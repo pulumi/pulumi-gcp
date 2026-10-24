@@ -13976,7 +13976,6 @@ func (o RegionSecurityPolicyRulePreconfiguredWafConfigPtrOutput) Exclusions() Re
 }
 
 type RegionSecurityPolicyRulePreconfiguredWafConfigExclusion struct {
-	// (Optional, Beta)
 	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestBodies []RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody `pulumi:"requestBodies"`
@@ -14013,7 +14012,6 @@ type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
 }
 
 type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
-	// (Optional, Beta)
 	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestBodies RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput `pulumi:"requestBodies"`
@@ -14089,7 +14087,6 @@ func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToRegionS
 	return o
 }
 
-// (Optional, Beta)
 // A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 // Structure is documented below.
 func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestBodies() RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
@@ -48164,7 +48161,6 @@ func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) Exclusions() Security
 }
 
 type SecurityPolicyRulePreconfiguredWafConfigExclusion struct {
-	// (Optional, Beta)
 	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestBodies []SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody `pulumi:"requestBodies"`
@@ -48201,7 +48197,6 @@ type SecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
 }
 
 type SecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
-	// (Optional, Beta)
 	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestBodies SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput `pulumi:"requestBodies"`
@@ -48277,7 +48272,6 @@ func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToSecurityPolic
 	return o
 }
 
-// (Optional, Beta)
 // A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 // Structure is documented below.
 func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestBodies() SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {

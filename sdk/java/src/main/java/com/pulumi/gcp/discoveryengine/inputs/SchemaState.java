@@ -57,6 +57,12 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The JSON representation of the schema.
+     * Changes are applied in place and must be backward compatible: existing fields
+     * can&#39;t be removed or have their type changed. Updating the schema triggers
+     * reindexing of all documents in the data store, which can take hours for large
+     * data stores and may incur costs. See
+     * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+     * for details.
      * 
      */
     @Import(name="jsonSchema")
@@ -64,6 +70,12 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The JSON representation of the schema.
+     * Changes are applied in place and must be backward compatible: existing fields
+     * can&#39;t be removed or have their type changed. Updating the schema triggers
+     * reindexing of all documents in the data store, which can take hours for large
+     * data stores and may incur costs. See
+     * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+     * for details.
      * 
      */
     public Optional<Output<String>> jsonSchema() {
@@ -224,6 +236,12 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param jsonSchema The JSON representation of the schema.
+         * Changes are applied in place and must be backward compatible: existing fields
+         * can&#39;t be removed or have their type changed. Updating the schema triggers
+         * reindexing of all documents in the data store, which can take hours for large
+         * data stores and may incur costs. See
+         * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+         * for details.
          * 
          * @return builder
          * 
@@ -235,6 +253,12 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param jsonSchema The JSON representation of the schema.
+         * Changes are applied in place and must be backward compatible: existing fields
+         * can&#39;t be removed or have their type changed. Updating the schema triggers
+         * reindexing of all documents in the data store, which can take hours for large
+         * data stores and may incur costs. See
+         * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+         * for details.
          * 
          * @return builder
          * 

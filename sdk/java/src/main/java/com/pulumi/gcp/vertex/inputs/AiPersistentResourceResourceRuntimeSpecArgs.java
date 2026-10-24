@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiPersistentResourceResourceRuntimeSpecRaySpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class AiPersistentResourceResourceRuntimeSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiPersistentResourceResourceRuntimeSpecArgs Empty = new AiPersistentResourceResourceRuntimeSpecArgs();
+
+    /**
+     * Configuration information for the Ray cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="raySpec")
+    private @Nullable Output<AiPersistentResourceResourceRuntimeSpecRaySpecArgs> raySpec;
+
+    /**
+     * @return Configuration information for the Ray cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiPersistentResourceResourceRuntimeSpecRaySpecArgs>> raySpec() {
+        return Optional.ofNullable(this.raySpec);
+    }
 
     /**
      * Configuration for the use of custom service account to run the workloads.
@@ -35,6 +53,7 @@ public final class AiPersistentResourceResourceRuntimeSpecArgs extends com.pulum
     private AiPersistentResourceResourceRuntimeSpecArgs() {}
 
     private AiPersistentResourceResourceRuntimeSpecArgs(AiPersistentResourceResourceRuntimeSpecArgs $) {
+        this.raySpec = $.raySpec;
         this.serviceAccountSpec = $.serviceAccountSpec;
     }
 
@@ -54,6 +73,29 @@ public final class AiPersistentResourceResourceRuntimeSpecArgs extends com.pulum
 
         public Builder(AiPersistentResourceResourceRuntimeSpecArgs defaults) {
             $ = new AiPersistentResourceResourceRuntimeSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param raySpec Configuration information for the Ray cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder raySpec(@Nullable Output<AiPersistentResourceResourceRuntimeSpecRaySpecArgs> raySpec) {
+            $.raySpec = raySpec;
+            return this;
+        }
+
+        /**
+         * @param raySpec Configuration information for the Ray cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder raySpec(AiPersistentResourceResourceRuntimeSpecRaySpecArgs raySpec) {
+            return raySpec(Output.of(raySpec));
         }
 
         /**

@@ -21,12 +21,24 @@ __all__ = [
 @pulumi.output_type
 class V2ConsumerPolicyEnableRule(dict):
     def __init__(__self__, *,
+                 catalogs: Optional[Sequence[_builtins.str]] = None,
                  services: Optional[Sequence[_builtins.str]] = None):
         """
+        :param Sequence[_builtins.str] catalogs: List of service catalog names to be enabled in the format of catalogs/<catalog_name>, for example catalogs/default-cloud-services.
         :param Sequence[_builtins.str] services: (Optional): List of service names to be enabled in the format of services/<service_name>
         """
+        if catalogs is not None:
+            pulumi.set(__self__, "catalogs", catalogs)
         if services is not None:
             pulumi.set(__self__, "services", services)
+
+    @_builtins.property
+    @pulumi.getter
+    def catalogs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of service catalog names to be enabled in the format of catalogs/<catalog_name>, for example catalogs/default-cloud-services.
+        """
+        return pulumi.get(self, "catalogs")
 
     @_builtins.property
     @pulumi.getter

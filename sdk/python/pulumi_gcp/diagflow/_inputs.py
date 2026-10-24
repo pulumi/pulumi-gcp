@@ -87,6 +87,8 @@ __all__ = [
     'ConversationProfileSipConfigArgsDict',
     'ConversationProfileSttConfigArgs',
     'ConversationProfileSttConfigArgsDict',
+    'ConversationProfileSttConfigGeminiAsrConfigArgs',
+    'ConversationProfileSttConfigGeminiAsrConfigArgsDict',
     'ConversationProfileTtsConfigArgs',
     'ConversationProfileTtsConfigArgsDict',
     'ConversationProfileTtsConfigVoiceArgs',
@@ -3030,6 +3032,11 @@ class ConversationProfileSttConfigArgsDict(TypedDict):
     """
     If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
     """
+    gemini_asr_config: NotRequired[pulumi.Input[Optional['ConversationProfileSttConfigGeminiAsrConfigArgsDict']]]
+    """
+    Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `use_gemini_asr` is true.
+    Structure is documented below.
+    """
     language_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The language of the supplied audio.
@@ -3048,6 +3055,10 @@ class ConversationProfileSttConfigArgsDict(TypedDict):
     The speech model used in speech to text.
     Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
     """
+    use_gemini_asr: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+    """
     use_timeout_based_endpointing: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
@@ -3058,27 +3069,34 @@ class ConversationProfileSttConfigArgs:
     def __init__(__self__, *,
                  audio_encoding: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_word_info: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gemini_asr_config: pulumi.Input[Optional['ConversationProfileSttConfigGeminiAsrConfigArgs']] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
                  sample_rate_hertz: pulumi.Input[Optional[_builtins.int]] = None,
                  speech_model_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_gemini_asr: pulumi.Input[Optional[_builtins.bool]] = None,
                  use_timeout_based_endpointing: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] audio_encoding: Audio encoding of the audio content to process.
                Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
         :param pulumi.Input[_builtins.bool] enable_word_info: If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
+        :param pulumi.Input['ConversationProfileSttConfigGeminiAsrConfigArgs'] gemini_asr_config: Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `use_gemini_asr` is true.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] language_code: The language of the supplied audio.
         :param pulumi.Input[_builtins.str] model: Which Speech model to select.
                Leave this field unspecified to use Agent Speech settings for model selection.
         :param pulumi.Input[_builtins.int] sample_rate_hertz: Sample rate (in Hertz) of the audio content sent in the query.
         :param pulumi.Input[_builtins.str] speech_model_variant: The speech model used in speech to text.
                Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
+        :param pulumi.Input[_builtins.bool] use_gemini_asr: If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
         :param pulumi.Input[_builtins.bool] use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         """
         if audio_encoding is not None:
             pulumi.set(__self__, "audio_encoding", audio_encoding)
         if enable_word_info is not None:
             pulumi.set(__self__, "enable_word_info", enable_word_info)
+        if gemini_asr_config is not None:
+            pulumi.set(__self__, "gemini_asr_config", gemini_asr_config)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
         if model is not None:
@@ -3087,6 +3105,8 @@ class ConversationProfileSttConfigArgs:
             pulumi.set(__self__, "sample_rate_hertz", sample_rate_hertz)
         if speech_model_variant is not None:
             pulumi.set(__self__, "speech_model_variant", speech_model_variant)
+        if use_gemini_asr is not None:
+            pulumi.set(__self__, "use_gemini_asr", use_gemini_asr)
         if use_timeout_based_endpointing is not None:
             pulumi.set(__self__, "use_timeout_based_endpointing", use_timeout_based_endpointing)
 
@@ -3114,6 +3134,19 @@ class ConversationProfileSttConfigArgs:
     @enable_word_info.setter
     def enable_word_info(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_word_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="geminiAsrConfig")
+    def gemini_asr_config(self) -> pulumi.Input[Optional['ConversationProfileSttConfigGeminiAsrConfigArgs']]:
+        """
+        Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `use_gemini_asr` is true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gemini_asr_config")
+
+    @gemini_asr_config.setter
+    def gemini_asr_config(self, value: pulumi.Input[Optional['ConversationProfileSttConfigGeminiAsrConfigArgs']]):
+        pulumi.set(self, "gemini_asr_config", value)
 
     @_builtins.property
     @pulumi.getter(name="languageCode")
@@ -3166,6 +3199,18 @@ class ConversationProfileSttConfigArgs:
         pulumi.set(self, "speech_model_variant", value)
 
     @_builtins.property
+    @pulumi.getter(name="useGeminiAsr")
+    def use_gemini_asr(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+        """
+        return pulumi.get(self, "use_gemini_asr")
+
+    @use_gemini_asr.setter
+    def use_gemini_asr(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "use_gemini_asr", value)
+
+    @_builtins.property
     @pulumi.getter(name="useTimeoutBasedEndpointing")
     def use_timeout_based_endpointing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -3176,6 +3221,121 @@ class ConversationProfileSttConfigArgs:
     @use_timeout_based_endpointing.setter
     def use_timeout_based_endpointing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_timeout_based_endpointing", value)
+
+
+class ConversationProfileSttConfigGeminiAsrConfigArgsDict(TypedDict):
+    end_of_speech_sensitivity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    End of speech sensitivity.
+    Possible values are: `END_SENSITIVITY_HIGH`, `END_SENSITIVITY_LOW`.
+    """
+    model_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Gemini ASR model ID used for transcription. This value overrides the default model ID configured on the server.
+    """
+    prefix_padding_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The required duration of detected speech before start-of-speech is committed.
+    """
+    silence_duration_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The required duration of detected silence (or non-speech) before end-of-speech is committed.
+    """
+    start_of_speech_sensitivity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Start of speech sensitivity.
+    Possible values are: `START_SENSITIVITY_HIGH`, `START_SENSITIVITY_LOW`.
+    """
+
+@pulumi.input_type
+class ConversationProfileSttConfigGeminiAsrConfigArgs:
+    def __init__(__self__, *,
+                 end_of_speech_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_padding_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 silence_duration_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_of_speech_sensitivity: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] end_of_speech_sensitivity: End of speech sensitivity.
+               Possible values are: `END_SENSITIVITY_HIGH`, `END_SENSITIVITY_LOW`.
+        :param pulumi.Input[_builtins.str] model_id: The Gemini ASR model ID used for transcription. This value overrides the default model ID configured on the server.
+        :param pulumi.Input[_builtins.int] prefix_padding_ms: The required duration of detected speech before start-of-speech is committed.
+        :param pulumi.Input[_builtins.int] silence_duration_ms: The required duration of detected silence (or non-speech) before end-of-speech is committed.
+        :param pulumi.Input[_builtins.str] start_of_speech_sensitivity: Start of speech sensitivity.
+               Possible values are: `START_SENSITIVITY_HIGH`, `START_SENSITIVITY_LOW`.
+        """
+        if end_of_speech_sensitivity is not None:
+            pulumi.set(__self__, "end_of_speech_sensitivity", end_of_speech_sensitivity)
+        if model_id is not None:
+            pulumi.set(__self__, "model_id", model_id)
+        if prefix_padding_ms is not None:
+            pulumi.set(__self__, "prefix_padding_ms", prefix_padding_ms)
+        if silence_duration_ms is not None:
+            pulumi.set(__self__, "silence_duration_ms", silence_duration_ms)
+        if start_of_speech_sensitivity is not None:
+            pulumi.set(__self__, "start_of_speech_sensitivity", start_of_speech_sensitivity)
+
+    @_builtins.property
+    @pulumi.getter(name="endOfSpeechSensitivity")
+    def end_of_speech_sensitivity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        End of speech sensitivity.
+        Possible values are: `END_SENSITIVITY_HIGH`, `END_SENSITIVITY_LOW`.
+        """
+        return pulumi.get(self, "end_of_speech_sensitivity")
+
+    @end_of_speech_sensitivity.setter
+    def end_of_speech_sensitivity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_of_speech_sensitivity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelId")
+    def model_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Gemini ASR model ID used for transcription. This value overrides the default model ID configured on the server.
+        """
+        return pulumi.get(self, "model_id")
+
+    @model_id.setter
+    def model_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="prefixPaddingMs")
+    def prefix_padding_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The required duration of detected speech before start-of-speech is committed.
+        """
+        return pulumi.get(self, "prefix_padding_ms")
+
+    @prefix_padding_ms.setter
+    def prefix_padding_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "prefix_padding_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="silenceDurationMs")
+    def silence_duration_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The required duration of detected silence (or non-speech) before end-of-speech is committed.
+        """
+        return pulumi.get(self, "silence_duration_ms")
+
+    @silence_duration_ms.setter
+    def silence_duration_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "silence_duration_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startOfSpeechSensitivity")
+    def start_of_speech_sensitivity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Start of speech sensitivity.
+        Possible values are: `START_SENSITIVITY_HIGH`, `START_SENSITIVITY_LOW`.
+        """
+        return pulumi.get(self, "start_of_speech_sensitivity")
+
+    @start_of_speech_sensitivity.setter
+    def start_of_speech_sensitivity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_of_speech_sensitivity", value)
 
 
 class ConversationProfileTtsConfigArgsDict(TypedDict):

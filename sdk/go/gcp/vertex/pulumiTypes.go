@@ -18486,6 +18486,4211 @@ func (o AiMetadataStoreStateTypeArrayOutput) Index(i pulumi.IntInput) AiMetadata
 	}).(AiMetadataStoreStateTypeOutput)
 }
 
+type AiModelDevelopmentClusterClusterEvent struct {
+	// (Output)
+	// The detailed description of the cluster event.
+	EventMessage *string `pulumi:"eventMessage"`
+	// (Output)
+	// The occurrence time of the cluster event.
+	EventTime *string `pulumi:"eventTime"`
+	// (Output)
+	// The type of the cluster event.
+	// Possible values:
+	// VM_PROLOG_ERROR
+	// VM_EPILOG_ERROR
+	// VM_CONTINUOUS_GPU_ERROR
+	// VM_SCAN_ERROR
+	// VM_SLURM_POWER_DOWN
+	// VM_SLURM_DRAIN
+	// VM_DELETION
+	// VM_REPORT_AND_REPLACEMENT
+	// VM_REBOOT
+	EventType *string `pulumi:"eventType"`
+}
+
+// AiModelDevelopmentClusterClusterEventInput is an input type that accepts AiModelDevelopmentClusterClusterEventArgs and AiModelDevelopmentClusterClusterEventOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterEventInput` via:
+//
+//	AiModelDevelopmentClusterClusterEventArgs{...}
+type AiModelDevelopmentClusterClusterEventInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterEventOutput() AiModelDevelopmentClusterClusterEventOutput
+	ToAiModelDevelopmentClusterClusterEventOutputWithContext(context.Context) AiModelDevelopmentClusterClusterEventOutput
+}
+
+type AiModelDevelopmentClusterClusterEventArgs struct {
+	// (Output)
+	// The detailed description of the cluster event.
+	EventMessage pulumi.StringPtrInput `pulumi:"eventMessage"`
+	// (Output)
+	// The occurrence time of the cluster event.
+	EventTime pulumi.StringPtrInput `pulumi:"eventTime"`
+	// (Output)
+	// The type of the cluster event.
+	// Possible values:
+	// VM_PROLOG_ERROR
+	// VM_EPILOG_ERROR
+	// VM_CONTINUOUS_GPU_ERROR
+	// VM_SCAN_ERROR
+	// VM_SLURM_POWER_DOWN
+	// VM_SLURM_DRAIN
+	// VM_DELETION
+	// VM_REPORT_AND_REPLACEMENT
+	// VM_REBOOT
+	EventType pulumi.StringPtrInput `pulumi:"eventType"`
+}
+
+func (AiModelDevelopmentClusterClusterEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterEvent)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterEventArgs) ToAiModelDevelopmentClusterClusterEventOutput() AiModelDevelopmentClusterClusterEventOutput {
+	return i.ToAiModelDevelopmentClusterClusterEventOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterEventArgs) ToAiModelDevelopmentClusterClusterEventOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterEventOutput)
+}
+
+// AiModelDevelopmentClusterClusterEventArrayInput is an input type that accepts AiModelDevelopmentClusterClusterEventArray and AiModelDevelopmentClusterClusterEventArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterEventArrayInput` via:
+//
+//	AiModelDevelopmentClusterClusterEventArray{ AiModelDevelopmentClusterClusterEventArgs{...} }
+type AiModelDevelopmentClusterClusterEventArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterEventArrayOutput() AiModelDevelopmentClusterClusterEventArrayOutput
+	ToAiModelDevelopmentClusterClusterEventArrayOutputWithContext(context.Context) AiModelDevelopmentClusterClusterEventArrayOutput
+}
+
+type AiModelDevelopmentClusterClusterEventArray []AiModelDevelopmentClusterClusterEventInput
+
+func (AiModelDevelopmentClusterClusterEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterEvent)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterEventArray) ToAiModelDevelopmentClusterClusterEventArrayOutput() AiModelDevelopmentClusterClusterEventArrayOutput {
+	return i.ToAiModelDevelopmentClusterClusterEventArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterEventArray) ToAiModelDevelopmentClusterClusterEventArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterEventArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterEventOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterEvent)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterEventOutput) ToAiModelDevelopmentClusterClusterEventOutput() AiModelDevelopmentClusterClusterEventOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterEventOutput) ToAiModelDevelopmentClusterClusterEventOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterEventOutput {
+	return o
+}
+
+// (Output)
+// The detailed description of the cluster event.
+func (o AiModelDevelopmentClusterClusterEventOutput) EventMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterEvent) *string { return v.EventMessage }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The occurrence time of the cluster event.
+func (o AiModelDevelopmentClusterClusterEventOutput) EventTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterEvent) *string { return v.EventTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The type of the cluster event.
+// Possible values:
+// VM_PROLOG_ERROR
+// VM_EPILOG_ERROR
+// VM_CONTINUOUS_GPU_ERROR
+// VM_SCAN_ERROR
+// VM_SLURM_POWER_DOWN
+// VM_SLURM_DRAIN
+// VM_DELETION
+// VM_REPORT_AND_REPLACEMENT
+// VM_REBOOT
+func (o AiModelDevelopmentClusterClusterEventOutput) EventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterEvent) *string { return v.EventType }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterClusterEventArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterEvent)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterEventArrayOutput) ToAiModelDevelopmentClusterClusterEventArrayOutput() AiModelDevelopmentClusterClusterEventArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterEventArrayOutput) ToAiModelDevelopmentClusterClusterEventArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterEventArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterEventArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterClusterEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterClusterEvent {
+		return vs[0].([]AiModelDevelopmentClusterClusterEvent)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterClusterEventOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatus struct {
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail *string `pulumi:"detail"`
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors []AiModelDevelopmentClusterClusterStatusError `pulumi:"errors"`
+	// (Output)
+	// The status information of all the nodes in the cluster.
+	// Structure is documented below.
+	NodesStatuses []AiModelDevelopmentClusterClusterStatusNodesStatus `pulumi:"nodesStatuses"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State *string `pulumi:"state"`
+}
+
+// AiModelDevelopmentClusterClusterStatusInput is an input type that accepts AiModelDevelopmentClusterClusterStatusArgs and AiModelDevelopmentClusterClusterStatusOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusArgs{...}
+type AiModelDevelopmentClusterClusterStatusInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusOutput() AiModelDevelopmentClusterClusterStatusOutput
+	ToAiModelDevelopmentClusterClusterStatusOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusArgs struct {
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail pulumi.StringPtrInput `pulumi:"detail"`
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors AiModelDevelopmentClusterClusterStatusErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// The status information of all the nodes in the cluster.
+	// Structure is documented below.
+	NodesStatuses AiModelDevelopmentClusterClusterStatusNodesStatusArrayInput `pulumi:"nodesStatuses"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (AiModelDevelopmentClusterClusterStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusArgs) ToAiModelDevelopmentClusterClusterStatusOutput() AiModelDevelopmentClusterClusterStatusOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusArgs) ToAiModelDevelopmentClusterClusterStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusOutput)
+}
+
+// AiModelDevelopmentClusterClusterStatusArrayInput is an input type that accepts AiModelDevelopmentClusterClusterStatusArray and AiModelDevelopmentClusterClusterStatusArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusArrayInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusArray{ AiModelDevelopmentClusterClusterStatusArgs{...} }
+type AiModelDevelopmentClusterClusterStatusArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusArrayOutput() AiModelDevelopmentClusterClusterStatusArrayOutput
+	ToAiModelDevelopmentClusterClusterStatusArrayOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusArrayOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusArray []AiModelDevelopmentClusterClusterStatusInput
+
+func (AiModelDevelopmentClusterClusterStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusArray) ToAiModelDevelopmentClusterClusterStatusArrayOutput() AiModelDevelopmentClusterClusterStatusArrayOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusArray) ToAiModelDevelopmentClusterClusterStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusOutput) ToAiModelDevelopmentClusterClusterStatusOutput() AiModelDevelopmentClusterClusterStatusOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusOutput) ToAiModelDevelopmentClusterClusterStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusOutput {
+	return o
+}
+
+// (Output)
+// Human-readable detail about the current state.
+func (o AiModelDevelopmentClusterClusterStatusOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatus) *string { return v.Detail }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+// three pieces of data: error code, error message, and error details.
+// You can find out more about this error model and how to work with it in the
+// [API Design Guide](https://cloud.google.com/apis/design/errors).
+// Structure is documented below.
+func (o AiModelDevelopmentClusterClusterStatusOutput) Errors() AiModelDevelopmentClusterClusterStatusErrorArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatus) []AiModelDevelopmentClusterClusterStatusError {
+		return v.Errors
+	}).(AiModelDevelopmentClusterClusterStatusErrorArrayOutput)
+}
+
+// (Output)
+// The status information of all the nodes in the cluster.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterClusterStatusOutput) NodesStatuses() AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatus) []AiModelDevelopmentClusterClusterStatusNodesStatus {
+		return v.NodesStatuses
+	}).(AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput)
+}
+
+// (Output)
+// The current state of the XManager instance.
+// Possible values:
+// PROVISIONING
+// RUNNING
+// DELETING
+// ERROR
+func (o AiModelDevelopmentClusterClusterStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusArrayOutput) ToAiModelDevelopmentClusterClusterStatusArrayOutput() AiModelDevelopmentClusterClusterStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusArrayOutput) ToAiModelDevelopmentClusterClusterStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterClusterStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterClusterStatus {
+		return vs[0].([]AiModelDevelopmentClusterClusterStatus)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterClusterStatusOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// AiModelDevelopmentClusterClusterStatusErrorInput is an input type that accepts AiModelDevelopmentClusterClusterStatusErrorArgs and AiModelDevelopmentClusterClusterStatusErrorOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusErrorInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusErrorArgs{...}
+type AiModelDevelopmentClusterClusterStatusErrorInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusErrorOutput() AiModelDevelopmentClusterClusterStatusErrorOutput
+	ToAiModelDevelopmentClusterClusterStatusErrorOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusErrorOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiModelDevelopmentClusterClusterStatusErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusError)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusErrorArgs) ToAiModelDevelopmentClusterClusterStatusErrorOutput() AiModelDevelopmentClusterClusterStatusErrorOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusErrorOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusErrorArgs) ToAiModelDevelopmentClusterClusterStatusErrorOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusErrorOutput)
+}
+
+// AiModelDevelopmentClusterClusterStatusErrorArrayInput is an input type that accepts AiModelDevelopmentClusterClusterStatusErrorArray and AiModelDevelopmentClusterClusterStatusErrorArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusErrorArrayInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusErrorArray{ AiModelDevelopmentClusterClusterStatusErrorArgs{...} }
+type AiModelDevelopmentClusterClusterStatusErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusErrorArrayOutput() AiModelDevelopmentClusterClusterStatusErrorArrayOutput
+	ToAiModelDevelopmentClusterClusterStatusErrorArrayOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusErrorArrayOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusErrorArray []AiModelDevelopmentClusterClusterStatusErrorInput
+
+func (AiModelDevelopmentClusterClusterStatusErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusError)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusErrorArray) ToAiModelDevelopmentClusterClusterStatusErrorArrayOutput() AiModelDevelopmentClusterClusterStatusErrorArrayOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusErrorArray) ToAiModelDevelopmentClusterClusterStatusErrorArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusErrorArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusErrorOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusError)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusErrorOutput) ToAiModelDevelopmentClusterClusterStatusErrorOutput() AiModelDevelopmentClusterClusterStatusErrorOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusErrorOutput) ToAiModelDevelopmentClusterClusterStatusErrorOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiModelDevelopmentClusterClusterStatusErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.  There is a common set of
+// message types for APIs to use.
+func (o AiModelDevelopmentClusterClusterStatusErrorOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusError) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o AiModelDevelopmentClusterClusterStatusErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusError)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusErrorArrayOutput) ToAiModelDevelopmentClusterClusterStatusErrorArrayOutput() AiModelDevelopmentClusterClusterStatusErrorArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusErrorArrayOutput) ToAiModelDevelopmentClusterClusterStatusErrorArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusErrorArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusErrorArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterClusterStatusErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterClusterStatusError {
+		return vs[0].([]AiModelDevelopmentClusterClusterStatusError)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterClusterStatusErrorOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatus struct {
+	// (Output)
+	// Time when the TrainingService was created.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail *string `pulumi:"detail"`
+	// (Output)
+	// The XManager instance ID (for example, "xmc-").
+	InstanceId *string `pulumi:"instanceId"`
+	// (Output)
+	// The name of the Compute Engine instance associated with the node.
+	InstanceName *string `pulumi:"instanceName"`
+	// (Output)
+	// The time when the node's current state or detail last changed.
+	LastUpdateTime *string `pulumi:"lastUpdateTime"`
+	// (Output)
+	// The ID of the node pool.
+	NodePoolId *string `pulumi:"nodePoolId"`
+	// (Output)
+	// The type of the node pool.
+	// Possible values:
+	// NODE_POOL_TYPE_LOGIN
+	// NODE_POOL_TYPE_COMPUTE
+	NodePoolType *string `pulumi:"nodePoolType"`
+	// (Output)
+	// The state of the node.
+	// Possible values:
+	// PREPARING
+	// RUNNING
+	// ERROR
+	// UPDATING
+	NodeState *string `pulumi:"nodeState"`
+	// (Output)
+	// Physical Host Hardware information.
+	// Structure is documented below.
+	PhysicalHosts []AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost `pulumi:"physicalHosts"`
+}
+
+// AiModelDevelopmentClusterClusterStatusNodesStatusInput is an input type that accepts AiModelDevelopmentClusterClusterStatusNodesStatusArgs and AiModelDevelopmentClusterClusterStatusNodesStatusOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusNodesStatusInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusNodesStatusArgs{...}
+type AiModelDevelopmentClusterClusterStatusNodesStatusInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusOutput() AiModelDevelopmentClusterClusterStatusNodesStatusOutput
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusArgs struct {
+	// (Output)
+	// Time when the TrainingService was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail pulumi.StringPtrInput `pulumi:"detail"`
+	// (Output)
+	// The XManager instance ID (for example, "xmc-").
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// (Output)
+	// The name of the Compute Engine instance associated with the node.
+	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
+	// (Output)
+	// The time when the node's current state or detail last changed.
+	LastUpdateTime pulumi.StringPtrInput `pulumi:"lastUpdateTime"`
+	// (Output)
+	// The ID of the node pool.
+	NodePoolId pulumi.StringPtrInput `pulumi:"nodePoolId"`
+	// (Output)
+	// The type of the node pool.
+	// Possible values:
+	// NODE_POOL_TYPE_LOGIN
+	// NODE_POOL_TYPE_COMPUTE
+	NodePoolType pulumi.StringPtrInput `pulumi:"nodePoolType"`
+	// (Output)
+	// The state of the node.
+	// Possible values:
+	// PREPARING
+	// RUNNING
+	// ERROR
+	// UPDATING
+	NodeState pulumi.StringPtrInput `pulumi:"nodeState"`
+	// (Output)
+	// Physical Host Hardware information.
+	// Structure is documented below.
+	PhysicalHosts AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayInput `pulumi:"physicalHosts"`
+}
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusArgs) ToAiModelDevelopmentClusterClusterStatusNodesStatusOutput() AiModelDevelopmentClusterClusterStatusNodesStatusOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusNodesStatusOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusArgs) ToAiModelDevelopmentClusterClusterStatusNodesStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusNodesStatusOutput)
+}
+
+// AiModelDevelopmentClusterClusterStatusNodesStatusArrayInput is an input type that accepts AiModelDevelopmentClusterClusterStatusNodesStatusArray and AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusNodesStatusArrayInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusNodesStatusArray{ AiModelDevelopmentClusterClusterStatusNodesStatusArgs{...} }
+type AiModelDevelopmentClusterClusterStatusNodesStatusArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusArray []AiModelDevelopmentClusterClusterStatusNodesStatusInput
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusNodesStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusArray) ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusArray) ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusOutput() AiModelDevelopmentClusterClusterStatusNodesStatusOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusOutput {
+	return o
+}
+
+// (Output)
+// Time when the TrainingService was created.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Human-readable detail about the current state.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.Detail }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The XManager instance ID (for example, "xmc-").
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the Compute Engine instance associated with the node.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time when the node's current state or detail last changed.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) LastUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.LastUpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The ID of the node pool.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) NodePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.NodePoolId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The type of the node pool.
+// Possible values:
+// NODE_POOL_TYPE_LOGIN
+// NODE_POOL_TYPE_COMPUTE
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) NodePoolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.NodePoolType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The state of the node.
+// Possible values:
+// PREPARING
+// RUNNING
+// ERROR
+// UPDATING
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) NodeState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.NodeState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Physical Host Hardware information.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) PhysicalHosts() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) []AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost {
+		return v.PhysicalHosts
+	}).(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusNodesStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterClusterStatusNodesStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterClusterStatusNodesStatus {
+		return vs[0].([]AiModelDevelopmentClusterClusterStatusNodesStatus)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterClusterStatusNodesStatusOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost struct {
+	// (Output)
+	// Name of the block.
+	BlockId *string `pulumi:"blockId"`
+	// (Output)
+	// Name of the physical cluster.
+	ClusterName *string `pulumi:"clusterName"`
+	// (Output)
+	// Name of the host.
+	HostId *string `pulumi:"hostId"`
+	// (Output)
+	// Name of the sub-block.
+	SubblockId *string `pulumi:"subblockId"`
+}
+
+// AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostInput is an input type that accepts AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs and AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs{...}
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs struct {
+	// (Output)
+	// Name of the block.
+	BlockId pulumi.StringPtrInput `pulumi:"blockId"`
+	// (Output)
+	// Name of the physical cluster.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// (Output)
+	// Name of the host.
+	HostId pulumi.StringPtrInput `pulumi:"hostId"`
+	// (Output)
+	// Name of the sub-block.
+	SubblockId pulumi.StringPtrInput `pulumi:"subblockId"`
+}
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput)
+}
+
+// AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayInput is an input type that accepts AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray and AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray{ AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs{...} }
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray []AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostInput
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput {
+	return o
+}
+
+// (Output)
+// Name of the block.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) BlockId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost) *string { return v.BlockId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Name of the physical cluster.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Name of the host.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) HostId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost) *string { return v.HostId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Name of the sub-block.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) SubblockId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost) *string { return v.SubblockId }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost {
+		return vs[0].([]AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfig struct {
+	// Days of the week on which a backup runs, each at most once and
+	// none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
+	// The Cloud Storage bucket that backups are written to, without
+	// the "gs://" scheme.
+	DestinationBucket string `pulumi:"destinationBucket"`
+	// The Managed Lustre instances to back up, each named as
+	// "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+	// must be attached to one of the cluster's node pools, and no entry may
+	// repeat. If empty, every attached instance is backed up.
+	Lustres []string `pulumi:"lustres"`
+	// Time when the ModelDevelopmentCluster for the first time entered the
+	// `RUNNING` state.
+	StartTime *AiModelDevelopmentClusterLustreExportConfigStartTime `pulumi:"startTime"`
+}
+
+// AiModelDevelopmentClusterLustreExportConfigInput is an input type that accepts AiModelDevelopmentClusterLustreExportConfigArgs and AiModelDevelopmentClusterLustreExportConfigOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterLustreExportConfigInput` via:
+//
+//	AiModelDevelopmentClusterLustreExportConfigArgs{...}
+type AiModelDevelopmentClusterLustreExportConfigInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterLustreExportConfigOutput() AiModelDevelopmentClusterLustreExportConfigOutput
+	ToAiModelDevelopmentClusterLustreExportConfigOutputWithContext(context.Context) AiModelDevelopmentClusterLustreExportConfigOutput
+}
+
+type AiModelDevelopmentClusterLustreExportConfigArgs struct {
+	// Days of the week on which a backup runs, each at most once and
+	// none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
+	// The Cloud Storage bucket that backups are written to, without
+	// the "gs://" scheme.
+	DestinationBucket pulumi.StringInput `pulumi:"destinationBucket"`
+	// The Managed Lustre instances to back up, each named as
+	// "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+	// must be attached to one of the cluster's node pools, and no entry may
+	// repeat. If empty, every attached instance is backed up.
+	Lustres pulumi.StringArrayInput `pulumi:"lustres"`
+	// Time when the ModelDevelopmentCluster for the first time entered the
+	// `RUNNING` state.
+	StartTime AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput `pulumi:"startTime"`
+}
+
+func (AiModelDevelopmentClusterLustreExportConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfig)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigArgs) ToAiModelDevelopmentClusterLustreExportConfigOutput() AiModelDevelopmentClusterLustreExportConfigOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigArgs) ToAiModelDevelopmentClusterLustreExportConfigOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigOutput)
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigArgs) ToAiModelDevelopmentClusterLustreExportConfigPtrOutput() AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigArgs) ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigOutput).ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterLustreExportConfigPtrInput is an input type that accepts AiModelDevelopmentClusterLustreExportConfigArgs, AiModelDevelopmentClusterLustreExportConfigPtr and AiModelDevelopmentClusterLustreExportConfigPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterLustreExportConfigPtrInput` via:
+//
+//	        AiModelDevelopmentClusterLustreExportConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterLustreExportConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterLustreExportConfigPtrOutput() AiModelDevelopmentClusterLustreExportConfigPtrOutput
+	ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(context.Context) AiModelDevelopmentClusterLustreExportConfigPtrOutput
+}
+
+type aiModelDevelopmentClusterLustreExportConfigPtrType AiModelDevelopmentClusterLustreExportConfigArgs
+
+func AiModelDevelopmentClusterLustreExportConfigPtr(v *AiModelDevelopmentClusterLustreExportConfigArgs) AiModelDevelopmentClusterLustreExportConfigPtrInput {
+	return (*aiModelDevelopmentClusterLustreExportConfigPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterLustreExportConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterLustreExportConfig)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterLustreExportConfigPtrType) ToAiModelDevelopmentClusterLustreExportConfigPtrOutput() AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterLustreExportConfigPtrType) ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigPtrOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfigOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterLustreExportConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfig)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) ToAiModelDevelopmentClusterLustreExportConfigOutput() AiModelDevelopmentClusterLustreExportConfigOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) ToAiModelDevelopmentClusterLustreExportConfigOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) ToAiModelDevelopmentClusterLustreExportConfigPtrOutput() AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return o.ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterLustreExportConfig) *AiModelDevelopmentClusterLustreExportConfig {
+		return &v
+	}).(AiModelDevelopmentClusterLustreExportConfigPtrOutput)
+}
+
+// Days of the week on which a backup runs, each at most once and
+// none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfig) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
+}
+
+// The Cloud Storage bucket that backups are written to, without
+// the "gs://" scheme.
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) DestinationBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfig) string { return v.DestinationBucket }).(pulumi.StringOutput)
+}
+
+// The Managed Lustre instances to back up, each named as
+// "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+// must be attached to one of the cluster's node pools, and no entry may
+// repeat. If empty, every attached instance is backed up.
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) Lustres() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfig) []string { return v.Lustres }).(pulumi.StringArrayOutput)
+}
+
+// Time when the ModelDevelopmentCluster for the first time entered the
+// `RUNNING` state.
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) StartTime() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfig) *AiModelDevelopmentClusterLustreExportConfigStartTime {
+		return v.StartTime
+	}).(AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterLustreExportConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterLustreExportConfig)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) ToAiModelDevelopmentClusterLustreExportConfigPtrOutput() AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) Elem() AiModelDevelopmentClusterLustreExportConfigOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfig) AiModelDevelopmentClusterLustreExportConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterLustreExportConfig
+		return ret
+	}).(AiModelDevelopmentClusterLustreExportConfigOutput)
+}
+
+// Days of the week on which a backup runs, each at most once and
+// none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DaysOfWeeks
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Cloud Storage bucket that backups are written to, without
+// the "gs://" scheme.
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) DestinationBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DestinationBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Managed Lustre instances to back up, each named as
+// "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+// must be attached to one of the cluster's node pools, and no entry may
+// repeat. If empty, every attached instance is backed up.
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) Lustres() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Lustres
+	}).(pulumi.StringArrayOutput)
+}
+
+// Time when the ModelDevelopmentCluster for the first time entered the
+// `RUNNING` state.
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) StartTime() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfig) *AiModelDevelopmentClusterLustreExportConfigStartTime {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfigStartTime struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
+	Minutes *int `pulumi:"minutes"`
+}
+
+// AiModelDevelopmentClusterLustreExportConfigStartTimeInput is an input type that accepts AiModelDevelopmentClusterLustreExportConfigStartTimeArgs and AiModelDevelopmentClusterLustreExportConfigStartTimeOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterLustreExportConfigStartTimeInput` via:
+//
+//	AiModelDevelopmentClusterLustreExportConfigStartTimeArgs{...}
+type AiModelDevelopmentClusterLustreExportConfigStartTimeInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutput() AiModelDevelopmentClusterLustreExportConfigStartTimeOutput
+	ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutputWithContext(context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimeOutput
+}
+
+type AiModelDevelopmentClusterLustreExportConfigStartTimeArgs struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+}
+
+func (AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigStartTime)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutput() AiModelDevelopmentClusterLustreExportConfigStartTimeOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigStartTimeOutput)
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigStartTimeOutput).ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput is an input type that accepts AiModelDevelopmentClusterLustreExportConfigStartTimeArgs, AiModelDevelopmentClusterLustreExportConfigStartTimePtr and AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput` via:
+//
+//	        AiModelDevelopmentClusterLustreExportConfigStartTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput
+	ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput
+}
+
+type aiModelDevelopmentClusterLustreExportConfigStartTimePtrType AiModelDevelopmentClusterLustreExportConfigStartTimeArgs
+
+func AiModelDevelopmentClusterLustreExportConfigStartTimePtr(v *AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput {
+	return (*aiModelDevelopmentClusterLustreExportConfigStartTimePtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterLustreExportConfigStartTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterLustreExportConfigStartTime)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterLustreExportConfigStartTimePtrType) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterLustreExportConfigStartTimePtrType) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfigStartTimeOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigStartTime)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutput() AiModelDevelopmentClusterLustreExportConfigStartTimeOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimeOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o.ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterLustreExportConfigStartTime) *AiModelDevelopmentClusterLustreExportConfigStartTime {
+		return &v
+	}).(AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput)
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+// typically must be less than or equal to 23. An API may choose to allow the
+// value "24:00:00" for scenarios like business closing time.
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfigStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and less than or
+// equal to 59.
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfigStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterLustreExportConfigStartTime)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) Elem() AiModelDevelopmentClusterLustreExportConfigStartTimeOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfigStartTime) AiModelDevelopmentClusterLustreExportConfigStartTime {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterLustreExportConfigStartTime
+		return ret
+	}).(AiModelDevelopmentClusterLustreExportConfigStartTimeOutput)
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+// typically must be less than or equal to 23. An API may choose to allow the
+// value "24:00:00" for scenarios like business closing time.
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfigStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and less than or
+// equal to 59.
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfigStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiModelDevelopmentClusterNetwork struct {
+	// Network spec of the cluster.
+	// Structure is documented below.
+	Network string `pulumi:"network"`
+	// The name of the subnetwork in the above network to create the cluster.
+	// If not specified:
+	// * for auto mode VPC, the subnet in corresponding region is auto-selected;
+	// * for custom mode VPC, a new subnet will be automatically created.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// AiModelDevelopmentClusterNetworkInput is an input type that accepts AiModelDevelopmentClusterNetworkArgs and AiModelDevelopmentClusterNetworkOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNetworkInput` via:
+//
+//	AiModelDevelopmentClusterNetworkArgs{...}
+type AiModelDevelopmentClusterNetworkInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNetworkOutput() AiModelDevelopmentClusterNetworkOutput
+	ToAiModelDevelopmentClusterNetworkOutputWithContext(context.Context) AiModelDevelopmentClusterNetworkOutput
+}
+
+type AiModelDevelopmentClusterNetworkArgs struct {
+	// Network spec of the cluster.
+	// Structure is documented below.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The name of the subnetwork in the above network to create the cluster.
+	// If not specified:
+	// * for auto mode VPC, the subnet in corresponding region is auto-selected;
+	// * for custom mode VPC, a new subnet will be automatically created.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (AiModelDevelopmentClusterNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNetwork)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNetworkArgs) ToAiModelDevelopmentClusterNetworkOutput() AiModelDevelopmentClusterNetworkOutput {
+	return i.ToAiModelDevelopmentClusterNetworkOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNetworkArgs) ToAiModelDevelopmentClusterNetworkOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNetworkOutput)
+}
+
+func (i AiModelDevelopmentClusterNetworkArgs) ToAiModelDevelopmentClusterNetworkPtrOutput() AiModelDevelopmentClusterNetworkPtrOutput {
+	return i.ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNetworkArgs) ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNetworkOutput).ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterNetworkPtrInput is an input type that accepts AiModelDevelopmentClusterNetworkArgs, AiModelDevelopmentClusterNetworkPtr and AiModelDevelopmentClusterNetworkPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNetworkPtrInput` via:
+//
+//	        AiModelDevelopmentClusterNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterNetworkPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNetworkPtrOutput() AiModelDevelopmentClusterNetworkPtrOutput
+	ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(context.Context) AiModelDevelopmentClusterNetworkPtrOutput
+}
+
+type aiModelDevelopmentClusterNetworkPtrType AiModelDevelopmentClusterNetworkArgs
+
+func AiModelDevelopmentClusterNetworkPtr(v *AiModelDevelopmentClusterNetworkArgs) AiModelDevelopmentClusterNetworkPtrInput {
+	return (*aiModelDevelopmentClusterNetworkPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNetwork)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterNetworkPtrType) ToAiModelDevelopmentClusterNetworkPtrOutput() AiModelDevelopmentClusterNetworkPtrOutput {
+	return i.ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterNetworkPtrType) ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNetworkPtrOutput)
+}
+
+type AiModelDevelopmentClusterNetworkOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNetwork)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNetworkOutput) ToAiModelDevelopmentClusterNetworkOutput() AiModelDevelopmentClusterNetworkOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNetworkOutput) ToAiModelDevelopmentClusterNetworkOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNetworkOutput) ToAiModelDevelopmentClusterNetworkPtrOutput() AiModelDevelopmentClusterNetworkPtrOutput {
+	return o.ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterNetworkOutput) ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterNetwork) *AiModelDevelopmentClusterNetwork {
+		return &v
+	}).(AiModelDevelopmentClusterNetworkPtrOutput)
+}
+
+// Network spec of the cluster.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The name of the subnetwork in the above network to create the cluster.
+// If not specified:
+// * for auto mode VPC, the subnet in corresponding region is auto-selected;
+// * for custom mode VPC, a new subnet will be automatically created.
+func (o AiModelDevelopmentClusterNetworkOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNetwork) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNetwork)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNetworkPtrOutput) ToAiModelDevelopmentClusterNetworkPtrOutput() AiModelDevelopmentClusterNetworkPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNetworkPtrOutput) ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNetworkPtrOutput) Elem() AiModelDevelopmentClusterNetworkOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNetwork) AiModelDevelopmentClusterNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterNetwork
+		return ret
+	}).(AiModelDevelopmentClusterNetworkOutput)
+}
+
+// Network spec of the cluster.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterNetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the subnetwork in the above network to create the cluster.
+// If not specified:
+// * for auto mode VPC, the subnet in corresponding region is auto-selected;
+// * for custom mode VPC, a new subnet will be automatically created.
+func (o AiModelDevelopmentClusterNetworkPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePool struct {
+	// Represents the spec of disk options.
+	// Structure is documented below.
+	BootDisk *AiModelDevelopmentClusterNodePoolBootDisk `pulumi:"bootDisk"`
+	// (Output)
+	// The effective maximum duration for instances in this node pool.
+	// This field reflects the value of `flexStartMaxDuration` if it is
+	// set by the user, or the server-applied default (for example, 7 days) if it
+	// is not.
+	// This field is only applicable when `provisioningModel` is set to
+	// `FLEX_START`.
+	EffectiveFlexStartMaxDuration *string `pulumi:"effectiveFlexStartMaxDuration"`
+	// Whether to enable public IPs for the node pool.
+	EnablePublicIps *bool `pulumi:"enablePublicIps"`
+	// List of the existing Filestore instances to be mounted.
+	// For example:
+	// if "projects/my-project/locations/us-central1-a/instances/my-instance" is
+	// specified, the instance will be mounted to the node pool under the path
+	// "mnt/filestore/"
+	Filestores []string `pulumi:"filestores"`
+	// The maximum duration for instances in this node pool.
+	// This field is only applicable when `provisioningModel` is set to
+	// `FLEX_START`.
+	FlexStartMaxDuration *string `pulumi:"flexStartMaxDuration"`
+	// The unique ID referring to this node pool.
+	Id string `pulumi:"id"`
+	// The labels with user-defined metadata to organize the node pool. These
+	// labels are applied to the underlying compute resources (for example, the
+	// VM instances) of the node pool, so they appear in billing exports and
+	// Cloud Monitoring filters.
+	// Label keys and values can be no longer than 64 characters
+	// (Unicode codepoints), can only contain lowercase letters, numeric
+	// characters, underscores and dashes. International characters are allowed.
+	// See https://goo.gl/xmQnxf for more information and examples of labels.
+	Labels map[string]string `pulumi:"labels"`
+	// List of the existing Google Managed Lustre instances to be mounted.
+	// Similar to the filestores, the instance will be mounted to the node pool
+	// under the path "/mnt/lustre/"
+	Lustres []string `pulumi:"lustres"`
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec AiModelDevelopmentClusterNodePoolMachineSpec `pulumi:"machineSpec"`
+	// The node image to be used for the VMs in the node pool.
+	// In format of "projects//global/images/" or
+	// "projects/test-project/global/images/family/"
+	NodeImage *string `pulumi:"nodeImage"`
+	// Specifies the provisioning model for the node pool.
+	// Behavior for `PROVISIONING_MODEL_UNSPECIFIED`:
+	// - For CPU node pools: Defaults to `ON_DEMAND`.
+	// - For GPU node pools:
+	// - If
+	//   `machine_spec.reservation_affinity`
+	//   is set, it defaults to `RESERVATION`.
+	// - If
+	//   `machine_spec.reservation_affinity`
+	//   is NOT set, this is an INVALID state and the request will be rejected.
+	//   An explicit `provisioningModel` must be provided.
+	ProvisioningModel *string `pulumi:"provisioningModel"`
+	// The scaling spec of the node pool.
+	ScalingSpec *AiModelDevelopmentClusterNodePoolScalingSpec `pulumi:"scalingSpec"`
+	// Startup script for the node pool instances.
+	StartupScript *string `pulumi:"startupScript"`
+	// The zone of the node pool.
+	Zone *string `pulumi:"zone"`
+}
+
+// AiModelDevelopmentClusterNodePoolInput is an input type that accepts AiModelDevelopmentClusterNodePoolArgs and AiModelDevelopmentClusterNodePoolOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolArgs{...}
+type AiModelDevelopmentClusterNodePoolInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolOutput() AiModelDevelopmentClusterNodePoolOutput
+	ToAiModelDevelopmentClusterNodePoolOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolOutput
+}
+
+type AiModelDevelopmentClusterNodePoolArgs struct {
+	// Represents the spec of disk options.
+	// Structure is documented below.
+	BootDisk AiModelDevelopmentClusterNodePoolBootDiskPtrInput `pulumi:"bootDisk"`
+	// (Output)
+	// The effective maximum duration for instances in this node pool.
+	// This field reflects the value of `flexStartMaxDuration` if it is
+	// set by the user, or the server-applied default (for example, 7 days) if it
+	// is not.
+	// This field is only applicable when `provisioningModel` is set to
+	// `FLEX_START`.
+	EffectiveFlexStartMaxDuration pulumi.StringPtrInput `pulumi:"effectiveFlexStartMaxDuration"`
+	// Whether to enable public IPs for the node pool.
+	EnablePublicIps pulumi.BoolPtrInput `pulumi:"enablePublicIps"`
+	// List of the existing Filestore instances to be mounted.
+	// For example:
+	// if "projects/my-project/locations/us-central1-a/instances/my-instance" is
+	// specified, the instance will be mounted to the node pool under the path
+	// "mnt/filestore/"
+	Filestores pulumi.StringArrayInput `pulumi:"filestores"`
+	// The maximum duration for instances in this node pool.
+	// This field is only applicable when `provisioningModel` is set to
+	// `FLEX_START`.
+	FlexStartMaxDuration pulumi.StringPtrInput `pulumi:"flexStartMaxDuration"`
+	// The unique ID referring to this node pool.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The labels with user-defined metadata to organize the node pool. These
+	// labels are applied to the underlying compute resources (for example, the
+	// VM instances) of the node pool, so they appear in billing exports and
+	// Cloud Monitoring filters.
+	// Label keys and values can be no longer than 64 characters
+	// (Unicode codepoints), can only contain lowercase letters, numeric
+	// characters, underscores and dashes. International characters are allowed.
+	// See https://goo.gl/xmQnxf for more information and examples of labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// List of the existing Google Managed Lustre instances to be mounted.
+	// Similar to the filestores, the instance will be mounted to the node pool
+	// under the path "/mnt/lustre/"
+	Lustres pulumi.StringArrayInput `pulumi:"lustres"`
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec AiModelDevelopmentClusterNodePoolMachineSpecInput `pulumi:"machineSpec"`
+	// The node image to be used for the VMs in the node pool.
+	// In format of "projects//global/images/" or
+	// "projects/test-project/global/images/family/"
+	NodeImage pulumi.StringPtrInput `pulumi:"nodeImage"`
+	// Specifies the provisioning model for the node pool.
+	// Behavior for `PROVISIONING_MODEL_UNSPECIFIED`:
+	// - For CPU node pools: Defaults to `ON_DEMAND`.
+	// - For GPU node pools:
+	// - If
+	//   `machine_spec.reservation_affinity`
+	//   is set, it defaults to `RESERVATION`.
+	// - If
+	//   `machine_spec.reservation_affinity`
+	//   is NOT set, this is an INVALID state and the request will be rejected.
+	//   An explicit `provisioningModel` must be provided.
+	ProvisioningModel pulumi.StringPtrInput `pulumi:"provisioningModel"`
+	// The scaling spec of the node pool.
+	ScalingSpec AiModelDevelopmentClusterNodePoolScalingSpecPtrInput `pulumi:"scalingSpec"`
+	// Startup script for the node pool instances.
+	StartupScript pulumi.StringPtrInput `pulumi:"startupScript"`
+	// The zone of the node pool.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (AiModelDevelopmentClusterNodePoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePool)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolArgs) ToAiModelDevelopmentClusterNodePoolOutput() AiModelDevelopmentClusterNodePoolOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolArgs) ToAiModelDevelopmentClusterNodePoolOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolOutput)
+}
+
+// AiModelDevelopmentClusterNodePoolArrayInput is an input type that accepts AiModelDevelopmentClusterNodePoolArray and AiModelDevelopmentClusterNodePoolArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolArrayInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolArray{ AiModelDevelopmentClusterNodePoolArgs{...} }
+type AiModelDevelopmentClusterNodePoolArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolArrayOutput() AiModelDevelopmentClusterNodePoolArrayOutput
+	ToAiModelDevelopmentClusterNodePoolArrayOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolArrayOutput
+}
+
+type AiModelDevelopmentClusterNodePoolArray []AiModelDevelopmentClusterNodePoolInput
+
+func (AiModelDevelopmentClusterNodePoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterNodePool)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolArray) ToAiModelDevelopmentClusterNodePoolArrayOutput() AiModelDevelopmentClusterNodePoolArrayOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolArray) ToAiModelDevelopmentClusterNodePoolArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolArrayOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePool)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolOutput) ToAiModelDevelopmentClusterNodePoolOutput() AiModelDevelopmentClusterNodePoolOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolOutput) ToAiModelDevelopmentClusterNodePoolOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolOutput {
+	return o
+}
+
+// Represents the spec of disk options.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterNodePoolOutput) BootDisk() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *AiModelDevelopmentClusterNodePoolBootDisk {
+		return v.BootDisk
+	}).(AiModelDevelopmentClusterNodePoolBootDiskPtrOutput)
+}
+
+// (Output)
+// The effective maximum duration for instances in this node pool.
+// This field reflects the value of `flexStartMaxDuration` if it is
+// set by the user, or the server-applied default (for example, 7 days) if it
+// is not.
+// This field is only applicable when `provisioningModel` is set to
+// `FLEX_START`.
+func (o AiModelDevelopmentClusterNodePoolOutput) EffectiveFlexStartMaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.EffectiveFlexStartMaxDuration }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable public IPs for the node pool.
+func (o AiModelDevelopmentClusterNodePoolOutput) EnablePublicIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *bool { return v.EnablePublicIps }).(pulumi.BoolPtrOutput)
+}
+
+// List of the existing Filestore instances to be mounted.
+// For example:
+// if "projects/my-project/locations/us-central1-a/instances/my-instance" is
+// specified, the instance will be mounted to the node pool under the path
+// "mnt/filestore/"
+func (o AiModelDevelopmentClusterNodePoolOutput) Filestores() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) []string { return v.Filestores }).(pulumi.StringArrayOutput)
+}
+
+// The maximum duration for instances in this node pool.
+// This field is only applicable when `provisioningModel` is set to
+// `FLEX_START`.
+func (o AiModelDevelopmentClusterNodePoolOutput) FlexStartMaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.FlexStartMaxDuration }).(pulumi.StringPtrOutput)
+}
+
+// The unique ID referring to this node pool.
+func (o AiModelDevelopmentClusterNodePoolOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The labels with user-defined metadata to organize the node pool. These
+// labels are applied to the underlying compute resources (for example, the
+// VM instances) of the node pool, so they appear in billing exports and
+// Cloud Monitoring filters.
+// Label keys and values can be no longer than 64 characters
+// (Unicode codepoints), can only contain lowercase letters, numeric
+// characters, underscores and dashes. International characters are allowed.
+// See https://goo.gl/xmQnxf for more information and examples of labels.
+func (o AiModelDevelopmentClusterNodePoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// List of the existing Google Managed Lustre instances to be mounted.
+// Similar to the filestores, the instance will be mounted to the node pool
+// under the path "/mnt/lustre/"
+func (o AiModelDevelopmentClusterNodePoolOutput) Lustres() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) []string { return v.Lustres }).(pulumi.StringArrayOutput)
+}
+
+// Specification of a single machine.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterNodePoolOutput) MachineSpec() AiModelDevelopmentClusterNodePoolMachineSpecOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) AiModelDevelopmentClusterNodePoolMachineSpec {
+		return v.MachineSpec
+	}).(AiModelDevelopmentClusterNodePoolMachineSpecOutput)
+}
+
+// The node image to be used for the VMs in the node pool.
+// In format of "projects//global/images/" or
+// "projects/test-project/global/images/family/"
+func (o AiModelDevelopmentClusterNodePoolOutput) NodeImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.NodeImage }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the provisioning model for the node pool.
+// Behavior for `PROVISIONING_MODEL_UNSPECIFIED`:
+//   - For CPU node pools: Defaults to `ON_DEMAND`.
+//   - For GPU node pools:
+//   - If
+//     `machine_spec.reservation_affinity`
+//     is set, it defaults to `RESERVATION`.
+//   - If
+//     `machine_spec.reservation_affinity`
+//     is NOT set, this is an INVALID state and the request will be rejected.
+//     An explicit `provisioningModel` must be provided.
+func (o AiModelDevelopmentClusterNodePoolOutput) ProvisioningModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
+}
+
+// The scaling spec of the node pool.
+func (o AiModelDevelopmentClusterNodePoolOutput) ScalingSpec() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *AiModelDevelopmentClusterNodePoolScalingSpec {
+		return v.ScalingSpec
+	}).(AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput)
+}
+
+// Startup script for the node pool instances.
+func (o AiModelDevelopmentClusterNodePoolOutput) StartupScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.StartupScript }).(pulumi.StringPtrOutput)
+}
+
+// The zone of the node pool.
+func (o AiModelDevelopmentClusterNodePoolOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterNodePool)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolArrayOutput) ToAiModelDevelopmentClusterNodePoolArrayOutput() AiModelDevelopmentClusterNodePoolArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolArrayOutput) ToAiModelDevelopmentClusterNodePoolArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterNodePoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterNodePool {
+		return vs[0].([]AiModelDevelopmentClusterNodePool)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterNodePoolOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolBootDisk struct {
+	// Size in GB of the boot disk (default is 100GB).
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk. For non-A3U machines, the default value is
+	// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+	// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+	// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+	BootDiskType *string `pulumi:"bootDiskType"`
+}
+
+// AiModelDevelopmentClusterNodePoolBootDiskInput is an input type that accepts AiModelDevelopmentClusterNodePoolBootDiskArgs and AiModelDevelopmentClusterNodePoolBootDiskOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolBootDiskInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolBootDiskArgs{...}
+type AiModelDevelopmentClusterNodePoolBootDiskInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolBootDiskOutput() AiModelDevelopmentClusterNodePoolBootDiskOutput
+	ToAiModelDevelopmentClusterNodePoolBootDiskOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolBootDiskOutput
+}
+
+type AiModelDevelopmentClusterNodePoolBootDiskArgs struct {
+	// Size in GB of the boot disk (default is 100GB).
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk. For non-A3U machines, the default value is
+	// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+	// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+	// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+}
+
+func (AiModelDevelopmentClusterNodePoolBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolBootDisk)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolBootDiskArgs) ToAiModelDevelopmentClusterNodePoolBootDiskOutput() AiModelDevelopmentClusterNodePoolBootDiskOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolBootDiskOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolBootDiskArgs) ToAiModelDevelopmentClusterNodePoolBootDiskOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolBootDiskOutput)
+}
+
+func (i AiModelDevelopmentClusterNodePoolBootDiskArgs) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutput() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolBootDiskArgs) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolBootDiskOutput).ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterNodePoolBootDiskPtrInput is an input type that accepts AiModelDevelopmentClusterNodePoolBootDiskArgs, AiModelDevelopmentClusterNodePoolBootDiskPtr and AiModelDevelopmentClusterNodePoolBootDiskPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolBootDiskPtrInput` via:
+//
+//	        AiModelDevelopmentClusterNodePoolBootDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterNodePoolBootDiskPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutput() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput
+	ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolBootDiskPtrOutput
+}
+
+type aiModelDevelopmentClusterNodePoolBootDiskPtrType AiModelDevelopmentClusterNodePoolBootDiskArgs
+
+func AiModelDevelopmentClusterNodePoolBootDiskPtr(v *AiModelDevelopmentClusterNodePoolBootDiskArgs) AiModelDevelopmentClusterNodePoolBootDiskPtrInput {
+	return (*aiModelDevelopmentClusterNodePoolBootDiskPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterNodePoolBootDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolBootDisk)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterNodePoolBootDiskPtrType) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutput() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterNodePoolBootDiskPtrType) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolBootDiskPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolBootDiskOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolBootDisk)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) ToAiModelDevelopmentClusterNodePoolBootDiskOutput() AiModelDevelopmentClusterNodePoolBootDiskOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) ToAiModelDevelopmentClusterNodePoolBootDiskOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutput() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return o.ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterNodePoolBootDisk) *AiModelDevelopmentClusterNodePoolBootDisk {
+		return &v
+	}).(AiModelDevelopmentClusterNodePoolBootDiskPtrOutput)
+}
+
+// Size in GB of the boot disk (default is 100GB).
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolBootDisk) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk. For non-A3U machines, the default value is
+// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolBootDisk) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolBootDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolBootDisk)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutput() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) Elem() AiModelDevelopmentClusterNodePoolBootDiskOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolBootDisk) AiModelDevelopmentClusterNodePoolBootDisk {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterNodePoolBootDisk
+		return ret
+	}).(AiModelDevelopmentClusterNodePoolBootDiskOutput)
+}
+
+// Size in GB of the boot disk (default is 100GB).
+func (o AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk. For non-A3U machines, the default value is
+// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+func (o AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolBootDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpec struct {
+	// The type of the machine.
+	//
+	// See the [list of machine types supported for
+	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+	//
+	// See the [list of machine types supported for custom
+	// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+	//
+	// For DeployedModel this field is optional, and the default
+	// value is 'n1-standard-2'. For BatchPredictionJob or as part of
+	// WorkerPoolSpec this field is required.
+	MachineType string `pulumi:"machineType"`
+	// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+	// DeployedModel) to draw its Compute Engine resources from a Shared
+	// Reservation, or exclusively from on-demand capacity.
+	ReservationAffinity *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity `pulumi:"reservationAffinity"`
+}
+
+// AiModelDevelopmentClusterNodePoolMachineSpecInput is an input type that accepts AiModelDevelopmentClusterNodePoolMachineSpecArgs and AiModelDevelopmentClusterNodePoolMachineSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolMachineSpecInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolMachineSpecArgs{...}
+type AiModelDevelopmentClusterNodePoolMachineSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolMachineSpecOutput() AiModelDevelopmentClusterNodePoolMachineSpecOutput
+	ToAiModelDevelopmentClusterNodePoolMachineSpecOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolMachineSpecOutput
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecArgs struct {
+	// The type of the machine.
+	//
+	// See the [list of machine types supported for
+	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+	//
+	// See the [list of machine types supported for custom
+	// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+	//
+	// For DeployedModel this field is optional, and the default
+	// value is 'n1-standard-2'. For BatchPredictionJob or as part of
+	// WorkerPoolSpec this field is required.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+	// DeployedModel) to draw its Compute Engine resources from a Shared
+	// Reservation, or exclusively from on-demand capacity.
+	ReservationAffinity AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+}
+
+func (AiModelDevelopmentClusterNodePoolMachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecOutput() AiModelDevelopmentClusterNodePoolMachineSpecOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolMachineSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolMachineSpecOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolMachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecOutput() AiModelDevelopmentClusterNodePoolMachineSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecOutput {
+	return o
+}
+
+// The type of the machine.
+//
+// See the [list of machine types supported for
+// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+//
+// See the [list of machine types supported for custom
+// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+//
+// For DeployedModel this field is optional, and the default
+// value is 'n1-standard-2'. For BatchPredictionJob or as part of
+// WorkerPoolSpec this field is required.
+func (o AiModelDevelopmentClusterNodePoolMachineSpecOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolMachineSpec) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+// DeployedModel) to draw its Compute Engine resources from a Shared
+// Reservation, or exclusively from on-demand capacity.
+func (o AiModelDevelopmentClusterNodePoolMachineSpecOutput) ReservationAffinity() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolMachineSpec) *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity {
+		return v.ReservationAffinity
+	}).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity struct {
+	// Specifies the reservation affinity type.
+	// Possible values:
+	// NO_RESERVATION
+	// ANY_RESERVATION
+	// SPECIFIC_RESERVATION
+	ReservationAffinityType string `pulumi:"reservationAffinityType"`
+	// Corresponds to the label values of a reservation resource. This must be the
+	// resource name of the reservation, reservation block, or reservation sub-
+	// block.
+	Values []string `pulumi:"values"`
+}
+
+// AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityInput is an input type that accepts AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs and AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs{...}
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput
+	ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs struct {
+	// Specifies the reservation affinity type.
+	// Possible values:
+	// NO_RESERVATION
+	// ANY_RESERVATION
+	// SPECIFIC_RESERVATION
+	ReservationAffinityType pulumi.StringInput `pulumi:"reservationAffinityType"`
+	// Corresponds to the label values of a reservation resource. This must be the
+	// resource name of the reservation, reservation block, or reservation sub-
+	// block.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput)
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput).ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput is an input type that accepts AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs, AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtr and AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput` via:
+//
+//	        AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput
+	ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput
+}
+
+type aiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrType AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs
+
+func AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtr(v *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput {
+	return (*aiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrType) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrType) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return o.ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity {
+		return &v
+	}).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput)
+}
+
+// Specifies the reservation affinity type.
+// Possible values:
+// NO_RESERVATION
+// ANY_RESERVATION
+// SPECIFIC_RESERVATION
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ReservationAffinityType() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) string {
+		return v.ReservationAffinityType
+	}).(pulumi.StringOutput)
+}
+
+// Corresponds to the label values of a reservation resource. This must be the
+// resource name of the reservation, reservation block, or reservation sub-
+// block.
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) Elem() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity
+		return ret
+	}).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput)
+}
+
+// Specifies the reservation affinity type.
+// Possible values:
+// NO_RESERVATION
+// ANY_RESERVATION
+// SPECIFIC_RESERVATION
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) ReservationAffinityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReservationAffinityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label values of a reservation resource. This must be the
+// resource name of the reservation, reservation block, or reservation sub-
+// block.
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolScalingSpec struct {
+	// maximum size of the node pool,
+	// must be ≥ min_node_count
+	MaxNodeCount *int `pulumi:"maxNodeCount"`
+	// minimum size of the node pool,
+	// must be >= 0 and <= max_node_count
+	MinNodeCount *int `pulumi:"minNodeCount"`
+}
+
+// AiModelDevelopmentClusterNodePoolScalingSpecInput is an input type that accepts AiModelDevelopmentClusterNodePoolScalingSpecArgs and AiModelDevelopmentClusterNodePoolScalingSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolScalingSpecInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolScalingSpecArgs{...}
+type AiModelDevelopmentClusterNodePoolScalingSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolScalingSpecOutput() AiModelDevelopmentClusterNodePoolScalingSpecOutput
+	ToAiModelDevelopmentClusterNodePoolScalingSpecOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolScalingSpecOutput
+}
+
+type AiModelDevelopmentClusterNodePoolScalingSpecArgs struct {
+	// maximum size of the node pool,
+	// must be ≥ min_node_count
+	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
+	// minimum size of the node pool,
+	// must be >= 0 and <= max_node_count
+	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
+}
+
+func (AiModelDevelopmentClusterNodePoolScalingSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolScalingSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolScalingSpecArgs) ToAiModelDevelopmentClusterNodePoolScalingSpecOutput() AiModelDevelopmentClusterNodePoolScalingSpecOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolScalingSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolScalingSpecArgs) ToAiModelDevelopmentClusterNodePoolScalingSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolScalingSpecOutput)
+}
+
+func (i AiModelDevelopmentClusterNodePoolScalingSpecArgs) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutput() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolScalingSpecArgs) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolScalingSpecOutput).ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterNodePoolScalingSpecPtrInput is an input type that accepts AiModelDevelopmentClusterNodePoolScalingSpecArgs, AiModelDevelopmentClusterNodePoolScalingSpecPtr and AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolScalingSpecPtrInput` via:
+//
+//	        AiModelDevelopmentClusterNodePoolScalingSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterNodePoolScalingSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutput() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput
+	ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput
+}
+
+type aiModelDevelopmentClusterNodePoolScalingSpecPtrType AiModelDevelopmentClusterNodePoolScalingSpecArgs
+
+func AiModelDevelopmentClusterNodePoolScalingSpecPtr(v *AiModelDevelopmentClusterNodePoolScalingSpecArgs) AiModelDevelopmentClusterNodePoolScalingSpecPtrInput {
+	return (*aiModelDevelopmentClusterNodePoolScalingSpecPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterNodePoolScalingSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolScalingSpec)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterNodePoolScalingSpecPtrType) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutput() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterNodePoolScalingSpecPtrType) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolScalingSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolScalingSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolScalingSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecOutput() AiModelDevelopmentClusterNodePoolScalingSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutput() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return o.ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterNodePoolScalingSpec) *AiModelDevelopmentClusterNodePoolScalingSpec {
+		return &v
+	}).(AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput)
+}
+
+// maximum size of the node pool,
+// must be ≥ min_node_count
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolScalingSpec) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// minimum size of the node pool,
+// must be >= 0 and <= max_node_count
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolScalingSpec) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolScalingSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutput() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) Elem() AiModelDevelopmentClusterNodePoolScalingSpecOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolScalingSpec) AiModelDevelopmentClusterNodePoolScalingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterNodePoolScalingSpec
+		return ret
+	}).(AiModelDevelopmentClusterNodePoolScalingSpecOutput)
+}
+
+// maximum size of the node pool,
+// must be ≥ min_node_count
+func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolScalingSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// minimum size of the node pool,
+// must be >= 0 and <= max_node_count
+func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolScalingSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpec struct {
+	// The Slurm orchestrator related spec of the cluster.
+	SlurmSpec *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec `pulumi:"slurmSpec"`
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecArgs and AiModelDevelopmentClusterOrchestratorSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecArgs{...}
+type AiModelDevelopmentClusterOrchestratorSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecOutput() AiModelDevelopmentClusterOrchestratorSpecOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecArgs struct {
+	// The Slurm orchestrator related spec of the cluster.
+	SlurmSpec AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput `pulumi:"slurmSpec"`
+}
+
+func (AiModelDevelopmentClusterOrchestratorSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecOutput() AiModelDevelopmentClusterOrchestratorSpecOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecOutput)
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecOutput).ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecPtrInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecArgs, AiModelDevelopmentClusterOrchestratorSpecPtr and AiModelDevelopmentClusterOrchestratorSpecPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecPtrInput` via:
+//
+//	        AiModelDevelopmentClusterOrchestratorSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterOrchestratorSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecPtrOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecPtrOutput
+}
+
+type aiModelDevelopmentClusterOrchestratorSpecPtrType AiModelDevelopmentClusterOrchestratorSpecArgs
+
+func AiModelDevelopmentClusterOrchestratorSpecPtr(v *AiModelDevelopmentClusterOrchestratorSpecArgs) AiModelDevelopmentClusterOrchestratorSpecPtrInput {
+	return (*aiModelDevelopmentClusterOrchestratorSpecPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterOrchestratorSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterOrchestratorSpec)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterOrchestratorSpecPtrType) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterOrchestratorSpecPtrType) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecOutput() AiModelDevelopmentClusterOrchestratorSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return o.ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterOrchestratorSpec) *AiModelDevelopmentClusterOrchestratorSpec {
+		return &v
+	}).(AiModelDevelopmentClusterOrchestratorSpecPtrOutput)
+}
+
+// The Slurm orchestrator related spec of the cluster.
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) SlurmSpec() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpec) *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
+		return v.SlurmSpec
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterOrchestratorSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) Elem() AiModelDevelopmentClusterOrchestratorSpecOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpec) AiModelDevelopmentClusterOrchestratorSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterOrchestratorSpec
+		return ret
+	}).(AiModelDevelopmentClusterOrchestratorSpecOutput)
+}
+
+// The Slurm orchestrator related spec of the cluster.
+func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) SlurmSpec() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpec) *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
+		if v == nil {
+			return nil
+		}
+		return v.SlurmSpec
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpec struct {
+	// Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+	// slurm.conf.
+	//
+	// Keys are Slurm parameter names exactly as documented by SchedMD
+	// (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+	// Values are written the way slurm.conf writes them, including composite
+	// forms such as 'bf_window=1440,bf_resolution=600'.
+	//
+	// Example:
+	// { "PriorityType":            "priority/multifactor",
+	// "PriorityWeightAge":       "1000",
+	// "PreemptMode":             "SUSPEND,GANG",
+	// "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+	//
+	// Unsupported, reserved, or misspelled parameters, and values that are not
+	// legal for the parameter, are rejected at request time with the offending
+	// parameter named; they are never silently dropped. Settings
+	// that apply to a single partition or node pool belong in
+	// 'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+	// several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+	// are valid at more than one scope with different meanings and different
+	// legal values.
+	//
+	// On update this map is replaced wholesale; supply the complete desired set.
+	Config map[string]string `pulumi:"config"`
+	// Id of the partition that Slurm jobs submitted without an explicit
+	// partition run on, for example 'sbatch' without '--partition'. Must match
+	// the 'id' of one of 'partitions'.
+	//
+	// If unset, the service uses the first entry of 'partitions' and this field
+	// stays empty; the cluster always has a default partition whether or not this
+	// field is set. Setting it makes the choice independent of list order, which
+	// matters because 'partitions' is replaced wholesale on update: reordering
+	// the list, or prepending a partition to it, otherwise moves the default and
+	// silently redirects every job submitted without '--partition'.
+	DefaultPartitionId *string `pulumi:"defaultPartitionId"`
+	// Custom bash scripts executed after each slurm job on every allocated node.
+	EpilogBashScripts []string `pulumi:"epilogBashScripts"`
+	// Full name of the Filestore to be mounted as /home directory on every node.
+	HomeDirectoryStorage string `pulumi:"homeDirectoryStorage"`
+	// The node pool id to be used as slurm login node.
+	LoginNodePoolId string `pulumi:"loginNodePoolId"`
+	// Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+	// pool. Node pools without an entry use the settings derived by the cluster's
+	// Slurm controller.
+	NodeSets []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet `pulumi:"nodeSets"`
+	// The Slurm partitions spec.
+	Partitions []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition `pulumi:"partitions"`
+	// Custom bash scripts executed before each slurm job on every allocated node.
+	PrologBashScripts []string `pulumi:"prologBashScripts"`
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs{...}
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs struct {
+	// Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+	// slurm.conf.
+	//
+	// Keys are Slurm parameter names exactly as documented by SchedMD
+	// (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+	// Values are written the way slurm.conf writes them, including composite
+	// forms such as 'bf_window=1440,bf_resolution=600'.
+	//
+	// Example:
+	// { "PriorityType":            "priority/multifactor",
+	// "PriorityWeightAge":       "1000",
+	// "PreemptMode":             "SUSPEND,GANG",
+	// "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+	//
+	// Unsupported, reserved, or misspelled parameters, and values that are not
+	// legal for the parameter, are rejected at request time with the offending
+	// parameter named; they are never silently dropped. Settings
+	// that apply to a single partition or node pool belong in
+	// 'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+	// several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+	// are valid at more than one scope with different meanings and different
+	// legal values.
+	//
+	// On update this map is replaced wholesale; supply the complete desired set.
+	Config pulumi.StringMapInput `pulumi:"config"`
+	// Id of the partition that Slurm jobs submitted without an explicit
+	// partition run on, for example 'sbatch' without '--partition'. Must match
+	// the 'id' of one of 'partitions'.
+	//
+	// If unset, the service uses the first entry of 'partitions' and this field
+	// stays empty; the cluster always has a default partition whether or not this
+	// field is set. Setting it makes the choice independent of list order, which
+	// matters because 'partitions' is replaced wholesale on update: reordering
+	// the list, or prepending a partition to it, otherwise moves the default and
+	// silently redirects every job submitted without '--partition'.
+	DefaultPartitionId pulumi.StringPtrInput `pulumi:"defaultPartitionId"`
+	// Custom bash scripts executed after each slurm job on every allocated node.
+	EpilogBashScripts pulumi.StringArrayInput `pulumi:"epilogBashScripts"`
+	// Full name of the Filestore to be mounted as /home directory on every node.
+	HomeDirectoryStorage pulumi.StringInput `pulumi:"homeDirectoryStorage"`
+	// The node pool id to be used as slurm login node.
+	LoginNodePoolId pulumi.StringInput `pulumi:"loginNodePoolId"`
+	// Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+	// pool. Node pools without an entry use the settings derived by the cluster's
+	// Slurm controller.
+	NodeSets AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayInput `pulumi:"nodeSets"`
+	// The Slurm partitions spec.
+	Partitions AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayInput `pulumi:"partitions"`
+	// Custom bash scripts executed before each slurm job on every allocated node.
+	PrologBashScripts pulumi.StringArrayInput `pulumi:"prologBashScripts"`
+}
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput)
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput).ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs, AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtr and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput` via:
+//
+//	        AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput
+}
+
+type aiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrType AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs
+
+func AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtr(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput {
+	return (*aiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterOrchestratorSpecSlurmSpec)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrType) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrType) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
+		return &v
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput)
+}
+
+// Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+// slurm.conf.
+//
+// Keys are Slurm parameter names exactly as documented by SchedMD
+// (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+// Values are written the way slurm.conf writes them, including composite
+// forms such as 'bf_window=1440,bf_resolution=600'.
+//
+// Example:
+// { "PriorityType":            "priority/multifactor",
+// "PriorityWeightAge":       "1000",
+// "PreemptMode":             "SUSPEND,GANG",
+// "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+//
+// Unsupported, reserved, or misspelled parameters, and values that are not
+// legal for the parameter, are rejected at request time with the offending
+// parameter named; they are never silently dropped. Settings
+// that apply to a single partition or node pool belong in
+// 'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+// several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+// are valid at more than one scope with different meanings and different
+// legal values.
+//
+// On update this map is replaced wholesale; supply the complete desired set.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) map[string]string { return v.Config }).(pulumi.StringMapOutput)
+}
+
+// Id of the partition that Slurm jobs submitted without an explicit
+// partition run on, for example 'sbatch' without '--partition'. Must match
+// the 'id' of one of 'partitions'.
+//
+// If unset, the service uses the first entry of 'partitions' and this field
+// stays empty; the cluster always has a default partition whether or not this
+// field is set. Setting it makes the choice independent of list order, which
+// matters because 'partitions' is replaced wholesale on update: reordering
+// the list, or prepending a partition to it, otherwise moves the default and
+// silently redirects every job submitted without '--partition'.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) DefaultPartitionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) *string { return v.DefaultPartitionId }).(pulumi.StringPtrOutput)
+}
+
+// Custom bash scripts executed after each slurm job on every allocated node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) EpilogBashScripts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []string { return v.EpilogBashScripts }).(pulumi.StringArrayOutput)
+}
+
+// Full name of the Filestore to be mounted as /home directory on every node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) HomeDirectoryStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) string { return v.HomeDirectoryStorage }).(pulumi.StringOutput)
+}
+
+// The node pool id to be used as slurm login node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) LoginNodePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) string { return v.LoginNodePoolId }).(pulumi.StringOutput)
+}
+
+// Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+// pool. Node pools without an entry use the settings derived by the cluster's
+// Slurm controller.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) NodeSets() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet {
+		return v.NodeSets
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput)
+}
+
+// The Slurm partitions spec.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) Partitions() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition {
+		return v.Partitions
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput)
+}
+
+// Custom bash scripts executed before each slurm job on every allocated node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) PrologBashScripts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []string { return v.PrologBashScripts }).(pulumi.StringArrayOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterOrchestratorSpecSlurmSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) Elem() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterOrchestratorSpecSlurmSpec
+		return ret
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput)
+}
+
+// Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+// slurm.conf.
+//
+// Keys are Slurm parameter names exactly as documented by SchedMD
+// (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+// Values are written the way slurm.conf writes them, including composite
+// forms such as 'bf_window=1440,bf_resolution=600'.
+//
+// Example:
+// { "PriorityType":            "priority/multifactor",
+// "PriorityWeightAge":       "1000",
+// "PreemptMode":             "SUSPEND,GANG",
+// "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+//
+// Unsupported, reserved, or misspelled parameters, and values that are not
+// legal for the parameter, are rejected at request time with the offending
+// parameter named; they are never silently dropped. Settings
+// that apply to a single partition or node pool belong in
+// 'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+// several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+// are valid at more than one scope with different meanings and different
+// legal values.
+//
+// On update this map is replaced wholesale; supply the complete desired set.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(pulumi.StringMapOutput)
+}
+
+// Id of the partition that Slurm jobs submitted without an explicit
+// partition run on, for example 'sbatch' without '--partition'. Must match
+// the 'id' of one of 'partitions'.
+//
+// If unset, the service uses the first entry of 'partitions' and this field
+// stays empty; the cluster always has a default partition whether or not this
+// field is set. Setting it makes the choice independent of list order, which
+// matters because 'partitions' is replaced wholesale on update: reordering
+// the list, or prepending a partition to it, otherwise moves the default and
+// silently redirects every job submitted without '--partition'.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) DefaultPartitionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultPartitionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom bash scripts executed after each slurm job on every allocated node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) EpilogBashScripts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EpilogBashScripts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Full name of the Filestore to be mounted as /home directory on every node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) HomeDirectoryStorage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HomeDirectoryStorage
+	}).(pulumi.StringPtrOutput)
+}
+
+// The node pool id to be used as slurm login node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) LoginNodePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LoginNodePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+// pool. Node pools without an entry use the settings derived by the cluster's
+// Slurm controller.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) NodeSets() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSets
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput)
+}
+
+// The Slurm partitions spec.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) Partitions() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition {
+		if v == nil {
+			return nil
+		}
+		return v.Partitions
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput)
+}
+
+// Custom bash scripts executed before each slurm job on every allocated node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) PrologBashScripts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PrologBashScripts
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet struct {
+	// Node-scoped Slurm settings, emitted as additional 'Key=Value' pairs on the
+	// 'NodeName=' line for this node pool's nodes in slurm.conf.
+	//
+	// Example:
+	// { "Features":     "a3mega,nvlink",
+	// "Weight":       "10",
+	// "MemSpecLimit": "4096" }
+	//
+	// On update this map is replaced wholesale; supply the complete desired set.
+	Config map[string]string `pulumi:"config"`
+	// (Output)
+	// The ID of the node pool.
+	NodePoolId string `pulumi:"nodePoolId"`
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs{...}
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs struct {
+	// Node-scoped Slurm settings, emitted as additional 'Key=Value' pairs on the
+	// 'NodeName=' line for this node pool's nodes in slurm.conf.
+	//
+	// Example:
+	// { "Features":     "a3mega,nvlink",
+	// "Weight":       "10",
+	// "MemSpecLimit": "4096" }
+	//
+	// On update this map is replaced wholesale; supply the complete desired set.
+	Config pulumi.StringMapInput `pulumi:"config"`
+	// (Output)
+	// The ID of the node pool.
+	NodePoolId pulumi.StringInput `pulumi:"nodePoolId"`
+}
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput)
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray{ AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs{...} }
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput {
+	return o
+}
+
+// Node-scoped Slurm settings, emitted as additional 'Key=Value' pairs on the
+// 'NodeName=' line for this node pool's nodes in slurm.conf.
+//
+// Example:
+// { "Features":     "a3mega,nvlink",
+// "Weight":       "10",
+// "MemSpecLimit": "4096" }
+//
+// On update this map is replaced wholesale; supply the complete desired set.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet) map[string]string { return v.Config }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The ID of the node pool.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput) NodePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet) string { return v.NodePoolId }).(pulumi.StringOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet {
+		return vs[0].([]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition struct {
+	// Partition-scoped Slurm settings, emitted as additional 'Key=Value' pairs
+	// on this partition's 'PartitionName=' line in slurm.conf.
+	//
+	// Example:
+	// { "MaxTime":       "4-00:00:00",
+	// "DenyAccounts":  "low-pri",
+	// "PriorityTier":  "20",
+	// "OverSubscribe": "YES:4" }
+	//
+	// Note: values set here take precedence over service-computed defaults for
+	// the same parameter (for example 'OverSubscribe' and 'DefMemPerCPU', which
+	// the service otherwise derives from the partition's exclusivity and from
+	// the memory per CPU of its nodes).
+	//
+	// 'Default' is rejected here: which partition is the default is a
+	// cluster-scoped choice, so it belongs in 'SlurmSpec.default_partition_id'.
+	Config map[string]string `pulumi:"config"`
+	// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/modelDevelopmentClusters/{{model_development_cluster_id}}`
+	Id string `pulumi:"id"`
+	// Node pools for the slurm partition
+	NodePoolIds []string `pulumi:"nodePoolIds"`
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs{...}
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs struct {
+	// Partition-scoped Slurm settings, emitted as additional 'Key=Value' pairs
+	// on this partition's 'PartitionName=' line in slurm.conf.
+	//
+	// Example:
+	// { "MaxTime":       "4-00:00:00",
+	// "DenyAccounts":  "low-pri",
+	// "PriorityTier":  "20",
+	// "OverSubscribe": "YES:4" }
+	//
+	// Note: values set here take precedence over service-computed defaults for
+	// the same parameter (for example 'OverSubscribe' and 'DefMemPerCPU', which
+	// the service otherwise derives from the partition's exclusivity and from
+	// the memory per CPU of its nodes).
+	//
+	// 'Default' is rejected here: which partition is the default is a
+	// cluster-scoped choice, so it belongs in 'SlurmSpec.default_partition_id'.
+	Config pulumi.StringMapInput `pulumi:"config"`
+	// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/modelDevelopmentClusters/{{model_development_cluster_id}}`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Node pools for the slurm partition
+	NodePoolIds pulumi.StringArrayInput `pulumi:"nodePoolIds"`
+}
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput)
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray{ AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs{...} }
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionInput
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput {
+	return o
+}
+
+// Partition-scoped Slurm settings, emitted as additional 'Key=Value' pairs
+// on this partition's 'PartitionName=' line in slurm.conf.
+//
+// Example:
+// { "MaxTime":       "4-00:00:00",
+// "DenyAccounts":  "low-pri",
+// "PriorityTier":  "20",
+// "OverSubscribe": "YES:4" }
+//
+// Note: values set here take precedence over service-computed defaults for
+// the same parameter (for example 'OverSubscribe' and 'DefMemPerCPU', which
+// the service otherwise derives from the partition's exclusivity and from
+// the memory per CPU of its nodes).
+//
+// 'Default' is rejected here: which partition is the default is a
+// cluster-scoped choice, so it belongs in 'SlurmSpec.default_partition_id'.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition) map[string]string { return v.Config }).(pulumi.StringMapOutput)
+}
+
+// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/modelDevelopmentClusters/{{model_development_cluster_id}}`
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Node pools for the slurm partition
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) NodePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition) []string { return v.NodePoolIds }).(pulumi.StringArrayOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition {
+		return vs[0].([]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput)
+}
+
+type AiModelDevelopmentClusterRuntime struct {
+	// (Output)
+	// The training services running on this Vertex AI Training Cluster.
+	// Structure is documented below.
+	TrainingServices []AiModelDevelopmentClusterRuntimeTrainingService `pulumi:"trainingServices"`
+	// (Output)
+	// A purpose-built, output-only view of the XManager instance attached to a
+	// cluster.
+	// Structure is documented below.
+	Xmanagers []AiModelDevelopmentClusterRuntimeXmanager `pulumi:"xmanagers"`
+}
+
+// AiModelDevelopmentClusterRuntimeInput is an input type that accepts AiModelDevelopmentClusterRuntimeArgs and AiModelDevelopmentClusterRuntimeOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeArgs{...}
+type AiModelDevelopmentClusterRuntimeInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeOutput() AiModelDevelopmentClusterRuntimeOutput
+	ToAiModelDevelopmentClusterRuntimeOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeOutput
+}
+
+type AiModelDevelopmentClusterRuntimeArgs struct {
+	// (Output)
+	// The training services running on this Vertex AI Training Cluster.
+	// Structure is documented below.
+	TrainingServices AiModelDevelopmentClusterRuntimeTrainingServiceArrayInput `pulumi:"trainingServices"`
+	// (Output)
+	// A purpose-built, output-only view of the XManager instance attached to a
+	// cluster.
+	// Structure is documented below.
+	Xmanagers AiModelDevelopmentClusterRuntimeXmanagerArrayInput `pulumi:"xmanagers"`
+}
+
+func (AiModelDevelopmentClusterRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntime)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeArgs) ToAiModelDevelopmentClusterRuntimeOutput() AiModelDevelopmentClusterRuntimeOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeArgs) ToAiModelDevelopmentClusterRuntimeOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeArray and AiModelDevelopmentClusterRuntimeArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeArray{ AiModelDevelopmentClusterRuntimeArgs{...} }
+type AiModelDevelopmentClusterRuntimeArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeArrayOutput() AiModelDevelopmentClusterRuntimeArrayOutput
+	ToAiModelDevelopmentClusterRuntimeArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeArray []AiModelDevelopmentClusterRuntimeInput
+
+func (AiModelDevelopmentClusterRuntimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntime)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeArray) ToAiModelDevelopmentClusterRuntimeArrayOutput() AiModelDevelopmentClusterRuntimeArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeArray) ToAiModelDevelopmentClusterRuntimeArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntime)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeOutput) ToAiModelDevelopmentClusterRuntimeOutput() AiModelDevelopmentClusterRuntimeOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeOutput) ToAiModelDevelopmentClusterRuntimeOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeOutput {
+	return o
+}
+
+// (Output)
+// The training services running on this Vertex AI Training Cluster.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterRuntimeOutput) TrainingServices() AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntime) []AiModelDevelopmentClusterRuntimeTrainingService {
+		return v.TrainingServices
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput)
+}
+
+// (Output)
+// A purpose-built, output-only view of the XManager instance attached to a
+// cluster.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterRuntimeOutput) Xmanagers() AiModelDevelopmentClusterRuntimeXmanagerArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntime) []AiModelDevelopmentClusterRuntimeXmanager {
+		return v.Xmanagers
+	}).(AiModelDevelopmentClusterRuntimeXmanagerArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntime)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeArrayOutput) ToAiModelDevelopmentClusterRuntimeArrayOutput() AiModelDevelopmentClusterRuntimeArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeArrayOutput) ToAiModelDevelopmentClusterRuntimeArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntime {
+		return vs[0].([]AiModelDevelopmentClusterRuntime)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeSpec struct {
+	// The default service account used by the cluster when running any workloads
+	// on it. If not specified, the default compute engine service account will be
+	// used.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+}
+
+// AiModelDevelopmentClusterRuntimeSpecInput is an input type that accepts AiModelDevelopmentClusterRuntimeSpecArgs and AiModelDevelopmentClusterRuntimeSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeSpecInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeSpecArgs{...}
+type AiModelDevelopmentClusterRuntimeSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeSpecOutput() AiModelDevelopmentClusterRuntimeSpecOutput
+	ToAiModelDevelopmentClusterRuntimeSpecOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeSpecOutput
+}
+
+type AiModelDevelopmentClusterRuntimeSpecArgs struct {
+	// The default service account used by the cluster when running any workloads
+	// on it. If not specified, the default compute engine service account will be
+	// used.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+}
+
+func (AiModelDevelopmentClusterRuntimeSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeSpecArgs) ToAiModelDevelopmentClusterRuntimeSpecOutput() AiModelDevelopmentClusterRuntimeSpecOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeSpecArgs) ToAiModelDevelopmentClusterRuntimeSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeSpecOutput)
+}
+
+func (i AiModelDevelopmentClusterRuntimeSpecArgs) ToAiModelDevelopmentClusterRuntimeSpecPtrOutput() AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeSpecArgs) ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeSpecOutput).ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterRuntimeSpecPtrInput is an input type that accepts AiModelDevelopmentClusterRuntimeSpecArgs, AiModelDevelopmentClusterRuntimeSpecPtr and AiModelDevelopmentClusterRuntimeSpecPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeSpecPtrInput` via:
+//
+//	        AiModelDevelopmentClusterRuntimeSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterRuntimeSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeSpecPtrOutput() AiModelDevelopmentClusterRuntimeSpecPtrOutput
+	ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeSpecPtrOutput
+}
+
+type aiModelDevelopmentClusterRuntimeSpecPtrType AiModelDevelopmentClusterRuntimeSpecArgs
+
+func AiModelDevelopmentClusterRuntimeSpecPtr(v *AiModelDevelopmentClusterRuntimeSpecArgs) AiModelDevelopmentClusterRuntimeSpecPtrInput {
+	return (*aiModelDevelopmentClusterRuntimeSpecPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterRuntimeSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterRuntimeSpec)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterRuntimeSpecPtrType) ToAiModelDevelopmentClusterRuntimeSpecPtrOutput() AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterRuntimeSpecPtrType) ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecOutput) ToAiModelDevelopmentClusterRuntimeSpecOutput() AiModelDevelopmentClusterRuntimeSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecOutput) ToAiModelDevelopmentClusterRuntimeSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecOutput) ToAiModelDevelopmentClusterRuntimeSpecPtrOutput() AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return o.ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecOutput) ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterRuntimeSpec) *AiModelDevelopmentClusterRuntimeSpec {
+		return &v
+	}).(AiModelDevelopmentClusterRuntimeSpecPtrOutput)
+}
+
+// The default service account used by the cluster when running any workloads
+// on it. If not specified, the default compute engine service account will be
+// used.
+func (o AiModelDevelopmentClusterRuntimeSpecOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeSpec) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterRuntimeSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecPtrOutput) ToAiModelDevelopmentClusterRuntimeSpecPtrOutput() AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecPtrOutput) ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecPtrOutput) Elem() AiModelDevelopmentClusterRuntimeSpecOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterRuntimeSpec) AiModelDevelopmentClusterRuntimeSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterRuntimeSpec
+		return ret
+	}).(AiModelDevelopmentClusterRuntimeSpecOutput)
+}
+
+// The default service account used by the cluster when running any workloads
+// on it. If not specified, the default compute engine service account will be
+// used.
+func (o AiModelDevelopmentClusterRuntimeSpecPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterRuntimeSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingService struct {
+	// (Output)
+	// Time when the TrainingService was created.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// Orchestrator-agnostic deployment spec.
+	// Structure is documented below.
+	DeploymentSpecs []AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec `pulumi:"deploymentSpecs"`
+	// (Output)
+	// Cloud Storage bucket name dynamically GCSFuse-mounted on all nodes, for
+	// storing checkpoints and other service outputs.
+	GcsBucket *string `pulumi:"gcsBucket"`
+	// (Output)
+	// Cloud Storage URI of the squashfs (.sqsh) container image.
+	ImageUri *string `pulumi:"imageUri"`
+	// (Output)
+	// Identifier. Resource name of the TrainingService. Format:
+	// `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
+	Name *string `pulumi:"name"`
+	// (Output)
+	// Status of a TrainingService.
+	// Structure is documented below.
+	ServiceStatuses []AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus `pulumi:"serviceStatuses"`
+	// (Output)
+	// Time when the TrainingService was most recently updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceArgs and AiModelDevelopmentClusterRuntimeTrainingServiceOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceArgs{...}
+type AiModelDevelopmentClusterRuntimeTrainingServiceInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceOutput() AiModelDevelopmentClusterRuntimeTrainingServiceOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceArgs struct {
+	// (Output)
+	// Time when the TrainingService was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// Orchestrator-agnostic deployment spec.
+	// Structure is documented below.
+	DeploymentSpecs AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayInput `pulumi:"deploymentSpecs"`
+	// (Output)
+	// Cloud Storage bucket name dynamically GCSFuse-mounted on all nodes, for
+	// storing checkpoints and other service outputs.
+	GcsBucket pulumi.StringPtrInput `pulumi:"gcsBucket"`
+	// (Output)
+	// Cloud Storage URI of the squashfs (.sqsh) container image.
+	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// (Output)
+	// Identifier. Resource name of the TrainingService. Format:
+	// `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// Status of a TrainingService.
+	// Structure is documented below.
+	ServiceStatuses AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayInput `pulumi:"serviceStatuses"`
+	// (Output)
+	// Time when the TrainingService was most recently updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingService)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceOutput() AiModelDevelopmentClusterRuntimeTrainingServiceOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceArray and AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceArray{ AiModelDevelopmentClusterRuntimeTrainingServiceArgs{...} }
+type AiModelDevelopmentClusterRuntimeTrainingServiceArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceArray []AiModelDevelopmentClusterRuntimeTrainingServiceInput
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingService)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingService)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceOutput() AiModelDevelopmentClusterRuntimeTrainingServiceOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceOutput {
+	return o
+}
+
+// (Output)
+// Time when the TrainingService was created.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Orchestrator-agnostic deployment spec.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) DeploymentSpecs() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) []AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec {
+		return v.DeploymentSpecs
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput)
+}
+
+// (Output)
+// Cloud Storage bucket name dynamically GCSFuse-mounted on all nodes, for
+// storing checkpoints and other service outputs.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) GcsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) *string { return v.GcsBucket }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Cloud Storage URI of the squashfs (.sqsh) container image.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Identifier. Resource name of the TrainingService. Format:
+// `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Status of a TrainingService.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) ServiceStatuses() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) []AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus {
+		return v.ServiceStatuses
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput)
+}
+
+// (Output)
+// Time when the TrainingService was most recently updated.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingService)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeTrainingServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntimeTrainingService {
+		return vs[0].([]AiModelDevelopmentClusterRuntimeTrainingService)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec struct {
+	// (Output)
+	// Number of worker nodes to allocate.
+	WorkerNodeCount *int `pulumi:"workerNodeCount"`
+	// (Output)
+	// ID of a node pool on the parent ModelDevelopmentCluster (see
+	// `ModelDevelopmentCluster.node_pools[].id`) on which to place the worker
+	// nodes.
+	WorkerNodePoolId *string `pulumi:"workerNodePoolId"`
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs and AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs{...}
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs struct {
+	// (Output)
+	// Number of worker nodes to allocate.
+	WorkerNodeCount pulumi.IntPtrInput `pulumi:"workerNodeCount"`
+	// (Output)
+	// ID of a node pool on the parent ModelDevelopmentCluster (see
+	// `ModelDevelopmentCluster.node_pools[].id`) on which to place the worker
+	// nodes.
+	WorkerNodePoolId pulumi.StringPtrInput `pulumi:"workerNodePoolId"`
+}
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray and AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray{ AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs{...} }
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray []AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecInput
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput {
+	return o
+}
+
+// (Output)
+// Number of worker nodes to allocate.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput) WorkerNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec) *int { return v.WorkerNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// ID of a node pool on the parent ModelDevelopmentCluster (see
+// `ModelDevelopmentCluster.node_pools[].id`) on which to place the worker
+// nodes.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput) WorkerNodePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec) *string {
+		return v.WorkerNodePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec {
+		return vs[0].([]AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus struct {
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail *string `pulumi:"detail"`
+	// (Output)
+	// Endpoints clients use to connect to the running service.
+	Endpoints map[string]string `pulumi:"endpoints"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State *string `pulumi:"state"`
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs and AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs{...}
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs struct {
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail pulumi.StringPtrInput `pulumi:"detail"`
+	// (Output)
+	// Endpoints clients use to connect to the running service.
+	Endpoints pulumi.StringMapInput `pulumi:"endpoints"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray and AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray{ AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs{...} }
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray []AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusInput
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput {
+	return o
+}
+
+// (Output)
+// Human-readable detail about the current state.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus) *string { return v.Detail }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Endpoints clients use to connect to the running service.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) Endpoints() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus) map[string]string {
+		return v.Endpoints
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The current state of the XManager instance.
+// Possible values:
+// PROVISIONING
+// RUNNING
+// DELETING
+// ERROR
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus {
+		return vs[0].([]AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanager struct {
+	// (Output)
+	// The gRPC API endpoint (Experiment State Server) of the
+	// XManager instance. Empty unless the instance is running.
+	ApiEndpoint *string `pulumi:"apiEndpoint"`
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors []AiModelDevelopmentClusterRuntimeXmanagerError `pulumi:"errors"`
+	// (Output)
+	// The XManager instance ID (for example, "xmc-").
+	InstanceId *string `pulumi:"instanceId"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State *string `pulumi:"state"`
+	// (Output)
+	// The UI endpoint of the XManager instance. Empty unless the
+	// instance is running.
+	UiEndpoint *string `pulumi:"uiEndpoint"`
+}
+
+// AiModelDevelopmentClusterRuntimeXmanagerInput is an input type that accepts AiModelDevelopmentClusterRuntimeXmanagerArgs and AiModelDevelopmentClusterRuntimeXmanagerOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeXmanagerInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeXmanagerArgs{...}
+type AiModelDevelopmentClusterRuntimeXmanagerInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeXmanagerOutput() AiModelDevelopmentClusterRuntimeXmanagerOutput
+	ToAiModelDevelopmentClusterRuntimeXmanagerOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeXmanagerOutput
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerArgs struct {
+	// (Output)
+	// The gRPC API endpoint (Experiment State Server) of the
+	// XManager instance. Empty unless the instance is running.
+	ApiEndpoint pulumi.StringPtrInput `pulumi:"apiEndpoint"`
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors AiModelDevelopmentClusterRuntimeXmanagerErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// The XManager instance ID (for example, "xmc-").
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// The UI endpoint of the XManager instance. Empty unless the
+	// instance is running.
+	UiEndpoint pulumi.StringPtrInput `pulumi:"uiEndpoint"`
+}
+
+func (AiModelDevelopmentClusterRuntimeXmanagerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanager)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerArgs) ToAiModelDevelopmentClusterRuntimeXmanagerOutput() AiModelDevelopmentClusterRuntimeXmanagerOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeXmanagerOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerArgs) ToAiModelDevelopmentClusterRuntimeXmanagerOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeXmanagerOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeXmanagerArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeXmanagerArray and AiModelDevelopmentClusterRuntimeXmanagerArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeXmanagerArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeXmanagerArray{ AiModelDevelopmentClusterRuntimeXmanagerArgs{...} }
+type AiModelDevelopmentClusterRuntimeXmanagerArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerArrayOutput
+	ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeXmanagerArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerArray []AiModelDevelopmentClusterRuntimeXmanagerInput
+
+func (AiModelDevelopmentClusterRuntimeXmanagerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeXmanager)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerArray) ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerArray) ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeXmanagerArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeXmanagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanager)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) ToAiModelDevelopmentClusterRuntimeXmanagerOutput() AiModelDevelopmentClusterRuntimeXmanagerOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) ToAiModelDevelopmentClusterRuntimeXmanagerOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerOutput {
+	return o
+}
+
+// (Output)
+// The gRPC API endpoint (Experiment State Server) of the
+// XManager instance. Empty unless the instance is running.
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) ApiEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanager) *string { return v.ApiEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+// three pieces of data: error code, error message, and error details.
+// You can find out more about this error model and how to work with it in the
+// [API Design Guide](https://cloud.google.com/apis/design/errors).
+// Structure is documented below.
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) Errors() AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanager) []AiModelDevelopmentClusterRuntimeXmanagerError {
+		return v.Errors
+	}).(AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput)
+}
+
+// (Output)
+// The XManager instance ID (for example, "xmc-").
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanager) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The current state of the XManager instance.
+// Possible values:
+// PROVISIONING
+// RUNNING
+// DELETING
+// ERROR
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanager) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The UI endpoint of the XManager instance. Empty unless the
+// instance is running.
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) UiEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanager) *string { return v.UiEndpoint }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeXmanagerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeXmanager)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerArrayOutput) ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerArrayOutput) ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeXmanagerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntimeXmanager {
+		return vs[0].([]AiModelDevelopmentClusterRuntimeXmanager)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeXmanagerOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// AiModelDevelopmentClusterRuntimeXmanagerErrorInput is an input type that accepts AiModelDevelopmentClusterRuntimeXmanagerErrorArgs and AiModelDevelopmentClusterRuntimeXmanagerErrorOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeXmanagerErrorInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeXmanagerErrorArgs{...}
+type AiModelDevelopmentClusterRuntimeXmanagerErrorInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorOutput
+	ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorOutput
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiModelDevelopmentClusterRuntimeXmanagerErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerError)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerErrorArgs) ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerErrorArgs) ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeXmanagerErrorOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeXmanagerErrorArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeXmanagerErrorArray and AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeXmanagerErrorArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeXmanagerErrorArray{ AiModelDevelopmentClusterRuntimeXmanagerErrorArgs{...} }
+type AiModelDevelopmentClusterRuntimeXmanagerErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput
+	ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerErrorArray []AiModelDevelopmentClusterRuntimeXmanagerErrorInput
+
+func (AiModelDevelopmentClusterRuntimeXmanagerErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeXmanagerError)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerErrorArray) ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerErrorArray) ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerErrorOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerError)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanagerError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.  There is a common set of
+// message types for APIs to use.
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanagerError) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanagerError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeXmanagerError)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput) ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput) ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeXmanagerErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntimeXmanagerError {
+		return vs[0].([]AiModelDevelopmentClusterRuntimeXmanagerError)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeXmanagerErrorOutput)
+}
+
 type AiOnlineEvaluatorCloudObservability struct {
 	// Optional log view that will be used to query logs. If empty, the
 	// project's default view (`projects/{{project_id}}`) will be used.
@@ -23063,6 +27268,9 @@ func (o AiPersistentResourceResourceRuntimeArrayOutput) Index(i pulumi.IntInput)
 }
 
 type AiPersistentResourceResourceRuntimeSpec struct {
+	// Configuration information for the Ray cluster.
+	// Structure is documented below.
+	RaySpec *AiPersistentResourceResourceRuntimeSpecRaySpec `pulumi:"raySpec"`
 	// Configuration for the use of custom service account to run the workloads.
 	// Structure is documented below.
 	ServiceAccountSpec *AiPersistentResourceResourceRuntimeSpecServiceAccountSpec `pulumi:"serviceAccountSpec"`
@@ -23080,6 +27288,9 @@ type AiPersistentResourceResourceRuntimeSpecInput interface {
 }
 
 type AiPersistentResourceResourceRuntimeSpecArgs struct {
+	// Configuration information for the Ray cluster.
+	// Structure is documented below.
+	RaySpec AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput `pulumi:"raySpec"`
 	// Configuration for the use of custom service account to run the workloads.
 	// Structure is documented below.
 	ServiceAccountSpec AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrInput `pulumi:"serviceAccountSpec"`
@@ -23162,6 +27373,14 @@ func (o AiPersistentResourceResourceRuntimeSpecOutput) ToAiPersistentResourceRes
 	}).(AiPersistentResourceResourceRuntimeSpecPtrOutput)
 }
 
+// Configuration information for the Ray cluster.
+// Structure is documented below.
+func (o AiPersistentResourceResourceRuntimeSpecOutput) RaySpec() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourceRuntimeSpec) *AiPersistentResourceResourceRuntimeSpecRaySpec {
+		return v.RaySpec
+	}).(AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput)
+}
+
 // Configuration for the use of custom service account to run the workloads.
 // Structure is documented below.
 func (o AiPersistentResourceResourceRuntimeSpecOutput) ServiceAccountSpec() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
@@ -23194,6 +27413,17 @@ func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) Elem() AiPersistentRes
 	}).(AiPersistentResourceResourceRuntimeSpecOutput)
 }
 
+// Configuration information for the Ray cluster.
+// Structure is documented below.
+func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) RaySpec() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourceRuntimeSpec) *AiPersistentResourceResourceRuntimeSpecRaySpec {
+		if v == nil {
+			return nil
+		}
+		return v.RaySpec
+	}).(AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput)
+}
+
 // Configuration for the use of custom service account to run the workloads.
 // Structure is documented below.
 func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) ServiceAccountSpec() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
@@ -23203,6 +27433,163 @@ func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) ServiceAccountSpec() A
 		}
 		return v.ServiceAccountSpec
 	}).(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecRaySpec struct {
+	// Default image for user to choose a preferred ML framework
+	// (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+	// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+	// Either this or the resourcePoolImages is required. Use this field if
+	// you need all the resource pools to have the same Ray image. Otherwise, use
+	// the `resourcePoolImages` field.
+	ImageUri *string `pulumi:"imageUri"`
+}
+
+// AiPersistentResourceResourceRuntimeSpecRaySpecInput is an input type that accepts AiPersistentResourceResourceRuntimeSpecRaySpecArgs and AiPersistentResourceResourceRuntimeSpecRaySpecOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourceRuntimeSpecRaySpecInput` via:
+//
+//	AiPersistentResourceResourceRuntimeSpecRaySpecArgs{...}
+type AiPersistentResourceResourceRuntimeSpecRaySpecInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourceRuntimeSpecRaySpecOutput() AiPersistentResourceResourceRuntimeSpecRaySpecOutput
+	ToAiPersistentResourceResourceRuntimeSpecRaySpecOutputWithContext(context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecOutput
+}
+
+type AiPersistentResourceResourceRuntimeSpecRaySpecArgs struct {
+	// Default image for user to choose a preferred ML framework
+	// (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+	// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+	// Either this or the resourcePoolImages is required. Use this field if
+	// you need all the resource pools to have the same Ray image. Otherwise, use
+	// the `resourcePoolImages` field.
+	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+}
+
+func (AiPersistentResourceResourceRuntimeSpecRaySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecRaySpec)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecRaySpecArgs) ToAiPersistentResourceResourceRuntimeSpecRaySpecOutput() AiPersistentResourceResourceRuntimeSpecRaySpecOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecRaySpecOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecRaySpecArgs) ToAiPersistentResourceResourceRuntimeSpecRaySpecOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecRaySpecOutput)
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecRaySpecArgs) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecRaySpecArgs) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecRaySpecOutput).ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(ctx)
+}
+
+// AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput is an input type that accepts AiPersistentResourceResourceRuntimeSpecRaySpecArgs, AiPersistentResourceResourceRuntimeSpecRaySpecPtr and AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput` via:
+//
+//	        AiPersistentResourceResourceRuntimeSpecRaySpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput
+	ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput
+}
+
+type aiPersistentResourceResourceRuntimeSpecRaySpecPtrType AiPersistentResourceResourceRuntimeSpecRaySpecArgs
+
+func AiPersistentResourceResourceRuntimeSpecRaySpecPtr(v *AiPersistentResourceResourceRuntimeSpecRaySpecArgs) AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput {
+	return (*aiPersistentResourceResourceRuntimeSpecRaySpecPtrType)(v)
+}
+
+func (*aiPersistentResourceResourceRuntimeSpecRaySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourceRuntimeSpecRaySpec)(nil)).Elem()
+}
+
+func (i *aiPersistentResourceResourceRuntimeSpecRaySpecPtrType) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPersistentResourceResourceRuntimeSpecRaySpecPtrType) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecRaySpecOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecRaySpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecOutput() AiPersistentResourceResourceRuntimeSpecRaySpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o.ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPersistentResourceResourceRuntimeSpecRaySpec) *AiPersistentResourceResourceRuntimeSpecRaySpec {
+		return &v
+	}).(AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput)
+}
+
+// Default image for user to choose a preferred ML framework
+// (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+// Either this or the resourcePoolImages is required. Use this field if
+// you need all the resource pools to have the same Ray image. Otherwise, use
+// the `resourcePoolImages` field.
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourceRuntimeSpecRaySpec) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourceRuntimeSpecRaySpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput) Elem() AiPersistentResourceResourceRuntimeSpecRaySpecOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourceRuntimeSpecRaySpec) AiPersistentResourceResourceRuntimeSpecRaySpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiPersistentResourceResourceRuntimeSpecRaySpec
+		return ret
+	}).(AiPersistentResourceResourceRuntimeSpecRaySpecOutput)
+}
+
+// Default image for user to choose a preferred ML framework
+// (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+// Either this or the resourcePoolImages is required. Use this field if
+// you need all the resource pools to have the same Ray image. Otherwise, use
+// the `resourcePoolImages` field.
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourceRuntimeSpecRaySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageUri
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiPersistentResourceResourceRuntimeSpecServiceAccountSpec struct {
@@ -38176,6 +42563,53 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreEncryptionSpecPtrInput)(nil)).Elem(), AiMetadataStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeInput)(nil)).Elem(), AiMetadataStoreStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeArrayInput)(nil)).Elem(), AiMetadataStoreStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterEventInput)(nil)).Elem(), AiModelDevelopmentClusterClusterEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterEventArrayInput)(nil)).Elem(), AiModelDevelopmentClusterClusterEventArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusArrayInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusErrorInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusErrorArrayInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusNodesStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusArrayInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusNodesStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigInput)(nil)).Elem(), AiModelDevelopmentClusterLustreExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigPtrInput)(nil)).Elem(), AiModelDevelopmentClusterLustreExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigStartTimeInput)(nil)).Elem(), AiModelDevelopmentClusterLustreExportConfigStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput)(nil)).Elem(), AiModelDevelopmentClusterLustreExportConfigStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNetworkInput)(nil)).Elem(), AiModelDevelopmentClusterNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNetworkPtrInput)(nil)).Elem(), AiModelDevelopmentClusterNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolArrayInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolBootDiskInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolBootDiskPtrInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpecInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolScalingSpecInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolScalingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolScalingSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolScalingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeSpecInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeXmanagerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeXmanagerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerErrorInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeXmanagerErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerErrorArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeXmanagerErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityOpenTelemetryInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs{})
@@ -38235,6 +42669,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeArrayInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecPtrInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecRaySpecInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecRaySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecRaySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecServiceAccountSpecInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagCorpusCorpusStatusInput)(nil)).Elem(), AiRagCorpusCorpusStatusArgs{})
@@ -38627,6 +43063,53 @@ func init() {
 	pulumi.RegisterOutputType(AiMetadataStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterEventOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterEventArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusErrorOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusNodesStatusOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterLustreExportConfigOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterLustreExportConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterLustreExportConfigStartTimeOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNetworkOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNetworkPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolBootDiskOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolBootDiskPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolMachineSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolScalingSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeXmanagerOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeXmanagerArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeXmanagerErrorOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput{})
 	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityOutput{})
 	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityPtrOutput{})
 	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput{})
@@ -38686,6 +43169,8 @@ func init() {
 	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeArrayOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecRaySpecOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiRagCorpusCorpusStatusOutput{})

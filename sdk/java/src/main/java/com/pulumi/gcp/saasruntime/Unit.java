@@ -126,6 +126,28 @@ public class Unit extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.annotations);
     }
     /**
+     * Reference to the App Hub Application this Unit belongs to, in the format
+     * `projects/{project}/locations/{location}/applications/{application}`.
+     * All resources deployed in this Unit are associated with the specified
+     * Application. If empty, the service sets it during any UnitOperation
+     * when the UnitKind has `app_params.group` and App Hub is enabled.
+     * 
+     */
+    @Export(name="application", refs={String.class}, tree="[0]")
+    private Output<String> application;
+
+    /**
+     * @return Reference to the App Hub Application this Unit belongs to, in the format
+     * `projects/{project}/locations/{location}/applications/{application}`.
+     * All resources deployed in this Unit are associated with the specified
+     * Application. If empty, the service sets it during any UnitOperation
+     * when the UnitKind has `app_params.group` and App Hub is enabled.
+     * 
+     */
+    public Output<String> application() {
+        return this.application;
+    }
+    /**
      * A set of conditions which indicate the various conditions this resource can
      * have.
      * Structure is documented below.

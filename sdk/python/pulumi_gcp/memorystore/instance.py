@@ -64,10 +64,10 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the instance.
         :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
                Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
-        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
+        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH.
-               TOKEN_AUTH is also supported, but only available in the google-beta provider.
+               IAM_AUTH
+               TOKEN_AUTH
         :param pulumi.Input['InstanceAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input['InstanceCrossInstanceReplicationConfigArgs'] cross_instance_replication_config: Cross instance replication config
@@ -247,10 +247,10 @@ class InstanceArgs:
     @pulumi.getter(name="authorizationMode")
     def authorization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. Immutable. Authorization mode of the instance. Possible values:
+        Optional. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
-        IAM_AUTH.
-        TOKEN_AUTH is also supported, but only available in the google-beta provider.
+        IAM_AUTH
+        TOKEN_AUTH
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -629,10 +629,10 @@ class _InstanceState:
 
         :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
                Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
-        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
+        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH.
-               TOKEN_AUTH is also supported, but only available in the google-beta provider.
+               IAM_AUTH
+               TOKEN_AUTH
         :param pulumi.Input['InstanceAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
@@ -863,10 +863,10 @@ class _InstanceState:
     @pulumi.getter(name="authorizationMode")
     def authorization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. Immutable. Authorization mode of the instance. Possible values:
+        Optional. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
-        IAM_AUTH.
-        TOKEN_AUTH is also supported, but only available in the google-beta provider.
+        IAM_AUTH
+        TOKEN_AUTH
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -1899,10 +1899,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
                Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
-        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
+        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH.
-               TOKEN_AUTH is also supported, but only available in the google-beta provider.
+               IAM_AUTH
+               TOKEN_AUTH
         :param pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict', 'outputs.InstanceAutomatedBackupConfig']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict', 'outputs.InstanceCrossInstanceReplicationConfig']] cross_instance_replication_config: Cross instance replication config
@@ -2533,10 +2533,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
                Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
-        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
+        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH.
-               TOKEN_AUTH is also supported, but only available in the google-beta provider.
+               IAM_AUTH
+               TOKEN_AUTH
         :param pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict', 'outputs.InstanceAutomatedBackupConfig']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
@@ -2712,10 +2712,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="authorizationMode")
     def authorization_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        Optional. Immutable. Authorization mode of the instance. Possible values:
+        Optional. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
-        IAM_AUTH.
-        TOKEN_AUTH is also supported, but only available in the google-beta provider.
+        IAM_AUTH
+        TOKEN_AUTH
         """
         return pulumi.get(self, "authorization_mode")
 

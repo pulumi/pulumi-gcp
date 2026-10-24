@@ -77,6 +77,8 @@ __all__ = [
     'GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgsDict',
     'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs',
     'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgsDict',
+    'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs',
+    'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgsDict',
     'GcpUserAccessBindingSessionSettingsArgs',
     'GcpUserAccessBindingSessionSettingsArgsDict',
     'ServicePerimeterDryRunEgressPolicyEgressFromArgs',
@@ -2223,6 +2225,21 @@ class AccessPolicyIamMemberConditionArgs:
 
 
 class GcpUserAccessBindingPrincipalArgsDict(TypedDict):
+    federated_principal: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Immutable. The IAM principal identifier of the federated workforce or workload to
+    assign the policy to. Examples include the following:
+    * Single principal:
+      `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+    * All workloads in a workload identity pool:
+      `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+    * All Workforce Pools in a Google Cloud organization:
+      `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+      Bindings created for all Workforce Pools in a Google Cloud organization
+      support only `scoped_access_settings` with the `restricted_project`
+      client scope and active `session_settings`. No other configurations are
+      allowed.
+    """
     service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Immutable. Service account email used to assign policies to a single service account.
@@ -2239,9 +2256,22 @@ class GcpUserAccessBindingPrincipalArgsDict(TypedDict):
 @pulumi.input_type
 class GcpUserAccessBindingPrincipalArgs:
     def __init__(__self__, *,
+                 federated_principal: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_project_number: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] federated_principal: Immutable. The IAM principal identifier of the federated workforce or workload to
+               assign the policy to. Examples include the following:
+               * Single principal:
+                 `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+               * All workloads in a workload identity pool:
+                 `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+               * All Workforce Pools in a Google Cloud organization:
+                 `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+                 Bindings created for all Workforce Pools in a Google Cloud organization
+                 support only `scoped_access_settings` with the `restricted_project`
+                 client scope and active `session_settings`. No other configurations are
+                 allowed.
         :param pulumi.Input[_builtins.str] service_account: Immutable. Service account email used to assign policies to a single service account.
                If a service account is subject to multiple policies (e.g., if there is a policy for all
                service accounts in a project and a policy for the service account), the closest (i.e.
@@ -2249,10 +2279,35 @@ class GcpUserAccessBindingPrincipalArgs:
                closest policy will be used for the enforcement.
         :param pulumi.Input[_builtins.str] service_account_project_number: Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
         """
+        if federated_principal is not None:
+            pulumi.set(__self__, "federated_principal", federated_principal)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_project_number is not None:
             pulumi.set(__self__, "service_account_project_number", service_account_project_number)
+
+    @_builtins.property
+    @pulumi.getter(name="federatedPrincipal")
+    def federated_principal(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Immutable. The IAM principal identifier of the federated workforce or workload to
+        assign the policy to. Examples include the following:
+        * Single principal:
+          `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+        * All workloads in a workload identity pool:
+          `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+        * All Workforce Pools in a Google Cloud organization:
+          `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+          Bindings created for all Workforce Pools in a Google Cloud organization
+          support only `scoped_access_settings` with the `restricted_project`
+          client scope and active `session_settings`. No other configurations are
+          allowed.
+        """
+        return pulumi.get(self, "federated_principal")
+
+    @federated_principal.setter
+    def federated_principal(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "federated_principal", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
@@ -2598,17 +2653,27 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgsDict(TypedDict)
     Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
     Structure is documented below.
     """
+    restricted_project: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgsDict']]]
+    """
+    Optional. The Google Cloud project that is subject to this binding's scope.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs:
     def __init__(__self__, *,
-                 restricted_client_application: pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs']] = None):
+                 restricted_client_application: pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs']] = None,
+                 restricted_project: pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs']] = None):
         """
         :param pulumi.Input['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs'] restricted_client_application: Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
+               Structure is documented below.
+        :param pulumi.Input['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs'] restricted_project: Optional. The Google Cloud project that is subject to this binding's scope.
                Structure is documented below.
         """
         if restricted_client_application is not None:
             pulumi.set(__self__, "restricted_client_application", restricted_client_application)
+        if restricted_project is not None:
+            pulumi.set(__self__, "restricted_project", restricted_project)
 
     @_builtins.property
     @pulumi.getter(name="restrictedClientApplication")
@@ -2622,6 +2687,19 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs:
     @restricted_client_application.setter
     def restricted_client_application(self, value: pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs']]):
         pulumi.set(self, "restricted_client_application", value)
+
+    @_builtins.property
+    @pulumi.getter(name="restrictedProject")
+    def restricted_project(self) -> pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs']]:
+        """
+        Optional. The Google Cloud project that is subject to this binding's scope.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restricted_project")
+
+    @restricted_project.setter
+    def restricted_project(self, value: pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs']]):
+        pulumi.set(self, "restricted_project", value)
 
 
 class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgsDict(TypedDict):
@@ -2670,6 +2748,40 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApp
 
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The Google Cloud project resource name.
+    Format: `projects/{project_number}`. Only the project number is supported.
+    Example: `projects/1234567890`
+    """
+
+@pulumi.input_type
+class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: The Google Cloud project resource name.
+               Format: `projects/{project_number}`. Only the project number is supported.
+               Example: `projects/1234567890`
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Google Cloud project resource name.
+        Format: `projects/{project_number}`. Only the project number is supported.
+        Example: `projects/1234567890`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
 
 
@@ -2922,7 +3034,10 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSourceArgsDict(TypedDict):
     """
     A Google Cloud resource that is allowed to egress the perimeter.
     Requests from these resources are allowed to access data outside the perimeter.
-    Currently only projects are allowed. Project format: `projects/{project_number}`.
+    Projects, folders, and organizations are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
     The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the
     case of allowing all Google Cloud resources only is not supported.
@@ -2941,7 +3056,10 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -2985,7 +3103,10 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -3044,8 +3165,9 @@ class ServicePerimeterDryRunEgressPolicyEgressToArgsDict(TypedDict):
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, that match this to stanza. A request matches
+    A list of resources, in the form `projects/{project_number}`,
+    `folders/{folder_number}`, or `organizations/{organization_number}`,
+    that match this to stanza. A request matches
     if it contains a resource in this list. If * is specified for resources,
     then this `EgressTo` rule will authorize access to all resources outside
     the perimeter.
@@ -3071,8 +3193,9 @@ class ServicePerimeterDryRunEgressPolicyEgressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -3121,8 +3244,9 @@ class ServicePerimeterDryRunEgressPolicyEgressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -3388,8 +3512,12 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgsDict(TypedDict):
     """
     A Google Cloud resource that is allowed to ingress the perimeter.
     Requests from these resources will be allowed to access perimeter data.
-    Currently only projects are allowed. Format `projects/{project_number}`
-    The project may be in any Google Cloud organization, not just the
+    Projects, folders, organizations, and VPC networks are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
+    VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
+    The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the case
     of allowing all Google Cloud resources only is not supported.
     """
@@ -3414,8 +3542,12 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to ingress the perimeter.
                Requests from these resources will be allowed to access perimeter data.
-               Currently only projects are allowed. Format `projects/{project_number}`
-               The project may be in any Google Cloud organization, not just the
+               Projects, folders, organizations, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
+               The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the case
                of allowing all Google Cloud resources only is not supported.
         """
@@ -3465,8 +3597,12 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to ingress the perimeter.
         Requests from these resources will be allowed to access perimeter data.
-        Currently only projects are allowed. Format `projects/{project_number}`
-        The project may be in any Google Cloud organization, not just the
+        Projects, folders, organizations, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
+        The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the case
         of allowing all Google Cloud resources only is not supported.
         """
@@ -3518,8 +3654,9 @@ class ServicePerimeterDryRunIngressPolicyIngressToArgsDict(TypedDict):
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, protected by this `ServicePerimeter`
+    A list of resources protected by this `ServicePerimeter`, in the form
+    `projects/{project_number}`, `folders/{folder_number}`, or
+    `organizations/{organization_number}`,
     that are allowed to be accessed by sources defined in the
     corresponding `IngressFrom`. A request matches if it contains
     a resource in this list. If `*` is specified for resources,
@@ -3544,8 +3681,9 @@ class ServicePerimeterDryRunIngressPolicyIngressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -3581,8 +3719,9 @@ class ServicePerimeterDryRunIngressPolicyIngressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,
@@ -3867,7 +4006,10 @@ class ServicePerimeterEgressPolicyEgressFromSourceArgsDict(TypedDict):
     """
     A Google Cloud resource that is allowed to egress the perimeter.
     Requests from these resources are allowed to access data outside the perimeter.
-    Currently only projects are allowed. Project format: `projects/{project_number}`.
+    Projects, folders, and organizations are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
     The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the
     case of allowing all Google Cloud resources only is not supported.
@@ -3886,7 +4028,10 @@ class ServicePerimeterEgressPolicyEgressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -3930,7 +4075,10 @@ class ServicePerimeterEgressPolicyEgressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -3989,8 +4137,9 @@ class ServicePerimeterEgressPolicyEgressToArgsDict(TypedDict):
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, that match this to stanza. A request matches
+    A list of resources, in the form `projects/{project_number}`,
+    `folders/{folder_number}`, or `organizations/{organization_number}`,
+    that match this to stanza. A request matches
     if it contains a resource in this list. If * is specified for resources,
     then this `EgressTo` rule will authorize access to all resources outside
     the perimeter.
@@ -4016,8 +4165,9 @@ class ServicePerimeterEgressPolicyEgressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -4066,8 +4216,9 @@ class ServicePerimeterEgressPolicyEgressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -4333,11 +4484,13 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgsDict(TypedDict):
     """
     A Google Cloud resource that is allowed to ingress the perimeter.
     Requests from these resources will be allowed to access perimeter data.
-    Currently only projects and VPCs are allowed.
+    Projects, folders, organizations, and VPC networks are allowed.
     Project format: `projects/{projectNumber}`
+    Folder format: `folders/{folderNumber}`
+    Organization format: `organizations/{organizationNumber}`
     VPC network format:
     `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-    The project may be in any Google Cloud organization, not just the
+    The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the case
     of allowing all Google Cloud resources only is not supported.
     """
@@ -4362,11 +4515,13 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to ingress the perimeter.
                Requests from these resources will be allowed to access perimeter data.
-               Currently only projects and VPCs are allowed.
+               Projects, folders, organizations, and VPC networks are allowed.
                Project format: `projects/{projectNumber}`
+               Folder format: `folders/{folderNumber}`
+               Organization format: `organizations/{organizationNumber}`
                VPC network format:
                `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-               The project may be in any Google Cloud organization, not just the
+               The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the case
                of allowing all Google Cloud resources only is not supported.
         """
@@ -4416,11 +4571,13 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to ingress the perimeter.
         Requests from these resources will be allowed to access perimeter data.
-        Currently only projects and VPCs are allowed.
+        Projects, folders, organizations, and VPC networks are allowed.
         Project format: `projects/{projectNumber}`
+        Folder format: `folders/{folderNumber}`
+        Organization format: `organizations/{organizationNumber}`
         VPC network format:
         `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-        The project may be in any Google Cloud organization, not just the
+        The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the case
         of allowing all Google Cloud resources only is not supported.
         """
@@ -4472,8 +4629,9 @@ class ServicePerimeterIngressPolicyIngressToArgsDict(TypedDict):
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, protected by this `ServicePerimeter`
+    A list of resources protected by this `ServicePerimeter`, in the form
+    `projects/{project_number}`, `folders/{folder_number}`, or
+    `organizations/{organization_number}`,
     that are allowed to be accessed by sources defined in the
     corresponding `IngressFrom`. A request matches if it contains
     a resource in this list. If `*` is specified for resources,
@@ -4498,8 +4656,9 @@ class ServicePerimeterIngressPolicyIngressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -4535,8 +4694,9 @@ class ServicePerimeterIngressPolicyIngressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,
@@ -4722,8 +4882,10 @@ class ServicePerimeterSpecArgsDict(TypedDict):
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of GCP resources that are inside of the service perimeter.
-    Currently only projects are allowed.
-    Format: projects/{project_number}
+    Projects, folders, and VPC networks are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
     """
     restricted_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -4770,8 +4932,10 @@ class ServicePerimeterSpecArgs:
                Must be empty for a perimeter bridge.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of GCP resources that are inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
@@ -4851,8 +5015,10 @@ class ServicePerimeterSpecArgs:
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of GCP resources that are inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resources")
 
@@ -5094,7 +5260,10 @@ class ServicePerimeterSpecEgressPolicyEgressFromSourceArgsDict(TypedDict):
     """
     A Google Cloud resource that is allowed to egress the perimeter.
     Requests from these resources are allowed to access data outside the perimeter.
-    Currently only projects are allowed. Project format: `projects/{project_number}`.
+    Projects, folders, and organizations are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
     The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the
     case of allowing all Google Cloud resources only is not supported.
@@ -5113,7 +5282,10 @@ class ServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -5157,7 +5329,10 @@ class ServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -5216,8 +5391,9 @@ class ServicePerimeterSpecEgressPolicyEgressToArgsDict(TypedDict):
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, that match this to stanza. A request matches
+    A list of resources, in the form `projects/{project_number}`,
+    `folders/{folder_number}`, or `organizations/{organization_number}`,
+    that match this to stanza. A request matches
     if it contains a resource in this list. If * is specified for resources,
     then this `EgressTo` rule will authorize access to all resources outside
     the perimeter.
@@ -5243,8 +5419,9 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -5293,8 +5470,9 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -5628,7 +5806,10 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgsDict(TypedDict):
     """
     A Google Cloud resource that is allowed to egress the perimeter.
     Requests from these resources are allowed to access data outside the perimeter.
-    Currently only projects are allowed. Project format: `projects/{project_number}`.
+    Projects, folders, and organizations are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
     The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the
     case of allowing all Google Cloud resources only is not supported.
@@ -5647,7 +5828,10 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -5691,7 +5875,10 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -5744,8 +5931,9 @@ class ServicePerimeterSpecIngressPolicyIngressToArgsDict(TypedDict):
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, protected by this `ServicePerimeter`
+    A list of resources protected by this `ServicePerimeter`, in the form
+    `projects/{project_number}`, `folders/{folder_number}`, or
+    `organizations/{organization_number}`,
     that are allowed to be accessed by sources defined in the
     corresponding `IngressFrom`. A request matches if it contains
     a resource in this list. If `*` is specified for resources,
@@ -5770,8 +5958,9 @@ class ServicePerimeterSpecIngressPolicyIngressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -5807,8 +5996,9 @@ class ServicePerimeterSpecIngressPolicyIngressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,
@@ -6249,8 +6439,10 @@ class ServicePerimeterStatusArgsDict(TypedDict):
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of GCP resources that are inside of the service perimeter.
-    Currently only projects are allowed.
-    Format: projects/{project_number}
+    Projects, folders, and VPC networks are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
     """
     restricted_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -6297,8 +6489,10 @@ class ServicePerimeterStatusArgs:
                Must be empty for a perimeter bridge.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of GCP resources that are inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
@@ -6378,8 +6572,10 @@ class ServicePerimeterStatusArgs:
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of GCP resources that are inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resources")
 
@@ -6621,7 +6817,10 @@ class ServicePerimeterStatusEgressPolicyEgressFromSourceArgsDict(TypedDict):
     """
     A Google Cloud resource that is allowed to egress the perimeter.
     Requests from these resources are allowed to access data outside the perimeter.
-    Currently only projects are allowed. Project format: `projects/{project_number}`.
+    Projects, folders, and organizations are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
     The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the
     case of allowing all Google Cloud resources only is not supported.
@@ -6640,7 +6839,10 @@ class ServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -6684,7 +6886,10 @@ class ServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -6743,8 +6948,9 @@ class ServicePerimeterStatusEgressPolicyEgressToArgsDict(TypedDict):
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, that match this to stanza. A request matches
+    A list of resources, in the form `projects/{project_number}`,
+    `folders/{folder_number}`, or `organizations/{organization_number}`,
+    that match this to stanza. A request matches
     if it contains a resource in this list. If * is specified for resources,
     then this `EgressTo` rule will authorize access to all resources outside
     the perimeter.
@@ -6770,8 +6976,9 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -6820,8 +7027,9 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -7155,7 +7363,10 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgsDict(TypedDict):
     """
     A Google Cloud resource that is allowed to egress the perimeter.
     Requests from these resources are allowed to access data outside the perimeter.
-    Currently only projects are allowed. Project format: `projects/{project_number}`.
+    Projects, folders, and organizations are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
     The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the
     case of allowing all Google Cloud resources only is not supported.
@@ -7174,7 +7385,10 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -7218,7 +7432,10 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -7271,8 +7488,9 @@ class ServicePerimeterStatusIngressPolicyIngressToArgsDict(TypedDict):
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, protected by this `ServicePerimeter`
+    A list of resources protected by this `ServicePerimeter`, in the form
+    `projects/{project_number}`, `folders/{folder_number}`, or
+    `organizations/{organization_number}`,
     that are allowed to be accessed by sources defined in the
     corresponding `IngressFrom`. A request matches if it contains
     a resource in this list. If `*` is specified for resources,
@@ -7297,8 +7515,9 @@ class ServicePerimeterStatusIngressPolicyIngressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -7334,8 +7553,9 @@ class ServicePerimeterStatusIngressPolicyIngressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,
@@ -8068,8 +8288,10 @@ class ServicePerimetersServicePerimeterSpecArgsDict(TypedDict):
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of GCP resources that are inside of the service perimeter.
-    Currently only projects are allowed.
-    Format: projects/{project_number}
+    Projects, folders, and VPC networks are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
     """
     restricted_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -8116,8 +8338,10 @@ class ServicePerimetersServicePerimeterSpecArgs:
                Must be empty for a perimeter bridge.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of GCP resources that are inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
@@ -8197,8 +8421,10 @@ class ServicePerimetersServicePerimeterSpecArgs:
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of GCP resources that are inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resources")
 
@@ -8446,7 +8672,10 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgsDict(
     """
     A Google Cloud resource that is allowed to egress the perimeter.
     Requests from these resources are allowed to access data outside the perimeter.
-    Currently only projects are allowed. Project format: `projects/{project_number}`.
+    Projects, folders, and organizations are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
     The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the
     case of allowing all Google Cloud resources only is not supported.
@@ -8465,7 +8694,10 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -8509,7 +8741,10 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -8568,8 +8803,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgsDict(TypedDic
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, that match this to stanza. A request matches
+    A list of resources, in the form `projects/{project_number}`,
+    `folders/{folder_number}`, or `organizations/{organization_number}`,
+    that match this to stanza. A request matches
     if it contains a resource in this list. If * is specified for resources,
     then this `EgressTo` rule will authorize access to all resources outside
     the perimeter.
@@ -8595,8 +8831,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -8645,8 +8882,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -8980,7 +9218,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgsDic
     """
     A Google Cloud resource that is allowed to egress the perimeter.
     Requests from these resources are allowed to access data outside the perimeter.
-    Currently only projects are allowed. Project format: `projects/{project_number}`.
+    Projects, folders, and organizations are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
     The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the
     case of allowing all Google Cloud resources only is not supported.
@@ -8999,7 +9240,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -9043,7 +9287,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -9096,8 +9343,9 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgsDict(TypedD
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, protected by this `ServicePerimeter`
+    A list of resources protected by this `ServicePerimeter`, in the form
+    `projects/{project_number}`, `folders/{folder_number}`, or
+    `organizations/{organization_number}`,
     that are allowed to be accessed by sources defined in the
     corresponding `IngressFrom`. A request matches if it contains
     a resource in this list. If `*` is specified for resources,
@@ -9122,8 +9370,9 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -9159,8 +9408,9 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,
@@ -9601,8 +9851,10 @@ class ServicePerimetersServicePerimeterStatusArgsDict(TypedDict):
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of GCP resources that are inside of the service perimeter.
-    Currently only projects are allowed.
-    Format: projects/{project_number}
+    Projects, folders, and VPC networks are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
     """
     restricted_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -9649,8 +9901,10 @@ class ServicePerimetersServicePerimeterStatusArgs:
                Must be empty for a perimeter bridge.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of GCP resources that are inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
@@ -9730,8 +9984,10 @@ class ServicePerimetersServicePerimeterStatusArgs:
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of GCP resources that are inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resources")
 
@@ -9979,7 +10235,10 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgsDic
     """
     A Google Cloud resource that is allowed to egress the perimeter.
     Requests from these resources are allowed to access data outside the perimeter.
-    Currently only projects are allowed. Project format: `projects/{project_number}`.
+    Projects, folders, and organizations are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
     The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the
     case of allowing all Google Cloud resources only is not supported.
@@ -9998,7 +10257,10 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -10042,7 +10304,10 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -10101,8 +10366,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgsDict(TypedD
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, that match this to stanza. A request matches
+    A list of resources, in the form `projects/{project_number}`,
+    `folders/{folder_number}`, or `organizations/{organization_number}`,
+    that match this to stanza. A request matches
     if it contains a resource in this list. If * is specified for resources,
     then this `EgressTo` rule will authorize access to all resources outside
     the perimeter.
@@ -10128,8 +10394,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -10178,8 +10445,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -10513,7 +10781,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgsD
     """
     A Google Cloud resource that is allowed to egress the perimeter.
     Requests from these resources are allowed to access data outside the perimeter.
-    Currently only projects are allowed. Project format: `projects/{project_number}`.
+    Projects, folders, and organizations are allowed.
+    Project format: `projects/{project_number}`
+    Folder format: `folders/{folder_number}`
+    Organization format: `organizations/{organization_number}`
     The resource may be in any Google Cloud organization, not just the
     organization that the perimeter is defined in. `*` is not allowed, the
     case of allowing all Google Cloud resources only is not supported.
@@ -10532,7 +10803,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -10576,7 +10850,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -10629,8 +10906,9 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgsDict(Type
     """
     resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of resources, currently only projects in the form
-    `projects/<projectnumber>`, protected by this `ServicePerimeter`
+    A list of resources protected by this `ServicePerimeter`, in the form
+    `projects/{project_number}`, `folders/{folder_number}`, or
+    `organizations/{organization_number}`,
     that are allowed to be accessed by sources defined in the
     corresponding `IngressFrom`. A request matches if it contains
     a resource in this list. If `*` is specified for resources,
@@ -10655,8 +10933,9 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -10692,8 +10971,9 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,

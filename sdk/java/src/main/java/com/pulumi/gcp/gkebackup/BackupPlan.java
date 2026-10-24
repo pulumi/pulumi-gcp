@@ -41,12 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
  * import com.pulumi.gcp.gkebackup.BackupPlan;
  * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -63,29 +57,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("basic-cluster")
- *             .location("us-east1")
- *             .initialNodeCount(1)
- *             .nodeConfig(ClusterNodeConfigArgs.builder()
- *                 .machineType("n4-standard-2")
- *                 .build())
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection(true)
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("basic-plan")
- *             .cluster(primary.id())
+ *             .cluster("projects/my-project-name/locations/us-east1/clusters/basic-cluster")
  *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
@@ -172,12 +146,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
  * import com.pulumi.gcp.kms.KeyRing;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
@@ -200,26 +168,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("cmek-cluster")
- *             .location("us-east1")
- *             .initialNodeCount(1)
- *             .nodeConfig(ClusterNodeConfigArgs.builder()
- *                 .machineType("n4-standard-2")
- *                 .build())
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection(true)
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
  *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("backup-key")
  *             .location("us-east1")
@@ -232,7 +180,7 @@ import javax.annotation.Nullable;
  * 
  *         var cmek = new BackupPlan("cmek", BackupPlanArgs.builder()
  *             .name("cmek-plan")
- *             .cluster(primary.id())
+ *             .cluster("projects/my-project-name/locations/us-east1/clusters/cmek-cluster")
  *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
@@ -261,12 +209,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
  * import com.pulumi.gcp.gkebackup.BackupPlan;
  * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -285,29 +227,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("nslabels-cluster")
- *             .location("us-east1")
- *             .initialNodeCount(1)
- *             .nodeConfig(ClusterNodeConfigArgs.builder()
- *                 .machineType("n4-standard-2")
- *                 .build())
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection(true)
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
  *         var nslabels = new BackupPlan("nslabels", BackupPlanArgs.builder()
  *             .name("nslabels-plan")
- *             .cluster(primary.id())
+ *             .cluster("projects/my-project-name/locations/us-east1/clusters/nslabels-cluster")
  *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
@@ -334,12 +256,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
  * import com.pulumi.gcp.gkebackup.BackupPlan;
  * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanRetentionPolicyArgs;
@@ -360,29 +276,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("full-cluster")
- *             .location("us-east1")
- *             .initialNodeCount(1)
- *             .nodeConfig(ClusterNodeConfigArgs.builder()
- *                 .machineType("n4-standard-2")
- *                 .build())
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection(true)
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
  *         var full = new BackupPlan("full", BackupPlanArgs.builder()
  *             .name("full-plan")
- *             .cluster(primary.id())
+ *             .cluster("projects/my-project-name/locations/us-east1/clusters/full-cluster")
  *             .location("us-east1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)
@@ -421,12 +317,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
  * import com.pulumi.gcp.gkebackup.BackupPlan;
  * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanRetentionPolicyArgs;
@@ -447,29 +337,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("permissive-cluster")
- *             .location("us-east1")
- *             .initialNodeCount(1)
- *             .nodeConfig(ClusterNodeConfigArgs.builder()
- *                 .machineType("n4-standard-2")
- *                 .build())
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection(true)
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
  *         var permissive = new BackupPlan("permissive", BackupPlanArgs.builder()
  *             .name("permissive-plan")
- *             .cluster(primary.id())
+ *             .cluster("projects/my-project-name/locations/us-east1/clusters/permissive-cluster")
  *             .location("us-east1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)
@@ -509,12 +379,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
  * import com.pulumi.gcp.gkebackup.BackupPlan;
  * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanRetentionPolicyArgs;
@@ -537,29 +401,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("rpo-daily-cluster")
- *             .location("us-east1")
- *             .initialNodeCount(1)
- *             .nodeConfig(ClusterNodeConfigArgs.builder()
- *                 .machineType("n4-standard-2")
- *                 .build())
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection(true)
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
  *         var rpoDailyWindow = new BackupPlan("rpoDailyWindow", BackupPlanArgs.builder()
  *             .name("rpo-daily-window")
- *             .cluster(primary.id())
+ *             .cluster("projects/my-project-name/locations/us-east1/clusters/rpo-daily-cluster")
  *             .location("us-east1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)
@@ -613,12 +457,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
  * import com.pulumi.gcp.gkebackup.BackupPlan;
  * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanRetentionPolicyArgs;
@@ -642,29 +480,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("rpo-weekly-cluster")
- *             .location("us-east1")
- *             .initialNodeCount(1)
- *             .nodeConfig(ClusterNodeConfigArgs.builder()
- *                 .machineType("n4-standard-2")
- *                 .build())
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection(true)
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
  *         var rpoWeeklyWindow = new BackupPlan("rpoWeeklyWindow", BackupPlanArgs.builder()
  *             .name("rpo-weekly-window")
- *             .cluster(primary.id())
+ *             .cluster("projects/my-project-name/locations/us-east1/clusters/rpo-weekly-cluster")
  *             .location("us-east1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)

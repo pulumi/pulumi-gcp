@@ -17,6 +17,7 @@ from .bucket_iam_policy import *
 from .bucket_object import *
 from .control_folder_intelligence_config import *
 from .control_organization_intelligence_config import *
+from .control_project_feature_config import *
 from .control_project_intelligence_config import *
 from .default_object_access_control import *
 from .default_object_acl import *
@@ -34,6 +35,7 @@ from .get_control_folder_intelligence_config import *
 from .get_control_folder_intelligence_findings_summary import *
 from .get_control_organization_intelligence_config import *
 from .get_control_organization_intelligence_findings_summary import *
+from .get_control_project_feature_config import *
 from .get_control_project_intelligence_config import *
 from .get_control_project_intelligence_finding import *
 from .get_control_project_intelligence_finding_revision import *

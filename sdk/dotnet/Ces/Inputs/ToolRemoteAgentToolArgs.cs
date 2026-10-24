@@ -47,12 +47,48 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("inputVariableMapping")]
+        private InputMap<string>? _inputVariableMapping;
+
+        /// <summary>
+        /// (Output)
+        /// Mapping of input variable names of remote agent to GECX variable names.
+        /// </summary>
+        public InputMap<string> InputVariableMapping
+        {
+            get => _inputVariableMapping ?? (_inputVariableMapping = new InputMap<string>());
+            set => _inputVariableMapping = value;
+        }
+
         /// <summary>
         /// (Output)
         /// The name of the system tool.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("outputVariableMapping")]
+        private InputMap<string>? _outputVariableMapping;
+
+        /// <summary>
+        /// (Output)
+        /// Mapping of output variable names of remote agent to GECX variable names.
+        /// </summary>
+        public InputMap<string> OutputVariableMapping
+        {
+            get => _outputVariableMapping ?? (_outputVariableMapping = new InputMap<string>());
+            set => _outputVariableMapping = value;
+        }
+
+        /// <summary>
+        /// (Output)
+        /// When enabled, the interaction between the CXAS app and the remote agent
+        /// will share the same context. If the remote agent returns a context_id, it
+        /// will be persisted for the entirety of the session for this remote agent
+        /// tool.
+        /// </summary>
+        [Input("statefulAgent")]
+        public Input<bool>? StatefulAgent { get; set; }
 
         public ToolRemoteAgentToolArgs()
         {

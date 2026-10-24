@@ -161,6 +161,7 @@ class BackupPlanAssociationArgs:
 @pulumi.input_type
 class _BackupPlanAssociationState:
     def __init__(__self__, *,
+                 auto_protection_policy_binding: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -176,6 +177,8 @@ class _BackupPlanAssociationState:
         """
         Input properties used for looking up and filtering BackupPlanAssociation resources.
 
+        :param pulumi.Input[_builtins.str] auto_protection_policy_binding: (Beta)
+               The resource name of the auto protection policy binding that manages this backup plan association, if any.
         :param pulumi.Input[_builtins.str] backup_plan: The BP with which resource needs to be created
                Note:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -202,6 +205,8 @@ class _BackupPlanAssociationState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the instance was updated.
         """
+        if auto_protection_policy_binding is not None:
+            pulumi.set(__self__, "auto_protection_policy_binding", auto_protection_policy_binding)
         if backup_plan is not None:
             pulumi.set(__self__, "backup_plan", backup_plan)
         if backup_plan_association_id is not None:
@@ -226,6 +231,19 @@ class _BackupPlanAssociationState:
             pulumi.set(__self__, "rules_config_infos", rules_config_infos)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="autoProtectionPolicyBinding")
+    def auto_protection_policy_binding(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Beta)
+        The resource name of the auto protection policy binding that manages this backup plan association, if any.
+        """
+        return pulumi.get(self, "auto_protection_policy_binding")
+
+    @auto_protection_policy_binding.setter
+    def auto_protection_policy_binding(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auto_protection_policy_binding", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPlan")
@@ -753,6 +771,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
             if resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_type'")
             __props__.__dict__["resource_type"] = resource_type
+            __props__.__dict__["auto_protection_policy_binding"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["data_source"] = None
             __props__.__dict__["name"] = None
@@ -768,6 +787,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_protection_policy_binding: pulumi.Input[Optional[_builtins.str]] = None,
             backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
             backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -787,6 +807,8 @@ class BackupPlanAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] auto_protection_policy_binding: (Beta)
+               The resource name of the auto protection policy binding that manages this backup plan association, if any.
         :param pulumi.Input[_builtins.str] backup_plan: The BP with which resource needs to be created
                Note:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -817,6 +839,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
 
         __props__ = _BackupPlanAssociationState.__new__(_BackupPlanAssociationState)
 
+        __props__.__dict__["auto_protection_policy_binding"] = auto_protection_policy_binding
         __props__.__dict__["backup_plan"] = backup_plan
         __props__.__dict__["backup_plan_association_id"] = backup_plan_association_id
         __props__.__dict__["create_time"] = create_time
@@ -830,6 +853,15 @@ class BackupPlanAssociation(pulumi.CustomResource):
         __props__.__dict__["rules_config_infos"] = rules_config_infos
         __props__.__dict__["update_time"] = update_time
         return BackupPlanAssociation(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="autoProtectionPolicyBinding")
+    def auto_protection_policy_binding(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Beta)
+        The resource name of the auto protection policy binding that manages this backup plan association, if any.
+        """
+        return pulumi.get(self, "auto_protection_policy_binding")
 
     @_builtins.property
     @pulumi.getter(name="backupPlan")

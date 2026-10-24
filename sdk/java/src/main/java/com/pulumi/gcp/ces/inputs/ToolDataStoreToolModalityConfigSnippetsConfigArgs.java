@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,28 @@ public final class ToolDataStoreToolModalityConfigSnippetsConfigArgs extends com
         return Optional.ofNullable(this.enableSnippets);
     }
 
+    /**
+     * Number of snippets to return per query.
+     * If unset, returns all snippets from the service by default.
+     * 
+     */
+    @Import(name="maxSnippets")
+    private @Nullable Output<Integer> maxSnippets;
+
+    /**
+     * @return Number of snippets to return per query.
+     * If unset, returns all snippets from the service by default.
+     * 
+     */
+    public Optional<Output<Integer>> maxSnippets() {
+        return Optional.ofNullable(this.maxSnippets);
+    }
+
     private ToolDataStoreToolModalityConfigSnippetsConfigArgs() {}
 
     private ToolDataStoreToolModalityConfigSnippetsConfigArgs(ToolDataStoreToolModalityConfigSnippetsConfigArgs $) {
         this.enableSnippets = $.enableSnippets;
+        this.maxSnippets = $.maxSnippets;
     }
 
     public static Builder builder() {
@@ -73,6 +92,29 @@ public final class ToolDataStoreToolModalityConfigSnippetsConfigArgs extends com
          */
         public Builder enableSnippets(Boolean enableSnippets) {
             return enableSnippets(Output.of(enableSnippets));
+        }
+
+        /**
+         * @param maxSnippets Number of snippets to return per query.
+         * If unset, returns all snippets from the service by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSnippets(@Nullable Output<Integer> maxSnippets) {
+            $.maxSnippets = maxSnippets;
+            return this;
+        }
+
+        /**
+         * @param maxSnippets Number of snippets to return per query.
+         * If unset, returns all snippets from the service by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSnippets(Integer maxSnippets) {
+            return maxSnippets(Output.of(maxSnippets));
         }
 
         public ToolDataStoreToolModalityConfigSnippetsConfigArgs build() {

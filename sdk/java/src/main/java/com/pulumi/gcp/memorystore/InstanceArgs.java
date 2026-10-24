@@ -47,20 +47,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Immutable. Authorization mode of the instance. Possible values:
+     * Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      * 
      */
     @Import(name="authorizationMode")
     private @Nullable Output<String> authorizationMode;
 
     /**
-     * @return Optional. Immutable. Authorization mode of the instance. Possible values:
+     * @return Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      * 
      */
     public Optional<Output<String>> authorizationMode() {
@@ -630,10 +630,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizationMode Optional. Immutable. Authorization mode of the instance. Possible values:
+         * @param authorizationMode Optional. Authorization mode of the instance. Possible values:
          * AUTH_DISABLED
-         * IAM_AUTH.
-         * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+         * IAM_AUTH
+         * TOKEN_AUTH
          * 
          * @return builder
          * 
@@ -644,10 +644,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizationMode Optional. Immutable. Authorization mode of the instance. Possible values:
+         * @param authorizationMode Optional. Authorization mode of the instance. Possible values:
          * AUTH_DISABLED
-         * IAM_AUTH.
-         * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+         * IAM_AUTH
+         * TOKEN_AUTH
          * 
          * @return builder
          * 

@@ -194,6 +194,7 @@ import javax.annotation.Nullable;
  *             .modelSettings(AppModelSettingsArgs.builder()
  *                 .model("gemini-3.0-flash-001")
  *                 .temperature(0.5)
+ *                 .thinkingLevel("LOW")
  *                 .build())
  *             .evaluationMetricsThresholds(AppEvaluationMetricsThresholdsArgs.builder()
  *                 .goldenEvaluationMetricsThresholds(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs.builder()

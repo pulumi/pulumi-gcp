@@ -629,27 +629,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="basic-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             name="basic-plan",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/basic-cluster",
             location="us-east1",
             backup_config={
                 "include_volume_data": True,
@@ -695,24 +677,6 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="cmek-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         key_ring = gcp.kms.KeyRing("key_ring",
             name="backup-key",
             location="us-east1")
@@ -721,7 +685,7 @@ class BackupPlan(pulumi.CustomResource):
             key_ring=key_ring.id)
         cmek = gcp.gkebackup.BackupPlan("cmek",
             name="cmek-plan",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/cmek-cluster",
             location="us-east1",
             backup_config={
                 "include_volume_data": True,
@@ -743,27 +707,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="nslabels-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         nslabels = gcp.gkebackup.BackupPlan("nslabels",
             name="nslabels-plan",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/nslabels-cluster",
             location="us-east1",
             backup_config={
                 "include_volume_data": True,
@@ -782,27 +728,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="full-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         full = gcp.gkebackup.BackupPlan("full",
             name="full-plan",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/full-cluster",
             location="us-east1",
             retention_policy={
                 "backup_delete_lock_days": 30,
@@ -834,27 +762,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="permissive-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         permissive = gcp.gkebackup.BackupPlan("permissive",
             name="permissive-plan",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/permissive-cluster",
             location="us-east1",
             retention_policy={
                 "backup_delete_lock_days": 30,
@@ -887,27 +797,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="rpo-daily-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         rpo_daily_window = gcp.gkebackup.BackupPlan("rpo_daily_window",
             name="rpo-daily-window",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/rpo-daily-cluster",
             location="us-east1",
             retention_policy={
                 "backup_delete_lock_days": 30,
@@ -954,27 +846,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="rpo-weekly-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         rpo_weekly_window = gcp.gkebackup.BackupPlan("rpo_weekly_window",
             name="rpo-weekly-window",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/rpo-weekly-cluster",
             location="us-east1",
             retention_policy={
                 "backup_delete_lock_days": 30,
@@ -1102,27 +976,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="basic-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             name="basic-plan",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/basic-cluster",
             location="us-east1",
             backup_config={
                 "include_volume_data": True,
@@ -1168,24 +1024,6 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="cmek-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         key_ring = gcp.kms.KeyRing("key_ring",
             name="backup-key",
             location="us-east1")
@@ -1194,7 +1032,7 @@ class BackupPlan(pulumi.CustomResource):
             key_ring=key_ring.id)
         cmek = gcp.gkebackup.BackupPlan("cmek",
             name="cmek-plan",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/cmek-cluster",
             location="us-east1",
             backup_config={
                 "include_volume_data": True,
@@ -1216,27 +1054,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="nslabels-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         nslabels = gcp.gkebackup.BackupPlan("nslabels",
             name="nslabels-plan",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/nslabels-cluster",
             location="us-east1",
             backup_config={
                 "include_volume_data": True,
@@ -1255,27 +1075,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="full-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         full = gcp.gkebackup.BackupPlan("full",
             name="full-plan",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/full-cluster",
             location="us-east1",
             retention_policy={
                 "backup_delete_lock_days": 30,
@@ -1307,27 +1109,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="permissive-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         permissive = gcp.gkebackup.BackupPlan("permissive",
             name="permissive-plan",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/permissive-cluster",
             location="us-east1",
             retention_policy={
                 "backup_delete_lock_days": 30,
@@ -1360,27 +1144,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="rpo-daily-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         rpo_daily_window = gcp.gkebackup.BackupPlan("rpo_daily_window",
             name="rpo-daily-window",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/rpo-daily-cluster",
             location="us-east1",
             retention_policy={
                 "backup_delete_lock_days": 30,
@@ -1427,27 +1193,9 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="rpo-weekly-cluster",
-            location="us-east1",
-            initial_node_count=1,
-            node_config={
-                "machine_type": "n4-standard-2",
-            },
-            workload_identity_config={
-                "workload_pool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gke_backup_agent_config": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection=True,
-            network="default",
-            subnetwork="default")
         rpo_weekly_window = gcp.gkebackup.BackupPlan("rpo_weekly_window",
             name="rpo-weekly-window",
-            cluster=primary.id,
+            cluster="projects/my-project-name/locations/us-east1/clusters/rpo-weekly-cluster",
             location="us-east1",
             retention_policy={
                 "backup_delete_lock_days": 30,

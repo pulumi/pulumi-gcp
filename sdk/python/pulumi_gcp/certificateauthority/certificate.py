@@ -31,7 +31,8 @@ class CertificateArgs:
                  lifetime: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  pem_csr: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_not_before_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
 
@@ -66,6 +67,9 @@ class CertificateArgs:
         :param pulumi.Input[_builtins.str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] requested_not_before_time: The requested not_before_time of this Certificate. This field may only be set
+               if the allow_requester_specified_not_before_time field is set to true for the
+               issuing CaPool.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "pool", pool)
@@ -87,6 +91,8 @@ class CertificateArgs:
             pulumi.set(__self__, "pem_csr", pem_csr)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if requested_not_before_time is not None:
+            pulumi.set(__self__, "requested_not_before_time", requested_not_before_time)
 
     @_builtins.property
     @pulumi.getter
@@ -240,6 +246,20 @@ class CertificateArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="requestedNotBeforeTime")
+    def requested_not_before_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The requested not_before_time of this Certificate. This field may only be set
+        if the allow_requester_specified_not_before_time field is set to true for the
+        issuing CaPool.
+        """
+        return pulumi.get(self, "requested_not_before_time")
+
+    @requested_not_before_time.setter
+    def requested_not_before_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "requested_not_before_time", value)
+
 
 @pulumi.input_type
 class _CertificateState:
@@ -262,6 +282,7 @@ class _CertificateState:
                  pool: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 requested_not_before_time: pulumi.Input[Optional[_builtins.str]] = None,
                  revocation_details: pulumi.Input[Optional[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -308,6 +329,9 @@ class _CertificateState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[_builtins.str] requested_not_before_time: The requested not_before_time of this Certificate. This field may only be set
+               if the allow_requester_specified_not_before_time field is set to true for the
+               issuing CaPool.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
                considered revoked if and only if this field is present.
                Structure is documented below.
@@ -350,6 +374,8 @@ class _CertificateState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if requested_not_before_time is not None:
+            pulumi.set(__self__, "requested_not_before_time", requested_not_before_time)
         if revocation_details is not None:
             pulumi.set(__self__, "revocation_details", revocation_details)
         if update_time is not None:
@@ -595,6 +621,20 @@ class _CertificateState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="requestedNotBeforeTime")
+    def requested_not_before_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The requested not_before_time of this Certificate. This field may only be set
+        if the allow_requester_specified_not_before_time field is set to true for the
+        issuing CaPool.
+        """
+        return pulumi.get(self, "requested_not_before_time")
+
+    @requested_not_before_time.setter
+    def requested_not_before_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "requested_not_before_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="revocationDetails")
     def revocation_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]]:
         """
@@ -639,6 +679,7 @@ class Certificate(pulumi.CustomResource):
                  pem_csr: pulumi.Input[Optional[_builtins.str]] = None,
                  pool: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_not_before_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Certificate corresponds to a signed X.509 certificate issued by a Certificate.
@@ -1185,6 +1226,110 @@ class Certificate(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
+        ### Privateca Certificate With Requested Not Before Time
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default = gcp.certificateauthority.CaPool("default",
+            location="us-central1",
+            name="my-pool",
+            tier="ENTERPRISE",
+            issuance_policy={
+                "allow_requester_specified_not_before_time": True,
+            })
+        default_authority = gcp.certificateauthority.Authority("default",
+            location="us-central1",
+            pool=default.name,
+            certificate_authority_id="my-authority",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "common_name": "my-certificate-authority",
+                    },
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
+        default_certificate = gcp.certificateauthority.Certificate("default",
+            location="us-central1",
+            pool=default.name,
+            certificate_authority=default_authority.certificate_authority_id,
+            lifetime="86000s",
+            name="my-certificate",
+            requested_not_before_time=default_authority.update_time,
+            config={
+                "subject_config": {
+                    "subject": {
+                        "common_name": "san1.example.com",
+                        "country_code": "us",
+                        "organization": "google",
+                        "organizational_unit": "enterprise",
+                        "locality": "mountain view",
+                        "province": "california",
+                        "street_address": "1600 amphitheatre parkway",
+                    },
+                    "subject_alt_name": {
+                        "email_addresses": ["email@example.com"],
+                        "ip_addresses": ["127.0.0.1"],
+                        "uris": ["http://www.ietf.org/rfc/rfc3986.txt"],
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "crl_sign": False,
+                            "decipher_only": False,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": False,
+                        },
+                    },
+                    "name_constraints": {
+                        "critical": True,
+                        "permitted_dns_names": ["*.example.com"],
+                        "excluded_dns_names": ["*.deny.example.com"],
+                        "permitted_ip_ranges": ["10.0.0.0/8"],
+                        "excluded_ip_ranges": ["10.1.1.0/24"],
+                        "permitted_email_addresses": [".example.com"],
+                        "excluded_email_addresses": [".deny.example.com"],
+                        "permitted_uris": [".example.com"],
+                        "excluded_uris": [".deny.example.com"],
+                    },
+                },
+                "public_key": {
+                    "format": "PEM",
+                    "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
+                },
+            })
+        ```
 
         ## Import
 
@@ -1236,6 +1381,9 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] requested_not_before_time: The requested not_before_time of this Certificate. This field may only be set
+               if the allow_requester_specified_not_before_time field is set to true for the
+               issuing CaPool.
         """
         ...
     @overload
@@ -1788,6 +1936,110 @@ class Certificate(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
+        ### Privateca Certificate With Requested Not Before Time
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default = gcp.certificateauthority.CaPool("default",
+            location="us-central1",
+            name="my-pool",
+            tier="ENTERPRISE",
+            issuance_policy={
+                "allow_requester_specified_not_before_time": True,
+            })
+        default_authority = gcp.certificateauthority.Authority("default",
+            location="us-central1",
+            pool=default.name,
+            certificate_authority_id="my-authority",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "common_name": "my-certificate-authority",
+                    },
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
+        default_certificate = gcp.certificateauthority.Certificate("default",
+            location="us-central1",
+            pool=default.name,
+            certificate_authority=default_authority.certificate_authority_id,
+            lifetime="86000s",
+            name="my-certificate",
+            requested_not_before_time=default_authority.update_time,
+            config={
+                "subject_config": {
+                    "subject": {
+                        "common_name": "san1.example.com",
+                        "country_code": "us",
+                        "organization": "google",
+                        "organizational_unit": "enterprise",
+                        "locality": "mountain view",
+                        "province": "california",
+                        "street_address": "1600 amphitheatre parkway",
+                    },
+                    "subject_alt_name": {
+                        "email_addresses": ["email@example.com"],
+                        "ip_addresses": ["127.0.0.1"],
+                        "uris": ["http://www.ietf.org/rfc/rfc3986.txt"],
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "crl_sign": False,
+                            "decipher_only": False,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": False,
+                        },
+                    },
+                    "name_constraints": {
+                        "critical": True,
+                        "permitted_dns_names": ["*.example.com"],
+                        "excluded_dns_names": ["*.deny.example.com"],
+                        "permitted_ip_ranges": ["10.0.0.0/8"],
+                        "excluded_ip_ranges": ["10.1.1.0/24"],
+                        "permitted_email_addresses": [".example.com"],
+                        "excluded_email_addresses": [".deny.example.com"],
+                        "permitted_uris": [".example.com"],
+                        "excluded_uris": [".deny.example.com"],
+                    },
+                },
+                "public_key": {
+                    "format": "PEM",
+                    "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
+                },
+            })
+        ```
 
         ## Import
 
@@ -1832,6 +2084,7 @@ class Certificate(pulumi.CustomResource):
                  pem_csr: pulumi.Input[Optional[_builtins.str]] = None,
                  pool: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_not_before_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1856,6 +2109,7 @@ class Certificate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'pool'")
             __props__.__dict__["pool"] = pool
             __props__.__dict__["project"] = project
+            __props__.__dict__["requested_not_before_time"] = requested_not_before_time
             __props__.__dict__["certificate_descriptions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
@@ -1895,6 +2149,7 @@ class Certificate(pulumi.CustomResource):
             pool: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            requested_not_before_time: pulumi.Input[Optional[_builtins.str]] = None,
             revocation_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateRevocationDetailArgs', 'CertificateRevocationDetailArgsDict', 'outputs.CertificateRevocationDetail']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Certificate':
         """
@@ -1945,6 +2200,9 @@ class Certificate(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[_builtins.str] requested_not_before_time: The requested not_before_time of this Certificate. This field may only be set
+               if the allow_requester_specified_not_before_time field is set to true for the
+               issuing CaPool.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateRevocationDetailArgs', 'CertificateRevocationDetailArgsDict', 'outputs.CertificateRevocationDetail']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
                considered revoked if and only if this field is present.
                Structure is documented below.
@@ -1973,6 +2231,7 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["pool"] = pool
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["requested_not_before_time"] = requested_not_before_time
         __props__.__dict__["revocation_details"] = revocation_details
         __props__.__dict__["update_time"] = update_time
         return Certificate(resource_name, opts=opts, __props__=__props__)
@@ -2143,6 +2402,16 @@ class Certificate(pulumi.CustomResource):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="requestedNotBeforeTime")
+    def requested_not_before_time(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The requested not_before_time of this Certificate. This field may only be set
+        if the allow_requester_specified_not_before_time field is set to true for the
+        issuing CaPool.
+        """
+        return pulumi.get(self, "requested_not_before_time")
 
     @_builtins.property
     @pulumi.getter(name="revocationDetails")

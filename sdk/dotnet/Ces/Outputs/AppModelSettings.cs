@@ -25,15 +25,23 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// responses that are more creative.
         /// </summary>
         public readonly double? Temperature;
+        /// <summary>
+        /// The thinking level of the model.
+        /// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+        /// </summary>
+        public readonly string? ThinkingLevel;
 
         [OutputConstructor]
         private AppModelSettings(
             string? model,
 
-            double? temperature)
+            double? temperature,
+
+            string? thinkingLevel)
         {
             Model = model;
             Temperature = temperature;
+            ThinkingLevel = thinkingLevel;
         }
     }
 }

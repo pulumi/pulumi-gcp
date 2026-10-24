@@ -463,6 +463,21 @@ export namespace accesscontextmanager {
 
     export interface GcpUserAccessBindingPrincipal {
         /**
+         * Immutable. The IAM principal identifier of the federated workforce or workload to
+         * assign the policy to. Examples include the following:
+         * * Single principal:
+         *   `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+         * * All workloads in a workload identity pool:
+         *   `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+         * * All Workforce Pools in a Google Cloud organization:
+         *   `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+         *   Bindings created for all Workforce Pools in a Google Cloud organization
+         *   support only `scopedAccessSettings` with the `restrictedProject`
+         *   client scope and active `sessionSettings`. No other configurations are
+         *   allowed.
+         */
+        federatedPrincipal?: string;
+        /**
          * Immutable. Service account email used to assign policies to a single service account.
          * If a service account is subject to multiple policies (e.g., if there is a policy for all
          * service accounts in a project and a policy for the service account), the closest (i.e.
@@ -553,6 +568,11 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         restrictedClientApplication?: outputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication;
+        /**
+         * Optional. The Google Cloud project that is subject to this binding's scope.
+         * Structure is documented below.
+         */
+        restrictedProject?: outputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject;
     }
 
     export interface GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
@@ -564,6 +584,15 @@ export namespace accesscontextmanager {
          * The name of the application. Example: "Cloud Console"
          */
         name?: string;
+    }
+
+    export interface GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject {
+        /**
+         * The Google Cloud project resource name.
+         * Format: `projects/{project_number}`. Only the project number is supported.
+         * Example: `projects/1234567890`
+         */
+        name: string;
     }
 
     export interface GcpUserAccessBindingSessionSettings {
@@ -672,7 +701,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -702,8 +734,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -792,8 +825,12 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to ingress the perimeter.
          * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
-         * The project may be in any Google Cloud organization, not just the
+         * Projects, folders, organizations, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
+         * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the case
          * of allowing all Google Cloud resources only is not supported.
          */
@@ -816,8 +853,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterDryRunIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -907,7 +945,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -937,8 +978,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -1027,11 +1069,13 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to ingress the perimeter.
          * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects and VPCs are allowed.
+         * Projects, folders, organizations, and VPC networks are allowed.
          * Project format: `projects/{projectNumber}`
+         * Folder format: `folders/{folderNumber}`
+         * Organization format: `organizations/{organizationNumber}`
          * VPC network format:
          * `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-         * The project may be in any Google Cloud organization, not just the
+         * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the case
          * of allowing all Google Cloud resources only is not supported.
          */
@@ -1054,8 +1098,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -1134,8 +1179,10 @@ export namespace accesscontextmanager {
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimeterSpecIngressPolicy[];
         /**
          * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * Projects, folders, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
          */
         resources?: string[];
         /**
@@ -1212,7 +1259,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -1242,8 +1292,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -1342,7 +1393,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -1366,8 +1420,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -1505,8 +1560,10 @@ export namespace accesscontextmanager {
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimeterStatusIngressPolicy[];
         /**
          * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * Projects, folders, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
          */
         resources?: string[];
         /**
@@ -1583,7 +1640,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -1613,8 +1673,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -1713,7 +1774,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -1737,8 +1801,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -1950,8 +2015,10 @@ export namespace accesscontextmanager {
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicy[];
         /**
          * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * Projects, folders, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
          */
         resources?: string[];
         /**
@@ -2030,7 +2097,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -2060,8 +2130,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -2160,7 +2231,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -2184,8 +2258,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -2323,8 +2398,10 @@ export namespace accesscontextmanager {
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicy[];
         /**
          * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * Projects, folders, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
          */
         resources?: string[];
         /**
@@ -2403,7 +2480,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -2433,8 +2513,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -2533,7 +2614,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -2557,8 +2641,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -17029,6 +17114,13 @@ export namespace certificateauthority {
 
     export interface CaPoolIssuancePolicy {
         /**
+         * If set to true, allows requesters to specify the requestedNotBeforeTime
+         * field when creating a Certificate. Certificates requested with this
+         * option enabled will have a 'not_before_time' equal to the value
+         * specified in the request.
+         */
+        allowRequesterSpecifiedNotBeforeTime?: boolean;
+        /**
          * IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
          * Structure is documented below.
          */
@@ -20458,6 +20550,11 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: string;
     }
 
     export interface AppTimeZoneSettings {
@@ -25413,6 +25510,11 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: string;
     }
 
     export interface GuardrailLlmPromptSecurity {
@@ -25490,6 +25592,11 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: string;
     }
 
     export interface GuardrailLlmPromptSecurityDefaultSettings {
@@ -26286,6 +26393,16 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values:
+         * DEFAULT
+         * LOW
+         * MEDIUM
+         * HIGH
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: string;
     }
 
     export interface ToolDataStoreToolModalityConfigSnippetsConfig {
@@ -26293,6 +26410,11 @@ export namespace ces {
          * Whether snippets are enabled.
          */
         enableSnippets?: boolean;
+        /**
+         * Number of snippets to return per query.
+         * If unset, returns all snippets from the service by default.
+         */
+        maxSnippets?: number;
     }
 
     export interface ToolDataStoreToolModalityConfigSummarizationConfig {
@@ -26324,6 +26446,16 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values:
+         * DEFAULT
+         * LOW
+         * MEDIUM
+         * HIGH
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: string;
     }
 
     export interface ToolFileSearchTool {
@@ -26906,9 +27038,27 @@ export namespace ces {
         description: string;
         /**
          * (Output)
+         * Mapping of input variable names of remote agent to GECX variable names.
+         */
+        inputVariableMapping: {[key: string]: string};
+        /**
+         * (Output)
          * The name of the system tool.
          */
         name: string;
+        /**
+         * (Output)
+         * Mapping of output variable names of remote agent to GECX variable names.
+         */
+        outputVariableMapping: {[key: string]: string};
+        /**
+         * (Output)
+         * When enabled, the interaction between the CXAS app and the remote agent
+         * will share the same context. If the remote agent returns a context_id, it
+         * will be persisted for the entirety of the session for this remote agent
+         * tool.
+         */
+        statefulAgent: boolean;
     }
 
     export interface ToolRemoteAgentToolAgentCard {
@@ -43018,6 +43168,490 @@ export namespace cloudrunv2 {
         type: string;
     }
 
+    export interface InstanceCondition {
+        /**
+         * (Output)
+         * A reason for the instance condition.
+         */
+        instanceReason: string;
+        /**
+         * (Output)
+         * Last time the condition transitioned from one status to another.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * Human readable message indicating details about the current status.
+         */
+        message: string;
+        /**
+         * (Output)
+         * A common (instance-level) reason for this condition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * How to interpret failures of this condition, one of Error, Warning, Info
+         */
+        severity: string;
+        /**
+         * (Output)
+         * State of the condition.
+         */
+        state: string;
+        /**
+         * (Output)
+         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+         */
+        type: string;
+    }
+
+    export interface InstanceContainer {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
+        args: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
+        commands: string[];
+        /**
+         * List of environment variables to set in the container.
+         * Structure is documented below.
+         */
+        envs?: outputs.cloudrunv2.InstanceContainerEnv[];
+        /**
+         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         */
+        image: string;
+        /**
+         * Periodic probe of container liveness. Container will be restarted if the probe fails.
+         * Structure is documented below.
+         */
+        livenessProbe?: outputs.cloudrunv2.InstanceContainerLivenessProbe;
+        /**
+         * Name of the container specified as a DNS_LABEL.
+         */
+        name?: string;
+        /**
+         * List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+         * If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+         * Structure is documented below.
+         */
+        ports: outputs.cloudrunv2.InstanceContainerPort[];
+        /**
+         * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * Structure is documented below.
+         */
+        resources: outputs.cloudrunv2.InstanceContainerResources;
+        /**
+         * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+         * Structure is documented below.
+         */
+        startupProbe?: outputs.cloudrunv2.InstanceContainerStartupProbe;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: outputs.cloudrunv2.InstanceContainerVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: string;
+    }
+
+    export interface InstanceContainerEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: string;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: string;
+        /**
+         * Source for the environment variable's value.
+         * Structure is documented below.
+         */
+        valueSource?: outputs.cloudrunv2.InstanceContainerEnvValueSource;
+    }
+
+    export interface InstanceContainerEnvValueSource {
+        /**
+         * Selects a secret and a specific version from Cloud Secret Manager.
+         * Structure is documented below.
+         */
+        secretKeyRef?: outputs.cloudrunv2.InstanceContainerEnvValueSourceSecretKeyRef;
+    }
+
+    export interface InstanceContainerEnvValueSourceSecretKeyRef {
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+         */
+        secret: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+         */
+        version: string;
+    }
+
+    export interface InstanceContainerLivenessProbe {
+        /**
+         * Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: number;
+        /**
+         * Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet or grpc must be specified.
+         * Structure is documented below.
+         */
+        grpc?: outputs.cloudrunv2.InstanceContainerLivenessProbeGrpc;
+        /**
+         * Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet or grpc must be specified.
+         * Structure is documented below.
+         */
+        httpGet?: outputs.cloudrunv2.InstanceContainerLivenessProbeHttpGet;
+        /**
+         * Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+         */
+        initialDelaySeconds?: number;
+        /**
+         * Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+         */
+        periodSeconds?: number;
+        /**
+         * Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface InstanceContainerLivenessProbeGrpc {
+        /**
+         * Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+         */
+        port?: number;
+        /**
+         * Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+         */
+        service?: string;
+    }
+
+    export interface InstanceContainerLivenessProbeHttpGet {
+        /**
+         * Optional. Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: outputs.cloudrunv2.InstanceContainerLivenessProbeHttpGetHttpHeader[];
+        /**
+         * Optional. Path to access on the HTTP server. Defaults to '/'.
+         */
+        path?: string;
+        /**
+         * Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+         */
+        port?: number;
+    }
+
+    export interface InstanceContainerLivenessProbeHttpGetHttpHeader {
+        /**
+         * Required. The header field name
+         */
+        name?: string;
+        /**
+         * Optional. The header field value
+         */
+        value?: string;
+    }
+
+    export interface InstanceContainerPort {
+        /**
+         * Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+         */
+        containerPort: number;
+        /**
+         * If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+         */
+        name: string;
+    }
+
+    export interface InstanceContainerResources {
+        /**
+         * Only memory and CPU are supported. Use key `cpu` for CPU limit, `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
+        limits: {[key: string]: string};
+    }
+
+    export interface InstanceContainerStartupProbe {
+        /**
+         * Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: number;
+        /**
+         * Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+         * Structure is documented below.
+         */
+        grpc?: outputs.cloudrunv2.InstanceContainerStartupProbeGrpc;
+        /**
+         * Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+         * Structure is documented below.
+         */
+        httpGet?: outputs.cloudrunv2.InstanceContainerStartupProbeHttpGet;
+        /**
+         * Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+         */
+        initialDelaySeconds?: number;
+        /**
+         * Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+         */
+        periodSeconds?: number;
+        /**
+         * Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+         * Structure is documented below.
+         */
+        tcpSocket?: outputs.cloudrunv2.InstanceContainerStartupProbeTcpSocket;
+        /**
+         * Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface InstanceContainerStartupProbeGrpc {
+        /**
+         * Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+         */
+        port?: number;
+        /**
+         * Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+         */
+        service?: string;
+    }
+
+    export interface InstanceContainerStartupProbeHttpGet {
+        /**
+         * Optional. Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: outputs.cloudrunv2.InstanceContainerStartupProbeHttpGetHttpHeader[];
+        /**
+         * Optional. Path to access on the HTTP server. Defaults to '/'.
+         */
+        path?: string;
+        /**
+         * Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+         */
+        port?: number;
+    }
+
+    export interface InstanceContainerStartupProbeHttpGetHttpHeader {
+        /**
+         * Required. The header field name
+         */
+        name?: string;
+        /**
+         * Optional. The header field value
+         */
+        value?: string;
+    }
+
+    export interface InstanceContainerStartupProbeTcpSocket {
+        /**
+         * Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+         */
+        port?: number;
+    }
+
+    export interface InstanceContainerStatus {
+        /**
+         * (Output)
+         * ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+         */
+        imageDigest: string;
+        /**
+         * Name of the Instance.
+         */
+        name: string;
+    }
+
+    export interface InstanceContainerVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: string;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath?: string;
+    }
+
+    export interface InstanceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface InstanceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface InstanceTerminalCondition {
+        /**
+         * (Output)
+         * A reason for the instance condition.
+         */
+        instanceReason: string;
+        /**
+         * (Output)
+         * Last time the condition transitioned from one status to another.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * Human readable message indicating details about the current status.
+         */
+        message: string;
+        /**
+         * (Output)
+         * A common (instance-level) reason for this condition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * How to interpret failures of this condition, one of Error, Warning, Info
+         */
+        severity: string;
+        /**
+         * (Output)
+         * State of the condition.
+         */
+        state: string;
+        /**
+         * (Output)
+         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+         */
+        type: string;
+    }
+
+    export interface InstanceVolume {
+        /**
+         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         * Structure is documented below.
+         */
+        cloudSqlInstance?: outputs.cloudrunv2.InstanceVolumeCloudSqlInstance;
+        /**
+         * Ephemeral storage used as a shared volume.
+         * Structure is documented below.
+         */
+        emptyDir?: outputs.cloudrunv2.InstanceVolumeEmptyDir;
+        /**
+         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
+         * Structure is documented below.
+         */
+        gcs?: outputs.cloudrunv2.InstanceVolumeGcs;
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * Represents an NFS mount.
+         * Structure is documented below.
+         */
+        nfs?: outputs.cloudrunv2.InstanceVolumeNfs;
+        /**
+         * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         * Structure is documented below.
+         */
+        secret?: outputs.cloudrunv2.InstanceVolumeSecret;
+    }
+
+    export interface InstanceVolumeCloudSqlInstance {
+        /**
+         * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         */
+        instances?: string[];
+    }
+
+    export interface InstanceVolumeEmptyDir {
+        /**
+         * The different types of medium supported for EmptyDir.
+         * Default value is `MEMORY`.
+         * Possible values are: `MEMORY`, `DISK`.
+         */
+        medium?: string;
+        /**
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+         */
+        sizeLimit?: string;
+    }
+
+    export interface InstanceVolumeGcs {
+        /**
+         * GCS Bucket name
+         */
+        bucket: string;
+        /**
+         * A list of flags to pass to the gcsfuse command for configuring this volume.
+         * Flags should be passed without leading dashes.
+         */
+        mountOptions?: string[];
+        /**
+         * If true, mount the GCS bucket as read-only
+         */
+        readOnly?: boolean;
+    }
+
+    export interface InstanceVolumeNfs {
+        /**
+         * Path that is exported by the NFS server.
+         */
+        path: string;
+        /**
+         * If true, mount the NFS volume as read only
+         */
+        readOnly?: boolean;
+        /**
+         * Hostname or IP address of the NFS server
+         */
+        server: string;
+    }
+
+    export interface InstanceVolumeSecret {
+        /**
+         * Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+         */
+        defaultMode?: number;
+        /**
+         * If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+         * Structure is documented below.
+         */
+        items?: outputs.cloudrunv2.InstanceVolumeSecretItem[];
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
+        secret: string;
+    }
+
+    export interface InstanceVolumeSecretItem {
+        /**
+         * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+         */
+        mode?: number;
+        /**
+         * The relative path of the secret in the container.
+         */
+        path: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+         */
+        version?: string;
+    }
+
     export interface JobBinaryAuthorization {
         /**
          * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
@@ -52685,10 +53319,11 @@ export namespace compute {
          */
         name: string;
         /**
-         * This field is not used for external load balancing.
+         * This field is not used for global external load balancing.
          *
-         * For Internal TCP/UDP Load Balancing, this field identifies the network that
-         * the load balanced IP should belong to for this Forwarding Rule.
+         * For Internal TCP/UDP Load Balancing and Regional External Load Balancing ('EXTERNAL_MANAGED'),
+         * this field identifies the network that the load balanced IP should belong to
+         * for this Forwarding Rule.
          * If the subnetwork is specified, the network of the subnetwork will be used.
          * If neither subnetwork nor this field is specified, the default network will
          * be used.
@@ -52831,8 +53466,9 @@ export namespace compute {
         sourceIpRanges: string[];
         /**
          * This field identifies the subnetwork that the load balanced IP should
-         * belong to for this Forwarding Rule, used in internal load balancing and
-         * network load balancing with IPv6.
+         * belong to for this Forwarding Rule, used in internal load balancing,
+         * network load balancing with IPv6, and regional external ('EXTERNAL_MANAGED')
+         * load balancing with IPv6.
          *
          * If the network specified is in auto subnet mode, this field is optional.
          * However, a subnetwork must be specified if the network is in custom subnet
@@ -70392,7 +71028,6 @@ export namespace compute {
 
     export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
-         * (Optional, Beta)
          * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          */
@@ -74763,7 +75398,6 @@ export namespace compute {
 
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
-         * (Optional, Beta)
          * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          */
@@ -81757,9 +82391,15 @@ export namespace container {
 
     export interface ClusterManagedOpentelemetryConfig {
         /**
-         * The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+         * The scope of the Managed OpenTelemetry pipeline. Available options include:
+         * * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+         * * `NONE`: Disables the Managed OpenTelemetry pipeline.
+         *
+         * See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+         *
+         * > **Note:** Removing the `managedOpentelemetryConfig` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
          */
-        scope?: string;
+        scope: string;
     }
 
     export interface ClusterMasterAuth {
@@ -82891,6 +83531,7 @@ export namespace container {
          * Accepted values are:
          *
          * * `"GVISOR"`: Pods run within a gVisor sandbox.
+         * * `"MICROVM"`: Pods run within a microVM sandbox.
          */
         type?: string;
     }
@@ -84499,6 +85140,7 @@ export namespace container {
          * Accepted values are:
          *
          * * `"GVISOR"`: Pods run within a gVisor sandbox.
+         * * `"MICROVM"`: Pods run within a microVM sandbox.
          */
         type?: string;
     }
@@ -84878,6 +85520,13 @@ export namespace container {
          * A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
          */
         controlPlaneSoakDuration?: string;
+    }
+
+    export interface ClusterScheduleUpgradeConfig {
+        /**
+         * Whether scheduled upgrades are enabled on the cluster.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterSecretManagerConfig {
@@ -85804,7 +86453,7 @@ export namespace container {
 
     export interface GetClusterManagedOpentelemetryConfig {
         /**
-         * The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+         * The scope of the Managed OpenTelemetry pipeline. Available options include NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig for more information. To disable the feature, explicitly set this to NONE.
          */
         scope: string;
     }
@@ -88593,6 +89242,13 @@ export namespace container {
          * A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
          */
         controlPlaneSoakDuration: string;
+    }
+
+    export interface GetClusterScheduleUpgradeConfig {
+        /**
+         * Whether scheduled upgrades are enabled.
+         */
+        enabled: boolean;
     }
 
     export interface GetClusterSecretManagerConfig {
@@ -108463,6 +109119,11 @@ export namespace diagflow {
          */
         enableWordInfo?: boolean;
         /**
+         * Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+         * Structure is documented below.
+         */
+        geminiAsrConfig?: outputs.diagflow.ConversationProfileSttConfigGeminiAsrConfig;
+        /**
          * The language of the supplied audio.
          */
         languageCode: string;
@@ -108481,9 +109142,38 @@ export namespace diagflow {
          */
         speechModelVariant?: string;
         /**
+         * If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+         */
+        useGeminiAsr?: boolean;
+        /**
          * Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
          */
         useTimeoutBasedEndpointing?: boolean;
+    }
+
+    export interface ConversationProfileSttConfigGeminiAsrConfig {
+        /**
+         * End of speech sensitivity.
+         * Possible values are: `END_SENSITIVITY_HIGH`, `END_SENSITIVITY_LOW`.
+         */
+        endOfSpeechSensitivity?: string;
+        /**
+         * The Gemini ASR model ID used for transcription. This value overrides the default model ID configured on the server.
+         */
+        modelId?: string;
+        /**
+         * The required duration of detected speech before start-of-speech is committed.
+         */
+        prefixPaddingMs?: number;
+        /**
+         * The required duration of detected silence (or non-speech) before end-of-speech is committed.
+         */
+        silenceDurationMs?: number;
+        /**
+         * Start of speech sensitivity.
+         * Possible values are: `START_SENSITIVITY_HIGH`, `START_SENSITIVITY_LOW`.
+         */
+        startOfSpeechSensitivity?: string;
     }
 
     export interface ConversationProfileTtsConfig {
@@ -114945,12 +115635,26 @@ export namespace dns {
 
     export interface ManagedZoneForwardingConfig {
         /**
+         * The list of outbound endpoints to use for queries.
+         * Structure is documented below.
+         */
+        outboundEndpoints?: outputs.dns.ManagedZoneForwardingConfigOutboundEndpoint[];
+        /**
          * List of target name servers to forward to. Cloud DNS will
          * select the best available name server if more than
          * one target is given.
          * Structure is documented below.
          */
         targetNameServers: outputs.dns.ManagedZoneForwardingConfigTargetNameServer[];
+    }
+
+    export interface ManagedZoneForwardingConfigOutboundEndpoint {
+        /**
+         * Specified as a resource path including project and region.
+         * This should be formatted like
+         * `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+         */
+        name: string;
     }
 
     export interface ManagedZoneForwardingConfigTargetNameServer {
@@ -115052,6 +115756,11 @@ export namespace dns {
 
     export interface PolicyAlternativeNameServerConfig {
         /**
+         * The list of outbound endpoints to use for queries.
+         * Structure is documented below.
+         */
+        outboundEndpoints?: outputs.dns.PolicyAlternativeNameServerConfigOutboundEndpoint[];
+        /**
          * Sets an alternative name server for the associated networks. When specified,
          * all DNS queries are forwarded to a name server that you choose. Names such as .internal
          * are not available when an alternative name server is specified.
@@ -115060,14 +115769,23 @@ export namespace dns {
         targetNameServers: outputs.dns.PolicyAlternativeNameServerConfigTargetNameServer[];
     }
 
+    export interface PolicyAlternativeNameServerConfigOutboundEndpoint {
+        /**
+         * Specified as a resource path including project and region.
+         * This should be formatted like
+         * `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+         *
+         * <a name="nestedDns64Config"></a>The `dns64Config` block supports:
+         */
+        name: string;
+    }
+
     export interface PolicyAlternativeNameServerConfigTargetNameServer {
         /**
          * Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
          * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
          * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
          * Possible values are: `default`, `private`.
-         *
-         * <a name="nestedDns64Config"></a>The `dns64Config` block supports:
          */
         forwardingPath?: string;
         /**
@@ -115410,6 +116128,110 @@ export namespace dns {
          * Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
          */
         type: string;
+    }
+
+}
+
+export namespace documentai {
+    export interface SchemaVersionSchema {
+        /**
+         * Description of the schema.
+         */
+        description?: string;
+        /**
+         * Display name to show users.
+         */
+        displayName?: string;
+        /**
+         * Document-level prompt provided by the user. This custom text is injected into the AI model's prompt to provide extra, document-wide guidance for processing.
+         */
+        documentPrompt?: string;
+        /**
+         * Entity types of the schema.
+         * Structure is documented below.
+         */
+        entityTypes?: outputs.documentai.SchemaVersionSchemaEntityType[];
+        /**
+         * Metadata of the schema.
+         * Structure is documented below.
+         */
+        metadata?: outputs.documentai.SchemaVersionSchemaMetadata;
+    }
+
+    export interface SchemaVersionSchemaEntityType {
+        /**
+         * The entity type that this type is derived from. For now, one and only one should be set.
+         */
+        baseTypes?: string[];
+        /**
+         * User defined name for the type.
+         */
+        displayName?: string;
+        /**
+         * Defines a list of enum values.
+         * Structure is documented below.
+         */
+        enumValues?: outputs.documentai.SchemaVersionSchemaEntityTypeEnumValues;
+        /**
+         * Name of the type. It must be unique within the schema file and cannot be a "Common Type".
+         */
+        name: string;
+        /**
+         * Defines properties that can be part of the entity type.
+         * Structure is documented below.
+         */
+        properties?: outputs.documentai.SchemaVersionSchemaEntityTypeProperty[];
+    }
+
+    export interface SchemaVersionSchemaEntityTypeEnumValues {
+        /**
+         * The individual values that this enum values type can include.
+         */
+        values?: string[];
+    }
+
+    export interface SchemaVersionSchemaEntityTypeProperty {
+        /**
+         * User defined name for the property.
+         */
+        displayName?: string;
+        /**
+         * Specifies how the entity's value is obtained.
+         * Possible values are: `EXTRACT`, `DERIVE`, `RELAXED_EXTRACT`.
+         */
+        method?: string;
+        /**
+         * The name of the property. Follows the same guidelines as the EntityType name.
+         */
+        name: string;
+        /**
+         * Occurrence type limits the number of instances an entity type appears in the document.
+         * Possible values are: `OPTIONAL_ONCE`, `OPTIONAL_MULTIPLE`, `REQUIRED_ONCE`, `REQUIRED_MULTIPLE`.
+         */
+        occurrenceType?: string;
+        /**
+         * A reference to the value type of the property. This type is subject to the same conventions as the `Entity.base_types` field.
+         */
+        valueType: string;
+    }
+
+    export interface SchemaVersionSchemaMetadata {
+        /**
+         * If true, on a given page, there can be multiple `document` annotations covering it.
+         */
+        documentAllowMultipleLabels?: boolean;
+        /**
+         * If true, a `document` entity type can be applied to subdocument (splitting). Otherwise, it can only be applied to the entire document (classification).
+         */
+        documentSplitter?: boolean;
+        /**
+         * If set, all the nested entities must be prefixed with the parents.
+         */
+        prefixedNamingOnProperties?: boolean;
+        /**
+         * If set, this will skip the naming format validation in the schema. So the string values in `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.Property.name` will not be checked.
+         */
+        skipNamingValidation?: boolean;
     }
 
 }
@@ -156466,6 +157288,82 @@ export namespace pubsub {
         writeMetadata: boolean;
     }
 
+    export interface GetSubscriptionBigtableConfig {
+        /**
+         * The app profile to use for the Bigtable writes. If not specified, the "default" application
+         * profile will be used. The app profile must use single-cluster routing.
+         */
+        appProfileId: string;
+        /**
+         * Configuration that allows writing row keys and/or columns based on fields in the input message.
+         * The input message format must be JSON if this field is set.
+         *
+         * If this field is set, top-level message fields are written to the 'data' column family with
+         * the field name as the column qualifier by default, or to an existing column family whose name
+         * matches the field name. The cell timestamp is the message publish time.
+         *
+         * If this field is not set, the row key is constructed from the subscription name, message ID hash,
+         * and message ID delimited by '#', and the message bytes are written to the 'data' column family
+         * with an empty-string column qualifier.
+         */
+        columnFamilyMappings: outputs.pubsub.GetSubscriptionBigtableConfigColumnFamilyMapping[];
+        /**
+         * The service account to use to write to Bigtable. The subscription creator or updater that
+         * specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+         * If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail: string;
+        /**
+         * An output-only field that indicates whether or not the subscription can receive messages.
+         */
+        state: string;
+        /**
+         * The unique name of the table to write messages to, of the form
+         * 'projects/{project}/instances/{instance}/tables/{table}'.
+         */
+        table: string;
+        /**
+         * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+         * additional columns in the table under the 'pubsub_metadata' column family. The subscription name,
+         * messageId, and publishTime fields are put in their own columns while all other message properties
+         * (other than data) are written to a JSON object in the attributes column.
+         */
+        writeMetadata: boolean;
+    }
+
+    export interface GetSubscriptionBigtableConfigColumnFamilyMapping {
+        /**
+         * If set, the row key is constructed from the given key fields and delimiter. All key fields
+         * must be present in the message; otherwise, the message remains in the subscription backlog.
+         */
+        delimitedKeys: outputs.pubsub.GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey[];
+        /**
+         * If set, the row key is constructed from the field names of the table's
+         * [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+         * If a field is nullable in the structured row key, it need not be present in the message;
+         * null will be used instead.
+         */
+        rowKeySchemas: outputs.pubsub.GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema[];
+    }
+
+    export interface GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey {
+        /**
+         * The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+         * (for example, 'Iw==' for '#'). Must be specified if multiple key fields are used. The
+         * delimiter must contain at least 1 character and at most 50 characters.
+         */
+        delimiter: string;
+        /**
+         * The key fields to construct the row key from. The fields must be present in the message
+         * as top-level fields; JSON path expressions will not traverse into nested objects.
+         */
+        keyFields: string[];
+    }
+
+    export interface GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema {
+    }
+
     export interface GetSubscriptionCloudStorageConfig {
         /**
          * If set, message data will be written to Cloud Storage in Avro format.
@@ -157171,6 +158069,83 @@ export namespace pubsub {
          * The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
          */
         writeMetadata?: boolean;
+    }
+
+    export interface SubscriptionBigtableConfig {
+        /**
+         * The app profile to use for the Bigtable writes. If not specified, the "default" application
+         * profile will be used. The app profile must use single-cluster routing.
+         */
+        appProfileId?: string;
+        /**
+         * Configuration that allows writing row keys and/or columns based on fields in the input message.
+         * The input message format must be JSON if this field is set.
+         * If this field is set, top-level message fields are written to the `data` column family with
+         * the field name as the column qualifier by default, or to an existing column family whose name
+         * matches the field name. The cell timestamp is the message publish time.
+         * If this field is not set, the row key is constructed from the subscription name, message ID hash,
+         * and message ID delimited by `#`, and the message bytes are written to the `data` column family
+         * with an empty-string column qualifier.
+         * Structure is documented below.
+         */
+        columnFamilyMapping?: outputs.pubsub.SubscriptionBigtableConfigColumnFamilyMapping;
+        /**
+         * The service account to use to write to Bigtable. The subscription creator or updater that
+         * specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+         * If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail?: string;
+        /**
+         * (Output)
+         * An output-only field that indicates whether or not the subscription can receive messages.
+         */
+        state: string;
+        /**
+         * The unique name of the table to write messages to, of the form
+         * `projects/{project}/instances/{instance}/tables/{table}`.
+         */
+        table: string;
+        /**
+         * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+         * additional columns in the table under the `pubsubMetadata` column family. The subscription name,
+         * messageId, and publishTime fields are put in their own columns while all other message properties
+         * (other than data) are written to a JSON object in the attributes column.
+         */
+        writeMetadata?: boolean;
+    }
+
+    export interface SubscriptionBigtableConfigColumnFamilyMapping {
+        /**
+         * If set, the row key is constructed from the given key fields and delimiter. All key fields
+         * must be present in the message; otherwise, the message remains in the subscription backlog.
+         * Structure is documented below.
+         */
+        delimitedKey?: outputs.pubsub.SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey;
+        /**
+         * If set, the row key is constructed from the field names of the table's
+         * [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+         * If a field is nullable in the structured row key, it need not be present in the message;
+         * null will be used instead.
+         */
+        rowKeySchema?: outputs.pubsub.SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema;
+    }
+
+    export interface SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey {
+        /**
+         * The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+         * (for example, `Iw==` for `#`). Must be specified if multiple key fields are used. The
+         * delimiter must contain at least 1 character and at most 50 characters.
+         */
+        delimiter?: string;
+        /**
+         * The key fields to construct the row key from. The fields must be present in the message
+         * as top-level fields; JSON path expressions will not traverse into nested objects.
+         */
+        keyFields: string[];
+    }
+
+    export interface SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema {
     }
 
     export interface SubscriptionCloudStorageConfig {
@@ -159169,6 +160144,43 @@ export namespace runtimeconfig {
 }
 
 export namespace saasruntime {
+    export interface ReleaseApplicationTemplateComponent {
+        /**
+         * (Output)
+         * Name of the component in the composite ApplicationTemplate.
+         */
+        component: string;
+        /**
+         * (Output)
+         * Reference to the composite ApplicationTemplate.
+         * Structure is documented below.
+         */
+        compositeReves: outputs.saasruntime.ReleaseApplicationTemplateComponentCompositeRef[];
+        /**
+         * (Output)
+         * Revision of the ApplicationTemplate.
+         */
+        revision: string;
+    }
+
+    export interface ReleaseApplicationTemplateComponentCompositeRef {
+        /**
+         * (Output)
+         * Reference to the ApplicationTemplate resource.
+         */
+        applicationTemplate: string;
+        /**
+         * (Output)
+         * Revision of the ApplicationTemplate.
+         */
+        revision: string;
+        /**
+         * (Output)
+         * Reference to the ongoing import and replication operation. Opaque for external usage.
+         */
+        syncOperation: string;
+    }
+
     export interface ReleaseBlueprint {
         /**
          * (Output)
@@ -159258,6 +160270,75 @@ export namespace saasruntime {
         allowedPercentage?: number;
     }
 
+    export interface SaaSApplicationTemplate {
+        /**
+         * Reference to the ApplicationTemplate resource, in the format
+         * `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+         */
+        applicationTemplate: string;
+        /**
+         * Revision of the ApplicationTemplate to import, as a full resource name
+         * prefixed by `applicationTemplate`:
+         * `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}/revisions/{revision}`.
+         * Changes to the revision trigger a new import. If empty, the service
+         * stores `applicationTemplate` but doesn't import it.
+         */
+        revision?: string;
+        /**
+         * (Output)
+         * Reference to the ongoing import and replication operation. Opaque for external usage.
+         */
+        syncOperation: string;
+    }
+
+    export interface SaaSCondition {
+        /**
+         * (Output)
+         * Last time the condition transited from one status to another.
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message: string;
+        /**
+         * (Output)
+         * Brief reason for the condition's last transition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * Status of the condition.
+         * Possible values:
+         * STATUS_UNKNOWN
+         * STATUS_TRUE
+         * STATUS_FALSE
+         */
+        status: string;
+        /**
+         * (Output)
+         * Type of the condition.
+         * Possible values:
+         * TYPE_READY
+         * TYPE_SYNCHRONIZED
+         */
+        type: string;
+    }
+
+    export interface SaaSError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message: string;
+    }
+
     export interface SaaSLocation {
         /**
          * Name of location.
@@ -159339,6 +160420,68 @@ export namespace saasruntime {
          * Name of the variable from actuation configs.
          */
         variable: string;
+    }
+
+    export interface UnitKindAppParams {
+        /**
+         * Grouping used to construct the name of the App Hub Application.
+         * Multiple UnitKinds can specify the same group to use the same
+         * Application across their respective Units. Corresponds to the
+         * appBoundaryId in the ADC composite ApplicationTemplate. If empty,
+         * the service creates no App Hub application.
+         */
+        group?: string;
+        /**
+         * Corresponds to the scope in the ADC composite ApplicationTemplate.
+         * Structure is documented below.
+         */
+        scope?: outputs.saasruntime.UnitKindAppParamsScope;
+    }
+
+    export interface UnitKindAppParamsScope {
+        /**
+         * Scope type.
+         * Possible values:
+         * TYPE_REGIONAL
+         * TYPE_GLOBAL
+         */
+        type: string;
+    }
+
+    export interface UnitKindApplicationTemplateComponent {
+        /**
+         * Name of the component in the composite ApplicationTemplate (the root
+         * module ID, e.g. a composite component ID or `native-components`).
+         */
+        component?: string;
+        /**
+         * Reference to the composite ApplicationTemplate.
+         * Structure is documented below.
+         */
+        compositeRef?: outputs.saasruntime.UnitKindApplicationTemplateComponentCompositeRef;
+        /**
+         * Revision of the component. If the component does not have a revision,
+         * this is the revision of the composite ApplicationTemplate.
+         */
+        revision?: string;
+    }
+
+    export interface UnitKindApplicationTemplateComponentCompositeRef {
+        /**
+         * Reference to the ApplicationTemplate resource, in the format
+         * `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+         */
+        applicationTemplate: string;
+        /**
+         * Revision of the ApplicationTemplate, as a full resource name
+         * prefixed by `applicationTemplate`.
+         */
+        revision?: string;
+        /**
+         * (Output)
+         * Reference to the ongoing import and replication operation. Opaque for external usage.
+         */
+        syncOperation: string;
     }
 
     export interface UnitKindDependency {
@@ -161700,6 +162843,10 @@ export namespace servicedirectory {
 
 export namespace serviceusage {
     export interface V2ConsumerPolicyEnableRule {
+        /**
+         * List of service catalog names to be enabled in the format of catalogs/<catalog_name>, for example catalogs/default-cloud-services.
+         */
+        catalogs?: string[];
         /**
          * (Optional): List of service names to be enabled in the format of services/<service_name>
          */
@@ -165807,6 +166954,50 @@ export namespace storage {
         expireTime: string;
     }
 
+    export interface ControlProjectFeatureConfigAutoAnnotateConfig {
+        /**
+         * The list of unique models used to generate annotations. Each model is identified by
+         * its `name`.
+         * Structure is documented below.
+         */
+        models: outputs.storage.ControlProjectFeatureConfigAutoAnnotateConfigModel[];
+        /**
+         * The geographic location (case-sensitive) where data is processed. Currently, only
+         * multi-region locations such as `us`, `eu`, or `asia` are supported.
+         * To avoid duplicate billing, configure exactly one processing location for each bucket
+         * and model combination. If you configure multiple processing locations for the same
+         * bucket and model across different feature configurations, a separate annotation run is
+         * triggered in each location, and you're billed for each resulting annotation.
+         */
+        processingLocation: string;
+    }
+
+    export interface ControlProjectFeatureConfigAutoAnnotateConfigModel {
+        /**
+         * The name of the model. Supported values include `face-detector`,
+         * `object-detector`, `label-detector`, and `content-safety`.
+         */
+        name: string;
+    }
+
+    export interface ControlProjectFeatureConfigFilter {
+        /**
+         * The buckets to include in the feature configuration.
+         * Structure is documented below.
+         */
+        includedCloudStorageBuckets: outputs.storage.ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets;
+    }
+
+    export interface ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets {
+        /**
+         * The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+         * supported, so specify exact bucket names (for example, `my-bucket`). Each bucket
+         * must already exist in the feature configuration's project. Up to 1,000 buckets can
+         * be specified.
+         */
+        bucketIdRegexes: string[];
+    }
+
     export interface ControlProjectIntelligenceConfigEffectiveIntelligenceConfig {
         /**
          * (Output)
@@ -166666,6 +167857,49 @@ export namespace storage {
          * The type of Cloud resource this summary detail applies to.
          */
         resourceType: string;
+    }
+
+    export interface GetControlProjectFeatureConfigAutoAnnotateConfig {
+        /**
+         * The list of unique models used to generate annotations. Each model is identified by
+         * its 'name'.
+         */
+        models: outputs.storage.GetControlProjectFeatureConfigAutoAnnotateConfigModel[];
+        /**
+         * The geographic location (case-sensitive) where data is processed. Currently, only
+         * multi-region locations such as 'us', 'eu', or 'asia' are supported.
+         *
+         * To avoid duplicate billing, configure exactly one processing location for each bucket
+         * and model combination. If you configure multiple processing locations for the same
+         * bucket and model across different feature configurations, a separate annotation run is
+         * triggered in each location, and you're billed for each resulting annotation.
+         */
+        processingLocation: string;
+    }
+
+    export interface GetControlProjectFeatureConfigAutoAnnotateConfigModel {
+        /**
+         * The name of the model. Supported values include 'face-detector',
+         * 'object-detector', 'label-detector', and 'content-safety'.
+         */
+        name: string;
+    }
+
+    export interface GetControlProjectFeatureConfigFilter {
+        /**
+         * The buckets to include in the feature configuration.
+         */
+        includedCloudStorageBuckets: outputs.storage.GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket[];
+    }
+
+    export interface GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket {
+        /**
+         * The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+         * supported, so specify exact bucket names (for example, 'my-bucket'). Each bucket
+         * must already exist in the feature configuration's project. Up to 1,000 buckets can
+         * be specified.
+         */
+        bucketIdRegexes: string[];
     }
 
     export interface GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig {
@@ -172659,6 +173893,678 @@ export namespace vertex {
         diskUtilizationBytes: string;
     }
 
+    export interface AiModelDevelopmentClusterClusterEvent {
+        /**
+         * (Output)
+         * The detailed description of the cluster event.
+         */
+        eventMessage: string;
+        /**
+         * (Output)
+         * The occurrence time of the cluster event.
+         */
+        eventTime: string;
+        /**
+         * (Output)
+         * The type of the cluster event.
+         * Possible values:
+         * VM_PROLOG_ERROR
+         * VM_EPILOG_ERROR
+         * VM_CONTINUOUS_GPU_ERROR
+         * VM_SCAN_ERROR
+         * VM_SLURM_POWER_DOWN
+         * VM_SLURM_DRAIN
+         * VM_DELETION
+         * VM_REPORT_AND_REPLACEMENT
+         * VM_REBOOT
+         */
+        eventType: string;
+    }
+
+    export interface AiModelDevelopmentClusterClusterStatus {
+        /**
+         * (Output)
+         * Human-readable detail about the current state.
+         */
+        detail: string;
+        /**
+         * (Output)
+         * The `Status` type defines a logical error model that is suitable for
+         * different programming environments, including REST APIs and RPC APIs. It is
+         * used by [gRPC](https://github.com/grpc). Each `Status` message contains
+         * three pieces of data: error code, error message, and error details.
+         * You can find out more about this error model and how to work with it in the
+         * [API Design Guide](https://cloud.google.com/apis/design/errors).
+         * Structure is documented below.
+         */
+        errors: outputs.vertex.AiModelDevelopmentClusterClusterStatusError[];
+        /**
+         * (Output)
+         * The status information of all the nodes in the cluster.
+         * Structure is documented below.
+         */
+        nodesStatuses: outputs.vertex.AiModelDevelopmentClusterClusterStatusNodesStatus[];
+        /**
+         * (Output)
+         * The current state of the XManager instance.
+         * Possible values:
+         * PROVISIONING
+         * RUNNING
+         * DELETING
+         * ERROR
+         */
+        state: string;
+    }
+
+    export interface AiModelDevelopmentClusterClusterStatusError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.  There is a common set of
+         * message types for APIs to use.
+         */
+        details: {[key: string]: string}[];
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message: string;
+    }
+
+    export interface AiModelDevelopmentClusterClusterStatusNodesStatus {
+        /**
+         * (Output)
+         * Time when the TrainingService was created.
+         */
+        createTime: string;
+        /**
+         * (Output)
+         * Human-readable detail about the current state.
+         */
+        detail: string;
+        /**
+         * (Output)
+         * The XManager instance ID (for example, "xmc-").
+         */
+        instanceId: string;
+        /**
+         * (Output)
+         * The name of the Compute Engine instance associated with the node.
+         */
+        instanceName: string;
+        /**
+         * (Output)
+         * The time when the node's current state or detail last changed.
+         */
+        lastUpdateTime: string;
+        /**
+         * (Output)
+         * The ID of the node pool.
+         */
+        nodePoolId: string;
+        /**
+         * (Output)
+         * The type of the node pool.
+         * Possible values:
+         * NODE_POOL_TYPE_LOGIN
+         * NODE_POOL_TYPE_COMPUTE
+         */
+        nodePoolType: string;
+        /**
+         * (Output)
+         * The state of the node.
+         * Possible values:
+         * PREPARING
+         * RUNNING
+         * ERROR
+         * UPDATING
+         */
+        nodeState: string;
+        /**
+         * (Output)
+         * Physical Host Hardware information.
+         * Structure is documented below.
+         */
+        physicalHosts: outputs.vertex.AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost[];
+    }
+
+    export interface AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost {
+        /**
+         * (Output)
+         * Name of the block.
+         */
+        blockId: string;
+        /**
+         * (Output)
+         * Name of the physical cluster.
+         */
+        clusterName: string;
+        /**
+         * (Output)
+         * Name of the host.
+         */
+        hostId: string;
+        /**
+         * (Output)
+         * Name of the sub-block.
+         */
+        subblockId: string;
+    }
+
+    export interface AiModelDevelopmentClusterLustreExportConfig {
+        /**
+         * Days of the week on which a backup runs, each at most once and
+         * none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+         */
+        daysOfWeeks?: string[];
+        /**
+         * The Cloud Storage bucket that backups are written to, without
+         * the "gs://" scheme.
+         */
+        destinationBucket: string;
+        /**
+         * The Managed Lustre instances to back up, each named as
+         * "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+         * must be attached to one of the cluster's node pools, and no entry may
+         * repeat. If empty, every attached instance is backed up.
+         */
+        lustres?: string[];
+        /**
+         * Time when the ModelDevelopmentCluster for the first time entered the
+         * `RUNNING` state.
+         */
+        startTime?: outputs.vertex.AiModelDevelopmentClusterLustreExportConfigStartTime;
+    }
+
+    export interface AiModelDevelopmentClusterLustreExportConfigStartTime {
+        /**
+         * Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+         * typically must be less than or equal to 23. An API may choose to allow the
+         * value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of an hour. Must be greater than or equal to 0 and less than or
+         * equal to 59.
+         */
+        minutes?: number;
+    }
+
+    export interface AiModelDevelopmentClusterNetwork {
+        /**
+         * Network spec of the cluster.
+         * Structure is documented below.
+         */
+        network: string;
+        /**
+         * The name of the subnetwork in the above network to create the cluster.
+         * If not specified:
+         * * for auto mode VPC, the subnet in corresponding region is auto-selected;
+         * * for custom mode VPC, a new subnet will be automatically created.
+         */
+        subnetwork: string;
+    }
+
+    export interface AiModelDevelopmentClusterNodePool {
+        /**
+         * Represents the spec of disk options.
+         * Structure is documented below.
+         */
+        bootDisk: outputs.vertex.AiModelDevelopmentClusterNodePoolBootDisk;
+        /**
+         * (Output)
+         * The effective maximum duration for instances in this node pool.
+         * This field reflects the value of `flexStartMaxDuration` if it is
+         * set by the user, or the server-applied default (for example, 7 days) if it
+         * is not.
+         * This field is only applicable when `provisioningModel` is set to
+         * `FLEX_START`.
+         */
+        effectiveFlexStartMaxDuration: string;
+        /**
+         * Whether to enable public IPs for the node pool.
+         */
+        enablePublicIps?: boolean;
+        /**
+         * List of the existing Filestore instances to be mounted.
+         * For example:
+         * if "projects/my-project/locations/us-central1-a/instances/my-instance" is
+         * specified, the instance will be mounted to the node pool under the path
+         * "mnt/filestore/"
+         */
+        filestores?: string[];
+        /**
+         * The maximum duration for instances in this node pool.
+         * This field is only applicable when `provisioningModel` is set to
+         * `FLEX_START`.
+         */
+        flexStartMaxDuration?: string;
+        /**
+         * The unique ID referring to this node pool.
+         */
+        id: string;
+        /**
+         * The labels with user-defined metadata to organize the node pool. These
+         * labels are applied to the underlying compute resources (for example, the
+         * VM instances) of the node pool, so they appear in billing exports and
+         * Cloud Monitoring filters.
+         * Label keys and values can be no longer than 64 characters
+         * (Unicode codepoints), can only contain lowercase letters, numeric
+         * characters, underscores and dashes. International characters are allowed.
+         * See https://goo.gl/xmQnxf for more information and examples of labels.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * List of the existing Google Managed Lustre instances to be mounted.
+         * Similar to the filestores, the instance will be mounted to the node pool
+         * under the path "/mnt/lustre/"
+         */
+        lustres?: string[];
+        /**
+         * Specification of a single machine.
+         * Structure is documented below.
+         */
+        machineSpec: outputs.vertex.AiModelDevelopmentClusterNodePoolMachineSpec;
+        /**
+         * The node image to be used for the VMs in the node pool.
+         * In format of "projects//global/images/" or
+         * "projects/test-project/global/images/family/"
+         */
+        nodeImage: string;
+        /**
+         * Specifies the provisioning model for the node pool.
+         * Behavior for `PROVISIONING_MODEL_UNSPECIFIED`:
+         * - For CPU node pools: Defaults to `ON_DEMAND`.
+         * - For GPU node pools:
+         * - If
+         *   `machine_spec.reservation_affinity`
+         *   is set, it defaults to `RESERVATION`.
+         * - If
+         *   `machine_spec.reservation_affinity`
+         *   is NOT set, this is an INVALID state and the request will be rejected.
+         *   An explicit `provisioningModel` must be provided.
+         */
+        provisioningModel: string;
+        /**
+         * The scaling spec of the node pool.
+         */
+        scalingSpec?: outputs.vertex.AiModelDevelopmentClusterNodePoolScalingSpec;
+        /**
+         * Startup script for the node pool instances.
+         */
+        startupScript?: string;
+        /**
+         * The zone of the node pool.
+         */
+        zone?: string;
+    }
+
+    export interface AiModelDevelopmentClusterNodePoolBootDisk {
+        /**
+         * Size in GB of the boot disk (default is 100GB).
+         */
+        bootDiskSizeGb: number;
+        /**
+         * Type of the boot disk. For non-A3U machines, the default value is
+         * "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+         * Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+         * "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+         */
+        bootDiskType: string;
+    }
+
+    export interface AiModelDevelopmentClusterNodePoolMachineSpec {
+        /**
+         * The type of the machine.
+         *
+         * See the [list of machine types supported for
+         * prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+         *
+         * See the [list of machine types supported for custom
+         * training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+         *
+         * For DeployedModel this field is optional, and the default
+         * value is 'n1-standard-2'. For BatchPredictionJob or as part of
+         * WorkerPoolSpec this field is required.
+         */
+        machineType: string;
+        /**
+         * A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+         * DeployedModel) to draw its Compute Engine resources from a Shared
+         * Reservation, or exclusively from on-demand capacity.
+         */
+        reservationAffinity?: outputs.vertex.AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity;
+    }
+
+    export interface AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity {
+        /**
+         * Specifies the reservation affinity type.
+         * Possible values:
+         * NO_RESERVATION
+         * ANY_RESERVATION
+         * SPECIFIC_RESERVATION
+         */
+        reservationAffinityType: string;
+        /**
+         * Corresponds to the label values of a reservation resource. This must be the
+         * resource name of the reservation, reservation block, or reservation sub-
+         * block.
+         */
+        values?: string[];
+    }
+
+    export interface AiModelDevelopmentClusterNodePoolScalingSpec {
+        /**
+         * maximum size of the node pool,
+         * must be ≥ min_node_count
+         */
+        maxNodeCount?: number;
+        /**
+         * minimum size of the node pool,
+         * must be >= 0 and <= max_node_count
+         */
+        minNodeCount?: number;
+    }
+
+    export interface AiModelDevelopmentClusterOrchestratorSpec {
+        /**
+         * The Slurm orchestrator related spec of the cluster.
+         */
+        slurmSpec?: outputs.vertex.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec;
+    }
+
+    export interface AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
+        /**
+         * Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+         * slurm.conf.
+         *
+         * Keys are Slurm parameter names exactly as documented by SchedMD
+         * (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+         * Values are written the way slurm.conf writes them, including composite
+         * forms such as 'bf_window=1440,bf_resolution=600'.
+         *
+         * Example:
+         * { "PriorityType":            "priority/multifactor",
+         * "PriorityWeightAge":       "1000",
+         * "PreemptMode":             "SUSPEND,GANG",
+         * "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+         *
+         * Unsupported, reserved, or misspelled parameters, and values that are not
+         * legal for the parameter, are rejected at request time with the offending
+         * parameter named; they are never silently dropped. Settings
+         * that apply to a single partition or node pool belong in
+         * 'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+         * several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+         * are valid at more than one scope with different meanings and different
+         * legal values.
+         *
+         * On update this map is replaced wholesale; supply the complete desired set.
+         */
+        config?: {[key: string]: string};
+        /**
+         * Id of the partition that Slurm jobs submitted without an explicit
+         * partition run on, for example 'sbatch' without '--partition'. Must match
+         * the 'id' of one of 'partitions'.
+         *
+         * If unset, the service uses the first entry of 'partitions' and this field
+         * stays empty; the cluster always has a default partition whether or not this
+         * field is set. Setting it makes the choice independent of list order, which
+         * matters because 'partitions' is replaced wholesale on update: reordering
+         * the list, or prepending a partition to it, otherwise moves the default and
+         * silently redirects every job submitted without '--partition'.
+         */
+        defaultPartitionId?: string;
+        /**
+         * Custom bash scripts executed after each slurm job on every allocated node.
+         */
+        epilogBashScripts?: string[];
+        /**
+         * Full name of the Filestore to be mounted as /home directory on every node.
+         */
+        homeDirectoryStorage: string;
+        /**
+         * The node pool id to be used as slurm login node.
+         */
+        loginNodePoolId: string;
+        /**
+         * Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+         * pool. Node pools without an entry use the settings derived by the cluster's
+         * Slurm controller.
+         */
+        nodeSets?: outputs.vertex.AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet[];
+        /**
+         * The Slurm partitions spec.
+         */
+        partitions?: outputs.vertex.AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition[];
+        /**
+         * Custom bash scripts executed before each slurm job on every allocated node.
+         */
+        prologBashScripts?: string[];
+    }
+
+    export interface AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet {
+        /**
+         * Node-scoped Slurm settings, emitted as additional 'Key=Value' pairs on the
+         * 'NodeName=' line for this node pool's nodes in slurm.conf.
+         *
+         * Example:
+         * { "Features":     "a3mega,nvlink",
+         * "Weight":       "10",
+         * "MemSpecLimit": "4096" }
+         *
+         * On update this map is replaced wholesale; supply the complete desired set.
+         */
+        config?: {[key: string]: string};
+        /**
+         * (Output)
+         * The ID of the node pool.
+         */
+        nodePoolId: string;
+    }
+
+    export interface AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition {
+        /**
+         * Partition-scoped Slurm settings, emitted as additional 'Key=Value' pairs
+         * on this partition's 'PartitionName=' line in slurm.conf.
+         *
+         * Example:
+         * { "MaxTime":       "4-00:00:00",
+         * "DenyAccounts":  "low-pri",
+         * "PriorityTier":  "20",
+         * "OverSubscribe": "YES:4" }
+         *
+         * Note: values set here take precedence over service-computed defaults for
+         * the same parameter (for example 'OverSubscribe' and 'DefMemPerCPU', which
+         * the service otherwise derives from the partition's exclusivity and from
+         * the memory per CPU of its nodes).
+         *
+         * 'Default' is rejected here: which partition is the default is a
+         * cluster-scoped choice, so it belongs in 'SlurmSpec.default_partition_id'.
+         */
+        config?: {[key: string]: string};
+        /**
+         * an identifier for the resource with format `projects/{{project}}/locations/{{region}}/modelDevelopmentClusters/{{model_development_cluster_id}}`
+         */
+        id: string;
+        /**
+         * Node pools for the slurm partition
+         */
+        nodePoolIds: string[];
+    }
+
+    export interface AiModelDevelopmentClusterRuntime {
+        /**
+         * (Output)
+         * The training services running on this Vertex AI Training Cluster.
+         * Structure is documented below.
+         */
+        trainingServices: outputs.vertex.AiModelDevelopmentClusterRuntimeTrainingService[];
+        /**
+         * (Output)
+         * A purpose-built, output-only view of the XManager instance attached to a
+         * cluster.
+         * Structure is documented below.
+         */
+        xmanagers: outputs.vertex.AiModelDevelopmentClusterRuntimeXmanager[];
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeSpec {
+        /**
+         * The default service account used by the cluster when running any workloads
+         * on it. If not specified, the default compute engine service account will be
+         * used.
+         */
+        serviceAccount: string;
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeTrainingService {
+        /**
+         * (Output)
+         * Time when the TrainingService was created.
+         */
+        createTime: string;
+        /**
+         * (Output)
+         * Orchestrator-agnostic deployment spec.
+         * Structure is documented below.
+         */
+        deploymentSpecs: outputs.vertex.AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec[];
+        /**
+         * (Output)
+         * Cloud Storage bucket name dynamically GCSFuse-mounted on all nodes, for
+         * storing checkpoints and other service outputs.
+         */
+        gcsBucket: string;
+        /**
+         * (Output)
+         * Cloud Storage URI of the squashfs (.sqsh) container image.
+         */
+        imageUri: string;
+        /**
+         * (Output)
+         * Identifier. Resource name of the TrainingService. Format:
+         * `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
+         */
+        name: string;
+        /**
+         * (Output)
+         * Status of a TrainingService.
+         * Structure is documented below.
+         */
+        serviceStatuses: outputs.vertex.AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus[];
+        /**
+         * (Output)
+         * Time when the TrainingService was most recently updated.
+         */
+        updateTime: string;
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec {
+        /**
+         * (Output)
+         * Number of worker nodes to allocate.
+         */
+        workerNodeCount: number;
+        /**
+         * (Output)
+         * ID of a node pool on the parent ModelDevelopmentCluster (see
+         * `ModelDevelopmentCluster.node_pools[].id`) on which to place the worker
+         * nodes.
+         */
+        workerNodePoolId: string;
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus {
+        /**
+         * (Output)
+         * Human-readable detail about the current state.
+         */
+        detail: string;
+        /**
+         * (Output)
+         * Endpoints clients use to connect to the running service.
+         */
+        endpoints: {[key: string]: string};
+        /**
+         * (Output)
+         * The current state of the XManager instance.
+         * Possible values:
+         * PROVISIONING
+         * RUNNING
+         * DELETING
+         * ERROR
+         */
+        state: string;
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeXmanager {
+        /**
+         * (Output)
+         * The gRPC API endpoint (Experiment State Server) of the
+         * XManager instance. Empty unless the instance is running.
+         */
+        apiEndpoint: string;
+        /**
+         * (Output)
+         * The `Status` type defines a logical error model that is suitable for
+         * different programming environments, including REST APIs and RPC APIs. It is
+         * used by [gRPC](https://github.com/grpc). Each `Status` message contains
+         * three pieces of data: error code, error message, and error details.
+         * You can find out more about this error model and how to work with it in the
+         * [API Design Guide](https://cloud.google.com/apis/design/errors).
+         * Structure is documented below.
+         */
+        errors: outputs.vertex.AiModelDevelopmentClusterRuntimeXmanagerError[];
+        /**
+         * (Output)
+         * The XManager instance ID (for example, "xmc-").
+         */
+        instanceId: string;
+        /**
+         * (Output)
+         * The current state of the XManager instance.
+         * Possible values:
+         * PROVISIONING
+         * RUNNING
+         * DELETING
+         * ERROR
+         */
+        state: string;
+        /**
+         * (Output)
+         * The UI endpoint of the XManager instance. Empty unless the
+         * instance is running.
+         */
+        uiEndpoint: string;
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeXmanagerError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.  There is a common set of
+         * message types for APIs to use.
+         */
+        details: {[key: string]: string}[];
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message: string;
+    }
+
     export interface AiOnlineEvaluatorCloudObservability {
         /**
          * Optional log view that will be used to query logs. If empty, the
@@ -173136,10 +175042,27 @@ export namespace vertex {
 
     export interface AiPersistentResourceResourceRuntimeSpec {
         /**
+         * Configuration information for the Ray cluster.
+         * Structure is documented below.
+         */
+        raySpec?: outputs.vertex.AiPersistentResourceResourceRuntimeSpecRaySpec;
+        /**
          * Configuration for the use of custom service account to run the workloads.
          * Structure is documented below.
          */
         serviceAccountSpec?: outputs.vertex.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec;
+    }
+
+    export interface AiPersistentResourceResourceRuntimeSpecRaySpec {
+        /**
+         * Default image for user to choose a preferred ML framework
+         * (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+         * images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+         * Either this or the resourcePoolImages is required. Use this field if
+         * you need all the resource pools to have the same Ray image. Otherwise, use
+         * the `resourcePoolImages` field.
+         */
+        imageUri?: string;
     }
 
     export interface AiPersistentResourceResourceRuntimeSpecServiceAccountSpec {

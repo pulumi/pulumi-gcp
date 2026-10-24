@@ -334,6 +334,7 @@ __all__ = [
     'ClusterResourceUsageExportConfig',
     'ClusterResourceUsageExportConfigBigqueryDestination',
     'ClusterRollbackSafeUpgrade',
+    'ClusterScheduleUpgradeConfig',
     'ClusterSecretManagerConfig',
     'ClusterSecretManagerConfigRotationConfig',
     'ClusterSecretSyncConfig',
@@ -668,6 +669,7 @@ __all__ = [
     'GetClusterResourceUsageExportConfigResult',
     'GetClusterResourceUsageExportConfigBigqueryDestinationResult',
     'GetClusterRollbackSafeUpgradeResult',
+    'GetClusterScheduleUpgradeConfigResult',
     'GetClusterSecretManagerConfigResult',
     'GetClusterSecretManagerConfigRotationConfigResult',
     'GetClusterSecretSyncConfigResult',
@@ -7881,7 +7883,13 @@ class ClusterManagedOpentelemetryConfig(dict):
     def __init__(__self__, *,
                  scope: Optional[_builtins.str] = None):
         """
-        :param _builtins.str scope: The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+        :param _builtins.str scope: The scope of the Managed OpenTelemetry pipeline. Available options include:
+               * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+               * `NONE`: Disables the Managed OpenTelemetry pipeline.
+               
+               See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+               
+               > **Note:** Removing the `managed_opentelemetry_config` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
         """
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
@@ -7890,7 +7898,13 @@ class ClusterManagedOpentelemetryConfig(dict):
     @pulumi.getter
     def scope(self) -> Optional[_builtins.str]:
         """
-        The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+        The scope of the Managed OpenTelemetry pipeline. Available options include:
+        * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+        * `NONE`: Disables the Managed OpenTelemetry pipeline.
+
+        See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+
+        > **Note:** Removing the `managed_opentelemetry_config` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
         """
         return pulumi.get(self, "scope")
 
@@ -11998,6 +12012,7 @@ class ClusterNodeConfigSandboxConfig(dict):
                Accepted values are:
                
                * `"GVISOR"`: Pods run within a gVisor sandbox.
+               * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         if sandbox_type is not None:
             pulumi.set(__self__, "sandbox_type", sandbox_type)
@@ -12024,6 +12039,7 @@ class ClusterNodeConfigSandboxConfig(dict):
         Accepted values are:
 
         * `"GVISOR"`: Pods run within a gVisor sandbox.
+        * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         return pulumi.get(self, "type")
 
@@ -17824,6 +17840,7 @@ class ClusterNodePoolNodeConfigSandboxConfig(dict):
                Accepted values are:
                
                * `"GVISOR"`: Pods run within a gVisor sandbox.
+               * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         if sandbox_type is not None:
             pulumi.set(__self__, "sandbox_type", sandbox_type)
@@ -17850,6 +17867,7 @@ class ClusterNodePoolNodeConfigSandboxConfig(dict):
         Accepted values are:
 
         * `"GVISOR"`: Pods run within a gVisor sandbox.
+        * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         return pulumi.get(self, "type")
 
@@ -19220,6 +19238,24 @@ class ClusterRollbackSafeUpgrade(dict):
         A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
         """
         return pulumi.get(self, "control_plane_soak_duration")
+
+
+@pulumi.output_type
+class ClusterScheduleUpgradeConfig(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether scheduled upgrades are enabled on the cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether scheduled upgrades are enabled on the cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -26743,7 +26779,7 @@ class GetClusterManagedOpentelemetryConfigResult(dict):
     def __init__(__self__, *,
                  scope: _builtins.str):
         """
-        :param _builtins.str scope: The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+        :param _builtins.str scope: The scope of the Managed OpenTelemetry pipeline. Available options include NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig for more information. To disable the feature, explicitly set this to NONE.
         """
         pulumi.set(__self__, "scope", scope)
 
@@ -26751,7 +26787,7 @@ class GetClusterManagedOpentelemetryConfigResult(dict):
     @pulumi.getter
     def scope(self) -> _builtins.str:
         """
-        The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+        The scope of the Managed OpenTelemetry pipeline. Available options include NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig for more information. To disable the feature, explicitly set this to NONE.
         """
         return pulumi.get(self, "scope")
 
@@ -34187,6 +34223,24 @@ class GetClusterRollbackSafeUpgradeResult(dict):
         A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
         """
         return pulumi.get(self, "control_plane_soak_duration")
+
+
+@pulumi.output_type
+class GetClusterScheduleUpgradeConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether scheduled upgrades are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether scheduled upgrades are enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

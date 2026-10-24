@@ -42,6 +42,7 @@ from .ai_index import *
 from .ai_index_endpoint import *
 from .ai_index_endpoint_deployed_index import *
 from .ai_metadata_store import *
+from .ai_model_development_cluster import *
 from .ai_model_garden_enable_model import *
 from .ai_online_evaluator import *
 from .ai_persistent_resource import *

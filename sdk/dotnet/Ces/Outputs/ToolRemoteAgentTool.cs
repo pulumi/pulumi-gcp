@@ -32,9 +32,27 @@ namespace Pulumi.Gcp.Ces.Outputs
         public readonly string? Description;
         /// <summary>
         /// (Output)
+        /// Mapping of input variable names of remote agent to GECX variable names.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? InputVariableMapping;
+        /// <summary>
+        /// (Output)
         /// The name of the system tool.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// (Output)
+        /// Mapping of output variable names of remote agent to GECX variable names.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? OutputVariableMapping;
+        /// <summary>
+        /// (Output)
+        /// When enabled, the interaction between the CXAS app and the remote agent
+        /// will share the same context. If the remote agent returns a context_id, it
+        /// will be persisted for the entirety of the session for this remote agent
+        /// tool.
+        /// </summary>
+        public readonly bool? StatefulAgent;
 
         [OutputConstructor]
         private ToolRemoteAgentTool(
@@ -44,12 +62,21 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             string? description,
 
-            string? name)
+            ImmutableDictionary<string, string>? inputVariableMapping,
+
+            string? name,
+
+            ImmutableDictionary<string, string>? outputVariableMapping,
+
+            bool? statefulAgent)
         {
             AgentCards = agentCards;
             ApiAuthentications = apiAuthentications;
             Description = description;
+            InputVariableMapping = inputVariableMapping;
             Name = name;
+            OutputVariableMapping = outputVariableMapping;
+            StatefulAgent = statefulAgent;
         }
     }
 }
