@@ -24,9 +24,11 @@ class GeminiGcpEnablementSettingArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GeminiGcpEnablementSetting resource.
@@ -44,12 +46,17 @@ class GeminiGcpEnablementSettingArgs:
                
                > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
+        :param pulumi.Input[_builtins.str] gemini_enterprise_project: The Gemini enterprise project for this setting.
+               Format: projects/{project}
+               The `{project}` segment can be the project ID or project number.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] mutations_enabled: Whether resource mutations should be enabled.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] release_channel: Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+               Possible values are: `STABLE`, `EXPERIMENTAL`.
         :param pulumi.Input[_builtins.str] web_grounding_type: Web grounding type.
                Possible values:
                GROUNDING_WITH_GOOGLE_SEARCH
@@ -66,12 +73,16 @@ class GeminiGcpEnablementSettingArgs:
             pulumi.set(__self__, "disable_web_grounding", disable_web_grounding)
         if enable_customer_data_sharing is not None:
             pulumi.set(__self__, "enable_customer_data_sharing", enable_customer_data_sharing)
+        if gemini_enterprise_project is not None:
+            pulumi.set(__self__, "gemini_enterprise_project", gemini_enterprise_project)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if mutations_enabled is not None:
             pulumi.set(__self__, "mutations_enabled", mutations_enabled)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if release_channel is not None:
+            pulumi.set(__self__, "release_channel", release_channel)
         if web_grounding_type is not None:
             pulumi.set(__self__, "web_grounding_type", web_grounding_type)
 
@@ -145,6 +156,20 @@ class GeminiGcpEnablementSettingArgs:
         pulumi.set(self, "enable_customer_data_sharing", value)
 
     @_builtins.property
+    @pulumi.getter(name="geminiEnterpriseProject")
+    def gemini_enterprise_project(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Gemini enterprise project for this setting.
+        Format: projects/{project}
+        The `{project}` segment can be the project ID or project number.
+        """
+        return pulumi.get(self, "gemini_enterprise_project")
+
+    @gemini_enterprise_project.setter
+    def gemini_enterprise_project(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gemini_enterprise_project", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -184,6 +209,19 @@ class GeminiGcpEnablementSettingArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="releaseChannel")
+    def release_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+        Possible values are: `STABLE`, `EXPERIMENTAL`.
+        """
+        return pulumi.get(self, "release_channel")
+
+    @release_channel.setter
+    def release_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "release_channel", value)
+
+    @_builtins.property
     @pulumi.getter(name="webGroundingType")
     def web_grounding_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -207,6 +245,7 @@ class _GeminiGcpEnablementSettingState:
                  disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -214,6 +253,7 @@ class _GeminiGcpEnablementSettingState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 release_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -232,6 +272,9 @@ class _GeminiGcpEnablementSettingState:
                > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
+        :param pulumi.Input[_builtins.str] gemini_enterprise_project: The Gemini enterprise project for this setting.
+               Format: projects/{project}
+               The `{project}` segment can be the project ID or project number.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -244,6 +287,8 @@ class _GeminiGcpEnablementSettingState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[_builtins.str] release_channel: Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+               Possible values are: `STABLE`, `EXPERIMENTAL`.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp.
         :param pulumi.Input[_builtins.str] web_grounding_type: Web grounding type.
                Possible values:
@@ -263,6 +308,8 @@ class _GeminiGcpEnablementSettingState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_customer_data_sharing is not None:
             pulumi.set(__self__, "enable_customer_data_sharing", enable_customer_data_sharing)
+        if gemini_enterprise_project is not None:
+            pulumi.set(__self__, "gemini_enterprise_project", gemini_enterprise_project)
         if gemini_gcp_enablement_setting_id is not None:
             pulumi.set(__self__, "gemini_gcp_enablement_setting_id", gemini_gcp_enablement_setting_id)
         if labels is not None:
@@ -277,6 +324,8 @@ class _GeminiGcpEnablementSettingState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if release_channel is not None:
+            pulumi.set(__self__, "release_channel", release_channel)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
         if web_grounding_type is not None:
@@ -350,6 +399,20 @@ class _GeminiGcpEnablementSettingState:
     @enable_customer_data_sharing.setter
     def enable_customer_data_sharing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_customer_data_sharing", value)
+
+    @_builtins.property
+    @pulumi.getter(name="geminiEnterpriseProject")
+    def gemini_enterprise_project(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Gemini enterprise project for this setting.
+        Format: projects/{project}
+        The `{project}` segment can be the project ID or project number.
+        """
+        return pulumi.get(self, "gemini_enterprise_project")
+
+    @gemini_enterprise_project.setter
+    def gemini_enterprise_project(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gemini_enterprise_project", value)
 
     @_builtins.property
     @pulumi.getter(name="geminiGcpEnablementSettingId")
@@ -441,6 +504,19 @@ class _GeminiGcpEnablementSettingState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="releaseChannel")
+    def release_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+        Possible values are: `STABLE`, `EXPERIMENTAL`.
+        """
+        return pulumi.get(self, "release_channel")
+
+    @release_channel.setter
+    def release_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "release_channel", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -477,11 +553,13 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -503,7 +581,8 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             },
             enable_customer_data_sharing=True,
             web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE",
-            mutations_enabled=True)
+            mutations_enabled=True,
+            release_channel="EXPERIMENTAL")
         ```
 
         ## Import
@@ -536,6 +615,9 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                
                > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
+        :param pulumi.Input[_builtins.str] gemini_enterprise_project: The Gemini enterprise project for this setting.
+               Format: projects/{project}
+               The `{project}` segment can be the project ID or project number.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -544,6 +626,8 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] mutations_enabled: Whether resource mutations should be enabled.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] release_channel: Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+               Possible values are: `STABLE`, `EXPERIMENTAL`.
         :param pulumi.Input[_builtins.str] web_grounding_type: Web grounding type.
                Possible values:
                GROUNDING_WITH_GOOGLE_SEARCH
@@ -574,7 +658,8 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             },
             enable_customer_data_sharing=True,
             web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE",
-            mutations_enabled=True)
+            mutations_enabled=True,
+            release_channel="EXPERIMENTAL")
         ```
 
         ## Import
@@ -612,11 +697,13 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -630,6 +717,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disable_web_grounding"] = disable_web_grounding
             __props__.__dict__["enable_customer_data_sharing"] = enable_customer_data_sharing
+            __props__.__dict__["gemini_enterprise_project"] = gemini_enterprise_project
             if gemini_gcp_enablement_setting_id is None and not opts.urn:
                 raise TypeError("Missing required property 'gemini_gcp_enablement_setting_id'")
             __props__.__dict__["gemini_gcp_enablement_setting_id"] = gemini_gcp_enablement_setting_id
@@ -639,6 +727,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["mutations_enabled"] = mutations_enabled
             __props__.__dict__["project"] = project
+            __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["web_grounding_type"] = web_grounding_type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
@@ -662,6 +751,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+            gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
             gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -669,6 +759,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            release_channel: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'GeminiGcpEnablementSetting':
         """
@@ -691,6 +782,9 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
+        :param pulumi.Input[_builtins.str] gemini_enterprise_project: The Gemini enterprise project for this setting.
+               Format: projects/{project}
+               The `{project}` segment can be the project ID or project number.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -703,6 +797,8 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[_builtins.str] release_channel: Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+               Possible values are: `STABLE`, `EXPERIMENTAL`.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp.
         :param pulumi.Input[_builtins.str] web_grounding_type: Web grounding type.
                Possible values:
@@ -718,6 +814,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         __props__.__dict__["disable_web_grounding"] = disable_web_grounding
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_customer_data_sharing"] = enable_customer_data_sharing
+        __props__.__dict__["gemini_enterprise_project"] = gemini_enterprise_project
         __props__.__dict__["gemini_gcp_enablement_setting_id"] = gemini_gcp_enablement_setting_id
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -725,6 +822,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["release_channel"] = release_channel
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["web_grounding_type"] = web_grounding_type
         return GeminiGcpEnablementSetting(resource_name, opts=opts, __props__=__props__)
@@ -777,6 +875,16 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         Whether customer data sharing should be enabled.
         """
         return pulumi.get(self, "enable_customer_data_sharing")
+
+    @_builtins.property
+    @pulumi.getter(name="geminiEnterpriseProject")
+    def gemini_enterprise_project(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The Gemini enterprise project for this setting.
+        Format: projects/{project}
+        The `{project}` segment can be the project ID or project number.
+        """
+        return pulumi.get(self, "gemini_enterprise_project")
 
     @_builtins.property
     @pulumi.getter(name="geminiGcpEnablementSettingId")
@@ -838,6 +946,15 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="releaseChannel")
+    def release_channel(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+        Possible values are: `STABLE`, `EXPERIMENTAL`.
+        """
+        return pulumi.get(self, "release_channel")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

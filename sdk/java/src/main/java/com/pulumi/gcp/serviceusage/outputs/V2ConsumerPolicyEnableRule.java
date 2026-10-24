@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V2ConsumerPolicyEnableRule {
     /**
+     * @return List of service catalog names to be enabled in the format of catalogs/&lt;catalog_name&gt;, for example catalogs/default-cloud-services.
+     * 
+     */
+    private @Nullable List<String> catalogs;
+    /**
      * @return (Optional): List of service names to be enabled in the format of services/&lt;service_name&gt;
      * 
      */
     private @Nullable List<String> services;
 
     private V2ConsumerPolicyEnableRule() {}
+    /**
+     * @return List of service catalog names to be enabled in the format of catalogs/&lt;catalog_name&gt;, for example catalogs/default-cloud-services.
+     * 
+     */
+    public List<String> catalogs() {
+        return this.catalogs == null ? List.of() : this.catalogs;
+    }
     /**
      * @return (Optional): List of service names to be enabled in the format of services/&lt;service_name&gt;
      * 
@@ -35,13 +47,24 @@ public final class V2ConsumerPolicyEnableRule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> catalogs;
         private @Nullable List<String> services;
         public Builder() {}
         public Builder(V2ConsumerPolicyEnableRule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.catalogs = defaults.catalogs;
     	      this.services = defaults.services;
         }
 
+        @CustomType.Setter
+        public Builder catalogs(@Nullable List<String> catalogs) {
+
+            this.catalogs = catalogs;
+            return this;
+        }
+        public Builder catalogs(String... catalogs) {
+            return catalogs(List.of(catalogs));
+        }
         @CustomType.Setter
         public Builder services(@Nullable List<String> services) {
 
@@ -53,6 +76,7 @@ public final class V2ConsumerPolicyEnableRule {
         }
         public V2ConsumerPolicyEnableRule build() {
             final var _resultValue = new V2ConsumerPolicyEnableRule();
+            _resultValue.catalogs = catalogs;
             _resultValue.services = services;
             return _resultValue;
         }

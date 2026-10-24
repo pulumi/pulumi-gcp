@@ -625,10 +625,10 @@ type Instance struct {
 	// The name of the ACL policy to attach to the instance.
 	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 	AclPolicy pulumi.StringPtrOutput `pulumi:"aclPolicy"`
-	// Optional. Immutable. Authorization mode of the instance. Possible values:
+	// Optional. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH.
-	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+	// IAM_AUTH
+	// TOKEN_AUTH
 	AuthorizationMode pulumi.StringOutput `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -838,10 +838,10 @@ type instanceState struct {
 	// The name of the ACL policy to attach to the instance.
 	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 	AclPolicy *string `pulumi:"aclPolicy"`
-	// Optional. Immutable. Authorization mode of the instance. Possible values:
+	// Optional. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH.
-	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+	// IAM_AUTH
+	// TOKEN_AUTH
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1008,10 +1008,10 @@ type InstanceState struct {
 	// The name of the ACL policy to attach to the instance.
 	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 	AclPolicy pulumi.StringPtrInput
-	// Optional. Immutable. Authorization mode of the instance. Possible values:
+	// Optional. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH.
-	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+	// IAM_AUTH
+	// TOKEN_AUTH
 	AuthorizationMode pulumi.StringPtrInput
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1182,10 +1182,10 @@ type instanceArgs struct {
 	// The name of the ACL policy to attach to the instance.
 	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 	AclPolicy *string `pulumi:"aclPolicy"`
-	// Optional. Immutable. Authorization mode of the instance. Possible values:
+	// Optional. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH.
-	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+	// IAM_AUTH
+	// TOKEN_AUTH
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1293,10 +1293,10 @@ type InstanceArgs struct {
 	// The name of the ACL policy to attach to the instance.
 	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 	AclPolicy pulumi.StringPtrInput
-	// Optional. Immutable. Authorization mode of the instance. Possible values:
+	// Optional. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH.
-	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+	// IAM_AUTH
+	// TOKEN_AUTH
 	AuthorizationMode pulumi.StringPtrInput
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1492,10 +1492,10 @@ func (o InstanceOutput) AclPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AclPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Immutable. Authorization mode of the instance. Possible values:
+// Optional. Authorization mode of the instance. Possible values:
 // AUTH_DISABLED
-// IAM_AUTH.
-// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+// IAM_AUTH
+// TOKEN_AUTH
 func (o InstanceOutput) AuthorizationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AuthorizationMode }).(pulumi.StringOutput)
 }

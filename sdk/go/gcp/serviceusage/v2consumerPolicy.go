@@ -37,7 +37,9 @@ import (
 type V2ConsumerPolicy struct {
 	pulumi.CustomResourceState
 
-	// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+	// (Optional) Default value is false. This field is deprecated and has no effect.
+	//
+	// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 	CheckUsageOnRemove pulumi.BoolPtrOutput `pulumi:"checkUsageOnRemove"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -96,7 +98,9 @@ func GetV2ConsumerPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering V2ConsumerPolicy resources.
 type v2consumerPolicyState struct {
-	// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+	// (Optional) Default value is false. This field is deprecated and has no effect.
+	//
+	// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 	CheckUsageOnRemove *bool `pulumi:"checkUsageOnRemove"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -120,7 +124,9 @@ type v2consumerPolicyState struct {
 }
 
 type V2ConsumerPolicyState struct {
-	// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+	// (Optional) Default value is false. This field is deprecated and has no effect.
+	//
+	// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 	CheckUsageOnRemove pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -148,7 +154,9 @@ func (V2ConsumerPolicyState) ElementType() reflect.Type {
 }
 
 type v2consumerPolicyArgs struct {
-	// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+	// (Optional) Default value is false. This field is deprecated and has no effect.
+	//
+	// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 	CheckUsageOnRemove *bool `pulumi:"checkUsageOnRemove"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -170,7 +178,9 @@ type v2consumerPolicyArgs struct {
 
 // The set of arguments for constructing a V2ConsumerPolicy resource.
 type V2ConsumerPolicyArgs struct {
-	// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+	// (Optional) Default value is false. This field is deprecated and has no effect.
+	//
+	// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 	CheckUsageOnRemove pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -277,7 +287,9 @@ func (o V2ConsumerPolicyOutput) ToV2ConsumerPolicyOutputWithContext(ctx context.
 	return o
 }
 
-// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+// (Optional) Default value is false. This field is deprecated and has no effect.
+//
+// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 func (o V2ConsumerPolicyOutput) CheckUsageOnRemove() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *V2ConsumerPolicy) pulumi.BoolPtrOutput { return v.CheckUsageOnRemove }).(pulumi.BoolPtrOutput)
 }

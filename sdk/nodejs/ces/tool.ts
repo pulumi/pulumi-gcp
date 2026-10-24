@@ -197,6 +197,7 @@ import * as utilities from "../utilities";
  *                 modelSettings: {
  *                     model: "gemini-3.0-flash-001",
  *                     temperature: 1,
+ *                     thinkingLevel: "LOW",
  *                 },
  *                 prompt: "example-prompt",
  *                 disabled: false,
@@ -205,6 +206,7 @@ import * as utilities from "../utilities";
  *                 modelSettings: {
  *                     model: "gemini-3.0-flash-001",
  *                     temperature: 1,
+ *                     thinkingLevel: "LOW",
  *                 },
  *                 prompt: "example-prompt",
  *                 disabled: false,
@@ -212,6 +214,10 @@ import * as utilities from "../utilities";
  *             groundingConfig: {
  *                 groundingLevel: 3,
  *                 disabled: false,
+ *             },
+ *             snippetsConfig: {
+ *                 enableSnippets: true,
+ *                 maxSnippets: 5,
  *             },
  *         }],
  *         engineSource: {

@@ -1767,7 +1767,9 @@ class CaPoolIssuancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "allowedIssuanceModes":
+        if key == "allowRequesterSpecifiedNotBeforeTime":
+            suggest = "allow_requester_specified_not_before_time"
+        elif key == "allowedIssuanceModes":
             suggest = "allowed_issuance_modes"
         elif key == "allowedKeyTypes":
             suggest = "allowed_key_types"
@@ -1792,6 +1794,7 @@ class CaPoolIssuancePolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allow_requester_specified_not_before_time: Optional[_builtins.bool] = None,
                  allowed_issuance_modes: Optional['outputs.CaPoolIssuancePolicyAllowedIssuanceModes'] = None,
                  allowed_key_types: Optional[Sequence['outputs.CaPoolIssuancePolicyAllowedKeyType']] = None,
                  backdate_duration: Optional[_builtins.str] = None,
@@ -1799,6 +1802,10 @@ class CaPoolIssuancePolicy(dict):
                  identity_constraints: Optional['outputs.CaPoolIssuancePolicyIdentityConstraints'] = None,
                  maximum_lifetime: Optional[_builtins.str] = None):
         """
+        :param _builtins.bool allow_requester_specified_not_before_time: If set to true, allows requesters to specify the requested_not_before_time
+               field when creating a Certificate. Certificates requested with this
+               option enabled will have a 'not_before_time' equal to the value
+               specified in the request.
         :param 'CaPoolIssuancePolicyAllowedIssuanceModesArgs' allowed_issuance_modes: IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
                Structure is documented below.
         :param Sequence['CaPoolIssuancePolicyAllowedKeyTypeArgs'] allowed_key_types: If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
@@ -1820,6 +1827,8 @@ class CaPoolIssuancePolicy(dict):
         :param _builtins.str maximum_lifetime: The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
                expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
         """
+        if allow_requester_specified_not_before_time is not None:
+            pulumi.set(__self__, "allow_requester_specified_not_before_time", allow_requester_specified_not_before_time)
         if allowed_issuance_modes is not None:
             pulumi.set(__self__, "allowed_issuance_modes", allowed_issuance_modes)
         if allowed_key_types is not None:
@@ -1832,6 +1841,17 @@ class CaPoolIssuancePolicy(dict):
             pulumi.set(__self__, "identity_constraints", identity_constraints)
         if maximum_lifetime is not None:
             pulumi.set(__self__, "maximum_lifetime", maximum_lifetime)
+
+    @_builtins.property
+    @pulumi.getter(name="allowRequesterSpecifiedNotBeforeTime")
+    def allow_requester_specified_not_before_time(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, allows requesters to specify the requested_not_before_time
+        field when creating a Certificate. Certificates requested with this
+        option enabled will have a 'not_before_time' equal to the value
+        specified in the request.
+        """
+        return pulumi.get(self, "allow_requester_specified_not_before_time")
 
     @_builtins.property
     @pulumi.getter(name="allowedIssuanceModes")

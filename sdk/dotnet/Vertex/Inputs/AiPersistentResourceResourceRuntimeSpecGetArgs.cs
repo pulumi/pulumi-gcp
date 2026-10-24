@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiPersistentResourceResourceRuntimeSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration information for the Ray cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("raySpec")]
+        public Input<Inputs.AiPersistentResourceResourceRuntimeSpecRaySpecGetArgs>? RaySpec { get; set; }
+
+        /// <summary>
         /// Configuration for the use of custom service account to run the workloads.
         /// Structure is documented below.
         /// </summary>

@@ -49,6 +49,7 @@ import com.pulumi.gcp.container.inputs.ClusterRbacBindingConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterReleaseChannelArgs;
 import com.pulumi.gcp.container.inputs.ClusterResourceUsageExportConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterRollbackSafeUpgradeArgs;
+import com.pulumi.gcp.container.inputs.ClusterScheduleUpgradeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecretManagerConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecretSyncConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecurityPostureConfigArgs;
@@ -1002,14 +1003,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      * 
      */
     @Import(name="managedOpentelemetryConfig")
     private @Nullable Output<ClusterManagedOpentelemetryConfigArgs> managedOpentelemetryConfig;
 
     /**
-     * @return ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * @return Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterManagedOpentelemetryConfigArgs>> managedOpentelemetryConfig() {
@@ -1693,6 +1694,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * )
+     * Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+     * 
+     */
+    @Import(name="scheduleUpgradeConfig")
+    private @Nullable Output<ClusterScheduleUpgradeConfigArgs> scheduleUpgradeConfig;
+
+    /**
+     * @return )
+     * Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterScheduleUpgradeConfigArgs>> scheduleUpgradeConfig() {
+        return Optional.ofNullable(this.scheduleUpgradeConfig);
+    }
+
+    /**
      * Configuration for the
      * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
      * Structure is documented below.
@@ -2023,6 +2041,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.resourceLabels = $.resourceLabels;
         this.resourceUsageExportConfig = $.resourceUsageExportConfig;
         this.rollbackSafeUpgrade = $.rollbackSafeUpgrade;
+        this.scheduleUpgradeConfig = $.scheduleUpgradeConfig;
         this.secretManagerConfig = $.secretManagerConfig;
         this.secretSyncConfig = $.secretSyncConfig;
         this.securityPostureConfig = $.securityPostureConfig;
@@ -3320,7 +3339,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedOpentelemetryConfig ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+         * @param managedOpentelemetryConfig Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
          * 
          * @return builder
          * 
@@ -3331,7 +3350,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedOpentelemetryConfig ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+         * @param managedOpentelemetryConfig Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
          * 
          * @return builder
          * 
@@ -4248,6 +4267,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rollbackSafeUpgrade(ClusterRollbackSafeUpgradeArgs rollbackSafeUpgrade) {
             return rollbackSafeUpgrade(Output.of(rollbackSafeUpgrade));
+        }
+
+        /**
+         * @param scheduleUpgradeConfig )
+         * Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduleUpgradeConfig(@Nullable Output<ClusterScheduleUpgradeConfigArgs> scheduleUpgradeConfig) {
+            $.scheduleUpgradeConfig = scheduleUpgradeConfig;
+            return this;
+        }
+
+        /**
+         * @param scheduleUpgradeConfig )
+         * Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduleUpgradeConfig(ClusterScheduleUpgradeConfigArgs scheduleUpgradeConfig) {
+            return scheduleUpgradeConfig(Output.of(scheduleUpgradeConfig));
         }
 
         /**

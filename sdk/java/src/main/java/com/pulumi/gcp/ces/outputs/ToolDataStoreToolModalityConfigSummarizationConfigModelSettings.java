@@ -26,6 +26,17 @@ public final class ToolDataStoreToolModalityConfigSummarizationConfigModelSettin
      * 
      */
     private @Nullable Double temperature;
+    /**
+     * @return The thinking level of the model.
+     * Possible values:
+     * DEFAULT
+     * LOW
+     * MEDIUM
+     * HIGH
+     * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+     * 
+     */
+    private @Nullable String thinkingLevel;
 
     private ToolDataStoreToolModalityConfigSummarizationConfigModelSettings() {}
     /**
@@ -46,6 +57,19 @@ public final class ToolDataStoreToolModalityConfigSummarizationConfigModelSettin
     public Optional<Double> temperature() {
         return Optional.ofNullable(this.temperature);
     }
+    /**
+     * @return The thinking level of the model.
+     * Possible values:
+     * DEFAULT
+     * LOW
+     * MEDIUM
+     * HIGH
+     * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+     * 
+     */
+    public Optional<String> thinkingLevel() {
+        return Optional.ofNullable(this.thinkingLevel);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -58,11 +82,13 @@ public final class ToolDataStoreToolModalityConfigSummarizationConfigModelSettin
     public static final class Builder {
         private @Nullable String model;
         private @Nullable Double temperature;
+        private @Nullable String thinkingLevel;
         public Builder() {}
         public Builder(ToolDataStoreToolModalityConfigSummarizationConfigModelSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.model = defaults.model;
     	      this.temperature = defaults.temperature;
+    	      this.thinkingLevel = defaults.thinkingLevel;
         }
 
         @CustomType.Setter
@@ -77,10 +103,17 @@ public final class ToolDataStoreToolModalityConfigSummarizationConfigModelSettin
             this.temperature = temperature;
             return this;
         }
+        @CustomType.Setter
+        public Builder thinkingLevel(@Nullable String thinkingLevel) {
+
+            this.thinkingLevel = thinkingLevel;
+            return this;
+        }
         public ToolDataStoreToolModalityConfigSummarizationConfigModelSettings build() {
             final var _resultValue = new ToolDataStoreToolModalityConfigSummarizationConfigModelSettings();
             _resultValue.model = model;
             _resultValue.temperature = temperature;
+            _resultValue.thinkingLevel = thinkingLevel;
             return _resultValue;
         }
     }

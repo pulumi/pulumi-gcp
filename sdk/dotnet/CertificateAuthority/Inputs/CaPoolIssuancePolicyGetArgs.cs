@@ -13,6 +13,15 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class CaPoolIssuancePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If set to true, allows requesters to specify the RequestedNotBeforeTime
+        /// field when creating a Certificate. Certificates requested with this
+        /// option enabled will have a 'not_before_time' equal to the value
+        /// specified in the request.
+        /// </summary>
+        [Input("allowRequesterSpecifiedNotBeforeTime")]
+        public Input<bool>? AllowRequesterSpecifiedNotBeforeTime { get; set; }
+
+        /// <summary>
         /// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
         /// Structure is documented below.
         /// </summary>

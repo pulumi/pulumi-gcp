@@ -110,6 +110,14 @@ type UnitKind struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Parameters for creating an App Hub Application for the Units of this
+	// UnitKind.
+	// Structure is documented below.
+	AppParams UnitKindAppParamsPtrOutput `pulumi:"appParams"`
+	// Reference to a component and revision in a composite Application Design
+	// Center ApplicationTemplate.
+	// Structure is documented below.
+	ApplicationTemplateComponent UnitKindApplicationTemplateComponentPtrOutput `pulumi:"applicationTemplateComponent"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A reference to the Release object to use as default for creating new units
@@ -231,6 +239,14 @@ type unitKindState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Parameters for creating an App Hub Application for the Units of this
+	// UnitKind.
+	// Structure is documented below.
+	AppParams *UnitKindAppParams `pulumi:"appParams"`
+	// Reference to a component and revision in a composite Application Design
+	// Center ApplicationTemplate.
+	// Structure is documented below.
+	ApplicationTemplateComponent *UnitKindApplicationTemplateComponent `pulumi:"applicationTemplateComponent"`
 	// The timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
 	// A reference to the Release object to use as default for creating new units
@@ -309,6 +325,14 @@ type UnitKindState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Parameters for creating an App Hub Application for the Units of this
+	// UnitKind.
+	// Structure is documented below.
+	AppParams UnitKindAppParamsPtrInput
+	// Reference to a component and revision in a composite Application Design
+	// Center ApplicationTemplate.
+	// Structure is documented below.
+	ApplicationTemplateComponent UnitKindApplicationTemplateComponentPtrInput
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
 	// A reference to the Release object to use as default for creating new units
@@ -391,6 +415,14 @@ type unitKindArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Parameters for creating an App Hub Application for the Units of this
+	// UnitKind.
+	// Structure is documented below.
+	AppParams *UnitKindAppParams `pulumi:"appParams"`
+	// Reference to a component and revision in a composite Application Design
+	// Center ApplicationTemplate.
+	// Structure is documented below.
+	ApplicationTemplateComponent *UnitKindApplicationTemplateComponent `pulumi:"applicationTemplateComponent"`
 	// A reference to the Release object to use as default for creating new units
 	// of this UnitKind.
 	// If not specified, a new unit must explicitly reference which release to use
@@ -443,6 +475,14 @@ type UnitKindArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Parameters for creating an App Hub Application for the Units of this
+	// UnitKind.
+	// Structure is documented below.
+	AppParams UnitKindAppParamsPtrInput
+	// Reference to a component and revision in a composite Application Design
+	// Center ApplicationTemplate.
+	// Structure is documented below.
+	ApplicationTemplateComponent UnitKindApplicationTemplateComponentPtrInput
 	// A reference to the Release object to use as default for creating new units
 	// of this UnitKind.
 	// If not specified, a new unit must explicitly reference which release to use
@@ -581,6 +621,20 @@ func (o UnitKindOutput) ToUnitKindOutputWithContext(ctx context.Context) UnitKin
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o UnitKindOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UnitKind) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Parameters for creating an App Hub Application for the Units of this
+// UnitKind.
+// Structure is documented below.
+func (o UnitKindOutput) AppParams() UnitKindAppParamsPtrOutput {
+	return o.ApplyT(func(v *UnitKind) UnitKindAppParamsPtrOutput { return v.AppParams }).(UnitKindAppParamsPtrOutput)
+}
+
+// Reference to a component and revision in a composite Application Design
+// Center ApplicationTemplate.
+// Structure is documented below.
+func (o UnitKindOutput) ApplicationTemplateComponent() UnitKindApplicationTemplateComponentPtrOutput {
+	return o.ApplyT(func(v *UnitKind) UnitKindApplicationTemplateComponentPtrOutput { return v.ApplicationTemplateComponent }).(UnitKindApplicationTemplateComponentPtrOutput)
 }
 
 // The timestamp when the resource was created.

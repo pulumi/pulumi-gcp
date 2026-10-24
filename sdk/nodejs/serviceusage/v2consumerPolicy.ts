@@ -59,7 +59,9 @@ export class V2ConsumerPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+     * (Optional) Default value is false. This field is deprecated and has no effect.
+     *
+     * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      */
     declare public readonly checkUsageOnRemove: pulumi.Output<boolean | undefined>;
     /**
@@ -140,7 +142,9 @@ export class V2ConsumerPolicy extends pulumi.CustomResource {
  */
 export interface V2ConsumerPolicyState {
     /**
-     * (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+     * (Optional) Default value is false. This field is deprecated and has no effect.
+     *
+     * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      */
     checkUsageOnRemove?: pulumi.Input<boolean | undefined>;
     /**
@@ -181,7 +185,9 @@ export interface V2ConsumerPolicyState {
  */
 export interface V2ConsumerPolicyArgs {
     /**
-     * (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+     * (Optional) Default value is false. This field is deprecated and has no effect.
+     *
+     * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      */
     checkUsageOnRemove?: pulumi.Input<boolean | undefined>;
     /**

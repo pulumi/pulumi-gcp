@@ -438,7 +438,7 @@ type Cluster struct {
 	MaintenancePolicy ClusterMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
 	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
 	ManagedMachineLearningDiagnosticsConfig ClusterManagedMachineLearningDiagnosticsConfigOutput `pulumi:"managedMachineLearningDiagnosticsConfig"`
-	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigOutput `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -594,6 +594,9 @@ type Cluster struct {
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrOutput `pulumi:"resourceUsageExportConfig"`
 	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 	RollbackSafeUpgrade ClusterRollbackSafeUpgradePtrOutput `pulumi:"rollbackSafeUpgrade"`
+	// )
+	// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+	ScheduleUpgradeConfig ClusterScheduleUpgradeConfigOutput `pulumi:"scheduleUpgradeConfig"`
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -845,7 +848,7 @@ type clusterState struct {
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
 	ManagedMachineLearningDiagnosticsConfig *ClusterManagedMachineLearningDiagnosticsConfig `pulumi:"managedMachineLearningDiagnosticsConfig"`
-	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig *ClusterManagedOpentelemetryConfig `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -1001,6 +1004,9 @@ type clusterState struct {
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
 	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 	RollbackSafeUpgrade *ClusterRollbackSafeUpgrade `pulumi:"rollbackSafeUpgrade"`
+	// )
+	// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+	ScheduleUpgradeConfig *ClusterScheduleUpgradeConfig `pulumi:"scheduleUpgradeConfig"`
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -1218,7 +1224,7 @@ type ClusterState struct {
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
 	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
 	ManagedMachineLearningDiagnosticsConfig ClusterManagedMachineLearningDiagnosticsConfigPtrInput
-	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigPtrInput
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -1374,6 +1380,9 @@ type ClusterState struct {
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
 	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 	RollbackSafeUpgrade ClusterRollbackSafeUpgradePtrInput
+	// )
+	// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+	ScheduleUpgradeConfig ClusterScheduleUpgradeConfigPtrInput
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -1587,7 +1596,7 @@ type clusterArgs struct {
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
 	ManagedMachineLearningDiagnosticsConfig *ClusterManagedMachineLearningDiagnosticsConfig `pulumi:"managedMachineLearningDiagnosticsConfig"`
-	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig *ClusterManagedOpentelemetryConfig `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -1736,6 +1745,9 @@ type clusterArgs struct {
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
 	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 	RollbackSafeUpgrade *ClusterRollbackSafeUpgrade `pulumi:"rollbackSafeUpgrade"`
+	// )
+	// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+	ScheduleUpgradeConfig *ClusterScheduleUpgradeConfig `pulumi:"scheduleUpgradeConfig"`
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -1935,7 +1947,7 @@ type ClusterArgs struct {
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
 	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
 	ManagedMachineLearningDiagnosticsConfig ClusterManagedMachineLearningDiagnosticsConfigPtrInput
-	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigPtrInput
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -2084,6 +2096,9 @@ type ClusterArgs struct {
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
 	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 	RollbackSafeUpgrade ClusterRollbackSafeUpgradePtrInput
+	// )
+	// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+	ScheduleUpgradeConfig ClusterScheduleUpgradeConfigPtrInput
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -2537,7 +2552,7 @@ func (o ClusterOutput) ManagedMachineLearningDiagnosticsConfig() ClusterManagedM
 	}).(ClusterManagedMachineLearningDiagnosticsConfigOutput)
 }
 
-// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 func (o ClusterOutput) ManagedOpentelemetryConfig() ClusterManagedOpentelemetryConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterManagedOpentelemetryConfigOutput { return v.ManagedOpentelemetryConfig }).(ClusterManagedOpentelemetryConfigOutput)
 }
@@ -2796,6 +2811,12 @@ func (o ClusterOutput) ResourceUsageExportConfig() ClusterResourceUsageExportCon
 // Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 func (o ClusterOutput) RollbackSafeUpgrade() ClusterRollbackSafeUpgradePtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterRollbackSafeUpgradePtrOutput { return v.RollbackSafeUpgrade }).(ClusterRollbackSafeUpgradePtrOutput)
+}
+
+// )
+// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+func (o ClusterOutput) ScheduleUpgradeConfig() ClusterScheduleUpgradeConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterScheduleUpgradeConfigOutput { return v.ScheduleUpgradeConfig }).(ClusterScheduleUpgradeConfigOutput)
 }
 
 // Configuration for the

@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores.schemas)
  * * How-to Guides
  *     * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
+ *     * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
  *
  * ## Example Usage
  *
@@ -98,6 +99,12 @@ export class Schema extends pulumi.CustomResource {
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * The JSON representation of the schema.
+     * Changes are applied in place and must be backward compatible: existing fields
+     * can't be removed or have their type changed. Updating the schema triggers
+     * reindexing of all documents in the data store, which can take hours for large
+     * data stores and may incur costs. See
+     * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+     * for details.
      */
     declare public readonly jsonSchema: pulumi.Output<string | undefined>;
     /**
@@ -185,6 +192,12 @@ export interface SchemaState {
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The JSON representation of the schema.
+     * Changes are applied in place and must be backward compatible: existing fields
+     * can't be removed or have their type changed. Updating the schema triggers
+     * reindexing of all documents in the data store, which can take hours for large
+     * data stores and may incur costs. See
+     * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+     * for details.
      */
     jsonSchema?: pulumi.Input<string | undefined>;
     /**
@@ -229,6 +242,12 @@ export interface SchemaArgs {
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The JSON representation of the schema.
+     * Changes are applied in place and must be backward compatible: existing fields
+     * can't be removed or have their type changed. Updating the schema triggers
+     * reindexing of all documents in the data store, which can take hours for large
+     * data stores and may incur costs. See
+     * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+     * for details.
      */
     jsonSchema?: pulumi.Input<string | undefined>;
     /**

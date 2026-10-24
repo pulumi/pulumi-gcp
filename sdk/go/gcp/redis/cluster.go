@@ -959,7 +959,7 @@ type Cluster struct {
 	AclPolicy pulumi.StringPtrOutput `pulumi:"aclPolicy"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
-	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 	AuthorizationMode pulumi.StringPtrOutput `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1130,7 +1130,7 @@ type clusterState struct {
 	AclPolicy *string `pulumi:"aclPolicy"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
-	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1264,7 +1264,7 @@ type ClusterState struct {
 	AclPolicy pulumi.StringPtrInput
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
-	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 	AuthorizationMode pulumi.StringPtrInput
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1402,7 +1402,7 @@ type clusterArgs struct {
 	AclPolicy *string `pulumi:"aclPolicy"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
-	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1491,7 +1491,7 @@ type ClusterArgs struct {
 	AclPolicy pulumi.StringPtrInput
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
-	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 	AuthorizationMode pulumi.StringPtrInput
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1668,7 +1668,7 @@ func (o ClusterOutput) AclPolicy() pulumi.StringPtrOutput {
 
 // Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 // Default value is `AUTH_MODE_DISABLED`.
-// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 func (o ClusterOutput) AuthorizationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AuthorizationMode }).(pulumi.StringPtrOutput)
 }

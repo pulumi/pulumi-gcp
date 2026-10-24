@@ -728,6 +728,93 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Subscription Push Bigtable
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := bigtable.NewInstance(ctx, "example", &bigtable.InstanceArgs{
+//				Name: pulumi.String("example-bt"),
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId: pulumi.String("example-bt"),
+//						Zone:      pulumi.String("us-central1-b"),
+//						NumNodes:  pulumi.Int(1),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAppProfile, err := bigtable.NewAppProfile(ctx, "example", &bigtable.AppProfileArgs{
+//				Instance:     example.Name,
+//				AppProfileId: pulumi.String("example-profile"),
+//				SingleClusterRouting: &bigtable.AppProfileSingleClusterRoutingArgs{
+//					ClusterId: pulumi.String("example-bt"),
+//				},
+//				IgnoreWarnings: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTable, err := bigtable.NewTable(ctx, "example", &bigtable.TableArgs{
+//				Name:         pulumi.String("example-table"),
+//				InstanceName: example.Name,
+//				ColumnFamilies: bigtable.TableColumnFamilyArray{
+//					&bigtable.TableColumnFamilyArgs{
+//						Family: pulumi.String("data"),
+//					},
+//					&bigtable.TableColumnFamilyArgs{
+//						Family: pulumi.String("pubsub_metadata"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTopic, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: exampleTopic.ID(),
+//				BigtableConfig: &pubsub.SubscriptionBigtableConfigArgs{
+//					Table:         exampleTable.ID(),
+//					AppProfileId:  exampleAppProfile.AppProfileId,
+//					WriteMetadata: pulumi.Bool(true),
+//					ColumnFamilyMapping: &pubsub.SubscriptionBigtableConfigColumnFamilyMappingArgs{
+//						DelimitedKey: &pubsub.SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs{
+//							KeyFields: pulumi.StringArray{
+//								pulumi.String("user_id"),
+//								pulumi.String("event_id"),
+//							},
+//							Delimiter: pulumi.String("Iw=="),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Pubsub Subscription Single Smt
 //
 // ```go
@@ -1003,13 +1090,18 @@ type Subscription struct {
 	// will eventually redeliver the message.
 	AckDeadlineSeconds pulumi.IntOutput `pulumi:"ackDeadlineSeconds"`
 	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	BigqueryConfig SubscriptionBigqueryConfigPtrOutput `pulumi:"bigqueryConfig"`
+	// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
+	// Structure is documented below.
+	BigtableConfig SubscriptionBigtableConfigPtrOutput `pulumi:"bigtableConfig"`
 	// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	CloudStorageConfig SubscriptionCloudStorageConfigPtrOutput `pulumi:"cloudStorageConfig"`
 	// A policy that specifies the conditions for dead lettering messages in
@@ -1166,13 +1258,18 @@ type subscriptionState struct {
 	// will eventually redeliver the message.
 	AckDeadlineSeconds *int `pulumi:"ackDeadlineSeconds"`
 	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	BigqueryConfig *SubscriptionBigqueryConfig `pulumi:"bigqueryConfig"`
+	// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
+	// Structure is documented below.
+	BigtableConfig *SubscriptionBigtableConfig `pulumi:"bigtableConfig"`
 	// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	CloudStorageConfig *SubscriptionCloudStorageConfig `pulumi:"cloudStorageConfig"`
 	// A policy that specifies the conditions for dead lettering messages in
@@ -1292,13 +1389,18 @@ type SubscriptionState struct {
 	// will eventually redeliver the message.
 	AckDeadlineSeconds pulumi.IntPtrInput
 	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	BigqueryConfig SubscriptionBigqueryConfigPtrInput
+	// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
+	// Structure is documented below.
+	BigtableConfig SubscriptionBigtableConfigPtrInput
 	// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	CloudStorageConfig SubscriptionCloudStorageConfigPtrInput
 	// A policy that specifies the conditions for dead lettering messages in
@@ -1422,13 +1524,18 @@ type subscriptionArgs struct {
 	// will eventually redeliver the message.
 	AckDeadlineSeconds *int `pulumi:"ackDeadlineSeconds"`
 	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	BigqueryConfig *SubscriptionBigqueryConfig `pulumi:"bigqueryConfig"`
+	// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
+	// Structure is documented below.
+	BigtableConfig *SubscriptionBigtableConfig `pulumi:"bigtableConfig"`
 	// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	CloudStorageConfig *SubscriptionCloudStorageConfig `pulumi:"cloudStorageConfig"`
 	// A policy that specifies the conditions for dead lettering messages in
@@ -1544,13 +1651,18 @@ type SubscriptionArgs struct {
 	// will eventually redeliver the message.
 	AckDeadlineSeconds pulumi.IntPtrInput
 	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	BigqueryConfig SubscriptionBigqueryConfigPtrInput
+	// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
+	// Structure is documented below.
+	BigtableConfig SubscriptionBigtableConfigPtrInput
 	// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+	// If none of them are set, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	CloudStorageConfig SubscriptionCloudStorageConfigPtrInput
 	// A policy that specifies the conditions for dead lettering messages in
@@ -1754,16 +1866,24 @@ func (o SubscriptionOutput) AckDeadlineSeconds() pulumi.IntOutput {
 }
 
 // If delivery to BigQuery is used with this subscription, this field is used to configure it.
-// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-// If all three are empty, then the subscriber will pull and ack messages using API methods.
+// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+// If none of them are set, then the subscriber will pull and ack messages using API methods.
 // Structure is documented below.
 func (o SubscriptionOutput) BigqueryConfig() SubscriptionBigqueryConfigPtrOutput {
 	return o.ApplyT(func(v *Subscription) SubscriptionBigqueryConfigPtrOutput { return v.BigqueryConfig }).(SubscriptionBigqueryConfigPtrOutput)
 }
 
+// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+// If none of them are set, then the subscriber will pull and ack messages using API methods.
+// Structure is documented below.
+func (o SubscriptionOutput) BigtableConfig() SubscriptionBigtableConfigPtrOutput {
+	return o.ApplyT(func(v *Subscription) SubscriptionBigtableConfigPtrOutput { return v.BigtableConfig }).(SubscriptionBigtableConfigPtrOutput)
+}
+
 // If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-// If all three are empty, then the subscriber will pull and ack messages using API methods.
+// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+// If none of them are set, then the subscriber will pull and ack messages using API methods.
 // Structure is documented below.
 func (o SubscriptionOutput) CloudStorageConfig() SubscriptionCloudStorageConfigPtrOutput {
 	return o.ApplyT(func(v *Subscription) SubscriptionCloudStorageConfigPtrOutput { return v.CloudStorageConfig }).(SubscriptionCloudStorageConfigPtrOutput)

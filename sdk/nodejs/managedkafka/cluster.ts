@@ -38,7 +38,6 @@ import * as utilities from "../utilities";
  *     labels: {
  *         key: "value",
  *     },
- *     kafkaVersion: "3.7.x",
  * });
  * ```
  * ### Managedkafka Cluster Mtls
@@ -224,7 +223,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly gcpConfig: pulumi.Output<outputs.managedkafka.ClusterGcpConfig>;
     /**
-     * The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+     * If not specified during cluster creation, defaults to `3.7.x`.
+     * If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
      */
     declare public readonly kafkaVersion: pulumi.Output<string>;
     /**
@@ -393,7 +394,9 @@ export interface ClusterState {
      */
     gcpConfig?: pulumi.Input<inputs.managedkafka.ClusterGcpConfig | undefined>;
     /**
-     * The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+     * If not specified during cluster creation, defaults to `3.7.x`.
+     * If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
      */
     kafkaVersion?: pulumi.Input<string | undefined>;
     /**
@@ -478,7 +481,9 @@ export interface ClusterArgs {
      */
     gcpConfig: pulumi.Input<inputs.managedkafka.ClusterGcpConfig>;
     /**
-     * The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+     * If not specified during cluster creation, defaults to `3.7.x`.
+     * If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
      */
     kafkaVersion?: pulumi.Input<string | undefined>;
     /**

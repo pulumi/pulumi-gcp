@@ -5,12 +5,20 @@ package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dns.outputs.PolicyAlternativeNameServerConfigOutboundEndpoint;
 import com.pulumi.gcp.dns.outputs.PolicyAlternativeNameServerConfigTargetNameServer;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PolicyAlternativeNameServerConfig {
+    /**
+     * @return The list of outbound endpoints to use for queries.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<PolicyAlternativeNameServerConfigOutboundEndpoint> outboundEndpoints;
     /**
      * @return Sets an alternative name server for the associated networks. When specified,
      * all DNS queries are forwarded to a name server that you choose. Names such as .internal
@@ -21,6 +29,14 @@ public final class PolicyAlternativeNameServerConfig {
     private List<PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers;
 
     private PolicyAlternativeNameServerConfig() {}
+    /**
+     * @return The list of outbound endpoints to use for queries.
+     * Structure is documented below.
+     * 
+     */
+    public List<PolicyAlternativeNameServerConfigOutboundEndpoint> outboundEndpoints() {
+        return this.outboundEndpoints == null ? List.of() : this.outboundEndpoints;
+    }
     /**
      * @return Sets an alternative name server for the associated networks. When specified,
      * all DNS queries are forwarded to a name server that you choose. Names such as .internal
@@ -41,13 +57,24 @@ public final class PolicyAlternativeNameServerConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<PolicyAlternativeNameServerConfigOutboundEndpoint> outboundEndpoints;
         private List<PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers;
         public Builder() {}
         public Builder(PolicyAlternativeNameServerConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.outboundEndpoints = defaults.outboundEndpoints;
     	      this.targetNameServers = defaults.targetNameServers;
         }
 
+        @CustomType.Setter
+        public Builder outboundEndpoints(@Nullable List<PolicyAlternativeNameServerConfigOutboundEndpoint> outboundEndpoints) {
+
+            this.outboundEndpoints = outboundEndpoints;
+            return this;
+        }
+        public Builder outboundEndpoints(PolicyAlternativeNameServerConfigOutboundEndpoint... outboundEndpoints) {
+            return outboundEndpoints(List.of(outboundEndpoints));
+        }
         @CustomType.Setter
         public Builder targetNameServers(List<PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers) {
             if (targetNameServers == null) {
@@ -61,6 +88,7 @@ public final class PolicyAlternativeNameServerConfig {
         }
         public PolicyAlternativeNameServerConfig build() {
             final var _resultValue = new PolicyAlternativeNameServerConfig();
+            _resultValue.outboundEndpoints = outboundEndpoints;
             _resultValue.targetNameServers = targetNameServers;
             return _resultValue;
         }

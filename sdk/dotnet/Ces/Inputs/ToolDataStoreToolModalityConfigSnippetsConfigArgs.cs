@@ -18,6 +18,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("enableSnippets")]
         public Input<bool>? EnableSnippets { get; set; }
 
+        /// <summary>
+        /// Number of snippets to return per query.
+        /// If unset, returns all snippets from the service by default.
+        /// </summary>
+        [Input("maxSnippets")]
+        public Input<int>? MaxSnippets { get; set; }
+
         public ToolDataStoreToolModalityConfigSnippetsConfigArgs()
         {
         }

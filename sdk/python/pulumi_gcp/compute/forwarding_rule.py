@@ -169,9 +169,10 @@ class ForwardingRuleArgs:
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
-        :param pulumi.Input[_builtins.str] network: This field is not used for external load balancing.
-               For Internal TCP/UDP Load Balancing, this field identifies the network that
-               the load balanced IP should belong to for this Forwarding Rule.
+        :param pulumi.Input[_builtins.str] network: This field is not used for global external load balancing.
+               For Internal TCP/UDP Load Balancing and Regional External Load Balancing (`EXTERNAL_MANAGED`),
+               this field identifies the network that the load balanced IP should belong to
+               for this Forwarding Rule.
                If the subnetwork is specified, the network of the subnetwork will be used.
                If neither subnetwork nor this field is specified, the default network will
                be used.
@@ -246,8 +247,9 @@ class ForwardingRuleArgs:
                This field is only used for INTERNAL load balancing.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[_builtins.str] subnetwork: This field identifies the subnetwork that the load balanced IP should
-               belong to for this Forwarding Rule, used in internal load balancing and
-               network load balancing with IPv6.
+               belong to for this Forwarding Rule, used in internal load balancing,
+               network load balancing with IPv6, and regional external (`EXTERNAL_MANAGED`)
+               load balancing with IPv6.
                If the network specified is in auto subnet mode, this field is optional.
                However, a subnetwork must be specified if the network is in custom subnet
                mode or when creating external forwarding rule with IPv6.
@@ -590,9 +592,10 @@ class ForwardingRuleArgs:
     @pulumi.getter
     def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        This field is not used for external load balancing.
-        For Internal TCP/UDP Load Balancing, this field identifies the network that
-        the load balanced IP should belong to for this Forwarding Rule.
+        This field is not used for global external load balancing.
+        For Internal TCP/UDP Load Balancing and Regional External Load Balancing (`EXTERNAL_MANAGED`),
+        this field identifies the network that the load balanced IP should belong to
+        for this Forwarding Rule.
         If the subnetwork is specified, the network of the subnetwork will be used.
         If neither subnetwork nor this field is specified, the default network will
         be used.
@@ -788,8 +791,9 @@ class ForwardingRuleArgs:
     def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field identifies the subnetwork that the load balanced IP should
-        belong to for this Forwarding Rule, used in internal load balancing and
-        network load balancing with IPv6.
+        belong to for this Forwarding Rule, used in internal load balancing,
+        network load balancing with IPv6, and regional external (`EXTERNAL_MANAGED`)
+        load balancing with IPv6.
         If the network specified is in auto subnet mode, this field is optional.
         However, a subnetwork must be specified if the network is in custom subnet
         mode or when creating external forwarding rule with IPv6.
@@ -986,9 +990,10 @@ class _ForwardingRuleState:
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
-        :param pulumi.Input[_builtins.str] network: This field is not used for external load balancing.
-               For Internal TCP/UDP Load Balancing, this field identifies the network that
-               the load balanced IP should belong to for this Forwarding Rule.
+        :param pulumi.Input[_builtins.str] network: This field is not used for global external load balancing.
+               For Internal TCP/UDP Load Balancing and Regional External Load Balancing (`EXTERNAL_MANAGED`),
+               this field identifies the network that the load balanced IP should belong to
+               for this Forwarding Rule.
                If the subnetwork is specified, the network of the subnetwork will be used.
                If neither subnetwork nor this field is specified, the default network will
                be used.
@@ -1070,8 +1075,9 @@ class _ForwardingRuleState:
                This field is only used for INTERNAL load balancing.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[_builtins.str] subnetwork: This field identifies the subnetwork that the load balanced IP should
-               belong to for this Forwarding Rule, used in internal load balancing and
-               network load balancing with IPv6.
+               belong to for this Forwarding Rule, used in internal load balancing,
+               network load balancing with IPv6, and regional external (`EXTERNAL_MANAGED`)
+               load balancing with IPv6.
                If the network specified is in auto subnet mode, this field is optional.
                However, a subnetwork must be specified if the network is in custom subnet
                mode or when creating external forwarding rule with IPv6.
@@ -1495,9 +1501,10 @@ class _ForwardingRuleState:
     @pulumi.getter
     def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        This field is not used for external load balancing.
-        For Internal TCP/UDP Load Balancing, this field identifies the network that
-        the load balanced IP should belong to for this Forwarding Rule.
+        This field is not used for global external load balancing.
+        For Internal TCP/UDP Load Balancing and Regional External Load Balancing (`EXTERNAL_MANAGED`),
+        this field identifies the network that the load balanced IP should belong to
+        for this Forwarding Rule.
         If the subnetwork is specified, the network of the subnetwork will be used.
         If neither subnetwork nor this field is specified, the default network will
         be used.
@@ -1755,8 +1762,9 @@ class _ForwardingRuleState:
     def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field identifies the subnetwork that the load balanced IP should
-        belong to for this Forwarding Rule, used in internal load balancing and
-        network load balancing with IPv6.
+        belong to for this Forwarding Rule, used in internal load balancing,
+        network load balancing with IPv6, and regional external (`EXTERNAL_MANAGED`)
+        load balancing with IPv6.
         If the network specified is in auto subnet mode, this field is optional.
         However, a subnetwork must be specified if the network is in custom subnet
         mode or when creating external forwarding rule with IPv6.
@@ -2623,9 +2631,10 @@ class ForwardingRule(pulumi.CustomResource):
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
-        :param pulumi.Input[_builtins.str] network: This field is not used for external load balancing.
-               For Internal TCP/UDP Load Balancing, this field identifies the network that
-               the load balanced IP should belong to for this Forwarding Rule.
+        :param pulumi.Input[_builtins.str] network: This field is not used for global external load balancing.
+               For Internal TCP/UDP Load Balancing and Regional External Load Balancing (`EXTERNAL_MANAGED`),
+               this field identifies the network that the load balanced IP should belong to
+               for this Forwarding Rule.
                If the subnetwork is specified, the network of the subnetwork will be used.
                If neither subnetwork nor this field is specified, the default network will
                be used.
@@ -2700,8 +2709,9 @@ class ForwardingRule(pulumi.CustomResource):
                This field is only used for INTERNAL load balancing.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[_builtins.str] subnetwork: This field identifies the subnetwork that the load balanced IP should
-               belong to for this Forwarding Rule, used in internal load balancing and
-               network load balancing with IPv6.
+               belong to for this Forwarding Rule, used in internal load balancing,
+               network load balancing with IPv6, and regional external (`EXTERNAL_MANAGED`)
+               load balancing with IPv6.
                If the network specified is in auto subnet mode, this field is optional.
                However, a subnetwork must be specified if the network is in custom subnet
                mode or when creating external forwarding rule with IPv6.
@@ -3670,9 +3680,10 @@ class ForwardingRule(pulumi.CustomResource):
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
-        :param pulumi.Input[_builtins.str] network: This field is not used for external load balancing.
-               For Internal TCP/UDP Load Balancing, this field identifies the network that
-               the load balanced IP should belong to for this Forwarding Rule.
+        :param pulumi.Input[_builtins.str] network: This field is not used for global external load balancing.
+               For Internal TCP/UDP Load Balancing and Regional External Load Balancing (`EXTERNAL_MANAGED`),
+               this field identifies the network that the load balanced IP should belong to
+               for this Forwarding Rule.
                If the subnetwork is specified, the network of the subnetwork will be used.
                If neither subnetwork nor this field is specified, the default network will
                be used.
@@ -3754,8 +3765,9 @@ class ForwardingRule(pulumi.CustomResource):
                This field is only used for INTERNAL load balancing.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[_builtins.str] subnetwork: This field identifies the subnetwork that the load balanced IP should
-               belong to for this Forwarding Rule, used in internal load balancing and
-               network load balancing with IPv6.
+               belong to for this Forwarding Rule, used in internal load balancing,
+               network load balancing with IPv6, and regional external (`EXTERNAL_MANAGED`)
+               load balancing with IPv6.
                If the network specified is in auto subnet mode, this field is optional.
                However, a subnetwork must be specified if the network is in custom subnet
                mode or when creating external forwarding rule with IPv6.
@@ -4071,9 +4083,10 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[_builtins.str]:
         """
-        This field is not used for external load balancing.
-        For Internal TCP/UDP Load Balancing, this field identifies the network that
-        the load balanced IP should belong to for this Forwarding Rule.
+        This field is not used for global external load balancing.
+        For Internal TCP/UDP Load Balancing and Regional External Load Balancing (`EXTERNAL_MANAGED`),
+        this field identifies the network that the load balanced IP should belong to
+        for this Forwarding Rule.
         If the subnetwork is specified, the network of the subnetwork will be used.
         If neither subnetwork nor this field is specified, the default network will
         be used.
@@ -4267,8 +4280,9 @@ class ForwardingRule(pulumi.CustomResource):
     def subnetwork(self) -> pulumi.Output[_builtins.str]:
         """
         This field identifies the subnetwork that the load balanced IP should
-        belong to for this Forwarding Rule, used in internal load balancing and
-        network load balancing with IPv6.
+        belong to for this Forwarding Rule, used in internal load balancing,
+        network load balancing with IPv6, and regional external (`EXTERNAL_MANAGED`)
+        load balancing with IPv6.
         If the network specified is in auto subnet mode, this field is optional.
         However, a subnetwork must be specified if the network is in custom subnet
         mode or when creating external forwarding rule with IPv6.

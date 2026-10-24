@@ -20,16 +20,24 @@ public final class V2ConsumerPolicyArgs extends com.pulumi.resources.ResourceArg
     public static final V2ConsumerPolicyArgs Empty = new V2ConsumerPolicyArgs();
 
     /**
-     * (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+     * (Optional) Default value is false. This field is deprecated and has no effect.
+     * 
+     * @deprecated
+     * `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      * 
      */
+    @Deprecated /* `checkUsageOnRemove` is deprecated and will be removed in a future major release. */
     @Import(name="checkUsageOnRemove")
     private @Nullable Output<Boolean> checkUsageOnRemove;
 
     /**
-     * @return (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+     * @return (Optional) Default value is false. This field is deprecated and has no effect.
+     * 
+     * @deprecated
+     * `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      * 
      */
+    @Deprecated /* `checkUsageOnRemove` is deprecated and will be removed in a future major release. */
     public Optional<Output<Boolean>> checkUsageOnRemove() {
         return Optional.ofNullable(this.checkUsageOnRemove);
     }
@@ -151,22 +159,30 @@ public final class V2ConsumerPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param checkUsageOnRemove (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+         * @param checkUsageOnRemove (Optional) Default value is false. This field is deprecated and has no effect.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `checkUsageOnRemove` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `checkUsageOnRemove` is deprecated and will be removed in a future major release. */
         public Builder checkUsageOnRemove(@Nullable Output<Boolean> checkUsageOnRemove) {
             $.checkUsageOnRemove = checkUsageOnRemove;
             return this;
         }
 
         /**
-         * @param checkUsageOnRemove (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+         * @param checkUsageOnRemove (Optional) Default value is false. This field is deprecated and has no effect.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `checkUsageOnRemove` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `checkUsageOnRemove` is deprecated and will be removed in a future major release. */
         public Builder checkUsageOnRemove(Boolean checkUsageOnRemove) {
             return checkUsageOnRemove(Output.of(checkUsageOnRemove));
         }

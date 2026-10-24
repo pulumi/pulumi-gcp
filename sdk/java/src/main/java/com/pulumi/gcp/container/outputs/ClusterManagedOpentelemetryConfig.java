@@ -12,14 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterManagedOpentelemetryConfig {
     /**
-     * @return The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+     * @return The scope of the Managed OpenTelemetry pipeline. Available options include:
+     * * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+     * * `NONE`: Disables the Managed OpenTelemetry pipeline.
+     * 
+     * See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+     * 
+     * &gt; **Note:** Removing the `managedOpentelemetryConfig` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = &#34;NONE&#34;`.
      * 
      */
     private @Nullable String scope;
 
     private ClusterManagedOpentelemetryConfig() {}
     /**
-     * @return The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+     * @return The scope of the Managed OpenTelemetry pipeline. Available options include:
+     * * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+     * * `NONE`: Disables the Managed OpenTelemetry pipeline.
+     * 
+     * See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+     * 
+     * &gt; **Note:** Removing the `managedOpentelemetryConfig` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = &#34;NONE&#34;`.
      * 
      */
     public Optional<String> scope() {

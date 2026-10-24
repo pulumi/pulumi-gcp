@@ -215,6 +215,7 @@ namespace Pulumi.Gcp.Ces
     ///                 {
     ///                     Model = "gemini-3.0-flash-001",
     ///                     Temperature = 50.0,
+    ///                     ThinkingLevel = "LOW",
     ///                 },
     ///                 Prompt = "example_prompt",
     ///                 PolicyScope = "USER_QUERY",
@@ -477,6 +478,7 @@ namespace Pulumi.Gcp.Ces
     ///             {
     ///                 Model = "gemini-3.0-flash-001",
     ///                 Temperature = 50.0,
+    ///                 ThinkingLevel = "LOW",
     ///             },
     ///             Prompt = "example_prompt",
     ///             PolicyScope = "USER_QUERY",

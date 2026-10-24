@@ -54,6 +54,7 @@ import com.pulumi.gcp.container.outputs.ClusterRbacBindingConfig;
 import com.pulumi.gcp.container.outputs.ClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.ClusterResourceUsageExportConfig;
 import com.pulumi.gcp.container.outputs.ClusterRollbackSafeUpgrade;
+import com.pulumi.gcp.container.outputs.ClusterScheduleUpgradeConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecretManagerConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecretSyncConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecurityPostureConfig;
@@ -1231,14 +1232,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.managedMachineLearningDiagnosticsConfig;
     }
     /**
-     * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      * 
      */
     @Export(name="managedOpentelemetryConfig", refs={ClusterManagedOpentelemetryConfig.class}, tree="[0]")
     private Output<ClusterManagedOpentelemetryConfig> managedOpentelemetryConfig;
 
     /**
-     * @return ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * @return Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      * 
      */
     public Output<ClusterManagedOpentelemetryConfig> managedOpentelemetryConfig() {
@@ -1885,6 +1886,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterRollbackSafeUpgrade>> rollbackSafeUpgrade() {
         return Codegen.optional(this.rollbackSafeUpgrade);
+    }
+    /**
+     * )
+     * Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+     * 
+     */
+    @Export(name="scheduleUpgradeConfig", refs={ClusterScheduleUpgradeConfig.class}, tree="[0]")
+    private Output<ClusterScheduleUpgradeConfig> scheduleUpgradeConfig;
+
+    /**
+     * @return )
+     * Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+     * 
+     */
+    public Output<ClusterScheduleUpgradeConfig> scheduleUpgradeConfig() {
+        return this.scheduleUpgradeConfig;
     }
     /**
      * Configuration for the

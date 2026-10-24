@@ -109,6 +109,10 @@ export class V2OrganizationSccBigQueryExports extends pulumi.CustomResource {
      */
     declare public readonly dataset: pulumi.Output<string | undefined>;
     /**
+     * Indicates whether the notifications will be sent for deleted findings.
+     */
+    declare public readonly deletionNotificationsEnabled: pulumi.Output<boolean | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -190,6 +194,7 @@ export class V2OrganizationSccBigQueryExports extends pulumi.CustomResource {
             resourceInputs["bigQueryExportId"] = state?.bigQueryExportId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["deletionNotificationsEnabled"] = state?.deletionNotificationsEnabled;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["filter"] = state?.filter;
@@ -209,6 +214,7 @@ export class V2OrganizationSccBigQueryExports extends pulumi.CustomResource {
             }
             resourceInputs["bigQueryExportId"] = args?.bigQueryExportId;
             resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["deletionNotificationsEnabled"] = args?.deletionNotificationsEnabled;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["filter"] = args?.filter;
@@ -245,6 +251,10 @@ export interface V2OrganizationSccBigQueryExportsState {
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      */
     dataset?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates whether the notifications will be sent for deleted findings.
+     */
+    deletionNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -326,6 +336,10 @@ export interface V2OrganizationSccBigQueryExportsArgs {
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      */
     dataset?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates whether the notifications will be sent for deleted findings.
+     */
+    deletionNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

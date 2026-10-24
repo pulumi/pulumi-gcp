@@ -45,14 +45,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:serviceusage/v2ConsumerPolicy:V2ConsumerPolicy")
 public class V2ConsumerPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+     * (Optional) Default value is false. This field is deprecated and has no effect.
+     * 
+     * @deprecated
+     * `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      * 
      */
+    @Deprecated /* `checkUsageOnRemove` is deprecated and will be removed in a future major release. */
     @Export(name="checkUsageOnRemove", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> checkUsageOnRemove;
 
     /**
-     * @return (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+     * @return (Optional) Default value is false. This field is deprecated and has no effect.
      * 
      */
     public Output<Optional<Boolean>> checkUsageOnRemove() {

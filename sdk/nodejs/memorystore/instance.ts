@@ -451,10 +451,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly aclPolicy: pulumi.Output<string | undefined>;
     /**
-     * Optional. Immutable. Authorization mode of the instance. Possible values:
+     * Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      */
     declare public readonly authorizationMode: pulumi.Output<string>;
     /**
@@ -843,10 +843,10 @@ export interface InstanceState {
      */
     aclPolicy?: pulumi.Input<string | undefined>;
     /**
-     * Optional. Immutable. Authorization mode of the instance. Possible values:
+     * Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      */
     authorizationMode?: pulumi.Input<string | undefined>;
     /**
@@ -1110,10 +1110,10 @@ export interface InstanceArgs {
      */
     aclPolicy?: pulumi.Input<string | undefined>;
     /**
-     * Optional. Immutable. Authorization mode of the instance. Possible values:
+     * Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      */
     authorizationMode?: pulumi.Input<string | undefined>;
     /**

@@ -3056,6 +3056,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "cloudrunv2/instance",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/instanceIamBinding",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/instanceIamBinding:InstanceIamBinding": "InstanceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/instanceIamMember",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/instanceIamMember:InstanceIamMember": "InstanceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/instanceIamPolicy",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/instanceIamPolicy:InstanceIamPolicy": "InstanceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "cloudrunv2/job",
   "fqn": "pulumi_gcp.cloudrunv2",
   "classes": {
@@ -6496,6 +6528,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dns/outboundEndpoint",
+  "fqn": "pulumi_gcp.dns",
+  "classes": {
+   "gcp:dns/outboundEndpoint:OutboundEndpoint": "OutboundEndpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dns/policy",
   "fqn": "pulumi_gcp.dns",
   "classes": {
@@ -6532,6 +6572,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.documentai",
   "classes": {
    "gcp:documentai/schema:Schema": "Schema"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "documentai/schemaVersion",
+  "fqn": "pulumi_gcp.documentai",
+  "classes": {
+   "gcp:documentai/schemaVersion:SchemaVersion": "SchemaVersion"
   }
  },
  {
@@ -11536,6 +11584,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "storage/controlProjectFeatureConfig",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/controlProjectFeatureConfig:ControlProjectFeatureConfig": "ControlProjectFeatureConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "storage/controlProjectIntelligenceConfig",
   "fqn": "pulumi_gcp.storage",
   "classes": {
@@ -12108,6 +12164,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiMetadataStore:AiMetadataStore": "AiMetadataStore"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiModelDevelopmentCluster",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiModelDevelopmentCluster:AiModelDevelopmentCluster": "AiModelDevelopmentCluster"
   }
  },
  {

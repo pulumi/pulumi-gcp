@@ -96,7 +96,6 @@ export class Transport extends pulumi.CustomResource {
      */
     declare public readonly advertisedRoutes: pulumi.Output<string[] | undefined>;
     /**
-     * (Optional, Beta)
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      */
     declare public readonly autoAccept: pulumi.Output<boolean | undefined>;
@@ -126,7 +125,6 @@ export class Transport extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly generatedActivationKey: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      */
     declare public readonly hub: pulumi.Output<string | undefined>;
@@ -162,7 +160,6 @@ export class Transport extends pulumi.CustomResource {
      */
     declare public readonly providedActivationKey: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Beta)
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      */
     declare public readonly pscRoutingEnabled: pulumi.Output<boolean | undefined>;
@@ -283,7 +280,6 @@ export interface TransportState {
      */
     advertisedRoutes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * (Optional, Beta)
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      */
     autoAccept?: pulumi.Input<boolean | undefined>;
@@ -313,7 +309,6 @@ export interface TransportState {
      */
     generatedActivationKey?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      */
     hub?: pulumi.Input<string | undefined>;
@@ -349,7 +344,6 @@ export interface TransportState {
      */
     providedActivationKey?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      */
     pscRoutingEnabled?: pulumi.Input<boolean | undefined>;
@@ -396,7 +390,6 @@ export interface TransportArgs {
      */
     advertisedRoutes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * (Optional, Beta)
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      */
     autoAccept?: pulumi.Input<boolean | undefined>;
@@ -418,7 +411,6 @@ export interface TransportArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      */
     hub?: pulumi.Input<string | undefined>;
@@ -450,7 +442,6 @@ export interface TransportArgs {
      */
     providedActivationKey?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      */
     pscRoutingEnabled?: pulumi.Input<boolean | undefined>;

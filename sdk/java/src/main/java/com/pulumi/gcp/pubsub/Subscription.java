@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.pubsub.SubscriptionArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionState;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionBigqueryConfig;
+import com.pulumi.gcp.pubsub.outputs.SubscriptionBigtableConfig;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionCloudStorageConfig;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionDeadLetterPolicy;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionExpirationPolicy;
@@ -807,6 +808,101 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Pubsub Subscription Push Bigtable
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigtable.Instance;
+ * import com.pulumi.gcp.bigtable.InstanceArgs;
+ * import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
+ * import com.pulumi.gcp.bigtable.AppProfile;
+ * import com.pulumi.gcp.bigtable.AppProfileArgs;
+ * import com.pulumi.gcp.bigtable.inputs.AppProfileSingleClusterRoutingArgs;
+ * import com.pulumi.gcp.bigtable.Table;
+ * import com.pulumi.gcp.bigtable.TableArgs;
+ * import com.pulumi.gcp.bigtable.inputs.TableColumnFamilyArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigtableConfigArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigtableConfigColumnFamilyMappingArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Instance("example", InstanceArgs.builder()
+ *             .name("example-bt")
+ *             .clusters(InstanceClusterArgs.builder()
+ *                 .clusterId("example-bt")
+ *                 .zone("us-central1-b")
+ *                 .numNodes(1)
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var exampleAppProfile = new AppProfile("exampleAppProfile", AppProfileArgs.builder()
+ *             .instance(example.name())
+ *             .appProfileId("example-profile")
+ *             .singleClusterRouting(AppProfileSingleClusterRoutingArgs.builder()
+ *                 .clusterId("example-bt")
+ *                 .build())
+ *             .ignoreWarnings(true)
+ *             .build());
+ * 
+ *         var exampleTable = new Table("exampleTable", TableArgs.builder()
+ *             .name("example-table")
+ *             .instanceName(example.name())
+ *             .columnFamilies(            
+ *                 TableColumnFamilyArgs.builder()
+ *                     .family("data")
+ *                     .build(),
+ *                 TableColumnFamilyArgs.builder()
+ *                     .family("pubsub_metadata")
+ *                     .build())
+ *             .build());
+ * 
+ *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
+ *             .name("example-subscription")
+ *             .topic(exampleTopic.id())
+ *             .bigtableConfig(SubscriptionBigtableConfigArgs.builder()
+ *                 .table(exampleTable.id())
+ *                 .appProfileId(exampleAppProfile.appProfileId())
+ *                 .writeMetadata(true)
+ *                 .columnFamilyMapping(SubscriptionBigtableConfigColumnFamilyMappingArgs.builder()
+ *                     .delimitedKey(SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs.builder()
+ *                         .keyFields(                        
+ *                             "user_id",
+ *                             "event_id")
+ *                         .delimiter("Iw==")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Pubsub Subscription Single Smt
  * 
  * <pre>
@@ -1138,8 +1234,8 @@ public class Subscription extends com.pulumi.resources.CustomResource {
     }
     /**
      * If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
@@ -1148,8 +1244,8 @@ public class Subscription extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
@@ -1157,9 +1253,29 @@ public class Subscription extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bigqueryConfig);
     }
     /**
+     * If delivery to Bigtable is used with this subscription, this field is used to configure it.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="bigtableConfig", refs={SubscriptionBigtableConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SubscriptionBigtableConfig> bigtableConfig;
+
+    /**
+     * @return If delivery to Bigtable is used with this subscription, this field is used to configure it.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SubscriptionBigtableConfig>> bigtableConfig() {
+        return Codegen.optional(this.bigtableConfig);
+    }
+    /**
      * If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
@@ -1168,8 +1284,8 @@ public class Subscription extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
