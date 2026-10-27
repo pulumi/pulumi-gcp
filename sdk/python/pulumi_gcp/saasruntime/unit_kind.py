@@ -25,6 +25,8 @@ class UnitKindArgs:
                  saas: pulumi.Input[_builtins.str],
                  unit_kind_id: pulumi.Input[_builtins.str],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 app_params: pulumi.Input[Optional['UnitKindAppParamsArgs']] = None,
+                 application_template_component: pulumi.Input[Optional['UnitKindApplicationTemplateComponentArgs']] = None,
                  default_release: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['UnitKindDependencyArgs']]]] = None,
@@ -46,6 +48,12 @@ class UnitKindArgs:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['UnitKindAppParamsArgs'] app_params: Parameters for creating an App Hub Application for the Units of this
+               UnitKind.
+               Structure is documented below.
+        :param pulumi.Input['UnitKindApplicationTemplateComponentArgs'] application_template_component: Reference to a component and revision in a composite Application Design
+               Center ApplicationTemplate.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] default_release: A reference to the Release object to use as default for creating new units
                of this UnitKind.
                If not specified, a new unit must explicitly reference which release to use
@@ -78,6 +86,10 @@ class UnitKindArgs:
         pulumi.set(__self__, "unit_kind_id", unit_kind_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if app_params is not None:
+            pulumi.set(__self__, "app_params", app_params)
+        if application_template_component is not None:
+            pulumi.set(__self__, "application_template_component", application_template_component)
         if default_release is not None:
             pulumi.set(__self__, "default_release", default_release)
         if deletion_policy is not None:
@@ -147,6 +159,34 @@ class UnitKindArgs:
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="appParams")
+    def app_params(self) -> pulumi.Input[Optional['UnitKindAppParamsArgs']]:
+        """
+        Parameters for creating an App Hub Application for the Units of this
+        UnitKind.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "app_params")
+
+    @app_params.setter
+    def app_params(self, value: pulumi.Input[Optional['UnitKindAppParamsArgs']]):
+        pulumi.set(self, "app_params", value)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplateComponent")
+    def application_template_component(self) -> pulumi.Input[Optional['UnitKindApplicationTemplateComponentArgs']]:
+        """
+        Reference to a component and revision in a composite Application Design
+        Center ApplicationTemplate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "application_template_component")
+
+    @application_template_component.setter
+    def application_template_component(self, value: pulumi.Input[Optional['UnitKindApplicationTemplateComponentArgs']]):
+        pulumi.set(self, "application_template_component", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRelease")
@@ -256,6 +296,8 @@ class UnitKindArgs:
 class _UnitKindState:
     def __init__(__self__, *,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 app_params: pulumi.Input[Optional['UnitKindAppParamsArgs']] = None,
+                 application_template_component: pulumi.Input[Optional['UnitKindApplicationTemplateComponentArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  default_release: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -283,6 +325,12 @@ class _UnitKindState:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['UnitKindAppParamsArgs'] app_params: Parameters for creating an App Hub Application for the Units of this
+               UnitKind.
+               Structure is documented below.
+        :param pulumi.Input['UnitKindApplicationTemplateComponentArgs'] application_template_component: Reference to a component and revision in a composite Application Design
+               Center ApplicationTemplate.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] default_release: A reference to the Release object to use as default for creating new units
                of this UnitKind.
@@ -336,6 +384,10 @@ class _UnitKindState:
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if app_params is not None:
+            pulumi.set(__self__, "app_params", app_params)
+        if application_template_component is not None:
+            pulumi.set(__self__, "application_template_component", application_template_component)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if default_release is not None:
@@ -389,6 +441,34 @@ class _UnitKindState:
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="appParams")
+    def app_params(self) -> pulumi.Input[Optional['UnitKindAppParamsArgs']]:
+        """
+        Parameters for creating an App Hub Application for the Units of this
+        UnitKind.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "app_params")
+
+    @app_params.setter
+    def app_params(self, value: pulumi.Input[Optional['UnitKindAppParamsArgs']]):
+        pulumi.set(self, "app_params", value)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplateComponent")
+    def application_template_component(self) -> pulumi.Input[Optional['UnitKindApplicationTemplateComponentArgs']]:
+        """
+        Reference to a component and revision in a composite Application Design
+        Center ApplicationTemplate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "application_template_component")
+
+    @application_template_component.setter
+    def application_template_component(self, value: pulumi.Input[Optional['UnitKindApplicationTemplateComponentArgs']]):
+        pulumi.set(self, "application_template_component", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -646,6 +726,8 @@ class UnitKind(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 app_params: pulumi.Input[Optional[Union['UnitKindAppParamsArgs', 'UnitKindAppParamsArgsDict', 'outputs.UnitKindAppParams']]] = None,
+                 application_template_component: pulumi.Input[Optional[Union['UnitKindApplicationTemplateComponentArgs', 'UnitKindApplicationTemplateComponentArgsDict', 'outputs.UnitKindApplicationTemplateComponent']]] = None,
                  default_release: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict', 'outputs.UnitKindDependency']]]]] = None,
@@ -724,6 +806,12 @@ class UnitKind(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['UnitKindAppParamsArgs', 'UnitKindAppParamsArgsDict', 'outputs.UnitKindAppParams']] app_params: Parameters for creating an App Hub Application for the Units of this
+               UnitKind.
+               Structure is documented below.
+        :param pulumi.Input[Union['UnitKindApplicationTemplateComponentArgs', 'UnitKindApplicationTemplateComponentArgsDict', 'outputs.UnitKindApplicationTemplateComponent']] application_template_component: Reference to a component and revision in a composite Application Design
+               Center ApplicationTemplate.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] default_release: A reference to the Release object to use as default for creating new units
                of this UnitKind.
                If not specified, a new unit must explicitly reference which release to use
@@ -837,6 +925,8 @@ class UnitKind(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 app_params: pulumi.Input[Optional[Union['UnitKindAppParamsArgs', 'UnitKindAppParamsArgsDict', 'outputs.UnitKindAppParams']]] = None,
+                 application_template_component: pulumi.Input[Optional[Union['UnitKindApplicationTemplateComponentArgs', 'UnitKindApplicationTemplateComponentArgsDict', 'outputs.UnitKindApplicationTemplateComponent']]] = None,
                  default_release: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict', 'outputs.UnitKindDependency']]]]] = None,
@@ -857,6 +947,8 @@ class UnitKind(pulumi.CustomResource):
             __props__ = UnitKindArgs.__new__(UnitKindArgs)
 
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["app_params"] = app_params
+            __props__.__dict__["application_template_component"] = application_template_component
             __props__.__dict__["default_release"] = default_release
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["dependencies"] = dependencies
@@ -894,6 +986,8 @@ class UnitKind(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            app_params: pulumi.Input[Optional[Union['UnitKindAppParamsArgs', 'UnitKindAppParamsArgsDict', 'outputs.UnitKindAppParams']]] = None,
+            application_template_component: pulumi.Input[Optional[Union['UnitKindApplicationTemplateComponentArgs', 'UnitKindApplicationTemplateComponentArgsDict', 'outputs.UnitKindApplicationTemplateComponent']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             default_release: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -925,6 +1019,12 @@ class UnitKind(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['UnitKindAppParamsArgs', 'UnitKindAppParamsArgsDict', 'outputs.UnitKindAppParams']] app_params: Parameters for creating an App Hub Application for the Units of this
+               UnitKind.
+               Structure is documented below.
+        :param pulumi.Input[Union['UnitKindApplicationTemplateComponentArgs', 'UnitKindApplicationTemplateComponentArgsDict', 'outputs.UnitKindApplicationTemplateComponent']] application_template_component: Reference to a component and revision in a composite Application Design
+               Center ApplicationTemplate.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] default_release: A reference to the Release object to use as default for creating new units
                of this UnitKind.
@@ -981,6 +1081,8 @@ class UnitKind(pulumi.CustomResource):
         __props__ = _UnitKindState.__new__(_UnitKindState)
 
         __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["app_params"] = app_params
+        __props__.__dict__["application_template_component"] = application_template_component
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["default_release"] = default_release
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1013,6 +1115,26 @@ class UnitKind(pulumi.CustomResource):
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter(name="appParams")
+    def app_params(self) -> pulumi.Output[Optional['outputs.UnitKindAppParams']]:
+        """
+        Parameters for creating an App Hub Application for the Units of this
+        UnitKind.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "app_params")
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplateComponent")
+    def application_template_component(self) -> pulumi.Output[Optional['outputs.UnitKindApplicationTemplateComponent']]:
+        """
+        Reference to a component and revision in a composite Application Design
+        Center ApplicationTemplate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "application_template_component")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

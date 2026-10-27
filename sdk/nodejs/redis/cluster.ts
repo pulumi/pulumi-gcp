@@ -703,7 +703,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
      */
     declare public readonly authorizationMode: pulumi.Output<string | undefined>;
     /**
@@ -1033,7 +1033,7 @@ export interface ClusterState {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
      */
     authorizationMode?: pulumi.Input<string | undefined>;
     /**
@@ -1254,7 +1254,7 @@ export interface ClusterArgs {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
      */
     authorizationMode?: pulumi.Input<string | undefined>;
     /**

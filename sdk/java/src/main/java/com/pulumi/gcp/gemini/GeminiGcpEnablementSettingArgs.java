@@ -88,6 +88,25 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
     }
 
     /**
+     * The Gemini enterprise project for this setting.
+     * Format: projects/{project}
+     * The `{project}` segment can be the project ID or project number.
+     * 
+     */
+    @Import(name="geminiEnterpriseProject")
+    private @Nullable Output<String> geminiEnterpriseProject;
+
+    /**
+     * @return The Gemini enterprise project for this setting.
+     * Format: projects/{project}
+     * The `{project}` segment can be the project ID or project number.
+     * 
+     */
+    public Optional<Output<String>> geminiEnterpriseProject() {
+        return Optional.ofNullable(this.geminiEnterpriseProject);
+    }
+
+    /**
      * Id of the Gemini Gcp Enablement setting.
      * 
      */
@@ -169,6 +188,23 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+     * Possible values are: `STABLE`, `EXPERIMENTAL`.
+     * 
+     */
+    @Import(name="releaseChannel")
+    private @Nullable Output<String> releaseChannel;
+
+    /**
+     * @return Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+     * Possible values are: `STABLE`, `EXPERIMENTAL`.
+     * 
+     */
+    public Optional<Output<String>> releaseChannel() {
+        return Optional.ofNullable(this.releaseChannel);
+    }
+
+    /**
      * Web grounding type.
      * Possible values:
      * GROUNDING_WITH_GOOGLE_SEARCH
@@ -195,11 +231,13 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
         this.deletionPolicy = $.deletionPolicy;
         this.disableWebGrounding = $.disableWebGrounding;
         this.enableCustomerDataSharing = $.enableCustomerDataSharing;
+        this.geminiEnterpriseProject = $.geminiEnterpriseProject;
         this.geminiGcpEnablementSettingId = $.geminiGcpEnablementSettingId;
         this.labels = $.labels;
         this.location = $.location;
         this.mutationsEnabled = $.mutationsEnabled;
         this.project = $.project;
+        this.releaseChannel = $.releaseChannel;
         this.webGroundingType = $.webGroundingType;
     }
 
@@ -306,6 +344,31 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
          */
         public Builder enableCustomerDataSharing(Boolean enableCustomerDataSharing) {
             return enableCustomerDataSharing(Output.of(enableCustomerDataSharing));
+        }
+
+        /**
+         * @param geminiEnterpriseProject The Gemini enterprise project for this setting.
+         * Format: projects/{project}
+         * The `{project}` segment can be the project ID or project number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geminiEnterpriseProject(@Nullable Output<String> geminiEnterpriseProject) {
+            $.geminiEnterpriseProject = geminiEnterpriseProject;
+            return this;
+        }
+
+        /**
+         * @param geminiEnterpriseProject The Gemini enterprise project for this setting.
+         * Format: projects/{project}
+         * The `{project}` segment can be the project ID or project number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geminiEnterpriseProject(String geminiEnterpriseProject) {
+            return geminiEnterpriseProject(Output.of(geminiEnterpriseProject));
         }
 
         /**
@@ -417,6 +480,29 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param releaseChannel Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+         * Possible values are: `STABLE`, `EXPERIMENTAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder releaseChannel(@Nullable Output<String> releaseChannel) {
+            $.releaseChannel = releaseChannel;
+            return this;
+        }
+
+        /**
+         * @param releaseChannel Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+         * Possible values are: `STABLE`, `EXPERIMENTAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder releaseChannel(String releaseChannel) {
+            return releaseChannel(Output.of(releaseChannel));
         }
 
         /**

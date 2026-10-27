@@ -203,8 +203,9 @@ import (
 //					},
 //				},
 //				ModelSettings: &ces.AppModelSettingsArgs{
-//					Model:       pulumi.String("gemini-3.0-flash-001"),
-//					Temperature: pulumi.Float64(0.5),
+//					Model:         pulumi.String("gemini-3.0-flash-001"),
+//					Temperature:   pulumi.Float64(0.5),
+//					ThinkingLevel: pulumi.String("LOW"),
 //				},
 //				EvaluationMetricsThresholds: &ces.AppEvaluationMetricsThresholdsArgs{
 //					GoldenEvaluationMetricsThresholds: &ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs{

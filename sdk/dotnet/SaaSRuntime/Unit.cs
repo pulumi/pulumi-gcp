@@ -86,6 +86,16 @@ namespace Pulumi.Gcp.SaaSRuntime
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
+        /// Reference to the App Hub Application this Unit belongs to, in the format
+        /// `projects/{project}/locations/{location}/applications/{application}`.
+        /// All resources deployed in this Unit are associated with the specified
+        /// Application. If empty, the service sets it during any UnitOperation
+        /// when the UnitKind has `app_params.group` and App Hub is enabled.
+        /// </summary>
+        [Output("application")]
+        public Output<string> Application { get; private set; } = null!;
+
+        /// <summary>
         /// A set of conditions which indicate the various conditions this resource can
         /// have.
         /// Structure is documented below.
@@ -373,6 +383,16 @@ namespace Pulumi.Gcp.SaaSRuntime
         }
 
         /// <summary>
+        /// Reference to the App Hub Application this Unit belongs to, in the format
+        /// `projects/{project}/locations/{location}/applications/{application}`.
+        /// All resources deployed in this Unit are associated with the specified
+        /// Application. If empty, the service sets it during any UnitOperation
+        /// when the UnitKind has `app_params.group` and App Hub is enabled.
+        /// </summary>
+        [Input("application")]
+        public Input<string>? Application { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -476,6 +496,16 @@ namespace Pulumi.Gcp.SaaSRuntime
             get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
+
+        /// <summary>
+        /// Reference to the App Hub Application this Unit belongs to, in the format
+        /// `projects/{project}/locations/{location}/applications/{application}`.
+        /// All resources deployed in this Unit are associated with the specified
+        /// Application. If empty, the service sets it during any UnitOperation
+        /// when the UnitKind has `app_params.group` and App Hub is enabled.
+        /// </summary>
+        [Input("application")]
+        public Input<string>? Application { get; set; }
 
         [Input("conditions")]
         private InputList<Inputs.UnitConditionGetArgs>? _conditions;

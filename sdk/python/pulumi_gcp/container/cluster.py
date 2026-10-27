@@ -102,6 +102,7 @@ class ClusterArgs:
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']] = None,
                  rollback_safe_upgrade: pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']] = None,
+                 schedule_upgrade_config: pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']] = None,
                  secret_manager_config: pulumi.Input[Optional['ClusterSecretManagerConfigArgs']] = None,
                  secret_sync_config: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']] = None,
                  security_posture_config: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']] = None,
@@ -228,7 +229,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs'] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -345,6 +346,8 @@ class ClusterArgs:
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterRollbackSafeUpgradeArgs'] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        :param pulumi.Input['ClusterScheduleUpgradeConfigArgs'] schedule_upgrade_config: )
+               Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
         :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -532,6 +535,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
         if rollback_safe_upgrade is not None:
             pulumi.set(__self__, "rollback_safe_upgrade", rollback_safe_upgrade)
+        if schedule_upgrade_config is not None:
+            pulumi.set(__self__, "schedule_upgrade_config", schedule_upgrade_config)
         if secret_manager_config is not None:
             pulumi.set(__self__, "secret_manager_config", secret_manager_config)
         if secret_sync_config is not None:
@@ -1211,7 +1216,7 @@ class ClusterArgs:
     @pulumi.getter(name="managedOpentelemetryConfig")
     def managed_opentelemetry_config(self) -> pulumi.Input[Optional['ClusterManagedOpentelemetryConfigArgs']]:
         """
-        ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
@@ -1677,6 +1682,19 @@ class ClusterArgs:
         pulumi.set(self, "rollback_safe_upgrade", value)
 
     @_builtins.property
+    @pulumi.getter(name="scheduleUpgradeConfig")
+    def schedule_upgrade_config(self) -> pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']]:
+        """
+        )
+        Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_upgrade_config")
+
+    @schedule_upgrade_config.setter
+    def schedule_upgrade_config(self, value: pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']]):
+        pulumi.set(self, "schedule_upgrade_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretManagerConfig")
     def secret_manager_config(self) -> pulumi.Input[Optional['ClusterSecretManagerConfigArgs']]:
         """
@@ -1910,6 +1928,7 @@ class _ClusterState:
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']] = None,
                  rollback_safe_upgrade: pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']] = None,
+                 schedule_upgrade_config: pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']] = None,
                  secret_manager_config: pulumi.Input[Optional['ClusterSecretManagerConfigArgs']] = None,
                  secret_sync_config: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']] = None,
                  security_posture_config: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']] = None,
@@ -2043,7 +2062,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs'] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -2164,6 +2183,8 @@ class _ClusterState:
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterRollbackSafeUpgradeArgs'] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        :param pulumi.Input['ClusterScheduleUpgradeConfigArgs'] schedule_upgrade_config: )
+               Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
         :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -2373,6 +2394,8 @@ class _ClusterState:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
         if rollback_safe_upgrade is not None:
             pulumi.set(__self__, "rollback_safe_upgrade", rollback_safe_upgrade)
+        if schedule_upgrade_config is not None:
+            pulumi.set(__self__, "schedule_upgrade_config", schedule_upgrade_config)
         if secret_manager_config is not None:
             pulumi.set(__self__, "secret_manager_config", secret_manager_config)
         if secret_sync_config is not None:
@@ -3106,7 +3129,7 @@ class _ClusterState:
     @pulumi.getter(name="managedOpentelemetryConfig")
     def managed_opentelemetry_config(self) -> pulumi.Input[Optional['ClusterManagedOpentelemetryConfigArgs']]:
         """
-        ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
@@ -3607,6 +3630,19 @@ class _ClusterState:
         pulumi.set(self, "rollback_safe_upgrade", value)
 
     @_builtins.property
+    @pulumi.getter(name="scheduleUpgradeConfig")
+    def schedule_upgrade_config(self) -> pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']]:
+        """
+        )
+        Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_upgrade_config")
+
+    @schedule_upgrade_config.setter
+    def schedule_upgrade_config(self, value: pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']]):
+        pulumi.set(self, "schedule_upgrade_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretManagerConfig")
     def secret_manager_config(self) -> pulumi.Input[Optional['ClusterSecretManagerConfigArgs']]:
         """
@@ -3877,6 +3913,7 @@ class Cluster(pulumi.CustomResource):
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']]] = None,
                  rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']]] = None,
+                 schedule_upgrade_config: pulumi.Input[Optional[Union['ClusterScheduleUpgradeConfigArgs', 'ClusterScheduleUpgradeConfigArgsDict', 'outputs.ClusterScheduleUpgradeConfig']]] = None,
                  secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']]] = None,
                  secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']]] = None,
                  security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']]] = None,
@@ -4156,7 +4193,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict', 'outputs.ClusterManagedMachineLearningDiagnosticsConfig']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict', 'outputs.ClusterMasterAuth']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -4273,6 +4310,8 @@ class Cluster(pulumi.CustomResource):
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        :param pulumi.Input[Union['ClusterScheduleUpgradeConfigArgs', 'ClusterScheduleUpgradeConfigArgsDict', 'outputs.ClusterScheduleUpgradeConfig']] schedule_upgrade_config: )
+               Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
         :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -4550,6 +4589,7 @@ class Cluster(pulumi.CustomResource):
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']]] = None,
                  rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']]] = None,
+                 schedule_upgrade_config: pulumi.Input[Optional[Union['ClusterScheduleUpgradeConfigArgs', 'ClusterScheduleUpgradeConfigArgsDict', 'outputs.ClusterScheduleUpgradeConfig']]] = None,
                  secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']]] = None,
                  secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']]] = None,
                  security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']]] = None,
@@ -4651,6 +4691,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
             __props__.__dict__["rollback_safe_upgrade"] = rollback_safe_upgrade
+            __props__.__dict__["schedule_upgrade_config"] = schedule_upgrade_config
             __props__.__dict__["secret_manager_config"] = secret_manager_config
             __props__.__dict__["secret_sync_config"] = secret_sync_config
             __props__.__dict__["security_posture_config"] = security_posture_config
@@ -4772,6 +4813,7 @@ class Cluster(pulumi.CustomResource):
             resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']]] = None,
             rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']]] = None,
+            schedule_upgrade_config: pulumi.Input[Optional[Union['ClusterScheduleUpgradeConfigArgs', 'ClusterScheduleUpgradeConfigArgsDict', 'outputs.ClusterScheduleUpgradeConfig']]] = None,
             secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']]] = None,
             secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']]] = None,
             security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']]] = None,
@@ -4909,7 +4951,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict', 'outputs.ClusterManagedMachineLearningDiagnosticsConfig']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict', 'outputs.ClusterMasterAuth']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -5030,6 +5072,8 @@ class Cluster(pulumi.CustomResource):
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        :param pulumi.Input[Union['ClusterScheduleUpgradeConfigArgs', 'ClusterScheduleUpgradeConfigArgsDict', 'outputs.ClusterScheduleUpgradeConfig']] schedule_upgrade_config: )
+               Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
         :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -5152,6 +5196,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["resource_labels"] = resource_labels
         __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
         __props__.__dict__["rollback_safe_upgrade"] = rollback_safe_upgrade
+        __props__.__dict__["schedule_upgrade_config"] = schedule_upgrade_config
         __props__.__dict__["secret_manager_config"] = secret_manager_config
         __props__.__dict__["secret_sync_config"] = secret_sync_config
         __props__.__dict__["security_posture_config"] = security_posture_config
@@ -5660,7 +5705,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="managedOpentelemetryConfig")
     def managed_opentelemetry_config(self) -> pulumi.Output['outputs.ClusterManagedOpentelemetryConfig']:
         """
-        ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
@@ -6019,6 +6064,15 @@ class Cluster(pulumi.CustomResource):
         Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
         """
         return pulumi.get(self, "rollback_safe_upgrade")
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleUpgradeConfig")
+    def schedule_upgrade_config(self) -> pulumi.Output['outputs.ClusterScheduleUpgradeConfig']:
+        """
+        )
+        Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_upgrade_config")
 
     @_builtins.property
     @pulumi.getter(name="secretManagerConfig")

@@ -6,14 +6,34 @@ package com.pulumi.gcp.dns.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dns.inputs.ManagedZoneForwardingConfigOutboundEndpointArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZoneForwardingConfigTargetNameServerArgs;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ManagedZoneForwardingConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ManagedZoneForwardingConfigArgs Empty = new ManagedZoneForwardingConfigArgs();
+
+    /**
+     * The list of outbound endpoints to use for queries.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="outboundEndpoints")
+    private @Nullable Output<List<ManagedZoneForwardingConfigOutboundEndpointArgs>> outboundEndpoints;
+
+    /**
+     * @return The list of outbound endpoints to use for queries.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ManagedZoneForwardingConfigOutboundEndpointArgs>>> outboundEndpoints() {
+        return Optional.ofNullable(this.outboundEndpoints);
+    }
 
     /**
      * List of target name servers to forward to. Cloud DNS will
@@ -39,6 +59,7 @@ public final class ManagedZoneForwardingConfigArgs extends com.pulumi.resources.
     private ManagedZoneForwardingConfigArgs() {}
 
     private ManagedZoneForwardingConfigArgs(ManagedZoneForwardingConfigArgs $) {
+        this.outboundEndpoints = $.outboundEndpoints;
         this.targetNameServers = $.targetNameServers;
     }
 
@@ -58,6 +79,40 @@ public final class ManagedZoneForwardingConfigArgs extends com.pulumi.resources.
 
         public Builder(ManagedZoneForwardingConfigArgs defaults) {
             $ = new ManagedZoneForwardingConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param outboundEndpoints The list of outbound endpoints to use for queries.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundEndpoints(@Nullable Output<List<ManagedZoneForwardingConfigOutboundEndpointArgs>> outboundEndpoints) {
+            $.outboundEndpoints = outboundEndpoints;
+            return this;
+        }
+
+        /**
+         * @param outboundEndpoints The list of outbound endpoints to use for queries.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundEndpoints(List<ManagedZoneForwardingConfigOutboundEndpointArgs> outboundEndpoints) {
+            return outboundEndpoints(Output.of(outboundEndpoints));
+        }
+
+        /**
+         * @param outboundEndpoints The list of outbound endpoints to use for queries.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundEndpoints(ManagedZoneForwardingConfigOutboundEndpointArgs... outboundEndpoints) {
+            return outboundEndpoints(List.of(outboundEndpoints));
         }
 
         /**

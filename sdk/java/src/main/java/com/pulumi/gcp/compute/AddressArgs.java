@@ -297,6 +297,9 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
+     * * SYSTEM_MANAGED for regional internal IP address that is reserved and
+     *   managed internally. It can not be assigned to compute resources such as
+     *   VM and internal load balancer.
      *   This should only be set when using an Internal address.
      * 
      */
@@ -316,6 +319,9 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
+     * * SYSTEM_MANAGED for regional internal IP address that is reserved and
+     *   managed internally. It can not be assigned to compute resources such as
+     *   VM and internal load balancer.
      *   This should only be set when using an Internal address.
      * 
      */
@@ -344,7 +350,8 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
      * The URL of the subnetwork in which to reserve the address. If an IP
      * address is specified, it must be within the subnetwork&#39;s IP range.
      * This field can only be used with INTERNAL type with
-     * GCE_ENDPOINT/DNS_RESOLVER purposes.
+     * GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+     * when `ipv6EndpointType` is `VM` or `NETLB`.
      * 
      */
     @Import(name="subnetwork")
@@ -354,7 +361,8 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
      * @return The URL of the subnetwork in which to reserve the address. If an IP
      * address is specified, it must be within the subnetwork&#39;s IP range.
      * This field can only be used with INTERNAL type with
-     * GCE_ENDPOINT/DNS_RESOLVER purposes.
+     * GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+     * when `ipv6EndpointType` is `VM` or `NETLB`.
      * 
      */
     public Optional<Output<String>> subnetwork() {
@@ -758,6 +766,9 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
          * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
          *   configure Private Service Connect. Only global internal addresses can use
          *   this purpose.
+         * * SYSTEM_MANAGED for regional internal IP address that is reserved and
+         *   managed internally. It can not be assigned to compute resources such as
+         *   VM and internal load balancer.
          *   This should only be set when using an Internal address.
          * 
          * @return builder
@@ -781,6 +792,9 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
          * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
          *   configure Private Service Connect. Only global internal addresses can use
          *   this purpose.
+         * * SYSTEM_MANAGED for regional internal IP address that is reserved and
+         *   managed internally. It can not be assigned to compute resources such as
+         *   VM and internal load balancer.
          *   This should only be set when using an Internal address.
          * 
          * @return builder
@@ -817,7 +831,8 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
          * @param subnetwork The URL of the subnetwork in which to reserve the address. If an IP
          * address is specified, it must be within the subnetwork&#39;s IP range.
          * This field can only be used with INTERNAL type with
-         * GCE_ENDPOINT/DNS_RESOLVER purposes.
+         * GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+         * when `ipv6EndpointType` is `VM` or `NETLB`.
          * 
          * @return builder
          * 
@@ -831,7 +846,8 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
          * @param subnetwork The URL of the subnetwork in which to reserve the address. If an IP
          * address is specified, it must be within the subnetwork&#39;s IP range.
          * This field can only be used with INTERNAL type with
-         * GCE_ENDPOINT/DNS_RESOLVER purposes.
+         * GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+         * when `ipv6EndpointType` is `VM` or `NETLB`.
          * 
          * @return builder
          * 

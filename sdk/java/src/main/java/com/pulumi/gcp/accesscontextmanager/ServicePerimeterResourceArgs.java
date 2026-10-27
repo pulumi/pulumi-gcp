@@ -58,8 +58,10 @@ public final class ServicePerimeterResourceArgs extends com.pulumi.resources.Res
 
     /**
      * A GCP resource that is inside of the service perimeter.
-     * Currently only projects are allowed.
-     * Format: projects/{project_number}
+     * Projects, folders, and VPC networks are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
      * 
      */
     @Import(name="resource", required=true)
@@ -67,8 +69,10 @@ public final class ServicePerimeterResourceArgs extends com.pulumi.resources.Res
 
     /**
      * @return A GCP resource that is inside of the service perimeter.
-     * Currently only projects are allowed.
-     * Format: projects/{project_number}
+     * Projects, folders, and VPC networks are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
      * 
      */
     public Output<String> resource() {
@@ -155,8 +159,10 @@ public final class ServicePerimeterResourceArgs extends com.pulumi.resources.Res
 
         /**
          * @param resource A GCP resource that is inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * Projects, folders, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
          * 
          * @return builder
          * 
@@ -168,8 +174,10 @@ public final class ServicePerimeterResourceArgs extends com.pulumi.resources.Res
 
         /**
          * @param resource A GCP resource that is inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * Projects, folders, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
          * 
          * @return builder
          * 

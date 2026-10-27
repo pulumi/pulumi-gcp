@@ -14,6 +14,8 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type V2ConsumerPolicyEnableRule struct {
+	// List of service catalog names to be enabled in the format of catalogs/<catalog_name>, for example catalogs/default-cloud-services.
+	Catalogs []string `pulumi:"catalogs"`
 	// (Optional): List of service names to be enabled in the format of services/<service_name>
 	Services []string `pulumi:"services"`
 }
@@ -30,6 +32,8 @@ type V2ConsumerPolicyEnableRuleInput interface {
 }
 
 type V2ConsumerPolicyEnableRuleArgs struct {
+	// List of service catalog names to be enabled in the format of catalogs/<catalog_name>, for example catalogs/default-cloud-services.
+	Catalogs pulumi.StringArrayInput `pulumi:"catalogs"`
 	// (Optional): List of service names to be enabled in the format of services/<service_name>
 	Services pulumi.StringArrayInput `pulumi:"services"`
 }
@@ -83,6 +87,11 @@ func (o V2ConsumerPolicyEnableRuleOutput) ToV2ConsumerPolicyEnableRuleOutput() V
 
 func (o V2ConsumerPolicyEnableRuleOutput) ToV2ConsumerPolicyEnableRuleOutputWithContext(ctx context.Context) V2ConsumerPolicyEnableRuleOutput {
 	return o
+}
+
+// List of service catalog names to be enabled in the format of catalogs/<catalog_name>, for example catalogs/default-cloud-services.
+func (o V2ConsumerPolicyEnableRuleOutput) Catalogs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2ConsumerPolicyEnableRule) []string { return v.Catalogs }).(pulumi.StringArrayOutput)
 }
 
 // (Optional): List of service names to be enabled in the format of services/<service_name>

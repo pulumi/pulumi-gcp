@@ -175,8 +175,10 @@ public class ServicePerimeterDryRunResource extends com.pulumi.resources.CustomR
     }
     /**
      * A GCP resource that is inside of the service perimeter.
-     * Currently only projects are allowed.
-     * Format: projects/{project_number}
+     * Projects, folders, and VPC networks are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
      * 
      */
     @Export(name="resource", refs={String.class}, tree="[0]")
@@ -184,8 +186,10 @@ public class ServicePerimeterDryRunResource extends com.pulumi.resources.CustomR
 
     /**
      * @return A GCP resource that is inside of the service perimeter.
-     * Currently only projects are allowed.
-     * Format: projects/{project_number}
+     * Projects, folders, and VPC networks are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
      * 
      */
     public Output<String> resource() {

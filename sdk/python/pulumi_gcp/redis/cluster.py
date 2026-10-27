@@ -53,7 +53,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] acl_policy: Optional. The name of the ACL policy to attach to the cluster.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
-               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         :param pulumi.Input['ClusterAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input['ClusterCrossClusterReplicationConfigArgs'] cross_cluster_replication_config: Cross cluster replication config
@@ -190,7 +190,7 @@ class ClusterArgs:
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         Default value is `AUTH_MODE_DISABLED`.
-        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -547,7 +547,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] acl_policy: Optional. The name of the ACL policy to attach to the cluster.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
-               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         :param pulumi.Input['ClusterAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
@@ -737,7 +737,7 @@ class _ClusterState:
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         Default value is `AUTH_MODE_DISABLED`.
-        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -1925,7 +1925,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_policy: Optional. The name of the ACL policy to attach to the cluster.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
-               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         :param pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict', 'outputs.ClusterAutomatedBackupConfig']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict', 'outputs.ClusterCrossClusterReplicationConfig']] cross_cluster_replication_config: Cross cluster replication config
@@ -2763,7 +2763,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_policy: Optional. The name of the ACL policy to attach to the cluster.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
-               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         :param pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict', 'outputs.ClusterAutomatedBackupConfig']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
@@ -2912,7 +2912,7 @@ class Cluster(pulumi.CustomResource):
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         Default value is `AUTH_MODE_DISABLED`.
-        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         """
         return pulumi.get(self, "authorization_mode")
 

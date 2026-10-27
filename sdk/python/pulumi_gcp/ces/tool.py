@@ -1032,6 +1032,7 @@ class Tool(pulumi.CustomResource):
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
                             "temperature": float(1),
+                            "thinking_level": "LOW",
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
@@ -1040,6 +1041,7 @@ class Tool(pulumi.CustomResource):
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
                             "temperature": float(1),
+                            "thinking_level": "LOW",
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
@@ -1047,6 +1049,10 @@ class Tool(pulumi.CustomResource):
                     "grounding_config": {
                         "grounding_level": float(3),
                         "disabled": False,
+                    },
+                    "snippets_config": {
+                        "enable_snippets": True,
+                        "max_snippets": 5,
                     },
                 }],
                 "engine_source": {
@@ -1486,6 +1492,7 @@ class Tool(pulumi.CustomResource):
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
                             "temperature": float(1),
+                            "thinking_level": "LOW",
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
@@ -1494,6 +1501,7 @@ class Tool(pulumi.CustomResource):
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
                             "temperature": float(1),
+                            "thinking_level": "LOW",
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
@@ -1501,6 +1509,10 @@ class Tool(pulumi.CustomResource):
                     "grounding_config": {
                         "grounding_level": float(3),
                         "disabled": False,
+                    },
+                    "snippets_config": {
+                        "enable_snippets": True,
+                        "max_snippets": 5,
                     },
                 }],
                 "engine_source": {

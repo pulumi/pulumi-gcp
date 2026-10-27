@@ -46,6 +46,36 @@ namespace Pulumi.Gcp.SaaSRuntime
     /// 
     /// });
     /// ```
+    /// ### Saas Runtime Saas Application Template
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.SaaSRuntime.SaaS("example", new()
+    ///     {
+    ///         SaasId = "example-saas",
+    ///         Location = "us-central1",
+    ///         Locations = new[]
+    ///         {
+    ///             new Gcp.SaaSRuntime.Inputs.SaaSLocationArgs
+    ///             {
+    ///                 Name = "us-central1",
+    ///             },
+    ///         },
+    ///         ApplicationTemplate = new Gcp.SaaSRuntime.Inputs.SaaSApplicationTemplateArgs
+    ///         {
+    ///             ApplicationTemplate = "projects/my-project-name/locations/us-central1/spaces/my-space/applicationTemplates/my-composite",
+    ///             Revision = "projects/my-project-name/locations/us-central1/spaces/my-space/applicationTemplates/my-composite/revisions/r-1",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -78,6 +108,51 @@ namespace Pulumi.Gcp.SaaSRuntime
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
+        /// Reference to a composite Application Design Center ApplicationTemplate.
+        /// When `Revision` is set, the service imports the template components into
+        /// equivalent UnitKind, Release and Blueprint resources. Create waits for
+        /// the import to finish. Update waits when the template changes or when the
+        /// Saas was failed, running, or not yet started. Both fail if `State`
+        /// becomes `STATE_FAILED`.
+        /// * The import creates UnitKinds (named `u-&lt;rootModuleId&gt;-&lt;6 chars&gt;`) and
+        /// their Releases, and copies the Saas, the UnitKinds and the Releases to
+        /// `Global` and to the other `Locations`. Terraform doesn't manage or
+        /// delete any of them, including when this field changes. Before
+        /// destroying or replacing the Saas (including `pulumi up -replace`
+        /// and recreating a tainted Saas), delete the imported UnitKinds and
+        /// Releases in every location: the API rejects the deletion of a Saas
+        /// that still has UnitKinds.
+        /// * After a failed import, fix the template and change `Revision`. Any
+        /// apply that changes a failed Saas restarts the import, and the provider
+        /// waits for the restarted import to finish or fail again.
+        /// * While an import is running, the provider retries template or revision
+        /// updates and DELETE until it finishes, within the resource timeouts.
+        /// * Don't create Terraform-managed UnitKinds whose
+        /// `ApplicationTemplateComponent` matches a component of this
+        /// template: the import adopts them and overwrites their fields.
+        /// * Set this field only on the source-region Saas, not on the copies in
+        /// `Global` or other `Locations`.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("applicationTemplate")]
+        public Output<Outputs.SaaSApplicationTemplate?> ApplicationTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the repository in Artifact Registry for system-generated
+        /// Blueprints, for example the Blueprints of imported ApplicationTemplates.
+        /// </summary>
+        [Output("blueprintRepo")]
+        public Output<string> BlueprintRepo { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of conditions which indicate the various conditions this resource can
+        /// have.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("conditions")]
+        public Output<ImmutableArray<Outputs.SaaSCondition>> Conditions { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the resource was created.
         /// </summary>
         [Output("createTime")]
@@ -105,6 +180,13 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// If the state is `STATE_FAILED`, the corresponding error code and message.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("errors")]
+        public Output<ImmutableArray<Outputs.SaaSError>> Errors { get; private set; } = null!;
 
         /// <summary>
         /// An opaque value that uniquely identifies a version or
@@ -164,6 +246,19 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// </summary>
         [Output("saasId")]
         public Output<string> SaasId { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the Saas. It is always `STATE_ACTIVE` if
+        /// `application_template.revision` is empty.
+        /// Possible values:
+        /// STATE_UNSPECIFIED
+        /// STATE_TYPE_UNSPECIFIED
+        /// STATE_ACTIVE
+        /// STATE_RUNNING
+        /// STATE_FAILED
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier of the resource. UID is unique in the time
@@ -252,6 +347,36 @@ namespace Pulumi.Gcp.SaaSRuntime
         }
 
         /// <summary>
+        /// Reference to a composite Application Design Center ApplicationTemplate.
+        /// When `Revision` is set, the service imports the template components into
+        /// equivalent UnitKind, Release and Blueprint resources. Create waits for
+        /// the import to finish. Update waits when the template changes or when the
+        /// Saas was failed, running, or not yet started. Both fail if `State`
+        /// becomes `STATE_FAILED`.
+        /// * The import creates UnitKinds (named `u-&lt;rootModuleId&gt;-&lt;6 chars&gt;`) and
+        /// their Releases, and copies the Saas, the UnitKinds and the Releases to
+        /// `Global` and to the other `Locations`. Terraform doesn't manage or
+        /// delete any of them, including when this field changes. Before
+        /// destroying or replacing the Saas (including `pulumi up -replace`
+        /// and recreating a tainted Saas), delete the imported UnitKinds and
+        /// Releases in every location: the API rejects the deletion of a Saas
+        /// that still has UnitKinds.
+        /// * After a failed import, fix the template and change `Revision`. Any
+        /// apply that changes a failed Saas restarts the import, and the provider
+        /// waits for the restarted import to finish or fail again.
+        /// * While an import is running, the provider retries template or revision
+        /// updates and DELETE until it finishes, within the resource timeouts.
+        /// * Don't create Terraform-managed UnitKinds whose
+        /// `ApplicationTemplateComponent` matches a component of this
+        /// template: the import adopts them and overwrites their fields.
+        /// * Set this field only on the source-region Saas, not on the copies in
+        /// `Global` or other `Locations`.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("applicationTemplate")]
+        public Input<Inputs.SaaSApplicationTemplateArgs>? ApplicationTemplate { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -336,6 +461,57 @@ namespace Pulumi.Gcp.SaaSRuntime
         }
 
         /// <summary>
+        /// Reference to a composite Application Design Center ApplicationTemplate.
+        /// When `Revision` is set, the service imports the template components into
+        /// equivalent UnitKind, Release and Blueprint resources. Create waits for
+        /// the import to finish. Update waits when the template changes or when the
+        /// Saas was failed, running, or not yet started. Both fail if `State`
+        /// becomes `STATE_FAILED`.
+        /// * The import creates UnitKinds (named `u-&lt;rootModuleId&gt;-&lt;6 chars&gt;`) and
+        /// their Releases, and copies the Saas, the UnitKinds and the Releases to
+        /// `Global` and to the other `Locations`. Terraform doesn't manage or
+        /// delete any of them, including when this field changes. Before
+        /// destroying or replacing the Saas (including `pulumi up -replace`
+        /// and recreating a tainted Saas), delete the imported UnitKinds and
+        /// Releases in every location: the API rejects the deletion of a Saas
+        /// that still has UnitKinds.
+        /// * After a failed import, fix the template and change `Revision`. Any
+        /// apply that changes a failed Saas restarts the import, and the provider
+        /// waits for the restarted import to finish or fail again.
+        /// * While an import is running, the provider retries template or revision
+        /// updates and DELETE until it finishes, within the resource timeouts.
+        /// * Don't create Terraform-managed UnitKinds whose
+        /// `ApplicationTemplateComponent` matches a component of this
+        /// template: the import adopts them and overwrites their fields.
+        /// * Set this field only on the source-region Saas, not on the copies in
+        /// `Global` or other `Locations`.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("applicationTemplate")]
+        public Input<Inputs.SaaSApplicationTemplateGetArgs>? ApplicationTemplate { get; set; }
+
+        /// <summary>
+        /// Name of the repository in Artifact Registry for system-generated
+        /// Blueprints, for example the Blueprints of imported ApplicationTemplates.
+        /// </summary>
+        [Input("blueprintRepo")]
+        public Input<string>? BlueprintRepo { get; set; }
+
+        [Input("conditions")]
+        private InputList<Inputs.SaaSConditionGetArgs>? _conditions;
+
+        /// <summary>
+        /// A set of conditions which indicate the various conditions this resource can
+        /// have.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.SaaSConditionGetArgs> Conditions
+        {
+            get => _conditions ?? (_conditions = new InputList<Inputs.SaaSConditionGetArgs>());
+            set => _conditions = value;
+        }
+
+        /// <summary>
         /// The timestamp when the resource was created.
         /// </summary>
         [Input("createTime")]
@@ -378,6 +554,19 @@ namespace Pulumi.Gcp.SaaSRuntime
                 var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
+        }
+
+        [Input("errors")]
+        private InputList<Inputs.SaaSErrorGetArgs>? _errors;
+
+        /// <summary>
+        /// If the state is `STATE_FAILED`, the corresponding error code and message.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.SaaSErrorGetArgs> Errors
+        {
+            get => _errors ?? (_errors = new InputList<Inputs.SaaSErrorGetArgs>());
+            set => _errors = value;
         }
 
         /// <summary>
@@ -460,6 +649,19 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// </summary>
         [Input("saasId")]
         public Input<string>? SaasId { get; set; }
+
+        /// <summary>
+        /// State of the Saas. It is always `STATE_ACTIVE` if
+        /// `application_template.revision` is empty.
+        /// Possible values:
+        /// STATE_UNSPECIFIED
+        /// STATE_TYPE_UNSPECIFIED
+        /// STATE_ACTIVE
+        /// STATE_RUNNING
+        /// STATE_FAILED
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The unique identifier of the resource. UID is unique in the time

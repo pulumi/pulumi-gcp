@@ -24,6 +24,10 @@ __all__ = [
     'SchemaIamBindingCondition',
     'SchemaIamMemberCondition',
     'SubscriptionBigqueryConfig',
+    'SubscriptionBigtableConfig',
+    'SubscriptionBigtableConfigColumnFamilyMapping',
+    'SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey',
+    'SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema',
     'SubscriptionCloudStorageConfig',
     'SubscriptionCloudStorageConfigAvroConfig',
     'SubscriptionCloudStorageConfigTextConfig',
@@ -58,6 +62,10 @@ __all__ = [
     'TopicMessageTransformJavascriptUdf',
     'TopicSchemaSettings',
     'GetSubscriptionBigqueryConfigResult',
+    'GetSubscriptionBigtableConfigResult',
+    'GetSubscriptionBigtableConfigColumnFamilyMappingResult',
+    'GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyResult',
+    'GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaResult',
     'GetSubscriptionCloudStorageConfigResult',
     'GetSubscriptionCloudStorageConfigAvroConfigResult',
     'GetSubscriptionCloudStorageConfigTextConfigResult',
@@ -468,6 +476,260 @@ class SubscriptionBigqueryConfig(dict):
         The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
         """
         return pulumi.get(self, "write_metadata")
+
+
+@pulumi.output_type
+class SubscriptionBigtableConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appProfileId":
+            suggest = "app_profile_id"
+        elif key == "columnFamilyMapping":
+            suggest = "column_family_mapping"
+        elif key == "serviceAccountEmail":
+            suggest = "service_account_email"
+        elif key == "writeMetadata":
+            suggest = "write_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionBigtableConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionBigtableConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionBigtableConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: _builtins.str,
+                 app_profile_id: Optional[_builtins.str] = None,
+                 column_family_mapping: Optional['outputs.SubscriptionBigtableConfigColumnFamilyMapping'] = None,
+                 service_account_email: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None,
+                 write_metadata: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str table: The unique name of the table to write messages to, of the form
+               `projects/{project}/instances/{instance}/tables/{table}`.
+        :param _builtins.str app_profile_id: The app profile to use for the Bigtable writes. If not specified, the "default" application
+               profile will be used. The app profile must use single-cluster routing.
+        :param 'SubscriptionBigtableConfigColumnFamilyMappingArgs' column_family_mapping: Configuration that allows writing row keys and/or columns based on fields in the input message.
+               The input message format must be JSON if this field is set.
+               If this field is set, top-level message fields are written to the `data` column family with
+               the field name as the column qualifier by default, or to an existing column family whose name
+               matches the field name. The cell timestamp is the message publish time.
+               If this field is not set, the row key is constructed from the subscription name, message ID hash,
+               and message ID delimited by `#`, and the message bytes are written to the `data` column family
+               with an empty-string column qualifier.
+               Structure is documented below.
+        :param _builtins.str service_account_email: The service account to use to write to Bigtable. The subscription creator or updater that
+               specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+               If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        :param _builtins.str state: (Output)
+               An output-only field that indicates whether or not the subscription can receive messages.
+        :param _builtins.bool write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+               additional columns in the table under the `pubsub_metadata` column family. The subscription name,
+               messageId, and publishTime fields are put in their own columns while all other message properties
+               (other than data) are written to a JSON object in the attributes column.
+        """
+        pulumi.set(__self__, "table", table)
+        if app_profile_id is not None:
+            pulumi.set(__self__, "app_profile_id", app_profile_id)
+        if column_family_mapping is not None:
+            pulumi.set(__self__, "column_family_mapping", column_family_mapping)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if write_metadata is not None:
+            pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> _builtins.str:
+        """
+        The unique name of the table to write messages to, of the form
+        `projects/{project}/instances/{instance}/tables/{table}`.
+        """
+        return pulumi.get(self, "table")
+
+    @_builtins.property
+    @pulumi.getter(name="appProfileId")
+    def app_profile_id(self) -> Optional[_builtins.str]:
+        """
+        The app profile to use for the Bigtable writes. If not specified, the "default" application
+        profile will be used. The app profile must use single-cluster routing.
+        """
+        return pulumi.get(self, "app_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="columnFamilyMapping")
+    def column_family_mapping(self) -> Optional['outputs.SubscriptionBigtableConfigColumnFamilyMapping']:
+        """
+        Configuration that allows writing row keys and/or columns based on fields in the input message.
+        The input message format must be JSON if this field is set.
+        If this field is set, top-level message fields are written to the `data` column family with
+        the field name as the column qualifier by default, or to an existing column family whose name
+        matches the field name. The cell timestamp is the message publish time.
+        If this field is not set, the row key is constructed from the subscription name, message ID hash,
+        and message ID delimited by `#`, and the message bytes are written to the `data` column family
+        with an empty-string column qualifier.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "column_family_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[_builtins.str]:
+        """
+        The service account to use to write to Bigtable. The subscription creator or updater that
+        specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+        If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        An output-only field that indicates whether or not the subscription can receive messages.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> Optional[_builtins.bool]:
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+        additional columns in the table under the `pubsub_metadata` column family. The subscription name,
+        messageId, and publishTime fields are put in their own columns while all other message properties
+        (other than data) are written to a JSON object in the attributes column.
+        """
+        return pulumi.get(self, "write_metadata")
+
+
+@pulumi.output_type
+class SubscriptionBigtableConfigColumnFamilyMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delimitedKey":
+            suggest = "delimited_key"
+        elif key == "rowKeySchema":
+            suggest = "row_key_schema"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionBigtableConfigColumnFamilyMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionBigtableConfigColumnFamilyMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionBigtableConfigColumnFamilyMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delimited_key: Optional['outputs.SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey'] = None,
+                 row_key_schema: Optional['outputs.SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema'] = None):
+        """
+        :param 'SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs' delimited_key: If set, the row key is constructed from the given key fields and delimiter. All key fields
+               must be present in the message; otherwise, the message remains in the subscription backlog.
+               Structure is documented below.
+        :param 'SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs' row_key_schema: If set, the row key is constructed from the field names of the table's
+               [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+               If a field is nullable in the structured row key, it need not be present in the message;
+               null will be used instead.
+        """
+        if delimited_key is not None:
+            pulumi.set(__self__, "delimited_key", delimited_key)
+        if row_key_schema is not None:
+            pulumi.set(__self__, "row_key_schema", row_key_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="delimitedKey")
+    def delimited_key(self) -> Optional['outputs.SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey']:
+        """
+        If set, the row key is constructed from the given key fields and delimiter. All key fields
+        must be present in the message; otherwise, the message remains in the subscription backlog.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delimited_key")
+
+    @_builtins.property
+    @pulumi.getter(name="rowKeySchema")
+    def row_key_schema(self) -> Optional['outputs.SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema']:
+        """
+        If set, the row key is constructed from the field names of the table's
+        [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+        If a field is nullable in the structured row key, it need not be present in the message;
+        null will be used instead.
+        """
+        return pulumi.get(self, "row_key_schema")
+
+
+@pulumi.output_type
+class SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyFields":
+            suggest = "key_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key_fields: Sequence[_builtins.str],
+                 delimiter: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] key_fields: The key fields to construct the row key from. The fields must be present in the message
+               as top-level fields; JSON path expressions will not traverse into nested objects.
+        :param _builtins.str delimiter: The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+               (for example, `Iw==` for `#`). Must be specified if multiple key fields are used. The
+               delimiter must contain at least 1 character and at most 50 characters.
+        """
+        pulumi.set(__self__, "key_fields", key_fields)
+        if delimiter is not None:
+            pulumi.set(__self__, "delimiter", delimiter)
+
+    @_builtins.property
+    @pulumi.getter(name="keyFields")
+    def key_fields(self) -> Sequence[_builtins.str]:
+        """
+        The key fields to construct the row key from. The fields must be present in the message
+        as top-level fields; JSON path expressions will not traverse into nested objects.
+        """
+        return pulumi.get(self, "key_fields")
+
+    @_builtins.property
+    @pulumi.getter
+    def delimiter(self) -> Optional[_builtins.str]:
+        """
+        The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+        (for example, `Iw==` for `#`). Must be specified if multiple key fields are used. The
+        delimiter must contain at least 1 character and at most 50 characters.
+        """
+        return pulumi.get(self, "delimiter")
+
+
+@pulumi.output_type
+class SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -2677,6 +2939,191 @@ class GetSubscriptionBigqueryConfigResult(dict):
         The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
         """
         return pulumi.get(self, "write_metadata")
+
+
+@pulumi.output_type
+class GetSubscriptionBigtableConfigResult(dict):
+    def __init__(__self__, *,
+                 app_profile_id: _builtins.str,
+                 column_family_mappings: Sequence['outputs.GetSubscriptionBigtableConfigColumnFamilyMappingResult'],
+                 service_account_email: _builtins.str,
+                 state: _builtins.str,
+                 table: _builtins.str,
+                 write_metadata: _builtins.bool):
+        """
+        :param _builtins.str app_profile_id: The app profile to use for the Bigtable writes. If not specified, the "default" application
+               profile will be used. The app profile must use single-cluster routing.
+        :param Sequence['GetSubscriptionBigtableConfigColumnFamilyMappingArgs'] column_family_mappings: Configuration that allows writing row keys and/or columns based on fields in the input message.
+               The input message format must be JSON if this field is set.
+               
+               If this field is set, top-level message fields are written to the 'data' column family with
+               the field name as the column qualifier by default, or to an existing column family whose name
+               matches the field name. The cell timestamp is the message publish time.
+               
+               If this field is not set, the row key is constructed from the subscription name, message ID hash,
+               and message ID delimited by '#', and the message bytes are written to the 'data' column family
+               with an empty-string column qualifier.
+        :param _builtins.str service_account_email: The service account to use to write to Bigtable. The subscription creator or updater that
+               specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+               If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        :param _builtins.str state: An output-only field that indicates whether or not the subscription can receive messages.
+        :param _builtins.str table: The unique name of the table to write messages to, of the form
+               'projects/{project}/instances/{instance}/tables/{table}'.
+        :param _builtins.bool write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+               additional columns in the table under the 'pubsub_metadata' column family. The subscription name,
+               messageId, and publishTime fields are put in their own columns while all other message properties
+               (other than data) are written to a JSON object in the attributes column.
+        """
+        pulumi.set(__self__, "app_profile_id", app_profile_id)
+        pulumi.set(__self__, "column_family_mappings", column_family_mappings)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "table", table)
+        pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @_builtins.property
+    @pulumi.getter(name="appProfileId")
+    def app_profile_id(self) -> _builtins.str:
+        """
+        The app profile to use for the Bigtable writes. If not specified, the "default" application
+        profile will be used. The app profile must use single-cluster routing.
+        """
+        return pulumi.get(self, "app_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="columnFamilyMappings")
+    def column_family_mappings(self) -> Sequence['outputs.GetSubscriptionBigtableConfigColumnFamilyMappingResult']:
+        """
+        Configuration that allows writing row keys and/or columns based on fields in the input message.
+        The input message format must be JSON if this field is set.
+
+        If this field is set, top-level message fields are written to the 'data' column family with
+        the field name as the column qualifier by default, or to an existing column family whose name
+        matches the field name. The cell timestamp is the message publish time.
+
+        If this field is not set, the row key is constructed from the subscription name, message ID hash,
+        and message ID delimited by '#', and the message bytes are written to the 'data' column family
+        with an empty-string column qualifier.
+        """
+        return pulumi.get(self, "column_family_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> _builtins.str:
+        """
+        The service account to use to write to Bigtable. The subscription creator or updater that
+        specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+        If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        An output-only field that indicates whether or not the subscription can receive messages.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> _builtins.str:
+        """
+        The unique name of the table to write messages to, of the form
+        'projects/{project}/instances/{instance}/tables/{table}'.
+        """
+        return pulumi.get(self, "table")
+
+    @_builtins.property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> _builtins.bool:
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+        additional columns in the table under the 'pubsub_metadata' column family. The subscription name,
+        messageId, and publishTime fields are put in their own columns while all other message properties
+        (other than data) are written to a JSON object in the attributes column.
+        """
+        return pulumi.get(self, "write_metadata")
+
+
+@pulumi.output_type
+class GetSubscriptionBigtableConfigColumnFamilyMappingResult(dict):
+    def __init__(__self__, *,
+                 delimited_keys: Sequence['outputs.GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyResult'],
+                 row_key_schemas: Sequence['outputs.GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaResult']):
+        """
+        :param Sequence['GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs'] delimited_keys: If set, the row key is constructed from the given key fields and delimiter. All key fields
+               must be present in the message; otherwise, the message remains in the subscription backlog.
+        :param Sequence['GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs'] row_key_schemas: If set, the row key is constructed from the field names of the table's
+               [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+               If a field is nullable in the structured row key, it need not be present in the message;
+               null will be used instead.
+        """
+        pulumi.set(__self__, "delimited_keys", delimited_keys)
+        pulumi.set(__self__, "row_key_schemas", row_key_schemas)
+
+    @_builtins.property
+    @pulumi.getter(name="delimitedKeys")
+    def delimited_keys(self) -> Sequence['outputs.GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyResult']:
+        """
+        If set, the row key is constructed from the given key fields and delimiter. All key fields
+        must be present in the message; otherwise, the message remains in the subscription backlog.
+        """
+        return pulumi.get(self, "delimited_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="rowKeySchemas")
+    def row_key_schemas(self) -> Sequence['outputs.GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaResult']:
+        """
+        If set, the row key is constructed from the field names of the table's
+        [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+        If a field is nullable in the structured row key, it need not be present in the message;
+        null will be used instead.
+        """
+        return pulumi.get(self, "row_key_schemas")
+
+
+@pulumi.output_type
+class GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyResult(dict):
+    def __init__(__self__, *,
+                 delimiter: _builtins.str,
+                 key_fields: Sequence[_builtins.str]):
+        """
+        :param _builtins.str delimiter: The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+               (for example, 'Iw==' for '#'). Must be specified if multiple key fields are used. The
+               delimiter must contain at least 1 character and at most 50 characters.
+        :param Sequence[_builtins.str] key_fields: The key fields to construct the row key from. The fields must be present in the message
+               as top-level fields; JSON path expressions will not traverse into nested objects.
+        """
+        pulumi.set(__self__, "delimiter", delimiter)
+        pulumi.set(__self__, "key_fields", key_fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def delimiter(self) -> _builtins.str:
+        """
+        The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+        (for example, 'Iw==' for '#'). Must be specified if multiple key fields are used. The
+        delimiter must contain at least 1 character and at most 50 characters.
+        """
+        return pulumi.get(self, "delimiter")
+
+    @_builtins.property
+    @pulumi.getter(name="keyFields")
+    def key_fields(self) -> Sequence[_builtins.str]:
+        """
+        The key fields to construct the row key from. The fields must be present in the message
+        as top-level fields; JSON path expressions will not traverse into nested objects.
+        """
+        return pulumi.get(self, "key_fields")
+
+
+@pulumi.output_type
+class GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaResult(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

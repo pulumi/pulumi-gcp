@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.Ces
     ///         {
     ///             Model = "gemini-3.0-flash-001",
     ///             Temperature = 0.5,
+    ///             ThinkingLevel = "LOW",
     ///         },
     ///         EvaluationMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsArgs
     ///         {

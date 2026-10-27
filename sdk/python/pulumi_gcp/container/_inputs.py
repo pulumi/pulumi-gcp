@@ -651,6 +651,8 @@ __all__ = [
     'ClusterResourceUsageExportConfigBigqueryDestinationArgsDict',
     'ClusterRollbackSafeUpgradeArgs',
     'ClusterRollbackSafeUpgradeArgsDict',
+    'ClusterScheduleUpgradeConfigArgs',
+    'ClusterScheduleUpgradeConfigArgsDict',
     'ClusterSecretManagerConfigArgs',
     'ClusterSecretManagerConfigArgsDict',
     'ClusterSecretManagerConfigRotationConfigArgs',
@@ -9364,7 +9366,13 @@ class ClusterManagedMachineLearningDiagnosticsConfigArgs:
 class ClusterManagedOpentelemetryConfigArgsDict(TypedDict):
     scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+    The scope of the Managed OpenTelemetry pipeline. Available options include:
+    * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+    * `NONE`: Disables the Managed OpenTelemetry pipeline.
+
+    See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+
+    > **Note:** Removing the `managed_opentelemetry_config` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
     """
 
 @pulumi.input_type
@@ -9372,7 +9380,13 @@ class ClusterManagedOpentelemetryConfigArgs:
     def __init__(__self__, *,
                  scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] scope: The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+        :param pulumi.Input[_builtins.str] scope: The scope of the Managed OpenTelemetry pipeline. Available options include:
+               * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+               * `NONE`: Disables the Managed OpenTelemetry pipeline.
+               
+               See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+               
+               > **Note:** Removing the `managed_opentelemetry_config` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
         """
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
@@ -9381,7 +9395,13 @@ class ClusterManagedOpentelemetryConfigArgs:
     @pulumi.getter
     def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+        The scope of the Managed OpenTelemetry pipeline. Available options include:
+        * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+        * `NONE`: Disables the Managed OpenTelemetry pipeline.
+
+        See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+
+        > **Note:** Removing the `managed_opentelemetry_config` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
         """
         return pulumi.get(self, "scope")
 
@@ -14356,6 +14376,7 @@ class ClusterNodeConfigSandboxConfigArgsDict(TypedDict):
     Accepted values are:
 
     * `"GVISOR"`: Pods run within a gVisor sandbox.
+    * `"MICROVM"`: Pods run within a microVM sandbox.
     """
 
 @pulumi.input_type
@@ -14372,6 +14393,7 @@ class ClusterNodeConfigSandboxConfigArgs:
                Accepted values are:
                
                * `"GVISOR"`: Pods run within a gVisor sandbox.
+               * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         if sandbox_type is not None:
             warnings.warn("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""", DeprecationWarning)
@@ -14405,6 +14427,7 @@ class ClusterNodeConfigSandboxConfigArgs:
         Accepted values are:
 
         * `"GVISOR"`: Pods run within a gVisor sandbox.
+        * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         return pulumi.get(self, "type")
 
@@ -21469,6 +21492,7 @@ class ClusterNodePoolNodeConfigSandboxConfigArgsDict(TypedDict):
     Accepted values are:
 
     * `"GVISOR"`: Pods run within a gVisor sandbox.
+    * `"MICROVM"`: Pods run within a microVM sandbox.
     """
 
 @pulumi.input_type
@@ -21485,6 +21509,7 @@ class ClusterNodePoolNodeConfigSandboxConfigArgs:
                Accepted values are:
                
                * `"GVISOR"`: Pods run within a gVisor sandbox.
+               * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         if sandbox_type is not None:
             warnings.warn("""`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.""", DeprecationWarning)
@@ -21518,6 +21543,7 @@ class ClusterNodePoolNodeConfigSandboxConfigArgs:
         Accepted values are:
 
         * `"GVISOR"`: Pods run within a gVisor sandbox.
+        * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         return pulumi.get(self, "type")
 
@@ -23113,6 +23139,34 @@ class ClusterRollbackSafeUpgradeArgs:
     @control_plane_soak_duration.setter
     def control_plane_soak_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane_soak_duration", value)
+
+
+class ClusterScheduleUpgradeConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether scheduled upgrades are enabled on the cluster.
+    """
+
+@pulumi.input_type
+class ClusterScheduleUpgradeConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether scheduled upgrades are enabled on the cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether scheduled upgrades are enabled on the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
 
 
 class ClusterSecretManagerConfigArgsDict(TypedDict):

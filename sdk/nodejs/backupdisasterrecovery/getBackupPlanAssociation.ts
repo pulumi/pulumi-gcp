@@ -51,6 +51,7 @@ export interface GetBackupPlanAssociationArgs {
  * A collection of values returned by getBackupPlanAssociation.
  */
 export interface GetBackupPlanAssociationResult {
+    readonly autoProtectionPolicyBinding: string;
     readonly backupPlan: string;
     readonly backupPlanAssociationId: string;
     readonly createTime: string;

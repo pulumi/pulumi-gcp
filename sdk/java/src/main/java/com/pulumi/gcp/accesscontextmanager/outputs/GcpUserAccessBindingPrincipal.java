@@ -12,6 +12,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GcpUserAccessBindingPrincipal {
     /**
+     * @return Immutable. The IAM principal identifier of the federated workforce or workload to
+     * assign the policy to. Examples include the following:
+     * * Single principal:
+     *   `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+     * * All workloads in a workload identity pool:
+     *   `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+     * * All Workforce Pools in a Google Cloud organization:
+     *   `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+     *   Bindings created for all Workforce Pools in a Google Cloud organization
+     *   support only `scopedAccessSettings` with the `restrictedProject`
+     *   client scope and active `sessionSettings`. No other configurations are
+     *   allowed.
+     * 
+     */
+    private @Nullable String federatedPrincipal;
+    /**
      * @return Immutable. Service account email used to assign policies to a single service account.
      * If a service account is subject to multiple policies (e.g., if there is a policy for all
      * service accounts in a project and a policy for the service account), the closest (i.e.
@@ -27,6 +43,24 @@ public final class GcpUserAccessBindingPrincipal {
     private @Nullable String serviceAccountProjectNumber;
 
     private GcpUserAccessBindingPrincipal() {}
+    /**
+     * @return Immutable. The IAM principal identifier of the federated workforce or workload to
+     * assign the policy to. Examples include the following:
+     * * Single principal:
+     *   `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+     * * All workloads in a workload identity pool:
+     *   `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+     * * All Workforce Pools in a Google Cloud organization:
+     *   `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+     *   Bindings created for all Workforce Pools in a Google Cloud organization
+     *   support only `scopedAccessSettings` with the `restrictedProject`
+     *   client scope and active `sessionSettings`. No other configurations are
+     *   allowed.
+     * 
+     */
+    public Optional<String> federatedPrincipal() {
+        return Optional.ofNullable(this.federatedPrincipal);
+    }
     /**
      * @return Immutable. Service account email used to assign policies to a single service account.
      * If a service account is subject to multiple policies (e.g., if there is a policy for all
@@ -55,15 +89,23 @@ public final class GcpUserAccessBindingPrincipal {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String federatedPrincipal;
         private @Nullable String serviceAccount;
         private @Nullable String serviceAccountProjectNumber;
         public Builder() {}
         public Builder(GcpUserAccessBindingPrincipal defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.federatedPrincipal = defaults.federatedPrincipal;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.serviceAccountProjectNumber = defaults.serviceAccountProjectNumber;
         }
 
+        @CustomType.Setter
+        public Builder federatedPrincipal(@Nullable String federatedPrincipal) {
+
+            this.federatedPrincipal = federatedPrincipal;
+            return this;
+        }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
 
@@ -78,6 +120,7 @@ public final class GcpUserAccessBindingPrincipal {
         }
         public GcpUserAccessBindingPrincipal build() {
             final var _resultValue = new GcpUserAccessBindingPrincipal();
+            _resultValue.federatedPrincipal = federatedPrincipal;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.serviceAccountProjectNumber = serviceAccountProjectNumber;
             return _resultValue;

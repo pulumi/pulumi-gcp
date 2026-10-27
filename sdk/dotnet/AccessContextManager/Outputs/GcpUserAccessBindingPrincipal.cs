@@ -14,6 +14,21 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     public sealed class GcpUserAccessBindingPrincipal
     {
         /// <summary>
+        /// Immutable. The IAM principal identifier of the federated workforce or workload to
+        /// assign the policy to. Examples include the following:
+        /// * Single principal:
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+        /// * All workloads in a workload identity pool:
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+        /// * All Workforce Pools in a Google Cloud organization:
+        /// `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+        /// Bindings created for all Workforce Pools in a Google Cloud organization
+        /// support only `ScopedAccessSettings` with the `RestrictedProject`
+        /// client scope and active `SessionSettings`. No other configurations are
+        /// allowed.
+        /// </summary>
+        public readonly string? FederatedPrincipal;
+        /// <summary>
         /// Immutable. Service account email used to assign policies to a single service account.
         /// If a service account is subject to multiple policies (e.g., if there is a policy for all
         /// service accounts in a project and a policy for the service account), the closest (i.e.
@@ -28,10 +43,13 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
 
         [OutputConstructor]
         private GcpUserAccessBindingPrincipal(
+            string? federatedPrincipal,
+
             string? serviceAccount,
 
             string? serviceAccountProjectNumber)
         {
+            FederatedPrincipal = federatedPrincipal;
             ServiceAccount = serviceAccount;
             ServiceAccountProjectNumber = serviceAccountProjectNumber;
         }

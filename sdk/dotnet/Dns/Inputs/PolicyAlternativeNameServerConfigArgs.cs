@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Dns.Inputs
 
     public sealed class PolicyAlternativeNameServerConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("outboundEndpoints")]
+        private InputList<Inputs.PolicyAlternativeNameServerConfigOutboundEndpointArgs>? _outboundEndpoints;
+
+        /// <summary>
+        /// The list of outbound endpoints to use for queries.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.PolicyAlternativeNameServerConfigOutboundEndpointArgs> OutboundEndpoints
+        {
+            get => _outboundEndpoints ?? (_outboundEndpoints = new InputList<Inputs.PolicyAlternativeNameServerConfigOutboundEndpointArgs>());
+            set => _outboundEndpoints = value;
+        }
+
         [Input("targetNameServers", required: true)]
         private InputList<Inputs.PolicyAlternativeNameServerConfigTargetNameServerArgs>? _targetNameServers;
 

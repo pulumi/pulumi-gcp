@@ -57606,7 +57606,6 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict(TypedDict)
     """
     request_bodies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgsDict']]]]]
     """
-    (Optional, Beta)
     A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
     Structure is documented below.
     """
@@ -57650,8 +57649,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
                  target_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]] request_bodies: (Optional, Beta)
-               A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]] request_bodies: A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
@@ -57696,7 +57694,6 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @pulumi.getter(name="requestBodies")
     def request_bodies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]]]:
         """
-        (Optional, Beta)
         A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
         Structure is documented below.
         """
@@ -74165,7 +74162,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict(TypedDict):
     """
     request_bodies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgsDict']]]]]
     """
-    (Optional, Beta)
     A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
     Structure is documented below.
     """
@@ -74209,8 +74205,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
                  target_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]] request_bodies: (Optional, Beta)
-               A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]] request_bodies: A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
@@ -74255,7 +74250,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @pulumi.getter(name="requestBodies")
     def request_bodies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]]]:
         """
-        (Optional, Beta)
         A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
         Structure is documented below.
         """

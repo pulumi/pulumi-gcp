@@ -1167,6 +1167,7 @@ class App(pulumi.CustomResource):
             model_settings={
                 "model": "gemini-3.0-flash-001",
                 "temperature": 0.5,
+                "thinking_level": "LOW",
             },
             evaluation_metrics_thresholds={
                 "golden_evaluation_metrics_thresholds": {
@@ -1603,6 +1604,7 @@ class App(pulumi.CustomResource):
             model_settings={
                 "model": "gemini-3.0-flash-001",
                 "temperature": 0.5,
+                "thinking_level": "LOW",
             },
             evaluation_metrics_thresholds={
                 "golden_evaluation_metrics_thresholds": {

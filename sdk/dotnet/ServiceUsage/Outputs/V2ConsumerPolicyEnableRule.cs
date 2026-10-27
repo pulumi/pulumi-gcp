@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.ServiceUsage.Outputs
     public sealed class V2ConsumerPolicyEnableRule
     {
         /// <summary>
+        /// List of service catalog names to be enabled in the format of catalogs/&lt;catalog_name&gt;, for example catalogs/default-cloud-services.
+        /// </summary>
+        public readonly ImmutableArray<string> Catalogs;
+        /// <summary>
         /// (Optional): List of service names to be enabled in the format of services/&lt;service_name&gt;
         /// </summary>
         public readonly ImmutableArray<string> Services;
 
         [OutputConstructor]
-        private V2ConsumerPolicyEnableRule(ImmutableArray<string> services)
+        private V2ConsumerPolicyEnableRule(
+            ImmutableArray<string> catalogs,
+
+            ImmutableArray<string> services)
         {
+            Catalogs = catalogs;
             Services = services;
         }
     }

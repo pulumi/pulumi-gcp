@@ -5,6 +5,9 @@ package com.pulumi.gcp.saasruntime.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.saasruntime.inputs.SaaSApplicationTemplateArgs;
+import com.pulumi.gcp.saasruntime.inputs.SaaSConditionArgs;
+import com.pulumi.gcp.saasruntime.inputs.SaaSErrorArgs;
 import com.pulumi.gcp.saasruntime.inputs.SaaSLocationArgs;
 import java.lang.String;
 import java.util.List;
@@ -41,6 +44,105 @@ public final class SaaSState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
+    }
+
+    /**
+     * Reference to a composite Application Design Center ApplicationTemplate.
+     * When `revision` is set, the service imports the template components into
+     * equivalent UnitKind, Release and Blueprint resources. Create waits for
+     * the import to finish. Update waits when the template changes or when the
+     * Saas was failed, running, or not yet started. Both fail if `state`
+     * becomes `STATE_FAILED`.
+     * * The import creates UnitKinds (named `u-&lt;rootModuleId&gt;-&lt;6 chars&gt;`) and
+     *   their Releases, and copies the Saas, the UnitKinds and the Releases to
+     *   `global` and to the other `locations`. Terraform doesn&#39;t manage or
+     *   delete any of them, including when this field changes. Before
+     *   destroying or replacing the Saas (including `pulumi up -replace`
+     *   and recreating a tainted Saas), delete the imported UnitKinds and
+     *   Releases in every location: the API rejects the deletion of a Saas
+     *   that still has UnitKinds.
+     * * After a failed import, fix the template and change `revision`. Any
+     *   apply that changes a failed Saas restarts the import, and the provider
+     *   waits for the restarted import to finish or fail again.
+     * * While an import is running, the provider retries template or revision
+     *   updates and DELETE until it finishes, within the resource timeouts.
+     * * Don&#39;t create Terraform-managed UnitKinds whose
+     *   `applicationTemplateComponent` matches a component of this
+     *   template: the import adopts them and overwrites their fields.
+     * * Set this field only on the source-region Saas, not on the copies in
+     *   `global` or other `locations`.
+     *   Structure is documented below.
+     * 
+     */
+    @Import(name="applicationTemplate")
+    private @Nullable Output<SaaSApplicationTemplateArgs> applicationTemplate;
+
+    /**
+     * @return Reference to a composite Application Design Center ApplicationTemplate.
+     * When `revision` is set, the service imports the template components into
+     * equivalent UnitKind, Release and Blueprint resources. Create waits for
+     * the import to finish. Update waits when the template changes or when the
+     * Saas was failed, running, or not yet started. Both fail if `state`
+     * becomes `STATE_FAILED`.
+     * * The import creates UnitKinds (named `u-&lt;rootModuleId&gt;-&lt;6 chars&gt;`) and
+     *   their Releases, and copies the Saas, the UnitKinds and the Releases to
+     *   `global` and to the other `locations`. Terraform doesn&#39;t manage or
+     *   delete any of them, including when this field changes. Before
+     *   destroying or replacing the Saas (including `pulumi up -replace`
+     *   and recreating a tainted Saas), delete the imported UnitKinds and
+     *   Releases in every location: the API rejects the deletion of a Saas
+     *   that still has UnitKinds.
+     * * After a failed import, fix the template and change `revision`. Any
+     *   apply that changes a failed Saas restarts the import, and the provider
+     *   waits for the restarted import to finish or fail again.
+     * * While an import is running, the provider retries template or revision
+     *   updates and DELETE until it finishes, within the resource timeouts.
+     * * Don&#39;t create Terraform-managed UnitKinds whose
+     *   `applicationTemplateComponent` matches a component of this
+     *   template: the import adopts them and overwrites their fields.
+     * * Set this field only on the source-region Saas, not on the copies in
+     *   `global` or other `locations`.
+     *   Structure is documented below.
+     * 
+     */
+    public Optional<Output<SaaSApplicationTemplateArgs>> applicationTemplate() {
+        return Optional.ofNullable(this.applicationTemplate);
+    }
+
+    /**
+     * Name of the repository in Artifact Registry for system-generated
+     * Blueprints, for example the Blueprints of imported ApplicationTemplates.
+     * 
+     */
+    @Import(name="blueprintRepo")
+    private @Nullable Output<String> blueprintRepo;
+
+    /**
+     * @return Name of the repository in Artifact Registry for system-generated
+     * Blueprints, for example the Blueprints of imported ApplicationTemplates.
+     * 
+     */
+    public Optional<Output<String>> blueprintRepo() {
+        return Optional.ofNullable(this.blueprintRepo);
+    }
+
+    /**
+     * A set of conditions which indicate the various conditions this resource can
+     * have.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="conditions")
+    private @Nullable Output<List<SaaSConditionArgs>> conditions;
+
+    /**
+     * @return A set of conditions which indicate the various conditions this resource can
+     * have.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<SaaSConditionArgs>>> conditions() {
+        return Optional.ofNullable(this.conditions);
     }
 
     /**
@@ -111,6 +213,23 @@ public final class SaaSState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * If the state is `STATE_FAILED`, the corresponding error code and message.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="errors")
+    private @Nullable Output<List<SaaSErrorArgs>> errors;
+
+    /**
+     * @return If the state is `STATE_FAILED`, the corresponding error code and message.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<SaaSErrorArgs>>> errors() {
+        return Optional.ofNullable(this.errors);
     }
 
     /**
@@ -256,6 +375,35 @@ public final class SaaSState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * State of the Saas. It is always `STATE_ACTIVE` if
+     * `application_template.revision` is empty.
+     * Possible values:
+     * STATE_UNSPECIFIED
+     * STATE_TYPE_UNSPECIFIED
+     * STATE_ACTIVE
+     * STATE_RUNNING
+     * STATE_FAILED
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return State of the Saas. It is always `STATE_ACTIVE` if
+     * `application_template.revision` is empty.
+     * Possible values:
+     * STATE_UNSPECIFIED
+     * STATE_TYPE_UNSPECIFIED
+     * STATE_ACTIVE
+     * STATE_RUNNING
+     * STATE_FAILED
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
      * The unique identifier of the resource. UID is unique in the time
      * and space for this resource within the scope of the service. It is
      * typically generated by the server on successful creation of a resource
@@ -301,10 +449,14 @@ public final class SaaSState extends com.pulumi.resources.ResourceArgs {
 
     private SaaSState(SaaSState $) {
         this.annotations = $.annotations;
+        this.applicationTemplate = $.applicationTemplate;
+        this.blueprintRepo = $.blueprintRepo;
+        this.conditions = $.conditions;
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
         this.effectiveAnnotations = $.effectiveAnnotations;
         this.effectiveLabels = $.effectiveLabels;
+        this.errors = $.errors;
         this.etag = $.etag;
         this.labels = $.labels;
         this.location = $.location;
@@ -313,6 +465,7 @@ public final class SaaSState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.saasId = $.saasId;
+        this.state = $.state;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
     }
@@ -364,6 +517,135 @@ public final class SaaSState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param applicationTemplate Reference to a composite Application Design Center ApplicationTemplate.
+         * When `revision` is set, the service imports the template components into
+         * equivalent UnitKind, Release and Blueprint resources. Create waits for
+         * the import to finish. Update waits when the template changes or when the
+         * Saas was failed, running, or not yet started. Both fail if `state`
+         * becomes `STATE_FAILED`.
+         * * The import creates UnitKinds (named `u-&lt;rootModuleId&gt;-&lt;6 chars&gt;`) and
+         *   their Releases, and copies the Saas, the UnitKinds and the Releases to
+         *   `global` and to the other `locations`. Terraform doesn&#39;t manage or
+         *   delete any of them, including when this field changes. Before
+         *   destroying or replacing the Saas (including `pulumi up -replace`
+         *   and recreating a tainted Saas), delete the imported UnitKinds and
+         *   Releases in every location: the API rejects the deletion of a Saas
+         *   that still has UnitKinds.
+         * * After a failed import, fix the template and change `revision`. Any
+         *   apply that changes a failed Saas restarts the import, and the provider
+         *   waits for the restarted import to finish or fail again.
+         * * While an import is running, the provider retries template or revision
+         *   updates and DELETE until it finishes, within the resource timeouts.
+         * * Don&#39;t create Terraform-managed UnitKinds whose
+         *   `applicationTemplateComponent` matches a component of this
+         *   template: the import adopts them and overwrites their fields.
+         * * Set this field only on the source-region Saas, not on the copies in
+         *   `global` or other `locations`.
+         *   Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationTemplate(@Nullable Output<SaaSApplicationTemplateArgs> applicationTemplate) {
+            $.applicationTemplate = applicationTemplate;
+            return this;
+        }
+
+        /**
+         * @param applicationTemplate Reference to a composite Application Design Center ApplicationTemplate.
+         * When `revision` is set, the service imports the template components into
+         * equivalent UnitKind, Release and Blueprint resources. Create waits for
+         * the import to finish. Update waits when the template changes or when the
+         * Saas was failed, running, or not yet started. Both fail if `state`
+         * becomes `STATE_FAILED`.
+         * * The import creates UnitKinds (named `u-&lt;rootModuleId&gt;-&lt;6 chars&gt;`) and
+         *   their Releases, and copies the Saas, the UnitKinds and the Releases to
+         *   `global` and to the other `locations`. Terraform doesn&#39;t manage or
+         *   delete any of them, including when this field changes. Before
+         *   destroying or replacing the Saas (including `pulumi up -replace`
+         *   and recreating a tainted Saas), delete the imported UnitKinds and
+         *   Releases in every location: the API rejects the deletion of a Saas
+         *   that still has UnitKinds.
+         * * After a failed import, fix the template and change `revision`. Any
+         *   apply that changes a failed Saas restarts the import, and the provider
+         *   waits for the restarted import to finish or fail again.
+         * * While an import is running, the provider retries template or revision
+         *   updates and DELETE until it finishes, within the resource timeouts.
+         * * Don&#39;t create Terraform-managed UnitKinds whose
+         *   `applicationTemplateComponent` matches a component of this
+         *   template: the import adopts them and overwrites their fields.
+         * * Set this field only on the source-region Saas, not on the copies in
+         *   `global` or other `locations`.
+         *   Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationTemplate(SaaSApplicationTemplateArgs applicationTemplate) {
+            return applicationTemplate(Output.of(applicationTemplate));
+        }
+
+        /**
+         * @param blueprintRepo Name of the repository in Artifact Registry for system-generated
+         * Blueprints, for example the Blueprints of imported ApplicationTemplates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blueprintRepo(@Nullable Output<String> blueprintRepo) {
+            $.blueprintRepo = blueprintRepo;
+            return this;
+        }
+
+        /**
+         * @param blueprintRepo Name of the repository in Artifact Registry for system-generated
+         * Blueprints, for example the Blueprints of imported ApplicationTemplates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blueprintRepo(String blueprintRepo) {
+            return blueprintRepo(Output.of(blueprintRepo));
+        }
+
+        /**
+         * @param conditions A set of conditions which indicate the various conditions this resource can
+         * have.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditions(@Nullable Output<List<SaaSConditionArgs>> conditions) {
+            $.conditions = conditions;
+            return this;
+        }
+
+        /**
+         * @param conditions A set of conditions which indicate the various conditions this resource can
+         * have.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditions(List<SaaSConditionArgs> conditions) {
+            return conditions(Output.of(conditions));
+        }
+
+        /**
+         * @param conditions A set of conditions which indicate the various conditions this resource can
+         * have.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditions(SaaSConditionArgs... conditions) {
+            return conditions(List.of(conditions));
         }
 
         /**
@@ -458,6 +740,40 @@ public final class SaaSState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param errors If the state is `STATE_FAILED`, the corresponding error code and message.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errors(@Nullable Output<List<SaaSErrorArgs>> errors) {
+            $.errors = errors;
+            return this;
+        }
+
+        /**
+         * @param errors If the state is `STATE_FAILED`, the corresponding error code and message.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errors(List<SaaSErrorArgs> errors) {
+            return errors(Output.of(errors));
+        }
+
+        /**
+         * @param errors If the state is `STATE_FAILED`, the corresponding error code and message.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errors(SaaSErrorArgs... errors) {
+            return errors(List.of(errors));
         }
 
         /**
@@ -660,6 +976,41 @@ public final class SaaSState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder saasId(String saasId) {
             return saasId(Output.of(saasId));
+        }
+
+        /**
+         * @param state State of the Saas. It is always `STATE_ACTIVE` if
+         * `application_template.revision` is empty.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * STATE_TYPE_UNSPECIFIED
+         * STATE_ACTIVE
+         * STATE_RUNNING
+         * STATE_FAILED
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state State of the Saas. It is always `STATE_ACTIVE` if
+         * `application_template.revision` is empty.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * STATE_TYPE_UNSPECIFIED
+         * STATE_ACTIVE
+         * STATE_RUNNING
+         * STATE_FAILED
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         /**
