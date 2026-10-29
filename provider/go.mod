@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-gcp/provider/v9
 
-go 1.26.6
+go 1.27.3
 
 require (
 	github.com/hashicorp/go-cty v1.5.0
