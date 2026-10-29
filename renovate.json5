@@ -12,6 +12,17 @@
       matchPackageNames: ["*"],
       enabled: false,
     },
+    // Bump the go directive in go.mod, which Renovate leaves alone by default:
+    // https://docs.renovatebot.com/modules/manager/gomod/
+    // enabled re-allows it on v9, overriding the rule above, so Go security
+    // releases reach the maintenance branch too.
+    {
+      matchManagers: ["gomod"],
+      matchDepNames: ["go"],
+      matchDepTypes: ["golang"],
+      rangeStrategy: "bump",
+      enabled: true,
+    },
   ],
   // Vulnerability-fix PRs inherit this as a forced override, which re-enables
   // the packages the v9 rule above disables. Same as Renovate's
