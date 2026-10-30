@@ -1,0 +1,38 @@
+name: serverless-yaml
+description: A minimal YAML Pulumi program using Google Cloud Functions.
+runtime: yaml
+
+resources:
+  bucket:
+    type: gcp:storage:Bucket
+    properties:
+      location: US
+
+  python-zip:
+    type: gcp:storage:BucketObject
+    properties:
+      bucket: ${bucket.name}
+      source:
+        fn::fileArchive: ./pythonfunc
+
+  python-func:
+    type: gcp:cloudfunctions:Function
+    properties:
+      sourceArchiveBucket: ${bucket.name}
+      runtime: python312
+      sourceArchiveObject: ${python-zip.name}
+      entryPoint: handler
+      triggerHttp: true
+      availableMemoryMb: 128
+
+  invoker:
+    type: gcp:cloudfunctions:FunctionIamMember
+    properties:
+      project: ${python-func.project}
+      region: ${python-func.region}
+      cloudFunction: ${python-func.name}
+      role: roles/cloudfunctions.invoker
+      member: allUsers
+
+outputs:
+  url: ${python-func.httpsTriggerUrl}
