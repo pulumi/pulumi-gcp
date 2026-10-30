@@ -1,5 +1,6 @@
 // Copyright 2016-2023, Pulumi Corporation.  All rights reserved.
 
+//nolint:goconst // repeated literals are test fixture data
 package gcp
 
 import (
