@@ -67,7 +67,7 @@ jobs:
         environment: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
         export-environment-variables: "false"
         pulumi-access-token: ${{ steps.esc-auth.outputs.pulumi-access-token }}
-    - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+    - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
       id: app-auth
       with:
         app-id: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_APP_ID }}
@@ -89,10 +89,12 @@ jobs:
       env:
         MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
       with:
-        version: 2026.3.7
+        version: 2026.10.21
         github_token: ${{ steps.app-auth.outputs.token }}
         # only saving the cache in the prerequisites job
         cache_save: true
+    - name: Install project dependencies
+      run: mise deps install
     - name: Setup Go Cache
       if: inputs.acceptance_fanout
       uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6

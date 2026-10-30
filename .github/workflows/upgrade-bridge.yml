@@ -99,7 +99,7 @@ jobs:
         environment: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
         export-environment-variables: "false"
         pulumi-access-token: ${{ steps.esc-auth.outputs.pulumi-access-token }}
-    - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+    - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
       id: app-auth
       with:
         app-id: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_APP_ID }}
@@ -110,10 +110,12 @@ jobs:
       env:
         MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
       with:
-        version: 2026.3.7
+        version: 2026.10.21
         github_token: ${{ steps.app-auth.outputs.token }}
         # only saving the cache in the prerequisites job
         cache_save: false
+    - name: Install project dependencies
+      run: mise deps install
     - name: Call upgrade provider action
       if: github.event_name == 'workflow_dispatch'
       uses: pulumi/pulumi-upgrade-provider-action@12996503de2aaddd72c7426efc43331a8970894f # v0.0.19
