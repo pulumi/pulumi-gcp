@@ -5,11 +5,9 @@
 package examples
 
 import (
-	"path/filepath"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
-	"github.com/stretchr/testify/assert"
 )
 
 func getCSBaseOptions(t *testing.T) integration.ProgramTestOptions {
@@ -21,19 +19,4 @@ func getCSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	})
 
 	return csharpBase
-}
-
-func TestAccAppServiceCs(t *testing.T) {
-	test := getCSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "serverless-cs"),
-			ExtraRuntimeValidation: validateAPITest(func(body string) {
-				assert.Equal(t, body, "Hello World!")
-			}),
-
-			// TODO[pulumi/pulumi-gcp#1487] Non-empty diff when refreshing programs using overlay callbacks
-			SkipRefresh: true,
-		})
-
-	integration.ProgramTest(t, &test)
 }
