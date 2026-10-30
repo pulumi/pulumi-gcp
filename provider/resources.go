@@ -1,5 +1,6 @@
 // Copyright 2016-2018, Pulumi Corporation.  All rights reserved.
 
+//nolint:goconst // mapping tables repeat TF tokens and doc sources by design
 package gcp
 
 import (
@@ -173,6 +174,11 @@ const (
 	gcpWorkbench                = "Workbench"                // Workbench
 	gcpWorkflows                = "Workflows"                // Workflows
 	gcpWorkstations             = "Workstations"             // Workstations
+)
+
+const (
+	containerClusterToken      = "google_container_cluster"
+	serviceAccountIamDocSource = "google_service_account_iam.html.markdown"
 )
 
 var moduleMapping = map[string]string{
@@ -988,19 +994,19 @@ func Provider() tfbridge.ProviderInfo {
 			"google_service_account_iam_binding": {
 				Tok: gcpResource(gcpServiceAccount, "IAMBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_iam.html.markdown",
+					Source: serviceAccountIamDocSource,
 				},
 			},
 			"google_service_account_iam_member": {
 				Tok: gcpResource(gcpServiceAccount, "IAMMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_iam.html.markdown",
+					Source: serviceAccountIamDocSource,
 				},
 			},
 			"google_service_account_iam_policy": {
 				Tok: gcpResource(gcpServiceAccount, "IAMPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_iam.html.markdown",
+					Source: serviceAccountIamDocSource,
 				},
 			},
 			"google_service_account_key": {
@@ -1287,7 +1293,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Container/Kubernetes resources
-			"google_container_cluster":          {Tok: gcpResource(gcpKubernetes, "Cluster")},
+			containerClusterToken:               {Tok: gcpResource(gcpKubernetes, "Cluster")},
 			"google_container_node_pool":        {Tok: gcpResource(gcpKubernetes, "NodePool")},
 			"google_container_registry":         {Tok: gcpResource(gcpKubernetes, "Registry")},
 			"google_container_aws_cluster":      {Tok: gcpResource(gcpKubernetes, "AwsCluster")},
@@ -2565,7 +2571,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_health_check": {Tok: gcpDataSource(gcpCompute, "getHealthCheck")},
 
-			"google_container_cluster": {
+			containerClusterToken: {
 				Tok: gcpDataSource(gcpKubernetes, "getCluster"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_container_cluster.html.markdown",
@@ -2967,8 +2973,6 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces:           namespaceMap,
 		},
 		EnableZeroDefaultSchemaVersion: true,
-		EnableAccurateBridgePreview:    true,
-		EnableRawStateDelta:            true,
 	}
 
 	prov.RenameResourceWithAlias("google_compute_managed_ssl_certificate", gcpResource(gcpCompute,

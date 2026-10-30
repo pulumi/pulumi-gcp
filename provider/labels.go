@@ -25,7 +25,7 @@ func fixEmptyLabels(_ context.Context, req shimv2.PlanStateEditRequest) (cty.Val
 	programLabels := property.Map{}
 
 	labelsPropertyName := "labels"
-	if req.TfToken == "google_container_cluster" {
+	if req.TfToken == containerClusterToken {
 		labelsPropertyName = "resourceLabels"
 	}
 
