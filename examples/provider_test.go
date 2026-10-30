@@ -50,7 +50,7 @@ func testProviderUpgrade(t *testing.T, dir string, opts *testProviderUpgradeOpti
 		}
 
 		opts = &testProviderUpgradeOptions{
-			baselineVersion: "8.41.1",
+			baselineVersion: "9.37.1",
 			project:         project,
 			region:          region,
 			zone:            zone,
