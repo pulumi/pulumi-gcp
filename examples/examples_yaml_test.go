@@ -22,7 +22,6 @@ func TestHttpHealthCheck(t *testing.T) {
 	})
 }
 
-// Replaces TestAccAppServiceCs. The serverless-cs directory is kept because release verification uses it.
 func TestAccAppServiceYAML(t *testing.T) {
 	test := getBaseOptions(t).
 		With(integration.ProgramTestOptions{

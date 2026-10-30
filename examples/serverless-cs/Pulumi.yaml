@@ -1,3 +1,5 @@
+# This directory is used by release verification (releaseVerification.dotnet in .ci-mgmt.yaml).
+# Do not delete or rename it without updating .ci-mgmt.yaml and running `make ci-mgmt`.
 name: serverless-cs
 description: "A minimal C# Pulumi program using Google Cloud Functions."
 runtime: dotnet
