@@ -1,3 +1,4 @@
+//nolint:goconst // repeated literals are test fixture data
 package gcp
 
 import (

@@ -291,7 +291,7 @@ var addContainerClusterAutopilotExample = targetedInsertBefore(
 )
 
 var fixUpServiceAccountIamConditionHeadings = tfbridge.DocsEdit{
-	Path: "google_service_account_iam.html.markdown",
+	Path: serviceAccountIamDocSource,
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		heading := []byte("With IAM Conditions:")
 		parts := bytes.SplitN(content, heading, 3)
