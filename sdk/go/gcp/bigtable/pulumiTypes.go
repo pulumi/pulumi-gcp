@@ -315,6 +315,9 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringPtrOut
 }
 
 type AppProfileStandardIsolation struct {
+	// The memory config to use for requests sent using this app profile.
+	// If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+	MemoryConfig *AppProfileStandardIsolationMemoryConfig `pulumi:"memoryConfig"`
 	// The priority of requests sent using this app profile.
 	// Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
 	Priority string `pulumi:"priority"`
@@ -332,6 +335,9 @@ type AppProfileStandardIsolationInput interface {
 }
 
 type AppProfileStandardIsolationArgs struct {
+	// The memory config to use for requests sent using this app profile.
+	// If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+	MemoryConfig AppProfileStandardIsolationMemoryConfigPtrInput `pulumi:"memoryConfig"`
 	// The priority of requests sent using this app profile.
 	// Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
 	Priority pulumi.StringInput `pulumi:"priority"`
@@ -414,6 +420,12 @@ func (o AppProfileStandardIsolationOutput) ToAppProfileStandardIsolationPtrOutpu
 	}).(AppProfileStandardIsolationPtrOutput)
 }
 
+// The memory config to use for requests sent using this app profile.
+// If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+func (o AppProfileStandardIsolationOutput) MemoryConfig() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o.ApplyT(func(v AppProfileStandardIsolation) *AppProfileStandardIsolationMemoryConfig { return v.MemoryConfig }).(AppProfileStandardIsolationMemoryConfigPtrOutput)
+}
+
 // The priority of requests sent using this app profile.
 // Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
 func (o AppProfileStandardIsolationOutput) Priority() pulumi.StringOutput {
@@ -444,6 +456,17 @@ func (o AppProfileStandardIsolationPtrOutput) Elem() AppProfileStandardIsolation
 	}).(AppProfileStandardIsolationOutput)
 }
 
+// The memory config to use for requests sent using this app profile.
+// If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+func (o AppProfileStandardIsolationPtrOutput) MemoryConfig() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o.ApplyT(func(v *AppProfileStandardIsolation) *AppProfileStandardIsolationMemoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryConfig
+	}).(AppProfileStandardIsolationMemoryConfigPtrOutput)
+}
+
 // The priority of requests sent using this app profile.
 // Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
 func (o AppProfileStandardIsolationPtrOutput) Priority() pulumi.StringPtrOutput {
@@ -453,6 +476,124 @@ func (o AppProfileStandardIsolationPtrOutput) Priority() pulumi.StringPtrOutput 
 		}
 		return &v.Priority
 	}).(pulumi.StringPtrOutput)
+}
+
+type AppProfileStandardIsolationMemoryConfig struct {
+}
+
+// AppProfileStandardIsolationMemoryConfigInput is an input type that accepts AppProfileStandardIsolationMemoryConfigArgs and AppProfileStandardIsolationMemoryConfigOutput values.
+// You can construct a concrete instance of `AppProfileStandardIsolationMemoryConfigInput` via:
+//
+//	AppProfileStandardIsolationMemoryConfigArgs{...}
+type AppProfileStandardIsolationMemoryConfigInput interface {
+	pulumi.Input
+
+	ToAppProfileStandardIsolationMemoryConfigOutput() AppProfileStandardIsolationMemoryConfigOutput
+	ToAppProfileStandardIsolationMemoryConfigOutputWithContext(context.Context) AppProfileStandardIsolationMemoryConfigOutput
+}
+
+type AppProfileStandardIsolationMemoryConfigArgs struct {
+}
+
+func (AppProfileStandardIsolationMemoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfileStandardIsolationMemoryConfig)(nil)).Elem()
+}
+
+func (i AppProfileStandardIsolationMemoryConfigArgs) ToAppProfileStandardIsolationMemoryConfigOutput() AppProfileStandardIsolationMemoryConfigOutput {
+	return i.ToAppProfileStandardIsolationMemoryConfigOutputWithContext(context.Background())
+}
+
+func (i AppProfileStandardIsolationMemoryConfigArgs) ToAppProfileStandardIsolationMemoryConfigOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileStandardIsolationMemoryConfigOutput)
+}
+
+func (i AppProfileStandardIsolationMemoryConfigArgs) ToAppProfileStandardIsolationMemoryConfigPtrOutput() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return i.ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AppProfileStandardIsolationMemoryConfigArgs) ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileStandardIsolationMemoryConfigOutput).ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(ctx)
+}
+
+// AppProfileStandardIsolationMemoryConfigPtrInput is an input type that accepts AppProfileStandardIsolationMemoryConfigArgs, AppProfileStandardIsolationMemoryConfigPtr and AppProfileStandardIsolationMemoryConfigPtrOutput values.
+// You can construct a concrete instance of `AppProfileStandardIsolationMemoryConfigPtrInput` via:
+//
+//	        AppProfileStandardIsolationMemoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppProfileStandardIsolationMemoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToAppProfileStandardIsolationMemoryConfigPtrOutput() AppProfileStandardIsolationMemoryConfigPtrOutput
+	ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(context.Context) AppProfileStandardIsolationMemoryConfigPtrOutput
+}
+
+type appProfileStandardIsolationMemoryConfigPtrType AppProfileStandardIsolationMemoryConfigArgs
+
+func AppProfileStandardIsolationMemoryConfigPtr(v *AppProfileStandardIsolationMemoryConfigArgs) AppProfileStandardIsolationMemoryConfigPtrInput {
+	return (*appProfileStandardIsolationMemoryConfigPtrType)(v)
+}
+
+func (*appProfileStandardIsolationMemoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfileStandardIsolationMemoryConfig)(nil)).Elem()
+}
+
+func (i *appProfileStandardIsolationMemoryConfigPtrType) ToAppProfileStandardIsolationMemoryConfigPtrOutput() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return i.ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *appProfileStandardIsolationMemoryConfigPtrType) ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileStandardIsolationMemoryConfigPtrOutput)
+}
+
+type AppProfileStandardIsolationMemoryConfigOutput struct{ *pulumi.OutputState }
+
+func (AppProfileStandardIsolationMemoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfileStandardIsolationMemoryConfig)(nil)).Elem()
+}
+
+func (o AppProfileStandardIsolationMemoryConfigOutput) ToAppProfileStandardIsolationMemoryConfigOutput() AppProfileStandardIsolationMemoryConfigOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationMemoryConfigOutput) ToAppProfileStandardIsolationMemoryConfigOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationMemoryConfigOutput) ToAppProfileStandardIsolationMemoryConfigPtrOutput() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o.ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AppProfileStandardIsolationMemoryConfigOutput) ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppProfileStandardIsolationMemoryConfig) *AppProfileStandardIsolationMemoryConfig {
+		return &v
+	}).(AppProfileStandardIsolationMemoryConfigPtrOutput)
+}
+
+type AppProfileStandardIsolationMemoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AppProfileStandardIsolationMemoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfileStandardIsolationMemoryConfig)(nil)).Elem()
+}
+
+func (o AppProfileStandardIsolationMemoryConfigPtrOutput) ToAppProfileStandardIsolationMemoryConfigPtrOutput() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationMemoryConfigPtrOutput) ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationMemoryConfigPtrOutput) Elem() AppProfileStandardIsolationMemoryConfigOutput {
+	return o.ApplyT(func(v *AppProfileStandardIsolationMemoryConfig) AppProfileStandardIsolationMemoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AppProfileStandardIsolationMemoryConfig
+		return ret
+	}).(AppProfileStandardIsolationMemoryConfigOutput)
 }
 
 type AuthorizedViewSubsetView struct {
@@ -1782,6 +1923,106 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MemoryLayerMemoryConfig struct {
+	// (Output)
+	// Reporting the current size of the memory layer in GiB.
+	StorageSizeGib *int `pulumi:"storageSizeGib"`
+}
+
+// MemoryLayerMemoryConfigInput is an input type that accepts MemoryLayerMemoryConfigArgs and MemoryLayerMemoryConfigOutput values.
+// You can construct a concrete instance of `MemoryLayerMemoryConfigInput` via:
+//
+//	MemoryLayerMemoryConfigArgs{...}
+type MemoryLayerMemoryConfigInput interface {
+	pulumi.Input
+
+	ToMemoryLayerMemoryConfigOutput() MemoryLayerMemoryConfigOutput
+	ToMemoryLayerMemoryConfigOutputWithContext(context.Context) MemoryLayerMemoryConfigOutput
+}
+
+type MemoryLayerMemoryConfigArgs struct {
+	// (Output)
+	// Reporting the current size of the memory layer in GiB.
+	StorageSizeGib pulumi.IntPtrInput `pulumi:"storageSizeGib"`
+}
+
+func (MemoryLayerMemoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemoryLayerMemoryConfig)(nil)).Elem()
+}
+
+func (i MemoryLayerMemoryConfigArgs) ToMemoryLayerMemoryConfigOutput() MemoryLayerMemoryConfigOutput {
+	return i.ToMemoryLayerMemoryConfigOutputWithContext(context.Background())
+}
+
+func (i MemoryLayerMemoryConfigArgs) ToMemoryLayerMemoryConfigOutputWithContext(ctx context.Context) MemoryLayerMemoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemoryLayerMemoryConfigOutput)
+}
+
+// MemoryLayerMemoryConfigArrayInput is an input type that accepts MemoryLayerMemoryConfigArray and MemoryLayerMemoryConfigArrayOutput values.
+// You can construct a concrete instance of `MemoryLayerMemoryConfigArrayInput` via:
+//
+//	MemoryLayerMemoryConfigArray{ MemoryLayerMemoryConfigArgs{...} }
+type MemoryLayerMemoryConfigArrayInput interface {
+	pulumi.Input
+
+	ToMemoryLayerMemoryConfigArrayOutput() MemoryLayerMemoryConfigArrayOutput
+	ToMemoryLayerMemoryConfigArrayOutputWithContext(context.Context) MemoryLayerMemoryConfigArrayOutput
+}
+
+type MemoryLayerMemoryConfigArray []MemoryLayerMemoryConfigInput
+
+func (MemoryLayerMemoryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemoryLayerMemoryConfig)(nil)).Elem()
+}
+
+func (i MemoryLayerMemoryConfigArray) ToMemoryLayerMemoryConfigArrayOutput() MemoryLayerMemoryConfigArrayOutput {
+	return i.ToMemoryLayerMemoryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i MemoryLayerMemoryConfigArray) ToMemoryLayerMemoryConfigArrayOutputWithContext(ctx context.Context) MemoryLayerMemoryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemoryLayerMemoryConfigArrayOutput)
+}
+
+type MemoryLayerMemoryConfigOutput struct{ *pulumi.OutputState }
+
+func (MemoryLayerMemoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemoryLayerMemoryConfig)(nil)).Elem()
+}
+
+func (o MemoryLayerMemoryConfigOutput) ToMemoryLayerMemoryConfigOutput() MemoryLayerMemoryConfigOutput {
+	return o
+}
+
+func (o MemoryLayerMemoryConfigOutput) ToMemoryLayerMemoryConfigOutputWithContext(ctx context.Context) MemoryLayerMemoryConfigOutput {
+	return o
+}
+
+// (Output)
+// Reporting the current size of the memory layer in GiB.
+func (o MemoryLayerMemoryConfigOutput) StorageSizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MemoryLayerMemoryConfig) *int { return v.StorageSizeGib }).(pulumi.IntPtrOutput)
+}
+
+type MemoryLayerMemoryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (MemoryLayerMemoryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemoryLayerMemoryConfig)(nil)).Elem()
+}
+
+func (o MemoryLayerMemoryConfigArrayOutput) ToMemoryLayerMemoryConfigArrayOutput() MemoryLayerMemoryConfigArrayOutput {
+	return o
+}
+
+func (o MemoryLayerMemoryConfigArrayOutput) ToMemoryLayerMemoryConfigArrayOutputWithContext(ctx context.Context) MemoryLayerMemoryConfigArrayOutput {
+	return o
+}
+
+func (o MemoryLayerMemoryConfigArrayOutput) Index(i pulumi.IntInput) MemoryLayerMemoryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MemoryLayerMemoryConfig {
+		return vs[0].([]MemoryLayerMemoryConfig)[vs[1].(int)]
+	}).(MemoryLayerMemoryConfigOutput)
+}
+
 type SchemaBundleProtoSchema struct {
 	// Base64 encoded content of the file.
 	ProtoDescriptors string `pulumi:"protoDescriptors"`
@@ -2533,6 +2774,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingPtrInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationInput)(nil)).Elem(), AppProfileStandardIsolationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationPtrInput)(nil)).Elem(), AppProfileStandardIsolationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationMemoryConfigInput)(nil)).Elem(), AppProfileStandardIsolationMemoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationMemoryConfigPtrInput)(nil)).Elem(), AppProfileStandardIsolationMemoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedViewSubsetViewInput)(nil)).Elem(), AuthorizedViewSubsetViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedViewSubsetViewPtrInput)(nil)).Elem(), AuthorizedViewSubsetViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedViewSubsetViewFamilySubsetInput)(nil)).Elem(), AuthorizedViewSubsetViewFamilySubsetArgs{})
@@ -2549,6 +2792,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionPtrInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionPtrInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MemoryLayerMemoryConfigInput)(nil)).Elem(), MemoryLayerMemoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MemoryLayerMemoryConfigArrayInput)(nil)).Elem(), MemoryLayerMemoryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaBundleProtoSchemaInput)(nil)).Elem(), SchemaBundleProtoSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaBundleProtoSchemaPtrInput)(nil)).Elem(), SchemaBundleProtoSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableAutomatedBackupPolicyInput)(nil)).Elem(), TableAutomatedBackupPolicyArgs{})
@@ -2565,6 +2810,8 @@ func init() {
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
 	pulumi.RegisterOutputType(AppProfileStandardIsolationOutput{})
 	pulumi.RegisterOutputType(AppProfileStandardIsolationPtrOutput{})
+	pulumi.RegisterOutputType(AppProfileStandardIsolationMemoryConfigOutput{})
+	pulumi.RegisterOutputType(AppProfileStandardIsolationMemoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthorizedViewSubsetViewOutput{})
 	pulumi.RegisterOutputType(AuthorizedViewSubsetViewPtrOutput{})
 	pulumi.RegisterOutputType(AuthorizedViewSubsetViewFamilySubsetOutput{})
@@ -2581,6 +2828,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(MemoryLayerMemoryConfigOutput{})
+	pulumi.RegisterOutputType(MemoryLayerMemoryConfigArrayOutput{})
 	pulumi.RegisterOutputType(SchemaBundleProtoSchemaOutput{})
 	pulumi.RegisterOutputType(SchemaBundleProtoSchemaPtrOutput{})
 	pulumi.RegisterOutputType(TableAutomatedBackupPolicyOutput{})

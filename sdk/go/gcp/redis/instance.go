@@ -39,7 +39,7 @@ import (
 //			_, err := redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
 //				Name:               pulumi.String("memory-cache"),
 //				MemorySizeGb:       pulumi.Int(1),
-//				Region:             pulumi.String("us-west1"),
+//				Region:             pulumi.String("us-east1"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -50,6 +50,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Instance Full
 //
 // ```go
@@ -83,9 +84,9 @@ import (
 //				Name:                  pulumi.String("ha-memory-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
-//				Region:                pulumi.String("us-west1"),
-//				LocationId:            pulumi.String("us-west1-a"),
-//				AlternativeLocationId: pulumi.String("us-west1-b"),
+//				Region:                pulumi.String("us-east1"),
+//				LocationId:            pulumi.String("us-east1-b"),
+//				AlternativeLocationId: pulumi.String("us-east1-c"),
 //				AuthorizedNetwork:     pulumi.String(redis_network.Id),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
 //				DisplayName:           pulumi.String("Test Instance"),
@@ -116,6 +117,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Instance Full With Persistence Config
 //
 // ```go
@@ -134,9 +136,9 @@ import (
 //				Name:                  pulumi.String("ha-memory-cache-persis"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
-//				Region:                pulumi.String("us-west1"),
-//				LocationId:            pulumi.String("us-west1-a"),
-//				AlternativeLocationId: pulumi.String("us-west1-b"),
+//				Region:                pulumi.String("us-east1"),
+//				LocationId:            pulumi.String("us-east1-b"),
+//				AlternativeLocationId: pulumi.String("us-east1-c"),
 //				PersistenceConfig: &redis.InstancePersistenceConfigArgs{
 //					PersistenceMode:   pulumi.String("RDB"),
 //					RdbSnapshotPeriod: pulumi.String("TWELVE_HOURS"),
@@ -150,6 +152,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Instance Private Service
 //
 // ```go
@@ -204,9 +207,9 @@ import (
 //				Name:                  pulumi.String("private-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
-//				Region:                pulumi.String("us-west1"),
-//				LocationId:            pulumi.String("us-west1-a"),
-//				AlternativeLocationId: pulumi.String("us-west1-b"),
+//				Region:                pulumi.String("us-east1"),
+//				LocationId:            pulumi.String("us-east1-b"),
+//				AlternativeLocationId: pulumi.String("us-east1-c"),
 //				AuthorizedNetwork:     redis_network.ID(),
 //				ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
@@ -222,6 +225,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Instance Mrr
 //
 // ```go
@@ -255,9 +259,9 @@ import (
 //				Name:                  pulumi.String("mrr-memory-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(5),
-//				Region:                pulumi.String("us-west1"),
-//				LocationId:            pulumi.String("us-west1-a"),
-//				AlternativeLocationId: pulumi.String("us-west1-b"),
+//				Region:                pulumi.String("us-east1"),
+//				LocationId:            pulumi.String("us-east1-b"),
+//				AlternativeLocationId: pulumi.String("us-east1-c"),
 //				AuthorizedNetwork:     pulumi.String(redis_network.Id),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
 //				DisplayName:           pulumi.String("Test Instance"),
@@ -276,6 +280,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Instance Cmek
 //
 // ```go
@@ -294,7 +299,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			redisKeyring, err := kms.NewKeyRing(ctx, "redis_keyring", &kms.KeyRingArgs{
 //				Name:     pulumi.String("redis-keyring"),
-//				Location: pulumi.String("us-west1"),
+//				Location: pulumi.String("us-east1"),
 //			})
 //			if err != nil {
 //				return err
@@ -324,9 +329,9 @@ import (
 //				Name:                  pulumi.String("cmek-memory-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
-//				Region:                pulumi.String("us-west1"),
-//				LocationId:            pulumi.String("us-west1-a"),
-//				AlternativeLocationId: pulumi.String("us-west1-b"),
+//				Region:                pulumi.String("us-east1"),
+//				LocationId:            pulumi.String("us-east1-b"),
+//				AlternativeLocationId: pulumi.String("us-east1-c"),
 //				AuthorizedNetwork:     pulumi.String(redis_network.Id),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
 //				DisplayName:           pulumi.String("Test Instance"),

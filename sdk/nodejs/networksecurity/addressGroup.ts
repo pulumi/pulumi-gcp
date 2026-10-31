@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  * });
  * ```
+ *
  * ### Network Security Address Groups Organization Basic
  *
  * ```typescript
@@ -45,6 +46,7 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  * });
  * ```
+ *
  * ### Network Security Address Groups Advanced
  *
  * ```typescript
@@ -61,6 +63,7 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  * });
  * ```
+ *
  * ### Network Security Address Groups Cloud Armor
  *
  * ```typescript

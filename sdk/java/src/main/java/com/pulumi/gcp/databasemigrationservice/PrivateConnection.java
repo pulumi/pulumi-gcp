@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Database Migration Service Private Connection Psc
  * 
  * <pre>
@@ -145,6 +146,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Database Migration Service Private Connection Reserved Public Ip
  * 
  * <pre>

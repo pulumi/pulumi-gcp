@@ -17,12 +17,29 @@ namespace Pulumi.Gcp.Gemini.Outputs
         /// References to BigQuery tables.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq Bq;
+        public readonly Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq? Bq;
+        /// <summary>
+        /// References to Looker explores.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLooker? Looker;
+        /// <summary>
+        /// References to Looker Studio datasources.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudio? Studio;
 
         [OutputConstructor]
-        private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences(Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq bq)
+        private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences(
+            Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq? bq,
+
+            Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLooker? looker,
+
+            Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudio? studio)
         {
             Bq = bq;
+            Looker = looker;
+            Studio = studio;
         }
     }
 }

@@ -136,6 +136,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Index Endpoint Deployed Index Basic Two
     /// 
     /// ```csharp

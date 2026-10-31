@@ -612,6 +612,7 @@ class CxSecuritySettings(pulumi.CustomResource):
             purge_data_types=[],
             retention_window_days=7)
         ```
+
         ### Dialogflowcx Security Settings Full
 
         ```python
@@ -754,6 +755,7 @@ class CxSecuritySettings(pulumi.CustomResource):
             purge_data_types=[],
             retention_window_days=7)
         ```
+
         ### Dialogflowcx Security Settings Full
 
         ```python

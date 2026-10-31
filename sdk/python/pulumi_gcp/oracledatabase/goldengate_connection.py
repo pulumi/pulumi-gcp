@@ -582,8 +582,12 @@ class GoldengateConnection(pulumi.CustomResource):
                     "password": "GenerateWallet@123",
                 },
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Full
 
         ```python
@@ -614,6 +618,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Mysql
 
         ```python
@@ -647,6 +652,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Postgresql
 
         ```python
@@ -673,6 +679,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Redis
 
         ```python
@@ -698,6 +705,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Kafka
 
         ```python
@@ -729,6 +737,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Iceberg
 
         ```python
@@ -766,6 +775,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Snowflake
 
         ```python
@@ -790,6 +800,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Jms
 
         ```python
@@ -909,8 +920,12 @@ class GoldengateConnection(pulumi.CustomResource):
                     "password": "GenerateWallet@123",
                 },
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Full
 
         ```python
@@ -941,6 +956,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Mysql
 
         ```python
@@ -974,6 +990,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Postgresql
 
         ```python
@@ -1000,6 +1017,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Redis
 
         ```python
@@ -1025,6 +1043,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Kafka
 
         ```python
@@ -1056,6 +1075,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Iceberg
 
         ```python
@@ -1093,6 +1113,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Snowflake
 
         ```python
@@ -1117,6 +1138,7 @@ class GoldengateConnection(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Goldengate Connection Jms
 
         ```python

@@ -20,6 +20,11 @@ export type AuthzExtension = import("./authzExtension").AuthzExtension;
 export const AuthzExtension: typeof import("./authzExtension").AuthzExtension = null as any;
 utilities.lazyLoad(exports, ["AuthzExtension"], () => require("./authzExtension"));
 
+export { CdnEdgeExtensionArgs, CdnEdgeExtensionState } from "./cdnEdgeExtension";
+export type CdnEdgeExtension = import("./cdnEdgeExtension").CdnEdgeExtension;
+export const CdnEdgeExtension: typeof import("./cdnEdgeExtension").CdnEdgeExtension = null as any;
+utilities.lazyLoad(exports, ["CdnEdgeExtension"], () => require("./cdnEdgeExtension"));
+
 export { EdgeCacheKeysetArgs, EdgeCacheKeysetState } from "./edgeCacheKeyset";
 export type EdgeCacheKeyset = import("./edgeCacheKeyset").EdgeCacheKeyset;
 export const EdgeCacheKeyset: typeof import("./edgeCacheKeyset").EdgeCacheKeyset = null as any;
@@ -140,6 +145,11 @@ export type TcpRoute = import("./tcpRoute").TcpRoute;
 export const TcpRoute: typeof import("./tcpRoute").TcpRoute = null as any;
 utilities.lazyLoad(exports, ["TcpRoute"], () => require("./tcpRoute"));
 
+export { TelemetryPolicyArgs, TelemetryPolicyState } from "./telemetryPolicy";
+export type TelemetryPolicy = import("./telemetryPolicy").TelemetryPolicy;
+export const TelemetryPolicy: typeof import("./telemetryPolicy").TelemetryPolicy = null as any;
+utilities.lazyLoad(exports, ["TelemetryPolicy"], () => require("./telemetryPolicy"));
+
 export { TlsRouteArgs, TlsRouteState } from "./tlsRoute";
 export type TlsRoute = import("./tlsRoute").TlsRoute;
 export const TlsRoute: typeof import("./tlsRoute").TlsRoute = null as any;
@@ -161,6 +171,8 @@ const _module = {
                 return new AgentGateway(name, <any>undefined, { urn })
             case "gcp:networkservices/authzExtension:AuthzExtension":
                 return new AuthzExtension(name, <any>undefined, { urn })
+            case "gcp:networkservices/cdnEdgeExtension:CdnEdgeExtension":
+                return new CdnEdgeExtension(name, <any>undefined, { urn })
             case "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset":
                 return new EdgeCacheKeyset(name, <any>undefined, { urn })
             case "gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin":
@@ -207,6 +219,8 @@ const _module = {
                 return new ServiceLbPolicies(name, <any>undefined, { urn })
             case "gcp:networkservices/tcpRoute:TcpRoute":
                 return new TcpRoute(name, <any>undefined, { urn })
+            case "gcp:networkservices/telemetryPolicy:TelemetryPolicy":
+                return new TelemetryPolicy(name, <any>undefined, { urn })
             case "gcp:networkservices/tlsRoute:TlsRoute":
                 return new TlsRoute(name, <any>undefined, { urn })
             case "gcp:networkservices/wasmPlugin:WasmPlugin":
@@ -219,6 +233,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "networkservices/agentConnectivityTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/agentGateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/authzExtension", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/cdnEdgeExtension", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheKeyset", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheOrigin", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheService", _module)
@@ -242,5 +257,6 @@ pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastProducerA
 pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceLbPolicies", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/tcpRoute", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/telemetryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/tlsRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/wasmPlugin", _module)

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ParallelStore
 {
     /// <summary>
+    /// &gt; **Warning:** `gcp.parallelstore.Instance` is deprecated and will be removed in a future major release. Use `gcp.lustre.Instance` instead.
+    /// 
     /// A Parallelstore Instance.
     /// 
     /// ## Example Usage
@@ -76,6 +78,7 @@ namespace Pulumi.Gcp.ParallelStore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Parallelstore Instance Basic
     /// 
     /// ```csharp

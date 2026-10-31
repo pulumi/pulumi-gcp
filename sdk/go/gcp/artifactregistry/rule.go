@@ -65,6 +65,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Rule Full
 //
 // ```go

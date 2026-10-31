@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Deploy Huggingface Model
  *
  * ```typescript
@@ -47,6 +48,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Deploy With Configs
  *
  * ```typescript
@@ -71,6 +73,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Deploy Multiple Models In Parallel
  *
  * ```typescript
@@ -129,6 +132,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Deploy Multiple Models In Sequence
  *
  * ```typescript
@@ -191,6 +195,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [deploy_qwen3_06b],
  * });
  * ```
+ *
  * ### Vertex Ai Deploy Psc Endpoint
  *
  * ```typescript
@@ -211,6 +216,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Deploy Psc Endpoint Automated
  *
  * ```typescript

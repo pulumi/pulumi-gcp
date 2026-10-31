@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Compute Interconnect Attachment Ipsec Encryption
  *
  * ```typescript
@@ -81,6 +82,7 @@ import * as utilities from "../utilities";
  *     ipsecInternalAddresses: [address.selfLink],
  * });
  * ```
+ *
  * ### Compute Interconnect Attachment Custom Ranges
  *
  * ```typescript

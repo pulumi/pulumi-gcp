@@ -65,6 +65,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebasehosting Release In Channel
     /// 
     /// ```csharp
@@ -114,6 +115,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebasehosting Release Disable
     /// 
     /// ```csharp

@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Address Groups Organization Basic
     /// 
     /// ```csharp
@@ -70,6 +71,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Address Groups Advanced
     /// 
     /// ```csharp
@@ -96,6 +98,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Address Groups Cloud Armor
     /// 
     /// ```csharp

@@ -439,6 +439,7 @@ class AnalysisRule(pulumi.CustomResource):
             location="us-central1",
             display_name="analysis-rule-display-name")
         ```
+
         ### Contact Center Insights Analysis Rule Full
 
         ```python
@@ -473,6 +474,7 @@ class AnalysisRule(pulumi.CustomResource):
             analysis_percentage=0.5,
             active=True)
         ```
+
         ### Contact Center Insights Analysis Rule Profile
 
         ```python
@@ -582,6 +584,7 @@ class AnalysisRule(pulumi.CustomResource):
             location="us-central1",
             display_name="analysis-rule-display-name")
         ```
+
         ### Contact Center Insights Analysis Rule Full
 
         ```python
@@ -616,6 +619,7 @@ class AnalysisRule(pulumi.CustomResource):
             analysis_percentage=0.5,
             active=True)
         ```
+
         ### Contact Center Insights Analysis Rule Profile
 
         ```python

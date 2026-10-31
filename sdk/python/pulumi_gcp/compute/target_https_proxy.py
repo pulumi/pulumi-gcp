@@ -846,6 +846,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
+
         ### Target Https Proxy Http Keep Alive Timeout
 
         ```python
@@ -891,6 +892,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
+
         ### Target Https Proxy Mtls
 
         ```python
@@ -961,6 +963,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             ssl_certificates=[default_ssl_certificate.id],
             server_tls_policy=default_server_tls_policy.id)
         ```
+
         ### Target Https Proxy Certificate Manager Certificate
 
         ```python
@@ -1002,6 +1005,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
         ```
+
         ### Target Https Proxy Fingerprint
 
         ```python
@@ -1198,6 +1202,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
+
         ### Target Https Proxy Http Keep Alive Timeout
 
         ```python
@@ -1243,6 +1248,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
+
         ### Target Https Proxy Mtls
 
         ```python
@@ -1313,6 +1319,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             ssl_certificates=[default_ssl_certificate.id],
             server_tls_policy=default_server_tls_policy.id)
         ```
+
         ### Target Https Proxy Certificate Manager Certificate
 
         ```python
@@ -1354,6 +1361,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
         ```
+
         ### Target Https Proxy Fingerprint
 
         ```python

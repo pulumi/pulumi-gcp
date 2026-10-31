@@ -99,7 +99,8 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+     * When set to &#34;FORCE&#34;, deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it&#39;s configured for the instances.
      * 
      * ***
      * 
@@ -113,7 +114,8 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+     * When set to &#34;FORCE&#34;, deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it&#39;s configured for the instances.
      * 
      * ***
      * 
@@ -638,7 +640,8 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
          * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
          * management without updating or deleting the resource in the API.
-         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+         * When set to &#34;FORCE&#34;, deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it&#39;s configured for the instances.
          * 
          * ***
          * 
@@ -656,7 +659,8 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
          * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
          * management without updating or deleting the resource in the API.
-         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+         * When set to &#34;FORCE&#34;, deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it&#39;s configured for the instances.
          * 
          * ***
          * 

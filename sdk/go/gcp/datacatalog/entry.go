@@ -63,6 +63,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Data Catalog Entry Fileset
 //
 // ```go
@@ -101,6 +102,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Data Catalog Entry Full
 //
 // ```go

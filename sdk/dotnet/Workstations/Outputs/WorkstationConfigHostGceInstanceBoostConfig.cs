@@ -23,6 +23,11 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly int? BootDiskSizeGb;
         /// <summary>
+        /// (Optional, Beta)
+        /// Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+        /// </summary>
+        public readonly bool? EnableAutomaticFailover;
+        /// <summary>
         /// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
         /// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         /// </summary>
@@ -46,6 +51,8 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
             int? bootDiskSizeGb,
 
+            bool? enableAutomaticFailover,
+
             bool? enableNestedVirtualization,
 
             string id,
@@ -56,6 +63,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
         {
             Accelerators = accelerators;
             BootDiskSizeGb = bootDiskSizeGb;
+            EnableAutomaticFailover = enableAutomaticFailover;
             EnableNestedVirtualization = enableNestedVirtualization;
             Id = id;
             MachineType = machineType;

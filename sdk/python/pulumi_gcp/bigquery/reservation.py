@@ -34,6 +34,7 @@ class ReservationArgs:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_policy: pulumi.Input[Optional['ReservationSchedulingPolicyArgs']] = None,
                  secondary_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
@@ -131,6 +132,10 @@ class ReservationArgs:
                autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
                Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
                Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
+        :param pulumi.Input['ReservationSchedulingPolicyArgs'] scheduling_policy: The scheduling policy to use for jobs and queries running under this
+               reservation. The scheduling policy controls how the reservation's resources
+               are distributed.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
                reservations using the managed disaster recovery feature. Users can set this in create
                reservation calls to create a failover reservation or in update reservation calls to convert
@@ -161,6 +166,8 @@ class ReservationArgs:
             pulumi.set(__self__, "reservation_group", reservation_group)
         if scaling_mode is not None:
             pulumi.set(__self__, "scaling_mode", scaling_mode)
+        if scheduling_policy is not None:
+            pulumi.set(__self__, "scheduling_policy", scheduling_policy)
         if secondary_location is not None:
             pulumi.set(__self__, "secondary_location", secondary_location)
 
@@ -401,6 +408,21 @@ class ReservationArgs:
         pulumi.set(self, "scaling_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="schedulingPolicy")
+    def scheduling_policy(self) -> pulumi.Input[Optional['ReservationSchedulingPolicyArgs']]:
+        """
+        The scheduling policy to use for jobs and queries running under this
+        reservation. The scheduling policy controls how the reservation's resources
+        are distributed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduling_policy")
+
+    @scheduling_policy.setter
+    def scheduling_policy(self, value: pulumi.Input[Optional['ReservationSchedulingPolicyArgs']]):
+        pulumi.set(self, "scheduling_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="secondaryLocation")
     def secondary_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -436,6 +458,7 @@ class _ReservationState:
                  replication_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]] = None,
                  reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_policy: pulumi.Input[Optional['ReservationSchedulingPolicyArgs']] = None,
                  secondary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  slot_capacity: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -547,6 +570,10 @@ class _ReservationState:
                autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
                Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
                Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
+        :param pulumi.Input['ReservationSchedulingPolicyArgs'] scheduling_policy: The scheduling policy to use for jobs and queries running under this
+               reservation. The scheduling policy controls how the reservation's resources
+               are distributed.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
                reservations using the managed disaster recovery feature. Users can set this in create
                reservation calls to create a failover reservation or in update reservation calls to convert
@@ -588,6 +615,8 @@ class _ReservationState:
             pulumi.set(__self__, "reservation_group", reservation_group)
         if scaling_mode is not None:
             pulumi.set(__self__, "scaling_mode", scaling_mode)
+        if scheduling_policy is not None:
+            pulumi.set(__self__, "scheduling_policy", scheduling_policy)
         if secondary_location is not None:
             pulumi.set(__self__, "secondary_location", secondary_location)
         if slot_capacity is not None:
@@ -887,6 +916,21 @@ class _ReservationState:
         pulumi.set(self, "scaling_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="schedulingPolicy")
+    def scheduling_policy(self) -> pulumi.Input[Optional['ReservationSchedulingPolicyArgs']]:
+        """
+        The scheduling policy to use for jobs and queries running under this
+        reservation. The scheduling policy controls how the reservation's resources
+        are distributed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduling_policy")
+
+    @scheduling_policy.setter
+    def scheduling_policy(self, value: pulumi.Input[Optional['ReservationSchedulingPolicyArgs']]):
+        pulumi.set(self, "scheduling_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="secondaryLocation")
     def secondary_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -933,6 +977,7 @@ class Reservation(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_policy: pulumi.Input[Optional[Union['ReservationSchedulingPolicyArgs', 'ReservationSchedulingPolicyArgsDict', 'outputs.ReservationSchedulingPolicy']]] = None,
                  secondary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  slot_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -1078,6 +1123,10 @@ class Reservation(pulumi.CustomResource):
                autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
                Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
                Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
+        :param pulumi.Input[Union['ReservationSchedulingPolicyArgs', 'ReservationSchedulingPolicyArgsDict', 'outputs.ReservationSchedulingPolicy']] scheduling_policy: The scheduling policy to use for jobs and queries running under this
+               reservation. The scheduling policy controls how the reservation's resources
+               are distributed.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
                reservations using the managed disaster recovery feature. Users can set this in create
                reservation calls to create a failover reservation or in update reservation calls to convert
@@ -1167,6 +1216,7 @@ class Reservation(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_policy: pulumi.Input[Optional[Union['ReservationSchedulingPolicyArgs', 'ReservationSchedulingPolicyArgsDict', 'outputs.ReservationSchedulingPolicy']]] = None,
                  secondary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  slot_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -1190,6 +1240,7 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["reservation_group"] = reservation_group
             __props__.__dict__["scaling_mode"] = scaling_mode
+            __props__.__dict__["scheduling_policy"] = scheduling_policy
             __props__.__dict__["secondary_location"] = secondary_location
             if slot_capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'slot_capacity'")
@@ -1228,6 +1279,7 @@ class Reservation(pulumi.CustomResource):
             replication_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict', 'outputs.ReservationReplicationStatus']]]]] = None,
             reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
             scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling_policy: pulumi.Input[Optional[Union['ReservationSchedulingPolicyArgs', 'ReservationSchedulingPolicyArgsDict', 'outputs.ReservationSchedulingPolicy']]] = None,
             secondary_location: pulumi.Input[Optional[_builtins.str]] = None,
             slot_capacity: pulumi.Input[Optional[_builtins.int]] = None) -> 'Reservation':
         """
@@ -1343,6 +1395,10 @@ class Reservation(pulumi.CustomResource):
                autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
                Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
                Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
+        :param pulumi.Input[Union['ReservationSchedulingPolicyArgs', 'ReservationSchedulingPolicyArgsDict', 'outputs.ReservationSchedulingPolicy']] scheduling_policy: The scheduling policy to use for jobs and queries running under this
+               reservation. The scheduling policy controls how the reservation's resources
+               are distributed.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
                reservations using the managed disaster recovery feature. Users can set this in create
                reservation calls to create a failover reservation or in update reservation calls to convert
@@ -1371,6 +1427,7 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["replication_statuses"] = replication_statuses
         __props__.__dict__["reservation_group"] = reservation_group
         __props__.__dict__["scaling_mode"] = scaling_mode
+        __props__.__dict__["scheduling_policy"] = scheduling_policy
         __props__.__dict__["secondary_location"] = secondary_location
         __props__.__dict__["slot_capacity"] = slot_capacity
         return Reservation(resource_name, opts=opts, __props__=__props__)
@@ -1599,6 +1656,17 @@ class Reservation(pulumi.CustomResource):
         Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
         """
         return pulumi.get(self, "scaling_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="schedulingPolicy")
+    def scheduling_policy(self) -> pulumi.Output[Optional['outputs.ReservationSchedulingPolicy']]:
+        """
+        The scheduling policy to use for jobs and queries running under this
+        reservation. The scheduling policy controls how the reservation's resources
+        are distributed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduling_policy")
 
     @_builtins.property
     @pulumi.getter(name="secondaryLocation")

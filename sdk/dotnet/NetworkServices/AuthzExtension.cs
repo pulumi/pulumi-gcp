@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Authz Extension Basic With Auth Grpc
     /// 
     /// ```csharp
@@ -97,6 +98,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Authz Extension Iap
     /// 
     /// ```csharp

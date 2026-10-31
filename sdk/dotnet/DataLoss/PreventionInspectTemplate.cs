@@ -198,6 +198,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Inspect Template Custom Type
     /// 
     /// ```csharp
@@ -306,6 +307,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Inspect Template Custom Type Surrogate
     /// 
     /// ```csharp
@@ -411,6 +413,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Inspect Template Max Infotype Per Finding Default
     /// 
     /// ```csharp

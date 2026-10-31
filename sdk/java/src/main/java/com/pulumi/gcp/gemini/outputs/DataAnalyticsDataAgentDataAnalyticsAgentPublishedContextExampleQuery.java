@@ -4,7 +4,9 @@
 package com.pulumi.gcp.gemini.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameter;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +18,12 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExamp
      * 
      */
     private @Nullable String naturalLanguageQuestion;
+    /**
+     * @return Optional. The list of query parameters.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameter> parameters;
     /**
      * @return Optional. The SQL query that should be generated to answer
      * the natural language question.
@@ -30,6 +38,14 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExamp
      */
     public Optional<String> naturalLanguageQuestion() {
         return Optional.ofNullable(this.naturalLanguageQuestion);
+    }
+    /**
+     * @return Optional. The list of query parameters.
+     * Structure is documented below.
+     * 
+     */
+    public List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameter> parameters() {
+        return this.parameters == null ? List.of() : this.parameters;
     }
     /**
      * @return Optional. The SQL query that should be generated to answer
@@ -50,11 +66,13 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExamp
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String naturalLanguageQuestion;
+        private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameter> parameters;
         private @Nullable String sqlQuery;
         public Builder() {}
         public Builder(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.naturalLanguageQuestion = defaults.naturalLanguageQuestion;
+    	      this.parameters = defaults.parameters;
     	      this.sqlQuery = defaults.sqlQuery;
         }
 
@@ -65,6 +83,15 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExamp
             return this;
         }
         @CustomType.Setter
+        public Builder parameters(@Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameter> parameters) {
+
+            this.parameters = parameters;
+            return this;
+        }
+        public Builder parameters(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameter... parameters) {
+            return parameters(List.of(parameters));
+        }
+        @CustomType.Setter
         public Builder sqlQuery(@Nullable String sqlQuery) {
 
             this.sqlQuery = sqlQuery;
@@ -73,6 +100,7 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExamp
         public DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery build() {
             final var _resultValue = new DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery();
             _resultValue.naturalLanguageQuestion = naturalLanguageQuestion;
+            _resultValue.parameters = parameters;
             _resultValue.sqlQuery = sqlQuery;
             return _resultValue;
         }

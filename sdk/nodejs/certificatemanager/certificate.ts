@@ -55,6 +55,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Certificate Manager Google Managed Certificate Issuance Config
  *
  * ```typescript
@@ -127,6 +128,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Certificate Manager Self Managed Certificate
  *
  * ```typescript
@@ -148,6 +150,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Certificate Manager Self Managed Certificate Write Only
  *
  * ```typescript
@@ -178,6 +181,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Certificate Manager Self Managed Certificate Regional
  *
  * ```typescript
@@ -199,6 +203,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Certificate Manager Google Managed Certificate Issuance Config All Regions
  *
  * ```typescript
@@ -271,6 +276,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Certificate Manager Google Managed Certificate Dns All Regions
  *
  * ```typescript
@@ -303,6 +309,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Certificate Manager Google Managed Regional Certificate Dns Auth
  *
  * ```typescript
@@ -325,6 +332,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Certificate Manager Client Auth Certificate
  *
  * ```typescript

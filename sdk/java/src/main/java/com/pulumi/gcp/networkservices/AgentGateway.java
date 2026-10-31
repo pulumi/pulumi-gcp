@@ -152,6 +152,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Agent Gateway Client To Agent
  * 
  * <pre>
@@ -200,6 +201,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Agent Gateway Self Managed
  * 
  * <pre>

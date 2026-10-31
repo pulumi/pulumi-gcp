@@ -780,8 +780,12 @@ class AutonomousDatabase(pulumi.CustomResource):
                 "db_workload": "OLTP",
                 "license_type": "LICENSE_INCLUDED",
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Autonomous Database Full
 
         ```python
@@ -825,6 +829,7 @@ class AutonomousDatabase(pulumi.CustomResource):
         default = gcp.compute.get_network(name="new",
             project="my-project")
         ```
+
         ### Oracledatabase Autonomous Database Odbnetwork
 
         ```python
@@ -848,6 +853,7 @@ class AutonomousDatabase(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Autonomous Database Publicip
 
         ```python
@@ -870,6 +876,7 @@ class AutonomousDatabase(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Autonomous Database Disaster Recovery
 
         ```python
@@ -1000,8 +1007,12 @@ class AutonomousDatabase(pulumi.CustomResource):
                 "db_workload": "OLTP",
                 "license_type": "LICENSE_INCLUDED",
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Autonomous Database Full
 
         ```python
@@ -1045,6 +1056,7 @@ class AutonomousDatabase(pulumi.CustomResource):
         default = gcp.compute.get_network(name="new",
             project="my-project")
         ```
+
         ### Oracledatabase Autonomous Database Odbnetwork
 
         ```python
@@ -1068,6 +1080,7 @@ class AutonomousDatabase(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Autonomous Database Publicip
 
         ```python
@@ -1090,6 +1103,7 @@ class AutonomousDatabase(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Autonomous Database Disaster Recovery
 
         ```python

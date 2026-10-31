@@ -497,6 +497,7 @@ class NetworkPolicy(pulumi.CustomResource):
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id)
         ```
+
         ### Vmware Engine Network Policy Full
 
         ```python
@@ -598,6 +599,7 @@ class NetworkPolicy(pulumi.CustomResource):
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id)
         ```
+
         ### Vmware Engine Network Policy Full
 
         ```python

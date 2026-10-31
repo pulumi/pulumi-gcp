@@ -186,6 +186,7 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
 
         cloud_armor_tier_config = gcp.compute.ProjectCloudArmorTier("cloud_armor_tier_config", cloud_armor_tier="CA_STANDARD")
         ```
+
         ### Compute Project Cloud Armor Tier Project Set
 
         ```python
@@ -260,6 +261,7 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
 
         cloud_armor_tier_config = gcp.compute.ProjectCloudArmorTier("cloud_armor_tier_config", cloud_armor_tier="CA_STANDARD")
         ```
+
         ### Compute Project Cloud Armor Tier Project Set
 
         ```python

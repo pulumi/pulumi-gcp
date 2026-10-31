@@ -470,6 +470,7 @@ class TargetTCPProxy(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL_MANAGED",
             backend_service=default_backend_service.id)
         ```
+
         ### Target Tcp Proxy Backendless
 
         ```python
@@ -480,6 +481,7 @@ class TargetTCPProxy(pulumi.CustomResource):
             name="test-proxy",
             load_balancing_scheme="INTERNAL_MANAGED")
         ```
+
         ### Target Tcp Proxy Tls Route
 
         ```python
@@ -605,6 +607,7 @@ class TargetTCPProxy(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL_MANAGED",
             backend_service=default_backend_service.id)
         ```
+
         ### Target Tcp Proxy Backendless
 
         ```python
@@ -615,6 +618,7 @@ class TargetTCPProxy(pulumi.CustomResource):
             name="test-proxy",
             load_balancing_scheme="INTERNAL_MANAGED")
         ```
+
         ### Target Tcp Proxy Tls Route
 
         ```python

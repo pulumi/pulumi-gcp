@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class StandardAppVersionVpcAccessNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+        /// The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `Default` or `projects/my-project/global/networks/default`).
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+        /// The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `Default` or `projects/my-project/regions/us-central1/subnetworks/default`).
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

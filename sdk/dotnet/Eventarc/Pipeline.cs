@@ -59,6 +59,7 @@ namespace Pulumi.Gcp.Eventarc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Eventarc Pipeline With Http Destination
     /// 
     /// ```csharp
@@ -91,6 +92,7 @@ namespace Pulumi.Gcp.Eventarc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Eventarc Pipeline With Workflow Destination
     /// 
     /// ```csharp
@@ -149,6 +151,7 @@ namespace Pulumi.Gcp.Eventarc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Eventarc Pipeline With Oidc And Json Format
     /// 
     /// ```csharp
@@ -223,6 +226,7 @@ namespace Pulumi.Gcp.Eventarc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Eventarc Pipeline With Oauth And Protobuf Format
     /// 
     /// ```csharp
@@ -313,6 +317,7 @@ namespace Pulumi.Gcp.Eventarc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Eventarc Pipeline With Cmek And Avro Format
     /// 
     /// ```csharp

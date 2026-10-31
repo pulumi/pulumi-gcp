@@ -62,6 +62,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Spanner Instance Partition Autoscaling
 //
 // ```go

@@ -1081,6 +1081,7 @@ class Dataset(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Bigquery Dataset Cmek
 
         ```python
@@ -1103,6 +1104,7 @@ class Dataset(pulumi.CustomResource):
                 "kms_key_name": crypto_key.id,
             })
         ```
+
         ### Bigquery Dataset Authorized Dataset
 
         ```python
@@ -1158,6 +1160,7 @@ class Dataset(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Bigquery Dataset Authorized Routine
 
         ```python
@@ -1206,6 +1209,7 @@ class Dataset(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Bigquery Dataset External Reference Aws
 
         ```python
@@ -1222,6 +1226,7 @@ class Dataset(pulumi.CustomResource):
                 "connection": "projects/project/locations/aws-us-east-1/connections/connection",
             })
         ```
+
         ### Bigquery Dataset External Catalog Dataset Options
 
         ```python
@@ -1395,6 +1400,7 @@ class Dataset(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Bigquery Dataset Cmek
 
         ```python
@@ -1417,6 +1423,7 @@ class Dataset(pulumi.CustomResource):
                 "kms_key_name": crypto_key.id,
             })
         ```
+
         ### Bigquery Dataset Authorized Dataset
 
         ```python
@@ -1472,6 +1479,7 @@ class Dataset(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Bigquery Dataset Authorized Routine
 
         ```python
@@ -1520,6 +1528,7 @@ class Dataset(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Bigquery Dataset External Reference Aws
 
         ```python
@@ -1536,6 +1545,7 @@ class Dataset(pulumi.CustomResource):
                 "connection": "projects/project/locations/aws-us-east-1/connections/connection",
             })
         ```
+
         ### Bigquery Dataset External Catalog Dataset Options
 
         ```python

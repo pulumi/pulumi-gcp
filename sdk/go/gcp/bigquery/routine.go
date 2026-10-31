@@ -58,6 +58,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Routine Json
 //
 // ```go
@@ -104,6 +105,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Routine Tvf
 //
 // ```go
@@ -170,6 +172,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Routine Table Type
 //
 // ```go
@@ -229,6 +232,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Routine Pyspark
 //
 // ```go
@@ -300,6 +304,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Routine Pyspark Mainfile
 //
 // ```go
@@ -357,6 +362,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Routine Spark Jar
 //
 // ```go
@@ -413,6 +419,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Routine Data Governance Type
 //
 // ```go
@@ -456,6 +463,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Routine Remote Function
 //
 // ```go
@@ -507,6 +515,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Routine Python Function
 //
 // ```go

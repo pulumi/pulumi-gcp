@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.parallelstore.Instance` is deprecated and will be removed in a future major release. Use `gcp.lustre.Instance` instead.
+ *
  * A Parallelstore Instance.
  *
  * ## Example Usage
@@ -50,6 +52,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Parallelstore Instance Basic
  *
  * ```typescript

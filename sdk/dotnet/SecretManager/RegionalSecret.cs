@@ -49,6 +49,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret With Cmek
     /// 
     /// ```csharp
@@ -86,6 +87,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret With Rotation
     /// 
     /// ```csharp
@@ -136,6 +138,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret With Ttl
     /// 
     /// ```csharp
@@ -166,6 +169,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret With Expire Time
     /// 
     /// ```csharp
@@ -195,6 +199,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret With Version Destroy Ttl
     /// 
     /// ```csharp

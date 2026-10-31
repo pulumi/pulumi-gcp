@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     siteId: "site-no-app",
  * });
  * ```
+ *
  * ### Firebasehosting Site Full
  *
  * ```typescript
@@ -45,6 +46,7 @@ import * as utilities from "../utilities";
  *     appId: _default.appId,
  * });
  * ```
+ *
  * ### Firebasehosting Site Default
  *
  * ```typescript

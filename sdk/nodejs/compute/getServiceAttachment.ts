@@ -80,6 +80,7 @@ export interface GetServiceAttachmentResult {
     readonly region?: string;
     readonly selfLink: string;
     readonly sendPropagatedConnectionLimitIfZero: boolean;
+    readonly serviceAttachmentId: number;
     readonly showNatIps: boolean;
     readonly targetService: string;
     readonly tunnelingConfigs: outputs.compute.GetServiceAttachmentTunnelingConfig[];

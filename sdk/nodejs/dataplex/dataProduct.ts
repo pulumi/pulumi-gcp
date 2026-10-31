@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Dataplex Data Product Full
  *
  * ```typescript

@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backup Dr Restore Workload Compute Instance Full
     /// 
     /// ```csharp
@@ -169,6 +170,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backup Dr Restore Workload Disk Basic
     /// 
     /// ```csharp
@@ -206,6 +208,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backup Dr Restore Workload Regional Disk
     /// 
     /// ```csharp
@@ -250,6 +253,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backup Dr Restore Workload Without Delete
     /// 
     /// ```csharp

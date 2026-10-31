@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Billing Budget Lastperiod
  *
  * ```typescript
@@ -70,6 +71,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Billing Budget Filter
  *
  * ```typescript
@@ -110,6 +112,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Billing Budget Notify
  *
  * ```typescript
@@ -154,6 +157,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Billing Budget Notify Project Recipient
  *
  * ```typescript
@@ -182,6 +186,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Billing Budget Customperiod
  *
  * ```typescript

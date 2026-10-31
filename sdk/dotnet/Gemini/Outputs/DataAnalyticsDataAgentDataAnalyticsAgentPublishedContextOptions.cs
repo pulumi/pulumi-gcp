@@ -23,15 +23,22 @@ namespace Pulumi.Gcp.Gemini.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource? Datasource;
+        /// <summary>
+        /// Optional. The model to use for the agent loop.
+        /// </summary>
+        public readonly string? Model;
 
         [OutputConstructor]
         private DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions(
             Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis? analysis,
 
-            Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource? datasource)
+            Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource? datasource,
+
+            string? model)
         {
             Analysis = analysis;
             Datasource = datasource;
+            Model = model;
         }
     }
 }

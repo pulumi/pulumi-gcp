@@ -1291,6 +1291,7 @@ class DataConnector(pulumi.CustomResource):
             connector_modes=["DATA_INGESTION"],
             sync_mode="PERIODIC")
         ```
+
         ### Discoveryengine Dataconnector Jira With Actions
 
         ```python
@@ -1534,6 +1535,7 @@ class DataConnector(pulumi.CustomResource):
             connector_modes=["DATA_INGESTION"],
             sync_mode="PERIODIC")
         ```
+
         ### Discoveryengine Dataconnector Jira With Actions
 
         ```python

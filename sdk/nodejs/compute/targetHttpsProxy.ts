@@ -69,6 +69,7 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultSSLCertificate.id],
  * });
  * ```
+ *
  * ### Target Https Proxy Http Keep Alive Timeout
  *
  * ```typescript
@@ -123,6 +124,7 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultSSLCertificate.id],
  * });
  * ```
+ *
  * ### Target Https Proxy Mtls
  *
  * ```typescript
@@ -208,6 +210,7 @@ import * as utilities from "../utilities";
  *     serverTlsPolicy: defaultServerTlsPolicy.id,
  * });
  * ```
+ *
  * ### Target Https Proxy Certificate Manager Certificate
  *
  * ```typescript
@@ -257,6 +260,7 @@ import * as utilities from "../utilities";
  *     certificateManagerCertificates: [pulumi.interpolate`//certificatemanager.googleapis.com/${defaultCertificate.id}`],
  * });
  * ```
+ *
  * ### Target Https Proxy Fingerprint
  *
  * ```typescript

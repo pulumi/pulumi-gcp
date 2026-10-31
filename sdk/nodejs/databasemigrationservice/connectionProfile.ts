@@ -102,6 +102,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cloudsqlprofile],
  * });
  * ```
+ *
  * ### Database Migration Service Connection Profile Postgres
  *
  * ```typescript
@@ -141,6 +142,7 @@ import * as utilities from "../utilities";
  *         port: 5432,
  *         username: sqldbUser.name,
  *         password: sqldbUser.password,
+ *         database: "postgres",
  *         ssl: {
  *             clientKey: sqlClientCert.privateKey,
  *             clientCertificate: sqlClientCert.cert,
@@ -153,6 +155,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [sqldbUser],
  * });
  * ```
+ *
  * ### Database Migration Service Connection Profile Postgres No Ssl
  *
  * ```typescript
@@ -192,6 +195,7 @@ import * as utilities from "../utilities";
  *         port: 5432,
  *         username: sqldbUser.name,
  *         password: sqldbUser.password,
+ *         database: "postgres",
  *         ssl: {
  *             type: "NONE",
  *         },
@@ -201,6 +205,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [sqldbUser],
  * });
  * ```
+ *
  * ### Database Migration Service Connection Profile Postgres Required Ssl
  *
  * ```typescript
@@ -240,6 +245,7 @@ import * as utilities from "../utilities";
  *         port: 5432,
  *         username: sqldbUser.name,
  *         password: sqldbUser.password,
+ *         database: "postgres",
  *         ssl: {
  *             type: "REQUIRED",
  *         },
@@ -249,6 +255,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [sqldbUser],
  * });
  * ```
+ *
  * ### Database Migration Service Connection Profile Oracle
  *
  * ```typescript
@@ -272,6 +279,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Database Migration Service Connection Profile Alloydb
  *
  * ```typescript
@@ -326,6 +334,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [vpcConnection],
  * });
  * ```
+ *
  * ### Database Migration Service Connection Profile Existing Mysql
  *
  * ```typescript
@@ -356,6 +365,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [destinationCsql],
  * });
  * ```
+ *
  * ### Database Migration Service Connection Profile Existing Postgres
  *
  * ```typescript
@@ -386,6 +396,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [destinationCsql],
  * });
  * ```
+ *
  * ### Database Migration Service Connection Profile Existing Alloydb
  *
  * ```typescript
@@ -393,12 +404,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const _default = new gcp.compute.Network("default", {name: "destination-alloydb"});
+ * const _default = gcp.compute.getNetwork({
+ *     name: "destination-alloydb",
+ * });
  * const destinationAlloydb = new gcp.alloydb.Cluster("destination_alloydb", {
  *     clusterId: "destination-alloydb",
  *     location: "us-central1",
  *     networkConfig: {
- *         network: _default.id,
+ *         network: _default.then(_default => _default.id),
  *     },
  *     databaseVersion: "POSTGRES_15",
  *     initialUser: {
@@ -407,24 +420,10 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: false,
  * });
- * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
- *     name: "destination-alloydb",
- *     addressType: "INTERNAL",
- *     purpose: "VPC_PEERING",
- *     prefixLength: 16,
- *     network: _default.id,
- * });
- * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
- *     network: _default.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
  * const destinationAlloydbPrimary = new gcp.alloydb.Instance("destination_alloydb_primary", {
  *     cluster: destinationAlloydb.name,
  *     instanceId: "destination-alloydb-primary",
  *     instanceType: "PRIMARY",
- * }, {
- *     dependsOn: [vpcConnection],
  * });
  * const existing_alloydb = new gcp.databasemigrationservice.ConnectionProfile("existing-alloydb", {
  *     location: "us-central1",

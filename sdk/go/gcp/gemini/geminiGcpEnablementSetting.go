@@ -39,6 +39,7 @@ import (
 //				EnableCustomerDataSharing: pulumi.Bool(true),
 //				WebGroundingType:          pulumi.String("WEB_GROUNDING_FOR_ENTERPRISE"),
 //				MutationsEnabled:          pulumi.Bool(true),
+//				ReleaseChannel:            pulumi.String("EXPERIMENTAL"),
 //			})
 //			if err != nil {
 //				return err
@@ -87,6 +88,10 @@ type GeminiGcpEnablementSetting struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing pulumi.BoolPtrOutput `pulumi:"enableCustomerDataSharing"`
+	// The Gemini enterprise project for this setting.
+	// Format: projects/{project}
+	// The `{project}` segment can be the project ID or project number.
+	GeminiEnterpriseProject pulumi.StringPtrOutput `pulumi:"geminiEnterpriseProject"`
 	// Id of the Gemini Gcp Enablement setting.
 	GeminiGcpEnablementSettingId pulumi.StringOutput `pulumi:"geminiGcpEnablementSettingId"`
 	// Labels as key value pairs.
@@ -106,6 +111,9 @@ type GeminiGcpEnablementSetting struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+	// Possible values are: `STABLE`, `EXPERIMENTAL`.
+	ReleaseChannel pulumi.StringPtrOutput `pulumi:"releaseChannel"`
 	// Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Web grounding type.
@@ -176,6 +184,10 @@ type geminiGcpEnablementSettingState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing *bool `pulumi:"enableCustomerDataSharing"`
+	// The Gemini enterprise project for this setting.
+	// Format: projects/{project}
+	// The `{project}` segment can be the project ID or project number.
+	GeminiEnterpriseProject *string `pulumi:"geminiEnterpriseProject"`
 	// Id of the Gemini Gcp Enablement setting.
 	GeminiGcpEnablementSettingId *string `pulumi:"geminiGcpEnablementSettingId"`
 	// Labels as key value pairs.
@@ -195,6 +207,9 @@ type geminiGcpEnablementSettingState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+	// Possible values are: `STABLE`, `EXPERIMENTAL`.
+	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// Update time stamp.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Web grounding type.
@@ -225,6 +240,10 @@ type GeminiGcpEnablementSettingState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing pulumi.BoolPtrInput
+	// The Gemini enterprise project for this setting.
+	// Format: projects/{project}
+	// The `{project}` segment can be the project ID or project number.
+	GeminiEnterpriseProject pulumi.StringPtrInput
 	// Id of the Gemini Gcp Enablement setting.
 	GeminiGcpEnablementSettingId pulumi.StringPtrInput
 	// Labels as key value pairs.
@@ -244,6 +263,9 @@ type GeminiGcpEnablementSettingState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+	// Possible values are: `STABLE`, `EXPERIMENTAL`.
+	ReleaseChannel pulumi.StringPtrInput
 	// Update time stamp.
 	UpdateTime pulumi.StringPtrInput
 	// Web grounding type.
@@ -274,6 +296,10 @@ type geminiGcpEnablementSettingArgs struct {
 	DisableWebGrounding *bool `pulumi:"disableWebGrounding"`
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing *bool `pulumi:"enableCustomerDataSharing"`
+	// The Gemini enterprise project for this setting.
+	// Format: projects/{project}
+	// The `{project}` segment can be the project ID or project number.
+	GeminiEnterpriseProject *string `pulumi:"geminiEnterpriseProject"`
 	// Id of the Gemini Gcp Enablement setting.
 	GeminiGcpEnablementSettingId string `pulumi:"geminiGcpEnablementSettingId"`
 	// Labels as key value pairs.
@@ -287,6 +313,9 @@ type geminiGcpEnablementSettingArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+	// Possible values are: `STABLE`, `EXPERIMENTAL`.
+	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// Web grounding type.
 	// Possible values:
 	// GROUNDING_WITH_GOOGLE_SEARCH
@@ -312,6 +341,10 @@ type GeminiGcpEnablementSettingArgs struct {
 	DisableWebGrounding pulumi.BoolPtrInput
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing pulumi.BoolPtrInput
+	// The Gemini enterprise project for this setting.
+	// Format: projects/{project}
+	// The `{project}` segment can be the project ID or project number.
+	GeminiEnterpriseProject pulumi.StringPtrInput
 	// Id of the Gemini Gcp Enablement setting.
 	GeminiGcpEnablementSettingId pulumi.StringInput
 	// Labels as key value pairs.
@@ -325,6 +358,9 @@ type GeminiGcpEnablementSettingArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+	// Possible values are: `STABLE`, `EXPERIMENTAL`.
+	ReleaseChannel pulumi.StringPtrInput
 	// Web grounding type.
 	// Possible values:
 	// GROUNDING_WITH_GOOGLE_SEARCH
@@ -454,6 +490,13 @@ func (o GeminiGcpEnablementSettingOutput) EnableCustomerDataSharing() pulumi.Boo
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.BoolPtrOutput { return v.EnableCustomerDataSharing }).(pulumi.BoolPtrOutput)
 }
 
+// The Gemini enterprise project for this setting.
+// Format: projects/{project}
+// The `{project}` segment can be the project ID or project number.
+func (o GeminiGcpEnablementSettingOutput) GeminiEnterpriseProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringPtrOutput { return v.GeminiEnterpriseProject }).(pulumi.StringPtrOutput)
+}
+
 // Id of the Gemini Gcp Enablement setting.
 func (o GeminiGcpEnablementSettingOutput) GeminiGcpEnablementSettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringOutput { return v.GeminiGcpEnablementSettingId }).(pulumi.StringOutput)
@@ -493,6 +536,12 @@ func (o GeminiGcpEnablementSettingOutput) Project() pulumi.StringOutput {
 //	and default labels configured on the provider.
 func (o GeminiGcpEnablementSettingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+// Possible values are: `STABLE`, `EXPERIMENTAL`.
+func (o GeminiGcpEnablementSettingOutput) ReleaseChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringPtrOutput { return v.ReleaseChannel }).(pulumi.StringPtrOutput)
 }
 
 // Update time stamp.

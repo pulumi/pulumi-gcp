@@ -56,6 +56,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Binary Authorization Attestor Kms
  *
  * ```typescript

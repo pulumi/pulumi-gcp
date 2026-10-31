@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.diagflow.inputs.ConversationProfileSttConfigGeminiAsrConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -47,6 +48,23 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
      */
     public Optional<Output<Boolean>> enableWordInfo() {
         return Optional.ofNullable(this.enableWordInfo);
+    }
+
+    /**
+     * Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="geminiAsrConfig")
+    private @Nullable Output<ConversationProfileSttConfigGeminiAsrConfigArgs> geminiAsrConfig;
+
+    /**
+     * @return Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConversationProfileSttConfigGeminiAsrConfigArgs>> geminiAsrConfig() {
+        return Optional.ofNullable(this.geminiAsrConfig);
     }
 
     /**
@@ -114,6 +132,21 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
     }
 
     /**
+     * If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+     * 
+     */
+    @Import(name="useGeminiAsr")
+    private @Nullable Output<Boolean> useGeminiAsr;
+
+    /**
+     * @return If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+     * 
+     */
+    public Optional<Output<Boolean>> useGeminiAsr() {
+        return Optional.ofNullable(this.useGeminiAsr);
+    }
+
+    /**
      * Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
@@ -133,10 +166,12 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
     private ConversationProfileSttConfigArgs(ConversationProfileSttConfigArgs $) {
         this.audioEncoding = $.audioEncoding;
         this.enableWordInfo = $.enableWordInfo;
+        this.geminiAsrConfig = $.geminiAsrConfig;
         this.languageCode = $.languageCode;
         this.model = $.model;
         this.sampleRateHertz = $.sampleRateHertz;
         this.speechModelVariant = $.speechModelVariant;
+        this.useGeminiAsr = $.useGeminiAsr;
         this.useTimeoutBasedEndpointing = $.useTimeoutBasedEndpointing;
     }
 
@@ -200,6 +235,29 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
          */
         public Builder enableWordInfo(Boolean enableWordInfo) {
             return enableWordInfo(Output.of(enableWordInfo));
+        }
+
+        /**
+         * @param geminiAsrConfig Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geminiAsrConfig(@Nullable Output<ConversationProfileSttConfigGeminiAsrConfigArgs> geminiAsrConfig) {
+            $.geminiAsrConfig = geminiAsrConfig;
+            return this;
+        }
+
+        /**
+         * @param geminiAsrConfig Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geminiAsrConfig(ConversationProfileSttConfigGeminiAsrConfigArgs geminiAsrConfig) {
+            return geminiAsrConfig(Output.of(geminiAsrConfig));
         }
 
         /**
@@ -288,6 +346,27 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
          */
         public Builder speechModelVariant(String speechModelVariant) {
             return speechModelVariant(Output.of(speechModelVariant));
+        }
+
+        /**
+         * @param useGeminiAsr If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useGeminiAsr(@Nullable Output<Boolean> useGeminiAsr) {
+            $.useGeminiAsr = useGeminiAsr;
+            return this;
+        }
+
+        /**
+         * @param useGeminiAsr If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useGeminiAsr(Boolean useGeminiAsr) {
+            return useGeminiAsr(Output.of(useGeminiAsr));
         }
 
         /**

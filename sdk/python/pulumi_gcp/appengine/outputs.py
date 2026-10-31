@@ -3071,6 +3071,8 @@ class StandardAppVersionVpcAccess(dict):
             suggest = "egress_setting"
         elif key == "networkInterfaces":
             suggest = "network_interfaces"
+        elif key == "vpcEgress":
+            suggest = "vpc_egress"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StandardAppVersionVpcAccess. Access the value via the '{suggest}' property getter instead.")
@@ -3085,22 +3087,34 @@ class StandardAppVersionVpcAccess(dict):
 
     def __init__(__self__, *,
                  egress_setting: Optional[_builtins.str] = None,
-                 network_interfaces: Optional[Sequence['outputs.StandardAppVersionVpcAccessNetworkInterface']] = None):
+                 network_interfaces: Optional[Sequence['outputs.StandardAppVersionVpcAccessNetworkInterface']] = None,
+                 vpc_egress: Optional[_builtins.str] = None):
         """
-        :param _builtins.str egress_setting: The egress setting for the VPC Access, controlling what traffic is diverted through it.
+        :param _builtins.str egress_setting: (Optional, Deprecated)
+               The egress setting for the VPC Access, controlling what traffic is diverted through it.
+               
+               > **Warning:** `egress_setting` is deprecated and will be removed in a future major release. Use `vpc_egress` instead.
         :param Sequence['StandardAppVersionVpcAccessNetworkInterfaceArgs'] network_interfaces: List of network interfaces for the VPC Access. Currently only a single network interface is supported.
                Structure is documented below.
+        :param _builtins.str vpc_egress: The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+               Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
         """
         if egress_setting is not None:
             pulumi.set(__self__, "egress_setting", egress_setting)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if vpc_egress is not None:
+            pulumi.set(__self__, "vpc_egress", vpc_egress)
 
     @_builtins.property
     @pulumi.getter(name="egressSetting")
+    @_utilities.deprecated("""`egress_setting` is deprecated and will be removed in a future major release. Use `vpc_egress` instead.""")
     def egress_setting(self) -> Optional[_builtins.str]:
         """
+        (Optional, Deprecated)
         The egress setting for the VPC Access, controlling what traffic is diverted through it.
+
+        > **Warning:** `egress_setting` is deprecated and will be removed in a future major release. Use `vpc_egress` instead.
         """
         return pulumi.get(self, "egress_setting")
 
@@ -3112,6 +3126,15 @@ class StandardAppVersionVpcAccess(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "network_interfaces")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcEgress")
+    def vpc_egress(self) -> Optional[_builtins.str]:
+        """
+        The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+        Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+        """
+        return pulumi.get(self, "vpc_egress")
 
 
 @pulumi.output_type
@@ -3168,8 +3191,8 @@ class StandardAppVersionVpcAccessNetworkInterface(dict):
                  subnetwork: Optional[_builtins.str] = None,
                  tags: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.str network: The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
-        :param _builtins.str subnetwork: The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+        :param _builtins.str network: The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `default` or `projects/my-project/global/networks/default`).
+        :param _builtins.str subnetwork: The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `default` or `projects/my-project/regions/us-central1/subnetworks/default`).
         :param Sequence[_builtins.str] tags: Network tags applied to this App Engine version.
         """
         if network is not None:
@@ -3183,7 +3206,7 @@ class StandardAppVersionVpcAccessNetworkInterface(dict):
     @pulumi.getter
     def network(self) -> Optional[_builtins.str]:
         """
-        The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+        The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `default` or `projects/my-project/global/networks/default`).
         """
         return pulumi.get(self, "network")
 
@@ -3191,7 +3214,7 @@ class StandardAppVersionVpcAccessNetworkInterface(dict):
     @pulumi.getter
     def subnetwork(self) -> Optional[_builtins.str]:
         """
-        The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+        The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `default` or `projects/my-project/regions/us-central1/subnetworks/default`).
         """
         return pulumi.get(self, "subnetwork")
 

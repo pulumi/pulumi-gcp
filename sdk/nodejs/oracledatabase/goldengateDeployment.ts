@@ -31,9 +31,13 @@ import * as utilities from "../utilities";
  *             deployment: "deployment",
  *         },
  *     },
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
  *     deletionPolicy: "PREVENT",
  * });
  * ```
+ *
  * ### Oracledatabase Goldengate Deployment Full
  *
  * ```typescript

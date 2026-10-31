@@ -72,6 +72,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Endpoint Group Cloudrun
     /// 
     /// ```csharp
@@ -123,6 +124,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Endpoint Group Appengine
     /// 
     /// ```csharp
@@ -226,6 +228,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Endpoint Group Appengine Empty
     /// 
     /// ```csharp
@@ -247,6 +250,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Endpoint Group Psc
     /// 
     /// ```csharp
@@ -267,6 +271,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Endpoint Group Psc Service Attachment
     /// 
     /// ```csharp
@@ -362,6 +367,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Endpoint Group Internet Ip Port
     /// 
     /// ```csharp
@@ -387,6 +393,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Endpoint Group Internet Fqdn Port
     /// 
     /// ```csharp
@@ -412,6 +419,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Endpoint Group Portmap
     /// 
     /// ```csharp

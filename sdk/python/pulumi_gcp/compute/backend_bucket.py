@@ -582,6 +582,7 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True)
         ```
+
         ### Backend Bucket Security Policy
 
         ```python
@@ -602,6 +603,7 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn=True,
             edge_security_policy=policy.id)
         ```
+
         ### Backend Bucket Query String Whitelist
 
         ```python
@@ -622,6 +624,7 @@ class BackendBucket(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Backend Bucket Include Http Headers
 
         ```python
@@ -733,6 +736,7 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True)
         ```
+
         ### Backend Bucket Security Policy
 
         ```python
@@ -753,6 +757,7 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn=True,
             edge_security_policy=policy.id)
         ```
+
         ### Backend Bucket Query String Whitelist
 
         ```python
@@ -773,6 +778,7 @@ class BackendBucket(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Backend Bucket Include Http Headers
 
         ```python

@@ -53,6 +53,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Services Gateway Advanced
 //
 // ```go
@@ -87,6 +88,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Services Gateway Secure Web Proxy
 //
 // ```go
@@ -206,6 +208,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Services Gateway Multiple Swp Same Network
 //
 // ```go

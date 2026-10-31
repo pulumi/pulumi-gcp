@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Reservation Basic Beta
  *
  * ```typescript
@@ -56,12 +57,13 @@ import * as utilities from "../utilities";
  *         instanceProperties: {
  *             minCpuPlatform: "Intel Cascade Lake",
  *             machineType: "n2-standard-2",
- *             maintenanceInterval: "PERIODIC",
+ *             maintenanceInterval: "RECURRENT",
  *         },
  *     },
  *     enableEmergentMaintenance: true,
  * });
  * ```
+ *
  * ### Reservation Source Instance Template
  *
  * ```typescript
@@ -115,6 +117,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Reservation Sharing Policy
  *
  * ```typescript

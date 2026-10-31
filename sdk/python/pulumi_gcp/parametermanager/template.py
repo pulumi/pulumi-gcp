@@ -377,6 +377,7 @@ class Template(pulumi.CustomResource):
 
         template_basic = gcp.parametermanager.Template("template-basic", template_id="template")
         ```
+
         ### Template With Format
 
         ```python
@@ -387,6 +388,7 @@ class Template(pulumi.CustomResource):
             template_id="template",
             format="TEMPLATE_FORMAT_JSON")
         ```
+
         ### Template With Labels
 
         ```python
@@ -469,6 +471,7 @@ class Template(pulumi.CustomResource):
 
         template_basic = gcp.parametermanager.Template("template-basic", template_id="template")
         ```
+
         ### Template With Format
 
         ```python
@@ -479,6 +482,7 @@ class Template(pulumi.CustomResource):
             template_id="template",
             format="TEMPLATE_FORMAT_JSON")
         ```
+
         ### Template With Labels
 
         ```python

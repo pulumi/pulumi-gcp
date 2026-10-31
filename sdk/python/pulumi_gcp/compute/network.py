@@ -867,6 +867,7 @@ class Network(pulumi.CustomResource):
 
         vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
         ```
+
         ### Network Custom Mtu
 
         ```python
@@ -879,6 +880,7 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             mtu=1460)
         ```
+
         ### Network Custom Firewall Enforcement Order
 
         ```python
@@ -891,6 +893,7 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL")
         ```
+
         ### Network Bgp Best Path Selection Mode
 
         ```python
@@ -902,6 +905,7 @@ class Network(pulumi.CustomResource):
             name="vpc-network",
             routing_mode="GLOBAL")
         ```
+
         ### Network Bgp Best Path Selection Mode Standard
 
         ```python
@@ -914,6 +918,7 @@ class Network(pulumi.CustomResource):
             routing_mode="GLOBAL",
             bgp_best_path_selection_mode="STANDARD")
         ```
+
         ### Network Bgp Best Path Selection Mode Standard Custom Fields
 
         ```python
@@ -928,6 +933,7 @@ class Network(pulumi.CustomResource):
             bgp_always_compare_med=True,
             bgp_inter_region_cost="ADD_COST_TO_MED")
         ```
+
         ### Network Bgp Standard Mode Delete Med
 
         ```python
@@ -1049,6 +1055,7 @@ class Network(pulumi.CustomResource):
 
         vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
         ```
+
         ### Network Custom Mtu
 
         ```python
@@ -1061,6 +1068,7 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             mtu=1460)
         ```
+
         ### Network Custom Firewall Enforcement Order
 
         ```python
@@ -1073,6 +1081,7 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL")
         ```
+
         ### Network Bgp Best Path Selection Mode
 
         ```python
@@ -1084,6 +1093,7 @@ class Network(pulumi.CustomResource):
             name="vpc-network",
             routing_mode="GLOBAL")
         ```
+
         ### Network Bgp Best Path Selection Mode Standard
 
         ```python
@@ -1096,6 +1106,7 @@ class Network(pulumi.CustomResource):
             routing_mode="GLOBAL",
             bgp_best_path_selection_mode="STANDARD")
         ```
+
         ### Network Bgp Best Path Selection Mode Standard Custom Fields
 
         ```python
@@ -1110,6 +1121,7 @@ class Network(pulumi.CustomResource):
             bgp_always_compare_med=True,
             bgp_inter_region_cost="ADD_COST_TO_MED")
         ```
+
         ### Network Bgp Standard Mode Delete Med
 
         ```python

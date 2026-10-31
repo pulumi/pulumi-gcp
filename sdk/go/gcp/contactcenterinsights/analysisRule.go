@@ -52,6 +52,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Contact Center Insights Analysis Rule Full
 //
 // ```go
@@ -108,6 +109,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Contact Center Insights Analysis Rule Profile
 //
 // ```go

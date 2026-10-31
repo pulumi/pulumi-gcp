@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataprocgdc Applicationenvironment
     /// 
     /// ```csharp

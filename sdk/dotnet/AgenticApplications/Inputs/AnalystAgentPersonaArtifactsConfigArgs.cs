@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.AgenticApplications.Inputs
     public sealed class AnalystAgentPersonaArtifactsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Options for audit trail export.
+        /// </summary>
+        [Input("auditTrailExportOptions")]
+        public Input<Inputs.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs>? AuditTrailExportOptions { get; set; }
+
+        /// <summary>
         /// Options for document generation.
         /// </summary>
         [Input("documentGenerationOptions")]

@@ -314,6 +314,7 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release")
         ```
+
         ### Firebasehosting Release In Channel
 
         ```python
@@ -341,6 +342,7 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release in channel")
         ```
+
         ### Firebasehosting Release Disable
 
         ```python
@@ -435,6 +437,7 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release")
         ```
+
         ### Firebasehosting Release In Channel
 
         ```python
@@ -462,6 +465,7 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release in channel")
         ```
+
         ### Firebasehosting Release Disable
 
         ```python

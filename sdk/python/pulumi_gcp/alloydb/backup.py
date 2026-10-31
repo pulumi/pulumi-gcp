@@ -783,6 +783,7 @@ class Backup(pulumi.CustomResource):
             cluster_name=default_cluster.name,
             opts = pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
+
         ### Alloydb Backup Full
 
         ```python
@@ -922,6 +923,7 @@ class Backup(pulumi.CustomResource):
             cluster_name=default_cluster.name,
             opts = pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
+
         ### Alloydb Backup Full
 
         ```python

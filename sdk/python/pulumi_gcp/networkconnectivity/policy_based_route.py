@@ -617,6 +617,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
             },
             next_hop_other_routes="DEFAULT_ROUTING")
         ```
+
         ### Network Connectivity Policy Based Route Full
 
         ```python
@@ -729,6 +730,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
             },
             next_hop_other_routes="DEFAULT_ROUTING")
         ```
+
         ### Network Connectivity Policy Based Route Full
 
         ```python

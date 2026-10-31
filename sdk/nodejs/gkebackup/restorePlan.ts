@@ -23,28 +23,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "restore-all-ns-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "restore-all-ns",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -56,7 +37,7 @@ import * as utilities from "../utilities";
  *     name: "restore-all-ns",
  *     location: "us-east1",
  *     backupPlan: basic.id,
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster",
  *     restoreConfig: {
  *         allNamespaces: true,
  *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
@@ -68,34 +49,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Rollback Namespace
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "rollback-ns-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "rollback-ns",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -107,7 +70,7 @@ import * as utilities from "../utilities";
  *     name: "rollback-ns-rp",
  *     location: "us-east1",
  *     backupPlan: basic.id,
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster",
  *     restoreConfig: {
  *         selectedNamespaces: {
  *             namespaces: ["my-ns"],
@@ -130,34 +93,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Protected Application
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "rollback-app-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "rollback-app",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -169,7 +114,7 @@ import * as utilities from "../utilities";
  *     name: "rollback-app-rp",
  *     location: "us-east1",
  *     backupPlan: basic.id,
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster",
  *     restoreConfig: {
  *         selectedApplications: {
  *             namespacedNames: [{
@@ -185,34 +130,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan All Cluster Resources
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "all-groupkinds-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "all-groupkinds",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -224,7 +151,7 @@ import * as utilities from "../utilities";
  *     name: "all-groupkinds-rp",
  *     location: "us-east1",
  *     backupPlan: basic.id,
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster",
  *     restoreConfig: {
  *         noNamespaces: true,
  *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
@@ -235,34 +162,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Rename Namespace
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "rename-ns-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "rename-ns",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -274,7 +183,7 @@ import * as utilities from "../utilities";
  *     name: "rename-ns-rp",
  *     location: "us-east1",
  *     backupPlan: basic.id,
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster",
  *     restoreConfig: {
  *         selectedNamespaces: {
  *             namespaces: ["ns1"],
@@ -314,34 +223,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Second Transformation
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "transform-rule-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "transform-rule",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -357,7 +248,7 @@ import * as utilities from "../utilities";
  *     },
  *     location: "us-east1",
  *     backupPlan: basic.id,
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster",
  *     restoreConfig: {
  *         excludedNamespaces: {
  *             namespaces: ["my-ns"],
@@ -389,34 +280,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Gitops Mode
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "gitops-mode-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "gitops-mode",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -428,7 +301,7 @@ import * as utilities from "../utilities";
  *     name: "gitops-mode",
  *     location: "us-east1",
  *     backupPlan: basic.id,
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster",
  *     restoreConfig: {
  *         allNamespaces: true,
  *         namespacedResourceRestoreMode: "MERGE_SKIP_ON_CONFLICT",
@@ -440,34 +313,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Restore Order
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "restore-order-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "restore-order",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/restore-order-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -479,7 +334,7 @@ import * as utilities from "../utilities";
  *     name: "restore-order",
  *     location: "us-east1",
  *     backupPlan: basic.id,
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/restore-order-cluster",
  *     restoreConfig: {
  *         allNamespaces: true,
  *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
@@ -515,34 +370,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Volume Res
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "volume-res-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "volume-res",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/volume-res-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -554,7 +391,7 @@ import * as utilities from "../utilities";
  *     name: "volume-res",
  *     location: "us-east1",
  *     backupPlan: basic.id,
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/volume-res-cluster",
  *     restoreConfig: {
  *         allNamespaces: true,
  *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",

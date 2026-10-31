@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Gateway Advanced
  * 
  * <pre>
@@ -102,6 +103,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Gateway Secure Web Proxy
  * 
  * <pre>
@@ -212,6 +214,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Gateway Multiple Swp Same Network
  * 
  * <pre>

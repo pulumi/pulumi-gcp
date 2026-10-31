@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Target Tcp Proxy Backendless
     /// 
     /// ```csharp
@@ -79,6 +80,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Target Tcp Proxy Tls Route
     /// 
     /// ```csharp

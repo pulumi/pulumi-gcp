@@ -344,6 +344,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
             firewall_policy=policy.id,
             region="us-west1")
         ```
+
         ### Region Network Firewall Policy Association Priority
 
         ```python
@@ -441,6 +442,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
             firewall_policy=policy.id,
             region="us-west1")
         ```
+
         ### Region Network Firewall Policy Association Priority
 
         ```python

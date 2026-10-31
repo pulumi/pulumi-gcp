@@ -18,11 +18,20 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication? RestrictedClientApplication;
+        /// <summary>
+        /// Optional. The Google Cloud project that is subject to this binding's scope.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject? RestrictedProject;
 
         [OutputConstructor]
-        private GcpUserAccessBindingScopedAccessSettingScopeClientScope(Outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication? restrictedClientApplication)
+        private GcpUserAccessBindingScopedAccessSettingScopeClientScope(
+            Outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication? restrictedClientApplication,
+
+            Outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject? restrictedProject)
         {
             RestrictedClientApplication = restrictedClientApplication;
+            RestrictedProject = restrictedProject;
         }
     }
 }

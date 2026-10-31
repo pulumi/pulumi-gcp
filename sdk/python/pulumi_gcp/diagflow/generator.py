@@ -530,6 +530,7 @@ class Generator(pulumi.CustomResource):
             },
             trigger_event="MANUAL_CALL")
         ```
+
         ### Dialogflow Generator Agent Coaching
 
         ```python
@@ -554,6 +555,7 @@ class Generator(pulumi.CustomResource):
             },
             trigger_event="END_OF_UTTERANCE")
         ```
+
         ### Dialogflow Generator With Tools
 
         ```python
@@ -671,6 +673,7 @@ class Generator(pulumi.CustomResource):
             },
             trigger_event="MANUAL_CALL")
         ```
+
         ### Dialogflow Generator Agent Coaching
 
         ```python
@@ -695,6 +698,7 @@ class Generator(pulumi.CustomResource):
             },
             trigger_event="END_OF_UTTERANCE")
         ```
+
         ### Dialogflow Generator With Tools
 
         ```python

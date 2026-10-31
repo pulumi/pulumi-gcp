@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase Database Instance Full
     /// 
     /// ```csharp
@@ -63,6 +64,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase Database Instance Default Database
     /// 
     /// ```csharp

@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *     values: ["www.example.com"],
  * });
  * ```
+ *
  * ### Network Security Url Lists Advanced
  *
  * ```typescript

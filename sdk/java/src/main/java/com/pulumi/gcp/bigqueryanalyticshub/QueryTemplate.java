@@ -93,6 +93,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Querytemplate Cmek
  * 
  * <pre>

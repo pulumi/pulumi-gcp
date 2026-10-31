@@ -163,6 +163,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [waitForPropagation],
  * });
  * ```
+ *
  * ### Developer Connect Insights Config Projects
  *
  * ```typescript

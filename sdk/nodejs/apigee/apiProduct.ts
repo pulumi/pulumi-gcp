@@ -59,6 +59,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [apigeeInstance],
  * });
  * ```
+ *
  * ### Apigee Api Product With Legacy Operation
  *
  * ```typescript
@@ -133,6 +134,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ## Import
  *
  * ApiProduct can be imported using any of these accepted formats:

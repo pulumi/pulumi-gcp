@@ -48,6 +48,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebaseailogic Prompt Template Lock Global Only
     /// 
     /// ```csharp

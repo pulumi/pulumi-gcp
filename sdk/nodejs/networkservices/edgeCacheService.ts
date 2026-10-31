@@ -68,6 +68,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Services Edge Cache Service Advanced
  *
  * ```typescript
@@ -267,6 +268,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Services Edge Cache Service Dual Token
  *
  * ```typescript

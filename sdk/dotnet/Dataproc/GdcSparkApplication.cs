@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataprocgdc Sparkapplication
     /// 
     /// ```csharp
@@ -113,6 +114,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataprocgdc Sparkapplication Pyspark
     /// 
     /// ```csharp
@@ -163,6 +165,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataprocgdc Sparkapplication Sparkr
     /// 
     /// ```csharp
@@ -201,6 +204,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataprocgdc Sparkapplication Sparksql
     /// 
     /// ```csharp
@@ -241,6 +245,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataprocgdc Sparkapplication Sparksql Query File
     /// 
     /// ```csharp

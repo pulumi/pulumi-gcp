@@ -60,11 +60,16 @@ namespace Pulumi.Gcp.OracleDatabase
     ///                 },
     ///             },
     ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
     ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Db System Full
     /// 
     /// ```csharp

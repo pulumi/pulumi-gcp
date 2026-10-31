@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// 
     /// });
     /// ```
+    /// 
     /// ### Integrations Client Full
     /// 
     /// ```csharp

@@ -491,6 +491,7 @@ class AutoProtectionPolicy(pulumi.CustomResource):
                 "backup_plan": my_backup_plan.name,
             }])
         ```
+
         ### Backup Dr Auto Protection Policy Full
 
         ```python
@@ -641,6 +642,7 @@ class AutoProtectionPolicy(pulumi.CustomResource):
                 "backup_plan": my_backup_plan.name,
             }])
         ```
+
         ### Backup Dr Auto Protection Policy Full
 
         ```python

@@ -552,6 +552,7 @@ class CustomTargetType(pulumi.CustomResource):
                 "deploy_action": "deployAction",
             })
         ```
+
         ### Clouddeploy Custom Target Type Git Skaffold Modules
 
         ```python
@@ -575,6 +576,7 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Clouddeploy Custom Target Type Gcs Skaffold Modules
 
         ```python
@@ -597,6 +599,7 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
 
         ```python
@@ -620,6 +623,7 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Clouddeploy Custom Target Type Tasks
 
         ```python
@@ -726,6 +730,7 @@ class CustomTargetType(pulumi.CustomResource):
                 "deploy_action": "deployAction",
             })
         ```
+
         ### Clouddeploy Custom Target Type Git Skaffold Modules
 
         ```python
@@ -749,6 +754,7 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Clouddeploy Custom Target Type Gcs Skaffold Modules
 
         ```python
@@ -771,6 +777,7 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
 
         ```python
@@ -794,6 +801,7 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Clouddeploy Custom Target Type Tasks
 
         ```python

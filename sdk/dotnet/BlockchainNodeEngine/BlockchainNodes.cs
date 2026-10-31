@@ -60,6 +60,7 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Blockchain Nodes Geth Details
     /// 
     /// ```csharp
@@ -104,6 +105,7 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Blockchain Nodes Beacon Fee Recipient
     /// 
     /// ```csharp

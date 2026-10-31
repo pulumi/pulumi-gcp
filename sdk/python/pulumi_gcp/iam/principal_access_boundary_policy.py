@@ -440,6 +440,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
             display_name="PAB policy for Organization",
             principal_access_boundary_policy_id="pab-policy-for-org")
         ```
+
         ### Iam Organizations Policy Binding
 
         ```python
@@ -536,6 +537,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
             display_name="PAB policy for Organization",
             principal_access_boundary_policy_id="pab-policy-for-org")
         ```
+
         ### Iam Organizations Policy Binding
 
         ```python

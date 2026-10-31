@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Cloud Support Event Subscription Update
  *
  * ```typescript

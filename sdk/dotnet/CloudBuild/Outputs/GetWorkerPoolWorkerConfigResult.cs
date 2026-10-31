@@ -29,6 +29,10 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// If true, workers are created without any public address, which prevents network egress to public IPs.
         /// </summary>
         public readonly bool NoExternalIp;
+        /// <summary>
+        /// The release or release channel to use for the worker. Possible values are `Rapid`, `Regular`, `Stable`, or a specific release version.
+        /// </summary>
+        public readonly string WorkerRelease;
 
         [OutputConstructor]
         private GetWorkerPoolWorkerConfigResult(
@@ -38,12 +42,15 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             string machineType,
 
-            bool noExternalIp)
+            bool noExternalIp,
+
+            string workerRelease)
         {
             DiskSizeGb = diskSizeGb;
             EnableNestedVirtualization = enableNestedVirtualization;
             MachineType = machineType;
             NoExternalIp = noExternalIp;
+            WorkerRelease = workerRelease;
         }
     }
 }

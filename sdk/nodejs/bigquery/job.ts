@@ -55,6 +55,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Job Query Table Reference
  *
  * ```typescript
@@ -93,6 +94,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Job Load
  *
  * ```typescript
@@ -132,6 +134,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Job Load Geojson
  *
  * ```typescript
@@ -183,6 +186,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [object],
  * });
  * ```
+ *
  * ### Bigquery Job Load Parquet
  *
  * ```typescript
@@ -236,6 +240,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Job Copy
  *
  * ```typescript
@@ -348,6 +353,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [encryptRole],
  * });
  * ```
+ *
  * ### Bigquery Job Extract
  *
  * ```typescript

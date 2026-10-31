@@ -1081,6 +1081,7 @@ class Instance(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         ```
+
         ### Alloydb Secondary Instance Basic
 
         ```python
@@ -1277,6 +1278,7 @@ class Instance(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         ```
+
         ### Alloydb Secondary Instance Basic
 
         ```python

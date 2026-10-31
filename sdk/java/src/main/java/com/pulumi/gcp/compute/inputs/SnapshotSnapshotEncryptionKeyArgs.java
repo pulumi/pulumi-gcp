@@ -17,6 +17,7 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
 
     /**
      * The name of the encryption key that is stored in Google Cloud KMS.
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     @Import(name="kmsKeySelfLink")
@@ -24,6 +25,7 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
 
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     public Optional<Output<String>> kmsKeySelfLink() {
@@ -134,6 +136,7 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
 
         /**
          * @param kmsKeySelfLink The name of the encryption key that is stored in Google Cloud KMS.
+         * Specify the key without a `/cryptoKeyVersions/` suffix.
          * 
          * @return builder
          * 
@@ -145,6 +148,7 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
 
         /**
          * @param kmsKeySelfLink The name of the encryption key that is stored in Google Cloud KMS.
+         * Specify the key without a `/cryptoKeyVersions/` suffix.
          * 
          * @return builder
          * 

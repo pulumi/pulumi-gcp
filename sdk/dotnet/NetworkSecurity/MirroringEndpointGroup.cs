@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Mirroring Endpoint Group Broker Basic
     /// 
     /// ```csharp

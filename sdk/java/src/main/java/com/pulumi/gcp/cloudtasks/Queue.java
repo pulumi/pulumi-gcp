@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloud Tasks Queue Advanced
  * 
  * <pre>
@@ -113,6 +114,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloud Tasks Queue Http Target Oidc
  * 
  * <pre>
@@ -192,6 +194,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloud Tasks Queue Http Target Oauth
  * 
  * <pre>

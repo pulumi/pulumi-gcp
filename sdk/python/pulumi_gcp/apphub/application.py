@@ -446,6 +446,7 @@ class Application(pulumi.CustomResource):
                 "type": "REGIONAL",
             })
         ```
+
         ### Apphub Application Global Basic
 
         ```python
@@ -459,6 +460,7 @@ class Application(pulumi.CustomResource):
                 "type": "GLOBAL",
             })
         ```
+
         ### Apphub Application Full
 
         ```python
@@ -555,6 +557,7 @@ class Application(pulumi.CustomResource):
                 "type": "REGIONAL",
             })
         ```
+
         ### Apphub Application Global Basic
 
         ```python
@@ -568,6 +571,7 @@ class Application(pulumi.CustomResource):
                 "type": "GLOBAL",
             })
         ```
+
         ### Apphub Application Full
 
         ```python

@@ -120,6 +120,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebase App Hosting Traffic Rollout Policy
  * 
  * <pre>
@@ -197,6 +198,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebase App Hosting Traffic Rollout Policy Disabled
  * 
  * <pre>

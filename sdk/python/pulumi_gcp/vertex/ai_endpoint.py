@@ -766,13 +766,14 @@ class AiEndpoint(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         ```
+
         ### Vertex Ai Endpoint Private Service Connect
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", name="psc-network-_78545")
+        default = gcp.compute.Network("default", name="psc-network-_72437")
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
             name="endpoint-name",
@@ -792,6 +793,7 @@ class AiEndpoint(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Vertex Ai Endpoint Dedicated Endpoint
 
         ```python
@@ -932,13 +934,14 @@ class AiEndpoint(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         ```
+
         ### Vertex Ai Endpoint Private Service Connect
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", name="psc-network-_78545")
+        default = gcp.compute.Network("default", name="psc-network-_72437")
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
             name="endpoint-name",
@@ -958,6 +961,7 @@ class AiEndpoint(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Vertex Ai Endpoint Dedicated Endpoint
 
         ```python

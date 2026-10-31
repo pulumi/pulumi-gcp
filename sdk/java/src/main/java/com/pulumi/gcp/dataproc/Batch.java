@@ -92,6 +92,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dataproc Batch Spark Full
  * 
  * <pre>
@@ -247,6 +248,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Dataproc Batch Sparksql
  * 
  * <pre>
@@ -300,6 +302,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dataproc Batch Pyspark
  * 
  * <pre>
@@ -359,6 +362,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dataproc Batch Sparkr
  * 
  * <pre>
@@ -414,6 +418,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dataproc Batch Autotuning
  * 
  * <pre>

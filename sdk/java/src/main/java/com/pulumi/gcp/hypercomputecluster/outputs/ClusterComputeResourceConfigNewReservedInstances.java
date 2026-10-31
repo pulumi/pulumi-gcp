@@ -5,12 +5,20 @@ package com.pulumi.gcp.hypercomputecluster.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterComputeResourceConfigNewReservedInstances {
+    /**
+     * @return (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    private @Nullable List<String> networkTags;
     /**
      * @return Name of the reservation from which VM instances should be created, in the
      * format `projects/{project}/zones/{zone}/reservations/{reservation}`.
@@ -19,6 +27,15 @@ public final class ClusterComputeResourceConfigNewReservedInstances {
     private @Nullable String reservation;
 
     private ClusterComputeResourceConfigNewReservedInstances() {}
+    /**
+     * @return (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    public List<String> networkTags() {
+        return this.networkTags == null ? List.of() : this.networkTags;
+    }
     /**
      * @return Name of the reservation from which VM instances should be created, in the
      * format `projects/{project}/zones/{zone}/reservations/{reservation}`.
@@ -37,13 +54,24 @@ public final class ClusterComputeResourceConfigNewReservedInstances {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> networkTags;
         private @Nullable String reservation;
         public Builder() {}
         public Builder(ClusterComputeResourceConfigNewReservedInstances defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.networkTags = defaults.networkTags;
     	      this.reservation = defaults.reservation;
         }
 
+        @CustomType.Setter
+        public Builder networkTags(@Nullable List<String> networkTags) {
+
+            this.networkTags = networkTags;
+            return this;
+        }
+        public Builder networkTags(String... networkTags) {
+            return networkTags(List.of(networkTags));
+        }
         @CustomType.Setter
         public Builder reservation(@Nullable String reservation) {
 
@@ -52,6 +80,7 @@ public final class ClusterComputeResourceConfigNewReservedInstances {
         }
         public ClusterComputeResourceConfigNewReservedInstances build() {
             final var _resultValue = new ClusterComputeResourceConfigNewReservedInstances();
+            _resultValue.networkTags = networkTags;
             _resultValue.reservation = reservation;
             return _resultValue;
         }

@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Gateway Security Policy Rules Advanced
     /// 
     /// ```csharp

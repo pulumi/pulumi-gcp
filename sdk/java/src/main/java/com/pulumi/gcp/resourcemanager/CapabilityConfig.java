@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Manager Capability Config Folder
  * 
  * <pre>
@@ -130,6 +131,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Manager Capability Config Project
  * 
  * <pre>

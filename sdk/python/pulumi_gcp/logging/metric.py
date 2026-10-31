@@ -570,6 +570,7 @@ class Metric(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Logging Metric Counter Basic
 
         ```python
@@ -584,6 +585,7 @@ class Metric(pulumi.CustomResource):
                 "value_type": "INT64",
             })
         ```
+
         ### Logging Metric Counter Labels
 
         ```python
@@ -606,6 +608,7 @@ class Metric(pulumi.CustomResource):
                 "mass": "EXTRACT(jsonPayload.request)",
             })
         ```
+
         ### Logging Metric Logging Bucket
 
         ```python
@@ -621,6 +624,7 @@ class Metric(pulumi.CustomResource):
             filter="resource.type=gae_app AND severity>=ERROR",
             bucket_name=logging_metric.name)
         ```
+
         ### Logging Metric Disabled
 
         ```python
@@ -753,6 +757,7 @@ class Metric(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Logging Metric Counter Basic
 
         ```python
@@ -767,6 +772,7 @@ class Metric(pulumi.CustomResource):
                 "value_type": "INT64",
             })
         ```
+
         ### Logging Metric Counter Labels
 
         ```python
@@ -789,6 +795,7 @@ class Metric(pulumi.CustomResource):
                 "mass": "EXTRACT(jsonPayload.request)",
             })
         ```
+
         ### Logging Metric Logging Bucket
 
         ```python
@@ -804,6 +811,7 @@ class Metric(pulumi.CustomResource):
             filter="resource.type=gae_app AND severity>=ERROR",
             bucket_name=logging_metric.name)
         ```
+
         ### Logging Metric Disabled
 
         ```python

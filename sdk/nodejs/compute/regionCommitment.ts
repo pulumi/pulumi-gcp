@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Compute Region Commitment Full
  *
  * ```typescript

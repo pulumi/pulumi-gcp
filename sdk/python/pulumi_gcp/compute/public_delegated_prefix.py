@@ -551,6 +551,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             ip_cidr_range="127.127.0.0/24",
             parent_prefix=advertised.id)
         ```
+
         ### Public Delegated Prefixes Ipv6
 
         ```python
@@ -579,6 +580,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             allocatable_prefix_length=64,
             mode="EXTERNAL_IPV6_FORWARDING_RULE_CREATION")
         ```
+
         ### Public Delegated Prefix Ipv6 Subnet Mode
 
         ```python
@@ -606,6 +608,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             parent_prefix=prefix.id,
             mode="EXTERNAL_IPV6_SUBNETWORK_CREATION")
         ```
+
         ### Public Delegated Prefix Internal Ipv6 Subnet Mode
 
         ```python
@@ -717,6 +720,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             ip_cidr_range="127.127.0.0/24",
             parent_prefix=advertised.id)
         ```
+
         ### Public Delegated Prefixes Ipv6
 
         ```python
@@ -745,6 +749,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             allocatable_prefix_length=64,
             mode="EXTERNAL_IPV6_FORWARDING_RULE_CREATION")
         ```
+
         ### Public Delegated Prefix Ipv6 Subnet Mode
 
         ```python
@@ -772,6 +777,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             parent_prefix=prefix.id,
             mode="EXTERNAL_IPV6_SUBNETWORK_CREATION")
         ```
+
         ### Public Delegated Prefix Internal Ipv6 Subnet Mode
 
         ```python

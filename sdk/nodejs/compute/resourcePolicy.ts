@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Full
  *
  * ```typescript
@@ -64,6 +65,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Placement Policy
  *
  * ```typescript
@@ -79,6 +81,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Placement Policy Max Distance
  *
  * ```typescript
@@ -95,6 +98,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Instance Schedule Policy
  *
  * ```typescript
@@ -116,6 +120,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Snapshot Schedule Chain Name
  *
  * ```typescript
@@ -148,6 +153,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Consistency Group
  *
  * ```typescript
@@ -162,6 +168,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Workload Policy
  *
  * ```typescript
@@ -176,6 +183,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Workload Policy Accelerator Topology
  *
  * ```typescript
@@ -191,6 +199,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Workload Policy Accelerator Topology Mode
  *
  * ```typescript
@@ -207,6 +216,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Workload Policy Max Topology Distance
  *
  * ```typescript
@@ -222,6 +232,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Placement Policy Gpu Topology
  *
  * ```typescript
@@ -237,6 +248,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Resource Policy Placement Policy Tpu Topology
  *
  * ```typescript

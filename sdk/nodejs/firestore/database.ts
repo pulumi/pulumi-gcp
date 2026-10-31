@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     type: "FIRESTORE_NATIVE",
  * });
  * ```
+ *
  * ### Firestore Database
  *
  * ```typescript
@@ -54,6 +55,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
+ *
  * ### Firestore Database With Tags
  *
  * ```typescript
@@ -72,6 +74,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Firestore Cmek Database
  *
  * ```typescript
@@ -110,6 +113,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [firestoreCmekKeyuser],
  * });
  * ```
+ *
  * ### Firestore Default Database In Datastore Mode
  *
  * ```typescript
@@ -123,6 +127,7 @@ import * as utilities from "../utilities";
  *     type: "DATASTORE_MODE",
  * });
  * ```
+ *
  * ### Firestore Database In Datastore Mode
  *
  * ```typescript
@@ -141,6 +146,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
+ *
  * ### Firestore Cmek Database In Datastore Mode
  *
  * ```typescript
@@ -179,6 +185,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [firestoreCmekKeyuser],
  * });
  * ```
+ *
  * ### Firestore Database Enterprise
  *
  * ```typescript
@@ -194,6 +201,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
+ *
  * ### Firestore Database Data Access
  *
  * ```typescript

@@ -369,6 +369,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableDictionary<string, string> ResourceLabels;
         public readonly ImmutableArray<Outputs.GetClusterResourceUsageExportConfigResult> ResourceUsageExportConfigs;
         public readonly ImmutableArray<Outputs.GetClusterRollbackSafeUpgradeResult> RollbackSafeUpgrades;
+        public readonly ImmutableArray<Outputs.GetClusterScheduleUpgradeConfigResult> ScheduleUpgradeConfigs;
         public readonly ImmutableArray<Outputs.GetClusterSecretManagerConfigResult> SecretManagerConfigs;
         public readonly ImmutableArray<Outputs.GetClusterSecretSyncConfigResult> SecretSyncConfigs;
         public readonly ImmutableArray<Outputs.GetClusterSecurityPostureConfigResult> SecurityPostureConfigs;
@@ -564,6 +565,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterRollbackSafeUpgradeResult> rollbackSafeUpgrades,
 
+            ImmutableArray<Outputs.GetClusterScheduleUpgradeConfigResult> scheduleUpgradeConfigs,
+
             ImmutableArray<Outputs.GetClusterSecretManagerConfigResult> secretManagerConfigs,
 
             ImmutableArray<Outputs.GetClusterSecretSyncConfigResult> secretSyncConfigs,
@@ -681,6 +684,7 @@ namespace Pulumi.Gcp.Container
             ResourceLabels = resourceLabels;
             ResourceUsageExportConfigs = resourceUsageExportConfigs;
             RollbackSafeUpgrades = rollbackSafeUpgrades;
+            ScheduleUpgradeConfigs = scheduleUpgradeConfigs;
             SecretManagerConfigs = secretManagerConfigs;
             SecretSyncConfigs = secretSyncConfigs;
             SecurityPostureConfigs = securityPostureConfigs;

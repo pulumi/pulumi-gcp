@@ -575,6 +575,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Region Security Policy Rule Multiple Rules
 
         ```python
@@ -616,6 +617,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Region Security Policy Rule Default Rule
 
         ```python
@@ -653,6 +655,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Region Security Policy Rule With Preconfigured Waf Config
 
         ```python
@@ -710,6 +713,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Region Security Policy Rule With Network Match
 
         ```python
@@ -759,6 +763,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Region Security Policy Rule With Body Exclude
 
         ```python
@@ -796,7 +801,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             name="backendpolicy",
             machine_type="e2-micro",
             disks=[{
-                "source_image": "projects/debian-cloud/global/images/family/debian-11",
+                "source_image": "projects/debian-cloud/global/images/family/debian-13",
                 "auto_delete": True,
                 "boot": True,
             }])
@@ -843,6 +848,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_region_backend_service]))
         ```
+
         ### Region Security Policy Rule Request Body Expression
 
         ```python
@@ -969,6 +975,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Region Security Policy Rule Multiple Rules
 
         ```python
@@ -1010,6 +1017,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Region Security Policy Rule Default Rule
 
         ```python
@@ -1047,6 +1055,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Region Security Policy Rule With Preconfigured Waf Config
 
         ```python
@@ -1104,6 +1113,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Region Security Policy Rule With Network Match
 
         ```python
@@ -1153,6 +1163,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Region Security Policy Rule With Body Exclude
 
         ```python
@@ -1190,7 +1201,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             name="backendpolicy",
             machine_type="e2-micro",
             disks=[{
-                "source_image": "projects/debian-cloud/global/images/family/debian-11",
+                "source_image": "projects/debian-cloud/global/images/family/debian-13",
                 "auto_delete": True,
                 "boot": True,
             }])
@@ -1237,6 +1248,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_region_backend_service]))
         ```
+
         ### Region Security Policy Rule Request Body Expression
 
         ```python

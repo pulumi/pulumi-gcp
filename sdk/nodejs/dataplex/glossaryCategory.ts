@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     categoryId: "tf-test-category-basic_3686",
  * });
  * ```
+ *
  * ### Dataplex Glossary Category Full
  *
  * ```typescript

@@ -103,6 +103,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Pipeline Job Backfill
     /// 
     /// ```csharp
@@ -132,6 +133,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Pipeline Job Whistle Mapping
     /// 
     /// ```csharp
@@ -236,6 +238,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Pipeline Job Mapping Recon Dest
     /// 
     /// ```csharp

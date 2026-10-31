@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Featurestore With Beta Fields
     /// 
     /// ```csharp
@@ -83,6 +84,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Featurestore Scaling
     /// 
     /// ```csharp

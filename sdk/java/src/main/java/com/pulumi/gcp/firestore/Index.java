@@ -93,6 +93,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firestore Index Datastore Mode
  * 
  * <pre>
@@ -151,6 +152,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firestore Index Vector
  * 
  * <pre>
@@ -216,6 +218,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firestore Index Name Descending
  * 
  * <pre>
@@ -266,6 +269,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firestore Index Mongodb Compatible Scope
  * 
  * <pre>
@@ -326,6 +330,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firestore Index Sparse Any
  * 
  * <pre>
@@ -386,6 +391,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firestore Index Unique
  * 
  * <pre>
@@ -447,6 +453,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firestore Index Skip Wait
  * 
  * <pre>
@@ -503,6 +510,64 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ### Firestore Index Deletion Policy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Index;
+ * import com.pulumi.gcp.firestore.IndexArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("database-id-deletion-policy")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var my_index = new Index("my-index", IndexArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("atestcollection")
+ *             .fields(            
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath("name")
+ *                     .order("ASCENDING")
+ *                     .build(),
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath("description")
+ *                     .order("DESCENDING")
+ *                     .build())
+ *             .deletionPolicy("PREVENT")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Firestore Index Text Search
  * 
  * <pre>
@@ -567,6 +632,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firestore Index Suppress Geojson Indexing
  * 
  * <pre>
@@ -626,6 +692,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firestore Index Geo Search
  * 
  * <pre>

@@ -70,6 +70,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Management Connectivity Test Addresses
  *
  * ```typescript
@@ -113,6 +114,7 @@ import * as utilities from "../utilities";
  *     protocol: "UDP",
  * });
  * ```
+ *
  * ### Network Management Connectivity Test Endpoints
  *
  * ```typescript
@@ -148,6 +150,7 @@ import * as utilities from "../utilities";
  *     roundTrip: true,
  * });
  * ```
+ *
  * ### Network Management Connectivity Test Gke Pod
  *
  * ```typescript

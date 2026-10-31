@@ -92,6 +92,8 @@ type GetEngineVersionsArgs struct {
 type GetEngineVersionsResult struct {
 	// Version of Kubernetes the service deploys by default.
 	DefaultClusterVersion string `pulumi:"defaultClusterVersion"`
+	// The default image type provided by this version of the API.
+	DefaultImageType string `pulumi:"defaultImageType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The latest version available in the given zone for use with master instances.
@@ -106,6 +108,8 @@ type GetEngineVersionsResult struct {
 	ReleaseChannelLatestVersion map[string]string `pulumi:"releaseChannelLatestVersion"`
 	// A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
 	ReleaseChannelUpgradeTargetVersion map[string]string `pulumi:"releaseChannelUpgradeTargetVersion"`
+	// A list of the valid image types available in the given zone.
+	ValidImageTypes []string `pulumi:"validImageTypes"`
 	// A list of versions available in the given zone for use with master instances.
 	ValidMasterVersions []string `pulumi:"validMasterVersions"`
 	// A list of versions available in the given zone for use with node instances.
@@ -161,6 +165,11 @@ func (o GetEngineVersionsResultOutput) DefaultClusterVersion() pulumi.StringOutp
 	return o.ApplyT(func(v GetEngineVersionsResult) string { return v.DefaultClusterVersion }).(pulumi.StringOutput)
 }
 
+// The default image type provided by this version of the API.
+func (o GetEngineVersionsResultOutput) DefaultImageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEngineVersionsResult) string { return v.DefaultImageType }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o GetEngineVersionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEngineVersionsResult) string { return v.Id }).(pulumi.StringOutput)
@@ -197,6 +206,11 @@ func (o GetEngineVersionsResultOutput) ReleaseChannelLatestVersion() pulumi.Stri
 // A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
 func (o GetEngineVersionsResultOutput) ReleaseChannelUpgradeTargetVersion() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEngineVersionsResult) map[string]string { return v.ReleaseChannelUpgradeTargetVersion }).(pulumi.StringMapOutput)
+}
+
+// A list of the valid image types available in the given zone.
+func (o GetEngineVersionsResultOutput) ValidImageTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEngineVersionsResult) []string { return v.ValidImageTypes }).(pulumi.StringArrayOutput)
 }
 
 // A list of versions available in the given zone for use with master instances.

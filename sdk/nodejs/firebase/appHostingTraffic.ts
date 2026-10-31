@@ -66,6 +66,7 @@ import * as utilities from "../utilities";
  *     member: serviceAccount.member,
  * });
  * ```
+ *
  * ### Firebase App Hosting Traffic Rollout Policy
  *
  * ```typescript
@@ -107,6 +108,7 @@ import * as utilities from "../utilities";
  *     member: serviceAccount.member,
  * });
  * ```
+ *
  * ### Firebase App Hosting Traffic Rollout Policy Disabled
  *
  * ```typescript

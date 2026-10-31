@@ -24,6 +24,7 @@ class UnitArgs:
                  location: pulumi.Input[_builtins.str],
                  unit_id: pulumi.Input[_builtins.str],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance: pulumi.Input[Optional['UnitMaintenanceArgs']] = None,
@@ -42,6 +43,11 @@ class UnitArgs:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] application: Reference to the App Hub Application this Unit belongs to, in the format
+               `projects/{project}/locations/{location}/applications/{application}`.
+               All resources deployed in this Unit are associated with the specified
+               Application. If empty, the service sets it during any UnitOperation
+               when the UnitKind has `app_params.group` and App Hub is enabled.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -74,6 +80,8 @@ class UnitArgs:
         pulumi.set(__self__, "unit_id", unit_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if application is not None:
+            pulumi.set(__self__, "application", application)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if labels is not None:
@@ -129,6 +137,22 @@ class UnitArgs:
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def application(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Reference to the App Hub Application this Unit belongs to, in the format
+        `projects/{project}/locations/{location}/applications/{application}`.
+        All resources deployed in this Unit are associated with the specified
+        Application. If empty, the service sets it during any UnitOperation
+        when the UnitKind has `app_params.group` and App Hub is enabled.
+        """
+        return pulumi.get(self, "application")
+
+    @application.setter
+    def application(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "application", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -239,6 +263,7 @@ class UnitArgs:
 class _UnitState:
     def __init__(__self__, *,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input['UnitConditionArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -276,6 +301,11 @@ class _UnitState:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] application: Reference to the App Hub Application this Unit belongs to, in the format
+               `projects/{project}/locations/{location}/applications/{application}`.
+               All resources deployed in this Unit are associated with the specified
+               Application. If empty, the service sets it during any UnitOperation
+               when the UnitKind has `app_params.group` and App Hub is enabled.
         :param pulumi.Input[Sequence[pulumi.Input['UnitConditionArgs']]] conditions: A set of conditions which indicate the various conditions this resource can
                have.
                Structure is documented below.
@@ -358,6 +388,8 @@ class _UnitState:
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if application is not None:
+            pulumi.set(__self__, "application", application)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
         if create_time is not None:
@@ -431,6 +463,22 @@ class _UnitState:
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def application(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Reference to the App Hub Application this Unit belongs to, in the format
+        `projects/{project}/locations/{location}/applications/{application}`.
+        All resources deployed in this Unit are associated with the specified
+        Application. If empty, the service sets it during any UnitOperation
+        when the UnitKind has `app_params.group` and App Hub is enabled.
+        """
+        return pulumi.get(self, "application")
+
+    @application.setter
+    def application(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "application", value)
 
     @_builtins.property
     @pulumi.getter
@@ -827,6 +875,7 @@ class Unit(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -890,6 +939,11 @@ class Unit(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] application: Reference to the App Hub Application this Unit belongs to, in the format
+               `projects/{project}/locations/{location}/applications/{application}`.
+               All resources deployed in this Unit are associated with the specified
+               Application. If empty, the service sets it during any UnitOperation
+               when the UnitKind has `app_params.group` and App Hub is enabled.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -987,6 +1041,7 @@ class Unit(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1006,6 +1061,7 @@ class Unit(pulumi.CustomResource):
             __props__ = UnitArgs.__new__(UnitArgs)
 
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["application"] = application
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -1051,6 +1107,7 @@ class Unit(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            application: pulumi.Input[Optional[_builtins.str]] = None,
             conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitConditionArgs', 'UnitConditionArgsDict', 'outputs.UnitCondition']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1092,6 +1149,11 @@ class Unit(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] application: Reference to the App Hub Application this Unit belongs to, in the format
+               `projects/{project}/locations/{location}/applications/{application}`.
+               All resources deployed in this Unit are associated with the specified
+               Application. If empty, the service sets it during any UnitOperation
+               when the UnitKind has `app_params.group` and App Hub is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UnitConditionArgs', 'UnitConditionArgsDict', 'outputs.UnitCondition']]]] conditions: A set of conditions which indicate the various conditions this resource can
                have.
                Structure is documented below.
@@ -1177,6 +1239,7 @@ class Unit(pulumi.CustomResource):
         __props__ = _UnitState.__new__(_UnitState)
 
         __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["application"] = application
         __props__.__dict__["conditions"] = conditions
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1219,6 +1282,18 @@ class Unit(pulumi.CustomResource):
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter
+    def application(self) -> pulumi.Output[_builtins.str]:
+        """
+        Reference to the App Hub Application this Unit belongs to, in the format
+        `projects/{project}/locations/{location}/applications/{application}`.
+        All resources deployed in this Unit are associated with the specified
+        Application. If empty, the service sets it during any UnitOperation
+        when the UnitKind has `app_params.group` and App Hub is enabled.
+        """
+        return pulumi.get(self, "application")
 
     @_builtins.property
     @pulumi.getter

@@ -801,6 +801,7 @@ class AuthzExtension(pulumi.CustomResource):
             fail_open=False,
             forward_headers=["Authorization"])
         ```
+
         ### Network Services Authz Extension Basic With Auth Grpc
 
         ```python
@@ -827,6 +828,7 @@ class AuthzExtension(pulumi.CustomResource):
             fail_open=False,
             forward_headers=["Authorization"])
         ```
+
         ### Network Services Authz Extension Iap
 
         ```python
@@ -962,6 +964,7 @@ class AuthzExtension(pulumi.CustomResource):
             fail_open=False,
             forward_headers=["Authorization"])
         ```
+
         ### Network Services Authz Extension Basic With Auth Grpc
 
         ```python
@@ -988,6 +991,7 @@ class AuthzExtension(pulumi.CustomResource):
             fail_open=False,
             forward_headers=["Authorization"])
         ```
+
         ### Network Services Authz Extension Iap
 
         ```python

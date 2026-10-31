@@ -43,14 +43,14 @@ import (
 //				return err
 //			}
 //			primary_network, err := compute.NewNetwork(ctx, "primary-network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-my-vpc-network_48153"),
+//				Name:                  pulumi.String("tf-test-my-vpc-network_29506"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = networkconnectivity.NewTransport(ctx, "primary", &networkconnectivity.TransportArgs{
-//				Name:            pulumi.String("tf-test-basic-transport_58845"),
+//				Name:            pulumi.String("tf-test-basic-transport_86474"),
 //				Region:          pulumi.String("us-east4"),
 //				Description:     pulumi.String("A sample transport"),
 //				RemoteProfile:   pulumi.Sprintf("https://networkconnectivity.googleapis.com/v1/%v/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.Id),
@@ -95,7 +95,6 @@ type Transport struct {
 	AdminEnabled pulumi.BoolPtrOutput `pulumi:"adminEnabled"`
 	// List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
 	AdvertisedRoutes pulumi.StringArrayOutput `pulumi:"advertisedRoutes"`
-	// (Optional, Beta)
 	// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
 	AutoAccept pulumi.BoolPtrOutput `pulumi:"autoAccept"`
 	// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
@@ -113,7 +112,6 @@ type Transport struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
 	GeneratedActivationKey pulumi.StringOutput `pulumi:"generatedActivationKey"`
-	// (Optional, Beta)
 	// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
 	Hub pulumi.StringPtrOutput `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -133,7 +131,6 @@ type Transport struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
 	ProvidedActivationKey pulumi.StringPtrOutput `pulumi:"providedActivationKey"`
-	// (Optional, Beta)
 	// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
 	PscRoutingEnabled pulumi.BoolPtrOutput `pulumi:"pscRoutingEnabled"`
 	// The combination of labels configured directly on the resource
@@ -199,7 +196,6 @@ type transportState struct {
 	AdminEnabled *bool `pulumi:"adminEnabled"`
 	// List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
 	AdvertisedRoutes []string `pulumi:"advertisedRoutes"`
-	// (Optional, Beta)
 	// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
 	AutoAccept *bool `pulumi:"autoAccept"`
 	// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
@@ -217,7 +213,6 @@ type transportState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
 	GeneratedActivationKey *string `pulumi:"generatedActivationKey"`
-	// (Optional, Beta)
 	// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
 	Hub *string `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -237,7 +232,6 @@ type transportState struct {
 	Project *string `pulumi:"project"`
 	// Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
 	ProvidedActivationKey *string `pulumi:"providedActivationKey"`
-	// (Optional, Beta)
 	// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
 	PscRoutingEnabled *bool `pulumi:"pscRoutingEnabled"`
 	// The combination of labels configured directly on the resource
@@ -263,7 +257,6 @@ type TransportState struct {
 	AdminEnabled pulumi.BoolPtrInput
 	// List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
 	AdvertisedRoutes pulumi.StringArrayInput
-	// (Optional, Beta)
 	// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
 	AutoAccept pulumi.BoolPtrInput
 	// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
@@ -281,7 +274,6 @@ type TransportState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
 	GeneratedActivationKey pulumi.StringPtrInput
-	// (Optional, Beta)
 	// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
 	Hub pulumi.StringPtrInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -301,7 +293,6 @@ type TransportState struct {
 	Project pulumi.StringPtrInput
 	// Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
 	ProvidedActivationKey pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
 	PscRoutingEnabled pulumi.BoolPtrInput
 	// The combination of labels configured directly on the resource
@@ -331,7 +322,6 @@ type transportArgs struct {
 	AdminEnabled *bool `pulumi:"adminEnabled"`
 	// List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
 	AdvertisedRoutes []string `pulumi:"advertisedRoutes"`
-	// (Optional, Beta)
 	// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
 	AutoAccept *bool `pulumi:"autoAccept"`
 	// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
@@ -345,7 +335,6 @@ type transportArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// (Optional, Beta)
 	// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
 	Hub *string `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -363,7 +352,6 @@ type transportArgs struct {
 	Project *string `pulumi:"project"`
 	// Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
 	ProvidedActivationKey *string `pulumi:"providedActivationKey"`
-	// (Optional, Beta)
 	// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
 	PscRoutingEnabled *bool `pulumi:"pscRoutingEnabled"`
 	// The region of this resource. This is required to construct the resource name, but is not sent to the API since the region is already contained in the parent field.
@@ -385,7 +373,6 @@ type TransportArgs struct {
 	AdminEnabled pulumi.BoolPtrInput
 	// List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
 	AdvertisedRoutes pulumi.StringArrayInput
-	// (Optional, Beta)
 	// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
 	AutoAccept pulumi.BoolPtrInput
 	// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
@@ -399,7 +386,6 @@ type TransportArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// (Optional, Beta)
 	// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
 	Hub pulumi.StringPtrInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -417,7 +403,6 @@ type TransportArgs struct {
 	Project pulumi.StringPtrInput
 	// Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
 	ProvidedActivationKey pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
 	PscRoutingEnabled pulumi.BoolPtrInput
 	// The region of this resource. This is required to construct the resource name, but is not sent to the API since the region is already contained in the parent field.
@@ -530,7 +515,6 @@ func (o TransportOutput) AdvertisedRoutes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Transport) pulumi.StringArrayOutput { return v.AdvertisedRoutes }).(pulumi.StringArrayOutput)
 }
 
-// (Optional, Beta)
 // Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
 func (o TransportOutput) AutoAccept() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Transport) pulumi.BoolPtrOutput { return v.AutoAccept }).(pulumi.BoolPtrOutput)
@@ -566,7 +550,6 @@ func (o TransportOutput) GeneratedActivationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Transport) pulumi.StringOutput { return v.GeneratedActivationKey }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
 func (o TransportOutput) Hub() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Transport) pulumi.StringPtrOutput { return v.Hub }).(pulumi.StringPtrOutput)
@@ -610,7 +593,6 @@ func (o TransportOutput) ProvidedActivationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Transport) pulumi.StringPtrOutput { return v.ProvidedActivationKey }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
 func (o TransportOutput) PscRoutingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Transport) pulumi.BoolPtrOutput { return v.PscRoutingEnabled }).(pulumi.BoolPtrOutput)

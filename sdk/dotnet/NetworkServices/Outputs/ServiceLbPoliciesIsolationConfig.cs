@@ -14,11 +14,13 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
     public sealed class ServiceLbPoliciesIsolationConfig
     {
         /// <summary>
+        /// (Optional, Beta)
         /// The isolation granularity of the load balancer.
         /// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
         /// </summary>
         public readonly string? IsolationGranularity;
         /// <summary>
+        /// (Optional, Beta)
         /// The isolation mode of the load balancer.
         /// Default value is `NEAREST`.
         /// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.

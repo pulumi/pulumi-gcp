@@ -53,6 +53,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Router Nat Rules
  *
  * ```typescript
@@ -111,6 +112,7 @@ import * as utilities from "../utilities";
  *     enableEndpointIndependentMapping: false,
  * });
  * ```
+ *
  * ### Router Nat Private
  *
  * ```typescript

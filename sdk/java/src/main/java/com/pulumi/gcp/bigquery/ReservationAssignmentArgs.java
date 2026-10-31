@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigquery;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigquery.inputs.ReservationAssignmentSchedulingPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,15 +61,15 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
      * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      * 
      */
-    @Import(name="jobType", required=true)
-    private Output<String> jobType;
+    @Import(name="jobType")
+    private @Nullable Output<String> jobType;
 
     /**
      * @return Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      * 
      */
-    public Output<String> jobType() {
-        return this.jobType;
+    public Optional<Output<String>> jobType() {
+        return Optional.ofNullable(this.jobType);
     }
 
     /**
@@ -141,6 +142,29 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
         return this.reservation;
     }
 
+    /**
+     * The scheduling policy to use for jobs and queries of this assignee when
+     * running under the associated reservation. The scheduling policy controls
+     * how the reservation&#39;s resources are distributed. This overrides the default
+     * scheduling policy specified on the reservation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="schedulingPolicy")
+    private @Nullable Output<ReservationAssignmentSchedulingPolicyArgs> schedulingPolicy;
+
+    /**
+     * @return The scheduling policy to use for jobs and queries of this assignee when
+     * running under the associated reservation. The scheduling policy controls
+     * how the reservation&#39;s resources are distributed. This overrides the default
+     * scheduling policy specified on the reservation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ReservationAssignmentSchedulingPolicyArgs>> schedulingPolicy() {
+        return Optional.ofNullable(this.schedulingPolicy);
+    }
+
     private ReservationAssignmentArgs() {}
 
     private ReservationAssignmentArgs(ReservationAssignmentArgs $) {
@@ -151,6 +175,7 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
         this.principal = $.principal;
         this.project = $.project;
         this.reservation = $.reservation;
+        this.schedulingPolicy = $.schedulingPolicy;
     }
 
     public static Builder builder() {
@@ -229,7 +254,7 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder jobType(Output<String> jobType) {
+        public Builder jobType(@Nullable Output<String> jobType) {
             $.jobType = jobType;
             return this;
         }
@@ -338,12 +363,38 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
             return reservation(Output.of(reservation));
         }
 
+        /**
+         * @param schedulingPolicy The scheduling policy to use for jobs and queries of this assignee when
+         * running under the associated reservation. The scheduling policy controls
+         * how the reservation&#39;s resources are distributed. This overrides the default
+         * scheduling policy specified on the reservation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingPolicy(@Nullable Output<ReservationAssignmentSchedulingPolicyArgs> schedulingPolicy) {
+            $.schedulingPolicy = schedulingPolicy;
+            return this;
+        }
+
+        /**
+         * @param schedulingPolicy The scheduling policy to use for jobs and queries of this assignee when
+         * running under the associated reservation. The scheduling policy controls
+         * how the reservation&#39;s resources are distributed. This overrides the default
+         * scheduling policy specified on the reservation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingPolicy(ReservationAssignmentSchedulingPolicyArgs schedulingPolicy) {
+            return schedulingPolicy(Output.of(schedulingPolicy));
+        }
+
         public ReservationAssignmentArgs build() {
             if ($.assignee == null) {
                 throw new MissingRequiredPropertyException("ReservationAssignmentArgs", "assignee");
-            }
-            if ($.jobType == null) {
-                throw new MissingRequiredPropertyException("ReservationAssignmentArgs", "jobType");
             }
             if ($.reservation == null) {
                 throw new MissingRequiredPropertyException("ReservationAssignmentArgs", "reservation");

@@ -1090,7 +1090,7 @@ class App(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         fake_private_key_secret = gcp.secretmanager.Secret("fake_private_key_secret",
-            secret_id="fake-pk-secret-app-tf1",
+            secret_id="fake-pk-secret-app-tf",
             replication={
                 "auto": {},
             })
@@ -1167,6 +1167,7 @@ class App(pulumi.CustomResource):
             model_settings={
                 "model": "gemini-3.0-flash-001",
                 "temperature": 0.5,
+                "thinking_level": "LOW",
             },
             evaluation_metrics_thresholds={
                 "golden_evaluation_metrics_thresholds": {
@@ -1278,6 +1279,7 @@ class App(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces App Ambient Sound Gcs Uri
 
         ```python
@@ -1526,7 +1528,7 @@ class App(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         fake_private_key_secret = gcp.secretmanager.Secret("fake_private_key_secret",
-            secret_id="fake-pk-secret-app-tf1",
+            secret_id="fake-pk-secret-app-tf",
             replication={
                 "auto": {},
             })
@@ -1603,6 +1605,7 @@ class App(pulumi.CustomResource):
             model_settings={
                 "model": "gemini-3.0-flash-001",
                 "temperature": 0.5,
+                "thinking_level": "LOW",
             },
             evaluation_metrics_thresholds={
                 "golden_evaluation_metrics_thresholds": {
@@ -1714,6 +1717,7 @@ class App(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces App Ambient Sound Gcs Uri
 
         ```python

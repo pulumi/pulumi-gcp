@@ -1522,6 +1522,508 @@ func (o AgentGatewaySelfManagedPtrOutput) ResourceUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type CdnEdgeExtensionExtensionChain struct {
+	// A set of extensions to execute for the matching request.
+	// At least one extension is required. Up to 3 extensions can be defined for each extension chain.
+	// Structure is documented below.
+	Extensions []CdnEdgeExtensionExtensionChainExtension `pulumi:"extensions"`
+	// Conditions under which this chain is invoked for a request.
+	// Structure is documented below.
+	MatchCondition CdnEdgeExtensionExtensionChainMatchCondition `pulumi:"matchCondition"`
+	// The name for this extension chain. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last character must be a letter or a number.
+	Name string `pulumi:"name"`
+}
+
+// CdnEdgeExtensionExtensionChainInput is an input type that accepts CdnEdgeExtensionExtensionChainArgs and CdnEdgeExtensionExtensionChainOutput values.
+// You can construct a concrete instance of `CdnEdgeExtensionExtensionChainInput` via:
+//
+//	CdnEdgeExtensionExtensionChainArgs{...}
+type CdnEdgeExtensionExtensionChainInput interface {
+	pulumi.Input
+
+	ToCdnEdgeExtensionExtensionChainOutput() CdnEdgeExtensionExtensionChainOutput
+	ToCdnEdgeExtensionExtensionChainOutputWithContext(context.Context) CdnEdgeExtensionExtensionChainOutput
+}
+
+type CdnEdgeExtensionExtensionChainArgs struct {
+	// A set of extensions to execute for the matching request.
+	// At least one extension is required. Up to 3 extensions can be defined for each extension chain.
+	// Structure is documented below.
+	Extensions CdnEdgeExtensionExtensionChainExtensionArrayInput `pulumi:"extensions"`
+	// Conditions under which this chain is invoked for a request.
+	// Structure is documented below.
+	MatchCondition CdnEdgeExtensionExtensionChainMatchConditionInput `pulumi:"matchCondition"`
+	// The name for this extension chain. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last character must be a letter or a number.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (CdnEdgeExtensionExtensionChainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnEdgeExtensionExtensionChain)(nil)).Elem()
+}
+
+func (i CdnEdgeExtensionExtensionChainArgs) ToCdnEdgeExtensionExtensionChainOutput() CdnEdgeExtensionExtensionChainOutput {
+	return i.ToCdnEdgeExtensionExtensionChainOutputWithContext(context.Background())
+}
+
+func (i CdnEdgeExtensionExtensionChainArgs) ToCdnEdgeExtensionExtensionChainOutputWithContext(ctx context.Context) CdnEdgeExtensionExtensionChainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnEdgeExtensionExtensionChainOutput)
+}
+
+// CdnEdgeExtensionExtensionChainArrayInput is an input type that accepts CdnEdgeExtensionExtensionChainArray and CdnEdgeExtensionExtensionChainArrayOutput values.
+// You can construct a concrete instance of `CdnEdgeExtensionExtensionChainArrayInput` via:
+//
+//	CdnEdgeExtensionExtensionChainArray{ CdnEdgeExtensionExtensionChainArgs{...} }
+type CdnEdgeExtensionExtensionChainArrayInput interface {
+	pulumi.Input
+
+	ToCdnEdgeExtensionExtensionChainArrayOutput() CdnEdgeExtensionExtensionChainArrayOutput
+	ToCdnEdgeExtensionExtensionChainArrayOutputWithContext(context.Context) CdnEdgeExtensionExtensionChainArrayOutput
+}
+
+type CdnEdgeExtensionExtensionChainArray []CdnEdgeExtensionExtensionChainInput
+
+func (CdnEdgeExtensionExtensionChainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CdnEdgeExtensionExtensionChain)(nil)).Elem()
+}
+
+func (i CdnEdgeExtensionExtensionChainArray) ToCdnEdgeExtensionExtensionChainArrayOutput() CdnEdgeExtensionExtensionChainArrayOutput {
+	return i.ToCdnEdgeExtensionExtensionChainArrayOutputWithContext(context.Background())
+}
+
+func (i CdnEdgeExtensionExtensionChainArray) ToCdnEdgeExtensionExtensionChainArrayOutputWithContext(ctx context.Context) CdnEdgeExtensionExtensionChainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnEdgeExtensionExtensionChainArrayOutput)
+}
+
+type CdnEdgeExtensionExtensionChainOutput struct{ *pulumi.OutputState }
+
+func (CdnEdgeExtensionExtensionChainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnEdgeExtensionExtensionChain)(nil)).Elem()
+}
+
+func (o CdnEdgeExtensionExtensionChainOutput) ToCdnEdgeExtensionExtensionChainOutput() CdnEdgeExtensionExtensionChainOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionExtensionChainOutput) ToCdnEdgeExtensionExtensionChainOutputWithContext(ctx context.Context) CdnEdgeExtensionExtensionChainOutput {
+	return o
+}
+
+// A set of extensions to execute for the matching request.
+// At least one extension is required. Up to 3 extensions can be defined for each extension chain.
+// Structure is documented below.
+func (o CdnEdgeExtensionExtensionChainOutput) Extensions() CdnEdgeExtensionExtensionChainExtensionArrayOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionExtensionChain) []CdnEdgeExtensionExtensionChainExtension { return v.Extensions }).(CdnEdgeExtensionExtensionChainExtensionArrayOutput)
+}
+
+// Conditions under which this chain is invoked for a request.
+// Structure is documented below.
+func (o CdnEdgeExtensionExtensionChainOutput) MatchCondition() CdnEdgeExtensionExtensionChainMatchConditionOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionExtensionChain) CdnEdgeExtensionExtensionChainMatchCondition {
+		return v.MatchCondition
+	}).(CdnEdgeExtensionExtensionChainMatchConditionOutput)
+}
+
+// The name for this extension chain. The name is logged as part of the HTTP request logs.
+// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+// and the last character must be a letter or a number.
+func (o CdnEdgeExtensionExtensionChainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionExtensionChain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type CdnEdgeExtensionExtensionChainArrayOutput struct{ *pulumi.OutputState }
+
+func (CdnEdgeExtensionExtensionChainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CdnEdgeExtensionExtensionChain)(nil)).Elem()
+}
+
+func (o CdnEdgeExtensionExtensionChainArrayOutput) ToCdnEdgeExtensionExtensionChainArrayOutput() CdnEdgeExtensionExtensionChainArrayOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionExtensionChainArrayOutput) ToCdnEdgeExtensionExtensionChainArrayOutputWithContext(ctx context.Context) CdnEdgeExtensionExtensionChainArrayOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionExtensionChainArrayOutput) Index(i pulumi.IntInput) CdnEdgeExtensionExtensionChainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CdnEdgeExtensionExtensionChain {
+		return vs[0].([]CdnEdgeExtensionExtensionChain)[vs[1].(int)]
+	}).(CdnEdgeExtensionExtensionChainOutput)
+}
+
+type CdnEdgeExtensionExtensionChainExtension struct {
+	// Determines how the proxy behaves if the call to the extension fails or times out.
+	// When set to TRUE, request or response processing continues without error.
+	// Any subsequent extensions in the extension chain are also executed.
+	FailOpen *bool `pulumi:"failOpen"`
+	// List of the Envoy attributes to forward to the extension server.
+	ForwardAttributes []string `pulumi:"forwardAttributes"`
+	// List of the HTTP headers to forward to the extension (from the client or backend).
+	// If omitted, all headers are sent. Each element is a string indicating the header name.
+	ForwardHeaders []string `pulumi:"forwardHeaders"`
+	// The name for this extension. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last a letter or a number.
+	Name string `pulumi:"name"`
+	// The reference to the service that runs the extension.
+	// Must be a reference to a WasmPlugin resource.
+	Service string `pulumi:"service"`
+	// A set of events during request or response processing for which this extension is called.
+	// Eligible values are `REQUEST_HEADERS` and `RESPONSE_HEADERS`.
+	SupportedEvents []string `pulumi:"supportedEvents"`
+}
+
+// CdnEdgeExtensionExtensionChainExtensionInput is an input type that accepts CdnEdgeExtensionExtensionChainExtensionArgs and CdnEdgeExtensionExtensionChainExtensionOutput values.
+// You can construct a concrete instance of `CdnEdgeExtensionExtensionChainExtensionInput` via:
+//
+//	CdnEdgeExtensionExtensionChainExtensionArgs{...}
+type CdnEdgeExtensionExtensionChainExtensionInput interface {
+	pulumi.Input
+
+	ToCdnEdgeExtensionExtensionChainExtensionOutput() CdnEdgeExtensionExtensionChainExtensionOutput
+	ToCdnEdgeExtensionExtensionChainExtensionOutputWithContext(context.Context) CdnEdgeExtensionExtensionChainExtensionOutput
+}
+
+type CdnEdgeExtensionExtensionChainExtensionArgs struct {
+	// Determines how the proxy behaves if the call to the extension fails or times out.
+	// When set to TRUE, request or response processing continues without error.
+	// Any subsequent extensions in the extension chain are also executed.
+	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
+	// List of the Envoy attributes to forward to the extension server.
+	ForwardAttributes pulumi.StringArrayInput `pulumi:"forwardAttributes"`
+	// List of the HTTP headers to forward to the extension (from the client or backend).
+	// If omitted, all headers are sent. Each element is a string indicating the header name.
+	ForwardHeaders pulumi.StringArrayInput `pulumi:"forwardHeaders"`
+	// The name for this extension. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last a letter or a number.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The reference to the service that runs the extension.
+	// Must be a reference to a WasmPlugin resource.
+	Service pulumi.StringInput `pulumi:"service"`
+	// A set of events during request or response processing for which this extension is called.
+	// Eligible values are `REQUEST_HEADERS` and `RESPONSE_HEADERS`.
+	SupportedEvents pulumi.StringArrayInput `pulumi:"supportedEvents"`
+}
+
+func (CdnEdgeExtensionExtensionChainExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnEdgeExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (i CdnEdgeExtensionExtensionChainExtensionArgs) ToCdnEdgeExtensionExtensionChainExtensionOutput() CdnEdgeExtensionExtensionChainExtensionOutput {
+	return i.ToCdnEdgeExtensionExtensionChainExtensionOutputWithContext(context.Background())
+}
+
+func (i CdnEdgeExtensionExtensionChainExtensionArgs) ToCdnEdgeExtensionExtensionChainExtensionOutputWithContext(ctx context.Context) CdnEdgeExtensionExtensionChainExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnEdgeExtensionExtensionChainExtensionOutput)
+}
+
+// CdnEdgeExtensionExtensionChainExtensionArrayInput is an input type that accepts CdnEdgeExtensionExtensionChainExtensionArray and CdnEdgeExtensionExtensionChainExtensionArrayOutput values.
+// You can construct a concrete instance of `CdnEdgeExtensionExtensionChainExtensionArrayInput` via:
+//
+//	CdnEdgeExtensionExtensionChainExtensionArray{ CdnEdgeExtensionExtensionChainExtensionArgs{...} }
+type CdnEdgeExtensionExtensionChainExtensionArrayInput interface {
+	pulumi.Input
+
+	ToCdnEdgeExtensionExtensionChainExtensionArrayOutput() CdnEdgeExtensionExtensionChainExtensionArrayOutput
+	ToCdnEdgeExtensionExtensionChainExtensionArrayOutputWithContext(context.Context) CdnEdgeExtensionExtensionChainExtensionArrayOutput
+}
+
+type CdnEdgeExtensionExtensionChainExtensionArray []CdnEdgeExtensionExtensionChainExtensionInput
+
+func (CdnEdgeExtensionExtensionChainExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CdnEdgeExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (i CdnEdgeExtensionExtensionChainExtensionArray) ToCdnEdgeExtensionExtensionChainExtensionArrayOutput() CdnEdgeExtensionExtensionChainExtensionArrayOutput {
+	return i.ToCdnEdgeExtensionExtensionChainExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i CdnEdgeExtensionExtensionChainExtensionArray) ToCdnEdgeExtensionExtensionChainExtensionArrayOutputWithContext(ctx context.Context) CdnEdgeExtensionExtensionChainExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnEdgeExtensionExtensionChainExtensionArrayOutput)
+}
+
+type CdnEdgeExtensionExtensionChainExtensionOutput struct{ *pulumi.OutputState }
+
+func (CdnEdgeExtensionExtensionChainExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnEdgeExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (o CdnEdgeExtensionExtensionChainExtensionOutput) ToCdnEdgeExtensionExtensionChainExtensionOutput() CdnEdgeExtensionExtensionChainExtensionOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionExtensionChainExtensionOutput) ToCdnEdgeExtensionExtensionChainExtensionOutputWithContext(ctx context.Context) CdnEdgeExtensionExtensionChainExtensionOutput {
+	return o
+}
+
+// Determines how the proxy behaves if the call to the extension fails or times out.
+// When set to TRUE, request or response processing continues without error.
+// Any subsequent extensions in the extension chain are also executed.
+func (o CdnEdgeExtensionExtensionChainExtensionOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionExtensionChainExtension) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
+}
+
+// List of the Envoy attributes to forward to the extension server.
+func (o CdnEdgeExtensionExtensionChainExtensionOutput) ForwardAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionExtensionChainExtension) []string { return v.ForwardAttributes }).(pulumi.StringArrayOutput)
+}
+
+// List of the HTTP headers to forward to the extension (from the client or backend).
+// If omitted, all headers are sent. Each element is a string indicating the header name.
+func (o CdnEdgeExtensionExtensionChainExtensionOutput) ForwardHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionExtensionChainExtension) []string { return v.ForwardHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The name for this extension. The name is logged as part of the HTTP request logs.
+// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+// and the last a letter or a number.
+func (o CdnEdgeExtensionExtensionChainExtensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionExtensionChainExtension) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The reference to the service that runs the extension.
+// Must be a reference to a WasmPlugin resource.
+func (o CdnEdgeExtensionExtensionChainExtensionOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionExtensionChainExtension) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// A set of events during request or response processing for which this extension is called.
+// Eligible values are `REQUEST_HEADERS` and `RESPONSE_HEADERS`.
+func (o CdnEdgeExtensionExtensionChainExtensionOutput) SupportedEvents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionExtensionChainExtension) []string { return v.SupportedEvents }).(pulumi.StringArrayOutput)
+}
+
+type CdnEdgeExtensionExtensionChainExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (CdnEdgeExtensionExtensionChainExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CdnEdgeExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (o CdnEdgeExtensionExtensionChainExtensionArrayOutput) ToCdnEdgeExtensionExtensionChainExtensionArrayOutput() CdnEdgeExtensionExtensionChainExtensionArrayOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionExtensionChainExtensionArrayOutput) ToCdnEdgeExtensionExtensionChainExtensionArrayOutputWithContext(ctx context.Context) CdnEdgeExtensionExtensionChainExtensionArrayOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionExtensionChainExtensionArrayOutput) Index(i pulumi.IntInput) CdnEdgeExtensionExtensionChainExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CdnEdgeExtensionExtensionChainExtension {
+		return vs[0].([]CdnEdgeExtensionExtensionChainExtension)[vs[1].(int)]
+	}).(CdnEdgeExtensionExtensionChainExtensionOutput)
+}
+
+type CdnEdgeExtensionExtensionChainMatchCondition struct {
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	CelExpression string `pulumi:"celExpression"`
+}
+
+// CdnEdgeExtensionExtensionChainMatchConditionInput is an input type that accepts CdnEdgeExtensionExtensionChainMatchConditionArgs and CdnEdgeExtensionExtensionChainMatchConditionOutput values.
+// You can construct a concrete instance of `CdnEdgeExtensionExtensionChainMatchConditionInput` via:
+//
+//	CdnEdgeExtensionExtensionChainMatchConditionArgs{...}
+type CdnEdgeExtensionExtensionChainMatchConditionInput interface {
+	pulumi.Input
+
+	ToCdnEdgeExtensionExtensionChainMatchConditionOutput() CdnEdgeExtensionExtensionChainMatchConditionOutput
+	ToCdnEdgeExtensionExtensionChainMatchConditionOutputWithContext(context.Context) CdnEdgeExtensionExtensionChainMatchConditionOutput
+}
+
+type CdnEdgeExtensionExtensionChainMatchConditionArgs struct {
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	CelExpression pulumi.StringInput `pulumi:"celExpression"`
+}
+
+func (CdnEdgeExtensionExtensionChainMatchConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnEdgeExtensionExtensionChainMatchCondition)(nil)).Elem()
+}
+
+func (i CdnEdgeExtensionExtensionChainMatchConditionArgs) ToCdnEdgeExtensionExtensionChainMatchConditionOutput() CdnEdgeExtensionExtensionChainMatchConditionOutput {
+	return i.ToCdnEdgeExtensionExtensionChainMatchConditionOutputWithContext(context.Background())
+}
+
+func (i CdnEdgeExtensionExtensionChainMatchConditionArgs) ToCdnEdgeExtensionExtensionChainMatchConditionOutputWithContext(ctx context.Context) CdnEdgeExtensionExtensionChainMatchConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnEdgeExtensionExtensionChainMatchConditionOutput)
+}
+
+type CdnEdgeExtensionExtensionChainMatchConditionOutput struct{ *pulumi.OutputState }
+
+func (CdnEdgeExtensionExtensionChainMatchConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnEdgeExtensionExtensionChainMatchCondition)(nil)).Elem()
+}
+
+func (o CdnEdgeExtensionExtensionChainMatchConditionOutput) ToCdnEdgeExtensionExtensionChainMatchConditionOutput() CdnEdgeExtensionExtensionChainMatchConditionOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionExtensionChainMatchConditionOutput) ToCdnEdgeExtensionExtensionChainMatchConditionOutputWithContext(ctx context.Context) CdnEdgeExtensionExtensionChainMatchConditionOutput {
+	return o
+}
+
+// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+func (o CdnEdgeExtensionExtensionChainMatchConditionOutput) CelExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionExtensionChainMatchCondition) string { return v.CelExpression }).(pulumi.StringOutput)
+}
+
+type CdnEdgeExtensionTarget struct {
+	// A list of references to the resources that are targeted by CdnEdgeExtension.
+	// Types of resources supported: EdgeCacheService.
+	// The format can be `projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}` or
+	// `//networkservices.googleapis.com/projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}`.
+	Resources []string `pulumi:"resources"`
+}
+
+// CdnEdgeExtensionTargetInput is an input type that accepts CdnEdgeExtensionTargetArgs and CdnEdgeExtensionTargetOutput values.
+// You can construct a concrete instance of `CdnEdgeExtensionTargetInput` via:
+//
+//	CdnEdgeExtensionTargetArgs{...}
+type CdnEdgeExtensionTargetInput interface {
+	pulumi.Input
+
+	ToCdnEdgeExtensionTargetOutput() CdnEdgeExtensionTargetOutput
+	ToCdnEdgeExtensionTargetOutputWithContext(context.Context) CdnEdgeExtensionTargetOutput
+}
+
+type CdnEdgeExtensionTargetArgs struct {
+	// A list of references to the resources that are targeted by CdnEdgeExtension.
+	// Types of resources supported: EdgeCacheService.
+	// The format can be `projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}` or
+	// `//networkservices.googleapis.com/projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}`.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (CdnEdgeExtensionTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnEdgeExtensionTarget)(nil)).Elem()
+}
+
+func (i CdnEdgeExtensionTargetArgs) ToCdnEdgeExtensionTargetOutput() CdnEdgeExtensionTargetOutput {
+	return i.ToCdnEdgeExtensionTargetOutputWithContext(context.Background())
+}
+
+func (i CdnEdgeExtensionTargetArgs) ToCdnEdgeExtensionTargetOutputWithContext(ctx context.Context) CdnEdgeExtensionTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnEdgeExtensionTargetOutput)
+}
+
+func (i CdnEdgeExtensionTargetArgs) ToCdnEdgeExtensionTargetPtrOutput() CdnEdgeExtensionTargetPtrOutput {
+	return i.ToCdnEdgeExtensionTargetPtrOutputWithContext(context.Background())
+}
+
+func (i CdnEdgeExtensionTargetArgs) ToCdnEdgeExtensionTargetPtrOutputWithContext(ctx context.Context) CdnEdgeExtensionTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnEdgeExtensionTargetOutput).ToCdnEdgeExtensionTargetPtrOutputWithContext(ctx)
+}
+
+// CdnEdgeExtensionTargetPtrInput is an input type that accepts CdnEdgeExtensionTargetArgs, CdnEdgeExtensionTargetPtr and CdnEdgeExtensionTargetPtrOutput values.
+// You can construct a concrete instance of `CdnEdgeExtensionTargetPtrInput` via:
+//
+//	        CdnEdgeExtensionTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type CdnEdgeExtensionTargetPtrInput interface {
+	pulumi.Input
+
+	ToCdnEdgeExtensionTargetPtrOutput() CdnEdgeExtensionTargetPtrOutput
+	ToCdnEdgeExtensionTargetPtrOutputWithContext(context.Context) CdnEdgeExtensionTargetPtrOutput
+}
+
+type cdnEdgeExtensionTargetPtrType CdnEdgeExtensionTargetArgs
+
+func CdnEdgeExtensionTargetPtr(v *CdnEdgeExtensionTargetArgs) CdnEdgeExtensionTargetPtrInput {
+	return (*cdnEdgeExtensionTargetPtrType)(v)
+}
+
+func (*cdnEdgeExtensionTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnEdgeExtensionTarget)(nil)).Elem()
+}
+
+func (i *cdnEdgeExtensionTargetPtrType) ToCdnEdgeExtensionTargetPtrOutput() CdnEdgeExtensionTargetPtrOutput {
+	return i.ToCdnEdgeExtensionTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *cdnEdgeExtensionTargetPtrType) ToCdnEdgeExtensionTargetPtrOutputWithContext(ctx context.Context) CdnEdgeExtensionTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnEdgeExtensionTargetPtrOutput)
+}
+
+type CdnEdgeExtensionTargetOutput struct{ *pulumi.OutputState }
+
+func (CdnEdgeExtensionTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnEdgeExtensionTarget)(nil)).Elem()
+}
+
+func (o CdnEdgeExtensionTargetOutput) ToCdnEdgeExtensionTargetOutput() CdnEdgeExtensionTargetOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionTargetOutput) ToCdnEdgeExtensionTargetOutputWithContext(ctx context.Context) CdnEdgeExtensionTargetOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionTargetOutput) ToCdnEdgeExtensionTargetPtrOutput() CdnEdgeExtensionTargetPtrOutput {
+	return o.ToCdnEdgeExtensionTargetPtrOutputWithContext(context.Background())
+}
+
+func (o CdnEdgeExtensionTargetOutput) ToCdnEdgeExtensionTargetPtrOutputWithContext(ctx context.Context) CdnEdgeExtensionTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CdnEdgeExtensionTarget) *CdnEdgeExtensionTarget {
+		return &v
+	}).(CdnEdgeExtensionTargetPtrOutput)
+}
+
+// A list of references to the resources that are targeted by CdnEdgeExtension.
+// Types of resources supported: EdgeCacheService.
+// The format can be `projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}` or
+// `//networkservices.googleapis.com/projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}`.
+func (o CdnEdgeExtensionTargetOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnEdgeExtensionTarget) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type CdnEdgeExtensionTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (CdnEdgeExtensionTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnEdgeExtensionTarget)(nil)).Elem()
+}
+
+func (o CdnEdgeExtensionTargetPtrOutput) ToCdnEdgeExtensionTargetPtrOutput() CdnEdgeExtensionTargetPtrOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionTargetPtrOutput) ToCdnEdgeExtensionTargetPtrOutputWithContext(ctx context.Context) CdnEdgeExtensionTargetPtrOutput {
+	return o
+}
+
+func (o CdnEdgeExtensionTargetPtrOutput) Elem() CdnEdgeExtensionTargetOutput {
+	return o.ApplyT(func(v *CdnEdgeExtensionTarget) CdnEdgeExtensionTarget {
+		if v != nil {
+			return *v
+		}
+		var ret CdnEdgeExtensionTarget
+		return ret
+	}).(CdnEdgeExtensionTargetOutput)
+}
+
+// A list of references to the resources that are targeted by CdnEdgeExtension.
+// Types of resources supported: EdgeCacheService.
+// The format can be `projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}` or
+// `//networkservices.googleapis.com/projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}`.
+func (o CdnEdgeExtensionTargetPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnEdgeExtensionTarget) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
 type EdgeCacheKeysetPublicKey struct {
 	// The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]*
@@ -16307,9 +16809,11 @@ func (o ServiceLbPoliciesFailoverConfigPtrOutput) FailoverHealthThreshold() pulu
 }
 
 type ServiceLbPoliciesIsolationConfig struct {
+	// (Optional, Beta)
 	// The isolation granularity of the load balancer.
 	// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
 	IsolationGranularity *string `pulumi:"isolationGranularity"`
+	// (Optional, Beta)
 	// The isolation mode of the load balancer.
 	// Default value is `NEAREST`.
 	// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
@@ -16328,9 +16832,11 @@ type ServiceLbPoliciesIsolationConfigInput interface {
 }
 
 type ServiceLbPoliciesIsolationConfigArgs struct {
+	// (Optional, Beta)
 	// The isolation granularity of the load balancer.
 	// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
 	IsolationGranularity pulumi.StringPtrInput `pulumi:"isolationGranularity"`
+	// (Optional, Beta)
 	// The isolation mode of the load balancer.
 	// Default value is `NEAREST`.
 	// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
@@ -16414,12 +16920,14 @@ func (o ServiceLbPoliciesIsolationConfigOutput) ToServiceLbPoliciesIsolationConf
 	}).(ServiceLbPoliciesIsolationConfigPtrOutput)
 }
 
+// (Optional, Beta)
 // The isolation granularity of the load balancer.
 // Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
 func (o ServiceLbPoliciesIsolationConfigOutput) IsolationGranularity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceLbPoliciesIsolationConfig) *string { return v.IsolationGranularity }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // The isolation mode of the load balancer.
 // Default value is `NEAREST`.
 // Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
@@ -16451,6 +16959,7 @@ func (o ServiceLbPoliciesIsolationConfigPtrOutput) Elem() ServiceLbPoliciesIsola
 	}).(ServiceLbPoliciesIsolationConfigOutput)
 }
 
+// (Optional, Beta)
 // The isolation granularity of the load balancer.
 // Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
 func (o ServiceLbPoliciesIsolationConfigPtrOutput) IsolationGranularity() pulumi.StringPtrOutput {
@@ -16462,6 +16971,7 @@ func (o ServiceLbPoliciesIsolationConfigPtrOutput) IsolationGranularity() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // The isolation mode of the load balancer.
 // Default value is `NEAREST`.
 // Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
@@ -16887,6 +17397,758 @@ func (o TcpRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) TcpRouteRuleMatch
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TcpRouteRuleMatch {
 		return vs[0].([]TcpRouteRuleMatch)[vs[1].(int)]
 	}).(TcpRouteRuleMatchOutput)
+}
+
+type TelemetryPolicyMetricsConfiguration struct {
+	// Indicates whether metrics are enabled or disabled. Set to true to explicitly enable, or false to explicitly disable.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// TelemetryPolicyMetricsConfigurationInput is an input type that accepts TelemetryPolicyMetricsConfigurationArgs and TelemetryPolicyMetricsConfigurationOutput values.
+// You can construct a concrete instance of `TelemetryPolicyMetricsConfigurationInput` via:
+//
+//	TelemetryPolicyMetricsConfigurationArgs{...}
+type TelemetryPolicyMetricsConfigurationInput interface {
+	pulumi.Input
+
+	ToTelemetryPolicyMetricsConfigurationOutput() TelemetryPolicyMetricsConfigurationOutput
+	ToTelemetryPolicyMetricsConfigurationOutputWithContext(context.Context) TelemetryPolicyMetricsConfigurationOutput
+}
+
+type TelemetryPolicyMetricsConfigurationArgs struct {
+	// Indicates whether metrics are enabled or disabled. Set to true to explicitly enable, or false to explicitly disable.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (TelemetryPolicyMetricsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryPolicyMetricsConfiguration)(nil)).Elem()
+}
+
+func (i TelemetryPolicyMetricsConfigurationArgs) ToTelemetryPolicyMetricsConfigurationOutput() TelemetryPolicyMetricsConfigurationOutput {
+	return i.ToTelemetryPolicyMetricsConfigurationOutputWithContext(context.Background())
+}
+
+func (i TelemetryPolicyMetricsConfigurationArgs) ToTelemetryPolicyMetricsConfigurationOutputWithContext(ctx context.Context) TelemetryPolicyMetricsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyMetricsConfigurationOutput)
+}
+
+func (i TelemetryPolicyMetricsConfigurationArgs) ToTelemetryPolicyMetricsConfigurationPtrOutput() TelemetryPolicyMetricsConfigurationPtrOutput {
+	return i.ToTelemetryPolicyMetricsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryPolicyMetricsConfigurationArgs) ToTelemetryPolicyMetricsConfigurationPtrOutputWithContext(ctx context.Context) TelemetryPolicyMetricsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyMetricsConfigurationOutput).ToTelemetryPolicyMetricsConfigurationPtrOutputWithContext(ctx)
+}
+
+// TelemetryPolicyMetricsConfigurationPtrInput is an input type that accepts TelemetryPolicyMetricsConfigurationArgs, TelemetryPolicyMetricsConfigurationPtr and TelemetryPolicyMetricsConfigurationPtrOutput values.
+// You can construct a concrete instance of `TelemetryPolicyMetricsConfigurationPtrInput` via:
+//
+//	        TelemetryPolicyMetricsConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryPolicyMetricsConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryPolicyMetricsConfigurationPtrOutput() TelemetryPolicyMetricsConfigurationPtrOutput
+	ToTelemetryPolicyMetricsConfigurationPtrOutputWithContext(context.Context) TelemetryPolicyMetricsConfigurationPtrOutput
+}
+
+type telemetryPolicyMetricsConfigurationPtrType TelemetryPolicyMetricsConfigurationArgs
+
+func TelemetryPolicyMetricsConfigurationPtr(v *TelemetryPolicyMetricsConfigurationArgs) TelemetryPolicyMetricsConfigurationPtrInput {
+	return (*telemetryPolicyMetricsConfigurationPtrType)(v)
+}
+
+func (*telemetryPolicyMetricsConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryPolicyMetricsConfiguration)(nil)).Elem()
+}
+
+func (i *telemetryPolicyMetricsConfigurationPtrType) ToTelemetryPolicyMetricsConfigurationPtrOutput() TelemetryPolicyMetricsConfigurationPtrOutput {
+	return i.ToTelemetryPolicyMetricsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryPolicyMetricsConfigurationPtrType) ToTelemetryPolicyMetricsConfigurationPtrOutputWithContext(ctx context.Context) TelemetryPolicyMetricsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyMetricsConfigurationPtrOutput)
+}
+
+type TelemetryPolicyMetricsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (TelemetryPolicyMetricsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryPolicyMetricsConfiguration)(nil)).Elem()
+}
+
+func (o TelemetryPolicyMetricsConfigurationOutput) ToTelemetryPolicyMetricsConfigurationOutput() TelemetryPolicyMetricsConfigurationOutput {
+	return o
+}
+
+func (o TelemetryPolicyMetricsConfigurationOutput) ToTelemetryPolicyMetricsConfigurationOutputWithContext(ctx context.Context) TelemetryPolicyMetricsConfigurationOutput {
+	return o
+}
+
+func (o TelemetryPolicyMetricsConfigurationOutput) ToTelemetryPolicyMetricsConfigurationPtrOutput() TelemetryPolicyMetricsConfigurationPtrOutput {
+	return o.ToTelemetryPolicyMetricsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryPolicyMetricsConfigurationOutput) ToTelemetryPolicyMetricsConfigurationPtrOutputWithContext(ctx context.Context) TelemetryPolicyMetricsConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryPolicyMetricsConfiguration) *TelemetryPolicyMetricsConfiguration {
+		return &v
+	}).(TelemetryPolicyMetricsConfigurationPtrOutput)
+}
+
+// Indicates whether metrics are enabled or disabled. Set to true to explicitly enable, or false to explicitly disable.
+func (o TelemetryPolicyMetricsConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TelemetryPolicyMetricsConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type TelemetryPolicyMetricsConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryPolicyMetricsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryPolicyMetricsConfiguration)(nil)).Elem()
+}
+
+func (o TelemetryPolicyMetricsConfigurationPtrOutput) ToTelemetryPolicyMetricsConfigurationPtrOutput() TelemetryPolicyMetricsConfigurationPtrOutput {
+	return o
+}
+
+func (o TelemetryPolicyMetricsConfigurationPtrOutput) ToTelemetryPolicyMetricsConfigurationPtrOutputWithContext(ctx context.Context) TelemetryPolicyMetricsConfigurationPtrOutput {
+	return o
+}
+
+func (o TelemetryPolicyMetricsConfigurationPtrOutput) Elem() TelemetryPolicyMetricsConfigurationOutput {
+	return o.ApplyT(func(v *TelemetryPolicyMetricsConfiguration) TelemetryPolicyMetricsConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryPolicyMetricsConfiguration
+		return ret
+	}).(TelemetryPolicyMetricsConfigurationOutput)
+}
+
+// Indicates whether metrics are enabled or disabled. Set to true to explicitly enable, or false to explicitly disable.
+func (o TelemetryPolicyMetricsConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TelemetryPolicyMetricsConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TelemetryPolicyTelemetryTarget struct {
+	// Lists references to the resources that are targeted by the policy.
+	// Types of resources supported:
+	// - `run.googleapis.com/`
+	// - `compute.googleapis.com/`
+	// - `networkservices.googleapis.com/`
+	//   The format must be the full resource name of a supported resource.
+	Resources []string `pulumi:"resources"`
+}
+
+// TelemetryPolicyTelemetryTargetInput is an input type that accepts TelemetryPolicyTelemetryTargetArgs and TelemetryPolicyTelemetryTargetOutput values.
+// You can construct a concrete instance of `TelemetryPolicyTelemetryTargetInput` via:
+//
+//	TelemetryPolicyTelemetryTargetArgs{...}
+type TelemetryPolicyTelemetryTargetInput interface {
+	pulumi.Input
+
+	ToTelemetryPolicyTelemetryTargetOutput() TelemetryPolicyTelemetryTargetOutput
+	ToTelemetryPolicyTelemetryTargetOutputWithContext(context.Context) TelemetryPolicyTelemetryTargetOutput
+}
+
+type TelemetryPolicyTelemetryTargetArgs struct {
+	// Lists references to the resources that are targeted by the policy.
+	// Types of resources supported:
+	// - `run.googleapis.com/`
+	// - `compute.googleapis.com/`
+	// - `networkservices.googleapis.com/`
+	//   The format must be the full resource name of a supported resource.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (TelemetryPolicyTelemetryTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryPolicyTelemetryTarget)(nil)).Elem()
+}
+
+func (i TelemetryPolicyTelemetryTargetArgs) ToTelemetryPolicyTelemetryTargetOutput() TelemetryPolicyTelemetryTargetOutput {
+	return i.ToTelemetryPolicyTelemetryTargetOutputWithContext(context.Background())
+}
+
+func (i TelemetryPolicyTelemetryTargetArgs) ToTelemetryPolicyTelemetryTargetOutputWithContext(ctx context.Context) TelemetryPolicyTelemetryTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTelemetryTargetOutput)
+}
+
+func (i TelemetryPolicyTelemetryTargetArgs) ToTelemetryPolicyTelemetryTargetPtrOutput() TelemetryPolicyTelemetryTargetPtrOutput {
+	return i.ToTelemetryPolicyTelemetryTargetPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryPolicyTelemetryTargetArgs) ToTelemetryPolicyTelemetryTargetPtrOutputWithContext(ctx context.Context) TelemetryPolicyTelemetryTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTelemetryTargetOutput).ToTelemetryPolicyTelemetryTargetPtrOutputWithContext(ctx)
+}
+
+// TelemetryPolicyTelemetryTargetPtrInput is an input type that accepts TelemetryPolicyTelemetryTargetArgs, TelemetryPolicyTelemetryTargetPtr and TelemetryPolicyTelemetryTargetPtrOutput values.
+// You can construct a concrete instance of `TelemetryPolicyTelemetryTargetPtrInput` via:
+//
+//	        TelemetryPolicyTelemetryTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryPolicyTelemetryTargetPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryPolicyTelemetryTargetPtrOutput() TelemetryPolicyTelemetryTargetPtrOutput
+	ToTelemetryPolicyTelemetryTargetPtrOutputWithContext(context.Context) TelemetryPolicyTelemetryTargetPtrOutput
+}
+
+type telemetryPolicyTelemetryTargetPtrType TelemetryPolicyTelemetryTargetArgs
+
+func TelemetryPolicyTelemetryTargetPtr(v *TelemetryPolicyTelemetryTargetArgs) TelemetryPolicyTelemetryTargetPtrInput {
+	return (*telemetryPolicyTelemetryTargetPtrType)(v)
+}
+
+func (*telemetryPolicyTelemetryTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryPolicyTelemetryTarget)(nil)).Elem()
+}
+
+func (i *telemetryPolicyTelemetryTargetPtrType) ToTelemetryPolicyTelemetryTargetPtrOutput() TelemetryPolicyTelemetryTargetPtrOutput {
+	return i.ToTelemetryPolicyTelemetryTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryPolicyTelemetryTargetPtrType) ToTelemetryPolicyTelemetryTargetPtrOutputWithContext(ctx context.Context) TelemetryPolicyTelemetryTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTelemetryTargetPtrOutput)
+}
+
+type TelemetryPolicyTelemetryTargetOutput struct{ *pulumi.OutputState }
+
+func (TelemetryPolicyTelemetryTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryPolicyTelemetryTarget)(nil)).Elem()
+}
+
+func (o TelemetryPolicyTelemetryTargetOutput) ToTelemetryPolicyTelemetryTargetOutput() TelemetryPolicyTelemetryTargetOutput {
+	return o
+}
+
+func (o TelemetryPolicyTelemetryTargetOutput) ToTelemetryPolicyTelemetryTargetOutputWithContext(ctx context.Context) TelemetryPolicyTelemetryTargetOutput {
+	return o
+}
+
+func (o TelemetryPolicyTelemetryTargetOutput) ToTelemetryPolicyTelemetryTargetPtrOutput() TelemetryPolicyTelemetryTargetPtrOutput {
+	return o.ToTelemetryPolicyTelemetryTargetPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryPolicyTelemetryTargetOutput) ToTelemetryPolicyTelemetryTargetPtrOutputWithContext(ctx context.Context) TelemetryPolicyTelemetryTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryPolicyTelemetryTarget) *TelemetryPolicyTelemetryTarget {
+		return &v
+	}).(TelemetryPolicyTelemetryTargetPtrOutput)
+}
+
+// Lists references to the resources that are targeted by the policy.
+// Types of resources supported:
+//   - `run.googleapis.com/`
+//   - `compute.googleapis.com/`
+//   - `networkservices.googleapis.com/`
+//     The format must be the full resource name of a supported resource.
+func (o TelemetryPolicyTelemetryTargetOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TelemetryPolicyTelemetryTarget) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type TelemetryPolicyTelemetryTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryPolicyTelemetryTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryPolicyTelemetryTarget)(nil)).Elem()
+}
+
+func (o TelemetryPolicyTelemetryTargetPtrOutput) ToTelemetryPolicyTelemetryTargetPtrOutput() TelemetryPolicyTelemetryTargetPtrOutput {
+	return o
+}
+
+func (o TelemetryPolicyTelemetryTargetPtrOutput) ToTelemetryPolicyTelemetryTargetPtrOutputWithContext(ctx context.Context) TelemetryPolicyTelemetryTargetPtrOutput {
+	return o
+}
+
+func (o TelemetryPolicyTelemetryTargetPtrOutput) Elem() TelemetryPolicyTelemetryTargetOutput {
+	return o.ApplyT(func(v *TelemetryPolicyTelemetryTarget) TelemetryPolicyTelemetryTarget {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryPolicyTelemetryTarget
+		return ret
+	}).(TelemetryPolicyTelemetryTargetOutput)
+}
+
+// Lists references to the resources that are targeted by the policy.
+// Types of resources supported:
+//   - `run.googleapis.com/`
+//   - `compute.googleapis.com/`
+//   - `networkservices.googleapis.com/`
+//     The format must be the full resource name of a supported resource.
+func (o TelemetryPolicyTelemetryTargetPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TelemetryPolicyTelemetryTarget) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+type TelemetryPolicyTracingConfiguration struct {
+	// Provides key-value pairs for adding context to spans. Supports literalValue (static) and fromHeaderValue (dynamic extraction).
+	// Structure is documented below.
+	CustomSpanAttributes []TelemetryPolicyTracingConfigurationCustomSpanAttribute `pulumi:"customSpanAttributes"`
+	// Configures honoring a sampled bit in downstream traceparentID headers.
+	// Structure is documented below.
+	ParentBasedSampling *TelemetryPolicyTracingConfigurationParentBasedSampling `pulumi:"parentBasedSampling"`
+	// Specifies the tracing sampling rate. The sampling rate is a float number in the interval [0, 1]. The sampling rate is applied to all requests to the targeted resources. The default value is 0.0.
+	SamplingRate *float64 `pulumi:"samplingRate"`
+}
+
+// TelemetryPolicyTracingConfigurationInput is an input type that accepts TelemetryPolicyTracingConfigurationArgs and TelemetryPolicyTracingConfigurationOutput values.
+// You can construct a concrete instance of `TelemetryPolicyTracingConfigurationInput` via:
+//
+//	TelemetryPolicyTracingConfigurationArgs{...}
+type TelemetryPolicyTracingConfigurationInput interface {
+	pulumi.Input
+
+	ToTelemetryPolicyTracingConfigurationOutput() TelemetryPolicyTracingConfigurationOutput
+	ToTelemetryPolicyTracingConfigurationOutputWithContext(context.Context) TelemetryPolicyTracingConfigurationOutput
+}
+
+type TelemetryPolicyTracingConfigurationArgs struct {
+	// Provides key-value pairs for adding context to spans. Supports literalValue (static) and fromHeaderValue (dynamic extraction).
+	// Structure is documented below.
+	CustomSpanAttributes TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayInput `pulumi:"customSpanAttributes"`
+	// Configures honoring a sampled bit in downstream traceparentID headers.
+	// Structure is documented below.
+	ParentBasedSampling TelemetryPolicyTracingConfigurationParentBasedSamplingPtrInput `pulumi:"parentBasedSampling"`
+	// Specifies the tracing sampling rate. The sampling rate is a float number in the interval [0, 1]. The sampling rate is applied to all requests to the targeted resources. The default value is 0.0.
+	SamplingRate pulumi.Float64PtrInput `pulumi:"samplingRate"`
+}
+
+func (TelemetryPolicyTracingConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryPolicyTracingConfiguration)(nil)).Elem()
+}
+
+func (i TelemetryPolicyTracingConfigurationArgs) ToTelemetryPolicyTracingConfigurationOutput() TelemetryPolicyTracingConfigurationOutput {
+	return i.ToTelemetryPolicyTracingConfigurationOutputWithContext(context.Background())
+}
+
+func (i TelemetryPolicyTracingConfigurationArgs) ToTelemetryPolicyTracingConfigurationOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTracingConfigurationOutput)
+}
+
+func (i TelemetryPolicyTracingConfigurationArgs) ToTelemetryPolicyTracingConfigurationPtrOutput() TelemetryPolicyTracingConfigurationPtrOutput {
+	return i.ToTelemetryPolicyTracingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryPolicyTracingConfigurationArgs) ToTelemetryPolicyTracingConfigurationPtrOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTracingConfigurationOutput).ToTelemetryPolicyTracingConfigurationPtrOutputWithContext(ctx)
+}
+
+// TelemetryPolicyTracingConfigurationPtrInput is an input type that accepts TelemetryPolicyTracingConfigurationArgs, TelemetryPolicyTracingConfigurationPtr and TelemetryPolicyTracingConfigurationPtrOutput values.
+// You can construct a concrete instance of `TelemetryPolicyTracingConfigurationPtrInput` via:
+//
+//	        TelemetryPolicyTracingConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryPolicyTracingConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryPolicyTracingConfigurationPtrOutput() TelemetryPolicyTracingConfigurationPtrOutput
+	ToTelemetryPolicyTracingConfigurationPtrOutputWithContext(context.Context) TelemetryPolicyTracingConfigurationPtrOutput
+}
+
+type telemetryPolicyTracingConfigurationPtrType TelemetryPolicyTracingConfigurationArgs
+
+func TelemetryPolicyTracingConfigurationPtr(v *TelemetryPolicyTracingConfigurationArgs) TelemetryPolicyTracingConfigurationPtrInput {
+	return (*telemetryPolicyTracingConfigurationPtrType)(v)
+}
+
+func (*telemetryPolicyTracingConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryPolicyTracingConfiguration)(nil)).Elem()
+}
+
+func (i *telemetryPolicyTracingConfigurationPtrType) ToTelemetryPolicyTracingConfigurationPtrOutput() TelemetryPolicyTracingConfigurationPtrOutput {
+	return i.ToTelemetryPolicyTracingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryPolicyTracingConfigurationPtrType) ToTelemetryPolicyTracingConfigurationPtrOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTracingConfigurationPtrOutput)
+}
+
+type TelemetryPolicyTracingConfigurationOutput struct{ *pulumi.OutputState }
+
+func (TelemetryPolicyTracingConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryPolicyTracingConfiguration)(nil)).Elem()
+}
+
+func (o TelemetryPolicyTracingConfigurationOutput) ToTelemetryPolicyTracingConfigurationOutput() TelemetryPolicyTracingConfigurationOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationOutput) ToTelemetryPolicyTracingConfigurationOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationOutput) ToTelemetryPolicyTracingConfigurationPtrOutput() TelemetryPolicyTracingConfigurationPtrOutput {
+	return o.ToTelemetryPolicyTracingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryPolicyTracingConfigurationOutput) ToTelemetryPolicyTracingConfigurationPtrOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryPolicyTracingConfiguration) *TelemetryPolicyTracingConfiguration {
+		return &v
+	}).(TelemetryPolicyTracingConfigurationPtrOutput)
+}
+
+// Provides key-value pairs for adding context to spans. Supports literalValue (static) and fromHeaderValue (dynamic extraction).
+// Structure is documented below.
+func (o TelemetryPolicyTracingConfigurationOutput) CustomSpanAttributes() TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput {
+	return o.ApplyT(func(v TelemetryPolicyTracingConfiguration) []TelemetryPolicyTracingConfigurationCustomSpanAttribute {
+		return v.CustomSpanAttributes
+	}).(TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput)
+}
+
+// Configures honoring a sampled bit in downstream traceparentID headers.
+// Structure is documented below.
+func (o TelemetryPolicyTracingConfigurationOutput) ParentBasedSampling() TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput {
+	return o.ApplyT(func(v TelemetryPolicyTracingConfiguration) *TelemetryPolicyTracingConfigurationParentBasedSampling {
+		return v.ParentBasedSampling
+	}).(TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput)
+}
+
+// Specifies the tracing sampling rate. The sampling rate is a float number in the interval [0, 1]. The sampling rate is applied to all requests to the targeted resources. The default value is 0.0.
+func (o TelemetryPolicyTracingConfigurationOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TelemetryPolicyTracingConfiguration) *float64 { return v.SamplingRate }).(pulumi.Float64PtrOutput)
+}
+
+type TelemetryPolicyTracingConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryPolicyTracingConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryPolicyTracingConfiguration)(nil)).Elem()
+}
+
+func (o TelemetryPolicyTracingConfigurationPtrOutput) ToTelemetryPolicyTracingConfigurationPtrOutput() TelemetryPolicyTracingConfigurationPtrOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationPtrOutput) ToTelemetryPolicyTracingConfigurationPtrOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationPtrOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationPtrOutput) Elem() TelemetryPolicyTracingConfigurationOutput {
+	return o.ApplyT(func(v *TelemetryPolicyTracingConfiguration) TelemetryPolicyTracingConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryPolicyTracingConfiguration
+		return ret
+	}).(TelemetryPolicyTracingConfigurationOutput)
+}
+
+// Provides key-value pairs for adding context to spans. Supports literalValue (static) and fromHeaderValue (dynamic extraction).
+// Structure is documented below.
+func (o TelemetryPolicyTracingConfigurationPtrOutput) CustomSpanAttributes() TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput {
+	return o.ApplyT(func(v *TelemetryPolicyTracingConfiguration) []TelemetryPolicyTracingConfigurationCustomSpanAttribute {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSpanAttributes
+	}).(TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput)
+}
+
+// Configures honoring a sampled bit in downstream traceparentID headers.
+// Structure is documented below.
+func (o TelemetryPolicyTracingConfigurationPtrOutput) ParentBasedSampling() TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput {
+	return o.ApplyT(func(v *TelemetryPolicyTracingConfiguration) *TelemetryPolicyTracingConfigurationParentBasedSampling {
+		if v == nil {
+			return nil
+		}
+		return v.ParentBasedSampling
+	}).(TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput)
+}
+
+// Specifies the tracing sampling rate. The sampling rate is a float number in the interval [0, 1]. The sampling rate is applied to all requests to the targeted resources. The default value is 0.0.
+func (o TelemetryPolicyTracingConfigurationPtrOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TelemetryPolicyTracingConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+type TelemetryPolicyTracingConfigurationCustomSpanAttribute struct {
+	// Defines the key for a custom attribute that is added to the trace spans generated by the Google Cloud Load Balancer (GCLB).
+	AttributeName string `pulumi:"attributeName"`
+	// Specifies an incoming request header name from which the value for the custom span attribute should be dynamically extracted. Mutually exclusive with literalValue.
+	FromHeaderValue *string `pulumi:"fromHeaderValue"`
+	// Assigns a static, constant value to the custom trace span attribute defined by the corresponding attributeName. Mutually exclusive with fromHeaderValue.
+	LiteralValue *string `pulumi:"literalValue"`
+}
+
+// TelemetryPolicyTracingConfigurationCustomSpanAttributeInput is an input type that accepts TelemetryPolicyTracingConfigurationCustomSpanAttributeArgs and TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput values.
+// You can construct a concrete instance of `TelemetryPolicyTracingConfigurationCustomSpanAttributeInput` via:
+//
+//	TelemetryPolicyTracingConfigurationCustomSpanAttributeArgs{...}
+type TelemetryPolicyTracingConfigurationCustomSpanAttributeInput interface {
+	pulumi.Input
+
+	ToTelemetryPolicyTracingConfigurationCustomSpanAttributeOutput() TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput
+	ToTelemetryPolicyTracingConfigurationCustomSpanAttributeOutputWithContext(context.Context) TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput
+}
+
+type TelemetryPolicyTracingConfigurationCustomSpanAttributeArgs struct {
+	// Defines the key for a custom attribute that is added to the trace spans generated by the Google Cloud Load Balancer (GCLB).
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// Specifies an incoming request header name from which the value for the custom span attribute should be dynamically extracted. Mutually exclusive with literalValue.
+	FromHeaderValue pulumi.StringPtrInput `pulumi:"fromHeaderValue"`
+	// Assigns a static, constant value to the custom trace span attribute defined by the corresponding attributeName. Mutually exclusive with fromHeaderValue.
+	LiteralValue pulumi.StringPtrInput `pulumi:"literalValue"`
+}
+
+func (TelemetryPolicyTracingConfigurationCustomSpanAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryPolicyTracingConfigurationCustomSpanAttribute)(nil)).Elem()
+}
+
+func (i TelemetryPolicyTracingConfigurationCustomSpanAttributeArgs) ToTelemetryPolicyTracingConfigurationCustomSpanAttributeOutput() TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput {
+	return i.ToTelemetryPolicyTracingConfigurationCustomSpanAttributeOutputWithContext(context.Background())
+}
+
+func (i TelemetryPolicyTracingConfigurationCustomSpanAttributeArgs) ToTelemetryPolicyTracingConfigurationCustomSpanAttributeOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput)
+}
+
+// TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayInput is an input type that accepts TelemetryPolicyTracingConfigurationCustomSpanAttributeArray and TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput values.
+// You can construct a concrete instance of `TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayInput` via:
+//
+//	TelemetryPolicyTracingConfigurationCustomSpanAttributeArray{ TelemetryPolicyTracingConfigurationCustomSpanAttributeArgs{...} }
+type TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayInput interface {
+	pulumi.Input
+
+	ToTelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput() TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput
+	ToTelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutputWithContext(context.Context) TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput
+}
+
+type TelemetryPolicyTracingConfigurationCustomSpanAttributeArray []TelemetryPolicyTracingConfigurationCustomSpanAttributeInput
+
+func (TelemetryPolicyTracingConfigurationCustomSpanAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TelemetryPolicyTracingConfigurationCustomSpanAttribute)(nil)).Elem()
+}
+
+func (i TelemetryPolicyTracingConfigurationCustomSpanAttributeArray) ToTelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput() TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput {
+	return i.ToTelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i TelemetryPolicyTracingConfigurationCustomSpanAttributeArray) ToTelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput)
+}
+
+type TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput struct{ *pulumi.OutputState }
+
+func (TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryPolicyTracingConfigurationCustomSpanAttribute)(nil)).Elem()
+}
+
+func (o TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput) ToTelemetryPolicyTracingConfigurationCustomSpanAttributeOutput() TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput) ToTelemetryPolicyTracingConfigurationCustomSpanAttributeOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput {
+	return o
+}
+
+// Defines the key for a custom attribute that is added to the trace spans generated by the Google Cloud Load Balancer (GCLB).
+func (o TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryPolicyTracingConfigurationCustomSpanAttribute) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// Specifies an incoming request header name from which the value for the custom span attribute should be dynamically extracted. Mutually exclusive with literalValue.
+func (o TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput) FromHeaderValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TelemetryPolicyTracingConfigurationCustomSpanAttribute) *string { return v.FromHeaderValue }).(pulumi.StringPtrOutput)
+}
+
+// Assigns a static, constant value to the custom trace span attribute defined by the corresponding attributeName. Mutually exclusive with fromHeaderValue.
+func (o TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput) LiteralValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TelemetryPolicyTracingConfigurationCustomSpanAttribute) *string { return v.LiteralValue }).(pulumi.StringPtrOutput)
+}
+
+type TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TelemetryPolicyTracingConfigurationCustomSpanAttribute)(nil)).Elem()
+}
+
+func (o TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput) ToTelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput() TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput) ToTelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput) Index(i pulumi.IntInput) TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TelemetryPolicyTracingConfigurationCustomSpanAttribute {
+		return vs[0].([]TelemetryPolicyTracingConfigurationCustomSpanAttribute)[vs[1].(int)]
+	}).(TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput)
+}
+
+type TelemetryPolicyTracingConfigurationParentBasedSampling struct {
+	// Provides a master switch to respect a sampled bit in incoming traceparentID headers. Default is false.
+	Enabled *bool `pulumi:"enabled"`
+	// Specifies the sampling rate to use when the sampled bit is set in the incoming traceparentID header.
+	SamplingRate *float64 `pulumi:"samplingRate"`
+}
+
+// TelemetryPolicyTracingConfigurationParentBasedSamplingInput is an input type that accepts TelemetryPolicyTracingConfigurationParentBasedSamplingArgs and TelemetryPolicyTracingConfigurationParentBasedSamplingOutput values.
+// You can construct a concrete instance of `TelemetryPolicyTracingConfigurationParentBasedSamplingInput` via:
+//
+//	TelemetryPolicyTracingConfigurationParentBasedSamplingArgs{...}
+type TelemetryPolicyTracingConfigurationParentBasedSamplingInput interface {
+	pulumi.Input
+
+	ToTelemetryPolicyTracingConfigurationParentBasedSamplingOutput() TelemetryPolicyTracingConfigurationParentBasedSamplingOutput
+	ToTelemetryPolicyTracingConfigurationParentBasedSamplingOutputWithContext(context.Context) TelemetryPolicyTracingConfigurationParentBasedSamplingOutput
+}
+
+type TelemetryPolicyTracingConfigurationParentBasedSamplingArgs struct {
+	// Provides a master switch to respect a sampled bit in incoming traceparentID headers. Default is false.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specifies the sampling rate to use when the sampled bit is set in the incoming traceparentID header.
+	SamplingRate pulumi.Float64PtrInput `pulumi:"samplingRate"`
+}
+
+func (TelemetryPolicyTracingConfigurationParentBasedSamplingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryPolicyTracingConfigurationParentBasedSampling)(nil)).Elem()
+}
+
+func (i TelemetryPolicyTracingConfigurationParentBasedSamplingArgs) ToTelemetryPolicyTracingConfigurationParentBasedSamplingOutput() TelemetryPolicyTracingConfigurationParentBasedSamplingOutput {
+	return i.ToTelemetryPolicyTracingConfigurationParentBasedSamplingOutputWithContext(context.Background())
+}
+
+func (i TelemetryPolicyTracingConfigurationParentBasedSamplingArgs) ToTelemetryPolicyTracingConfigurationParentBasedSamplingOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationParentBasedSamplingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTracingConfigurationParentBasedSamplingOutput)
+}
+
+func (i TelemetryPolicyTracingConfigurationParentBasedSamplingArgs) ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput() TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput {
+	return i.ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryPolicyTracingConfigurationParentBasedSamplingArgs) ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTracingConfigurationParentBasedSamplingOutput).ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutputWithContext(ctx)
+}
+
+// TelemetryPolicyTracingConfigurationParentBasedSamplingPtrInput is an input type that accepts TelemetryPolicyTracingConfigurationParentBasedSamplingArgs, TelemetryPolicyTracingConfigurationParentBasedSamplingPtr and TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput values.
+// You can construct a concrete instance of `TelemetryPolicyTracingConfigurationParentBasedSamplingPtrInput` via:
+//
+//	        TelemetryPolicyTracingConfigurationParentBasedSamplingArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryPolicyTracingConfigurationParentBasedSamplingPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput() TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput
+	ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutputWithContext(context.Context) TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput
+}
+
+type telemetryPolicyTracingConfigurationParentBasedSamplingPtrType TelemetryPolicyTracingConfigurationParentBasedSamplingArgs
+
+func TelemetryPolicyTracingConfigurationParentBasedSamplingPtr(v *TelemetryPolicyTracingConfigurationParentBasedSamplingArgs) TelemetryPolicyTracingConfigurationParentBasedSamplingPtrInput {
+	return (*telemetryPolicyTracingConfigurationParentBasedSamplingPtrType)(v)
+}
+
+func (*telemetryPolicyTracingConfigurationParentBasedSamplingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryPolicyTracingConfigurationParentBasedSampling)(nil)).Elem()
+}
+
+func (i *telemetryPolicyTracingConfigurationParentBasedSamplingPtrType) ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput() TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput {
+	return i.ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryPolicyTracingConfigurationParentBasedSamplingPtrType) ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput)
+}
+
+type TelemetryPolicyTracingConfigurationParentBasedSamplingOutput struct{ *pulumi.OutputState }
+
+func (TelemetryPolicyTracingConfigurationParentBasedSamplingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryPolicyTracingConfigurationParentBasedSampling)(nil)).Elem()
+}
+
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingOutput) ToTelemetryPolicyTracingConfigurationParentBasedSamplingOutput() TelemetryPolicyTracingConfigurationParentBasedSamplingOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingOutput) ToTelemetryPolicyTracingConfigurationParentBasedSamplingOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationParentBasedSamplingOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingOutput) ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput() TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput {
+	return o.ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingOutput) ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryPolicyTracingConfigurationParentBasedSampling) *TelemetryPolicyTracingConfigurationParentBasedSampling {
+		return &v
+	}).(TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput)
+}
+
+// Provides a master switch to respect a sampled bit in incoming traceparentID headers. Default is false.
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TelemetryPolicyTracingConfigurationParentBasedSampling) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the sampling rate to use when the sampled bit is set in the incoming traceparentID header.
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TelemetryPolicyTracingConfigurationParentBasedSampling) *float64 { return v.SamplingRate }).(pulumi.Float64PtrOutput)
+}
+
+type TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryPolicyTracingConfigurationParentBasedSampling)(nil)).Elem()
+}
+
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput) ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput() TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput) ToTelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutputWithContext(ctx context.Context) TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput {
+	return o
+}
+
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput) Elem() TelemetryPolicyTracingConfigurationParentBasedSamplingOutput {
+	return o.ApplyT(func(v *TelemetryPolicyTracingConfigurationParentBasedSampling) TelemetryPolicyTracingConfigurationParentBasedSampling {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryPolicyTracingConfigurationParentBasedSampling
+		return ret
+	}).(TelemetryPolicyTracingConfigurationParentBasedSamplingOutput)
+}
+
+// Provides a master switch to respect a sampled bit in incoming traceparentID headers. Default is false.
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TelemetryPolicyTracingConfigurationParentBasedSampling) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the sampling rate to use when the sampled bit is set in the incoming traceparentID header.
+func (o TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TelemetryPolicyTracingConfigurationParentBasedSampling) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingRate
+	}).(pulumi.Float64PtrOutput)
 }
 
 type TlsRouteRule struct {
@@ -17800,6 +19062,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigEgressPtrInput)(nil)).Elem(), AgentGatewayNetworkConfigEgressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewaySelfManagedInput)(nil)).Elem(), AgentGatewaySelfManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewaySelfManagedPtrInput)(nil)).Elem(), AgentGatewaySelfManagedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnEdgeExtensionExtensionChainInput)(nil)).Elem(), CdnEdgeExtensionExtensionChainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnEdgeExtensionExtensionChainArrayInput)(nil)).Elem(), CdnEdgeExtensionExtensionChainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnEdgeExtensionExtensionChainExtensionInput)(nil)).Elem(), CdnEdgeExtensionExtensionChainExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnEdgeExtensionExtensionChainExtensionArrayInput)(nil)).Elem(), CdnEdgeExtensionExtensionChainExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnEdgeExtensionExtensionChainMatchConditionInput)(nil)).Elem(), CdnEdgeExtensionExtensionChainMatchConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnEdgeExtensionTargetInput)(nil)).Elem(), CdnEdgeExtensionTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnEdgeExtensionTargetPtrInput)(nil)).Elem(), CdnEdgeExtensionTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyArrayInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetValidationSharedKeyInput)(nil)).Elem(), EdgeCacheKeysetValidationSharedKeyArgs{})
@@ -17986,6 +19255,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleActionDestinationArrayInput)(nil)).Elem(), TcpRouteRuleActionDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleMatchInput)(nil)).Elem(), TcpRouteRuleMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleMatchArrayInput)(nil)).Elem(), TcpRouteRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPolicyMetricsConfigurationInput)(nil)).Elem(), TelemetryPolicyMetricsConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPolicyMetricsConfigurationPtrInput)(nil)).Elem(), TelemetryPolicyMetricsConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPolicyTelemetryTargetInput)(nil)).Elem(), TelemetryPolicyTelemetryTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPolicyTelemetryTargetPtrInput)(nil)).Elem(), TelemetryPolicyTelemetryTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPolicyTracingConfigurationInput)(nil)).Elem(), TelemetryPolicyTracingConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPolicyTracingConfigurationPtrInput)(nil)).Elem(), TelemetryPolicyTracingConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPolicyTracingConfigurationCustomSpanAttributeInput)(nil)).Elem(), TelemetryPolicyTracingConfigurationCustomSpanAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayInput)(nil)).Elem(), TelemetryPolicyTracingConfigurationCustomSpanAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPolicyTracingConfigurationParentBasedSamplingInput)(nil)).Elem(), TelemetryPolicyTracingConfigurationParentBasedSamplingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPolicyTracingConfigurationParentBasedSamplingPtrInput)(nil)).Elem(), TelemetryPolicyTracingConfigurationParentBasedSamplingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleInput)(nil)).Elem(), TlsRouteRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleArrayInput)(nil)).Elem(), TlsRouteRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleActionInput)(nil)).Elem(), TlsRouteRuleActionArgs{})
@@ -18017,6 +19296,13 @@ func init() {
 	pulumi.RegisterOutputType(AgentGatewayNetworkConfigEgressPtrOutput{})
 	pulumi.RegisterOutputType(AgentGatewaySelfManagedOutput{})
 	pulumi.RegisterOutputType(AgentGatewaySelfManagedPtrOutput{})
+	pulumi.RegisterOutputType(CdnEdgeExtensionExtensionChainOutput{})
+	pulumi.RegisterOutputType(CdnEdgeExtensionExtensionChainArrayOutput{})
+	pulumi.RegisterOutputType(CdnEdgeExtensionExtensionChainExtensionOutput{})
+	pulumi.RegisterOutputType(CdnEdgeExtensionExtensionChainExtensionArrayOutput{})
+	pulumi.RegisterOutputType(CdnEdgeExtensionExtensionChainMatchConditionOutput{})
+	pulumi.RegisterOutputType(CdnEdgeExtensionTargetOutput{})
+	pulumi.RegisterOutputType(CdnEdgeExtensionTargetPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetValidationSharedKeyOutput{})
@@ -18203,6 +19489,16 @@ func init() {
 	pulumi.RegisterOutputType(TcpRouteRuleActionDestinationArrayOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleMatchOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(TelemetryPolicyMetricsConfigurationOutput{})
+	pulumi.RegisterOutputType(TelemetryPolicyMetricsConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryPolicyTelemetryTargetOutput{})
+	pulumi.RegisterOutputType(TelemetryPolicyTelemetryTargetPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryPolicyTracingConfigurationOutput{})
+	pulumi.RegisterOutputType(TelemetryPolicyTracingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryPolicyTracingConfigurationCustomSpanAttributeOutput{})
+	pulumi.RegisterOutputType(TelemetryPolicyTracingConfigurationCustomSpanAttributeArrayOutput{})
+	pulumi.RegisterOutputType(TelemetryPolicyTracingConfigurationParentBasedSamplingOutput{})
+	pulumi.RegisterOutputType(TelemetryPolicyTracingConfigurationParentBasedSamplingPtrOutput{})
 	pulumi.RegisterOutputType(TlsRouteRuleOutput{})
 	pulumi.RegisterOutputType(TlsRouteRuleArrayOutput{})
 	pulumi.RegisterOutputType(TlsRouteRuleActionOutput{})

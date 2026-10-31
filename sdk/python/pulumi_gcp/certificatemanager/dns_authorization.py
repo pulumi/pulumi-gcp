@@ -454,6 +454,7 @@ class DnsAuthorization(pulumi.CustomResource):
         pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
         pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
         ```
+
         ### Certificate Manager Dns Authorization Regional
 
         ```python
@@ -540,6 +541,7 @@ class DnsAuthorization(pulumi.CustomResource):
         pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
         pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
         ```
+
         ### Certificate Manager Dns Authorization Regional
 
         ```python

@@ -427,6 +427,7 @@ class BigQueryExport(pulumi.CustomResource):
                 "retention_days": 7,
             })
         ```
+
         ### Chronicle Bigquery Export Full
 
         ```python
@@ -526,6 +527,7 @@ class BigQueryExport(pulumi.CustomResource):
                 "retention_days": 7,
             })
         ```
+
         ### Chronicle Bigquery Export Full
 
         ```python

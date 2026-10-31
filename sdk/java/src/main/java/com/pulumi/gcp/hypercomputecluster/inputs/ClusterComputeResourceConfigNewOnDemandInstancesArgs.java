@@ -7,7 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterComputeResourceConfigNewOnDemandInstancesArgs extends com.pulumi.resources.ResourceArgs {
@@ -34,6 +37,25 @@ public final class ClusterComputeResourceConfigNewOnDemandInstancesArgs extends 
     }
 
     /**
+     * (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    @Import(name="networkTags")
+    private @Nullable Output<List<String>> networkTags;
+
+    /**
+     * @return (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    public Optional<Output<List<String>>> networkTags() {
+        return Optional.ofNullable(this.networkTags);
+    }
+
+    /**
      * Name of the zone in which VM instances should run, e.g., `us-central1-a`.
      * Must be in the same region as the cluster, and must match the zone of any
      * other resources specified in the cluster.
@@ -56,6 +78,7 @@ public final class ClusterComputeResourceConfigNewOnDemandInstancesArgs extends 
 
     private ClusterComputeResourceConfigNewOnDemandInstancesArgs(ClusterComputeResourceConfigNewOnDemandInstancesArgs $) {
         this.machineType = $.machineType;
+        this.networkTags = $.networkTags;
         this.zone = $.zone;
     }
 
@@ -100,6 +123,43 @@ public final class ClusterComputeResourceConfigNewOnDemandInstancesArgs extends 
          */
         public Builder machineType(String machineType) {
             return machineType(Output.of(machineType));
+        }
+
+        /**
+         * @param networkTags (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTags(@Nullable Output<List<String>> networkTags) {
+            $.networkTags = networkTags;
+            return this;
+        }
+
+        /**
+         * @param networkTags (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTags(List<String> networkTags) {
+            return networkTags(Output.of(networkTags));
+        }
+
+        /**
+         * @param networkTags (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTags(String... networkTags) {
+            return networkTags(List.of(networkTags));
         }
 
         /**

@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [appcheck],
  * });
  * ```
+ *
  * ### Firebase App Check Service Config Enforced
  *
  * ```typescript
@@ -50,6 +51,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [appcheck],
  * });
  * ```
+ *
  * ### Firebase App Check Service Config Unenforced
  *
  * ```typescript

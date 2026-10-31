@@ -52,7 +52,7 @@ import (
 //			subnetNetwork1, err := compute.NewSubnetwork(ctx, "subnet_network1", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("subnet-net1"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     network1.ID(),
 //			})
 //			if err != nil {
@@ -60,7 +60,7 @@ import (
 //			}
 //			ip1Network1, err := compute.NewAddress(ctx, "ip1_network1", &compute.AddressArgs{
 //				Name:        pulumi.String("ip1-net1"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Subnetwork:  subnetNetwork1.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -71,8 +71,9 @@ import (
 //			// redis cluster without endpoint
 //			cluster_user_connCluster, err := redis.NewCluster(ctx, "cluster-user-conn", &redis.ClusterArgs{
 //				Name:                      pulumi.String("cluster-user-conn"),
-//				ShardCount:                pulumi.Int(3),
-//				Region:                    pulumi.String("us-west1"),
+//				ShardCount:                pulumi.Int(1),
+//				NodeType:                  pulumi.String("REDIS_SHARED_CORE_NANO"),
+//				Region:                    pulumi.String("us-east1"),
 //				ReplicaCount:              pulumi.Int(0),
 //				DeletionProtectionEnabled: pulumi.Bool(false),
 //			})
@@ -81,7 +82,7 @@ import (
 //			}
 //			forwardingRule1Network1, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network1", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd1-net1"),
-//				Region:              pulumi.String("us-west1"),
+//				Region:              pulumi.String("us-east1"),
 //				IpAddress:           ip1Network1.ID(),
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network1.ID(),
@@ -94,7 +95,7 @@ import (
 //			}
 //			ip2Network1, err := compute.NewAddress(ctx, "ip2_network1", &compute.AddressArgs{
 //				Name:        pulumi.String("ip2-net1"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Subnetwork:  subnetNetwork1.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -104,7 +105,7 @@ import (
 //			}
 //			forwardingRule2Network1, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network1", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd2-net1"),
-//				Region:              pulumi.String("us-west1"),
+//				Region:              pulumi.String("us-east1"),
 //				IpAddress:           ip2Network1.ID(),
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network1.ID(),
@@ -125,7 +126,7 @@ import (
 //			subnetNetwork2, err := compute.NewSubnetwork(ctx, "subnet_network2", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("subnet-net2"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     network2.ID(),
 //			})
 //			if err != nil {
@@ -133,7 +134,7 @@ import (
 //			}
 //			ip1Network2, err := compute.NewAddress(ctx, "ip1_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip1-net2"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Subnetwork:  subnetNetwork2.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -143,7 +144,7 @@ import (
 //			}
 //			forwardingRule1Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd1-net2"),
-//				Region:              pulumi.String("us-west1"),
+//				Region:              pulumi.String("us-east1"),
 //				IpAddress:           ip1Network2.ID(),
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
@@ -156,7 +157,7 @@ import (
 //			}
 //			ip2Network2, err := compute.NewAddress(ctx, "ip2_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip2-net2"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Subnetwork:  subnetNetwork2.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -166,7 +167,7 @@ import (
 //			}
 //			forwardingRule2Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd2-net2"),
-//				Region:              pulumi.String("us-west1"),
+//				Region:              pulumi.String("us-east1"),
 //				IpAddress:           ip2Network2.ID(),
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
@@ -183,7 +184,7 @@ import (
 //			}
 //			_, err = redis.NewClusterUserCreatedConnections(ctx, "cluster-user-conn", &redis.ClusterUserCreatedConnectionsArgs{
 //				Name:   pulumi.String("cluster-user-conn"),
-//				Region: pulumi.String("us-west1"),
+//				Region: pulumi.String("us-east1"),
 //				ClusterEndpoints: redis.ClusterUserCreatedConnectionsClusterEndpointArray{
 //					&redis.ClusterUserCreatedConnectionsClusterEndpointArgs{
 //						Connections: redis.ClusterUserCreatedConnectionsClusterEndpointConnectionArray{
@@ -248,6 +249,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Cluster User And Auto Created Connections
 //
 // ```go
@@ -274,7 +276,7 @@ import (
 //			subnetNetwork2, err := compute.NewSubnetwork(ctx, "subnet_network2", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("subnet-net2"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     network2.ID(),
 //			})
 //			if err != nil {
@@ -282,7 +284,7 @@ import (
 //			}
 //			ip1Network2, err := compute.NewAddress(ctx, "ip1_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip1-net2"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Subnetwork:  subnetNetwork2.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -300,7 +302,7 @@ import (
 //			subnetNetwork1, err := compute.NewSubnetwork(ctx, "subnet_network1", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("subnet-net1"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     network1.ID(),
 //			})
 //			if err != nil {
@@ -308,7 +310,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("scpolicy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      network1.ID(),
@@ -324,8 +326,9 @@ import (
 //			// redis cluster without endpoint
 //			cluster_user_auto_connCluster, err := redis.NewCluster(ctx, "cluster-user-auto-conn", &redis.ClusterArgs{
 //				Name:                      pulumi.String("cluster-user-auto-conn"),
-//				ShardCount:                pulumi.Int(3),
-//				Region:                    pulumi.String("us-west1"),
+//				ShardCount:                pulumi.Int(1),
+//				NodeType:                  pulumi.String("REDIS_SHARED_CORE_NANO"),
+//				Region:                    pulumi.String("us-east1"),
 //				ReplicaCount:              pulumi.Int(0),
 //				DeletionProtectionEnabled: pulumi.Bool(false),
 //				PscConfigs: redis.ClusterPscConfigArray{
@@ -341,7 +344,7 @@ import (
 //			}
 //			forwardingRule1Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd1-net2"),
-//				Region:              pulumi.String("us-west1"),
+//				Region:              pulumi.String("us-east1"),
 //				IpAddress:           ip1Network2.ID(),
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
@@ -354,7 +357,7 @@ import (
 //			}
 //			ip2Network2, err := compute.NewAddress(ctx, "ip2_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip2-net2"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Subnetwork:  subnetNetwork2.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -364,7 +367,7 @@ import (
 //			}
 //			forwardingRule2Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd2-net2"),
-//				Region:              pulumi.String("us-west1"),
+//				Region:              pulumi.String("us-east1"),
 //				IpAddress:           ip2Network2.ID(),
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
@@ -377,7 +380,7 @@ import (
 //			}
 //			_, err = redis.NewClusterUserCreatedConnections(ctx, "cluster-user-auto-conn", &redis.ClusterUserCreatedConnectionsArgs{
 //				Name:   pulumi.String("cluster-user-auto-conn"),
-//				Region: pulumi.String("us-west1"),
+//				Region: pulumi.String("us-east1"),
 //				ClusterEndpoints: redis.ClusterUserCreatedConnectionsClusterEndpointArray{
 //					&redis.ClusterUserCreatedConnectionsClusterEndpointArgs{
 //						Connections: redis.ClusterUserCreatedConnectionsClusterEndpointConnectionArray{

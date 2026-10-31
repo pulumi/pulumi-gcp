@@ -429,6 +429,7 @@ class Cluster(pulumi.CustomResource):
                 "node_count": 3,
             }])
         ```
+
         ### Vmware Engine Cluster Full
 
         ```python
@@ -487,6 +488,7 @@ class Cluster(pulumi.CustomResource):
                 "cool_down_period": "1800s",
             })
         ```
+
         ### Vmware Engine Cluster Nfs Datastore Filestore
 
         ```python
@@ -587,6 +589,7 @@ class Cluster(pulumi.CustomResource):
             }],
             opts = pulumi.ResourceOptions(depends_on=[psa_network_peering]))
         ```
+
         ### Vmware Engine Cluster Nfs Datastore Netapp
 
         ```python
@@ -785,6 +788,7 @@ class Cluster(pulumi.CustomResource):
                 "node_count": 3,
             }])
         ```
+
         ### Vmware Engine Cluster Full
 
         ```python
@@ -843,6 +847,7 @@ class Cluster(pulumi.CustomResource):
                 "cool_down_period": "1800s",
             })
         ```
+
         ### Vmware Engine Cluster Nfs Datastore Filestore
 
         ```python
@@ -943,6 +948,7 @@ class Cluster(pulumi.CustomResource):
             }],
             opts = pulumi.ResourceOptions(depends_on=[psa_network_peering]))
         ```
+
         ### Vmware Engine Cluster Nfs Datastore Netapp
 
         ```python

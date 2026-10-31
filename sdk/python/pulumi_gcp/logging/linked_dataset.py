@@ -385,6 +385,7 @@ class LinkedDataset(pulumi.CustomResource):
             bucket=logging_linked_dataset.id,
             description="Linked dataset test")
         ```
+
         ### Logging Linked Dataset All Params
 
         ```python
@@ -469,6 +470,7 @@ class LinkedDataset(pulumi.CustomResource):
             bucket=logging_linked_dataset.id,
             description="Linked dataset test")
         ```
+
         ### Logging Linked Dataset All Params
 
         ```python

@@ -82,6 +82,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     /// });
     /// ```
+    /// 
     /// ### Binary Authorization Policy Global Evaluation
     /// 
     /// ```csharp

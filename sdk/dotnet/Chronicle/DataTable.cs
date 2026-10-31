@@ -63,6 +63,7 @@ namespace Pulumi.Gcp.Chronicle
     ///     };
     /// });
     /// ```
+    /// 
     /// ### Chronicle Data Table With Optional Fields
     /// 
     /// ```csharp

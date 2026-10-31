@@ -82,6 +82,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Reservation Basic Beta
  * 
  * <pre>
@@ -116,7 +117,7 @@ import javax.annotation.Nullable;
  *                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
  *                     .minCpuPlatform("Intel Cascade Lake")
  *                     .machineType("n2-standard-2")
- *                     .maintenanceInterval("PERIODIC")
+ *                     .maintenanceInterval("RECURRENT")
  *                     .build())
  *                 .build())
  *             .enableEmergentMaintenance(true)
@@ -126,6 +127,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Reservation Source Instance Template
  * 
  * <pre>
@@ -206,6 +208,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Reservation Sharing Policy
  * 
  * <pre>

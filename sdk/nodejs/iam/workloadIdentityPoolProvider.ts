@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Provider Aws Full
  *
  * ```typescript
@@ -56,6 +57,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Provider Github Actions
  *
  * ```typescript
@@ -85,6 +87,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Provider Oidc Basic
  *
  * ```typescript
@@ -103,6 +106,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Provider Oidc Full
  *
  * ```typescript
@@ -135,6 +139,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Provider Saml Basic
  *
  * ```typescript
@@ -158,6 +163,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Provider Saml Full
  *
  * ```typescript
@@ -184,6 +190,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Provider Oidc Upload Key
  *
  * ```typescript
@@ -217,6 +224,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Provider X509 Basic
  *
  * ```typescript
@@ -242,6 +250,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Provider X509 Full
  *
  * ```typescript

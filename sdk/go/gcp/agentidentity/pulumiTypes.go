@@ -1040,6 +1040,332 @@ func (o AuthProviderAuthProviderTypeParamsTwoLeggedOauthPtrOutput) TokenUrl() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+type AuthProviderIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AuthProviderIamBindingConditionInput is an input type that accepts AuthProviderIamBindingConditionArgs and AuthProviderIamBindingConditionOutput values.
+// You can construct a concrete instance of `AuthProviderIamBindingConditionInput` via:
+//
+//	AuthProviderIamBindingConditionArgs{...}
+type AuthProviderIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAuthProviderIamBindingConditionOutput() AuthProviderIamBindingConditionOutput
+	ToAuthProviderIamBindingConditionOutputWithContext(context.Context) AuthProviderIamBindingConditionOutput
+}
+
+type AuthProviderIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AuthProviderIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderIamBindingCondition)(nil)).Elem()
+}
+
+func (i AuthProviderIamBindingConditionArgs) ToAuthProviderIamBindingConditionOutput() AuthProviderIamBindingConditionOutput {
+	return i.ToAuthProviderIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AuthProviderIamBindingConditionArgs) ToAuthProviderIamBindingConditionOutputWithContext(ctx context.Context) AuthProviderIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderIamBindingConditionOutput)
+}
+
+func (i AuthProviderIamBindingConditionArgs) ToAuthProviderIamBindingConditionPtrOutput() AuthProviderIamBindingConditionPtrOutput {
+	return i.ToAuthProviderIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AuthProviderIamBindingConditionArgs) ToAuthProviderIamBindingConditionPtrOutputWithContext(ctx context.Context) AuthProviderIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderIamBindingConditionOutput).ToAuthProviderIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AuthProviderIamBindingConditionPtrInput is an input type that accepts AuthProviderIamBindingConditionArgs, AuthProviderIamBindingConditionPtr and AuthProviderIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AuthProviderIamBindingConditionPtrInput` via:
+//
+//	        AuthProviderIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthProviderIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAuthProviderIamBindingConditionPtrOutput() AuthProviderIamBindingConditionPtrOutput
+	ToAuthProviderIamBindingConditionPtrOutputWithContext(context.Context) AuthProviderIamBindingConditionPtrOutput
+}
+
+type authProviderIamBindingConditionPtrType AuthProviderIamBindingConditionArgs
+
+func AuthProviderIamBindingConditionPtr(v *AuthProviderIamBindingConditionArgs) AuthProviderIamBindingConditionPtrInput {
+	return (*authProviderIamBindingConditionPtrType)(v)
+}
+
+func (*authProviderIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderIamBindingCondition)(nil)).Elem()
+}
+
+func (i *authProviderIamBindingConditionPtrType) ToAuthProviderIamBindingConditionPtrOutput() AuthProviderIamBindingConditionPtrOutput {
+	return i.ToAuthProviderIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *authProviderIamBindingConditionPtrType) ToAuthProviderIamBindingConditionPtrOutputWithContext(ctx context.Context) AuthProviderIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderIamBindingConditionPtrOutput)
+}
+
+type AuthProviderIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderIamBindingCondition)(nil)).Elem()
+}
+
+func (o AuthProviderIamBindingConditionOutput) ToAuthProviderIamBindingConditionOutput() AuthProviderIamBindingConditionOutput {
+	return o
+}
+
+func (o AuthProviderIamBindingConditionOutput) ToAuthProviderIamBindingConditionOutputWithContext(ctx context.Context) AuthProviderIamBindingConditionOutput {
+	return o
+}
+
+func (o AuthProviderIamBindingConditionOutput) ToAuthProviderIamBindingConditionPtrOutput() AuthProviderIamBindingConditionPtrOutput {
+	return o.ToAuthProviderIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AuthProviderIamBindingConditionOutput) ToAuthProviderIamBindingConditionPtrOutputWithContext(ctx context.Context) AuthProviderIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthProviderIamBindingCondition) *AuthProviderIamBindingCondition {
+		return &v
+	}).(AuthProviderIamBindingConditionPtrOutput)
+}
+
+func (o AuthProviderIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthProviderIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AuthProviderIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AuthProviderIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AuthProviderIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderIamBindingCondition)(nil)).Elem()
+}
+
+func (o AuthProviderIamBindingConditionPtrOutput) ToAuthProviderIamBindingConditionPtrOutput() AuthProviderIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AuthProviderIamBindingConditionPtrOutput) ToAuthProviderIamBindingConditionPtrOutputWithContext(ctx context.Context) AuthProviderIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AuthProviderIamBindingConditionPtrOutput) Elem() AuthProviderIamBindingConditionOutput {
+	return o.ApplyT(func(v *AuthProviderIamBindingCondition) AuthProviderIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AuthProviderIamBindingCondition
+		return ret
+	}).(AuthProviderIamBindingConditionOutput)
+}
+
+func (o AuthProviderIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuthProviderIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuthProviderIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthProviderIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AuthProviderIamMemberConditionInput is an input type that accepts AuthProviderIamMemberConditionArgs and AuthProviderIamMemberConditionOutput values.
+// You can construct a concrete instance of `AuthProviderIamMemberConditionInput` via:
+//
+//	AuthProviderIamMemberConditionArgs{...}
+type AuthProviderIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAuthProviderIamMemberConditionOutput() AuthProviderIamMemberConditionOutput
+	ToAuthProviderIamMemberConditionOutputWithContext(context.Context) AuthProviderIamMemberConditionOutput
+}
+
+type AuthProviderIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AuthProviderIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderIamMemberCondition)(nil)).Elem()
+}
+
+func (i AuthProviderIamMemberConditionArgs) ToAuthProviderIamMemberConditionOutput() AuthProviderIamMemberConditionOutput {
+	return i.ToAuthProviderIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AuthProviderIamMemberConditionArgs) ToAuthProviderIamMemberConditionOutputWithContext(ctx context.Context) AuthProviderIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderIamMemberConditionOutput)
+}
+
+func (i AuthProviderIamMemberConditionArgs) ToAuthProviderIamMemberConditionPtrOutput() AuthProviderIamMemberConditionPtrOutput {
+	return i.ToAuthProviderIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AuthProviderIamMemberConditionArgs) ToAuthProviderIamMemberConditionPtrOutputWithContext(ctx context.Context) AuthProviderIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderIamMemberConditionOutput).ToAuthProviderIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AuthProviderIamMemberConditionPtrInput is an input type that accepts AuthProviderIamMemberConditionArgs, AuthProviderIamMemberConditionPtr and AuthProviderIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AuthProviderIamMemberConditionPtrInput` via:
+//
+//	        AuthProviderIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthProviderIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAuthProviderIamMemberConditionPtrOutput() AuthProviderIamMemberConditionPtrOutput
+	ToAuthProviderIamMemberConditionPtrOutputWithContext(context.Context) AuthProviderIamMemberConditionPtrOutput
+}
+
+type authProviderIamMemberConditionPtrType AuthProviderIamMemberConditionArgs
+
+func AuthProviderIamMemberConditionPtr(v *AuthProviderIamMemberConditionArgs) AuthProviderIamMemberConditionPtrInput {
+	return (*authProviderIamMemberConditionPtrType)(v)
+}
+
+func (*authProviderIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderIamMemberCondition)(nil)).Elem()
+}
+
+func (i *authProviderIamMemberConditionPtrType) ToAuthProviderIamMemberConditionPtrOutput() AuthProviderIamMemberConditionPtrOutput {
+	return i.ToAuthProviderIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *authProviderIamMemberConditionPtrType) ToAuthProviderIamMemberConditionPtrOutputWithContext(ctx context.Context) AuthProviderIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderIamMemberConditionPtrOutput)
+}
+
+type AuthProviderIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderIamMemberCondition)(nil)).Elem()
+}
+
+func (o AuthProviderIamMemberConditionOutput) ToAuthProviderIamMemberConditionOutput() AuthProviderIamMemberConditionOutput {
+	return o
+}
+
+func (o AuthProviderIamMemberConditionOutput) ToAuthProviderIamMemberConditionOutputWithContext(ctx context.Context) AuthProviderIamMemberConditionOutput {
+	return o
+}
+
+func (o AuthProviderIamMemberConditionOutput) ToAuthProviderIamMemberConditionPtrOutput() AuthProviderIamMemberConditionPtrOutput {
+	return o.ToAuthProviderIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AuthProviderIamMemberConditionOutput) ToAuthProviderIamMemberConditionPtrOutputWithContext(ctx context.Context) AuthProviderIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthProviderIamMemberCondition) *AuthProviderIamMemberCondition {
+		return &v
+	}).(AuthProviderIamMemberConditionPtrOutput)
+}
+
+func (o AuthProviderIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthProviderIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AuthProviderIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AuthProviderIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AuthProviderIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderIamMemberCondition)(nil)).Elem()
+}
+
+func (o AuthProviderIamMemberConditionPtrOutput) ToAuthProviderIamMemberConditionPtrOutput() AuthProviderIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AuthProviderIamMemberConditionPtrOutput) ToAuthProviderIamMemberConditionPtrOutputWithContext(ctx context.Context) AuthProviderIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AuthProviderIamMemberConditionPtrOutput) Elem() AuthProviderIamMemberConditionOutput {
+	return o.ApplyT(func(v *AuthProviderIamMemberCondition) AuthProviderIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AuthProviderIamMemberCondition
+		return ret
+	}).(AuthProviderIamMemberConditionOutput)
+}
+
+func (o AuthProviderIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuthProviderIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuthProviderIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsArgs{})
@@ -1051,6 +1377,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsThreeLeggedOauthPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsThreeLeggedOauthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsTwoLeggedOauthInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsTwoLeggedOauthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsTwoLeggedOauthPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsTwoLeggedOauthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderIamBindingConditionInput)(nil)).Elem(), AuthProviderIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderIamBindingConditionPtrInput)(nil)).Elem(), AuthProviderIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderIamMemberConditionInput)(nil)).Elem(), AuthProviderIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderIamMemberConditionPtrInput)(nil)).Elem(), AuthProviderIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsPtrOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsApiKeyOutput{})
@@ -1061,4 +1391,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsThreeLeggedOauthPtrOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsTwoLeggedOauthOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsTwoLeggedOauthPtrOutput{})
+	pulumi.RegisterOutputType(AuthProviderIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AuthProviderIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AuthProviderIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AuthProviderIamMemberConditionPtrOutput{})
 }

@@ -239,6 +239,66 @@ import (
 //	}
 //
 // ```
+// ### Express_key
+// A basic test of recaptcha enterprise key that can be used by reCAPTCHA Express
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+//				DisplayName:     pulumi.String("display-name-one"),
+//				Project:         pulumi.String("my-project-name"),
+//				ExpressSettings: &recaptcha.EnterpriseKeyExpressSettingsArgs{},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Universal_key
+// A basic test of recaptcha enterprise key that can be used by universal frontend integrations
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+//				DisplayName:       pulumi.String("display-name-one"),
+//				Project:           pulumi.String("my-project-name"),
+//				UniversalSettings: &recaptcha.EnterpriseKeyUniversalSettingsArgs{},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -274,6 +334,8 @@ type EnterpriseKey struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Settings for keys that can be used by reCAPTCHA Express.
+	ExpressSettings EnterpriseKeyExpressSettingsPtrOutput `pulumi:"expressSettings"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrOutput `pulumi:"iosSettings"`
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -289,6 +351,8 @@ type EnterpriseKey struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrOutput `pulumi:"testingOptions"`
+	// Settings for keys that can be used by universal frontend integrations.
+	UniversalSettings EnterpriseKeyUniversalSettingsPtrOutput `pulumi:"universalSettings"`
 	// Settings specific to keys that can be used for WAF (Web Application Firewall).
 	WafSettings EnterpriseKeyWafSettingsPtrOutput `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
@@ -350,6 +414,8 @@ type enterpriseKeyState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Settings for keys that can be used by reCAPTCHA Express.
+	ExpressSettings *EnterpriseKeyExpressSettings `pulumi:"expressSettings"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings *EnterpriseKeyIosSettings `pulumi:"iosSettings"`
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -365,6 +431,8 @@ type enterpriseKeyState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Options for user acceptance testing.
 	TestingOptions *EnterpriseKeyTestingOptions `pulumi:"testingOptions"`
+	// Settings for keys that can be used by universal frontend integrations.
+	UniversalSettings *EnterpriseKeyUniversalSettings `pulumi:"universalSettings"`
 	// Settings specific to keys that can be used for WAF (Web Application Firewall).
 	WafSettings *EnterpriseKeyWafSettings `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
@@ -389,6 +457,8 @@ type EnterpriseKeyState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Settings for keys that can be used by reCAPTCHA Express.
+	ExpressSettings EnterpriseKeyExpressSettingsPtrInput
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrInput
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -404,6 +474,8 @@ type EnterpriseKeyState struct {
 	PulumiLabels pulumi.StringMapInput
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrInput
+	// Settings for keys that can be used by universal frontend integrations.
+	UniversalSettings EnterpriseKeyUniversalSettingsPtrInput
 	// Settings specific to keys that can be used for WAF (Web Application Firewall).
 	WafSettings EnterpriseKeyWafSettingsPtrInput
 	// Settings for keys that can be used by websites.
@@ -428,6 +500,8 @@ type enterpriseKeyArgs struct {
 	//
 	// ***
 	DisplayName string `pulumi:"displayName"`
+	// Settings for keys that can be used by reCAPTCHA Express.
+	ExpressSettings *EnterpriseKeyExpressSettings `pulumi:"expressSettings"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings *EnterpriseKeyIosSettings `pulumi:"iosSettings"`
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -439,6 +513,8 @@ type enterpriseKeyArgs struct {
 	Project *string `pulumi:"project"`
 	// Options for user acceptance testing.
 	TestingOptions *EnterpriseKeyTestingOptions `pulumi:"testingOptions"`
+	// Settings for keys that can be used by universal frontend integrations.
+	UniversalSettings *EnterpriseKeyUniversalSettings `pulumi:"universalSettings"`
 	// Settings specific to keys that can be used for WAF (Web Application Firewall).
 	WafSettings *EnterpriseKeyWafSettings `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
@@ -460,6 +536,8 @@ type EnterpriseKeyArgs struct {
 	//
 	// ***
 	DisplayName pulumi.StringInput
+	// Settings for keys that can be used by reCAPTCHA Express.
+	ExpressSettings EnterpriseKeyExpressSettingsPtrInput
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrInput
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -471,6 +549,8 @@ type EnterpriseKeyArgs struct {
 	Project pulumi.StringPtrInput
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrInput
+	// Settings for keys that can be used by universal frontend integrations.
+	UniversalSettings EnterpriseKeyUniversalSettingsPtrInput
 	// Settings specific to keys that can be used for WAF (Web Application Firewall).
 	WafSettings EnterpriseKeyWafSettingsPtrInput
 	// Settings for keys that can be used by websites.
@@ -596,6 +676,11 @@ func (o EnterpriseKeyOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// Settings for keys that can be used by reCAPTCHA Express.
+func (o EnterpriseKeyOutput) ExpressSettings() EnterpriseKeyExpressSettingsPtrOutput {
+	return o.ApplyT(func(v *EnterpriseKey) EnterpriseKeyExpressSettingsPtrOutput { return v.ExpressSettings }).(EnterpriseKeyExpressSettingsPtrOutput)
+}
+
 // Settings for keys that can be used by iOS apps.
 func (o EnterpriseKeyOutput) IosSettings() EnterpriseKeyIosSettingsPtrOutput {
 	return o.ApplyT(func(v *EnterpriseKey) EnterpriseKeyIosSettingsPtrOutput { return v.IosSettings }).(EnterpriseKeyIosSettingsPtrOutput)
@@ -627,6 +712,11 @@ func (o EnterpriseKeyOutput) PulumiLabels() pulumi.StringMapOutput {
 // Options for user acceptance testing.
 func (o EnterpriseKeyOutput) TestingOptions() EnterpriseKeyTestingOptionsPtrOutput {
 	return o.ApplyT(func(v *EnterpriseKey) EnterpriseKeyTestingOptionsPtrOutput { return v.TestingOptions }).(EnterpriseKeyTestingOptionsPtrOutput)
+}
+
+// Settings for keys that can be used by universal frontend integrations.
+func (o EnterpriseKeyOutput) UniversalSettings() EnterpriseKeyUniversalSettingsPtrOutput {
+	return o.ApplyT(func(v *EnterpriseKey) EnterpriseKeyUniversalSettingsPtrOutput { return v.UniversalSettings }).(EnterpriseKeyUniversalSettingsPtrOutput)
 }
 
 // Settings specific to keys that can be used for WAF (Web Application Firewall).

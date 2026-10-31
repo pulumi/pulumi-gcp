@@ -92,6 +92,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firestore Change Stream Full
  * 
  * <pre>

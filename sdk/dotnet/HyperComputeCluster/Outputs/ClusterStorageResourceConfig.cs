@@ -34,6 +34,13 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
         /// </summary>
         public readonly Outputs.ClusterStorageResourceConfigExistingLustre? ExistingLustre;
         /// <summary>
+        /// (Optional, Beta)
+        /// When set in a StorageResourceConfig, indicates that an existing NFS
+        /// share should be imported.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterStorageResourceConfigExistingNfs? ExistingNfs;
+        /// <summary>
         /// When set in a StorageResourceConfig, indicates that a new
         /// [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
         /// created.
@@ -62,6 +69,8 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
 
             Outputs.ClusterStorageResourceConfigExistingLustre? existingLustre,
 
+            Outputs.ClusterStorageResourceConfigExistingNfs? existingNfs,
+
             Outputs.ClusterStorageResourceConfigNewBucket? newBucket,
 
             Outputs.ClusterStorageResourceConfigNewFilestore? newFilestore,
@@ -71,6 +80,7 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
             ExistingBucket = existingBucket;
             ExistingFilestore = existingFilestore;
             ExistingLustre = existingLustre;
+            ExistingNfs = existingNfs;
             NewBucket = newBucket;
             NewFilestore = newFilestore;
             NewLustre = newLustre;

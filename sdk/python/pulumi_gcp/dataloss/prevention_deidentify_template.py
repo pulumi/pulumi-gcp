@@ -444,6 +444,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Deidentify Template Image Transformations
 
         ```python
@@ -632,6 +633,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Deidentify Template Image Transformations
 
         ```python

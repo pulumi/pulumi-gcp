@@ -90,7 +90,9 @@ type LookupAddressArgs struct {
 // A collection of values returned by getAddress.
 type LookupAddressResult struct {
 	// The IP of the created resource.
-	Address     string `pulumi:"address"`
+	Address string `pulumi:"address"`
+	// The numeric ID of the created resource.
+	AddressId   string `pulumi:"addressId"`
 	AddressType string `pulumi:"addressType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string `pulumi:"id"`
@@ -150,6 +152,11 @@ func (o LookupAddressResultOutput) ToLookupAddressResultOutputWithContext(ctx co
 // The IP of the created resource.
 func (o LookupAddressResultOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The numeric ID of the created resource.
+func (o LookupAddressResultOutput) AddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.AddressId }).(pulumi.StringOutput)
 }
 
 func (o LookupAddressResultOutput) AddressType() pulumi.StringOutput {

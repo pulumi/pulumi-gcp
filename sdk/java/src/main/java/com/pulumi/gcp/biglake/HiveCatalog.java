@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Biglake Hive Catalog Full
  * 
  * <pre>

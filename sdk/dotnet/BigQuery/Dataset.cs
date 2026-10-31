@@ -67,6 +67,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset Cmek
     /// 
     /// ```csharp
@@ -104,6 +105,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset Authorized Dataset
     /// 
     /// ```csharp
@@ -188,6 +190,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset Authorized Routine
     /// 
     /// ```csharp
@@ -266,6 +269,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset External Reference Aws
     /// 
     /// ```csharp
@@ -291,6 +295,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset External Catalog Dataset Options
     /// 
     /// ```csharp

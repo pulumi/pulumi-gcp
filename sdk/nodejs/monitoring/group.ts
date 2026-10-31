@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     filter: "resource.metadata.region=\"europe-west2\"",
  * });
  * ```
+ *
  * ### Monitoring Group Subgroup
  *
  * ```typescript

@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     apiKey: "<api-key>",
  * });
  * ```
+ *
  * ### Cloudbuild Bitbucket Server Config Repositories
  *
  * ```typescript
@@ -65,6 +66,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Cloudbuild Bitbucket Server Config Peered Network
  *
  * ```typescript

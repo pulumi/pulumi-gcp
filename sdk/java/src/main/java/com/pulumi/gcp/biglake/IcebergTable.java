@@ -113,6 +113,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Biglake Iceberg Table Sort Order
  * 
  * <pre>
@@ -191,6 +192,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Biglake Iceberg Table Update
  * 
  * <pre>

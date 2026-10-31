@@ -58,6 +58,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase App Check Service Config Enforced
 //
 // ```go
@@ -95,6 +96,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase App Check Service Config Unenforced
 //
 // ```go

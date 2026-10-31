@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloud Tasks Queue Advanced
     /// 
     /// ```csharp
@@ -73,6 +74,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloud Tasks Queue Http Target Oidc
     /// 
     /// ```csharp
@@ -140,6 +142,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloud Tasks Queue Http Target Oauth
     /// 
     /// ```csharp

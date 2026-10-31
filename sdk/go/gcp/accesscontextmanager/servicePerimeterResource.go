@@ -14,7 +14,7 @@ import (
 
 // Allows configuring a single GCP resource that should be inside the `status` block of a service perimeter.
 // This resource is intended to be used in cases where it is not possible to compile a full list
-// of projects to include in a `accesscontextmanager.ServicePerimeter` resource,
+// of resources (projects, folders, or VPC networks) to include in a `accesscontextmanager.ServicePerimeter` resource,
 // to enable them to be added separately.
 // If your perimeter is in dry-run mode use `accesscontextmanager.ServicePerimeterDryRunResource` instead.
 //
@@ -117,8 +117,10 @@ type ServicePerimeterResource struct {
 	// The name of the Service Perimeter to add this resource to.
 	PerimeterName pulumi.StringOutput `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resource pulumi.StringOutput `pulumi:"resource"`
 }
 
@@ -172,8 +174,10 @@ type servicePerimeterResourceState struct {
 	// The name of the Service Perimeter to add this resource to.
 	PerimeterName *string `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resource *string `pulumi:"resource"`
 }
 
@@ -192,8 +196,10 @@ type ServicePerimeterResourceState struct {
 	// The name of the Service Perimeter to add this resource to.
 	PerimeterName pulumi.StringPtrInput
 	// A GCP resource that is inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resource pulumi.StringPtrInput
 }
 
@@ -212,8 +218,10 @@ type servicePerimeterResourceArgs struct {
 	// The name of the Service Perimeter to add this resource to.
 	PerimeterName string `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resource string `pulumi:"resource"`
 }
 
@@ -229,8 +237,10 @@ type ServicePerimeterResourceArgs struct {
 	// The name of the Service Perimeter to add this resource to.
 	PerimeterName pulumi.StringInput
 	// A GCP resource that is inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resource pulumi.StringInput
 }
 
@@ -347,8 +357,10 @@ func (o ServicePerimeterResourceOutput) PerimeterName() pulumi.StringOutput {
 }
 
 // A GCP resource that is inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// Projects, folders, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 func (o ServicePerimeterResourceOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterResource) pulumi.StringOutput { return v.Resource }).(pulumi.StringOutput)
 }

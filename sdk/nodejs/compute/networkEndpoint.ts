@@ -42,32 +42,67 @@ import * as utilities from "../utilities";
  *     ipCidrRange: "10.0.0.1/16",
  *     region: "us-central1",
  *     network: _default.id,
+ *     stackType: "IPV4_IPV6",
+ *     ipv6AccessType: "EXTERNAL",
  * });
- * const endpoint_instance = new gcp.compute.Instance("endpoint-instance", {
+ * const endpoint_instance1 = new gcp.compute.Instance("endpoint-instance1", {
  *     networkInterfaces: [{
  *         accessConfigs: [{}],
  *         subnetwork: defaultSubnetwork.id,
+ *         stackType: "IPV4_IPV6",
+ *         ipv6AccessConfigs: [{
+ *             networkTier: "PREMIUM",
+ *         }],
  *     }],
- *     name: "endpoint-instance",
- *     machineType: "e2-medium",
+ *     name: "endpoint-instance1",
+ *     machineType: "e2-micro",
  *     bootDisk: {
  *         initializeParams: {
  *             image: myImage.then(myImage => myImage.selfLink),
  *         },
  *     },
  * });
- * const default_endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
- *     networkEndpointGroup: neg.name,
- *     instance: endpoint_instance.name,
- *     port: neg.defaultPort,
- *     ipAddress: endpoint_instance.networkInterfaces[0].networkIp,
- * });
- * const group = new gcp.compute.NetworkEndpointGroup("group", {
+ * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
  *     name: "my-lb-neg",
  *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
  *     defaultPort: 90,
  *     zone: "us-central1-a",
+ * });
+ * const default_endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
+ *     networkEndpointGroup: neg.name,
+ *     instance: endpoint_instance1.name,
+ *     port: neg.defaultPort,
+ *     ipAddress: endpoint_instance1.networkInterfaces[0].networkIp,
+ * });
+ * const ipv6_endpoint1 = new gcp.compute.NetworkEndpoint("ipv6-endpoint1", {
+ *     networkEndpointGroup: neg.name,
+ *     instance: endpoint_instance1.name,
+ *     port: neg.defaultPort,
+ *     ipv6Address: endpoint_instance1.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].ipv6AccessConfigs?.[0]?.externalIpv6),
+ * });
+ * const endpoint_instance2 = new gcp.compute.Instance("endpoint-instance2", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         subnetwork: defaultSubnetwork.id,
+ *         stackType: "IPV4_IPV6",
+ *         ipv6AccessConfigs: [{
+ *             networkTier: "PREMIUM",
+ *         }],
+ *     }],
+ *     name: "endpoint-instance2",
+ *     machineType: "e2-micro",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: myImage.then(myImage => myImage.selfLink),
+ *         },
+ *     },
+ * });
+ * const ipv6_endpoint2 = new gcp.compute.NetworkEndpoint("ipv6-endpoint2", {
+ *     networkEndpointGroup: neg.name,
+ *     instance: endpoint_instance2.name,
+ *     port: neg.defaultPort,
+ *     ipv6Address: endpoint_instance2.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].ipv6AccessConfigs?.[0]?.externalIpv6),
  * });
  * ```
  *
@@ -137,7 +172,12 @@ export class NetworkEndpoint extends pulumi.CustomResource {
      * to a VM in GCE (either the primary IP or as part of an aliased IP
      * range).
      */
-    declare public readonly ipAddress: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string | undefined>;
+    /**
+     * IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     */
+    declare public readonly ipv6Address: pulumi.Output<string | undefined>;
     /**
      * The network endpoint group this endpoint is part of.
      */
@@ -174,21 +214,20 @@ export class NetworkEndpoint extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["instance"] = state?.instance;
             resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["ipv6Address"] = state?.ipv6Address;
             resourceInputs["networkEndpointGroup"] = state?.networkEndpointGroup;
             resourceInputs["port"] = state?.port;
             resourceInputs["project"] = state?.project;
             resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as NetworkEndpointArgs | undefined;
-            if (args?.ipAddress === undefined && !opts.urn) {
-                throw new Error("Missing required property 'ipAddress'");
-            }
             if (args?.networkEndpointGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkEndpointGroup'");
             }
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["instance"] = args?.instance;
             resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["ipv6Address"] = args?.ipv6Address;
             resourceInputs["networkEndpointGroup"] = args?.networkEndpointGroup;
             resourceInputs["port"] = args?.port;
             resourceInputs["project"] = args?.project;
@@ -224,6 +263,11 @@ export interface NetworkEndpointState {
      * range).
      */
     ipAddress?: pulumi.Input<string | undefined>;
+    /**
+     * IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     */
+    ipv6Address?: pulumi.Input<string | undefined>;
     /**
      * The network endpoint group this endpoint is part of.
      */
@@ -269,7 +313,12 @@ export interface NetworkEndpointArgs {
      * to a VM in GCE (either the primary IP or as part of an aliased IP
      * range).
      */
-    ipAddress: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
+    /**
+     * IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     */
+    ipv6Address?: pulumi.Input<string | undefined>;
     /**
      * The network endpoint group this endpoint is part of.
      */

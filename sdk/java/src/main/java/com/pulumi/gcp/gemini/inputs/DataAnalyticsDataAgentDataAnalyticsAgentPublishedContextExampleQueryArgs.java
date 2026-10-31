@@ -5,7 +5,9 @@ package com.pulumi.gcp.gemini.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +33,23 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExamp
     }
 
     /**
+     * Optional. The list of query parameters.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="parameters")
+    private @Nullable Output<List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs>> parameters;
+
+    /**
+     * @return Optional. The list of query parameters.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs>>> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+
+    /**
      * Optional. The SQL query that should be generated to answer
      * the natural language question.
      * 
@@ -51,6 +70,7 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExamp
 
     private DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs $) {
         this.naturalLanguageQuestion = $.naturalLanguageQuestion;
+        this.parameters = $.parameters;
         this.sqlQuery = $.sqlQuery;
     }
 
@@ -91,6 +111,40 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExamp
          */
         public Builder naturalLanguageQuestion(String naturalLanguageQuestion) {
             return naturalLanguageQuestion(Output.of(naturalLanguageQuestion));
+        }
+
+        /**
+         * @param parameters Optional. The list of query parameters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(@Nullable Output<List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs>> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        /**
+         * @param parameters Optional. The list of query parameters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs> parameters) {
+            return parameters(Output.of(parameters));
+        }
+
+        /**
+         * @param parameters Optional. The list of query parameters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs... parameters) {
+            return parameters(List.of(parameters));
         }
 
         /**

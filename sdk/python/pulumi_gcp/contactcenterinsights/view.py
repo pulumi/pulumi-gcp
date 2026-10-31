@@ -305,6 +305,7 @@ class View(pulumi.CustomResource):
             display_name="view-display-name",
             value="medium=\\"CHAT\\"")
         ```
+
         ### Contact Center Insights View Full
 
         ```python
@@ -376,6 +377,7 @@ class View(pulumi.CustomResource):
             display_name="view-display-name",
             value="medium=\\"CHAT\\"")
         ```
+
         ### Contact Center Insights View Full
 
         ```python

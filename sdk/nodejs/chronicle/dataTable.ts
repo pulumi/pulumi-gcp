@@ -47,6 +47,7 @@ import * as utilities from "../utilities";
  * export const dataTableDescription = example.description;
  * export const dataTableCreateTime = example.createTime;
  * ```
+ *
  * ### Chronicle Data Table With Optional Fields
  *
  * ```typescript

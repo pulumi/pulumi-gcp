@@ -52,6 +52,12 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
+        /// (Optional, Beta)
+        /// A list of network tags to attach to the VM instances.
+        /// A maximum of 64 network tags are allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> NetworkTags;
+        /// <summary>
         /// [Startup
         /// script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
         /// to be run on each login node instance. Max 256KB.
@@ -89,6 +95,8 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
 
             string machineType,
 
+            ImmutableArray<string> networkTags,
+
             string? startupScript,
 
             ImmutableArray<Outputs.ClusterOrchestratorSlurmLoginNodesStorageConfig> storageConfigs,
@@ -102,6 +110,7 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
             Instances = instances;
             Labels = labels;
             MachineType = machineType;
+            NetworkTags = networkTags;
             StartupScript = startupScript;
             StorageConfigs = storageConfigs;
             Zone = zone;

@@ -117,6 +117,7 @@ import * as utilities from "../utilities";
  *     type: "CONTINUOUS",
  * });
  * ```
+ *
  * ### Database Migration Service Migration Job Postgres To Postgres
  *
  * ```typescript
@@ -158,6 +159,7 @@ import * as utilities from "../utilities";
  *         port: 3306,
  *         username: sourceSqldbUser.name,
  *         password: sourceSqldbUser.password,
+ *         database: "postgres",
  *         ssl: {
  *             clientKey: sourceSqlClientCert.privateKey,
  *             clientCertificate: sourceSqlClientCert.cert,
@@ -204,6 +206,7 @@ import * as utilities from "../utilities";
  *     type: "CONTINUOUS",
  * });
  * ```
+ *
  * ### Database Migration Service Migration Job Postgres To Postgres Objects
  *
  * ```typescript
@@ -245,6 +248,7 @@ import * as utilities from "../utilities";
  *         port: 3306,
  *         username: sourceSqldbUser.name,
  *         password: sourceSqldbUser.password,
+ *         database: "postgres",
  *         ssl: {
  *             clientKey: sourceSqlClientCert.privateKey,
  *             clientCertificate: sourceSqlClientCert.cert,
@@ -310,6 +314,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Database Migration Service Migration Job Postgres To Alloydb
  *
  * ```typescript
@@ -351,6 +356,7 @@ import * as utilities from "../utilities";
  *         port: 3306,
  *         username: sourceSqldbUser.name,
  *         password: sourceSqldbUser.password,
+ *         database: "postgres",
  *         ssl: {
  *             clientKey: sourceSqlClientCert.privateKey,
  *             clientCertificate: sourceSqlClientCert.cert,
@@ -362,12 +368,14 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [sourceSqldbUser],
  * });
- * const _default = new gcp.compute.Network("default", {name: "destination-alloydb"});
+ * const _default = gcp.compute.getNetwork({
+ *     name: "destination-alloydb",
+ * });
  * const destinationAlloydb = new gcp.alloydb.Cluster("destination_alloydb", {
  *     clusterId: "destination-alloydb",
  *     location: "us-central1",
  *     networkConfig: {
- *         network: _default.id,
+ *         network: _default.then(_default => _default.id),
  *     },
  *     databaseVersion: "POSTGRES_15",
  *     initialUser: {
@@ -376,24 +384,10 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: false,
  * });
- * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
- *     name: "destination-alloydb",
- *     addressType: "INTERNAL",
- *     purpose: "VPC_PEERING",
- *     prefixLength: 16,
- *     network: _default.id,
- * });
- * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
- *     network: _default.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
  * const destinationAlloydbPrimary = new gcp.alloydb.Instance("destination_alloydb_primary", {
  *     cluster: destinationAlloydb.name,
  *     instanceId: "destination-alloydb-primary",
  *     instanceType: "PRIMARY",
- * }, {
- *     dependsOn: [vpcConnection],
  * });
  * const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
  *     location: "us-central1",

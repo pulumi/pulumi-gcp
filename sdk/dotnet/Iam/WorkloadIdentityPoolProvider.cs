@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Provider Aws Full
     /// 
     /// ```csharp
@@ -84,6 +85,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Provider Github Actions
     /// 
     /// ```csharp
@@ -126,6 +128,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Provider Oidc Basic
     /// 
     /// ```csharp
@@ -157,6 +160,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Provider Oidc Full
     /// 
     /// ```csharp
@@ -203,6 +207,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Provider Saml Basic
     /// 
     /// ```csharp
@@ -240,6 +245,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Provider Saml Full
     /// 
     /// ```csharp
@@ -280,6 +286,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Provider Oidc Upload Key
     /// 
     /// ```csharp
@@ -327,6 +334,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Provider X509 Basic
     /// 
     /// ```csharp
@@ -371,6 +379,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Provider X509 Full
     /// 
     /// ```csharp

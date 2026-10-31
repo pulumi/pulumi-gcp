@@ -145,6 +145,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Services Agent Gateway Client To Agent
 //
 // ```go
@@ -187,6 +188,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Services Agent Gateway Self Managed
 //
 // ```go

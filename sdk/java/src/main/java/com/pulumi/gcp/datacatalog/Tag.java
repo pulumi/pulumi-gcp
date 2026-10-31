@@ -131,6 +131,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Data Catalog Entry Group Tag
  * 
  * <pre>
@@ -238,6 +239,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Data Catalog Entry Tag Full
  * 
  * <pre>

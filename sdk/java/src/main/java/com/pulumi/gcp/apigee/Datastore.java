@@ -112,6 +112,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Apigee Datastore Bigquery
  * 
  * <pre>

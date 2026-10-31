@@ -84,6 +84,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflow Tool Connector
  * 
  * <pre>
@@ -204,6 +205,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Dialogflow Tool Function
  * 
  * <pre>
@@ -262,6 +264,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflow Tool Auth
  * 
  * <pre>
@@ -324,6 +327,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflow Tool Bearer
  * 
  * <pre>
@@ -384,6 +388,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflow Tool Oauth
  * 
  * <pre>
@@ -466,6 +471,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflow Tool Service Agent
  * 
  * <pre>

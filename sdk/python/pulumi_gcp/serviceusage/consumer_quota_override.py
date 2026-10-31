@@ -388,6 +388,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="95",
             force=True)
         ```
+
         ### Region Consumer Quota Override
 
         ```python
@@ -411,6 +412,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="8",
             force=True)
         ```
+
         ### Consumer Quota Override Custom Dimension
 
         ```python
@@ -513,6 +515,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="95",
             force=True)
         ```
+
         ### Region Consumer Quota Override
 
         ```python
@@ -536,6 +539,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="8",
             force=True)
         ```
+
         ### Consumer Quota Override Custom Dimension
 
         ```python

@@ -172,6 +172,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Deidentify Template Image Transformations
     /// 
     /// ```csharp

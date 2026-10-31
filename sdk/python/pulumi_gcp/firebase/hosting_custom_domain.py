@@ -679,6 +679,7 @@ class HostingCustomDomain(pulumi.CustomResource):
             site_id="site-id",
             custom_domain="custom.domain.com")
         ```
+
         ### Firebasehosting Customdomain Full
 
         ```python
@@ -696,6 +697,7 @@ class HostingCustomDomain(pulumi.CustomResource):
             redirect_target="destination.domain.com",
             wait_dns_verification=False)
         ```
+
         ### Firebasehosting Customdomain Cloud Run
 
         ```python
@@ -814,6 +816,7 @@ class HostingCustomDomain(pulumi.CustomResource):
             site_id="site-id",
             custom_domain="custom.domain.com")
         ```
+
         ### Firebasehosting Customdomain Full
 
         ```python
@@ -831,6 +834,7 @@ class HostingCustomDomain(pulumi.CustomResource):
             redirect_target="destination.domain.com",
             wait_dns_verification=False)
         ```
+
         ### Firebasehosting Customdomain Cloud Run
 
         ```python

@@ -85,6 +85,9 @@ type NetworkEdgeSecurityService struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Name of the resource. Provided by the client when the resource is created.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params NetworkEdgeSecurityServiceParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -146,6 +149,9 @@ type networkEdgeSecurityServiceState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// Name of the resource. Provided by the client when the resource is created.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *NetworkEdgeSecurityServiceParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -178,6 +184,9 @@ type NetworkEdgeSecurityServiceState struct {
 	Fingerprint pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params NetworkEdgeSecurityServiceParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -209,6 +218,9 @@ type networkEdgeSecurityServiceArgs struct {
 	Description *string `pulumi:"description"`
 	// Name of the resource. Provided by the client when the resource is created.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *NetworkEdgeSecurityServiceParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -231,6 +243,9 @@ type NetworkEdgeSecurityServiceArgs struct {
 	Description pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params NetworkEdgeSecurityServiceParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -356,6 +371,12 @@ func (o NetworkEdgeSecurityServiceOutput) Fingerprint() pulumi.StringOutput {
 // Name of the resource. Provided by the client when the resource is created.
 func (o NetworkEdgeSecurityServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEdgeSecurityService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o NetworkEdgeSecurityServiceOutput) Params() NetworkEdgeSecurityServiceParamsPtrOutput {
+	return o.ApplyT(func(v *NetworkEdgeSecurityService) NetworkEdgeSecurityServiceParamsPtrOutput { return v.Params }).(NetworkEdgeSecurityServiceParamsPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

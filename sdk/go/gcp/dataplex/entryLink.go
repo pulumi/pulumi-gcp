@@ -95,6 +95,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Entry Link Full
 //
 // ```go
@@ -205,6 +206,7 @@ import (
 //	}
 //
 // ```
+//
 // ## Import
 //
 // EntryLink can be imported using any of these accepted formats:

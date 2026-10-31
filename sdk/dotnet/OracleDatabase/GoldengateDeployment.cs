@@ -41,11 +41,16 @@ namespace Pulumi.Gcp.OracleDatabase
     ///                 Deployment = "deployment",
     ///             },
     ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
     ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Goldengate Deployment Full
     /// 
     /// ```csharp

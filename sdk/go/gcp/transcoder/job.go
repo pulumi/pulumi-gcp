@@ -183,6 +183,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Transcoder Job Pubsub
 //
 // ```go
@@ -348,6 +349,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Transcoder Job Encryptions
 //
 // ```go
@@ -597,6 +599,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Transcoder Job Overlays
 //
 // ```go
@@ -784,6 +787,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Transcoder Job Manifests
 //
 // ```go

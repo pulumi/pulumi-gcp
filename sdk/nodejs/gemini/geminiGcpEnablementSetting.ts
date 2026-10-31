@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *     enableCustomerDataSharing: true,
  *     webGroundingType: "WEB_GROUNDING_FOR_ENTERPRISE",
  *     mutationsEnabled: true,
+ *     releaseChannel: "EXPERIMENTAL",
  * });
  * ```
  *
@@ -102,6 +103,12 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
      */
     declare public readonly enableCustomerDataSharing: pulumi.Output<boolean | undefined>;
     /**
+     * The Gemini enterprise project for this setting.
+     * Format: projects/{project}
+     * The `{project}` segment can be the project ID or project number.
+     */
+    declare public readonly geminiEnterpriseProject: pulumi.Output<string | undefined>;
+    /**
      * Id of the Gemini Gcp Enablement setting.
      */
     declare public readonly geminiGcpEnablementSettingId: pulumi.Output<string>;
@@ -135,6 +142,11 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+     * Possible values are: `STABLE`, `EXPERIMENTAL`.
+     */
+    declare public readonly releaseChannel: pulumi.Output<string | undefined>;
+    /**
      * Update time stamp.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -164,6 +176,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["disableWebGrounding"] = state?.disableWebGrounding;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableCustomerDataSharing"] = state?.enableCustomerDataSharing;
+            resourceInputs["geminiEnterpriseProject"] = state?.geminiEnterpriseProject;
             resourceInputs["geminiGcpEnablementSettingId"] = state?.geminiGcpEnablementSettingId;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
@@ -171,6 +184,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["releaseChannel"] = state?.releaseChannel;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["webGroundingType"] = state?.webGroundingType;
         } else {
@@ -184,11 +198,13 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disableWebGrounding"] = args?.disableWebGrounding;
             resourceInputs["enableCustomerDataSharing"] = args?.enableCustomerDataSharing;
+            resourceInputs["geminiEnterpriseProject"] = args?.geminiEnterpriseProject;
             resourceInputs["geminiGcpEnablementSettingId"] = args?.geminiGcpEnablementSettingId;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["mutationsEnabled"] = args?.mutationsEnabled;
             resourceInputs["project"] = args?.project;
+            resourceInputs["releaseChannel"] = args?.releaseChannel;
             resourceInputs["webGroundingType"] = args?.webGroundingType;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -238,6 +254,12 @@ export interface GeminiGcpEnablementSettingState {
      */
     enableCustomerDataSharing?: pulumi.Input<boolean | undefined>;
     /**
+     * The Gemini enterprise project for this setting.
+     * Format: projects/{project}
+     * The `{project}` segment can be the project ID or project number.
+     */
+    geminiEnterpriseProject?: pulumi.Input<string | undefined>;
+    /**
      * Id of the Gemini Gcp Enablement setting.
      */
     geminiGcpEnablementSettingId?: pulumi.Input<string | undefined>;
@@ -270,6 +292,11 @@ export interface GeminiGcpEnablementSettingState {
      *  and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+     * Possible values are: `STABLE`, `EXPERIMENTAL`.
+     */
+    releaseChannel?: pulumi.Input<string | undefined>;
     /**
      * Update time stamp.
      */
@@ -310,6 +337,12 @@ export interface GeminiGcpEnablementSettingArgs {
      */
     enableCustomerDataSharing?: pulumi.Input<boolean | undefined>;
     /**
+     * The Gemini enterprise project for this setting.
+     * Format: projects/{project}
+     * The `{project}` segment can be the project ID or project number.
+     */
+    geminiEnterpriseProject?: pulumi.Input<string | undefined>;
+    /**
      * Id of the Gemini Gcp Enablement setting.
      */
     geminiGcpEnablementSettingId: pulumi.Input<string>;
@@ -332,6 +365,11 @@ export interface GeminiGcpEnablementSettingArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+     * Possible values are: `STABLE`, `EXPERIMENTAL`.
+     */
+    releaseChannel?: pulumi.Input<string | undefined>;
     /**
      * Web grounding type.
      * Possible values:

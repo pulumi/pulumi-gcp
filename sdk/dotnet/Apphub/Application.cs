@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.Apphub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apphub Application Global Basic
     /// 
     /// ```csharp
@@ -58,6 +59,7 @@ namespace Pulumi.Gcp.Apphub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apphub Application Full
     /// 
     /// ```csharp

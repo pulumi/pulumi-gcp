@@ -494,6 +494,7 @@ class GlossaryTerm(pulumi.CustomResource):
             location="us-central1",
             term_id="tf-test-term-basic_44339")
         ```
+
         ### Dataplex Glossary Term Full
 
         ```python
@@ -587,6 +588,7 @@ class GlossaryTerm(pulumi.CustomResource):
             location="us-central1",
             term_id="tf-test-term-basic_44339")
         ```
+
         ### Dataplex Glossary Term Full
 
         ```python

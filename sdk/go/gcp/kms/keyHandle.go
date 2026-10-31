@@ -100,7 +100,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Create KMS Service Agent
+//			//Create KMS Service Agent
 //			kmsServiceAgent, err := projects.NewServiceIdentity(ctx, "kms_service_agent", &projects.ServiceIdentityArgs{
 //				Service: pulumi.String("cloudkms.googleapis.com"),
 //				Project: keyProject.Number,
@@ -119,7 +119,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Grant the KMS Service Agent the Cloud KMS Admin role
+//			//Grant the KMS Service Agent the Cloud KMS Admin role
 //			autokeyProjectAdmin, err := projects.NewIAMMember(ctx, "autokey_project_admin", &projects.IAMMemberArgs{
 //				Project: keyProject.ProjectId,
 //				Role:    pulumi.String("roles/cloudkms.admin"),

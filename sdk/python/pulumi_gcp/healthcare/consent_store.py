@@ -368,6 +368,7 @@ class ConsentStore(pulumi.CustomResource):
             dataset=dataset.id,
             name="my-consent-store")
         ```
+
         ### Healthcare Consent Store Full
 
         ```python
@@ -386,6 +387,7 @@ class ConsentStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
+
         ### Healthcare Consent Store Iam
 
         ```python
@@ -478,6 +480,7 @@ class ConsentStore(pulumi.CustomResource):
             dataset=dataset.id,
             name="my-consent-store")
         ```
+
         ### Healthcare Consent Store Full
 
         ```python
@@ -496,6 +499,7 @@ class ConsentStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
+
         ### Healthcare Consent Store Iam
 
         ```python

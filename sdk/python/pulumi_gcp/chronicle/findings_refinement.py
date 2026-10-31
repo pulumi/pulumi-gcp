@@ -393,6 +393,7 @@ class FindingsRefinement(pulumi.CustomResource):
                 "outcome_value": "value",
             }])
         ```
+
         ### Chronicle Findings Refinement Full
 
         ```python
@@ -484,6 +485,7 @@ class FindingsRefinement(pulumi.CustomResource):
                 "outcome_value": "value",
             }])
         ```
+
         ### Chronicle Findings Refinement Full
 
         ```python

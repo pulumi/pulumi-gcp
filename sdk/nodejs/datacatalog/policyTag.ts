@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     description: "A policy tag normally associated with low security items",
  * });
  * ```
+ *
  * ### Data Catalog Taxonomies Policy Tag Child Policies
  *
  * ```typescript

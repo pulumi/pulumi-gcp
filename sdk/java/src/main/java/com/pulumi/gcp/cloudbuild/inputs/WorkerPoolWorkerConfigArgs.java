@@ -77,6 +77,21 @@ public final class WorkerPoolWorkerConfigArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.noExternalIp);
     }
 
+    /**
+     * The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+     * 
+     */
+    @Import(name="workerRelease")
+    private @Nullable Output<String> workerRelease;
+
+    /**
+     * @return The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+     * 
+     */
+    public Optional<Output<String>> workerRelease() {
+        return Optional.ofNullable(this.workerRelease);
+    }
+
     private WorkerPoolWorkerConfigArgs() {}
 
     private WorkerPoolWorkerConfigArgs(WorkerPoolWorkerConfigArgs $) {
@@ -84,6 +99,7 @@ public final class WorkerPoolWorkerConfigArgs extends com.pulumi.resources.Resou
         this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.machineType = $.machineType;
         this.noExternalIp = $.noExternalIp;
+        this.workerRelease = $.workerRelease;
     }
 
     public static Builder builder() {
@@ -186,6 +202,27 @@ public final class WorkerPoolWorkerConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder noExternalIp(Boolean noExternalIp) {
             return noExternalIp(Output.of(noExternalIp));
+        }
+
+        /**
+         * @param workerRelease The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerRelease(@Nullable Output<String> workerRelease) {
+            $.workerRelease = workerRelease;
+            return this;
+        }
+
+        /**
+         * @param workerRelease The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerRelease(String workerRelease) {
+            return workerRelease(Output.of(workerRelease));
         }
 
         public WorkerPoolWorkerConfigArgs build() {

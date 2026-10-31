@@ -53,6 +53,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Security Profile Overrides
 //
 // ```go
@@ -105,6 +106,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Security Profile Mirroring
 //
 // ```go
@@ -160,6 +162,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Security Profile Intercept
 //
 // ```go
@@ -215,6 +218,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Security Profile Url Filtering
 //
 // ```go
@@ -266,6 +270,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Security Profile Broker
 //
 // ```go
@@ -327,6 +332,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Security Profile Wildfire
 //
 // ```go
@@ -484,7 +490,7 @@ type SecurityProfile struct {
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
 	ThreatPreventionProfile SecurityProfileThreatPreventionProfilePtrOutput `pulumi:"threatPreventionProfile"`
-	// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+	// The type of security profile.
 	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Time the security profile was updated in UTC.
@@ -492,7 +498,6 @@ type SecurityProfile struct {
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile SecurityProfileUrlFilteringProfilePtrOutput `pulumi:"urlFilteringProfile"`
-	// (Optional, Beta)
 	// The wildfire analysis configuration for the security profile.
 	// Structure is documented below.
 	WildfireAnalysisProfile SecurityProfileWildfireAnalysisProfilePtrOutput `pulumi:"wildfireAnalysisProfile"`
@@ -582,7 +587,7 @@ type securityProfileState struct {
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
 	ThreatPreventionProfile *SecurityProfileThreatPreventionProfile `pulumi:"threatPreventionProfile"`
-	// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+	// The type of security profile.
 	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 	Type *string `pulumi:"type"`
 	// Time the security profile was updated in UTC.
@@ -590,7 +595,6 @@ type securityProfileState struct {
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile *SecurityProfileUrlFilteringProfile `pulumi:"urlFilteringProfile"`
-	// (Optional, Beta)
 	// The wildfire analysis configuration for the security profile.
 	// Structure is documented below.
 	WildfireAnalysisProfile *SecurityProfileWildfireAnalysisProfile `pulumi:"wildfireAnalysisProfile"`
@@ -643,7 +647,7 @@ type SecurityProfileState struct {
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
 	ThreatPreventionProfile SecurityProfileThreatPreventionProfilePtrInput
-	// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+	// The type of security profile.
 	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 	Type pulumi.StringPtrInput
 	// Time the security profile was updated in UTC.
@@ -651,7 +655,6 @@ type SecurityProfileState struct {
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile SecurityProfileUrlFilteringProfilePtrInput
-	// (Optional, Beta)
 	// The wildfire analysis configuration for the security profile.
 	// Structure is documented below.
 	WildfireAnalysisProfile SecurityProfileWildfireAnalysisProfilePtrInput
@@ -695,13 +698,12 @@ type securityProfileArgs struct {
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
 	ThreatPreventionProfile *SecurityProfileThreatPreventionProfile `pulumi:"threatPreventionProfile"`
-	// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+	// The type of security profile.
 	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 	Type string `pulumi:"type"`
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile *SecurityProfileUrlFilteringProfile `pulumi:"urlFilteringProfile"`
-	// (Optional, Beta)
 	// The wildfire analysis configuration for the security profile.
 	// Structure is documented below.
 	WildfireAnalysisProfile *SecurityProfileWildfireAnalysisProfile `pulumi:"wildfireAnalysisProfile"`
@@ -742,13 +744,12 @@ type SecurityProfileArgs struct {
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
 	ThreatPreventionProfile SecurityProfileThreatPreventionProfilePtrInput
-	// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+	// The type of security profile.
 	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 	Type pulumi.StringInput
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile SecurityProfileUrlFilteringProfilePtrInput
-	// (Optional, Beta)
 	// The wildfire analysis configuration for the security profile.
 	// Structure is documented below.
 	WildfireAnalysisProfile SecurityProfileWildfireAnalysisProfilePtrInput
@@ -936,7 +937,7 @@ func (o SecurityProfileOutput) ThreatPreventionProfile() SecurityProfileThreatPr
 	}).(SecurityProfileThreatPreventionProfilePtrOutput)
 }
 
-// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+// The type of security profile.
 // Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 func (o SecurityProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
@@ -953,7 +954,6 @@ func (o SecurityProfileOutput) UrlFilteringProfile() SecurityProfileUrlFiltering
 	return o.ApplyT(func(v *SecurityProfile) SecurityProfileUrlFilteringProfilePtrOutput { return v.UrlFilteringProfile }).(SecurityProfileUrlFilteringProfilePtrOutput)
 }
 
-// (Optional, Beta)
 // The wildfire analysis configuration for the security profile.
 // Structure is documented below.
 func (o SecurityProfileOutput) WildfireAnalysisProfile() SecurityProfileWildfireAnalysisProfilePtrOutput {

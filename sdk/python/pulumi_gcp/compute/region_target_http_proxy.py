@@ -443,6 +443,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_region_url_map.id)
         ```
+
         ### Region Target Http Proxy Http Keep Alive Timeout
 
         ```python
@@ -485,6 +486,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             http_keep_alive_timeout_sec=600,
             url_map=default_region_url_map.id)
         ```
+
         ### Region Target Http Proxy Https Redirect
 
         ```python
@@ -609,6 +611,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_region_url_map.id)
         ```
+
         ### Region Target Http Proxy Http Keep Alive Timeout
 
         ```python
@@ -651,6 +654,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             http_keep_alive_timeout_sec=600,
             url_map=default_region_url_map.id)
         ```
+
         ### Region Target Http Proxy Https Redirect
 
         ```python

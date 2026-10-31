@@ -95,6 +95,7 @@ public final class ConnectionProfileMongodbProfileArgs extends com.pulumi.resour
     /**
      * A reference to a Secret Manager resource name storing the MongoDB
      * connection password. Mutually exclusive with password.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="secretManagerStoredPassword")
@@ -103,6 +104,7 @@ public final class ConnectionProfileMongodbProfileArgs extends com.pulumi.resour
     /**
      * @return A reference to a Secret Manager resource name storing the MongoDB
      * connection password. Mutually exclusive with password.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> secretManagerStoredPassword() {
@@ -317,6 +319,7 @@ public final class ConnectionProfileMongodbProfileArgs extends com.pulumi.resour
         /**
          * @param secretManagerStoredPassword A reference to a Secret Manager resource name storing the MongoDB
          * connection password. Mutually exclusive with password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -329,6 +332,7 @@ public final class ConnectionProfileMongodbProfileArgs extends com.pulumi.resour
         /**
          * @param secretManagerStoredPassword A reference to a Secret Manager resource name storing the MongoDB
          * connection password. Mutually exclusive with password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

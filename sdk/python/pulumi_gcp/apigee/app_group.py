@@ -450,6 +450,7 @@ class AppGroup(pulumi.CustomResource):
             org_id=apigee_org.id,
             opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
         ```
+
         ### Apigee App Group With Attributes
 
         ```python
@@ -586,6 +587,7 @@ class AppGroup(pulumi.CustomResource):
             org_id=apigee_org.id,
             opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
         ```
+
         ### Apigee App Group With Attributes
 
         ```python

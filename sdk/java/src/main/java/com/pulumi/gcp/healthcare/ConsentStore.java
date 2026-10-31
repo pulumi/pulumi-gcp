@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Healthcare Consent Store Full
  * 
  * <pre>
@@ -111,6 +112,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Healthcare Consent Store Iam
  * 
  * <pre>

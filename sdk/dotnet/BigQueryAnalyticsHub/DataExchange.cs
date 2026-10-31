@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Data Exchange Dcr
     /// 
     /// ```csharp
@@ -64,6 +65,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
     /// 
     /// ```csharp
@@ -85,6 +87,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Public Data Exchange
     /// 
     /// ```csharp

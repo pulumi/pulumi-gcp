@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkehub Membership Basic
     /// 
     /// ```csharp
@@ -93,6 +94,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkehub Membership Issuer
     /// 
     /// ```csharp

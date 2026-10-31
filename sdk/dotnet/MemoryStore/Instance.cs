@@ -40,14 +40,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Network = producerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
     ///         ServiceClass = "gcp-memorystore",
     ///         Description = "my basic service connection policy",
     ///         Network = producerNet.Id,
@@ -74,7 +74,8 @@ namespace Pulumi.Gcp.MemoryStore
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///             },
     ///         },
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
+    ///         NodeType = "SHARED_CORE_NANO",
     ///         DeletionProtectionEnabled = false,
     ///         MaintenancePolicy = new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyArgs
     ///         {
@@ -103,6 +104,7 @@ namespace Pulumi.Gcp.MemoryStore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Memorystore Instance Full
     /// 
     /// ```csharp
@@ -123,14 +125,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Network = producerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
     ///         ServiceClass = "gcp-memorystore",
     ///         Description = "my basic service connection policy",
     ///         Network = producerNet.Id,
@@ -157,7 +159,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///             },
     ///         },
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
     ///         ReplicaCount = 1,
     ///         NodeType = "SHARED_CORE_NANO",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_DISABLED",
@@ -170,7 +172,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///         ZoneDistributionConfig = new Gcp.MemoryStore.Inputs.InstanceZoneDistributionConfigArgs
     ///         {
     ///             Mode = "SINGLE_ZONE",
-    ///             Zone = "us-west1-b",
+    ///             Zone = "us-east4-a",
     ///         },
     ///         MaintenancePolicy = new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyArgs
     ///         {
@@ -215,6 +217,7 @@ namespace Pulumi.Gcp.MemoryStore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Memorystore Instance Persistence Aof
     /// 
     /// ```csharp
@@ -235,14 +238,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Network = producerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
     ///         ServiceClass = "gcp-memorystore",
     ///         Description = "my basic service connection policy",
     ///         Network = producerNet.Id,
@@ -269,7 +272,8 @@ namespace Pulumi.Gcp.MemoryStore
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///             },
     ///         },
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
+    ///         NodeType = "SHARED_CORE_NANO",
     ///         PersistenceConfig = new Gcp.MemoryStore.Inputs.InstancePersistenceConfigArgs
     ///         {
     ///             Mode = "AOF",
@@ -289,6 +293,7 @@ namespace Pulumi.Gcp.MemoryStore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Memorystore Instance Secondary Instance
     /// 
     /// ```csharp
@@ -469,6 +474,7 @@ namespace Pulumi.Gcp.MemoryStore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Memorystore Instance Flexible Ca
     /// 
     /// ```csharp
@@ -484,7 +490,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
     ///         Name = "ca-pool",
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
     ///         Tier = "ENTERPRISE",
     ///     });
     /// 
@@ -499,7 +505,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Pool = @default.Name,
     ///         CertificateAuthorityId = "ca-auth",
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -549,14 +555,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "ca-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Network = producerNet.Id,
     ///     });
     /// 
     ///     var defaultServiceConnectionPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "ca-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
     ///         ServiceClass = "gcp-memorystore",
     ///         Network = producerNet.Id,
     ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
@@ -571,8 +577,9 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var test_instance = new Gcp.MemoryStore.Instance("test-instance", new()
     ///     {
     ///         InstanceId = "ca-instance",
-    ///         ShardCount = 3,
-    ///         Location = "us-west1",
+    ///         ShardCount = 1,
+    ///         Location = "us-east4",
+    ///         NodeType = "SHARED_CORE_NANO",
     ///         DesiredAutoCreatedEndpoints = new[]
     ///         {
     ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
@@ -625,10 +632,10 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<string?> AclPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Immutable. Authorization mode of the instance. Possible values:
+        /// Optional. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
-        /// IAM_AUTH.
-        /// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+        /// IAM_AUTH
+        /// TOKEN_AUTH
         /// </summary>
         [Output("authorizationMode")]
         public Output<string> AuthorizationMode { get; private set; } = null!;
@@ -1025,10 +1032,10 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string>? AclPolicy { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. Authorization mode of the instance. Possible values:
+        /// Optional. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
-        /// IAM_AUTH.
-        /// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+        /// IAM_AUTH
+        /// TOKEN_AUTH
         /// </summary>
         [Input("authorizationMode")]
         public Input<string>? AuthorizationMode { get; set; }
@@ -1275,10 +1282,10 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string>? AclPolicy { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. Authorization mode of the instance. Possible values:
+        /// Optional. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
-        /// IAM_AUTH.
-        /// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+        /// IAM_AUTH
+        /// TOKEN_AUTH
         /// </summary>
         [Input("authorizationMode")]
         public Input<string>? AuthorizationMode { get; set; }

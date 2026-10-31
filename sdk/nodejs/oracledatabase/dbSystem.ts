@@ -45,9 +45,13 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Db System Full
  *
  * ```typescript

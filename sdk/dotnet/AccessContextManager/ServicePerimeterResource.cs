@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// <summary>
     /// Allows configuring a single GCP resource that should be inside the `Status` block of a service perimeter.
     /// This resource is intended to be used in cases where it is not possible to compile a full list
-    /// of projects to include in a `gcp.accesscontextmanager.ServicePerimeter` resource,
+    /// of resources (projects, folders, or VPC networks) to include in a `gcp.accesscontextmanager.ServicePerimeter` resource,
     /// to enable them to be added separately.
     /// If your perimeter is in dry-run mode use `gcp.accesscontextmanager.ServicePerimeterDryRunResource` instead.
     /// 
@@ -119,8 +119,10 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// A GCP resource that is inside of the service perimeter.
-        /// Currently only projects are allowed.
-        /// Format: projects/{project_number}
+        /// Projects, folders, and VPC networks are allowed.
+        /// Project format: `projects/{project_number}`
+        /// Folder format: `folders/{folder_number}`
+        /// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         /// </summary>
         [Output("resource")]
         public Output<string> Resource { get; private set; } = null!;
@@ -190,8 +192,10 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// A GCP resource that is inside of the service perimeter.
-        /// Currently only projects are allowed.
-        /// Format: projects/{project_number}
+        /// Projects, folders, and VPC networks are allowed.
+        /// Project format: `projects/{project_number}`
+        /// Folder format: `folders/{folder_number}`
+        /// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         /// </summary>
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;
@@ -235,8 +239,10 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// A GCP resource that is inside of the service perimeter.
-        /// Currently only projects are allowed.
-        /// Format: projects/{project_number}
+        /// Projects, folders, and VPC networks are allowed.
+        /// Project format: `projects/{project_number}`
+        /// Folder format: `folders/{folder_number}`
+        /// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }

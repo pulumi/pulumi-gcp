@@ -1156,6 +1156,8 @@ func (o AnalystAgentPersonaArtifactExampleResourceRawFileResourcePtrOutput) Mime
 }
 
 type AnalystAgentPersonaArtifactsConfig struct {
+	// Options for audit trail export.
+	AuditTrailExportOptions *AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions `pulumi:"auditTrailExportOptions"`
 	// Options for document generation.
 	DocumentGenerationOptions *AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions `pulumi:"documentGenerationOptions"`
 	// Options for methodology export.
@@ -1178,6 +1180,8 @@ type AnalystAgentPersonaArtifactsConfigInput interface {
 }
 
 type AnalystAgentPersonaArtifactsConfigArgs struct {
+	// Options for audit trail export.
+	AuditTrailExportOptions AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrInput `pulumi:"auditTrailExportOptions"`
 	// Options for document generation.
 	DocumentGenerationOptions AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsPtrInput `pulumi:"documentGenerationOptions"`
 	// Options for methodology export.
@@ -1265,6 +1269,13 @@ func (o AnalystAgentPersonaArtifactsConfigOutput) ToAnalystAgentPersonaArtifacts
 	}).(AnalystAgentPersonaArtifactsConfigPtrOutput)
 }
 
+// Options for audit trail export.
+func (o AnalystAgentPersonaArtifactsConfigOutput) AuditTrailExportOptions() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfig) *AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions {
+		return v.AuditTrailExportOptions
+	}).(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput)
+}
+
 // Options for document generation.
 func (o AnalystAgentPersonaArtifactsConfigOutput) DocumentGenerationOptions() AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsPtrOutput {
 	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfig) *AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions {
@@ -1317,6 +1328,16 @@ func (o AnalystAgentPersonaArtifactsConfigPtrOutput) Elem() AnalystAgentPersonaA
 	}).(AnalystAgentPersonaArtifactsConfigOutput)
 }
 
+// Options for audit trail export.
+func (o AnalystAgentPersonaArtifactsConfigPtrOutput) AuditTrailExportOptions() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfig) *AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions {
+		if v == nil {
+			return nil
+		}
+		return v.AuditTrailExportOptions
+	}).(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput)
+}
+
 // Options for document generation.
 func (o AnalystAgentPersonaArtifactsConfigPtrOutput) DocumentGenerationOptions() AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsPtrOutput {
 	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfig) *AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions {
@@ -1355,6 +1376,199 @@ func (o AnalystAgentPersonaArtifactsConfigPtrOutput) VisualizationOptions() Anal
 		}
 		return v.VisualizationOptions
 	}).(AnalystAgentPersonaArtifactsConfigVisualizationOptionsPtrOutput)
+}
+
+type AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions struct {
+	// If true, append the audit trail to the final response.
+	AppendAuditTrail *bool `pulumi:"appendAuditTrail"`
+	// If true, export the audit trail as a separate artifact.
+	ExportAuditTrailArtifact *bool `pulumi:"exportAuditTrailArtifact"`
+	// Format for audit trail export.
+	// Possible values:
+	// MARKDOWN
+	// HTML
+	// PDF
+	ExportFormat *string `pulumi:"exportFormat"`
+}
+
+// AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsInput is an input type that accepts AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs and AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput values.
+// You can construct a concrete instance of `AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsInput` via:
+//
+//	AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs{...}
+type AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsInput interface {
+	pulumi.Input
+
+	ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput
+	ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutputWithContext(context.Context) AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput
+}
+
+type AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs struct {
+	// If true, append the audit trail to the final response.
+	AppendAuditTrail pulumi.BoolPtrInput `pulumi:"appendAuditTrail"`
+	// If true, export the audit trail as a separate artifact.
+	ExportAuditTrailArtifact pulumi.BoolPtrInput `pulumi:"exportAuditTrailArtifact"`
+	// Format for audit trail export.
+	// Possible values:
+	// MARKDOWN
+	// HTML
+	// PDF
+	ExportFormat pulumi.StringPtrInput `pulumi:"exportFormat"`
+}
+
+func (AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions)(nil)).Elem()
+}
+
+func (i AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput {
+	return i.ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutputWithContext(context.Background())
+}
+
+func (i AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput)
+}
+
+func (i AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput {
+	return i.ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput).ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutputWithContext(ctx)
+}
+
+// AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrInput is an input type that accepts AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs, AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtr and AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput values.
+// You can construct a concrete instance of `AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrInput` via:
+//
+//	        AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput
+	ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutputWithContext(context.Context) AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput
+}
+
+type analystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrType AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs
+
+func AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtr(v *AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs) AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrInput {
+	return (*analystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrType)(v)
+}
+
+func (*analystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions)(nil)).Elem()
+}
+
+func (i *analystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrType) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput {
+	return i.ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *analystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrType) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput)
+}
+
+type AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput struct{ *pulumi.OutputState }
+
+func (AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions)(nil)).Elem()
+}
+
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput {
+	return o.ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions) *AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions {
+		return &v
+	}).(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput)
+}
+
+// If true, append the audit trail to the final response.
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput) AppendAuditTrail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions) *bool { return v.AppendAuditTrail }).(pulumi.BoolPtrOutput)
+}
+
+// If true, export the audit trail as a separate artifact.
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput) ExportAuditTrailArtifact() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions) *bool {
+		return v.ExportAuditTrailArtifact
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Format for audit trail export.
+// Possible values:
+// MARKDOWN
+// HTML
+// PDF
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput) ExportFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions) *string { return v.ExportFormat }).(pulumi.StringPtrOutput)
+}
+
+type AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions)(nil)).Elem()
+}
+
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput) ToAnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput) Elem() AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions) AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions
+		return ret
+	}).(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput)
+}
+
+// If true, append the audit trail to the final response.
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput) AppendAuditTrail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AppendAuditTrail
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, export the audit trail as a separate artifact.
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput) ExportAuditTrailArtifact() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExportAuditTrailArtifact
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Format for audit trail export.
+// Possible values:
+// MARKDOWN
+// HTML
+// PDF
+func (o AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput) ExportFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportFormat
+	}).(pulumi.StringPtrOutput)
 }
 
 type AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions struct {
@@ -8630,6 +8844,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactExampleResourceRawFileResourcePtrInput)(nil)).Elem(), AnalystAgentPersonaArtifactExampleResourceRawFileResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigPtrInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsPtrInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleArgs{})
@@ -8734,6 +8950,8 @@ func init() {
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactExampleResourceRawFileResourcePtrOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigPtrOutput{})
+	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsOutput{})
+	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleOutput{})

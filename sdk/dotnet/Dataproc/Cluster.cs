@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     * [Official Documentation](https://cloud.google.com/dataproc/docs)
     /// 
     /// &gt; **Warning:** Due to limitations of the API, all arguments except
-    /// `Labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
+    /// `Labels`, `cluster_config.worker_config.num_instances`, `cluster_config.preemptible_worker_config.num_instances`, `cluster_config.worker_flexible_config.num_instances` and `cluster_config.secondary_worker_flexible_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
     /// whole cluster!
     /// 
     /// ## Example Usage
@@ -129,6 +129,51 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
+    /// ### High Obtainability (HO) Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hoCluster = new Gcp.Dataproc.Cluster("ho_cluster", new()
+    ///     {
+    ///         Name = "my-ho-cluster",
+    ///         Region = "us-central1",
+    ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
+    ///         {
+    ///             MasterFlexibleConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterFlexibleConfigArgs
+    ///             {
+    ///                 NumInstances = 1,
+    ///                 CoreCount = 4,
+    ///                 HardwareClass = "STANDARD",
+    ///                 BootDiskSizeGb = 100,
+    ///             },
+    ///             WorkerFlexibleConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerFlexibleConfigArgs
+    ///             {
+    ///                 NumInstances = 2,
+    ///                 CoreCount = 8,
+    ///                 HardwareClass = "STANDARD",
+    ///                 BootDiskSizeGb = 100,
+    ///             },
+    ///             SecondaryWorkerFlexibleConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs
+    ///             {
+    ///                 NumInstances = 2,
+    ///                 CoreCount = 8,
+    ///                 HardwareClass = "PERFORMANCE",
+    ///                 BootDiskSizeGb = 100,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **Tip:** When an autoscaling policy is attached to an HO cluster, use `lifecycle { IgnoreChanges = [cluster_config[0].worker_flexible_config[0].num_instances, cluster_config[0].secondary_worker_flexible_config[0].num_instances] }` to avoid fighting the autoscaler.
     /// 
     /// ### Using A GPU Accelerator
     /// 

@@ -76,6 +76,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflow Generator Agent Coaching
  * 
  * <pre>
@@ -125,6 +126,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflow Generator With Tools
  * 
  * <pre>

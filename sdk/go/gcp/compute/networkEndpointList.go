@@ -62,10 +62,12 @@ import (
 //				return err
 //			}
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("neg-subnetwork"),
-//				IpCidrRange: pulumi.String("10.0.0.1/16"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     _default.ID(),
+//				Name:           pulumi.String("neg-subnetwork"),
+//				IpCidrRange:    pulumi.String("10.0.0.1/16"),
+//				Region:         pulumi.String("us-central1"),
+//				Network:        _default.ID(),
+//				StackType:      pulumi.String("IPV4_IPV6"),
+//				Ipv6AccessType: pulumi.String("EXTERNAL"),
 //			})
 //			if err != nil {
 //				return err
@@ -77,10 +79,16 @@ import (
 //							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 //						},
 //						Subnetwork: defaultSubnetwork.ID(),
+//						StackType:  pulumi.String("IPV4_IPV6"),
+//						Ipv6AccessConfigs: compute.InstanceNetworkInterfaceIpv6AccessConfigArray{
+//							&compute.InstanceNetworkInterfaceIpv6AccessConfigArgs{
+//								NetworkTier: pulumi.String("PREMIUM"),
+//							},
+//						},
 //					},
 //				},
 //				Name:        pulumi.String("endpoint-instance1"),
-//				MachineType: pulumi.String("e2-medium"),
+//				MachineType: pulumi.String("e2-micro"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 //						Image: pulumi.String(myImage.SelfLink),
@@ -97,10 +105,16 @@ import (
 //							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 //						},
 //						Subnetwork: defaultSubnetwork.ID(),
+//						StackType:  pulumi.String("IPV4_IPV6"),
+//						Ipv6AccessConfigs: compute.InstanceNetworkInterfaceIpv6AccessConfigArray{
+//							&compute.InstanceNetworkInterfaceIpv6AccessConfigArgs{
+//								NetworkTier: pulumi.String("PREMIUM"),
+//							},
+//						},
 //					},
 //				},
 //				Name:        pulumi.String("endpoint-instance2"),
-//				MachineType: pulumi.String("e2-medium"),
+//				MachineType: pulumi.String("e2-micro"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 //						Image: pulumi.String(myImage.SelfLink),
@@ -110,34 +124,48 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkEndpointList(ctx, "default-endpoints", &compute.NetworkEndpointListArgs{
-//				NetworkEndpointGroup: pulumi.Any(neg.Name),
-//				NetworkEndpoints: compute.NetworkEndpointListNetworkEndpointArray{
-//					&compute.NetworkEndpointListNetworkEndpointArgs{
-//						Instance: endpoint_instance1.Name,
-//						Port:     pulumi.Any(neg.DefaultPort),
-//						IpAddress: endpoint_instance1.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-//							return networkInterfaces[0].NetworkIp, nil
-//						}).(pulumi.StringPtrOutput),
-//					},
-//					&compute.NetworkEndpointListNetworkEndpointArgs{
-//						Instance: endpoint_instance2.Name,
-//						Port:     pulumi.Any(neg.DefaultPort),
-//						IpAddress: endpoint_instance2.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-//							return networkInterfaces[0].NetworkIp, nil
-//						}).(pulumi.StringPtrOutput),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewNetworkEndpointGroup(ctx, "group", &compute.NetworkEndpointGroupArgs{
+//			neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
 //				Name:        pulumi.String("my-lb-neg"),
 //				Network:     _default.ID(),
 //				Subnetwork:  defaultSubnetwork.ID(),
 //				DefaultPort: pulumi.Int(90),
 //				Zone:        pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkEndpointList(ctx, "default-endpoints", &compute.NetworkEndpointListArgs{
+//				NetworkEndpointGroup: neg.Name,
+//				NetworkEndpoints: compute.NetworkEndpointListNetworkEndpointArray{
+//					&compute.NetworkEndpointListNetworkEndpointArgs{
+//						Instance: endpoint_instance1.Name,
+//						Port:     neg.DefaultPort,
+//						IpAddress: endpoint_instance1.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//							return networkInterfaces[0].NetworkIp, nil
+//						}).(pulumi.StringPtrOutput),
+//					},
+//					&compute.NetworkEndpointListNetworkEndpointArgs{
+//						Instance: endpoint_instance1.Name,
+//						Port:     neg.DefaultPort,
+//						Ipv6Address: endpoint_instance1.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//							return networkInterfaces[0].Ipv6AccessConfigs[0].ExternalIpv6, nil
+//						}).(pulumi.StringPtrOutput),
+//					},
+//					&compute.NetworkEndpointListNetworkEndpointArgs{
+//						Instance: endpoint_instance2.Name,
+//						Port:     neg.DefaultPort,
+//						IpAddress: endpoint_instance2.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//							return networkInterfaces[0].NetworkIp, nil
+//						}).(pulumi.StringPtrOutput),
+//					},
+//					&compute.NetworkEndpointListNetworkEndpointArgs{
+//						Instance: endpoint_instance2.Name,
+//						Port:     neg.DefaultPort,
+//						Ipv6Address: endpoint_instance2.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//							return networkInterfaces[0].Ipv6AccessConfigs[0].ExternalIpv6, nil
+//						}).(pulumi.StringPtrOutput),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

@@ -84,6 +84,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Healthcare Hl7 V2 Store Parser Config
  * 
  * <pre>
@@ -209,6 +210,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Healthcare Hl7 V2 Store Unschematized
  * 
  * <pre>

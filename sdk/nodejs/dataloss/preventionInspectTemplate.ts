@@ -132,6 +132,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Inspect Template Custom Type
  *
  * ```typescript
@@ -196,6 +197,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Inspect Template Custom Type Surrogate
  *
  * ```typescript
@@ -258,6 +260,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Inspect Template Max Infotype Per Finding Default
  *
  * ```typescript

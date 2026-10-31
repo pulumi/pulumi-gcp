@@ -347,6 +347,7 @@ class HiveCatalog(pulumi.CustomResource):
             location_uri=bucket_for_my_hive_catalog.name.apply(lambda name: f"gs://{name}"),
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_hive_catalog]))
         ```
+
         ### Biglake Hive Catalog Full
 
         ```python
@@ -432,6 +433,7 @@ class HiveCatalog(pulumi.CustomResource):
             location_uri=bucket_for_my_hive_catalog.name.apply(lambda name: f"gs://{name}"),
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_hive_catalog]))
         ```
+
         ### Biglake Hive Catalog Full
 
         ```python

@@ -926,6 +926,7 @@ class V2Vm(pulumi.CustomResource):
             zone="us-central1-c",
             runtime_version="tpu-vm-tf-2.13.0")
         ```
+
         ### Tpu V2 Vm Full
 
         ```python
@@ -1093,6 +1094,7 @@ class V2Vm(pulumi.CustomResource):
             zone="us-central1-c",
             runtime_version="tpu-vm-tf-2.13.0")
         ```
+
         ### Tpu V2 Vm Full
 
         ```python

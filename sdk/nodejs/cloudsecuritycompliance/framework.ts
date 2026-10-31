@@ -76,6 +76,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Cloudsecuritycompliance Framework Project Basic
  *
  * ```typescript
@@ -138,6 +139,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Cloudsecuritycompliance Framework Org Basic Backward
  *
  * ```typescript

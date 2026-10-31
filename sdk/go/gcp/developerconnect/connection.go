@@ -70,6 +70,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Existing Credentials
 //
 // ```go
@@ -103,6 +104,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Existing Installation
 //
 // ```go
@@ -185,6 +187,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Github
 //
 // ```go
@@ -217,6 +220,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Github Doc
 //
 // ```go
@@ -295,6 +299,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Github Enterprise
 //
 // ```go
@@ -328,6 +333,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Github Enterprise Doc
 //
 // ```go
@@ -432,6 +438,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Gitlab
 //
 // ```go
@@ -467,6 +474,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Gitlab Enterprise
 //
 // ```go
@@ -503,6 +511,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Bbc
 //
 // ```go
@@ -539,6 +548,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Bbdc
 //
 // ```go
@@ -575,6 +585,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Http Conn Basic
 //
 // ```go
@@ -608,6 +619,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Developer Connect Connection Http Conn Bearer
 //
 // ```go

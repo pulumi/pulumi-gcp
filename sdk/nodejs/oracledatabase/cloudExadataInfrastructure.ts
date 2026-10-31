@@ -33,9 +33,13 @@ import * as utilities from "../utilities";
  *         computeCount: 2,
  *         storageCount: 3,
  *     },
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Cloud Exadata Infrastructure Full
  *
  * ```typescript

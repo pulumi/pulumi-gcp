@@ -621,6 +621,7 @@ class DataProduct(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Dataplex Data Product Full
 
         ```python
@@ -748,6 +749,7 @@ class DataProduct(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Dataplex Data Product Full
 
         ```python

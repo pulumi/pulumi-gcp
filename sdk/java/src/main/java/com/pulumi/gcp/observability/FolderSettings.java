@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testFolder = new Folder("testFolder", FolderArgs.builder()
- *             .displayName("tf-test-_29506")
+ *             .displayName("tf-test-_91207")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());
@@ -97,6 +97,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Observability Folder Settings Basic Global
  * 
  * <pre>
@@ -129,7 +130,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testFolder = new Folder("testFolder", FolderArgs.builder()
- *             .displayName("tf-test-_86474")
+ *             .displayName("tf-test-_14939")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());

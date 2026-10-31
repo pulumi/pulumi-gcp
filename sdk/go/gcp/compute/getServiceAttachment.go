@@ -87,6 +87,7 @@ type LookupServiceAttachmentResult struct {
 	Region                              *string                                      `pulumi:"region"`
 	SelfLink                            string                                       `pulumi:"selfLink"`
 	SendPropagatedConnectionLimitIfZero bool                                         `pulumi:"sendPropagatedConnectionLimitIfZero"`
+	ServiceAttachmentId                 int                                          `pulumi:"serviceAttachmentId"`
 	ShowNatIps                          bool                                         `pulumi:"showNatIps"`
 	TargetService                       string                                       `pulumi:"targetService"`
 	TunnelingConfigs                    []GetServiceAttachmentTunnelingConfig        `pulumi:"tunnelingConfigs"`
@@ -213,6 +214,10 @@ func (o LookupServiceAttachmentResultOutput) SelfLink() pulumi.StringOutput {
 
 func (o LookupServiceAttachmentResultOutput) SendPropagatedConnectionLimitIfZero() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceAttachmentResult) bool { return v.SendPropagatedConnectionLimitIfZero }).(pulumi.BoolOutput)
+}
+
+func (o LookupServiceAttachmentResultOutput) ServiceAttachmentId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServiceAttachmentResult) int { return v.ServiceAttachmentId }).(pulumi.IntOutput)
 }
 
 func (o LookupServiceAttachmentResultOutput) ShowNatIps() pulumi.BoolOutput {

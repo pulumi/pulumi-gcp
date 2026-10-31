@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     nodeCount: 1,
  * });
  * ```
+ *
  * ### Spanner Instance Partition Autoscaling
  *
  * ```typescript

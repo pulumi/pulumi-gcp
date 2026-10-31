@@ -219,6 +219,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflowcx Tool Version Data Store
 //
 // ```go
@@ -321,6 +322,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflowcx Tool Version Function
 //
 // ```go
@@ -427,6 +429,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflowcx Tool Version Connector
 //
 // ```go

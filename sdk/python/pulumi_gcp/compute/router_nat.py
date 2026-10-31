@@ -1208,6 +1208,7 @@ class RouterNat(pulumi.CustomResource):
                 "filter": "ERRORS_ONLY",
             })
         ```
+
         ### Router Nat Rules
 
         ```python
@@ -1259,6 +1260,7 @@ class RouterNat(pulumi.CustomResource):
             }],
             enable_endpoint_independent_mapping=False)
         ```
+
         ### Router Nat Private
 
         ```python
@@ -1471,6 +1473,7 @@ class RouterNat(pulumi.CustomResource):
                 "filter": "ERRORS_ONLY",
             })
         ```
+
         ### Router Nat Rules
 
         ```python
@@ -1522,6 +1525,7 @@ class RouterNat(pulumi.CustomResource):
             }],
             enable_endpoint_independent_mapping=False)
         ```
+
         ### Router Nat Private
 
         ```python

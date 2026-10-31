@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *
  * const vpcNetwork = new gcp.compute.Network("vpc_network", {name: "vpc-network"});
  * ```
+ *
  * ### Network Custom Mtu
  *
  * ```typescript
@@ -38,6 +39,7 @@ import * as utilities from "../utilities";
  *     mtu: 1460,
  * });
  * ```
+ *
  * ### Network Custom Firewall Enforcement Order
  *
  * ```typescript
@@ -51,6 +53,7 @@ import * as utilities from "../utilities";
  *     networkFirewallPolicyEnforcementOrder: "BEFORE_CLASSIC_FIREWALL",
  * });
  * ```
+ *
  * ### Network Bgp Best Path Selection Mode
  *
  * ```typescript
@@ -63,6 +66,7 @@ import * as utilities from "../utilities";
  *     routingMode: "GLOBAL",
  * });
  * ```
+ *
  * ### Network Bgp Best Path Selection Mode Standard
  *
  * ```typescript
@@ -76,6 +80,7 @@ import * as utilities from "../utilities";
  *     bgpBestPathSelectionMode: "STANDARD",
  * });
  * ```
+ *
  * ### Network Bgp Best Path Selection Mode Standard Custom Fields
  *
  * ```typescript
@@ -91,6 +96,7 @@ import * as utilities from "../utilities";
  *     bgpInterRegionCost: "ADD_COST_TO_MED",
  * });
  * ```
+ *
  * ### Network Bgp Standard Mode Delete Med
  *
  * ```typescript

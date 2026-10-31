@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.ServiceUsage
     public partial class V2ConsumerPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        /// Default value is false. This field is deprecated and has no effect.
         /// </summary>
         [Output("checkUsageOnRemove")]
         public Output<bool?> CheckUsageOnRemove { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.ServiceUsage
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+        /// Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
         /// </summary>
         [Output("validateDependencies")]
         public Output<bool?> ValidateDependencies { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.ServiceUsage
     public sealed class V2ConsumerPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        /// Default value is false. This field is deprecated and has no effect.
         /// </summary>
         [Input("checkUsageOnRemove")]
         public Input<bool>? CheckUsageOnRemove { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.Gcp.ServiceUsage
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+        /// Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
         /// </summary>
         [Input("validateDependencies")]
         public Input<bool>? ValidateDependencies { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.Gcp.ServiceUsage
     public sealed class V2ConsumerPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        /// Default value is false. This field is deprecated and has no effect.
         /// </summary>
         [Input("checkUsageOnRemove")]
         public Input<bool>? CheckUsageOnRemove { get; set; }
@@ -237,7 +237,7 @@ namespace Pulumi.Gcp.ServiceUsage
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+        /// Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
         /// </summary>
         [Input("validateDependencies")]
         public Input<bool>? ValidateDependencies { get; set; }

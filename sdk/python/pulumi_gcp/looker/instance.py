@@ -1141,6 +1141,24 @@ class Instance(pulumi.CustomResource):
             },
             deletion_policy="DEFAULT")
         ```
+
+        ### Looker Instance Force Delete
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
+            region="us-central1",
+            oauth_config={
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
+            },
+            deletion_policy="FORCE")
+        ```
+
         ### Looker Instance Full
 
         ```python
@@ -1186,25 +1204,10 @@ class Instance(pulumi.CustomResource):
             oauth_config={
                 "client_id": "my-client-id",
                 "client_secret": "my-client-secret",
-            })
+            },
+            deletion_policy="FORCE")
         ```
-        ### Looker Instance Fips
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_instance = gcp.looker.Instance("looker-instance",
-            name="my-instance-fips",
-            platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
-            region="us-central1",
-            public_ip_enabled=True,
-            fips_enabled=True,
-            oauth_config={
-                "client_id": "my-client-id",
-                "client_secret": "my-client-secret",
-            })
-        ```
         ### Looker Instance Enterprise Full
 
         ```python
@@ -1268,6 +1271,9 @@ class Instance(pulumi.CustomResource):
                 "client_id": "my-client-id",
                 "client_secret": "my-client-secret",
             },
+            custom_domain={
+                "domain": "my-custom-domain.com",
+            },
             opts = pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
@@ -1275,24 +1281,7 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
         ```
-        ### Looker Instance Custom Domain
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_instance = gcp.looker.Instance("looker-instance",
-            name="my-instance",
-            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
-            region="us-central1",
-            oauth_config={
-                "client_id": "my-client-id",
-                "client_secret": "my-client-secret",
-            },
-            custom_domain={
-                "domain": "my-custom-domain.com",
-            })
-        ```
         ### Looker Instance Psc
 
         ```python
@@ -1313,22 +1302,6 @@ class Instance(pulumi.CustomResource):
             psc_config={
                 "allowed_vpcs": ["projects/test-project/global/networks/test"],
             })
-        ```
-        ### Looker Instance Force Delete
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_instance = gcp.looker.Instance("looker-instance",
-            name="my-instance",
-            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
-            region="us-central1",
-            oauth_config={
-                "client_id": "my-client-id",
-                "client_secret": "my-client-secret",
-            },
-            deletion_policy="FORCE")
         ```
 
         ## Regional Endpoint Policies
@@ -1463,6 +1436,24 @@ class Instance(pulumi.CustomResource):
             },
             deletion_policy="DEFAULT")
         ```
+
+        ### Looker Instance Force Delete
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
+            region="us-central1",
+            oauth_config={
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
+            },
+            deletion_policy="FORCE")
+        ```
+
         ### Looker Instance Full
 
         ```python
@@ -1508,25 +1499,10 @@ class Instance(pulumi.CustomResource):
             oauth_config={
                 "client_id": "my-client-id",
                 "client_secret": "my-client-secret",
-            })
+            },
+            deletion_policy="FORCE")
         ```
-        ### Looker Instance Fips
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_instance = gcp.looker.Instance("looker-instance",
-            name="my-instance-fips",
-            platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
-            region="us-central1",
-            public_ip_enabled=True,
-            fips_enabled=True,
-            oauth_config={
-                "client_id": "my-client-id",
-                "client_secret": "my-client-secret",
-            })
-        ```
         ### Looker Instance Enterprise Full
 
         ```python
@@ -1590,6 +1566,9 @@ class Instance(pulumi.CustomResource):
                 "client_id": "my-client-id",
                 "client_secret": "my-client-secret",
             },
+            custom_domain={
+                "domain": "my-custom-domain.com",
+            },
             opts = pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
@@ -1597,24 +1576,7 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
         ```
-        ### Looker Instance Custom Domain
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_instance = gcp.looker.Instance("looker-instance",
-            name="my-instance",
-            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
-            region="us-central1",
-            oauth_config={
-                "client_id": "my-client-id",
-                "client_secret": "my-client-secret",
-            },
-            custom_domain={
-                "domain": "my-custom-domain.com",
-            })
-        ```
         ### Looker Instance Psc
 
         ```python
@@ -1635,22 +1597,6 @@ class Instance(pulumi.CustomResource):
             psc_config={
                 "allowed_vpcs": ["projects/test-project/global/networks/test"],
             })
-        ```
-        ### Looker Instance Force Delete
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_instance = gcp.looker.Instance("looker-instance",
-            name="my-instance",
-            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
-            region="us-central1",
-            oauth_config={
-                "client_id": "my-client-id",
-                "client_secret": "my-client-secret",
-            },
-            deletion_policy="FORCE")
         ```
 
         ## Regional Endpoint Policies

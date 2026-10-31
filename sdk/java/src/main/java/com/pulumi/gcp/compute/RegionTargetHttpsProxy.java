@@ -124,6 +124,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Target Https Proxy Http Keep Alive Timeout
  * 
  * <pre>
@@ -222,6 +223,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Target Https Proxy Mtls
  * 
  * <pre>
@@ -365,6 +367,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Target Https Proxy Certificate Manager Certificate
  * 
  * <pre>

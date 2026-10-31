@@ -155,6 +155,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Database Migration Service Connection Profile Postgres
  * 
  * <pre>
@@ -223,6 +224,7 @@ import javax.annotation.Nullable;
  *                 .port(5432)
  *                 .username(sqldbUser.name())
  *                 .password(sqldbUser.password())
+ *                 .database("postgres")
  *                 .ssl(ConnectionProfilePostgresqlSslArgs.builder()
  *                     .clientKey(sqlClientCert.privateKey())
  *                     .clientCertificate(sqlClientCert.cert())
@@ -239,6 +241,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Database Migration Service Connection Profile Postgres No Ssl
  * 
  * <pre>
@@ -307,6 +310,7 @@ import javax.annotation.Nullable;
  *                 .port(5432)
  *                 .username(sqldbUser.name())
  *                 .password(sqldbUser.password())
+ *                 .database("postgres")
  *                 .ssl(ConnectionProfilePostgresqlSslArgs.builder()
  *                     .type("NONE")
  *                     .build())
@@ -320,6 +324,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Database Migration Service Connection Profile Postgres Required Ssl
  * 
  * <pre>
@@ -388,6 +393,7 @@ import javax.annotation.Nullable;
  *                 .port(5432)
  *                 .username(sqldbUser.name())
  *                 .password(sqldbUser.password())
+ *                 .database("postgres")
  *                 .ssl(ConnectionProfilePostgresqlSslArgs.builder()
  *                     .type("REQUIRED")
  *                     .build())
@@ -401,6 +407,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Database Migration Service Connection Profile Oracle
  * 
  * <pre>
@@ -447,6 +454,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Database Migration Service Connection Profile Alloydb
  * 
  * <pre>
@@ -539,6 +547,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Database Migration Service Connection Profile Existing Mysql
  * 
  * <pre>
@@ -599,6 +608,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Database Migration Service Connection Profile Existing Postgres
  * 
  * <pre>
@@ -659,6 +669,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Database Migration Service Connection Profile Existing Alloydb
  * 
  * <pre>
@@ -670,16 +681,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
- * import com.pulumi.gcp.compute.GlobalAddress;
- * import com.pulumi.gcp.compute.GlobalAddressArgs;
- * import com.pulumi.gcp.servicenetworking.Connection;
- * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.alloydb.Instance;
  * import com.pulumi.gcp.alloydb.InstanceArgs;
  * import com.pulumi.gcp.databasemigrationservice.ConnectionProfile;
@@ -702,7 +709,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
- *         var default_ = new Network("default", NetworkArgs.builder()
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name("destination-alloydb")
  *             .build());
  * 
@@ -720,27 +727,11 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
- *             .name("destination-alloydb")
- *             .addressType("INTERNAL")
- *             .purpose("VPC_PEERING")
- *             .prefixLength(16)
- *             .network(default_.id())
- *             .build());
- * 
- *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
- *             .network(default_.id())
- *             .service("servicenetworking.googleapis.com")
- *             .reservedPeeringRanges(privateIpAlloc.name())
- *             .build());
- * 
  *         var destinationAlloydbPrimary = new Instance("destinationAlloydbPrimary", InstanceArgs.builder()
  *             .cluster(destinationAlloydb.name())
  *             .instanceId("destination-alloydb-primary")
  *             .instanceType("PRIMARY")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(vpcConnection)
- *                 .build());
+ *             .build());
  * 
  *         var existing_alloydb = new ConnectionProfile("existing-alloydb", ConnectionProfileArgs.builder()
  *             .location("us-central1")

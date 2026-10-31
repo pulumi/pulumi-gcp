@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AgentGateway{}
 	case "gcp:networkservices/authzExtension:AuthzExtension":
 		r = &AuthzExtension{}
+	case "gcp:networkservices/cdnEdgeExtension:CdnEdgeExtension":
+		r = &CdnEdgeExtension{}
 	case "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset":
 		r = &EdgeCacheKeyset{}
 	case "gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin":
@@ -73,6 +75,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceLbPolicies{}
 	case "gcp:networkservices/tcpRoute:TcpRoute":
 		r = &TcpRoute{}
+	case "gcp:networkservices/telemetryPolicy:TelemetryPolicy":
+		r = &TelemetryPolicy{}
 	case "gcp:networkservices/tlsRoute:TlsRoute":
 		r = &TlsRoute{}
 	case "gcp:networkservices/wasmPlugin:WasmPlugin":
@@ -103,6 +107,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkservices/authzExtension",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/cdnEdgeExtension",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -218,6 +227,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkservices/tcpRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/telemetryPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

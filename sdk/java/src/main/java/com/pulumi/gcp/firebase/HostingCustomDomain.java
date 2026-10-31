@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebasehosting Customdomain Full
  * 
  * <pre>
@@ -113,6 +114,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebasehosting Customdomain Cloud Run
  * 
  * <pre>

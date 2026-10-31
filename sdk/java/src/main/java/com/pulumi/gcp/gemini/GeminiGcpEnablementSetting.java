@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  *             .enableCustomerDataSharing(true)
  *             .webGroundingType("WEB_GROUNDING_FOR_ENTERPRISE")
  *             .mutationsEnabled(true)
+ *             .releaseChannel("EXPERIMENTAL")
  *             .build());
  * 
  *     }
@@ -170,6 +171,24 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.enableCustomerDataSharing);
     }
     /**
+     * The Gemini enterprise project for this setting.
+     * Format: projects/{project}
+     * The `{project}` segment can be the project ID or project number.
+     * 
+     */
+    @Export(name="geminiEnterpriseProject", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> geminiEnterpriseProject;
+
+    /**
+     * @return The Gemini enterprise project for this setting.
+     * Format: projects/{project}
+     * The `{project}` segment can be the project ID or project number.
+     * 
+     */
+    public Output<Optional<String>> geminiEnterpriseProject() {
+        return Codegen.optional(this.geminiEnterpriseProject);
+    }
+    /**
      * Id of the Gemini Gcp Enablement setting.
      * 
      */
@@ -276,6 +295,22 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+     * Possible values are: `STABLE`, `EXPERIMENTAL`.
+     * 
+     */
+    @Export(name="releaseChannel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> releaseChannel;
+
+    /**
+     * @return Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+     * Possible values are: `STABLE`, `EXPERIMENTAL`.
+     * 
+     */
+    public Output<Optional<String>> releaseChannel() {
+        return Codegen.optional(this.releaseChannel);
     }
     /**
      * Update time stamp.

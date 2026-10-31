@@ -42,11 +42,16 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             ComputeCount = 2,
     ///             StorageCount = 3,
     ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
     ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Cloud Exadata Infrastructure Full
     /// 
     /// ```csharp

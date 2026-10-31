@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Firewall Endpoint Project
     /// 
     /// ```csharp
@@ -200,7 +201,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Settings for WildFire analysis on the firewall endpoint.
         /// Structure is documented below.
         /// </summary>
@@ -320,7 +320,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Settings for WildFire analysis on the firewall endpoint.
         /// Structure is documented below.
         /// </summary>
@@ -475,7 +474,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Settings for WildFire analysis on the firewall endpoint.
         /// Structure is documented below.
         /// </summary>

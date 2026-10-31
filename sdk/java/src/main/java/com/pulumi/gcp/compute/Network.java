@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Custom Mtu
  * 
  * <pre>
@@ -95,6 +96,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Custom Firewall Enforcement Order
  * 
  * <pre>
@@ -130,6 +132,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Bgp Best Path Selection Mode
  * 
  * <pre>
@@ -164,6 +167,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Bgp Best Path Selection Mode Standard
  * 
  * <pre>
@@ -199,6 +203,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Bgp Best Path Selection Mode Standard Custom Fields
  * 
  * <pre>
@@ -236,6 +241,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Bgp Standard Mode Delete Med
  * 
  * <pre>

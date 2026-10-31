@@ -100,6 +100,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Subnetwork Logging Config
  * 
  * <pre>
@@ -148,6 +149,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Subnetwork Internal L7lb
  * 
  * <pre>
@@ -192,6 +194,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Subnetwork Ipv6
  * 
  * <pre>
@@ -236,6 +239,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Subnetwork Internal Ipv6
  * 
  * <pre>
@@ -281,6 +285,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Subnetwork Purpose Private Nat
  * 
  * <pre>
@@ -324,6 +329,51 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ### Subnetwork Purpose Custom Hardware Link
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()
+ *             .name("subnet-purpose-chl-test-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetwork_purpose_custom_hardware_link = new Subnetwork("subnetwork-purpose-custom-hardware-link", SubnetworkArgs.builder()
+ *             .name("subnet-purpose-chl-test-subnetwork")
+ *             .region("us-central1")
+ *             .ipCidrRange("192.168.2.0/24")
+ *             .purpose("CUSTOM_HARDWARE_LINK")
+ *             .network(custom_test.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Subnetwork Resolve Subnet Mask
  * 
  * <pre>
@@ -368,6 +418,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Subnetwork Cidr Overlap
  * 
  * <pre>
@@ -411,6 +462,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Subnetwork Reserved Internal Range
  * 
  * <pre>
@@ -464,6 +516,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Subnetwork Reserved Secondary Range
  * 
  * <pre>
@@ -531,6 +584,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Subnetwork With Secondary Ipv6 Range
  * 
  * <pre>
@@ -542,10 +596,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.PublicAdvertisedPrefix;
- * import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
- * import com.pulumi.gcp.compute.PublicDelegatedPrefix;
- * import com.pulumi.gcp.compute.PublicDelegatedPrefixArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.inputs.SubnetworkSecondaryIpRangeArgs;
@@ -568,31 +618,6 @@ import javax.annotation.Nullable;
  *             .enableUlaInternalIpv6(true)
  *             .build());
  * 
- *         var ipv6Pap = new PublicAdvertisedPrefix("ipv6Pap", PublicAdvertisedPrefixArgs.builder()
- *             .name("pap-for-secondary-ranges")
- *             .ipCidrRange("2001:db8::/40")
- *             .pdpScope("REGIONAL")
- *             .ipv6AccessType("INTERNAL")
- *             .description("GOOGLE_INTERNAL_TEST_PREFIX")
- *             .build());
- * 
- *         var ipv6Pdp = new PublicDelegatedPrefix("ipv6Pdp", PublicDelegatedPrefixArgs.builder()
- *             .name("pdp-for-secondary-ranges")
- *             .region("us-central1")
- *             .description("PDP in internal subnet mode")
- *             .ipCidrRange("2001:db8::/48")
- *             .parentPrefix(ipv6Pap.id())
- *             .mode("DELEGATION")
- *             .build());
- * 
- *         var ipv6SubPdp = new PublicDelegatedPrefix("ipv6SubPdp", PublicDelegatedPrefixArgs.builder()
- *             .name("sub-pdp-for-secondary-ranges")
- *             .region("us-central1")
- *             .ipCidrRange("2001:db8::/56")
- *             .parentPrefix(ipv6Pdp.id())
- *             .mode("INTERNAL_IPV6_SUBNETWORK_CREATION")
- *             .build());
- * 
  *         var subnetworkWithSecondaryIpv6Range = new Subnetwork("subnetworkWithSecondaryIpv6Range", SubnetworkArgs.builder()
  *             .name("subnet-with-secondary-ranges")
  *             .region("us-central1")
@@ -607,13 +632,13 @@ import javax.annotation.Nullable;
  *                 SubnetworkSecondaryIpRangeArgs.builder()
  *                     .rangeName("v6-byogua-auto")
  *                     .ipVersion("IPV6")
- *                     .ipCollection(ipv6SubPdp.selfLink())
+ *                     .ipCollection("projects/tf-static-byoip/regions/us-central1/publicDelegatedPrefixes/terraform-v6-internal-sub-pdp")
  *                     .build(),
  *                 SubnetworkSecondaryIpRangeArgs.builder()
  *                     .rangeName("v6-byogua-manual")
  *                     .ipVersion("IPV6")
- *                     .ipCollection(ipv6SubPdp.selfLink())
- *                     .ipCidrRange("2001:db8:0:2::/64")
+ *                     .ipCollection("projects/tf-static-byoip/regions/us-central1/publicDelegatedPrefixes/terraform-v6-internal-sub-pdp")
+ *                     .ipCidrRange("2600:1904:9:60::/64")
  *                     .build())
  *             .build());
  * 
@@ -1026,12 +1051,13 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+     * The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
      * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
      * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
      * A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
      * A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+     * A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
      * Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
      * If unspecified, the purpose defaults to `PRIVATE`.
      * 
@@ -1040,12 +1066,13 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     private Output<String> purpose;
 
     /**
-     * @return The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+     * @return The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
      * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
      * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
      * A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
      * A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+     * A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
      * Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
      * If unspecified, the purpose defaults to `PRIVATE`.
      * 
@@ -1101,7 +1128,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role of subnetwork.
-     * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+     * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * The value can be set to `ACTIVE` or `BACKUP`.
      * An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
      * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -1113,7 +1140,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role of subnetwork.
-     * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+     * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * The value can be set to `ACTIVE` or `BACKUP`.
      * An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
      * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.

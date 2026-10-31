@@ -6,8 +6,10 @@ package com.pulumi.gcp.recaptcha.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyAndroidSettingsArgs;
+import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyExpressSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyIosSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
+import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyUniversalSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWafSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
 import java.lang.String;
@@ -111,6 +113,21 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Settings for keys that can be used by reCAPTCHA Express.
+     * 
+     */
+    @Import(name="expressSettings")
+    private @Nullable Output<EnterpriseKeyExpressSettingsArgs> expressSettings;
+
+    /**
+     * @return Settings for keys that can be used by reCAPTCHA Express.
+     * 
+     */
+    public Optional<Output<EnterpriseKeyExpressSettingsArgs>> expressSettings() {
+        return Optional.ofNullable(this.expressSettings);
+    }
+
+    /**
      * Settings for keys that can be used by iOS apps.
      * 
      */
@@ -207,6 +224,21 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Settings for keys that can be used by universal frontend integrations.
+     * 
+     */
+    @Import(name="universalSettings")
+    private @Nullable Output<EnterpriseKeyUniversalSettingsArgs> universalSettings;
+
+    /**
+     * @return Settings for keys that can be used by universal frontend integrations.
+     * 
+     */
+    public Optional<Output<EnterpriseKeyUniversalSettingsArgs>> universalSettings() {
+        return Optional.ofNullable(this.universalSettings);
+    }
+
+    /**
      * Settings specific to keys that can be used for WAF (Web Application Firewall).
      * 
      */
@@ -244,12 +276,14 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
         this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.effectiveLabels = $.effectiveLabels;
+        this.expressSettings = $.expressSettings;
         this.iosSettings = $.iosSettings;
         this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.testingOptions = $.testingOptions;
+        this.universalSettings = $.universalSettings;
         this.wafSettings = $.wafSettings;
         this.webSettings = $.webSettings;
     }
@@ -392,6 +426,27 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param expressSettings Settings for keys that can be used by reCAPTCHA Express.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressSettings(@Nullable Output<EnterpriseKeyExpressSettingsArgs> expressSettings) {
+            $.expressSettings = expressSettings;
+            return this;
+        }
+
+        /**
+         * @param expressSettings Settings for keys that can be used by reCAPTCHA Express.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressSettings(EnterpriseKeyExpressSettingsArgs expressSettings) {
+            return expressSettings(Output.of(expressSettings));
+        }
+
+        /**
          * @param iosSettings Settings for keys that can be used by iOS apps.
          * 
          * @return builder
@@ -521,6 +576,27 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder testingOptions(EnterpriseKeyTestingOptionsArgs testingOptions) {
             return testingOptions(Output.of(testingOptions));
+        }
+
+        /**
+         * @param universalSettings Settings for keys that can be used by universal frontend integrations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder universalSettings(@Nullable Output<EnterpriseKeyUniversalSettingsArgs> universalSettings) {
+            $.universalSettings = universalSettings;
+            return this;
+        }
+
+        /**
+         * @param universalSettings Settings for keys that can be used by universal frontend integrations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder universalSettings(EnterpriseKeyUniversalSettingsArgs universalSettings) {
+            return universalSettings(Output.of(universalSettings));
         }
 
         /**

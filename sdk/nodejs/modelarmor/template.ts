@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     templateMetadata: {},
  * });
  * ```
+ *
  * ### Modelarmor Template Filter Config
  *
  * ```typescript
@@ -61,6 +62,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Modelarmor Template Template Metadata
  *
  * ```typescript
@@ -100,6 +102,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Modelarmor Template Filter Version Selector
  *
  * ```typescript
@@ -124,6 +127,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Modelarmor Template Label
  *
  * ```typescript

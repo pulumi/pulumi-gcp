@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Public Advertised Prefixes Pdp Scope
     /// 
     /// ```csharp
@@ -61,6 +62,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Public Advertised Prefixes Ipv6 Access Type
     /// 
     /// ```csharp

@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
+ *
  * ### Network Endpoint Group Non Gcp
  *
  * ```typescript

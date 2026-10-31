@@ -17,10 +17,14 @@ from .. import _utilities
 __all__ = [
     'EnterpriseKeyAndroidSettingsArgs',
     'EnterpriseKeyAndroidSettingsArgsDict',
+    'EnterpriseKeyExpressSettingsArgs',
+    'EnterpriseKeyExpressSettingsArgsDict',
     'EnterpriseKeyIosSettingsArgs',
     'EnterpriseKeyIosSettingsArgsDict',
     'EnterpriseKeyTestingOptionsArgs',
     'EnterpriseKeyTestingOptionsArgsDict',
+    'EnterpriseKeyUniversalSettingsArgs',
+    'EnterpriseKeyUniversalSettingsArgsDict',
     'EnterpriseKeyWafSettingsArgs',
     'EnterpriseKeyWafSettingsArgsDict',
     'EnterpriseKeyWebSettingsArgs',
@@ -80,6 +84,15 @@ class EnterpriseKeyAndroidSettingsArgs:
     @allowed_package_names.setter
     def allowed_package_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_package_names", value)
+
+
+class EnterpriseKeyExpressSettingsArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class EnterpriseKeyExpressSettingsArgs:
+    def __init__(__self__):
+        pass
 
 
 class EnterpriseKeyIosSettingsArgsDict(TypedDict):
@@ -178,6 +191,15 @@ class EnterpriseKeyTestingOptionsArgs:
     @testing_score.setter
     def testing_score(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "testing_score", value)
+
+
+class EnterpriseKeyUniversalSettingsArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class EnterpriseKeyUniversalSettingsArgs:
+    def __init__(__self__):
+        pass
 
 
 class EnterpriseKeyWafSettingsArgsDict(TypedDict):

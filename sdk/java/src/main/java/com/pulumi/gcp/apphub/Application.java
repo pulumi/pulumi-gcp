@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Apphub Application Global Basic
  * 
  * <pre>
@@ -95,6 +96,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Apphub Application Full
  * 
  * <pre>

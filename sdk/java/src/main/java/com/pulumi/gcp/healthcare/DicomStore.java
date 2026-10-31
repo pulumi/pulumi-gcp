@@ -81,6 +81,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Healthcare Dicom Store Bq Stream
  * 
  * <pre>

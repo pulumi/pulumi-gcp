@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Firestore Index Datastore Mode
  *
  * ```typescript
@@ -90,6 +91,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Firestore Index Vector
  *
  * ```typescript
@@ -127,6 +129,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Firestore Index Name Descending
  *
  * ```typescript
@@ -151,6 +154,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Firestore Index Mongodb Compatible Scope
  *
  * ```typescript
@@ -186,6 +190,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Firestore Index Sparse Any
  *
  * ```typescript
@@ -221,6 +226,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Firestore Index Unique
  *
  * ```typescript
@@ -257,6 +263,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Firestore Index Skip Wait
  *
  * ```typescript
@@ -288,6 +295,39 @@ import * as utilities from "../utilities";
  *     skipWait: true,
  * });
  * ```
+ *
+ * ### Firestore Index Deletion Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id-deletion-policy",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "atestcollection",
+ *     fields: [
+ *         {
+ *             fieldPath: "name",
+ *             order: "ASCENDING",
+ *         },
+ *         {
+ *             fieldPath: "description",
+ *             order: "DESCENDING",
+ *         },
+ *     ],
+ *     deletionPolicy: "PREVENT",
+ * });
+ * ```
+ *
  * ### Firestore Index Text Search
  *
  * ```typescript
@@ -323,6 +363,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Firestore Index Suppress Geojson Indexing
  *
  * ```typescript
@@ -354,6 +395,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Firestore Index Geo Search
  *
  * ```typescript

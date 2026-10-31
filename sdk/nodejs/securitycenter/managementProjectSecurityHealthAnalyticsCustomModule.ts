@@ -44,6 +44,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Scc Management Organization Project Security Health Analytics Custom Module Full
  *
  * ```typescript

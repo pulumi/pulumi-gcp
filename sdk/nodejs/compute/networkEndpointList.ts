@@ -47,14 +47,20 @@ import * as utilities from "../utilities";
  *     ipCidrRange: "10.0.0.1/16",
  *     region: "us-central1",
  *     network: _default.id,
+ *     stackType: "IPV4_IPV6",
+ *     ipv6AccessType: "EXTERNAL",
  * });
  * const endpoint_instance1 = new gcp.compute.Instance("endpoint-instance1", {
  *     networkInterfaces: [{
  *         accessConfigs: [{}],
  *         subnetwork: defaultSubnetwork.id,
+ *         stackType: "IPV4_IPV6",
+ *         ipv6AccessConfigs: [{
+ *             networkTier: "PREMIUM",
+ *         }],
  *     }],
  *     name: "endpoint-instance1",
- *     machineType: "e2-medium",
+ *     machineType: "e2-micro",
  *     bootDisk: {
  *         initializeParams: {
  *             image: myImage.then(myImage => myImage.selfLink),
@@ -65,14 +71,25 @@ import * as utilities from "../utilities";
  *     networkInterfaces: [{
  *         accessConfigs: [{}],
  *         subnetwork: defaultSubnetwork.id,
+ *         stackType: "IPV4_IPV6",
+ *         ipv6AccessConfigs: [{
+ *             networkTier: "PREMIUM",
+ *         }],
  *     }],
  *     name: "endpoint-instance2",
- *     machineType: "e2-medium",
+ *     machineType: "e2-micro",
  *     bootDisk: {
  *         initializeParams: {
  *             image: myImage.then(myImage => myImage.selfLink),
  *         },
  *     },
+ * });
+ * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
+ *     name: "my-lb-neg",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     defaultPort: 90,
+ *     zone: "us-central1-a",
  * });
  * const default_endpoints = new gcp.compute.NetworkEndpointList("default-endpoints", {
  *     networkEndpointGroup: neg.name,
@@ -83,18 +100,21 @@ import * as utilities from "../utilities";
  *             ipAddress: endpoint_instance1.networkInterfaces[0].networkIp,
  *         },
  *         {
+ *             instance: endpoint_instance1.name,
+ *             port: neg.defaultPort,
+ *             ipv6Address: endpoint_instance1.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].ipv6AccessConfigs?.[0]?.externalIpv6),
+ *         },
+ *         {
  *             instance: endpoint_instance2.name,
  *             port: neg.defaultPort,
  *             ipAddress: endpoint_instance2.networkInterfaces[0].networkIp,
  *         },
+ *         {
+ *             instance: endpoint_instance2.name,
+ *             port: neg.defaultPort,
+ *             ipv6Address: endpoint_instance2.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].ipv6AccessConfigs?.[0]?.externalIpv6),
+ *         },
  *     ],
- * });
- * const group = new gcp.compute.NetworkEndpointGroup("group", {
- *     name: "my-lb-neg",
- *     network: _default.id,
- *     subnetwork: defaultSubnetwork.id,
- *     defaultPort: 90,
- *     zone: "us-central1-a",
  * });
  * ```
  *

@@ -19,6 +19,7 @@ import (
 // * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores.schemas)
 // * How-to Guides
 //   - [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
+//   - [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
 //
 // ## Example Usage
 //
@@ -94,6 +95,12 @@ type Schema struct {
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The JSON representation of the schema.
+	// Changes are applied in place and must be backward compatible: existing fields
+	// can't be removed or have their type changed. Updating the schema triggers
+	// reindexing of all documents in the data store, which can take hours for large
+	// data stores and may incur costs. See
+	// [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+	// for details.
 	JsonSchema pulumi.StringPtrOutput `pulumi:"jsonSchema"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -159,6 +166,12 @@ type schemaState struct {
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The JSON representation of the schema.
+	// Changes are applied in place and must be backward compatible: existing fields
+	// can't be removed or have their type changed. Updating the schema triggers
+	// reindexing of all documents in the data store, which can take hours for large
+	// data stores and may incur costs. See
+	// [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+	// for details.
 	JsonSchema *string `pulumi:"jsonSchema"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -186,6 +199,12 @@ type SchemaState struct {
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// The JSON representation of the schema.
+	// Changes are applied in place and must be backward compatible: existing fields
+	// can't be removed or have their type changed. Updating the schema triggers
+	// reindexing of all documents in the data store, which can take hours for large
+	// data stores and may incur costs. See
+	// [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+	// for details.
 	JsonSchema pulumi.StringPtrInput
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -217,6 +236,12 @@ type schemaArgs struct {
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The JSON representation of the schema.
+	// Changes are applied in place and must be backward compatible: existing fields
+	// can't be removed or have their type changed. Updating the schema triggers
+	// reindexing of all documents in the data store, which can take hours for large
+	// data stores and may incur costs. See
+	// [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+	// for details.
 	JsonSchema *string `pulumi:"jsonSchema"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -240,6 +265,12 @@ type SchemaArgs struct {
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// The JSON representation of the schema.
+	// Changes are applied in place and must be backward compatible: existing fields
+	// can't be removed or have their type changed. Updating the schema triggers
+	// reindexing of all documents in the data store, which can take hours for large
+	// data stores and may incur costs. See
+	// [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+	// for details.
 	JsonSchema pulumi.StringPtrInput
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -354,6 +385,12 @@ func (o SchemaOutput) DeletionPolicy() pulumi.StringOutput {
 }
 
 // The JSON representation of the schema.
+// Changes are applied in place and must be backward compatible: existing fields
+// can't be removed or have their type changed. Updating the schema triggers
+// reindexing of all documents in the data store, which can take hours for large
+// data stores and may incur costs. See
+// [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+// for details.
 func (o SchemaOutput) JsonSchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.JsonSchema }).(pulumi.StringPtrOutput)
 }

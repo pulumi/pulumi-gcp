@@ -459,6 +459,7 @@ class Binding(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_auth_provider]))
         ```
+
         ### Agent Registry Binding Target Only
 
         ```python
@@ -574,6 +575,7 @@ class Binding(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_auth_provider]))
         ```
+
         ### Agent Registry Binding Target Only
 
         ```python

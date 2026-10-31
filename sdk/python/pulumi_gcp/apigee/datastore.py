@@ -367,6 +367,7 @@ class Datastore(pulumi.CustomResource):
                 "path": "/analytics",
             })
         ```
+
         ### Apigee Datastore Bigquery
 
         ```python
@@ -490,6 +491,7 @@ class Datastore(pulumi.CustomResource):
                 "path": "/analytics",
             })
         ```
+
         ### Apigee Datastore Bigquery
 
         ```python

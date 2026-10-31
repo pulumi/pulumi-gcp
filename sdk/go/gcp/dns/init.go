@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DnsManagedZoneIamPolicy{}
 	case "gcp:dns/managedZone:ManagedZone":
 		r = &ManagedZone{}
+	case "gcp:dns/outboundEndpoint:OutboundEndpoint":
+		r = &OutboundEndpoint{}
 	case "gcp:dns/policy:Policy":
 		r = &Policy{}
 	case "gcp:dns/recordSet:RecordSet":
@@ -68,6 +70,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dns/managedZone",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dns/outboundEndpoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

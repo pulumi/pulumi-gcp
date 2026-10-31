@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// 
     /// ### Alloydb Cluster Before Upgrade
     /// 
     /// ```csharp
@@ -108,6 +109,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// 
     /// ### Alloydb Cluster After Upgrade
     /// 
     /// ```csharp
@@ -152,6 +154,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// 
     /// ### Alloydb Cluster Full
     /// 
     /// ```csharp
@@ -228,6 +231,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// 
     /// ### Alloydb Cluster Restore
     /// 
     /// ```csharp
@@ -339,6 +343,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// 
     /// ### Alloydb Secondary Cluster Basic
     /// 
     /// ```csharp

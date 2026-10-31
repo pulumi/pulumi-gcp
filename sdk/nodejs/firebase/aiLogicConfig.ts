@@ -61,6 +61,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait30s],
  * });
  * ```
+ *
  * ### Firebaseailogic Config Full
  *
  * ```typescript

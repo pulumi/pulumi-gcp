@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Filestore Instance Full
     /// 
     /// ```csharp
@@ -116,6 +117,7 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Filestore Instance Protocol
     /// 
     /// ```csharp
@@ -152,6 +154,7 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Filestore Instance Enterprise
     /// 
     /// ```csharp

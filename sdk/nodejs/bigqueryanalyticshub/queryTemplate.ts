@@ -51,6 +51,7 @@ import * as utilities from "../utilities";
  *     submit: false,
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Querytemplate Cmek
  *
  * ```typescript

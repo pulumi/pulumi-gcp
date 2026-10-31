@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * });
  * const myappV1 = new gcp.appengine.StandardAppVersion("myapp_v1", {
  *     versionId: "v1",
- *     service: "myapp",
+ *     service: "ae-service",
  *     runtime: "nodejs22",
  *     entrypoint: {
  *         shell: "node ./app.js",
@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  * });
  * const myappV2 = new gcp.appengine.StandardAppVersion("myapp_v2", {
  *     versionId: "v2",
- *     service: "myapp",
+ *     service: "ae-service",
  *     runtime: "nodejs22",
  *     appEngineApis: true,
  *     entrypoint: {
@@ -103,6 +103,7 @@ import * as utilities from "../utilities";
  *     serviceAccount: customServiceAccount.email,
  * });
  * ```
+ *
  * ### App Engine Standard App Version Bundled Services
  *
  * ```typescript
@@ -140,7 +141,7 @@ import * as utilities from "../utilities";
  * const gae_std_app_ver_bundled = new gcp.appengine.StandardAppVersion("gae-std-app-ver-bundled", {
  *     versionId: "v1",
  *     service: "bundled-service",
- *     runtime: "python310",
+ *     runtime: "python312",
  *     deployment: {
  *         files: [
  *             {
@@ -169,6 +170,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### App Engine Standard App Version Vpc Access
  *
  * ```typescript
@@ -217,9 +219,9 @@ import * as utilities from "../utilities";
  * const gae_std_app_ver_vpc_access = new gcp.appengine.StandardAppVersion("gae-std-app-ver-vpc-access", {
  *     versionId: "v1",
  *     service: "vpc-service",
- *     runtime: "python310",
+ *     runtime: "python312",
  *     vpcAccess: {
- *         egressSetting: "ALL_TRAFFIC",
+ *         vpcEgress: "ALL_TRAFFIC",
  *         networkInterfaces: [{
  *             network: custom.name,
  *             subnetwork: customSubnetwork.name,

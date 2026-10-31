@@ -1060,6 +1060,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
                 "ca_cert": "test-ca-cert",
             })
         ```
+
         ### Gkeonprem Vmware Admin Cluster Full
 
         ```python
@@ -1161,6 +1162,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
                 "no_proxy": "10.151.222.0/24,my-host.example.local,10.151.2.1",
             })
         ```
+
         ### Gkeonprem Vmware Admin Cluster Metallb
 
         ```python
@@ -1343,6 +1345,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
                 "ca_cert": "test-ca-cert",
             })
         ```
+
         ### Gkeonprem Vmware Admin Cluster Full
 
         ```python
@@ -1444,6 +1447,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
                 "no_proxy": "10.151.222.0/24,my-host.example.local,10.151.2.1",
             })
         ```
+
         ### Gkeonprem Vmware Admin Cluster Metallb
 
         ```python

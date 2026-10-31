@@ -98,6 +98,7 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataform Repository Release Config Disabled
     /// 
     /// ```csharp

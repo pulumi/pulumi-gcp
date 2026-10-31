@@ -341,6 +341,7 @@ class Settings(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Iap Settings Oauth Storage
 
         ```python
@@ -499,6 +500,7 @@ class Settings(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Iap Settings Oauth Storage
 
         ```python

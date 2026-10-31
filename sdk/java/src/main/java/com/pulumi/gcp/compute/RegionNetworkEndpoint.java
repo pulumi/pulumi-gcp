@@ -81,6 +81,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Network Endpoint Internet Fqdn Port
  * 
  * <pre>
@@ -132,6 +133,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Network Endpoint Portmap
  * 
  * <pre>

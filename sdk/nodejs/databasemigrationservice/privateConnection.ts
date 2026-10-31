@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * ```
+ *
  * ### Database Migration Service Private Connection Psc
  *
  * ```typescript
@@ -76,6 +77,7 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.id,
  * });
  * ```
+ *
  * ### Database Migration Service Private Connection Reserved Public Ip
  *
  * ```typescript

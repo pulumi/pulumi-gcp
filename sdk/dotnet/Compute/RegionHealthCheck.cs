@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Tcp Full
     /// 
     /// ```csharp
@@ -83,6 +84,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Ssl
     /// 
     /// ```csharp
@@ -106,6 +108,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Ssl Full
     /// 
     /// ```csharp
@@ -136,6 +139,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Http
     /// 
     /// ```csharp
@@ -159,6 +163,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Http Logs
     /// 
     /// ```csharp
@@ -186,6 +191,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Http Full
     /// 
     /// ```csharp
@@ -217,6 +223,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Https
     /// 
     /// ```csharp
@@ -240,6 +247,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Https Full
     /// 
     /// ```csharp
@@ -271,6 +279,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Http2
     /// 
     /// ```csharp
@@ -294,6 +303,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Http2 Full
     /// 
     /// ```csharp
@@ -325,6 +335,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Grpc
     /// 
     /// ```csharp
@@ -348,6 +359,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Grpc Full
     /// 
     /// ```csharp
@@ -373,6 +385,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Grpc With Tls
     /// 
     /// ```csharp
@@ -396,6 +409,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Health Check Grpc With Tls Full
     /// 
     /// ```csharp

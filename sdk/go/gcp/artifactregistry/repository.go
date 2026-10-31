@@ -50,6 +50,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Multi Region
 //
 // ```go
@@ -78,6 +79,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Docker
 //
 // ```go
@@ -109,6 +111,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Cmek
 //
 // ```go
@@ -154,6 +157,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Virtual
 //
 // ```go
@@ -215,6 +219,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote
 //
 // ```go
@@ -250,6 +255,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Connector
 //
 // ```go
@@ -323,6 +329,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote Apt
 //
 // ```go
@@ -361,6 +368,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote Yum
 //
 // ```go
@@ -399,6 +407,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Cleanup
 //
 // ```go
@@ -483,6 +492,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote Dockerhub Auth
 //
 // ```go
@@ -555,6 +565,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote Docker Custom With Auth
 //
 // ```go
@@ -629,6 +640,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote Maven Custom With Auth
 //
 // ```go
@@ -703,6 +715,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote Npm Custom With Auth
 //
 // ```go
@@ -777,6 +790,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote Python Custom With Auth
 //
 // ```go
@@ -851,6 +865,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote Common Repository With Docker
 //
 // ```go
@@ -895,6 +910,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
 //
 // ```go
@@ -946,6 +962,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Remote Common Repository With Custom Upstream
 //
 // ```go
@@ -1018,6 +1035,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Artifact Registry Repository Vulnerability Scanning
 //
 // ```go

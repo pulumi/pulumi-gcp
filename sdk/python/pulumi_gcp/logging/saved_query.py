@@ -434,6 +434,7 @@ class SavedQuery(pulumi.CustomResource):
             },
             visibility="SHARED")
         ```
+
         ### Logging Saved Query Private
 
         ```python
@@ -451,6 +452,7 @@ class SavedQuery(pulumi.CustomResource):
             },
             visibility="PRIVATE")
         ```
+
         ### Logging Saved Query Summary Fields
 
         ```python
@@ -477,6 +479,7 @@ class SavedQuery(pulumi.CustomResource):
             },
             visibility="SHARED")
         ```
+
         ### Logging Saved Query Sql Basic
 
         ```python
@@ -573,6 +576,7 @@ class SavedQuery(pulumi.CustomResource):
             },
             visibility="SHARED")
         ```
+
         ### Logging Saved Query Private
 
         ```python
@@ -590,6 +594,7 @@ class SavedQuery(pulumi.CustomResource):
             },
             visibility="PRIVATE")
         ```
+
         ### Logging Saved Query Summary Fields
 
         ```python
@@ -616,6 +621,7 @@ class SavedQuery(pulumi.CustomResource):
             },
             visibility="SHARED")
         ```
+
         ### Logging Saved Query Sql Basic
 
         ```python

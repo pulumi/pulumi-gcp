@@ -128,7 +128,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
@@ -136,7 +136,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID(),
@@ -151,7 +151,7 @@ import (
 //			}
 //			_, err = redis.NewCluster(ctx, "cluster-ha-with-labels", &redis.ClusterArgs{
 //				Name:       pulumi.String("ha-cluster"),
-//				ShardCount: pulumi.Int(3),
+//				ShardCount: pulumi.Int(1),
 //				Labels: pulumi.StringMap{
 //					"my_key":    pulumi.String("my_val"),
 //					"other_key": pulumi.String("other_val"),
@@ -161,7 +161,7 @@ import (
 //						Network: consumerNet.ID(),
 //					},
 //				},
-//				Region:                pulumi.String("us-west1"),
+//				Region:                pulumi.String("us-east1"),
 //				ReplicaCount:          pulumi.Int(1),
 //				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -197,6 +197,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Cluster Ha
 //
 // ```go
@@ -223,7 +224,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
@@ -231,7 +232,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID(),
@@ -246,13 +247,13 @@ import (
 //			}
 //			_, err = redis.NewCluster(ctx, "cluster-ha", &redis.ClusterArgs{
 //				Name:       pulumi.String("ha-cluster"),
-//				ShardCount: pulumi.Int(3),
+//				ShardCount: pulumi.Int(1),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
 //						Network: consumerNet.ID(),
 //					},
 //				},
-//				Region:                pulumi.String("us-west1"),
+//				Region:                pulumi.String("us-east1"),
 //				ReplicaCount:          pulumi.Int(1),
 //				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -288,6 +289,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Cluster Ha Single Zone
 //
 // ```go
@@ -314,7 +316,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
@@ -322,7 +324,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID(),
@@ -337,16 +339,17 @@ import (
 //			}
 //			_, err = redis.NewCluster(ctx, "cluster-ha-single-zone", &redis.ClusterArgs{
 //				Name:       pulumi.String("ha-cluster-single-zone"),
-//				ShardCount: pulumi.Int(3),
+//				ShardCount: pulumi.Int(1),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
 //						Network: consumerNet.ID(),
 //					},
 //				},
-//				Region: pulumi.String("us-west1"),
+//				Region:   pulumi.String("us-east1"),
+//				NodeType: pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
 //					Mode: pulumi.String("SINGLE_ZONE"),
-//					Zone: pulumi.String("us-west1-a"),
+//					Zone: pulumi.String("us-east1-b"),
 //				},
 //				MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
 //					WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
@@ -373,6 +376,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Cluster Secondary
 //
 // ```go
@@ -399,7 +403,7 @@ import (
 //			primaryClusterConsumerSubnet, err := compute.NewSubnetwork(ctx, "primary_cluster_consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("mysubnet-primary-cluster"),
 //				IpCidrRange: pulumi.String("10.0.1.0/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
@@ -407,7 +411,7 @@ import (
 //			}
 //			primaryClusterRegionScp, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "primary_cluster_region_scp", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("mypolicy-primary-cluster"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("Primary cluster service connection policy"),
 //				Network:      consumerNet.ID(),
@@ -423,7 +427,7 @@ import (
 //			// Primary cluster
 //			primaryCluster, err := redis.NewCluster(ctx, "primary_cluster", &redis.ClusterArgs{
 //				Name:   pulumi.String("my-primary-cluster"),
-//				Region: pulumi.String("us-west1"),
+//				Region: pulumi.String("us-east1"),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
 //						Network: consumerNet.ID(),
@@ -431,11 +435,11 @@ import (
 //				},
 //				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
-//				ShardCount:            pulumi.Int(3),
+//				ShardCount:            pulumi.Int(1),
 //				RedisConfigs: pulumi.StringMap{
 //					"maxmemory-policy": pulumi.String("volatile-ttl"),
 //				},
-//				NodeType: pulumi.String("REDIS_HIGHMEM_MEDIUM"),
+//				NodeType: pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				PersistenceConfig: &redis.ClusterPersistenceConfigArgs{
 //					Mode: pulumi.String("RDB"),
 //					RdbConfig: &redis.ClusterPersistenceConfigRdbConfigArgs{
@@ -502,11 +506,11 @@ import (
 //				},
 //				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
-//				ShardCount:            pulumi.Int(3),
+//				ShardCount:            pulumi.Int(1),
 //				RedisConfigs: pulumi.StringMap{
 //					"maxmemory-policy": pulumi.String("volatile-ttl"),
 //				},
-//				NodeType: pulumi.String("REDIS_HIGHMEM_MEDIUM"),
+//				NodeType: pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				PersistenceConfig: &redis.ClusterPersistenceConfigArgs{
 //					Mode: pulumi.String("RDB"),
 //					RdbConfig: &redis.ClusterPersistenceConfigRdbConfigArgs{
@@ -517,7 +521,7 @@ import (
 //				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
 //					Mode: pulumi.String("MULTI_ZONE"),
 //				},
-//				ReplicaCount: pulumi.Int(2),
+//				ReplicaCount: pulumi.Int(1),
 //				MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
 //					WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
 //						&redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{
@@ -549,6 +553,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Cluster Rdb
 //
 // ```go
@@ -575,7 +580,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
@@ -583,7 +588,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID(),
@@ -598,13 +603,13 @@ import (
 //			}
 //			_, err = redis.NewCluster(ctx, "cluster-rdb", &redis.ClusterArgs{
 //				Name:       pulumi.String("rdb-cluster"),
-//				ShardCount: pulumi.Int(3),
+//				ShardCount: pulumi.Int(1),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
 //						Network: consumerNet.ID(),
 //					},
 //				},
-//				Region:                pulumi.String("us-west1"),
+//				Region:                pulumi.String("us-east1"),
 //				ReplicaCount:          pulumi.Int(0),
 //				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -647,6 +652,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Cluster Aof
 //
 // ```go
@@ -673,7 +679,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
@@ -681,7 +687,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID(),
@@ -696,13 +702,13 @@ import (
 //			}
 //			_, err = redis.NewCluster(ctx, "cluster-aof", &redis.ClusterArgs{
 //				Name:       pulumi.String("aof-cluster"),
-//				ShardCount: pulumi.Int(3),
+//				ShardCount: pulumi.Int(1),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
 //						Network: consumerNet.ID(),
 //					},
 //				},
-//				Region:                pulumi.String("us-west1"),
+//				Region:                pulumi.String("us-east1"),
 //				ReplicaCount:          pulumi.Int(0),
 //				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -744,6 +750,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Cluster Cmek
 //
 // ```go
@@ -771,7 +778,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
@@ -779,7 +786,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID(),
@@ -794,14 +801,15 @@ import (
 //			}
 //			_, err = redis.NewCluster(ctx, "cluster-cmek", &redis.ClusterArgs{
 //				Name:       pulumi.String("cmek-cluster"),
-//				ShardCount: pulumi.Int(3),
+//				ShardCount: pulumi.Int(1),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
 //						Network: consumerNet.ID(),
 //					},
 //				},
 //				KmsKey:                    pulumi.String("my-key"),
-//				Region:                    pulumi.String("us-west1"),
+//				Region:                    pulumi.String("us-east1"),
+//				NodeType:                  pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				DeletionProtectionEnabled: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
@@ -818,6 +826,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Cluster Flexible Ca
 //
 // ```go
@@ -837,7 +846,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 //				Name:     pulumi.String("ca-pool"),
-//				Location: pulumi.String("us-west1"),
+//				Location: pulumi.String("us-east1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
@@ -846,7 +855,7 @@ import (
 //			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Pool:                   _default.Name,
 //				CertificateAuthorityId: pulumi.String("ca-auth"),
-//				Location:               pulumi.String("us-west1"),
+//				Location:               pulumi.String("us-east1"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -889,7 +898,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("ca-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east1"),
 //				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
@@ -897,7 +906,7 @@ import (
 //			}
 //			defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("ca-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Network:      consumerNet.ID(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
@@ -911,8 +920,9 @@ import (
 //			}
 //			_, err = redis.NewCluster(ctx, "test-cluster", &redis.ClusterArgs{
 //				Name:       pulumi.String("ca-cluster"),
-//				ShardCount: pulumi.Int(3),
-//				Region:     pulumi.String("us-west1"),
+//				ShardCount: pulumi.Int(1),
+//				Region:     pulumi.String("us-east1"),
+//				NodeType:   pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
 //						Network: consumerNet.ID(),
@@ -959,7 +969,7 @@ type Cluster struct {
 	AclPolicy pulumi.StringPtrOutput `pulumi:"aclPolicy"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
-	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 	AuthorizationMode pulumi.StringPtrOutput `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1130,7 +1140,7 @@ type clusterState struct {
 	AclPolicy *string `pulumi:"aclPolicy"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
-	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1264,7 +1274,7 @@ type ClusterState struct {
 	AclPolicy pulumi.StringPtrInput
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
-	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 	AuthorizationMode pulumi.StringPtrInput
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1402,7 +1412,7 @@ type clusterArgs struct {
 	AclPolicy *string `pulumi:"aclPolicy"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
-	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1491,7 +1501,7 @@ type ClusterArgs struct {
 	AclPolicy pulumi.StringPtrInput
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
-	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 	AuthorizationMode pulumi.StringPtrInput
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1668,7 +1678,7 @@ func (o ClusterOutput) AclPolicy() pulumi.StringPtrOutput {
 
 // Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 // Default value is `AUTH_MODE_DISABLED`.
-// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
 func (o ClusterOutput) AuthorizationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AuthorizationMode }).(pulumi.StringPtrOutput)
 }

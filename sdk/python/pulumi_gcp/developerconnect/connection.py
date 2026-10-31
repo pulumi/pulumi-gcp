@@ -873,6 +873,7 @@ class Connection(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[devconnect_secret]))
         pulumi.export("nextSteps", my_connection.installation_states)
         ```
+
         ### Developer Connect Connection Existing Credentials
 
         ```python
@@ -890,6 +891,7 @@ class Connection(pulumi.CustomResource):
             })
         pulumi.export("nextSteps", my_connection.installation_states)
         ```
+
         ### Developer Connect Connection Existing Installation
 
         ```python
@@ -924,6 +926,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Github
 
         ```python
@@ -940,6 +943,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Github Doc
 
         ```python
@@ -973,6 +977,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Github Enterprise
 
         ```python
@@ -990,6 +995,7 @@ class Connection(pulumi.CustomResource):
                 "app_installation_id": "837537",
             })
         ```
+
         ### Developer Connect Connection Github Enterprise Doc
 
         ```python
@@ -1038,6 +1044,7 @@ class Connection(pulumi.CustomResource):
                     policy_whs,
                 ]))
         ```
+
         ### Developer Connect Connection Gitlab
 
         ```python
@@ -1057,6 +1064,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Gitlab Enterprise
 
         ```python
@@ -1077,6 +1085,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Bbc
 
         ```python
@@ -1097,6 +1106,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Bbdc
 
         ```python
@@ -1117,6 +1127,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Http Conn Basic
 
         ```python
@@ -1134,6 +1145,7 @@ class Connection(pulumi.CustomResource):
                 "host_uri": "https://devconnectprober.atlassian.net",
             })
         ```
+
         ### Developer Connect Connection Http Conn Bearer
 
         ```python
@@ -1250,6 +1262,7 @@ class Connection(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[devconnect_secret]))
         pulumi.export("nextSteps", my_connection.installation_states)
         ```
+
         ### Developer Connect Connection Existing Credentials
 
         ```python
@@ -1267,6 +1280,7 @@ class Connection(pulumi.CustomResource):
             })
         pulumi.export("nextSteps", my_connection.installation_states)
         ```
+
         ### Developer Connect Connection Existing Installation
 
         ```python
@@ -1301,6 +1315,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Github
 
         ```python
@@ -1317,6 +1332,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Github Doc
 
         ```python
@@ -1350,6 +1366,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Github Enterprise
 
         ```python
@@ -1367,6 +1384,7 @@ class Connection(pulumi.CustomResource):
                 "app_installation_id": "837537",
             })
         ```
+
         ### Developer Connect Connection Github Enterprise Doc
 
         ```python
@@ -1415,6 +1433,7 @@ class Connection(pulumi.CustomResource):
                     policy_whs,
                 ]))
         ```
+
         ### Developer Connect Connection Gitlab
 
         ```python
@@ -1434,6 +1453,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Gitlab Enterprise
 
         ```python
@@ -1454,6 +1474,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Bbc
 
         ```python
@@ -1474,6 +1495,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Bbdc
 
         ```python
@@ -1494,6 +1516,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Developer Connect Connection Http Conn Basic
 
         ```python
@@ -1511,6 +1534,7 @@ class Connection(pulumi.CustomResource):
                 "host_uri": "https://devconnectprober.atlassian.net",
             })
         ```
+
         ### Developer Connect Connection Http Conn Bearer
 
         ```python

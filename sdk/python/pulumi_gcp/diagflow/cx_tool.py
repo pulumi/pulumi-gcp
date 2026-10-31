@@ -491,6 +491,7 @@ class CxTool(pulumi.CustomResource):
         \"\"\",
             })
         ```
+
         ### Dialogflowcx Tool Data Store
 
         ```python
@@ -530,6 +531,7 @@ class CxTool(pulumi.CustomResource):
                     agent,
                 ]))
         ```
+
         ### Dialogflowcx Tool Function
 
         ```python
@@ -572,6 +574,7 @@ class CxTool(pulumi.CustomResource):
         \"\"\",
             })
         ```
+
         ### Dialogflowcx Tool Connector
 
         ```python
@@ -793,6 +796,7 @@ class CxTool(pulumi.CustomResource):
         \"\"\",
             })
         ```
+
         ### Dialogflowcx Tool Data Store
 
         ```python
@@ -832,6 +836,7 @@ class CxTool(pulumi.CustomResource):
                     agent,
                 ]))
         ```
+
         ### Dialogflowcx Tool Function
 
         ```python
@@ -874,6 +879,7 @@ class CxTool(pulumi.CustomResource):
         \"\"\",
             })
         ```
+
         ### Dialogflowcx Tool Connector
 
         ```python

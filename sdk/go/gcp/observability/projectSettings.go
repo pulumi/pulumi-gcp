@@ -34,8 +34,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_59865"),
-//				Name:           pulumi.String("tf-test_34995"),
+//				ProjectId:      pulumi.String("tf-test_44263"),
+//				Name:           pulumi.String("tf-test_45598"),
 //				OrgId:          pulumi.String("123456789"),
 //				DeletionPolicy: pulumi.String("DELETE"),
 //			})

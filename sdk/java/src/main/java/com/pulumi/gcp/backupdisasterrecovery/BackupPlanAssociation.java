@@ -135,6 +135,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Backup Dr Bpa Filestore
  * 
  * <pre>
@@ -243,6 +244,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation")
 public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
+    /**
+     * (Beta)
+     * The resource name of the auto protection policy binding that manages this backup plan association, if any.
+     * 
+     */
+    @Export(name="autoProtectionPolicyBinding", refs={String.class}, tree="[0]")
+    private Output<String> autoProtectionPolicyBinding;
+
+    /**
+     * @return (Beta)
+     * The resource name of the auto protection policy binding that manages this backup plan association, if any.
+     * 
+     */
+    public Output<String> autoProtectionPolicyBinding() {
+        return this.autoProtectionPolicyBinding;
+    }
     /**
      * The BP with which resource needs to be created
      * Note:

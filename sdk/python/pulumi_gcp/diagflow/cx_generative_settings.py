@@ -328,7 +328,7 @@ class CxGenerativeSettings(pulumi.CustomResource):
             },
             language_code="en",
             llm_model_settings={
-                "model": "gemini-2.0-flash-001",
+                "model": "gemini-2.5-flash",
                 "prompt_text": "example prompt text",
             })
         ```
@@ -418,7 +418,7 @@ class CxGenerativeSettings(pulumi.CustomResource):
             },
             language_code="en",
             llm_model_settings={
-                "model": "gemini-2.0-flash-001",
+                "model": "gemini-2.5-flash",
                 "prompt_text": "example prompt text",
             })
         ```

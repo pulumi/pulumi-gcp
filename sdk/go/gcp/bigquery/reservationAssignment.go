@@ -88,7 +88,7 @@ type ReservationAssignment struct {
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
-	JobType pulumi.StringOutput `pulumi:"jobType"`
+	JobType pulumi.StringPtrOutput `pulumi:"jobType"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Output only. The resource name of the assignment.
@@ -104,6 +104,12 @@ type ReservationAssignment struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The reservation for the resource
 	Reservation pulumi.StringOutput `pulumi:"reservation"`
+	// The scheduling policy to use for jobs and queries of this assignee when
+	// running under the associated reservation. The scheduling policy controls
+	// how the reservation's resources are distributed. This overrides the default
+	// scheduling policy specified on the reservation.
+	// Structure is documented below.
+	SchedulingPolicy ReservationAssignmentSchedulingPolicyPtrOutput `pulumi:"schedulingPolicy"`
 	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
 	// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State pulumi.StringOutput `pulumi:"state"`
@@ -118,9 +124,6 @@ func NewReservationAssignment(ctx *pulumi.Context,
 
 	if args.Assignee == nil {
 		return nil, errors.New("invalid value for required argument 'Assignee'")
-	}
-	if args.JobType == nil {
-		return nil, errors.New("invalid value for required argument 'JobType'")
 	}
 	if args.Reservation == nil {
 		return nil, errors.New("invalid value for required argument 'Reservation'")
@@ -174,6 +177,12 @@ type reservationAssignmentState struct {
 	Project *string `pulumi:"project"`
 	// The reservation for the resource
 	Reservation *string `pulumi:"reservation"`
+	// The scheduling policy to use for jobs and queries of this assignee when
+	// running under the associated reservation. The scheduling policy controls
+	// how the reservation's resources are distributed. This overrides the default
+	// scheduling policy specified on the reservation.
+	// Structure is documented below.
+	SchedulingPolicy *ReservationAssignmentSchedulingPolicy `pulumi:"schedulingPolicy"`
 	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
 	// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State *string `pulumi:"state"`
@@ -206,6 +215,12 @@ type ReservationAssignmentState struct {
 	Project pulumi.StringPtrInput
 	// The reservation for the resource
 	Reservation pulumi.StringPtrInput
+	// The scheduling policy to use for jobs and queries of this assignee when
+	// running under the associated reservation. The scheduling policy controls
+	// how the reservation's resources are distributed. This overrides the default
+	// scheduling policy specified on the reservation.
+	// Structure is documented below.
+	SchedulingPolicy ReservationAssignmentSchedulingPolicyPtrInput
 	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
 	// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State pulumi.StringPtrInput
@@ -226,7 +241,7 @@ type reservationAssignmentArgs struct {
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
-	JobType string `pulumi:"jobType"`
+	JobType *string `pulumi:"jobType"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
@@ -240,6 +255,12 @@ type reservationAssignmentArgs struct {
 	Project *string `pulumi:"project"`
 	// The reservation for the resource
 	Reservation string `pulumi:"reservation"`
+	// The scheduling policy to use for jobs and queries of this assignee when
+	// running under the associated reservation. The scheduling policy controls
+	// how the reservation's resources are distributed. This overrides the default
+	// scheduling policy specified on the reservation.
+	// Structure is documented below.
+	SchedulingPolicy *ReservationAssignmentSchedulingPolicy `pulumi:"schedulingPolicy"`
 }
 
 // The set of arguments for constructing a ReservationAssignment resource.
@@ -254,7 +275,7 @@ type ReservationAssignmentArgs struct {
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
-	JobType pulumi.StringInput
+	JobType pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
@@ -268,6 +289,12 @@ type ReservationAssignmentArgs struct {
 	Project pulumi.StringPtrInput
 	// The reservation for the resource
 	Reservation pulumi.StringInput
+	// The scheduling policy to use for jobs and queries of this assignee when
+	// running under the associated reservation. The scheduling policy controls
+	// how the reservation's resources are distributed. This overrides the default
+	// scheduling policy specified on the reservation.
+	// Structure is documented below.
+	SchedulingPolicy ReservationAssignmentSchedulingPolicyPtrInput
 }
 
 func (ReservationAssignmentArgs) ElementType() reflect.Type {
@@ -373,8 +400,8 @@ func (o ReservationAssignmentOutput) DeletionPolicy() pulumi.StringOutput {
 }
 
 // Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
-func (o ReservationAssignmentOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.JobType }).(pulumi.StringOutput)
+func (o ReservationAssignmentOutput) JobType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringPtrOutput { return v.JobType }).(pulumi.StringPtrOutput)
 }
 
 // The location for the resource
@@ -405,6 +432,17 @@ func (o ReservationAssignmentOutput) Project() pulumi.StringOutput {
 // The reservation for the resource
 func (o ReservationAssignmentOutput) Reservation() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.Reservation }).(pulumi.StringOutput)
+}
+
+// The scheduling policy to use for jobs and queries of this assignee when
+// running under the associated reservation. The scheduling policy controls
+// how the reservation's resources are distributed. This overrides the default
+// scheduling policy specified on the reservation.
+// Structure is documented below.
+func (o ReservationAssignmentOutput) SchedulingPolicy() ReservationAssignmentSchedulingPolicyPtrOutput {
+	return o.ApplyT(func(v *ReservationAssignment) ReservationAssignmentSchedulingPolicyPtrOutput {
+		return v.SchedulingPolicy
+	}).(ReservationAssignmentSchedulingPolicyPtrOutput)
 }
 
 // Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.

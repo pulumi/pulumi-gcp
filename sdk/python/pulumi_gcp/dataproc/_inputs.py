@@ -111,6 +111,8 @@ __all__ = [
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict',
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs',
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
+    'ClusterClusterConfigMasterFlexibleConfigArgs',
+    'ClusterClusterConfigMasterFlexibleConfigArgsDict',
     'ClusterClusterConfigMetastoreConfigArgs',
     'ClusterClusterConfigMetastoreConfigArgsDict',
     'ClusterClusterConfigPreemptibleWorkerConfigArgs',
@@ -131,6 +133,8 @@ __all__ = [
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict',
+    'ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs',
+    'ClusterClusterConfigSecondaryWorkerFlexibleConfigArgsDict',
     'ClusterClusterConfigSecurityConfigArgs',
     'ClusterClusterConfigSecurityConfigArgsDict',
     'ClusterClusterConfigSecurityConfigIdentityConfigArgs',
@@ -157,6 +161,8 @@ __all__ = [
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict',
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs',
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
+    'ClusterClusterConfigWorkerFlexibleConfigArgs',
+    'ClusterClusterConfigWorkerFlexibleConfigArgsDict',
     'ClusterIAMBindingConditionArgs',
     'ClusterIAMBindingConditionArgsDict',
     'ClusterIAMMemberConditionArgs',
@@ -2503,6 +2509,13 @@ class ClusterClusterConfigArgsDict(TypedDict):
     The Google Compute Engine config settings for the master instances
     in a cluster. Structure defined below.
     """
+    master_flexible_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMasterFlexibleConfigArgsDict']]]
+    """
+    The configuration for the master flexible instance group
+    in High Obtainability (HO) mode. Mutually exclusive with `master_config` and `gce_cluster_config.zone`.
+    Required whenever `worker_flexible_config` or `secondary_worker_flexible_config` is specified.
+    Structure defined below.
+    """
     metastore_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMetastoreConfigArgsDict']]]
     """
     The config setting for metastore service with the cluster.
@@ -2516,6 +2529,13 @@ class ClusterClusterConfigArgsDict(TypedDict):
     * **NOTE** : `preemptible_worker_config` is
       an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
       such for legacy/compatibility reasons.
+    """
+    secondary_worker_flexible_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigSecondaryWorkerFlexibleConfigArgsDict']]]
+    """
+    The configuration for the secondary worker flexible
+    instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptible_worker_config` and
+    `gce_cluster_config.zone`. Requires `master_flexible_config`.
+    Structure defined below.
     """
     security_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigSecurityConfigArgsDict']]]
     """
@@ -2547,6 +2567,12 @@ class ClusterClusterConfigArgsDict(TypedDict):
     The Google Compute Engine config settings for the worker instances
     in a cluster. Structure defined below.
     """
+    worker_flexible_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigWorkerFlexibleConfigArgsDict']]]
+    """
+    The configuration for the worker flexible instance group
+    in High Obtainability (HO) mode. Mutually exclusive with `worker_config` and `gce_cluster_config.zone`.
+    Requires `master_flexible_config`. Structure defined below.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigArgs:
@@ -2564,13 +2590,16 @@ class ClusterClusterConfigArgs:
                  initialization_actions: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgs']]]] = None,
                  lifecycle_config: pulumi.Input[Optional['ClusterClusterConfigLifecycleConfigArgs']] = None,
                  master_config: pulumi.Input[Optional['ClusterClusterConfigMasterConfigArgs']] = None,
+                 master_flexible_config: pulumi.Input[Optional['ClusterClusterConfigMasterFlexibleConfigArgs']] = None,
                  metastore_config: pulumi.Input[Optional['ClusterClusterConfigMetastoreConfigArgs']] = None,
                  preemptible_worker_config: pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigArgs']] = None,
+                 secondary_worker_flexible_config: pulumi.Input[Optional['ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs']] = None,
                  security_config: pulumi.Input[Optional['ClusterClusterConfigSecurityConfigArgs']] = None,
                  software_config: pulumi.Input[Optional['ClusterClusterConfigSoftwareConfigArgs']] = None,
                  staging_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  temp_bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 worker_config: pulumi.Input[Optional['ClusterClusterConfigWorkerConfigArgs']] = None):
+                 worker_config: pulumi.Input[Optional['ClusterClusterConfigWorkerConfigArgs']] = None,
+                 worker_flexible_config: pulumi.Input[Optional['ClusterClusterConfigWorkerFlexibleConfigArgs']] = None):
         """
         :param pulumi.Input['ClusterClusterConfigAutoscalingConfigArgs'] autoscaling_config: The autoscaling policy config associated with the cluster.
                Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
@@ -2598,6 +2627,10 @@ class ClusterClusterConfigArgs:
                Structure defined below.
         :param pulumi.Input['ClusterClusterConfigMasterConfigArgs'] master_config: The Google Compute Engine config settings for the master instances
                in a cluster. Structure defined below.
+        :param pulumi.Input['ClusterClusterConfigMasterFlexibleConfigArgs'] master_flexible_config: The configuration for the master flexible instance group
+               in High Obtainability (HO) mode. Mutually exclusive with `master_config` and `gce_cluster_config.zone`.
+               Required whenever `worker_flexible_config` or `secondary_worker_flexible_config` is specified.
+               Structure defined below.
         :param pulumi.Input['ClusterClusterConfigMetastoreConfigArgs'] metastore_config: The config setting for metastore service with the cluster.
                Structure defined below.
                ***
@@ -2606,6 +2639,10 @@ class ClusterClusterConfigArgs:
                * **NOTE** : `preemptible_worker_config` is
                  an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
                  such for legacy/compatibility reasons.
+        :param pulumi.Input['ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs'] secondary_worker_flexible_config: The configuration for the secondary worker flexible
+               instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptible_worker_config` and
+               `gce_cluster_config.zone`. Requires `master_flexible_config`.
+               Structure defined below.
         :param pulumi.Input['ClusterClusterConfigSecurityConfigArgs'] security_config: Security related configuration. Structure defined below.
         :param pulumi.Input['ClusterClusterConfigSoftwareConfigArgs'] software_config: The config settings for software inside the cluster.
                Structure defined below.
@@ -2621,6 +2658,9 @@ class ClusterClusterConfigArgs:
                Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
         :param pulumi.Input['ClusterClusterConfigWorkerConfigArgs'] worker_config: The Google Compute Engine config settings for the worker instances
                in a cluster. Structure defined below.
+        :param pulumi.Input['ClusterClusterConfigWorkerFlexibleConfigArgs'] worker_flexible_config: The configuration for the worker flexible instance group
+               in High Obtainability (HO) mode. Mutually exclusive with `worker_config` and `gce_cluster_config.zone`.
+               Requires `master_flexible_config`. Structure defined below.
         """
         if autoscaling_config is not None:
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
@@ -2648,10 +2688,14 @@ class ClusterClusterConfigArgs:
             pulumi.set(__self__, "lifecycle_config", lifecycle_config)
         if master_config is not None:
             pulumi.set(__self__, "master_config", master_config)
+        if master_flexible_config is not None:
+            pulumi.set(__self__, "master_flexible_config", master_flexible_config)
         if metastore_config is not None:
             pulumi.set(__self__, "metastore_config", metastore_config)
         if preemptible_worker_config is not None:
             pulumi.set(__self__, "preemptible_worker_config", preemptible_worker_config)
+        if secondary_worker_flexible_config is not None:
+            pulumi.set(__self__, "secondary_worker_flexible_config", secondary_worker_flexible_config)
         if security_config is not None:
             pulumi.set(__self__, "security_config", security_config)
         if software_config is not None:
@@ -2662,6 +2706,8 @@ class ClusterClusterConfigArgs:
             pulumi.set(__self__, "temp_bucket", temp_bucket)
         if worker_config is not None:
             pulumi.set(__self__, "worker_config", worker_config)
+        if worker_flexible_config is not None:
+            pulumi.set(__self__, "worker_flexible_config", worker_flexible_config)
 
     @_builtins.property
     @pulumi.getter(name="autoscalingConfig")
@@ -2833,6 +2879,21 @@ class ClusterClusterConfigArgs:
         pulumi.set(self, "master_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="masterFlexibleConfig")
+    def master_flexible_config(self) -> pulumi.Input[Optional['ClusterClusterConfigMasterFlexibleConfigArgs']]:
+        """
+        The configuration for the master flexible instance group
+        in High Obtainability (HO) mode. Mutually exclusive with `master_config` and `gce_cluster_config.zone`.
+        Required whenever `worker_flexible_config` or `secondary_worker_flexible_config` is specified.
+        Structure defined below.
+        """
+        return pulumi.get(self, "master_flexible_config")
+
+    @master_flexible_config.setter
+    def master_flexible_config(self, value: pulumi.Input[Optional['ClusterClusterConfigMasterFlexibleConfigArgs']]):
+        pulumi.set(self, "master_flexible_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="metastoreConfig")
     def metastore_config(self) -> pulumi.Input[Optional['ClusterClusterConfigMetastoreConfigArgs']]:
         """
@@ -2861,6 +2922,21 @@ class ClusterClusterConfigArgs:
     @preemptible_worker_config.setter
     def preemptible_worker_config(self, value: pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigArgs']]):
         pulumi.set(self, "preemptible_worker_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secondaryWorkerFlexibleConfig")
+    def secondary_worker_flexible_config(self) -> pulumi.Input[Optional['ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs']]:
+        """
+        The configuration for the secondary worker flexible
+        instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptible_worker_config` and
+        `gce_cluster_config.zone`. Requires `master_flexible_config`.
+        Structure defined below.
+        """
+        return pulumi.get(self, "secondary_worker_flexible_config")
+
+    @secondary_worker_flexible_config.setter
+    def secondary_worker_flexible_config(self, value: pulumi.Input[Optional['ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs']]):
+        pulumi.set(self, "secondary_worker_flexible_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securityConfig")
@@ -2931,6 +3007,20 @@ class ClusterClusterConfigArgs:
     @worker_config.setter
     def worker_config(self, value: pulumi.Input[Optional['ClusterClusterConfigWorkerConfigArgs']]):
         pulumi.set(self, "worker_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerFlexibleConfig")
+    def worker_flexible_config(self) -> pulumi.Input[Optional['ClusterClusterConfigWorkerFlexibleConfigArgs']]:
+        """
+        The configuration for the worker flexible instance group
+        in High Obtainability (HO) mode. Mutually exclusive with `worker_config` and `gce_cluster_config.zone`.
+        Requires `master_flexible_config`. Structure defined below.
+        """
+        return pulumi.get(self, "worker_flexible_config")
+
+    @worker_flexible_config.setter
+    def worker_flexible_config(self, value: pulumi.Input[Optional['ClusterClusterConfigWorkerFlexibleConfigArgs']]):
+        pulumi.set(self, "worker_flexible_config", value)
 
 
 class ClusterClusterConfigAutoscalingConfigArgsDict(TypedDict):
@@ -5368,6 +5458,109 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
         pulumi.set(self, "vm_count", value)
 
 
+class ClusterClusterConfigMasterFlexibleConfigArgsDict(TypedDict):
+    core_count: pulumi.Input[_builtins.int]
+    """
+    The number of vCPUs per instance. Must be a power of 2
+    (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+    """
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The boot disk size in GB.
+    Changing this forces a new resource to be created.
+    ***
+    """
+    hardware_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Controls the hardware class for the flexible instance group.
+    Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+    Changing this forces a new resource to be created.
+    """
+    num_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Must be `1`. Defaults to `1`. Changing this forces a new resource to be created.
+    """
+
+@pulumi.input_type
+class ClusterClusterConfigMasterFlexibleConfigArgs:
+    def __init__(__self__, *,
+                 core_count: pulumi.Input[_builtins.int],
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 hardware_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_instances: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] core_count: The number of vCPUs per instance. Must be a power of 2
+               (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: The boot disk size in GB.
+               Changing this forces a new resource to be created.
+               ***
+        :param pulumi.Input[_builtins.str] hardware_class: Controls the hardware class for the flexible instance group.
+               Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.int] num_instances: Must be `1`. Defaults to `1`. Changing this forces a new resource to be created.
+        """
+        pulumi.set(__self__, "core_count", core_count)
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if hardware_class is not None:
+            pulumi.set(__self__, "hardware_class", hardware_class)
+        if num_instances is not None:
+            pulumi.set(__self__, "num_instances", num_instances)
+
+    @_builtins.property
+    @pulumi.getter(name="coreCount")
+    def core_count(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of vCPUs per instance. Must be a power of 2
+        (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "core_count")
+
+    @core_count.setter
+    def core_count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "core_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The boot disk size in GB.
+        Changing this forces a new resource to be created.
+        ***
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hardwareClass")
+    def hardware_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls the hardware class for the flexible instance group.
+        Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "hardware_class")
+
+    @hardware_class.setter
+    def hardware_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hardware_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numInstances")
+    def num_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Must be `1`. Defaults to `1`. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "num_instances")
+
+    @num_instances.setter
+    def num_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_instances", value)
+
+
 class ClusterClusterConfigMetastoreConfigArgsDict(TypedDict):
     dataproc_metastore_service: pulumi.Input[_builtins.str]
     """
@@ -6311,6 +6504,112 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvis
     @standard_capacity_percent_above_base.setter
     def standard_capacity_percent_above_base(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "standard_capacity_percent_above_base", value)
+
+
+class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgsDict(TypedDict):
+    core_count: pulumi.Input[_builtins.int]
+    """
+    The number of vCPUs per instance. Must be a power of 2
+    (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+    """
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The boot disk size in GB.
+    Changing this forces a new resource to be created.
+    ***
+    """
+    hardware_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Controls the hardware class for the flexible instance group.
+    Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+    Changing this forces a new resource to be created.
+    """
+    num_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Specifies the number of secondary worker instances to create.
+    Defaults to `0`; can be scaled down to `0`; updatable in place.
+    """
+
+@pulumi.input_type
+class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs:
+    def __init__(__self__, *,
+                 core_count: pulumi.Input[_builtins.int],
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 hardware_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_instances: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] core_count: The number of vCPUs per instance. Must be a power of 2
+               (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: The boot disk size in GB.
+               Changing this forces a new resource to be created.
+               ***
+        :param pulumi.Input[_builtins.str] hardware_class: Controls the hardware class for the flexible instance group.
+               Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.int] num_instances: Specifies the number of secondary worker instances to create.
+               Defaults to `0`; can be scaled down to `0`; updatable in place.
+        """
+        pulumi.set(__self__, "core_count", core_count)
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if hardware_class is not None:
+            pulumi.set(__self__, "hardware_class", hardware_class)
+        if num_instances is not None:
+            pulumi.set(__self__, "num_instances", num_instances)
+
+    @_builtins.property
+    @pulumi.getter(name="coreCount")
+    def core_count(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of vCPUs per instance. Must be a power of 2
+        (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "core_count")
+
+    @core_count.setter
+    def core_count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "core_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The boot disk size in GB.
+        Changing this forces a new resource to be created.
+        ***
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hardwareClass")
+    def hardware_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls the hardware class for the flexible instance group.
+        Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "hardware_class")
+
+    @hardware_class.setter
+    def hardware_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hardware_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numInstances")
+    def num_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Specifies the number of secondary worker instances to create.
+        Defaults to `0`; can be scaled down to `0`; updatable in place.
+        """
+        return pulumi.get(self, "num_instances")
+
+    @num_instances.setter
+    def num_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_instances", value)
 
 
 class ClusterClusterConfigSecurityConfigArgsDict(TypedDict):
@@ -7876,6 +8175,111 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
     @vm_count.setter
     def vm_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_count", value)
+
+
+class ClusterClusterConfigWorkerFlexibleConfigArgsDict(TypedDict):
+    core_count: pulumi.Input[_builtins.int]
+    """
+    The number of vCPUs per instance. Must be a power of 2
+    (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+    """
+    num_instances: pulumi.Input[_builtins.int]
+    """
+    Specifies the number of worker instances to create.
+    Represents the desired capacity of the group and is updatable in place.
+    """
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The boot disk size in GB.
+    Changing this forces a new resource to be created.
+    ***
+    """
+    hardware_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Controls the hardware class for the flexible instance group.
+    Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+    Changing this forces a new resource to be created.
+    """
+
+@pulumi.input_type
+class ClusterClusterConfigWorkerFlexibleConfigArgs:
+    def __init__(__self__, *,
+                 core_count: pulumi.Input[_builtins.int],
+                 num_instances: pulumi.Input[_builtins.int],
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 hardware_class: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] core_count: The number of vCPUs per instance. Must be a power of 2
+               (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.int] num_instances: Specifies the number of worker instances to create.
+               Represents the desired capacity of the group and is updatable in place.
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: The boot disk size in GB.
+               Changing this forces a new resource to be created.
+               ***
+        :param pulumi.Input[_builtins.str] hardware_class: Controls the hardware class for the flexible instance group.
+               Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+               Changing this forces a new resource to be created.
+        """
+        pulumi.set(__self__, "core_count", core_count)
+        pulumi.set(__self__, "num_instances", num_instances)
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if hardware_class is not None:
+            pulumi.set(__self__, "hardware_class", hardware_class)
+
+    @_builtins.property
+    @pulumi.getter(name="coreCount")
+    def core_count(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of vCPUs per instance. Must be a power of 2
+        (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "core_count")
+
+    @core_count.setter
+    def core_count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "core_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numInstances")
+    def num_instances(self) -> pulumi.Input[_builtins.int]:
+        """
+        Specifies the number of worker instances to create.
+        Represents the desired capacity of the group and is updatable in place.
+        """
+        return pulumi.get(self, "num_instances")
+
+    @num_instances.setter
+    def num_instances(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "num_instances", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The boot disk size in GB.
+        Changing this forces a new resource to be created.
+        ***
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hardwareClass")
+    def hardware_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls the hardware class for the flexible instance group.
+        Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "hardware_class")
+
+    @hardware_class.setter
+    def hardware_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hardware_class", value)
 
 
 class ClusterIAMBindingConditionArgsDict(TypedDict):

@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.AgenticApplications
     /// <summary>
     /// Represents a persona configuration for an analyst agent in Agentic Applications.
     /// 
+    /// &gt; **Note:** The `Project` field must be set to the numeric project number (not the project ID).
+    /// 
     /// ## Example Usage
     /// 
     /// ### Analyst Agent Persona Basic
@@ -26,6 +28,7 @@ namespace Pulumi.Gcp.AgenticApplications
     /// {
     ///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
     ///     {
+    ///         Project = "1111111111111",
     ///         Location = "us",
     ///         AnalystAgentPersonaId = "basic",
     ///         DisplayName = "Test Analyst Persona",
@@ -77,6 +80,7 @@ namespace Pulumi.Gcp.AgenticApplications
     /// 
     /// });
     /// ```
+    /// 
     /// ### Analyst Agent Persona Full
     /// 
     /// ```csharp
@@ -117,6 +121,7 @@ namespace Pulumi.Gcp.AgenticApplications
     /// 
     ///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
     ///     {
+    ///         Project = "1111111111111",
     ///         Location = "us",
     ///         AnalystAgentPersonaId = "full",
     ///         DisplayName = "Full Test Analyst Persona",
@@ -292,6 +297,7 @@ namespace Pulumi.Gcp.AgenticApplications
     ///                 ApiKeyName = "x-api-key",
     ///                 ApiKeyHeader = "x-api-key-header",
     ///                 ClientId = "sample-client-id",
+    ///                 ClientSecret = "sample-client-secret",
     ///                 OauthTokenUrl = "https://example.com/oauth/token",
     ///             },
     ///         },
@@ -393,6 +399,7 @@ namespace Pulumi.Gcp.AgenticApplications
     /// 
     /// });
     /// ```
+    /// 
     /// ### Analyst Agent Persona Methodology Export Options
     /// 
     /// ```csharp
@@ -405,6 +412,7 @@ namespace Pulumi.Gcp.AgenticApplications
     /// {
     ///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
     ///     {
+    ///         Project = "1111111111111",
     ///         Location = "us",
     ///         AnalystAgentPersonaId = "methodology",
     ///         DisplayName = "Test Analyst Persona Methodology Export",
@@ -418,6 +426,39 @@ namespace Pulumi.Gcp.AgenticApplications
     ///                 AppendMethodology = true,
     ///                 ExportFormat = "MARKDOWN",
     ///                 ExportMethodologyArtifact = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Analyst Agent Persona Audit Trail Export Options
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
+    ///     {
+    ///         Project = "1111111111111",
+    ///         Location = "us",
+    ///         AnalystAgentPersonaId = "audit_trail",
+    ///         DisplayName = "Test Analyst Persona Audit Trail Export",
+    ///         DisplayDescription = "Sample analyst agent persona description",
+    ///         ModelDescription = "Sample model description",
+    ///         Role = "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+    ///         ArtifactsConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigArgs
+    ///         {
+    ///             AuditTrailExportOptions = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs
+    ///             {
+    ///                 AppendAuditTrail = true,
+    ///                 ExportFormat = "MARKDOWN",
+    ///                 ExportAuditTrailArtifact = true,
     ///             },
     ///         },
     ///     });
@@ -475,6 +516,11 @@ namespace Pulumi.Gcp.AgenticApplications
     /// 
     /// &lt;a name="NestedArtifactsConfig"&gt;&lt;/a&gt;The `ArtifactsConfig` block supports:
     /// 
+    /// * `AuditTrailExportOptions` -
+    /// (Optional)
+    /// Options for audit trail export.
+    /// Structure is documented below.
+    /// 
     /// * `DocumentGenerationOptions` -
     /// (Optional)
     /// Options for document generation.
@@ -494,6 +540,24 @@ namespace Pulumi.Gcp.AgenticApplications
     /// (Optional)
     /// Options for visualizations.
     /// Structure is documented below.
+    /// 
+    /// &lt;a name="NestedArtifactsConfigAuditTrailExportOptions"&gt;&lt;/a&gt;The `AuditTrailExportOptions` block supports:
+    /// 
+    /// * `AppendAuditTrail` -
+    /// (Optional)
+    /// If true, append the audit trail to the final response.
+    /// 
+    /// * `ExportAuditTrailArtifact` -
+    /// (Optional)
+    /// If true, export the audit trail as a separate artifact.
+    /// 
+    /// * `ExportFormat` -
+    /// (Optional)
+    /// Format for audit trail export.
+    /// Possible values:
+    /// MARKDOWN
+    /// HTML
+    /// PDF
     /// 
     /// &lt;a name="NestedArtifactsConfigDocumentGenerationOptions"&gt;&lt;/a&gt;The `DocumentGenerationOptions` block supports:
     /// 

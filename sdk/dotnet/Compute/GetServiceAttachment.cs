@@ -180,6 +180,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Region;
         public readonly string SelfLink;
         public readonly bool SendPropagatedConnectionLimitIfZero;
+        public readonly int ServiceAttachmentId;
         public readonly bool ShowNatIps;
         public readonly string TargetService;
         public readonly ImmutableArray<Outputs.GetServiceAttachmentTunnelingConfigResult> TunnelingConfigs;
@@ -226,6 +227,8 @@ namespace Pulumi.Gcp.Compute
 
             bool sendPropagatedConnectionLimitIfZero,
 
+            int serviceAttachmentId,
+
             bool showNatIps,
 
             string targetService,
@@ -252,6 +255,7 @@ namespace Pulumi.Gcp.Compute
             Region = region;
             SelfLink = selfLink;
             SendPropagatedConnectionLimitIfZero = sendPropagatedConnectionLimitIfZero;
+            ServiceAttachmentId = serviceAttachmentId;
             ShowNatIps = showNatIps;
             TargetService = targetService;
             TunnelingConfigs = tunnelingConfigs;

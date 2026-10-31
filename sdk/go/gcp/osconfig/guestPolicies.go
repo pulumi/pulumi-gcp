@@ -97,6 +97,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Os Config Guest Policies Packages
 //
 // ```go
@@ -176,6 +177,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Os Config Guest Policies Recipes
 //
 // ```go

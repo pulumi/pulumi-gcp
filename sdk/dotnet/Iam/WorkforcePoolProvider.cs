@@ -60,6 +60,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Saml Full
     /// 
     /// ```csharp
@@ -115,6 +116,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Oidc Basic
     /// 
     /// ```csharp
@@ -162,6 +164,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Oidc Full
     /// 
     /// ```csharp
@@ -235,6 +238,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Basic
     /// 
     /// ```csharp
@@ -295,6 +299,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Full
     /// 
     /// ```csharp
@@ -359,6 +364,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Basic
     /// 
     /// ```csharp
@@ -419,6 +425,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Full
     /// 
     /// ```csharp
@@ -483,6 +490,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Basic
     /// 
     /// ```csharp
@@ -543,6 +551,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Full
     /// 
     /// ```csharp
@@ -607,6 +616,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Oidc Detailed Audit Logging
     /// 
     /// ```csharp

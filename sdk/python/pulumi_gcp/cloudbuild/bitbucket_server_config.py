@@ -513,6 +513,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
             username="test",
             api_key="<api-key>")
         ```
+
         ### Cloudbuild Bitbucket Server Config Repositories
 
         ```python
@@ -541,6 +542,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Cloudbuild Bitbucket Server Config Peered Network
 
         ```python
@@ -664,6 +666,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
             username="test",
             api_key="<api-key>")
         ```
+
         ### Cloudbuild Bitbucket Server Config Repositories
 
         ```python
@@ -692,6 +695,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Cloudbuild Bitbucket Server Config Peered Network
 
         ```python

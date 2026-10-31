@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Organization Snapshot Recycle Bin Policy Multiple
     /// 
     /// ```csharp

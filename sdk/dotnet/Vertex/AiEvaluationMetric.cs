@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Evaluation Metric Full
     /// 
     /// ```csharp

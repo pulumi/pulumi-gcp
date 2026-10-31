@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Disk Basic Wo
     /// 
     /// ```csharp
@@ -92,6 +93,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Disk Rsa Encrypted Key Wo
     /// 
     /// ```csharp
@@ -117,6 +119,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Disk Async
     /// 
     /// ```csharp
@@ -149,6 +152,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Disk Features
     /// 
     /// ```csharp
@@ -286,8 +290,9 @@ namespace Pulumi.Gcp.Compute
         /// If you do not provide an encryption key when creating the disk, then
         /// the disk will be encrypted using an automatically generated key and
         /// you do not need to provide a key to use the disk later.
-        /// ~&gt;**NOTE** Only changing `KmsKeySelfLink` between Cloud KMS keys is
-        /// done in place; other changes to this block recreate the disk.
+        /// ~&gt;**NOTE** `KmsKeySelfLink` can be added or changed in place.
+        /// Removing it, or changing it while `KmsKeyServiceAccount` is set,
+        /// fails at plan time. Other changes to this block recreate the disk.
         /// Structure is documented below.
         /// </summary>
         [Output("diskEncryptionKey")]
@@ -733,8 +738,9 @@ namespace Pulumi.Gcp.Compute
         /// If you do not provide an encryption key when creating the disk, then
         /// the disk will be encrypted using an automatically generated key and
         /// you do not need to provide a key to use the disk later.
-        /// ~&gt;**NOTE** Only changing `KmsKeySelfLink` between Cloud KMS keys is
-        /// done in place; other changes to this block recreate the disk.
+        /// ~&gt;**NOTE** `KmsKeySelfLink` can be added or changed in place.
+        /// Removing it, or changing it while `KmsKeyServiceAccount` is set,
+        /// fails at plan time. Other changes to this block recreate the disk.
         /// Structure is documented below.
         /// </summary>
         [Input("diskEncryptionKey")]
@@ -1077,8 +1083,9 @@ namespace Pulumi.Gcp.Compute
         /// If you do not provide an encryption key when creating the disk, then
         /// the disk will be encrypted using an automatically generated key and
         /// you do not need to provide a key to use the disk later.
-        /// ~&gt;**NOTE** Only changing `KmsKeySelfLink` between Cloud KMS keys is
-        /// done in place; other changes to this block recreate the disk.
+        /// ~&gt;**NOTE** `KmsKeySelfLink` can be added or changed in place.
+        /// Removing it, or changing it while `KmsKeyServiceAccount` is set,
+        /// fails at plan time. Other changes to this block recreate the disk.
         /// Structure is documented below.
         /// </summary>
         [Input("diskEncryptionKey")]

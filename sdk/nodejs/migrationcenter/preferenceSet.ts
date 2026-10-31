@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Preference Set Full
  *
  * ```typescript
@@ -79,6 +80,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Preference Set Compute Engine Preferences Disk Type
  *
  * ```typescript

@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Instance Cmek
     /// 
     /// ```csharp
@@ -78,6 +79,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Instance Private
     /// 
     /// ```csharp
@@ -190,6 +192,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Instance Private Custom Host
     /// 
     /// ```csharp
@@ -309,6 +312,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Instance Private Psc Backend
     /// 
     /// ```csharp
@@ -554,6 +558,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Instance Private Psc Endpoint
     /// 
     /// ```csharp
@@ -755,6 +760,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Instance Workforce Identity Federation
     /// 
     /// ```csharp

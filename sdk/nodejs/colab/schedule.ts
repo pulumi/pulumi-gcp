@@ -103,6 +103,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Colab Schedule Paused
  *
  * ```typescript
@@ -190,6 +191,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Colab Schedule Full
  *
  * ```typescript
@@ -274,6 +276,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Colab Schedule Notebook Full
  *
  * ```typescript
@@ -381,6 +384,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Colab Schedule Pipeline
  *
  * ```typescript

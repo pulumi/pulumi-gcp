@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuildv2 Connection Ghe
     /// 
     /// ```csharp
@@ -141,6 +142,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuildv2 Connection Github
     /// 
     /// ```csharp

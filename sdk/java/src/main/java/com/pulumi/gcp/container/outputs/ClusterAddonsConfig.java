@@ -156,8 +156,13 @@ public final class ClusterAddonsConfig {
      * It is disabled by default for Standard clusters; set `enabled = true` to enable.
      * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
      * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+     * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+     * 
+     * @deprecated
+     * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
      * 
      */
+    @Deprecated /* `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead. */
     private @Nullable ClusterAddonsConfigParallelstoreCsiDriverConfig parallelstoreCsiDriverConfig;
     /**
      * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
@@ -351,8 +356,13 @@ public final class ClusterAddonsConfig {
      * It is disabled by default for Standard clusters; set `enabled = true` to enable.
      * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
      * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+     * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+     * 
+     * @deprecated
+     * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
      * 
      */
+    @Deprecated /* `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead. */
     public Optional<ClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfig() {
         return Optional.ofNullable(this.parallelstoreCsiDriverConfig);
     }

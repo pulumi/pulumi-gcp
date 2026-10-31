@@ -6,6 +6,7 @@ package com.pulumi.gcp.gemini.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis;
 import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,6 +25,11 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions
      * 
      */
     private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource datasource;
+    /**
+     * @return Optional. The model to use for the agent loop.
+     * 
+     */
+    private @Nullable String model;
 
     private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions() {}
     /**
@@ -42,6 +48,13 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions
     public Optional<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource> datasource() {
         return Optional.ofNullable(this.datasource);
     }
+    /**
+     * @return Optional. The model to use for the agent loop.
+     * 
+     */
+    public Optional<String> model() {
+        return Optional.ofNullable(this.model);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,11 +67,13 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions
     public static final class Builder {
         private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis analysis;
         private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource datasource;
+        private @Nullable String model;
         public Builder() {}
         public Builder(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.analysis = defaults.analysis;
     	      this.datasource = defaults.datasource;
+    	      this.model = defaults.model;
         }
 
         @CustomType.Setter
@@ -73,10 +88,17 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions
             this.datasource = datasource;
             return this;
         }
+        @CustomType.Setter
+        public Builder model(@Nullable String model) {
+
+            this.model = model;
+            return this;
+        }
         public DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions build() {
             final var _resultValue = new DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions();
             _resultValue.analysis = analysis;
             _resultValue.datasource = datasource;
+            _resultValue.model = model;
             return _resultValue;
         }
     }

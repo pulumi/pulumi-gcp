@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     resourceTypes: ["container.googleapis.com/NodePool"],
  * });
  * ```
+ *
  * ### Org Policy Custom Constraint Full
  *
  * ```typescript

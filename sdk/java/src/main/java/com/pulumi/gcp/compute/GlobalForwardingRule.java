@@ -119,6 +119,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Global Forwarding Rule Internal
  * 
  * <pre>
@@ -263,6 +264,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Global Forwarding Rule External Managed
  * 
  * <pre>
@@ -340,6 +342,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Global Forwarding Rule Hybrid
  * 
  * <pre>
@@ -513,6 +516,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Private Service Connect Google Apis
  * 
  * <pre>
@@ -585,6 +589,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Private Service Connect Google Apis No Automate Dns
  * 
  * <pre>

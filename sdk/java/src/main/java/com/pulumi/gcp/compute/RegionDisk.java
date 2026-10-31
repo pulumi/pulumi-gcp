@@ -108,6 +108,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Disk Disk Encryption Key Wo
  * 
  * <pre>
@@ -170,6 +171,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Disk Rsa Encrypted Key Wo
  * 
  * <pre>
@@ -232,6 +234,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Disk Async
  * 
  * <pre>
@@ -284,6 +287,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Disk Features
  * 
  * <pre>
@@ -334,6 +338,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Disk Hyperdisk Balanced Ha Write Many
  * 
  * <pre>
@@ -530,8 +535,8 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
      * you do not need to provide a key to use the disk later.
-     * ~&gt;**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
-     * in place; other changes to this block recreate the disk.
+     * ~&gt;**NOTE** `kmsKeyName` can be added or changed in place. Removing it
+     * fails at plan time. Other changes to this block recreate the disk.
      * Structure is documented below.
      * 
      */
@@ -548,8 +553,8 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
      * you do not need to provide a key to use the disk later.
-     * ~&gt;**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
-     * in place; other changes to this block recreate the disk.
+     * ~&gt;**NOTE** `kmsKeyName` can be added or changed in place. Removing it
+     * fails at plan time. Other changes to this block recreate the disk.
      * Structure is documented below.
      * 
      */

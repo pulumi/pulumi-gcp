@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     forceDestroy: true,
  * });
  * ```
+ *
  * ### Vertex Ai Featurestore With Beta Fields
  *
  * ```typescript
@@ -60,6 +61,7 @@ import * as utilities from "../utilities";
  *     forceDestroy: true,
  * });
  * ```
+ *
  * ### Vertex Ai Featurestore Scaling
  *
  * ```typescript

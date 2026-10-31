@@ -19611,7 +19611,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationArgsDict(TypedDict):
     detail_of_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     How much data to include in the pub/sub message.
-    Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+    Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
     """
     event: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -19637,7 +19637,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationArgs:
                  topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] detail_of_message: How much data to include in the pub/sub message.
-               Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+               Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
         :param pulumi.Input[_builtins.str] event: The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
                Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
         :param pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgs'] pubsub_condition: Conditions for triggering pubsub
@@ -19658,7 +19658,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationArgs:
     def detail_of_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How much data to include in the pub/sub message.
-        Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+        Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
         """
         return pulumi.get(self, "detail_of_message")
 

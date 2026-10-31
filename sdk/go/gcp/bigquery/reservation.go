@@ -200,6 +200,11 @@ type Reservation struct {
 	// Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 	// Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
 	ScalingMode pulumi.StringPtrOutput `pulumi:"scalingMode"`
+	// The scheduling policy to use for jobs and queries running under this
+	// reservation. The scheduling policy controls how the reservation's resources
+	// are distributed.
+	// Structure is documented below.
+	SchedulingPolicy ReservationSchedulingPolicyPtrOutput `pulumi:"schedulingPolicy"`
 	// The current location of the reservation's secondary replica. This field is only set for
 	// reservations using the managed disaster recovery feature. Users can set this in create
 	// reservation calls to create a failover reservation or in update reservation calls to convert
@@ -371,6 +376,11 @@ type reservationState struct {
 	// Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 	// Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
 	ScalingMode *string `pulumi:"scalingMode"`
+	// The scheduling policy to use for jobs and queries running under this
+	// reservation. The scheduling policy controls how the reservation's resources
+	// are distributed.
+	// Structure is documented below.
+	SchedulingPolicy *ReservationSchedulingPolicy `pulumi:"schedulingPolicy"`
 	// The current location of the reservation's secondary replica. This field is only set for
 	// reservations using the managed disaster recovery feature. Users can set this in create
 	// reservation calls to create a failover reservation or in update reservation calls to convert
@@ -505,6 +515,11 @@ type ReservationState struct {
 	// Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 	// Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
 	ScalingMode pulumi.StringPtrInput
+	// The scheduling policy to use for jobs and queries running under this
+	// reservation. The scheduling policy controls how the reservation's resources
+	// are distributed.
+	// Structure is documented below.
+	SchedulingPolicy ReservationSchedulingPolicyPtrInput
 	// The current location of the reservation's secondary replica. This field is only set for
 	// reservations using the managed disaster recovery feature. Users can set this in create
 	// reservation calls to create a failover reservation or in update reservation calls to convert
@@ -623,6 +638,11 @@ type reservationArgs struct {
 	// Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 	// Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
 	ScalingMode *string `pulumi:"scalingMode"`
+	// The scheduling policy to use for jobs and queries running under this
+	// reservation. The scheduling policy controls how the reservation's resources
+	// are distributed.
+	// Structure is documented below.
+	SchedulingPolicy *ReservationSchedulingPolicy `pulumi:"schedulingPolicy"`
 	// The current location of the reservation's secondary replica. This field is only set for
 	// reservations using the managed disaster recovery feature. Users can set this in create
 	// reservation calls to create a failover reservation or in update reservation calls to convert
@@ -738,6 +758,11 @@ type ReservationArgs struct {
 	// Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 	// Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
 	ScalingMode pulumi.StringPtrInput
+	// The scheduling policy to use for jobs and queries running under this
+	// reservation. The scheduling policy controls how the reservation's resources
+	// are distributed.
+	// Structure is documented below.
+	SchedulingPolicy ReservationSchedulingPolicyPtrInput
 	// The current location of the reservation's secondary replica. This field is only set for
 	// reservations using the managed disaster recovery feature. Users can set this in create
 	// reservation calls to create a failover reservation or in update reservation calls to convert
@@ -1008,6 +1033,14 @@ func (o ReservationOutput) ReservationGroup() pulumi.StringPtrOutput {
 // Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
 func (o ReservationOutput) ScalingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.ScalingMode }).(pulumi.StringPtrOutput)
+}
+
+// The scheduling policy to use for jobs and queries running under this
+// reservation. The scheduling policy controls how the reservation's resources
+// are distributed.
+// Structure is documented below.
+func (o ReservationOutput) SchedulingPolicy() ReservationSchedulingPolicyPtrOutput {
+	return o.ApplyT(func(v *Reservation) ReservationSchedulingPolicyPtrOutput { return v.SchedulingPolicy }).(ReservationSchedulingPolicyPtrOutput)
 }
 
 // The current location of the reservation's secondary replica. This field is only set for

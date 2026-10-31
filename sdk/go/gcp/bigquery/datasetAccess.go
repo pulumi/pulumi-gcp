@@ -73,6 +73,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset Access View
 //
 // ```go
@@ -127,6 +128,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset Access Authorized Dataset
 //
 // ```go
@@ -173,6 +175,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset Access Authorized Routine
 //
 // ```go

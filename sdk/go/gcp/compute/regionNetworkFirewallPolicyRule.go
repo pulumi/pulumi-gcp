@@ -138,6 +138,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Network Firewall Policy Rule Network Scope Egress
 //
 // ```go
@@ -191,6 +192,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Network Firewall Policy Rule Network Scope Ingress
 //
 // ```go
@@ -253,6 +255,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Network Firewall Policy Rule Network Context Egress
 //
 // ```go
@@ -306,6 +309,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Network Firewall Policy Rule Network Context Ingress
 //
 // ```go
@@ -359,6 +363,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firewall Policy Rule Target Type Internal Managed Lb Instance Regional
 //
 // ```go

@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:resourcemanager/boundary:Boundary":
+		r = &Boundary{}
+	case "gcp:resourcemanager/boundaryConfig:BoundaryConfig":
+		r = &BoundaryConfig{}
 	case "gcp:resourcemanager/capability:Capability":
 		r = &Capability{}
 	case "gcp:resourcemanager/capabilityConfig:CapabilityConfig":
@@ -40,6 +44,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"resourcemanager/boundary",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"resourcemanager/boundaryConfig",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"resourcemanager/capability",

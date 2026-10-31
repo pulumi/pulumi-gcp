@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     message: "Redirect to Google",
  * });
  * ```
+ *
  * ### Firebasehosting Version Headers
  *
  * ```typescript
@@ -73,6 +74,7 @@ import * as utilities from "../utilities";
  *     message: "With custom headers",
  * });
  * ```
+ *
  * ### Firebasehosting Version Headers Regex
  *
  * ```typescript
@@ -100,6 +102,7 @@ import * as utilities from "../utilities";
  *     message: "With custom headers",
  * });
  * ```
+ *
  * ### Firebasehosting Version Path
  *
  * ```typescript
@@ -125,6 +128,7 @@ import * as utilities from "../utilities";
  *     message: "Path Rewrite",
  * });
  * ```
+ *
  * ### Firebasehosting Version Cloud Run
  *
  * ```typescript
@@ -165,6 +169,7 @@ import * as utilities from "../utilities";
  *     message: "Cloud Run Integration",
  * });
  * ```
+ *
  * ### Firebasehosting Version Cloud Functions
  *
  * ```typescript

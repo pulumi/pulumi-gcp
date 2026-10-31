@@ -895,6 +895,7 @@ class RegionalSecret(pulumi.CustomResource):
             },
             deletion_protection=False)
         ```
+
         ### Regional Secret With Cmek
 
         ```python
@@ -914,6 +915,7 @@ class RegionalSecret(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
         ```
+
         ### Regional Secret With Rotation
 
         ```python
@@ -938,6 +940,7 @@ class RegionalSecret(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secrets_manager_access]))
         ```
+
         ### Regional Secret With Ttl
 
         ```python
@@ -958,6 +961,7 @@ class RegionalSecret(pulumi.CustomResource):
             ttl="36000s",
             secret_type="ACCESS_KEY")
         ```
+
         ### Regional Secret With Expire Time
 
         ```python
@@ -977,6 +981,7 @@ class RegionalSecret(pulumi.CustomResource):
             },
             expire_time="2055-11-30T00:00:00Z")
         ```
+
         ### Regional Secret With Version Destroy Ttl
 
         ```python
@@ -1122,6 +1127,7 @@ class RegionalSecret(pulumi.CustomResource):
             },
             deletion_protection=False)
         ```
+
         ### Regional Secret With Cmek
 
         ```python
@@ -1141,6 +1147,7 @@ class RegionalSecret(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
         ```
+
         ### Regional Secret With Rotation
 
         ```python
@@ -1165,6 +1172,7 @@ class RegionalSecret(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secrets_manager_access]))
         ```
+
         ### Regional Secret With Ttl
 
         ```python
@@ -1185,6 +1193,7 @@ class RegionalSecret(pulumi.CustomResource):
             ttl="36000s",
             secret_type="ACCESS_KEY")
         ```
+
         ### Regional Secret With Expire Time
 
         ```python
@@ -1204,6 +1213,7 @@ class RegionalSecret(pulumi.CustomResource):
             },
             expire_time="2055-11-30T00:00:00Z")
         ```
+
         ### Regional Secret With Version Destroy Ttl
 
         ```python

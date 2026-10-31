@@ -87,6 +87,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquerydatatransfer Config Cmek
 //
 // ```go
@@ -166,6 +167,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquerydatatransfer Config Salesforce
 //
 // ```go

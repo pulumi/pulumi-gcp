@@ -88,6 +88,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Compute Interconnect Attachment Ipsec Encryption
  * 
  * <pre>
@@ -155,6 +156,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Compute Interconnect Attachment Custom Ranges
  * 
  * <pre>

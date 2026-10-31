@@ -58,6 +58,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Firestore Field Timestamp Enterprise
  *
  * ```typescript
@@ -76,11 +77,12 @@ import * as utilities from "../utilities";
  * const timestamp_enterprise = new gcp.firestore.Field("timestamp-enterprise", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms",
+ *     collection: "chatrooms__26240",
  *     field: "timestamp",
  *     ttlConfig: {},
  * });
  * ```
+ *
  * ### Firestore Field Timestamp With Ttl Offset Enterprise
  *
  * ```typescript
@@ -99,13 +101,14 @@ import * as utilities from "../utilities";
  * const timestamp_with_offset_enterprise = new gcp.firestore.Field("timestamp-with-offset-enterprise", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms",
+ *     collection: "chatrooms__35711",
  *     field: "timestamp",
  *     ttlConfig: {
  *         expirationOffset: "2592000s",
  *     },
  * });
  * ```
+ *
  * ### Firestore Field Timestamp
  *
  * ```typescript
@@ -123,12 +126,13 @@ import * as utilities from "../utilities";
  * const timestamp = new gcp.firestore.Field("timestamp", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms",
+ *     collection: "chatrooms__85072",
  *     field: "timestamp",
  *     ttlConfig: {},
  *     indexConfig: {},
  * });
  * ```
+ *
  * ### Firestore Field Timestamp With Ttl Offset
  *
  * ```typescript
@@ -146,7 +150,7 @@ import * as utilities from "../utilities";
  * const timestamp_with_offset = new gcp.firestore.Field("timestamp-with-offset", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms",
+ *     collection: "chatrooms__35762",
  *     field: "timestamp",
  *     ttlConfig: {
  *         expirationOffset: "2592000s",
@@ -154,6 +158,7 @@ import * as utilities from "../utilities";
  *     indexConfig: {},
  * });
  * ```
+ *
  * ### Firestore Field Match Override
  *
  * ```typescript
@@ -171,7 +176,7 @@ import * as utilities from "../utilities";
  * const matchOverride = new gcp.firestore.Field("match_override", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__26240",
+ *     collection: "chatrooms__24469",
  *     field: "field_with_same_configuration_as_ancestor",
  *     indexConfig: {
  *         indexes: [
@@ -188,6 +193,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Firestore Field Wildcard
  *
  * ```typescript
@@ -205,7 +211,7 @@ import * as utilities from "../utilities";
  * const wildcard = new gcp.firestore.Field("wildcard", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__35711",
+ *     collection: "chatrooms__79580",
  *     field: "*",
  *     indexConfig: {
  *         indexes: [
@@ -220,6 +226,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Firestore Field Skip Wait
  *
  * ```typescript
@@ -237,7 +244,7 @@ import * as utilities from "../utilities";
  * const skipWait = new gcp.firestore.Field("skip_wait", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__85072",
+ *     collection: "chatrooms__98863",
  *     field: "skip_wait",
  *     indexConfig: {
  *         indexes: [

@@ -70,6 +70,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Compute Machine Image Kms
 //
 // ```go
@@ -131,6 +132,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Machine Image Resource Manager Tags
 //
 // ## Import

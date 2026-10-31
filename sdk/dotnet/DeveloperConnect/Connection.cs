@@ -65,6 +65,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     };
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Existing Credentials
     /// 
     /// ```csharp
@@ -95,6 +96,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     };
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Existing Installation
     /// 
     /// ```csharp
@@ -167,6 +169,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Github
     /// 
     /// ```csharp
@@ -193,6 +196,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Github Doc
     /// 
     /// ```csharp
@@ -260,6 +264,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Github Enterprise
     /// 
     /// ```csharp
@@ -286,6 +291,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Github Enterprise Doc
     /// 
     /// ```csharp
@@ -380,6 +386,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Gitlab
     /// 
     /// ```csharp
@@ -410,6 +417,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Gitlab Enterprise
     /// 
     /// ```csharp
@@ -441,6 +449,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Bbc
     /// 
     /// ```csharp
@@ -472,6 +481,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Bbdc
     /// 
     /// ```csharp
@@ -503,6 +513,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Http Conn Basic
     /// 
     /// ```csharp
@@ -530,6 +541,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Connection Http Conn Bearer
     /// 
     /// ```csharp

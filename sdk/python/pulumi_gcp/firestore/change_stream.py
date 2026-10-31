@@ -417,6 +417,7 @@ class ChangeStream(pulumi.CustomResource):
             database_scope={},
             opts = pulumi.ResourceOptions(depends_on=[wait30_seconds]))
         ```
+
         ### Firestore Change Stream Full
 
         ```python
@@ -526,6 +527,7 @@ class ChangeStream(pulumi.CustomResource):
             database_scope={},
             opts = pulumi.ResourceOptions(depends_on=[wait30_seconds]))
         ```
+
         ### Firestore Change Stream Full
 
         ```python

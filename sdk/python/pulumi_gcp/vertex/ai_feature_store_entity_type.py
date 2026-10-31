@@ -469,6 +469,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Featurestore Entitytype With Beta Fields
 
         ```python
@@ -602,6 +603,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Featurestore Entitytype With Beta Fields
 
         ```python

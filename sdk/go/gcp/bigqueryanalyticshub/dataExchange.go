@@ -50,6 +50,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Analyticshub Data Exchange Dcr
 //
 // ```go
@@ -81,6 +82,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
 //
 // ```go
@@ -110,6 +112,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Analyticshub Public Data Exchange
 //
 // ```go

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vectorsearch.inputs.IndexDedicatedInfrastructureArgs;
 import com.pulumi.gcp.vectorsearch.inputs.IndexDenseScannArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -319,6 +320,37 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to skip waiting for the index to be created. Building an ANN
+     * index over a large collection can take several hours; setting `skipWait`
+     * to `true` causes Terraform to return as soon as the creation request is
+     * accepted rather than blocking until the long-running build completes
+     * (which can exceed CI/CD timeouts or short-lived Terraform runner
+     * credentials). Leave this set to `false` (the default) if downstream
+     * resources or workloads depend on the index being ready to serve queries
+     * immediately after `pulumi up`, or if you want Terraform to fail
+     * synchronously when an asynchronous index build fails.
+     * 
+     */
+    @Import(name="skipWait")
+    private @Nullable Output<Boolean> skipWait;
+
+    /**
+     * @return Whether to skip waiting for the index to be created. Building an ANN
+     * index over a large collection can take several hours; setting `skipWait`
+     * to `true` causes Terraform to return as soon as the creation request is
+     * accepted rather than blocking until the long-running build completes
+     * (which can exceed CI/CD timeouts or short-lived Terraform runner
+     * credentials). Leave this set to `false` (the default) if downstream
+     * resources or workloads depend on the index being ready to serve queries
+     * immediately after `pulumi up`, or if you want Terraform to fail
+     * synchronously when an asynchronous index build fails.
+     * 
+     */
+    public Optional<Output<Boolean>> skipWait() {
+        return Optional.ofNullable(this.skipWait);
+    }
+
+    /**
      * The fields to push into the index to enable inline data retrieval.
      * 
      */
@@ -368,6 +400,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.skipWait = $.skipWait;
         this.storeFields = $.storeFields;
         this.updateTime = $.updateTime;
     }
@@ -799,6 +832,43 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param skipWait Whether to skip waiting for the index to be created. Building an ANN
+         * index over a large collection can take several hours; setting `skipWait`
+         * to `true` causes Terraform to return as soon as the creation request is
+         * accepted rather than blocking until the long-running build completes
+         * (which can exceed CI/CD timeouts or short-lived Terraform runner
+         * credentials). Leave this set to `false` (the default) if downstream
+         * resources or workloads depend on the index being ready to serve queries
+         * immediately after `pulumi up`, or if you want Terraform to fail
+         * synchronously when an asynchronous index build fails.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWait(@Nullable Output<Boolean> skipWait) {
+            $.skipWait = skipWait;
+            return this;
+        }
+
+        /**
+         * @param skipWait Whether to skip waiting for the index to be created. Building an ANN
+         * index over a large collection can take several hours; setting `skipWait`
+         * to `true` causes Terraform to return as soon as the creation request is
+         * accepted rather than blocking until the long-running build completes
+         * (which can exceed CI/CD timeouts or short-lived Terraform runner
+         * credentials). Leave this set to `false` (the default) if downstream
+         * resources or workloads depend on the index being ready to serve queries
+         * immediately after `pulumi up`, or if you want Terraform to fail
+         * synchronously when an asynchronous index build fails.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWait(Boolean skipWait) {
+            return skipWait(Output.of(skipWait));
         }
 
         /**

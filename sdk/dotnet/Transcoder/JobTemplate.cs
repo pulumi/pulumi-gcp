@@ -161,6 +161,7 @@ namespace Pulumi.Gcp.Transcoder
     /// 
     /// });
     /// ```
+    /// 
     /// ### Transcoder Job Template Overlays
     /// 
     /// ```csharp
@@ -334,6 +335,7 @@ namespace Pulumi.Gcp.Transcoder
     /// 
     /// });
     /// ```
+    /// 
     /// ### Transcoder Job Template Encryptions
     /// 
     /// ```csharp
@@ -556,6 +558,7 @@ namespace Pulumi.Gcp.Transcoder
     /// 
     /// });
     /// ```
+    /// 
     /// ### Transcoder Job Template Pubsub
     /// 
     /// ```csharp

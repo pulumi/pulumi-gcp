@@ -90,6 +90,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkeonprem Vmware Admin Cluster Full
     /// 
     /// ```csharp
@@ -248,6 +249,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkeonprem Vmware Admin Cluster Metallb
     /// 
     /// ```csharp

@@ -18,7 +18,7 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dataproc/docs)
 //
 // > **Warning:** Due to limitations of the API, all arguments except
-// `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
+// `labels`, `cluster_config.worker_config.num_instances`, `cluster_config.preemptible_worker_config.num_instances`, `cluster_config.worker_flexible_config.num_instances` and `cluster_config.secondary_worker_flexible_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
 // whole cluster!
 //
 // ## Example Usage
@@ -134,6 +134,55 @@ import (
 //	}
 //
 // ```
+//
+// ### High Obtainability (HO) Mode
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewCluster(ctx, "ho_cluster", &dataproc.ClusterArgs{
+//				Name:   pulumi.String("my-ho-cluster"),
+//				Region: pulumi.String("us-central1"),
+//				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
+//					MasterFlexibleConfig: &dataproc.ClusterClusterConfigMasterFlexibleConfigArgs{
+//						NumInstances:   pulumi.Int(1),
+//						CoreCount:      pulumi.Int(4),
+//						HardwareClass:  pulumi.String("STANDARD"),
+//						BootDiskSizeGb: pulumi.Int(100),
+//					},
+//					WorkerFlexibleConfig: &dataproc.ClusterClusterConfigWorkerFlexibleConfigArgs{
+//						NumInstances:   pulumi.Int(2),
+//						CoreCount:      pulumi.Int(8),
+//						HardwareClass:  pulumi.String("STANDARD"),
+//						BootDiskSizeGb: pulumi.Int(100),
+//					},
+//					SecondaryWorkerFlexibleConfig: &dataproc.ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs{
+//						NumInstances:   pulumi.Int(2),
+//						CoreCount:      pulumi.Int(8),
+//						HardwareClass:  pulumi.String("PERFORMANCE"),
+//						BootDiskSizeGb: pulumi.Int(100),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **Tip:** When an autoscaling policy is attached to an HO cluster, use `lifecycle { ignoreChanges = [cluster_config[0].worker_flexible_config[0].num_instances, cluster_config[0].secondary_worker_flexible_config[0].num_instances] }` to avoid fighting the autoscaler.
 //
 // ### Using A GPU Accelerator
 //

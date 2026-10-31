@@ -1033,10 +1033,10 @@ class Instance(pulumi.CustomResource):
         lustre_network = gcp.compute.get_network(name="my-network")
         instance = gcp.lustre.Instance("instance",
             instance_id="my-instance",
-            location="us-central1-a",
+            location="us-east4-a",
             description="test lustre instance",
             filesystem="testfs",
-            capacity_gib="18000",
+            capacity_gib="9000",
             network=lustre_network.id,
             per_unit_storage_throughput="1000",
             labels={
@@ -1161,10 +1161,10 @@ class Instance(pulumi.CustomResource):
         lustre_network = gcp.compute.get_network(name="my-network")
         instance = gcp.lustre.Instance("instance",
             instance_id="my-instance",
-            location="us-central1-a",
+            location="us-east4-a",
             description="test lustre instance",
             filesystem="testfs",
-            capacity_gib="18000",
+            capacity_gib="9000",
             network=lustre_network.id,
             per_unit_storage_throughput="1000",
             labels={

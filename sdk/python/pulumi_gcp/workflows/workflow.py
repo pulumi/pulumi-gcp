@@ -818,6 +818,7 @@ class Workflow(pulumi.CustomResource):
             return: ${wikiResult.body[1]}
         \"\"\")
         ```
+
         ### Workflow Tags
 
         ```python
@@ -997,6 +998,7 @@ class Workflow(pulumi.CustomResource):
             return: ${wikiResult.body[1]}
         \"\"\")
         ```
+
         ### Workflow Tags
 
         ```python

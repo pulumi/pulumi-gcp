@@ -983,6 +983,7 @@ class Gateway(pulumi.CustomResource):
             type="OPEN_MESH",
             ports=[443])
         ```
+
         ### Network Services Gateway Advanced
 
         ```python
@@ -999,6 +1000,7 @@ class Gateway(pulumi.CustomResource):
             ports=[443],
             scope="default-scope-advance")
         ```
+
         ### Network Services Gateway Secure Web Proxy
 
         ```python
@@ -1056,6 +1058,7 @@ class Gateway(pulumi.CustomResource):
             delete_swg_autogen_router_on_destroy=True,
             opts = pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
+
         ### Network Services Gateway Multiple Swp Same Network
 
         ```python
@@ -1234,6 +1237,7 @@ class Gateway(pulumi.CustomResource):
             type="OPEN_MESH",
             ports=[443])
         ```
+
         ### Network Services Gateway Advanced
 
         ```python
@@ -1250,6 +1254,7 @@ class Gateway(pulumi.CustomResource):
             ports=[443],
             scope="default-scope-advance")
         ```
+
         ### Network Services Gateway Secure Web Proxy
 
         ```python
@@ -1307,6 +1312,7 @@ class Gateway(pulumi.CustomResource):
             delete_swg_autogen_router_on_destroy=True,
             opts = pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
+
         ### Network Services Gateway Multiple Swp Same Network
 
         ```python

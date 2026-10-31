@@ -22,9 +22,6 @@ import javax.annotation.Nullable;
 /**
  * ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about ServiceLbPolicies, see:
  * 
  * * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
@@ -64,6 +61,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Service Lb Policies Advanced
  * 
  * <pre>
@@ -118,6 +116,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Service Lb Policies Beta
  * 
  * <pre>
@@ -177,6 +176,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Service Lb Policies Regional
  * 
  * <pre>
@@ -351,6 +351,7 @@ public class ServiceLbPolicies extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.failoverConfig);
     }
     /**
+     * (Optional, Beta)
      * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      * 
@@ -359,7 +360,8 @@ public class ServiceLbPolicies extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ServiceLbPoliciesIsolationConfig> isolationConfig;
 
     /**
-     * @return Configuration to provide isolation support for the associated Backend Service.
+     * @return (Optional, Beta)
+     * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      * 
      */

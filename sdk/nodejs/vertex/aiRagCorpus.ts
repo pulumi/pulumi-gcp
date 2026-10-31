@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Rag Corpus Full
  *
  * ```typescript
@@ -69,6 +70,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Rag Corpus Search
  *
  * ```typescript
@@ -85,6 +87,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Rag Corpus Pinecone
  *
  * ```typescript
@@ -113,6 +116,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Rag Corpus Vertex Vector Search
  *
  * ```typescript
@@ -172,6 +176,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [deployedIndex],
  * });
  * ```
+ *
  * ### Vertex Ai Rag Corpus Secret Manager
  *
  * ```typescript

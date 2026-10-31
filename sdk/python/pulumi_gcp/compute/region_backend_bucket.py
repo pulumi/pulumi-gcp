@@ -427,6 +427,7 @@ class RegionBackendBucket(pulumi.CustomResource):
             description="Regional backend bucket example",
             load_balancing_scheme="INTERNAL_MANAGED")
         ```
+
         ### Region Backend Bucket Internal Lb
 
         ```python
@@ -453,6 +454,7 @@ class RegionBackendBucket(pulumi.CustomResource):
             bucket=internal_backend_bucket.name,
             content="<html><body><h1>Regional Internal LB Backend Bucket</h1></body></html>")
         ```
+
         ### Region Backend Bucket External Lb
 
         ```python
@@ -587,6 +589,7 @@ class RegionBackendBucket(pulumi.CustomResource):
             description="Regional backend bucket example",
             load_balancing_scheme="INTERNAL_MANAGED")
         ```
+
         ### Region Backend Bucket Internal Lb
 
         ```python
@@ -613,6 +616,7 @@ class RegionBackendBucket(pulumi.CustomResource):
             bucket=internal_backend_bucket.name,
             content="<html><body><h1>Regional Internal LB Backend Bucket</h1></body></html>")
         ```
+
         ### Region Backend Bucket External Lb
 
         ```python

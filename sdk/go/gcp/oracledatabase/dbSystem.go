@@ -60,6 +60,9 @@ import (
 //						},
 //					},
 //				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
 //				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -70,6 +73,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Db System Full
 //
 // ```go

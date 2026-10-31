@@ -96,6 +96,7 @@ namespace Pulumi.Gcp.DataLineage
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Lineage Config Folder
     /// 
     /// ```csharp
@@ -163,6 +164,7 @@ namespace Pulumi.Gcp.DataLineage
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Lineage Config Organization
     /// 
     /// ```csharp

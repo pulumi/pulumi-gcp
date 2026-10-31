@@ -79,6 +79,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Management Vpc Flow Logs Config Vpn Basic
 //
 // ```go
@@ -187,6 +188,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Management Vpc Flow Logs Config Network Basic
 //
 // ```go
@@ -230,6 +232,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Management Vpc Flow Logs Config Subnet Basic
 //
 // ```go

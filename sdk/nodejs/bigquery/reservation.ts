@@ -241,6 +241,13 @@ export class Reservation extends pulumi.CustomResource {
      */
     declare public readonly scalingMode: pulumi.Output<string | undefined>;
     /**
+     * The scheduling policy to use for jobs and queries running under this
+     * reservation. The scheduling policy controls how the reservation's resources
+     * are distributed.
+     * Structure is documented below.
+     */
+    declare public readonly schedulingPolicy: pulumi.Output<outputs.bigquery.ReservationSchedulingPolicy | undefined>;
+    /**
      * The current location of the reservation's secondary replica. This field is only set for
      * reservations using the managed disaster recovery feature. Users can set this in create
      * reservation calls to create a failover reservation or in update reservation calls to convert
@@ -283,6 +290,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["replicationStatuses"] = state?.replicationStatuses;
             resourceInputs["reservationGroup"] = state?.reservationGroup;
             resourceInputs["scalingMode"] = state?.scalingMode;
+            resourceInputs["schedulingPolicy"] = state?.schedulingPolicy;
             resourceInputs["secondaryLocation"] = state?.secondaryLocation;
             resourceInputs["slotCapacity"] = state?.slotCapacity;
         } else {
@@ -302,6 +310,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["reservationGroup"] = args?.reservationGroup;
             resourceInputs["scalingMode"] = args?.scalingMode;
+            resourceInputs["schedulingPolicy"] = args?.schedulingPolicy;
             resourceInputs["secondaryLocation"] = args?.secondaryLocation;
             resourceInputs["slotCapacity"] = args?.slotCapacity;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -479,6 +488,13 @@ export interface ReservationState {
      */
     scalingMode?: pulumi.Input<string | undefined>;
     /**
+     * The scheduling policy to use for jobs and queries running under this
+     * reservation. The scheduling policy controls how the reservation's resources
+     * are distributed.
+     * Structure is documented below.
+     */
+    schedulingPolicy?: pulumi.Input<inputs.bigquery.ReservationSchedulingPolicy | undefined>;
+    /**
      * The current location of the reservation's secondary replica. This field is only set for
      * reservations using the managed disaster recovery feature. Users can set this in create
      * reservation calls to create a failover reservation or in update reservation calls to convert
@@ -623,6 +639,13 @@ export interface ReservationArgs {
      * Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
      */
     scalingMode?: pulumi.Input<string | undefined>;
+    /**
+     * The scheduling policy to use for jobs and queries running under this
+     * reservation. The scheduling policy controls how the reservation's resources
+     * are distributed.
+     * Structure is documented below.
+     */
+    schedulingPolicy?: pulumi.Input<inputs.bigquery.ReservationSchedulingPolicy | undefined>;
     /**
      * The current location of the reservation's secondary replica. This field is only set for
      * reservations using the managed disaster recovery feature. Users can set this in create

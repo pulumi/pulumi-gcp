@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     workloadIdentityPoolNamespaceId: "example-namespace",
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Namespace Full
  *
  * ```typescript

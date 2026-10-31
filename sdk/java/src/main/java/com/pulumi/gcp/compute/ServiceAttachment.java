@@ -145,6 +145,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Service Attachment Nat Ips
  * 
  * <pre>
@@ -240,6 +241,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Service Attachment Explicit Projects
  * 
  * <pre>
@@ -361,6 +363,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Service Attachment Explicit Networks
  * 
  * <pre>
@@ -491,6 +494,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Service Attachment Reconcile Connections
  * 
  * <pre>
@@ -595,6 +599,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Service Attachment Tunneling Config
  * 
  * <pre>
@@ -694,6 +699,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Service Attachment Cross Region Ilb
  * 
  * <pre>
@@ -1168,6 +1174,20 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> sendPropagatedConnectionLimitIfZero() {
         return Codegen.optional(this.sendPropagatedConnectionLimitIfZero);
+    }
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="serviceAttachmentId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> serviceAttachmentId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> serviceAttachmentId() {
+        return this.serviceAttachmentId;
     }
     /**
      * NOTE: This field is temporarily non-functional due to an underlying API issue.

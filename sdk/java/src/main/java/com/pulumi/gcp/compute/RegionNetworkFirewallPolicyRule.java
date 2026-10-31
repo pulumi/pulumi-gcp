@@ -130,6 +130,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Region Network Firewall Policy Rule Network Scope Egress
  * 
  * <pre>
@@ -188,6 +189,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Network Firewall Policy Rule Network Scope Ingress
  * 
  * <pre>
@@ -253,6 +255,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Network Firewall Policy Rule Network Context Egress
  * 
  * <pre>
@@ -311,6 +314,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Network Firewall Policy Rule Network Context Ingress
  * 
  * <pre>
@@ -369,6 +373,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firewall Policy Rule Target Type Internal Managed Lb Instance Regional
  * 
  * <pre>

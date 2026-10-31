@@ -262,6 +262,15 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> ScalingMode { get; private set; } = null!;
 
         /// <summary>
+        /// The scheduling policy to use for jobs and queries running under this
+        /// reservation. The scheduling policy controls how the reservation's resources
+        /// are distributed.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("schedulingPolicy")]
+        public Output<Outputs.ReservationSchedulingPolicy?> SchedulingPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The current location of the reservation's secondary replica. This field is only set for
         /// reservations using the managed disaster recovery feature. Users can set this in create
         /// reservation calls to create a failover reservation or in update reservation calls to convert
@@ -484,6 +493,15 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("scalingMode")]
         public Input<string>? ScalingMode { get; set; }
+
+        /// <summary>
+        /// The scheduling policy to use for jobs and queries running under this
+        /// reservation. The scheduling policy controls how the reservation's resources
+        /// are distributed.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("schedulingPolicy")]
+        public Input<Inputs.ReservationSchedulingPolicyArgs>? SchedulingPolicy { get; set; }
 
         /// <summary>
         /// The current location of the reservation's secondary replica. This field is only set for
@@ -731,6 +749,15 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("scalingMode")]
         public Input<string>? ScalingMode { get; set; }
+
+        /// <summary>
+        /// The scheduling policy to use for jobs and queries running under this
+        /// reservation. The scheduling policy controls how the reservation's resources
+        /// are distributed.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("schedulingPolicy")]
+        public Input<Inputs.ReservationSchedulingPolicyGetArgs>? SchedulingPolicy { get; set; }
 
         /// <summary>
         /// The current location of the reservation's secondary replica. This field is only set for

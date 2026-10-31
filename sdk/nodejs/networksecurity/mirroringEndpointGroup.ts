@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Security Mirroring Endpoint Group Broker Basic
  *
  * ```typescript

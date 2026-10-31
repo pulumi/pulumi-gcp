@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Tcp Full
  *
  * ```typescript
@@ -68,6 +69,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Ssl
  *
  * ```typescript
@@ -83,6 +85,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Ssl Full
  *
  * ```typescript
@@ -105,6 +108,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Http
  *
  * ```typescript
@@ -120,6 +124,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Http Full
  *
  * ```typescript
@@ -143,6 +148,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Https
  *
  * ```typescript
@@ -158,6 +164,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Https Full
  *
  * ```typescript
@@ -181,6 +188,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Http2
  *
  * ```typescript
@@ -196,6 +204,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Http2 Full
  *
  * ```typescript
@@ -219,6 +228,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Grpc
  *
  * ```typescript
@@ -234,6 +244,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Grpc Full
  *
  * ```typescript
@@ -251,6 +262,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Grpc With Tls
  *
  * ```typescript
@@ -266,6 +278,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check Grpc With Tls Full
  *
  * ```typescript
@@ -286,6 +299,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Health Check With Logging
  *
  * ```typescript
@@ -304,6 +318,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Compute Health Check Http Source Regions
  *
  * ```typescript
@@ -324,6 +339,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Compute Health Check Https Source Regions
  *
  * ```typescript
@@ -344,6 +360,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Compute Health Check Tcp Source Regions
  *
  * ```typescript

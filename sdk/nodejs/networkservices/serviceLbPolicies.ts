@@ -9,9 +9,6 @@ import * as utilities from "../utilities";
 /**
  * ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about ServiceLbPolicies, see:
  *
  * * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
@@ -29,6 +26,7 @@ import * as utilities from "../utilities";
  *     location: "global",
  * });
  * ```
+ *
  * ### Network Services Service Lb Policies Advanced
  *
  * ```typescript
@@ -58,6 +56,7 @@ import * as utilities from "../utilities";
  *     serviceLbPolicy: pulumi.interpolate`//networkservices.googleapis.com/${_default.id}`,
  * });
  * ```
+ *
  * ### Network Services Service Lb Policies Beta
  *
  * ```typescript
@@ -91,6 +90,7 @@ import * as utilities from "../utilities";
  *     serviceLbPolicy: pulumi.interpolate`//networkservices.googleapis.com/${_default.id}`,
  * });
  * ```
+ *
  * ### Network Services Service Lb Policies Regional
  *
  * ```typescript
@@ -198,6 +198,7 @@ export class ServiceLbPolicies extends pulumi.CustomResource {
      */
     declare public readonly failoverConfig: pulumi.Output<outputs.networkservices.ServiceLbPoliciesFailoverConfig | undefined>;
     /**
+     * (Optional, Beta)
      * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      */
@@ -326,6 +327,7 @@ export interface ServiceLbPoliciesState {
      */
     failoverConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesFailoverConfig | undefined>;
     /**
+     * (Optional, Beta)
      * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      */
@@ -393,6 +395,7 @@ export interface ServiceLbPoliciesArgs {
      */
     failoverConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesFailoverConfig | undefined>;
     /**
+     * (Optional, Beta)
      * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      */

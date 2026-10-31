@@ -70,6 +70,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Preference Set Full
  * 
  * <pre>
@@ -142,6 +143,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Preference Set Compute Engine Preferences Disk Type
  * 
  * <pre>

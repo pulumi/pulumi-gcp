@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Rag Corpus Full
     /// 
     /// ```csharp
@@ -98,6 +99,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Rag Corpus Search
     /// 
     /// ```csharp
@@ -123,6 +125,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Rag Corpus Pinecone
     /// 
     /// ```csharp
@@ -165,6 +168,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Rag Corpus Vertex Vector Search
     /// 
     /// ```csharp
@@ -260,6 +264,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Rag Corpus Secret Manager
     /// 
     /// ```csharp

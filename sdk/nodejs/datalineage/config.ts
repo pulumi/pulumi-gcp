@@ -59,6 +59,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [datalineageApi],
  * });
  * ```
+ *
  * ### Data Lineage Config Folder
  *
  * ```typescript
@@ -96,6 +97,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [waitForFolderIam],
  * });
  * ```
+ *
  * ### Data Lineage Config Organization
  *
  * ```typescript

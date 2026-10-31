@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Edge Cache Origin Advanced
     /// 
     /// ```csharp
@@ -120,6 +121,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Edge Cache Origin V4auth
     /// 
     /// ```csharp

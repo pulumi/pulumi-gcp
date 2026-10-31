@@ -49,6 +49,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Discoveryengine Datastore Kms Key Name
     /// 
     /// ```csharp
@@ -77,6 +78,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Discoveryengine Datastore Document Processing Config
     /// 
     /// ```csharp
@@ -121,6 +123,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Discoveryengine Datastore Advanced Site Search Config
     /// 
     /// ```csharp

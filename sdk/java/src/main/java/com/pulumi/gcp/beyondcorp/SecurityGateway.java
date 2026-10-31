@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Beyondcorp Security Gateway Logging
  * 
  * <pre>
@@ -101,6 +102,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Beyondcorp Security Gateway Spa
  * 
  * <pre>

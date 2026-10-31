@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Backup Dr Restore Workload Compute Instance Full
  *
  * ```typescript
@@ -122,6 +123,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Backup Dr Restore Workload Disk Basic
  *
  * ```typescript
@@ -149,6 +151,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Backup Dr Restore Workload Regional Disk
  *
  * ```typescript
@@ -182,6 +185,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Backup Dr Restore Workload Without Delete
  *
  * ```typescript

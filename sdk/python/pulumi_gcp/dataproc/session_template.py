@@ -535,6 +535,7 @@ class SessionTemplate(pulumi.CustomResource):
                 "display_name": "tf python kernel",
             })
         ```
+
         ### Dataproc Session Templates Jupyter Full
 
         ```python
@@ -636,6 +637,7 @@ class SessionTemplate(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member1]))
         ```
+
         ### Dataproc Session Templates Spark Connect
 
         ```python
@@ -752,6 +754,7 @@ class SessionTemplate(pulumi.CustomResource):
                 "display_name": "tf python kernel",
             })
         ```
+
         ### Dataproc Session Templates Jupyter Full
 
         ```python
@@ -853,6 +856,7 @@ class SessionTemplate(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member1]))
         ```
+
         ### Dataproc Session Templates Spark Connect
 
         ```python

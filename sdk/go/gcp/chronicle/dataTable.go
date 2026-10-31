@@ -67,6 +67,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Data Table With Optional Fields
 //
 // ```go

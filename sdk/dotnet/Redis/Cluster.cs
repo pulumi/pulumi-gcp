@@ -116,14 +116,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
     ///         Network = consumerNet.Id,
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.Redis
     ///     var cluster_ha_with_labels = new Gcp.Redis.Cluster("cluster-ha-with-labels", new()
     ///     {
     ///         Name = "ha-cluster",
-    ///         ShardCount = 3,
+    ///         ShardCount = 1,
     ///         Labels = 
     ///         {
     ///             { "my_key", "my_val" },
@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.Redis
     ///                 Network = consumerNet.Id,
     ///             },
     ///         },
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         ReplicaCount = 1,
     ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -193,6 +193,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Cluster Ha
     /// 
     /// ```csharp
@@ -213,14 +214,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
     ///         Network = consumerNet.Id,
@@ -236,7 +237,7 @@ namespace Pulumi.Gcp.Redis
     ///     var cluster_ha = new Gcp.Redis.Cluster("cluster-ha", new()
     ///     {
     ///         Name = "ha-cluster",
-    ///         ShardCount = 3,
+    ///         ShardCount = 1,
     ///         PscConfigs = new[]
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -244,7 +245,7 @@ namespace Pulumi.Gcp.Redis
     ///                 Network = consumerNet.Id,
     ///             },
     ///         },
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         ReplicaCount = 1,
     ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -285,6 +286,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Cluster Ha Single Zone
     /// 
     /// ```csharp
@@ -305,14 +307,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
     ///         Network = consumerNet.Id,
@@ -328,7 +330,7 @@ namespace Pulumi.Gcp.Redis
     ///     var cluster_ha_single_zone = new Gcp.Redis.Cluster("cluster-ha-single-zone", new()
     ///     {
     ///         Name = "ha-cluster-single-zone",
-    ///         ShardCount = 3,
+    ///         ShardCount = 1,
     ///         PscConfigs = new[]
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -336,11 +338,12 @@ namespace Pulumi.Gcp.Redis
     ///                 Network = consumerNet.Id,
     ///             },
     ///         },
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
     ///         {
     ///             Mode = "SINGLE_ZONE",
-    ///             Zone = "us-west1-a",
+    ///             Zone = "us-east1-b",
     ///         },
     ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
     ///         {
@@ -370,6 +373,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Cluster Secondary
     /// 
     /// ```csharp
@@ -390,14 +394,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "mysubnet-primary-cluster",
     ///         IpCidrRange = "10.0.1.0/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var primaryClusterRegionScp = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("primary_cluster_region_scp", new()
     ///     {
     ///         Name = "mypolicy-primary-cluster",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "Primary cluster service connection policy",
     ///         Network = consumerNet.Id,
@@ -414,7 +418,7 @@ namespace Pulumi.Gcp.Redis
     ///     var primaryCluster = new Gcp.Redis.Cluster("primary_cluster", new()
     ///     {
     ///         Name = "my-primary-cluster",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         PscConfigs = new[]
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -424,12 +428,12 @@ namespace Pulumi.Gcp.Redis
     ///         },
     ///         AuthorizationMode = "AUTH_MODE_DISABLED",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
-    ///         ShardCount = 3,
+    ///         ShardCount = 1,
     ///         RedisConfigs = 
     ///         {
     ///             { "maxmemory-policy", "volatile-ttl" },
     ///         },
-    ///         NodeType = "REDIS_HIGHMEM_MEDIUM",
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         PersistenceConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigArgs
     ///         {
     ///             Mode = "RDB",
@@ -508,12 +512,12 @@ namespace Pulumi.Gcp.Redis
     ///         },
     ///         AuthorizationMode = "AUTH_MODE_DISABLED",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
-    ///         ShardCount = 3,
+    ///         ShardCount = 1,
     ///         RedisConfigs = 
     ///         {
     ///             { "maxmemory-policy", "volatile-ttl" },
     ///         },
-    ///         NodeType = "REDIS_HIGHMEM_MEDIUM",
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         PersistenceConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigArgs
     ///         {
     ///             Mode = "RDB",
@@ -527,7 +531,7 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             Mode = "MULTI_ZONE",
     ///         },
-    ///         ReplicaCount = 2,
+    ///         ReplicaCount = 1,
     ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
     ///         {
     ///             WeeklyMaintenanceWindows = new[]
@@ -564,6 +568,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Cluster Rdb
     /// 
     /// ```csharp
@@ -584,14 +589,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
     ///         Network = consumerNet.Id,
@@ -607,7 +612,7 @@ namespace Pulumi.Gcp.Redis
     ///     var cluster_rdb = new Gcp.Redis.Cluster("cluster-rdb", new()
     ///     {
     ///         Name = "rdb-cluster",
-    ///         ShardCount = 3,
+    ///         ShardCount = 1,
     ///         PscConfigs = new[]
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -615,7 +620,7 @@ namespace Pulumi.Gcp.Redis
     ///                 Network = consumerNet.Id,
     ///             },
     ///         },
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         ReplicaCount = 0,
     ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -665,6 +670,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Cluster Aof
     /// 
     /// ```csharp
@@ -685,14 +691,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
     ///         Network = consumerNet.Id,
@@ -708,7 +714,7 @@ namespace Pulumi.Gcp.Redis
     ///     var cluster_aof = new Gcp.Redis.Cluster("cluster-aof", new()
     ///     {
     ///         Name = "aof-cluster",
-    ///         ShardCount = 3,
+    ///         ShardCount = 1,
     ///         PscConfigs = new[]
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -716,7 +722,7 @@ namespace Pulumi.Gcp.Redis
     ///                 Network = consumerNet.Id,
     ///             },
     ///         },
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         ReplicaCount = 0,
     ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -765,6 +771,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Cluster Cmek
     /// 
     /// ```csharp
@@ -785,14 +792,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
     ///         Network = consumerNet.Id,
@@ -808,7 +815,7 @@ namespace Pulumi.Gcp.Redis
     ///     var cluster_cmek = new Gcp.Redis.Cluster("cluster-cmek", new()
     ///     {
     ///         Name = "cmek-cluster",
-    ///         ShardCount = 3,
+    ///         ShardCount = 1,
     ///         PscConfigs = new[]
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -817,7 +824,8 @@ namespace Pulumi.Gcp.Redis
     ///             },
     ///         },
     ///         KmsKey = "my-key",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         DeletionProtectionEnabled = true,
     ///     }, new CustomResourceOptions
     ///     {
@@ -831,6 +839,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Cluster Flexible Ca
     /// 
     /// ```csharp
@@ -844,7 +853,7 @@ namespace Pulumi.Gcp.Redis
     ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
     ///         Name = "ca-pool",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         Tier = "ENTERPRISE",
     ///     });
     /// 
@@ -852,7 +861,7 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Pool = @default.Name,
     ///         CertificateAuthorityId = "ca-auth",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -902,14 +911,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "ca-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var defaultServiceConnectionPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "ca-policy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Network = consumerNet.Id,
     ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
@@ -924,8 +933,9 @@ namespace Pulumi.Gcp.Redis
     ///     var test_cluster = new Gcp.Redis.Cluster("test-cluster", new()
     ///     {
     ///         Name = "ca-cluster",
-    ///         ShardCount = 3,
-    ///         Region = "us-west1",
+    ///         ShardCount = 1,
+    ///         Region = "us-east1",
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         PscConfigs = new[]
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -979,7 +989,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         /// Default value is `AUTH_MODE_DISABLED`.
-        /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         /// </summary>
         [Output("authorizationMode")]
         public Output<string?> AuthorizationMode { get; private set; } = null!;
@@ -1329,7 +1339,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         /// Default value is `AUTH_MODE_DISABLED`.
-        /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         /// </summary>
         [Input("authorizationMode")]
         public Input<string>? AuthorizationMode { get; set; }
@@ -1540,7 +1550,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         /// Default value is `AUTH_MODE_DISABLED`.
-        /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         /// </summary>
         [Input("authorizationMode")]
         public Input<string>? AuthorizationMode { get; set; }

@@ -736,6 +736,7 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workbench Instance Basic Container
 
         ```python
@@ -756,6 +757,7 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workbench Instance Basic Gpu
 
         ```python
@@ -801,6 +803,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[gpu_reservation]))
         ```
+
         ### Workbench Instance Labels Stopped
 
         ```python
@@ -832,6 +835,7 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="STOPPED")
         ```
+
         ### Workbench Instance Full
 
         ```python
@@ -952,6 +956,7 @@ class Instance(pulumi.CustomResource):
                     my_policy,
                 ]))
         ```
+
         ### Workbench Instance Confidential Compute
 
         ```python
@@ -976,6 +981,7 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workbench Instance Euc
 
         ```python
@@ -1085,6 +1091,7 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workbench Instance Basic Container
 
         ```python
@@ -1105,6 +1112,7 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workbench Instance Basic Gpu
 
         ```python
@@ -1150,6 +1158,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[gpu_reservation]))
         ```
+
         ### Workbench Instance Labels Stopped
 
         ```python
@@ -1181,6 +1190,7 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="STOPPED")
         ```
+
         ### Workbench Instance Full
 
         ```python
@@ -1301,6 +1311,7 @@ class Instance(pulumi.CustomResource):
                     my_policy,
                 ]))
         ```
+
         ### Workbench Instance Confidential Compute
 
         ```python
@@ -1325,6 +1336,7 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workbench Instance Euc
 
         ```python

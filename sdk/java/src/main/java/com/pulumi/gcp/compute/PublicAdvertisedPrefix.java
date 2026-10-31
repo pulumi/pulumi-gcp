@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Public Advertised Prefixes Pdp Scope
  * 
  * <pre>
@@ -96,6 +97,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Public Advertised Prefixes Ipv6 Access Type
  * 
  * <pre>

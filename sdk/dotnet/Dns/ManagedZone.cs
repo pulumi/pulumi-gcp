@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dns Managed Zone Private
     /// 
     /// ```csharp
@@ -95,6 +96,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dns Managed Zone Private Forwarding
     /// 
     /// ```csharp
@@ -159,6 +161,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dns Managed Zone Private Forwarding Ipv6
     /// 
     /// ```csharp
@@ -205,6 +208,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dns Managed Zone Private Gke
     /// 
     /// ```csharp
@@ -298,6 +302,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dns Managed Zone Private Peering
     /// 
     /// ```csharp
@@ -347,6 +352,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dns Managed Zone Service Directory
     /// 
     /// ```csharp
@@ -386,6 +392,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dns Managed Zone Cloud Logging
     /// 
     /// ```csharp
@@ -413,6 +420,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dns Managed Zone Iam Condition
     /// 
     /// ```csharp

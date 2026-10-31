@@ -13,6 +13,8 @@ public final class GetRegionDiskDiskEncryptionKey {
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
      * 
+     * Specify the key without a &#39;/cryptoKeyVersions/&#39; suffix.
+     * 
      */
     private String kmsKeyName;
     /**
@@ -61,6 +63,8 @@ public final class GetRegionDiskDiskEncryptionKey {
     private GetRegionDiskDiskEncryptionKey() {}
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     * Specify the key without a &#39;/cryptoKeyVersions/&#39; suffix.
      * 
      */
     public String kmsKeyName() {

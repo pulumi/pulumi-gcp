@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Datapolicy Data Policy Routine
     /// 
     /// ```csharp

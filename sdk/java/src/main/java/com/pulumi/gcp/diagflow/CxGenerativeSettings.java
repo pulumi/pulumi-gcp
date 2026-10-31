@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .languageCode("en")
  *             .llmModelSettings(CxGenerativeSettingsLlmModelSettingsArgs.builder()
- *                 .model("gemini-2.0-flash-001")
+ *                 .model("gemini-2.5-flash")
  *                 .promptText("example prompt text")
  *                 .build())
  *             .build());

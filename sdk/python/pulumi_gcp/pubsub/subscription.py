@@ -24,6 +24,7 @@ class SubscriptionArgs:
                  topic: pulumi.Input[_builtins.str],
                  ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  bigquery_config: pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']] = None,
+                 bigtable_config: pulumi.Input[Optional['SubscriptionBigtableConfigArgs']] = None,
                  cloud_storage_config: pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']] = None,
                  dead_letter_policy: pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -62,12 +63,16 @@ class SubscriptionArgs:
                If the subscriber never acknowledges the message, the Pub/Sub system
                will eventually redeliver the message.
         :param pulumi.Input['SubscriptionBigqueryConfigArgs'] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
-               Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-               If all three are empty, then the subscriber will pull and ack messages using API methods.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
+               Structure is documented below.
+        :param pulumi.Input['SubscriptionBigtableConfigArgs'] bigtable_config: If delivery to Bigtable is used with this subscription, this field is used to configure it.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
         :param pulumi.Input['SubscriptionCloudStorageConfigArgs'] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-               Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-               If all three are empty, then the subscriber will pull and ack messages using API methods.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
         :param pulumi.Input['SubscriptionDeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
                this subscription. If dead_letter_policy is not set, dead lettering
@@ -148,6 +153,8 @@ class SubscriptionArgs:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
         if bigquery_config is not None:
             pulumi.set(__self__, "bigquery_config", bigquery_config)
+        if bigtable_config is not None:
+            pulumi.set(__self__, "bigtable_config", bigtable_config)
         if cloud_storage_config is not None:
             pulumi.set(__self__, "cloud_storage_config", cloud_storage_config)
         if dead_letter_policy is not None:
@@ -226,8 +233,8 @@ class SubscriptionArgs:
     def bigquery_config(self) -> pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']]:
         """
         If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        If all three are empty, then the subscriber will pull and ack messages using API methods.
+        Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        If none of them are set, then the subscriber will pull and ack messages using API methods.
         Structure is documented below.
         """
         return pulumi.get(self, "bigquery_config")
@@ -237,12 +244,27 @@ class SubscriptionArgs:
         pulumi.set(self, "bigquery_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="bigtableConfig")
+    def bigtable_config(self) -> pulumi.Input[Optional['SubscriptionBigtableConfigArgs']]:
+        """
+        If delivery to Bigtable is used with this subscription, this field is used to configure it.
+        Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        If none of them are set, then the subscriber will pull and ack messages using API methods.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigtable_config")
+
+    @bigtable_config.setter
+    def bigtable_config(self, value: pulumi.Input[Optional['SubscriptionBigtableConfigArgs']]):
+        pulumi.set(self, "bigtable_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="cloudStorageConfig")
     def cloud_storage_config(self) -> pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']]:
         """
         If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-        Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        If all three are empty, then the subscriber will pull and ack messages using API methods.
+        Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        If none of them are set, then the subscriber will pull and ack messages using API methods.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_storage_config")
@@ -495,6 +517,7 @@ class _SubscriptionState:
     def __init__(__self__, *,
                  ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  bigquery_config: pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']] = None,
+                 bigtable_config: pulumi.Input[Optional['SubscriptionBigtableConfigArgs']] = None,
                  cloud_storage_config: pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']] = None,
                  dead_letter_policy: pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -533,12 +556,16 @@ class _SubscriptionState:
                If the subscriber never acknowledges the message, the Pub/Sub system
                will eventually redeliver the message.
         :param pulumi.Input['SubscriptionBigqueryConfigArgs'] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
-               Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-               If all three are empty, then the subscriber will pull and ack messages using API methods.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
+               Structure is documented below.
+        :param pulumi.Input['SubscriptionBigtableConfigArgs'] bigtable_config: If delivery to Bigtable is used with this subscription, this field is used to configure it.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
         :param pulumi.Input['SubscriptionCloudStorageConfigArgs'] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-               Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-               If all three are empty, then the subscriber will pull and ack messages using API methods.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
         :param pulumi.Input['SubscriptionDeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
                this subscription. If dead_letter_policy is not set, dead lettering
@@ -624,6 +651,8 @@ class _SubscriptionState:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
         if bigquery_config is not None:
             pulumi.set(__self__, "bigquery_config", bigquery_config)
+        if bigtable_config is not None:
+            pulumi.set(__self__, "bigtable_config", bigtable_config)
         if cloud_storage_config is not None:
             pulumi.set(__self__, "cloud_storage_config", cloud_storage_config)
         if dead_letter_policy is not None:
@@ -694,8 +723,8 @@ class _SubscriptionState:
     def bigquery_config(self) -> pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']]:
         """
         If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        If all three are empty, then the subscriber will pull and ack messages using API methods.
+        Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        If none of them are set, then the subscriber will pull and ack messages using API methods.
         Structure is documented below.
         """
         return pulumi.get(self, "bigquery_config")
@@ -705,12 +734,27 @@ class _SubscriptionState:
         pulumi.set(self, "bigquery_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="bigtableConfig")
+    def bigtable_config(self) -> pulumi.Input[Optional['SubscriptionBigtableConfigArgs']]:
+        """
+        If delivery to Bigtable is used with this subscription, this field is used to configure it.
+        Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        If none of them are set, then the subscriber will pull and ack messages using API methods.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigtable_config")
+
+    @bigtable_config.setter
+    def bigtable_config(self, value: pulumi.Input[Optional['SubscriptionBigtableConfigArgs']]):
+        pulumi.set(self, "bigtable_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="cloudStorageConfig")
     def cloud_storage_config(self) -> pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']]:
         """
         If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-        Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        If all three are empty, then the subscriber will pull and ack messages using API methods.
+        Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        If none of them are set, then the subscriber will pull and ack messages using API methods.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_storage_config")
@@ -1005,6 +1049,7 @@ class Subscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  bigquery_config: pulumi.Input[Optional[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict', 'outputs.SubscriptionBigqueryConfig']]] = None,
+                 bigtable_config: pulumi.Input[Optional[Union['SubscriptionBigtableConfigArgs', 'SubscriptionBigtableConfigArgsDict', 'outputs.SubscriptionBigtableConfig']]] = None,
                  cloud_storage_config: pulumi.Input[Optional[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict', 'outputs.SubscriptionCloudStorageConfig']]] = None,
                  dead_letter_policy: pulumi.Input[Optional[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict', 'outputs.SubscriptionDeadLetterPolicy']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1059,6 +1104,7 @@ class Subscription(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Subscription Pull
 
         ```python
@@ -1083,6 +1129,7 @@ class Subscription(pulumi.CustomResource):
             },
             enable_message_ordering=False)
         ```
+
         ### Pubsub Subscription Pull Filter
 
         ```python
@@ -1101,6 +1148,7 @@ class Subscription(pulumi.CustomResource):
         \"\"\",
             ack_deadline_seconds=20)
         ```
+
         ### Pubsub Subscription Dead Letter
 
         ```python
@@ -1117,6 +1165,7 @@ class Subscription(pulumi.CustomResource):
                 "max_delivery_attempts": 10,
             })
         ```
+
         ### Pubsub Subscription Push Bq
 
         ```python
@@ -1151,6 +1200,7 @@ class Subscription(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Pubsub Subscription Push Bq Table Schema
 
         ```python
@@ -1186,6 +1236,7 @@ class Subscription(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Pubsub Subscription Push Bq Service Account
 
         ```python
@@ -1237,6 +1288,7 @@ class Subscription(pulumi.CustomResource):
                     bigquery_data_editor,
                 ]))
         ```
+
         ### Pubsub Subscription Push Cloudstorage
 
         ```python
@@ -1259,7 +1311,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_45598",
+                "filename_suffix": "-_78545",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1270,6 +1322,7 @@ class Subscription(pulumi.CustomResource):
                     admin,
                 ]))
         ```
+
         ### Pubsub Subscription Push Cloudstorage Text
 
         ```python
@@ -1292,7 +1345,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_64623",
+                "filename_suffix": "-_48234",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1304,6 +1357,7 @@ class Subscription(pulumi.CustomResource):
                     admin,
                 ]))
         ```
+
         ### Pubsub Subscription Push Cloudstorage Avro
 
         ```python
@@ -1326,7 +1380,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_42057",
+                "filename_suffix": "-_74065",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1341,6 +1395,7 @@ class Subscription(pulumi.CustomResource):
                     admin,
                 ]))
         ```
+
         ### Pubsub Subscription Push Cloudstorage Service Account
 
         ```python
@@ -1365,7 +1420,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_84735",
+                "filename_suffix": "-_75303",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1378,6 +1433,59 @@ class Subscription(pulumi.CustomResource):
                 ]))
         project = gcp.organizations.get_project()
         ```
+
+        ### Pubsub Subscription Push Bigtable
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.bigtable.Instance("example",
+            name="example-bt",
+            clusters=[{
+                "cluster_id": "example-bt",
+                "zone": "us-central1-b",
+                "num_nodes": 1,
+            }],
+            deletion_protection=False)
+        example_app_profile = gcp.bigtable.AppProfile("example",
+            instance=example.name,
+            app_profile_id="example-profile",
+            single_cluster_routing={
+                "cluster_id": "example-bt",
+            },
+            ignore_warnings=True)
+        example_table = gcp.bigtable.Table("example",
+            name="example-table",
+            instance_name=example.name,
+            column_families=[
+                {
+                    "family": "data",
+                },
+                {
+                    "family": "pubsub_metadata",
+                },
+            ])
+        example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example_topic.id,
+            bigtable_config={
+                "table": example_table.id,
+                "app_profile_id": example_app_profile.app_profile_id,
+                "write_metadata": True,
+                "column_family_mapping": {
+                    "delimited_key": {
+                        "key_fields": [
+                            "user_id",
+                            "event_id",
+                        ],
+                        "delimiter": "Iw==",
+                    },
+                },
+            })
+        ```
+
         ### Pubsub Subscription Single Smt
 
         ```python
@@ -1399,6 +1507,7 @@ class Subscription(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Pubsub Subscription Multiple Smts
 
         ```python
@@ -1440,6 +1549,7 @@ class Subscription(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Pubsub Subscription Tags
 
         ```python
@@ -1466,6 +1576,7 @@ class Subscription(pulumi.CustomResource):
             })
         )
         ```
+
         ### Pubsub Subscription Ai Inference
 
         ```python
@@ -1535,12 +1646,16 @@ class Subscription(pulumi.CustomResource):
                If the subscriber never acknowledges the message, the Pub/Sub system
                will eventually redeliver the message.
         :param pulumi.Input[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict', 'outputs.SubscriptionBigqueryConfig']] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
-               Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-               If all three are empty, then the subscriber will pull and ack messages using API methods.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
+               Structure is documented below.
+        :param pulumi.Input[Union['SubscriptionBigtableConfigArgs', 'SubscriptionBigtableConfigArgsDict', 'outputs.SubscriptionBigtableConfig']] bigtable_config: If delivery to Bigtable is used with this subscription, this field is used to configure it.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
         :param pulumi.Input[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict', 'outputs.SubscriptionCloudStorageConfig']] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-               Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-               If all three are empty, then the subscriber will pull and ack messages using API methods.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
         :param pulumi.Input[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict', 'outputs.SubscriptionDeadLetterPolicy']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
                this subscription. If dead_letter_policy is not set, dead lettering
@@ -1661,6 +1776,7 @@ class Subscription(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Subscription Pull
 
         ```python
@@ -1685,6 +1801,7 @@ class Subscription(pulumi.CustomResource):
             },
             enable_message_ordering=False)
         ```
+
         ### Pubsub Subscription Pull Filter
 
         ```python
@@ -1703,6 +1820,7 @@ class Subscription(pulumi.CustomResource):
         \"\"\",
             ack_deadline_seconds=20)
         ```
+
         ### Pubsub Subscription Dead Letter
 
         ```python
@@ -1719,6 +1837,7 @@ class Subscription(pulumi.CustomResource):
                 "max_delivery_attempts": 10,
             })
         ```
+
         ### Pubsub Subscription Push Bq
 
         ```python
@@ -1753,6 +1872,7 @@ class Subscription(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Pubsub Subscription Push Bq Table Schema
 
         ```python
@@ -1788,6 +1908,7 @@ class Subscription(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Pubsub Subscription Push Bq Service Account
 
         ```python
@@ -1839,6 +1960,7 @@ class Subscription(pulumi.CustomResource):
                     bigquery_data_editor,
                 ]))
         ```
+
         ### Pubsub Subscription Push Cloudstorage
 
         ```python
@@ -1861,7 +1983,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_45598",
+                "filename_suffix": "-_78545",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1872,6 +1994,7 @@ class Subscription(pulumi.CustomResource):
                     admin,
                 ]))
         ```
+
         ### Pubsub Subscription Push Cloudstorage Text
 
         ```python
@@ -1894,7 +2017,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_64623",
+                "filename_suffix": "-_48234",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1906,6 +2029,7 @@ class Subscription(pulumi.CustomResource):
                     admin,
                 ]))
         ```
+
         ### Pubsub Subscription Push Cloudstorage Avro
 
         ```python
@@ -1928,7 +2052,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_42057",
+                "filename_suffix": "-_74065",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1943,6 +2067,7 @@ class Subscription(pulumi.CustomResource):
                     admin,
                 ]))
         ```
+
         ### Pubsub Subscription Push Cloudstorage Service Account
 
         ```python
@@ -1967,7 +2092,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_84735",
+                "filename_suffix": "-_75303",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1980,6 +2105,59 @@ class Subscription(pulumi.CustomResource):
                 ]))
         project = gcp.organizations.get_project()
         ```
+
+        ### Pubsub Subscription Push Bigtable
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.bigtable.Instance("example",
+            name="example-bt",
+            clusters=[{
+                "cluster_id": "example-bt",
+                "zone": "us-central1-b",
+                "num_nodes": 1,
+            }],
+            deletion_protection=False)
+        example_app_profile = gcp.bigtable.AppProfile("example",
+            instance=example.name,
+            app_profile_id="example-profile",
+            single_cluster_routing={
+                "cluster_id": "example-bt",
+            },
+            ignore_warnings=True)
+        example_table = gcp.bigtable.Table("example",
+            name="example-table",
+            instance_name=example.name,
+            column_families=[
+                {
+                    "family": "data",
+                },
+                {
+                    "family": "pubsub_metadata",
+                },
+            ])
+        example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example_topic.id,
+            bigtable_config={
+                "table": example_table.id,
+                "app_profile_id": example_app_profile.app_profile_id,
+                "write_metadata": True,
+                "column_family_mapping": {
+                    "delimited_key": {
+                        "key_fields": [
+                            "user_id",
+                            "event_id",
+                        ],
+                        "delimiter": "Iw==",
+                    },
+                },
+            })
+        ```
+
         ### Pubsub Subscription Single Smt
 
         ```python
@@ -2001,6 +2179,7 @@ class Subscription(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Pubsub Subscription Multiple Smts
 
         ```python
@@ -2042,6 +2221,7 @@ class Subscription(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Pubsub Subscription Tags
 
         ```python
@@ -2068,6 +2248,7 @@ class Subscription(pulumi.CustomResource):
             })
         )
         ```
+
         ### Pubsub Subscription Ai Inference
 
         ```python
@@ -2136,6 +2317,7 @@ class Subscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  bigquery_config: pulumi.Input[Optional[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict', 'outputs.SubscriptionBigqueryConfig']]] = None,
+                 bigtable_config: pulumi.Input[Optional[Union['SubscriptionBigtableConfigArgs', 'SubscriptionBigtableConfigArgsDict', 'outputs.SubscriptionBigtableConfig']]] = None,
                  cloud_storage_config: pulumi.Input[Optional[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict', 'outputs.SubscriptionCloudStorageConfig']]] = None,
                  dead_letter_policy: pulumi.Input[Optional[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict', 'outputs.SubscriptionDeadLetterPolicy']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2164,6 +2346,7 @@ class Subscription(pulumi.CustomResource):
 
             __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
             __props__.__dict__["bigquery_config"] = bigquery_config
+            __props__.__dict__["bigtable_config"] = bigtable_config
             __props__.__dict__["cloud_storage_config"] = cloud_storage_config
             __props__.__dict__["dead_letter_policy"] = dead_letter_policy
             __props__.__dict__["deletion_policy"] = deletion_policy
@@ -2199,6 +2382,7 @@ class Subscription(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             bigquery_config: pulumi.Input[Optional[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict', 'outputs.SubscriptionBigqueryConfig']]] = None,
+            bigtable_config: pulumi.Input[Optional[Union['SubscriptionBigtableConfigArgs', 'SubscriptionBigtableConfigArgsDict', 'outputs.SubscriptionBigtableConfig']]] = None,
             cloud_storage_config: pulumi.Input[Optional[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict', 'outputs.SubscriptionCloudStorageConfig']]] = None,
             dead_letter_policy: pulumi.Input[Optional[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict', 'outputs.SubscriptionDeadLetterPolicy']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2241,12 +2425,16 @@ class Subscription(pulumi.CustomResource):
                If the subscriber never acknowledges the message, the Pub/Sub system
                will eventually redeliver the message.
         :param pulumi.Input[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict', 'outputs.SubscriptionBigqueryConfig']] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
-               Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-               If all three are empty, then the subscriber will pull and ack messages using API methods.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
+               Structure is documented below.
+        :param pulumi.Input[Union['SubscriptionBigtableConfigArgs', 'SubscriptionBigtableConfigArgsDict', 'outputs.SubscriptionBigtableConfig']] bigtable_config: If delivery to Bigtable is used with this subscription, this field is used to configure it.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
         :param pulumi.Input[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict', 'outputs.SubscriptionCloudStorageConfig']] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-               Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-               If all three are empty, then the subscriber will pull and ack messages using API methods.
+               Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+               If none of them are set, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
         :param pulumi.Input[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict', 'outputs.SubscriptionDeadLetterPolicy']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
                this subscription. If dead_letter_policy is not set, dead lettering
@@ -2334,6 +2522,7 @@ class Subscription(pulumi.CustomResource):
 
         __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
         __props__.__dict__["bigquery_config"] = bigquery_config
+        __props__.__dict__["bigtable_config"] = bigtable_config
         __props__.__dict__["cloud_storage_config"] = cloud_storage_config
         __props__.__dict__["dead_letter_policy"] = dead_letter_policy
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -2382,19 +2571,30 @@ class Subscription(pulumi.CustomResource):
     def bigquery_config(self) -> pulumi.Output[Optional['outputs.SubscriptionBigqueryConfig']]:
         """
         If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        If all three are empty, then the subscriber will pull and ack messages using API methods.
+        Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        If none of them are set, then the subscriber will pull and ack messages using API methods.
         Structure is documented below.
         """
         return pulumi.get(self, "bigquery_config")
+
+    @_builtins.property
+    @pulumi.getter(name="bigtableConfig")
+    def bigtable_config(self) -> pulumi.Output[Optional['outputs.SubscriptionBigtableConfig']]:
+        """
+        If delivery to Bigtable is used with this subscription, this field is used to configure it.
+        Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        If none of them are set, then the subscriber will pull and ack messages using API methods.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigtable_config")
 
     @_builtins.property
     @pulumi.getter(name="cloudStorageConfig")
     def cloud_storage_config(self) -> pulumi.Output[Optional['outputs.SubscriptionCloudStorageConfig']]:
         """
         If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-        Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        If all three are empty, then the subscriber will pull and ack messages using API methods.
+        Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        If none of them are set, then the subscriber will pull and ack messages using API methods.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_storage_config")

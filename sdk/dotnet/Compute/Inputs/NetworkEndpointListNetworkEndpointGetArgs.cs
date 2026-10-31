@@ -30,6 +30,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
+        /// IPv6 address of network endpoint. The result of parsing the endpoint config,
+        /// or empty if IPv6 is not used.
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
+
+        /// <summary>
         /// Port number of network endpoint.
         /// **Note** `Port` is required unless the Network Endpoint Group is created
         /// with the type of `GCE_VM_IP`

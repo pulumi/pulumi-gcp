@@ -36,10 +36,10 @@ import * as utilities from "../utilities";
  * });
  * const instance = new gcp.lustre.Instance("instance", {
  *     instanceId: "my-instance",
- *     location: "us-central1-a",
+ *     location: "us-east4-a",
  *     description: "test lustre instance",
  *     filesystem: "testfs",
- *     capacityGib: "18000",
+ *     capacityGib: "9000",
  *     network: lustre_network.then(lustre_network => lustre_network.id),
  *     perUnitStorageThroughput: "1000",
  *     labels: {

@@ -45,6 +45,9 @@ import (
 //						Password:         pulumi.String("GenerateWallet@123"),
 //					},
 //				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
 //				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -55,6 +58,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Goldengate Connection Full
 //
 // ```go
@@ -101,6 +105,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Goldengate Connection Mysql
 //
 // ```go
@@ -152,6 +157,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Goldengate Connection Postgresql
 //
 // ```go
@@ -194,6 +200,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Goldengate Connection Redis
 //
 // ```go
@@ -235,6 +242,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Goldengate Connection Kafka
 //
 // ```go
@@ -284,6 +292,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Goldengate Connection Iceberg
 //
 // ```go
@@ -337,6 +346,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Goldengate Connection Snowflake
 //
 // ```go
@@ -377,6 +387,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Goldengate Connection Jms
 //
 // ```go

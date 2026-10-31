@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Odbnetwork Full
  *
  * ```typescript

@@ -14,9 +14,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StandardAppVersionVpcAccess {
     /**
-     * @return The egress setting for the VPC Access, controlling what traffic is diverted through it.
+     * @return (Optional, Deprecated)
+     * The egress setting for the VPC Access, controlling what traffic is diverted through it.
+     * 
+     * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+     * 
+     * @deprecated
+     * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
      */
+    @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
     private @Nullable String egressSetting;
     /**
      * @return List of network interfaces for the VPC Access. Currently only a single network interface is supported.
@@ -24,12 +31,25 @@ public final class StandardAppVersionVpcAccess {
      * 
      */
     private @Nullable List<StandardAppVersionVpcAccessNetworkInterface> networkInterfaces;
+    /**
+     * @return The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+     * Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+     * 
+     */
+    private @Nullable String vpcEgress;
 
     private StandardAppVersionVpcAccess() {}
     /**
-     * @return The egress setting for the VPC Access, controlling what traffic is diverted through it.
+     * @return (Optional, Deprecated)
+     * The egress setting for the VPC Access, controlling what traffic is diverted through it.
+     * 
+     * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+     * 
+     * @deprecated
+     * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
      */
+    @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
     public Optional<String> egressSetting() {
         return Optional.ofNullable(this.egressSetting);
     }
@@ -40,6 +60,14 @@ public final class StandardAppVersionVpcAccess {
      */
     public List<StandardAppVersionVpcAccessNetworkInterface> networkInterfaces() {
         return this.networkInterfaces == null ? List.of() : this.networkInterfaces;
+    }
+    /**
+     * @return The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+     * Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+     * 
+     */
+    public Optional<String> vpcEgress() {
+        return Optional.ofNullable(this.vpcEgress);
     }
 
     public static Builder builder() {
@@ -53,11 +81,13 @@ public final class StandardAppVersionVpcAccess {
     public static final class Builder {
         private @Nullable String egressSetting;
         private @Nullable List<StandardAppVersionVpcAccessNetworkInterface> networkInterfaces;
+        private @Nullable String vpcEgress;
         public Builder() {}
         public Builder(StandardAppVersionVpcAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.egressSetting = defaults.egressSetting;
     	      this.networkInterfaces = defaults.networkInterfaces;
+    	      this.vpcEgress = defaults.vpcEgress;
         }
 
         @CustomType.Setter
@@ -75,10 +105,17 @@ public final class StandardAppVersionVpcAccess {
         public Builder networkInterfaces(StandardAppVersionVpcAccessNetworkInterface... networkInterfaces) {
             return networkInterfaces(List.of(networkInterfaces));
         }
+        @CustomType.Setter
+        public Builder vpcEgress(@Nullable String vpcEgress) {
+
+            this.vpcEgress = vpcEgress;
+            return this;
+        }
         public StandardAppVersionVpcAccess build() {
             final var _resultValue = new StandardAppVersionVpcAccess();
             _resultValue.egressSetting = egressSetting;
             _resultValue.networkInterfaces = networkInterfaces;
+            _resultValue.vpcEgress = vpcEgress;
             return _resultValue;
         }
     }

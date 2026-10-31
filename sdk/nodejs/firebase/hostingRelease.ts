@@ -44,6 +44,7 @@ import * as utilities from "../utilities";
  *     message: "Test release",
  * });
  * ```
+ *
  * ### Firebasehosting Release In Channel
  *
  * ```typescript
@@ -75,6 +76,7 @@ import * as utilities from "../utilities";
  *     message: "Test release in channel",
  * });
  * ```
+ *
  * ### Firebasehosting Release Disable
  *
  * ```typescript

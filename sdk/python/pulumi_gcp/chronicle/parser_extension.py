@@ -585,6 +585,7 @@ class ParserExtension(pulumi.CustomResource):
             validation_skipped=True,
             cbn_snippet="ZHVtbXkgZXh0ZW5zaW9uIHNuaXBwZXQ=")
         ```
+
         ### Chronicle Parserextension Full
 
         ```python
@@ -620,6 +621,7 @@ class ParserExtension(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Chronicle Parserextension Dynamic
 
         ```python
@@ -711,6 +713,7 @@ class ParserExtension(pulumi.CustomResource):
             validation_skipped=True,
             cbn_snippet="ZHVtbXkgZXh0ZW5zaW9uIHNuaXBwZXQ=")
         ```
+
         ### Chronicle Parserextension Full
 
         ```python
@@ -746,6 +749,7 @@ class ParserExtension(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Chronicle Parserextension Dynamic
 
         ```python

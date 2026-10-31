@@ -12,11 +12,6 @@ namespace Pulumi.Gcp.SecretManager
     public static class GetRegionalSecrets
     {
         /// <summary>
-        /// subcategory: "Secret Manager"
-        /// description: |-
-        ///   List the Secret Manager Regional Secrets.
-        /// ---
-        /// 
         /// Use this data source to list the Secret Manager Regional Secrets.
         /// 
         /// ## Example Usage
@@ -41,11 +36,6 @@ namespace Pulumi.Gcp.SecretManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionalSecretsResult>("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", args ?? new GetRegionalSecretsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// subcategory: "Secret Manager"
-        /// description: |-
-        ///   List the Secret Manager Regional Secrets.
-        /// ---
-        /// 
         /// Use this data source to list the Secret Manager Regional Secrets.
         /// 
         /// ## Example Usage
@@ -70,11 +60,6 @@ namespace Pulumi.Gcp.SecretManager
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionalSecretsResult>("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", args ?? new GetRegionalSecretsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// subcategory: "Secret Manager"
-        /// description: |-
-        ///   List the Secret Manager Regional Secrets.
-        /// ---
-        /// 
         /// Use this data source to list the Secret Manager Regional Secrets.
         /// 
         /// ## Example Usage

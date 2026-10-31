@@ -89,6 +89,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Vectorsearch Collection Cmek
  * 
  * <pre>

@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Full Federation Only Mode
  * 
  * <pre>
@@ -101,6 +102,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Full Trust Domain Mode
  * 
  * <pre>
@@ -189,6 +191,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
  * 
  * <pre>

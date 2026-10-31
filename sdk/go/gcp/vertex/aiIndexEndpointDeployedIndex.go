@@ -144,6 +144,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Index Endpoint Deployed Index Basic Two
 //
 // ```go

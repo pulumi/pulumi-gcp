@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     workloadIdentityPoolManagedIdentityId: "example-managed-identity",
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Managed Identity Full
  *
  * ```typescript

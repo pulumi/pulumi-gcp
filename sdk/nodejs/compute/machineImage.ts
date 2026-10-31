@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     sourceInstance: vm.selfLink,
  * });
  * ```
+ *
  * ### Compute Machine Image Kms
  *
  * ```typescript
@@ -79,6 +80,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Machine Image Resource Manager Tags
  *
  * ```typescript

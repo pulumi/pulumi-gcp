@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     ipCidrRange: "127.127.0.0/16",
  * });
  * ```
+ *
  * ### Public Advertised Prefixes Pdp Scope
  *
  * ```typescript
@@ -42,6 +43,7 @@ import * as utilities from "../utilities";
  *     pdpScope: "REGIONAL",
  * });
  * ```
+ *
  * ### Public Advertised Prefixes Ipv6 Access Type
  *
  * ```typescript

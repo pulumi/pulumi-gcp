@@ -575,6 +575,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
             opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         ```
+
         ### Vertex Ai Index Endpoint With Psc
 
         ```python
@@ -594,6 +595,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                 "project_allowlists": [project.name],
             })
         ```
+
         ### Vertex Ai Index Endpoint With Public Endpoint
 
         ```python
@@ -698,6 +700,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
             opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         ```
+
         ### Vertex Ai Index Endpoint With Psc
 
         ```python
@@ -717,6 +720,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                 "project_allowlists": [project.name],
             })
         ```
+
         ### Vertex Ai Index Endpoint With Public Endpoint
 
         ```python

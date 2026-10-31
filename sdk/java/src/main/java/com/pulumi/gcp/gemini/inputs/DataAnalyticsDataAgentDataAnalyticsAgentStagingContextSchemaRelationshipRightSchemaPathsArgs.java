@@ -18,16 +18,12 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaR
     /**
      * Required. The ordered list of paths within the table schema.
      * 
-     * &lt;a name=&#34;nestedDataAnalyticsAgentLastPublishedContext&#34;&gt;&lt;/a&gt;The `lastPublishedContext` block contains:
-     * 
      */
     @Import(name="paths", required=true)
     private Output<List<String>> paths;
 
     /**
      * @return Required. The ordered list of paths within the table schema.
-     * 
-     * &lt;a name=&#34;nestedDataAnalyticsAgentLastPublishedContext&#34;&gt;&lt;/a&gt;The `lastPublishedContext` block contains:
      * 
      */
     public Output<List<String>> paths() {
@@ -77,8 +73,6 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaR
         /**
          * @param paths Required. The ordered list of paths within the table schema.
          * 
-         * &lt;a name=&#34;nestedDataAnalyticsAgentLastPublishedContext&#34;&gt;&lt;/a&gt;The `lastPublishedContext` block contains:
-         * 
          * @return builder
          * 
          */
@@ -90,8 +84,6 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaR
         /**
          * @param paths Required. The ordered list of paths within the table schema.
          * 
-         * &lt;a name=&#34;nestedDataAnalyticsAgentLastPublishedContext&#34;&gt;&lt;/a&gt;The `lastPublishedContext` block contains:
-         * 
          * @return builder
          * 
          */
@@ -101,8 +93,6 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaR
 
         /**
          * @param paths Required. The ordered list of paths within the table schema.
-         * 
-         * &lt;a name=&#34;nestedDataAnalyticsAgentLastPublishedContext&#34;&gt;&lt;/a&gt;The `lastPublishedContext` block contains:
          * 
          * @return builder
          * 

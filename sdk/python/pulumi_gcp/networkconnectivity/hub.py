@@ -532,6 +532,7 @@ class Hub(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+
         ### Network Connectivity Hub With Export Psc
 
         ```python
@@ -543,6 +544,7 @@ class Hub(pulumi.CustomResource):
             description="A sample hub with Private Service Connect transitivity is enabled",
             export_psc=True)
         ```
+
         ### Network Connectivity Hub With Export Psc Config
 
         ```python
@@ -558,6 +560,7 @@ class Hub(pulumi.CustomResource):
                 "global_google_apis": True,
             })
         ```
+
         ### Network Connectivity Hub Mesh Topology
 
         ```python
@@ -571,6 +574,7 @@ class Hub(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+
         ### Network Connectivity Hub Star Topology
 
         ```python
@@ -585,6 +589,7 @@ class Hub(pulumi.CustomResource):
             },
             preset_topology="STAR")
         ```
+
         ### Network Connectivity Hub Policy Mode
 
         ```python
@@ -673,6 +678,7 @@ class Hub(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+
         ### Network Connectivity Hub With Export Psc
 
         ```python
@@ -684,6 +690,7 @@ class Hub(pulumi.CustomResource):
             description="A sample hub with Private Service Connect transitivity is enabled",
             export_psc=True)
         ```
+
         ### Network Connectivity Hub With Export Psc Config
 
         ```python
@@ -699,6 +706,7 @@ class Hub(pulumi.CustomResource):
                 "global_google_apis": True,
             })
         ```
+
         ### Network Connectivity Hub Mesh Topology
 
         ```python
@@ -712,6 +720,7 @@ class Hub(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+
         ### Network Connectivity Hub Star Topology
 
         ```python
@@ -726,6 +735,7 @@ class Hub(pulumi.CustomResource):
             },
             preset_topology="STAR")
         ```
+
         ### Network Connectivity Hub Policy Mode
 
         ```python

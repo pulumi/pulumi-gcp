@@ -55,9 +55,13 @@ import * as utilities from "../utilities";
  *         giVersion: "19.0.0.0",
  *         hostnamePrefix: "hostname1",
  *     },
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Cloud Vmcluster Odbnetwork
  *
  * ```typescript
@@ -95,6 +99,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Cloud Vmcluster Full
  *
  * ```typescript
@@ -161,10 +166,13 @@ import * as utilities from "../utilities";
  *             incidentLogsEnabled: true,
  *         },
  *         memorySizeGb: 60,
+ *         scanListenerPortTcp: 1521,
+ *         scanListenerPortTcpSsl: 2484,
  *     },
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Cloud Vmcluster Exascale
  *
  * ```typescript

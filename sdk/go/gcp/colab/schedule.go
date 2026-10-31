@@ -146,6 +146,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Colab Schedule Paused
 //
 // ```go
@@ -271,6 +272,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Colab Schedule Full
 //
 // ```go
@@ -397,6 +399,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Colab Schedule Notebook Full
 //
 // ```go
@@ -547,6 +550,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Colab Schedule Pipeline
 //
 // ```go

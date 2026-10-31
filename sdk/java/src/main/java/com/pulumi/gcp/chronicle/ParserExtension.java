@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Parserextension Full
  * 
  * <pre>
@@ -125,6 +126,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Parserextension Dynamic
  * 
  * <pre>

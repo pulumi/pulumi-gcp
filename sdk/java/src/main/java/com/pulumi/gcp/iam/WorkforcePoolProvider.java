@@ -84,6 +84,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workforce Pool Provider Saml Full
  * 
  * <pre>
@@ -152,6 +153,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workforce Pool Provider Oidc Basic
  * 
  * <pre>
@@ -212,6 +214,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workforce Pool Provider Oidc Full
  * 
  * <pre>
@@ -296,6 +299,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Basic
  * 
  * <pre>
@@ -369,6 +373,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Full
  * 
  * <pre>
@@ -446,6 +451,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Basic
  * 
  * <pre>
@@ -519,6 +525,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Full
  * 
  * <pre>
@@ -596,6 +603,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Basic
  * 
  * <pre>
@@ -669,6 +677,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Full
  * 
  * <pre>
@@ -746,6 +755,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workforce Pool Provider Oidc Detailed Audit Logging
  * 
  * <pre>

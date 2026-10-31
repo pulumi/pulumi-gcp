@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.Gemini.Inputs
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
+        /// Optional. The schema of the datasource.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("schema")]
+        public Input<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaGetArgs>? Schema { get; set; }
+
+        /// <summary>
         /// The table ID.
         /// </summary>
         [Input("tableId", required: true)]

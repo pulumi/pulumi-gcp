@@ -204,6 +204,7 @@ type LookupClusterResult struct {
 	ResourceLabels                           map[string]string                                   `pulumi:"resourceLabels"`
 	ResourceUsageExportConfigs               []GetClusterResourceUsageExportConfig               `pulumi:"resourceUsageExportConfigs"`
 	RollbackSafeUpgrades                     []GetClusterRollbackSafeUpgrade                     `pulumi:"rollbackSafeUpgrades"`
+	ScheduleUpgradeConfigs                   []GetClusterScheduleUpgradeConfig                   `pulumi:"scheduleUpgradeConfigs"`
 	SecretManagerConfigs                     []GetClusterSecretManagerConfig                     `pulumi:"secretManagerConfigs"`
 	SecretSyncConfigs                        []GetClusterSecretSyncConfig                        `pulumi:"secretSyncConfigs"`
 	SecurityPostureConfigs                   []GetClusterSecurityPostureConfig                   `pulumi:"securityPostureConfigs"`
@@ -634,6 +635,10 @@ func (o LookupClusterResultOutput) ResourceUsageExportConfigs() GetClusterResour
 
 func (o LookupClusterResultOutput) RollbackSafeUpgrades() GetClusterRollbackSafeUpgradeArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterRollbackSafeUpgrade { return v.RollbackSafeUpgrades }).(GetClusterRollbackSafeUpgradeArrayOutput)
+}
+
+func (o LookupClusterResultOutput) ScheduleUpgradeConfigs() GetClusterScheduleUpgradeConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterScheduleUpgradeConfig { return v.ScheduleUpgradeConfigs }).(GetClusterScheduleUpgradeConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) SecretManagerConfigs() GetClusterSecretManagerConfigArrayOutput {

@@ -478,6 +478,7 @@ class Note(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Container Analysis Note Attestation Full
 
         ```python
@@ -583,6 +584,7 @@ class Note(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Container Analysis Note Attestation Full
 
         ```python

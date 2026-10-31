@@ -186,6 +186,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Transcoder Job Pubsub
  * 
  * <pre>
@@ -349,6 +350,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Transcoder Job Encryptions
  * 
  * <pre>
@@ -600,6 +602,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Transcoder Job Overlays
  * 
  * <pre>
@@ -784,6 +787,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Transcoder Job Manifests
  * 
  * <pre>

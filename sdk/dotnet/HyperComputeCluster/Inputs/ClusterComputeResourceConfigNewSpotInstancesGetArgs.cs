@@ -20,6 +20,20 @@ namespace Pulumi.Gcp.HyperComputeCluster.Inputs
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;
 
+        [Input("networkTags")]
+        private InputList<string>? _networkTags;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// A list of network tags to attach to the VM instances.
+        /// A maximum of 64 network tags are allowed.
+        /// </summary>
+        public InputList<string> NetworkTags
+        {
+            get => _networkTags ?? (_networkTags = new InputList<string>());
+            set => _networkTags = value;
+        }
+
         /// <summary>
         /// Specifies the termination action of the instance
         /// Possible values:

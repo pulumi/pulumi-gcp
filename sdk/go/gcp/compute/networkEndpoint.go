@@ -59,25 +59,33 @@ import (
 //				return err
 //			}
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("neg-subnetwork"),
-//				IpCidrRange: pulumi.String("10.0.0.1/16"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     _default.ID(),
+//				Name:           pulumi.String("neg-subnetwork"),
+//				IpCidrRange:    pulumi.String("10.0.0.1/16"),
+//				Region:         pulumi.String("us-central1"),
+//				Network:        _default.ID(),
+//				StackType:      pulumi.String("IPV4_IPV6"),
+//				Ipv6AccessType: pulumi.String("EXTERNAL"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			endpoint_instance, err := compute.NewInstance(ctx, "endpoint-instance", &compute.InstanceArgs{
+//			endpoint_instance1, err := compute.NewInstance(ctx, "endpoint-instance1", &compute.InstanceArgs{
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
 //					&compute.InstanceNetworkInterfaceArgs{
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 //							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 //						},
 //						Subnetwork: defaultSubnetwork.ID(),
+//						StackType:  pulumi.String("IPV4_IPV6"),
+//						Ipv6AccessConfigs: compute.InstanceNetworkInterfaceIpv6AccessConfigArray{
+//							&compute.InstanceNetworkInterfaceIpv6AccessConfigArgs{
+//								NetworkTier: pulumi.String("PREMIUM"),
+//							},
+//						},
 //					},
 //				},
-//				Name:        pulumi.String("endpoint-instance"),
-//				MachineType: pulumi.String("e2-medium"),
+//				Name:        pulumi.String("endpoint-instance1"),
+//				MachineType: pulumi.String("e2-micro"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 //						Image: pulumi.String(myImage.SelfLink),
@@ -87,23 +95,71 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
+//				Name:        pulumi.String("my-lb-neg"),
+//				Network:     _default.ID(),
+//				Subnetwork:  defaultSubnetwork.ID(),
+//				DefaultPort: pulumi.Int(90),
+//				Zone:        pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = compute.NewNetworkEndpoint(ctx, "default-endpoint", &compute.NetworkEndpointArgs{
-//				NetworkEndpointGroup: pulumi.Any(neg.Name),
-//				Instance:             endpoint_instance.Name,
-//				Port:                 pulumi.Any(neg.DefaultPort),
-//				IpAddress: endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//				NetworkEndpointGroup: neg.Name,
+//				Instance:             endpoint_instance1.Name,
+//				Port:                 neg.DefaultPort,
+//				IpAddress: endpoint_instance1.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
 //					return networkInterfaces[0].NetworkIp, nil
 //				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkEndpointGroup(ctx, "group", &compute.NetworkEndpointGroupArgs{
-//				Name:        pulumi.String("my-lb-neg"),
-//				Network:     _default.ID(),
-//				Subnetwork:  defaultSubnetwork.ID(),
-//				DefaultPort: pulumi.Int(90),
-//				Zone:        pulumi.String("us-central1-a"),
+//			_, err = compute.NewNetworkEndpoint(ctx, "ipv6-endpoint1", &compute.NetworkEndpointArgs{
+//				NetworkEndpointGroup: neg.Name,
+//				Instance:             endpoint_instance1.Name,
+//				Port:                 neg.DefaultPort,
+//				Ipv6Address: endpoint_instance1.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//					return networkInterfaces[0].Ipv6AccessConfigs[0].ExternalIpv6, nil
+//				}).(pulumi.StringPtrOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			endpoint_instance2, err := compute.NewInstance(ctx, "endpoint-instance2", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
+//						},
+//						Subnetwork: defaultSubnetwork.ID(),
+//						StackType:  pulumi.String("IPV4_IPV6"),
+//						Ipv6AccessConfigs: compute.InstanceNetworkInterfaceIpv6AccessConfigArray{
+//							&compute.InstanceNetworkInterfaceIpv6AccessConfigArgs{
+//								NetworkTier: pulumi.String("PREMIUM"),
+//							},
+//						},
+//					},
+//				},
+//				Name:        pulumi.String("endpoint-instance2"),
+//				MachineType: pulumi.String("e2-micro"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String(myImage.SelfLink),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkEndpoint(ctx, "ipv6-endpoint2", &compute.NetworkEndpointArgs{
+//				NetworkEndpointGroup: neg.Name,
+//				Instance:             endpoint_instance2.Name,
+//				Port:                 neg.DefaultPort,
+//				Ipv6Address: endpoint_instance2.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//					return networkInterfaces[0].Ipv6AccessConfigs[0].ExternalIpv6, nil
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -148,7 +204,10 @@ type NetworkEndpoint struct {
 	// IPv4 address of network endpoint. The IP address must belong
 	// to a VM in GCE (either the primary IP or as part of an aliased IP
 	// range).
-	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
+	IpAddress pulumi.StringPtrOutput `pulumi:"ipAddress"`
+	// IPv6 address of network endpoint. The result of parsing the endpoint config,
+	// or empty if IPv6 is not used.
+	Ipv6Address pulumi.StringPtrOutput `pulumi:"ipv6Address"`
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringOutput `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
@@ -169,9 +228,6 @@ func NewNetworkEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.IpAddress == nil {
-		return nil, errors.New("invalid value for required argument 'IpAddress'")
-	}
 	if args.NetworkEndpointGroup == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkEndpointGroup'")
 	}
@@ -213,6 +269,9 @@ type networkEndpointState struct {
 	// to a VM in GCE (either the primary IP or as part of an aliased IP
 	// range).
 	IpAddress *string `pulumi:"ipAddress"`
+	// IPv6 address of network endpoint. The result of parsing the endpoint config,
+	// or empty if IPv6 is not used.
+	Ipv6Address *string `pulumi:"ipv6Address"`
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup *string `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
@@ -242,6 +301,9 @@ type NetworkEndpointState struct {
 	// to a VM in GCE (either the primary IP or as part of an aliased IP
 	// range).
 	IpAddress pulumi.StringPtrInput
+	// IPv6 address of network endpoint. The result of parsing the endpoint config,
+	// or empty if IPv6 is not used.
+	Ipv6Address pulumi.StringPtrInput
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringPtrInput
 	// Port number of network endpoint.
@@ -274,7 +336,10 @@ type networkEndpointArgs struct {
 	// IPv4 address of network endpoint. The IP address must belong
 	// to a VM in GCE (either the primary IP or as part of an aliased IP
 	// range).
-	IpAddress string `pulumi:"ipAddress"`
+	IpAddress *string `pulumi:"ipAddress"`
+	// IPv6 address of network endpoint. The result of parsing the endpoint config,
+	// or empty if IPv6 is not used.
+	Ipv6Address *string `pulumi:"ipv6Address"`
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup string `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
@@ -304,7 +369,10 @@ type NetworkEndpointArgs struct {
 	// IPv4 address of network endpoint. The IP address must belong
 	// to a VM in GCE (either the primary IP or as part of an aliased IP
 	// range).
-	IpAddress pulumi.StringInput
+	IpAddress pulumi.StringPtrInput
+	// IPv6 address of network endpoint. The result of parsing the endpoint config,
+	// or empty if IPv6 is not used.
+	Ipv6Address pulumi.StringPtrInput
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringInput
 	// Port number of network endpoint.
@@ -425,8 +493,14 @@ func (o NetworkEndpointOutput) Instance() pulumi.StringPtrOutput {
 // IPv4 address of network endpoint. The IP address must belong
 // to a VM in GCE (either the primary IP or as part of an aliased IP
 // range).
-func (o NetworkEndpointOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkEndpoint) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+func (o NetworkEndpointOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpoint) pulumi.StringPtrOutput { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// IPv6 address of network endpoint. The result of parsing the endpoint config,
+// or empty if IPv6 is not used.
+func (o NetworkEndpointOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpoint) pulumi.StringPtrOutput { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
 // The network endpoint group this endpoint is part of.

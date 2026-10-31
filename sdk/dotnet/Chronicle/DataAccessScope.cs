@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Dataaccessscope With Dataaccesslabel
     /// 
     /// ```csharp
@@ -86,6 +87,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Dataaccessscope With Asset Namespace
     /// 
     /// ```csharp
@@ -113,6 +115,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Dataaccessscope With Ingestion Label
     /// 
     /// ```csharp
@@ -144,6 +147,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Dataaccessscope With Denied Labels
     /// 
     /// ```csharp

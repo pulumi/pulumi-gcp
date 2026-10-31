@@ -85,6 +85,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Guardrail Transfer Agent Content Filter
 //
 // ```go
@@ -160,6 +161,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Guardrail Generative Answer Llm Prompt Security
 //
 // ```go
@@ -211,8 +213,9 @@ import (
 //					CustomPolicy: &ces.GuardrailLlmPromptSecurityCustomPolicyArgs{
 //						MaxConversationMessages: pulumi.Int(10),
 //						ModelSettings: &ces.GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs{
-//							Model:       pulumi.String("gemini-3.0-flash-001"),
-//							Temperature: pulumi.Float64(50),
+//							Model:         pulumi.String("gemini-3.0-flash-001"),
+//							Temperature:   pulumi.Float64(50),
+//							ThinkingLevel: pulumi.String("LOW"),
 //						},
 //						Prompt:              pulumi.String("example_prompt"),
 //						PolicyScope:         pulumi.String("USER_QUERY"),
@@ -229,6 +232,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Guardrail Llm Prompt Security Fail Open
 //
 // ```go
@@ -288,6 +292,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Guardrail Llm Prompt Security Default Settings
 //
 // ```go
@@ -347,6 +352,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Guardrail Code Callback
 //
 // ```go
@@ -426,6 +432,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Guardrail Llm Policy
 //
 // ```go
@@ -476,8 +483,9 @@ import (
 //				LlmPolicy: &ces.GuardrailLlmPolicyArgs{
 //					MaxConversationMessages: pulumi.Int(10),
 //					ModelSettings: &ces.GuardrailLlmPolicyModelSettingsArgs{
-//						Model:       pulumi.String("gemini-3.0-flash-001"),
-//						Temperature: pulumi.Float64(50),
+//						Model:         pulumi.String("gemini-3.0-flash-001"),
+//						Temperature:   pulumi.Float64(50),
+//						ThinkingLevel: pulumi.String("LOW"),
 //					},
 //					Prompt:              pulumi.String("example_prompt"),
 //					PolicyScope:         pulumi.String("USER_QUERY"),

@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Build
     /// 
     /// ```csharp
@@ -218,6 +219,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Service Account
     /// 
     /// ```csharp
@@ -269,6 +271,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Include Build Logs
     /// 
     /// ```csharp
@@ -298,6 +301,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Pubsub Config
     /// 
     /// ```csharp
@@ -344,6 +348,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Webhook Config
     /// 
     /// ```csharp
@@ -427,6 +432,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Manual
     /// 
     /// ```csharp
@@ -462,6 +468,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Manual Github Enterprise
     /// 
     /// ```csharp
@@ -494,6 +501,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Manual Bitbucket Server
     /// 
     /// ```csharp
@@ -526,6 +534,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Repo
     /// 
     /// ```csharp
@@ -573,6 +582,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Bitbucket Server Push
     /// 
     /// ```csharp
@@ -603,6 +613,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Bitbucket Server Pull Request
     /// 
     /// ```csharp
@@ -634,6 +645,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Github Enterprise
     /// 
     /// ```csharp
@@ -663,6 +675,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Allow Failure
     /// 
     /// ```csharp
@@ -790,6 +803,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Allow Exit Codes
     /// 
     /// ```csharp
@@ -921,6 +935,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Pubsub With Repo
     /// 
     /// ```csharp
@@ -982,6 +997,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Developer Connect Pull
     /// 
     /// ```csharp
@@ -1010,6 +1026,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Developer Connect Push
     /// 
     /// ```csharp
@@ -1037,6 +1054,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Developer Connect Push Branch
     /// 
     /// ```csharp

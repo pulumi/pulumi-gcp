@@ -70,6 +70,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Discoveryengine Datastore Kms Key Name
  * 
  * <pre>
@@ -110,6 +111,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Discoveryengine Datastore Document Processing Config
  * 
  * <pre>
@@ -165,6 +167,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Discoveryengine Datastore Advanced Site Search Config
  * 
  * <pre>

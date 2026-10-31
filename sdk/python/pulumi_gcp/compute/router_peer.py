@@ -1404,6 +1404,7 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=0,
             zero_advertised_route_priority=True)
         ```
+
         ### Router Peer Router Appliance
 
         ```python
@@ -1830,6 +1831,7 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=0,
             zero_advertised_route_priority=True)
         ```
+
         ### Router Peer Router Appliance
 
         ```python

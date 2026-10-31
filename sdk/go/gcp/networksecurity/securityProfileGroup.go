@@ -62,6 +62,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Security Profile Group Mirroring
 //
 // ```go
@@ -126,6 +127,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Security Profile Group Intercept
 //
 // ```go
@@ -190,6 +192,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Security Profile Group Url Filtering
 //
 // ```go
@@ -243,6 +246,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Security Profile Group Wildfire
 //
 // ```go
@@ -360,7 +364,6 @@ type SecurityProfileGroup struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 	UrlFilteringProfile pulumi.StringPtrOutput `pulumi:"urlFilteringProfile"`
-	// (Optional, Beta)
 	// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
 	WildfireAnalysisProfile pulumi.StringPtrOutput `pulumi:"wildfireAnalysisProfile"`
 }
@@ -443,7 +446,6 @@ type securityProfileGroupState struct {
 	UpdateTime *string `pulumi:"updateTime"`
 	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 	UrlFilteringProfile *string `pulumi:"urlFilteringProfile"`
-	// (Optional, Beta)
 	// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
 	WildfireAnalysisProfile *string `pulumi:"wildfireAnalysisProfile"`
 }
@@ -492,7 +494,6 @@ type SecurityProfileGroupState struct {
 	UpdateTime pulumi.StringPtrInput
 	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 	UrlFilteringProfile pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
 	WildfireAnalysisProfile pulumi.StringPtrInput
 }
@@ -532,7 +533,6 @@ type securityProfileGroupArgs struct {
 	ThreatPreventionProfile *string `pulumi:"threatPreventionProfile"`
 	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 	UrlFilteringProfile *string `pulumi:"urlFilteringProfile"`
-	// (Optional, Beta)
 	// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
 	WildfireAnalysisProfile *string `pulumi:"wildfireAnalysisProfile"`
 }
@@ -569,7 +569,6 @@ type SecurityProfileGroupArgs struct {
 	ThreatPreventionProfile pulumi.StringPtrInput
 	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 	UrlFilteringProfile pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
 	WildfireAnalysisProfile pulumi.StringPtrInput
 }
@@ -750,7 +749,6 @@ func (o SecurityProfileGroupOutput) UrlFilteringProfile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringPtrOutput { return v.UrlFilteringProfile }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
 func (o SecurityProfileGroupOutput) WildfireAnalysisProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringPtrOutput { return v.WildfireAnalysisProfile }).(pulumi.StringPtrOutput)

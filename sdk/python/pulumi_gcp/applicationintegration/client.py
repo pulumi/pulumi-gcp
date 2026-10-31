@@ -255,6 +255,7 @@ class Client(pulumi.CustomResource):
 
         example = gcp.applicationintegration.Client("example", location="us-central1")
         ```
+
         ### Integrations Client Full
 
         ```python
@@ -338,6 +339,7 @@ class Client(pulumi.CustomResource):
 
         example = gcp.applicationintegration.Client("example", location="us-central1")
         ```
+
         ### Integrations Client Full
 
         ```python

@@ -531,6 +531,7 @@ class BatchOperationsJob(pulumi.CustomResource):
             },
             delete_protection=False)
         ```
+
         ### Storage Batch Operations Description
 
         ```python
@@ -641,6 +642,7 @@ class BatchOperationsJob(pulumi.CustomResource):
             },
             delete_protection=False)
         ```
+
         ### Storage Batch Operations Description
 
         ```python

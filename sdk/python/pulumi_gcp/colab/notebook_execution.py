@@ -31,6 +31,7 @@ class NotebookExecutionArgs:
                  execution_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_user: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_notebook_source: pulumi.Input[Optional['NotebookExecutionGcsNotebookSourceArgs']] = None,
+                 kernel_name: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_execution_job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_runtime_template_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -58,6 +59,7 @@ class NotebookExecutionArgs:
         :param pulumi.Input[_builtins.str] execution_user: The user email to run the execution as.
         :param pulumi.Input['NotebookExecutionGcsNotebookSourceArgs'] gcs_notebook_source: The Cloud Storage uri for the input notebook.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] kernel_name: The name of the kernel to use during notebook execution. If unset, the default kernel is used.
         :param pulumi.Input[_builtins.str] notebook_execution_job_id: User specified ID for the Notebook Execution Job
         :param pulumi.Input[_builtins.str] notebook_runtime_template_resource_name: The NotebookRuntimeTemplate to source compute configuration from.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -83,6 +85,8 @@ class NotebookExecutionArgs:
             pulumi.set(__self__, "execution_user", execution_user)
         if gcs_notebook_source is not None:
             pulumi.set(__self__, "gcs_notebook_source", gcs_notebook_source)
+        if kernel_name is not None:
+            pulumi.set(__self__, "kernel_name", kernel_name)
         if notebook_execution_job_id is not None:
             pulumi.set(__self__, "notebook_execution_job_id", notebook_execution_job_id)
         if notebook_runtime_template_resource_name is not None:
@@ -224,6 +228,18 @@ class NotebookExecutionArgs:
         pulumi.set(self, "gcs_notebook_source", value)
 
     @_builtins.property
+    @pulumi.getter(name="kernelName")
+    def kernel_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+        """
+        return pulumi.get(self, "kernel_name")
+
+    @kernel_name.setter
+    def kernel_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kernel_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="notebookExecutionJobId")
     def notebook_execution_job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -298,6 +314,7 @@ class _NotebookExecutionState:
                  execution_user: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_notebook_source: pulumi.Input[Optional['NotebookExecutionGcsNotebookSourceArgs']] = None,
                  gcs_output_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 kernel_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_execution_job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_runtime_template_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -325,6 +342,7 @@ class _NotebookExecutionState:
         :param pulumi.Input['NotebookExecutionGcsNotebookSourceArgs'] gcs_notebook_source: The Cloud Storage uri for the input notebook.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+        :param pulumi.Input[_builtins.str] kernel_name: The name of the kernel to use during notebook execution. If unset, the default kernel is used.
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[_builtins.str] notebook_execution_job_id: User specified ID for the Notebook Execution Job
         :param pulumi.Input[_builtins.str] notebook_runtime_template_resource_name: The NotebookRuntimeTemplate to source compute configuration from.
@@ -352,6 +370,8 @@ class _NotebookExecutionState:
             pulumi.set(__self__, "gcs_notebook_source", gcs_notebook_source)
         if gcs_output_uri is not None:
             pulumi.set(__self__, "gcs_output_uri", gcs_output_uri)
+        if kernel_name is not None:
+            pulumi.set(__self__, "kernel_name", kernel_name)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if notebook_execution_job_id is not None:
@@ -483,6 +503,18 @@ class _NotebookExecutionState:
         pulumi.set(self, "gcs_output_uri", value)
 
     @_builtins.property
+    @pulumi.getter(name="kernelName")
+    def kernel_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+        """
+        return pulumi.get(self, "kernel_name")
+
+    @kernel_name.setter
+    def kernel_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kernel_name", value)
+
+    @_builtins.property
     @pulumi.getter
     def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -572,6 +604,7 @@ class NotebookExecution(pulumi.CustomResource):
                  execution_user: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_notebook_source: pulumi.Input[Optional[Union['NotebookExecutionGcsNotebookSourceArgs', 'NotebookExecutionGcsNotebookSourceArgsDict', 'outputs.NotebookExecutionGcsNotebookSource']]] = None,
                  gcs_output_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 kernel_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_execution_job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_runtime_template_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -665,6 +698,7 @@ class NotebookExecution(pulumi.CustomResource):
                     output_bucket,
                 ]))
         ```
+
         ### Colab Notebook Execution Custom Env
 
         ```python
@@ -750,6 +784,152 @@ class NotebookExecution(pulumi.CustomResource):
             service_account="my@service-account.com",
             opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
         ```
+
+        ### Colab Notebook Execution Workbench Runtime Custom Container
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        output_bucket = gcp.storage.Bucket("output_bucket",
+            name="my_bucket",
+            location="US",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        notebook_execution = gcp.colab.NotebookExecution("notebook-execution",
+            display_name="Notebook execution workbench runtime custom container",
+            location="us-central1",
+            direct_notebook_source={
+                "content": std.base64encode(input=\"\"\"    {
+              \\"cells\\": [
+                {
+                  \\"cell_type\\": \\"code\\",
+                  \\"execution_count\\": null,
+                  \\"metadata\\": {},
+                  \\"outputs\\": [],
+                  \\"source\\": [
+                    \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+                  ]
+                }
+              ],
+              \\"metadata\\": {
+                \\"kernelspec\\": {
+                  \\"display_name\\": \\"Python 3\\",
+                  \\"language\\": \\"python\\",
+                  \\"name\\": \\"python3\\"
+                },
+                \\"language_info\\": {
+                  \\"codemirror_mode\\": {
+                    \\"name\\": \\"ipython\\",
+                    \\"version\\": 3
+                  },
+                  \\"file_extension\\": \\".py\\",
+                  \\"mimetype\\": \\"text/x-python\\",
+                  \\"name\\": \\"python\\",
+                  \\"nbconvert_exporter\\": \\"python\\",
+                  \\"pygments_lexer\\": \\"ipython3\\",
+                  \\"version\\": \\"3.8.5\\"
+                }
+              },
+              \\"nbformat\\": 4,
+              \\"nbformat_minor\\": 4
+            }
+        \"\"\").result,
+            },
+            custom_environment_spec={
+                "machine_spec": {
+                    "machine_type": "n1-standard-2",
+                },
+                "persistent_disk_spec": {
+                    "disk_type": "pd-ssd",
+                    "disk_size_gb": "100",
+                },
+            },
+            workbench_runtime={
+                "custom_container_image": {
+                    "repository": "gcr.io/deeplearning-platform-release/base-cpu",
+                    "tag": "latest",
+                },
+            },
+            kernel_name="python3",
+            gcs_output_uri=output_bucket.name.apply(lambda name: f"gs://{name}"),
+            service_account="my@service-account.com",
+            opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
+        ```
+
+        ### Colab Notebook Execution Workbench Runtime Custom Container No Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        output_bucket = gcp.storage.Bucket("output_bucket",
+            name="my_bucket",
+            location="US",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        notebook_execution = gcp.colab.NotebookExecution("notebook-execution",
+            display_name="Notebook execution workbench runtime custom container no tag",
+            location="us-central1",
+            direct_notebook_source={
+                "content": std.base64encode(input=\"\"\"    {
+              \\"cells\\": [
+                {
+                  \\"cell_type\\": \\"code\\",
+                  \\"execution_count\\": null,
+                  \\"metadata\\": {},
+                  \\"outputs\\": [],
+                  \\"source\\": [
+                    \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+                  ]
+                }
+              ],
+              \\"metadata\\": {
+                \\"kernelspec\\": {
+                  \\"display_name\\": \\"Python 3\\",
+                  \\"language\\": \\"python\\",
+                  \\"name\\": \\"python3\\"
+                },
+                \\"language_info\\": {
+                  \\"codemirror_mode\\": {
+                    \\"name\\": \\"ipython\\",
+                    \\"version\\": 3
+                  },
+                  \\"file_extension\\": \\".py\\",
+                  \\"mimetype\\": \\"text/x-python\\",
+                  \\"name\\": \\"python\\",
+                  \\"nbconvert_exporter\\": \\"python\\",
+                  \\"pygments_lexer\\": \\"ipython3\\",
+                  \\"version\\": \\"3.8.5\\"
+                }
+              },
+              \\"nbformat\\": 4,
+              \\"nbformat_minor\\": 4
+            }
+        \"\"\").result,
+            },
+            custom_environment_spec={
+                "machine_spec": {
+                    "machine_type": "n1-standard-2",
+                },
+                "persistent_disk_spec": {
+                    "disk_type": "pd-ssd",
+                    "disk_size_gb": "100",
+                },
+            },
+            workbench_runtime={
+                "custom_container_image": {
+                    "repository": "gcr.io/deeplearning-platform-release/base-cpu",
+                },
+            },
+            kernel_name="python3",
+            gcs_output_uri=output_bucket.name.apply(lambda name: f"gs://{name}"),
+            service_account="my@service-account.com",
+            opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
+        ```
+
         ### Colab Notebook Execution Workbench Runtime Vm
 
         ```python
@@ -821,6 +1001,7 @@ class NotebookExecution(pulumi.CustomResource):
             service_account="my@service-account.com",
             opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
         ```
+
         ### Colab Notebook Execution Workbench Runtime Vm Name
 
         ```python
@@ -892,6 +1073,7 @@ class NotebookExecution(pulumi.CustomResource):
             service_account="my@service-account.com",
             opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
         ```
+
         ### Colab Notebook Execution Full
 
         ```python
@@ -978,6 +1160,7 @@ class NotebookExecution(pulumi.CustomResource):
                     my_runtime_template,
                 ]))
         ```
+
         ### Colab Notebook Execution Dataform
 
         ```python
@@ -1091,6 +1274,7 @@ class NotebookExecution(pulumi.CustomResource):
         :param pulumi.Input[Union['NotebookExecutionGcsNotebookSourceArgs', 'NotebookExecutionGcsNotebookSourceArgsDict', 'outputs.NotebookExecutionGcsNotebookSource']] gcs_notebook_source: The Cloud Storage uri for the input notebook.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+        :param pulumi.Input[_builtins.str] kernel_name: The name of the kernel to use during notebook execution. If unset, the default kernel is used.
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[_builtins.str] notebook_execution_job_id: User specified ID for the Notebook Execution Job
         :param pulumi.Input[_builtins.str] notebook_runtime_template_resource_name: The NotebookRuntimeTemplate to source compute configuration from.
@@ -1192,6 +1376,7 @@ class NotebookExecution(pulumi.CustomResource):
                     output_bucket,
                 ]))
         ```
+
         ### Colab Notebook Execution Custom Env
 
         ```python
@@ -1277,6 +1462,152 @@ class NotebookExecution(pulumi.CustomResource):
             service_account="my@service-account.com",
             opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
         ```
+
+        ### Colab Notebook Execution Workbench Runtime Custom Container
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        output_bucket = gcp.storage.Bucket("output_bucket",
+            name="my_bucket",
+            location="US",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        notebook_execution = gcp.colab.NotebookExecution("notebook-execution",
+            display_name="Notebook execution workbench runtime custom container",
+            location="us-central1",
+            direct_notebook_source={
+                "content": std.base64encode(input=\"\"\"    {
+              \\"cells\\": [
+                {
+                  \\"cell_type\\": \\"code\\",
+                  \\"execution_count\\": null,
+                  \\"metadata\\": {},
+                  \\"outputs\\": [],
+                  \\"source\\": [
+                    \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+                  ]
+                }
+              ],
+              \\"metadata\\": {
+                \\"kernelspec\\": {
+                  \\"display_name\\": \\"Python 3\\",
+                  \\"language\\": \\"python\\",
+                  \\"name\\": \\"python3\\"
+                },
+                \\"language_info\\": {
+                  \\"codemirror_mode\\": {
+                    \\"name\\": \\"ipython\\",
+                    \\"version\\": 3
+                  },
+                  \\"file_extension\\": \\".py\\",
+                  \\"mimetype\\": \\"text/x-python\\",
+                  \\"name\\": \\"python\\",
+                  \\"nbconvert_exporter\\": \\"python\\",
+                  \\"pygments_lexer\\": \\"ipython3\\",
+                  \\"version\\": \\"3.8.5\\"
+                }
+              },
+              \\"nbformat\\": 4,
+              \\"nbformat_minor\\": 4
+            }
+        \"\"\").result,
+            },
+            custom_environment_spec={
+                "machine_spec": {
+                    "machine_type": "n1-standard-2",
+                },
+                "persistent_disk_spec": {
+                    "disk_type": "pd-ssd",
+                    "disk_size_gb": "100",
+                },
+            },
+            workbench_runtime={
+                "custom_container_image": {
+                    "repository": "gcr.io/deeplearning-platform-release/base-cpu",
+                    "tag": "latest",
+                },
+            },
+            kernel_name="python3",
+            gcs_output_uri=output_bucket.name.apply(lambda name: f"gs://{name}"),
+            service_account="my@service-account.com",
+            opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
+        ```
+
+        ### Colab Notebook Execution Workbench Runtime Custom Container No Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        output_bucket = gcp.storage.Bucket("output_bucket",
+            name="my_bucket",
+            location="US",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        notebook_execution = gcp.colab.NotebookExecution("notebook-execution",
+            display_name="Notebook execution workbench runtime custom container no tag",
+            location="us-central1",
+            direct_notebook_source={
+                "content": std.base64encode(input=\"\"\"    {
+              \\"cells\\": [
+                {
+                  \\"cell_type\\": \\"code\\",
+                  \\"execution_count\\": null,
+                  \\"metadata\\": {},
+                  \\"outputs\\": [],
+                  \\"source\\": [
+                    \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+                  ]
+                }
+              ],
+              \\"metadata\\": {
+                \\"kernelspec\\": {
+                  \\"display_name\\": \\"Python 3\\",
+                  \\"language\\": \\"python\\",
+                  \\"name\\": \\"python3\\"
+                },
+                \\"language_info\\": {
+                  \\"codemirror_mode\\": {
+                    \\"name\\": \\"ipython\\",
+                    \\"version\\": 3
+                  },
+                  \\"file_extension\\": \\".py\\",
+                  \\"mimetype\\": \\"text/x-python\\",
+                  \\"name\\": \\"python\\",
+                  \\"nbconvert_exporter\\": \\"python\\",
+                  \\"pygments_lexer\\": \\"ipython3\\",
+                  \\"version\\": \\"3.8.5\\"
+                }
+              },
+              \\"nbformat\\": 4,
+              \\"nbformat_minor\\": 4
+            }
+        \"\"\").result,
+            },
+            custom_environment_spec={
+                "machine_spec": {
+                    "machine_type": "n1-standard-2",
+                },
+                "persistent_disk_spec": {
+                    "disk_type": "pd-ssd",
+                    "disk_size_gb": "100",
+                },
+            },
+            workbench_runtime={
+                "custom_container_image": {
+                    "repository": "gcr.io/deeplearning-platform-release/base-cpu",
+                },
+            },
+            kernel_name="python3",
+            gcs_output_uri=output_bucket.name.apply(lambda name: f"gs://{name}"),
+            service_account="my@service-account.com",
+            opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
+        ```
+
         ### Colab Notebook Execution Workbench Runtime Vm
 
         ```python
@@ -1348,6 +1679,7 @@ class NotebookExecution(pulumi.CustomResource):
             service_account="my@service-account.com",
             opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
         ```
+
         ### Colab Notebook Execution Workbench Runtime Vm Name
 
         ```python
@@ -1419,6 +1751,7 @@ class NotebookExecution(pulumi.CustomResource):
             service_account="my@service-account.com",
             opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
         ```
+
         ### Colab Notebook Execution Full
 
         ```python
@@ -1505,6 +1838,7 @@ class NotebookExecution(pulumi.CustomResource):
                     my_runtime_template,
                 ]))
         ```
+
         ### Colab Notebook Execution Dataform
 
         ```python
@@ -1622,6 +1956,7 @@ class NotebookExecution(pulumi.CustomResource):
                  execution_user: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_notebook_source: pulumi.Input[Optional[Union['NotebookExecutionGcsNotebookSourceArgs', 'NotebookExecutionGcsNotebookSourceArgsDict', 'outputs.NotebookExecutionGcsNotebookSource']]] = None,
                  gcs_output_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 kernel_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_execution_job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_runtime_template_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1650,6 +1985,7 @@ class NotebookExecution(pulumi.CustomResource):
             if gcs_output_uri is None and not opts.urn:
                 raise TypeError("Missing required property 'gcs_output_uri'")
             __props__.__dict__["gcs_output_uri"] = gcs_output_uri
+            __props__.__dict__["kernel_name"] = kernel_name
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -1677,6 +2013,7 @@ class NotebookExecution(pulumi.CustomResource):
             execution_user: pulumi.Input[Optional[_builtins.str]] = None,
             gcs_notebook_source: pulumi.Input[Optional[Union['NotebookExecutionGcsNotebookSourceArgs', 'NotebookExecutionGcsNotebookSourceArgsDict', 'outputs.NotebookExecutionGcsNotebookSource']]] = None,
             gcs_output_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            kernel_name: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             notebook_execution_job_id: pulumi.Input[Optional[_builtins.str]] = None,
             notebook_runtime_template_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1708,6 +2045,7 @@ class NotebookExecution(pulumi.CustomResource):
         :param pulumi.Input[Union['NotebookExecutionGcsNotebookSourceArgs', 'NotebookExecutionGcsNotebookSourceArgsDict', 'outputs.NotebookExecutionGcsNotebookSource']] gcs_notebook_source: The Cloud Storage uri for the input notebook.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+        :param pulumi.Input[_builtins.str] kernel_name: The name of the kernel to use during notebook execution. If unset, the default kernel is used.
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[_builtins.str] notebook_execution_job_id: User specified ID for the Notebook Execution Job
         :param pulumi.Input[_builtins.str] notebook_runtime_template_resource_name: The NotebookRuntimeTemplate to source compute configuration from.
@@ -1730,6 +2068,7 @@ class NotebookExecution(pulumi.CustomResource):
         __props__.__dict__["execution_user"] = execution_user
         __props__.__dict__["gcs_notebook_source"] = gcs_notebook_source
         __props__.__dict__["gcs_output_uri"] = gcs_output_uri
+        __props__.__dict__["kernel_name"] = kernel_name
         __props__.__dict__["location"] = location
         __props__.__dict__["notebook_execution_job_id"] = notebook_execution_job_id
         __props__.__dict__["notebook_runtime_template_resource_name"] = notebook_runtime_template_resource_name
@@ -1818,6 +2157,14 @@ class NotebookExecution(pulumi.CustomResource):
         The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
         """
         return pulumi.get(self, "gcs_output_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="kernelName")
+    def kernel_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+        """
+        return pulumi.get(self, "kernel_name")
 
     @_builtins.property
     @pulumi.getter

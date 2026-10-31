@@ -91,6 +91,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Healthcare Fhir Store Streaming Config
  * 
  * <pre>
@@ -170,6 +171,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Healthcare Fhir Store Notification Configs
  * 
  * <pre>
@@ -228,6 +230,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Healthcare Fhir Store Consent Config
  * 
  * <pre>
@@ -299,6 +302,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Healthcare Fhir Store Validation Config
  * 
  * <pre>

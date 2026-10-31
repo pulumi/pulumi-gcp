@@ -821,6 +821,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "account_id": "999999999999",
             })
         ```
+
         ### Iam Workload Identity Pool Provider Aws Full
 
         ```python
@@ -844,6 +845,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "account_id": "999999999999",
             })
         ```
+
         ### Iam Workload Identity Pool Provider Github Actions
 
         ```python
@@ -872,6 +874,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://token.actions.githubusercontent.com",
             })
         ```
+
         ### Iam Workload Identity Pool Provider Oidc Basic
 
         ```python
@@ -889,6 +892,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
             })
         ```
+
         ### Iam Workload Identity Pool Provider Oidc Full
 
         ```python
@@ -920,6 +924,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
             })
         ```
+
         ### Iam Workload Identity Pool Provider Saml Basic
 
         ```python
@@ -940,6 +945,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
             })
         ```
+
         ### Iam Workload Identity Pool Provider Saml Full
 
         ```python
@@ -963,6 +969,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
             })
         ```
+
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
         ```python
@@ -995,6 +1002,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "jwks_json": "{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             })
         ```
+
         ### Iam Workload Identity Pool Provider X509 Basic
 
         ```python
@@ -1017,6 +1025,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Iam Workload Identity Pool Provider X509 Full
 
         ```python
@@ -1180,6 +1189,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "account_id": "999999999999",
             })
         ```
+
         ### Iam Workload Identity Pool Provider Aws Full
 
         ```python
@@ -1203,6 +1213,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "account_id": "999999999999",
             })
         ```
+
         ### Iam Workload Identity Pool Provider Github Actions
 
         ```python
@@ -1231,6 +1242,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://token.actions.githubusercontent.com",
             })
         ```
+
         ### Iam Workload Identity Pool Provider Oidc Basic
 
         ```python
@@ -1248,6 +1260,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
             })
         ```
+
         ### Iam Workload Identity Pool Provider Oidc Full
 
         ```python
@@ -1279,6 +1292,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
             })
         ```
+
         ### Iam Workload Identity Pool Provider Saml Basic
 
         ```python
@@ -1299,6 +1313,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
             })
         ```
+
         ### Iam Workload Identity Pool Provider Saml Full
 
         ```python
@@ -1322,6 +1337,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
             })
         ```
+
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
         ```python
@@ -1354,6 +1370,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "jwks_json": "{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             })
         ```
+
         ### Iam Workload Identity Pool Provider X509 Basic
 
         ```python
@@ -1376,6 +1393,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Iam Workload Identity Pool Provider X509 Full
 
         ```python

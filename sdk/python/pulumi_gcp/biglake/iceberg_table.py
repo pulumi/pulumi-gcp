@@ -464,6 +464,7 @@ class IcebergTable(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Biglake Iceberg Table Sort Order
 
         ```python
@@ -503,6 +504,7 @@ class IcebergTable(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Biglake Iceberg Table Update
 
         ```python
@@ -641,6 +643,7 @@ class IcebergTable(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Biglake Iceberg Table Sort Order
 
         ```python
@@ -680,6 +683,7 @@ class IcebergTable(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Biglake Iceberg Table Update
 
         ```python

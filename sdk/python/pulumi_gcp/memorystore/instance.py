@@ -64,10 +64,10 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the instance.
         :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
                Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
-        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
+        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH.
-               TOKEN_AUTH is also supported, but only available in the google-beta provider.
+               IAM_AUTH
+               TOKEN_AUTH
         :param pulumi.Input['InstanceAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input['InstanceCrossInstanceReplicationConfigArgs'] cross_instance_replication_config: Cross instance replication config
@@ -247,10 +247,10 @@ class InstanceArgs:
     @pulumi.getter(name="authorizationMode")
     def authorization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. Immutable. Authorization mode of the instance. Possible values:
+        Optional. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
-        IAM_AUTH.
-        TOKEN_AUTH is also supported, but only available in the google-beta provider.
+        IAM_AUTH
+        TOKEN_AUTH
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -629,10 +629,10 @@ class _InstanceState:
 
         :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
                Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
-        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
+        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH.
-               TOKEN_AUTH is also supported, but only available in the google-beta provider.
+               IAM_AUTH
+               TOKEN_AUTH
         :param pulumi.Input['InstanceAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
@@ -863,10 +863,10 @@ class _InstanceState:
     @pulumi.getter(name="authorizationMode")
     def authorization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. Immutable. Authorization mode of the instance. Possible values:
+        Optional. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
-        IAM_AUTH.
-        TOKEN_AUTH is also supported, but only available in the google-beta provider.
+        IAM_AUTH
+        TOKEN_AUTH
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -1539,11 +1539,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east4",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -1558,7 +1558,8 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-west1",
+            location="us-east4",
+            node_type="SHARED_CORE_NANO",
             deletion_protection_enabled=False,
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -1573,6 +1574,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Memorystore Instance Full
 
         ```python
@@ -1585,11 +1587,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east4",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -1604,7 +1606,7 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-west1",
+            location="us-east4",
             replica_count=1,
             node_type="SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
@@ -1615,7 +1617,7 @@ class Instance(pulumi.CustomResource):
             },
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
-                "zone": "us-west1-b",
+                "zone": "us-east4-a",
             },
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -1643,6 +1645,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Memorystore Instance Persistence Aof
 
         ```python
@@ -1655,11 +1658,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east4",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -1674,7 +1677,8 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-west1",
+            location="us-east4",
+            node_type="SHARED_CORE_NANO",
             persistence_config={
                 "mode": "AOF",
                 "aof_config": {
@@ -1684,6 +1688,7 @@ class Instance(pulumi.CustomResource):
             deletion_protection_enabled=False,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Memorystore Instance Secondary Instance
 
         ```python
@@ -1796,6 +1801,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secondary_policy]))
         ```
+
         ### Memorystore Instance Flexible Ca
 
         ```python
@@ -1805,7 +1811,7 @@ class Instance(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         default = gcp.certificateauthority.CaPool("default",
             name="ca-pool",
-            location="us-west1",
+            location="us-east4",
             tier="ENTERPRISE")
         memorystore_p4sa_requester = gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester",
             ca_pool=default.id,
@@ -1814,7 +1820,7 @@ class Instance(pulumi.CustomResource):
         default_authority = gcp.certificateauthority.Authority("default",
             pool=default.name,
             certificate_authority_id="ca-auth",
-            location="us-west1",
+            location="us-east4",
             config={
                 "subject_config": {
                     "subject": {
@@ -1849,11 +1855,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="ca-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=producer_net.id)
         default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="ca-policy",
-            location="us-west1",
+            location="us-east4",
             service_class="gcp-memorystore",
             network=producer_net.id,
             psc_config={
@@ -1861,8 +1867,9 @@ class Instance(pulumi.CustomResource):
             })
         test_instance = gcp.memorystore.Instance("test-instance",
             instance_id="ca-instance",
-            shard_count=3,
-            location="us-west1",
+            shard_count=1,
+            location="us-east4",
+            node_type="SHARED_CORE_NANO",
             desired_auto_created_endpoints=[{
                 "network": producer_net.id,
                 "project_id": project.project_id,
@@ -1899,10 +1906,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
                Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
-        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
+        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH.
-               TOKEN_AUTH is also supported, but only available in the google-beta provider.
+               IAM_AUTH
+               TOKEN_AUTH
         :param pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict', 'outputs.InstanceAutomatedBackupConfig']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict', 'outputs.InstanceCrossInstanceReplicationConfig']] cross_instance_replication_config: Cross instance replication config
@@ -2004,11 +2011,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east4",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -2023,7 +2030,8 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-west1",
+            location="us-east4",
+            node_type="SHARED_CORE_NANO",
             deletion_protection_enabled=False,
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -2038,6 +2046,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Memorystore Instance Full
 
         ```python
@@ -2050,11 +2059,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east4",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -2069,7 +2078,7 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-west1",
+            location="us-east4",
             replica_count=1,
             node_type="SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
@@ -2080,7 +2089,7 @@ class Instance(pulumi.CustomResource):
             },
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
-                "zone": "us-west1-b",
+                "zone": "us-east4-a",
             },
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -2108,6 +2117,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Memorystore Instance Persistence Aof
 
         ```python
@@ -2120,11 +2130,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east4",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -2139,7 +2149,8 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-west1",
+            location="us-east4",
+            node_type="SHARED_CORE_NANO",
             persistence_config={
                 "mode": "AOF",
                 "aof_config": {
@@ -2149,6 +2160,7 @@ class Instance(pulumi.CustomResource):
             deletion_protection_enabled=False,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Memorystore Instance Secondary Instance
 
         ```python
@@ -2261,6 +2273,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secondary_policy]))
         ```
+
         ### Memorystore Instance Flexible Ca
 
         ```python
@@ -2270,7 +2283,7 @@ class Instance(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         default = gcp.certificateauthority.CaPool("default",
             name="ca-pool",
-            location="us-west1",
+            location="us-east4",
             tier="ENTERPRISE")
         memorystore_p4sa_requester = gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester",
             ca_pool=default.id,
@@ -2279,7 +2292,7 @@ class Instance(pulumi.CustomResource):
         default_authority = gcp.certificateauthority.Authority("default",
             pool=default.name,
             certificate_authority_id="ca-auth",
-            location="us-west1",
+            location="us-east4",
             config={
                 "subject_config": {
                     "subject": {
@@ -2314,11 +2327,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="ca-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=producer_net.id)
         default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="ca-policy",
-            location="us-west1",
+            location="us-east4",
             service_class="gcp-memorystore",
             network=producer_net.id,
             psc_config={
@@ -2326,8 +2339,9 @@ class Instance(pulumi.CustomResource):
             })
         test_instance = gcp.memorystore.Instance("test-instance",
             instance_id="ca-instance",
-            shard_count=3,
-            location="us-west1",
+            shard_count=1,
+            location="us-east4",
+            node_type="SHARED_CORE_NANO",
             desired_auto_created_endpoints=[{
                 "network": producer_net.id,
                 "project_id": project.project_id,
@@ -2533,10 +2547,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
                Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
-        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
+        :param pulumi.Input[_builtins.str] authorization_mode: Optional. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH.
-               TOKEN_AUTH is also supported, but only available in the google-beta provider.
+               IAM_AUTH
+               TOKEN_AUTH
         :param pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict', 'outputs.InstanceAutomatedBackupConfig']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
@@ -2712,10 +2726,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="authorizationMode")
     def authorization_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        Optional. Immutable. Authorization mode of the instance. Possible values:
+        Optional. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
-        IAM_AUTH.
-        TOKEN_AUTH is also supported, but only available in the google-beta provider.
+        IAM_AUTH
+        TOKEN_AUTH
         """
         return pulumi.get(self, "authorization_mode")
 

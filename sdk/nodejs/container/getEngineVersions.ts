@@ -82,6 +82,10 @@ export interface GetEngineVersionsResult {
      */
     readonly defaultClusterVersion: string;
     /**
+     * The default image type provided by this version of the API.
+     */
+    readonly defaultImageType: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -107,6 +111,10 @@ export interface GetEngineVersionsResult {
      * A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
      */
     readonly releaseChannelUpgradeTargetVersion: {[key: string]: string};
+    /**
+     * A list of the valid image types available in the given zone.
+     */
+    readonly validImageTypes: string[];
     /**
      * A list of versions available in the given zone for use with master instances.
      */

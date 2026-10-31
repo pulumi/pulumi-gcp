@@ -628,6 +628,7 @@ class GlobalAddress(pulumi.CustomResource):
 
         default = gcp.compute.GlobalAddress("default", name="global-appserver-ip")
         ```
+
         ### Global Address Private Services Connect
 
         ```python
@@ -732,6 +733,7 @@ class GlobalAddress(pulumi.CustomResource):
 
         default = gcp.compute.GlobalAddress("default", name="global-appserver-ip")
         ```
+
         ### Global Address Private Services Connect
 
         ```python

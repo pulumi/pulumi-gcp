@@ -648,6 +648,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "agentidentity/authProviderIamBinding",
+  "fqn": "pulumi_gcp.agentidentity",
+  "classes": {
+   "gcp:agentidentity/authProviderIamBinding:AuthProviderIamBinding": "AuthProviderIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "agentidentity/authProviderIamMember",
+  "fqn": "pulumi_gcp.agentidentity",
+  "classes": {
+   "gcp:agentidentity/authProviderIamMember:AuthProviderIamMember": "AuthProviderIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "agentidentity/authProviderIamPolicy",
+  "fqn": "pulumi_gcp.agentidentity",
+  "classes": {
+   "gcp:agentidentity/authProviderIamPolicy:AuthProviderIamPolicy": "AuthProviderIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "agentregistry/binding",
   "fqn": "pulumi_gcp.agentregistry",
   "classes": {
@@ -2136,6 +2160,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigtable/memoryLayer",
+  "fqn": "pulumi_gcp.bigtable",
+  "classes": {
+   "gcp:bigtable/memoryLayer:MemoryLayer": "MemoryLayer"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigtable/schemaBundle",
   "fqn": "pulumi_gcp.bigtable",
   "classes": {
@@ -3052,6 +3084,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudrun",
   "classes": {
    "gcp:cloudrun/service:Service": "Service"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/instance",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/instanceIamBinding",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/instanceIamBinding:InstanceIamBinding": "InstanceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/instanceIamMember",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/instanceIamMember:InstanceIamMember": "InstanceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/instanceIamPolicy",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/instanceIamPolicy:InstanceIamPolicy": "InstanceIamPolicy"
   }
  },
  {
@@ -6496,6 +6560,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dns/outboundEndpoint",
+  "fqn": "pulumi_gcp.dns",
+  "classes": {
+   "gcp:dns/outboundEndpoint:OutboundEndpoint": "OutboundEndpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dns/policy",
   "fqn": "pulumi_gcp.dns",
   "classes": {
@@ -6532,6 +6604,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.documentai",
   "classes": {
    "gcp:documentai/schema:Schema": "Schema"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "documentai/schemaVersion",
+  "fqn": "pulumi_gcp.documentai",
+  "classes": {
+   "gcp:documentai/schemaVersion:SchemaVersion": "SchemaVersion"
   }
  },
  {
@@ -9696,6 +9776,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkservices/cdnEdgeExtension",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/cdnEdgeExtension:CdnEdgeExtension": "CdnEdgeExtension"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkservices/edgeCacheKeyset",
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
@@ -9876,6 +9964,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/tcpRoute:TcpRoute": "TcpRoute"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/telemetryPolicy",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/telemetryPolicy:TelemetryPolicy": "TelemetryPolicy"
   }
  },
  {
@@ -10516,6 +10612,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.redis",
   "classes": {
    "gcp:redis/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "resourcemanager/boundary",
+  "fqn": "pulumi_gcp.resourcemanager",
+  "classes": {
+   "gcp:resourcemanager/boundary:Boundary": "Boundary"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "resourcemanager/boundaryConfig",
+  "fqn": "pulumi_gcp.resourcemanager",
+  "classes": {
+   "gcp:resourcemanager/boundaryConfig:BoundaryConfig": "BoundaryConfig"
   }
  },
  {
@@ -11536,6 +11648,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "storage/controlProjectFeatureConfig",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/controlProjectFeatureConfig:ControlProjectFeatureConfig": "ControlProjectFeatureConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "storage/controlProjectIntelligenceConfig",
   "fqn": "pulumi_gcp.storage",
   "classes": {
@@ -11840,6 +11960,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiCustomJob",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiCustomJob:AiCustomJob": "AiCustomJob"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiDataset",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -12112,6 +12240,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiModelDevelopmentCluster",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiModelDevelopmentCluster:AiModelDevelopmentCluster": "AiModelDevelopmentCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiModelGardenEnableModel",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -12136,6 +12272,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiPipelineJob",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiPipelineJob:AiPipelineJob": "AiPipelineJob"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiRagCorpus",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -12148,6 +12292,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig": "AiRagEngineConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiRagFile",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiRagFile:AiRagFile": "AiRagFile"
   }
  },
  {

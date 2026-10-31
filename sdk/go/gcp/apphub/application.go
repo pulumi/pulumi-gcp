@@ -45,6 +45,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apphub Application Global Basic
 //
 // ```go
@@ -74,6 +75,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apphub Application Full
 //
 // ```go

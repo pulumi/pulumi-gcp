@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Organization Snapshot Recycle Bin Policy Multiple
  * 
  * <pre>

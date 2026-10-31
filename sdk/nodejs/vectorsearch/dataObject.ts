@@ -93,6 +93,7 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
+ *
  * ### Vectorsearch Data Object With Vectors
  *
  * ```typescript

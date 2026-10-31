@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     instanceId: "active-db",
  * });
  * ```
+ *
  * ### Firebase Database Instance Full
  *
  * ```typescript
@@ -44,6 +45,7 @@ import * as utilities from "../utilities";
  *     desiredState: "DISABLED",
  * });
  * ```
+ *
  * ### Firebase Database Instance Default Database
  *
  * ```typescript

@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Full Profile
     /// 
     /// ```csharp
@@ -132,6 +133,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Onetime Profile
     /// 
     /// ```csharp
@@ -166,6 +168,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Basic Quality
     /// 
     /// ```csharp
@@ -212,6 +215,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Full Quality
     /// 
     /// ```csharp
@@ -372,6 +376,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Onetime Quality
     /// 
     /// ```csharp
@@ -421,6 +426,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Basic Discovery
     /// 
     /// ```csharp
@@ -464,6 +470,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Full Discovery
     /// 
     /// ```csharp
@@ -566,6 +573,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Onetime Discovery
     /// 
     /// ```csharp
@@ -612,6 +620,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Documentation
     /// 
     /// ```csharp
@@ -624,14 +633,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__10719",
+    ///         DatasetId = "tf_test_dataplex_dataset_id__10719",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__1443",
+    ///         TableId = "tf_test_dataplex_table_id__1443",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {
@@ -715,6 +724,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Onetime Documentation
     /// 
     /// ```csharp
@@ -727,14 +737,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__26032",
+    ///         DatasetId = "tf_test_dataplex_dataset_id__26032",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__8647",
+    ///         TableId = "tf_test_dataplex_table_id__8647",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {
@@ -817,6 +827,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Execution Identity User Credential
     /// 
     /// ```csharp
@@ -892,6 +903,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Execution Identity Service Account
     /// 
     /// ```csharp
@@ -1024,6 +1036,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Quality Reusable Rules Catalog Based
     /// 
     /// ```csharp
@@ -1105,7 +1118,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var testGroup = new Gcp.DataPlex.EntryGroup("test_group", new()
     ///     {
     ///         Location = "us-central1",
-    ///         EntryGroupId = "test-group-_25141",
+    ///         EntryGroupId = "tf-test-group-_25141",
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -1113,7 +1126,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = testGroup.EntryGroupId,
-    ///         EntryId = "test-entry-_30827",
+    ///         EntryId = "tf-test-entry-_30827",
     ///         EntryType = "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         Aspects = new[]
@@ -1331,6 +1344,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Data Quality Template Reference
     /// 
     /// ```csharp
@@ -1390,7 +1404,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var testGroup = new Gcp.DataPlex.EntryGroup("test_group", new()
     ///     {
     ///         Location = "us-central1",
-    ///         EntryGroupId = "test-group-_16178",
+    ///         EntryGroupId = "tf-test-group-_16178",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///     });
     /// 
@@ -1398,7 +1412,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = testGroup.EntryGroupId,
-    ///         EntryId = "test-entry-_26317",
+    ///         EntryId = "tf-test-entry-_26317",
     ///         EntryType = "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         Aspects = new[]

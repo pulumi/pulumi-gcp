@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Url Lists Advanced
  * 
  * <pre>

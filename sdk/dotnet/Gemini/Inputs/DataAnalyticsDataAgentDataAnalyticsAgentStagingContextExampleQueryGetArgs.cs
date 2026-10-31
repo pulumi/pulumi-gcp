@@ -18,6 +18,19 @@ namespace Pulumi.Gcp.Gemini.Inputs
         [Input("naturalLanguageQuestion")]
         public Input<string>? NaturalLanguageQuestion { get; set; }
 
+        [Input("parameters")]
+        private InputList<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterGetArgs>? _parameters;
+
+        /// <summary>
+        /// Optional. The list of query parameters.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterGetArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterGetArgs>());
+            set => _parameters = value;
+        }
+
         /// <summary>
         /// Optional. The SQL query that should be generated to answer
         /// the natural language question.

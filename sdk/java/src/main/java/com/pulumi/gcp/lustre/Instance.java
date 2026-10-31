@@ -72,10 +72,10 @@ import javax.annotation.Nullable;
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .instanceId("my-instance")
- *             .location("us-central1-a")
+ *             .location("us-east4-a")
  *             .description("test lustre instance")
  *             .filesystem("testfs")
- *             .capacityGib("18000")
+ *             .capacityGib("9000")
  *             .network(lustre_network.id())
  *             .perUnitStorageThroughput("1000")
  *             .labels(Map.of("test", "value"))

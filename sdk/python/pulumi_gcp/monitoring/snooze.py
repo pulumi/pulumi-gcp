@@ -280,6 +280,7 @@ class Snooze(pulumi.CustomResource):
                 "policies": [alert_policy.id],
             })
         ```
+
         ### Monitoring Snooze Filter
 
         ```python
@@ -401,6 +402,7 @@ class Snooze(pulumi.CustomResource):
                 "policies": [alert_policy.id],
             })
         ```
+
         ### Monitoring Snooze Filter
 
         ```python

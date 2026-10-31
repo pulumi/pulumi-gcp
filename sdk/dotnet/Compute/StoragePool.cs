@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Storage Pool Full
     /// 
     /// ```csharp

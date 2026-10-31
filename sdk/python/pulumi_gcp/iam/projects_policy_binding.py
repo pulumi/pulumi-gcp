@@ -671,6 +671,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
+
         ### Iam Projects Policy Binding Access Policy
 
         ```python
@@ -852,6 +853,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
+
         ### Iam Projects Policy Binding Access Policy
 
         ```python

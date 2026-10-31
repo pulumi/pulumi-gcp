@@ -4174,6 +4174,11 @@ func (o CaPoolIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type CaPoolIssuancePolicy struct {
+	// If set to true, allows requesters to specify the requestedNotBeforeTime
+	// field when creating a Certificate. Certificates requested with this
+	// option enabled will have a 'not_before_time' equal to the value
+	// specified in the request.
+	AllowRequesterSpecifiedNotBeforeTime *bool `pulumi:"allowRequesterSpecifiedNotBeforeTime"`
 	// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
 	// Structure is documented below.
 	AllowedIssuanceModes *CaPoolIssuancePolicyAllowedIssuanceModes `pulumi:"allowedIssuanceModes"`
@@ -4214,6 +4219,11 @@ type CaPoolIssuancePolicyInput interface {
 }
 
 type CaPoolIssuancePolicyArgs struct {
+	// If set to true, allows requesters to specify the requestedNotBeforeTime
+	// field when creating a Certificate. Certificates requested with this
+	// option enabled will have a 'not_before_time' equal to the value
+	// specified in the request.
+	AllowRequesterSpecifiedNotBeforeTime pulumi.BoolPtrInput `pulumi:"allowRequesterSpecifiedNotBeforeTime"`
 	// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
 	// Structure is documented below.
 	AllowedIssuanceModes CaPoolIssuancePolicyAllowedIssuanceModesPtrInput `pulumi:"allowedIssuanceModes"`
@@ -4319,6 +4329,14 @@ func (o CaPoolIssuancePolicyOutput) ToCaPoolIssuancePolicyPtrOutputWithContext(c
 	}).(CaPoolIssuancePolicyPtrOutput)
 }
 
+// If set to true, allows requesters to specify the requestedNotBeforeTime
+// field when creating a Certificate. Certificates requested with this
+// option enabled will have a 'not_before_time' equal to the value
+// specified in the request.
+func (o CaPoolIssuancePolicyOutput) AllowRequesterSpecifiedNotBeforeTime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicy) *bool { return v.AllowRequesterSpecifiedNotBeforeTime }).(pulumi.BoolPtrOutput)
+}
+
 // IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
 // Structure is documented below.
 func (o CaPoolIssuancePolicyOutput) AllowedIssuanceModes() CaPoolIssuancePolicyAllowedIssuanceModesPtrOutput {
@@ -4385,6 +4403,19 @@ func (o CaPoolIssuancePolicyPtrOutput) Elem() CaPoolIssuancePolicyOutput {
 		var ret CaPoolIssuancePolicy
 		return ret
 	}).(CaPoolIssuancePolicyOutput)
+}
+
+// If set to true, allows requesters to specify the requestedNotBeforeTime
+// field when creating a Certificate. Certificates requested with this
+// option enabled will have a 'not_before_time' equal to the value
+// specified in the request.
+func (o CaPoolIssuancePolicyPtrOutput) AllowRequesterSpecifiedNotBeforeTime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowRequesterSpecifiedNotBeforeTime
+	}).(pulumi.BoolPtrOutput)
 }
 
 // IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.

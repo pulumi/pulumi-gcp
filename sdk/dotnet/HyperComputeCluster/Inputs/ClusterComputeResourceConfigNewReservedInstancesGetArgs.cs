@@ -12,6 +12,20 @@ namespace Pulumi.Gcp.HyperComputeCluster.Inputs
 
     public sealed class ClusterComputeResourceConfigNewReservedInstancesGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("networkTags")]
+        private InputList<string>? _networkTags;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// A list of network tags to attach to the VM instances.
+        /// A maximum of 64 network tags are allowed.
+        /// </summary>
+        public InputList<string> NetworkTags
+        {
+            get => _networkTags ?? (_networkTags = new InputList<string>());
+            set => _networkTags = value;
+        }
+
         /// <summary>
         /// Name of the reservation from which VM instances should be created, in the
         /// format `projects/{project}/zones/{zone}/reservations/{reservation}`.

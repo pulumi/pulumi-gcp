@@ -439,6 +439,7 @@ class Datastore(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vmware Engine Datastore Filestore
 
         ```python
@@ -470,6 +471,7 @@ class Datastore(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vmware Engine Datastore Netapp
 
         ```python
@@ -593,6 +595,7 @@ class Datastore(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vmware Engine Datastore Filestore
 
         ```python
@@ -624,6 +627,7 @@ class Datastore(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vmware Engine Datastore Netapp
 
         ```python

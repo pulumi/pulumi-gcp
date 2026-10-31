@@ -94,6 +94,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// 
     /// ### Os Config Guest Policies Packages
     /// 
     /// ```csharp
@@ -182,6 +183,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// 
     /// ### Os Config Guest Policies Recipes
     /// 
     /// ```csharp
