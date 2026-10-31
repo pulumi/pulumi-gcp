@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Overrides
     /// 
     /// ```csharp
@@ -96,6 +97,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Mirroring
     /// 
     /// ```csharp
@@ -140,6 +142,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Intercept
     /// 
     /// ```csharp
@@ -184,6 +187,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Url Filtering
     /// 
     /// ```csharp
@@ -234,6 +238,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Broker
     /// 
     /// ```csharp
@@ -286,6 +291,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Wildfire
     /// 
     /// ```csharp
@@ -515,7 +521,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<Outputs.SecurityProfileThreatPreventionProfile?> ThreatPreventionProfile { get; private set; } = null!;
 
         /// <summary>
-        /// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+        /// The type of security profile.
         /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         /// </summary>
         [Output("type")]
@@ -535,7 +541,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<Outputs.SecurityProfileUrlFilteringProfile?> UrlFilteringProfile { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// The wildfire analysis configuration for the security profile.
         /// Structure is documented below.
         /// </summary>
@@ -669,7 +674,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<Inputs.SecurityProfileThreatPreventionProfileArgs>? ThreatPreventionProfile { get; set; }
 
         /// <summary>
-        /// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+        /// The type of security profile.
         /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         /// </summary>
         [Input("type", required: true)]
@@ -683,7 +688,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<Inputs.SecurityProfileUrlFilteringProfileArgs>? UrlFilteringProfile { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// The wildfire analysis configuration for the security profile.
         /// Structure is documented below.
         /// </summary>
@@ -827,7 +831,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<Inputs.SecurityProfileThreatPreventionProfileGetArgs>? ThreatPreventionProfile { get; set; }
 
         /// <summary>
-        /// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+        /// The type of security profile.
         /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         /// </summary>
         [Input("type")]
@@ -847,7 +851,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<Inputs.SecurityProfileUrlFilteringProfileGetArgs>? UrlFilteringProfile { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// The wildfire analysis configuration for the security profile.
         /// Structure is documented below.
         /// </summary>

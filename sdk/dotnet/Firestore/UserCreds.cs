@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore User Creds With Secret Manager
     /// 
     /// ```csharp

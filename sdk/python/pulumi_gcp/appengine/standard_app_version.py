@@ -991,7 +991,7 @@ class StandardAppVersion(pulumi.CustomResource):
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         myapp_v1 = gcp.appengine.StandardAppVersion("myapp_v1",
             version_id="v1",
-            service="myapp",
+            service="ae-service",
             runtime="nodejs22",
             entrypoint={
                 "shell": "node ./app.js",
@@ -1025,7 +1025,7 @@ class StandardAppVersion(pulumi.CustomResource):
             service_account=custom_service_account.email)
         myapp_v2 = gcp.appengine.StandardAppVersion("myapp_v2",
             version_id="v2",
-            service="myapp",
+            service="ae-service",
             runtime="nodejs22",
             app_engine_apis=True,
             entrypoint={
@@ -1049,6 +1049,7 @@ class StandardAppVersion(pulumi.CustomResource):
             noop_on_destroy=True,
             service_account=custom_service_account.email)
         ```
+
         ### App Engine Standard App Version Bundled Services
 
         ```python
@@ -1080,7 +1081,7 @@ class StandardAppVersion(pulumi.CustomResource):
         gae_std_app_ver_bundled = gcp.appengine.StandardAppVersion("gae-std-app-ver-bundled",
             version_id="v1",
             service="bundled-service",
-            runtime="python310",
+            runtime="python312",
             deployment={
                 "files": [
                     {
@@ -1115,6 +1116,7 @@ class StandardAppVersion(pulumi.CustomResource):
                     storage_viewer,
                 ]))
         ```
+
         ### App Engine Standard App Version Vpc Access
 
         ```python
@@ -1155,9 +1157,9 @@ class StandardAppVersion(pulumi.CustomResource):
         gae_std_app_ver_vpc_access = gcp.appengine.StandardAppVersion("gae-std-app-ver-vpc-access",
             version_id="v1",
             service="vpc-service",
-            runtime="python310",
+            runtime="python312",
             vpc_access={
-                "egress_setting": "ALL_TRAFFIC",
+                "vpc_egress": "ALL_TRAFFIC",
                 "network_interfaces": [{
                     "network": custom.name,
                     "subnetwork": custom_subnetwork.name,
@@ -1314,7 +1316,7 @@ class StandardAppVersion(pulumi.CustomResource):
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         myapp_v1 = gcp.appengine.StandardAppVersion("myapp_v1",
             version_id="v1",
-            service="myapp",
+            service="ae-service",
             runtime="nodejs22",
             entrypoint={
                 "shell": "node ./app.js",
@@ -1348,7 +1350,7 @@ class StandardAppVersion(pulumi.CustomResource):
             service_account=custom_service_account.email)
         myapp_v2 = gcp.appengine.StandardAppVersion("myapp_v2",
             version_id="v2",
-            service="myapp",
+            service="ae-service",
             runtime="nodejs22",
             app_engine_apis=True,
             entrypoint={
@@ -1372,6 +1374,7 @@ class StandardAppVersion(pulumi.CustomResource):
             noop_on_destroy=True,
             service_account=custom_service_account.email)
         ```
+
         ### App Engine Standard App Version Bundled Services
 
         ```python
@@ -1403,7 +1406,7 @@ class StandardAppVersion(pulumi.CustomResource):
         gae_std_app_ver_bundled = gcp.appengine.StandardAppVersion("gae-std-app-ver-bundled",
             version_id="v1",
             service="bundled-service",
-            runtime="python310",
+            runtime="python312",
             deployment={
                 "files": [
                     {
@@ -1438,6 +1441,7 @@ class StandardAppVersion(pulumi.CustomResource):
                     storage_viewer,
                 ]))
         ```
+
         ### App Engine Standard App Version Vpc Access
 
         ```python
@@ -1478,9 +1482,9 @@ class StandardAppVersion(pulumi.CustomResource):
         gae_std_app_ver_vpc_access = gcp.appengine.StandardAppVersion("gae-std-app-ver-vpc-access",
             version_id="v1",
             service="vpc-service",
-            runtime="python310",
+            runtime="python312",
             vpc_access={
-                "egress_setting": "ALL_TRAFFIC",
+                "vpc_egress": "ALL_TRAFFIC",
                 "network_interfaces": [{
                     "network": custom.name,
                     "subnetwork": custom_subnetwork.name,

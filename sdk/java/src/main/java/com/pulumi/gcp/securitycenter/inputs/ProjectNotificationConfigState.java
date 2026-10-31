@@ -6,6 +6,7 @@ package com.pulumi.gcp.securitycenter.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.securitycenter.inputs.ProjectNotificationConfigStreamingConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,21 @@ public final class ProjectNotificationConfigState extends com.pulumi.resources.R
      */
     public Optional<Output<String>> configId() {
         return Optional.ofNullable(this.configId);
+    }
+
+    /**
+     * Indicates whether the notifications will be sent for deleted findings.
+     * 
+     */
+    @Import(name="deletionNotificationsEnabled")
+    private @Nullable Output<Boolean> deletionNotificationsEnabled;
+
+    /**
+     * @return Indicates whether the notifications will be sent for deleted findings.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionNotificationsEnabled() {
+        return Optional.ofNullable(this.deletionNotificationsEnabled);
     }
 
     /**
@@ -160,6 +176,7 @@ public final class ProjectNotificationConfigState extends com.pulumi.resources.R
 
     private ProjectNotificationConfigState(ProjectNotificationConfigState $) {
         this.configId = $.configId;
+        this.deletionNotificationsEnabled = $.deletionNotificationsEnabled;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.name = $.name;
@@ -206,6 +223,27 @@ public final class ProjectNotificationConfigState extends com.pulumi.resources.R
          */
         public Builder configId(String configId) {
             return configId(Output.of(configId));
+        }
+
+        /**
+         * @param deletionNotificationsEnabled Indicates whether the notifications will be sent for deleted findings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionNotificationsEnabled(@Nullable Output<Boolean> deletionNotificationsEnabled) {
+            $.deletionNotificationsEnabled = deletionNotificationsEnabled;
+            return this;
+        }
+
+        /**
+         * @param deletionNotificationsEnabled Indicates whether the notifications will be sent for deleted findings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionNotificationsEnabled(Boolean deletionNotificationsEnabled) {
+            return deletionNotificationsEnabled(Output.of(deletionNotificationsEnabled));
         }
 
         /**

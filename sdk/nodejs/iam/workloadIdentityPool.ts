@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *
  * const example = new gcp.iam.WorkloadIdentityPool("example", {workloadIdentityPoolId: "example-pool"});
  * ```
+ *
  * ### Iam Workload Identity Pool Full Federation Only Mode
  *
  * ```typescript
@@ -42,6 +43,7 @@ import * as utilities from "../utilities";
  *     mode: "FEDERATION_ONLY",
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Full Trust Domain Mode
  *
  * ```typescript
@@ -105,6 +107,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
  *
  * ```typescript

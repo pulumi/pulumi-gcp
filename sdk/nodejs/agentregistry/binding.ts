@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultAuthProvider],
  * });
  * ```
+ *
  * ### Agent Registry Binding Target Only
  *
  * ```typescript

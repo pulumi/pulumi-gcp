@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Security Firewall Endpoint Project
  *
  * ```typescript
@@ -176,7 +177,6 @@ export class FirewallEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * Settings for WildFire analysis on the firewall endpoint.
      * Structure is documented below.
      */
@@ -325,7 +325,6 @@ export interface FirewallEndpointState {
      */
     updateTime?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Settings for WildFire analysis on the firewall endpoint.
      * Structure is documented below.
      */
@@ -378,7 +377,6 @@ export interface FirewallEndpointArgs {
      */
     parent: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Settings for WildFire analysis on the firewall endpoint.
      * Structure is documented below.
      */

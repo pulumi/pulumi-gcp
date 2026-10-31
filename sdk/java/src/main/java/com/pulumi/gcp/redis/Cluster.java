@@ -165,13 +165,13 @@ import javax.annotation.Nullable;
  *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
  *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .network(consumerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("my-policy")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
  *             .network(consumerNet.id())
@@ -182,7 +182,7 @@ import javax.annotation.Nullable;
  * 
  *         var cluster_ha_with_labels = new Cluster("cluster-ha-with-labels", ClusterArgs.builder()
  *             .name("ha-cluster")
- *             .shardCount(3)
+ *             .shardCount(1)
  *             .labels(Map.ofEntries(
  *                 Map.entry("my_key", "my_val"),
  *                 Map.entry("other_key", "other_val")
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *             .pscConfigs(ClusterPscConfigArgs.builder()
  *                 .network(consumerNet.id())
  *                 .build())
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .replicaCount(1)
  *             .nodeType("REDIS_SHARED_CORE_NANO")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
@@ -219,6 +219,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Cluster Ha
  * 
  * <pre>
@@ -264,13 +265,13 @@ import javax.annotation.Nullable;
  *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
  *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .network(consumerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("my-policy")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
  *             .network(consumerNet.id())
@@ -281,11 +282,11 @@ import javax.annotation.Nullable;
  * 
  *         var cluster_ha = new Cluster("cluster-ha", ClusterArgs.builder()
  *             .name("ha-cluster")
- *             .shardCount(3)
+ *             .shardCount(1)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
  *                 .network(consumerNet.id())
  *                 .build())
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .replicaCount(1)
  *             .nodeType("REDIS_SHARED_CORE_NANO")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
@@ -314,6 +315,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Cluster Ha Single Zone
  * 
  * <pre>
@@ -359,13 +361,13 @@ import javax.annotation.Nullable;
  *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
  *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .network(consumerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("my-policy")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
  *             .network(consumerNet.id())
@@ -376,14 +378,15 @@ import javax.annotation.Nullable;
  * 
  *         var cluster_ha_single_zone = new Cluster("cluster-ha-single-zone", ClusterArgs.builder()
  *             .name("ha-cluster-single-zone")
- *             .shardCount(3)
+ *             .shardCount(1)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
  *                 .network(consumerNet.id())
  *                 .build())
- *             .region("us-west1")
+ *             .region("us-east1")
+ *             .nodeType("REDIS_SHARED_CORE_NANO")
  *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
  *                 .mode("SINGLE_ZONE")
- *                 .zone("us-west1-a")
+ *                 .zone("us-east1-b")
  *                 .build())
  *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
  *                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
@@ -405,6 +408,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Cluster Secondary
  * 
  * <pre>
@@ -454,13 +458,13 @@ import javax.annotation.Nullable;
  *         var primaryClusterConsumerSubnet = new Subnetwork("primaryClusterConsumerSubnet", SubnetworkArgs.builder()
  *             .name("mysubnet-primary-cluster")
  *             .ipCidrRange("10.0.1.0/29")
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .network(consumerNet.id())
  *             .build());
  * 
  *         var primaryClusterRegionScp = new ServiceConnectionPolicy("primaryClusterRegionScp", ServiceConnectionPolicyArgs.builder()
  *             .name("mypolicy-primary-cluster")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("Primary cluster service connection policy")
  *             .network(consumerNet.id())
@@ -472,15 +476,15 @@ import javax.annotation.Nullable;
  *         // Primary cluster
  *         var primaryCluster = new Cluster("primaryCluster", ClusterArgs.builder()
  *             .name("my-primary-cluster")
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .pscConfigs(ClusterPscConfigArgs.builder()
  *                 .network(consumerNet.id())
  *                 .build())
  *             .authorizationMode("AUTH_MODE_DISABLED")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
- *             .shardCount(3)
+ *             .shardCount(1)
  *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
- *             .nodeType("REDIS_HIGHMEM_MEDIUM")
+ *             .nodeType("REDIS_SHARED_CORE_NANO")
  *             .persistenceConfig(ClusterPersistenceConfigArgs.builder()
  *                 .mode("RDB")
  *                 .rdbConfig(ClusterPersistenceConfigRdbConfigArgs.builder()
@@ -535,9 +539,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .authorizationMode("AUTH_MODE_DISABLED")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
- *             .shardCount(3)
+ *             .shardCount(1)
  *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
- *             .nodeType("REDIS_HIGHMEM_MEDIUM")
+ *             .nodeType("REDIS_SHARED_CORE_NANO")
  *             .persistenceConfig(ClusterPersistenceConfigArgs.builder()
  *                 .mode("RDB")
  *                 .rdbConfig(ClusterPersistenceConfigRdbConfigArgs.builder()
@@ -548,7 +552,7 @@ import javax.annotation.Nullable;
  *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
  *                 .mode("MULTI_ZONE")
  *                 .build())
- *             .replicaCount(2)
+ *             .replicaCount(1)
  *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
  *                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
  *                     .day("WEDNESDAY")
@@ -575,6 +579,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Cluster Rdb
  * 
  * <pre>
@@ -622,13 +627,13 @@ import javax.annotation.Nullable;
  *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
  *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .network(consumerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("my-policy")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
  *             .network(consumerNet.id())
@@ -639,11 +644,11 @@ import javax.annotation.Nullable;
  * 
  *         var cluster_rdb = new Cluster("cluster-rdb", ClusterArgs.builder()
  *             .name("rdb-cluster")
- *             .shardCount(3)
+ *             .shardCount(1)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
  *                 .network(consumerNet.id())
  *                 .build())
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .replicaCount(0)
  *             .nodeType("REDIS_SHARED_CORE_NANO")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
@@ -679,6 +684,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Cluster Aof
  * 
  * <pre>
@@ -726,13 +732,13 @@ import javax.annotation.Nullable;
  *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
  *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .network(consumerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("my-policy")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
  *             .network(consumerNet.id())
@@ -743,11 +749,11 @@ import javax.annotation.Nullable;
  * 
  *         var cluster_aof = new Cluster("cluster-aof", ClusterArgs.builder()
  *             .name("aof-cluster")
- *             .shardCount(3)
+ *             .shardCount(1)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
  *                 .network(consumerNet.id())
  *                 .build())
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .replicaCount(0)
  *             .nodeType("REDIS_SHARED_CORE_NANO")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
@@ -782,6 +788,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Cluster Cmek
  * 
  * <pre>
@@ -825,13 +832,13 @@ import javax.annotation.Nullable;
  *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
  *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .network(consumerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("my-policy")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
  *             .network(consumerNet.id())
@@ -842,12 +849,13 @@ import javax.annotation.Nullable;
  * 
  *         var cluster_cmek = new Cluster("cluster-cmek", ClusterArgs.builder()
  *             .name("cmek-cluster")
- *             .shardCount(3)
+ *             .shardCount(1)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
  *                 .network(consumerNet.id())
  *                 .build())
  *             .kmsKey("my-key")
- *             .region("us-west1")
+ *             .region("us-east1")
+ *             .nodeType("REDIS_SHARED_CORE_NANO")
  *             .deletionProtectionEnabled(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(default_)
@@ -860,6 +868,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Cluster Flexible Ca
  * 
  * <pre>
@@ -908,14 +917,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .name("ca-pool")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .tier("ENTERPRISE")
  *             .build());
  * 
  *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
  *             .pool(default_.name())
  *             .certificateAuthorityId("ca-auth")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -954,13 +963,13 @@ import javax.annotation.Nullable;
  *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
  *             .name("ca-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .network(consumerNet.id())
  *             .build());
  * 
  *         var defaultServiceConnectionPolicy = new ServiceConnectionPolicy("defaultServiceConnectionPolicy", ServiceConnectionPolicyArgs.builder()
  *             .name("ca-policy")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .network(consumerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
@@ -970,8 +979,9 @@ import javax.annotation.Nullable;
  * 
  *         var test_cluster = new Cluster("test-cluster", ClusterArgs.builder()
  *             .name("ca-cluster")
- *             .shardCount(3)
- *             .region("us-west1")
+ *             .shardCount(1)
+ *             .region("us-east1")
+ *             .nodeType("REDIS_SHARED_CORE_NANO")
  *             .pscConfigs(ClusterPscConfigArgs.builder()
  *                 .network(consumerNet.id())
  *                 .build())
@@ -1028,7 +1038,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
      * 
      */
     @Export(name="authorizationMode", refs={String.class}, tree="[0]")
@@ -1037,7 +1047,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
      * 
      */
     public Output<Optional<String>> authorizationMode() {

@@ -84,6 +84,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Entry Link Full
     /// 
     /// ```csharp
@@ -192,6 +193,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ## Import
     /// 
     /// EntryLink can be imported using any of these accepted formats:

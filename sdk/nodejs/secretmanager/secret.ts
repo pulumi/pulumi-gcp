@@ -43,6 +43,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  * });
  * ```
+ *
  * ### Secret With Annotations
  *
  * ```typescript
@@ -67,6 +68,7 @@ import * as utilities from "../utilities";
  *     secretType: "ACCESS_KEY",
  * });
  * ```
+ *
  * ### Secret With Version Destroy Ttl
  *
  * ```typescript
@@ -81,6 +83,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Secret With Automatic Cmek
  *
  * ```typescript

@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkehub Feature Multi Cluster Service Discovery
     /// 
     /// ```csharp
@@ -86,6 +87,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkehub Feature Anthos Service Mesh
     /// 
     /// ```csharp
@@ -104,6 +106,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Enable Fleet Observability For Default Logs With Copy
     /// 
     /// ```csharp
@@ -135,6 +138,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Enable Fleet Observability For Scope Logs With Move
     /// 
     /// ```csharp
@@ -166,6 +170,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Enable Fleet Observability For Both Default And Scope Logs
     /// 
     /// ```csharp
@@ -201,6 +206,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Enable Fleet Default Member Config Service Mesh
     /// 
     /// ```csharp
@@ -226,6 +232,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Enable Fleet Default Member Config Configmanagement
     /// 
     /// ```csharp
@@ -257,6 +264,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Enable Fleet Default Member Config Policycontroller
     /// 
     /// ```csharp
@@ -310,6 +318,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Enable Fleet Default Member Config Policycontroller Full
     /// 
     /// ```csharp
@@ -409,6 +418,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Enable Fleet Default Member Config Policycontroller Minimal
     /// 
     /// ```csharp
@@ -450,6 +460,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkehub Feature Clusterupgrade
     /// 
     /// ```csharp
@@ -479,6 +490,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkehub Feature Rbacrolebinding Actuation
     /// 
     /// ```csharp
@@ -509,6 +521,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkehub Feature Workload Identity
     /// 
     /// ```csharp

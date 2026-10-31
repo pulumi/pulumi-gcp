@@ -707,6 +707,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
             parent=basic_key.id,
             short_name="tag-value")
         ```
+
         ### Firewall Policy Rule Network Scope
 
         ```python
@@ -747,6 +748,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Firewall Policy Rule Network Context
 
         ```python
@@ -811,6 +813,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Firewall Policy Rule Secure Tags
 
         ```python
@@ -997,6 +1000,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
             parent=basic_key.id,
             short_name="tag-value")
         ```
+
         ### Firewall Policy Rule Network Scope
 
         ```python
@@ -1037,6 +1041,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Firewall Policy Rule Network Context
 
         ```python
@@ -1101,6 +1106,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Firewall Policy Rule Secure Tags
 
         ```python

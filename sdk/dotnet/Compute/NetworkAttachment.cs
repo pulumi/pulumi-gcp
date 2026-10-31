@@ -84,6 +84,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Attachment Instance Usage
     /// 
     /// ```csharp

@@ -55,6 +55,40 @@ import (
 //	}
 //
 // ```
+//
+// ### Looker Instance Force Delete
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+//				Name:            pulumi.String("my-instance"),
+//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD_ANNUAL"),
+//				Region:          pulumi.String("us-central1"),
+//				OauthConfig: &looker.InstanceOauthConfigArgs{
+//					ClientId:     pulumi.String("my-client-id"),
+//					ClientSecret: pulumi.String("my-client-secret"),
+//				},
+//				DeletionPolicy: pulumi.String("FORCE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Looker Instance Full
 //
 // ```go
@@ -111,6 +145,7 @@ import (
 //					ClientId:     pulumi.String("my-client-id"),
 //					ClientSecret: pulumi.String("my-client-secret"),
 //				},
+//				DeletionPolicy: pulumi.String("FORCE"),
 //			})
 //			if err != nil {
 //				return err
@@ -120,39 +155,7 @@ import (
 //	}
 //
 // ```
-// ### Looker Instance Fips
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
-//				Name:            pulumi.String("my-instance-fips"),
-//				PlatformEdition: pulumi.String("LOOKER_CORE_ENTERPRISE_ANNUAL"),
-//				Region:          pulumi.String("us-central1"),
-//				PublicIpEnabled: pulumi.Bool(true),
-//				FipsEnabled:     pulumi.Bool(true),
-//				OauthConfig: &looker.InstanceOauthConfigArgs{
-//					ClientId:     pulumi.String("my-client-id"),
-//					ClientSecret: pulumi.String("my-client-secret"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Looker Instance Enterprise Full
 //
 // ```go
@@ -245,6 +248,9 @@ import (
 //					ClientId:     pulumi.String("my-client-id"),
 //					ClientSecret: pulumi.String("my-client-secret"),
 //				},
+//				CustomDomain: &looker.InstanceCustomDomainArgs{
+//					Domain: pulumi.String("my-custom-domain.com"),
+//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				lookerVpcConnection,
 //			}))
@@ -268,40 +274,7 @@ import (
 //	}
 //
 // ```
-// ### Looker Instance Custom Domain
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
-//				Name:            pulumi.String("my-instance"),
-//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD_ANNUAL"),
-//				Region:          pulumi.String("us-central1"),
-//				OauthConfig: &looker.InstanceOauthConfigArgs{
-//					ClientId:     pulumi.String("my-client-id"),
-//					ClientSecret: pulumi.String("my-client-secret"),
-//				},
-//				CustomDomain: &looker.InstanceCustomDomainArgs{
-//					Domain: pulumi.String("my-custom-domain.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Looker Instance Psc
 //
 // ```go
@@ -332,38 +305,6 @@ import (
 //						pulumi.String("projects/test-project/global/networks/test"),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Looker Instance Force Delete
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
-//				Name:            pulumi.String("my-instance"),
-//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD_ANNUAL"),
-//				Region:          pulumi.String("us-central1"),
-//				OauthConfig: &looker.InstanceOauthConfigArgs{
-//					ClientId:     pulumi.String("my-client-id"),
-//					ClientSecret: pulumi.String("my-client-secret"),
-//				},
-//				DeletionPolicy: pulumi.String("FORCE"),
 //			})
 //			if err != nil {
 //				return err

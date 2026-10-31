@@ -674,6 +674,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Openapi Oauth Config
 
         ```python
@@ -733,6 +734,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Openapi Service Agent Id Token Auth Config
 
         ```python
@@ -786,6 +788,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Openapi Api Key Config
 
         ```python
@@ -845,6 +848,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Bearer Token Config
 
         ```python
@@ -900,6 +904,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Mcp Service Account Auth Config
 
         ```python
@@ -947,6 +952,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Mcp Oauth Config
 
         ```python
@@ -997,6 +1003,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Mcp Service Agent Id Token Auth Config
 
         ```python
@@ -1049,6 +1056,7 @@ class Toolset(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Ces Toolset Mcp Api Key Config
 
         ```python
@@ -1099,6 +1107,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Mcp Bearer Token Config
 
         ```python
@@ -1264,6 +1273,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Openapi Oauth Config
 
         ```python
@@ -1323,6 +1333,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Openapi Service Agent Id Token Auth Config
 
         ```python
@@ -1376,6 +1387,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Openapi Api Key Config
 
         ```python
@@ -1435,6 +1447,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Bearer Token Config
 
         ```python
@@ -1490,6 +1503,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Mcp Service Account Auth Config
 
         ```python
@@ -1537,6 +1551,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Mcp Oauth Config
 
         ```python
@@ -1587,6 +1602,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Mcp Service Agent Id Token Auth Config
 
         ```python
@@ -1639,6 +1655,7 @@ class Toolset(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Ces Toolset Mcp Api Key Config
 
         ```python
@@ -1689,6 +1706,7 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Toolset Mcp Bearer Token Config
 
         ```python

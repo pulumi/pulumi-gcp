@@ -565,6 +565,7 @@ class RegionalEndpoint(pulumi.CustomResource):
                 "env": "default",
             })
         ```
+
         ### Network Connectivity Regional Endpoint Global Access
 
         ```python
@@ -675,6 +676,7 @@ class RegionalEndpoint(pulumi.CustomResource):
                 "env": "default",
             })
         ```
+
         ### Network Connectivity Regional Endpoint Global Access
 
         ```python

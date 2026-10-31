@@ -75,6 +75,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset Cmek
 //
 // ```go
@@ -122,6 +123,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset Authorized Dataset
 //
 // ```go
@@ -205,6 +207,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset Authorized Routine
 //
 // ```go
@@ -292,6 +295,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset External Reference Aws
 //
 // ```go
@@ -324,6 +328,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset External Catalog Dataset Options
 //
 // ```go

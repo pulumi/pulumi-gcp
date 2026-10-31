@@ -777,6 +777,7 @@ class DataTransferConfig(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[permissions]))
         ```
+
         ### Bigquerydatatransfer Config Cmek
 
         ```python
@@ -816,6 +817,7 @@ class DataTransferConfig(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[permissions]))
         ```
+
         ### Bigquerydatatransfer Config Salesforce
 
         ```python
@@ -963,6 +965,7 @@ class DataTransferConfig(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[permissions]))
         ```
+
         ### Bigquerydatatransfer Config Cmek
 
         ```python
@@ -1002,6 +1005,7 @@ class DataTransferConfig(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[permissions]))
         ```
+
         ### Bigquerydatatransfer Config Salesforce
 
         ```python

@@ -72,6 +72,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Organization Cloud Basic Disable Vpc Peering
     /// 
     /// ```csharp
@@ -94,6 +95,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Organization Cloud Basic Data Residency
     /// 
     /// ```csharp
@@ -117,6 +119,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Organization Cloud Full
     /// 
     /// ```csharp
@@ -197,6 +200,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Organization Cloud Full Disable Vpc Peering
     /// 
     /// ```csharp

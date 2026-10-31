@@ -60,6 +60,7 @@ import * as utilities from "../utilities";
  *     urlMap: defaultRegionUrlMap.id,
  * });
  * ```
+ *
  * ### Region Target Http Proxy Http Keep Alive Timeout
  *
  * ```typescript
@@ -106,6 +107,7 @@ import * as utilities from "../utilities";
  *     urlMap: defaultRegionUrlMap.id,
  * });
  * ```
+ *
  * ### Region Target Http Proxy Https Redirect
  *
  * ```typescript

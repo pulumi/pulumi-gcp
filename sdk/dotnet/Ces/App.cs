@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     ///     var fakePrivateKeySecret = new Gcp.SecretManager.Secret("fake_private_key_secret", new()
     ///     {
-    ///         SecretId = "fake-pk-secret-app-tf1",
+    ///         SecretId = "fake-pk-secret-app-tf",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
     ///             Auto = null,
@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.Ces
     ///         {
     ///             Model = "gemini-3.0-flash-001",
     ///             Temperature = 0.5,
+    ///             ThinkingLevel = "LOW",
     ///         },
     ///         EvaluationMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsArgs
     ///         {
@@ -303,6 +304,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces App Ambient Sound Gcs Uri
     /// 
     /// ```csharp

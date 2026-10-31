@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Provider Aws Full
  * 
  * <pre>
@@ -126,6 +127,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Provider Github Actions
  * 
  * <pre>
@@ -184,6 +186,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Provider Oidc Basic
  * 
  * <pre>
@@ -228,6 +231,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Provider Oidc Full
  * 
  * <pre>
@@ -288,6 +292,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Provider Saml Basic
  * 
  * <pre>
@@ -340,6 +345,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Provider Saml Full
  * 
  * <pre>
@@ -395,6 +401,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Provider Oidc Upload Key
  * 
  * <pre>
@@ -456,6 +463,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Provider X509 Basic
  * 
  * <pre>
@@ -510,6 +518,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Iam Workload Identity Pool Provider X509 Full
  * 
  * <pre>

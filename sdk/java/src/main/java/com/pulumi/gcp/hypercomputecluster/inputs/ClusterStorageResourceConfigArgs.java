@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.hypercomputecluster.inputs.ClusterStorageResourceConfigExistingBucketArgs;
 import com.pulumi.gcp.hypercomputecluster.inputs.ClusterStorageResourceConfigExistingFilestoreArgs;
 import com.pulumi.gcp.hypercomputecluster.inputs.ClusterStorageResourceConfigExistingLustreArgs;
+import com.pulumi.gcp.hypercomputecluster.inputs.ClusterStorageResourceConfigExistingNfsArgs;
 import com.pulumi.gcp.hypercomputecluster.inputs.ClusterStorageResourceConfigNewBucketArgs;
 import com.pulumi.gcp.hypercomputecluster.inputs.ClusterStorageResourceConfigNewFilestoreArgs;
 import com.pulumi.gcp.hypercomputecluster.inputs.ClusterStorageResourceConfigNewLustreArgs;
@@ -82,6 +83,27 @@ public final class ClusterStorageResourceConfigArgs extends com.pulumi.resources
     }
 
     /**
+     * (Optional, Beta)
+     * When set in a StorageResourceConfig, indicates that an existing NFS
+     * share should be imported.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="existingNfs")
+    private @Nullable Output<ClusterStorageResourceConfigExistingNfsArgs> existingNfs;
+
+    /**
+     * @return (Optional, Beta)
+     * When set in a StorageResourceConfig, indicates that an existing NFS
+     * share should be imported.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterStorageResourceConfigExistingNfsArgs>> existingNfs() {
+        return Optional.ofNullable(this.existingNfs);
+    }
+
+    /**
      * When set in a StorageResourceConfig, indicates that a new
      * [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
      * created.
@@ -148,6 +170,7 @@ public final class ClusterStorageResourceConfigArgs extends com.pulumi.resources
         this.existingBucket = $.existingBucket;
         this.existingFilestore = $.existingFilestore;
         this.existingLustre = $.existingLustre;
+        this.existingNfs = $.existingNfs;
         this.newBucket = $.newBucket;
         this.newFilestore = $.newFilestore;
         this.newLustre = $.newLustre;
@@ -248,6 +271,33 @@ public final class ClusterStorageResourceConfigArgs extends com.pulumi.resources
          */
         public Builder existingLustre(ClusterStorageResourceConfigExistingLustreArgs existingLustre) {
             return existingLustre(Output.of(existingLustre));
+        }
+
+        /**
+         * @param existingNfs (Optional, Beta)
+         * When set in a StorageResourceConfig, indicates that an existing NFS
+         * share should be imported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder existingNfs(@Nullable Output<ClusterStorageResourceConfigExistingNfsArgs> existingNfs) {
+            $.existingNfs = existingNfs;
+            return this;
+        }
+
+        /**
+         * @param existingNfs (Optional, Beta)
+         * When set in a StorageResourceConfig, indicates that an existing NFS
+         * share should be imported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder existingNfs(ClusterStorageResourceConfigExistingNfsArgs existingNfs) {
+            return existingNfs(Output.of(existingNfs));
         }
 
         /**

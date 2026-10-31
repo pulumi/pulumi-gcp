@@ -450,6 +450,9 @@ namespace Pulumi.Gcp
         [Output("networkSecurityCustomEndpoint")]
         public Output<string?> NetworkSecurityCustomEndpoint { get; private set; } = null!;
 
+        [Output("networkServices2CustomEndpoint")]
+        public Output<string?> NetworkServices2CustomEndpoint { get; private set; } = null!;
+
         [Output("networkServicesCustomEndpoint")]
         public Output<string?> NetworkServicesCustomEndpoint { get; private set; } = null!;
 
@@ -1157,6 +1160,9 @@ namespace Pulumi.Gcp
 
         [Input("networkSecurityCustomEndpoint")]
         public Input<string>? NetworkSecurityCustomEndpoint { get; set; }
+
+        [Input("networkServices2CustomEndpoint")]
+        public Input<string>? NetworkServices2CustomEndpoint { get; set; }
 
         [Input("networkServicesCustomEndpoint")]
         public Input<string>? NetworkServicesCustomEndpoint { get; set; }

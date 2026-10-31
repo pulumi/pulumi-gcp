@@ -68,6 +68,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Discoveryengine Searchengine Agentspace Basic
 //
 // ```go
@@ -189,6 +190,16 @@ type SearchEngine struct {
 	KnowledgeGraphConfig SearchEngineKnowledgeGraphConfigOutput `pulumi:"knowledgeGraphConfig"`
 	// Location.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Maps a model name to its specific configuration for this engine. This
+	// allows admin users to turn on/off individual models. This only stores
+	// models whose states are overridden by the admin. When the state is
+	// unspecified, or `modelConfigs` is empty for this model, the system
+	// decides if this model is available based on the default configuration.
+	// For example, a preview model is disabled by default if the admin has not
+	// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+	// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+	// for details.
+	ModelConfigs pulumi.StringMapOutput `pulumi:"modelConfigs"`
 	// The unique full resource name of the search engine. Values are of the format
 	// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
 	// This field must be a UTF-8 encoded string with a length limit of 1024
@@ -296,6 +307,16 @@ type searchEngineState struct {
 	KnowledgeGraphConfig *SearchEngineKnowledgeGraphConfig `pulumi:"knowledgeGraphConfig"`
 	// Location.
 	Location *string `pulumi:"location"`
+	// Maps a model name to its specific configuration for this engine. This
+	// allows admin users to turn on/off individual models. This only stores
+	// models whose states are overridden by the admin. When the state is
+	// unspecified, or `modelConfigs` is empty for this model, the system
+	// decides if this model is available based on the default configuration.
+	// For example, a preview model is disabled by default if the admin has not
+	// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+	// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+	// for details.
+	ModelConfigs map[string]string `pulumi:"modelConfigs"`
 	// The unique full resource name of the search engine. Values are of the format
 	// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
 	// This field must be a UTF-8 encoded string with a length limit of 1024
@@ -356,6 +377,16 @@ type SearchEngineState struct {
 	KnowledgeGraphConfig SearchEngineKnowledgeGraphConfigPtrInput
 	// Location.
 	Location pulumi.StringPtrInput
+	// Maps a model name to its specific configuration for this engine. This
+	// allows admin users to turn on/off individual models. This only stores
+	// models whose states are overridden by the admin. When the state is
+	// unspecified, or `modelConfigs` is empty for this model, the system
+	// decides if this model is available based on the default configuration.
+	// For example, a preview model is disabled by default if the admin has not
+	// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+	// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+	// for details.
+	ModelConfigs pulumi.StringMapInput
 	// The unique full resource name of the search engine. Values are of the format
 	// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
 	// This field must be a UTF-8 encoded string with a length limit of 1024
@@ -418,6 +449,16 @@ type searchEngineArgs struct {
 	KnowledgeGraphConfig *SearchEngineKnowledgeGraphConfig `pulumi:"knowledgeGraphConfig"`
 	// Location.
 	Location string `pulumi:"location"`
+	// Maps a model name to its specific configuration for this engine. This
+	// allows admin users to turn on/off individual models. This only stores
+	// models whose states are overridden by the admin. When the state is
+	// unspecified, or `modelConfigs` is empty for this model, the system
+	// decides if this model is available based on the default configuration.
+	// For example, a preview model is disabled by default if the admin has not
+	// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+	// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+	// for details.
+	ModelConfigs map[string]string `pulumi:"modelConfigs"`
 	// The emails of the procurement contacts.
 	ProcurementContactEmails []string `pulumi:"procurementContactEmails"`
 	// The ID of the project in which the resource belongs.
@@ -470,6 +511,16 @@ type SearchEngineArgs struct {
 	KnowledgeGraphConfig SearchEngineKnowledgeGraphConfigPtrInput
 	// Location.
 	Location pulumi.StringInput
+	// Maps a model name to its specific configuration for this engine. This
+	// allows admin users to turn on/off individual models. This only stores
+	// models whose states are overridden by the admin. When the state is
+	// unspecified, or `modelConfigs` is empty for this model, the system
+	// decides if this model is available based on the default configuration.
+	// For example, a preview model is disabled by default if the admin has not
+	// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+	// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+	// for details.
+	ModelConfigs pulumi.StringMapInput
 	// The emails of the procurement contacts.
 	ProcurementContactEmails pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
@@ -649,6 +700,19 @@ func (o SearchEngineOutput) KnowledgeGraphConfig() SearchEngineKnowledgeGraphCon
 // Location.
 func (o SearchEngineOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Maps a model name to its specific configuration for this engine. This
+// allows admin users to turn on/off individual models. This only stores
+// models whose states are overridden by the admin. When the state is
+// unspecified, or `modelConfigs` is empty for this model, the system
+// decides if this model is available based on the default configuration.
+// For example, a preview model is disabled by default if the admin has not
+// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+// for details.
+func (o SearchEngineOutput) ModelConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SearchEngine) pulumi.StringMapOutput { return v.ModelConfigs }).(pulumi.StringMapOutput)
 }
 
 // The unique full resource name of the search engine. Values are of the format

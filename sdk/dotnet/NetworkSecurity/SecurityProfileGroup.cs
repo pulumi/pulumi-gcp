@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Group Mirroring
     /// 
     /// ```csharp
@@ -105,6 +106,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Group Intercept
     /// 
     /// ```csharp
@@ -157,6 +159,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Group Url Filtering
     /// 
     /// ```csharp
@@ -206,6 +209,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Group Wildfire
     /// 
     /// ```csharp
@@ -379,7 +383,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string?> UrlFilteringProfile { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
         /// </summary>
         [Output("wildfireAnalysisProfile")]
@@ -513,7 +516,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? UrlFilteringProfile { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
         /// </summary>
         [Input("wildfireAnalysisProfile")]
@@ -657,7 +659,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? UrlFilteringProfile { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
         /// </summary>
         [Input("wildfireAnalysisProfile")]

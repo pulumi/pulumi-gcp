@@ -213,7 +213,8 @@ type RegionInstanceGroupManager struct {
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
-	// When set to "DELETE", deleting the resource is allowed.
+	// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+	// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 	//
 	// ***
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
@@ -362,7 +363,8 @@ type regionInstanceGroupManagerState struct {
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
-	// When set to "DELETE", deleting the resource is allowed.
+	// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+	// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 	//
 	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
@@ -476,7 +478,8 @@ type RegionInstanceGroupManagerState struct {
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
-	// When set to "DELETE", deleting the resource is allowed.
+	// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+	// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 	//
 	// ***
 	DeletionPolicy pulumi.StringPtrInput
@@ -592,7 +595,8 @@ type regionInstanceGroupManagerArgs struct {
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
-	// When set to "DELETE", deleting the resource is allowed.
+	// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+	// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 	//
 	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
@@ -695,7 +699,8 @@ type RegionInstanceGroupManagerArgs struct {
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
-	// When set to "DELETE", deleting the resource is allowed.
+	// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+	// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 	//
 	// ***
 	DeletionPolicy pulumi.StringPtrInput
@@ -901,7 +906,8 @@ func (o RegionInstanceGroupManagerOutput) CreationTimestamp() pulumi.StringOutpu
 // the command will fail if this field is set to "PREVENT" in Terraform state.
 // When set to "ABANDON", the command will remove the resource from Terraform
 // management without updating or deleting the resource in the API.
-// When set to "DELETE", deleting the resource is allowed.
+// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 //
 // ***
 func (o RegionInstanceGroupManagerOutput) DeletionPolicy() pulumi.StringOutput {

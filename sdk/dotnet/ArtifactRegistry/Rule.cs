@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Rule Full
     /// 
     /// ```csharp

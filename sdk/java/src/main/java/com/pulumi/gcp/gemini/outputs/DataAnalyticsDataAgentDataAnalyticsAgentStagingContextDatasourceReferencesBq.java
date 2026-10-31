@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gemini.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReference;
 import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference;
 import java.util.List;
 import java.util.Objects;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq {
     /**
+     * @return Optional. References to BigQuery property graphs.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReference> propertyGraphReferences;
+    /**
      * @return References to BigQuery tables.
      * Structure is documented below.
      * 
@@ -19,6 +26,14 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasou
     private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference> tableReferences;
 
     private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq() {}
+    /**
+     * @return Optional. References to BigQuery property graphs.
+     * Structure is documented below.
+     * 
+     */
+    public List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReference> propertyGraphReferences() {
+        return this.propertyGraphReferences == null ? List.of() : this.propertyGraphReferences;
+    }
     /**
      * @return References to BigQuery tables.
      * Structure is documented below.
@@ -37,13 +52,24 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasou
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReference> propertyGraphReferences;
         private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference> tableReferences;
         public Builder() {}
         public Builder(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.propertyGraphReferences = defaults.propertyGraphReferences;
     	      this.tableReferences = defaults.tableReferences;
         }
 
+        @CustomType.Setter
+        public Builder propertyGraphReferences(@Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReference> propertyGraphReferences) {
+
+            this.propertyGraphReferences = propertyGraphReferences;
+            return this;
+        }
+        public Builder propertyGraphReferences(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReference... propertyGraphReferences) {
+            return propertyGraphReferences(List.of(propertyGraphReferences));
+        }
         @CustomType.Setter
         public Builder tableReferences(@Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference> tableReferences) {
 
@@ -55,6 +81,7 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasou
         }
         public DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq build() {
             final var _resultValue = new DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq();
+            _resultValue.propertyGraphReferences = propertyGraphReferences;
             _resultValue.tableReferences = tableReferences;
             return _resultValue;
         }

@@ -688,6 +688,7 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Spanner Instance Processing Units
 
         ```python
@@ -702,6 +703,7 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Spanner Instance Multi Regional
 
         ```python
@@ -819,6 +821,7 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Spanner Instance Processing Units
 
         ```python
@@ -833,6 +836,7 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Spanner Instance Multi Regional
 
         ```python

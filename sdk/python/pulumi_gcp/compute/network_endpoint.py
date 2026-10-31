@@ -19,19 +19,17 @@ __all__ = ['NetworkEndpointArgs', 'NetworkEndpoint']
 @pulumi.input_type
 class NetworkEndpointArgs:
     def __init__(__self__, *,
-                 ip_address: pulumi.Input[_builtins.str],
                  network_endpoint_group: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkEndpoint resource.
 
-        :param pulumi.Input[_builtins.str] ip_address: IPv4 address of network endpoint. The IP address must belong
-               to a VM in GCE (either the primary IP or as part of an aliased IP
-               range).
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -42,6 +40,11 @@ class NetworkEndpointArgs:
         :param pulumi.Input[_builtins.str] instance: The name for a specific VM instance that the IP address belongs to.
                This is required for network endpoints of type GCE_VM_IP_PORT.
                The instance must be in the same zone of network endpoint group.
+        :param pulumi.Input[_builtins.str] ip_address: IPv4 address of network endpoint. The IP address must belong
+               to a VM in GCE (either the primary IP or as part of an aliased IP
+               range).
+        :param pulumi.Input[_builtins.str] ipv6_address: IPv6 address of network endpoint. The result of parsing the endpoint config,
+               or empty if IPv6 is not used.
         :param pulumi.Input[_builtins.int] port: Port number of network endpoint.
                **Note** `port` is required unless the Network Endpoint Group is created
                with the type of `GCE_VM_IP`
@@ -49,32 +52,21 @@ class NetworkEndpointArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] zone: Zone where the containing network endpoint group is located.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "network_endpoint_group", network_endpoint_group)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> pulumi.Input[_builtins.str]:
-        """
-        IPv4 address of network endpoint. The IP address must belong
-        to a VM in GCE (either the primary IP or as part of an aliased IP
-        range).
-        """
-        return pulumi.get(self, "ip_address")
-
-    @ip_address.setter
-    def ip_address(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="networkEndpointGroup")
@@ -118,6 +110,33 @@ class NetworkEndpointArgs:
     @instance.setter
     def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv4 address of network endpoint. The IP address must belong
+        to a VM in GCE (either the primary IP or as part of an aliased IP
+        range).
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv6 address of network endpoint. The result of parsing the endpoint config,
+        or empty if IPv6 is not used.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter
@@ -165,6 +184,7 @@ class _NetworkEndpointState:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -184,6 +204,8 @@ class _NetworkEndpointState:
         :param pulumi.Input[_builtins.str] ip_address: IPv4 address of network endpoint. The IP address must belong
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
+        :param pulumi.Input[_builtins.str] ipv6_address: IPv6 address of network endpoint. The result of parsing the endpoint config,
+               or empty if IPv6 is not used.
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[_builtins.int] port: Port number of network endpoint.
                **Note** `port` is required unless the Network Endpoint Group is created
@@ -198,6 +220,8 @@ class _NetworkEndpointState:
             pulumi.set(__self__, "instance", instance)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if network_endpoint_group is not None:
             pulumi.set(__self__, "network_endpoint_group", network_endpoint_group)
         if port is not None:
@@ -251,6 +275,19 @@ class _NetworkEndpointState:
     @ip_address.setter
     def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv6 address of network endpoint. The result of parsing the endpoint config,
+        or empty if IPv6 is not used.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter(name="networkEndpointGroup")
@@ -313,6 +350,7 @@ class NetworkEndpoint(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -352,30 +390,62 @@ class NetworkEndpoint(pulumi.CustomResource):
             name="neg-subnetwork",
             ip_cidr_range="10.0.0.1/16",
             region="us-central1",
-            network=default.id)
-        endpoint_instance = gcp.compute.Instance("endpoint-instance",
+            network=default.id,
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="EXTERNAL")
+        endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
             network_interfaces=[{
                 "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
+                "stack_type": "IPV4_IPV6",
+                "ipv6_access_configs": [{
+                    "network_tier": "PREMIUM",
+                }],
             }],
-            name="endpoint-instance",
-            machine_type="e2-medium",
+            name="endpoint-instance1",
+            machine_type="e2-micro",
             boot_disk={
                 "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
-        default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
-            network_endpoint_group=neg["name"],
-            instance=endpoint_instance.name,
-            port=neg["defaultPort"],
-            ip_address=endpoint_instance.network_interfaces[0].network_ip)
-        group = gcp.compute.NetworkEndpointGroup("group",
+        neg = gcp.compute.NetworkEndpointGroup("neg",
             name="my-lb-neg",
             network=default.id,
             subnetwork=default_subnetwork.id,
             default_port=90,
             zone="us-central1-a")
+        default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
+            network_endpoint_group=neg.name,
+            instance=endpoint_instance1.name,
+            port=neg.default_port,
+            ip_address=endpoint_instance1.network_interfaces[0].network_ip)
+        ipv6_endpoint1 = gcp.compute.NetworkEndpoint("ipv6-endpoint1",
+            network_endpoint_group=neg.name,
+            instance=endpoint_instance1.name,
+            port=neg.default_port,
+            ipv6_address=endpoint_instance1.network_interfaces[0].ipv6_access_configs[0].external_ipv6)
+        endpoint_instance2 = gcp.compute.Instance("endpoint-instance2",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "subnetwork": default_subnetwork.id,
+                "stack_type": "IPV4_IPV6",
+                "ipv6_access_configs": [{
+                    "network_tier": "PREMIUM",
+                }],
+            }],
+            name="endpoint-instance2",
+            machine_type="e2-micro",
+            boot_disk={
+                "initialize_params": {
+                    "image": my_image.self_link,
+                },
+            })
+        ipv6_endpoint2 = gcp.compute.NetworkEndpoint("ipv6-endpoint2",
+            network_endpoint_group=neg.name,
+            instance=endpoint_instance2.name,
+            port=neg.default_port,
+            ipv6_address=endpoint_instance2.network_interfaces[0].ipv6_access_configs[0].external_ipv6)
         ```
 
         ## Import
@@ -411,6 +481,8 @@ class NetworkEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ip_address: IPv4 address of network endpoint. The IP address must belong
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
+        :param pulumi.Input[_builtins.str] ipv6_address: IPv6 address of network endpoint. The result of parsing the endpoint config,
+               or empty if IPv6 is not used.
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[_builtins.int] port: Port number of network endpoint.
                **Note** `port` is required unless the Network Endpoint Group is created
@@ -459,30 +531,62 @@ class NetworkEndpoint(pulumi.CustomResource):
             name="neg-subnetwork",
             ip_cidr_range="10.0.0.1/16",
             region="us-central1",
-            network=default.id)
-        endpoint_instance = gcp.compute.Instance("endpoint-instance",
+            network=default.id,
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="EXTERNAL")
+        endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
             network_interfaces=[{
                 "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
+                "stack_type": "IPV4_IPV6",
+                "ipv6_access_configs": [{
+                    "network_tier": "PREMIUM",
+                }],
             }],
-            name="endpoint-instance",
-            machine_type="e2-medium",
+            name="endpoint-instance1",
+            machine_type="e2-micro",
             boot_disk={
                 "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
-        default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
-            network_endpoint_group=neg["name"],
-            instance=endpoint_instance.name,
-            port=neg["defaultPort"],
-            ip_address=endpoint_instance.network_interfaces[0].network_ip)
-        group = gcp.compute.NetworkEndpointGroup("group",
+        neg = gcp.compute.NetworkEndpointGroup("neg",
             name="my-lb-neg",
             network=default.id,
             subnetwork=default_subnetwork.id,
             default_port=90,
             zone="us-central1-a")
+        default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
+            network_endpoint_group=neg.name,
+            instance=endpoint_instance1.name,
+            port=neg.default_port,
+            ip_address=endpoint_instance1.network_interfaces[0].network_ip)
+        ipv6_endpoint1 = gcp.compute.NetworkEndpoint("ipv6-endpoint1",
+            network_endpoint_group=neg.name,
+            instance=endpoint_instance1.name,
+            port=neg.default_port,
+            ipv6_address=endpoint_instance1.network_interfaces[0].ipv6_access_configs[0].external_ipv6)
+        endpoint_instance2 = gcp.compute.Instance("endpoint-instance2",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "subnetwork": default_subnetwork.id,
+                "stack_type": "IPV4_IPV6",
+                "ipv6_access_configs": [{
+                    "network_tier": "PREMIUM",
+                }],
+            }],
+            name="endpoint-instance2",
+            machine_type="e2-micro",
+            boot_disk={
+                "initialize_params": {
+                    "image": my_image.self_link,
+                },
+            })
+        ipv6_endpoint2 = gcp.compute.NetworkEndpoint("ipv6-endpoint2",
+            network_endpoint_group=neg.name,
+            instance=endpoint_instance2.name,
+            port=neg.default_port,
+            ipv6_address=endpoint_instance2.network_interfaces[0].ipv6_access_configs[0].external_ipv6)
         ```
 
         ## Import
@@ -522,6 +626,7 @@ class NetworkEndpoint(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -537,9 +642,8 @@ class NetworkEndpoint(pulumi.CustomResource):
 
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["instance"] = instance
-            if ip_address is None and not opts.urn:
-                raise TypeError("Missing required property 'ip_address'")
             __props__.__dict__["ip_address"] = ip_address
+            __props__.__dict__["ipv6_address"] = ipv6_address
             if network_endpoint_group is None and not opts.urn:
                 raise TypeError("Missing required property 'network_endpoint_group'")
             __props__.__dict__["network_endpoint_group"] = network_endpoint_group
@@ -559,6 +663,7 @@ class NetworkEndpoint(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
             network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -582,6 +687,8 @@ class NetworkEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ip_address: IPv4 address of network endpoint. The IP address must belong
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
+        :param pulumi.Input[_builtins.str] ipv6_address: IPv6 address of network endpoint. The result of parsing the endpoint config,
+               or empty if IPv6 is not used.
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[_builtins.int] port: Port number of network endpoint.
                **Note** `port` is required unless the Network Endpoint Group is created
@@ -597,6 +704,7 @@ class NetworkEndpoint(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["instance"] = instance
         __props__.__dict__["ip_address"] = ip_address
+        __props__.__dict__["ipv6_address"] = ipv6_address
         __props__.__dict__["network_endpoint_group"] = network_endpoint_group
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
@@ -628,13 +736,22 @@ class NetworkEndpoint(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> pulumi.Output[_builtins.str]:
+    def ip_address(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         IPv4 address of network endpoint. The IP address must belong
         to a VM in GCE (either the primary IP or as part of an aliased IP
         range).
         """
         return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        IPv6 address of network endpoint. The result of parsing the endpoint config,
+        or empty if IPv6 is not used.
+        """
+        return pulumi.get(self, "ipv6_address")
 
     @_builtins.property
     @pulumi.getter(name="networkEndpointGroup")

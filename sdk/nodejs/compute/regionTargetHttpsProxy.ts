@@ -73,6 +73,7 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultRegionSslCertificate.id],
  * });
  * ```
+ *
  * ### Region Target Https Proxy Http Keep Alive Timeout
  *
  * ```typescript
@@ -132,6 +133,7 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultRegionSslCertificate.id],
  * });
  * ```
+ *
  * ### Region Target Https Proxy Mtls
  *
  * ```typescript
@@ -224,6 +226,7 @@ import * as utilities from "../utilities";
  *     serverTlsPolicy: defaultServerTlsPolicy.id,
  * });
  * ```
+ *
  * ### Region Target Https Proxy Certificate Manager Certificate
  *
  * ```typescript

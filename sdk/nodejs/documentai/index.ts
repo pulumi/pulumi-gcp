@@ -10,6 +10,11 @@ export type Schema = import("./schema").Schema;
 export const Schema: typeof import("./schema").Schema = null as any;
 utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
 
+export { SchemaVersionArgs, SchemaVersionState } from "./schemaVersion";
+export type SchemaVersion = import("./schemaVersion").SchemaVersion;
+export const SchemaVersion: typeof import("./schemaVersion").SchemaVersion = null as any;
+utilities.lazyLoad(exports, ["SchemaVersion"], () => require("./schemaVersion"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +22,12 @@ const _module = {
         switch (type) {
             case "gcp:documentai/schema:Schema":
                 return new Schema(name, <any>undefined, { urn })
+            case "gcp:documentai/schemaVersion:SchemaVersion":
+                return new SchemaVersion(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "documentai/schema", _module)
+pulumi.runtime.registerResourceModule("gcp", "documentai/schemaVersion", _module)

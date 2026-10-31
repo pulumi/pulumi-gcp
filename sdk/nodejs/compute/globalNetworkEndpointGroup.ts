@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  * });
  * ```
+ *
  * ### Global Network Endpoint Group Ip Address
  *
  * ```typescript

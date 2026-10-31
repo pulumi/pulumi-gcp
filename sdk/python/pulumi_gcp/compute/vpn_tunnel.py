@@ -1116,6 +1116,7 @@ class VPNTunnel(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
         ```
+
         ### Vpn Tunnel Cipher Suite
 
         ```python
@@ -1329,6 +1330,7 @@ class VPNTunnel(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
         ```
+
         ### Vpn Tunnel Cipher Suite
 
         ```python

@@ -582,6 +582,7 @@ class SecurityScanConfig(pulumi.CustomResource):
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```
+
         ### Scan Config Ignore Http Status Errors
 
         ```python
@@ -599,6 +600,7 @@ class SecurityScanConfig(pulumi.CustomResource):
             ignore_http_status_errors=True,
             opts = pulumi.ResourceOptions(depends_on=[wait15_seconds]))
         ```
+
         ### Scan Config Static Ip
 
         ```python
@@ -695,6 +697,7 @@ class SecurityScanConfig(pulumi.CustomResource):
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```
+
         ### Scan Config Ignore Http Status Errors
 
         ```python
@@ -712,6 +715,7 @@ class SecurityScanConfig(pulumi.CustomResource):
             ignore_http_status_errors=True,
             opts = pulumi.ResourceOptions(depends_on=[wait15_seconds]))
         ```
+
         ### Scan Config Static Ip
 
         ```python

@@ -48,6 +48,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ha Vpn Gateway Ipv6
     /// 
     /// ```csharp
@@ -78,6 +79,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Ha Vpn Gateway Encrypted Interconnect
     /// 
     /// ```csharp

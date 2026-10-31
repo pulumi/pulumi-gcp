@@ -59,6 +59,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secret With Annotations
     /// 
     /// ```csharp
@@ -93,6 +94,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secret With Version Destroy Ttl
     /// 
     /// ```csharp
@@ -115,6 +117,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secret With Automatic Cmek
     /// 
     /// ```csharp

@@ -85,6 +85,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Subnetwork Logging Config
 //
 // ```go
@@ -125,6 +126,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Subnetwork Internal L7lb
 //
 // ```go
@@ -162,6 +164,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Subnetwork Ipv6
 //
 // ```go
@@ -199,6 +202,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Subnetwork Internal Ipv6
 //
 // ```go
@@ -237,6 +241,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Subnetwork Purpose Private Nat
 //
 // ```go
@@ -273,6 +278,44 @@ import (
 //	}
 //
 // ```
+//
+// ### Subnetwork Purpose Custom Hardware Link
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			custom_test, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("subnet-purpose-chl-test-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork-purpose-custom-hardware-link", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("subnet-purpose-chl-test-subnetwork"),
+//				Region:      pulumi.String("us-central1"),
+//				IpCidrRange: pulumi.String("192.168.2.0/24"),
+//				Purpose:     pulumi.String("CUSTOM_HARDWARE_LINK"),
+//				Network:     custom_test.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Subnetwork Resolve Subnet Mask
 //
 // ```go
@@ -310,6 +353,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Subnetwork Cidr Overlap
 //
 // ```go
@@ -346,6 +390,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Subnetwork Reserved Internal Range
 //
 // ```go
@@ -399,6 +444,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Subnetwork Reserved Secondary Range
 //
 // ```go
@@ -473,6 +519,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Subnetwork With Secondary Ipv6 Range
 //
 // ```go
@@ -495,37 +542,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ipv6Pap, err := compute.NewPublicAdvertisedPrefix(ctx, "ipv6_pap", &compute.PublicAdvertisedPrefixArgs{
-//				Name:           pulumi.String("pap-for-secondary-ranges"),
-//				IpCidrRange:    pulumi.String("2001:db8::/40"),
-//				PdpScope:       pulumi.String("REGIONAL"),
-//				Ipv6AccessType: pulumi.String("INTERNAL"),
-//				Description:    pulumi.String("GOOGLE_INTERNAL_TEST_PREFIX"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ipv6Pdp, err := compute.NewPublicDelegatedPrefix(ctx, "ipv6_pdp", &compute.PublicDelegatedPrefixArgs{
-//				Name:         pulumi.String("pdp-for-secondary-ranges"),
-//				Region:       pulumi.String("us-central1"),
-//				Description:  pulumi.String("PDP in internal subnet mode"),
-//				IpCidrRange:  pulumi.String("2001:db8::/48"),
-//				ParentPrefix: ipv6Pap.ID(),
-//				Mode:         pulumi.String("DELEGATION"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ipv6SubPdp, err := compute.NewPublicDelegatedPrefix(ctx, "ipv6_sub_pdp", &compute.PublicDelegatedPrefixArgs{
-//				Name:         pulumi.String("sub-pdp-for-secondary-ranges"),
-//				Region:       pulumi.String("us-central1"),
-//				IpCidrRange:  pulumi.String("2001:db8::/56"),
-//				ParentPrefix: ipv6Pdp.ID(),
-//				Mode:         pulumi.String("INTERNAL_IPV6_SUBNETWORK_CREATION"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork_with_secondary_ipv6_range", &compute.SubnetworkArgs{
 //				Name:           pulumi.String("subnet-with-secondary-ranges"),
 //				Region:         pulumi.String("us-central1"),
@@ -540,13 +556,13 @@ import (
 //					&compute.SubnetworkSecondaryIpRangeArgs{
 //						RangeName:    pulumi.String("v6-byogua-auto"),
 //						IpVersion:    pulumi.String("IPV6"),
-//						IpCollection: ipv6SubPdp.SelfLink,
+//						IpCollection: pulumi.String("projects/tf-static-byoip/regions/us-central1/publicDelegatedPrefixes/terraform-v6-internal-sub-pdp"),
 //					},
 //					&compute.SubnetworkSecondaryIpRangeArgs{
 //						RangeName:    pulumi.String("v6-byogua-manual"),
 //						IpVersion:    pulumi.String("IPV6"),
-//						IpCollection: ipv6SubPdp.SelfLink,
-//						IpCidrRange:  pulumi.String("2001:db8:0:2::/64"),
+//						IpCollection: pulumi.String("projects/tf-static-byoip/regions/us-central1/publicDelegatedPrefixes/terraform-v6-internal-sub-pdp"),
+//						IpCidrRange:  pulumi.String("2600:1904:9:60::/64"),
 //					},
 //				},
 //			})
@@ -670,12 +686,13 @@ type Subnetwork struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
 	// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 	// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 	// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
 	// A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
 	// A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+	// A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
 	// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
 	// If unspecified, the purpose defaults to `PRIVATE`.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
@@ -688,7 +705,7 @@ type Subnetwork struct {
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 	ResolveSubnetMask pulumi.StringPtrOutput `pulumi:"resolveSubnetMask"`
 	// The role of subnetwork.
-	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
 	// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
 	// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -846,12 +863,13 @@ type subnetworkState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
 	// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 	// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 	// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
 	// A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
 	// A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+	// A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
 	// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
 	// If unspecified, the purpose defaults to `PRIVATE`.
 	Purpose *string `pulumi:"purpose"`
@@ -864,7 +882,7 @@ type subnetworkState struct {
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 	ResolveSubnetMask *string `pulumi:"resolveSubnetMask"`
 	// The role of subnetwork.
-	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
 	// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
 	// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -990,12 +1008,13 @@ type SubnetworkState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
 	// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 	// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 	// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
 	// A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
 	// A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+	// A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
 	// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
 	// If unspecified, the purpose defaults to `PRIVATE`.
 	Purpose pulumi.StringPtrInput
@@ -1008,7 +1027,7 @@ type SubnetworkState struct {
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 	ResolveSubnetMask pulumi.StringPtrInput
 	// The role of subnetwork.
-	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
 	// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
 	// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -1121,12 +1140,13 @@ type subnetworkArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
 	// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 	// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 	// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
 	// A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
 	// A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+	// A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
 	// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
 	// If unspecified, the purpose defaults to `PRIVATE`.
 	Purpose *string `pulumi:"purpose"`
@@ -1139,7 +1159,7 @@ type subnetworkArgs struct {
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 	ResolveSubnetMask *string `pulumi:"resolveSubnetMask"`
 	// The role of subnetwork.
-	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
 	// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
 	// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -1240,12 +1260,13 @@ type SubnetworkArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
 	// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 	// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 	// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
 	// A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
 	// A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+	// A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
 	// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
 	// If unspecified, the purpose defaults to `PRIVATE`.
 	Purpose pulumi.StringPtrInput
@@ -1258,7 +1279,7 @@ type SubnetworkArgs struct {
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 	ResolveSubnetMask pulumi.StringPtrInput
 	// The role of subnetwork.
-	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
 	// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
 	// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -1521,12 +1542,13 @@ func (o SubnetworkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
 // A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 // A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 // A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
 // A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
 // A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+// A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
 // Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
 // If unspecified, the purpose defaults to `PRIVATE`.
 func (o SubnetworkOutput) Purpose() pulumi.StringOutput {
@@ -1551,7 +1573,7 @@ func (o SubnetworkOutput) ResolveSubnetMask() pulumi.StringPtrOutput {
 }
 
 // The role of subnetwork.
-// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
 // The value can be set to `ACTIVE` or `BACKUP`.
 // An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
 // A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.

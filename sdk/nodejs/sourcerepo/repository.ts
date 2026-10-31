@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *
  * const my_repo = new gcp.sourcerepo.Repository("my-repo", {name: "my/repository"});
  * ```
+ *
  * ### Sourcerepo Repository Full
  *
  * ```typescript

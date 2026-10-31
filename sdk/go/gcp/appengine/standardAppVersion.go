@@ -88,7 +88,7 @@ import (
 //			}
 //			_, err = appengine.NewStandardAppVersion(ctx, "myapp_v1", &appengine.StandardAppVersionArgs{
 //				VersionId: pulumi.String("v1"),
-//				Service:   pulumi.String("myapp"),
+//				Service:   pulumi.String("ae-service"),
 //				Runtime:   pulumi.String("nodejs22"),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),
@@ -126,7 +126,7 @@ import (
 //			}
 //			_, err = appengine.NewStandardAppVersion(ctx, "myapp_v2", &appengine.StandardAppVersionArgs{
 //				VersionId:     pulumi.String("v2"),
-//				Service:       pulumi.String("myapp"),
+//				Service:       pulumi.String("ae-service"),
 //				Runtime:       pulumi.String("nodejs22"),
 //				AppEngineApis: pulumi.Bool(true),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
@@ -158,6 +158,7 @@ import (
 //	}
 //
 // ```
+//
 // ### App Engine Standard App Version Bundled Services
 //
 // ```go
@@ -230,7 +231,7 @@ import (
 //			_, err = appengine.NewStandardAppVersion(ctx, "gae-std-app-ver-bundled", &appengine.StandardAppVersionArgs{
 //				VersionId: pulumi.String("v1"),
 //				Service:   pulumi.String("bundled-service"),
-//				Runtime:   pulumi.String("python310"),
+//				Runtime:   pulumi.String("python312"),
 //				Deployment: &appengine.StandardAppVersionDeploymentArgs{
 //					Files: appengine.StandardAppVersionDeploymentFileArray{
 //						&appengine.StandardAppVersionDeploymentFileArgs{
@@ -272,6 +273,7 @@ import (
 //	}
 //
 // ```
+//
 // ### App Engine Standard App Version Vpc Access
 //
 // ```go
@@ -362,9 +364,9 @@ import (
 //			_, err = appengine.NewStandardAppVersion(ctx, "gae-std-app-ver-vpc-access", &appengine.StandardAppVersionArgs{
 //				VersionId: pulumi.String("v1"),
 //				Service:   pulumi.String("vpc-service"),
-//				Runtime:   pulumi.String("python310"),
+//				Runtime:   pulumi.String("python312"),
 //				VpcAccess: &appengine.StandardAppVersionVpcAccessArgs{
-//					EgressSetting: pulumi.String("ALL_TRAFFIC"),
+//					VpcEgress: pulumi.String("ALL_TRAFFIC"),
 //					NetworkInterfaces: appengine.StandardAppVersionVpcAccessNetworkInterfaceArray{
 //						&appengine.StandardAppVersionVpcAccessNetworkInterfaceArgs{
 //							Network:    custom.Name,

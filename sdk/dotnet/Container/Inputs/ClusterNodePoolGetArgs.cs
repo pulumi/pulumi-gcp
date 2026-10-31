@@ -33,7 +33,10 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-        /// number of nodes per zone. Must be set if `NodePool` is not set. If you're using
+        /// number of nodes per zone. When omitted (or set to `0`) with no `NodeConfig` or
+        /// `NodePool` blocks defined, the cluster is created without a default node pool.
+        /// This requires a GKE version that supports clusters without a default node pool
+        /// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
         /// `gcp.container.NodePool` objects with no default node pool, you'll need to
         /// set this to a value of at least `1`, alongside setting
         /// `RemoveDefaultNodePool` to `True`.

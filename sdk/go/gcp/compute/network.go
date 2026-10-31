@@ -46,6 +46,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Custom Mtu
 //
 // ```go
@@ -74,6 +75,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Custom Firewall Enforcement Order
 //
 // ```go
@@ -102,6 +104,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Bgp Best Path Selection Mode
 //
 // ```go
@@ -129,6 +132,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Bgp Best Path Selection Mode Standard
 //
 // ```go
@@ -157,6 +161,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Bgp Best Path Selection Mode Standard Custom Fields
 //
 // ```go
@@ -187,6 +192,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Bgp Standard Mode Delete Med
 //
 // ```go

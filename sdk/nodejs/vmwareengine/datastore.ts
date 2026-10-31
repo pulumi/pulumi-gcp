@@ -51,6 +51,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vmware Engine Datastore Filestore
  *
  * ```typescript
@@ -85,6 +86,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vmware Engine Datastore Netapp
  *
  * ```typescript

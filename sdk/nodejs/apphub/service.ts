@@ -105,6 +105,7 @@ import * as utilities from "../utilities";
  *     discoveredService: catalog_service.name,
  * });
  * ```
+ *
  * ### Apphub Service Full
  *
  * ```typescript

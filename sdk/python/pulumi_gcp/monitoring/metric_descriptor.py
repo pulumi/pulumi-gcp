@@ -578,6 +578,7 @@ class MetricDescriptor(pulumi.CustomResource):
                 "ingest_delay": "30s",
             })
         ```
+
         ### Monitoring Metric Descriptor Alert
 
         ```python
@@ -703,6 +704,7 @@ class MetricDescriptor(pulumi.CustomResource):
                 "ingest_delay": "30s",
             })
         ```
+
         ### Monitoring Metric Descriptor Alert
 
         ```python

@@ -73,6 +73,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataform Repository Release Config Disabled
  *
  * ```typescript

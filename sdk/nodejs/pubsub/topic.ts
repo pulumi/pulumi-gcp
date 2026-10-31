@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     messageRetentionDuration: "86600s",
  * });
  * ```
+ *
  * ### Pubsub Topic Cmek
  *
  * ```typescript
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *     kmsKeyName: cryptoKey.id,
  * });
  * ```
+ *
  * ### Pubsub Topic Geo Restricted
  *
  * ```typescript
@@ -67,6 +69,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Pubsub Topic Schema Settings
  *
  * ```typescript
@@ -104,6 +107,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [example],
  * });
  * ```
+ *
  * ### Pubsub Topic Ingestion Kinesis
  *
  * ```typescript
@@ -122,6 +126,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Pubsub Topic Ingestion Cloud Storage
  *
  * ```typescript
@@ -145,6 +150,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Pubsub Topic Ingestion Azure Event Hubs
  *
  * ```typescript
@@ -166,6 +172,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Pubsub Topic Ingestion Aws Msk
  *
  * ```typescript
@@ -184,6 +191,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Pubsub Topic Ingestion Confluent Cloud
  *
  * ```typescript
@@ -203,6 +211,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Pubsub Topic Single Smt
  *
  * ```typescript
@@ -223,6 +232,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Pubsub Topic Multiple Smts
  *
  * ```typescript
@@ -263,6 +273,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Pubsub Topic Tags
  *
  * ```typescript
@@ -287,6 +298,7 @@ import * as utilities from "../utilities";
  *     tagValue: tagValue.id,
  * });
  * ```
+ *
  * ### Pubsub Topic Ai Inference
  *
  * ```typescript

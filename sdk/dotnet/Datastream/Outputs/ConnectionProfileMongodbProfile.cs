@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// <summary>
         /// A reference to a Secret Manager resource name storing the MongoDB
         /// connection password. Mutually exclusive with password.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? SecretManagerStoredPassword;
         /// <summary>

@@ -144,6 +144,36 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Express_key
+ * A basic test of recaptcha enterprise key that can be used by reCAPTCHA Express
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     displayName: "display-name-one",
+ *     project: "my-project-name",
+ *     expressSettings: {},
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * ```
+ * ### Universal_key
+ * A basic test of recaptcha enterprise key that can be used by universal frontend integrations
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     displayName: "display-name-one",
+ *     project: "my-project-name",
+ *     universalSettings: {},
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -216,6 +246,10 @@ export class EnterpriseKey extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Settings for keys that can be used by reCAPTCHA Express.
+     */
+    declare public readonly expressSettings: pulumi.Output<outputs.recaptcha.EnterpriseKeyExpressSettings | undefined>;
+    /**
      * Settings for keys that can be used by iOS apps.
      */
     declare public readonly iosSettings: pulumi.Output<outputs.recaptcha.EnterpriseKeyIosSettings | undefined>;
@@ -243,6 +277,10 @@ export class EnterpriseKey extends pulumi.CustomResource {
      */
     declare public readonly testingOptions: pulumi.Output<outputs.recaptcha.EnterpriseKeyTestingOptions | undefined>;
     /**
+     * Settings for keys that can be used by universal frontend integrations.
+     */
+    declare public readonly universalSettings: pulumi.Output<outputs.recaptcha.EnterpriseKeyUniversalSettings | undefined>;
+    /**
      * Settings specific to keys that can be used for WAF (Web Application Firewall).
      */
     declare public readonly wafSettings: pulumi.Output<outputs.recaptcha.EnterpriseKeyWafSettings | undefined>;
@@ -269,12 +307,14 @@ export class EnterpriseKey extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["expressSettings"] = state?.expressSettings;
             resourceInputs["iosSettings"] = state?.iosSettings;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["testingOptions"] = state?.testingOptions;
+            resourceInputs["universalSettings"] = state?.universalSettings;
             resourceInputs["wafSettings"] = state?.wafSettings;
             resourceInputs["webSettings"] = state?.webSettings;
         } else {
@@ -285,10 +325,12 @@ export class EnterpriseKey extends pulumi.CustomResource {
             resourceInputs["androidSettings"] = args?.androidSettings;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["expressSettings"] = args?.expressSettings;
             resourceInputs["iosSettings"] = args?.iosSettings;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["project"] = args?.project;
             resourceInputs["testingOptions"] = args?.testingOptions;
+            resourceInputs["universalSettings"] = args?.universalSettings;
             resourceInputs["wafSettings"] = args?.wafSettings;
             resourceInputs["webSettings"] = args?.webSettings;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -335,6 +377,10 @@ export interface EnterpriseKeyState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * Settings for keys that can be used by reCAPTCHA Express.
+     */
+    expressSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyExpressSettings | undefined>;
+    /**
      * Settings for keys that can be used by iOS apps.
      */
     iosSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyIosSettings | undefined>;
@@ -361,6 +407,10 @@ export interface EnterpriseKeyState {
      * Options for user acceptance testing.
      */
     testingOptions?: pulumi.Input<inputs.recaptcha.EnterpriseKeyTestingOptions | undefined>;
+    /**
+     * Settings for keys that can be used by universal frontend integrations.
+     */
+    universalSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyUniversalSettings | undefined>;
     /**
      * Settings specific to keys that can be used for WAF (Web Application Firewall).
      */
@@ -395,6 +445,10 @@ export interface EnterpriseKeyArgs {
      */
     displayName: pulumi.Input<string>;
     /**
+     * Settings for keys that can be used by reCAPTCHA Express.
+     */
+    expressSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyExpressSettings | undefined>;
+    /**
      * Settings for keys that can be used by iOS apps.
      */
     iosSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyIosSettings | undefined>;
@@ -413,6 +467,10 @@ export interface EnterpriseKeyArgs {
      * Options for user acceptance testing.
      */
     testingOptions?: pulumi.Input<inputs.recaptcha.EnterpriseKeyTestingOptions | undefined>;
+    /**
+     * Settings for keys that can be used by universal frontend integrations.
+     */
+    universalSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyUniversalSettings | undefined>;
     /**
      * Settings specific to keys that can be used for WAF (Web Application Firewall).
      */

@@ -69,6 +69,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Toolset Openapi Oauth Config
  *
  * ```typescript
@@ -130,6 +131,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Toolset Openapi Service Agent Id Token Auth Config
  *
  * ```typescript
@@ -185,6 +187,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Toolset Openapi Api Key Config
  *
  * ```typescript
@@ -246,6 +249,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Toolset Bearer Token Config
  *
  * ```typescript
@@ -303,6 +307,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Toolset Mcp Service Account Auth Config
  *
  * ```typescript
@@ -352,6 +357,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Toolset Mcp Oauth Config
  *
  * ```typescript
@@ -404,6 +410,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Toolset Mcp Service Agent Id Token Auth Config
  *
  * ```typescript
@@ -458,6 +465,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Toolset Mcp Api Key Config
  *
  * ```typescript
@@ -510,6 +518,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Toolset Mcp Bearer Token Config
  *
  * ```typescript

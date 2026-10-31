@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Allows configuring a single GCP resource that should be inside of the `spec` block of a dry run service perimeter.
  * This resource is intended to be used in cases where it is not possible to compile a full list
- * of projects to include in a `gcp.accesscontextmanager.ServicePerimeter` resource,
+ * of resources (projects, folders, or VPC networks) to include in a `gcp.accesscontextmanager.ServicePerimeter` resource,
  * to enable them to be added separately.
  * If your perimeter is NOT in dry-run mode use `gcp.accesscontextmanager.ServicePerimeterResource` instead.
  * 
@@ -175,8 +175,10 @@ public class ServicePerimeterDryRunResource extends com.pulumi.resources.CustomR
     }
     /**
      * A GCP resource that is inside of the service perimeter.
-     * Currently only projects are allowed.
-     * Format: projects/{project_number}
+     * Projects, folders, and VPC networks are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
      * 
      */
     @Export(name="resource", refs={String.class}, tree="[0]")
@@ -184,8 +186,10 @@ public class ServicePerimeterDryRunResource extends com.pulumi.resources.CustomR
 
     /**
      * @return A GCP resource that is inside of the service perimeter.
-     * Currently only projects are allowed.
-     * Format: projects/{project_number}
+     * Projects, folders, and VPC networks are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
      * 
      */
     public Output<String> resource() {

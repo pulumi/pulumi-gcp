@@ -14,14 +14,23 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class AppProfileStandardIsolation
     {
         /// <summary>
+        /// The memory config to use for requests sent using this app profile.
+        /// If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `MemoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+        /// </summary>
+        public readonly Outputs.AppProfileStandardIsolationMemoryConfig? MemoryConfig;
+        /// <summary>
         /// The priority of requests sent using this app profile.
         /// Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
         /// </summary>
         public readonly string Priority;
 
         [OutputConstructor]
-        private AppProfileStandardIsolation(string priority)
+        private AppProfileStandardIsolation(
+            Outputs.AppProfileStandardIsolationMemoryConfig? memoryConfig,
+
+            string priority)
         {
+            MemoryConfig = memoryConfig;
             Priority = priority;
         }
     }

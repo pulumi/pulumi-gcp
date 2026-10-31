@@ -6,7 +6,9 @@ package com.pulumi.gcp.hypercomputecluster.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterComputeResourceConfigNewOnDemandInstances {
@@ -17,6 +19,13 @@ public final class ClusterComputeResourceConfigNewOnDemandInstances {
      * 
      */
     private String machineType;
+    /**
+     * @return (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    private @Nullable List<String> networkTags;
     /**
      * @return Name of the zone in which VM instances should run, e.g., `us-central1-a`.
      * Must be in the same region as the cluster, and must match the zone of any
@@ -34,6 +43,15 @@ public final class ClusterComputeResourceConfigNewOnDemandInstances {
      */
     public String machineType() {
         return this.machineType;
+    }
+    /**
+     * @return (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    public List<String> networkTags() {
+        return this.networkTags == null ? List.of() : this.networkTags;
     }
     /**
      * @return Name of the zone in which VM instances should run, e.g., `us-central1-a`.
@@ -55,11 +73,13 @@ public final class ClusterComputeResourceConfigNewOnDemandInstances {
     @CustomType.Builder
     public static final class Builder {
         private String machineType;
+        private @Nullable List<String> networkTags;
         private String zone;
         public Builder() {}
         public Builder(ClusterComputeResourceConfigNewOnDemandInstances defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.machineType = defaults.machineType;
+    	      this.networkTags = defaults.networkTags;
     	      this.zone = defaults.zone;
         }
 
@@ -72,6 +92,15 @@ public final class ClusterComputeResourceConfigNewOnDemandInstances {
             return this;
         }
         @CustomType.Setter
+        public Builder networkTags(@Nullable List<String> networkTags) {
+
+            this.networkTags = networkTags;
+            return this;
+        }
+        public Builder networkTags(String... networkTags) {
+            return networkTags(List.of(networkTags));
+        }
+        @CustomType.Setter
         public Builder zone(String zone) {
             if (zone == null) {
               throw new MissingRequiredPropertyException("ClusterComputeResourceConfigNewOnDemandInstances", "zone");
@@ -82,6 +111,7 @@ public final class ClusterComputeResourceConfigNewOnDemandInstances {
         public ClusterComputeResourceConfigNewOnDemandInstances build() {
             final var _resultValue = new ClusterComputeResourceConfigNewOnDemandInstances();
             _resultValue.machineType = machineType;
+            _resultValue.networkTags = networkTags;
             _resultValue.zone = zone;
             return _resultValue;
         }

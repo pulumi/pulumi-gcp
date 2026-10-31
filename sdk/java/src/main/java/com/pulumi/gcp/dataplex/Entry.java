@@ -89,6 +89,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dataplex Entry Full
  * 
  * <pre>
@@ -258,6 +259,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dataplex Entry Bigquery Table
  * 
  * <pre>
@@ -430,6 +432,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Dataplex Entry Glossary Term
  * 
  * <pre>

@@ -4143,6 +4143,10 @@ class WorkerPoolWorkerConfigArgsDict(TypedDict):
     """
     If true, workers are created without any public address, which prevents network egress to public IPs.
     """
+    worker_release: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+    """
 
 @pulumi.input_type
 class WorkerPoolWorkerConfigArgs:
@@ -4150,12 +4154,14 @@ class WorkerPoolWorkerConfigArgs:
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 no_external_ip: pulumi.Input[Optional[_builtins.bool]] = None):
+                 no_external_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 worker_release: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
         :param pulumi.Input[_builtins.str] machine_type: Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
         :param pulumi.Input[_builtins.bool] no_external_ip: If true, workers are created without any public address, which prevents network egress to public IPs.
+        :param pulumi.Input[_builtins.str] worker_release: The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -4165,6 +4171,8 @@ class WorkerPoolWorkerConfigArgs:
             pulumi.set(__self__, "machine_type", machine_type)
         if no_external_ip is not None:
             pulumi.set(__self__, "no_external_ip", no_external_ip)
+        if worker_release is not None:
+            pulumi.set(__self__, "worker_release", worker_release)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -4213,5 +4221,17 @@ class WorkerPoolWorkerConfigArgs:
     @no_external_ip.setter
     def no_external_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_external_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerRelease")
+    def worker_release(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+        """
+        return pulumi.get(self, "worker_release")
+
+    @worker_release.setter
+    def worker_release(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "worker_release", value)
 
 

@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// The name of the encryption key that is stored in Google Cloud KMS.
+        /// Specify the key without a `/cryptoKeyVersions/` suffix.
         /// </summary>
         public readonly string? KmsKeyName;
         /// <summary>

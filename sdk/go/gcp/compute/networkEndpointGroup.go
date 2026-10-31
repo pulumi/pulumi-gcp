@@ -80,6 +80,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Endpoint Group Non Gcp
 //
 // ```go

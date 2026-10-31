@@ -495,6 +495,7 @@ class OdbNetwork(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Odbnetwork Full
 
         ```python
@@ -590,6 +591,7 @@ class OdbNetwork(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Odbnetwork Full
 
         ```python

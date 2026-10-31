@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Hl7 V2 Store Parser Config
     /// 
     /// ```csharp
@@ -170,6 +171,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Hl7 V2 Store Unschematized
     /// 
     /// ```csharp

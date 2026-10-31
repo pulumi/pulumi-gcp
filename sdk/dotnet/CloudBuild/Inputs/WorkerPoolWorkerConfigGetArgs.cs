@@ -36,6 +36,12 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         [Input("noExternalIp")]
         public Input<bool>? NoExternalIp { get; set; }
 
+        /// <summary>
+        /// The release or release channel to use for the worker. Possible values are `Rapid`, `Regular`, `Stable`, or a specific release version.
+        /// </summary>
+        [Input("workerRelease")]
+        public Input<string>? WorkerRelease { get; set; }
+
         public WorkerPoolWorkerConfigGetArgs()
         {
         }

@@ -113,6 +113,7 @@ namespace Pulumi.Gcp.VectorSearch
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vectorsearch Data Object With Vectors
     /// 
     /// ```csharp

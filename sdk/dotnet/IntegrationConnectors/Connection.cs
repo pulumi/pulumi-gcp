@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     /// });
     /// ```
+    /// 
     /// ### Integration Connectors Connection Advanced
     /// 
     /// ```csharp

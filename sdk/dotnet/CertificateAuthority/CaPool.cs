@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
     /// ### Privateca Capool All Fields
     /// 
     /// ```csharp

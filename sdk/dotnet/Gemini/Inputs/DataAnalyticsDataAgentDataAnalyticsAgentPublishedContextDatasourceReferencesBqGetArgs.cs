@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Gemini.Inputs
 
     public sealed class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("propertyGraphReferences")]
+        private InputList<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceGetArgs>? _propertyGraphReferences;
+
+        /// <summary>
+        /// Optional. References to BigQuery property graphs.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceGetArgs> PropertyGraphReferences
+        {
+            get => _propertyGraphReferences ?? (_propertyGraphReferences = new InputList<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceGetArgs>());
+            set => _propertyGraphReferences = value;
+        }
+
         [Input("tableReferences")]
         private InputList<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceGetArgs>? _tableReferences;
 

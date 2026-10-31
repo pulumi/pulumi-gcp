@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Security Profile Overrides
  * 
  * <pre>
@@ -126,6 +127,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Security Profile Mirroring
  * 
  * <pre>
@@ -188,6 +190,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Security Profile Intercept
  * 
  * <pre>
@@ -250,6 +253,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Security Profile Url Filtering
  * 
  * <pre>
@@ -304,6 +308,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Security Profile Broker
  * 
  * <pre>
@@ -368,6 +373,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Security Profile Wildfire
  * 
  * <pre>
@@ -716,7 +722,7 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.threatPreventionProfile);
     }
     /**
-     * The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+     * The type of security profile.
      * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
      * 
      */
@@ -724,7 +730,7 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
     private Output<String> type;
 
     /**
-     * @return The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+     * @return The type of security profile.
      * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
      * 
      */
@@ -762,7 +768,6 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.urlFilteringProfile);
     }
     /**
-     * (Optional, Beta)
      * The wildfire analysis configuration for the security profile.
      * Structure is documented below.
      * 
@@ -771,8 +776,7 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ SecurityProfileWildfireAnalysisProfile> wildfireAnalysisProfile;
 
     /**
-     * @return (Optional, Beta)
-     * The wildfire analysis configuration for the security profile.
+     * @return The wildfire analysis configuration for the security profile.
      * Structure is documented below.
      * 
      */

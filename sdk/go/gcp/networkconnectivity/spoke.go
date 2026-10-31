@@ -82,6 +82,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Connectivity Spoke Linked Vpc Network Group
 //
 // ```go
@@ -151,6 +152,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Connectivity Spoke Router Appliance Basic
 //
 // ```go
@@ -167,14 +169,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-network_97962"),
+//				Name:                  pulumi.String("tf-test-network_50206"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_34534"),
+//				Name:        pulumi.String("tf-test-subnet_9873"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
@@ -183,7 +185,7 @@ import (
 //				return err
 //			}
 //			instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-//				Name:         pulumi.String("tf-test-instance_87829"),
+//				Name:         pulumi.String("tf-test-instance_48153"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(true),
 //				Zone:         pulumi.String("us-central1-a"),
@@ -208,7 +210,7 @@ import (
 //				return err
 //			}
 //			basicHub, err := networkconnectivity.NewHub(ctx, "basic_hub", &networkconnectivity.HubArgs{
-//				Name:        pulumi.String("tf-test-hub_44023"),
+//				Name:        pulumi.String("tf-test-hub_58845"),
 //				Description: pulumi.String("A sample hub"),
 //				Labels: pulumi.StringMap{
 //					"label-two": pulumi.String("value-one"),
@@ -218,7 +220,7 @@ import (
 //				return err
 //			}
 //			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
-//				Name:        pulumi.String("tf-test-name_50206"),
+//				Name:        pulumi.String("tf-test-name_9305"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("A sample spoke with a linked routher appliance instance"),
 //				Labels: pulumi.StringMap{
@@ -246,6 +248,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Connectivity Spoke Vpn Tunnel Basic
 //
 // ```go
@@ -440,6 +443,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Connectivity Spoke Interconnect Attachment Basic
 //
 // ```go
@@ -520,6 +524,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Connectivity Spoke Linked Producer Vpc Network Basic
 //
 // ```go
@@ -607,6 +612,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Connectivity Spoke Center Group
 //
 // ```go
@@ -670,6 +676,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Connectivity Spoke Linked Vpc Network Ipv6 Support
 //
 // ```go
@@ -726,6 +733,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Connectivity Spoke Gateway
 //
 // ```go
@@ -749,7 +757,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_9873"),
+//				Name:        pulumi.String("tf-test-subnet_48542"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,

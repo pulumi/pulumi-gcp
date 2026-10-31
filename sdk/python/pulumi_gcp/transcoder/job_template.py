@@ -441,6 +441,7 @@ class JobTemplate(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Template Overlays
 
         ```python
@@ -562,6 +563,7 @@ class JobTemplate(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Template Encryptions
 
         ```python
@@ -716,6 +718,7 @@ class JobTemplate(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Template Pubsub
 
         ```python
@@ -980,6 +983,7 @@ class JobTemplate(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Template Overlays
 
         ```python
@@ -1101,6 +1105,7 @@ class JobTemplate(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Template Encryptions
 
         ```python
@@ -1255,6 +1260,7 @@ class JobTemplate(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Template Pubsub
 
         ```python

@@ -71,6 +71,8 @@ __all__ = [
     'ClusterStorageResourceConfigExistingFilestoreArgsDict',
     'ClusterStorageResourceConfigExistingLustreArgs',
     'ClusterStorageResourceConfigExistingLustreArgsDict',
+    'ClusterStorageResourceConfigExistingNfsArgs',
+    'ClusterStorageResourceConfigExistingNfsArgsDict',
     'ClusterStorageResourceConfigNewBucketArgs',
     'ClusterStorageResourceConfigNewBucketArgsDict',
     'ClusterStorageResourceConfigNewBucketAutoclassArgs',
@@ -279,13 +281,20 @@ class ClusterComputeResourceConfigNewFlexStartInstancesArgsDict(TypedDict):
     Must be in the same region as the cluster, and must match the zone of any
     other resources specified in the cluster.
     """
+    network_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Optional, Beta)
+    A list of network tags to attach to the VM instances.
+    A maximum of 64 network tags are allowed.
+    """
 
 @pulumi.input_type
 class ClusterComputeResourceConfigNewFlexStartInstancesArgs:
     def __init__(__self__, *,
                  machine_type: pulumi.Input[_builtins.str],
                  max_duration: pulumi.Input[_builtins.str],
-                 zone: pulumi.Input[_builtins.str]):
+                 zone: pulumi.Input[_builtins.str],
+                 network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] machine_type: Name of the Compute Engine [machine
                type](https://cloud.google.com/compute/docs/machine-resource) to use, e.g.
@@ -295,10 +304,15 @@ class ClusterComputeResourceConfigNewFlexStartInstancesArgs:
         :param pulumi.Input[_builtins.str] zone: Name of the zone in which VM instances should run, e.g., `us-central1-a`.
                Must be in the same region as the cluster, and must match the zone of any
                other resources specified in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_tags: (Optional, Beta)
+               A list of network tags to attach to the VM instances.
+               A maximum of 64 network tags are allowed.
         """
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "max_duration", max_duration)
         pulumi.set(__self__, "zone", zone)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
@@ -341,6 +355,20 @@ class ClusterComputeResourceConfigNewFlexStartInstancesArgs:
     def zone(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone", value)
 
+    @_builtins.property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Optional, Beta)
+        A list of network tags to attach to the VM instances.
+        A maximum of 64 network tags are allowed.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "network_tags", value)
+
 
 class ClusterComputeResourceConfigNewOnDemandInstancesArgsDict(TypedDict):
     machine_type: pulumi.Input[_builtins.str]
@@ -355,12 +383,19 @@ class ClusterComputeResourceConfigNewOnDemandInstancesArgsDict(TypedDict):
     Must be in the same region as the cluster, and must match the zone of any
     other resources specified in the cluster.
     """
+    network_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Optional, Beta)
+    A list of network tags to attach to the VM instances.
+    A maximum of 64 network tags are allowed.
+    """
 
 @pulumi.input_type
 class ClusterComputeResourceConfigNewOnDemandInstancesArgs:
     def __init__(__self__, *,
                  machine_type: pulumi.Input[_builtins.str],
-                 zone: pulumi.Input[_builtins.str]):
+                 zone: pulumi.Input[_builtins.str],
+                 network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] machine_type: Name of the Compute Engine [machine
                type](https://cloud.google.com/compute/docs/machine-resource) to use, e.g.
@@ -368,9 +403,14 @@ class ClusterComputeResourceConfigNewOnDemandInstancesArgs:
         :param pulumi.Input[_builtins.str] zone: Name of the zone in which VM instances should run, e.g., `us-central1-a`.
                Must be in the same region as the cluster, and must match the zone of any
                other resources specified in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_tags: (Optional, Beta)
+               A list of network tags to attach to the VM instances.
+               A maximum of 64 network tags are allowed.
         """
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "zone", zone)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
@@ -400,8 +440,28 @@ class ClusterComputeResourceConfigNewOnDemandInstancesArgs:
     def zone(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone", value)
 
+    @_builtins.property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Optional, Beta)
+        A list of network tags to attach to the VM instances.
+        A maximum of 64 network tags are allowed.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "network_tags", value)
+
 
 class ClusterComputeResourceConfigNewReservedInstancesArgsDict(TypedDict):
+    network_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Optional, Beta)
+    A list of network tags to attach to the VM instances.
+    A maximum of 64 network tags are allowed.
+    """
     reservation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the reservation from which VM instances should be created, in the
@@ -411,13 +471,33 @@ class ClusterComputeResourceConfigNewReservedInstancesArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterComputeResourceConfigNewReservedInstancesArgs:
     def __init__(__self__, *,
+                 network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  reservation: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_tags: (Optional, Beta)
+               A list of network tags to attach to the VM instances.
+               A maximum of 64 network tags are allowed.
         :param pulumi.Input[_builtins.str] reservation: Name of the reservation from which VM instances should be created, in the
                format `projects/{project}/zones/{zone}/reservations/{reservation}`.
         """
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
         if reservation is not None:
             pulumi.set(__self__, "reservation", reservation)
+
+    @_builtins.property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Optional, Beta)
+        A list of network tags to attach to the VM instances.
+        A maximum of 64 network tags are allowed.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "network_tags", value)
 
     @_builtins.property
     @pulumi.getter
@@ -446,6 +526,12 @@ class ClusterComputeResourceConfigNewSpotInstancesArgsDict(TypedDict):
     Must be in the same region as the cluster, and must match the zone of any
     other resources specified in the cluster.
     """
+    network_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Optional, Beta)
+    A list of network tags to attach to the VM instances.
+    A maximum of 64 network tags are allowed.
+    """
     termination_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the termination action of the instance
@@ -459,6 +545,7 @@ class ClusterComputeResourceConfigNewSpotInstancesArgs:
     def __init__(__self__, *,
                  machine_type: pulumi.Input[_builtins.str],
                  zone: pulumi.Input[_builtins.str],
+                 network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  termination_action: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] machine_type: Name of the Compute Engine [machine
@@ -467,6 +554,9 @@ class ClusterComputeResourceConfigNewSpotInstancesArgs:
         :param pulumi.Input[_builtins.str] zone: Name of the zone in which VM instances should run, e.g., `us-central1-a`.
                Must be in the same region as the cluster, and must match the zone of any
                other resources specified in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_tags: (Optional, Beta)
+               A list of network tags to attach to the VM instances.
+               A maximum of 64 network tags are allowed.
         :param pulumi.Input[_builtins.str] termination_action: Specifies the termination action of the instance
                Possible values:
                STOP
@@ -474,6 +564,8 @@ class ClusterComputeResourceConfigNewSpotInstancesArgs:
         """
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "zone", zone)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
         if termination_action is not None:
             pulumi.set(__self__, "termination_action", termination_action)
 
@@ -504,6 +596,20 @@ class ClusterComputeResourceConfigNewSpotInstancesArgs:
     @zone.setter
     def zone(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Optional, Beta)
+        A list of network tags to attach to the VM instances.
+        A maximum of 64 network tags are allowed.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "network_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationAction")
@@ -1081,6 +1187,12 @@ class ClusterOrchestratorSlurmLoginNodesArgsDict(TypedDict):
     [Labels](https://cloud.google.com/compute/docs/labeling-resources) that
     should be applied to each login node instance.
     """
+    network_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Optional, Beta)
+    A list of network tags to attach to the VM instances.
+    A maximum of 64 network tags are allowed.
+    """
     startup_script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     [Startup
@@ -1108,6 +1220,7 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
                  enable_public_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  instances: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgs']]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  startup_script: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgs']]]] = None):
         """
@@ -1131,6 +1244,9 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: [Labels](https://cloud.google.com/compute/docs/labeling-resources) that
                should be applied to each login node instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_tags: (Optional, Beta)
+               A list of network tags to attach to the VM instances.
+               A maximum of 64 network tags are allowed.
         :param pulumi.Input[_builtins.str] startup_script: [Startup
                script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
                to be run on each login node instance. Max 256KB.
@@ -1154,6 +1270,8 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
             pulumi.set(__self__, "instances", instances)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
         if startup_script is not None:
             pulumi.set(__self__, "startup_script", startup_script)
         if storage_configs is not None:
@@ -1266,6 +1384,20 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
     @labels.setter
     def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Optional, Beta)
+        A list of network tags to attach to the VM instances.
+        A maximum of 64 network tags are allowed.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "network_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="startupScript")
@@ -2040,6 +2172,13 @@ class ClusterStorageResourceConfigArgsDict(TypedDict):
     should be imported.
     Structure is documented below.
     """
+    existing_nfs: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigExistingNfsArgsDict']]]
+    """
+    (Optional, Beta)
+    When set in a StorageResourceConfig, indicates that an existing NFS
+    share should be imported.
+    Structure is documented below.
+    """
     new_bucket: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketArgsDict']]]
     """
     When set in a StorageResourceConfig, indicates that a new
@@ -2067,6 +2206,7 @@ class ClusterStorageResourceConfigArgs:
                  existing_bucket: pulumi.Input[Optional['ClusterStorageResourceConfigExistingBucketArgs']] = None,
                  existing_filestore: pulumi.Input[Optional['ClusterStorageResourceConfigExistingFilestoreArgs']] = None,
                  existing_lustre: pulumi.Input[Optional['ClusterStorageResourceConfigExistingLustreArgs']] = None,
+                 existing_nfs: pulumi.Input[Optional['ClusterStorageResourceConfigExistingNfsArgs']] = None,
                  new_bucket: pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketArgs']] = None,
                  new_filestore: pulumi.Input[Optional['ClusterStorageResourceConfigNewFilestoreArgs']] = None,
                  new_lustre: pulumi.Input[Optional['ClusterStorageResourceConfigNewLustreArgs']] = None):
@@ -2081,6 +2221,10 @@ class ClusterStorageResourceConfigArgs:
         :param pulumi.Input['ClusterStorageResourceConfigExistingLustreArgs'] existing_lustre: When set in a StorageResourceConfig, indicates that an existing
                [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance
                should be imported.
+               Structure is documented below.
+        :param pulumi.Input['ClusterStorageResourceConfigExistingNfsArgs'] existing_nfs: (Optional, Beta)
+               When set in a StorageResourceConfig, indicates that an existing NFS
+               share should be imported.
                Structure is documented below.
         :param pulumi.Input['ClusterStorageResourceConfigNewBucketArgs'] new_bucket: When set in a StorageResourceConfig, indicates that a new
                [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
@@ -2100,6 +2244,8 @@ class ClusterStorageResourceConfigArgs:
             pulumi.set(__self__, "existing_filestore", existing_filestore)
         if existing_lustre is not None:
             pulumi.set(__self__, "existing_lustre", existing_lustre)
+        if existing_nfs is not None:
+            pulumi.set(__self__, "existing_nfs", existing_nfs)
         if new_bucket is not None:
             pulumi.set(__self__, "new_bucket", new_bucket)
         if new_filestore is not None:
@@ -2150,6 +2296,21 @@ class ClusterStorageResourceConfigArgs:
     @existing_lustre.setter
     def existing_lustre(self, value: pulumi.Input[Optional['ClusterStorageResourceConfigExistingLustreArgs']]):
         pulumi.set(self, "existing_lustre", value)
+
+    @_builtins.property
+    @pulumi.getter(name="existingNfs")
+    def existing_nfs(self) -> pulumi.Input[Optional['ClusterStorageResourceConfigExistingNfsArgs']]:
+        """
+        (Optional, Beta)
+        When set in a StorageResourceConfig, indicates that an existing NFS
+        share should be imported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "existing_nfs")
+
+    @existing_nfs.setter
+    def existing_nfs(self, value: pulumi.Input[Optional['ClusterStorageResourceConfigExistingNfsArgs']]):
+        pulumi.set(self, "existing_nfs", value)
 
     @_builtins.property
     @pulumi.getter(name="newBucket")
@@ -2284,6 +2445,76 @@ class ClusterStorageResourceConfigExistingLustreArgs:
     @lustre.setter
     def lustre(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "lustre", value)
+
+
+class ClusterStorageResourceConfigExistingNfsArgsDict(TypedDict):
+    remote_mount: pulumi.Input[_builtins.str]
+    """
+    Remote mount path of the NFS share.
+    """
+    server_ip_address: pulumi.Input[_builtins.str]
+    """
+    Server IP address of the NFS share.
+    """
+    mount_options: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Options to mount the NFS share, as expected by fs_mntops field in fstab(5),
+    for example: "rw,vers=4.1,nconnect=2,noatime".
+    """
+
+@pulumi.input_type
+class ClusterStorageResourceConfigExistingNfsArgs:
+    def __init__(__self__, *,
+                 remote_mount: pulumi.Input[_builtins.str],
+                 server_ip_address: pulumi.Input[_builtins.str],
+                 mount_options: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] remote_mount: Remote mount path of the NFS share.
+        :param pulumi.Input[_builtins.str] server_ip_address: Server IP address of the NFS share.
+        :param pulumi.Input[_builtins.str] mount_options: Options to mount the NFS share, as expected by fs_mntops field in fstab(5),
+               for example: "rw,vers=4.1,nconnect=2,noatime".
+        """
+        pulumi.set(__self__, "remote_mount", remote_mount)
+        pulumi.set(__self__, "server_ip_address", server_ip_address)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteMount")
+    def remote_mount(self) -> pulumi.Input[_builtins.str]:
+        """
+        Remote mount path of the NFS share.
+        """
+        return pulumi.get(self, "remote_mount")
+
+    @remote_mount.setter
+    def remote_mount(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "remote_mount", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverIpAddress")
+    def server_ip_address(self) -> pulumi.Input[_builtins.str]:
+        """
+        Server IP address of the NFS share.
+        """
+        return pulumi.get(self, "server_ip_address")
+
+    @server_ip_address.setter
+    def server_ip_address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "server_ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Options to mount the NFS share, as expected by fs_mntops field in fstab(5),
+        for example: "rw,vers=4.1,nconnect=2,noatime".
+        """
+        return pulumi.get(self, "mount_options")
+
+    @mount_options.setter
+    def mount_options(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mount_options", value)
 
 
 class ClusterStorageResourceConfigNewBucketArgsDict(TypedDict):

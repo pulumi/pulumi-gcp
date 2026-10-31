@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Certificate Manager Trust Config Allowlisted Certificates
  *
  * ```typescript

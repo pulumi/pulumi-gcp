@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         LanguageCode = "en",
     ///         LlmModelSettings = new Gcp.Diagflow.Inputs.CxGenerativeSettingsLlmModelSettingsArgs
     ///         {
-    ///             Model = "gemini-2.0-flash-001",
+    ///             Model = "gemini-2.5-flash",
     ///             PromptText = "example prompt text",
     ///         },
     ///     });

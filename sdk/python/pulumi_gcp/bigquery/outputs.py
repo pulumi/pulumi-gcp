@@ -19,6 +19,7 @@ __all__ = [
     'AppProfileDataBoostIsolationReadOnly',
     'AppProfileSingleClusterRouting',
     'AppProfileStandardIsolation',
+    'AppProfileStandardIsolationMemoryConfig',
     'BiReservationPreferredTable',
     'ConnectionAws',
     'ConnectionAwsAccessRole',
@@ -37,6 +38,8 @@ __all__ = [
     'ConnectionConfigurationNetworkPrivateServiceConnect',
     'ConnectionIamBindingCondition',
     'ConnectionIamMemberCondition',
+    'ConnectionSalesforceDataCloud',
+    'ConnectionSalesforceDataCloudCrossCloudCacheOptions',
     'ConnectionSpark',
     'ConnectionSparkMetastoreServiceConfig',
     'ConnectionSparkSparkHistoryServerConfig',
@@ -86,9 +89,11 @@ __all__ = [
     'JobStatus',
     'JobStatusError',
     'JobStatusErrorResult',
+    'ReservationAssignmentSchedulingPolicy',
     'ReservationAutoscale',
     'ReservationReplicationStatus',
     'ReservationReplicationStatusError',
+    'ReservationSchedulingPolicy',
     'RoutineArgument',
     'RoutineArgumentTableType',
     'RoutineArgumentTableTypeColumn',
@@ -255,13 +260,35 @@ class AppProfileSingleClusterRouting(dict):
 
 @pulumi.output_type
 class AppProfileStandardIsolation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryConfig":
+            suggest = "memory_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppProfileStandardIsolation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppProfileStandardIsolation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppProfileStandardIsolation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 priority: _builtins.str):
+                 priority: _builtins.str,
+                 memory_config: Optional['outputs.AppProfileStandardIsolationMemoryConfig'] = None):
         """
         :param _builtins.str priority: The priority of requests sent using this app profile.
                Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        :param 'AppProfileStandardIsolationMemoryConfigArgs' memory_config: The memory config to use for requests sent using this app profile.
+               If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memory_config` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
         """
         pulumi.set(__self__, "priority", priority)
+        if memory_config is not None:
+            pulumi.set(__self__, "memory_config", memory_config)
 
     @_builtins.property
     @pulumi.getter
@@ -271,6 +298,21 @@ class AppProfileStandardIsolation(dict):
         Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
         """
         return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryConfig")
+    def memory_config(self) -> Optional['outputs.AppProfileStandardIsolationMemoryConfig']:
+        """
+        The memory config to use for requests sent using this app profile.
+        If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memory_config` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+        """
+        return pulumi.get(self, "memory_config")
+
+
+@pulumi.output_type
+class AppProfileStandardIsolationMemoryConfig(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -1312,6 +1354,106 @@ class ConnectionIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ConnectionSalesforceDataCloud(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "crossCloudCacheOptions":
+            suggest = "cross_cloud_cache_options"
+        elif key == "instanceUri":
+            suggest = "instance_uri"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionSalesforceDataCloud. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionSalesforceDataCloud.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionSalesforceDataCloud.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cross_cloud_cache_options: 'outputs.ConnectionSalesforceDataCloudCrossCloudCacheOptions',
+                 instance_uri: _builtins.str,
+                 tenant_id: _builtins.str,
+                 identity: Optional[_builtins.str] = None):
+        """
+        :param 'ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs' cross_cloud_cache_options: Configuration options for cross-cloud caching of data and metadata files.
+               Structure is documented below.
+        :param _builtins.str instance_uri: The URL to the user's Salesforce Data Cloud instance.
+        :param _builtins.str tenant_id: The ID of the user's Salesforce tenant.
+        :param _builtins.str identity: (Output)
+               A unique Google-owned and Google-generated service account identity for the connection.
+        """
+        pulumi.set(__self__, "cross_cloud_cache_options", cross_cloud_cache_options)
+        pulumi.set(__self__, "instance_uri", instance_uri)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+
+    @_builtins.property
+    @pulumi.getter(name="crossCloudCacheOptions")
+    def cross_cloud_cache_options(self) -> 'outputs.ConnectionSalesforceDataCloudCrossCloudCacheOptions':
+        """
+        Configuration options for cross-cloud caching of data and metadata files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cross_cloud_cache_options")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceUri")
+    def instance_uri(self) -> _builtins.str:
+        """
+        The URL to the user's Salesforce Data Cloud instance.
+        """
+        return pulumi.get(self, "instance_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> _builtins.str:
+        """
+        The ID of the user's Salesforce tenant.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A unique Google-owned and Google-generated service account identity for the connection.
+        """
+        return pulumi.get(self, "identity")
+
+
+@pulumi.output_type
+class ConnectionSalesforceDataCloudCrossCloudCacheOptions(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether cross-cloud caching is enabled for queries through BigQuery.
+               When enabled, read data and metadata are cached, which can improve performance
+               and reduce network egress costs for cross-cloud queries.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether cross-cloud caching is enabled for queries through BigQuery.
+        When enabled, read data and metadata are cached, which can improve performance
+        and reduce network egress costs for cross-cloud queries.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -5032,6 +5174,60 @@ class JobStatusErrorResult(dict):
 
 
 @pulumi.output_type
+class ReservationAssignmentSchedulingPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxSlots":
+            suggest = "max_slots"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservationAssignmentSchedulingPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservationAssignmentSchedulingPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservationAssignmentSchedulingPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 concurrency: Optional[_builtins.int] = None,
+                 max_slots: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int concurrency: If present and > 0, the reservation will attempt to limit the concurrency
+               of jobs running for any particular project within it to the given value.
+        :param _builtins.int max_slots: If present and > 0, the reservation will attempt to limit the slot
+               consumption of queries running for any particular project within it to
+               the given value.
+        """
+        if concurrency is not None:
+            pulumi.set(__self__, "concurrency", concurrency)
+        if max_slots is not None:
+            pulumi.set(__self__, "max_slots", max_slots)
+
+    @_builtins.property
+    @pulumi.getter
+    def concurrency(self) -> Optional[_builtins.int]:
+        """
+        If present and > 0, the reservation will attempt to limit the concurrency
+        of jobs running for any particular project within it to the given value.
+        """
+        return pulumi.get(self, "concurrency")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSlots")
+    def max_slots(self) -> Optional[_builtins.int]:
+        """
+        If present and > 0, the reservation will attempt to limit the slot
+        consumption of queries running for any particular project within it to
+        the given value.
+        """
+        return pulumi.get(self, "max_slots")
+
+
+@pulumi.output_type
 class ReservationAutoscale(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5194,6 +5390,60 @@ class ReservationReplicationStatusError(dict):
         A developer-facing error message, which should be in English.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class ReservationSchedulingPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxSlots":
+            suggest = "max_slots"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservationSchedulingPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservationSchedulingPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservationSchedulingPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 concurrency: Optional[_builtins.int] = None,
+                 max_slots: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int concurrency: If present and > 0, the reservation will attempt to limit the concurrency
+               of jobs running for any particular project within it to the given value.
+        :param _builtins.int max_slots: If present and > 0, the reservation will attempt to limit the slot
+               consumption of queries running for any particular project within it to
+               the given value.
+        """
+        if concurrency is not None:
+            pulumi.set(__self__, "concurrency", concurrency)
+        if max_slots is not None:
+            pulumi.set(__self__, "max_slots", max_slots)
+
+    @_builtins.property
+    @pulumi.getter
+    def concurrency(self) -> Optional[_builtins.int]:
+        """
+        If present and > 0, the reservation will attempt to limit the concurrency
+        of jobs running for any particular project within it to the given value.
+        """
+        return pulumi.get(self, "concurrency")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSlots")
+    def max_slots(self) -> Optional[_builtins.int]:
+        """
+        If present and > 0, the reservation will attempt to limit the slot
+        consumption of queries running for any particular project within it to
+        the given value.
+        """
+        return pulumi.get(self, "max_slots")
 
 
 @pulumi.output_type

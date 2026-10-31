@@ -930,6 +930,8 @@ class AnalystAgentPersona(pulumi.CustomResource):
         """
         Represents a persona configuration for an analyst agent in Agentic Applications.
 
+        > **Note:** The `project` field must be set to the numeric project number (not the project ID).
+
         ## Example Usage
 
         ### Analyst Agent Persona Basic
@@ -939,6 +941,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.agenticapplications.AnalystAgentPersona("example",
+            project="1111111111111",
             location="us",
             analyst_agent_persona_id="basic",
             display_name="Test Analyst Persona",
@@ -972,6 +975,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                 "excluded_domains": ["example.com"],
             })
         ```
+
         ### Analyst Agent Persona Full
 
         ```python
@@ -995,6 +999,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
             content="Hello World",
             bucket=bucket.name)
         example = gcp.agenticapplications.AnalystAgentPersona("example",
+            project="1111111111111",
             location="us",
             analyst_agent_persona_id="full",
             display_name="Full Test Analyst Persona",
@@ -1121,6 +1126,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                 "api_key_name": "x-api-key",
                 "api_key_header": "x-api-key-header",
                 "client_id": "sample-client-id",
+                "client_secret": "sample-client-secret",
                 "oauth_token_url": "https://example.com/oauth/token",
             }],
             resources=[
@@ -1186,6 +1192,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                 "excluded_domains": ["example.com"],
             })
         ```
+
         ### Analyst Agent Persona Methodology Export Options
 
         ```python
@@ -1193,6 +1200,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.agenticapplications.AnalystAgentPersona("example",
+            project="1111111111111",
             location="us",
             analyst_agent_persona_id="methodology",
             display_name="Test Analyst Persona Methodology Export",
@@ -1204,6 +1212,29 @@ class AnalystAgentPersona(pulumi.CustomResource):
                     "append_methodology": True,
                     "export_format": "MARKDOWN",
                     "export_methodology_artifact": True,
+                },
+            })
+        ```
+
+        ### Analyst Agent Persona Audit Trail Export Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.agenticapplications.AnalystAgentPersona("example",
+            project="1111111111111",
+            location="us",
+            analyst_agent_persona_id="audit_trail",
+            display_name="Test Analyst Persona Audit Trail Export",
+            display_description="Sample analyst agent persona description",
+            model_description="Sample model description",
+            role="ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+            artifacts_config={
+                "audit_trail_export_options": {
+                    "append_audit_trail": True,
+                    "export_format": "MARKDOWN",
+                    "export_audit_trail_artifact": True,
                 },
             })
         ```
@@ -1258,6 +1289,11 @@ class AnalystAgentPersona(pulumi.CustomResource):
 
         <a name="nested_artifacts_config"></a>The `artifacts_config` block supports:
 
+        * `audit_trail_export_options` -
+        (Optional)
+        Options for audit trail export.
+        Structure is documented below.
+
         * `document_generation_options` -
         (Optional)
         Options for document generation.
@@ -1277,6 +1313,24 @@ class AnalystAgentPersona(pulumi.CustomResource):
         (Optional)
         Options for visualizations.
         Structure is documented below.
+
+        <a name="nested_artifacts_config_audit_trail_export_options"></a>The `audit_trail_export_options` block supports:
+
+        * `append_audit_trail` -
+        (Optional)
+        If true, append the audit trail to the final response.
+
+        * `export_audit_trail_artifact` -
+        (Optional)
+        If true, export the audit trail as a separate artifact.
+
+        * `export_format` -
+        (Optional)
+        Format for audit trail export.
+        Possible values:
+        MARKDOWN
+        HTML
+        PDF
 
         <a name="nested_artifacts_config_document_generation_options"></a>The `document_generation_options` block supports:
 
@@ -2084,6 +2138,8 @@ class AnalystAgentPersona(pulumi.CustomResource):
         """
         Represents a persona configuration for an analyst agent in Agentic Applications.
 
+        > **Note:** The `project` field must be set to the numeric project number (not the project ID).
+
         ## Example Usage
 
         ### Analyst Agent Persona Basic
@@ -2093,6 +2149,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.agenticapplications.AnalystAgentPersona("example",
+            project="1111111111111",
             location="us",
             analyst_agent_persona_id="basic",
             display_name="Test Analyst Persona",
@@ -2126,6 +2183,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                 "excluded_domains": ["example.com"],
             })
         ```
+
         ### Analyst Agent Persona Full
 
         ```python
@@ -2149,6 +2207,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
             content="Hello World",
             bucket=bucket.name)
         example = gcp.agenticapplications.AnalystAgentPersona("example",
+            project="1111111111111",
             location="us",
             analyst_agent_persona_id="full",
             display_name="Full Test Analyst Persona",
@@ -2275,6 +2334,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                 "api_key_name": "x-api-key",
                 "api_key_header": "x-api-key-header",
                 "client_id": "sample-client-id",
+                "client_secret": "sample-client-secret",
                 "oauth_token_url": "https://example.com/oauth/token",
             }],
             resources=[
@@ -2340,6 +2400,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                 "excluded_domains": ["example.com"],
             })
         ```
+
         ### Analyst Agent Persona Methodology Export Options
 
         ```python
@@ -2347,6 +2408,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.agenticapplications.AnalystAgentPersona("example",
+            project="1111111111111",
             location="us",
             analyst_agent_persona_id="methodology",
             display_name="Test Analyst Persona Methodology Export",
@@ -2358,6 +2420,29 @@ class AnalystAgentPersona(pulumi.CustomResource):
                     "append_methodology": True,
                     "export_format": "MARKDOWN",
                     "export_methodology_artifact": True,
+                },
+            })
+        ```
+
+        ### Analyst Agent Persona Audit Trail Export Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.agenticapplications.AnalystAgentPersona("example",
+            project="1111111111111",
+            location="us",
+            analyst_agent_persona_id="audit_trail",
+            display_name="Test Analyst Persona Audit Trail Export",
+            display_description="Sample analyst agent persona description",
+            model_description="Sample model description",
+            role="ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+            artifacts_config={
+                "audit_trail_export_options": {
+                    "append_audit_trail": True,
+                    "export_format": "MARKDOWN",
+                    "export_audit_trail_artifact": True,
                 },
             })
         ```
@@ -2412,6 +2497,11 @@ class AnalystAgentPersona(pulumi.CustomResource):
 
         <a name="nested_artifacts_config"></a>The `artifacts_config` block supports:
 
+        * `audit_trail_export_options` -
+        (Optional)
+        Options for audit trail export.
+        Structure is documented below.
+
         * `document_generation_options` -
         (Optional)
         Options for document generation.
@@ -2431,6 +2521,24 @@ class AnalystAgentPersona(pulumi.CustomResource):
         (Optional)
         Options for visualizations.
         Structure is documented below.
+
+        <a name="nested_artifacts_config_audit_trail_export_options"></a>The `audit_trail_export_options` block supports:
+
+        * `append_audit_trail` -
+        (Optional)
+        If true, append the audit trail to the final response.
+
+        * `export_audit_trail_artifact` -
+        (Optional)
+        If true, export the audit trail as a separate artifact.
+
+        * `export_format` -
+        (Optional)
+        Format for audit trail export.
+        Possible values:
+        MARKDOWN
+        HTML
+        PDF
 
         <a name="nested_artifacts_config_document_generation_options"></a>The `document_generation_options` block supports:
 

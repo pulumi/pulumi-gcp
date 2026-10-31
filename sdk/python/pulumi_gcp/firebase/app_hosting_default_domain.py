@@ -320,6 +320,7 @@ class AppHostingDefaultDomain(pulumi.CustomResource):
             backend=example_app_hosting_backend.backend_id,
             domain_id=example_app_hosting_backend.uri)
         ```
+
         ### Firebase App Hosting Default Domain Full
 
         ```python
@@ -345,6 +346,7 @@ class AppHostingDefaultDomain(pulumi.CustomResource):
             domain_id=example_app_hosting_backend.uri,
             disabled=False)
         ```
+
         ### Firebase App Hosting Default Domain Disabled
 
         ```python
@@ -432,6 +434,7 @@ class AppHostingDefaultDomain(pulumi.CustomResource):
             backend=example_app_hosting_backend.backend_id,
             domain_id=example_app_hosting_backend.uri)
         ```
+
         ### Firebase App Hosting Default Domain Full
 
         ```python
@@ -457,6 +460,7 @@ class AppHostingDefaultDomain(pulumi.CustomResource):
             domain_id=example_app_hosting_backend.uri,
             disabled=False)
         ```
+
         ### Firebase App Hosting Default Domain Disabled
 
         ```python

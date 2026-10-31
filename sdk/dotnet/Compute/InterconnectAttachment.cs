@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Interconnect Attachment Ipsec Encryption
     /// 
     /// ```csharp
@@ -114,6 +115,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Interconnect Attachment Custom Ranges
     /// 
     /// ```csharp

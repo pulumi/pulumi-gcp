@@ -272,6 +272,7 @@ class V2QueuedResource(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Tpu V2 Queued Resource Full
 
         ```python
@@ -386,6 +387,7 @@ class V2QueuedResource(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Tpu V2 Queued Resource Full
 
         ```python

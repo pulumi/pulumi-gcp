@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Full
  * 
  * <pre>
@@ -127,6 +128,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Placement Policy
  * 
  * <pre>
@@ -165,6 +167,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Placement Policy Max Distance
  * 
  * <pre>
@@ -204,6 +207,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Instance Schedule Policy
  * 
  * <pre>
@@ -250,6 +254,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Snapshot Schedule Chain Name
  * 
  * <pre>
@@ -307,6 +312,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Consistency Group
  * 
  * <pre>
@@ -344,6 +350,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Workload Policy
  * 
  * <pre>
@@ -381,6 +388,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Workload Policy Accelerator Topology
  * 
  * <pre>
@@ -419,6 +427,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Workload Policy Accelerator Topology Mode
  * 
  * <pre>
@@ -458,6 +467,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Workload Policy Max Topology Distance
  * 
  * <pre>
@@ -496,6 +506,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Placement Policy Gpu Topology
  * 
  * <pre>
@@ -534,6 +545,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Resource Policy Placement Policy Tpu Topology
  * 
  * <pre>

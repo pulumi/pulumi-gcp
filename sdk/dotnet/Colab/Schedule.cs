@@ -137,6 +137,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Schedule Paused
     /// 
     /// ```csharp
@@ -255,6 +256,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Schedule Full
     /// 
     /// ```csharp
@@ -373,6 +375,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Schedule Notebook Full
     /// 
     /// ```csharp
@@ -510,6 +513,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Schedule Pipeline
     /// 
     /// ```csharp

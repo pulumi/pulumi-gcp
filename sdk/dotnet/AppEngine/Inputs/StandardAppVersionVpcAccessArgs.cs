@@ -13,7 +13,10 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class StandardAppVersionVpcAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Deprecated)
         /// The egress setting for the VPC Access, controlling what traffic is diverted through it.
+        /// 
+        /// &gt; **Warning:** `EgressSetting` is deprecated and will be removed in a future major release. Use `VpcEgress` instead.
         /// </summary>
         [Input("egressSetting")]
         public Input<string>? EgressSetting { get; set; }
@@ -30,6 +33,13 @@ namespace Pulumi.Gcp.AppEngine.Inputs
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.StandardAppVersionVpcAccessNetworkInterfaceArgs>());
             set => _networkInterfaces = value;
         }
+
+        /// <summary>
+        /// The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+        /// Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+        /// </summary>
+        [Input("vpcEgress")]
+        public Input<string>? VpcEgress { get; set; }
 
         public StandardAppVersionVpcAccessArgs()
         {

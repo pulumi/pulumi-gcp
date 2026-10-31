@@ -582,6 +582,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Cloudbuildv2 Connection Ghe
 
         ```python
@@ -631,6 +632,7 @@ class Connection(pulumi.CustomResource):
                     policy_whs,
                 ]))
         ```
+
         ### Cloudbuildv2 Connection Github
 
         ```python
@@ -743,6 +745,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Cloudbuildv2 Connection Ghe
 
         ```python
@@ -792,6 +795,7 @@ class Connection(pulumi.CustomResource):
                     policy_whs,
                 ]))
         ```
+
         ### Cloudbuildv2 Connection Github
 
         ```python

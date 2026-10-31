@@ -378,6 +378,7 @@ class Document(pulumi.CustomResource):
             document_id="my-doc-id",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
         ```
+
         ### Firestore Document Nested Document
 
         ```python
@@ -508,6 +509,7 @@ class Document(pulumi.CustomResource):
             document_id="my-doc-id",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
         ```
+
         ### Firestore Document Nested Document
 
         ```python

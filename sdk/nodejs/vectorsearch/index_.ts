@@ -69,6 +69,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vectorsearch Index Dedicated
  *
  * ```typescript
@@ -133,6 +134,62 @@ import * as utilities from "../utilities";
  *             maxReplicaCount: 5,
  *         },
  *     },
+ * });
+ * ```
+ *
+ * ### Vectorsearch Index Skip Wait
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+ * // can take many hours; setting skip_wait = true returns as soon as the create
+ * // request has been accepted so short-lived credentials in your Pulumi runner
+ * // do not have to be extended to the full build duration. The index continues to
+ * // build asynchronously on the backend; subsequent pulumi up invocations
+ * // refresh state from the API.
+ * const parent = new gcp.vectorsearch.Collection("parent", {
+ *     location: "us-central1",
+ *     collectionId: "example-skip-wait-collection",
+ *     displayName: "Collection for a skip_wait ANN index",
+ *     description: "Parent collection for the skip_wait index example.",
+ *     dataSchema: `{
+ *   \\"type\\": \\"object\\",
+ *   \\"properties\\": {
+ *     \\"title\\": {
+ *       \\"type\\": \\"string\\"
+ *     },
+ *     \\"plot\\": {
+ *       \\"type\\": \\"string\\"
+ *     }
+ *   }
+ * }
+ * `,
+ *     vectorSchemas: [{
+ *         fieldName: "text_embedding",
+ *         denseVector: {
+ *             dimensions: 768,
+ *             vertexEmbeddingConfig: {
+ *                 modelId: "textembedding-gecko@003",
+ *                 taskType: "RETRIEVAL_DOCUMENT",
+ *                 textTemplate: "Title: {title} ---- Plot: {plot}",
+ *             },
+ *         },
+ *     }],
+ * });
+ * const example_skip_wait_index = new gcp.vectorsearch.Index("example-skip-wait-index", {
+ *     location: "us-central1",
+ *     collectionId: parent.collectionId,
+ *     indexId: "example-skip-wait-index",
+ *     displayName: "Skip-wait ANN index",
+ *     description: "ScaNN index over text_embedding, created without waiting for the build to finish.",
+ *     indexField: "text_embedding",
+ *     distanceMetric: "DOT_PRODUCT",
+ *     denseScann: {
+ *         featureNormType: "UNIT_L2_NORM",
+ *     },
+ *     skipWait: true,
  * });
  * ```
  *
@@ -271,6 +328,18 @@ export class Index extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Whether to skip waiting for the index to be created. Building an ANN
+     * index over a large collection can take several hours; setting `skipWait`
+     * to `true` causes Terraform to return as soon as the creation request is
+     * accepted rather than blocking until the long-running build completes
+     * (which can exceed CI/CD timeouts or short-lived Terraform runner
+     * credentials). Leave this set to `false` (the default) if downstream
+     * resources or workloads depend on the index being ready to serve queries
+     * immediately after `pulumi up`, or if you want Terraform to fail
+     * synchronously when an asynchronous index build fails.
+     */
+    declare public readonly skipWait: pulumi.Output<boolean | undefined>;
+    /**
      * The fields to push into the index to enable inline data retrieval.
      */
     declare public readonly storeFields: pulumi.Output<string[] | undefined>;
@@ -309,6 +378,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["skipWait"] = state?.skipWait;
             resourceInputs["storeFields"] = state?.storeFields;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -338,6 +408,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["skipWait"] = args?.skipWait;
             resourceInputs["storeFields"] = args?.storeFields;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -447,6 +518,18 @@ export interface IndexState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * Whether to skip waiting for the index to be created. Building an ANN
+     * index over a large collection can take several hours; setting `skipWait`
+     * to `true` causes Terraform to return as soon as the creation request is
+     * accepted rather than blocking until the long-running build completes
+     * (which can exceed CI/CD timeouts or short-lived Terraform runner
+     * credentials). Leave this set to `false` (the default) if downstream
+     * resources or workloads depend on the index being ready to serve queries
+     * immediately after `pulumi up`, or if you want Terraform to fail
+     * synchronously when an asynchronous index build fails.
+     */
+    skipWait?: pulumi.Input<boolean | undefined>;
+    /**
      * The fields to push into the index to enable inline data retrieval.
      */
     storeFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -533,6 +616,18 @@ export interface IndexArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to skip waiting for the index to be created. Building an ANN
+     * index over a large collection can take several hours; setting `skipWait`
+     * to `true` causes Terraform to return as soon as the creation request is
+     * accepted rather than blocking until the long-running build completes
+     * (which can exceed CI/CD timeouts or short-lived Terraform runner
+     * credentials). Leave this set to `false` (the default) if downstream
+     * resources or workloads depend on the index being ready to serve queries
+     * immediately after `pulumi up`, or if you want Terraform to fail
+     * synchronously when an asynchronous index build fails.
+     */
+    skipWait?: pulumi.Input<boolean | undefined>;
     /**
      * The fields to push into the index to enable inline data retrieval.
      */

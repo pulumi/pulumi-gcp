@@ -97,6 +97,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase App Hosting Traffic Rollout Policy
     /// 
     /// ```csharp
@@ -158,6 +159,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase App Hosting Traffic Rollout Policy Disabled
     /// 
     /// ```csharp

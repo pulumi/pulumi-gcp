@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Feed Gcs
  * 
  * <pre>
@@ -186,6 +187,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Feed Https Push
  * 
  * <pre>

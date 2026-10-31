@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Connection Profile Postgresql Private Connection
  *
  * ```typescript
@@ -150,6 +151,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Connection Profile Full
  *
  * ```typescript
@@ -169,6 +171,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Connection Profile Postgres
  *
  * ```typescript
@@ -229,6 +232,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Connection Profile Sql Server
  *
  * ```typescript
@@ -286,6 +290,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Stream Postgresql Sslconfig Server And Client Verification
  *
  * ```typescript
@@ -354,6 +359,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Connection Profile Salesforce
  *
  * ```typescript
@@ -375,6 +381,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Connection Profile Spanner
  *
  * ```typescript
@@ -392,6 +399,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Connection Profile Postgres Secret Manager
  *
  * ```typescript
@@ -412,6 +420,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Connection Profile Mongodb
  *
  * ```typescript

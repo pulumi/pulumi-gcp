@@ -603,6 +603,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Featureonlinestore With Optimized
 
         ```python
@@ -624,6 +625,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 
         ```python
@@ -735,6 +737,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Featureonlinestore With Optimized
 
         ```python
@@ -756,6 +759,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 
         ```python

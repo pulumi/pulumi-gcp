@@ -57,6 +57,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Provider Aws Full
 //
 // ```go
@@ -101,6 +102,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Provider Github Actions
 //
 // ```go
@@ -146,6 +148,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Provider Oidc Basic
 //
 // ```go
@@ -184,6 +187,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Provider Oidc Full
 //
 // ```go
@@ -232,6 +236,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Provider Saml Basic
 //
 // ```go
@@ -279,6 +284,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Provider Saml Full
 //
 // ```go
@@ -329,6 +335,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Provider Oidc Upload Key
 //
 // ```go
@@ -378,6 +385,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Provider X509 Basic
 //
 // ```go
@@ -429,6 +437,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Provider X509 Full
 //
 // ```go

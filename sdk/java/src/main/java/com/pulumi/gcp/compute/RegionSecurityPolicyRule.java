@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Security Policy Rule Multiple Rules
  * 
  * <pre>
@@ -156,6 +157,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Security Policy Rule Default Rule
  * 
  * <pre>
@@ -224,6 +226,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Security Policy Rule With Preconfigured Waf Config
  * 
  * <pre>
@@ -311,6 +314,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Security Policy Rule With Network Match
  * 
  * <pre>
@@ -399,6 +403,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Security Policy Rule With Body Exclude
  * 
  * <pre>
@@ -490,7 +495,7 @@ import javax.annotation.Nullable;
  *             .name("backendpolicy")
  *             .machineType("e2-micro")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage("projects/debian-cloud/global/images/family/debian-11")
+ *                 .sourceImage("projects/debian-cloud/global/images/family/debian-13")
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
@@ -549,6 +554,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Security Policy Rule Request Body Expression
  * 
  * <pre>

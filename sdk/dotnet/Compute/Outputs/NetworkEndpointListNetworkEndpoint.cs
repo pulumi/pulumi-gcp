@@ -27,6 +27,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? IpAddress;
         /// <summary>
+        /// IPv6 address of network endpoint. The result of parsing the endpoint config,
+        /// or empty if IPv6 is not used.
+        /// </summary>
+        public readonly string? Ipv6Address;
+        /// <summary>
         /// Port number of network endpoint.
         /// **Note** `Port` is required unless the Network Endpoint Group is created
         /// with the type of `GCE_VM_IP`
@@ -39,10 +44,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? ipAddress,
 
+            string? ipv6Address,
+
             int? port)
         {
             Instance = instance;
             IpAddress = ipAddress;
+            Ipv6Address = ipv6Address;
             Port = port;
         }
     }

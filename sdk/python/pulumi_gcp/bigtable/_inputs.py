@@ -21,6 +21,8 @@ __all__ = [
     'AppProfileSingleClusterRoutingArgsDict',
     'AppProfileStandardIsolationArgs',
     'AppProfileStandardIsolationArgsDict',
+    'AppProfileStandardIsolationMemoryConfigArgs',
+    'AppProfileStandardIsolationMemoryConfigArgsDict',
     'AuthorizedViewSubsetViewArgs',
     'AuthorizedViewSubsetViewArgsDict',
     'AuthorizedViewSubsetViewFamilySubsetArgs',
@@ -37,6 +39,8 @@ __all__ = [
     'InstanceIamBindingConditionArgsDict',
     'InstanceIamMemberConditionArgs',
     'InstanceIamMemberConditionArgsDict',
+    'MemoryLayerMemoryConfigArgs',
+    'MemoryLayerMemoryConfigArgsDict',
     'SchemaBundleProtoSchemaArgs',
     'SchemaBundleProtoSchemaArgsDict',
     'TableAutomatedBackupPolicyArgs',
@@ -137,16 +141,26 @@ class AppProfileStandardIsolationArgsDict(TypedDict):
     The priority of requests sent using this app profile.
     Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
     """
+    memory_config: NotRequired[pulumi.Input[Optional['AppProfileStandardIsolationMemoryConfigArgsDict']]]
+    """
+    The memory config to use for requests sent using this app profile.
+    If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memory_config` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+    """
 
 @pulumi.input_type
 class AppProfileStandardIsolationArgs:
     def __init__(__self__, *,
-                 priority: pulumi.Input[_builtins.str]):
+                 priority: pulumi.Input[_builtins.str],
+                 memory_config: pulumi.Input[Optional['AppProfileStandardIsolationMemoryConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] priority: The priority of requests sent using this app profile.
                Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        :param pulumi.Input['AppProfileStandardIsolationMemoryConfigArgs'] memory_config: The memory config to use for requests sent using this app profile.
+               If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memory_config` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
         """
         pulumi.set(__self__, "priority", priority)
+        if memory_config is not None:
+            pulumi.set(__self__, "memory_config", memory_config)
 
     @_builtins.property
     @pulumi.getter
@@ -160,6 +174,28 @@ class AppProfileStandardIsolationArgs:
     @priority.setter
     def priority(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryConfig")
+    def memory_config(self) -> pulumi.Input[Optional['AppProfileStandardIsolationMemoryConfigArgs']]:
+        """
+        The memory config to use for requests sent using this app profile.
+        If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memory_config` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+        """
+        return pulumi.get(self, "memory_config")
+
+    @memory_config.setter
+    def memory_config(self, value: pulumi.Input[Optional['AppProfileStandardIsolationMemoryConfigArgs']]):
+        pulumi.set(self, "memory_config", value)
+
+
+class AppProfileStandardIsolationMemoryConfigArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class AppProfileStandardIsolationMemoryConfigArgs:
+    def __init__(__self__):
+        pass
 
 
 class AuthorizedViewSubsetViewArgsDict(TypedDict):
@@ -827,6 +863,38 @@ class InstanceIamMemberConditionArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class MemoryLayerMemoryConfigArgsDict(TypedDict):
+    storage_size_gib: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Reporting the current size of the memory layer in GiB.
+    """
+
+@pulumi.input_type
+class MemoryLayerMemoryConfigArgs:
+    def __init__(__self__, *,
+                 storage_size_gib: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] storage_size_gib: (Output)
+               Reporting the current size of the memory layer in GiB.
+        """
+        if storage_size_gib is not None:
+            pulumi.set(__self__, "storage_size_gib", storage_size_gib)
+
+    @_builtins.property
+    @pulumi.getter(name="storageSizeGib")
+    def storage_size_gib(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Reporting the current size of the memory layer in GiB.
+        """
+        return pulumi.get(self, "storage_size_gib")
+
+    @storage_size_gib.setter
+    def storage_size_gib(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "storage_size_gib", value)
 
 
 class SchemaBundleProtoSchemaArgsDict(TypedDict):

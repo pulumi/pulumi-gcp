@@ -79,6 +79,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Certificate Manager Trust Config Allowlisted Certificates
 //
 // ```go

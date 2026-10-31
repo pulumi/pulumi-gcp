@@ -61,6 +61,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Apigee Datastore Bigquery
  *
  * ```typescript

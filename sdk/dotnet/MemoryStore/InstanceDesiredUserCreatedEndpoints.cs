@@ -44,14 +44,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "subnet-net1",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Network = network1.Id,
     ///     });
     /// 
     ///     var ip1Network1 = new Gcp.Compute.Address("ip1_network1", new()
     ///     {
     ///         Name = "ip1-net1",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Subnetwork = subnetNetwork1.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -62,14 +62,15 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         InstanceId = "instance-user-conn",
     ///         ShardCount = 1,
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
+    ///         NodeType = "SHARED_CORE_NANO",
     ///         DeletionProtectionEnabled = false,
     ///     });
     /// 
     ///     var forwardingRule1Network1 = new Gcp.Compute.ForwardingRule("forwarding_rule1_network1", new()
     ///     {
     ///         Name = "fwd1-net1",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         IpAddress = ip1Network1.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network1.Id,
@@ -79,7 +80,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var ip2Network1 = new Gcp.Compute.Address("ip2_network1", new()
     ///     {
     ///         Name = "ip2-net1",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Subnetwork = subnetNetwork1.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -88,7 +89,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var forwardingRule2Network1 = new Gcp.Compute.ForwardingRule("forwarding_rule2_network1", new()
     ///     {
     ///         Name = "fwd2-net1",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         IpAddress = ip2Network1.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network1.Id,
@@ -105,14 +106,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "subnet-net2",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Network = network2.Id,
     ///     });
     /// 
     ///     var ip1Network2 = new Gcp.Compute.Address("ip1_network2", new()
     ///     {
     ///         Name = "ip1-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Subnetwork = subnetNetwork2.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -121,7 +122,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var forwardingRule1Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule1_network2", new()
     ///     {
     ///         Name = "fwd1-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         IpAddress = ip1Network2.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network2.Id,
@@ -131,7 +132,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var ip2Network2 = new Gcp.Compute.Address("ip2_network2", new()
     ///     {
     ///         Name = "ip2-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Subnetwork = subnetNetwork2.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -140,7 +141,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var forwardingRule2Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule2_network2", new()
     ///     {
     ///         Name = "fwd2-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         IpAddress = ip2Network2.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network2.Id,
@@ -150,7 +151,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var instance_user_conn = new Gcp.MemoryStore.InstanceDesiredUserCreatedEndpoints("instance-user-conn", new()
     ///     {
     ///         Name = "instance-user-conn",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         DesiredUserCreatedEndpoints = new[]
     ///         {
     ///             new Gcp.MemoryStore.Inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs
@@ -216,6 +217,7 @@ namespace Pulumi.Gcp.MemoryStore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Memorystore Instance Desired User And Auto Created Endpoints
     /// 
     /// ```csharp
@@ -236,14 +238,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "subnet-net2",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Network = network2.Id,
     ///     });
     /// 
     ///     var ip1Network2 = new Gcp.Compute.Address("ip1_network2", new()
     ///     {
     ///         Name = "ip1-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Subnetwork = subnetNetwork2.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -259,14 +261,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "subnet-net1",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Network = network1.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "scpolicy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
     ///         ServiceClass = "gcp-memorystore",
     ///         Description = "my basic service connection policy",
     ///         Network = network1.Id,
@@ -294,7 +296,8 @@ namespace Pulumi.Gcp.MemoryStore
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///             },
     ///         },
-    ///         Location = "us-west1",
+    ///         Location = "us-east4",
+    ///         NodeType = "SHARED_CORE_NANO",
     ///         DeletionProtectionEnabled = false,
     ///     }, new CustomResourceOptions
     ///     {
@@ -307,7 +310,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var forwardingRule1Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule1_network2", new()
     ///     {
     ///         Name = "fwd1-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         IpAddress = ip1Network2.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network2.Id,
@@ -317,7 +320,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var ip2Network2 = new Gcp.Compute.Address("ip2_network2", new()
     ///     {
     ///         Name = "ip2-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         Subnetwork = subnetNetwork2.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -326,7 +329,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var forwardingRule2Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule2_network2", new()
     ///     {
     ///         Name = "fwd2-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         IpAddress = ip2Network2.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network2.Id,
@@ -336,7 +339,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var instance_user_auto_conn = new Gcp.MemoryStore.InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn", new()
     ///     {
     ///         Name = "instance-user-auto-conn",
-    ///         Region = "us-west1",
+    ///         Region = "us-east4",
     ///         DesiredUserCreatedEndpoints = new[]
     ///         {
     ///             new Gcp.MemoryStore.Inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs

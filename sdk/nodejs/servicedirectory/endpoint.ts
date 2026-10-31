@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     port: 5353,
  * });
  * ```
+ *
  * ### Service Directory Endpoint With Network
  *
  * ```typescript

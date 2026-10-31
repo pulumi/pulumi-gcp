@@ -136,6 +136,11 @@ public final class GetServiceAttachmentsServiceAttachment {
      */
     private Boolean sendPropagatedConnectionLimitIfZero;
     /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    private Integer serviceAttachmentId;
+    /**
      * @return NOTE: This field is temporarily non-functional due to an underlying API issue.
      * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
      * [If true, show NAT IPs of all connected endpoints.]
@@ -312,6 +317,13 @@ public final class GetServiceAttachmentsServiceAttachment {
         return this.sendPropagatedConnectionLimitIfZero;
     }
     /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Integer serviceAttachmentId() {
+        return this.serviceAttachmentId;
+    }
+    /**
      * @return NOTE: This field is temporarily non-functional due to an underlying API issue.
      * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
      * [If true, show NAT IPs of all connected endpoints.]
@@ -364,6 +376,7 @@ public final class GetServiceAttachmentsServiceAttachment {
         private String region;
         private String selfLink;
         private Boolean sendPropagatedConnectionLimitIfZero;
+        private Integer serviceAttachmentId;
         private Boolean showNatIps;
         private String targetService;
         private List<GetServiceAttachmentsServiceAttachmentTunnelingConfig> tunnelingConfigs;
@@ -389,6 +402,7 @@ public final class GetServiceAttachmentsServiceAttachment {
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
     	      this.sendPropagatedConnectionLimitIfZero = defaults.sendPropagatedConnectionLimitIfZero;
+    	      this.serviceAttachmentId = defaults.serviceAttachmentId;
     	      this.showNatIps = defaults.showNatIps;
     	      this.targetService = defaults.targetService;
     	      this.tunnelingConfigs = defaults.tunnelingConfigs;
@@ -565,6 +579,14 @@ public final class GetServiceAttachmentsServiceAttachment {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAttachmentId(Integer serviceAttachmentId) {
+            if (serviceAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetServiceAttachmentsServiceAttachment", "serviceAttachmentId");
+            }
+            this.serviceAttachmentId = serviceAttachmentId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder showNatIps(Boolean showNatIps) {
             if (showNatIps == null) {
               throw new MissingRequiredPropertyException("GetServiceAttachmentsServiceAttachment", "showNatIps");
@@ -612,6 +634,7 @@ public final class GetServiceAttachmentsServiceAttachment {
             _resultValue.region = region;
             _resultValue.selfLink = selfLink;
             _resultValue.sendPropagatedConnectionLimitIfZero = sendPropagatedConnectionLimitIfZero;
+            _resultValue.serviceAttachmentId = serviceAttachmentId;
             _resultValue.showNatIps = showNatIps;
             _resultValue.targetService = targetService;
             _resultValue.tunnelingConfigs = tunnelingConfigs;

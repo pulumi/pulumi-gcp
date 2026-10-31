@@ -13,6 +13,232 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RegionInstanceTemplateDiskSourceSnapshotEncryptionKey struct {
+	// The self link of the encryption key that is
+	// stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+	// may be set.
+	KmsKeySelfLink *string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the
+	// encryption request for the given KMS key. If absent, the Compute Engine
+	// default service account is used.
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
+	// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+	// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+	// to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+	// may be set.
+	RawKey *string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+	// may be set.
+	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
+}
+
+// RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput is an input type that accepts RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs and RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput` via:
+//
+//	RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{...}
+type RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput
+	ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput
+}
+
+type RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs struct {
+	// The self link of the encryption key that is
+	// stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+	// may be set.
+	KmsKeySelfLink pulumi.StringPtrInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the
+	// encryption request for the given KMS key. If absent, the Compute Engine
+	// default service account is used.
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
+	// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+	// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+	// to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+	// may be set.
+	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+	// may be set.
+	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
+}
+
+func (RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return i.ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+func (i RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
+	return i.ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput).ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput is an input type that accepts RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs, RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtr and RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput` via:
+//
+//	        RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput
+	ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput
+}
+
+type regionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrType RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs
+
+func RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtr(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput {
+	return (*regionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrType)(v)
+}
+
+func (*regionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i *regionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrType) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
+	return i.ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *regionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrType) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput)
+}
+
+type RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
+	return o.ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey {
+		return &v
+	}).(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput)
+}
+
+// The self link of the encryption key that is
+// stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+// may be set.
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string { return v.KmsKeySelfLink }).(pulumi.StringPtrOutput)
+}
+
+// The service account being used for the
+// encryption request for the given KMS key. If absent, the Compute Engine
+// default service account is used.
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+// to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+// may be set.
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+// may be set.
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string { return v.RsaEncryptedKey }).(pulumi.StringPtrOutput)
+}
+
+type RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) Elem() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) RegionInstanceTemplateDiskSourceSnapshotEncryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret RegionInstanceTemplateDiskSourceSnapshotEncryptionKey
+		return ret
+	}).(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+// The self link of the encryption key that is
+// stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+// may be set.
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeySelfLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account being used for the
+// encryption request for the given KMS key. If absent, the Compute Engine
+// default service account is used.
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+// to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+// may be set.
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+// may be set.
+func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RsaEncryptedKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type RegionInstanceTemplateGuestAccelerator struct {
 	// The number of the guest accelerator cards exposed to this instance.
 	Count int `pulumi:"count"`
@@ -13976,7 +14202,6 @@ func (o RegionSecurityPolicyRulePreconfiguredWafConfigPtrOutput) Exclusions() Re
 }
 
 type RegionSecurityPolicyRulePreconfiguredWafConfigExclusion struct {
-	// (Optional, Beta)
 	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestBodies []RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody `pulumi:"requestBodies"`
@@ -14013,7 +14238,6 @@ type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
 }
 
 type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
-	// (Optional, Beta)
 	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestBodies RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput `pulumi:"requestBodies"`
@@ -14089,7 +14313,6 @@ func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToRegionS
 	return o
 }
 
-// (Optional, Beta)
 // A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 // Structure is documented below.
 func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestBodies() RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
@@ -17088,7 +17311,6 @@ type RegionUrlMapDefaultRouteActionRequestMirrorPolicy struct {
 	// The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
 	// Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService *string `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent *float64 `pulumi:"mirrorPercent"`
@@ -17110,7 +17332,6 @@ type RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs struct {
 	// The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
 	// Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService pulumi.StringPtrInput `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent pulumi.Float64PtrInput `pulumi:"mirrorPercent"`
@@ -17200,7 +17421,6 @@ func (o RegionUrlMapDefaultRouteActionRequestMirrorPolicyOutput) BackendService(
 	return o.ApplyT(func(v RegionUrlMapDefaultRouteActionRequestMirrorPolicy) *string { return v.BackendService }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o RegionUrlMapDefaultRouteActionRequestMirrorPolicyOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -17243,7 +17463,6 @@ func (o RegionUrlMapDefaultRouteActionRequestMirrorPolicyPtrOutput) BackendServi
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o RegionUrlMapDefaultRouteActionRequestMirrorPolicyPtrOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -21210,7 +21429,6 @@ type RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy struct {
 	// The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
 	// Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService string `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent *float64 `pulumi:"mirrorPercent"`
@@ -21232,7 +21450,6 @@ type RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs struct {
 	// The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
 	// Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService pulumi.StringInput `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent pulumi.Float64PtrInput `pulumi:"mirrorPercent"`
@@ -21322,7 +21539,6 @@ func (o RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyOutput) Back
 	return o.ApplyT(func(v RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy) string { return v.BackendService }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -21365,7 +21581,6 @@ func (o RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrOutput) B
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -25030,7 +25245,6 @@ type RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy struct {
 	// The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
 	// Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService string `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent *float64 `pulumi:"mirrorPercent"`
@@ -25052,7 +25266,6 @@ type RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs struct {
 	// The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
 	// Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService pulumi.StringInput `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent pulumi.Float64PtrInput `pulumi:"mirrorPercent"`
@@ -25142,7 +25355,6 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput) Bac
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy) string { return v.BackendService }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -25185,7 +25397,6 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -29930,7 +30141,6 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy struct {
 	// The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
 	// Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService string `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent *float64 `pulumi:"mirrorPercent"`
@@ -29952,7 +30162,6 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs struct {
 	// The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
 	// Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService pulumi.StringInput `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent pulumi.Float64PtrInput `pulumi:"mirrorPercent"`
@@ -30042,7 +30251,6 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyOutput) Ba
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy) string { return v.BackendService }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -30087,7 +30295,6 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -48164,7 +48371,6 @@ func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) Exclusions() Security
 }
 
 type SecurityPolicyRulePreconfiguredWafConfigExclusion struct {
-	// (Optional, Beta)
 	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestBodies []SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody `pulumi:"requestBodies"`
@@ -48201,7 +48407,6 @@ type SecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
 }
 
 type SecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
-	// (Optional, Beta)
 	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestBodies SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput `pulumi:"requestBodies"`
@@ -48277,7 +48482,6 @@ func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToSecurityPolic
 	return o
 }
 
-// (Optional, Beta)
 // A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 // Structure is documented below.
 func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestBodies() SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
@@ -52623,6 +52827,7 @@ func (o SnapshotSettingsStorageLocationLocationArrayOutput) Index(i pulumi.IntIn
 
 type SnapshotSnapshotEncryptionKey struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
+	// Specify the key without a `/cryptoKeyVersions/` suffix.
 	KmsKeySelfLink *string `pulumi:"kmsKeySelfLink"`
 	// The service account used for the encryption request for the given KMS key.
 	// If absent, the Compute Engine Service Agent service account is used.
@@ -52654,6 +52859,7 @@ type SnapshotSnapshotEncryptionKeyInput interface {
 
 type SnapshotSnapshotEncryptionKeyArgs struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
+	// Specify the key without a `/cryptoKeyVersions/` suffix.
 	KmsKeySelfLink pulumi.StringPtrInput `pulumi:"kmsKeySelfLink"`
 	// The service account used for the encryption request for the given KMS key.
 	// If absent, the Compute Engine Service Agent service account is used.
@@ -52750,6 +52956,7 @@ func (o SnapshotSnapshotEncryptionKeyOutput) ToSnapshotSnapshotEncryptionKeyPtrO
 }
 
 // The name of the encryption key that is stored in Google Cloud KMS.
+// Specify the key without a `/cryptoKeyVersions/` suffix.
 func (o SnapshotSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) *string { return v.KmsKeySelfLink }).(pulumi.StringPtrOutput)
 }
@@ -52806,6 +53013,7 @@ func (o SnapshotSnapshotEncryptionKeyPtrOutput) Elem() SnapshotSnapshotEncryptio
 }
 
 // The name of the encryption key that is stored in Google Cloud KMS.
+// Specify the key without a `/cryptoKeyVersions/` suffix.
 func (o SnapshotSnapshotEncryptionKeyPtrOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) *string {
 		if v == nil {
@@ -59181,7 +59389,6 @@ func (o URLMapDefaultRouteActionMaxStreamDurationPtrOutput) Seconds() pulumi.Str
 type URLMapDefaultRouteActionRequestMirrorPolicy struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService string `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent *float64 `pulumi:"mirrorPercent"`
@@ -59201,7 +59408,6 @@ type URLMapDefaultRouteActionRequestMirrorPolicyInput interface {
 type URLMapDefaultRouteActionRequestMirrorPolicyArgs struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService pulumi.StringInput `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent pulumi.Float64PtrInput `pulumi:"mirrorPercent"`
@@ -59289,7 +59495,6 @@ func (o URLMapDefaultRouteActionRequestMirrorPolicyOutput) BackendService() pulu
 	return o.ApplyT(func(v URLMapDefaultRouteActionRequestMirrorPolicy) string { return v.BackendService }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o URLMapDefaultRouteActionRequestMirrorPolicyOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -59330,7 +59535,6 @@ func (o URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput) BackendService() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -66032,7 +66236,6 @@ func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput) Seconds()
 type URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService string `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent *float64 `pulumi:"mirrorPercent"`
@@ -66052,7 +66255,6 @@ type URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyInput interface {
 type URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService pulumi.StringInput `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent pulumi.Float64PtrInput `pulumi:"mirrorPercent"`
@@ -66140,7 +66342,6 @@ func (o URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyOutput) BackendSer
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy) string { return v.BackendService }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -66181,7 +66382,6 @@ func (o URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrOutput) Backend
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -72709,7 +72909,6 @@ func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput) Seconds(
 type URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService string `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent *float64 `pulumi:"mirrorPercent"`
@@ -72729,7 +72928,6 @@ type URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyInput interface {
 type URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService pulumi.StringInput `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent pulumi.Float64PtrInput `pulumi:"mirrorPercent"`
@@ -72817,7 +73015,6 @@ func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput) BackendSe
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy) string { return v.BackendService }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -72858,7 +73055,6 @@ func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput) Backen
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -80766,7 +80962,6 @@ func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput) Seconds
 type URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService string `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent *float64 `pulumi:"mirrorPercent"`
@@ -80786,7 +80981,6 @@ type URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyInput interface {
 type URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService pulumi.StringInput `pulumi:"backendService"`
-	// (Optional, Beta)
 	// The percentage of requests to be mirrored to backendService.
 	// The value must be between 0.0 and 100.0 inclusive.
 	MirrorPercent pulumi.Float64PtrInput `pulumi:"mirrorPercent"`
@@ -80874,7 +81068,6 @@ func (o URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyOutput) BackendS
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy) string { return v.BackendService }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -80915,7 +81108,6 @@ func (o URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput) Backe
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // The percentage of requests to be mirrored to backendService.
 // The value must be between 0.0 and 100.0 inclusive.
 func (o URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput) MirrorPercent() pulumi.Float64PtrOutput {
@@ -88047,125 +88239,9 @@ func (o GetBackendServiceConsistentHashHttpCookyArrayOutput) Index(i pulumi.IntI
 	}).(GetBackendServiceConsistentHashHttpCookyOutput)
 }
 
-type GetBackendServiceConsistentHashHttpCookyTtl struct {
-	// Span of time that's a fraction of a second at nanosecond
-	// resolution. Durations less than one second are represented
-	// with a 0 seconds field and a positive nanos field. Must
-	// be from 0 to 999,999,999 inclusive.
-	Nanos int `pulumi:"nanos"`
-	// Span of time at a resolution of a second.
-	// Must be from 0 to 315,576,000,000 inclusive.
-	Seconds int `pulumi:"seconds"`
-}
-
-// GetBackendServiceConsistentHashHttpCookyTtlInput is an input type that accepts GetBackendServiceConsistentHashHttpCookyTtlArgs and GetBackendServiceConsistentHashHttpCookyTtlOutput values.
-// You can construct a concrete instance of `GetBackendServiceConsistentHashHttpCookyTtlInput` via:
-//
-//	GetBackendServiceConsistentHashHttpCookyTtlArgs{...}
-type GetBackendServiceConsistentHashHttpCookyTtlInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceConsistentHashHttpCookyTtlOutput() GetBackendServiceConsistentHashHttpCookyTtlOutput
-	ToGetBackendServiceConsistentHashHttpCookyTtlOutputWithContext(context.Context) GetBackendServiceConsistentHashHttpCookyTtlOutput
-}
-
-type GetBackendServiceConsistentHashHttpCookyTtlArgs struct {
-	// Span of time that's a fraction of a second at nanosecond
-	// resolution. Durations less than one second are represented
-	// with a 0 seconds field and a positive nanos field. Must
-	// be from 0 to 999,999,999 inclusive.
-	Nanos pulumi.IntInput `pulumi:"nanos"`
-	// Span of time at a resolution of a second.
-	// Must be from 0 to 315,576,000,000 inclusive.
-	Seconds pulumi.IntInput `pulumi:"seconds"`
-}
-
-func (GetBackendServiceConsistentHashHttpCookyTtlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
-}
-
-func (i GetBackendServiceConsistentHashHttpCookyTtlArgs) ToGetBackendServiceConsistentHashHttpCookyTtlOutput() GetBackendServiceConsistentHashHttpCookyTtlOutput {
-	return i.ToGetBackendServiceConsistentHashHttpCookyTtlOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceConsistentHashHttpCookyTtlArgs) ToGetBackendServiceConsistentHashHttpCookyTtlOutputWithContext(ctx context.Context) GetBackendServiceConsistentHashHttpCookyTtlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceConsistentHashHttpCookyTtlOutput)
-}
-
-// GetBackendServiceConsistentHashHttpCookyTtlArrayInput is an input type that accepts GetBackendServiceConsistentHashHttpCookyTtlArray and GetBackendServiceConsistentHashHttpCookyTtlArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceConsistentHashHttpCookyTtlArrayInput` via:
-//
-//	GetBackendServiceConsistentHashHttpCookyTtlArray{ GetBackendServiceConsistentHashHttpCookyTtlArgs{...} }
-type GetBackendServiceConsistentHashHttpCookyTtlArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutput() GetBackendServiceConsistentHashHttpCookyTtlArrayOutput
-	ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(context.Context) GetBackendServiceConsistentHashHttpCookyTtlArrayOutput
-}
-
-type GetBackendServiceConsistentHashHttpCookyTtlArray []GetBackendServiceConsistentHashHttpCookyTtlInput
-
-func (GetBackendServiceConsistentHashHttpCookyTtlArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
-}
-
-func (i GetBackendServiceConsistentHashHttpCookyTtlArray) ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutput() GetBackendServiceConsistentHashHttpCookyTtlArrayOutput {
-	return i.ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceConsistentHashHttpCookyTtlArray) ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(ctx context.Context) GetBackendServiceConsistentHashHttpCookyTtlArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceConsistentHashHttpCookyTtlArrayOutput)
-}
-
-type GetBackendServiceConsistentHashHttpCookyTtlOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceConsistentHashHttpCookyTtlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
-}
-
-func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) ToGetBackendServiceConsistentHashHttpCookyTtlOutput() GetBackendServiceConsistentHashHttpCookyTtlOutput {
-	return o
-}
-
-func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) ToGetBackendServiceConsistentHashHttpCookyTtlOutputWithContext(ctx context.Context) GetBackendServiceConsistentHashHttpCookyTtlOutput {
-	return o
-}
-
-// Span of time that's a fraction of a second at nanosecond
-// resolution. Durations less than one second are represented
-// with a 0 seconds field and a positive nanos field. Must
-// be from 0 to 999,999,999 inclusive.
-func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) Nanos() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCookyTtl) int { return v.Nanos }).(pulumi.IntOutput)
-}
-
-// Span of time at a resolution of a second.
-// Must be from 0 to 315,576,000,000 inclusive.
-func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) Seconds() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCookyTtl) int { return v.Seconds }).(pulumi.IntOutput)
-}
-
-type GetBackendServiceConsistentHashHttpCookyTtlArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
-}
-
-func (o GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutput() GetBackendServiceConsistentHashHttpCookyTtlArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(ctx context.Context) GetBackendServiceConsistentHashHttpCookyTtlArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) Index(i pulumi.IntInput) GetBackendServiceConsistentHashHttpCookyTtlOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceConsistentHashHttpCookyTtl {
-		return vs[0].([]GetBackendServiceConsistentHashHttpCookyTtl)[vs[1].(int)]
-	}).(GetBackendServiceConsistentHashHttpCookyTtlOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput)(nil)).Elem(), RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateGuestAcceleratorInput)(nil)).Elem(), RegionInstanceTemplateGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateGuestAcceleratorArrayInput)(nil)).Elem(), RegionInstanceTemplateGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceArgs{})
@@ -89161,8 +89237,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceConsistentHashArrayInput)(nil)).Elem(), GetBackendServiceConsistentHashArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyInput)(nil)).Elem(), GetBackendServiceConsistentHashHttpCookyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyArrayInput)(nil)).Elem(), GetBackendServiceConsistentHashHttpCookyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyTtlInput)(nil)).Elem(), GetBackendServiceConsistentHashHttpCookyTtlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyTtlArrayInput)(nil)).Elem(), GetBackendServiceConsistentHashHttpCookyTtlArray{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceOutput{})
@@ -90158,6 +90234,4 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceConsistentHashArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceConsistentHashHttpCookyOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceConsistentHashHttpCookyArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceConsistentHashHttpCookyTtlOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceConsistentHashHttpCookyTtlArrayOutput{})
 }

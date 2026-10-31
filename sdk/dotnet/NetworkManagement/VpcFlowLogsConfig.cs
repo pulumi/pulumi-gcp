@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Management Vpc Flow Logs Config Vpn Basic
     /// 
     /// ```csharp
@@ -157,6 +158,7 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Management Vpc Flow Logs Config Network Basic
     /// 
     /// ```csharp
@@ -188,6 +190,7 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Management Vpc Flow Logs Config Subnet Basic
     /// 
     /// ```csharp

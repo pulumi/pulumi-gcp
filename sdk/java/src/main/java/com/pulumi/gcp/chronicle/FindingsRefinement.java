@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Findings Refinement Full
  * 
  * <pre>

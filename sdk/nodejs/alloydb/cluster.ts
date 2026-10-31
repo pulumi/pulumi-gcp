@@ -48,6 +48,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Alloydb Cluster Before Upgrade
  *
  * ```typescript
@@ -78,6 +79,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Alloydb Cluster After Upgrade
  *
  * ```typescript
@@ -108,6 +110,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Alloydb Cluster Full
  *
  * ```typescript
@@ -157,6 +160,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Alloydb Cluster Restore
  *
  * ```typescript
@@ -229,6 +233,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Alloydb Secondary Cluster Basic
  *
  * ```typescript

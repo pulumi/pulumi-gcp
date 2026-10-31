@@ -99,6 +99,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Job Query Table Reference
  * 
  * <pre>
@@ -167,6 +168,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Job Load
  * 
  * <pre>
@@ -233,6 +235,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Job Load Geojson
  * 
  * <pre>
@@ -325,6 +328,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Job Load Parquet
  * 
  * <pre>
@@ -417,6 +421,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Job Copy
  * 
  * <pre>
@@ -574,6 +579,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Bigquery Job Extract
  * 
  * <pre>

@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Reservation Basic Beta
     /// 
     /// ```csharp
@@ -75,7 +76,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 MinCpuPlatform = "Intel Cascade Lake",
     ///                 MachineType = "n2-standard-2",
-    ///                 MaintenanceInterval = "PERIODIC",
+    ///                 MaintenanceInterval = "RECURRENT",
     ///             },
     ///         },
     ///         EnableEmergentMaintenance = true,
@@ -83,6 +84,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Reservation Source Instance Template
     /// 
     /// ```csharp
@@ -162,6 +164,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Reservation Sharing Policy
     /// 
     /// ```csharp

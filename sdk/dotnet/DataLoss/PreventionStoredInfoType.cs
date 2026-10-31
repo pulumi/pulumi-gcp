@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Stored Info Type Dictionary
     /// 
     /// ```csharp
@@ -77,6 +78,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Stored Info Type Large Custom Dictionary
     /// 
     /// ```csharp
@@ -126,6 +128,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Stored Info Type With Id
     /// 
     /// ```csharp

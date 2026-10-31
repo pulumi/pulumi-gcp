@@ -273,6 +273,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Agent Remote A2a Agent
     /// 
     /// ```csharp
@@ -380,6 +381,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Agent Remote Dialogflow Agent
     /// 
     /// ```csharp
@@ -443,6 +445,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Agent Remote Dialogflow Agent Interruption
     /// 
     /// ```csharp

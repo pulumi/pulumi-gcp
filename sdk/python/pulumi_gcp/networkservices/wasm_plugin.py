@@ -505,6 +505,7 @@ class WasmPlugin(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Wasm Plugin Basic Generic Repository
 
         ```python
@@ -619,6 +620,7 @@ class WasmPlugin(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Wasm Plugin Basic Generic Repository
 
         ```python

@@ -97,6 +97,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Cloud Identity Group Membership User
  * 
  * <pre>

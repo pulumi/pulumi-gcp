@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Colab Runtime Stopped
  * 
  * <pre>
@@ -144,6 +145,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Colab Runtime Full
  * 
  * <pre>

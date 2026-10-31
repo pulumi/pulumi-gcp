@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** When importing the resource with `pulumi import`, provide the destination project and location
  * in the format projects/{{destination_project}}/locations/{{destination_location}}/subscriptions/{{subscription_id}}
+ *
  * ## Example Usage
  *
  * ### Bigquery Analyticshub Listing Subscription Basic
@@ -65,6 +66,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Listing Subscription Multiregion
  *
  * ```typescript
@@ -100,6 +102,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Listing Subscription Pubsub
  *
  * ```typescript

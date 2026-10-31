@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? MaxUnavailable { get; set; }
 
         /// <summary>
-        /// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+        /// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

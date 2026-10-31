@@ -48,6 +48,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// 
     /// ### Logging Saved Query Private
     /// 
     /// ```csharp
@@ -74,6 +75,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// 
     /// ### Logging Saved Query Summary Fields
     /// 
     /// ```csharp
@@ -112,6 +114,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// 
     /// ### Logging Saved Query Sql Basic
     /// 
     /// ```csharp

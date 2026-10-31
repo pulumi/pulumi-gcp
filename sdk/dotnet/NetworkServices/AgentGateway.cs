@@ -139,6 +139,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Agent Gateway Client To Agent
     /// 
     /// ```csharp
@@ -177,6 +178,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Agent Gateway Self Managed
     /// 
     /// ```csharp

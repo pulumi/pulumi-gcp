@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     value: "medium=\"CHAT\"",
  * });
  * ```
+ *
  * ### Contact Center Insights View Full
  *
  * ```typescript

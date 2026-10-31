@@ -5,9 +5,11 @@ package com.pulumi.gcp.colab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs;
 import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeVmImageArgs;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NotebookExecutionWorkbenchRuntimeArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,25 +17,43 @@ public final class NotebookExecutionWorkbenchRuntimeArgs extends com.pulumi.reso
     public static final NotebookExecutionWorkbenchRuntimeArgs Empty = new NotebookExecutionWorkbenchRuntimeArgs();
 
     /**
+     * Use a container image to start the workbench instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customContainerImage")
+    private @Nullable Output<NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs> customContainerImage;
+
+    /**
+     * @return Use a container image to start the workbench instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs>> customContainerImage() {
+        return Optional.ofNullable(this.customContainerImage);
+    }
+
+    /**
      * Custom Compute Engine VM image for the Workbench instance.
      * Structure is documented below.
      * 
      */
-    @Import(name="vmImage", required=true)
-    private Output<NotebookExecutionWorkbenchRuntimeVmImageArgs> vmImage;
+    @Import(name="vmImage")
+    private @Nullable Output<NotebookExecutionWorkbenchRuntimeVmImageArgs> vmImage;
 
     /**
      * @return Custom Compute Engine VM image for the Workbench instance.
      * Structure is documented below.
      * 
      */
-    public Output<NotebookExecutionWorkbenchRuntimeVmImageArgs> vmImage() {
-        return this.vmImage;
+    public Optional<Output<NotebookExecutionWorkbenchRuntimeVmImageArgs>> vmImage() {
+        return Optional.ofNullable(this.vmImage);
     }
 
     private NotebookExecutionWorkbenchRuntimeArgs() {}
 
     private NotebookExecutionWorkbenchRuntimeArgs(NotebookExecutionWorkbenchRuntimeArgs $) {
+        this.customContainerImage = $.customContainerImage;
         this.vmImage = $.vmImage;
     }
 
@@ -56,13 +76,36 @@ public final class NotebookExecutionWorkbenchRuntimeArgs extends com.pulumi.reso
         }
 
         /**
+         * @param customContainerImage Use a container image to start the workbench instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customContainerImage(@Nullable Output<NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs> customContainerImage) {
+            $.customContainerImage = customContainerImage;
+            return this;
+        }
+
+        /**
+         * @param customContainerImage Use a container image to start the workbench instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customContainerImage(NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs customContainerImage) {
+            return customContainerImage(Output.of(customContainerImage));
+        }
+
+        /**
          * @param vmImage Custom Compute Engine VM image for the Workbench instance.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder vmImage(Output<NotebookExecutionWorkbenchRuntimeVmImageArgs> vmImage) {
+        public Builder vmImage(@Nullable Output<NotebookExecutionWorkbenchRuntimeVmImageArgs> vmImage) {
             $.vmImage = vmImage;
             return this;
         }
@@ -79,9 +122,6 @@ public final class NotebookExecutionWorkbenchRuntimeArgs extends com.pulumi.reso
         }
 
         public NotebookExecutionWorkbenchRuntimeArgs build() {
-            if ($.vmImage == null) {
-                throw new MissingRequiredPropertyException("NotebookExecutionWorkbenchRuntimeArgs", "vmImage");
-            }
             return $;
         }
     }

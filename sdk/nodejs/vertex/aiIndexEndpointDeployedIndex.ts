@@ -89,6 +89,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
  * ### Vertex Ai Index Endpoint Deployed Index Basic Two
  *
  * ```typescript

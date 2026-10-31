@@ -67,6 +67,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Eventarc Pipeline With Http Destination
 //
 // ```go
@@ -103,6 +104,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Eventarc Pipeline With Workflow Destination
 //
 // ```go
@@ -172,6 +174,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Eventarc Pipeline With Oidc And Json Format
 //
 // ```go
@@ -243,6 +246,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Eventarc Pipeline With Oauth And Protobuf Format
 //
 // ```go
@@ -332,6 +336,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Eventarc Pipeline With Cmek And Avro Format
 //
 // ```go

@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Scc Management Folder Security Health Analytics Custom Module Full
  *
  * ```typescript

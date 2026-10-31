@@ -708,6 +708,7 @@ class DataStore(pulumi.CustomResource):
             create_advanced_site_search=False,
             skip_default_schema_creation=False)
         ```
+
         ### Discoveryengine Datastore Kms Key Name
 
         ```python
@@ -725,6 +726,7 @@ class DataStore(pulumi.CustomResource):
             create_advanced_site_search=False,
             skip_default_schema_creation=False)
         ```
+
         ### Discoveryengine Datastore Document Processing Config
 
         ```python
@@ -751,6 +753,7 @@ class DataStore(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Discoveryengine Datastore Advanced Site Search Config
 
         ```python
@@ -872,6 +875,7 @@ class DataStore(pulumi.CustomResource):
             create_advanced_site_search=False,
             skip_default_schema_creation=False)
         ```
+
         ### Discoveryengine Datastore Kms Key Name
 
         ```python
@@ -889,6 +893,7 @@ class DataStore(pulumi.CustomResource):
             create_advanced_site_search=False,
             skip_default_schema_creation=False)
         ```
+
         ### Discoveryengine Datastore Document Processing Config
 
         ```python
@@ -915,6 +920,7 @@ class DataStore(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Discoveryengine Datastore Advanced Site Search Config
 
         ```python

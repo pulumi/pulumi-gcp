@@ -51,6 +51,7 @@ import * as utilities from "../utilities";
  *     physicalBlockSizeBytes: 4096,
  * });
  * ```
+ *
  * ### Disk Basic Wo
  *
  * ```typescript
@@ -72,6 +73,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Disk Rsa Encrypted Key Wo
  *
  * ```typescript
@@ -89,6 +91,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Disk Async
  *
  * ```typescript
@@ -111,6 +114,7 @@ import * as utilities from "../utilities";
  *     physicalBlockSizeBytes: 4096,
  * });
  * ```
+ *
  * ### Disk Features
  *
  * ```typescript
@@ -242,8 +246,9 @@ export class Disk extends pulumi.CustomResource {
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
      * you do not need to provide a key to use the disk later.
-     * ~>**NOTE** Only changing `kmsKeySelfLink` between Cloud KMS keys is
-     * done in place; other changes to this block recreate the disk.
+     * ~>**NOTE** `kmsKeySelfLink` can be added or changed in place.
+     * Removing it, or changing it while `kmsKeyServiceAccount` is set,
+     * fails at plan time. Other changes to this block recreate the disk.
      * Structure is documented below.
      */
     declare public readonly diskEncryptionKey: pulumi.Output<outputs.compute.DiskDiskEncryptionKey | undefined>;
@@ -674,8 +679,9 @@ export interface DiskState {
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
      * you do not need to provide a key to use the disk later.
-     * ~>**NOTE** Only changing `kmsKeySelfLink` between Cloud KMS keys is
-     * done in place; other changes to this block recreate the disk.
+     * ~>**NOTE** `kmsKeySelfLink` can be added or changed in place.
+     * Removing it, or changing it while `kmsKeyServiceAccount` is set,
+     * fails at plan time. Other changes to this block recreate the disk.
      * Structure is documented below.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey | undefined>;
@@ -988,8 +994,9 @@ export interface DiskArgs {
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
      * you do not need to provide a key to use the disk later.
-     * ~>**NOTE** Only changing `kmsKeySelfLink` between Cloud KMS keys is
-     * done in place; other changes to this block recreate the disk.
+     * ~>**NOTE** `kmsKeySelfLink` can be added or changed in place.
+     * Removing it, or changing it while `kmsKeyServiceAccount` is set,
+     * fails at plan time. Other changes to this block recreate the disk.
      * Structure is documented below.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey | undefined>;

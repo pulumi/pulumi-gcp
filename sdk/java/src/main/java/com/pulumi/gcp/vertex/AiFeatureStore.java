@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Featurestore With Beta Fields
  * 
  * <pre>
@@ -118,6 +119,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Featurestore Scaling
  * 
  * <pre>

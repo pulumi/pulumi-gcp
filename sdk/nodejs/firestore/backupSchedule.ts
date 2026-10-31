@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     dailyRecurrence: {},
  * });
  * ```
+ *
  * ### Firestore Backup Schedule Weekly
  *
  * ```typescript

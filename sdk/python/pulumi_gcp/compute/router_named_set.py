@@ -421,6 +421,7 @@ class RouterNamedSet(pulumi.CustomResource):
                 }],
             }])
         ```
+
         ### Router Named Set Prefix
 
         ```python
@@ -452,6 +453,7 @@ class RouterNamedSet(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Router Named Set Community
 
         ```python
@@ -585,6 +587,7 @@ class RouterNamedSet(pulumi.CustomResource):
                 }],
             }])
         ```
+
         ### Router Named Set Prefix
 
         ```python
@@ -616,6 +619,7 @@ class RouterNamedSet(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Router Named Set Community
 
         ```python

@@ -57,6 +57,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Build
 //
 // ```go
@@ -199,6 +200,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Service Account
 //
 // ```go
@@ -267,6 +269,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Include Build Logs
 //
 // ```go
@@ -302,6 +305,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Pubsub Config
 //
 // ```go
@@ -354,6 +358,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Webhook Config
 //
 // ```go
@@ -445,6 +450,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Manual
 //
 // ```go
@@ -483,6 +489,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Manual Github Enterprise
 //
 // ```go
@@ -521,6 +528,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Manual Bitbucket Server
 //
 // ```go
@@ -559,6 +567,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Repo
 //
 // ```go
@@ -613,6 +622,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Bitbucket Server Push
 //
 // ```go
@@ -649,6 +659,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Bitbucket Server Pull Request
 //
 // ```go
@@ -686,6 +697,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Github Enterprise
 //
 // ```go
@@ -721,6 +733,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Allow Failure
 //
 // ```go
@@ -831,6 +844,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Allow Exit Codes
 //
 // ```go
@@ -944,6 +958,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Pubsub With Repo
 //
 // ```go
@@ -1013,6 +1028,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Developer Connect Pull
 //
 // ```go
@@ -1047,6 +1063,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Developer Connect Push
 //
 // ```go
@@ -1080,6 +1097,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Developer Connect Push Branch
 //
 // ```go

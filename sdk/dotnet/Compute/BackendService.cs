@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service External Iap
     /// 
     /// ```csharp
@@ -86,6 +87,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Cache Simple
     /// 
     /// ```csharp
@@ -121,6 +123,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Cache Include Http Headers
     /// 
     /// ```csharp
@@ -153,6 +156,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Cache Include Named Cookies
     /// 
     /// ```csharp
@@ -189,6 +193,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Cache
     /// 
     /// ```csharp
@@ -229,6 +234,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Cache Bypass Cache On Request Headers
     /// 
     /// ```csharp
@@ -280,6 +286,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Traffic Director Round Robin
     /// 
     /// ```csharp
@@ -309,6 +316,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Traffic Director Ring Hash
     /// 
     /// ```csharp
@@ -367,6 +375,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Stateful Session Affinity
     /// 
     /// ```csharp
@@ -406,6 +415,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Network Endpoint
     /// 
     /// ```csharp
@@ -455,6 +465,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service In Flight
     /// 
     /// ```csharp
@@ -557,6 +568,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service External Managed
     /// 
     /// ```csharp
@@ -586,6 +598,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Ip Address Selection Policy
     /// 
     /// ```csharp
@@ -605,6 +618,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Custom Metrics
     /// 
     /// ```csharp
@@ -691,6 +705,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Tls Settings
     /// 
     /// ```csharp
@@ -742,6 +757,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Identity
     /// 
     /// ```csharp
@@ -776,6 +792,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Dynamic Forwarding
     /// 
     /// ```csharp
@@ -801,6 +818,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Dynamic Forwarding Forward Proxy Cloud Run
     /// 
     /// ```csharp
@@ -828,6 +846,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
     /// 
     /// ```csharp

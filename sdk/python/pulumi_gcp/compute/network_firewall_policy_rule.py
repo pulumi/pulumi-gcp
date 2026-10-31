@@ -831,6 +831,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Firewall Policy Rule Network Scope Egress
 
         ```python
@@ -858,6 +859,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Firewall Policy Rule Network Scope Ingress
 
         ```python
@@ -887,6 +889,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Firewall Policy Rule Network Context Egress
 
         ```python
@@ -914,6 +917,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Firewall Policy Rule Network Context Ingress
 
         ```python
@@ -943,6 +947,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Firewall Policy Rule Target Type Internal Managed Lb
 
         ```python
@@ -1153,6 +1158,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Firewall Policy Rule Network Scope Egress
 
         ```python
@@ -1180,6 +1186,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Firewall Policy Rule Network Scope Ingress
 
         ```python
@@ -1209,6 +1216,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Firewall Policy Rule Network Context Egress
 
         ```python
@@ -1236,6 +1244,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Firewall Policy Rule Network Context Ingress
 
         ```python
@@ -1265,6 +1274,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Firewall Policy Rule Target Type Internal Managed Lb
 
         ```python

@@ -97,6 +97,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Document Nested Document
     /// 
     /// ```csharp

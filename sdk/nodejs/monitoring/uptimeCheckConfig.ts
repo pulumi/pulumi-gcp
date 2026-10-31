@@ -62,6 +62,7 @@ import * as utilities from "../utilities";
  *     checkerType: "STATIC_IP_CHECKERS",
  * });
  * ```
+ *
  * ### Uptime Check Config Http Password Wo
  *
  * ```typescript
@@ -108,6 +109,7 @@ import * as utilities from "../utilities";
  *     checkerType: "STATIC_IP_CHECKERS",
  * });
  * ```
+ *
  * ### Uptime Check Config Status Code
  *
  * ```typescript
@@ -153,6 +155,7 @@ import * as utilities from "../utilities";
  *     checkerType: "STATIC_IP_CHECKERS",
  * });
  * ```
+ *
  * ### Uptime Check Config Https
  *
  * ```typescript
@@ -185,6 +188,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Uptime Check Tcp
  *
  * ```typescript
@@ -210,6 +214,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Uptime Check Config Synthetic Monitor
  *
  * ```typescript

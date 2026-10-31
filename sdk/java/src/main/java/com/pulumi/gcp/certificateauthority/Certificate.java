@@ -188,6 +188,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Privateca Certificate With Template
  * 
  * <pre>
@@ -373,6 +374,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Privateca Certificate Csr
  * 
  * <pre>
@@ -471,6 +473,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Privateca Certificate No Authority
  * 
  * <pre>
@@ -612,6 +615,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Privateca Certificate Custom Ski
  * 
  * <pre>
@@ -757,6 +761,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Privateca Certificate Subject Config Org Optional
  * 
  * <pre>
@@ -888,6 +893,167 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
+ * }
+ * </pre>
+ * 
+ * ### Privateca Certificate With Requested Not Before Time
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.certificateauthority.Certificate;
+ * import com.pulumi.gcp.certificateauthority.CertificateArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigSubjectAltNameArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigNameConstraintsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigPublicKeyArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
+ *             .location("us-central1")
+ *             .name("my-pool")
+ *             .tier("ENTERPRISE")
+ *             .issuancePolicy(CaPoolIssuancePolicyArgs.builder()
+ *                 .allowRequesterSpecifiedNotBeforeTime(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
+ *             .location("us-central1")
+ *             .pool(default_.name())
+ *             .certificateAuthorityId("my-authority")
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
+ *                         .build())
+ *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
+ *                         .dnsNames("hashicorp.com")
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .skipGracePeriod(true)
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .build());
+ * 
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
+ *             .location("us-central1")
+ *             .pool(default_.name())
+ *             .certificateAuthority(defaultAuthority.certificateAuthorityId())
+ *             .lifetime("86000s")
+ *             .name("my-certificate")
+ *             .requestedNotBeforeTime(defaultAuthority.updateTime())
+ *             .config(CertificateConfigArgs.builder()
+ *                 .subjectConfig(CertificateConfigSubjectConfigArgs.builder()
+ *                     .subject(CertificateConfigSubjectConfigSubjectArgs.builder()
+ *                         .commonName("san1.example.com")
+ *                         .countryCode("us")
+ *                         .organization("google")
+ *                         .organizationalUnit("enterprise")
+ *                         .locality("mountain view")
+ *                         .province("california")
+ *                         .streetAddress("1600 amphitheatre parkway")
+ *                         .build())
+ *                     .subjectAltName(CertificateConfigSubjectConfigSubjectAltNameArgs.builder()
+ *                         .emailAddresses("email}{@literal @}{@code example.com")
+ *                         .ipAddresses("127.0.0.1")
+ *                         .uris("http://www.ietf.org/rfc/rfc3986.txt")
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(CertificateConfigX509ConfigArgs.builder()
+ *                     .caOptions(CertificateConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(CertificateConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .crlSign(false)
+ *                             .decipherOnly(false)
+ *                             .build())
+ *                         .extendedKeyUsage(CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(false)
+ *                             .build())
+ *                         .build())
+ *                     .nameConstraints(CertificateConfigX509ConfigNameConstraintsArgs.builder()
+ *                         .critical(true)
+ *                         .permittedDnsNames("*.example.com")
+ *                         .excludedDnsNames("*.deny.example.com")
+ *                         .permittedIpRanges("10.0.0.0/8")
+ *                         .excludedIpRanges("10.1.1.0/24")
+ *                         .permittedEmailAddresses(".example.com")
+ *                         .excludedEmailAddresses(".deny.example.com")
+ *                         .permittedUris(".example.com")
+ *                         .excludedUris(".deny.example.com")
+ *                         .build())
+ *                     .build())
+ *                 .publicKey(CertificateConfigPublicKeyArgs.builder()
+ *                     .format("PEM")
+ *                     .key(StdFunctions.filebase64(Filebase64Args.builder()
+ *                         .input("test-fixtures/rsa_public.pem")
+ *                         .build()).result())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -1207,6 +1373,24 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * The requested notBeforeTime of this Certificate. This field may only be set
+     * if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+     * issuing CaPool.
+     * 
+     */
+    @Export(name="requestedNotBeforeTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> requestedNotBeforeTime;
+
+    /**
+     * @return The requested notBeforeTime of this Certificate. This field may only be set
+     * if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+     * issuing CaPool.
+     * 
+     */
+    public Output<Optional<String>> requestedNotBeforeTime() {
+        return Codegen.optional(this.requestedNotBeforeTime);
     }
     /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is

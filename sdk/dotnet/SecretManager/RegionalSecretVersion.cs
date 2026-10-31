@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret Version Basic Write Only
     /// 
     /// ```csharp
@@ -82,6 +83,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret Version With Base64 String Secret Data Write Only
     /// 
     /// ```csharp
@@ -112,6 +114,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret Version With Base64 Data
     /// 
     /// ```csharp
@@ -141,6 +144,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret Version Disabled
     /// 
     /// ```csharp
@@ -166,6 +170,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret Version Deletion Policy Abandon
     /// 
     /// ```csharp
@@ -191,6 +196,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Regional Secret Version Deletion Policy Disable
     /// 
     /// ```csharp

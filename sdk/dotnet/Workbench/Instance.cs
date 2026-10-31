@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workbench Instance Basic Container
     /// 
     /// ```csharp
@@ -77,6 +78,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workbench Instance Basic Gpu
     /// 
     /// ```csharp
@@ -153,6 +155,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workbench Instance Labels Stopped
     /// 
     /// ```csharp
@@ -201,6 +204,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workbench Instance Full
     /// 
     /// ```csharp
@@ -392,6 +396,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workbench Instance Confidential Compute
     /// 
     /// ```csharp
@@ -428,6 +433,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workbench Instance Euc
     /// 
     /// ```csharp

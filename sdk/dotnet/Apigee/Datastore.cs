@@ -92,6 +92,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Datastore Bigquery
     /// 
     /// ```csharp

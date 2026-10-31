@@ -685,6 +685,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "function": function_neg_function.name,
             })
         ```
+
         ### Region Network Endpoint Group Cloudrun
 
         ```python
@@ -714,6 +715,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "service": cloudrun_neg_service.name,
             })
         ```
+
         ### Region Network Endpoint Group Appengine
 
         ```python
@@ -784,6 +786,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "version": appengine_neg_flexible_app_version.version_id,
             })
         ```
+
         ### Region Network Endpoint Group Appengine Empty
 
         ```python
@@ -797,6 +800,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             region="us-central1",
             app_engine={})
         ```
+
         ### Region Network Endpoint Group Psc
 
         ```python
@@ -809,6 +813,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network_endpoint_type="PRIVATE_SERVICE_CONNECT",
             psc_target_service="asia-northeast3-cloudkms.googleapis.com")
         ```
+
         ### Region Network Endpoint Group Psc Service Attachment
 
         ```python
@@ -868,6 +873,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             },
             subnetwork=default_subnetwork.self_link)
         ```
+
         ### Region Network Endpoint Group Internet Ip Port
 
         ```python
@@ -881,6 +887,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_IP_PORT")
         ```
+
         ### Region Network Endpoint Group Internet Fqdn Port
 
         ```python
@@ -894,6 +901,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
+
         ### Region Network Endpoint Group Portmap
 
         ```python
@@ -1031,6 +1039,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "function": function_neg_function.name,
             })
         ```
+
         ### Region Network Endpoint Group Cloudrun
 
         ```python
@@ -1060,6 +1069,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "service": cloudrun_neg_service.name,
             })
         ```
+
         ### Region Network Endpoint Group Appengine
 
         ```python
@@ -1130,6 +1140,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "version": appengine_neg_flexible_app_version.version_id,
             })
         ```
+
         ### Region Network Endpoint Group Appengine Empty
 
         ```python
@@ -1143,6 +1154,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             region="us-central1",
             app_engine={})
         ```
+
         ### Region Network Endpoint Group Psc
 
         ```python
@@ -1155,6 +1167,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network_endpoint_type="PRIVATE_SERVICE_CONNECT",
             psc_target_service="asia-northeast3-cloudkms.googleapis.com")
         ```
+
         ### Region Network Endpoint Group Psc Service Attachment
 
         ```python
@@ -1214,6 +1227,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             },
             subnetwork=default_subnetwork.self_link)
         ```
+
         ### Region Network Endpoint Group Internet Ip Port
 
         ```python
@@ -1227,6 +1241,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_IP_PORT")
         ```
+
         ### Region Network Endpoint Group Internet Fqdn Port
 
         ```python
@@ -1240,6 +1255,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
+
         ### Region Network Endpoint Group Portmap
 
         ```python

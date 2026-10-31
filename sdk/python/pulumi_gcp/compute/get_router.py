@@ -27,7 +27,7 @@ class GetRouterResult:
     """
     A collection of values returned by getRouter.
     """
-    def __init__(__self__, bgps=None, creation_timestamp=None, deletion_policy=None, description=None, encrypted_interconnect_router=None, id=None, md5_authentication_keys=None, name=None, ncc_gateway=None, network=None, params=None, project=None, region=None, self_link=None):
+    def __init__(__self__, bgps=None, creation_timestamp=None, deletion_policy=None, description=None, encrypted_interconnect_router=None, id=None, md5_authentication_keys=None, name=None, ncc_gateway=None, network=None, params=None, project=None, region=None, router_id=None, self_link=None):
         if bgps and not isinstance(bgps, list):
             raise TypeError("Expected argument 'bgps' to be a list")
         pulumi.set(__self__, "bgps", bgps)
@@ -67,6 +67,9 @@ class GetRouterResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if router_id and not isinstance(router_id, int):
+            raise TypeError("Expected argument 'router_id' to be a int")
+        pulumi.set(__self__, "router_id", router_id)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -140,6 +143,11 @@ class GetRouterResult:
         return pulumi.get(self, "region")
 
     @_builtins.property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> _builtins.int:
+        return pulumi.get(self, "router_id")
+
+    @_builtins.property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> _builtins.str:
         return pulumi.get(self, "self_link")
@@ -164,6 +172,7 @@ class AwaitableGetRouterResult(GetRouterResult):
             params=self.params,
             project=self.project,
             region=self.region,
+            router_id=self.router_id,
             self_link=self.self_link)
 
 
@@ -215,6 +224,7 @@ def get_router(name: Optional[_builtins.str] = None,
         params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
+        router_id=pulumi.get(__ret__, 'router_id'),
         self_link=pulumi.get(__ret__, 'self_link'))
 def get_router_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                       network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -263,4 +273,5 @@ def get_router_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         params=pulumi.get(__response__, 'params'),
         project=pulumi.get(__response__, 'project'),
         region=pulumi.get(__response__, 'region'),
+        router_id=pulumi.get(__response__, 'router_id'),
         self_link=pulumi.get(__response__, 'self_link')))

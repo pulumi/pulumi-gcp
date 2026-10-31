@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Chronicle Dataaccessscope With Dataaccesslabel
  *
  * ```typescript
@@ -60,6 +61,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Chronicle Dataaccessscope With Asset Namespace
  *
  * ```typescript
@@ -76,6 +78,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Chronicle Dataaccessscope With Ingestion Label
  *
  * ```typescript
@@ -95,6 +98,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Chronicle Dataaccessscope With Denied Labels
  *
  * ```typescript

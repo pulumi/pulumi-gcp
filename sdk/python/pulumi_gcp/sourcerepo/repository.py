@@ -295,6 +295,7 @@ class Repository(pulumi.CustomResource):
 
         my_repo = gcp.sourcerepo.Repository("my-repo", name="my/repository")
         ```
+
         ### Sourcerepo Repository Full
 
         ```python
@@ -371,6 +372,7 @@ class Repository(pulumi.CustomResource):
 
         my_repo = gcp.sourcerepo.Repository("my-repo", name="my/repository")
         ```
+
         ### Sourcerepo Repository Full
 
         ```python

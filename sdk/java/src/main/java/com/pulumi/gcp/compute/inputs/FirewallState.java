@@ -206,6 +206,21 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="firewallId")
+    private @Nullable Output<Integer> firewallId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> firewallId() {
+        return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
      * This field denotes the logging options for a particular firewall rule.
      * If defined, logging is enabled, and logs will be exported to Cloud Logging.
      * Structure is documented below.
@@ -499,6 +514,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         this.direction = $.direction;
         this.disabled = $.disabled;
         this.enableLogging = $.enableLogging;
+        this.firewallId = $.firewallId;
         this.logConfig = $.logConfig;
         this.name = $.name;
         this.network = $.network;
@@ -803,6 +819,27 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Deprecated in favor of log_config */
         public Builder enableLogging(Boolean enableLogging) {
             return enableLogging(Output.of(enableLogging));
+        }
+
+        /**
+         * @param firewallId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(@Nullable Output<Integer> firewallId) {
+            $.firewallId = firewallId;
+            return this;
+        }
+
+        /**
+         * @param firewallId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(Integer firewallId) {
+            return firewallId(Output.of(firewallId));
         }
 
         /**

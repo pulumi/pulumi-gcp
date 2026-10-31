@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     cbn: "ZHVtbXkgcGFyc2VyIGNvbmZpZw==",
  * });
  * ```
+ *
  * ### Chronicle Parser Full
  *
  * ```typescript

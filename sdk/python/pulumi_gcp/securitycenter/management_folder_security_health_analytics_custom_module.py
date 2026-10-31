@@ -400,6 +400,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Management Folder Security Health Analytics Custom Module Full
 
         ```python
@@ -525,6 +526,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Management Folder Security Health Analytics Custom Module Full
 
         ```python

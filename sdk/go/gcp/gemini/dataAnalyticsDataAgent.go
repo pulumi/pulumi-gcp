@@ -77,6 +77,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Gemini Data Analytics Data Agent Bigquery
 //
 // ```go
@@ -146,11 +147,61 @@ import (
 //										ProjectId: dataset.Project,
 //										DatasetId: dataset.DatasetId,
 //										TableId:   table.TableId,
+//										Schema: &gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs{
+//											Description: pulumi.String("Sales orders table."),
+//											DisplayName: pulumi.String("Sales Orders"),
+//											Synonyms: pulumi.StringArray{
+//												pulumi.String("orders"),
+//												pulumi.String("purchases"),
+//											},
+//											Tags: pulumi.StringArray{
+//												pulumi.String("sales"),
+//												pulumi.String("finance"),
+//											},
+//											Fields: gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArray{
+//												&gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs{
+//													Name:        pulumi.String("order_id"),
+//													Type:        pulumi.String("STRING"),
+//													Description: pulumi.String("Unique order identifier."),
+//													Mode:        pulumi.String("REQUIRED"),
+//													Synonyms: pulumi.StringArray{
+//														pulumi.String("id"),
+//													},
+//													Tags: pulumi.StringArray{
+//														pulumi.String("identifier"),
+//													},
+//													Category: pulumi.String("DIMENSION"),
+//												},
+//												&gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs{
+//													Name:        pulumi.String("order_total"),
+//													Type:        pulumi.String("FLOAT"),
+//													Description: pulumi.String("Total order amount."),
+//													Mode:        pulumi.String("NULLABLE"),
+//													Synonyms: pulumi.StringArray{
+//														pulumi.String("revenue"),
+//														pulumi.String("amount"),
+//													},
+//													Tags: pulumi.StringArray{
+//														pulumi.String("metric"),
+//													},
+//													Category:    pulumi.String("MEASURE"),
+//													ValueFormat: pulumi.String("$#,##0.00"),
+//												},
+//											},
+//											Filters: gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArray{
+//												&gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgs{
+//													Field: pulumi.String("order_total"),
+//													Value: pulumi.String("0"),
+//													Type:  pulumi.String("ALWAYS_FILTER"),
+//												},
+//											},
+//										},
 //									},
 //								},
 //							},
 //						},
 //						Options: &gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs{
+//							Model: pulumi.String("LATEST_GA_MODEL"),
 //							Analysis: &gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs{
 //								Python: &gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs{
 //									Enabled: pulumi.Bool(true),
@@ -162,8 +213,15 @@ import (
 //						},
 //						ExampleQueries: gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArray{
 //							&gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs{
-//								NaturalLanguageQuestion: pulumi.String("What is the total order value?"),
-//								SqlQuery:                pulumi.String("SELECT SUM(order_total) AS total_order_value FROM sales"),
+//								NaturalLanguageQuestion: pulumi.String("What is the total order value above a threshold?"),
+//								SqlQuery:                pulumi.String("SELECT SUM(order_total) AS total_order_value FROM sales WHERE order_total > @min_total"),
+//								Parameters: gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArray{
+//									&gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs{
+//										Name:        pulumi.String("min_total"),
+//										Description: pulumi.String("Minimum order total threshold."),
+//										DataType:    pulumi.String("FLOAT64"),
+//									},
+//								},
 //							},
 //						},
 //						GlossaryTerms: gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArray{
@@ -219,6 +277,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Gemini Data Analytics Data Agent Cmek
 //
 // ```go

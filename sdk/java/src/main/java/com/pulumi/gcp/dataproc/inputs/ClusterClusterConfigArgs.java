@@ -14,11 +14,14 @@ import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigInitializationActionArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigLifecycleConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterFlexibleConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMetastoreConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigPreemptibleWorkerConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigSecurityConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigSoftwareConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerFlexibleConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -252,6 +255,27 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The configuration for the master flexible instance group
+     * in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+     * Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+     * Structure defined below.
+     * 
+     */
+    @Import(name="masterFlexibleConfig")
+    private @Nullable Output<ClusterClusterConfigMasterFlexibleConfigArgs> masterFlexibleConfig;
+
+    /**
+     * @return The configuration for the master flexible instance group
+     * in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+     * Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+     * Structure defined below.
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigMasterFlexibleConfigArgs>> masterFlexibleConfig() {
+        return Optional.ofNullable(this.masterFlexibleConfig);
+    }
+
+    /**
      * The config setting for metastore service with the cluster.
      * Structure defined below.
      * ***
@@ -291,6 +315,27 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<ClusterClusterConfigPreemptibleWorkerConfigArgs>> preemptibleWorkerConfig() {
         return Optional.ofNullable(this.preemptibleWorkerConfig);
+    }
+
+    /**
+     * The configuration for the secondary worker flexible
+     * instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+     * `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+     * Structure defined below.
+     * 
+     */
+    @Import(name="secondaryWorkerFlexibleConfig")
+    private @Nullable Output<ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs> secondaryWorkerFlexibleConfig;
+
+    /**
+     * @return The configuration for the secondary worker flexible
+     * instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+     * `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+     * Structure defined below.
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs>> secondaryWorkerFlexibleConfig() {
+        return Optional.ofNullable(this.secondaryWorkerFlexibleConfig);
     }
 
     /**
@@ -388,6 +433,25 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.workerConfig);
     }
 
+    /**
+     * The configuration for the worker flexible instance group
+     * in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+     * Requires `masterFlexibleConfig`. Structure defined below.
+     * 
+     */
+    @Import(name="workerFlexibleConfig")
+    private @Nullable Output<ClusterClusterConfigWorkerFlexibleConfigArgs> workerFlexibleConfig;
+
+    /**
+     * @return The configuration for the worker flexible instance group
+     * in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+     * Requires `masterFlexibleConfig`. Structure defined below.
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigWorkerFlexibleConfigArgs>> workerFlexibleConfig() {
+        return Optional.ofNullable(this.workerFlexibleConfig);
+    }
+
     private ClusterClusterConfigArgs() {}
 
     private ClusterClusterConfigArgs(ClusterClusterConfigArgs $) {
@@ -404,13 +468,16 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         this.initializationActions = $.initializationActions;
         this.lifecycleConfig = $.lifecycleConfig;
         this.masterConfig = $.masterConfig;
+        this.masterFlexibleConfig = $.masterFlexibleConfig;
         this.metastoreConfig = $.metastoreConfig;
         this.preemptibleWorkerConfig = $.preemptibleWorkerConfig;
+        this.secondaryWorkerFlexibleConfig = $.secondaryWorkerFlexibleConfig;
         this.securityConfig = $.securityConfig;
         this.softwareConfig = $.softwareConfig;
         this.stagingBucket = $.stagingBucket;
         this.tempBucket = $.tempBucket;
         this.workerConfig = $.workerConfig;
+        this.workerFlexibleConfig = $.workerFlexibleConfig;
     }
 
     public static Builder builder() {
@@ -753,6 +820,33 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param masterFlexibleConfig The configuration for the master flexible instance group
+         * in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+         * Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterFlexibleConfig(@Nullable Output<ClusterClusterConfigMasterFlexibleConfigArgs> masterFlexibleConfig) {
+            $.masterFlexibleConfig = masterFlexibleConfig;
+            return this;
+        }
+
+        /**
+         * @param masterFlexibleConfig The configuration for the master flexible instance group
+         * in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+         * Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterFlexibleConfig(ClusterClusterConfigMasterFlexibleConfigArgs masterFlexibleConfig) {
+            return masterFlexibleConfig(Output.of(masterFlexibleConfig));
+        }
+
+        /**
          * @param metastoreConfig The config setting for metastore service with the cluster.
          * Structure defined below.
          * ***
@@ -804,6 +898,33 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder preemptibleWorkerConfig(ClusterClusterConfigPreemptibleWorkerConfigArgs preemptibleWorkerConfig) {
             return preemptibleWorkerConfig(Output.of(preemptibleWorkerConfig));
+        }
+
+        /**
+         * @param secondaryWorkerFlexibleConfig The configuration for the secondary worker flexible
+         * instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+         * `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryWorkerFlexibleConfig(@Nullable Output<ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs> secondaryWorkerFlexibleConfig) {
+            $.secondaryWorkerFlexibleConfig = secondaryWorkerFlexibleConfig;
+            return this;
+        }
+
+        /**
+         * @param secondaryWorkerFlexibleConfig The configuration for the secondary worker flexible
+         * instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+         * `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryWorkerFlexibleConfig(ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs secondaryWorkerFlexibleConfig) {
+            return secondaryWorkerFlexibleConfig(Output.of(secondaryWorkerFlexibleConfig));
         }
 
         /**
@@ -929,6 +1050,31 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder workerConfig(ClusterClusterConfigWorkerConfigArgs workerConfig) {
             return workerConfig(Output.of(workerConfig));
+        }
+
+        /**
+         * @param workerFlexibleConfig The configuration for the worker flexible instance group
+         * in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+         * Requires `masterFlexibleConfig`. Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerFlexibleConfig(@Nullable Output<ClusterClusterConfigWorkerFlexibleConfigArgs> workerFlexibleConfig) {
+            $.workerFlexibleConfig = workerFlexibleConfig;
+            return this;
+        }
+
+        /**
+         * @param workerFlexibleConfig The configuration for the worker flexible instance group
+         * in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+         * Requires `masterFlexibleConfig`. Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerFlexibleConfig(ClusterClusterConfigWorkerFlexibleConfigArgs workerFlexibleConfig) {
+            return workerFlexibleConfig(Output.of(workerFlexibleConfig));
         }
 
         public ClusterClusterConfigArgs build() {

@@ -808,6 +808,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             origin_address="gs://media-edge-default",
             description="The default bucket for media edge test")
         ```
+
         ### Network Services Edge Cache Origin Advanced
 
         ```python
@@ -867,6 +868,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 "connect_timeout": "10s",
             })
         ```
+
         ### Network Services Edge Cache Origin V4auth
 
         ```python
@@ -1000,6 +1002,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             origin_address="gs://media-edge-default",
             description="The default bucket for media edge test")
         ```
+
         ### Network Services Edge Cache Origin Advanced
 
         ```python
@@ -1059,6 +1062,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 "connect_timeout": "10s",
             })
         ```
+
         ### Network Services Edge Cache Origin V4auth
 
         ```python

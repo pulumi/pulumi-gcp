@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Private Connection Force Delete
  *
  * ```typescript
@@ -58,6 +59,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Private Connection Psc Interface
  *
  * ```typescript

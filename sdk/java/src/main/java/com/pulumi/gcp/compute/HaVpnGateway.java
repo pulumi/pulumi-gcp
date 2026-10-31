@@ -73,6 +73,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ha Vpn Gateway Ipv6
  * 
  * <pre>
@@ -116,6 +117,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Compute Ha Vpn Gateway Encrypted Interconnect
  * 
  * <pre>

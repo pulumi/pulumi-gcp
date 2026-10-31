@@ -85,6 +85,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apigee Organization Cloud Basic Disable Vpc Peering
 //
 // ```go
@@ -118,6 +119,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apigee Organization Cloud Basic Data Residency
 //
 // ```go
@@ -152,6 +154,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apigee Organization Cloud Full
 //
 // ```go
@@ -249,6 +252,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apigee Organization Cloud Full Disable Vpc Peering
 //
 // ```go

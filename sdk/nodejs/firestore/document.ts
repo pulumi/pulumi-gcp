@@ -63,6 +63,7 @@ import * as utilities from "../utilities";
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
  * });
  * ```
+ *
  * ### Firestore Document Nested Document
  *
  * ```typescript

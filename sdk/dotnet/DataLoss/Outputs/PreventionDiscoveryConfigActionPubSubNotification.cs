@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     {
         /// <summary>
         /// How much data to include in the pub/sub message.
-        /// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+        /// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
         /// </summary>
         public readonly string? DetailOfMessage;
         /// <summary>

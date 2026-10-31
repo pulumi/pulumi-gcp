@@ -494,6 +494,7 @@ class GlossaryCategory(pulumi.CustomResource):
             location="us-central1",
             category_id="tf-test-category-basic_3686")
         ```
+
         ### Dataplex Glossary Category Full
 
         ```python
@@ -587,6 +588,7 @@ class GlossaryCategory(pulumi.CustomResource):
             location="us-central1",
             category_id="tf-test-category-basic_3686")
         ```
+
         ### Dataplex Glossary Category Full
 
         ```python

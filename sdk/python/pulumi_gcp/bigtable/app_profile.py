@@ -542,6 +542,7 @@ class AppProfile(pulumi.CustomResource):
             multi_cluster_routing_use_any=True,
             ignore_warnings=True)
         ```
+
         ### Bigtable App Profile Singlecluster
 
         ```python
@@ -566,6 +567,7 @@ class AppProfile(pulumi.CustomResource):
             },
             ignore_warnings=True)
         ```
+
         ### Bigtable App Profile Multicluster
 
         ```python
@@ -605,6 +607,7 @@ class AppProfile(pulumi.CustomResource):
             ],
             ignore_warnings=True)
         ```
+
         ### Bigtable App Profile Priority
 
         ```python
@@ -726,6 +729,7 @@ class AppProfile(pulumi.CustomResource):
             multi_cluster_routing_use_any=True,
             ignore_warnings=True)
         ```
+
         ### Bigtable App Profile Singlecluster
 
         ```python
@@ -750,6 +754,7 @@ class AppProfile(pulumi.CustomResource):
             },
             ignore_warnings=True)
         ```
+
         ### Bigtable App Profile Multicluster
 
         ```python
@@ -789,6 +794,7 @@ class AppProfile(pulumi.CustomResource):
             ],
             ignore_warnings=True)
         ```
+
         ### Bigtable App Profile Priority
 
         ```python

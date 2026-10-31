@@ -18,16 +18,30 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
     public static final StandardAppVersionVpcAccessArgs Empty = new StandardAppVersionVpcAccessArgs();
 
     /**
+     * (Optional, Deprecated)
      * The egress setting for the VPC Access, controlling what traffic is diverted through it.
      * 
+     * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+     * 
+     * @deprecated
+     * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+     * 
      */
+    @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
     @Import(name="egressSetting")
     private @Nullable Output<String> egressSetting;
 
     /**
-     * @return The egress setting for the VPC Access, controlling what traffic is diverted through it.
+     * @return (Optional, Deprecated)
+     * The egress setting for the VPC Access, controlling what traffic is diverted through it.
+     * 
+     * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+     * 
+     * @deprecated
+     * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
      */
+    @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
     public Optional<Output<String>> egressSetting() {
         return Optional.ofNullable(this.egressSetting);
     }
@@ -49,11 +63,29 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.networkInterfaces);
     }
 
+    /**
+     * The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+     * Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+     * 
+     */
+    @Import(name="vpcEgress")
+    private @Nullable Output<String> vpcEgress;
+
+    /**
+     * @return The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+     * Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+     * 
+     */
+    public Optional<Output<String>> vpcEgress() {
+        return Optional.ofNullable(this.vpcEgress);
+    }
+
     private StandardAppVersionVpcAccessArgs() {}
 
     private StandardAppVersionVpcAccessArgs(StandardAppVersionVpcAccessArgs $) {
         this.egressSetting = $.egressSetting;
         this.networkInterfaces = $.networkInterfaces;
+        this.vpcEgress = $.vpcEgress;
     }
 
     public static Builder builder() {
@@ -75,22 +107,36 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param egressSetting The egress setting for the VPC Access, controlling what traffic is diverted through it.
+         * @param egressSetting (Optional, Deprecated)
+         * The egress setting for the VPC Access, controlling what traffic is diverted through it.
+         * 
+         * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+         * 
          */
+        @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
         public Builder egressSetting(@Nullable Output<String> egressSetting) {
             $.egressSetting = egressSetting;
             return this;
         }
 
         /**
-         * @param egressSetting The egress setting for the VPC Access, controlling what traffic is diverted through it.
+         * @param egressSetting (Optional, Deprecated)
+         * The egress setting for the VPC Access, controlling what traffic is diverted through it.
+         * 
+         * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+         * 
          */
+        @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
         public Builder egressSetting(String egressSetting) {
             return egressSetting(Output.of(egressSetting));
         }
@@ -127,6 +173,29 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
          */
         public Builder networkInterfaces(StandardAppVersionVpcAccessNetworkInterfaceArgs... networkInterfaces) {
             return networkInterfaces(List.of(networkInterfaces));
+        }
+
+        /**
+         * @param vpcEgress The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+         * Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcEgress(@Nullable Output<String> vpcEgress) {
+            $.vpcEgress = vpcEgress;
+            return this;
+        }
+
+        /**
+         * @param vpcEgress The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+         * Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcEgress(String vpcEgress) {
+            return vpcEgress(Output.of(vpcEgress));
         }
 
         public StandardAppVersionVpcAccessArgs build() {

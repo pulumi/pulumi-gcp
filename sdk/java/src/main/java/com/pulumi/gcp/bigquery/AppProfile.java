@@ -90,6 +90,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigtable App Profile Singlecluster
  * 
  * <pre>
@@ -143,6 +144,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigtable App Profile Multicluster
  * 
  * <pre>
@@ -208,6 +210,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigtable App Profile Priority
  * 
  * <pre>

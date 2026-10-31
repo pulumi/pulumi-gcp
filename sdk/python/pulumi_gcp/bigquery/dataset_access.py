@@ -654,6 +654,7 @@ class DatasetAccess(pulumi.CustomResource):
             role="OWNER",
             user_by_email=bqowner.email)
         ```
+
         ### Bigquery Dataset Access View
 
         ```python
@@ -678,6 +679,7 @@ class DatasetAccess(pulumi.CustomResource):
                 "table_id": public_table.table_id,
             })
         ```
+
         ### Bigquery Dataset Access Authorized Dataset
 
         ```python
@@ -696,6 +698,7 @@ class DatasetAccess(pulumi.CustomResource):
                 "target_types": ["VIEWS"],
             })
         ```
+
         ### Bigquery Dataset Access Authorized Routine
 
         ```python
@@ -834,6 +837,7 @@ class DatasetAccess(pulumi.CustomResource):
             role="OWNER",
             user_by_email=bqowner.email)
         ```
+
         ### Bigquery Dataset Access View
 
         ```python
@@ -858,6 +862,7 @@ class DatasetAccess(pulumi.CustomResource):
                 "table_id": public_table.table_id,
             })
         ```
+
         ### Bigquery Dataset Access Authorized Dataset
 
         ```python
@@ -876,6 +881,7 @@ class DatasetAccess(pulumi.CustomResource):
                 "target_types": ["VIEWS"],
             })
         ```
+
         ### Bigquery Dataset Access Authorized Routine
 
         ```python

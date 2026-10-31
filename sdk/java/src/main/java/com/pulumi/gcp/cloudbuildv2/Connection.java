@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuildv2 Connection Ghe
  * 
  * <pre>
@@ -180,6 +181,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Cloudbuildv2 Connection Github
  * 
  * <pre>

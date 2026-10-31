@@ -37,11 +37,16 @@ namespace Pulumi.Gcp.OracleDatabase
     ///                 TotalSizeGbs = 512,
     ///             },
     ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
     ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Exascale Db Storage Vault Full
     /// 
     /// ```csharp
@@ -80,6 +85,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
     /// 
     /// ```csharp

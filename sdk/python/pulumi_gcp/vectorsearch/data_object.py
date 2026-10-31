@@ -514,6 +514,7 @@ class DataObject(pulumi.CustomResource):
                 "plot": "A computer hacker learns about the true nature of reality.",
             }))
         ```
+
         ### Vectorsearch Data Object With Vectors
 
         ```python
@@ -738,6 +739,7 @@ class DataObject(pulumi.CustomResource):
                 "plot": "A computer hacker learns about the true nature of reality.",
             }))
         ```
+
         ### Vectorsearch Data Object With Vectors
 
         ```python

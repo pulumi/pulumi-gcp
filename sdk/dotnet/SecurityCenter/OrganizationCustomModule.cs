@@ -60,6 +60,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scc Organization Custom Module Full
     /// 
     /// ```csharp

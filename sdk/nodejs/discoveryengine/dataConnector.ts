@@ -72,6 +72,7 @@ import * as utilities from "../utilities";
  *     syncMode: "PERIODIC",
  * });
  * ```
+ *
  * ### Discoveryengine Dataconnector Jira With Actions
  *
  * ```typescript

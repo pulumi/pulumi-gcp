@@ -14,14 +14,24 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
     public sealed class ClusterComputeResourceConfigNewReservedInstances
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// A list of network tags to attach to the VM instances.
+        /// A maximum of 64 network tags are allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> NetworkTags;
+        /// <summary>
         /// Name of the reservation from which VM instances should be created, in the
         /// format `projects/{project}/zones/{zone}/reservations/{reservation}`.
         /// </summary>
         public readonly string? Reservation;
 
         [OutputConstructor]
-        private ClusterComputeResourceConfigNewReservedInstances(string? reservation)
+        private ClusterComputeResourceConfigNewReservedInstances(
+            ImmutableArray<string> networkTags,
+
+            string? reservation)
         {
+            NetworkTags = networkTags;
             Reservation = reservation;
         }
     }

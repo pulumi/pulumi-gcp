@@ -562,6 +562,7 @@ class DataAnalyticsDataAgent(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gemini Data Analytics Data Agent Bigquery
 
         ```python
@@ -606,10 +607,52 @@ class DataAnalyticsDataAgent(pulumi.CustomResource):
                                 "project_id": dataset.project,
                                 "dataset_id": dataset.dataset_id,
                                 "table_id": table.table_id,
+                                "schema": {
+                                    "description": "Sales orders table.",
+                                    "display_name": "Sales Orders",
+                                    "synonyms": [
+                                        "orders",
+                                        "purchases",
+                                    ],
+                                    "tags": [
+                                        "sales",
+                                        "finance",
+                                    ],
+                                    "fields": [
+                                        {
+                                            "name": "order_id",
+                                            "type": "STRING",
+                                            "description": "Unique order identifier.",
+                                            "mode": "REQUIRED",
+                                            "synonyms": ["id"],
+                                            "tags": ["identifier"],
+                                            "category": "DIMENSION",
+                                        },
+                                        {
+                                            "name": "order_total",
+                                            "type": "FLOAT",
+                                            "description": "Total order amount.",
+                                            "mode": "NULLABLE",
+                                            "synonyms": [
+                                                "revenue",
+                                                "amount",
+                                            ],
+                                            "tags": ["metric"],
+                                            "category": "MEASURE",
+                                            "value_format": "$#,##0.00",
+                                        },
+                                    ],
+                                    "filters": [{
+                                        "field": "order_total",
+                                        "value": "0",
+                                        "type": "ALWAYS_FILTER",
+                                    }],
+                                },
                             }],
                         },
                     },
                     "options": {
+                        "model": "LATEST_GA_MODEL",
                         "analysis": {
                             "python": {
                                 "enabled": True,
@@ -620,8 +663,13 @@ class DataAnalyticsDataAgent(pulumi.CustomResource):
                         },
                     },
                     "example_queries": [{
-                        "natural_language_question": "What is the total order value?",
-                        "sql_query": "SELECT SUM(order_total) AS total_order_value FROM sales",
+                        "natural_language_question": "What is the total order value above a threshold?",
+                        "sql_query": "SELECT SUM(order_total) AS total_order_value FROM sales WHERE order_total > @min_total",
+                        "parameters": [{
+                            "name": "min_total",
+                            "description": "Minimum order total threshold.",
+                            "data_type": "FLOAT64",
+                        }],
                     }],
                     "glossary_terms": [{
                         "display_name": "Order",
@@ -657,6 +705,7 @@ class DataAnalyticsDataAgent(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[table]))
         ```
+
         ### Gemini Data Analytics Data Agent Cmek
 
         ```python
@@ -789,6 +838,7 @@ class DataAnalyticsDataAgent(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gemini Data Analytics Data Agent Bigquery
 
         ```python
@@ -833,10 +883,52 @@ class DataAnalyticsDataAgent(pulumi.CustomResource):
                                 "project_id": dataset.project,
                                 "dataset_id": dataset.dataset_id,
                                 "table_id": table.table_id,
+                                "schema": {
+                                    "description": "Sales orders table.",
+                                    "display_name": "Sales Orders",
+                                    "synonyms": [
+                                        "orders",
+                                        "purchases",
+                                    ],
+                                    "tags": [
+                                        "sales",
+                                        "finance",
+                                    ],
+                                    "fields": [
+                                        {
+                                            "name": "order_id",
+                                            "type": "STRING",
+                                            "description": "Unique order identifier.",
+                                            "mode": "REQUIRED",
+                                            "synonyms": ["id"],
+                                            "tags": ["identifier"],
+                                            "category": "DIMENSION",
+                                        },
+                                        {
+                                            "name": "order_total",
+                                            "type": "FLOAT",
+                                            "description": "Total order amount.",
+                                            "mode": "NULLABLE",
+                                            "synonyms": [
+                                                "revenue",
+                                                "amount",
+                                            ],
+                                            "tags": ["metric"],
+                                            "category": "MEASURE",
+                                            "value_format": "$#,##0.00",
+                                        },
+                                    ],
+                                    "filters": [{
+                                        "field": "order_total",
+                                        "value": "0",
+                                        "type": "ALWAYS_FILTER",
+                                    }],
+                                },
                             }],
                         },
                     },
                     "options": {
+                        "model": "LATEST_GA_MODEL",
                         "analysis": {
                             "python": {
                                 "enabled": True,
@@ -847,8 +939,13 @@ class DataAnalyticsDataAgent(pulumi.CustomResource):
                         },
                     },
                     "example_queries": [{
-                        "natural_language_question": "What is the total order value?",
-                        "sql_query": "SELECT SUM(order_total) AS total_order_value FROM sales",
+                        "natural_language_question": "What is the total order value above a threshold?",
+                        "sql_query": "SELECT SUM(order_total) AS total_order_value FROM sales WHERE order_total > @min_total",
+                        "parameters": [{
+                            "name": "min_total",
+                            "description": "Minimum order total threshold.",
+                            "data_type": "FLOAT64",
+                        }],
                     }],
                     "glossary_terms": [{
                         "display_name": "Order",
@@ -884,6 +981,7 @@ class DataAnalyticsDataAgent(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[table]))
         ```
+
         ### Gemini Data Analytics Data Agent Cmek
 
         ```python

@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
 /**
  * Represents a persona configuration for an analyst agent in Agentic Applications.
  * 
+ * &gt; **Note:** The `project` field must be set to the numeric project number (not the project ID).
+ * 
  * ## Example Usage
  * 
  * ### Analyst Agent Persona Basic
@@ -58,6 +60,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AnalystAgentPersona("example", AnalystAgentPersonaArgs.builder()
+ *             .project("1111111111111")
  *             .location("us")
  *             .analystAgentPersonaId("basic")
  *             .displayName("Test Analyst Persona")
@@ -96,6 +99,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Analyst Agent Persona Full
  * 
  * <pre>
@@ -183,6 +187,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new AnalystAgentPersona("example", AnalystAgentPersonaArgs.builder()
+ *             .project("1111111111111")
  *             .location("us")
  *             .analystAgentPersonaId("full")
  *             .displayName("Full Test Analyst Persona")
@@ -307,6 +312,7 @@ import javax.annotation.Nullable;
  *                 .apiKeyName("x-api-key")
  *                 .apiKeyHeader("x-api-key-header")
  *                 .clientId("sample-client-id")
+ *                 .clientSecret("sample-client-secret")
  *                 .oauthTokenUrl("https://example.com/oauth/token")
  *                 .build())
  *             .resources(            
@@ -377,6 +383,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Analyst Agent Persona Methodology Export Options
  * 
  * <pre>
@@ -404,6 +411,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AnalystAgentPersona("example", AnalystAgentPersonaArgs.builder()
+ *             .project("1111111111111")
  *             .location("us")
  *             .analystAgentPersonaId("methodology")
  *             .displayName("Test Analyst Persona Methodology Export")
@@ -415,6 +423,54 @@ import javax.annotation.Nullable;
  *                     .appendMethodology(true)
  *                     .exportFormat("MARKDOWN")
  *                     .exportMethodologyArtifact(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Analyst Agent Persona Audit Trail Export Options
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.agenticapplications.AnalystAgentPersona;
+ * import com.pulumi.gcp.agenticapplications.AnalystAgentPersonaArgs;
+ * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigArgs;
+ * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new AnalystAgentPersona("example", AnalystAgentPersonaArgs.builder()
+ *             .project("1111111111111")
+ *             .location("us")
+ *             .analystAgentPersonaId("audit_trail")
+ *             .displayName("Test Analyst Persona Audit Trail Export")
+ *             .displayDescription("Sample analyst agent persona description")
+ *             .modelDescription("Sample model description")
+ *             .role("ANALYST_ROLE_GENERIC_FINANCE_ANALYST")
+ *             .artifactsConfig(AnalystAgentPersonaArtifactsConfigArgs.builder()
+ *                 .auditTrailExportOptions(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs.builder()
+ *                     .appendAuditTrail(true)
+ *                     .exportFormat("MARKDOWN")
+ *                     .exportAuditTrailArtifact(true)
  *                     .build())
  *                 .build())
  *             .build());
@@ -474,6 +530,11 @@ import javax.annotation.Nullable;
  * 
  * &lt;a name=&#34;nestedArtifactsConfig&#34;&gt;&lt;/a&gt;The `artifactsConfig` block supports:
  * 
+ * * `auditTrailExportOptions` -
+ * (Optional)
+ * Options for audit trail export.
+ * Structure is documented below.
+ * 
  * * `documentGenerationOptions` -
  * (Optional)
  * Options for document generation.
@@ -493,6 +554,24 @@ import javax.annotation.Nullable;
  * (Optional)
  * Options for visualizations.
  * Structure is documented below.
+ * 
+ * &lt;a name=&#34;nestedArtifactsConfigAuditTrailExportOptions&#34;&gt;&lt;/a&gt;The `auditTrailExportOptions` block supports:
+ * 
+ * * `appendAuditTrail` -
+ * (Optional)
+ * If true, append the audit trail to the final response.
+ * 
+ * * `exportAuditTrailArtifact` -
+ * (Optional)
+ * If true, export the audit trail as a separate artifact.
+ * 
+ * * `exportFormat` -
+ * (Optional)
+ * Format for audit trail export.
+ * Possible values:
+ * MARKDOWN
+ * HTML
+ * PDF
  * 
  * &lt;a name=&#34;nestedArtifactsConfigDocumentGenerationOptions&#34;&gt;&lt;/a&gt;The `documentGenerationOptions` block supports:
  * 

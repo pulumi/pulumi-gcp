@@ -63,6 +63,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Compute Global Vm Extension Policy Basic
 //
 // ```go
@@ -110,6 +111,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Compute Global Vm Extension Policy Custom Rollout
 //
 // ```go

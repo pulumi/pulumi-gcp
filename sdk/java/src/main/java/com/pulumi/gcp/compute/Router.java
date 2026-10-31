@@ -14,6 +14,7 @@ import com.pulumi.gcp.compute.outputs.RouterBgp;
 import com.pulumi.gcp.compute.outputs.RouterMd5AuthenticationKeys;
 import com.pulumi.gcp.compute.outputs.RouterParams;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -83,6 +84,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Compute Router Encrypted Interconnect
  * 
  * <pre>
@@ -128,6 +130,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Router Ncc Gw
  * 
  * <pre>
@@ -438,6 +441,20 @@ public class Router extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="routerId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> routerId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> routerId() {
+        return this.routerId;
     }
     /**
      * The URI of the created resource.

@@ -64,6 +64,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Os Config Guest Policies Packages
  *
  * ```typescript
@@ -126,6 +127,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Os Config Guest Policies Recipes
  *
  * ```typescript

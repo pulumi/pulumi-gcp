@@ -443,7 +443,7 @@ class Cluster(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataproc/docs)
 
         > **Warning:** Due to limitations of the API, all arguments except
-        `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
+        `labels`, `cluster_config.worker_config.num_instances`, `cluster_config.preemptible_worker_config.num_instances`, `cluster_config.worker_flexible_config.num_instances` and `cluster_config.secondary_worker_flexible_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
         whole cluster!
 
         ## Example Usage
@@ -518,6 +518,39 @@ class Cluster(pulumi.CustomResource):
                 }],
             })
         ```
+
+        ### High Obtainability (HO) Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ho_cluster = gcp.dataproc.Cluster("ho_cluster",
+            name="my-ho-cluster",
+            region="us-central1",
+            cluster_config={
+                "master_flexible_config": {
+                    "num_instances": 1,
+                    "core_count": 4,
+                    "hardware_class": "STANDARD",
+                    "boot_disk_size_gb": 100,
+                },
+                "worker_flexible_config": {
+                    "num_instances": 2,
+                    "core_count": 8,
+                    "hardware_class": "STANDARD",
+                    "boot_disk_size_gb": 100,
+                },
+                "secondary_worker_flexible_config": {
+                    "num_instances": 2,
+                    "core_count": 8,
+                    "hardware_class": "PERFORMANCE",
+                    "boot_disk_size_gb": 100,
+                },
+            })
+        ```
+
+        > **Tip:** When an autoscaling policy is attached to an HO cluster, use `lifecycle { ignore_changes = [cluster_config[0].worker_flexible_config[0].num_instances, cluster_config[0].secondary_worker_flexible_config[0].num_instances] }` to avoid fighting the autoscaler.
 
         ### Using A GPU Accelerator
 
@@ -594,7 +627,7 @@ class Cluster(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataproc/docs)
 
         > **Warning:** Due to limitations of the API, all arguments except
-        `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
+        `labels`, `cluster_config.worker_config.num_instances`, `cluster_config.preemptible_worker_config.num_instances`, `cluster_config.worker_flexible_config.num_instances` and `cluster_config.secondary_worker_flexible_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
         whole cluster!
 
         ## Example Usage
@@ -669,6 +702,39 @@ class Cluster(pulumi.CustomResource):
                 }],
             })
         ```
+
+        ### High Obtainability (HO) Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ho_cluster = gcp.dataproc.Cluster("ho_cluster",
+            name="my-ho-cluster",
+            region="us-central1",
+            cluster_config={
+                "master_flexible_config": {
+                    "num_instances": 1,
+                    "core_count": 4,
+                    "hardware_class": "STANDARD",
+                    "boot_disk_size_gb": 100,
+                },
+                "worker_flexible_config": {
+                    "num_instances": 2,
+                    "core_count": 8,
+                    "hardware_class": "STANDARD",
+                    "boot_disk_size_gb": 100,
+                },
+                "secondary_worker_flexible_config": {
+                    "num_instances": 2,
+                    "core_count": 8,
+                    "hardware_class": "PERFORMANCE",
+                    "boot_disk_size_gb": 100,
+                },
+            })
+        ```
+
+        > **Tip:** When an autoscaling policy is attached to an HO cluster, use `lifecycle { ignore_changes = [cluster_config[0].worker_flexible_config[0].num_instances, cluster_config[0].secondary_worker_flexible_config[0].num_instances] }` to avoid fighting the autoscaler.
 
         ### Using A GPU Accelerator
 

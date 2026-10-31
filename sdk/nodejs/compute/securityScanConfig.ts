@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     targetPlatforms: ["COMPUTE"],
  * });
  * ```
+ *
  * ### Scan Config Ignore Http Status Errors
  *
  * ```typescript
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait15Seconds],
  * });
  * ```
+ *
  * ### Scan Config Static Ip
  *
  * ```typescript

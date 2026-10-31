@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Gemini.Inputs
     {
         /// <summary>
         /// Required. Data sources that are available for answering questions.
-        /// This Terraform resource currently supports BigQuery table references.
         /// Structure is documented below.
         /// </summary>
         [Input("datasourceReferences", required: true)]
@@ -46,6 +45,19 @@ namespace Pulumi.Gcp.Gemini.Inputs
             set => _glossaryTerms = value;
         }
 
+        [Input("lookerGoldenQueries")]
+        private InputList<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgs>? _lookerGoldenQueries;
+
+        /// <summary>
+        /// Optional. A list of golden queries for Looker data sources.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgs> LookerGoldenQueries
+        {
+            get => _lookerGoldenQueries ?? (_lookerGoldenQueries = new InputList<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgs>());
+            set => _lookerGoldenQueries = value;
+        }
+
         /// <summary>
         /// Optional. Additional options for the conversation.
         /// Structure is documented below.
@@ -73,6 +85,13 @@ namespace Pulumi.Gcp.Gemini.Inputs
         /// </summary>
         [Input("systemInstruction")]
         public Input<string>? SystemInstruction { get; set; }
+
+        /// <summary>
+        /// Optional. A collection of user functions to be included in context.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("userFunctions")]
+        public Input<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsArgs>? UserFunctions { get; set; }
 
         public DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs()
         {

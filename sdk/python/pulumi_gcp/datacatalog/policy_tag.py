@@ -312,6 +312,7 @@ class PolicyTag(pulumi.CustomResource):
             display_name="Low security",
             description="A policy tag normally associated with low security items")
         ```
+
         ### Data Catalog Taxonomies Policy Tag Child Policies
 
         ```python
@@ -404,6 +405,7 @@ class PolicyTag(pulumi.CustomResource):
             display_name="Low security",
             description="A policy tag normally associated with low security items")
         ```
+
         ### Data Catalog Taxonomies Policy Tag Child Policies
 
         ```python

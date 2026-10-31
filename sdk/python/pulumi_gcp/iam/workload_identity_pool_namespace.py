@@ -389,6 +389,7 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_namespace_id="example-namespace")
         ```
+
         ### Iam Workload Identity Pool Namespace Full
 
         ```python
@@ -478,6 +479,7 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_namespace_id="example-namespace")
         ```
+
         ### Iam Workload Identity Pool Namespace Full
 
         ```python

@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase Android App Custom Api Key
     /// 
     /// ```csharp

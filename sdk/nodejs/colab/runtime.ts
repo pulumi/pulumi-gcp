@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [myTemplate],
  * });
  * ```
+ *
  * ### Colab Runtime Stopped
  *
  * ```typescript
@@ -76,6 +77,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [myTemplate],
  * });
  * ```
+ *
  * ### Colab Runtime Full
  *
  * ```typescript

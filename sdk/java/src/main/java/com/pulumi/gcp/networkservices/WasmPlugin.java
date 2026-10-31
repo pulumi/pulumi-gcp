@@ -83,6 +83,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Wasm Plugin Basic Generic Repository
  * 
  * <pre>

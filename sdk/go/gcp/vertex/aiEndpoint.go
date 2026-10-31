@@ -135,6 +135,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Endpoint Private Service Connect
 //
 // ```go
@@ -152,7 +153,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("psc-network-_78545"),
+//				Name: pulumi.String("psc-network-_72437"),
 //			})
 //			if err != nil {
 //				return err
@@ -191,6 +192,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Endpoint Dedicated Endpoint
 //
 // ```go

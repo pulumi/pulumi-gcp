@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dataproc/docs)
  *
  * > **Warning:** Due to limitations of the API, all arguments except
- * `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
+ * `labels`, `cluster_config.worker_config.num_instances`, `cluster_config.preemptible_worker_config.num_instances`, `cluster_config.worker_flexible_config.num_instances` and `cluster_config.secondary_worker_flexible_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
  * whole cluster!
  *
  * ## Example Usage
@@ -92,6 +92,40 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ### High Obtainability (HO) Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hoCluster = new gcp.dataproc.Cluster("ho_cluster", {
+ *     name: "my-ho-cluster",
+ *     region: "us-central1",
+ *     clusterConfig: {
+ *         masterFlexibleConfig: {
+ *             numInstances: 1,
+ *             coreCount: 4,
+ *             hardwareClass: "STANDARD",
+ *             bootDiskSizeGb: 100,
+ *         },
+ *         workerFlexibleConfig: {
+ *             numInstances: 2,
+ *             coreCount: 8,
+ *             hardwareClass: "STANDARD",
+ *             bootDiskSizeGb: 100,
+ *         },
+ *         secondaryWorkerFlexibleConfig: {
+ *             numInstances: 2,
+ *             coreCount: 8,
+ *             hardwareClass: "PERFORMANCE",
+ *             bootDiskSizeGb: 100,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * > **Tip:** When an autoscaling policy is attached to an HO cluster, use `lifecycle { ignoreChanges = [cluster_config[0].worker_flexible_config[0].num_instances, cluster_config[0].secondary_worker_flexible_config[0].num_instances] }` to avoid fighting the autoscaler.
  *
  * ### Using A GPU Accelerator
  *

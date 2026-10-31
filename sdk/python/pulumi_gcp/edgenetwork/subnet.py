@@ -582,6 +582,7 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+
         ### Edgenetwork Subnet With Vlan Id
 
         ```python
@@ -692,6 +693,7 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+
         ### Edgenetwork Subnet With Vlan Id
 
         ```python

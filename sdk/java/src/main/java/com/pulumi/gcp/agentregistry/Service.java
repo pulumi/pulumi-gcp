@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Agent Registry Service Mcp Server
  * 
  * <pre>

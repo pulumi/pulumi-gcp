@@ -13,11 +13,14 @@ import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigInitializationAction;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigLifecycleConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigMasterConfig;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigMasterFlexibleConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigMetastoreConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigPreemptibleWorkerConfig;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigSecondaryWorkerFlexibleConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigSecurityConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigSoftwareConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigWorkerConfig;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigWorkerFlexibleConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -105,6 +108,14 @@ public final class ClusterClusterConfig {
      */
     private @Nullable ClusterClusterConfigMasterConfig masterConfig;
     /**
+     * @return The configuration for the master flexible instance group
+     * in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+     * Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+     * Structure defined below.
+     * 
+     */
+    private @Nullable ClusterClusterConfigMasterFlexibleConfig masterFlexibleConfig;
+    /**
      * @return The config setting for metastore service with the cluster.
      * Structure defined below.
      * ***
@@ -120,6 +131,14 @@ public final class ClusterClusterConfig {
      * 
      */
     private @Nullable ClusterClusterConfigPreemptibleWorkerConfig preemptibleWorkerConfig;
+    /**
+     * @return The configuration for the secondary worker flexible
+     * instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+     * `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+     * Structure defined below.
+     * 
+     */
+    private @Nullable ClusterClusterConfigSecondaryWorkerFlexibleConfig secondaryWorkerFlexibleConfig;
     /**
      * @return Security related configuration. Structure defined below.
      * 
@@ -155,6 +174,13 @@ public final class ClusterClusterConfig {
      * 
      */
     private @Nullable ClusterClusterConfigWorkerConfig workerConfig;
+    /**
+     * @return The configuration for the worker flexible instance group
+     * in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+     * Requires `masterFlexibleConfig`. Structure defined below.
+     * 
+     */
+    private @Nullable ClusterClusterConfigWorkerFlexibleConfig workerFlexibleConfig;
 
     private ClusterClusterConfig() {}
     /**
@@ -262,6 +288,16 @@ public final class ClusterClusterConfig {
         return Optional.ofNullable(this.masterConfig);
     }
     /**
+     * @return The configuration for the master flexible instance group
+     * in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+     * Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+     * Structure defined below.
+     * 
+     */
+    public Optional<ClusterClusterConfigMasterFlexibleConfig> masterFlexibleConfig() {
+        return Optional.ofNullable(this.masterFlexibleConfig);
+    }
+    /**
      * @return The config setting for metastore service with the cluster.
      * Structure defined below.
      * ***
@@ -280,6 +316,16 @@ public final class ClusterClusterConfig {
      */
     public Optional<ClusterClusterConfigPreemptibleWorkerConfig> preemptibleWorkerConfig() {
         return Optional.ofNullable(this.preemptibleWorkerConfig);
+    }
+    /**
+     * @return The configuration for the secondary worker flexible
+     * instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+     * `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+     * Structure defined below.
+     * 
+     */
+    public Optional<ClusterClusterConfigSecondaryWorkerFlexibleConfig> secondaryWorkerFlexibleConfig() {
+        return Optional.ofNullable(this.secondaryWorkerFlexibleConfig);
     }
     /**
      * @return Security related configuration. Structure defined below.
@@ -326,6 +372,15 @@ public final class ClusterClusterConfig {
     public Optional<ClusterClusterConfigWorkerConfig> workerConfig() {
         return Optional.ofNullable(this.workerConfig);
     }
+    /**
+     * @return The configuration for the worker flexible instance group
+     * in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+     * Requires `masterFlexibleConfig`. Structure defined below.
+     * 
+     */
+    public Optional<ClusterClusterConfigWorkerFlexibleConfig> workerFlexibleConfig() {
+        return Optional.ofNullable(this.workerFlexibleConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -349,13 +404,16 @@ public final class ClusterClusterConfig {
         private @Nullable List<ClusterClusterConfigInitializationAction> initializationActions;
         private @Nullable ClusterClusterConfigLifecycleConfig lifecycleConfig;
         private @Nullable ClusterClusterConfigMasterConfig masterConfig;
+        private @Nullable ClusterClusterConfigMasterFlexibleConfig masterFlexibleConfig;
         private @Nullable ClusterClusterConfigMetastoreConfig metastoreConfig;
         private @Nullable ClusterClusterConfigPreemptibleWorkerConfig preemptibleWorkerConfig;
+        private @Nullable ClusterClusterConfigSecondaryWorkerFlexibleConfig secondaryWorkerFlexibleConfig;
         private @Nullable ClusterClusterConfigSecurityConfig securityConfig;
         private @Nullable ClusterClusterConfigSoftwareConfig softwareConfig;
         private @Nullable String stagingBucket;
         private @Nullable String tempBucket;
         private @Nullable ClusterClusterConfigWorkerConfig workerConfig;
+        private @Nullable ClusterClusterConfigWorkerFlexibleConfig workerFlexibleConfig;
         public Builder() {}
         public Builder(ClusterClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -372,13 +430,16 @@ public final class ClusterClusterConfig {
     	      this.initializationActions = defaults.initializationActions;
     	      this.lifecycleConfig = defaults.lifecycleConfig;
     	      this.masterConfig = defaults.masterConfig;
+    	      this.masterFlexibleConfig = defaults.masterFlexibleConfig;
     	      this.metastoreConfig = defaults.metastoreConfig;
     	      this.preemptibleWorkerConfig = defaults.preemptibleWorkerConfig;
+    	      this.secondaryWorkerFlexibleConfig = defaults.secondaryWorkerFlexibleConfig;
     	      this.securityConfig = defaults.securityConfig;
     	      this.softwareConfig = defaults.softwareConfig;
     	      this.stagingBucket = defaults.stagingBucket;
     	      this.tempBucket = defaults.tempBucket;
     	      this.workerConfig = defaults.workerConfig;
+    	      this.workerFlexibleConfig = defaults.workerFlexibleConfig;
         }
 
         @CustomType.Setter
@@ -466,6 +527,12 @@ public final class ClusterClusterConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder masterFlexibleConfig(@Nullable ClusterClusterConfigMasterFlexibleConfig masterFlexibleConfig) {
+
+            this.masterFlexibleConfig = masterFlexibleConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder metastoreConfig(@Nullable ClusterClusterConfigMetastoreConfig metastoreConfig) {
 
             this.metastoreConfig = metastoreConfig;
@@ -475,6 +542,12 @@ public final class ClusterClusterConfig {
         public Builder preemptibleWorkerConfig(@Nullable ClusterClusterConfigPreemptibleWorkerConfig preemptibleWorkerConfig) {
 
             this.preemptibleWorkerConfig = preemptibleWorkerConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder secondaryWorkerFlexibleConfig(@Nullable ClusterClusterConfigSecondaryWorkerFlexibleConfig secondaryWorkerFlexibleConfig) {
+
+            this.secondaryWorkerFlexibleConfig = secondaryWorkerFlexibleConfig;
             return this;
         }
         @CustomType.Setter
@@ -507,6 +580,12 @@ public final class ClusterClusterConfig {
             this.workerConfig = workerConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder workerFlexibleConfig(@Nullable ClusterClusterConfigWorkerFlexibleConfig workerFlexibleConfig) {
+
+            this.workerFlexibleConfig = workerFlexibleConfig;
+            return this;
+        }
         public ClusterClusterConfig build() {
             final var _resultValue = new ClusterClusterConfig();
             _resultValue.autoscalingConfig = autoscalingConfig;
@@ -522,13 +601,16 @@ public final class ClusterClusterConfig {
             _resultValue.initializationActions = initializationActions;
             _resultValue.lifecycleConfig = lifecycleConfig;
             _resultValue.masterConfig = masterConfig;
+            _resultValue.masterFlexibleConfig = masterFlexibleConfig;
             _resultValue.metastoreConfig = metastoreConfig;
             _resultValue.preemptibleWorkerConfig = preemptibleWorkerConfig;
+            _resultValue.secondaryWorkerFlexibleConfig = secondaryWorkerFlexibleConfig;
             _resultValue.securityConfig = securityConfig;
             _resultValue.softwareConfig = softwareConfig;
             _resultValue.stagingBucket = stagingBucket;
             _resultValue.tempBucket = tempBucket;
             _resultValue.workerConfig = workerConfig;
+            _resultValue.workerFlexibleConfig = workerFlexibleConfig;
             return _resultValue;
         }
     }

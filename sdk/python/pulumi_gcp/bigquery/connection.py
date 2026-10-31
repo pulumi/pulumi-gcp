@@ -34,6 +34,7 @@ class ConnectionArgs:
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 salesforce_data_cloud: pulumi.Input[Optional['ConnectionSalesforceDataCloudArgs']] = None,
                  spark: pulumi.Input[Optional['ConnectionSparkArgs']] = None):
         """
         The set of arguments for constructing a Connection resource.
@@ -72,6 +73,9 @@ class ConnectionArgs:
                Azure allowed regions are azure-eastus2
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ConnectionSalesforceDataCloudArgs'] salesforce_data_cloud: Connection properties specific to Salesforce Data Cloud.
+               This connection type is intended for use only by Salesforce partner projects.
+               Structure is documented below.
         :param pulumi.Input['ConnectionSparkArgs'] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
                Structure is documented below.
         """
@@ -101,6 +105,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if salesforce_data_cloud is not None:
+            pulumi.set(__self__, "salesforce_data_cloud", salesforce_data_cloud)
         if spark is not None:
             pulumi.set(__self__, "spark", spark)
 
@@ -282,6 +288,20 @@ class ConnectionArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="salesforceDataCloud")
+    def salesforce_data_cloud(self) -> pulumi.Input[Optional['ConnectionSalesforceDataCloudArgs']]:
+        """
+        Connection properties specific to Salesforce Data Cloud.
+        This connection type is intended for use only by Salesforce partner projects.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "salesforce_data_cloud")
+
+    @salesforce_data_cloud.setter
+    def salesforce_data_cloud(self, value: pulumi.Input[Optional['ConnectionSalesforceDataCloudArgs']]):
+        pulumi.set(self, "salesforce_data_cloud", value)
+
+    @_builtins.property
     @pulumi.getter
     def spark(self) -> pulumi.Input[Optional['ConnectionSparkArgs']]:
         """
@@ -313,6 +333,7 @@ class _ConnectionState:
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 salesforce_data_cloud: pulumi.Input[Optional['ConnectionSalesforceDataCloudArgs']] = None,
                  spark: pulumi.Input[Optional['ConnectionSparkArgs']] = None):
         """
         Input properties used for looking up and filtering Connection resources.
@@ -354,6 +375,9 @@ class _ConnectionState:
                "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ConnectionSalesforceDataCloudArgs'] salesforce_data_cloud: Connection properties specific to Salesforce Data Cloud.
+               This connection type is intended for use only by Salesforce partner projects.
+               Structure is documented below.
         :param pulumi.Input['ConnectionSparkArgs'] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
                Structure is documented below.
         """
@@ -387,6 +411,8 @@ class _ConnectionState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if salesforce_data_cloud is not None:
+            pulumi.set(__self__, "salesforce_data_cloud", salesforce_data_cloud)
         if spark is not None:
             pulumi.set(__self__, "spark", spark)
 
@@ -593,6 +619,20 @@ class _ConnectionState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="salesforceDataCloud")
+    def salesforce_data_cloud(self) -> pulumi.Input[Optional['ConnectionSalesforceDataCloudArgs']]:
+        """
+        Connection properties specific to Salesforce Data Cloud.
+        This connection type is intended for use only by Salesforce partner projects.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "salesforce_data_cloud")
+
+    @salesforce_data_cloud.setter
+    def salesforce_data_cloud(self, value: pulumi.Input[Optional['ConnectionSalesforceDataCloudArgs']]):
+        pulumi.set(self, "salesforce_data_cloud", value)
+
+    @_builtins.property
     @pulumi.getter
     def spark(self) -> pulumi.Input[Optional['ConnectionSparkArgs']]:
         """
@@ -625,6 +665,7 @@ class Connection(pulumi.CustomResource):
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 salesforce_data_cloud: pulumi.Input[Optional[Union['ConnectionSalesforceDataCloudArgs', 'ConnectionSalesforceDataCloudArgsDict', 'outputs.ConnectionSalesforceDataCloud']]] = None,
                  spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']]] = None,
                  __props__=None):
         """
@@ -654,6 +695,7 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             cloud_resource={})
         ```
+
         ### Bigquery Connection Basic
 
         ```python
@@ -693,6 +735,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Connection Full
 
         ```python
@@ -733,6 +776,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Connection Aws
 
         ```python
@@ -750,6 +794,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Connection Azure
 
         ```python
@@ -766,6 +811,7 @@ class Connection(pulumi.CustomResource):
                 "federated_application_client_id": "b43eeeee-eeee-eeee-eeee-a480155501ce",
             })
         ```
+
         ### Bigquery Connection Cloudspanner
 
         ```python
@@ -782,6 +828,7 @@ class Connection(pulumi.CustomResource):
                 "database_role": "database_role",
             })
         ```
+
         ### Bigquery Connection Cloudspanner Databoost
 
         ```python
@@ -800,6 +847,7 @@ class Connection(pulumi.CustomResource):
                 "max_parallelism": 100,
             })
         ```
+
         ### Bigquery Connection Spark
 
         ```python
@@ -834,6 +882,22 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
+        ### Bigquery Connection Salesforce Data Cloud
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="US",
+            salesforce_data_cloud={
+                "instance_uri": "my-instance.c360a.salesforce.com",
+                "tenant_id": "tenant-id",
+            })
+        ```
+
         ### Bigquery Connection Sql With Cmek
 
         ```python
@@ -870,6 +934,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Connection Sql With Cmek Password Wo
 
         ```python
@@ -907,42 +972,32 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Connection Connector Configuration
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
+        default = gcp.compute.get_network(name="alloydb-network")
         name_prefix = "my-connection"
-        default_network = gcp.compute.Network("default", name=f"{name_prefix}-alloydb-network")
-        default = gcp.alloydb.Cluster("default",
+        default_cluster = gcp.alloydb.Cluster("default",
             cluster_id=f"{name_prefix}-alloydb-cluster",
             location="us-central1",
             network_config={
-                "network": default_network.id,
+                "network": default.id,
             },
             initial_user={
                 "password": "alloydb-cluster-password",
             },
             deletion_protection=False)
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name=f"{name_prefix}-alloydb-ip",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
-            network=default_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
         default_instance = gcp.alloydb.Instance("default",
-            cluster=default.name,
+            cluster=default_cluster.name,
             instance_id=f"{name_prefix}-alloydb-instance",
             instance_type="PRIMARY",
             machine_config={
                 "cpu_count": 2,
-            },
-            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            })
         connection = gcp.bigquery.Connection("connection",
             connection_id="my-connection",
             location="us-central1",
@@ -1018,6 +1073,9 @@ class Connection(pulumi.CustomResource):
                Azure allowed regions are azure-eastus2
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['ConnectionSalesforceDataCloudArgs', 'ConnectionSalesforceDataCloudArgsDict', 'outputs.ConnectionSalesforceDataCloud']] salesforce_data_cloud: Connection properties specific to Salesforce Data Cloud.
+               This connection type is intended for use only by Salesforce partner projects.
+               Structure is documented below.
         :param pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
                Structure is documented below.
         """
@@ -1054,6 +1112,7 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             cloud_resource={})
         ```
+
         ### Bigquery Connection Basic
 
         ```python
@@ -1093,6 +1152,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Connection Full
 
         ```python
@@ -1133,6 +1193,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Connection Aws
 
         ```python
@@ -1150,6 +1211,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Connection Azure
 
         ```python
@@ -1166,6 +1228,7 @@ class Connection(pulumi.CustomResource):
                 "federated_application_client_id": "b43eeeee-eeee-eeee-eeee-a480155501ce",
             })
         ```
+
         ### Bigquery Connection Cloudspanner
 
         ```python
@@ -1182,6 +1245,7 @@ class Connection(pulumi.CustomResource):
                 "database_role": "database_role",
             })
         ```
+
         ### Bigquery Connection Cloudspanner Databoost
 
         ```python
@@ -1200,6 +1264,7 @@ class Connection(pulumi.CustomResource):
                 "max_parallelism": 100,
             })
         ```
+
         ### Bigquery Connection Spark
 
         ```python
@@ -1234,6 +1299,22 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
+        ### Bigquery Connection Salesforce Data Cloud
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="US",
+            salesforce_data_cloud={
+                "instance_uri": "my-instance.c360a.salesforce.com",
+                "tenant_id": "tenant-id",
+            })
+        ```
+
         ### Bigquery Connection Sql With Cmek
 
         ```python
@@ -1270,6 +1351,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Connection Sql With Cmek Password Wo
 
         ```python
@@ -1307,42 +1389,32 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Connection Connector Configuration
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
+        default = gcp.compute.get_network(name="alloydb-network")
         name_prefix = "my-connection"
-        default_network = gcp.compute.Network("default", name=f"{name_prefix}-alloydb-network")
-        default = gcp.alloydb.Cluster("default",
+        default_cluster = gcp.alloydb.Cluster("default",
             cluster_id=f"{name_prefix}-alloydb-cluster",
             location="us-central1",
             network_config={
-                "network": default_network.id,
+                "network": default.id,
             },
             initial_user={
                 "password": "alloydb-cluster-password",
             },
             deletion_protection=False)
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name=f"{name_prefix}-alloydb-ip",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
-            network=default_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
         default_instance = gcp.alloydb.Instance("default",
-            cluster=default.name,
+            cluster=default_cluster.name,
             instance_id=f"{name_prefix}-alloydb-instance",
             instance_type="PRIMARY",
             machine_config={
                 "cpu_count": 2,
-            },
-            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            })
         connection = gcp.bigquery.Connection("connection",
             connection_id="my-connection",
             location="us-central1",
@@ -1410,6 +1482,7 @@ class Connection(pulumi.CustomResource):
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 salesforce_data_cloud: pulumi.Input[Optional[Union['ConnectionSalesforceDataCloudArgs', 'ConnectionSalesforceDataCloudArgsDict', 'outputs.ConnectionSalesforceDataCloud']]] = None,
                  spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1433,6 +1506,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["salesforce_data_cloud"] = salesforce_data_cloud
             __props__.__dict__["spark"] = spark
             __props__.__dict__["has_credential"] = None
             __props__.__dict__["name"] = None
@@ -1461,6 +1535,7 @@ class Connection(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            salesforce_data_cloud: pulumi.Input[Optional[Union['ConnectionSalesforceDataCloudArgs', 'ConnectionSalesforceDataCloudArgsDict', 'outputs.ConnectionSalesforceDataCloud']]] = None,
             spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
@@ -1506,6 +1581,9 @@ class Connection(pulumi.CustomResource):
                "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['ConnectionSalesforceDataCloudArgs', 'ConnectionSalesforceDataCloudArgsDict', 'outputs.ConnectionSalesforceDataCloud']] salesforce_data_cloud: Connection properties specific to Salesforce Data Cloud.
+               This connection type is intended for use only by Salesforce partner projects.
+               Structure is documented below.
         :param pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
                Structure is documented below.
         """
@@ -1528,6 +1606,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["salesforce_data_cloud"] = salesforce_data_cloud
         __props__.__dict__["spark"] = spark
         return Connection(resource_name, opts=opts, __props__=__props__)
 
@@ -1672,6 +1751,16 @@ class Connection(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="salesforceDataCloud")
+    def salesforce_data_cloud(self) -> pulumi.Output[Optional['outputs.ConnectionSalesforceDataCloud']]:
+        """
+        Connection properties specific to Salesforce Data Cloud.
+        This connection type is intended for use only by Salesforce partner projects.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "salesforce_data_cloud")
 
     @_builtins.property
     @pulumi.getter

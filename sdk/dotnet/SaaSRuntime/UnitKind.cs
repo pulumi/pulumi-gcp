@@ -108,6 +108,22 @@ namespace Pulumi.Gcp.SaaSRuntime
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
+        /// Parameters for creating an App Hub Application for the Units of this
+        /// UnitKind.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("appParams")]
+        public Output<Outputs.UnitKindAppParams?> AppParams { get; private set; } = null!;
+
+        /// <summary>
+        /// Reference to a component and revision in a composite Application Design
+        /// Center ApplicationTemplate.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("applicationTemplateComponent")]
+        public Output<Outputs.UnitKindApplicationTemplateComponent?> ApplicationTemplateComponent { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the resource was created.
         /// </summary>
         [Output("createTime")]
@@ -316,6 +332,22 @@ namespace Pulumi.Gcp.SaaSRuntime
         }
 
         /// <summary>
+        /// Parameters for creating an App Hub Application for the Units of this
+        /// UnitKind.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("appParams")]
+        public Input<Inputs.UnitKindAppParamsArgs>? AppParams { get; set; }
+
+        /// <summary>
+        /// Reference to a component and revision in a composite Application Design
+        /// Center ApplicationTemplate.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("applicationTemplateComponent")]
+        public Input<Inputs.UnitKindApplicationTemplateComponentArgs>? ApplicationTemplateComponent { get; set; }
+
+        /// <summary>
         /// A reference to the Release object to use as default for creating new units
         /// of this UnitKind.
         /// If not specified, a new unit must explicitly reference which release to use
@@ -444,6 +476,22 @@ namespace Pulumi.Gcp.SaaSRuntime
             get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
+
+        /// <summary>
+        /// Parameters for creating an App Hub Application for the Units of this
+        /// UnitKind.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("appParams")]
+        public Input<Inputs.UnitKindAppParamsGetArgs>? AppParams { get; set; }
+
+        /// <summary>
+        /// Reference to a component and revision in a composite Application Design
+        /// Center ApplicationTemplate.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("applicationTemplateComponent")]
+        public Input<Inputs.UnitKindApplicationTemplateComponentGetArgs>? ApplicationTemplateComponent { get; set; }
 
         /// <summary>
         /// The timestamp when the resource was created.

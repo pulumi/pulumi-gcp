@@ -972,6 +972,7 @@ class Tool(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Tool Data Store Tool Engine Source Basic
 
         ```python
@@ -1032,6 +1033,7 @@ class Tool(pulumi.CustomResource):
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
                             "temperature": float(1),
+                            "thinking_level": "LOW",
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
@@ -1040,6 +1042,7 @@ class Tool(pulumi.CustomResource):
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
                             "temperature": float(1),
+                            "thinking_level": "LOW",
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
@@ -1047,6 +1050,10 @@ class Tool(pulumi.CustomResource):
                     "grounding_config": {
                         "grounding_level": float(3),
                         "disabled": False,
+                    },
+                    "snippets_config": {
+                        "enable_snippets": True,
+                        "max_snippets": 5,
                     },
                 }],
                 "engine_source": {
@@ -1061,6 +1068,7 @@ class Tool(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Tool Google Search Tool Basic
 
         ```python
@@ -1096,6 +1104,7 @@ class Tool(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Ces Tool Python Function Basic
 
         ```python
@@ -1119,6 +1128,7 @@ class Tool(pulumi.CustomResource):
                 "python_code": "def example_function() -> int: return 0",
             })
         ```
+
         ### Ces Tool Agent Basic
 
         ```python
@@ -1155,6 +1165,7 @@ class Tool(pulumi.CustomResource):
         ,
             })
         ```
+
         ### Ces Tool File Search Basic
 
         ```python
@@ -1180,6 +1191,7 @@ class Tool(pulumi.CustomResource):
                 "file_corpus": my_app.project.apply(lambda project: f"projects/{project}/locations/us/ragCorpora/tf-test-mock-corpus"),
             })
         ```
+
         ### Ces Tool Widget Basic
 
         ```python
@@ -1426,6 +1438,7 @@ class Tool(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Tool Data Store Tool Engine Source Basic
 
         ```python
@@ -1486,6 +1499,7 @@ class Tool(pulumi.CustomResource):
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
                             "temperature": float(1),
+                            "thinking_level": "LOW",
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
@@ -1494,6 +1508,7 @@ class Tool(pulumi.CustomResource):
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
                             "temperature": float(1),
+                            "thinking_level": "LOW",
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
@@ -1501,6 +1516,10 @@ class Tool(pulumi.CustomResource):
                     "grounding_config": {
                         "grounding_level": float(3),
                         "disabled": False,
+                    },
+                    "snippets_config": {
+                        "enable_snippets": True,
+                        "max_snippets": 5,
                     },
                 }],
                 "engine_source": {
@@ -1515,6 +1534,7 @@ class Tool(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Tool Google Search Tool Basic
 
         ```python
@@ -1550,6 +1570,7 @@ class Tool(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Ces Tool Python Function Basic
 
         ```python
@@ -1573,6 +1594,7 @@ class Tool(pulumi.CustomResource):
                 "python_code": "def example_function() -> int: return 0",
             })
         ```
+
         ### Ces Tool Agent Basic
 
         ```python
@@ -1609,6 +1631,7 @@ class Tool(pulumi.CustomResource):
         ,
             })
         ```
+
         ### Ces Tool File Search Basic
 
         ```python
@@ -1634,6 +1657,7 @@ class Tool(pulumi.CustomResource):
                 "file_corpus": my_app.project.apply(lambda project: f"projects/{project}/locations/us/ragCorpora/tf-test-mock-corpus"),
             })
         ```
+
         ### Ces Tool Widget Basic
 
         ```python

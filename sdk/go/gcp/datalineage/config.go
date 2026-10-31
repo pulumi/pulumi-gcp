@@ -98,6 +98,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Data Lineage Config Folder
 //
 // ```go
@@ -165,6 +166,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Data Lineage Config Organization
 //
 // ```go

@@ -119,6 +119,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Catalog Entry Group Tag
     /// 
     /// ```csharp
@@ -222,6 +223,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Catalog Entry Tag Full
     /// 
     /// ```csharp

@@ -52,6 +52,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase Apple App Full
 //
 // ```go

@@ -174,6 +174,21 @@ public final class NotebookExecutionState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+     * 
+     */
+    @Import(name="kernelName")
+    private @Nullable Output<String> kernelName;
+
+    /**
+     * @return The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+     * 
+     */
+    public Optional<Output<String>> kernelName() {
+        return Optional.ofNullable(this.kernelName);
+    }
+
+    /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      * 
      */
@@ -279,6 +294,7 @@ public final class NotebookExecutionState extends com.pulumi.resources.ResourceA
         this.executionUser = $.executionUser;
         this.gcsNotebookSource = $.gcsNotebookSource;
         this.gcsOutputUri = $.gcsOutputUri;
+        this.kernelName = $.kernelName;
         this.location = $.location;
         this.notebookExecutionJobId = $.notebookExecutionJobId;
         this.notebookRuntimeTemplateResourceName = $.notebookRuntimeTemplateResourceName;
@@ -510,6 +526,27 @@ public final class NotebookExecutionState extends com.pulumi.resources.ResourceA
          */
         public Builder gcsOutputUri(String gcsOutputUri) {
             return gcsOutputUri(Output.of(gcsOutputUri));
+        }
+
+        /**
+         * @param kernelName The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernelName(@Nullable Output<String> kernelName) {
+            $.kernelName = kernelName;
+            return this;
+        }
+
+        /**
+         * @param kernelName The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernelName(String kernelName) {
+            return kernelName(Output.of(kernelName));
         }
 
         /**

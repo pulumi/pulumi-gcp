@@ -82,6 +82,7 @@ import * as utilities from "../utilities";
  *     remoteUri: "https://ghe.com/hashicorp/terraform-provider-google.git",
  * });
  * ```
+ *
  * ### Cloudbuildv2 Repository Github Doc
  *
  * ```typescript

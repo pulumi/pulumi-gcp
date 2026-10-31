@@ -16,6 +16,34 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'InstanceCondition',
+    'InstanceContainer',
+    'InstanceContainerEnv',
+    'InstanceContainerEnvValueSource',
+    'InstanceContainerEnvValueSourceSecretKeyRef',
+    'InstanceContainerLivenessProbe',
+    'InstanceContainerLivenessProbeGrpc',
+    'InstanceContainerLivenessProbeHttpGet',
+    'InstanceContainerLivenessProbeHttpGetHttpHeader',
+    'InstanceContainerPort',
+    'InstanceContainerResources',
+    'InstanceContainerStartupProbe',
+    'InstanceContainerStartupProbeGrpc',
+    'InstanceContainerStartupProbeHttpGet',
+    'InstanceContainerStartupProbeHttpGetHttpHeader',
+    'InstanceContainerStartupProbeTcpSocket',
+    'InstanceContainerStatus',
+    'InstanceContainerVolumeMount',
+    'InstanceIamBindingCondition',
+    'InstanceIamMemberCondition',
+    'InstanceTerminalCondition',
+    'InstanceVolume',
+    'InstanceVolumeCloudSqlInstance',
+    'InstanceVolumeEmptyDir',
+    'InstanceVolumeGcs',
+    'InstanceVolumeNfs',
+    'InstanceVolumeSecret',
+    'InstanceVolumeSecretItem',
     'JobBinaryAuthorization',
     'JobCondition',
     'JobIamBindingCondition',
@@ -245,6 +273,1693 @@ __all__ = [
     'GetWorkerPoolTemplateVpcAccessNetworkInterfaceResult',
     'GetWorkerPoolTerminalConditionResult',
 ]
+
+@pulumi.output_type
+class InstanceCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceReason":
+            suggest = "instance_reason"
+        elif key == "lastTransitionTime":
+            suggest = "last_transition_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_reason: Optional[_builtins.str] = None,
+                 last_transition_time: Optional[_builtins.str] = None,
+                 message: Optional[_builtins.str] = None,
+                 reason: Optional[_builtins.str] = None,
+                 severity: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str instance_reason: (Output)
+               A reason for the instance condition.
+        :param _builtins.str last_transition_time: (Output)
+               Last time the condition transitioned from one status to another.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param _builtins.str message: (Output)
+               Human readable message indicating details about the current status.
+        :param _builtins.str reason: (Output)
+               A common (instance-level) reason for this condition.
+        :param _builtins.str severity: (Output)
+               How to interpret failures of this condition, one of Error, Warning, Info
+        :param _builtins.str state: (Output)
+               State of the condition.
+        :param _builtins.str type: (Output)
+               type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
+        if instance_reason is not None:
+            pulumi.set(__self__, "instance_reason", instance_reason)
+        if last_transition_time is not None:
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceReason")
+    def instance_reason(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A reason for the instance condition.
+        """
+        return pulumi.get(self, "instance_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="lastTransitionTime")
+    def last_transition_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Last time the condition transitioned from one status to another.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "last_transition_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A common (instance-level) reason for this condition.
+        """
+        return pulumi.get(self, "reason")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        State of the condition.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class InstanceContainer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "livenessProbe":
+            suggest = "liveness_probe"
+        elif key == "startupProbe":
+            suggest = "startup_probe"
+        elif key == "volumeMounts":
+            suggest = "volume_mounts"
+        elif key == "workingDir":
+            suggest = "working_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceContainer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceContainer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceContainer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image: _builtins.str,
+                 args: Optional[Sequence[_builtins.str]] = None,
+                 commands: Optional[Sequence[_builtins.str]] = None,
+                 envs: Optional[Sequence['outputs.InstanceContainerEnv']] = None,
+                 liveness_probe: Optional['outputs.InstanceContainerLivenessProbe'] = None,
+                 name: Optional[_builtins.str] = None,
+                 ports: Optional[Sequence['outputs.InstanceContainerPort']] = None,
+                 resources: Optional['outputs.InstanceContainerResources'] = None,
+                 startup_probe: Optional['outputs.InstanceContainerStartupProbe'] = None,
+                 volume_mounts: Optional[Sequence['outputs.InstanceContainerVolumeMount']] = None,
+                 working_dir: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        :param Sequence[_builtins.str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[_builtins.str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence['InstanceContainerEnvArgs'] envs: List of environment variables to set in the container.
+               Structure is documented below.
+        :param 'InstanceContainerLivenessProbeArgs' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails.
+               Structure is documented below.
+        :param _builtins.str name: Name of the container specified as a DNS_LABEL.
+        :param Sequence['InstanceContainerPortArgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+               If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+               Structure is documented below.
+        :param 'InstanceContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+               Structure is documented below.
+        :param 'InstanceContainerStartupProbeArgs' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+               Structure is documented below.
+        :param Sequence['InstanceContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
+               Structure is documented below.
+        :param _builtins.str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if liveness_probe is not None:
+            pulumi.set(__self__, "liveness_probe", liveness_probe)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if startup_probe is not None:
+            pulumi.set(__self__, "startup_probe", startup_probe)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> _builtins.str:
+        """
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.InstanceContainerEnv']]:
+        """
+        List of environment variables to set in the container.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "envs")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbe")
+    def liveness_probe(self) -> Optional['outputs.InstanceContainerLivenessProbe']:
+        """
+        Periodic probe of container liveness. Container will be restarted if the probe fails.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "liveness_probe")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the container specified as a DNS_LABEL.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence['outputs.InstanceContainerPort']]:
+        """
+        List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+        If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional['outputs.InstanceContainerResources']:
+        """
+        Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        Structure is documented below.
+        """
+        return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> Optional['outputs.InstanceContainerStartupProbe']:
+        """
+        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "startup_probe")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[Sequence['outputs.InstanceContainerVolumeMount']]:
+        """
+        Volume to mount into the container's filesystem.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @_builtins.property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> Optional[_builtins.str]:
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+        return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class InstanceContainerEnv(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueSource":
+            suggest = "value_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceContainerEnv. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceContainerEnv.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceContainerEnv.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: Optional[_builtins.str] = None,
+                 value_source: Optional['outputs.InstanceContainerEnvValueSource'] = None):
+        """
+        :param _builtins.str name: Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+        :param _builtins.str value: Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+        :param 'InstanceContainerEnvValueSourceArgs' value_source: Source for the environment variable's value.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_source is not None:
+            pulumi.set(__self__, "value_source", value_source)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter(name="valueSource")
+    def value_source(self) -> Optional['outputs.InstanceContainerEnvValueSource']:
+        """
+        Source for the environment variable's value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "value_source")
+
+
+@pulumi.output_type
+class InstanceContainerEnvValueSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretKeyRef":
+            suggest = "secret_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceContainerEnvValueSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceContainerEnvValueSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceContainerEnvValueSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_key_ref: Optional['outputs.InstanceContainerEnvValueSourceSecretKeyRef'] = None):
+        """
+        :param 'InstanceContainerEnvValueSourceSecretKeyRefArgs' secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
+               Structure is documented below.
+        """
+        if secret_key_ref is not None:
+            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> Optional['outputs.InstanceContainerEnvValueSourceSecretKeyRef']:
+        """
+        Selects a secret and a specific version from Cloud Secret Manager.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+
+@pulumi.output_type
+class InstanceContainerEnvValueSourceSecretKeyRef(dict):
+    def __init__(__self__, *,
+                 secret: _builtins.str,
+                 version: _builtins.str):
+        """
+        :param _builtins.str secret: The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+        :param _builtins.str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        """
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class InstanceContainerLivenessProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGet":
+            suggest = "http_get"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceContainerLivenessProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceContainerLivenessProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceContainerLivenessProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_threshold: Optional[_builtins.int] = None,
+                 grpc: Optional['outputs.InstanceContainerLivenessProbeGrpc'] = None,
+                 http_get: Optional['outputs.InstanceContainerLivenessProbeHttpGet'] = None,
+                 initial_delay_seconds: Optional[_builtins.int] = None,
+                 period_seconds: Optional[_builtins.int] = None,
+                 timeout_seconds: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int failure_threshold: Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param 'InstanceContainerLivenessProbeGrpcArgs' grpc: Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet or grpc must be specified.
+               Structure is documented below.
+        :param 'InstanceContainerLivenessProbeHttpGetArgs' http_get: Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet or grpc must be specified.
+               Structure is documented below.
+        :param _builtins.int initial_delay_seconds: Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+        :param _builtins.int period_seconds: Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        :param _builtins.int timeout_seconds: Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[_builtins.int]:
+        """
+        Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def grpc(self) -> Optional['outputs.InstanceContainerLivenessProbeGrpc']:
+        """
+        Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet or grpc must be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc")
+
+    @_builtins.property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional['outputs.InstanceContainerLivenessProbeHttpGet']:
+        """
+        Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet or grpc must be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[_builtins.int]:
+        """
+        Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[_builtins.int]:
+        """
+        Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[_builtins.int]:
+        """
+        Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class InstanceContainerLivenessProbeGrpc(dict):
+    def __init__(__self__, *,
+                 port: Optional[_builtins.int] = None,
+                 service: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int port: Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        :param _builtins.str service: Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional[_builtins.str]:
+        """
+        Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class InstanceContainerLivenessProbeHttpGet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpHeaders":
+            suggest = "http_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceContainerLivenessProbeHttpGet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceContainerLivenessProbeHttpGet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceContainerLivenessProbeHttpGet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_headers: Optional[Sequence['outputs.InstanceContainerLivenessProbeHttpGetHttpHeader']] = None,
+                 path: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param Sequence['InstanceContainerLivenessProbeHttpGetHttpHeaderArgs'] http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
+               Structure is documented below.
+        :param _builtins.str path: Optional. Path to access on the HTTP server. Defaults to '/'.
+        :param _builtins.int port: Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        """
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[Sequence['outputs.InstanceContainerLivenessProbeHttpGetHttpHeader']]:
+        """
+        Optional. Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        Optional. Path to access on the HTTP server. Defaults to '/'.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class InstanceContainerLivenessProbeHttpGetHttpHeader(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Required. The header field name
+        :param _builtins.str value: Optional. The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Required. The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Optional. The header field value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class InstanceContainerPort(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerPort":
+            suggest = "container_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceContainerPort. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceContainerPort.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceContainerPort.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_port: Optional[_builtins.int] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int container_port: Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+        :param _builtins.str name: If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        """
+        if container_port is not None:
+            pulumi.set(__self__, "container_port", container_port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> Optional[_builtins.int]:
+        """
+        Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+        """
+        return pulumi.get(self, "container_port")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class InstanceContainerResources(dict):
+    def __init__(__self__, *,
+                 limits: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] limits: Only memory and CPU are supported. Use key `cpu` for CPU limit, `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Only memory and CPU are supported. Use key `cpu` for CPU limit, `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        """
+        return pulumi.get(self, "limits")
+
+
+@pulumi.output_type
+class InstanceContainerStartupProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGet":
+            suggest = "http_get"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "tcpSocket":
+            suggest = "tcp_socket"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceContainerStartupProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceContainerStartupProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceContainerStartupProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_threshold: Optional[_builtins.int] = None,
+                 grpc: Optional['outputs.InstanceContainerStartupProbeGrpc'] = None,
+                 http_get: Optional['outputs.InstanceContainerStartupProbeHttpGet'] = None,
+                 initial_delay_seconds: Optional[_builtins.int] = None,
+                 period_seconds: Optional[_builtins.int] = None,
+                 tcp_socket: Optional['outputs.InstanceContainerStartupProbeTcpSocket'] = None,
+                 timeout_seconds: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int failure_threshold: Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param 'InstanceContainerStartupProbeGrpcArgs' grpc: Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+               Structure is documented below.
+        :param 'InstanceContainerStartupProbeHttpGetArgs' http_get: Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+               Structure is documented below.
+        :param _builtins.int initial_delay_seconds: Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+        :param _builtins.int period_seconds: Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        :param 'InstanceContainerStartupProbeTcpSocketArgs' tcp_socket: Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+               Structure is documented below.
+        :param _builtins.int timeout_seconds: Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[_builtins.int]:
+        """
+        Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def grpc(self) -> Optional['outputs.InstanceContainerStartupProbeGrpc']:
+        """
+        Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc")
+
+    @_builtins.property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional['outputs.InstanceContainerStartupProbeHttpGet']:
+        """
+        Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[_builtins.int]:
+        """
+        Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[_builtins.int]:
+        """
+        Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional['outputs.InstanceContainerStartupProbeTcpSocket']:
+        """
+        Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[_builtins.int]:
+        """
+        Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class InstanceContainerStartupProbeGrpc(dict):
+    def __init__(__self__, *,
+                 port: Optional[_builtins.int] = None,
+                 service: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int port: Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        :param _builtins.str service: Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional[_builtins.str]:
+        """
+        Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class InstanceContainerStartupProbeHttpGet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpHeaders":
+            suggest = "http_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceContainerStartupProbeHttpGet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceContainerStartupProbeHttpGet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceContainerStartupProbeHttpGet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_headers: Optional[Sequence['outputs.InstanceContainerStartupProbeHttpGetHttpHeader']] = None,
+                 path: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param Sequence['InstanceContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
+               Structure is documented below.
+        :param _builtins.str path: Optional. Path to access on the HTTP server. Defaults to '/'.
+        :param _builtins.int port: Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        """
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[Sequence['outputs.InstanceContainerStartupProbeHttpGetHttpHeader']]:
+        """
+        Optional. Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        Optional. Path to access on the HTTP server. Defaults to '/'.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class InstanceContainerStartupProbeHttpGetHttpHeader(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Required. The header field name
+        :param _builtins.str value: Optional. The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Required. The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Optional. The header field value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class InstanceContainerStartupProbeTcpSocket(dict):
+    def __init__(__self__, *,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int port: Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class InstanceContainerStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageDigest":
+            suggest = "image_digest"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceContainerStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceContainerStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceContainerStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_digest: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str image_digest: (Output)
+               ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+        :param _builtins.str name: Name of the Instance.
+        """
+        if image_digest is not None:
+            pulumi.set(__self__, "image_digest", image_digest)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="imageDigest")
+    def image_digest(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+        """
+        return pulumi.get(self, "image_digest")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the Instance.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class InstanceContainerVolumeMount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "subPath":
+            suggest = "sub_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceContainerVolumeMount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceContainerVolumeMount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceContainerVolumeMount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: _builtins.str,
+                 name: _builtins.str,
+                 sub_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        :param _builtins.str name: This must match the Name of a Volume.
+        :param _builtins.str sub_path: Path within the volume from which the container's volume should be mounted.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> _builtins.str:
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        """
+        return pulumi.get(self, "mount_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        This must match the Name of a Volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[_builtins.str]:
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
+        return pulumi.get(self, "sub_path")
+
+
+@pulumi.output_type
+class InstanceIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class InstanceIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class InstanceTerminalCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceReason":
+            suggest = "instance_reason"
+        elif key == "lastTransitionTime":
+            suggest = "last_transition_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceTerminalCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceTerminalCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceTerminalCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_reason: Optional[_builtins.str] = None,
+                 last_transition_time: Optional[_builtins.str] = None,
+                 message: Optional[_builtins.str] = None,
+                 reason: Optional[_builtins.str] = None,
+                 severity: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str instance_reason: (Output)
+               A reason for the instance condition.
+        :param _builtins.str last_transition_time: (Output)
+               Last time the condition transitioned from one status to another.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param _builtins.str message: (Output)
+               Human readable message indicating details about the current status.
+        :param _builtins.str reason: (Output)
+               A common (instance-level) reason for this condition.
+        :param _builtins.str severity: (Output)
+               How to interpret failures of this condition, one of Error, Warning, Info
+        :param _builtins.str state: (Output)
+               State of the condition.
+        :param _builtins.str type: (Output)
+               type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
+        if instance_reason is not None:
+            pulumi.set(__self__, "instance_reason", instance_reason)
+        if last_transition_time is not None:
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceReason")
+    def instance_reason(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A reason for the instance condition.
+        """
+        return pulumi.get(self, "instance_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="lastTransitionTime")
+    def last_transition_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Last time the condition transitioned from one status to another.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "last_transition_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A common (instance-level) reason for this condition.
+        """
+        return pulumi.get(self, "reason")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        State of the condition.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class InstanceVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudSqlInstance":
+            suggest = "cloud_sql_instance"
+        elif key == "emptyDir":
+            suggest = "empty_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 cloud_sql_instance: Optional['outputs.InstanceVolumeCloudSqlInstance'] = None,
+                 empty_dir: Optional['outputs.InstanceVolumeEmptyDir'] = None,
+                 gcs: Optional['outputs.InstanceVolumeGcs'] = None,
+                 nfs: Optional['outputs.InstanceVolumeNfs'] = None,
+                 secret: Optional['outputs.InstanceVolumeSecret'] = None):
+        """
+        :param _builtins.str name: Volume's name.
+        :param 'InstanceVolumeCloudSqlInstanceArgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+               Structure is documented below.
+        :param 'InstanceVolumeEmptyDirArgs' empty_dir: Ephemeral storage used as a shared volume.
+               Structure is documented below.
+        :param 'InstanceVolumeGcsArgs' gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
+               Structure is documented below.
+        :param 'InstanceVolumeNfsArgs' nfs: Represents an NFS mount.
+               Structure is documented below.
+        :param 'InstanceVolumeSecretArgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if cloud_sql_instance is not None:
+            pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
+        if empty_dir is not None:
+            pulumi.set(__self__, "empty_dir", empty_dir)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if nfs is not None:
+            pulumi.set(__self__, "nfs", nfs)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Volume's name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudSqlInstance")
+    def cloud_sql_instance(self) -> Optional['outputs.InstanceVolumeCloudSqlInstance']:
+        """
+        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_sql_instance")
+
+    @_builtins.property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> Optional['outputs.InstanceVolumeEmptyDir']:
+        """
+        Ephemeral storage used as a shared volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "empty_dir")
+
+    @_builtins.property
+    @pulumi.getter
+    def gcs(self) -> Optional['outputs.InstanceVolumeGcs']:
+        """
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs")
+
+    @_builtins.property
+    @pulumi.getter
+    def nfs(self) -> Optional['outputs.InstanceVolumeNfs']:
+        """
+        Represents an NFS mount.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "nfs")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional['outputs.InstanceVolumeSecret']:
+        """
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class InstanceVolumeCloudSqlInstance(dict):
+    def __init__(__self__, *,
+                 instances: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        """
+        if instances is not None:
+            pulumi.set(__self__, "instances", instances)
+
+    @_builtins.property
+    @pulumi.getter
+    def instances(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        """
+        return pulumi.get(self, "instances")
+
+
+@pulumi.output_type
+class InstanceVolumeEmptyDir(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeLimit":
+            suggest = "size_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceVolumeEmptyDir. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceVolumeEmptyDir.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceVolumeEmptyDir.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 medium: Optional[_builtins.str] = None,
+                 size_limit: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str medium: The different types of medium supported for EmptyDir.
+               Default value is `MEMORY`.
+               Possible values are: `MEMORY`, `DISK`.
+        :param _builtins.str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        """
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if size_limit is not None:
+            pulumi.set(__self__, "size_limit", size_limit)
+
+    @_builtins.property
+    @pulumi.getter
+    def medium(self) -> Optional[_builtins.str]:
+        """
+        The different types of medium supported for EmptyDir.
+        Default value is `MEMORY`.
+        Possible values are: `MEMORY`, `DISK`.
+        """
+        return pulumi.get(self, "medium")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> Optional[_builtins.str]:
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        """
+        return pulumi.get(self, "size_limit")
+
+
+@pulumi.output_type
+class InstanceVolumeGcs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountOptions":
+            suggest = "mount_options"
+        elif key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceVolumeGcs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceVolumeGcs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceVolumeGcs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 mount_options: Optional[Sequence[_builtins.str]] = None,
+                 read_only: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str bucket: GCS Bucket name
+        :param Sequence[_builtins.str] mount_options: A list of flags to pass to the gcsfuse command for configuring this volume.
+               Flags should be passed without leading dashes.
+        :param _builtins.bool read_only: If true, mount the GCS bucket as read-only
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        GCS Bucket name
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of flags to pass to the gcsfuse command for configuring this volume.
+        Flags should be passed without leading dashes.
+        """
+        return pulumi.get(self, "mount_options")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[_builtins.bool]:
+        """
+        If true, mount the GCS bucket as read-only
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class InstanceVolumeNfs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceVolumeNfs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceVolumeNfs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceVolumeNfs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 server: _builtins.str,
+                 read_only: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str path: Path that is exported by the NFS server.
+        :param _builtins.str server: Hostname or IP address of the NFS server
+        :param _builtins.bool read_only: If true, mount the NFS volume as read only
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "server", server)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        Path that is exported by the NFS server.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> _builtins.str:
+        """
+        Hostname or IP address of the NFS server
+        """
+        return pulumi.get(self, "server")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[_builtins.bool]:
+        """
+        If true, mount the NFS volume as read only
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class InstanceVolumeSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultMode":
+            suggest = "default_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceVolumeSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceVolumeSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceVolumeSecret.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret: _builtins.str,
+                 default_mode: Optional[_builtins.int] = None,
+                 items: Optional[Sequence['outputs.InstanceVolumeSecretItem']] = None):
+        """
+        :param _builtins.str secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        :param _builtins.int default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+        :param Sequence['InstanceVolumeSecretItemArgs'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "secret", secret)
+        if default_mode is not None:
+            pulumi.set(__self__, "default_mode", default_mode)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultMode")
+    def default_mode(self) -> Optional[_builtins.int]:
+        """
+        Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+        """
+        return pulumi.get(self, "default_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def items(self) -> Optional[Sequence['outputs.InstanceVolumeSecretItem']]:
+        """
+        If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "items")
+
+
+@pulumi.output_type
+class InstanceVolumeSecretItem(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 mode: Optional[_builtins.int] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str path: The relative path of the secret in the container.
+        :param _builtins.int mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        :param _builtins.str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        """
+        pulumi.set(__self__, "path", path)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The relative path of the secret in the container.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.int]:
+        """
+        Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        """
+        return pulumi.get(self, "version")
+
 
 @pulumi.output_type
 class JobBinaryAuthorization(dict):

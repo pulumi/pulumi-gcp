@@ -402,6 +402,7 @@ class CustomConstraint(pulumi.CustomResource):
             ],
             resource_types=["container.googleapis.com/NodePool"])
         ```
+
         ### Org Policy Custom Constraint Full
 
         ```python
@@ -496,6 +497,7 @@ class CustomConstraint(pulumi.CustomResource):
             ],
             resource_types=["container.googleapis.com/NodePool"])
         ```
+
         ### Org Policy Custom Constraint Full
 
         ```python

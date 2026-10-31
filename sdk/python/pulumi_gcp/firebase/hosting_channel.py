@@ -399,6 +399,7 @@ class HostingChannel(pulumi.CustomResource):
             site_id=default.site_id,
             channel_id="channel-basic")
         ```
+
         ### Firebasehosting Channel Full
 
         ```python
@@ -490,6 +491,7 @@ class HostingChannel(pulumi.CustomResource):
             site_id=default.site_id,
             channel_id="channel-basic")
         ```
+
         ### Firebasehosting Channel Full
 
         ```python

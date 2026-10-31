@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dns Managed Zone Private
  *
  * ```typescript
@@ -68,6 +69,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dns Managed Zone Private Forwarding
  *
  * ```typescript
@@ -112,6 +114,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dns Managed Zone Private Forwarding Ipv6
  *
  * ```typescript
@@ -139,6 +142,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dns Managed Zone Private Gke
  *
  * ```typescript
@@ -206,6 +210,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dns Managed Zone Private Peering
  *
  * ```typescript
@@ -237,6 +242,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dns Managed Zone Service Directory
  *
  * ```typescript
@@ -263,6 +269,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * ```
+ *
  * ### Dns Managed Zone Cloud Logging
  *
  * ```typescript
@@ -281,6 +288,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dns Managed Zone Iam Condition
  *
  * ```typescript

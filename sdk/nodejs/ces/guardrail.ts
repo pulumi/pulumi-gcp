@@ -58,6 +58,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Guardrail Transfer Agent Content Filter
  *
  * ```typescript
@@ -103,6 +104,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Guardrail Generative Answer Llm Prompt Security
  *
  * ```typescript
@@ -145,6 +147,7 @@ import * as utilities from "../utilities";
  *             modelSettings: {
  *                 model: "gemini-3.0-flash-001",
  *                 temperature: 50,
+ *                 thinkingLevel: "LOW",
  *             },
  *             prompt: "example_prompt",
  *             policyScope: "USER_QUERY",
@@ -154,6 +157,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Guardrail Llm Prompt Security Fail Open
  *
  * ```typescript
@@ -195,6 +199,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Guardrail Llm Prompt Security Default Settings
  *
  * ```typescript
@@ -236,6 +241,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Guardrail Code Callback
  *
  * ```typescript
@@ -301,6 +307,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces Guardrail Llm Policy
  *
  * ```typescript
@@ -342,6 +349,7 @@ import * as utilities from "../utilities";
  *         modelSettings: {
  *             model: "gemini-3.0-flash-001",
  *             temperature: 50,
+ *             thinkingLevel: "LOW",
  *         },
  *         prompt: "example_prompt",
  *         policyScope: "USER_QUERY",

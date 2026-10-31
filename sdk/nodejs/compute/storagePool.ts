@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Compute Storage Pool Full
  *
  * ```typescript

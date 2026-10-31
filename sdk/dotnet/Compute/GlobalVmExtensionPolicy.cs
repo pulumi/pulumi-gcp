@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Global Vm Extension Policy Basic
     /// 
     /// ```csharp
@@ -108,6 +109,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Global Vm Extension Policy Custom Rollout
     /// 
     /// ```csharp

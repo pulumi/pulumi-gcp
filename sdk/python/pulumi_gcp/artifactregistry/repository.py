@@ -848,6 +848,7 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER")
         ```
+
         ### Artifact Registry Repository Multi Region
 
         ```python
@@ -860,6 +861,7 @@ class Repository(pulumi.CustomResource):
             location="us",
             format="DOCKER")
         ```
+
         ### Artifact Registry Repository Docker
 
         ```python
@@ -875,6 +877,7 @@ class Repository(pulumi.CustomResource):
                 "immutable_tags": True,
             })
         ```
+
         ### Artifact Registry Repository Cmek
 
         ```python
@@ -894,6 +897,7 @@ class Repository(pulumi.CustomResource):
             kms_key_name="kms-key",
             opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
+
         ### Artifact Registry Repository Virtual
 
         ```python
@@ -931,6 +935,7 @@ class Repository(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Artifact Registry Repository Remote
 
         ```python
@@ -950,6 +955,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Connector
 
         ```python
@@ -990,6 +996,7 @@ class Repository(pulumi.CustomResource):
                 "no_cache": {},
             })
         ```
+
         ### Artifact Registry Repository Remote Apt
 
         ```python
@@ -1012,6 +1019,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Yum
 
         ```python
@@ -1034,6 +1042,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Cleanup
 
         ```python
@@ -1100,6 +1109,7 @@ class Repository(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Artifact Registry Repository Remote Dockerhub Auth
 
         ```python
@@ -1139,6 +1149,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Docker Custom With Auth
 
         ```python
@@ -1180,6 +1191,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Maven Custom With Auth
 
         ```python
@@ -1221,6 +1233,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Npm Custom With Auth
 
         ```python
@@ -1262,6 +1275,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Python Custom With Auth
 
         ```python
@@ -1303,6 +1317,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Common Repository With Docker
 
         ```python
@@ -1327,6 +1342,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
 
         ```python
@@ -1353,6 +1369,7 @@ class Repository(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[upstream_repo]))
         ```
+
         ### Artifact Registry Repository Remote Common Repository With Custom Upstream
 
         ```python
@@ -1392,6 +1409,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Vulnerability Scanning
 
         ```python
@@ -1516,6 +1534,7 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER")
         ```
+
         ### Artifact Registry Repository Multi Region
 
         ```python
@@ -1528,6 +1547,7 @@ class Repository(pulumi.CustomResource):
             location="us",
             format="DOCKER")
         ```
+
         ### Artifact Registry Repository Docker
 
         ```python
@@ -1543,6 +1563,7 @@ class Repository(pulumi.CustomResource):
                 "immutable_tags": True,
             })
         ```
+
         ### Artifact Registry Repository Cmek
 
         ```python
@@ -1562,6 +1583,7 @@ class Repository(pulumi.CustomResource):
             kms_key_name="kms-key",
             opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
+
         ### Artifact Registry Repository Virtual
 
         ```python
@@ -1599,6 +1621,7 @@ class Repository(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Artifact Registry Repository Remote
 
         ```python
@@ -1618,6 +1641,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Connector
 
         ```python
@@ -1658,6 +1682,7 @@ class Repository(pulumi.CustomResource):
                 "no_cache": {},
             })
         ```
+
         ### Artifact Registry Repository Remote Apt
 
         ```python
@@ -1680,6 +1705,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Yum
 
         ```python
@@ -1702,6 +1728,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Cleanup
 
         ```python
@@ -1768,6 +1795,7 @@ class Repository(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Artifact Registry Repository Remote Dockerhub Auth
 
         ```python
@@ -1807,6 +1835,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Docker Custom With Auth
 
         ```python
@@ -1848,6 +1877,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Maven Custom With Auth
 
         ```python
@@ -1889,6 +1919,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Npm Custom With Auth
 
         ```python
@@ -1930,6 +1961,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Python Custom With Auth
 
         ```python
@@ -1971,6 +2003,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Common Repository With Docker
 
         ```python
@@ -1995,6 +2028,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
 
         ```python
@@ -2021,6 +2055,7 @@ class Repository(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[upstream_repo]))
         ```
+
         ### Artifact Registry Repository Remote Common Repository With Custom Upstream
 
         ```python
@@ -2060,6 +2095,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Artifact Registry Repository Vulnerability Scanning
 
         ```python

@@ -6,8 +6,11 @@ package com.pulumi.gcp.gemini.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs extends com.pulumi.resources.ResourceArgs {
@@ -45,6 +48,23 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatas
     }
 
     /**
+     * Optional. The schema of the datasource.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="schema")
+    private @Nullable Output<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs> schema;
+
+    /**
+     * @return Optional. The schema of the datasource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs>> schema() {
+        return Optional.ofNullable(this.schema);
+    }
+
+    /**
      * The table ID.
      * 
      */
@@ -64,6 +84,7 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatas
     private DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs $) {
         this.datasetId = $.datasetId;
         this.projectId = $.projectId;
+        this.schema = $.schema;
         this.tableId = $.tableId;
     }
 
@@ -125,6 +146,29 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatas
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param schema Optional. The schema of the datasource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schema(@Nullable Output<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs> schema) {
+            $.schema = schema;
+            return this;
+        }
+
+        /**
+         * @param schema Optional. The schema of the datasource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schema(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs schema) {
+            return schema(Output.of(schema));
         }
 
         /**

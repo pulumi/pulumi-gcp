@@ -136,6 +136,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Firewall Policy Rule Network Scope Egress
 //
 // ```go
@@ -187,6 +188,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Firewall Policy Rule Network Scope Ingress
 //
 // ```go
@@ -247,6 +249,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Firewall Policy Rule Network Context Egress
 //
 // ```go
@@ -298,6 +301,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Firewall Policy Rule Network Context Ingress
 //
 // ```go
@@ -358,6 +362,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Firewall Policy Rule Target Type Internal Managed Lb
 //
 // ```go

@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Apihub Api Hub Instance Full
  *
  * ```typescript

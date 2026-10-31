@@ -3930,6 +3930,19 @@ func (o AccessPolicyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 }
 
 type GcpUserAccessBindingPrincipal struct {
+	// Immutable. The IAM principal identifier of the federated workforce or workload to
+	// assign the policy to. Examples include the following:
+	// * Single principal:
+	//   `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+	// * All workloads in a workload identity pool:
+	//   `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+	// * All Workforce Pools in a Google Cloud organization:
+	//   `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+	//   Bindings created for all Workforce Pools in a Google Cloud organization
+	//   support only `scopedAccessSettings` with the `restrictedProject`
+	//   client scope and active `sessionSettings`. No other configurations are
+	//   allowed.
+	FederatedPrincipal *string `pulumi:"federatedPrincipal"`
 	// Immutable. Service account email used to assign policies to a single service account.
 	// If a service account is subject to multiple policies (e.g., if there is a policy for all
 	// service accounts in a project and a policy for the service account), the closest (i.e.
@@ -3952,6 +3965,19 @@ type GcpUserAccessBindingPrincipalInput interface {
 }
 
 type GcpUserAccessBindingPrincipalArgs struct {
+	// Immutable. The IAM principal identifier of the federated workforce or workload to
+	// assign the policy to. Examples include the following:
+	// * Single principal:
+	//   `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+	// * All workloads in a workload identity pool:
+	//   `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+	// * All Workforce Pools in a Google Cloud organization:
+	//   `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+	//   Bindings created for all Workforce Pools in a Google Cloud organization
+	//   support only `scopedAccessSettings` with the `restrictedProject`
+	//   client scope and active `sessionSettings`. No other configurations are
+	//   allowed.
+	FederatedPrincipal pulumi.StringPtrInput `pulumi:"federatedPrincipal"`
 	// Immutable. Service account email used to assign policies to a single service account.
 	// If a service account is subject to multiple policies (e.g., if there is a policy for all
 	// service accounts in a project and a policy for the service account), the closest (i.e.
@@ -4039,6 +4065,22 @@ func (o GcpUserAccessBindingPrincipalOutput) ToGcpUserAccessBindingPrincipalPtrO
 	}).(GcpUserAccessBindingPrincipalPtrOutput)
 }
 
+// Immutable. The IAM principal identifier of the federated workforce or workload to
+// assign the policy to. Examples include the following:
+//   - Single principal:
+//     `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+//   - All workloads in a workload identity pool:
+//     `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+//   - All Workforce Pools in a Google Cloud organization:
+//     `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+//     Bindings created for all Workforce Pools in a Google Cloud organization
+//     support only `scopedAccessSettings` with the `restrictedProject`
+//     client scope and active `sessionSettings`. No other configurations are
+//     allowed.
+func (o GcpUserAccessBindingPrincipalOutput) FederatedPrincipal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingPrincipal) *string { return v.FederatedPrincipal }).(pulumi.StringPtrOutput)
+}
+
 // Immutable. Service account email used to assign policies to a single service account.
 // If a service account is subject to multiple policies (e.g., if there is a policy for all
 // service accounts in a project and a policy for the service account), the closest (i.e.
@@ -4075,6 +4117,27 @@ func (o GcpUserAccessBindingPrincipalPtrOutput) Elem() GcpUserAccessBindingPrinc
 		var ret GcpUserAccessBindingPrincipal
 		return ret
 	}).(GcpUserAccessBindingPrincipalOutput)
+}
+
+// Immutable. The IAM principal identifier of the federated workforce or workload to
+// assign the policy to. Examples include the following:
+//   - Single principal:
+//     `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+//   - All workloads in a workload identity pool:
+//     `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+//   - All Workforce Pools in a Google Cloud organization:
+//     `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+//     Bindings created for all Workforce Pools in a Google Cloud organization
+//     support only `scopedAccessSettings` with the `restrictedProject`
+//     client scope and active `sessionSettings`. No other configurations are
+//     allowed.
+func (o GcpUserAccessBindingPrincipalPtrOutput) FederatedPrincipal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingPrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FederatedPrincipal
+	}).(pulumi.StringPtrOutput)
 }
 
 // Immutable. Service account email used to assign policies to a single service account.
@@ -4912,6 +4975,9 @@ type GcpUserAccessBindingScopedAccessSettingScopeClientScope struct {
 	// Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
 	// Structure is documented below.
 	RestrictedClientApplication *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication `pulumi:"restrictedClientApplication"`
+	// Optional. The Google Cloud project that is subject to this binding's scope.
+	// Structure is documented below.
+	RestrictedProject *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject `pulumi:"restrictedProject"`
 }
 
 // GcpUserAccessBindingScopedAccessSettingScopeClientScopeInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs and GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput values.
@@ -4929,6 +4995,9 @@ type GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs struct {
 	// Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
 	// Structure is documented below.
 	RestrictedClientApplication GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrInput `pulumi:"restrictedClientApplication"`
+	// Optional. The Google Cloud project that is subject to this binding's scope.
+	// Structure is documented below.
+	RestrictedProject GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrInput `pulumi:"restrictedProject"`
 }
 
 func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs) ElementType() reflect.Type {
@@ -5016,6 +5085,14 @@ func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput) Restricte
 	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput)
 }
 
+// Optional. The Google Cloud project that is subject to this binding's scope.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput) RestrictedProject() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingScopeClientScope) *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject {
+		return v.RestrictedProject
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput)
+}
+
 type GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput struct{ *pulumi.OutputState }
 
 func (GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) ElementType() reflect.Type {
@@ -5049,6 +5126,17 @@ func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) Restri
 		}
 		return v.RestrictedClientApplication
 	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput)
+}
+
+// Optional. The Google Cloud project that is subject to this binding's scope.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) RestrictedProject() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScopeClientScope) *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictedProject
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput)
 }
 
 type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication struct {
@@ -5208,6 +5296,151 @@ func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientA
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject struct {
+	// The Google Cloud project resource name.
+	// Format: `projects/{project_number}`. Only the project number is supported.
+	// Example: `projects/1234567890`
+	Name string `pulumi:"name"`
+}
+
+// GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs and GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectInput` via:
+//
+//	GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs{...}
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs struct {
+	// The Google Cloud project resource name.
+	// Format: `projects/{project_number}`. Only the project number is supported.
+	// Example: `projects/1234567890`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput)
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput).ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutputWithContext(ctx)
+}
+
+// GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs, GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtr and GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrInput` via:
+//
+//	        GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput
+}
+
+type gcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrType GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs
+
+func GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtr(v *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrInput {
+	return (*gcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrType)(v)
+}
+
+func (*gcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject)(nil)).Elem()
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrType) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrType) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput {
+	return o.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutputWithContext(context.Background())
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject) *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject {
+		return &v
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput)
+}
+
+// The Google Cloud project resource name.
+// Format: `projects/{project_number}`. Only the project number is supported.
+// Example: `projects/1234567890`
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput) Elem() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject {
+		if v != nil {
+			return *v
+		}
+		var ret GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject
+		return ret
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput)
+}
+
+// The Google Cloud project resource name.
+// Format: `projects/{project_number}`. Only the project number is supported.
+// Example: `projects/1234567890`
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5677,7 +5910,10 @@ type ServicePerimeterDryRunEgressPolicyEgressFromSource struct {
 	PscEndpoint *ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -5704,7 +5940,10 @@ type ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs struct {
 	PscEndpoint ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -5778,7 +6017,10 @@ func (o ServicePerimeterDryRunEgressPolicyEgressFromSourceOutput) PscEndpoint() 
 
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
-// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// Projects, folders, and organizations are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the
 // case of allowing all Google Cloud resources only is not supported.
@@ -5956,8 +6198,9 @@ type ServicePerimeterDryRunEgressPolicyEgressTo struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimeterDryRunEgressPolicyEgressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -5988,8 +6231,9 @@ type ServicePerimeterDryRunEgressPolicyEgressToArgs struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimeterDryRunEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -6093,8 +6337,9 @@ func (o ServicePerimeterDryRunEgressPolicyEgressToOutput) Operations() ServicePe
 	}).(ServicePerimeterDryRunEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -6157,8 +6402,9 @@ func (o ServicePerimeterDryRunEgressPolicyEgressToPtrOutput) Operations() Servic
 	}).(ServicePerimeterDryRunEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -6649,8 +6895,12 @@ type ServicePerimeterDryRunIngressPolicyIngressFromSource struct {
 	PscEndpoint *ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects are allowed. Format `projects/{project_number}`
-	// The project may be in any Google Cloud organization, not just the
+	// Projects, folders, organizations, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
+	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the case
 	// of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
@@ -6683,8 +6933,12 @@ type ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs struct {
 	PscEndpoint ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects are allowed. Format `projects/{project_number}`
-	// The project may be in any Google Cloud organization, not just the
+	// Projects, folders, organizations, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
+	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the case
 	// of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
@@ -6764,8 +7018,12 @@ func (o ServicePerimeterDryRunIngressPolicyIngressFromSourceOutput) PscEndpoint(
 
 // A Google Cloud resource that is allowed to ingress the perimeter.
 // Requests from these resources will be allowed to access perimeter data.
-// Currently only projects are allowed. Format `projects/{project_number}`
-// The project may be in any Google Cloud organization, not just the
+// Projects, folders, organizations, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
+// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
+// The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the case
 // of allowing all Google Cloud resources only is not supported.
 func (o ServicePerimeterDryRunIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
@@ -6940,8 +7198,9 @@ type ServicePerimeterDryRunIngressPolicyIngressTo struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations []ServicePerimeterDryRunIngressPolicyIngressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -6971,8 +7230,9 @@ type ServicePerimeterDryRunIngressPolicyIngressToArgs struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations ServicePerimeterDryRunIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -7072,8 +7332,9 @@ func (o ServicePerimeterDryRunIngressPolicyIngressToOutput) Operations() Service
 	}).(ServicePerimeterDryRunIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -7127,8 +7388,9 @@ func (o ServicePerimeterDryRunIngressPolicyIngressToPtrOutput) Operations() Serv
 	}).(ServicePerimeterDryRunIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -7640,7 +7902,10 @@ type ServicePerimeterEgressPolicyEgressFromSource struct {
 	PscEndpoint *ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -7667,7 +7932,10 @@ type ServicePerimeterEgressPolicyEgressFromSourceArgs struct {
 	PscEndpoint ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -7741,7 +8009,10 @@ func (o ServicePerimeterEgressPolicyEgressFromSourceOutput) PscEndpoint() Servic
 
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
-// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// Projects, folders, and organizations are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the
 // case of allowing all Google Cloud resources only is not supported.
@@ -7919,8 +8190,9 @@ type ServicePerimeterEgressPolicyEgressTo struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimeterEgressPolicyEgressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -7951,8 +8223,9 @@ type ServicePerimeterEgressPolicyEgressToArgs struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimeterEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -8056,8 +8329,9 @@ func (o ServicePerimeterEgressPolicyEgressToOutput) Operations() ServicePerimete
 	}).(ServicePerimeterEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -8120,8 +8394,9 @@ func (o ServicePerimeterEgressPolicyEgressToPtrOutput) Operations() ServicePerim
 	}).(ServicePerimeterEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -8612,11 +8887,13 @@ type ServicePerimeterIngressPolicyIngressFromSource struct {
 	PscEndpoint *ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects and VPCs are allowed.
-	// Project format: `projects/{projectNumber}`
+	// Projects, folders, organizations, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// VPC network format:
 	// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-	// The project may be in any Google Cloud organization, not just the
+	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the case
 	// of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
@@ -8649,11 +8926,13 @@ type ServicePerimeterIngressPolicyIngressFromSourceArgs struct {
 	PscEndpoint ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects and VPCs are allowed.
-	// Project format: `projects/{projectNumber}`
+	// Projects, folders, organizations, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// VPC network format:
 	// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-	// The project may be in any Google Cloud organization, not just the
+	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the case
 	// of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
@@ -8733,11 +9012,13 @@ func (o ServicePerimeterIngressPolicyIngressFromSourceOutput) PscEndpoint() Serv
 
 // A Google Cloud resource that is allowed to ingress the perimeter.
 // Requests from these resources will be allowed to access perimeter data.
-// Currently only projects and VPCs are allowed.
-// Project format: `projects/{projectNumber}`
+// Projects, folders, organizations, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // VPC network format:
 // `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-// The project may be in any Google Cloud organization, not just the
+// The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the case
 // of allowing all Google Cloud resources only is not supported.
 func (o ServicePerimeterIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
@@ -8910,8 +9191,9 @@ type ServicePerimeterIngressPolicyIngressTo struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations []ServicePerimeterIngressPolicyIngressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -8941,8 +9223,9 @@ type ServicePerimeterIngressPolicyIngressToArgs struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations ServicePerimeterIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -9042,8 +9325,9 @@ func (o ServicePerimeterIngressPolicyIngressToOutput) Operations() ServicePerime
 	}).(ServicePerimeterIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -9097,8 +9381,9 @@ func (o ServicePerimeterIngressPolicyIngressToPtrOutput) Operations() ServicePer
 	}).(ServicePerimeterIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -9391,8 +9676,10 @@ type ServicePerimeterSpec struct {
 	// Structure is documented below.
 	IngressPolicies []ServicePerimeterSpecIngressPolicy `pulumi:"ingressPolicies"`
 	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -9441,8 +9728,10 @@ type ServicePerimeterSpecArgs struct {
 	// Structure is documented below.
 	IngressPolicies ServicePerimeterSpecIngressPolicyArrayInput `pulumi:"ingressPolicies"`
 	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -9565,8 +9854,10 @@ func (o ServicePerimeterSpecOutput) IngressPolicies() ServicePerimeterSpecIngres
 }
 
 // A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// Projects, folders, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 func (o ServicePerimeterSpecOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -9660,8 +9951,10 @@ func (o ServicePerimeterSpecPtrOutput) IngressPolicies() ServicePerimeterSpecIng
 }
 
 // A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// Projects, folders, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 func (o ServicePerimeterSpecPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpec) []string {
 		if v == nil {
@@ -10056,7 +10349,10 @@ type ServicePerimeterSpecEgressPolicyEgressFromSource struct {
 	PscEndpoint *ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -10083,7 +10379,10 @@ type ServicePerimeterSpecEgressPolicyEgressFromSourceArgs struct {
 	PscEndpoint ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -10157,7 +10456,10 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromSourceOutput) PscEndpoint() Se
 
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
-// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// Projects, folders, and organizations are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the
 // case of allowing all Google Cloud resources only is not supported.
@@ -10335,8 +10637,9 @@ type ServicePerimeterSpecEgressPolicyEgressTo struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimeterSpecEgressPolicyEgressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -10367,8 +10670,9 @@ type ServicePerimeterSpecEgressPolicyEgressToArgs struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -10472,8 +10776,9 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOutput) Operations() ServicePeri
 	}).(ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -10536,8 +10841,9 @@ func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Operations() ServiceP
 	}).(ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -11144,7 +11450,10 @@ type ServicePerimeterSpecIngressPolicyIngressFromSource struct {
 	PscEndpoint *ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -11171,7 +11480,10 @@ type ServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
 	PscEndpoint ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -11245,7 +11557,10 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) PscEndpoint() 
 
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
-// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// Projects, folders, and organizations are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the
 // case of allowing all Google Cloud resources only is not supported.
@@ -11419,8 +11734,9 @@ type ServicePerimeterSpecIngressPolicyIngressTo struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations []ServicePerimeterSpecIngressPolicyIngressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -11450,8 +11766,9 @@ type ServicePerimeterSpecIngressPolicyIngressToArgs struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -11551,8 +11868,9 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOutput) Operations() ServicePe
 	}).(ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -11606,8 +11924,9 @@ func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Operations() Servic
 	}).(ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -12498,8 +12817,10 @@ type ServicePerimeterStatus struct {
 	// Structure is documented below.
 	IngressPolicies []ServicePerimeterStatusIngressPolicy `pulumi:"ingressPolicies"`
 	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -12548,8 +12869,10 @@ type ServicePerimeterStatusArgs struct {
 	// Structure is documented below.
 	IngressPolicies ServicePerimeterStatusIngressPolicyArrayInput `pulumi:"ingressPolicies"`
 	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -12672,8 +12995,10 @@ func (o ServicePerimeterStatusOutput) IngressPolicies() ServicePerimeterStatusIn
 }
 
 // A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// Projects, folders, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 func (o ServicePerimeterStatusOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -12767,8 +13092,10 @@ func (o ServicePerimeterStatusPtrOutput) IngressPolicies() ServicePerimeterStatu
 }
 
 // A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// Projects, folders, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 func (o ServicePerimeterStatusPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatus) []string {
 		if v == nil {
@@ -13165,7 +13492,10 @@ type ServicePerimeterStatusEgressPolicyEgressFromSource struct {
 	PscEndpoint *ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -13192,7 +13522,10 @@ type ServicePerimeterStatusEgressPolicyEgressFromSourceArgs struct {
 	PscEndpoint ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -13266,7 +13599,10 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromSourceOutput) PscEndpoint() 
 
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
-// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// Projects, folders, and organizations are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the
 // case of allowing all Google Cloud resources only is not supported.
@@ -13444,8 +13780,9 @@ type ServicePerimeterStatusEgressPolicyEgressTo struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimeterStatusEgressPolicyEgressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -13476,8 +13813,9 @@ type ServicePerimeterStatusEgressPolicyEgressToArgs struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -13581,8 +13919,9 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOutput) Operations() ServicePe
 	}).(ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -13645,8 +13984,9 @@ func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Operations() Servic
 	}).(ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -14253,7 +14593,10 @@ type ServicePerimeterStatusIngressPolicyIngressFromSource struct {
 	PscEndpoint *ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -14280,7 +14623,10 @@ type ServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
 	PscEndpoint ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -14354,7 +14700,10 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) PscEndpoint(
 
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
-// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// Projects, folders, and organizations are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the
 // case of allowing all Google Cloud resources only is not supported.
@@ -14530,8 +14879,9 @@ type ServicePerimeterStatusIngressPolicyIngressTo struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations []ServicePerimeterStatusIngressPolicyIngressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -14561,8 +14911,9 @@ type ServicePerimeterStatusIngressPolicyIngressToArgs struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -14662,8 +15013,9 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOutput) Operations() Service
 	}).(ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -14717,8 +15069,9 @@ func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Operations() Serv
 	}).(ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -15887,8 +16240,10 @@ type ServicePerimetersServicePerimeterSpec struct {
 	// Structure is documented below.
 	IngressPolicies []ServicePerimetersServicePerimeterSpecIngressPolicy `pulumi:"ingressPolicies"`
 	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -15937,8 +16292,10 @@ type ServicePerimetersServicePerimeterSpecArgs struct {
 	// Structure is documented below.
 	IngressPolicies ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput `pulumi:"ingressPolicies"`
 	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -16065,8 +16422,10 @@ func (o ServicePerimetersServicePerimeterSpecOutput) IngressPolicies() ServicePe
 }
 
 // A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// Projects, folders, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 func (o ServicePerimetersServicePerimeterSpecOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -16160,8 +16519,10 @@ func (o ServicePerimetersServicePerimeterSpecPtrOutput) IngressPolicies() Servic
 }
 
 // A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// Projects, folders, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 func (o ServicePerimetersServicePerimeterSpecPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) []string {
 		if v == nil {
@@ -16568,7 +16929,10 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource struct {
 	PscEndpoint *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -16595,7 +16959,10 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs struc
 	PscEndpoint ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -16671,7 +17038,10 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput)
 
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
-// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// Projects, folders, and organizations are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the
 // case of allowing all Google Cloud resources only is not supported.
@@ -16851,8 +17221,9 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -16883,8 +17254,9 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -16988,8 +17360,9 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) Operati
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -17052,8 +17425,9 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Oper
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -17666,7 +18040,10 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource struct 
 	PscEndpoint *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -17693,7 +18070,10 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs str
 	PscEndpoint ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -17769,7 +18149,10 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutpu
 
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
-// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// Projects, folders, and organizations are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the
 // case of allowing all Google Cloud resources only is not supported.
@@ -17945,8 +18328,9 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -17976,8 +18360,9 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -18077,8 +18462,9 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) Opera
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -18132,8 +18518,9 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Op
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -19036,8 +19423,10 @@ type ServicePerimetersServicePerimeterStatus struct {
 	// Structure is documented below.
 	IngressPolicies []ServicePerimetersServicePerimeterStatusIngressPolicy `pulumi:"ingressPolicies"`
 	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -19086,8 +19475,10 @@ type ServicePerimetersServicePerimeterStatusArgs struct {
 	// Structure is documented below.
 	IngressPolicies ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput `pulumi:"ingressPolicies"`
 	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// Projects, folders, and VPC networks are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -19214,8 +19605,10 @@ func (o ServicePerimetersServicePerimeterStatusOutput) IngressPolicies() Service
 }
 
 // A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// Projects, folders, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 func (o ServicePerimetersServicePerimeterStatusOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -19309,8 +19702,10 @@ func (o ServicePerimetersServicePerimeterStatusPtrOutput) IngressPolicies() Serv
 }
 
 // A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// Projects, folders, and VPC networks are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
 func (o ServicePerimetersServicePerimeterStatusPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) []string {
 		if v == nil {
@@ -19717,7 +20112,10 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource struct 
 	PscEndpoint *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -19744,7 +20142,10 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs str
 	PscEndpoint ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -19820,7 +20221,10 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutpu
 
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
-// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// Projects, folders, and organizations are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the
 // case of allowing all Google Cloud resources only is not supported.
@@ -20000,8 +20404,9 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -20032,8 +20437,9 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs struct {
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// A list of resources, in the form `projects/{project_number}`,
+	// `folders/{folder_number}`, or `organizations/{organization_number}`,
+	// that match this to stanza. A request matches
 	// if it contains a resource in this list. If * is specified for resources,
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
@@ -20139,8 +20545,9 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) Opera
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -20203,8 +20610,9 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Op
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, that match this to stanza. A request matches
+// A list of resources, in the form `projects/{project_number}`,
+// `folders/{folder_number}`, or `organizations/{organization_number}`,
+// that match this to stanza. A request matches
 // if it contains a resource in this list. If * is specified for resources,
 // then this `EgressTo` rule will authorize access to all resources outside
 // the perimeter.
@@ -20817,7 +21225,10 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource struc
 	PscEndpoint *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -20844,7 +21255,10 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs s
 	PscEndpoint ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
-	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// Projects, folders, and organizations are allowed.
+	// Project format: `projects/{project_number}`
+	// Folder format: `folders/{folder_number}`
+	// Organization format: `organizations/{organization_number}`
 	// The resource may be in any Google Cloud organization, not just the
 	// organization that the perimeter is defined in. `*` is not allowed, the
 	// case of allowing all Google Cloud resources only is not supported.
@@ -20920,7 +21334,10 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOut
 
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
-// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// Projects, folders, and organizations are allowed.
+// Project format: `projects/{project_number}`
+// Folder format: `folders/{folder_number}`
+// Organization format: `organizations/{organization_number}`
 // The resource may be in any Google Cloud organization, not just the
 // organization that the perimeter is defined in. `*` is not allowed, the
 // case of allowing all Google Cloud resources only is not supported.
@@ -21098,8 +21515,9 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -21129,8 +21547,9 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs struct {
 	// are allowed to perform in this `ServicePerimeter`.
 	// Structure is documented below.
 	Operations ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form
-	// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+	// A list of resources protected by this `ServicePerimeter`, in the form
+	// `projects/{project_number}`, `folders/{folder_number}`, or
+	// `organizations/{organization_number}`,
 	// that are allowed to be accessed by sources defined in the
 	// corresponding `IngressFrom`. A request matches if it contains
 	// a resource in this list. If `*` is specified for resources,
@@ -21230,8 +21649,9 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) Ope
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -21285,8 +21705,9 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) 
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form
-// `projects/<projectnumber>`, protected by this `ServicePerimeter`
+// A list of resources protected by this `ServicePerimeter`, in the form
+// `projects/{project_number}`, `folders/{folder_number}`, or
+// `organizations/{organization_number}`,
 // that are allowed to be accessed by sources defined in the
 // corresponding `IngressFrom`. A request matches if it contains
 // a resource in this list. If `*` is specified for resources,
@@ -22478,6 +22899,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingSessionSettingsInput)(nil)).Elem(), GcpUserAccessBindingSessionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingSessionSettingsPtrInput)(nil)).Elem(), GcpUserAccessBindingSessionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressFromArgs{})
@@ -22748,6 +23171,8 @@ func init() {
 	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectPtrOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingSessionSettingsOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingSessionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressFromOutput{})

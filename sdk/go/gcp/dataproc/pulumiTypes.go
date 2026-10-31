@@ -4050,6 +4050,11 @@ type ClusterClusterConfig struct {
 	// The Google Compute Engine config settings for the master instances
 	// in a cluster. Structure defined below.
 	MasterConfig *ClusterClusterConfigMasterConfig `pulumi:"masterConfig"`
+	// The configuration for the master flexible instance group
+	// in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+	// Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+	// Structure defined below.
+	MasterFlexibleConfig *ClusterClusterConfigMasterFlexibleConfig `pulumi:"masterFlexibleConfig"`
 	// The config setting for metastore service with the cluster.
 	// Structure defined below.
 	// ***
@@ -4060,6 +4065,11 @@ type ClusterClusterConfig struct {
 	//   an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
 	//   such for legacy/compatibility reasons.
 	PreemptibleWorkerConfig *ClusterClusterConfigPreemptibleWorkerConfig `pulumi:"preemptibleWorkerConfig"`
+	// The configuration for the secondary worker flexible
+	// instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+	// `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+	// Structure defined below.
+	SecondaryWorkerFlexibleConfig *ClusterClusterConfigSecondaryWorkerFlexibleConfig `pulumi:"secondaryWorkerFlexibleConfig"`
 	// Security related configuration. Structure defined below.
 	SecurityConfig *ClusterClusterConfigSecurityConfig `pulumi:"securityConfig"`
 	// The config settings for software inside the cluster.
@@ -4080,6 +4090,10 @@ type ClusterClusterConfig struct {
 	// The Google Compute Engine config settings for the worker instances
 	// in a cluster. Structure defined below.
 	WorkerConfig *ClusterClusterConfigWorkerConfig `pulumi:"workerConfig"`
+	// The configuration for the worker flexible instance group
+	// in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+	// Requires `masterFlexibleConfig`. Structure defined below.
+	WorkerFlexibleConfig *ClusterClusterConfigWorkerFlexibleConfig `pulumi:"workerFlexibleConfig"`
 }
 
 // ClusterClusterConfigInput is an input type that accepts ClusterClusterConfigArgs and ClusterClusterConfigOutput values.
@@ -4133,6 +4147,11 @@ type ClusterClusterConfigArgs struct {
 	// The Google Compute Engine config settings for the master instances
 	// in a cluster. Structure defined below.
 	MasterConfig ClusterClusterConfigMasterConfigPtrInput `pulumi:"masterConfig"`
+	// The configuration for the master flexible instance group
+	// in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+	// Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+	// Structure defined below.
+	MasterFlexibleConfig ClusterClusterConfigMasterFlexibleConfigPtrInput `pulumi:"masterFlexibleConfig"`
 	// The config setting for metastore service with the cluster.
 	// Structure defined below.
 	// ***
@@ -4143,6 +4162,11 @@ type ClusterClusterConfigArgs struct {
 	//   an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
 	//   such for legacy/compatibility reasons.
 	PreemptibleWorkerConfig ClusterClusterConfigPreemptibleWorkerConfigPtrInput `pulumi:"preemptibleWorkerConfig"`
+	// The configuration for the secondary worker flexible
+	// instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+	// `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+	// Structure defined below.
+	SecondaryWorkerFlexibleConfig ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrInput `pulumi:"secondaryWorkerFlexibleConfig"`
 	// Security related configuration. Structure defined below.
 	SecurityConfig ClusterClusterConfigSecurityConfigPtrInput `pulumi:"securityConfig"`
 	// The config settings for software inside the cluster.
@@ -4163,6 +4187,10 @@ type ClusterClusterConfigArgs struct {
 	// The Google Compute Engine config settings for the worker instances
 	// in a cluster. Structure defined below.
 	WorkerConfig ClusterClusterConfigWorkerConfigPtrInput `pulumi:"workerConfig"`
+	// The configuration for the worker flexible instance group
+	// in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+	// Requires `masterFlexibleConfig`. Structure defined below.
+	WorkerFlexibleConfig ClusterClusterConfigWorkerFlexibleConfigPtrInput `pulumi:"workerFlexibleConfig"`
 }
 
 func (ClusterClusterConfigArgs) ElementType() reflect.Type {
@@ -4322,6 +4350,14 @@ func (o ClusterClusterConfigOutput) MasterConfig() ClusterClusterConfigMasterCon
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigMasterConfig { return v.MasterConfig }).(ClusterClusterConfigMasterConfigPtrOutput)
 }
 
+// The configuration for the master flexible instance group
+// in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+// Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+// Structure defined below.
+func (o ClusterClusterConfigOutput) MasterFlexibleConfig() ClusterClusterConfigMasterFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigMasterFlexibleConfig { return v.MasterFlexibleConfig }).(ClusterClusterConfigMasterFlexibleConfigPtrOutput)
+}
+
 // The config setting for metastore service with the cluster.
 // Structure defined below.
 // ***
@@ -4338,6 +4374,16 @@ func (o ClusterClusterConfigOutput) PreemptibleWorkerConfig() ClusterClusterConf
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigPreemptibleWorkerConfig {
 		return v.PreemptibleWorkerConfig
 	}).(ClusterClusterConfigPreemptibleWorkerConfigPtrOutput)
+}
+
+// The configuration for the secondary worker flexible
+// instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+// `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+// Structure defined below.
+func (o ClusterClusterConfigOutput) SecondaryWorkerFlexibleConfig() ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigSecondaryWorkerFlexibleConfig {
+		return v.SecondaryWorkerFlexibleConfig
+	}).(ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput)
 }
 
 // Security related configuration. Structure defined below.
@@ -4373,6 +4419,13 @@ func (o ClusterClusterConfigOutput) TempBucket() pulumi.StringPtrOutput {
 // in a cluster. Structure defined below.
 func (o ClusterClusterConfigOutput) WorkerConfig() ClusterClusterConfigWorkerConfigPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigWorkerConfig { return v.WorkerConfig }).(ClusterClusterConfigWorkerConfigPtrOutput)
+}
+
+// The configuration for the worker flexible instance group
+// in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+// Requires `masterFlexibleConfig`. Structure defined below.
+func (o ClusterClusterConfigOutput) WorkerFlexibleConfig() ClusterClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigWorkerFlexibleConfig { return v.WorkerFlexibleConfig }).(ClusterClusterConfigWorkerFlexibleConfigPtrOutput)
 }
 
 type ClusterClusterConfigPtrOutput struct{ *pulumi.OutputState }
@@ -4542,6 +4595,19 @@ func (o ClusterClusterConfigPtrOutput) MasterConfig() ClusterClusterConfigMaster
 	}).(ClusterClusterConfigMasterConfigPtrOutput)
 }
 
+// The configuration for the master flexible instance group
+// in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+// Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+// Structure defined below.
+func (o ClusterClusterConfigPtrOutput) MasterFlexibleConfig() ClusterClusterConfigMasterFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigMasterFlexibleConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MasterFlexibleConfig
+	}).(ClusterClusterConfigMasterFlexibleConfigPtrOutput)
+}
+
 // The config setting for metastore service with the cluster.
 // Structure defined below.
 // ***
@@ -4566,6 +4632,19 @@ func (o ClusterClusterConfigPtrOutput) PreemptibleWorkerConfig() ClusterClusterC
 		}
 		return v.PreemptibleWorkerConfig
 	}).(ClusterClusterConfigPreemptibleWorkerConfigPtrOutput)
+}
+
+// The configuration for the secondary worker flexible
+// instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+// `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+// Structure defined below.
+func (o ClusterClusterConfigPtrOutput) SecondaryWorkerFlexibleConfig() ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigSecondaryWorkerFlexibleConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryWorkerFlexibleConfig
+	}).(ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput)
 }
 
 // Security related configuration. Structure defined below.
@@ -4626,6 +4705,18 @@ func (o ClusterClusterConfigPtrOutput) WorkerConfig() ClusterClusterConfigWorker
 		}
 		return v.WorkerConfig
 	}).(ClusterClusterConfigWorkerConfigPtrOutput)
+}
+
+// The configuration for the worker flexible instance group
+// in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+// Requires `masterFlexibleConfig`. Structure defined below.
+func (o ClusterClusterConfigPtrOutput) WorkerFlexibleConfig() ClusterClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigWorkerFlexibleConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerFlexibleConfig
+	}).(ClusterClusterConfigWorkerFlexibleConfigPtrOutput)
 }
 
 type ClusterClusterConfigAutoscalingConfig struct {
@@ -9414,6 +9505,220 @@ func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelecti
 	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
 }
 
+type ClusterClusterConfigMasterFlexibleConfig struct {
+	// The boot disk size in GB.
+	// Changing this forces a new resource to be created.
+	// ***
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// The number of vCPUs per instance. Must be a power of 2
+	// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+	CoreCount int `pulumi:"coreCount"`
+	// Controls the hardware class for the flexible instance group.
+	// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+	// Changing this forces a new resource to be created.
+	HardwareClass *string `pulumi:"hardwareClass"`
+	// Must be `1`. Defaults to `1`. Changing this forces a new resource to be created.
+	NumInstances *int `pulumi:"numInstances"`
+}
+
+// ClusterClusterConfigMasterFlexibleConfigInput is an input type that accepts ClusterClusterConfigMasterFlexibleConfigArgs and ClusterClusterConfigMasterFlexibleConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterFlexibleConfigInput` via:
+//
+//	ClusterClusterConfigMasterFlexibleConfigArgs{...}
+type ClusterClusterConfigMasterFlexibleConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterFlexibleConfigOutput() ClusterClusterConfigMasterFlexibleConfigOutput
+	ToClusterClusterConfigMasterFlexibleConfigOutputWithContext(context.Context) ClusterClusterConfigMasterFlexibleConfigOutput
+}
+
+type ClusterClusterConfigMasterFlexibleConfigArgs struct {
+	// The boot disk size in GB.
+	// Changing this forces a new resource to be created.
+	// ***
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// The number of vCPUs per instance. Must be a power of 2
+	// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+	CoreCount pulumi.IntInput `pulumi:"coreCount"`
+	// Controls the hardware class for the flexible instance group.
+	// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+	// Changing this forces a new resource to be created.
+	HardwareClass pulumi.StringPtrInput `pulumi:"hardwareClass"`
+	// Must be `1`. Defaults to `1`. Changing this forces a new resource to be created.
+	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
+}
+
+func (ClusterClusterConfigMasterFlexibleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterFlexibleConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMasterFlexibleConfigArgs) ToClusterClusterConfigMasterFlexibleConfigOutput() ClusterClusterConfigMasterFlexibleConfigOutput {
+	return i.ToClusterClusterConfigMasterFlexibleConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterFlexibleConfigArgs) ToClusterClusterConfigMasterFlexibleConfigOutputWithContext(ctx context.Context) ClusterClusterConfigMasterFlexibleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterFlexibleConfigOutput)
+}
+
+func (i ClusterClusterConfigMasterFlexibleConfigArgs) ToClusterClusterConfigMasterFlexibleConfigPtrOutput() ClusterClusterConfigMasterFlexibleConfigPtrOutput {
+	return i.ToClusterClusterConfigMasterFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterFlexibleConfigArgs) ToClusterClusterConfigMasterFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterFlexibleConfigOutput).ToClusterClusterConfigMasterFlexibleConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigMasterFlexibleConfigPtrInput is an input type that accepts ClusterClusterConfigMasterFlexibleConfigArgs, ClusterClusterConfigMasterFlexibleConfigPtr and ClusterClusterConfigMasterFlexibleConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterFlexibleConfigPtrInput` via:
+//
+//	        ClusterClusterConfigMasterFlexibleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigMasterFlexibleConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterFlexibleConfigPtrOutput() ClusterClusterConfigMasterFlexibleConfigPtrOutput
+	ToClusterClusterConfigMasterFlexibleConfigPtrOutputWithContext(context.Context) ClusterClusterConfigMasterFlexibleConfigPtrOutput
+}
+
+type clusterClusterConfigMasterFlexibleConfigPtrType ClusterClusterConfigMasterFlexibleConfigArgs
+
+func ClusterClusterConfigMasterFlexibleConfigPtr(v *ClusterClusterConfigMasterFlexibleConfigArgs) ClusterClusterConfigMasterFlexibleConfigPtrInput {
+	return (*clusterClusterConfigMasterFlexibleConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigMasterFlexibleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigMasterFlexibleConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigMasterFlexibleConfigPtrType) ToClusterClusterConfigMasterFlexibleConfigPtrOutput() ClusterClusterConfigMasterFlexibleConfigPtrOutput {
+	return i.ToClusterClusterConfigMasterFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigMasterFlexibleConfigPtrType) ToClusterClusterConfigMasterFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterFlexibleConfigPtrOutput)
+}
+
+type ClusterClusterConfigMasterFlexibleConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterFlexibleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterFlexibleConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterFlexibleConfigOutput) ToClusterClusterConfigMasterFlexibleConfigOutput() ClusterClusterConfigMasterFlexibleConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterFlexibleConfigOutput) ToClusterClusterConfigMasterFlexibleConfigOutputWithContext(ctx context.Context) ClusterClusterConfigMasterFlexibleConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterFlexibleConfigOutput) ToClusterClusterConfigMasterFlexibleConfigPtrOutput() ClusterClusterConfigMasterFlexibleConfigPtrOutput {
+	return o.ToClusterClusterConfigMasterFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigMasterFlexibleConfigOutput) ToClusterClusterConfigMasterFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterFlexibleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigMasterFlexibleConfig) *ClusterClusterConfigMasterFlexibleConfig {
+		return &v
+	}).(ClusterClusterConfigMasterFlexibleConfigPtrOutput)
+}
+
+// The boot disk size in GB.
+// Changing this forces a new resource to be created.
+// ***
+func (o ClusterClusterConfigMasterFlexibleConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterFlexibleConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// The number of vCPUs per instance. Must be a power of 2
+// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+func (o ClusterClusterConfigMasterFlexibleConfigOutput) CoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterFlexibleConfig) int { return v.CoreCount }).(pulumi.IntOutput)
+}
+
+// Controls the hardware class for the flexible instance group.
+// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+// Changing this forces a new resource to be created.
+func (o ClusterClusterConfigMasterFlexibleConfigOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterFlexibleConfig) *string { return v.HardwareClass }).(pulumi.StringPtrOutput)
+}
+
+// Must be `1`. Defaults to `1`. Changing this forces a new resource to be created.
+func (o ClusterClusterConfigMasterFlexibleConfigOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterFlexibleConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigMasterFlexibleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterFlexibleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigMasterFlexibleConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterFlexibleConfigPtrOutput) ToClusterClusterConfigMasterFlexibleConfigPtrOutput() ClusterClusterConfigMasterFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterFlexibleConfigPtrOutput) ToClusterClusterConfigMasterFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterFlexibleConfigPtrOutput) Elem() ClusterClusterConfigMasterFlexibleConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterFlexibleConfig) ClusterClusterConfigMasterFlexibleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigMasterFlexibleConfig
+		return ret
+	}).(ClusterClusterConfigMasterFlexibleConfigOutput)
+}
+
+// The boot disk size in GB.
+// Changing this forces a new resource to be created.
+// ***
+func (o ClusterClusterConfigMasterFlexibleConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of vCPUs per instance. Must be a power of 2
+// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+func (o ClusterClusterConfigMasterFlexibleConfigPtrOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.CoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Controls the hardware class for the flexible instance group.
+// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+// Changing this forces a new resource to be created.
+func (o ClusterClusterConfigMasterFlexibleConfigPtrOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterFlexibleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HardwareClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Must be `1`. Defaults to `1`. Changing this forces a new resource to be created.
+func (o ClusterClusterConfigMasterFlexibleConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumInstances
+	}).(pulumi.IntPtrOutput)
+}
+
 type ClusterClusterConfigMetastoreConfig struct {
 	// Resource name of an existing Dataproc Metastore service.
 	//
@@ -11217,6 +11522,224 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProv
 			return nil
 		}
 		return v.StandardCapacityPercentAboveBase
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigSecondaryWorkerFlexibleConfig struct {
+	// The boot disk size in GB.
+	// Changing this forces a new resource to be created.
+	// ***
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// The number of vCPUs per instance. Must be a power of 2
+	// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+	CoreCount int `pulumi:"coreCount"`
+	// Controls the hardware class for the flexible instance group.
+	// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+	// Changing this forces a new resource to be created.
+	HardwareClass *string `pulumi:"hardwareClass"`
+	// Specifies the number of secondary worker instances to create.
+	// Defaults to `0`; can be scaled down to `0`; updatable in place.
+	NumInstances *int `pulumi:"numInstances"`
+}
+
+// ClusterClusterConfigSecondaryWorkerFlexibleConfigInput is an input type that accepts ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs and ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigSecondaryWorkerFlexibleConfigInput` via:
+//
+//	ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs{...}
+type ClusterClusterConfigSecondaryWorkerFlexibleConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigSecondaryWorkerFlexibleConfigOutput() ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput
+	ToClusterClusterConfigSecondaryWorkerFlexibleConfigOutputWithContext(context.Context) ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput
+}
+
+type ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs struct {
+	// The boot disk size in GB.
+	// Changing this forces a new resource to be created.
+	// ***
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// The number of vCPUs per instance. Must be a power of 2
+	// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+	CoreCount pulumi.IntInput `pulumi:"coreCount"`
+	// Controls the hardware class for the flexible instance group.
+	// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+	// Changing this forces a new resource to be created.
+	HardwareClass pulumi.StringPtrInput `pulumi:"hardwareClass"`
+	// Specifies the number of secondary worker instances to create.
+	// Defaults to `0`; can be scaled down to `0`; updatable in place.
+	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
+}
+
+func (ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigSecondaryWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs) ToClusterClusterConfigSecondaryWorkerFlexibleConfigOutput() ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput {
+	return i.ToClusterClusterConfigSecondaryWorkerFlexibleConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs) ToClusterClusterConfigSecondaryWorkerFlexibleConfigOutputWithContext(ctx context.Context) ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput)
+}
+
+func (i ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs) ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput() ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return i.ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs) ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput).ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrInput is an input type that accepts ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs, ClusterClusterConfigSecondaryWorkerFlexibleConfigPtr and ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrInput` via:
+//
+//	        ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput() ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput
+	ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(context.Context) ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput
+}
+
+type clusterClusterConfigSecondaryWorkerFlexibleConfigPtrType ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs
+
+func ClusterClusterConfigSecondaryWorkerFlexibleConfigPtr(v *ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs) ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrInput {
+	return (*clusterClusterConfigSecondaryWorkerFlexibleConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigSecondaryWorkerFlexibleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigSecondaryWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigSecondaryWorkerFlexibleConfigPtrType) ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput() ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return i.ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigSecondaryWorkerFlexibleConfigPtrType) ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput)
+}
+
+type ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigSecondaryWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) ToClusterClusterConfigSecondaryWorkerFlexibleConfigOutput() ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) ToClusterClusterConfigSecondaryWorkerFlexibleConfigOutputWithContext(ctx context.Context) ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput() ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o.ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigSecondaryWorkerFlexibleConfig) *ClusterClusterConfigSecondaryWorkerFlexibleConfig {
+		return &v
+	}).(ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput)
+}
+
+// The boot disk size in GB.
+// Changing this forces a new resource to be created.
+// ***
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigSecondaryWorkerFlexibleConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// The number of vCPUs per instance. Must be a power of 2
+// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) CoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterClusterConfigSecondaryWorkerFlexibleConfig) int { return v.CoreCount }).(pulumi.IntOutput)
+}
+
+// Controls the hardware class for the flexible instance group.
+// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+// Changing this forces a new resource to be created.
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigSecondaryWorkerFlexibleConfig) *string { return v.HardwareClass }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of secondary worker instances to create.
+// Defaults to `0`; can be scaled down to `0`; updatable in place.
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigSecondaryWorkerFlexibleConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigSecondaryWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput() ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) ToClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) Elem() ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigSecondaryWorkerFlexibleConfig) ClusterClusterConfigSecondaryWorkerFlexibleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigSecondaryWorkerFlexibleConfig
+		return ret
+	}).(ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput)
+}
+
+// The boot disk size in GB.
+// Changing this forces a new resource to be created.
+// ***
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigSecondaryWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of vCPUs per instance. Must be a power of 2
+// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigSecondaryWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.CoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Controls the hardware class for the flexible instance group.
+// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+// Changing this forces a new resource to be created.
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigSecondaryWorkerFlexibleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HardwareClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of secondary worker instances to create.
+// Defaults to `0`; can be scaled down to `0`; updatable in place.
+func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigSecondaryWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumInstances
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -13930,6 +14453,224 @@ func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelecti
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
 		return vs[0].([]ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)[vs[1].(int)]
 	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
+}
+
+type ClusterClusterConfigWorkerFlexibleConfig struct {
+	// The boot disk size in GB.
+	// Changing this forces a new resource to be created.
+	// ***
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// The number of vCPUs per instance. Must be a power of 2
+	// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+	CoreCount int `pulumi:"coreCount"`
+	// Controls the hardware class for the flexible instance group.
+	// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+	// Changing this forces a new resource to be created.
+	HardwareClass *string `pulumi:"hardwareClass"`
+	// Specifies the number of worker instances to create.
+	// Represents the desired capacity of the group and is updatable in place.
+	NumInstances int `pulumi:"numInstances"`
+}
+
+// ClusterClusterConfigWorkerFlexibleConfigInput is an input type that accepts ClusterClusterConfigWorkerFlexibleConfigArgs and ClusterClusterConfigWorkerFlexibleConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerFlexibleConfigInput` via:
+//
+//	ClusterClusterConfigWorkerFlexibleConfigArgs{...}
+type ClusterClusterConfigWorkerFlexibleConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerFlexibleConfigOutput() ClusterClusterConfigWorkerFlexibleConfigOutput
+	ToClusterClusterConfigWorkerFlexibleConfigOutputWithContext(context.Context) ClusterClusterConfigWorkerFlexibleConfigOutput
+}
+
+type ClusterClusterConfigWorkerFlexibleConfigArgs struct {
+	// The boot disk size in GB.
+	// Changing this forces a new resource to be created.
+	// ***
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// The number of vCPUs per instance. Must be a power of 2
+	// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+	CoreCount pulumi.IntInput `pulumi:"coreCount"`
+	// Controls the hardware class for the flexible instance group.
+	// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+	// Changing this forces a new resource to be created.
+	HardwareClass pulumi.StringPtrInput `pulumi:"hardwareClass"`
+	// Specifies the number of worker instances to create.
+	// Represents the desired capacity of the group and is updatable in place.
+	NumInstances pulumi.IntInput `pulumi:"numInstances"`
+}
+
+func (ClusterClusterConfigWorkerFlexibleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigWorkerFlexibleConfigArgs) ToClusterClusterConfigWorkerFlexibleConfigOutput() ClusterClusterConfigWorkerFlexibleConfigOutput {
+	return i.ToClusterClusterConfigWorkerFlexibleConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerFlexibleConfigArgs) ToClusterClusterConfigWorkerFlexibleConfigOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerFlexibleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerFlexibleConfigOutput)
+}
+
+func (i ClusterClusterConfigWorkerFlexibleConfigArgs) ToClusterClusterConfigWorkerFlexibleConfigPtrOutput() ClusterClusterConfigWorkerFlexibleConfigPtrOutput {
+	return i.ToClusterClusterConfigWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerFlexibleConfigArgs) ToClusterClusterConfigWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerFlexibleConfigOutput).ToClusterClusterConfigWorkerFlexibleConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigWorkerFlexibleConfigPtrInput is an input type that accepts ClusterClusterConfigWorkerFlexibleConfigArgs, ClusterClusterConfigWorkerFlexibleConfigPtr and ClusterClusterConfigWorkerFlexibleConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerFlexibleConfigPtrInput` via:
+//
+//	        ClusterClusterConfigWorkerFlexibleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigWorkerFlexibleConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerFlexibleConfigPtrOutput() ClusterClusterConfigWorkerFlexibleConfigPtrOutput
+	ToClusterClusterConfigWorkerFlexibleConfigPtrOutputWithContext(context.Context) ClusterClusterConfigWorkerFlexibleConfigPtrOutput
+}
+
+type clusterClusterConfigWorkerFlexibleConfigPtrType ClusterClusterConfigWorkerFlexibleConfigArgs
+
+func ClusterClusterConfigWorkerFlexibleConfigPtr(v *ClusterClusterConfigWorkerFlexibleConfigArgs) ClusterClusterConfigWorkerFlexibleConfigPtrInput {
+	return (*clusterClusterConfigWorkerFlexibleConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigWorkerFlexibleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigWorkerFlexibleConfigPtrType) ToClusterClusterConfigWorkerFlexibleConfigPtrOutput() ClusterClusterConfigWorkerFlexibleConfigPtrOutput {
+	return i.ToClusterClusterConfigWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigWorkerFlexibleConfigPtrType) ToClusterClusterConfigWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerFlexibleConfigPtrOutput)
+}
+
+type ClusterClusterConfigWorkerFlexibleConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerFlexibleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerFlexibleConfigOutput) ToClusterClusterConfigWorkerFlexibleConfigOutput() ClusterClusterConfigWorkerFlexibleConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerFlexibleConfigOutput) ToClusterClusterConfigWorkerFlexibleConfigOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerFlexibleConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerFlexibleConfigOutput) ToClusterClusterConfigWorkerFlexibleConfigPtrOutput() ClusterClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o.ToClusterClusterConfigWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigWorkerFlexibleConfigOutput) ToClusterClusterConfigWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigWorkerFlexibleConfig) *ClusterClusterConfigWorkerFlexibleConfig {
+		return &v
+	}).(ClusterClusterConfigWorkerFlexibleConfigPtrOutput)
+}
+
+// The boot disk size in GB.
+// Changing this forces a new resource to be created.
+// ***
+func (o ClusterClusterConfigWorkerFlexibleConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerFlexibleConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// The number of vCPUs per instance. Must be a power of 2
+// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+func (o ClusterClusterConfigWorkerFlexibleConfigOutput) CoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerFlexibleConfig) int { return v.CoreCount }).(pulumi.IntOutput)
+}
+
+// Controls the hardware class for the flexible instance group.
+// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+// Changing this forces a new resource to be created.
+func (o ClusterClusterConfigWorkerFlexibleConfigOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerFlexibleConfig) *string { return v.HardwareClass }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of worker instances to create.
+// Represents the desired capacity of the group and is updatable in place.
+func (o ClusterClusterConfigWorkerFlexibleConfigOutput) NumInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerFlexibleConfig) int { return v.NumInstances }).(pulumi.IntOutput)
+}
+
+type ClusterClusterConfigWorkerFlexibleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerFlexibleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerFlexibleConfigPtrOutput) ToClusterClusterConfigWorkerFlexibleConfigPtrOutput() ClusterClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerFlexibleConfigPtrOutput) ToClusterClusterConfigWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerFlexibleConfigPtrOutput) Elem() ClusterClusterConfigWorkerFlexibleConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerFlexibleConfig) ClusterClusterConfigWorkerFlexibleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigWorkerFlexibleConfig
+		return ret
+	}).(ClusterClusterConfigWorkerFlexibleConfigOutput)
+}
+
+// The boot disk size in GB.
+// Changing this forces a new resource to be created.
+// ***
+func (o ClusterClusterConfigWorkerFlexibleConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of vCPUs per instance. Must be a power of 2
+// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+func (o ClusterClusterConfigWorkerFlexibleConfigPtrOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.CoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Controls the hardware class for the flexible instance group.
+// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+// Changing this forces a new resource to be created.
+func (o ClusterClusterConfigWorkerFlexibleConfigPtrOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerFlexibleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HardwareClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of worker instances to create.
+// Represents the desired capacity of the group and is updatable in place.
+func (o ClusterClusterConfigWorkerFlexibleConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NumInstances
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterIAMBindingCondition struct {
@@ -42199,6 +42940,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterFlexibleConfigInput)(nil)).Elem(), ClusterClusterConfigMasterFlexibleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterFlexibleConfigPtrInput)(nil)).Elem(), ClusterClusterConfigMasterFlexibleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMetastoreConfigInput)(nil)).Elem(), ClusterClusterConfigMetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMetastoreConfigPtrInput)(nil)).Elem(), ClusterClusterConfigMetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigArgs{})
@@ -42219,6 +42962,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecondaryWorkerFlexibleConfigInput)(nil)).Elem(), ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrInput)(nil)).Elem(), ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigPtrInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigIdentityConfigInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigIdentityConfigArgs{})
@@ -42245,6 +42990,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerFlexibleConfigInput)(nil)).Elem(), ClusterClusterConfigWorkerFlexibleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerFlexibleConfigPtrInput)(nil)).Elem(), ClusterClusterConfigWorkerFlexibleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMBindingConditionInput)(nil)).Elem(), ClusterIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMBindingConditionPtrInput)(nil)).Elem(), ClusterIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberConditionInput)(nil)).Elem(), ClusterIAMMemberConditionArgs{})
@@ -42667,6 +43414,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterFlexibleConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterFlexibleConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMetastoreConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMetastoreConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigOutput{})
@@ -42687,6 +43436,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigIdentityConfigOutput{})
@@ -42713,6 +43464,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerFlexibleConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerFlexibleConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(ClusterIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIAMMemberConditionOutput{})

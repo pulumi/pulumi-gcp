@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores.schemas)
  * * How-to Guides
  *     * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
+ *     * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
  * 
  * ## Example Usage
  * 
@@ -133,6 +134,12 @@ public class Schema extends com.pulumi.resources.CustomResource {
     }
     /**
      * The JSON representation of the schema.
+     * Changes are applied in place and must be backward compatible: existing fields
+     * can&#39;t be removed or have their type changed. Updating the schema triggers
+     * reindexing of all documents in the data store, which can take hours for large
+     * data stores and may incur costs. See
+     * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+     * for details.
      * 
      */
     @Export(name="jsonSchema", refs={String.class}, tree="[0]")
@@ -140,6 +147,12 @@ public class Schema extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The JSON representation of the schema.
+     * Changes are applied in place and must be backward compatible: existing fields
+     * can&#39;t be removed or have their type changed. Updating the schema triggers
+     * reindexing of all documents in the data store, which can take hours for large
+     * data stores and may incur costs. See
+     * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+     * for details.
      * 
      */
     public Output<Optional<String>> jsonSchema() {

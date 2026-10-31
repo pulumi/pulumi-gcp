@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.Tpu
     /// 
     /// });
     /// ```
+    /// 
     /// ### Tpu V2 Vm Full
     /// 
     /// ```csharp

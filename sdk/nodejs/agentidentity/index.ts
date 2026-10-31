@@ -10,6 +10,26 @@ export type AuthProvider = import("./authProvider").AuthProvider;
 export const AuthProvider: typeof import("./authProvider").AuthProvider = null as any;
 utilities.lazyLoad(exports, ["AuthProvider"], () => require("./authProvider"));
 
+export { AuthProviderIamBindingArgs, AuthProviderIamBindingState } from "./authProviderIamBinding";
+export type AuthProviderIamBinding = import("./authProviderIamBinding").AuthProviderIamBinding;
+export const AuthProviderIamBinding: typeof import("./authProviderIamBinding").AuthProviderIamBinding = null as any;
+utilities.lazyLoad(exports, ["AuthProviderIamBinding"], () => require("./authProviderIamBinding"));
+
+export { AuthProviderIamMemberArgs, AuthProviderIamMemberState } from "./authProviderIamMember";
+export type AuthProviderIamMember = import("./authProviderIamMember").AuthProviderIamMember;
+export const AuthProviderIamMember: typeof import("./authProviderIamMember").AuthProviderIamMember = null as any;
+utilities.lazyLoad(exports, ["AuthProviderIamMember"], () => require("./authProviderIamMember"));
+
+export { AuthProviderIamPolicyArgs, AuthProviderIamPolicyState } from "./authProviderIamPolicy";
+export type AuthProviderIamPolicy = import("./authProviderIamPolicy").AuthProviderIamPolicy;
+export const AuthProviderIamPolicy: typeof import("./authProviderIamPolicy").AuthProviderIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AuthProviderIamPolicy"], () => require("./authProviderIamPolicy"));
+
+export { GetAuthProviderIamPolicyArgs, GetAuthProviderIamPolicyResult, GetAuthProviderIamPolicyOutputArgs } from "./getAuthProviderIamPolicy";
+export const getAuthProviderIamPolicy: typeof import("./getAuthProviderIamPolicy").getAuthProviderIamPolicy = null as any;
+export const getAuthProviderIamPolicyOutput: typeof import("./getAuthProviderIamPolicy").getAuthProviderIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthProviderIamPolicy","getAuthProviderIamPolicyOutput"], () => require("./getAuthProviderIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +37,18 @@ const _module = {
         switch (type) {
             case "gcp:agentidentity/authProvider:AuthProvider":
                 return new AuthProvider(name, <any>undefined, { urn })
+            case "gcp:agentidentity/authProviderIamBinding:AuthProviderIamBinding":
+                return new AuthProviderIamBinding(name, <any>undefined, { urn })
+            case "gcp:agentidentity/authProviderIamMember:AuthProviderIamMember":
+                return new AuthProviderIamMember(name, <any>undefined, { urn })
+            case "gcp:agentidentity/authProviderIamPolicy:AuthProviderIamPolicy":
+                return new AuthProviderIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "agentidentity/authProvider", _module)
+pulumi.runtime.registerResourceModule("gcp", "agentidentity/authProviderIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "agentidentity/authProviderIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "agentidentity/authProviderIamPolicy", _module)

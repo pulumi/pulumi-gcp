@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Gateway Advanced
     /// 
     /// ```csharp
@@ -72,6 +73,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Gateway Secure Web Proxy
     /// 
     /// ```csharp
@@ -176,6 +178,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Gateway Multiple Swp Same Network
     /// 
     /// ```csharp

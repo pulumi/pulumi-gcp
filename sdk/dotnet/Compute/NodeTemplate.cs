@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Node Template Server Binding
     /// 
     /// ```csharp
@@ -73,6 +74,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Node Template Accelerators
     /// 
     /// ```csharp
@@ -105,6 +107,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Node Template Disks
     /// 
     /// ```csharp

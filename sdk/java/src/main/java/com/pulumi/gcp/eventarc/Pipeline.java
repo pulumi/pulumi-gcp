@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Eventarc Pipeline With Http Destination
  * 
  * <pre>
@@ -122,6 +123,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Eventarc Pipeline With Workflow Destination
  * 
  * <pre>
@@ -194,6 +196,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Eventarc Pipeline With Oidc And Json Format
  * 
  * <pre>
@@ -282,6 +285,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Eventarc Pipeline With Oauth And Protobuf Format
  * 
  * <pre>
@@ -384,6 +388,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Eventarc Pipeline With Cmek And Avro Format
  * 
  * <pre>

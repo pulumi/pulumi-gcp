@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
         /// </summary>
         public readonly string MaxDuration;
         /// <summary>
+        /// (Optional, Beta)
+        /// A list of network tags to attach to the VM instances.
+        /// A maximum of 64 network tags are allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> NetworkTags;
+        /// <summary>
         /// Name of the zone in which VM instances should run, e.g., `us-central1-a`.
         /// Must be in the same region as the cluster, and must match the zone of any
         /// other resources specified in the cluster.
@@ -37,10 +43,13 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
 
             string maxDuration,
 
+            ImmutableArray<string> networkTags,
+
             string zone)
         {
             MachineType = machineType;
             MaxDuration = maxDuration;
+            NetworkTags = networkTags;
             Zone = zone;
         }
     }

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs;
 import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -50,11 +51,27 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions
         return Optional.ofNullable(this.datasource);
     }
 
+    /**
+     * Optional. The model to use for the agent loop.
+     * 
+     */
+    @Import(name="model")
+    private @Nullable Output<String> model;
+
+    /**
+     * @return Optional. The model to use for the agent loop.
+     * 
+     */
+    public Optional<Output<String>> model() {
+        return Optional.ofNullable(this.model);
+    }
+
     private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs() {}
 
     private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs $) {
         this.analysis = $.analysis;
         this.datasource = $.datasource;
+        this.model = $.model;
     }
 
     public static Builder builder() {
@@ -119,6 +136,27 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions
          */
         public Builder datasource(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs datasource) {
             return datasource(Output.of(datasource));
+        }
+
+        /**
+         * @param model Optional. The model to use for the agent loop.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder model(@Nullable Output<String> model) {
+            $.model = model;
+            return this;
+        }
+
+        /**
+         * @param model Optional. The model to use for the agent loop.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder model(String model) {
+            return model(Output.of(model));
         }
 
         public DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs build() {

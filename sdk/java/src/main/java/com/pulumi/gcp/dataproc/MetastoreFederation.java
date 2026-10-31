@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dataproc Metastore Federation Bigquery
  * 
  * <pre>

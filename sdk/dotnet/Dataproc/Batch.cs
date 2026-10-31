@@ -75,6 +75,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataproc Batch Spark Full
     /// 
     /// ```csharp
@@ -222,6 +223,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataproc Batch Sparksql
     /// 
     /// ```csharp
@@ -267,6 +269,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataproc Batch Pyspark
     /// 
     /// ```csharp
@@ -326,6 +329,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataproc Batch Sparkr
     /// 
     /// ```csharp
@@ -376,6 +380,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataproc Batch Autotuning
     /// 
     /// ```csharp

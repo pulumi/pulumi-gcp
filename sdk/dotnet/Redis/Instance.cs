@@ -34,12 +34,13 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "memory-cache",
     ///         MemorySizeGb = 1,
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         DeletionProtection = false,
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Instance Full
     /// 
     /// ```csharp
@@ -68,9 +69,9 @@ namespace Pulumi.Gcp.Redis
     ///         Name = "ha-memory-cache",
     ///         Tier = "STANDARD_HA",
     ///         MemorySizeGb = 1,
-    ///         Region = "us-west1",
-    ///         LocationId = "us-west1-a",
-    ///         AlternativeLocationId = "us-west1-b",
+    ///         Region = "us-east1",
+    ///         LocationId = "us-east1-b",
+    ///         AlternativeLocationId = "us-east1-c",
     ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         RedisVersion = "REDIS_7_2",
     ///         DisplayName = "Test Instance",
@@ -101,6 +102,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Instance Full With Persistence Config
     /// 
     /// ```csharp
@@ -116,9 +118,9 @@ namespace Pulumi.Gcp.Redis
     ///         Name = "ha-memory-cache-persis",
     ///         Tier = "STANDARD_HA",
     ///         MemorySizeGb = 1,
-    ///         Region = "us-west1",
-    ///         LocationId = "us-west1-a",
-    ///         AlternativeLocationId = "us-west1-b",
+    ///         Region = "us-east1",
+    ///         LocationId = "us-east1-b",
+    ///         AlternativeLocationId = "us-east1-c",
     ///         PersistenceConfig = new Gcp.Redis.Inputs.InstancePersistenceConfigArgs
     ///         {
     ///             PersistenceMode = "RDB",
@@ -128,6 +130,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Instance Private Service
     /// 
     /// ```csharp
@@ -175,9 +178,9 @@ namespace Pulumi.Gcp.Redis
     ///         Name = "private-cache",
     ///         Tier = "STANDARD_HA",
     ///         MemorySizeGb = 1,
-    ///         Region = "us-west1",
-    ///         LocationId = "us-west1-a",
-    ///         AlternativeLocationId = "us-west1-b",
+    ///         Region = "us-east1",
+    ///         LocationId = "us-east1-b",
+    ///         AlternativeLocationId = "us-east1-c",
     ///         AuthorizedNetwork = redis_network.Id,
     ///         ConnectMode = "PRIVATE_SERVICE_ACCESS",
     ///         RedisVersion = "REDIS_7_2",
@@ -192,6 +195,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Instance Mrr
     /// 
     /// ```csharp
@@ -220,9 +224,9 @@ namespace Pulumi.Gcp.Redis
     ///         Name = "mrr-memory-cache",
     ///         Tier = "STANDARD_HA",
     ///         MemorySizeGb = 5,
-    ///         Region = "us-west1",
-    ///         LocationId = "us-west1-a",
-    ///         AlternativeLocationId = "us-west1-b",
+    ///         Region = "us-east1",
+    ///         LocationId = "us-east1-b",
+    ///         AlternativeLocationId = "us-east1-c",
     ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         RedisVersion = "REDIS_7_2",
     ///         DisplayName = "Test Instance",
@@ -237,6 +241,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Instance Cmek
     /// 
     /// ```csharp
@@ -250,7 +255,7 @@ namespace Pulumi.Gcp.Redis
     ///     var redisKeyring = new Gcp.Kms.KeyRing("redis_keyring", new()
     ///     {
     ///         Name = "redis-keyring",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///     });
     /// 
     ///     var redisKey = new Gcp.Kms.CryptoKey("redis_key", new()
@@ -277,9 +282,9 @@ namespace Pulumi.Gcp.Redis
     ///         Name = "cmek-memory-cache",
     ///         Tier = "STANDARD_HA",
     ///         MemorySizeGb = 1,
-    ///         Region = "us-west1",
-    ///         LocationId = "us-west1-a",
-    ///         AlternativeLocationId = "us-west1-b",
+    ///         Region = "us-east1",
+    ///         LocationId = "us-east1-b",
+    ///         AlternativeLocationId = "us-east1-c",
     ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         RedisVersion = "REDIS_7_2",
     ///         DisplayName = "Test Instance",

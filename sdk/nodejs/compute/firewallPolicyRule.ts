@@ -83,6 +83,7 @@ import * as utilities from "../utilities";
  *     shortName: "tag-value",
  * });
  * ```
+ *
  * ### Firewall Policy Rule Network Scope
  *
  * ```typescript
@@ -127,6 +128,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Firewall Policy Rule Network Context
  *
  * ```typescript
@@ -196,6 +198,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Firewall Policy Rule Secure Tags
  *
  * ```typescript

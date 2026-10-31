@@ -863,6 +863,7 @@ class CloudControl(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Cloudsecuritycompliance Cloudcontrol Project Basic
 
         ```python
@@ -1015,6 +1016,7 @@ class CloudControl(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Cloudsecuritycompliance Cloudcontrol Org Basic Backward
 
         ```python
@@ -1387,6 +1389,7 @@ class CloudControl(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Cloudsecuritycompliance Cloudcontrol Project Basic
 
         ```python
@@ -1539,6 +1542,7 @@ class CloudControl(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Cloudsecuritycompliance Cloudcontrol Org Basic Backward
 
         ```python

@@ -68,6 +68,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Fhir Store Streaming Config
     /// 
     /// ```csharp
@@ -143,6 +144,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Fhir Store Notification Configs
     /// 
     /// ```csharp
@@ -190,6 +192,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Fhir Store Consent Config
     /// 
     /// ```csharp
@@ -250,6 +253,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Fhir Store Validation Config
     /// 
     /// ```csharp

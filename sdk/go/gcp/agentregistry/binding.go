@@ -79,6 +79,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Agent Registry Binding Target Only
 //
 // ```go

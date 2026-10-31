@@ -334,6 +334,7 @@ __all__ = [
     'ClusterResourceUsageExportConfig',
     'ClusterResourceUsageExportConfigBigqueryDestination',
     'ClusterRollbackSafeUpgrade',
+    'ClusterScheduleUpgradeConfig',
     'ClusterSecretManagerConfig',
     'ClusterSecretManagerConfigRotationConfig',
     'ClusterSecretSyncConfig',
@@ -668,6 +669,7 @@ __all__ = [
     'GetClusterResourceUsageExportConfigResult',
     'GetClusterResourceUsageExportConfigBigqueryDestinationResult',
     'GetClusterRollbackSafeUpgradeResult',
+    'GetClusterScheduleUpgradeConfigResult',
     'GetClusterSecretManagerConfigResult',
     'GetClusterSecretManagerConfigRotationConfigResult',
     'GetClusterSecretSyncConfigResult',
@@ -4247,6 +4249,7 @@ class ClusterAddonsConfig(dict):
                It is disabled by default for Standard clusters; set `enabled = true` to enable.
                It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
                See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+               `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
         :param 'ClusterAddonsConfigPodSnapshotConfigArgs' pod_snapshot_config: The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
         :param Sequence['ClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: The status of the [Ray Operator
                addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
@@ -4475,6 +4478,7 @@ class ClusterAddonsConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="parallelstoreCsiDriverConfig")
+    @_utilities.deprecated("""`addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.""")
     def parallelstore_csi_driver_config(self) -> Optional['outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig']:
         """
         The status of the Parallelstore CSI driver addon,
@@ -4482,6 +4486,7 @@ class ClusterAddonsConfig(dict):
         It is disabled by default for Standard clusters; set `enabled = true` to enable.
         It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
         See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+        `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
         """
         return pulumi.get(self, "parallelstore_csi_driver_config")
 
@@ -5723,7 +5728,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings(dict):
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs' blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         :param _builtins.int max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
         :param _builtins.int max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
-        :param _builtins.str strategy: Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+        :param _builtins.str strategy: Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
         """
         if blue_green_settings is not None:
             pulumi.set(__self__, "blue_green_settings", blue_green_settings)
@@ -5762,7 +5767,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings(dict):
     @pulumi.getter
     def strategy(self) -> Optional[_builtins.str]:
         """
-        Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+        Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
         """
         return pulumi.get(self, "strategy")
 
@@ -7881,7 +7886,13 @@ class ClusterManagedOpentelemetryConfig(dict):
     def __init__(__self__, *,
                  scope: Optional[_builtins.str] = None):
         """
-        :param _builtins.str scope: The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+        :param _builtins.str scope: The scope of the Managed OpenTelemetry pipeline. Available options include:
+               * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+               * `NONE`: Disables the Managed OpenTelemetry pipeline.
+               
+               See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+               
+               > **Note:** Removing the `managed_opentelemetry_config` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
         """
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
@@ -7890,7 +7901,13 @@ class ClusterManagedOpentelemetryConfig(dict):
     @pulumi.getter
     def scope(self) -> Optional[_builtins.str]:
         """
-        The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+        The scope of the Managed OpenTelemetry pipeline. Available options include:
+        * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+        * `NONE`: Disables the Managed OpenTelemetry pipeline.
+
+        See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+
+        > **Note:** Removing the `managed_opentelemetry_config` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
         """
         return pulumi.get(self, "scope")
 
@@ -11998,6 +12015,7 @@ class ClusterNodeConfigSandboxConfig(dict):
                Accepted values are:
                
                * `"GVISOR"`: Pods run within a gVisor sandbox.
+               * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         if sandbox_type is not None:
             pulumi.set(__self__, "sandbox_type", sandbox_type)
@@ -12024,6 +12042,7 @@ class ClusterNodeConfigSandboxConfig(dict):
         Accepted values are:
 
         * `"GVISOR"`: Pods run within a gVisor sandbox.
+        * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         return pulumi.get(self, "type")
 
@@ -12461,7 +12480,10 @@ class ClusterNodePool(dict):
         :param _builtins.bool ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param _builtins.int initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
-               number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+               number of nodes per zone. When omitted (or set to `0`) with no `node_config` or
+               `node_pool` blocks defined, the cluster is created without a default node pool.
+               This requires a GKE version that supports clusters without a default node pool
+               (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
@@ -12568,7 +12590,10 @@ class ClusterNodePool(dict):
         """
         The number of nodes to create in this
         cluster's default node pool. In regional or multi-zonal clusters, this is the
-        number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+        number of nodes per zone. When omitted (or set to `0`) with no `node_config` or
+        `node_pool` blocks defined, the cluster is created without a default node pool.
+        This requires a GKE version that supports clusters without a default node pool
+        (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
         `container.NodePool` objects with no default node pool, you'll need to
         set this to a value of at least `1`, alongside setting
         `remove_default_node_pool` to `true`.
@@ -17824,6 +17849,7 @@ class ClusterNodePoolNodeConfigSandboxConfig(dict):
                Accepted values are:
                
                * `"GVISOR"`: Pods run within a gVisor sandbox.
+               * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         if sandbox_type is not None:
             pulumi.set(__self__, "sandbox_type", sandbox_type)
@@ -17850,6 +17876,7 @@ class ClusterNodePoolNodeConfigSandboxConfig(dict):
         Accepted values are:
 
         * `"GVISOR"`: Pods run within a gVisor sandbox.
+        * `"MICROVM"`: Pods run within a microVM sandbox.
         """
         return pulumi.get(self, "type")
 
@@ -18353,7 +18380,7 @@ class ClusterNodePoolUpgradeSettings(dict):
         :param 'ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs' blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         :param _builtins.int max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
         :param _builtins.int max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
-        :param _builtins.str strategy: Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+        :param _builtins.str strategy: Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
         """
         if blue_green_settings is not None:
             pulumi.set(__self__, "blue_green_settings", blue_green_settings)
@@ -18392,7 +18419,7 @@ class ClusterNodePoolUpgradeSettings(dict):
     @pulumi.getter
     def strategy(self) -> Optional[_builtins.str]:
         """
-        Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+        Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
         """
         return pulumi.get(self, "strategy")
 
@@ -18779,7 +18806,9 @@ class ClusterPrivateClusterConfig(dict):
                with any other ranges in use within the cluster's network, and it must be a /28
                subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
                for more details. This field only applies to private clusters, when
-               `enable_private_nodes` is `true`.
+               `enable_private_nodes` is `true`. On GKE versions 1.29 and later, this field is
+               optional when `private_endpoint_subnetwork` is specified. It is also optional for
+               Autopilot clusters.
         :param _builtins.str peering_name: The name of the peering between this cluster and the Google owned VPC.
         :param _builtins.str private_endpoint: The internal IP address of this cluster's master endpoint.
         :param _builtins.str private_endpoint_subnetwork: Subnetwork in cluster's network where master's endpoint will be provisioned.
@@ -18848,7 +18877,9 @@ class ClusterPrivateClusterConfig(dict):
         with any other ranges in use within the cluster's network, and it must be a /28
         subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
         for more details. This field only applies to private clusters, when
-        `enable_private_nodes` is `true`.
+        `enable_private_nodes` is `true`. On GKE versions 1.29 and later, this field is
+        optional when `private_endpoint_subnetwork` is specified. It is also optional for
+        Autopilot clusters.
         """
         return pulumi.get(self, "master_ipv4_cidr_block")
 
@@ -19220,6 +19251,24 @@ class ClusterRollbackSafeUpgrade(dict):
         A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
         """
         return pulumi.get(self, "control_plane_soak_duration")
+
+
+@pulumi.output_type
+class ClusterScheduleUpgradeConfig(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether scheduled upgrades are enabled on the cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether scheduled upgrades are enabled on the cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -24323,7 +24372,7 @@ class NodePoolUpgradeSettings(dict):
                parallel. Can be set to 0 or greater.
                
                `max_surge` and `max_unavailable` must not be negative and at least one of them must be greater than zero.
-        :param _builtins.str strategy: The upgrade strategy to be used for upgrading the nodes.
+        :param _builtins.str strategy: The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
         """
         if blue_green_settings is not None:
             pulumi.set(__self__, "blue_green_settings", blue_green_settings)
@@ -24369,7 +24418,7 @@ class NodePoolUpgradeSettings(dict):
     @pulumi.getter
     def strategy(self) -> Optional[_builtins.str]:
         """
-        The upgrade strategy to be used for upgrading the nodes.
+        The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
         """
         return pulumi.get(self, "strategy")
 
@@ -26743,7 +26792,7 @@ class GetClusterManagedOpentelemetryConfigResult(dict):
     def __init__(__self__, *,
                  scope: _builtins.str):
         """
-        :param _builtins.str scope: The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+        :param _builtins.str scope: The scope of the Managed OpenTelemetry pipeline. Available options include NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig for more information. To disable the feature, explicitly set this to NONE.
         """
         pulumi.set(__self__, "scope", scope)
 
@@ -26751,7 +26800,7 @@ class GetClusterManagedOpentelemetryConfigResult(dict):
     @pulumi.getter
     def scope(self) -> _builtins.str:
         """
-        The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+        The scope of the Managed OpenTelemetry pipeline. Available options include NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig for more information. To disable the feature, explicitly set this to NONE.
         """
         return pulumi.get(self, "scope")
 
@@ -33911,7 +33960,7 @@ class GetClusterPrivateClusterConfigResult(dict):
         :param _builtins.bool enable_private_endpoint: When true, the cluster's private endpoint is used as the cluster endpoint and access through the public endpoint is disabled. When false, either endpoint can be used.
         :param _builtins.bool enable_private_nodes: Enables the private cluster feature, creating a private endpoint on the cluster. In a private cluster, nodes only have RFC 1918 private addresses and communicate with the master's private endpoint via private networking.
         :param Sequence['GetClusterPrivateClusterConfigMasterGlobalAccessConfigArgs'] master_global_access_configs: Controls cluster master global access settings.
-        :param _builtins.str master_ipv4_cidr_block: The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true.
+        :param _builtins.str master_ipv4_cidr_block: The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true. On GKE versions 1.29 and later, this field is optional when private_endpoint_subnetwork is specified. It is also optional for Autopilot clusters.
         :param _builtins.str peering_name: The name of the peering between this cluster and the Google owned VPC.
         :param _builtins.str private_endpoint: The internal IP address of this cluster's master endpoint.
         :param _builtins.str private_endpoint_subnetwork: Subnetwork in cluster's network where master's endpoint will be provisioned.
@@ -33954,7 +34003,7 @@ class GetClusterPrivateClusterConfigResult(dict):
     @pulumi.getter(name="masterIpv4CidrBlock")
     def master_ipv4_cidr_block(self) -> _builtins.str:
         """
-        The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true.
+        The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true. On GKE versions 1.29 and later, this field is optional when private_endpoint_subnetwork is specified. It is also optional for Autopilot clusters.
         """
         return pulumi.get(self, "master_ipv4_cidr_block")
 
@@ -34187,6 +34236,24 @@ class GetClusterRollbackSafeUpgradeResult(dict):
         A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
         """
         return pulumi.get(self, "control_plane_soak_duration")
+
+
+@pulumi.output_type
+class GetClusterScheduleUpgradeConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether scheduled upgrades are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether scheduled upgrades are enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

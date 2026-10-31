@@ -337,6 +337,25 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The requested notBeforeTime of this Certificate. This field may only be set
+     * if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+     * issuing CaPool.
+     * 
+     */
+    @Import(name="requestedNotBeforeTime")
+    private @Nullable Output<String> requestedNotBeforeTime;
+
+    /**
+     * @return The requested notBeforeTime of this Certificate. This field may only be set
+     * if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+     * issuing CaPool.
+     * 
+     */
+    public Optional<Output<String>> requestedNotBeforeTime() {
+        return Optional.ofNullable(this.requestedNotBeforeTime);
+    }
+
+    /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is
      * considered revoked if and only if this field is present.
      * Structure is documented below.
@@ -393,6 +412,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         this.pool = $.pool;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.requestedNotBeforeTime = $.requestedNotBeforeTime;
         this.revocationDetails = $.revocationDetails;
         this.updateTime = $.updateTime;
     }
@@ -858,6 +878,31 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param requestedNotBeforeTime The requested notBeforeTime of this Certificate. This field may only be set
+         * if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+         * issuing CaPool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestedNotBeforeTime(@Nullable Output<String> requestedNotBeforeTime) {
+            $.requestedNotBeforeTime = requestedNotBeforeTime;
+            return this;
+        }
+
+        /**
+         * @param requestedNotBeforeTime The requested notBeforeTime of this Certificate. This field may only be set
+         * if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+         * issuing CaPool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestedNotBeforeTime(String requestedNotBeforeTime) {
+            return requestedNotBeforeTime(Output.of(requestedNotBeforeTime));
         }
 
         /**

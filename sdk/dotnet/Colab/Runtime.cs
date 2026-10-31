@@ -65,6 +65,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Runtime Stopped
     /// 
     /// ```csharp
@@ -111,6 +112,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Runtime Full
     /// 
     /// ```csharp

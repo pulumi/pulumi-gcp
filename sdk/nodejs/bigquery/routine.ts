@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     definitionBody: "CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);",
  * });
  * ```
+ *
  * ### Bigquery Routine Json
  *
  * ```typescript
@@ -59,6 +60,7 @@ import * as utilities from "../utilities";
  *     returnType: "{\"typeKind\" :  \"FLOAT64\"}",
  * });
  * ```
+ *
  * ### Bigquery Routine Tvf
  *
  * ```typescript
@@ -89,6 +91,7 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
+ *
  * ### Bigquery Routine Table Type
  *
  * ```typescript
@@ -117,6 +120,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Bigquery Routine Pyspark
  *
  * ```typescript
@@ -160,6 +164,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Routine Pyspark Mainfile
  *
  * ```typescript
@@ -188,6 +193,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Routine Spark Jar
  *
  * ```typescript
@@ -219,6 +225,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Routine Data Governance Type
  *
  * ```typescript
@@ -240,6 +247,7 @@ import * as utilities from "../utilities";
  *     returnType: "{\"typeKind\" :  \"STRING\"}",
  * });
  * ```
+ *
  * ### Bigquery Routine Remote Function
  *
  * ```typescript
@@ -268,6 +276,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Routine Python Function
  *
  * ```typescript

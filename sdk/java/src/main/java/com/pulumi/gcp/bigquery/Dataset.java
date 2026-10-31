@@ -90,6 +90,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Dataset Cmek
  * 
  * <pre>
@@ -144,6 +145,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Dataset Authorized Dataset
  * 
  * <pre>
@@ -226,6 +228,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Dataset Authorized Routine
  * 
  * <pre>
@@ -309,6 +312,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Bigquery Dataset External Reference Aws
  * 
  * <pre>
@@ -349,6 +353,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Dataset External Catalog Dataset Options
  * 
  * <pre>

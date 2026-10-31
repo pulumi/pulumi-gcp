@@ -114,6 +114,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Apigee Api Product With Legacy Operation
  * 
  * <pre>
@@ -234,6 +235,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ## Import
  * 
  * ApiProduct can be imported using any of these accepted formats:

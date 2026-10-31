@@ -243,6 +243,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudsecuritycompliance Cloudcontrol Project Basic
     /// 
     /// ```csharp
@@ -470,6 +471,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudsecuritycompliance Cloudcontrol Org Basic Backward
     /// 
     /// ```csharp

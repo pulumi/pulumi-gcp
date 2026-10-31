@@ -77,14 +77,14 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The upgrade strategy to be used for upgrading the nodes.
+     * The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return The upgrade strategy to be used for upgrading the nodes.
+     * @return The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -196,7 +196,7 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param strategy The upgrade strategy to be used for upgrading the nodes.
+         * @param strategy The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param strategy The upgrade strategy to be used for upgrading the nodes.
+         * @param strategy The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
          * 
          * @return builder
          * 

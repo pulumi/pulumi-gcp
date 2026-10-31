@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  *     interconnectAttachment: pulumi.all([project, attachment.name]).apply(([project, name]) => `projects/${project.number}/regions/us-east4/interconnectAttachments/${name}`),
  * });
  * ```
+ *
  * ### Network Management Vpc Flow Logs Config Vpn Basic
  *
  * ```typescript
@@ -95,6 +96,7 @@ import * as utilities from "../utilities";
  *     nextHopVpnTunnel: tunnel.id,
  * });
  * ```
+ *
  * ### Network Management Vpc Flow Logs Config Network Basic
  *
  * ```typescript
@@ -109,6 +111,7 @@ import * as utilities from "../utilities";
  *     network: pulumi.all([project, network.name]).apply(([project, name]) => `projects/${project.number}/global/networks/${name}`),
  * });
  * ```
+ *
  * ### Network Management Vpc Flow Logs Config Subnet Basic
  *
  * ```typescript

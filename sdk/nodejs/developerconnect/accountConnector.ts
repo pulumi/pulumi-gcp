@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Account Connector Gitlab
  *
  * ```typescript
@@ -41,6 +42,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Account Connector Ghe
  *
  * ```typescript
@@ -81,6 +83,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Account Connector Gle
  *
  * ```typescript
@@ -121,6 +124,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Account Connector Bbdc
  *
  * ```typescript

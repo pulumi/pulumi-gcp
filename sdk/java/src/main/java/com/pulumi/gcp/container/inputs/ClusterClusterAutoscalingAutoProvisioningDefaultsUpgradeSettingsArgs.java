@@ -63,14 +63,14 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
     }
 
     /**
-     * Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+     * Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+     * @return Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -168,7 +168,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
         }
 
         /**
-         * @param strategy Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+         * @param strategy Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
         }
 
         /**
-         * @param strategy Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+         * @param strategy Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
          * 
          * @return builder
          * 

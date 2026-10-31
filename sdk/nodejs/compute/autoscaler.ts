@@ -84,6 +84,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Autoscaler Basic
  *
  * ```typescript

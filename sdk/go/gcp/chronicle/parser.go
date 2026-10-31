@@ -52,6 +52,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Parser Full
 //
 // ```go

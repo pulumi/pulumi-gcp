@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Authorization Policy Destinations
     /// 
     /// ```csharp

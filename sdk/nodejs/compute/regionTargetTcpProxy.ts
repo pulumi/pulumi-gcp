@@ -47,6 +47,7 @@ import * as utilities from "../utilities";
  *     backendService: defaultRegionBackendService.id,
  * });
  * ```
+ *
  * ### Region Target Tcp Proxy Backendless
  *
  * ```typescript
@@ -59,6 +60,7 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  * });
  * ```
+ *
  * ### Region Target Tcp Proxy Tls Route
  *
  * ```typescript

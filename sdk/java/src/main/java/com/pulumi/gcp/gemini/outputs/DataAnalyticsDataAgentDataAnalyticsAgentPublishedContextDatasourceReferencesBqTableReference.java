@@ -5,8 +5,11 @@ package com.pulumi.gcp.gemini.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchema;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference {
@@ -20,6 +23,12 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatas
      * 
      */
     private String projectId;
+    /**
+     * @return Optional. The schema of the datasource.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchema schema;
     /**
      * @return The table ID.
      * 
@@ -42,6 +51,14 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatas
         return this.projectId;
     }
     /**
+     * @return Optional. The schema of the datasource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchema> schema() {
+        return Optional.ofNullable(this.schema);
+    }
+    /**
      * @return The table ID.
      * 
      */
@@ -60,12 +77,14 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatas
     public static final class Builder {
         private String datasetId;
         private String projectId;
+        private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchema schema;
         private String tableId;
         public Builder() {}
         public Builder(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
     	      this.projectId = defaults.projectId;
+    	      this.schema = defaults.schema;
     	      this.tableId = defaults.tableId;
         }
 
@@ -86,6 +105,12 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatas
             return this;
         }
         @CustomType.Setter
+        public Builder schema(@Nullable DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchema schema) {
+
+            this.schema = schema;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableId(String tableId) {
             if (tableId == null) {
               throw new MissingRequiredPropertyException("DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference", "tableId");
@@ -97,6 +122,7 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatas
             final var _resultValue = new DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference();
             _resultValue.datasetId = datasetId;
             _resultValue.projectId = projectId;
+            _resultValue.schema = schema;
             _resultValue.tableId = tableId;
             return _resultValue;
         }

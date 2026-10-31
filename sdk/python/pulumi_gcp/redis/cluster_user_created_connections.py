@@ -262,37 +262,38 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         subnet_network1 = gcp.compute.Subnetwork("subnet_network1",
             name="subnet-net1",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=network1.id)
         ip1_network1 = gcp.compute.Address("ip1_network1",
             name="ip1-net1",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network1.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         # redis cluster without endpoint
         cluster_user_conn_cluster = gcp.redis.Cluster("cluster-user-conn",
             name="cluster-user-conn",
-            shard_count=3,
-            region="us-west1",
+            shard_count=1,
+            node_type="REDIS_SHARED_CORE_NANO",
+            region="us-east1",
             replica_count=0,
             deletion_protection_enabled=False)
         forwarding_rule1_network1 = gcp.compute.ForwardingRule("forwarding_rule1_network1",
             name="fwd1-net1",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip1_network1.id,
             load_balancing_scheme="",
             network=network1.id,
             target=cluster_user_conn_cluster.psc_service_attachments[0].service_attachment)
         ip2_network1 = gcp.compute.Address("ip2_network1",
             name="ip2-net1",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network1.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network1 = gcp.compute.ForwardingRule("forwarding_rule2_network1",
             name="fwd2-net1",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip2_network1.id,
             load_balancing_scheme="",
             network=network1.id,
@@ -303,30 +304,30 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         subnet_network2 = gcp.compute.Subnetwork("subnet_network2",
             name="subnet-net2",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=network2.id)
         ip1_network2 = gcp.compute.Address("ip1_network2",
             name="ip1-net2",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule1_network2 = gcp.compute.ForwardingRule("forwarding_rule1_network2",
             name="fwd1-net2",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip1_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=cluster_user_conn_cluster.psc_service_attachments[0].service_attachment)
         ip2_network2 = gcp.compute.Address("ip2_network2",
             name="ip2-net2",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network2 = gcp.compute.ForwardingRule("forwarding_rule2_network2",
             name="fwd2-net2",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip2_network2.id,
             load_balancing_scheme="",
             network=network2.id,
@@ -334,7 +335,7 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         cluster_user_conn = gcp.redis.ClusterUserCreatedConnections("cluster-user-conn",
             name="cluster-user-conn",
-            region="us-west1",
+            region="us-east1",
             cluster_endpoints=[
                 {
                     "connections": [
@@ -383,6 +384,7 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Redis Cluster User And Auto Created Connections
 
         ```python
@@ -395,11 +397,11 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         subnet_network2 = gcp.compute.Subnetwork("subnet_network2",
             name="subnet-net2",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=network2.id)
         ip1_network2 = gcp.compute.Address("ip1_network2",
             name="ip1-net2",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
@@ -409,11 +411,11 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         subnet_network1 = gcp.compute.Subnetwork("subnet_network1",
             name="subnet-net1",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=network1.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="scpolicy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=network1.id,
@@ -423,8 +425,9 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         # redis cluster without endpoint
         cluster_user_auto_conn_cluster = gcp.redis.Cluster("cluster-user-auto-conn",
             name="cluster-user-auto-conn",
-            shard_count=3,
-            region="us-west1",
+            shard_count=1,
+            node_type="REDIS_SHARED_CORE_NANO",
+            region="us-east1",
             replica_count=0,
             deletion_protection_enabled=False,
             psc_configs=[{
@@ -433,27 +436,27 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[default]))
         forwarding_rule1_network2 = gcp.compute.ForwardingRule("forwarding_rule1_network2",
             name="fwd1-net2",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip1_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=cluster_user_auto_conn_cluster.psc_service_attachments[0].service_attachment)
         ip2_network2 = gcp.compute.Address("ip2_network2",
             name="ip2-net2",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network2 = gcp.compute.ForwardingRule("forwarding_rule2_network2",
             name="fwd2-net2",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip2_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=cluster_user_auto_conn_cluster.psc_service_attachments[1].service_attachment)
         cluster_user_auto_conn = gcp.redis.ClusterUserCreatedConnections("cluster-user-auto-conn",
             name="cluster-user-auto-conn",
-            region="us-west1",
+            region="us-east1",
             cluster_endpoints=[{
                 "connections": [
                     {
@@ -545,37 +548,38 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         subnet_network1 = gcp.compute.Subnetwork("subnet_network1",
             name="subnet-net1",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=network1.id)
         ip1_network1 = gcp.compute.Address("ip1_network1",
             name="ip1-net1",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network1.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         # redis cluster without endpoint
         cluster_user_conn_cluster = gcp.redis.Cluster("cluster-user-conn",
             name="cluster-user-conn",
-            shard_count=3,
-            region="us-west1",
+            shard_count=1,
+            node_type="REDIS_SHARED_CORE_NANO",
+            region="us-east1",
             replica_count=0,
             deletion_protection_enabled=False)
         forwarding_rule1_network1 = gcp.compute.ForwardingRule("forwarding_rule1_network1",
             name="fwd1-net1",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip1_network1.id,
             load_balancing_scheme="",
             network=network1.id,
             target=cluster_user_conn_cluster.psc_service_attachments[0].service_attachment)
         ip2_network1 = gcp.compute.Address("ip2_network1",
             name="ip2-net1",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network1.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network1 = gcp.compute.ForwardingRule("forwarding_rule2_network1",
             name="fwd2-net1",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip2_network1.id,
             load_balancing_scheme="",
             network=network1.id,
@@ -586,30 +590,30 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         subnet_network2 = gcp.compute.Subnetwork("subnet_network2",
             name="subnet-net2",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=network2.id)
         ip1_network2 = gcp.compute.Address("ip1_network2",
             name="ip1-net2",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule1_network2 = gcp.compute.ForwardingRule("forwarding_rule1_network2",
             name="fwd1-net2",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip1_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=cluster_user_conn_cluster.psc_service_attachments[0].service_attachment)
         ip2_network2 = gcp.compute.Address("ip2_network2",
             name="ip2-net2",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network2 = gcp.compute.ForwardingRule("forwarding_rule2_network2",
             name="fwd2-net2",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip2_network2.id,
             load_balancing_scheme="",
             network=network2.id,
@@ -617,7 +621,7 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         cluster_user_conn = gcp.redis.ClusterUserCreatedConnections("cluster-user-conn",
             name="cluster-user-conn",
-            region="us-west1",
+            region="us-east1",
             cluster_endpoints=[
                 {
                     "connections": [
@@ -666,6 +670,7 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Redis Cluster User And Auto Created Connections
 
         ```python
@@ -678,11 +683,11 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         subnet_network2 = gcp.compute.Subnetwork("subnet_network2",
             name="subnet-net2",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=network2.id)
         ip1_network2 = gcp.compute.Address("ip1_network2",
             name="ip1-net2",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
@@ -692,11 +697,11 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         subnet_network1 = gcp.compute.Subnetwork("subnet_network1",
             name="subnet-net1",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=network1.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="scpolicy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=network1.id,
@@ -706,8 +711,9 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         # redis cluster without endpoint
         cluster_user_auto_conn_cluster = gcp.redis.Cluster("cluster-user-auto-conn",
             name="cluster-user-auto-conn",
-            shard_count=3,
-            region="us-west1",
+            shard_count=1,
+            node_type="REDIS_SHARED_CORE_NANO",
+            region="us-east1",
             replica_count=0,
             deletion_protection_enabled=False,
             psc_configs=[{
@@ -716,27 +722,27 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[default]))
         forwarding_rule1_network2 = gcp.compute.ForwardingRule("forwarding_rule1_network2",
             name="fwd1-net2",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip1_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=cluster_user_auto_conn_cluster.psc_service_attachments[0].service_attachment)
         ip2_network2 = gcp.compute.Address("ip2_network2",
             name="ip2-net2",
-            region="us-west1",
+            region="us-east1",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network2 = gcp.compute.ForwardingRule("forwarding_rule2_network2",
             name="fwd2-net2",
-            region="us-west1",
+            region="us-east1",
             ip_address=ip2_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=cluster_user_auto_conn_cluster.psc_service_attachments[1].service_attachment)
         cluster_user_auto_conn = gcp.redis.ClusterUserCreatedConnections("cluster-user-auto-conn",
             name="cluster-user-auto-conn",
-            region="us-west1",
+            region="us-east1",
             cluster_endpoints=[{
                 "connections": [
                     {

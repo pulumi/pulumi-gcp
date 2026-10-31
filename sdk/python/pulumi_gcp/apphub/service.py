@@ -567,6 +567,7 @@ class Service(pulumi.CustomResource):
             service_id=forwarding_rule.name,
             discovered_service=catalog_service.name)
         ```
+
         ### Apphub Service Full
 
         ```python
@@ -793,6 +794,7 @@ class Service(pulumi.CustomResource):
             service_id=forwarding_rule.name,
             discovered_service=catalog_service.name)
         ```
+
         ### Apphub Service Full
 
         ```python

@@ -56,6 +56,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Monitoring Snooze Filter
  *
  * ```typescript

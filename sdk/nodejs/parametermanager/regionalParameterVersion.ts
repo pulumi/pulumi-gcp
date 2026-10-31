@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     parameterData: "regional-parameter-version-data",
  * });
  * ```
+ *
  * ### Regional Parameter Version With Json Format
  *
  * ```typescript
@@ -49,6 +50,7 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
+ *
  * ### Regional Parameter Version With Kms Key
  *
  * ```typescript
@@ -67,6 +69,7 @@ import * as utilities from "../utilities";
  *     parameterData: "regional-parameter-version-data",
  * });
  * ```
+ *
  * ### Regional Parameter Version With Json Format With File
  *
  * ```typescript
@@ -87,6 +90,7 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ *
  * ### Regional Parameter Version With Yaml Format With File
  *
  * ```typescript
@@ -107,6 +111,7 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ *
  * ### Regional Parameter Version With Data Crc32c
  *
  * ```typescript

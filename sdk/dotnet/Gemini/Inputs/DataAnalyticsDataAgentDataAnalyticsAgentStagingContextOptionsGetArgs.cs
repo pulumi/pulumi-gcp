@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.Gemini.Inputs
         [Input("datasource")]
         public Input<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceGetArgs>? Datasource { get; set; }
 
+        /// <summary>
+        /// Optional. The model to use for the agent loop.
+        /// </summary>
+        [Input("model")]
+        public Input<string>? Model { get; set; }
+
         public DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsGetArgs()
         {
         }

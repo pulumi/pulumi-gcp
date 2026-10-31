@@ -817,6 +817,8 @@ class Instance(pulumi.CustomResource):
                  reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** `parallelstore.Instance` is deprecated and will be removed in a future major release. Use `lustre.Instance` instead.
+
         A Parallelstore Instance.
 
         ## Example Usage
@@ -857,6 +859,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Parallelstore Instance Basic
 
         ```python
@@ -986,6 +989,8 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `parallelstore.Instance` is deprecated and will be removed in a future major release. Use `lustre.Instance` instead.
+
         A Parallelstore Instance.
 
         ## Example Usage
@@ -1026,6 +1031,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Parallelstore Instance Basic
 
         ```python

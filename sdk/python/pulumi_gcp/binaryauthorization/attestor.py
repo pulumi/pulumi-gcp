@@ -287,6 +287,7 @@ class Attestor(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Binary Authorization Attestor Kms
 
         ```python
@@ -412,6 +413,7 @@ class Attestor(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Binary Authorization Attestor Kms
 
         ```python

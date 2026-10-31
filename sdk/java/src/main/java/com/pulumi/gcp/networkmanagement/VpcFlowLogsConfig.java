@@ -88,6 +88,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Management Vpc Flow Logs Config Vpn Basic
  * 
  * <pre>
@@ -196,6 +197,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Management Vpc Flow Logs Config Network Basic
  * 
  * <pre>
@@ -241,6 +243,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Management Vpc Flow Logs Config Subnet Basic
  * 
  * <pre>

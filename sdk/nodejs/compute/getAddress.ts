@@ -69,6 +69,10 @@ export interface GetAddressResult {
      * The IP of the created resource.
      */
     readonly address: string;
+    /**
+     * The numeric ID of the created resource.
+     */
+    readonly addressId: string;
     readonly addressType: string;
     /**
      * The provider-assigned unique ID for this managed resource.

@@ -102,6 +102,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dialogflowcx Tool Data Store
  *
  * ```typescript
@@ -146,6 +147,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Dialogflowcx Tool Function
  *
  * ```typescript
@@ -190,6 +192,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dialogflowcx Tool Connector
  *
  * ```typescript

@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Schema Protobuf
     /// 
     /// ```csharp

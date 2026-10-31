@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** When importing the resource with `pulumi import`, provide the destination/subscriber's project and location
  * in the format projects/{{subscriber_project}}/locations/{{subscriber_location}}/subscriptions/{{subscription_id}}
+ *
  * ## Example Usage
  *
  * ### Bigquery Analyticshub Dataexchange Subscription Basic

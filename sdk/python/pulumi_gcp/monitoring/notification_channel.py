@@ -536,6 +536,7 @@ class NotificationChannel(pulumi.CustomResource):
             },
             force_delete=False)
         ```
+
         ### Notification Channel Sensitive
 
         ```python
@@ -650,6 +651,7 @@ class NotificationChannel(pulumi.CustomResource):
             },
             force_delete=False)
         ```
+
         ### Notification Channel Sensitive
 
         ```python

@@ -603,6 +603,7 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
             deployment_model="CENTRALIZED",
             access_path="CLIENT_TO_AGENT")
         ```
+
         ### Network Services Agent Connectivity Template Advanced
 
         ```python
@@ -749,6 +750,7 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
             deployment_model="CENTRALIZED",
             access_path="CLIENT_TO_AGENT")
         ```
+
         ### Network Services Agent Connectivity Template Advanced
 
         ```python

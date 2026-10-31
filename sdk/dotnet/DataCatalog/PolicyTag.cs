@@ -49,6 +49,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Catalog Taxonomies Policy Tag Child Policies
     /// 
     /// ```csharp

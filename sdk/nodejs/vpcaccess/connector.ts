@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     maxInstances: 3,
  * });
  * ```
+ *
  * ### Vpc Access Connector Shared Vpc
  *
  * ```typescript

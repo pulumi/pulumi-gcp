@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Connection Profile Postgres
     /// 
     /// ```csharp
@@ -207,6 +208,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///             Port = 5432,
     ///             Username = sqldbUser.Name,
     ///             Password = sqldbUser.Password,
+    ///             Database = "postgres",
     ///             Ssl = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlSslArgs
     ///             {
     ///                 ClientKey = sqlClientCert.PrivateKey,
@@ -226,6 +228,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Connection Profile Postgres No Ssl
     /// 
     /// ```csharp
@@ -287,6 +290,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///             Port = 5432,
     ///             Username = sqldbUser.Name,
     ///             Password = sqldbUser.Password,
+    ///             Database = "postgres",
     ///             Ssl = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlSslArgs
     ///             {
     ///                 Type = "NONE",
@@ -303,6 +307,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Connection Profile Postgres Required Ssl
     /// 
     /// ```csharp
@@ -364,6 +369,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///             Port = 5432,
     ///             Username = sqldbUser.Name,
     ///             Password = sqldbUser.Password,
+    ///             Database = "postgres",
     ///             Ssl = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlSslArgs
     ///             {
     ///                 Type = "REQUIRED",
@@ -380,6 +386,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Connection Profile Oracle
     /// 
     /// ```csharp
@@ -412,6 +419,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Connection Profile Alloydb
     /// 
     /// ```csharp
@@ -497,6 +505,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Connection Profile Existing Mysql
     /// 
     /// ```csharp
@@ -544,6 +553,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Connection Profile Existing Postgres
     /// 
     /// ```csharp
@@ -591,6 +601,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Connection Profile Existing Alloydb
     /// 
     /// ```csharp
@@ -603,7 +614,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "destination-alloydb",
     ///     });
@@ -614,7 +625,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         Location = "us-central1",
     ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
     ///         {
-    ///             Network = @default.Id,
+    ///             Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         },
     ///         DatabaseVersion = "POSTGRES_15",
     ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
@@ -625,36 +636,11 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         DeletionProtection = false,
     ///     });
     /// 
-    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
-    ///     {
-    ///         Name = "destination-alloydb",
-    ///         AddressType = "INTERNAL",
-    ///         Purpose = "VPC_PEERING",
-    ///         PrefixLength = 16,
-    ///         Network = @default.Id,
-    ///     });
-    /// 
-    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpc_connection", new()
-    ///     {
-    ///         Network = @default.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             privateIpAlloc.Name,
-    ///         },
-    ///     });
-    /// 
     ///     var destinationAlloydbPrimary = new Gcp.Alloydb.Instance("destination_alloydb_primary", new()
     ///     {
     ///         Cluster = destinationAlloydb.Name,
     ///         InstanceId = "destination-alloydb-primary",
     ///         InstanceType = "PRIMARY",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             vpcConnection,
-    ///         },
     ///     });
     /// 
     ///     var existing_alloydb = new Gcp.DatabaseMigrationService.ConnectionProfile("existing-alloydb", new()

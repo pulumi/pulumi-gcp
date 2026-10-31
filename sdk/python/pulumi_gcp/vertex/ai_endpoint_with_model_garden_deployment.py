@@ -438,6 +438,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 "accept_eula": True,
             })
         ```
+
         ### Vertex Ai Deploy Huggingface Model
 
         ```python
@@ -451,6 +452,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 "accept_eula": True,
             })
         ```
+
         ### Vertex Ai Deploy With Configs
 
         ```python
@@ -474,6 +476,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Deploy Multiple Models In Parallel
 
         ```python
@@ -529,6 +532,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Deploy Multiple Models In Sequence
 
         ```python
@@ -586,6 +590,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[deploy_qwen3_06b]))
         ```
+
         ### Vertex Ai Deploy Psc Endpoint
 
         ```python
@@ -605,6 +610,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Deploy Psc Endpoint Automated
 
         ```python
@@ -699,6 +705,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 "accept_eula": True,
             })
         ```
+
         ### Vertex Ai Deploy Huggingface Model
 
         ```python
@@ -712,6 +719,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 "accept_eula": True,
             })
         ```
+
         ### Vertex Ai Deploy With Configs
 
         ```python
@@ -735,6 +743,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Deploy Multiple Models In Parallel
 
         ```python
@@ -790,6 +799,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Deploy Multiple Models In Sequence
 
         ```python
@@ -847,6 +857,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[deploy_qwen3_06b]))
         ```
+
         ### Vertex Ai Deploy Psc Endpoint
 
         ```python
@@ -866,6 +877,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Deploy Psc Endpoint Automated
 
         ```python

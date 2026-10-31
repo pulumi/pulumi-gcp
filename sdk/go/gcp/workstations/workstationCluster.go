@@ -78,6 +78,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Cluster Private
 //
 // ```go
@@ -137,6 +138,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Cluster Custom Domain
 //
 // ```go
@@ -199,6 +201,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Cluster Tags
 //
 // ### Workstation Cluster Custom Urls

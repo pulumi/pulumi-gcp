@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Internal Ranges Automatic Reservation
  *
  * ```typescript
@@ -58,6 +59,7 @@ import * as utilities from "../utilities";
  *     targetCidrRanges: ["192.16.0.0/16"],
  * });
  * ```
+ *
  * ### Network Connectivity Internal Ranges External Ranges
  *
  * ```typescript
@@ -79,6 +81,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Internal Ranges Reserve With Overlap
  *
  * ```typescript
@@ -107,6 +110,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultSubnetwork],
  * });
  * ```
+ *
  * ### Network Connectivity Internal Ranges Migration
  *
  * ```typescript
@@ -137,6 +141,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Internal Ranges Allocation Algoritms
  *
  * ```typescript
@@ -159,6 +164,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Internal Ranges Allocation Algoritms Random First N
  *
  * ```typescript

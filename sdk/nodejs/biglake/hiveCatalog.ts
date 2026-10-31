@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [bucketForMyHiveCatalog],
  * });
  * ```
+ *
  * ### Biglake Hive Catalog Full
  *
  * ```typescript

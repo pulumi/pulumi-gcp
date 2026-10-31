@@ -63,6 +63,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Discoveryengine Recommendationengine Media
     /// 
     /// ```csharp

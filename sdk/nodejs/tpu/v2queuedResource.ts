@@ -43,6 +43,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Tpu V2 Queued Resource Full
  *
  * ```typescript

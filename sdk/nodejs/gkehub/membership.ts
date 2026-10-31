@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkehub Membership Basic
  *
  * ```typescript
@@ -67,6 +68,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkehub Membership Issuer
  *
  * ```typescript

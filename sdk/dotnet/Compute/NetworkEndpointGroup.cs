@@ -68,6 +68,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Endpoint Group Non Gcp
     /// 
     /// ```csharp

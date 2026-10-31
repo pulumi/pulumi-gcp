@@ -13,6 +13,8 @@ public final class GetSnapshotSnapshotEncryptionKey {
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
      * 
+     * Specify the key without a &#39;/cryptoKeyVersions/&#39; suffix.
+     * 
      */
     private String kmsKeySelfLink;
     /**
@@ -43,6 +45,8 @@ public final class GetSnapshotSnapshotEncryptionKey {
     private GetSnapshotSnapshotEncryptionKey() {}
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     * Specify the key without a &#39;/cryptoKeyVersions/&#39; suffix.
      * 
      */
     public String kmsKeySelfLink() {

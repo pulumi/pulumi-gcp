@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     nextHopOtherRoutes: "DEFAULT_ROUTING",
  * });
  * ```
+ *
  * ### Network Connectivity Policy Based Route Full
  *
  * ```typescript

@@ -49,6 +49,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dialogflow Tool Connector
  *
  * ```typescript
@@ -127,6 +128,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dialogflow Tool Function
  *
  * ```typescript
@@ -159,6 +161,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dialogflow Tool Auth
  *
  * ```typescript
@@ -195,6 +198,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dialogflow Tool Bearer
  *
  * ```typescript
@@ -229,6 +233,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dialogflow Tool Oauth
  *
  * ```typescript
@@ -282,6 +287,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dialogflow Tool Service Agent
  *
  * ```typescript

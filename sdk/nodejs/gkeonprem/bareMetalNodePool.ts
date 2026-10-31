@@ -102,6 +102,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkeonprem Bare Metal Node Pool Full
  *
  * ```typescript

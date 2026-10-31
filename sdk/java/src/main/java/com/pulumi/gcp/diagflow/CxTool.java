@@ -147,6 +147,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflowcx Tool Data Store
  * 
  * <pre>
@@ -227,6 +228,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflowcx Tool Function
  * 
  * <pre>
@@ -299,6 +301,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflowcx Tool Connector
  * 
  * <pre>

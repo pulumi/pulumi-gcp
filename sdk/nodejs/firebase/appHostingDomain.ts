@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     domainId: "example.com",
  * });
  * ```
+ *
  * ### Firebase App Hosting Domain Full
  *
  * ```typescript

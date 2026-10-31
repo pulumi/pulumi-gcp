@@ -480,6 +480,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_url_map.id)
         ```
+
         ### Target Http Proxy Http Keep Alive Timeout
 
         ```python
@@ -518,6 +519,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             http_keep_alive_timeout_sec=610,
             url_map=default_url_map.id)
         ```
+
         ### Target Http Proxy Https Redirect
 
         ```python
@@ -534,6 +536,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             name="test-https-redirect-proxy",
             url_map=default_url_map.id)
         ```
+
         ### Target Http Proxy Fingerprint
 
         ```python
@@ -677,6 +680,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_url_map.id)
         ```
+
         ### Target Http Proxy Http Keep Alive Timeout
 
         ```python
@@ -715,6 +719,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             http_keep_alive_timeout_sec=610,
             url_map=default_url_map.id)
         ```
+
         ### Target Http Proxy Https Redirect
 
         ```python
@@ -731,6 +736,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             name="test-https-redirect-proxy",
             url_map=default_url_map.id)
         ```
+
         ### Target Http Proxy Fingerprint
 
         ```python

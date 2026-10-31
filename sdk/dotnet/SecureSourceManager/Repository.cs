@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Repository Initial Config
     /// 
     /// ```csharp
@@ -85,6 +86,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Repository Service Account
     /// 
     /// ```csharp
@@ -119,6 +121,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Repository Secret Scanning
     /// 
     /// ```csharp
@@ -185,6 +188,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Repository Secret Scanning Default
     /// 
     /// ```csharp

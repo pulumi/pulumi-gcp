@@ -4400,12 +4400,10 @@ class CloudVmClusterPropertiesArgsDict(TypedDict):
     """
     scan_listener_port_tcp: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    (Output)
     SCAN listener port - TCP
     """
     scan_listener_port_tcp_ssl: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    (Output)
     SCAN listener port - TLS
     """
     shape: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -4561,10 +4559,8 @@ class CloudVmClusterPropertiesArgs:
                OCID of scan DNS record.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scan_ip_ids: (Output)
                OCIDs of scan IPs.
-        :param pulumi.Input[_builtins.int] scan_listener_port_tcp: (Output)
-               SCAN listener port - TCP
-        :param pulumi.Input[_builtins.int] scan_listener_port_tcp_ssl: (Output)
-               SCAN listener port - TLS
+        :param pulumi.Input[_builtins.int] scan_listener_port_tcp: SCAN listener port - TCP
+        :param pulumi.Input[_builtins.int] scan_listener_port_tcp_ssl: SCAN listener port - TLS
         :param pulumi.Input[_builtins.str] shape: (Output)
                Shape of VM Cluster.
         :param pulumi.Input[_builtins.bool] sparse_diskgroup_enabled: Use exadata sparse snapshots.
@@ -4975,7 +4971,6 @@ class CloudVmClusterPropertiesArgs:
     @pulumi.getter(name="scanListenerPortTcp")
     def scan_listener_port_tcp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        (Output)
         SCAN listener port - TCP
         """
         return pulumi.get(self, "scan_listener_port_tcp")
@@ -4988,7 +4983,6 @@ class CloudVmClusterPropertiesArgs:
     @pulumi.getter(name="scanListenerPortTcpSsl")
     def scan_listener_port_tcp_ssl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        (Output)
         SCAN listener port - TLS
         """
         return pulumi.get(self, "scan_listener_port_tcp_ssl")

@@ -17,14 +17,14 @@ public final class StandardAppVersionVpcAccessNetworkInterfaceArgs extends com.p
     public static final StandardAppVersionVpcAccessNetworkInterfaceArgs Empty = new StandardAppVersionVpcAccessNetworkInterfaceArgs();
 
     /**
-     * The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+     * The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `default` or `projects/my-project/global/networks/default`).
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+     * @return The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `default` or `projects/my-project/global/networks/default`).
      * 
      */
     public Optional<Output<String>> network() {
@@ -32,14 +32,14 @@ public final class StandardAppVersionVpcAccessNetworkInterfaceArgs extends com.p
     }
 
     /**
-     * The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+     * The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `default` or `projects/my-project/regions/us-central1/subnetworks/default`).
      * 
      */
     @Import(name="subnetwork")
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+     * @return The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `default` or `projects/my-project/regions/us-central1/subnetworks/default`).
      * 
      */
     public Optional<Output<String>> subnetwork() {
@@ -88,7 +88,7 @@ public final class StandardAppVersionVpcAccessNetworkInterfaceArgs extends com.p
         }
 
         /**
-         * @param network The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+         * @param network The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `default` or `projects/my-project/global/networks/default`).
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class StandardAppVersionVpcAccessNetworkInterfaceArgs extends com.p
         }
 
         /**
-         * @param network The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+         * @param network The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `default` or `projects/my-project/global/networks/default`).
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class StandardAppVersionVpcAccessNetworkInterfaceArgs extends com.p
         }
 
         /**
-         * @param subnetwork The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+         * @param subnetwork The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `default` or `projects/my-project/regions/us-central1/subnetworks/default`).
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class StandardAppVersionVpcAccessNetworkInterfaceArgs extends com.p
         }
 
         /**
-         * @param subnetwork The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+         * @param subnetwork The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `default` or `projects/my-project/regions/us-central1/subnetworks/default`).
          * 
          * @return builder
          * 

@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Connectivity Hub With Export Psc
     /// 
     /// ```csharp
@@ -61,6 +62,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Connectivity Hub With Export Psc Config
     /// 
     /// ```csharp
@@ -85,6 +87,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Connectivity Hub Mesh Topology
     /// 
     /// ```csharp
@@ -107,6 +110,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Connectivity Hub Star Topology
     /// 
     /// ```csharp
@@ -130,6 +134,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Connectivity Hub Policy Mode
     /// 
     /// ```csharp

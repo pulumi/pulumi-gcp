@@ -737,6 +737,7 @@ class Reservation(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Reservation Basic Beta
 
         ```python
@@ -751,11 +752,12 @@ class Reservation(pulumi.CustomResource):
                 "instance_properties": {
                     "min_cpu_platform": "Intel Cascade Lake",
                     "machine_type": "n2-standard-2",
-                    "maintenance_interval": "PERIODIC",
+                    "maintenance_interval": "RECURRENT",
                 },
             },
             enable_emergent_maintenance=True)
         ```
+
         ### Reservation Source Instance Template
 
         ```python
@@ -805,6 +807,7 @@ class Reservation(pulumi.CustomResource):
                 "source_instance_template": foobar.self_link,
             })
         ```
+
         ### Reservation Sharing Policy
 
         ```python
@@ -955,6 +958,7 @@ class Reservation(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Reservation Basic Beta
 
         ```python
@@ -969,11 +973,12 @@ class Reservation(pulumi.CustomResource):
                 "instance_properties": {
                     "min_cpu_platform": "Intel Cascade Lake",
                     "machine_type": "n2-standard-2",
-                    "maintenance_interval": "PERIODIC",
+                    "maintenance_interval": "RECURRENT",
                 },
             },
             enable_emergent_maintenance=True)
         ```
+
         ### Reservation Source Instance Template
 
         ```python
@@ -1023,6 +1028,7 @@ class Reservation(pulumi.CustomResource):
                 "source_instance_template": foobar.self_link,
             })
         ```
+
         ### Reservation Sharing Policy
 
         ```python

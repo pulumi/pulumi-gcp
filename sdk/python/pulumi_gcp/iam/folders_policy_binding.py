@@ -669,6 +669,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
+
         ### Iam Folders Policy Binding Access Policy
 
         ```python
@@ -843,6 +844,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
+
         ### Iam Folders Policy Binding Access Policy
 
         ```python

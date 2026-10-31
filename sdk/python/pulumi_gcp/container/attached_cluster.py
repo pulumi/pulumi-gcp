@@ -933,6 +933,7 @@ class AttachedCluster(pulumi.CustomResource):
                 "project": f"projects/{project.number}",
             })
         ```
+
         ### Container Attached Cluster Full
 
         ```python
@@ -993,6 +994,7 @@ class AttachedCluster(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Container Attached Cluster Ignore Errors
 
         ```python
@@ -1133,6 +1135,7 @@ class AttachedCluster(pulumi.CustomResource):
                 "project": f"projects/{project.number}",
             })
         ```
+
         ### Container Attached Cluster Full
 
         ```python
@@ -1193,6 +1196,7 @@ class AttachedCluster(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Container Attached Cluster Ignore Errors
 
         ```python

@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult
     {
         /// <summary>
+        /// The default fraction of leaf nodes that any query may be searched. Must be in
+        /// range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+        /// This value can only be set when creating the index.
+        /// </summary>
+        public readonly double FractionLeafNodesToSearch;
+        /// <summary>
         /// Number of embeddings on each leaf node. The default value is 1000 if not set.
         /// </summary>
         public readonly int LeafNodeEmbeddingCount;
@@ -25,10 +31,13 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
         [OutputConstructor]
         private GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult(
+            double fractionLeafNodesToSearch,
+
             int leafNodeEmbeddingCount,
 
             int leafNodesToSearchPercent)
         {
+            FractionLeafNodesToSearch = fractionLeafNodesToSearch;
             LeafNodeEmbeddingCount = leafNodeEmbeddingCount;
             LeafNodesToSearchPercent = leafNodesToSearchPercent;
         }

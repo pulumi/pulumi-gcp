@@ -363,6 +363,7 @@ class FolderCustomModule(pulumi.CustomResource):
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Folder Custom Module Full
 
         ```python
@@ -485,6 +486,7 @@ class FolderCustomModule(pulumi.CustomResource):
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Folder Custom Module Full
 
         ```python

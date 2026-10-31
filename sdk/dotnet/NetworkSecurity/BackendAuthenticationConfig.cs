@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Backend Authentication Config Full
     /// 
     /// ```csharp
@@ -127,6 +128,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Service Tls Settings
     /// 
     /// ```csharp

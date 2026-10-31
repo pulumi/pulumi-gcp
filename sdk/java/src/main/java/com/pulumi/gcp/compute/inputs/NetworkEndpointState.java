@@ -80,6 +80,23 @@ public final class NetworkEndpointState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     * 
+     */
+    @Import(name="ipv6Address")
+    private @Nullable Output<String> ipv6Address;
+
+    /**
+     * @return IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     * 
+     */
+    public Optional<Output<String>> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
+    }
+
+    /**
      * The network endpoint group this endpoint is part of.
      * 
      */
@@ -151,6 +168,7 @@ public final class NetworkEndpointState extends com.pulumi.resources.ResourceArg
         this.deletionPolicy = $.deletionPolicy;
         this.instance = $.instance;
         this.ipAddress = $.ipAddress;
+        this.ipv6Address = $.ipv6Address;
         this.networkEndpointGroup = $.networkEndpointGroup;
         this.port = $.port;
         this.project = $.project;
@@ -254,6 +272,29 @@ public final class NetworkEndpointState extends com.pulumi.resources.ResourceArg
          */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
+         * @param ipv6Address IPv6 address of network endpoint. The result of parsing the endpoint config,
+         * or empty if IPv6 is not used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
+            $.ipv6Address = ipv6Address;
+            return this;
+        }
+
+        /**
+         * @param ipv6Address IPv6 address of network endpoint. The result of parsing the endpoint config,
+         * or empty if IPv6 is not used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(String ipv6Address) {
+            return ipv6Address(Output.of(ipv6Address));
         }
 
         /**

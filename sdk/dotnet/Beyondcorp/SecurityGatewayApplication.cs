@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
+    /// 
     /// ### Beyondcorp Security Gateway Application Vpc
     /// 
     /// ```csharp
@@ -119,6 +120,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
+    /// 
     /// ### Beyondcorp Security Gateway Application Spa Api
     /// 
     /// ```csharp
@@ -168,6 +170,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
+    /// 
     /// ### Beyondcorp Security Gateway Application Spa Proxy
     /// 
     /// ```csharp

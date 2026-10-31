@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     types: ["AGENT_MANAGEMENT"],
  * });
  * ```
+ *
  * ### Resource Manager Capability Config Folder
  *
  * ```typescript
@@ -64,6 +65,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait60Seconds],
  * });
  * ```
+ *
  * ### Resource Manager Capability Config Project
  *
  * ```typescript

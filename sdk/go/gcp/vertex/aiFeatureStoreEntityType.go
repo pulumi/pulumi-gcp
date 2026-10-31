@@ -85,6 +85,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Featurestore Entitytype With Beta Fields
 //
 // ```go

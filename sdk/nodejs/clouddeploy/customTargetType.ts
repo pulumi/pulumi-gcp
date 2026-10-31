@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Clouddeploy Custom Target Type Git Skaffold Modules
  *
  * ```typescript
@@ -66,6 +67,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Clouddeploy Custom Target Type Gcs Skaffold Modules
  *
  * ```typescript
@@ -89,6 +91,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
  *
  * ```typescript
@@ -113,6 +116,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Clouddeploy Custom Target Type Tasks
  *
  * ```typescript

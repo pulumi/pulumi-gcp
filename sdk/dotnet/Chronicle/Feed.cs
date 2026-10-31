@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Feed Gcs
     /// 
     /// ```csharp
@@ -153,6 +154,7 @@ namespace Pulumi.Gcp.Chronicle
     ///     };
     /// });
     /// ```
+    /// 
     /// ### Chronicle Feed Https Push
     /// 
     /// ```csharp

@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *     type: "BASIC",
  * });
  * ```
+ *
  * ### Data Fusion Instance Full
  *
  * ```typescript
@@ -65,6 +66,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Data Fusion Instance Psc
  *
  * ```typescript
@@ -101,6 +103,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Data Fusion Instance Cmek
  *
  * ```typescript
@@ -139,6 +142,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKeyMemberGcsSa],
  * });
  * ```
+ *
  * ### Data Fusion Instance Enterprise
  *
  * ```typescript
@@ -152,6 +156,7 @@ import * as utilities from "../utilities";
  *     enableRbac: true,
  * });
  * ```
+ *
  * ### Data Fusion Instance Event
  *
  * ```typescript
@@ -169,6 +174,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Data Fusion Instance Zone
  *
  * ```typescript
@@ -182,6 +188,7 @@ import * as utilities from "../utilities";
  *     type: "DEVELOPER",
  * });
  * ```
+ *
  * ### Data Fusion Instance Patch Revision
  *
  * ```typescript

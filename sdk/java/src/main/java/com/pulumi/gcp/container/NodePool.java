@@ -71,8 +71,6 @@ import javax.annotation.Nullable;
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("my-gke-cluster")
  *             .location("us-central1")
- *             .removeDefaultNodePool(true)
- *             .initialNodeCount(1)
  *             .build());
  * 
  *         var primaryPreemptibleNodes = new NodePool("primaryPreemptibleNodes", NodePoolArgs.builder()

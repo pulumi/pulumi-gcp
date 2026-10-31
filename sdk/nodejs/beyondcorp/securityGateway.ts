@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Beyondcorp Security Gateway Logging
  *
  * ```typescript
@@ -40,6 +41,7 @@ import * as utilities from "../utilities";
  *     logging: {},
  * });
  * ```
+ *
  * ### Beyondcorp Security Gateway Spa
  *
  * ```typescript

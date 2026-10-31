@@ -396,6 +396,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Management Organization Security Health Analytics Custom Module Full
 
         ```python
@@ -513,6 +514,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Management Organization Security Health Analytics Custom Module Full
 
         ```python

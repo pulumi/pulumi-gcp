@@ -49,6 +49,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Runtime Template No Name
     /// 
     /// ```csharp
@@ -76,6 +77,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Runtime Template Full
     /// 
     /// ```csharp

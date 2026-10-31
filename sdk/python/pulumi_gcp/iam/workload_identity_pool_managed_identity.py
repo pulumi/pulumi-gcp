@@ -465,6 +465,7 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
             workload_identity_pool_namespace_id=ns.workload_identity_pool_namespace_id,
             workload_identity_pool_managed_identity_id="example-managed-identity")
         ```
+
         ### Iam Workload Identity Pool Managed Identity Full
 
         ```python
@@ -578,6 +579,7 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
             workload_identity_pool_namespace_id=ns.workload_identity_pool_namespace_id,
             workload_identity_pool_managed_identity_id="example-managed-identity")
         ```
+
         ### Iam Workload Identity Pool Managed Identity Full
 
         ```python

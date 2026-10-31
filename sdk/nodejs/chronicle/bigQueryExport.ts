@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Chronicle Bigquery Export Full
  *
  * ```typescript

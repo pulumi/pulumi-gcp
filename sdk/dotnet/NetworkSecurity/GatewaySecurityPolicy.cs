@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Gateway Security Policy Tls Inspection Basic
     /// 
     /// ```csharp

@@ -18,7 +18,7 @@ import (
 // has a target outside of the ServicePerimeter, the request will be blocked.
 // Otherwise the request is allowed. There are two types of Service Perimeter
 //   - Regular and Bridge. Regular Service Perimeters cannot overlap, a single
-//     GCP project can only belong to a single regular Service Perimeter. Service
+//     GCP project, folder, or VPC network can only belong to a single regular Service Perimeter. Service
 //     Perimeter Bridges can contain only GCP projects as members, a single GCP
 //     project may belong to multiple Service Perimeter Bridges.
 //
@@ -113,6 +113,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Access Context Manager Service Perimeter Secure Data Exchange
 //
 // ```go
@@ -283,6 +284,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Access Context Manager Service Perimeter Dry-Run
 //
 // ```go
@@ -334,6 +336,7 @@ import (
 //	}
 //
 // ```
+//
 // ## Import
 //
 // ServicePerimeter can be imported using any of these accepted formats:

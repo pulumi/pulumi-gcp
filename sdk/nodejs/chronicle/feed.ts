@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Chronicle Feed Gcs
  *
  * ```typescript
@@ -105,6 +106,7 @@ import * as utilities from "../utilities";
  * });
  * export const fetchedFeedServiceAccount = exampleFeed.feedServiceAccount;
  * ```
+ *
  * ### Chronicle Feed Https Push
  *
  * ```typescript

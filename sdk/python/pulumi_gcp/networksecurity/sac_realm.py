@@ -411,6 +411,7 @@ class SacRealm(pulumi.CustomResource):
             },
             security_service="PALO_ALTO_PRISMA_ACCESS")
         ```
+
         ### Sac Realm Symantec Cloud Swg
 
         ```python
@@ -498,6 +499,7 @@ class SacRealm(pulumi.CustomResource):
             },
             security_service="PALO_ALTO_PRISMA_ACCESS")
         ```
+
         ### Sac Realm Symantec Cloud Swg
 
         ```python

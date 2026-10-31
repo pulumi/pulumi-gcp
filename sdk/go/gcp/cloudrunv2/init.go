@@ -21,6 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:cloudrunv2/instance:Instance":
+		r = &Instance{}
+	case "gcp:cloudrunv2/instanceIamBinding:InstanceIamBinding":
+		r = &InstanceIamBinding{}
+	case "gcp:cloudrunv2/instanceIamMember:InstanceIamMember":
+		r = &InstanceIamMember{}
+	case "gcp:cloudrunv2/instanceIamPolicy:InstanceIamPolicy":
+		r = &InstanceIamPolicy{}
 	case "gcp:cloudrunv2/job:Job":
 		r = &Job{}
 	case "gcp:cloudrunv2/jobIamBinding:JobIamBinding":
@@ -58,6 +66,26 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/instanceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/instanceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/instanceIamPolicy",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"cloudrunv2/job",

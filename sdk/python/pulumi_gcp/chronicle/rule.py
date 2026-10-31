@@ -728,6 +728,7 @@ class Rule(pulumi.CustomResource):
             deletion_policy="DEFAULT",
             text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
         ```
+
         ### Chronicle Rule With Force Deletion
 
         ```python
@@ -740,6 +741,7 @@ class Rule(pulumi.CustomResource):
             deletion_policy="FORCE",
             text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
         ```
+
         ### Chronicle Rule With Data Access Scope
 
         ```python
@@ -843,6 +845,7 @@ class Rule(pulumi.CustomResource):
             deletion_policy="DEFAULT",
             text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
         ```
+
         ### Chronicle Rule With Force Deletion
 
         ```python
@@ -855,6 +858,7 @@ class Rule(pulumi.CustomResource):
             deletion_policy="FORCE",
             text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
         ```
+
         ### Chronicle Rule With Data Access Scope
 
         ```python

@@ -530,6 +530,7 @@ class Watchlist(pulumi.CustomResource):
                 "pinned": True,
             })
         ```
+
         ### Chronicle Watchlist Without Id
 
         ```python
@@ -632,6 +633,7 @@ class Watchlist(pulumi.CustomResource):
                 "pinned": True,
             })
         ```
+
         ### Chronicle Watchlist Without Id
 
         ```python

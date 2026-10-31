@@ -14,9 +14,6 @@ import (
 
 // ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about ServiceLbPolicies, see:
 //
 // * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
@@ -49,6 +46,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Services Service Lb Policies Advanced
 //
 // ```go
@@ -101,6 +99,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Services Service Lb Policies Beta
 //
 // ```go
@@ -157,6 +156,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Services Service Lb Policies Regional
 //
 // ```go
@@ -248,6 +248,7 @@ type ServiceLbPolicies struct {
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
 	// Structure is documented below.
 	FailoverConfig ServiceLbPoliciesFailoverConfigPtrOutput `pulumi:"failoverConfig"`
+	// (Optional, Beta)
 	// Configuration to provide isolation support for the associated Backend Service.
 	// Structure is documented below.
 	IsolationConfig ServiceLbPoliciesIsolationConfigPtrOutput `pulumi:"isolationConfig"`
@@ -329,6 +330,7 @@ type serviceLbPoliciesState struct {
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
 	// Structure is documented below.
 	FailoverConfig *ServiceLbPoliciesFailoverConfig `pulumi:"failoverConfig"`
+	// (Optional, Beta)
 	// Configuration to provide isolation support for the associated Backend Service.
 	// Structure is documented below.
 	IsolationConfig *ServiceLbPoliciesIsolationConfig `pulumi:"isolationConfig"`
@@ -373,6 +375,7 @@ type ServiceLbPoliciesState struct {
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
 	// Structure is documented below.
 	FailoverConfig ServiceLbPoliciesFailoverConfigPtrInput
+	// (Optional, Beta)
 	// Configuration to provide isolation support for the associated Backend Service.
 	// Structure is documented below.
 	IsolationConfig ServiceLbPoliciesIsolationConfigPtrInput
@@ -417,6 +420,7 @@ type serviceLbPoliciesArgs struct {
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
 	// Structure is documented below.
 	FailoverConfig *ServiceLbPoliciesFailoverConfig `pulumi:"failoverConfig"`
+	// (Optional, Beta)
 	// Configuration to provide isolation support for the associated Backend Service.
 	// Structure is documented below.
 	IsolationConfig *ServiceLbPoliciesIsolationConfig `pulumi:"isolationConfig"`
@@ -453,6 +457,7 @@ type ServiceLbPoliciesArgs struct {
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
 	// Structure is documented below.
 	FailoverConfig ServiceLbPoliciesFailoverConfigPtrInput
+	// (Optional, Beta)
 	// Configuration to provide isolation support for the associated Backend Service.
 	// Structure is documented below.
 	IsolationConfig ServiceLbPoliciesIsolationConfigPtrInput
@@ -596,6 +601,7 @@ func (o ServiceLbPoliciesOutput) FailoverConfig() ServiceLbPoliciesFailoverConfi
 	return o.ApplyT(func(v *ServiceLbPolicies) ServiceLbPoliciesFailoverConfigPtrOutput { return v.FailoverConfig }).(ServiceLbPoliciesFailoverConfigPtrOutput)
 }
 
+// (Optional, Beta)
 // Configuration to provide isolation support for the associated Backend Service.
 // Structure is documented below.
 func (o ServiceLbPoliciesOutput) IsolationConfig() ServiceLbPoliciesIsolationConfigPtrOutput {

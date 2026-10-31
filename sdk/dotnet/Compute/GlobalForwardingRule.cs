@@ -103,6 +103,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Global Forwarding Rule Internal
     /// 
     /// ```csharp
@@ -258,6 +259,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Global Forwarding Rule External Managed
     /// 
     /// ```csharp
@@ -332,6 +334,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Global Forwarding Rule Hybrid
     /// 
     /// ```csharp
@@ -511,6 +514,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Private Service Connect Google Apis
     /// 
     /// ```csharp
@@ -565,6 +569,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Private Service Connect Google Apis No Automate Dns
     /// 
     /// ```csharp

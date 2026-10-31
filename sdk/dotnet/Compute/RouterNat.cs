@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Router Nat Rules
     /// 
     /// ```csharp
@@ -166,6 +167,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Router Nat Private
     /// 
     /// ```csharp

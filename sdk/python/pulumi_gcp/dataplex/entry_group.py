@@ -440,6 +440,7 @@ class EntryGroup(pulumi.CustomResource):
             project="my-project-name",
             location="us-central1")
         ```
+
         ### Dataplex Entry Group Full
 
         ```python
@@ -515,6 +516,7 @@ class EntryGroup(pulumi.CustomResource):
             project="my-project-name",
             location="us-central1")
         ```
+
         ### Dataplex Entry Group Full
 
         ```python

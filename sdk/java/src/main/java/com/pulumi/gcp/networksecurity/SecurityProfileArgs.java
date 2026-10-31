@@ -188,7 +188,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+     * The type of security profile.
      * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
      * 
      */
@@ -196,7 +196,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
     private Output<String> type;
 
     /**
-     * @return The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+     * @return The type of security profile.
      * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
      * 
      */
@@ -222,7 +222,6 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (Optional, Beta)
      * The wildfire analysis configuration for the security profile.
      * Structure is documented below.
      * 
@@ -231,8 +230,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<SecurityProfileWildfireAnalysisProfileArgs> wildfireAnalysisProfile;
 
     /**
-     * @return (Optional, Beta)
-     * The wildfire analysis configuration for the security profile.
+     * @return The wildfire analysis configuration for the security profile.
      * Structure is documented below.
      * 
      */
@@ -495,7 +493,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+         * @param type The type of security profile.
          * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
          * 
          * @return builder
@@ -507,7 +505,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+         * @param type The type of security profile.
          * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
          * 
          * @return builder
@@ -541,8 +539,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param wildfireAnalysisProfile (Optional, Beta)
-         * The wildfire analysis configuration for the security profile.
+         * @param wildfireAnalysisProfile The wildfire analysis configuration for the security profile.
          * Structure is documented below.
          * 
          * @return builder
@@ -554,8 +551,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param wildfireAnalysisProfile (Optional, Beta)
-         * The wildfire analysis configuration for the security profile.
+         * @param wildfireAnalysisProfile The wildfire analysis configuration for the security profile.
          * Structure is documented below.
          * 
          * @return builder

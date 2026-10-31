@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Dicom Store Bq Stream
     /// 
     /// ```csharp

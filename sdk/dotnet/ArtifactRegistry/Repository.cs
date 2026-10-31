@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Multi Region
     /// 
     /// ```csharp
@@ -60,6 +61,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Docker
     /// 
     /// ```csharp
@@ -84,6 +86,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Cmek
     /// 
     /// ```csharp
@@ -120,6 +123,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Virtual
     /// 
     /// ```csharp
@@ -175,6 +179,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote
     /// 
     /// ```csharp
@@ -204,6 +209,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Connector
     /// 
     /// ```csharp
@@ -267,6 +273,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote Apt
     /// 
     /// ```csharp
@@ -300,6 +307,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote Yum
     /// 
     /// ```csharp
@@ -333,6 +341,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Cleanup
     /// 
     /// ```csharp
@@ -424,6 +433,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote Dockerhub Auth
     /// 
     /// ```csharp
@@ -486,6 +496,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote Docker Custom With Auth
     /// 
     /// ```csharp
@@ -551,6 +562,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote Maven Custom With Auth
     /// 
     /// ```csharp
@@ -616,6 +628,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote Npm Custom With Auth
     /// 
     /// ```csharp
@@ -681,6 +694,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote Python Custom With Auth
     /// 
     /// ```csharp
@@ -746,6 +760,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote Common Repository With Docker
     /// 
     /// ```csharp
@@ -783,6 +798,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
     /// 
     /// ```csharp
@@ -828,6 +844,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Remote Common Repository With Custom Upstream
     /// 
     /// ```csharp
@@ -890,6 +907,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Artifact Registry Repository Vulnerability Scanning
     /// 
     /// ```csharp

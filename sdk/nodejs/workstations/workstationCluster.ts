@@ -47,6 +47,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Workstation Cluster Private
  *
  * ```typescript
@@ -80,6 +81,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Workstation Cluster Custom Domain
  *
  * ```typescript
@@ -116,6 +118,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Workstation Cluster Tags
  *
  * ```typescript
@@ -151,6 +154,7 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
+ *
  * ### Workstation Cluster Custom Urls
  *
  * ```typescript

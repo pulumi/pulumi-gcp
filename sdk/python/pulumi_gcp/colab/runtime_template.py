@@ -697,6 +697,7 @@ class RuntimeTemplate(pulumi.CustomResource):
                 "enable_internet_access": True,
             })
         ```
+
         ### Colab Runtime Template No Name
 
         ```python
@@ -714,6 +715,7 @@ class RuntimeTemplate(pulumi.CustomResource):
             },
             software_config={})
         ```
+
         ### Colab Runtime Template Full
 
         ```python
@@ -870,6 +872,7 @@ class RuntimeTemplate(pulumi.CustomResource):
                 "enable_internet_access": True,
             })
         ```
+
         ### Colab Runtime Template No Name
 
         ```python
@@ -887,6 +890,7 @@ class RuntimeTemplate(pulumi.CustomResource):
             },
             software_config={})
         ```
+
         ### Colab Runtime Template Full
 
         ```python

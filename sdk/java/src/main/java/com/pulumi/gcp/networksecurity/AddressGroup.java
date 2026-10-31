@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Address Groups Organization Basic
  * 
  * <pre>
@@ -102,6 +103,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Address Groups Advanced
  * 
  * <pre>
@@ -140,6 +142,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Address Groups Cloud Armor
  * 
  * <pre>

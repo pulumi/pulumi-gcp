@@ -46,6 +46,7 @@ public final class ConnectionProfileMongodbProfile {
     /**
      * @return A reference to a Secret Manager resource name storing the MongoDB
      * connection password. Mutually exclusive with password.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private @Nullable String secretManagerStoredPassword;
@@ -111,6 +112,7 @@ public final class ConnectionProfileMongodbProfile {
     /**
      * @return A reference to a Secret Manager resource name storing the MongoDB
      * connection password. Mutually exclusive with password.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<String> secretManagerStoredPassword() {

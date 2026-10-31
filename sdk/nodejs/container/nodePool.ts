@@ -26,8 +26,6 @@ import * as utilities from "../utilities";
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "my-gke-cluster",
  *     location: "us-central1",
- *     removeDefaultNodePool: true,
- *     initialNodeCount: 1,
  * });
  * const primaryPreemptibleNodes = new gcp.container.NodePool("primary_preemptible_nodes", {
  *     name: "my-node-pool",

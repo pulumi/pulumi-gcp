@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Connectivity Regional Endpoint Global Access
     /// 
     /// ```csharp

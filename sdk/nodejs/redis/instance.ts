@@ -26,10 +26,11 @@ import * as utilities from "../utilities";
  * const cache = new gcp.redis.Instance("cache", {
  *     name: "memory-cache",
  *     memorySizeGb: 1,
- *     region: "us-west1",
+ *     region: "us-east1",
  *     deletionProtection: false,
  * });
  * ```
+ *
  * ### Redis Instance Full
  *
  * ```typescript
@@ -51,9 +52,9 @@ import * as utilities from "../utilities";
  *     name: "ha-memory-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
- *     region: "us-west1",
- *     locationId: "us-west1-a",
- *     alternativeLocationId: "us-west1-b",
+ *     region: "us-east1",
+ *     locationId: "us-east1-b",
+ *     alternativeLocationId: "us-east1-c",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
  *     redisVersion: "REDIS_7_2",
  *     displayName: "Test Instance",
@@ -75,6 +76,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Redis Instance Full With Persistence Config
  *
  * ```typescript
@@ -85,15 +87,16 @@ import * as utilities from "../utilities";
  *     name: "ha-memory-cache-persis",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
- *     region: "us-west1",
- *     locationId: "us-west1-a",
- *     alternativeLocationId: "us-west1-b",
+ *     region: "us-east1",
+ *     locationId: "us-east1-b",
+ *     alternativeLocationId: "us-east1-c",
  *     persistenceConfig: {
  *         persistenceMode: "RDB",
  *         rdbSnapshotPeriod: "TWELVE_HOURS",
  *     },
  * });
  * ```
+ *
  * ### Redis Instance Private Service
  *
  * ```typescript
@@ -125,9 +128,9 @@ import * as utilities from "../utilities";
  *     name: "private-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
- *     region: "us-west1",
- *     locationId: "us-west1-a",
- *     alternativeLocationId: "us-west1-b",
+ *     region: "us-east1",
+ *     locationId: "us-east1-b",
+ *     alternativeLocationId: "us-east1-c",
  *     authorizedNetwork: redis_network.id,
  *     connectMode: "PRIVATE_SERVICE_ACCESS",
  *     redisVersion: "REDIS_7_2",
@@ -136,6 +139,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [privateServiceConnection],
  * });
  * ```
+ *
  * ### Redis Instance Mrr
  *
  * ```typescript
@@ -157,9 +161,9 @@ import * as utilities from "../utilities";
  *     name: "mrr-memory-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 5,
- *     region: "us-west1",
- *     locationId: "us-west1-a",
- *     alternativeLocationId: "us-west1-b",
+ *     region: "us-east1",
+ *     locationId: "us-east1-b",
+ *     alternativeLocationId: "us-east1-c",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
  *     redisVersion: "REDIS_7_2",
  *     displayName: "Test Instance",
@@ -171,6 +175,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Redis Instance Cmek
  *
  * ```typescript
@@ -179,7 +184,7 @@ import * as utilities from "../utilities";
  *
  * const redisKeyring = new gcp.kms.KeyRing("redis_keyring", {
  *     name: "redis-keyring",
- *     location: "us-west1",
+ *     location: "us-east1",
  * });
  * const redisKey = new gcp.kms.CryptoKey("redis_key", {
  *     name: "redis-key",
@@ -200,9 +205,9 @@ import * as utilities from "../utilities";
  *     name: "cmek-memory-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
- *     region: "us-west1",
- *     locationId: "us-west1-a",
- *     alternativeLocationId: "us-west1-b",
+ *     region: "us-east1",
+ *     locationId: "us-east1-b",
+ *     alternativeLocationId: "us-east1-c",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
  *     redisVersion: "REDIS_7_2",
  *     displayName: "Test Instance",

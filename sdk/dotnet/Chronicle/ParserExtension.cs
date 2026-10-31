@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Parserextension Full
     /// 
     /// ```csharp
@@ -90,6 +91,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Parserextension Dynamic
     /// 
     /// ```csharp

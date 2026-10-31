@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     },
  * }]});
  * ```
+ *
  * ### Snapshot Recycle Bin Policy Multiple
  *
  * ```typescript

@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// 
     /// ### Os Config Patch Deployment Daily
     /// 
     /// ```csharp
@@ -81,6 +82,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// 
     /// ### Os Config Patch Deployment Daily Midnight
     /// 
     /// ```csharp
@@ -116,6 +118,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// 
     /// ### Os Config Patch Deployment Instance
     /// 
     /// ```csharp
@@ -207,6 +210,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// 
     /// ### Os Config Patch Deployment Full
     /// 
     /// ```csharp

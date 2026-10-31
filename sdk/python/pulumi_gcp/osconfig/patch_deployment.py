@@ -538,6 +538,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "execute_time": "2999-10-10T10:10:10.045123456Z",
             })
         ```
+
         ### Os Config Patch Deployment Daily
 
         ```python
@@ -561,6 +562,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Os Config Patch Deployment Daily Midnight
 
         ```python
@@ -584,6 +586,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Os Config Patch Deployment Instance
 
         ```python
@@ -639,6 +642,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Os Config Patch Deployment Full
 
         ```python
@@ -829,6 +833,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "execute_time": "2999-10-10T10:10:10.045123456Z",
             })
         ```
+
         ### Os Config Patch Deployment Daily
 
         ```python
@@ -852,6 +857,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Os Config Patch Deployment Daily Midnight
 
         ```python
@@ -875,6 +881,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Os Config Patch Deployment Instance
 
         ```python
@@ -930,6 +937,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Os Config Patch Deployment Full
 
         ```python

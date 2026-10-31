@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Endpoint Internet Fqdn Port
     /// 
     /// ```csharp
@@ -92,6 +93,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Endpoint Portmap
     /// 
     /// ```csharp

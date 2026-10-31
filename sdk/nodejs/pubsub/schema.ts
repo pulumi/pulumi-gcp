@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
  * ### Pubsub Schema Protobuf
  *
  * ```typescript

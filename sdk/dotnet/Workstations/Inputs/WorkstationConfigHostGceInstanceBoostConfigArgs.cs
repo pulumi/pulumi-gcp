@@ -32,6 +32,13 @@ namespace Pulumi.Gcp.Workstations.Inputs
         public Input<int>? BootDiskSizeGb { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+        /// </summary>
+        [Input("enableAutomaticFailover")]
+        public Input<bool>? EnableAutomaticFailover { get; set; }
+
+        /// <summary>
         /// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
         /// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         /// </summary>

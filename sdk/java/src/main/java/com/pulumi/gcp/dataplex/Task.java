@@ -102,6 +102,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Dataplex Task Spark
  * 
  * <pre>
@@ -198,6 +199,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Dataplex Task Notebook
  * 
  * <pre>

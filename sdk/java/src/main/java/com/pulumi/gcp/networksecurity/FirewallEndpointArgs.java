@@ -151,7 +151,6 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (Optional, Beta)
      * Settings for WildFire analysis on the firewall endpoint.
      * Structure is documented below.
      * 
@@ -160,8 +159,7 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<FirewallEndpointWildfireSettingsArgs> wildfireSettings;
 
     /**
-     * @return (Optional, Beta)
-     * Settings for WildFire analysis on the firewall endpoint.
+     * @return Settings for WildFire analysis on the firewall endpoint.
      * Structure is documented below.
      * 
      */
@@ -374,8 +372,7 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param wildfireSettings (Optional, Beta)
-         * Settings for WildFire analysis on the firewall endpoint.
+         * @param wildfireSettings Settings for WildFire analysis on the firewall endpoint.
          * Structure is documented below.
          * 
          * @return builder
@@ -387,8 +384,7 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param wildfireSettings (Optional, Beta)
-         * Settings for WildFire analysis on the firewall endpoint.
+         * @param wildfireSettings Settings for WildFire analysis on the firewall endpoint.
          * Structure is documented below.
          * 
          * @return builder

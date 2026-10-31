@@ -89,6 +89,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Integration Connectors Connection Advanced
  * 
  * <pre>

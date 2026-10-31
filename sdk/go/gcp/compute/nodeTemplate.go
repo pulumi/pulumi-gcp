@@ -50,6 +50,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Node Template Server Binding
 //
 // ```go
@@ -89,6 +90,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Node Template Accelerators
 //
 // ```go
@@ -128,6 +130,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Node Template Disks
 //
 // ```go

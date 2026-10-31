@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
+    /// 
     /// ### Spanner Instance Partition Autoscaling
     /// 
     /// ```csharp

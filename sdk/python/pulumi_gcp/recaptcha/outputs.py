@@ -17,8 +17,10 @@ from . import outputs
 
 __all__ = [
     'EnterpriseKeyAndroidSettings',
+    'EnterpriseKeyExpressSettings',
     'EnterpriseKeyIosSettings',
     'EnterpriseKeyTestingOptions',
+    'EnterpriseKeyUniversalSettings',
     'EnterpriseKeyWafSettings',
     'EnterpriseKeyWebSettings',
     'EnterpriseKeyWebSettingsChallengeSettings',
@@ -74,6 +76,12 @@ class EnterpriseKeyAndroidSettings(dict):
         Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         """
         return pulumi.get(self, "allowed_package_names")
+
+
+@pulumi.output_type
+class EnterpriseKeyExpressSettings(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -174,6 +182,12 @@ class EnterpriseKeyTestingOptions(dict):
         All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
         """
         return pulumi.get(self, "testing_score")
+
+
+@pulumi.output_type
+class EnterpriseKeyUniversalSettings(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

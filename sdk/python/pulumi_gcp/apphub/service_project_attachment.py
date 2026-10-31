@@ -290,6 +290,7 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         example = gcp.apphub.ServiceProjectAttachment("example", service_project_attachment_id=service_project.project_id,
         opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
+
         ### Service Project Attachment Full
 
         ```python
@@ -370,6 +371,7 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         example = gcp.apphub.ServiceProjectAttachment("example", service_project_attachment_id=service_project.project_id,
         opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
+
         ### Service Project Attachment Full
 
         ```python

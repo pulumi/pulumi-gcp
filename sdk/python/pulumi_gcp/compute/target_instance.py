@@ -497,6 +497,7 @@ class TargetInstance(pulumi.CustomResource):
             name="target",
             instance=target_vm.id)
         ```
+
         ### Target Instance Custom Network
 
         ```python
@@ -523,6 +524,7 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm_instance.id,
             network=target_vm.self_link)
         ```
+
         ### Target Instance With Security Policy
 
         ```python
@@ -681,6 +683,7 @@ class TargetInstance(pulumi.CustomResource):
             name="target",
             instance=target_vm.id)
         ```
+
         ### Target Instance Custom Network
 
         ```python
@@ -707,6 +710,7 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm_instance.id,
             network=target_vm.self_link)
         ```
+
         ### Target Instance With Security Policy
 
         ```python

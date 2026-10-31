@@ -573,6 +573,7 @@ class MetastoreFederation(pulumi.CustomResource):
                 "metastore_type": "DATAPROC_METASTORE",
             }])
         ```
+
         ### Dataproc Metastore Federation Bigquery
 
         ```python
@@ -686,6 +687,7 @@ class MetastoreFederation(pulumi.CustomResource):
                 "metastore_type": "DATAPROC_METASTORE",
             }])
         ```
+
         ### Dataproc Metastore Federation Bigquery
 
         ```python

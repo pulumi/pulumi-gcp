@@ -616,6 +616,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
 
         example = gcp.iam.WorkloadIdentityPool("example", workload_identity_pool_id="example-pool")
         ```
+
         ### Iam Workload Identity Pool Full Federation Only Mode
 
         ```python
@@ -629,6 +630,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             disabled=True,
             mode="FEDERATION_ONLY")
         ```
+
         ### Iam Workload Identity Pool Full Trust Domain Mode
 
         ```python
@@ -683,6 +685,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                 "google_cloud_resource": "//run.googleapis.com/projects/1111111111111/type/Service/*",
             }])
         ```
+
         ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
 
         ```python
@@ -833,6 +836,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
 
         example = gcp.iam.WorkloadIdentityPool("example", workload_identity_pool_id="example-pool")
         ```
+
         ### Iam Workload Identity Pool Full Federation Only Mode
 
         ```python
@@ -846,6 +850,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             disabled=True,
             mode="FEDERATION_ONLY")
         ```
+
         ### Iam Workload Identity Pool Full Trust Domain Mode
 
         ```python
@@ -900,6 +905,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                 "google_cloud_resource": "//run.googleapis.com/projects/1111111111111/type/Service/*",
             }])
         ```
+
         ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
 
         ```python

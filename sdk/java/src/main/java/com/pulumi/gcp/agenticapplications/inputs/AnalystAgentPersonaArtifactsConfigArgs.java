@@ -5,6 +5,7 @@ package com.pulumi.gcp.agenticapplications.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs;
 import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs;
 import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs;
 import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class AnalystAgentPersonaArtifactsConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AnalystAgentPersonaArtifactsConfigArgs Empty = new AnalystAgentPersonaArtifactsConfigArgs();
+
+    /**
+     * Options for audit trail export.
+     * 
+     */
+    @Import(name="auditTrailExportOptions")
+    private @Nullable Output<AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs> auditTrailExportOptions;
+
+    /**
+     * @return Options for audit trail export.
+     * 
+     */
+    public Optional<Output<AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs>> auditTrailExportOptions() {
+        return Optional.ofNullable(this.auditTrailExportOptions);
+    }
 
     /**
      * Options for document generation.
@@ -81,6 +97,7 @@ public final class AnalystAgentPersonaArtifactsConfigArgs extends com.pulumi.res
     private AnalystAgentPersonaArtifactsConfigArgs() {}
 
     private AnalystAgentPersonaArtifactsConfigArgs(AnalystAgentPersonaArtifactsConfigArgs $) {
+        this.auditTrailExportOptions = $.auditTrailExportOptions;
         this.documentGenerationOptions = $.documentGenerationOptions;
         this.methodologyExportOptions = $.methodologyExportOptions;
         this.slideGenerationOptions = $.slideGenerationOptions;
@@ -103,6 +120,27 @@ public final class AnalystAgentPersonaArtifactsConfigArgs extends com.pulumi.res
 
         public Builder(AnalystAgentPersonaArtifactsConfigArgs defaults) {
             $ = new AnalystAgentPersonaArtifactsConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param auditTrailExportOptions Options for audit trail export.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditTrailExportOptions(@Nullable Output<AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs> auditTrailExportOptions) {
+            $.auditTrailExportOptions = auditTrailExportOptions;
+            return this;
+        }
+
+        /**
+         * @param auditTrailExportOptions Options for audit trail export.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditTrailExportOptions(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs auditTrailExportOptions) {
+            return auditTrailExportOptions(Output.of(auditTrailExportOptions));
         }
 
         /**

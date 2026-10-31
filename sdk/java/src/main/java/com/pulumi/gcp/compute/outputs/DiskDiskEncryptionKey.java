@@ -17,6 +17,7 @@ public final class DiskDiskEncryptionKey {
      * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     private @Nullable String kmsKeySelfLink;
@@ -89,6 +90,7 @@ public final class DiskDiskEncryptionKey {
      * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     public Optional<String> kmsKeySelfLink() {

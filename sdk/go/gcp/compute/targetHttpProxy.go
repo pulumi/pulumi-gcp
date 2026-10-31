@@ -98,6 +98,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Target Http Proxy Http Keep Alive Timeout
 //
 // ```go
@@ -174,6 +175,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Target Http Proxy Https Redirect
 //
 // ```go
@@ -210,6 +212,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Target Http Proxy Fingerprint
 //
 // ```go

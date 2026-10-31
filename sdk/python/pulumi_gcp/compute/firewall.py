@@ -488,6 +488,7 @@ class _FirewallState:
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
                  log_config: pulumi.Input[Optional['FirewallLogConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -532,6 +533,7 @@ class _FirewallState:
                is unspecified, the firewall rule will be enabled.
         :param pulumi.Input[_builtins.bool] enable_logging: This field denotes whether to enable logging for a particular firewall rule.
                If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+        :param pulumi.Input[_builtins.int] firewall_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input['FirewallLogConfigArgs'] log_config: This field denotes the logging options for a particular firewall rule.
                If defined, logging is enabled, and logs will be exported to Cloud Logging.
                Structure is documented below.
@@ -617,6 +619,8 @@ class _FirewallState:
             pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of log_config""")
         if enable_logging is not None:
             pulumi.set(__self__, "enable_logging", enable_logging)
+        if firewall_id is not None:
+            pulumi.set(__self__, "firewall_id", firewall_id)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
         if name is not None:
@@ -770,6 +774,18 @@ class _FirewallState:
     @enable_logging.setter
     def enable_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_logging", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @firewall_id.setter
+    def firewall_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
@@ -1040,6 +1056,7 @@ class Firewall(pulumi.CustomResource):
             ],
             source_tags=["web"])
         ```
+
         ### Firewall With Target Tags
 
         ```python
@@ -1226,6 +1243,7 @@ class Firewall(pulumi.CustomResource):
             ],
             source_tags=["web"])
         ```
+
         ### Firewall With Target Tags
 
         ```python
@@ -1331,6 +1349,7 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["target_service_accounts"] = target_service_accounts
             __props__.__dict__["target_tags"] = target_tags
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["firewall_id"] = None
             __props__.__dict__["self_link"] = None
         super(Firewall, __self__).__init__(
             'gcp:compute/firewall:Firewall',
@@ -1351,6 +1370,7 @@ class Firewall(pulumi.CustomResource):
             direction: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
             log_config: pulumi.Input[Optional[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict', 'outputs.FirewallLogConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1399,6 +1419,7 @@ class Firewall(pulumi.CustomResource):
                is unspecified, the firewall rule will be enabled.
         :param pulumi.Input[_builtins.bool] enable_logging: This field denotes whether to enable logging for a particular firewall rule.
                If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+        :param pulumi.Input[_builtins.int] firewall_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict', 'outputs.FirewallLogConfig']] log_config: This field denotes the logging options for a particular firewall rule.
                If defined, logging is enabled, and logs will be exported to Cloud Logging.
                Structure is documented below.
@@ -1476,6 +1497,7 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["direction"] = direction
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["enable_logging"] = enable_logging
+        __props__.__dict__["firewall_id"] = firewall_id
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -1582,6 +1604,14 @@ class Firewall(pulumi.CustomResource):
         If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
         """
         return pulumi.get(self, "enable_logging")
+
+    @_builtins.property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> pulumi.Output[_builtins.int]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "firewall_id")
 
     @_builtins.property
     @pulumi.getter(name="logConfig")

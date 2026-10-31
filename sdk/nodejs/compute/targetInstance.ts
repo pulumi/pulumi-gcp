@@ -48,6 +48,7 @@ import * as utilities from "../utilities";
  *     instance: target_vm.id,
  * });
  * ```
+ *
  * ### Target Instance Custom Network
  *
  * ```typescript
@@ -80,6 +81,7 @@ import * as utilities from "../utilities";
  *     network: target_vm.then(target_vm => target_vm.selfLink),
  * });
  * ```
+ *
  * ### Target Instance With Security Policy
  *
  * ```typescript

@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Privateca Capool All Fields
  * 
  * <pre>

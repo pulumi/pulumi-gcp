@@ -65,6 +65,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Pubsub Schema Protobuf
 //
 // ```go

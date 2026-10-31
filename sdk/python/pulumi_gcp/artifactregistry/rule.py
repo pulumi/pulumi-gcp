@@ -458,6 +458,7 @@ class Rule(pulumi.CustomResource):
                 "description": "Prevents downloading images with version IDs less than 2.0",
             })
         ```
+
         ### Artifact Registry Rule Full
 
         ```python
@@ -574,6 +575,7 @@ class Rule(pulumi.CustomResource):
                 "description": "Prevents downloading images with version IDs less than 2.0",
             })
         ```
+
         ### Artifact Registry Rule Full
 
         ```python

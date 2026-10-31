@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *
  * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {entryGroupId: "my_group"});
  * ```
+ *
  * ### Data Catalog Entry Group Full
  *
  * ```typescript

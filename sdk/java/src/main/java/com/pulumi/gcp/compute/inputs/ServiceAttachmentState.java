@@ -374,6 +374,21 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="serviceAttachmentId")
+    private @Nullable Output<Integer> serviceAttachmentId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> serviceAttachmentId() {
+        return Optional.ofNullable(this.serviceAttachmentId);
+    }
+
+    /**
      * NOTE: This field is temporarily non-functional due to an underlying API issue.
      * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
      * [If true, show NAT IPs of all connected endpoints.]
@@ -448,6 +463,7 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
         this.region = $.region;
         this.selfLink = $.selfLink;
         this.sendPropagatedConnectionLimitIfZero = $.sendPropagatedConnectionLimitIfZero;
+        this.serviceAttachmentId = $.serviceAttachmentId;
         this.showNatIps = $.showNatIps;
         this.targetService = $.targetService;
         this.tunnelingConfig = $.tunnelingConfig;
@@ -1003,6 +1019,27 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
          */
         public Builder sendPropagatedConnectionLimitIfZero(Boolean sendPropagatedConnectionLimitIfZero) {
             return sendPropagatedConnectionLimitIfZero(Output.of(sendPropagatedConnectionLimitIfZero));
+        }
+
+        /**
+         * @param serviceAttachmentId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAttachmentId(@Nullable Output<Integer> serviceAttachmentId) {
+            $.serviceAttachmentId = serviceAttachmentId;
+            return this;
+        }
+
+        /**
+         * @param serviceAttachmentId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAttachmentId(Integer serviceAttachmentId) {
+            return serviceAttachmentId(Output.of(serviceAttachmentId));
         }
 
         /**

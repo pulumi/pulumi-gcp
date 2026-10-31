@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Featureonlinestore With Optimized
     /// 
     /// ```csharp
@@ -87,6 +88,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
     /// 
     /// ```csharp

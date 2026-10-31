@@ -70,6 +70,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Certificate Manager Trust Config Allowlisted Certificates
     /// 
     /// ```csharp

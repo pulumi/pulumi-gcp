@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Pubsub Schema Protobuf
  * 
  * <pre>

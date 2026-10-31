@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebase App Hosting Default Domain Full
  * 
  * <pre>
@@ -130,6 +131,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebase App Hosting Default Domain Disabled
  * 
  * <pre>

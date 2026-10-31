@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Colab Runtime Template No Name
  * 
  * <pre>
@@ -123,6 +124,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Colab Runtime Template Full
  * 
  * <pre>

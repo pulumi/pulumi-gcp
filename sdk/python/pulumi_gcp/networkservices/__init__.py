@@ -9,6 +9,7 @@ import typing
 from .agent_connectivity_template import *
 from .agent_gateway import *
 from .authz_extension import *
+from .cdn_edge_extension import *
 from .edge_cache_keyset import *
 from .edge_cache_origin import *
 from .edge_cache_service import *
@@ -33,6 +34,7 @@ from .multicast_producer_association import *
 from .service_binding import *
 from .service_lb_policies import *
 from .tcp_route import *
+from .telemetry_policy import *
 from .tls_route import *
 from .wasm_plugin import *
 from ._inputs import *

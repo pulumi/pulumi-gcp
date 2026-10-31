@@ -118,6 +118,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebase Web App Custom Api Key
  * 
  * <pre>

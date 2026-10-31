@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     secretData: "secret-data",
  * });
  * ```
+ *
  * ### Regional Secret Version Basic Write Only
  *
  * ```typescript
@@ -60,6 +61,7 @@ import * as utilities from "../utilities";
  *     secretDataWo: "regional-secret-data-write-only",
  * });
  * ```
+ *
  * ### Regional Secret Version With Base64 String Secret Data Write Only
  *
  * ```typescript
@@ -80,6 +82,7 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ *
  * ### Regional Secret Version With Base64 Data
  *
  * ```typescript
@@ -99,6 +102,7 @@ import * as utilities from "../utilities";
  *     isSecretDataBase64: true,
  * });
  * ```
+ *
  * ### Regional Secret Version Disabled
  *
  * ```typescript
@@ -115,6 +119,7 @@ import * as utilities from "../utilities";
  *     enabled: false,
  * });
  * ```
+ *
  * ### Regional Secret Version Deletion Policy Abandon
  *
  * ```typescript
@@ -131,6 +136,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "ABANDON",
  * });
  * ```
+ *
  * ### Regional Secret Version Deletion Policy Disable
  *
  * ```typescript

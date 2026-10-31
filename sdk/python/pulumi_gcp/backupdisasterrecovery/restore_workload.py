@@ -618,6 +618,7 @@ class RestoreWorkload(pulumi.CustomResource):
                 "machine_type": "zones/us-central1-a/machineTypes/e2-medium",
             })
         ```
+
         ### Backup Dr Restore Workload Compute Instance Full
 
         ```python
@@ -705,6 +706,7 @@ class RestoreWorkload(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Backup Dr Restore Workload Disk Basic
 
         ```python
@@ -731,6 +733,7 @@ class RestoreWorkload(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Backup Dr Restore Workload Regional Disk
 
         ```python
@@ -763,6 +766,7 @@ class RestoreWorkload(pulumi.CustomResource):
                 "provisioned_throughput": 140,
             })
         ```
+
         ### Backup Dr Restore Workload Without Delete
 
         ```python
@@ -867,6 +871,7 @@ class RestoreWorkload(pulumi.CustomResource):
                 "machine_type": "zones/us-central1-a/machineTypes/e2-medium",
             })
         ```
+
         ### Backup Dr Restore Workload Compute Instance Full
 
         ```python
@@ -954,6 +959,7 @@ class RestoreWorkload(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Backup Dr Restore Workload Disk Basic
 
         ```python
@@ -980,6 +986,7 @@ class RestoreWorkload(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Backup Dr Restore Workload Regional Disk
 
         ```python
@@ -1012,6 +1019,7 @@ class RestoreWorkload(pulumi.CustomResource):
                 "provisioned_throughput": 140,
             })
         ```
+
         ### Backup Dr Restore Workload Without Delete
 
         ```python

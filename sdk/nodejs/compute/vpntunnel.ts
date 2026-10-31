@@ -76,6 +76,7 @@ import * as utilities from "../utilities";
  *     nextHopVpnTunnel: tunnel1.id,
  * });
  * ```
+ *
  * ### Vpn Tunnel Cipher Suite
  *
  * ```typescript

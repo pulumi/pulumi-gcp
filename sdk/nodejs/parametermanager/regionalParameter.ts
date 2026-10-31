@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
+ *
  * ### Regional Parameter With Format
  *
  * ```typescript
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  *     format: "JSON",
  * });
  * ```
+ *
  * ### Regional Parameter With Labels
  *
  * ```typescript
@@ -61,6 +63,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Regional Parameter With Kms Key
  *
  * ```typescript
@@ -74,6 +77,7 @@ import * as utilities from "../utilities";
  *     kmsKey: "kms-key",
  * });
  * ```
+ *
  * ### Regional Parameter With Tags
  *
  * ```typescript

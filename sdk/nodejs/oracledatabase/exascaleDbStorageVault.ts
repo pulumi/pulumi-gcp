@@ -27,9 +27,13 @@ import * as utilities from "../utilities";
  *             totalSizeGbs: 512,
  *         },
  *     },
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Exascale Db Storage Vault Full
  *
  * ```typescript
@@ -57,6 +61,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
  *
  * ```typescript

@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * Represents a persona configuration for an analyst agent in Agentic Applications.
  *
+ * > **Note:** The `project` field must be set to the numeric project number (not the project ID).
+ *
  * ## Example Usage
  *
  * ### Analyst Agent Persona Basic
@@ -18,6 +20,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+ *     project: "1111111111111",
  *     location: "us",
  *     analystAgentPersonaId: "basic",
  *     displayName: "Test Analyst Persona",
@@ -52,6 +55,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Analyst Agent Persona Full
  *
  * ```typescript
@@ -79,6 +83,7 @@ import * as utilities from "../utilities";
  *     bucket: bucket.name,
  * });
  * const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+ *     project: "1111111111111",
  *     location: "us",
  *     analystAgentPersonaId: "full",
  *     displayName: "Full Test Analyst Persona",
@@ -193,6 +198,7 @@ import * as utilities from "../utilities";
  *         apiKeyName: "x-api-key",
  *         apiKeyHeader: "x-api-key-header",
  *         clientId: "sample-client-id",
+ *         clientSecret: "sample-client-secret",
  *         oauthTokenUrl: "https://example.com/oauth/token",
  *     }],
  *     resources: [
@@ -250,6 +256,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Analyst Agent Persona Methodology Export Options
  *
  * ```typescript
@@ -257,6 +264,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+ *     project: "1111111111111",
  *     location: "us",
  *     analystAgentPersonaId: "methodology",
  *     displayName: "Test Analyst Persona Methodology Export",
@@ -268,6 +276,30 @@ import * as utilities from "../utilities";
  *             appendMethodology: true,
  *             exportFormat: "MARKDOWN",
  *             exportMethodologyArtifact: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Analyst Agent Persona Audit Trail Export Options
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+ *     project: "1111111111111",
+ *     location: "us",
+ *     analystAgentPersonaId: "audit_trail",
+ *     displayName: "Test Analyst Persona Audit Trail Export",
+ *     displayDescription: "Sample analyst agent persona description",
+ *     modelDescription: "Sample model description",
+ *     role: "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+ *     artifactsConfig: {
+ *         auditTrailExportOptions: {
+ *             appendAuditTrail: true,
+ *             exportFormat: "MARKDOWN",
+ *             exportAuditTrailArtifact: true,
  *         },
  *     },
  * });
@@ -323,6 +355,11 @@ import * as utilities from "../utilities";
  *
  * <a name="nestedArtifactsConfig"></a>The `artifactsConfig` block supports:
  *
+ * * `auditTrailExportOptions` -
+ * (Optional)
+ * Options for audit trail export.
+ * Structure is documented below.
+ *
  * * `documentGenerationOptions` -
  * (Optional)
  * Options for document generation.
@@ -342,6 +379,24 @@ import * as utilities from "../utilities";
  * (Optional)
  * Options for visualizations.
  * Structure is documented below.
+ *
+ * <a name="nestedArtifactsConfigAuditTrailExportOptions"></a>The `auditTrailExportOptions` block supports:
+ *
+ * * `appendAuditTrail` -
+ * (Optional)
+ * If true, append the audit trail to the final response.
+ *
+ * * `exportAuditTrailArtifact` -
+ * (Optional)
+ * If true, export the audit trail as a separate artifact.
+ *
+ * * `exportFormat` -
+ * (Optional)
+ * Format for audit trail export.
+ * Possible values:
+ * MARKDOWN
+ * HTML
+ * PDF
  *
  * <a name="nestedArtifactsConfigDocumentGenerationOptions"></a>The `documentGenerationOptions` block supports:
  *

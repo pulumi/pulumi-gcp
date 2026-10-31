@@ -97,6 +97,7 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// 
     /// ### Biglake Iceberg Table Sort Order
     /// 
     /// ```csharp
@@ -163,6 +164,7 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// 
     /// ### Biglake Iceberg Table Update
     /// 
     /// ```csharp

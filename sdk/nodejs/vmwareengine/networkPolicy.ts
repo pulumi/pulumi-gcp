@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     vmwareEngineNetwork: network_policy_nw.id,
  * });
  * ```
+ *
  * ### Vmware Engine Network Policy Full
  *
  * ```typescript

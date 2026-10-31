@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     displayName: "Basic Folder-_40289",
  * });
  * ```
+ *
  * ### Dataform Folder Full
  *
  * ```typescript

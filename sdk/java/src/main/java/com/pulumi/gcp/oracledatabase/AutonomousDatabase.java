@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  *                 .dbWorkload("OLTP")
  *                 .licenseType("LICENSE_INCLUDED")
  *                 .build())
+ *             .labels(Map.of("label-one", "value-one"))
  *             .deletionProtection(true)
  *             .build());
  * 
@@ -84,6 +85,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Oracledatabase Autonomous Database Full
  * 
  * <pre>
@@ -155,6 +157,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Oracledatabase Autonomous Database Odbnetwork
  * 
  * <pre>
@@ -202,6 +205,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Oracledatabase Autonomous Database Publicip
  * 
  * <pre>
@@ -248,6 +252,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Oracledatabase Autonomous Database Disaster Recovery
  * 
  * <pre>

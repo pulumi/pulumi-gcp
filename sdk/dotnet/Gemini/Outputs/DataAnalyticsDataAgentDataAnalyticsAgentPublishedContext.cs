@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Gemini.Outputs
     {
         /// <summary>
         /// Required. Data sources that are available for answering questions.
-        /// This Terraform resource currently supports BigQuery table references.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences DatasourceReferences;
@@ -29,6 +28,11 @@ namespace Pulumi.Gcp.Gemini.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm> GlossaryTerms;
+        /// <summary>
+        /// Optional. A list of golden queries for Looker data sources.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQuery> LookerGoldenQueries;
         /// <summary>
         /// Optional. Additional options for the conversation.
         /// Structure is documented below.
@@ -45,6 +49,11 @@ namespace Pulumi.Gcp.Gemini.Outputs
         /// knowledge for the agent.
         /// </summary>
         public readonly string? SystemInstruction;
+        /// <summary>
+        /// Optional. A collection of user functions to be included in context.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctions? UserFunctions;
 
         [OutputConstructor]
         private DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext(
@@ -54,18 +63,24 @@ namespace Pulumi.Gcp.Gemini.Outputs
 
             ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm> glossaryTerms,
 
+            ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQuery> lookerGoldenQueries,
+
             Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions? options,
 
             ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship> schemaRelationships,
 
-            string? systemInstruction)
+            string? systemInstruction,
+
+            Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctions? userFunctions)
         {
             DatasourceReferences = datasourceReferences;
             ExampleQueries = exampleQueries;
             GlossaryTerms = glossaryTerms;
+            LookerGoldenQueries = lookerGoldenQueries;
             Options = options;
             SchemaRelationships = schemaRelationships;
             SystemInstruction = systemInstruction;
+            UserFunctions = userFunctions;
         }
     }
 }

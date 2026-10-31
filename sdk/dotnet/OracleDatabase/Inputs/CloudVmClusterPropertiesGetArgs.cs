@@ -185,14 +185,12 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         }
 
         /// <summary>
-        /// (Output)
         /// SCAN listener port - TCP
         /// </summary>
         [Input("scanListenerPortTcp")]
         public Input<int>? ScanListenerPortTcp { get; set; }
 
         /// <summary>
-        /// (Output)
         /// SCAN listener port - TLS
         /// </summary>
         [Input("scanListenerPortTcpSsl")]

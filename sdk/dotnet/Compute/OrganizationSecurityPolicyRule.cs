@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Organization Security Policy Rule Expression
     /// 
     /// ```csharp
@@ -91,6 +92,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Organization Security Policy Rule With Preconfigured Waf Config
     /// 
     /// ```csharp
@@ -163,6 +165,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Organization Security Policy Rule With Header Action
     /// 
     /// ```csharp
@@ -213,6 +216,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Organization Security Policy Rule With Redirect
     /// 
     /// ```csharp
@@ -255,6 +259,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Organization Security Policy Rule Firewall
     /// 
     /// ```csharp

@@ -47,6 +47,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [vertexVpcConnection],
  * });
  * ```
+ *
  * ### Vertex Ai Index Endpoint With Psc
  *
  * ```typescript
@@ -67,6 +68,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Index Endpoint With Public Endpoint
  *
  * ```typescript

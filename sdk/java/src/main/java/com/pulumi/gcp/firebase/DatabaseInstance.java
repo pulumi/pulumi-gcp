@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebase Database Instance Full
  * 
  * <pre>
@@ -98,6 +99,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebase Database Instance Default Database
  * 
  * <pre>

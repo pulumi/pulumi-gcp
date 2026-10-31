@@ -17,14 +17,29 @@ public final class V2ConsumerPolicyEnableRuleArgs extends com.pulumi.resources.R
     public static final V2ConsumerPolicyEnableRuleArgs Empty = new V2ConsumerPolicyEnableRuleArgs();
 
     /**
-     * (Optional): List of service names to be enabled in the format of services/&lt;service_name&gt;
+     * List of service catalog names to be enabled in the format of catalogs/&lt;catalog_name&gt;, for example catalogs/default-cloud-services.
+     * 
+     */
+    @Import(name="catalogs")
+    private @Nullable Output<List<String>> catalogs;
+
+    /**
+     * @return List of service catalog names to be enabled in the format of catalogs/&lt;catalog_name&gt;, for example catalogs/default-cloud-services.
+     * 
+     */
+    public Optional<Output<List<String>>> catalogs() {
+        return Optional.ofNullable(this.catalogs);
+    }
+
+    /**
+     * List of service names to be enabled in the format of services/&lt;service_name&gt;
      * 
      */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
     /**
-     * @return (Optional): List of service names to be enabled in the format of services/&lt;service_name&gt;
+     * @return List of service names to be enabled in the format of services/&lt;service_name&gt;
      * 
      */
     public Optional<Output<List<String>>> services() {
@@ -34,6 +49,7 @@ public final class V2ConsumerPolicyEnableRuleArgs extends com.pulumi.resources.R
     private V2ConsumerPolicyEnableRuleArgs() {}
 
     private V2ConsumerPolicyEnableRuleArgs(V2ConsumerPolicyEnableRuleArgs $) {
+        this.catalogs = $.catalogs;
         this.services = $.services;
     }
 
@@ -56,7 +72,38 @@ public final class V2ConsumerPolicyEnableRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param services (Optional): List of service names to be enabled in the format of services/&lt;service_name&gt;
+         * @param catalogs List of service catalog names to be enabled in the format of catalogs/&lt;catalog_name&gt;, for example catalogs/default-cloud-services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogs(@Nullable Output<List<String>> catalogs) {
+            $.catalogs = catalogs;
+            return this;
+        }
+
+        /**
+         * @param catalogs List of service catalog names to be enabled in the format of catalogs/&lt;catalog_name&gt;, for example catalogs/default-cloud-services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogs(List<String> catalogs) {
+            return catalogs(Output.of(catalogs));
+        }
+
+        /**
+         * @param catalogs List of service catalog names to be enabled in the format of catalogs/&lt;catalog_name&gt;, for example catalogs/default-cloud-services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogs(String... catalogs) {
+            return catalogs(List.of(catalogs));
+        }
+
+        /**
+         * @param services List of service names to be enabled in the format of services/&lt;service_name&gt;
          * 
          * @return builder
          * 
@@ -67,7 +114,7 @@ public final class V2ConsumerPolicyEnableRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param services (Optional): List of service names to be enabled in the format of services/&lt;service_name&gt;
+         * @param services List of service names to be enabled in the format of services/&lt;service_name&gt;
          * 
          * @return builder
          * 
@@ -77,7 +124,7 @@ public final class V2ConsumerPolicyEnableRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param services (Optional): List of service names to be enabled in the format of services/&lt;service_name&gt;
+         * @param services List of service names to be enabled in the format of services/&lt;service_name&gt;
          * 
          * @return builder
          * 

@@ -404,6 +404,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 "group_indexes": [2],
             })
         ```
+
         ### Dlp Stored Info Type Dictionary
 
         ```python
@@ -423,6 +424,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Stored Info Type Large Custom Dictionary
 
         ```python
@@ -454,6 +456,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Stored Info Type With Id
 
         ```python
@@ -543,6 +546,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 "group_indexes": [2],
             })
         ```
+
         ### Dlp Stored Info Type Dictionary
 
         ```python
@@ -562,6 +566,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Stored Info Type Large Custom Dictionary
 
         ```python
@@ -593,6 +598,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Stored Info Type With Id
 
         ```python

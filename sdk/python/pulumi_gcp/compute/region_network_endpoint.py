@@ -423,6 +423,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             ip_address="8.8.8.8",
             port=443)
         ```
+
         ### Region Network Endpoint Internet Fqdn Port
 
         ```python
@@ -443,6 +444,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn="backend.example.com",
             port=443)
         ```
+
         ### Region Network Endpoint Portmap
 
         ```python
@@ -568,6 +570,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             ip_address="8.8.8.8",
             port=443)
         ```
+
         ### Region Network Endpoint Internet Fqdn Port
 
         ```python
@@ -588,6 +591,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn="backend.example.com",
             port=443)
         ```
+
         ### Region Network Endpoint Portmap
 
         ```python

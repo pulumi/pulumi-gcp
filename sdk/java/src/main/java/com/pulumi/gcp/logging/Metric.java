@@ -97,6 +97,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Logging Metric Counter Basic
  * 
  * <pre>
@@ -135,6 +136,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Logging Metric Counter Labels
  * 
  * <pre>
@@ -180,6 +182,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Logging Metric Logging Bucket
  * 
  * <pre>
@@ -222,6 +225,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Logging Metric Disabled
  * 
  * <pre>

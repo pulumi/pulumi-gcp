@@ -822,6 +822,7 @@ class ApiProduct(pulumi.CustomResource):
             approval_type="auto",
             opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
         ```
+
         ### Apigee Api Product With Legacy Operation
 
         ```python
@@ -887,6 +888,7 @@ class ApiProduct(pulumi.CustomResource):
                     test_apigee_api,
                 ]))
         ```
+
         ## Import
 
         ApiProduct can be imported using any of these accepted formats:
@@ -995,6 +997,7 @@ class ApiProduct(pulumi.CustomResource):
             approval_type="auto",
             opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
         ```
+
         ### Apigee Api Product With Legacy Operation
 
         ```python
@@ -1060,6 +1063,7 @@ class ApiProduct(pulumi.CustomResource):
                     test_apigee_api,
                 ]))
         ```
+
         ## Import
 
         ApiProduct can be imported using any of these accepted formats:

@@ -341,6 +341,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
+
         ### Global Network Endpoint Group Ip Address
 
         ```python
@@ -427,6 +428,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
+
         ### Global Network Endpoint Group Ip Address
 
         ```python

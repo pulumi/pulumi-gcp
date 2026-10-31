@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Blockchain Nodes Geth Details
  * 
  * <pre>
@@ -133,6 +134,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Blockchain Nodes Beacon Fee Recipient
  * 
  * <pre>

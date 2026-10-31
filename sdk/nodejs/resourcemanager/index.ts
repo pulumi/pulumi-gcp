@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BoundaryArgs, BoundaryState } from "./boundary";
+export type Boundary = import("./boundary").Boundary;
+export const Boundary: typeof import("./boundary").Boundary = null as any;
+utilities.lazyLoad(exports, ["Boundary"], () => require("./boundary"));
+
+export { BoundaryConfigArgs, BoundaryConfigState } from "./boundaryConfig";
+export type BoundaryConfig = import("./boundaryConfig").BoundaryConfig;
+export const BoundaryConfig: typeof import("./boundaryConfig").BoundaryConfig = null as any;
+utilities.lazyLoad(exports, ["BoundaryConfig"], () => require("./boundaryConfig"));
+
 export { CapabilityArgs, CapabilityState } from "./capability";
 export type Capability = import("./capability").Capability;
 export const Capability: typeof import("./capability").Capability = null as any;
@@ -25,6 +35,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:resourcemanager/boundary:Boundary":
+                return new Boundary(name, <any>undefined, { urn })
+            case "gcp:resourcemanager/boundaryConfig:BoundaryConfig":
+                return new BoundaryConfig(name, <any>undefined, { urn })
             case "gcp:resourcemanager/capability:Capability":
                 return new Capability(name, <any>undefined, { urn })
             case "gcp:resourcemanager/capabilityConfig:CapabilityConfig":
@@ -36,6 +50,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "resourcemanager/boundary", _module)
+pulumi.runtime.registerResourceModule("gcp", "resourcemanager/boundaryConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "resourcemanager/capability", _module)
 pulumi.runtime.registerResourceModule("gcp", "resourcemanager/capabilityConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "resourcemanager/lien", _module)

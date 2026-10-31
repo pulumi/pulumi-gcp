@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.NetworkEdgeSecurityServiceParamsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -100,6 +101,23 @@ public final class NetworkEdgeSecurityServiceState extends com.pulumi.resources.
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<NetworkEdgeSecurityServiceParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<NetworkEdgeSecurityServiceParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
     }
 
     /**
@@ -202,6 +220,7 @@ public final class NetworkEdgeSecurityServiceState extends com.pulumi.resources.
         this.description = $.description;
         this.fingerprint = $.fingerprint;
         this.name = $.name;
+        this.params = $.params;
         this.project = $.project;
         this.region = $.region;
         this.securityPolicy = $.securityPolicy;
@@ -343,6 +362,29 @@ public final class NetworkEdgeSecurityServiceState extends com.pulumi.resources.
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<NetworkEdgeSecurityServiceParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(NetworkEdgeSecurityServiceParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

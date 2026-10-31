@@ -128,12 +128,10 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ScanIpIds;
         /// <summary>
-        /// (Output)
         /// SCAN listener port - TCP
         /// </summary>
         public readonly int? ScanListenerPortTcp;
         /// <summary>
-        /// (Output)
         /// SCAN listener port - TLS
         /// </summary>
         public readonly int? ScanListenerPortTcpSsl;

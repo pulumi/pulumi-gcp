@@ -668,6 +668,7 @@ class EdgeCacheService(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Services Edge Cache Service Advanced
 
         ```python
@@ -863,6 +864,7 @@ class EdgeCacheService(pulumi.CustomResource):
                 "sample_rate": 0.01,
             })
         ```
+
         ### Network Services Edge Cache Service Dual Token
 
         ```python
@@ -1100,6 +1102,7 @@ class EdgeCacheService(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Services Edge Cache Service Advanced
 
         ```python
@@ -1295,6 +1298,7 @@ class EdgeCacheService(pulumi.CustomResource):
                 "sample_rate": 0.01,
             })
         ```
+
         ### Network Services Edge Cache Service Dual Token
 
         ```python

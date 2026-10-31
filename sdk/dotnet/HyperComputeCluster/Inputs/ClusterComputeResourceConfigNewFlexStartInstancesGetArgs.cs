@@ -27,6 +27,20 @@ namespace Pulumi.Gcp.HyperComputeCluster.Inputs
         [Input("maxDuration", required: true)]
         public Input<string> MaxDuration { get; set; } = null!;
 
+        [Input("networkTags")]
+        private InputList<string>? _networkTags;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// A list of network tags to attach to the VM instances.
+        /// A maximum of 64 network tags are allowed.
+        /// </summary>
+        public InputList<string> NetworkTags
+        {
+            get => _networkTags ?? (_networkTags = new InputList<string>());
+            set => _networkTags = value;
+        }
+
         /// <summary>
         /// Name of the zone in which VM instances should run, e.g., `us-central1-a`.
         /// Must be in the same region as the cluster, and must match the zone of any

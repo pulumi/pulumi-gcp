@@ -209,6 +209,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
             app_id=default.app_id,
             opts = pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
+
         ### Firebase App Check Play Integrity Config Full
 
         ```python
@@ -308,6 +309,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
             app_id=default.app_id,
             opts = pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
+
         ### Firebase App Check Play Integrity Config Full
 
         ```python

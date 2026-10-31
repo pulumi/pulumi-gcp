@@ -550,8 +550,12 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
                     "total_size_gbs": 512,
                 },
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Exascale Db Storage Vault Full
 
         ```python
@@ -578,6 +582,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
 
         ```python
@@ -690,8 +695,12 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
                     "total_size_gbs": 512,
                 },
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Exascale Db Storage Vault Full
 
         ```python
@@ -718,6 +727,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
 
         ```python

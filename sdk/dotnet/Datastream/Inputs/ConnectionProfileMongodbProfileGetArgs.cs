@@ -63,12 +63,23 @@ namespace Pulumi.Gcp.Datastream.Inputs
         [Input("replicaSet")]
         public Input<string>? ReplicaSet { get; set; }
 
+        [Input("secretManagerStoredPassword")]
+        private Input<string>? _secretManagerStoredPassword;
+
         /// <summary>
         /// A reference to a Secret Manager resource name storing the MongoDB
         /// connection password. Mutually exclusive with password.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("secretManagerStoredPassword")]
-        public Input<string>? SecretManagerStoredPassword { get; set; }
+        public Input<string>? SecretManagerStoredPassword
+        {
+            get => _secretManagerStoredPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretManagerStoredPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Srv connection format. Mutually exclusive with

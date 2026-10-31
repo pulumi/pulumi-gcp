@@ -619,72 +619,127 @@ class FrameworkDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.cloudsecuritycompliance.Framework("example",
+        example = gcp.cloudsecuritycompliance.CloudControl("example",
+            parent="organizations/123456789",
+            location="global",
+            cloud_control_id="example-cloudcontrol",
+            display_name="TF test CloudControl Name",
+            description="A test cloud control for security compliance",
+            categories=["CC_CATEGORY_INFRASTRUCTURE"],
+            severity="HIGH",
+            finding_category="SECURITY_POLICY",
+            remediation_steps="Review and update the security configuration according to best practices.",
+            supported_cloud_providers=["GCP"],
+            rules=[{
+                "description": "Ensure compute instances have secure boot enabled",
+                "rule_action_types": ["RULE_ACTION_TYPE_DETECTIVE"],
+                "cel_expression": {
+                    "expression": "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+                    "resource_types_values": {
+                        "values": ["compute.googleapis.com/Instance"],
+                    },
+                },
+            }],
+            parameter_specs=[
+                {
+                    "name": "enabled",
+                    "value_type": "BOOLEAN",
+                    "is_required": True,
+                },
+                {
+                    "name": "regions",
+                    "value_type": "STRINGLIST",
+                    "is_required": True,
+                },
+                {
+                    "name": "location",
+                    "value_type": "STRING",
+                    "is_required": True,
+                },
+                {
+                    "name": "oneof-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "test-oneof",
+                            "value_type": "STRING",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-test-oneof",
+                            "value_type": "STRING",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "bool-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "bool-oneof",
+                            "value_type": "BOOLEAN",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-bool-oneof",
+                            "value_type": "BOOLEAN",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "number-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "number-oneof",
+                            "value_type": "NUMBER",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-number-oneof",
+                            "value_type": "NUMBER",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "string-list-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "string-list-oneof",
+                            "value_type": "STRINGLIST",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-string-list-oneof",
+                            "value_type": "STRINGLIST",
+                            "is_required": True,
+                        },
+                    ],
+                },
+            ])
+        example_framework = gcp.cloudsecuritycompliance.Framework("example",
             parent="organizations/123456789",
             location="global",
             framework_id="example-framework",
             display_name="Terraform Framework Name",
             description="An Terraform description for the framework",
             cloud_control_details=[{
-                "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-                "major_revision_id": "2",
-                "parameters": [
-                    {
-                        "name": "location",
-                        "parameter_value": {
-                            "string_value": "us-central1",
-                        },
+                "name": example.name,
+                "major_revision_id": "1",
+                "parameters": [{
+                    "name": "enabled",
+                    "parameter_value": {
+                        "bool_value": True,
                     },
-                    {
-                        "name": "oneof-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "test-oneof",
-                                "parameter_value": {
-                                    "string_value": "test-value",
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "bool-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "bool-oneof",
-                                "parameter_value": {
-                                    "bool_value": True,
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "number-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "number-oneof",
-                                "parameter_value": {
-                                    "number_value": 123.45,
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "string-list-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "string-list-oneof",
-                                "parameter_value": {
-                                    "string_list_value": {
-                                        "values": [
-                                            "value1",
-                                            "value2",
-                                        ],
-                                    },
-                                },
-                            },
-                        },
-                    },
-                ],
+                }],
             }])
         example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
             parent="organizations/123456789",
@@ -692,7 +747,7 @@ class FrameworkDeployment(pulumi.CustomResource):
             framework_deployment_id="example-deployment",
             description="A framework deployment for cloud security compliance",
             framework={
-                "framework": example.name,
+                "framework": example_framework.name,
                 "major_revision_id": "1",
             },
             target_resource_config={
@@ -701,8 +756,8 @@ class FrameworkDeployment(pulumi.CustomResource):
             cloud_control_metadatas=[{
                 "enforcement_mode": "DETECTIVE",
                 "cloud_control_details": {
-                    "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-                    "major_revision_id": "2",
+                    "name": example.name,
+                    "major_revision_id": "1",
                     "parameters": [
                         {
                             "name": "enabled",
@@ -781,6 +836,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Cloudsecuritycompliance Framework Deployment Project Basic
 
         ```python
@@ -788,72 +844,127 @@ class FrameworkDeployment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example = gcp.cloudsecuritycompliance.Framework("example",
+        example = gcp.cloudsecuritycompliance.CloudControl("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            cloud_control_id="example-cloudcontrol",
+            display_name="TF test CloudControl Name",
+            description="A test cloud control for security compliance",
+            categories=["CC_CATEGORY_INFRASTRUCTURE"],
+            severity="HIGH",
+            finding_category="SECURITY_POLICY",
+            remediation_steps="Review and update the security configuration according to best practices.",
+            supported_cloud_providers=["GCP"],
+            rules=[{
+                "description": "Ensure compute instances have secure boot enabled",
+                "rule_action_types": ["RULE_ACTION_TYPE_DETECTIVE"],
+                "cel_expression": {
+                    "expression": "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+                    "resource_types_values": {
+                        "values": ["compute.googleapis.com/Instance"],
+                    },
+                },
+            }],
+            parameter_specs=[
+                {
+                    "name": "enabled",
+                    "value_type": "BOOLEAN",
+                    "is_required": True,
+                },
+                {
+                    "name": "regions",
+                    "value_type": "STRINGLIST",
+                    "is_required": True,
+                },
+                {
+                    "name": "location",
+                    "value_type": "STRING",
+                    "is_required": True,
+                },
+                {
+                    "name": "oneof-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "test-oneof",
+                            "value_type": "STRING",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-test-oneof",
+                            "value_type": "STRING",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "bool-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "bool-oneof",
+                            "value_type": "BOOLEAN",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-bool-oneof",
+                            "value_type": "BOOLEAN",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "number-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "number-oneof",
+                            "value_type": "NUMBER",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-number-oneof",
+                            "value_type": "NUMBER",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "string-list-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "string-list-oneof",
+                            "value_type": "STRINGLIST",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-string-list-oneof",
+                            "value_type": "STRINGLIST",
+                            "is_required": True,
+                        },
+                    ],
+                },
+            ])
+        example_framework = gcp.cloudsecuritycompliance.Framework("example",
             parent=f"projects/{project.number}",
             location="global",
             framework_id="example-framework",
             display_name="Terraform Framework Name",
             description="An Terraform description for the framework",
             cloud_control_details=[{
-                "name": f"projects/{project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-                "major_revision_id": "2",
-                "parameters": [
-                    {
-                        "name": "location",
-                        "parameter_value": {
-                            "string_value": "us-central1",
-                        },
+                "name": example.name,
+                "major_revision_id": "1",
+                "parameters": [{
+                    "name": "enabled",
+                    "parameter_value": {
+                        "bool_value": True,
                     },
-                    {
-                        "name": "oneof-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "test-oneof",
-                                "parameter_value": {
-                                    "string_value": "test-value",
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "bool-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "bool-oneof",
-                                "parameter_value": {
-                                    "bool_value": True,
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "number-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "number-oneof",
-                                "parameter_value": {
-                                    "number_value": 123.45,
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "string-list-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "string-list-oneof",
-                                "parameter_value": {
-                                    "string_list_value": {
-                                        "values": [
-                                            "value1",
-                                            "value2",
-                                        ],
-                                    },
-                                },
-                            },
-                        },
-                    },
-                ],
+                }],
             }])
         example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
             parent=f"projects/{project.number}",
@@ -861,7 +972,7 @@ class FrameworkDeployment(pulumi.CustomResource):
             framework_deployment_id="example-deployment",
             description="A framework deployment for cloud security compliance",
             framework={
-                "framework": example.name,
+                "framework": example_framework.name,
                 "major_revision_id": "1",
             },
             target_resource_config={
@@ -870,8 +981,8 @@ class FrameworkDeployment(pulumi.CustomResource):
             cloud_control_metadatas=[{
                 "enforcement_mode": "DETECTIVE",
                 "cloud_control_details": {
-                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-                    "major_revision_id": "2",
+                    "name": example.name,
+                    "major_revision_id": "1",
                     "parameters": [
                         {
                             "name": "enabled",
@@ -950,6 +1061,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Cloudsecuritycompliance Framework Deployment Org Project Basic
 
         ```python
@@ -999,6 +1111,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Cloudsecuritycompliance Framework Deployment Project Application Basic
 
         ```python
@@ -1055,6 +1168,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
 
         ```python
@@ -1170,72 +1284,127 @@ class FrameworkDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.cloudsecuritycompliance.Framework("example",
+        example = gcp.cloudsecuritycompliance.CloudControl("example",
+            parent="organizations/123456789",
+            location="global",
+            cloud_control_id="example-cloudcontrol",
+            display_name="TF test CloudControl Name",
+            description="A test cloud control for security compliance",
+            categories=["CC_CATEGORY_INFRASTRUCTURE"],
+            severity="HIGH",
+            finding_category="SECURITY_POLICY",
+            remediation_steps="Review and update the security configuration according to best practices.",
+            supported_cloud_providers=["GCP"],
+            rules=[{
+                "description": "Ensure compute instances have secure boot enabled",
+                "rule_action_types": ["RULE_ACTION_TYPE_DETECTIVE"],
+                "cel_expression": {
+                    "expression": "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+                    "resource_types_values": {
+                        "values": ["compute.googleapis.com/Instance"],
+                    },
+                },
+            }],
+            parameter_specs=[
+                {
+                    "name": "enabled",
+                    "value_type": "BOOLEAN",
+                    "is_required": True,
+                },
+                {
+                    "name": "regions",
+                    "value_type": "STRINGLIST",
+                    "is_required": True,
+                },
+                {
+                    "name": "location",
+                    "value_type": "STRING",
+                    "is_required": True,
+                },
+                {
+                    "name": "oneof-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "test-oneof",
+                            "value_type": "STRING",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-test-oneof",
+                            "value_type": "STRING",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "bool-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "bool-oneof",
+                            "value_type": "BOOLEAN",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-bool-oneof",
+                            "value_type": "BOOLEAN",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "number-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "number-oneof",
+                            "value_type": "NUMBER",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-number-oneof",
+                            "value_type": "NUMBER",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "string-list-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "string-list-oneof",
+                            "value_type": "STRINGLIST",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-string-list-oneof",
+                            "value_type": "STRINGLIST",
+                            "is_required": True,
+                        },
+                    ],
+                },
+            ])
+        example_framework = gcp.cloudsecuritycompliance.Framework("example",
             parent="organizations/123456789",
             location="global",
             framework_id="example-framework",
             display_name="Terraform Framework Name",
             description="An Terraform description for the framework",
             cloud_control_details=[{
-                "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-                "major_revision_id": "2",
-                "parameters": [
-                    {
-                        "name": "location",
-                        "parameter_value": {
-                            "string_value": "us-central1",
-                        },
+                "name": example.name,
+                "major_revision_id": "1",
+                "parameters": [{
+                    "name": "enabled",
+                    "parameter_value": {
+                        "bool_value": True,
                     },
-                    {
-                        "name": "oneof-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "test-oneof",
-                                "parameter_value": {
-                                    "string_value": "test-value",
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "bool-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "bool-oneof",
-                                "parameter_value": {
-                                    "bool_value": True,
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "number-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "number-oneof",
-                                "parameter_value": {
-                                    "number_value": 123.45,
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "string-list-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "string-list-oneof",
-                                "parameter_value": {
-                                    "string_list_value": {
-                                        "values": [
-                                            "value1",
-                                            "value2",
-                                        ],
-                                    },
-                                },
-                            },
-                        },
-                    },
-                ],
+                }],
             }])
         example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
             parent="organizations/123456789",
@@ -1243,7 +1412,7 @@ class FrameworkDeployment(pulumi.CustomResource):
             framework_deployment_id="example-deployment",
             description="A framework deployment for cloud security compliance",
             framework={
-                "framework": example.name,
+                "framework": example_framework.name,
                 "major_revision_id": "1",
             },
             target_resource_config={
@@ -1252,8 +1421,8 @@ class FrameworkDeployment(pulumi.CustomResource):
             cloud_control_metadatas=[{
                 "enforcement_mode": "DETECTIVE",
                 "cloud_control_details": {
-                    "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-                    "major_revision_id": "2",
+                    "name": example.name,
+                    "major_revision_id": "1",
                     "parameters": [
                         {
                             "name": "enabled",
@@ -1332,6 +1501,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Cloudsecuritycompliance Framework Deployment Project Basic
 
         ```python
@@ -1339,72 +1509,127 @@ class FrameworkDeployment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example = gcp.cloudsecuritycompliance.Framework("example",
+        example = gcp.cloudsecuritycompliance.CloudControl("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            cloud_control_id="example-cloudcontrol",
+            display_name="TF test CloudControl Name",
+            description="A test cloud control for security compliance",
+            categories=["CC_CATEGORY_INFRASTRUCTURE"],
+            severity="HIGH",
+            finding_category="SECURITY_POLICY",
+            remediation_steps="Review and update the security configuration according to best practices.",
+            supported_cloud_providers=["GCP"],
+            rules=[{
+                "description": "Ensure compute instances have secure boot enabled",
+                "rule_action_types": ["RULE_ACTION_TYPE_DETECTIVE"],
+                "cel_expression": {
+                    "expression": "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+                    "resource_types_values": {
+                        "values": ["compute.googleapis.com/Instance"],
+                    },
+                },
+            }],
+            parameter_specs=[
+                {
+                    "name": "enabled",
+                    "value_type": "BOOLEAN",
+                    "is_required": True,
+                },
+                {
+                    "name": "regions",
+                    "value_type": "STRINGLIST",
+                    "is_required": True,
+                },
+                {
+                    "name": "location",
+                    "value_type": "STRING",
+                    "is_required": True,
+                },
+                {
+                    "name": "oneof-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "test-oneof",
+                            "value_type": "STRING",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-test-oneof",
+                            "value_type": "STRING",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "bool-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "bool-oneof",
+                            "value_type": "BOOLEAN",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-bool-oneof",
+                            "value_type": "BOOLEAN",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "number-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "number-oneof",
+                            "value_type": "NUMBER",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-number-oneof",
+                            "value_type": "NUMBER",
+                            "is_required": True,
+                        },
+                    ],
+                },
+                {
+                    "name": "string-list-parameter",
+                    "value_type": "ONEOF",
+                    "is_required": True,
+                    "sub_parameters": [
+                        {
+                            "name": "string-list-oneof",
+                            "value_type": "STRINGLIST",
+                            "is_required": True,
+                        },
+                        {
+                            "name": "updated-string-list-oneof",
+                            "value_type": "STRINGLIST",
+                            "is_required": True,
+                        },
+                    ],
+                },
+            ])
+        example_framework = gcp.cloudsecuritycompliance.Framework("example",
             parent=f"projects/{project.number}",
             location="global",
             framework_id="example-framework",
             display_name="Terraform Framework Name",
             description="An Terraform description for the framework",
             cloud_control_details=[{
-                "name": f"projects/{project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-                "major_revision_id": "2",
-                "parameters": [
-                    {
-                        "name": "location",
-                        "parameter_value": {
-                            "string_value": "us-central1",
-                        },
+                "name": example.name,
+                "major_revision_id": "1",
+                "parameters": [{
+                    "name": "enabled",
+                    "parameter_value": {
+                        "bool_value": True,
                     },
-                    {
-                        "name": "oneof-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "test-oneof",
-                                "parameter_value": {
-                                    "string_value": "test-value",
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "bool-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "bool-oneof",
-                                "parameter_value": {
-                                    "bool_value": True,
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "number-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "number-oneof",
-                                "parameter_value": {
-                                    "number_value": 123.45,
-                                },
-                            },
-                        },
-                    },
-                    {
-                        "name": "string-list-parameter",
-                        "parameter_value": {
-                            "oneof_value": {
-                                "name": "string-list-oneof",
-                                "parameter_value": {
-                                    "string_list_value": {
-                                        "values": [
-                                            "value1",
-                                            "value2",
-                                        ],
-                                    },
-                                },
-                            },
-                        },
-                    },
-                ],
+                }],
             }])
         example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
             parent=f"projects/{project.number}",
@@ -1412,7 +1637,7 @@ class FrameworkDeployment(pulumi.CustomResource):
             framework_deployment_id="example-deployment",
             description="A framework deployment for cloud security compliance",
             framework={
-                "framework": example.name,
+                "framework": example_framework.name,
                 "major_revision_id": "1",
             },
             target_resource_config={
@@ -1421,8 +1646,8 @@ class FrameworkDeployment(pulumi.CustomResource):
             cloud_control_metadatas=[{
                 "enforcement_mode": "DETECTIVE",
                 "cloud_control_details": {
-                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-                    "major_revision_id": "2",
+                    "name": example.name,
+                    "major_revision_id": "1",
                     "parameters": [
                         {
                             "name": "enabled",
@@ -1501,6 +1726,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Cloudsecuritycompliance Framework Deployment Org Project Basic
 
         ```python
@@ -1550,6 +1776,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Cloudsecuritycompliance Framework Deployment Project Application Basic
 
         ```python
@@ -1606,6 +1833,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
 
         ```python

@@ -36,7 +36,6 @@ public final class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs extends
     }
 
     /**
-     * (Optional, Beta)
      * The percentage of requests to be mirrored to backendService.
      * The value must be between 0.0 and 100.0 inclusive.
      * 
@@ -45,8 +44,7 @@ public final class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs extends
     private @Nullable Output<Double> mirrorPercent;
 
     /**
-     * @return (Optional, Beta)
-     * The percentage of requests to be mirrored to backendService.
+     * @return The percentage of requests to be mirrored to backendService.
      * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
@@ -105,8 +103,7 @@ public final class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs extends
         }
 
         /**
-         * @param mirrorPercent (Optional, Beta)
-         * The percentage of requests to be mirrored to backendService.
+         * @param mirrorPercent The percentage of requests to be mirrored to backendService.
          * The value must be between 0.0 and 100.0 inclusive.
          * 
          * @return builder
@@ -118,8 +115,7 @@ public final class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs extends
         }
 
         /**
-         * @param mirrorPercent (Optional, Beta)
-         * The percentage of requests to be mirrored to backendService.
+         * @param mirrorPercent The percentage of requests to be mirrored to backendService.
          * The value must be between 0.0 and 100.0 inclusive.
          * 
          * @return builder

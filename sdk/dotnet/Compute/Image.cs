@@ -68,6 +68,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Image Guest Os
     /// 
     /// ```csharp
@@ -124,6 +125,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Image Basic Storage Location
     /// 
     /// ```csharp

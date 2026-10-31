@@ -95,6 +95,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firewall With Target Tags
  * 
  * <pre>
@@ -329,6 +330,20 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enableLogging() {
         return this.enableLogging;
+    }
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="firewallId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> firewallId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> firewallId() {
+        return this.firewallId;
     }
     /**
      * This field denotes the logging options for a particular firewall rule.

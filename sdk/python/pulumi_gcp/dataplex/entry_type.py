@@ -560,6 +560,7 @@ class EntryType(pulumi.CustomResource):
             project="my-project-name",
             location="us-central1")
         ```
+
         ### Dataplex Entry Type Full
 
         ```python
@@ -678,6 +679,7 @@ class EntryType(pulumi.CustomResource):
             project="my-project-name",
             location="us-central1")
         ```
+
         ### Dataplex Entry Type Full
 
         ```python

@@ -334,6 +334,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             network=network_secondary.id,
             peer_network=network_primary.id)
         ```
+
         ### Network Peering Routes Config Gke Peered Vpc
 
         ```python
@@ -478,6 +479,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             network=network_secondary.id,
             peer_network=network_primary.id)
         ```
+
         ### Network Peering Routes Config Gke Peered Vpc
 
         ```python

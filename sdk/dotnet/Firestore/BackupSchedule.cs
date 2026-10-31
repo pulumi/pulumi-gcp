@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Backup Schedule Weekly
     /// 
     /// ```csharp

@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     customDomain: "custom.domain.com",
  * });
  * ```
+ *
  * ### Firebasehosting Customdomain Full
  *
  * ```typescript
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *     waitDnsVerification: false,
  * });
  * ```
+ *
  * ### Firebasehosting Customdomain Cloud Run
  *
  * ```typescript

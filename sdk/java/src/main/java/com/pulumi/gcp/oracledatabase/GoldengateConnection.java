@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  *                     .password("GenerateWallet}{@literal @}{@code 123")
  *                     .build())
  *                 .build())
+ *             .labels(Map.of("label-one", "value-one"))
  *             .deletionProtection(true)
  *             .build());
  * 
@@ -71,6 +72,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Oracledatabase Goldengate Connection Full
  * 
  * <pre>
@@ -124,6 +126,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Oracledatabase Goldengate Connection Mysql
  * 
  * <pre>
@@ -183,6 +186,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Oracledatabase Goldengate Connection Postgresql
  * 
  * <pre>
@@ -234,6 +238,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Oracledatabase Goldengate Connection Redis
  * 
  * <pre>
@@ -284,6 +289,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Oracledatabase Goldengate Connection Kafka
  * 
  * <pre>
@@ -341,6 +347,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Oracledatabase Goldengate Connection Iceberg
  * 
  * <pre>
@@ -407,6 +414,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Oracledatabase Goldengate Connection Snowflake
  * 
  * <pre>
@@ -456,6 +464,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Oracledatabase Goldengate Connection Jms
  * 
  * <pre>

@@ -121,6 +121,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Privateca Certificate With Template
  *
  * ```typescript
@@ -255,6 +256,7 @@ import * as utilities from "../utilities";
  *     certificateTemplate: defaultCertificateTemplate.id,
  * });
  * ```
+ *
  * ### Privateca Certificate Csr
  *
  * ```typescript
@@ -314,6 +316,7 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ *
  * ### Privateca Certificate No Authority
  *
  * ```typescript
@@ -406,6 +409,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultAuthority],
  * });
  * ```
+ *
  * ### Privateca Certificate Custom Ski
  *
  * ```typescript
@@ -501,6 +505,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultAuthority],
  * });
  * ```
+ *
  * ### Privateca Certificate Subject Config Org Optional
  *
  * ```typescript
@@ -583,6 +588,116 @@ import * as utilities from "../utilities";
  *     },
  * }, {
  *     dependsOn: [defaultAuthority],
+ * });
+ * ```
+ *
+ * ### Privateca Certificate With Requested Not Before Time
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const _default = new gcp.certificateauthority.CaPool("default", {
+ *     location: "us-central1",
+ *     name: "my-pool",
+ *     tier: "ENTERPRISE",
+ *     issuancePolicy: {
+ *         allowRequesterSpecifiedNotBeforeTime: true,
+ *     },
+ * });
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+ *     location: "us-central1",
+ *     pool: _default.name,
+ *     certificateAuthorityId: "my-authority",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ * });
+ * const defaultCertificate = new gcp.certificateauthority.Certificate("default", {
+ *     location: "us-central1",
+ *     pool: _default.name,
+ *     certificateAuthority: defaultAuthority.certificateAuthorityId,
+ *     lifetime: "86000s",
+ *     name: "my-certificate",
+ *     requestedNotBeforeTime: defaultAuthority.updateTime,
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 commonName: "san1.example.com",
+ *                 countryCode: "us",
+ *                 organization: "google",
+ *                 organizationalUnit: "enterprise",
+ *                 locality: "mountain view",
+ *                 province: "california",
+ *                 streetAddress: "1600 amphitheatre parkway",
+ *             },
+ *             subjectAltName: {
+ *                 emailAddresses: ["email@example.com"],
+ *                 ipAddresses: ["127.0.0.1"],
+ *                 uris: ["http://www.ietf.org/rfc/rfc3986.txt"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     crlSign: false,
+ *                     decipherOnly: false,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: false,
+ *                 },
+ *             },
+ *             nameConstraints: {
+ *                 critical: true,
+ *                 permittedDnsNames: ["*.example.com"],
+ *                 excludedDnsNames: ["*.deny.example.com"],
+ *                 permittedIpRanges: ["10.0.0.0/8"],
+ *                 excludedIpRanges: ["10.1.1.0/24"],
+ *                 permittedEmailAddresses: [".example.com"],
+ *                 excludedEmailAddresses: [".deny.example.com"],
+ *                 permittedUris: [".example.com"],
+ *                 excludedUris: [".deny.example.com"],
+ *             },
+ *         },
+ *         publicKey: {
+ *             format: "PEM",
+ *             key: std.filebase64({
+ *                 input: "test-fixtures/rsa_public.pem",
+ *             }).then(invoke => invoke.result),
+ *         },
+ *     },
  * });
  * ```
  *
@@ -726,6 +841,12 @@ export class Certificate extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * The requested notBeforeTime of this Certificate. This field may only be set
+     * if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+     * issuing CaPool.
+     */
+    declare public readonly requestedNotBeforeTime: pulumi.Output<string | undefined>;
+    /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is
      * considered revoked if and only if this field is present.
      * Structure is documented below.
@@ -768,6 +889,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["pool"] = state?.pool;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["requestedNotBeforeTime"] = state?.requestedNotBeforeTime;
             resourceInputs["revocationDetails"] = state?.revocationDetails;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -789,6 +911,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["pemCsr"] = args?.pemCsr;
             resourceInputs["pool"] = args?.pool;
             resourceInputs["project"] = args?.project;
+            resourceInputs["requestedNotBeforeTime"] = args?.requestedNotBeforeTime;
             resourceInputs["certificateDescriptions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -906,6 +1029,12 @@ export interface CertificateState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * The requested notBeforeTime of this Certificate. This field may only be set
+     * if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+     * issuing CaPool.
+     */
+    requestedNotBeforeTime?: pulumi.Input<string | undefined>;
+    /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is
      * considered revoked if and only if this field is present.
      * Structure is documented below.
@@ -986,4 +1115,10 @@ export interface CertificateArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The requested notBeforeTime of this Certificate. This field may only be set
+     * if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+     * issuing CaPool.
+     */
+    requestedNotBeforeTime?: pulumi.Input<string | undefined>;
 }

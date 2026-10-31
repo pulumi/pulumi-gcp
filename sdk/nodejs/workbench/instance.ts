@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Workbench Instance Basic Container
  *
  * ```typescript
@@ -55,6 +56,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Workbench Instance Basic Gpu
  *
  * ```typescript
@@ -103,6 +105,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [gpuReservation],
  * });
  * ```
+ *
  * ### Workbench Instance Labels Stopped
  *
  * ```typescript
@@ -135,6 +138,7 @@ import * as utilities from "../utilities";
  *     desiredState: "STOPPED",
  * });
  * ```
+ *
  * ### Workbench Instance Full
  *
  * ```typescript
@@ -263,6 +267,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Workbench Instance Confidential Compute
  *
  * ```typescript
@@ -288,6 +293,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Workbench Instance Euc
  *
  * ```typescript

@@ -55,6 +55,7 @@ import * as utilities from "../utilities";
  *     peerNetwork: networkPrimary.id,
  * });
  * ```
+ *
  * ### Network Peering Routes Config Gke Peered Vpc
  *
  * ```typescript

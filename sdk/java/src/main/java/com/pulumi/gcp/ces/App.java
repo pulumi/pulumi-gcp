@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var fakePrivateKeySecret = new Secret("fakePrivateKeySecret", SecretArgs.builder()
- *             .secretId("fake-pk-secret-app-tf1")
+ *             .secretId("fake-pk-secret-app-tf")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto(SecretReplicationAutoArgs.builder()
  *                     .build())
@@ -194,6 +194,7 @@ import javax.annotation.Nullable;
  *             .modelSettings(AppModelSettingsArgs.builder()
  *                 .model("gemini-3.0-flash-001")
  *                 .temperature(0.5)
+ *                 .thinkingLevel("LOW")
  *                 .build())
  *             .evaluationMetricsThresholds(AppEvaluationMetricsThresholdsArgs.builder()
  *                 .goldenEvaluationMetricsThresholds(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs.builder()
@@ -314,6 +315,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Ces App Ambient Sound Gcs Uri
  * 
  * <pre>

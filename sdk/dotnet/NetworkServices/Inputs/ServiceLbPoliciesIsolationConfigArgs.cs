@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
     public sealed class ServiceLbPoliciesIsolationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// The isolation granularity of the load balancer.
         /// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
         /// </summary>
@@ -20,6 +21,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public Input<string>? IsolationGranularity { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The isolation mode of the load balancer.
         /// Default value is `NEAREST`.
         /// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.

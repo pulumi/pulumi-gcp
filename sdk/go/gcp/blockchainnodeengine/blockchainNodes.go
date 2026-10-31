@@ -66,6 +66,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Blockchain Nodes Geth Details
 //
 // ```go
@@ -113,6 +114,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Blockchain Nodes Beacon Fee Recipient
 //
 // ```go

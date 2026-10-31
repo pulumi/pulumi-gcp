@@ -63,6 +63,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Machine Image Kms
     /// 
     /// ```csharp
@@ -117,6 +118,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Machine Image Resource Manager Tags
     /// 
     /// ```csharp

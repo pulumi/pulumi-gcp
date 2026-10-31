@@ -59,6 +59,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Address With Subnetwork
 //
 // ```go
@@ -103,6 +104,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Address With Gce Endpoint
 //
 // ```go
@@ -130,6 +132,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Instance With Ip
 //
 // ```go
@@ -185,6 +188,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Compute Address Ipsec Interconnect
 //
 // ```go
@@ -222,6 +226,7 @@ import (
 //	}
 //
 // ```
+//
 // ## Import
 //
 // Address can be imported using any of these accepted formats:
@@ -328,6 +333,9 @@ type Address struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
+	// * SYSTEM_MANAGED for regional internal IP address that is reserved and
+	//   managed internally. It can not be assigned to compute resources such as
+	//   VM and internal load balancer.
 	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The Region in which the created address should reside.
@@ -338,7 +346,8 @@ type Address struct {
 	// The URL of the subnetwork in which to reserve the address. If an IP
 	// address is specified, it must be within the subnetwork's IP range.
 	// This field can only be used with INTERNAL type with
-	// GCE_ENDPOINT/DNS_RESOLVER purposes.
+	// GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+	// when `ipv6EndpointType` is `VM` or `NETLB`.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 	// The URLs of the resources that are using this address.
 	Users pulumi.StringArrayOutput `pulumi:"users"`
@@ -465,6 +474,9 @@ type addressState struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
+	// * SYSTEM_MANAGED for regional internal IP address that is reserved and
+	//   managed internally. It can not be assigned to compute resources such as
+	//   VM and internal load balancer.
 	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
@@ -475,7 +487,8 @@ type addressState struct {
 	// The URL of the subnetwork in which to reserve the address. If an IP
 	// address is specified, it must be within the subnetwork's IP range.
 	// This field can only be used with INTERNAL type with
-	// GCE_ENDPOINT/DNS_RESOLVER purposes.
+	// GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+	// when `ipv6EndpointType` is `VM` or `NETLB`.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The URLs of the resources that are using this address.
 	Users []string `pulumi:"users"`
@@ -568,6 +581,9 @@ type AddressState struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
+	// * SYSTEM_MANAGED for regional internal IP address that is reserved and
+	//   managed internally. It can not be assigned to compute resources such as
+	//   VM and internal load balancer.
 	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
@@ -578,7 +594,8 @@ type AddressState struct {
 	// The URL of the subnetwork in which to reserve the address. If an IP
 	// address is specified, it must be within the subnetwork's IP range.
 	// This field can only be used with INTERNAL type with
-	// GCE_ENDPOINT/DNS_RESOLVER purposes.
+	// GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+	// when `ipv6EndpointType` is `VM` or `NETLB`.
 	Subnetwork pulumi.StringPtrInput
 	// The URLs of the resources that are using this address.
 	Users pulumi.StringArrayInput
@@ -663,6 +680,9 @@ type addressArgs struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
+	// * SYSTEM_MANAGED for regional internal IP address that is reserved and
+	//   managed internally. It can not be assigned to compute resources such as
+	//   VM and internal load balancer.
 	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
@@ -671,7 +691,8 @@ type addressArgs struct {
 	// The URL of the subnetwork in which to reserve the address. If an IP
 	// address is specified, it must be within the subnetwork's IP range.
 	// This field can only be used with INTERNAL type with
-	// GCE_ENDPOINT/DNS_RESOLVER purposes.
+	// GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+	// when `ipv6EndpointType` is `VM` or `NETLB`.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
 
@@ -751,6 +772,9 @@ type AddressArgs struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
+	// * SYSTEM_MANAGED for regional internal IP address that is reserved and
+	//   managed internally. It can not be assigned to compute resources such as
+	//   VM and internal load balancer.
 	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
@@ -759,7 +783,8 @@ type AddressArgs struct {
 	// The URL of the subnetwork in which to reserve the address. If an IP
 	// address is specified, it must be within the subnetwork's IP range.
 	// This field can only be used with INTERNAL type with
-	// GCE_ENDPOINT/DNS_RESOLVER purposes.
+	// GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+	// when `ipv6EndpointType` is `VM` or `NETLB`.
 	Subnetwork pulumi.StringPtrInput
 }
 
@@ -991,6 +1016,9 @@ func (o AddressOutput) PulumiLabels() pulumi.StringMapOutput {
 //   - PRIVATE_SERVICE_CONNECT for a private network address that is used to
 //     configure Private Service Connect. Only global internal addresses can use
 //     this purpose.
+//   - SYSTEM_MANAGED for regional internal IP address that is reserved and
+//     managed internally. It can not be assigned to compute resources such as
+//     VM and internal load balancer.
 //     This should only be set when using an Internal address.
 func (o AddressOutput) Purpose() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Purpose }).(pulumi.StringOutput)
@@ -1010,7 +1038,8 @@ func (o AddressOutput) SelfLink() pulumi.StringOutput {
 // The URL of the subnetwork in which to reserve the address. If an IP
 // address is specified, it must be within the subnetwork's IP range.
 // This field can only be used with INTERNAL type with
-// GCE_ENDPOINT/DNS_RESOLVER purposes.
+// GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+// when `ipv6EndpointType` is `VM` or `NETLB`.
 func (o AddressOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
 }

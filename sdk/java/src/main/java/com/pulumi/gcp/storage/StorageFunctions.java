@@ -31,6 +31,8 @@ import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArg
 import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceFindingsSummaryArgs;
 import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceFindingsSummaryPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectFeatureConfigArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectFeatureConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingArgs;
@@ -66,6 +68,7 @@ import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceFindingsSummaryResult;
 import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceFindingsSummaryResult;
+import com.pulumi.gcp.storage.outputs.GetControlProjectFeatureConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingRevisionResult;
@@ -2650,6 +2653,221 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetControlOrganizationIntelligenceFindingsSummaryResult> getControlOrganizationIntelligenceFindingsSummaryPlain(GetControlOrganizationIntelligenceFindingsSummaryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getControlOrganizationIntelligenceFindingsSummary:getControlOrganizationIntelligenceFindingsSummary", TypeShape.of(GetControlOrganizationIntelligenceFindingsSummaryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Cloud Storage Control ProjectFeatureConfig.
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectFeatureConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getControlProjectFeatureConfig(GetControlProjectFeatureConfigArgs.builder()
+     *             .featureConfigId(example.get("featureConfigId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectFeatureConfigResult> getControlProjectFeatureConfig(GetControlProjectFeatureConfigArgs args) {
+        return getControlProjectFeatureConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Cloud Storage Control ProjectFeatureConfig.
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectFeatureConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getControlProjectFeatureConfig(GetControlProjectFeatureConfigArgs.builder()
+     *             .featureConfigId(example.get("featureConfigId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectFeatureConfigResult> getControlProjectFeatureConfigPlain(GetControlProjectFeatureConfigPlainArgs args) {
+        return getControlProjectFeatureConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Cloud Storage Control ProjectFeatureConfig.
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectFeatureConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getControlProjectFeatureConfig(GetControlProjectFeatureConfigArgs.builder()
+     *             .featureConfigId(example.get("featureConfigId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectFeatureConfigResult> getControlProjectFeatureConfig(GetControlProjectFeatureConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectFeatureConfig:getControlProjectFeatureConfig", TypeShape.of(GetControlProjectFeatureConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Cloud Storage Control ProjectFeatureConfig.
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectFeatureConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getControlProjectFeatureConfig(GetControlProjectFeatureConfigArgs.builder()
+     *             .featureConfigId(example.get("featureConfigId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectFeatureConfigResult> getControlProjectFeatureConfig(GetControlProjectFeatureConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectFeatureConfig:getControlProjectFeatureConfig", TypeShape.of(GetControlProjectFeatureConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Cloud Storage Control ProjectFeatureConfig.
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectFeatureConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getControlProjectFeatureConfig(GetControlProjectFeatureConfigArgs.builder()
+     *             .featureConfigId(example.get("featureConfigId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectFeatureConfigResult> getControlProjectFeatureConfigPlain(GetControlProjectFeatureConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectFeatureConfig:getControlProjectFeatureConfig", TypeShape.of(GetControlProjectFeatureConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a Cloud Storage Control ProjectIntelligenceConfig.

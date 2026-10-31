@@ -294,6 +294,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Postgresql
     /// 
     /// ```csharp
@@ -437,6 +438,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Oracle
     /// 
     /// ```csharp
@@ -580,6 +582,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Sql Server
     /// 
     /// ```csharp
@@ -721,6 +724,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Sql Server Change Tables
     /// 
     /// ```csharp
@@ -862,6 +866,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Mysql Gtid
     /// 
     /// ```csharp
@@ -1003,6 +1008,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Postgresql Bigquery Dataset Id
     /// 
     /// ```csharp
@@ -1133,6 +1139,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Bigquery
     /// 
     /// ```csharp
@@ -1275,6 +1282,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Bigquery Cross Project Source Hierachy
     /// 
     /// ```csharp
@@ -1449,6 +1457,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Bigquery Append Only
     /// 
     /// ```csharp
@@ -1576,6 +1585,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Bigquery Blmt
     /// 
     /// ```csharp
@@ -1736,6 +1746,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Rule Sets Bigquery
     /// 
     /// ```csharp
@@ -1862,6 +1873,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Mongodb
     /// 
     /// ```csharp

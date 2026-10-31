@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Multi Region
  * 
  * <pre>
@@ -104,6 +105,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Docker
  * 
  * <pre>
@@ -143,6 +145,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Cmek
  * 
  * <pre>
@@ -195,6 +198,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Virtual
  * 
  * <pre>
@@ -260,6 +264,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote
  * 
  * <pre>
@@ -304,6 +309,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Connector
  * 
  * <pre>
@@ -392,6 +398,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote Apt
  * 
  * <pre>
@@ -440,6 +447,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote Yum
  * 
  * <pre>
@@ -488,6 +496,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Cleanup
  * 
  * <pre>
@@ -576,6 +585,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote Dockerhub Auth
  * 
  * <pre>
@@ -661,6 +671,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote Docker Custom With Auth
  * 
  * <pre>
@@ -749,6 +760,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote Maven Custom With Auth
  * 
  * <pre>
@@ -837,6 +849,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote Npm Custom With Auth
  * 
  * <pre>
@@ -925,6 +938,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote Python Custom With Auth
  * 
  * <pre>
@@ -1013,6 +1027,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote Common Repository With Docker
  * 
  * <pre>
@@ -1064,6 +1079,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
  * 
  * <pre>
@@ -1123,6 +1139,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Remote Common Repository With Custom Upstream
  * 
  * <pre>
@@ -1208,6 +1225,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Artifact Registry Repository Vulnerability Scanning
  * 
  * <pre>

@@ -70,6 +70,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Logging Saved Query Private
  * 
  * <pre>
@@ -111,6 +112,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Logging Saved Query Summary Fields
  * 
  * <pre>
@@ -161,6 +163,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Logging Saved Query Sql Basic
  * 
  * <pre>

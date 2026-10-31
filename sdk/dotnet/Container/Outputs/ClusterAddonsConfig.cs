@@ -120,6 +120,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
         /// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
         /// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+        /// `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? ParallelstoreCsiDriverConfig;
         /// <summary>

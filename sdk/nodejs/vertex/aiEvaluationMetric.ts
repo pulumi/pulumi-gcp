@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
+ *
  * ### Vertex Ai Evaluation Metric Full
  *
  * ```typescript

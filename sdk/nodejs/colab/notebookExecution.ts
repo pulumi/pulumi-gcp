@@ -93,6 +93,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Colab Notebook Execution Custom Env
  *
  * ```typescript
@@ -185,6 +186,162 @@ import * as utilities from "../utilities";
  *     dependsOn: [outputBucket],
  * });
  * ```
+ *
+ * ### Colab Notebook Execution Workbench Runtime Custom Container
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const outputBucket = new gcp.storage.Bucket("output_bucket", {
+ *     name: "my_bucket",
+ *     location: "US",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const notebook_execution = new gcp.colab.NotebookExecution("notebook-execution", {
+ *     displayName: "Notebook execution workbench runtime custom container",
+ *     location: "us-central1",
+ *     directNotebookSource: {
+ *         content: std.base64encode({
+ *             input: `    {
+ *       \\"cells\\": [
+ *         {
+ *           \\"cell_type\\": \\"code\\",
+ *           \\"execution_count\\": null,
+ *           \\"metadata\\": {},
+ *           \\"outputs\\": [],
+ *           \\"source\\": [
+ *             \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+ *           ]
+ *         }
+ *       ],
+ *       \\"metadata\\": {
+ *         \\"kernelspec\\": {
+ *           \\"display_name\\": \\"Python 3\\",
+ *           \\"language\\": \\"python\\",
+ *           \\"name\\": \\"python3\\"
+ *         },
+ *         \\"language_info\\": {
+ *           \\"codemirror_mode\\": {
+ *             \\"name\\": \\"ipython\\",
+ *             \\"version\\": 3
+ *           },
+ *           \\"file_extension\\": \\".py\\",
+ *           \\"mimetype\\": \\"text/x-python\\",
+ *           \\"name\\": \\"python\\",
+ *           \\"nbconvert_exporter\\": \\"python\\",
+ *           \\"pygments_lexer\\": \\"ipython3\\",
+ *           \\"version\\": \\"3.8.5\\"
+ *         }
+ *       },
+ *       \\"nbformat\\": 4,
+ *       \\"nbformat_minor\\": 4
+ *     }
+ * `,
+ *         }).then(invoke => invoke.result),
+ *     },
+ *     customEnvironmentSpec: {
+ *         machineSpec: {
+ *             machineType: "n1-standard-2",
+ *         },
+ *         persistentDiskSpec: {
+ *             diskType: "pd-ssd",
+ *             diskSizeGb: "100",
+ *         },
+ *     },
+ *     workbenchRuntime: {
+ *         customContainerImage: {
+ *             repository: "gcr.io/deeplearning-platform-release/base-cpu",
+ *             tag: "latest",
+ *         },
+ *     },
+ *     kernelName: "python3",
+ *     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
+ *     serviceAccount: "my@service-account.com",
+ * }, {
+ *     dependsOn: [outputBucket],
+ * });
+ * ```
+ *
+ * ### Colab Notebook Execution Workbench Runtime Custom Container No Tag
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const outputBucket = new gcp.storage.Bucket("output_bucket", {
+ *     name: "my_bucket",
+ *     location: "US",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const notebook_execution = new gcp.colab.NotebookExecution("notebook-execution", {
+ *     displayName: "Notebook execution workbench runtime custom container no tag",
+ *     location: "us-central1",
+ *     directNotebookSource: {
+ *         content: std.base64encode({
+ *             input: `    {
+ *       \\"cells\\": [
+ *         {
+ *           \\"cell_type\\": \\"code\\",
+ *           \\"execution_count\\": null,
+ *           \\"metadata\\": {},
+ *           \\"outputs\\": [],
+ *           \\"source\\": [
+ *             \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+ *           ]
+ *         }
+ *       ],
+ *       \\"metadata\\": {
+ *         \\"kernelspec\\": {
+ *           \\"display_name\\": \\"Python 3\\",
+ *           \\"language\\": \\"python\\",
+ *           \\"name\\": \\"python3\\"
+ *         },
+ *         \\"language_info\\": {
+ *           \\"codemirror_mode\\": {
+ *             \\"name\\": \\"ipython\\",
+ *             \\"version\\": 3
+ *           },
+ *           \\"file_extension\\": \\".py\\",
+ *           \\"mimetype\\": \\"text/x-python\\",
+ *           \\"name\\": \\"python\\",
+ *           \\"nbconvert_exporter\\": \\"python\\",
+ *           \\"pygments_lexer\\": \\"ipython3\\",
+ *           \\"version\\": \\"3.8.5\\"
+ *         }
+ *       },
+ *       \\"nbformat\\": 4,
+ *       \\"nbformat_minor\\": 4
+ *     }
+ * `,
+ *         }).then(invoke => invoke.result),
+ *     },
+ *     customEnvironmentSpec: {
+ *         machineSpec: {
+ *             machineType: "n1-standard-2",
+ *         },
+ *         persistentDiskSpec: {
+ *             diskType: "pd-ssd",
+ *             diskSizeGb: "100",
+ *         },
+ *     },
+ *     workbenchRuntime: {
+ *         customContainerImage: {
+ *             repository: "gcr.io/deeplearning-platform-release/base-cpu",
+ *         },
+ *     },
+ *     kernelName: "python3",
+ *     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
+ *     serviceAccount: "my@service-account.com",
+ * }, {
+ *     dependsOn: [outputBucket],
+ * });
+ * ```
+ *
  * ### Colab Notebook Execution Workbench Runtime Vm
  *
  * ```typescript
@@ -261,6 +418,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [outputBucket],
  * });
  * ```
+ *
  * ### Colab Notebook Execution Workbench Runtime Vm Name
  *
  * ```typescript
@@ -337,6 +495,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [outputBucket],
  * });
  * ```
+ *
  * ### Colab Notebook Execution Full
  *
  * ```typescript
@@ -419,6 +578,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Colab Notebook Execution Dataform
  *
  * ```typescript
@@ -582,6 +742,10 @@ export class NotebookExecution extends pulumi.CustomResource {
      */
     declare public readonly gcsOutputUri: pulumi.Output<string>;
     /**
+     * The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+     */
+    declare public readonly kernelName: pulumi.Output<string | undefined>;
+    /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
     declare public readonly location: pulumi.Output<string>;
@@ -630,6 +794,7 @@ export class NotebookExecution extends pulumi.CustomResource {
             resourceInputs["executionUser"] = state?.executionUser;
             resourceInputs["gcsNotebookSource"] = state?.gcsNotebookSource;
             resourceInputs["gcsOutputUri"] = state?.gcsOutputUri;
+            resourceInputs["kernelName"] = state?.kernelName;
             resourceInputs["location"] = state?.location;
             resourceInputs["notebookExecutionJobId"] = state?.notebookExecutionJobId;
             resourceInputs["notebookRuntimeTemplateResourceName"] = state?.notebookRuntimeTemplateResourceName;
@@ -656,6 +821,7 @@ export class NotebookExecution extends pulumi.CustomResource {
             resourceInputs["executionUser"] = args?.executionUser;
             resourceInputs["gcsNotebookSource"] = args?.gcsNotebookSource;
             resourceInputs["gcsOutputUri"] = args?.gcsOutputUri;
+            resourceInputs["kernelName"] = args?.kernelName;
             resourceInputs["location"] = args?.location;
             resourceInputs["notebookExecutionJobId"] = args?.notebookExecutionJobId;
             resourceInputs["notebookRuntimeTemplateResourceName"] = args?.notebookRuntimeTemplateResourceName;
@@ -717,6 +883,10 @@ export interface NotebookExecutionState {
      * The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
      */
     gcsOutputUri?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+     */
+    kernelName?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
@@ -794,6 +964,10 @@ export interface NotebookExecutionArgs {
      * The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
      */
     gcsOutputUri: pulumi.Input<string>;
+    /**
+     * The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+     */
+    kernelName?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */

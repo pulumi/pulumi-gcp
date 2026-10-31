@@ -513,6 +513,7 @@ class ConnectionProfileMongodbProfileArgsDict(TypedDict):
     """
     A reference to a Secret Manager resource name storing the MongoDB
     connection password. Mutually exclusive with password.
+    **Note**: This property is sensitive and will not be displayed in the plan.
     """
     srv_connection_format: NotRequired[pulumi.Input[Optional['ConnectionProfileMongodbProfileSrvConnectionFormatArgsDict']]]
     """
@@ -556,6 +557,7 @@ class ConnectionProfileMongodbProfileArgs:
         :param pulumi.Input[_builtins.str] replica_set: Name of the replica set.
         :param pulumi.Input[_builtins.str] secret_manager_stored_password: A reference to a Secret Manager resource name storing the MongoDB
                connection password. Mutually exclusive with password.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input['ConnectionProfileMongodbProfileSrvConnectionFormatArgs'] srv_connection_format: Srv connection format. Mutually exclusive with
                standard_connection_Format.
         :param pulumi.Input['ConnectionProfileMongodbProfileSslConfigArgs'] ssl_config: SSL configuration for the MongoDB connection.
@@ -652,6 +654,7 @@ class ConnectionProfileMongodbProfileArgs:
         """
         A reference to a Secret Manager resource name storing the MongoDB
         connection password. Mutually exclusive with password.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret_manager_stored_password")
 

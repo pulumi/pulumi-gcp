@@ -58,6 +58,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Full Profile
 //
 // ```go
@@ -133,6 +134,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Onetime Profile
 //
 // ```go
@@ -171,6 +173,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Basic Quality
 //
 // ```go
@@ -218,6 +221,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Full Quality
 //
 // ```go
@@ -356,6 +360,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Onetime Quality
 //
 // ```go
@@ -405,6 +410,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Basic Discovery
 //
 // ```go
@@ -456,6 +462,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Full Discovery
 //
 // ```go
@@ -560,6 +567,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Onetime Discovery
 //
 // ```go
@@ -613,6 +621,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Documentation
 //
 // ```go
@@ -631,7 +640,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__10719"),
+//				DatasetId:                pulumi.String("tf_test_dataplex_dataset_id__10719"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -639,7 +648,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__1443"),
+//				TableId:            pulumi.String("tf_test_dataplex_table_id__1443"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -726,6 +735,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Onetime Documentation
 //
 // ```go
@@ -744,7 +754,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__26032"),
+//				DatasetId:                pulumi.String("tf_test_dataplex_dataset_id__26032"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -752,7 +762,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__8647"),
+//				TableId:            pulumi.String("tf_test_dataplex_table_id__8647"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -838,6 +848,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Execution Identity User Credential
 //
 // ```go
@@ -919,6 +930,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Execution Identity Service Account
 //
 // ```go
@@ -1061,6 +1073,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Quality Reusable Rules Catalog Based
 //
 // ```go
@@ -1160,7 +1173,7 @@ import (
 //			}
 //			testGroup, err := dataplex.NewEntryGroup(ctx, "test_group", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
-//				EntryGroupId: pulumi.String("test-group-_25141"),
+//				EntryGroupId: pulumi.String("tf-test-group-_25141"),
 //				Project:      pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
@@ -1189,7 +1202,7 @@ import (
 //			testEntry, err := dataplex.NewEntry(ctx, "test_entry", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: testGroup.EntryGroupId,
-//				EntryId:      pulumi.String("test-entry-_30827"),
+//				EntryId:      pulumi.String("tf-test-entry-_30827"),
 //				EntryType:    pulumi.String("projects/655216118709/locations/global/entryTypes/data-quality-rule-template"),
 //				Project:      pulumi.String(project.Number),
 //				Aspects: dataplex.EntryAspectArray{
@@ -1343,6 +1356,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Data Quality Template Reference
 //
 // ```go
@@ -1417,7 +1431,7 @@ import (
 //			}
 //			testGroup, err := dataplex.NewEntryGroup(ctx, "test_group", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
-//				EntryGroupId: pulumi.String("test-group-_16178"),
+//				EntryGroupId: pulumi.String("tf-test-group-_16178"),
 //				Project:      pulumi.String(project.ProjectId),
 //			})
 //			if err != nil {
@@ -1438,7 +1452,7 @@ import (
 //			testEntry, err := dataplex.NewEntry(ctx, "test_entry", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: testGroup.EntryGroupId,
-//				EntryId:      pulumi.String("test-entry-_26317"),
+//				EntryId:      pulumi.String("tf-test-entry-_26317"),
 //				EntryType:    pulumi.String("projects/655216118709/locations/global/entryTypes/data-quality-rule-template"),
 //				Project:      pulumi.String(project.Number),
 //				Aspects: dataplex.EntryAspectArray{

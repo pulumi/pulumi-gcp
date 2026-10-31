@@ -43,9 +43,14 @@ import (
 //				ResourcePools: vertex.AiPersistentResourceResourcePoolArray{
 //					&vertex.AiPersistentResourceResourcePoolArgs{
 //						MachineSpec: &vertex.AiPersistentResourceResourcePoolMachineSpecArgs{
-//							MachineType: pulumi.String("n1-standard-4"),
+//							MachineType: pulumi.String("n1-standard-8"),
 //						},
-//						ReplicaCount: pulumi.String("1"),
+//						ReplicaCount: pulumi.String("2"),
+//					},
+//				},
+//				ResourceRuntimeSpec: &vertex.AiPersistentResourceResourceRuntimeSpecArgs{
+//					RaySpec: &vertex.AiPersistentResourceResourceRuntimeSpecRaySpecArgs{
+//						ImageUri: pulumi.String("us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest"),
 //					},
 //				},
 //			})
@@ -57,6 +62,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Persistent Resource Autoscaling
 //
 // ```go
@@ -96,6 +102,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Persistent Resource Machine Spec
 //
 // ```go
@@ -136,6 +143,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Persistent Resource Network
 //
 // ```go

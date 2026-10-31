@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scan Config Ignore Http Status Errors
     /// 
     /// ```csharp
@@ -102,6 +103,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scan Config Static Ip
     /// 
     /// ```csharp

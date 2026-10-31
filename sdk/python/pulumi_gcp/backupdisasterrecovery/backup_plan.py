@@ -596,6 +596,7 @@ class BackupPlan(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Backup Dr Backup Plan For Disk Resource
 
         ```python
@@ -629,6 +630,7 @@ class BackupPlan(pulumi.CustomResource):
                 "guest_flush": True,
             })
         ```
+
         ### Backup Dr Backup Plan For Csql Resource
 
         ```python
@@ -660,6 +662,7 @@ class BackupPlan(pulumi.CustomResource):
             }],
             log_retention_days=4)
         ```
+
         ### Backup Dr Backup Plan For Filestore Resource
 
         ```python
@@ -779,6 +782,7 @@ class BackupPlan(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Backup Dr Backup Plan For Disk Resource
 
         ```python
@@ -812,6 +816,7 @@ class BackupPlan(pulumi.CustomResource):
                 "guest_flush": True,
             })
         ```
+
         ### Backup Dr Backup Plan For Csql Resource
 
         ```python
@@ -843,6 +848,7 @@ class BackupPlan(pulumi.CustomResource):
             }],
             log_retention_days=4)
         ```
+
         ### Backup Dr Backup Plan For Filestore Resource
 
         ```python

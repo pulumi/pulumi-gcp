@@ -741,6 +741,7 @@ class Organization(pulumi.CustomResource):
             authorized_network=apigee_network.id,
             opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         ```
+
         ### Apigee Organization Cloud Basic Disable Vpc Peering
 
         ```python
@@ -754,6 +755,7 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             disable_vpc_peering=True)
         ```
+
         ### Apigee Organization Cloud Basic Data Residency
 
         ```python
@@ -768,6 +770,7 @@ class Organization(pulumi.CustomResource):
             billing_type="PAYG",
             disable_vpc_peering=True)
         ```
+
         ### Apigee Organization Cloud Full
 
         ```python
@@ -811,6 +814,7 @@ class Organization(pulumi.CustomResource):
                     apigee_sa_keyuser,
                 ]))
         ```
+
         ### Apigee Organization Cloud Full Disable Vpc Peering
 
         ```python
@@ -941,6 +945,7 @@ class Organization(pulumi.CustomResource):
             authorized_network=apigee_network.id,
             opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         ```
+
         ### Apigee Organization Cloud Basic Disable Vpc Peering
 
         ```python
@@ -954,6 +959,7 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             disable_vpc_peering=True)
         ```
+
         ### Apigee Organization Cloud Basic Data Residency
 
         ```python
@@ -968,6 +974,7 @@ class Organization(pulumi.CustomResource):
             billing_type="PAYG",
             disable_vpc_peering=True)
         ```
+
         ### Apigee Organization Cloud Full
 
         ```python
@@ -1011,6 +1018,7 @@ class Organization(pulumi.CustomResource):
                     apigee_sa_keyuser,
                 ]))
         ```
+
         ### Apigee Organization Cloud Full Disable Vpc Peering
 
         ```python

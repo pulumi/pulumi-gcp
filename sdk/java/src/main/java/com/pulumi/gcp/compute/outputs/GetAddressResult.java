@@ -16,6 +16,11 @@ public final class GetAddressResult {
      * 
      */
     private String address;
+    /**
+     * @return The numeric ID of the created resource.
+     * 
+     */
+    private String addressId;
     private String addressType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -49,6 +54,13 @@ public final class GetAddressResult {
      */
     public String address() {
         return this.address;
+    }
+    /**
+     * @return The numeric ID of the created resource.
+     * 
+     */
+    public String addressId() {
+        return this.addressId;
     }
     public String addressType() {
         return this.addressType;
@@ -112,6 +124,7 @@ public final class GetAddressResult {
     @CustomType.Builder
     public static final class Builder {
         private String address;
+        private String addressId;
         private String addressType;
         private String id;
         private String name;
@@ -129,6 +142,7 @@ public final class GetAddressResult {
         public Builder(GetAddressResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
+    	      this.addressId = defaults.addressId;
     	      this.addressType = defaults.addressType;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -150,6 +164,14 @@ public final class GetAddressResult {
               throw new MissingRequiredPropertyException("GetAddressResult", "address");
             }
             this.address = address;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder addressId(String addressId) {
+            if (addressId == null) {
+              throw new MissingRequiredPropertyException("GetAddressResult", "addressId");
+            }
+            this.addressId = addressId;
             return this;
         }
         @CustomType.Setter
@@ -259,6 +281,7 @@ public final class GetAddressResult {
         public GetAddressResult build() {
             final var _resultValue = new GetAddressResult();
             _resultValue.address = address;
+            _resultValue.addressId = addressId;
             _resultValue.addressType = addressType;
             _resultValue.id = id;
             _resultValue.name = name;

@@ -104,6 +104,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Data Lineage Config Folder
  * 
  * <pre>
@@ -178,6 +179,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Data Lineage Config Organization
  * 
  * <pre>

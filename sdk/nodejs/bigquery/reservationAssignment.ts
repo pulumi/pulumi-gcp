@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -95,7 +97,7 @@ export class ReservationAssignment extends pulumi.CustomResource {
     /**
      * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      */
-    declare public readonly jobType: pulumi.Output<string>;
+    declare public readonly jobType: pulumi.Output<string | undefined>;
     /**
      * The location for the resource
      */
@@ -121,6 +123,14 @@ export class ReservationAssignment extends pulumi.CustomResource {
      * The reservation for the resource
      */
     declare public readonly reservation: pulumi.Output<string>;
+    /**
+     * The scheduling policy to use for jobs and queries of this assignee when
+     * running under the associated reservation. The scheduling policy controls
+     * how the reservation's resources are distributed. This overrides the default
+     * scheduling policy specified on the reservation.
+     * Structure is documented below.
+     */
+    declare public readonly schedulingPolicy: pulumi.Output<outputs.bigquery.ReservationAssignmentSchedulingPolicy | undefined>;
     /**
      * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
      * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
@@ -148,14 +158,12 @@ export class ReservationAssignment extends pulumi.CustomResource {
             resourceInputs["principal"] = state?.principal;
             resourceInputs["project"] = state?.project;
             resourceInputs["reservation"] = state?.reservation;
+            resourceInputs["schedulingPolicy"] = state?.schedulingPolicy;
             resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as ReservationAssignmentArgs | undefined;
             if (args?.assignee === undefined && !opts.urn) {
                 throw new Error("Missing required property 'assignee'");
-            }
-            if (args?.jobType === undefined && !opts.urn) {
-                throw new Error("Missing required property 'jobType'");
             }
             if (args?.reservation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'reservation'");
@@ -167,6 +175,7 @@ export class ReservationAssignment extends pulumi.CustomResource {
             resourceInputs["principal"] = args?.principal;
             resourceInputs["project"] = args?.project;
             resourceInputs["reservation"] = args?.reservation;
+            resourceInputs["schedulingPolicy"] = args?.schedulingPolicy;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
@@ -222,6 +231,14 @@ export interface ReservationAssignmentState {
      */
     reservation?: pulumi.Input<string | undefined>;
     /**
+     * The scheduling policy to use for jobs and queries of this assignee when
+     * running under the associated reservation. The scheduling policy controls
+     * how the reservation's resources are distributed. This overrides the default
+     * scheduling policy specified on the reservation.
+     * Structure is documented below.
+     */
+    schedulingPolicy?: pulumi.Input<inputs.bigquery.ReservationAssignmentSchedulingPolicy | undefined>;
+    /**
      * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
      * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      */
@@ -248,7 +265,7 @@ export interface ReservationAssignmentArgs {
     /**
      * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      */
-    jobType: pulumi.Input<string>;
+    jobType?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource
      */
@@ -270,4 +287,12 @@ export interface ReservationAssignmentArgs {
      * The reservation for the resource
      */
     reservation: pulumi.Input<string>;
+    /**
+     * The scheduling policy to use for jobs and queries of this assignee when
+     * running under the associated reservation. The scheduling policy controls
+     * how the reservation's resources are distributed. This overrides the default
+     * scheduling policy specified on the reservation.
+     * Structure is documented below.
+     */
+    schedulingPolicy?: pulumi.Input<inputs.bigquery.ReservationAssignmentSchedulingPolicy | undefined>;
 }

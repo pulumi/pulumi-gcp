@@ -298,6 +298,7 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
             location=basic.location,
             template_id=basic.template_id)
         ```
+
         ### Firebaseailogic Prompt Template Lock Global Only
 
         ```python
@@ -385,6 +386,7 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
             location=basic.location,
             template_id=basic.template_id)
         ```
+
         ### Firebaseailogic Prompt Template Lock Global Only
 
         ```python

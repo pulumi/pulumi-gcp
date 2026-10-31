@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     type: "CLOUD_ARMOR",
  * });
  * ```
+ *
  * ### Region Security Policy With Ddos Protection Config
  *
  * ```typescript
@@ -44,6 +45,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Security Policy With User Defined Fields
  *
  * ```typescript
@@ -72,6 +74,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Region Security Policy With Rules
  *
  * ```typescript
@@ -106,6 +109,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Region Security Policy With Body Exclude
  *
  * ```typescript
@@ -180,7 +184,7 @@ import * as utilities from "../utilities";
  *     name: "backendpolicy",
  *     machineType: "e2-micro",
  *     disks: [{
- *         sourceImage: "projects/debian-cloud/global/images/family/debian-11",
+ *         sourceImage: "projects/debian-cloud/global/images/family/debian-13",
  *         autoDelete: true,
  *         boot: true,
  *     }],
@@ -208,6 +212,7 @@ import * as utilities from "../utilities";
  *     securityPolicy: policyRuleOne.id,
  * });
  * ```
+ *
  * ### Region Security Policy Request Body Expression
  *
  * ```typescript

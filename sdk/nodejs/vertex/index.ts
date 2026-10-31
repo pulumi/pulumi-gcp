@@ -15,6 +15,11 @@ export type AiCacheConfig = import("./aiCacheConfig").AiCacheConfig;
 export const AiCacheConfig: typeof import("./aiCacheConfig").AiCacheConfig = null as any;
 utilities.lazyLoad(exports, ["AiCacheConfig"], () => require("./aiCacheConfig"));
 
+export { AiCustomJobArgs, AiCustomJobState } from "./aiCustomJob";
+export type AiCustomJob = import("./aiCustomJob").AiCustomJob;
+export const AiCustomJob: typeof import("./aiCustomJob").AiCustomJob = null as any;
+utilities.lazyLoad(exports, ["AiCustomJob"], () => require("./aiCustomJob"));
+
 export { AiDatasetArgs, AiDatasetState } from "./aiDataset";
 export type AiDataset = import("./aiDataset").AiDataset;
 export const AiDataset: typeof import("./aiDataset").AiDataset = null as any;
@@ -185,6 +190,11 @@ export type AiMetadataStore = import("./aiMetadataStore").AiMetadataStore;
 export const AiMetadataStore: typeof import("./aiMetadataStore").AiMetadataStore = null as any;
 utilities.lazyLoad(exports, ["AiMetadataStore"], () => require("./aiMetadataStore"));
 
+export { AiModelDevelopmentClusterArgs, AiModelDevelopmentClusterState } from "./aiModelDevelopmentCluster";
+export type AiModelDevelopmentCluster = import("./aiModelDevelopmentCluster").AiModelDevelopmentCluster;
+export const AiModelDevelopmentCluster: typeof import("./aiModelDevelopmentCluster").AiModelDevelopmentCluster = null as any;
+utilities.lazyLoad(exports, ["AiModelDevelopmentCluster"], () => require("./aiModelDevelopmentCluster"));
+
 export { AiModelGardenEnableModelArgs, AiModelGardenEnableModelState } from "./aiModelGardenEnableModel";
 export type AiModelGardenEnableModel = import("./aiModelGardenEnableModel").AiModelGardenEnableModel;
 export const AiModelGardenEnableModel: typeof import("./aiModelGardenEnableModel").AiModelGardenEnableModel = null as any;
@@ -200,6 +210,11 @@ export type AiPersistentResource = import("./aiPersistentResource").AiPersistent
 export const AiPersistentResource: typeof import("./aiPersistentResource").AiPersistentResource = null as any;
 utilities.lazyLoad(exports, ["AiPersistentResource"], () => require("./aiPersistentResource"));
 
+export { AiPipelineJobArgs, AiPipelineJobState } from "./aiPipelineJob";
+export type AiPipelineJob = import("./aiPipelineJob").AiPipelineJob;
+export const AiPipelineJob: typeof import("./aiPipelineJob").AiPipelineJob = null as any;
+utilities.lazyLoad(exports, ["AiPipelineJob"], () => require("./aiPipelineJob"));
+
 export { AiRagCorpusArgs, AiRagCorpusState } from "./aiRagCorpus";
 export type AiRagCorpus = import("./aiRagCorpus").AiRagCorpus;
 export const AiRagCorpus: typeof import("./aiRagCorpus").AiRagCorpus = null as any;
@@ -209,6 +224,11 @@ export { AiRagEngineConfigArgs, AiRagEngineConfigState } from "./aiRagEngineConf
 export type AiRagEngineConfig = import("./aiRagEngineConfig").AiRagEngineConfig;
 export const AiRagEngineConfig: typeof import("./aiRagEngineConfig").AiRagEngineConfig = null as any;
 utilities.lazyLoad(exports, ["AiRagEngineConfig"], () => require("./aiRagEngineConfig"));
+
+export { AiRagFileArgs, AiRagFileState } from "./aiRagFile";
+export type AiRagFile = import("./aiRagFile").AiRagFile;
+export const AiRagFile: typeof import("./aiRagFile").AiRagFile = null as any;
+utilities.lazyLoad(exports, ["AiRagFile"], () => require("./aiRagFile"));
 
 export { AiReasoningEngineArgs, AiReasoningEngineState } from "./aiReasoningEngine";
 export type AiReasoningEngine = import("./aiReasoningEngine").AiReasoningEngine;
@@ -309,6 +329,8 @@ const _module = {
                 return new AiAgentAnomalyDetectionScope(name, <any>undefined, { urn })
             case "gcp:vertex/aiCacheConfig:AiCacheConfig":
                 return new AiCacheConfig(name, <any>undefined, { urn })
+            case "gcp:vertex/aiCustomJob:AiCustomJob":
+                return new AiCustomJob(name, <any>undefined, { urn })
             case "gcp:vertex/aiDataset:AiDataset":
                 return new AiDataset(name, <any>undefined, { urn })
             case "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool":
@@ -377,16 +399,22 @@ const _module = {
                 return new AiIndexEndpointDeployedIndex(name, <any>undefined, { urn })
             case "gcp:vertex/aiMetadataStore:AiMetadataStore":
                 return new AiMetadataStore(name, <any>undefined, { urn })
+            case "gcp:vertex/aiModelDevelopmentCluster:AiModelDevelopmentCluster":
+                return new AiModelDevelopmentCluster(name, <any>undefined, { urn })
             case "gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel":
                 return new AiModelGardenEnableModel(name, <any>undefined, { urn })
             case "gcp:vertex/aiOnlineEvaluator:AiOnlineEvaluator":
                 return new AiOnlineEvaluator(name, <any>undefined, { urn })
             case "gcp:vertex/aiPersistentResource:AiPersistentResource":
                 return new AiPersistentResource(name, <any>undefined, { urn })
+            case "gcp:vertex/aiPipelineJob:AiPipelineJob":
+                return new AiPipelineJob(name, <any>undefined, { urn })
             case "gcp:vertex/aiRagCorpus:AiRagCorpus":
                 return new AiRagCorpus(name, <any>undefined, { urn })
             case "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig":
                 return new AiRagEngineConfig(name, <any>undefined, { urn })
+            case "gcp:vertex/aiRagFile:AiRagFile":
+                return new AiRagFile(name, <any>undefined, { urn })
             case "gcp:vertex/aiReasoningEngine:AiReasoningEngine":
                 return new AiReasoningEngine(name, <any>undefined, { urn })
             case "gcp:vertex/aiReasoningEngineIamBinding:AiReasoningEngineIamBinding":
@@ -412,6 +440,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiAgentAnomalyDetectionScope", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiCacheConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiCustomJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDeploymentResourcePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpoint", _module)
@@ -446,11 +475,14 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpointDeployedIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiModelDevelopmentCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiModelGardenEnableModel", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiOnlineEvaluator", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiPersistentResource", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiPipelineJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagCorpus", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagEngineConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagFile", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamMember", _module)

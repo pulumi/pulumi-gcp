@@ -14,14 +14,23 @@ namespace Pulumi.Gcp.Gemini.Outputs
     public sealed class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq
     {
         /// <summary>
+        /// Optional. References to BigQuery property graphs.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReference> PropertyGraphReferences;
+        /// <summary>
         /// References to BigQuery tables.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference> TableReferences;
 
         [OutputConstructor]
-        private DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq(ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference> tableReferences)
+        private DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq(
+            ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReference> propertyGraphReferences,
+
+            ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference> tableReferences)
         {
+            PropertyGraphReferences = propertyGraphReferences;
             TableReferences = tableReferences;
         }
     }

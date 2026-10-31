@@ -529,6 +529,7 @@ class DataExchange(pulumi.CustomResource):
             display_name="my_data_exchange",
             description="example data exchange")
         ```
+
         ### Bigquery Analyticshub Data Exchange Dcr
 
         ```python
@@ -544,6 +545,7 @@ class DataExchange(pulumi.CustomResource):
                 "dcr_exchange_config": {},
             })
         ```
+
         ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
 
         ```python
@@ -557,6 +559,7 @@ class DataExchange(pulumi.CustomResource):
             description="Example for log email test for data exchange",
             log_linked_dataset_query_user_email=True)
         ```
+
         ### Bigquery Analyticshub Public Data Exchange
 
         ```python
@@ -643,6 +646,7 @@ class DataExchange(pulumi.CustomResource):
             display_name="my_data_exchange",
             description="example data exchange")
         ```
+
         ### Bigquery Analyticshub Data Exchange Dcr
 
         ```python
@@ -658,6 +662,7 @@ class DataExchange(pulumi.CustomResource):
                 "dcr_exchange_config": {},
             })
         ```
+
         ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
 
         ```python
@@ -671,6 +676,7 @@ class DataExchange(pulumi.CustomResource):
             description="Example for log email test for data exchange",
             log_linked_dataset_query_user_email=True)
         ```
+
         ### Bigquery Analyticshub Public Data Exchange
 
         ```python

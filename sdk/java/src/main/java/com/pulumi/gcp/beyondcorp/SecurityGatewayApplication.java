@@ -73,6 +73,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Beyondcorp Security Gateway Application Vpc
  * 
  * <pre>
@@ -140,6 +141,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Beyondcorp Security Gateway Application Spa Api
  * 
  * <pre>
@@ -196,6 +198,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Beyondcorp Security Gateway Application Spa Proxy
  * 
  * <pre>

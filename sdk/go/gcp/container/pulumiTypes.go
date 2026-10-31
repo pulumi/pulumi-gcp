@@ -10840,6 +10840,9 @@ type ClusterAddonsConfig struct {
 	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
 	// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
 	// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+	// `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+	//
+	// Deprecated: `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
 	ParallelstoreCsiDriverConfig *ClusterAddonsConfigParallelstoreCsiDriverConfig `pulumi:"parallelstoreCsiDriverConfig"`
 	// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
 	PodSnapshotConfig *ClusterAddonsConfigPodSnapshotConfig `pulumi:"podSnapshotConfig"`
@@ -10949,6 +10952,9 @@ type ClusterAddonsConfigArgs struct {
 	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
 	// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
 	// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+	// `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+	//
+	// Deprecated: `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
 	ParallelstoreCsiDriverConfig ClusterAddonsConfigParallelstoreCsiDriverConfigPtrInput `pulumi:"parallelstoreCsiDriverConfig"`
 	// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
 	PodSnapshotConfig ClusterAddonsConfigPodSnapshotConfigPtrInput `pulumi:"podSnapshotConfig"`
@@ -11181,6 +11187,9 @@ func (o ClusterAddonsConfigOutput) NodeReadinessConfig() ClusterAddonsConfigNode
 // It is disabled by default for Standard clusters; set `enabled = true` to enable.
 // It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
 // See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+// `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+//
+// Deprecated: `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
 func (o ClusterAddonsConfigOutput) ParallelstoreCsiDriverConfig() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigParallelstoreCsiDriverConfig {
 		return v.ParallelstoreCsiDriverConfig
@@ -11448,6 +11457,9 @@ func (o ClusterAddonsConfigPtrOutput) NodeReadinessConfig() ClusterAddonsConfigN
 // It is disabled by default for Standard clusters; set `enabled = true` to enable.
 // It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
 // See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+// `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+//
+// Deprecated: `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
 func (o ClusterAddonsConfigPtrOutput) ParallelstoreCsiDriverConfig() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigParallelstoreCsiDriverConfig {
 		if v == nil {
@@ -16573,7 +16585,7 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings struct {
 	MaxSurge *int `pulumi:"maxSurge"`
 	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
 	MaxUnavailable *int `pulumi:"maxUnavailable"`
-	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
 	Strategy *string `pulumi:"strategy"`
 }
 
@@ -16595,7 +16607,7 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs struct
 	MaxSurge pulumi.IntPtrInput `pulumi:"maxSurge"`
 	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
 	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
-	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
 	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
 }
 
@@ -16693,7 +16705,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) 
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
 }
 
-// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *string { return v.Strategy }).(pulumi.StringPtrOutput)
 }
@@ -16752,7 +16764,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *string {
 		if v == nil {
@@ -22669,7 +22681,13 @@ func (o ClusterManagedMachineLearningDiagnosticsConfigPtrOutput) Enabled() pulum
 }
 
 type ClusterManagedOpentelemetryConfig struct {
-	// The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+	// The scope of the Managed OpenTelemetry pipeline. Available options include:
+	// * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+	// * `NONE`: Disables the Managed OpenTelemetry pipeline.
+	//
+	// See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+	//
+	// > **Note:** Removing the `managedOpentelemetryConfig` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
 	Scope *string `pulumi:"scope"`
 }
 
@@ -22685,7 +22703,13 @@ type ClusterManagedOpentelemetryConfigInput interface {
 }
 
 type ClusterManagedOpentelemetryConfigArgs struct {
-	// The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+	// The scope of the Managed OpenTelemetry pipeline. Available options include:
+	// * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+	// * `NONE`: Disables the Managed OpenTelemetry pipeline.
+	//
+	// See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+	//
+	// > **Note:** Removing the `managedOpentelemetryConfig` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 }
 
@@ -22766,7 +22790,13 @@ func (o ClusterManagedOpentelemetryConfigOutput) ToClusterManagedOpentelemetryCo
 	}).(ClusterManagedOpentelemetryConfigPtrOutput)
 }
 
-// The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+// The scope of the Managed OpenTelemetry pipeline. Available options include:
+// * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+// * `NONE`: Disables the Managed OpenTelemetry pipeline.
+//
+// See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+//
+// > **Note:** Removing the `managedOpentelemetryConfig` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
 func (o ClusterManagedOpentelemetryConfigOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterManagedOpentelemetryConfig) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
@@ -22795,7 +22825,13 @@ func (o ClusterManagedOpentelemetryConfigPtrOutput) Elem() ClusterManagedOpentel
 	}).(ClusterManagedOpentelemetryConfigOutput)
 }
 
-// The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+// The scope of the Managed OpenTelemetry pipeline. Available options include:
+// * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+// * `NONE`: Disables the Managed OpenTelemetry pipeline.
+//
+// See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+//
+// > **Note:** Removing the `managedOpentelemetryConfig` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
 func (o ClusterManagedOpentelemetryConfigPtrOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterManagedOpentelemetryConfig) *string {
 		if v == nil {
@@ -33478,6 +33514,7 @@ type ClusterNodeConfigSandboxConfig struct {
 	// Accepted values are:
 	//
 	// * `"GVISOR"`: Pods run within a gVisor sandbox.
+	// * `"MICROVM"`: Pods run within a microVM sandbox.
 	Type *string `pulumi:"type"`
 }
 
@@ -33504,6 +33541,7 @@ type ClusterNodeConfigSandboxConfigArgs struct {
 	// Accepted values are:
 	//
 	// * `"GVISOR"`: Pods run within a gVisor sandbox.
+	// * `"MICROVM"`: Pods run within a microVM sandbox.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -33598,6 +33636,7 @@ func (o ClusterNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringPtrOutp
 // Accepted values are:
 //
 // * `"GVISOR"`: Pods run within a gVisor sandbox.
+// * `"MICROVM"`: Pods run within a microVM sandbox.
 func (o ClusterNodeConfigSandboxConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigSandboxConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -33645,6 +33684,7 @@ func (o ClusterNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringPtrO
 // Accepted values are:
 //
 // * `"GVISOR"`: Pods run within a gVisor sandbox.
+// * `"MICROVM"`: Pods run within a microVM sandbox.
 func (o ClusterNodeConfigSandboxConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigSandboxConfig) *string {
 		if v == nil {
@@ -34909,7 +34949,10 @@ type ClusterNodePool struct {
 	IgnoreNodeCountChanges *bool `pulumi:"ignoreNodeCountChanges"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
-	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+	// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+	// `nodePool` blocks defined, the cluster is created without a default node pool.
+	// This requires a GKE version that supports clusters without a default node pool
+	// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
@@ -34983,7 +35026,10 @@ type ClusterNodePoolArgs struct {
 	IgnoreNodeCountChanges pulumi.BoolPtrInput `pulumi:"ignoreNodeCountChanges"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
-	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+	// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+	// `nodePool` blocks defined, the cluster is created without a default node pool.
+	// This requires a GKE version that supports clusters without a default node pool
+	// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
@@ -35105,7 +35151,10 @@ func (o ClusterNodePoolOutput) IgnoreNodeCountChanges() pulumi.BoolPtrOutput {
 
 // The number of nodes to create in this
 // cluster's default node pool. In regional or multi-zonal clusters, this is the
-// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+// `nodePool` blocks defined, the cluster is created without a default node pool.
+// This requires a GKE version that supports clusters without a default node pool
+// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
 // `container.NodePool` objects with no default node pool, you'll need to
 // set this to a value of at least `1`, alongside setting
 // `removeDefaultNodePool` to `true`.
@@ -48571,6 +48620,7 @@ type ClusterNodePoolNodeConfigSandboxConfig struct {
 	// Accepted values are:
 	//
 	// * `"GVISOR"`: Pods run within a gVisor sandbox.
+	// * `"MICROVM"`: Pods run within a microVM sandbox.
 	Type *string `pulumi:"type"`
 }
 
@@ -48597,6 +48647,7 @@ type ClusterNodePoolNodeConfigSandboxConfigArgs struct {
 	// Accepted values are:
 	//
 	// * `"GVISOR"`: Pods run within a gVisor sandbox.
+	// * `"MICROVM"`: Pods run within a microVM sandbox.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -48691,6 +48742,7 @@ func (o ClusterNodePoolNodeConfigSandboxConfigOutput) SandboxType() pulumi.Strin
 // Accepted values are:
 //
 // * `"GVISOR"`: Pods run within a gVisor sandbox.
+// * `"MICROVM"`: Pods run within a microVM sandbox.
 func (o ClusterNodePoolNodeConfigSandboxConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigSandboxConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -48738,6 +48790,7 @@ func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.St
 // Accepted values are:
 //
 // * `"GVISOR"`: Pods run within a gVisor sandbox.
+// * `"MICROVM"`: Pods run within a microVM sandbox.
 func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigSandboxConfig) *string {
 		if v == nil {
@@ -50294,7 +50347,7 @@ type ClusterNodePoolUpgradeSettings struct {
 	MaxSurge *int `pulumi:"maxSurge"`
 	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
 	MaxUnavailable *int `pulumi:"maxUnavailable"`
-	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
 	Strategy *string `pulumi:"strategy"`
 }
 
@@ -50316,7 +50369,7 @@ type ClusterNodePoolUpgradeSettingsArgs struct {
 	MaxSurge pulumi.IntPtrInput `pulumi:"maxSurge"`
 	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
 	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
-	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
 	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
 }
 
@@ -50414,7 +50467,7 @@ func (o ClusterNodePoolUpgradeSettingsOutput) MaxUnavailable() pulumi.IntPtrOutp
 	return o.ApplyT(func(v ClusterNodePoolUpgradeSettings) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
 }
 
-// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
 func (o ClusterNodePoolUpgradeSettingsOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolUpgradeSettings) *string { return v.Strategy }).(pulumi.StringPtrOutput)
 }
@@ -50473,7 +50526,7 @@ func (o ClusterNodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
 func (o ClusterNodePoolUpgradeSettingsPtrOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolUpgradeSettings) *string {
 		if v == nil {
@@ -51746,7 +51799,9 @@ type ClusterPrivateClusterConfig struct {
 	// with any other ranges in use within the cluster's network, and it must be a /28
 	// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
 	// for more details. This field only applies to private clusters, when
-	// `enablePrivateNodes` is `true`.
+	// `enablePrivateNodes` is `true`. On GKE versions 1.29 and later, this field is
+	// optional when `privateEndpointSubnetwork` is specified. It is also optional for
+	// Autopilot clusters.
 	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
 	// The name of the peering between this cluster and the Google owned VPC.
 	PeeringName *string `pulumi:"peeringName"`
@@ -51794,7 +51849,9 @@ type ClusterPrivateClusterConfigArgs struct {
 	// with any other ranges in use within the cluster's network, and it must be a /28
 	// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
 	// for more details. This field only applies to private clusters, when
-	// `enablePrivateNodes` is `true`.
+	// `enablePrivateNodes` is `true`. On GKE versions 1.29 and later, this field is
+	// optional when `privateEndpointSubnetwork` is specified. It is also optional for
+	// Autopilot clusters.
 	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
 	// The name of the peering between this cluster and the Google owned VPC.
 	PeeringName pulumi.StringPtrInput `pulumi:"peeringName"`
@@ -51918,7 +51975,9 @@ func (o ClusterPrivateClusterConfigOutput) MasterGlobalAccessConfig() ClusterPri
 // with any other ranges in use within the cluster's network, and it must be a /28
 // subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
 // for more details. This field only applies to private clusters, when
-// `enablePrivateNodes` is `true`.
+// `enablePrivateNodes` is `true`. On GKE versions 1.29 and later, this field is
+// optional when `privateEndpointSubnetwork` is specified. It is also optional for
+// Autopilot clusters.
 func (o ClusterPrivateClusterConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
@@ -52015,7 +52074,9 @@ func (o ClusterPrivateClusterConfigPtrOutput) MasterGlobalAccessConfig() Cluster
 // with any other ranges in use within the cluster's network, and it must be a /28
 // subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
 // for more details. This field only applies to private clusters, when
-// `enablePrivateNodes` is `true`.
+// `enablePrivateNodes` is `true`. On GKE versions 1.29 and later, this field is
+// optional when `privateEndpointSubnetwork` is specified. It is also optional for
+// Autopilot clusters.
 func (o ClusterPrivateClusterConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterPrivateClusterConfig) *string {
 		if v == nil {
@@ -53297,6 +53358,143 @@ func (o ClusterRollbackSafeUpgradePtrOutput) ControlPlaneSoakDuration() pulumi.S
 		}
 		return v.ControlPlaneSoakDuration
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterScheduleUpgradeConfig struct {
+	// Whether scheduled upgrades are enabled on the cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterScheduleUpgradeConfigInput is an input type that accepts ClusterScheduleUpgradeConfigArgs and ClusterScheduleUpgradeConfigOutput values.
+// You can construct a concrete instance of `ClusterScheduleUpgradeConfigInput` via:
+//
+//	ClusterScheduleUpgradeConfigArgs{...}
+type ClusterScheduleUpgradeConfigInput interface {
+	pulumi.Input
+
+	ToClusterScheduleUpgradeConfigOutput() ClusterScheduleUpgradeConfigOutput
+	ToClusterScheduleUpgradeConfigOutputWithContext(context.Context) ClusterScheduleUpgradeConfigOutput
+}
+
+type ClusterScheduleUpgradeConfigArgs struct {
+	// Whether scheduled upgrades are enabled on the cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterScheduleUpgradeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScheduleUpgradeConfig)(nil)).Elem()
+}
+
+func (i ClusterScheduleUpgradeConfigArgs) ToClusterScheduleUpgradeConfigOutput() ClusterScheduleUpgradeConfigOutput {
+	return i.ToClusterScheduleUpgradeConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterScheduleUpgradeConfigArgs) ToClusterScheduleUpgradeConfigOutputWithContext(ctx context.Context) ClusterScheduleUpgradeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduleUpgradeConfigOutput)
+}
+
+func (i ClusterScheduleUpgradeConfigArgs) ToClusterScheduleUpgradeConfigPtrOutput() ClusterScheduleUpgradeConfigPtrOutput {
+	return i.ToClusterScheduleUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterScheduleUpgradeConfigArgs) ToClusterScheduleUpgradeConfigPtrOutputWithContext(ctx context.Context) ClusterScheduleUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduleUpgradeConfigOutput).ToClusterScheduleUpgradeConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterScheduleUpgradeConfigPtrInput is an input type that accepts ClusterScheduleUpgradeConfigArgs, ClusterScheduleUpgradeConfigPtr and ClusterScheduleUpgradeConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterScheduleUpgradeConfigPtrInput` via:
+//
+//	        ClusterScheduleUpgradeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterScheduleUpgradeConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterScheduleUpgradeConfigPtrOutput() ClusterScheduleUpgradeConfigPtrOutput
+	ToClusterScheduleUpgradeConfigPtrOutputWithContext(context.Context) ClusterScheduleUpgradeConfigPtrOutput
+}
+
+type clusterScheduleUpgradeConfigPtrType ClusterScheduleUpgradeConfigArgs
+
+func ClusterScheduleUpgradeConfigPtr(v *ClusterScheduleUpgradeConfigArgs) ClusterScheduleUpgradeConfigPtrInput {
+	return (*clusterScheduleUpgradeConfigPtrType)(v)
+}
+
+func (*clusterScheduleUpgradeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterScheduleUpgradeConfig)(nil)).Elem()
+}
+
+func (i *clusterScheduleUpgradeConfigPtrType) ToClusterScheduleUpgradeConfigPtrOutput() ClusterScheduleUpgradeConfigPtrOutput {
+	return i.ToClusterScheduleUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterScheduleUpgradeConfigPtrType) ToClusterScheduleUpgradeConfigPtrOutputWithContext(ctx context.Context) ClusterScheduleUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduleUpgradeConfigPtrOutput)
+}
+
+type ClusterScheduleUpgradeConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterScheduleUpgradeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScheduleUpgradeConfig)(nil)).Elem()
+}
+
+func (o ClusterScheduleUpgradeConfigOutput) ToClusterScheduleUpgradeConfigOutput() ClusterScheduleUpgradeConfigOutput {
+	return o
+}
+
+func (o ClusterScheduleUpgradeConfigOutput) ToClusterScheduleUpgradeConfigOutputWithContext(ctx context.Context) ClusterScheduleUpgradeConfigOutput {
+	return o
+}
+
+func (o ClusterScheduleUpgradeConfigOutput) ToClusterScheduleUpgradeConfigPtrOutput() ClusterScheduleUpgradeConfigPtrOutput {
+	return o.ToClusterScheduleUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterScheduleUpgradeConfigOutput) ToClusterScheduleUpgradeConfigPtrOutputWithContext(ctx context.Context) ClusterScheduleUpgradeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterScheduleUpgradeConfig) *ClusterScheduleUpgradeConfig {
+		return &v
+	}).(ClusterScheduleUpgradeConfigPtrOutput)
+}
+
+// Whether scheduled upgrades are enabled on the cluster.
+func (o ClusterScheduleUpgradeConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterScheduleUpgradeConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterScheduleUpgradeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterScheduleUpgradeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterScheduleUpgradeConfig)(nil)).Elem()
+}
+
+func (o ClusterScheduleUpgradeConfigPtrOutput) ToClusterScheduleUpgradeConfigPtrOutput() ClusterScheduleUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterScheduleUpgradeConfigPtrOutput) ToClusterScheduleUpgradeConfigPtrOutputWithContext(ctx context.Context) ClusterScheduleUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterScheduleUpgradeConfigPtrOutput) Elem() ClusterScheduleUpgradeConfigOutput {
+	return o.ApplyT(func(v *ClusterScheduleUpgradeConfig) ClusterScheduleUpgradeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterScheduleUpgradeConfig
+		return ret
+	}).(ClusterScheduleUpgradeConfigOutput)
+}
+
+// Whether scheduled upgrades are enabled on the cluster.
+func (o ClusterScheduleUpgradeConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterScheduleUpgradeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterSecretManagerConfig struct {
@@ -66972,7 +67170,7 @@ type NodePoolUpgradeSettings struct {
 	//
 	// `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
 	MaxUnavailable *int `pulumi:"maxUnavailable"`
-	// The upgrade strategy to be used for upgrading the nodes.
+	// The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
 	Strategy *string `pulumi:"strategy"`
 }
 
@@ -67001,7 +67199,7 @@ type NodePoolUpgradeSettingsArgs struct {
 	//
 	// `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
 	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
-	// The upgrade strategy to be used for upgrading the nodes.
+	// The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
 	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
 }
 
@@ -67104,7 +67302,7 @@ func (o NodePoolUpgradeSettingsOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettings) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
 }
 
-// The upgrade strategy to be used for upgrading the nodes.
+// The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
 func (o NodePoolUpgradeSettingsOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettings) *string { return v.Strategy }).(pulumi.StringPtrOutput)
 }
@@ -67170,7 +67368,7 @@ func (o NodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The upgrade strategy to be used for upgrading the nodes.
+// The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
 func (o NodePoolUpgradeSettingsPtrOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolUpgradeSettings) *string {
 		if v == nil {
@@ -75409,7 +75607,7 @@ func (o GetClusterManagedMachineLearningDiagnosticsConfigArrayOutput) Index(i pu
 }
 
 type GetClusterManagedOpentelemetryConfig struct {
-	// The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+	// The scope of the Managed OpenTelemetry pipeline. Available options include NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig for more information. To disable the feature, explicitly set this to NONE.
 	Scope string `pulumi:"scope"`
 }
 
@@ -75425,7 +75623,7 @@ type GetClusterManagedOpentelemetryConfigInput interface {
 }
 
 type GetClusterManagedOpentelemetryConfigArgs struct {
-	// The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+	// The scope of the Managed OpenTelemetry pipeline. Available options include NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig for more information. To disable the feature, explicitly set this to NONE.
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -75480,7 +75678,7 @@ func (o GetClusterManagedOpentelemetryConfigOutput) ToGetClusterManagedOpentelem
 	return o
 }
 
-// The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+// The scope of the Managed OpenTelemetry pipeline. Available options include NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig for more information. To disable the feature, explicitly set this to NONE.
 func (o GetClusterManagedOpentelemetryConfigOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterManagedOpentelemetryConfig) string { return v.Scope }).(pulumi.StringOutput)
 }
@@ -78679,112 +78877,6 @@ func (o GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArrayOutput
 	}).(GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyOutput)
 }
 
-type GetClusterNodeConfigContainerdConfigRegistryHostHostHeader struct {
-	// Configures the header key.
-	Key string `pulumi:"key"`
-	// Configures the header value.
-	Values []string `pulumi:"values"`
-}
-
-// GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput is an input type that accepts GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs and GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput` via:
-//
-//	GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs{...}
-type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput
-	ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput
-}
-
-type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs struct {
-	// Configures the header key.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Configures the header value.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostHeader)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput {
-	return i.ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput)
-}
-
-// GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput is an input type that accepts GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray and GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput` via:
-//
-//	GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray{ GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs{...} }
-type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput
-	ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput
-}
-
-type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray []GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput
-
-func (GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigRegistryHostHostHeader)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput {
-	return i.ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput)
-}
-
-type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostHeader)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput {
-	return o
-}
-
-// Configures the header key.
-func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfigRegistryHostHostHeader) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// Configures the header value.
-func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfigRegistryHostHostHeader) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigRegistryHostHostHeader)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigContainerdConfigRegistryHostHostHeader {
-		return vs[0].([]GetClusterNodeConfigContainerdConfigRegistryHostHostHeader)[vs[1].(int)]
-	}).(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationPtrInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
@@ -79416,6 +79508,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRollbackSafeUpgradeInput)(nil)).Elem(), ClusterRollbackSafeUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRollbackSafeUpgradePtrInput)(nil)).Elem(), ClusterRollbackSafeUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterScheduleUpgradeConfigInput)(nil)).Elem(), ClusterScheduleUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterScheduleUpgradeConfigPtrInput)(nil)).Elem(), ClusterScheduleUpgradeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigInput)(nil)).Elem(), ClusterSecretManagerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigPtrInput)(nil)).Elem(), ClusterSecretManagerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigRotationConfigInput)(nil)).Elem(), ClusterSecretManagerConfigRotationConfigArgs{})
@@ -79776,8 +79870,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostClientCertArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigRegistryHostHostClientCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationOutput{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AttachedClusterBinaryAuthorizationOutput{})
@@ -80408,6 +80500,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRollbackSafeUpgradeOutput{})
 	pulumi.RegisterOutputType(ClusterRollbackSafeUpgradePtrOutput{})
+	pulumi.RegisterOutputType(ClusterScheduleUpgradeConfigOutput{})
+	pulumi.RegisterOutputType(ClusterScheduleUpgradeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterSecretManagerConfigOutput{})
 	pulumi.RegisterOutputType(ClusterSecretManagerConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterSecretManagerConfigRotationConfigOutput{})
@@ -80768,6 +80862,4 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigRegistryHostHostClientCertArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput{})
 }

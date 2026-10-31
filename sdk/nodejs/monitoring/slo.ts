@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Monitoring Slo Request Based
  *
  * ```typescript
@@ -76,6 +77,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Monitoring Slo Windows Based Good Bad Metric Filter
  *
  * ```typescript
@@ -104,6 +106,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Monitoring Slo Windows Based Metric Mean
  *
  * ```typescript
@@ -137,6 +140,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Monitoring Slo Windows Based Metric Sum
  *
  * ```typescript
@@ -170,6 +174,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Monitoring Slo Windows Based Ratio Threshold
  *
  * ```typescript

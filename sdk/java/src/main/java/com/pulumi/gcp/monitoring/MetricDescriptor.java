@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Monitoring Metric Descriptor Alert
  * 
  * <pre>

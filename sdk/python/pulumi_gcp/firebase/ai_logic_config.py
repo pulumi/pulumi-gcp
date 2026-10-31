@@ -388,6 +388,7 @@ class AiLogicConfig(pulumi.CustomResource):
             location="global",
             opts = pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
+
         ### Firebaseailogic Config Full
 
         ```python
@@ -527,6 +528,7 @@ class AiLogicConfig(pulumi.CustomResource):
             location="global",
             opts = pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
+
         ### Firebaseailogic Config Full
 
         ```python

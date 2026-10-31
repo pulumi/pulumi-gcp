@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Spanner Instance Processing Units
  *
  * ```typescript
@@ -50,6 +51,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Spanner Instance Multi Regional
  *
  * ```typescript

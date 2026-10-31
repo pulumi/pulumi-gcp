@@ -68,6 +68,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigtable App Profile Singlecluster
     /// 
     /// ```csharp
@@ -108,6 +109,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigtable App Profile Multicluster
     /// 
     /// ```csharp
@@ -163,6 +165,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigtable App Profile Priority
     /// 
     /// ```csharp

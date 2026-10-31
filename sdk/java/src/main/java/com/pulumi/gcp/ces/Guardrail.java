@@ -104,6 +104,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Guardrail Transfer Agent Content Filter
  * 
  * <pre>
@@ -182,6 +183,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Guardrail Generative Answer Llm Prompt Security
  * 
  * <pre>
@@ -251,6 +253,7 @@ import javax.annotation.Nullable;
  *                     .modelSettings(GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs.builder()
  *                         .model("gemini-3.0-flash-001")
  *                         .temperature(50.0)
+ *                         .thinkingLevel("LOW")
  *                         .build())
  *                     .prompt("example_prompt")
  *                     .policyScope("USER_QUERY")
@@ -264,6 +267,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Guardrail Llm Prompt Security Fail Open
  * 
  * <pre>
@@ -334,6 +338,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Guardrail Llm Prompt Security Default Settings
  * 
  * <pre>
@@ -406,6 +411,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Guardrail Code Callback
  * 
  * <pre>
@@ -508,6 +514,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Guardrail Llm Policy
  * 
  * <pre>
@@ -575,6 +582,7 @@ import javax.annotation.Nullable;
  *                 .modelSettings(GuardrailLlmPolicyModelSettingsArgs.builder()
  *                     .model("gemini-3.0-flash-001")
  *                     .temperature(50.0)
+ *                     .thinkingLevel("LOW")
  *                     .build())
  *                 .prompt("example_prompt")
  *                 .policyScope("USER_QUERY")

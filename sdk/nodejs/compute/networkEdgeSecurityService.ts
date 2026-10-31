@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -101,6 +103,11 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.NetworkEdgeSecurityServiceParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -144,6 +151,7 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["region"] = state?.region;
             resourceInputs["securityPolicy"] = state?.securityPolicy;
@@ -155,6 +163,7 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["securityPolicy"] = args?.securityPolicy;
@@ -199,6 +208,11 @@ export interface NetworkEdgeSecurityServiceState {
      * Name of the resource. Provided by the client when the resource is created.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.NetworkEdgeSecurityServiceParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -247,6 +261,11 @@ export interface NetworkEdgeSecurityServiceArgs {
      * Name of the resource. Provided by the client when the resource is created.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.NetworkEdgeSecurityServiceParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

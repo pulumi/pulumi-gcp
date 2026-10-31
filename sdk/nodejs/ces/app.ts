@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const fakePrivateKeySecret = new gcp.secretmanager.Secret("fake_private_key_secret", {
- *     secretId: "fake-pk-secret-app-tf1",
+ *     secretId: "fake-pk-secret-app-tf",
  *     replication: {
  *         auto: {},
  *     },
@@ -106,6 +106,7 @@ import * as utilities from "../utilities";
  *     modelSettings: {
  *         model: "gemini-3.0-flash-001",
  *         temperature: 0.5,
+ *         thinkingLevel: "LOW",
  *     },
  *     evaluationMetricsThresholds: {
  *         goldenEvaluationMetricsThresholds: {
@@ -220,6 +221,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Ces App Ambient Sound Gcs Uri
  *
  * ```typescript

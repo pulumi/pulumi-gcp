@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     termId: "tf-test-term-basic_44339",
  * });
  * ```
+ *
  * ### Dataplex Glossary Term Full
  *
  * ```typescript

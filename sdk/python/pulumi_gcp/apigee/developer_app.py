@@ -714,6 +714,7 @@ class DeveloperApp(pulumi.CustomResource):
             scopes=api_product.scopes)
         project = gcp.organizations.get_project()
         ```
+
         ### Apigee Developer App Basic Test
 
         ```python
@@ -894,6 +895,7 @@ class DeveloperApp(pulumi.CustomResource):
             scopes=api_product.scopes)
         project = gcp.organizations.get_project()
         ```
+
         ### Apigee Developer App Basic Test
 
         ```python

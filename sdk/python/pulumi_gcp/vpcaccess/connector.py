@@ -563,6 +563,7 @@ class Connector(pulumi.CustomResource):
             min_instances=2,
             max_instances=3)
         ```
+
         ### Vpc Access Connector Shared Vpc
 
         ```python
@@ -661,6 +662,7 @@ class Connector(pulumi.CustomResource):
             min_instances=2,
             max_instances=3)
         ```
+
         ### Vpc Access Connector Shared Vpc
 
         ```python

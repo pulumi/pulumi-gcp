@@ -21,6 +21,8 @@ __all__ = [
     'AuthProviderAuthProviderTypeParamsGeAuthProvider',
     'AuthProviderAuthProviderTypeParamsThreeLeggedOauth',
     'AuthProviderAuthProviderTypeParamsTwoLeggedOauth',
+    'AuthProviderIamBindingCondition',
+    'AuthProviderIamMemberCondition',
 ]
 
 @pulumi.output_type
@@ -431,5 +433,59 @@ class AuthProviderAuthProviderTypeParamsTwoLeggedOauth(dict):
         The token endpoint of the OAuth client.
         """
         return pulumi.get(self, "token_url")
+
+
+@pulumi.output_type
+class AuthProviderIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AuthProviderIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
 
 

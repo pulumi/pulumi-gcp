@@ -99,6 +99,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Attachment Instance Usage
  * 
  * <pre>

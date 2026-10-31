@@ -73,6 +73,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataproc Session Templates Jupyter Full
 //
 // ```go
@@ -224,6 +225,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataproc Session Templates Spark Connect
 //
 // ```go

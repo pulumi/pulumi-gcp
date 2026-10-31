@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Gemini
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gemini Data Analytics Data Agent Bigquery
     /// 
     /// ```csharp
@@ -140,12 +141,74 @@ namespace Pulumi.Gcp.Gemini
     ///                                 ProjectId = dataset.Project,
     ///                                 DatasetId = dataset.DatasetId,
     ///                                 TableId = table.TableId,
+    ///                                 Schema = new Gcp.Gemini.Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs
+    ///                                 {
+    ///                                     Description = "Sales orders table.",
+    ///                                     DisplayName = "Sales Orders",
+    ///                                     Synonyms = new[]
+    ///                                     {
+    ///                                         "orders",
+    ///                                         "purchases",
+    ///                                     },
+    ///                                     Tags = new[]
+    ///                                     {
+    ///                                         "sales",
+    ///                                         "finance",
+    ///                                     },
+    ///                                     Fields = new[]
+    ///                                     {
+    ///                                         new Gcp.Gemini.Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs
+    ///                                         {
+    ///                                             Name = "order_id",
+    ///                                             Type = "STRING",
+    ///                                             Description = "Unique order identifier.",
+    ///                                             Mode = "REQUIRED",
+    ///                                             Synonyms = new[]
+    ///                                             {
+    ///                                                 "id",
+    ///                                             },
+    ///                                             Tags = new[]
+    ///                                             {
+    ///                                                 "identifier",
+    ///                                             },
+    ///                                             Category = "DIMENSION",
+    ///                                         },
+    ///                                         new Gcp.Gemini.Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs
+    ///                                         {
+    ///                                             Name = "order_total",
+    ///                                             Type = "FLOAT",
+    ///                                             Description = "Total order amount.",
+    ///                                             Mode = "NULLABLE",
+    ///                                             Synonyms = new[]
+    ///                                             {
+    ///                                                 "revenue",
+    ///                                                 "amount",
+    ///                                             },
+    ///                                             Tags = new[]
+    ///                                             {
+    ///                                                 "metric",
+    ///                                             },
+    ///                                             Category = "MEASURE",
+    ///                                             ValueFormat = "$#,##0.00",
+    ///                                         },
+    ///                                     },
+    ///                                     Filters = new[]
+    ///                                     {
+    ///                                         new Gcp.Gemini.Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgs
+    ///                                         {
+    ///                                             Field = "order_total",
+    ///                                             Value = "0",
+    ///                                             Type = "ALWAYS_FILTER",
+    ///                                         },
+    ///                                     },
+    ///                                 },
     ///                             },
     ///                         },
     ///                     },
     ///                 },
     ///                 Options = new Gcp.Gemini.Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs
     ///                 {
+    ///                     Model = "LATEST_GA_MODEL",
     ///                     Analysis = new Gcp.Gemini.Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs
     ///                     {
     ///                         Python = new Gcp.Gemini.Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs
@@ -162,8 +225,17 @@ namespace Pulumi.Gcp.Gemini
     ///                 {
     ///                     new Gcp.Gemini.Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs
     ///                     {
-    ///                         NaturalLanguageQuestion = "What is the total order value?",
-    ///                         SqlQuery = "SELECT SUM(order_total) AS total_order_value FROM sales",
+    ///                         NaturalLanguageQuestion = "What is the total order value above a threshold?",
+    ///                         SqlQuery = "SELECT SUM(order_total) AS total_order_value FROM sales WHERE order_total &gt; @min_total",
+    ///                         Parameters = new[]
+    ///                         {
+    ///                             new Gcp.Gemini.Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs
+    ///                             {
+    ///                                 Name = "min_total",
+    ///                                 Description = "Minimum order total threshold.",
+    ///                                 DataType = "FLOAT64",
+    ///                             },
+    ///                         },
     ///                     },
     ///                 },
     ///                 GlossaryTerms = new[]
@@ -230,6 +302,7 @@ namespace Pulumi.Gcp.Gemini
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gemini Data Analytics Data Agent Cmek
     /// 
     /// ```csharp

@@ -14,14 +14,23 @@ namespace Pulumi.Gcp.Colab.Outputs
     public sealed class NotebookExecutionWorkbenchRuntime
     {
         /// <summary>
+        /// Use a container image to start the workbench instance.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.NotebookExecutionWorkbenchRuntimeCustomContainerImage? CustomContainerImage;
+        /// <summary>
         /// Custom Compute Engine VM image for the Workbench instance.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.NotebookExecutionWorkbenchRuntimeVmImage VmImage;
+        public readonly Outputs.NotebookExecutionWorkbenchRuntimeVmImage? VmImage;
 
         [OutputConstructor]
-        private NotebookExecutionWorkbenchRuntime(Outputs.NotebookExecutionWorkbenchRuntimeVmImage vmImage)
+        private NotebookExecutionWorkbenchRuntime(
+            Outputs.NotebookExecutionWorkbenchRuntimeCustomContainerImage? customContainerImage,
+
+            Outputs.NotebookExecutionWorkbenchRuntimeVmImage? vmImage)
         {
+            CustomContainerImage = customContainerImage;
             VmImage = vmImage;
         }
     }

@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Router Encrypted Interconnect
     /// 
     /// ```csharp
@@ -93,6 +94,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Router Ncc Gw
     /// 
     /// ```csharp
@@ -288,6 +290,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("routerId")]
+        public Output<int> RouterId { get; private set; } = null!;
 
         /// <summary>
         /// The URI of the created resource.
@@ -516,6 +524,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("routerId")]
+        public Input<int>? RouterId { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

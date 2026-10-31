@@ -55,6 +55,7 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  * });
  * ```
+ *
  * ### Region Backend Bucket Internal Lb
  *
  * ```typescript
@@ -84,6 +85,7 @@ import * as utilities from "../utilities";
  *     content: "<html><body><h1>Regional Internal LB Backend Bucket</h1></body></html>",
  * });
  * ```
+ *
  * ### Region Backend Bucket External Lb
  *
  * ```typescript

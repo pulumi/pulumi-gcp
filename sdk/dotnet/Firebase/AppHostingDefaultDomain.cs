@@ -52,6 +52,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase App Hosting Default Domain Full
     /// 
     /// ```csharp
@@ -91,6 +92,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase App Hosting Default Domain Disabled
     /// 
     /// ```csharp

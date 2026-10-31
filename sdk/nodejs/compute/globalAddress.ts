@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.compute.GlobalAddress("default", {name: "global-appserver-ip"});
  * ```
+ *
  * ### Global Address Private Services Connect
  *
  * ```typescript

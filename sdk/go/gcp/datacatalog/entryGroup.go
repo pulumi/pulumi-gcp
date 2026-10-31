@@ -49,6 +49,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Data Catalog Entry Group Full
 //
 // ```go

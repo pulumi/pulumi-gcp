@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Integration Connectors Connection Advanced
  *
  * ```typescript
