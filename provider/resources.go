@@ -927,7 +927,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_project_iam_custom_role": {
 				Tok: gcpResource(gcpProject, "IAMCustomRole"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"role_id": info.AutoName("", 255, "-"),
+					"role_id": info.AutoName("", 255, "_"),
 				},
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project_iam_custom_role.html.markdown",
