@@ -91,6 +91,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dataproc Session Templates Jupyter Full
  * 
  * <pre>
@@ -257,6 +258,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Dataproc Session Templates Spark Connect
  * 
  * <pre>

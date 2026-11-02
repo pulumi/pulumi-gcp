@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     text: "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n",
  * });
  * ```
+ *
  * ### Chronicle Rule With Force Deletion
  *
  * ```typescript
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  *     text: "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n",
  * });
  * ```
+ *
  * ### Chronicle Rule With Data Access Scope
  *
  * ```typescript

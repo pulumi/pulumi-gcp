@@ -547,6 +547,7 @@ class SecurityGateway(pulumi.CustomResource):
                 "region": "us-central1",
             }])
         ```
+
         ### Beyondcorp Security Gateway Logging
 
         ```python
@@ -561,6 +562,7 @@ class SecurityGateway(pulumi.CustomResource):
             }],
             logging={})
         ```
+
         ### Beyondcorp Security Gateway Spa
 
         ```python
@@ -673,6 +675,7 @@ class SecurityGateway(pulumi.CustomResource):
                 "region": "us-central1",
             }])
         ```
+
         ### Beyondcorp Security Gateway Logging
 
         ```python
@@ -687,6 +690,7 @@ class SecurityGateway(pulumi.CustomResource):
             }],
             logging={})
         ```
+
         ### Beyondcorp Security Gateway Spa
 
         ```python

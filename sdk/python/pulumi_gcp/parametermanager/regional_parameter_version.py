@@ -367,6 +367,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
             parameter_version_id="regional_parameter_version",
             parameter_data="regional-parameter-version-data")
         ```
+
         ### Regional Parameter Version With Json Format
 
         ```python
@@ -386,6 +387,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
                 "key2": "val2",
             }))
         ```
+
         ### Regional Parameter Version With Kms Key
 
         ```python
@@ -402,6 +404,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
             parameter_version_id="regional_parameter_version",
             parameter_data="regional-parameter-version-data")
         ```
+
         ### Regional Parameter Version With Json Format With File
 
         ```python
@@ -418,6 +421,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
             parameter_version_id="regional_parameter_version",
             parameter_data=std.file(input="regional-parameter-json-data.json").result)
         ```
+
         ### Regional Parameter Version With Yaml Format With File
 
         ```python
@@ -434,6 +438,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
             parameter_version_id="regional_parameter_version",
             parameter_data=std.file(input="regional-parameter-yaml-data.yaml").result)
         ```
+
         ### Regional Parameter Version With Data Crc32c
 
         ```python
@@ -507,6 +512,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
             parameter_version_id="regional_parameter_version",
             parameter_data="regional-parameter-version-data")
         ```
+
         ### Regional Parameter Version With Json Format
 
         ```python
@@ -526,6 +532,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
                 "key2": "val2",
             }))
         ```
+
         ### Regional Parameter Version With Kms Key
 
         ```python
@@ -542,6 +549,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
             parameter_version_id="regional_parameter_version",
             parameter_data="regional-parameter-version-data")
         ```
+
         ### Regional Parameter Version With Json Format With File
 
         ```python
@@ -558,6 +566,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
             parameter_version_id="regional_parameter_version",
             parameter_data=std.file(input="regional-parameter-json-data.json").result)
         ```
+
         ### Regional Parameter Version With Yaml Format With File
 
         ```python
@@ -574,6 +583,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
             parameter_version_id="regional_parameter_version",
             parameter_data=std.file(input="regional-parameter-yaml-data.yaml").result)
         ```
+
         ### Regional Parameter Version With Data Crc32c
 
         ```python

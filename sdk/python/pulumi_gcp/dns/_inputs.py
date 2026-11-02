@@ -27,6 +27,8 @@ __all__ = [
     'ManagedZoneDnssecConfigDefaultKeySpecArgsDict',
     'ManagedZoneForwardingConfigArgs',
     'ManagedZoneForwardingConfigArgsDict',
+    'ManagedZoneForwardingConfigOutboundEndpointArgs',
+    'ManagedZoneForwardingConfigOutboundEndpointArgsDict',
     'ManagedZoneForwardingConfigTargetNameServerArgs',
     'ManagedZoneForwardingConfigTargetNameServerArgsDict',
     'ManagedZonePeeringConfigArgs',
@@ -45,6 +47,8 @@ __all__ = [
     'ManagedZoneServiceDirectoryConfigNamespaceArgsDict',
     'PolicyAlternativeNameServerConfigArgs',
     'PolicyAlternativeNameServerConfigArgsDict',
+    'PolicyAlternativeNameServerConfigOutboundEndpointArgs',
+    'PolicyAlternativeNameServerConfigOutboundEndpointArgsDict',
     'PolicyAlternativeNameServerConfigTargetNameServerArgs',
     'PolicyAlternativeNameServerConfigTargetNameServerArgsDict',
     'PolicyDns64ConfigArgs',
@@ -503,18 +507,28 @@ class ManagedZoneForwardingConfigArgsDict(TypedDict):
     one target is given.
     Structure is documented below.
     """
+    outbound_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ManagedZoneForwardingConfigOutboundEndpointArgsDict']]]]]
+    """
+    The list of outbound endpoints to use for queries.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ManagedZoneForwardingConfigArgs:
     def __init__(__self__, *,
-                 target_name_servers: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]):
+                 target_name_servers: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]],
+                 outbound_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedZoneForwardingConfigOutboundEndpointArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]] target_name_servers: List of target name servers to forward to. Cloud DNS will
                select the best available name server if more than
                one target is given.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigOutboundEndpointArgs']]] outbound_endpoints: The list of outbound endpoints to use for queries.
+               Structure is documented below.
         """
         pulumi.set(__self__, "target_name_servers", target_name_servers)
+        if outbound_endpoints is not None:
+            pulumi.set(__self__, "outbound_endpoints", outbound_endpoints)
 
     @_builtins.property
     @pulumi.getter(name="targetNameServers")
@@ -530,6 +544,53 @@ class ManagedZoneForwardingConfigArgs:
     @target_name_servers.setter
     def target_name_servers(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]):
         pulumi.set(self, "target_name_servers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outboundEndpoints")
+    def outbound_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedZoneForwardingConfigOutboundEndpointArgs']]]]:
+        """
+        The list of outbound endpoints to use for queries.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "outbound_endpoints")
+
+    @outbound_endpoints.setter
+    def outbound_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedZoneForwardingConfigOutboundEndpointArgs']]]]):
+        pulumi.set(self, "outbound_endpoints", value)
+
+
+class ManagedZoneForwardingConfigOutboundEndpointArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Specified as a resource path including project and region.
+    This should be formatted like
+    `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+    """
+
+@pulumi.input_type
+class ManagedZoneForwardingConfigOutboundEndpointArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: Specified as a resource path including project and region.
+               This should be formatted like
+               `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specified as a resource path including project and region.
+        This should be formatted like
+        `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
 
 
 class ManagedZoneForwardingConfigTargetNameServerArgsDict(TypedDict):
@@ -921,18 +982,28 @@ class PolicyAlternativeNameServerConfigArgsDict(TypedDict):
     are not available when an alternative name server is specified.
     Structure is documented below.
     """
+    outbound_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigOutboundEndpointArgsDict']]]]]
+    """
+    The list of outbound endpoints to use for queries.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PolicyAlternativeNameServerConfigArgs:
     def __init__(__self__, *,
-                 target_name_servers: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]):
+                 target_name_servers: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]],
+                 outbound_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigOutboundEndpointArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]] target_name_servers: Sets an alternative name server for the associated networks. When specified,
                all DNS queries are forwarded to a name server that you choose. Names such as .internal
                are not available when an alternative name server is specified.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigOutboundEndpointArgs']]] outbound_endpoints: The list of outbound endpoints to use for queries.
+               Structure is documented below.
         """
         pulumi.set(__self__, "target_name_servers", target_name_servers)
+        if outbound_endpoints is not None:
+            pulumi.set(__self__, "outbound_endpoints", outbound_endpoints)
 
     @_builtins.property
     @pulumi.getter(name="targetNameServers")
@@ -949,6 +1020,59 @@ class PolicyAlternativeNameServerConfigArgs:
     def target_name_servers(self, value: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]):
         pulumi.set(self, "target_name_servers", value)
 
+    @_builtins.property
+    @pulumi.getter(name="outboundEndpoints")
+    def outbound_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigOutboundEndpointArgs']]]]:
+        """
+        The list of outbound endpoints to use for queries.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "outbound_endpoints")
+
+    @outbound_endpoints.setter
+    def outbound_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigOutboundEndpointArgs']]]]):
+        pulumi.set(self, "outbound_endpoints", value)
+
+
+class PolicyAlternativeNameServerConfigOutboundEndpointArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Specified as a resource path including project and region.
+    This should be formatted like
+    `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+
+    <a name="nested_dns64_config"></a>The `dns64_config` block supports:
+    """
+
+@pulumi.input_type
+class PolicyAlternativeNameServerConfigOutboundEndpointArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: Specified as a resource path including project and region.
+               This should be formatted like
+               `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+               
+               <a name="nested_dns64_config"></a>The `dns64_config` block supports:
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specified as a resource path including project and region.
+        This should be formatted like
+        `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+
+        <a name="nested_dns64_config"></a>The `dns64_config` block supports:
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
 
 class PolicyAlternativeNameServerConfigTargetNameServerArgsDict(TypedDict):
     ipv4_address: pulumi.Input[_builtins.str]
@@ -961,8 +1085,6 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgsDict(TypedDict):
     decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
     to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
     Possible values are: `default`, `private`.
-
-    <a name="nested_dns64_config"></a>The `dns64_config` block supports:
     """
 
 @pulumi.input_type
@@ -976,8 +1098,6 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
                decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
                to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
                Possible values are: `default`, `private`.
-               
-               <a name="nested_dns64_config"></a>The `dns64_config` block supports:
         """
         pulumi.set(__self__, "ipv4_address", ipv4_address)
         if forwarding_path is not None:
@@ -1003,8 +1123,6 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
         decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
         to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
         Possible values are: `default`, `private`.
-
-        <a name="nested_dns64_config"></a>The `dns64_config` block supports:
         """
         return pulumi.get(self, "forwarding_path")
 

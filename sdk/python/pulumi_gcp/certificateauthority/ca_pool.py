@@ -475,6 +475,7 @@ class CaPool(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Privateca Capool All Fields
 
         ```python
@@ -703,6 +704,7 @@ class CaPool(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Privateca Capool All Fields
 
         ```python

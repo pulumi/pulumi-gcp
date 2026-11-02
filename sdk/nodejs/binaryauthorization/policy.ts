@@ -53,6 +53,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Binary Authorization Policy Global Evaluation
  *
  * ```typescript

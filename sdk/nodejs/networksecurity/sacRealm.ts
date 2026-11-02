@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     securityService: "PALO_ALTO_PRISMA_ACCESS",
  * });
  * ```
+ *
  * ### Sac Realm Symantec Cloud Swg
  *
  * ```typescript

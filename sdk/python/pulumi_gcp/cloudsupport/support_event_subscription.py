@@ -323,6 +323,7 @@ class SupportEventSubscription(pulumi.CustomResource):
                     support_publisher,
                 ]))
         ```
+
         ### Cloud Support Event Subscription Update
 
         ```python
@@ -416,6 +417,7 @@ class SupportEventSubscription(pulumi.CustomResource):
                     support_publisher,
                 ]))
         ```
+
         ### Cloud Support Event Subscription Update
 
         ```python

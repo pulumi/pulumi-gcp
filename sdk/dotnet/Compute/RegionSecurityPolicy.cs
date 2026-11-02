@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Security Policy With Ddos Protection Config
     /// 
     /// ```csharp
@@ -62,6 +63,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Security Policy With User Defined Fields
     /// 
     /// ```csharp
@@ -100,6 +102,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Security Policy With Rules
     /// 
     /// ```csharp
@@ -151,6 +154,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Security Policy With Body Exclude
     /// 
     /// ```csharp
@@ -269,7 +273,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///             {
-    ///                 SourceImage = "projects/debian-cloud/global/images/family/debian-11",
+    ///                 SourceImage = "projects/debian-cloud/global/images/family/debian-13",
     ///                 AutoDelete = true,
     ///                 Boot = true,
     ///             },
@@ -312,6 +316,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Security Policy Request Body Expression
     /// 
     /// ```csharp

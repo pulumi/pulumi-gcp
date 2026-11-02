@@ -16,8 +16,22 @@ namespace Pulumi.Gcp.Gemini.Inputs
         /// References to BigQuery tables.
         /// Structure is documented below.
         /// </summary>
-        [Input("bq", required: true)]
-        public Input<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs> Bq { get; set; } = null!;
+        [Input("bq")]
+        public Input<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs>? Bq { get; set; }
+
+        /// <summary>
+        /// References to Looker explores.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("looker")]
+        public Input<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerArgs>? Looker { get; set; }
+
+        /// <summary>
+        /// References to Looker Studio datasources.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("studio")]
+        public Input<Inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioArgs>? Studio { get; set; }
 
         public DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs()
         {

@@ -900,6 +900,9 @@ func (o ManagedZoneDnssecConfigDefaultKeySpecArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ManagedZoneForwardingConfig struct {
+	// The list of outbound endpoints to use for queries.
+	// Structure is documented below.
+	OutboundEndpoints []ManagedZoneForwardingConfigOutboundEndpoint `pulumi:"outboundEndpoints"`
 	// List of target name servers to forward to. Cloud DNS will
 	// select the best available name server if more than
 	// one target is given.
@@ -919,6 +922,9 @@ type ManagedZoneForwardingConfigInput interface {
 }
 
 type ManagedZoneForwardingConfigArgs struct {
+	// The list of outbound endpoints to use for queries.
+	// Structure is documented below.
+	OutboundEndpoints ManagedZoneForwardingConfigOutboundEndpointArrayInput `pulumi:"outboundEndpoints"`
 	// List of target name servers to forward to. Cloud DNS will
 	// select the best available name server if more than
 	// one target is given.
@@ -1003,6 +1009,14 @@ func (o ManagedZoneForwardingConfigOutput) ToManagedZoneForwardingConfigPtrOutpu
 	}).(ManagedZoneForwardingConfigPtrOutput)
 }
 
+// The list of outbound endpoints to use for queries.
+// Structure is documented below.
+func (o ManagedZoneForwardingConfigOutput) OutboundEndpoints() ManagedZoneForwardingConfigOutboundEndpointArrayOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfig) []ManagedZoneForwardingConfigOutboundEndpoint {
+		return v.OutboundEndpoints
+	}).(ManagedZoneForwardingConfigOutboundEndpointArrayOutput)
+}
+
 // List of target name servers to forward to. Cloud DNS will
 // select the best available name server if more than
 // one target is given.
@@ -1037,6 +1051,17 @@ func (o ManagedZoneForwardingConfigPtrOutput) Elem() ManagedZoneForwardingConfig
 	}).(ManagedZoneForwardingConfigOutput)
 }
 
+// The list of outbound endpoints to use for queries.
+// Structure is documented below.
+func (o ManagedZoneForwardingConfigPtrOutput) OutboundEndpoints() ManagedZoneForwardingConfigOutboundEndpointArrayOutput {
+	return o.ApplyT(func(v *ManagedZoneForwardingConfig) []ManagedZoneForwardingConfigOutboundEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.OutboundEndpoints
+	}).(ManagedZoneForwardingConfigOutboundEndpointArrayOutput)
+}
+
 // List of target name servers to forward to. Cloud DNS will
 // select the best available name server if more than
 // one target is given.
@@ -1048,6 +1073,109 @@ func (o ManagedZoneForwardingConfigPtrOutput) TargetNameServers() ManagedZoneFor
 		}
 		return v.TargetNameServers
 	}).(ManagedZoneForwardingConfigTargetNameServerArrayOutput)
+}
+
+type ManagedZoneForwardingConfigOutboundEndpoint struct {
+	// Specified as a resource path including project and region.
+	// This should be formatted like
+	// `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+	Name string `pulumi:"name"`
+}
+
+// ManagedZoneForwardingConfigOutboundEndpointInput is an input type that accepts ManagedZoneForwardingConfigOutboundEndpointArgs and ManagedZoneForwardingConfigOutboundEndpointOutput values.
+// You can construct a concrete instance of `ManagedZoneForwardingConfigOutboundEndpointInput` via:
+//
+//	ManagedZoneForwardingConfigOutboundEndpointArgs{...}
+type ManagedZoneForwardingConfigOutboundEndpointInput interface {
+	pulumi.Input
+
+	ToManagedZoneForwardingConfigOutboundEndpointOutput() ManagedZoneForwardingConfigOutboundEndpointOutput
+	ToManagedZoneForwardingConfigOutboundEndpointOutputWithContext(context.Context) ManagedZoneForwardingConfigOutboundEndpointOutput
+}
+
+type ManagedZoneForwardingConfigOutboundEndpointArgs struct {
+	// Specified as a resource path including project and region.
+	// This should be formatted like
+	// `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ManagedZoneForwardingConfigOutboundEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneForwardingConfigOutboundEndpoint)(nil)).Elem()
+}
+
+func (i ManagedZoneForwardingConfigOutboundEndpointArgs) ToManagedZoneForwardingConfigOutboundEndpointOutput() ManagedZoneForwardingConfigOutboundEndpointOutput {
+	return i.ToManagedZoneForwardingConfigOutboundEndpointOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneForwardingConfigOutboundEndpointArgs) ToManagedZoneForwardingConfigOutboundEndpointOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigOutboundEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigOutboundEndpointOutput)
+}
+
+// ManagedZoneForwardingConfigOutboundEndpointArrayInput is an input type that accepts ManagedZoneForwardingConfigOutboundEndpointArray and ManagedZoneForwardingConfigOutboundEndpointArrayOutput values.
+// You can construct a concrete instance of `ManagedZoneForwardingConfigOutboundEndpointArrayInput` via:
+//
+//	ManagedZoneForwardingConfigOutboundEndpointArray{ ManagedZoneForwardingConfigOutboundEndpointArgs{...} }
+type ManagedZoneForwardingConfigOutboundEndpointArrayInput interface {
+	pulumi.Input
+
+	ToManagedZoneForwardingConfigOutboundEndpointArrayOutput() ManagedZoneForwardingConfigOutboundEndpointArrayOutput
+	ToManagedZoneForwardingConfigOutboundEndpointArrayOutputWithContext(context.Context) ManagedZoneForwardingConfigOutboundEndpointArrayOutput
+}
+
+type ManagedZoneForwardingConfigOutboundEndpointArray []ManagedZoneForwardingConfigOutboundEndpointInput
+
+func (ManagedZoneForwardingConfigOutboundEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZoneForwardingConfigOutboundEndpoint)(nil)).Elem()
+}
+
+func (i ManagedZoneForwardingConfigOutboundEndpointArray) ToManagedZoneForwardingConfigOutboundEndpointArrayOutput() ManagedZoneForwardingConfigOutboundEndpointArrayOutput {
+	return i.ToManagedZoneForwardingConfigOutboundEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneForwardingConfigOutboundEndpointArray) ToManagedZoneForwardingConfigOutboundEndpointArrayOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigOutboundEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigOutboundEndpointArrayOutput)
+}
+
+type ManagedZoneForwardingConfigOutboundEndpointOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneForwardingConfigOutboundEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneForwardingConfigOutboundEndpoint)(nil)).Elem()
+}
+
+func (o ManagedZoneForwardingConfigOutboundEndpointOutput) ToManagedZoneForwardingConfigOutboundEndpointOutput() ManagedZoneForwardingConfigOutboundEndpointOutput {
+	return o
+}
+
+func (o ManagedZoneForwardingConfigOutboundEndpointOutput) ToManagedZoneForwardingConfigOutboundEndpointOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigOutboundEndpointOutput {
+	return o
+}
+
+// Specified as a resource path including project and region.
+// This should be formatted like
+// `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+func (o ManagedZoneForwardingConfigOutboundEndpointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigOutboundEndpoint) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ManagedZoneForwardingConfigOutboundEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneForwardingConfigOutboundEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZoneForwardingConfigOutboundEndpoint)(nil)).Elem()
+}
+
+func (o ManagedZoneForwardingConfigOutboundEndpointArrayOutput) ToManagedZoneForwardingConfigOutboundEndpointArrayOutput() ManagedZoneForwardingConfigOutboundEndpointArrayOutput {
+	return o
+}
+
+func (o ManagedZoneForwardingConfigOutboundEndpointArrayOutput) ToManagedZoneForwardingConfigOutboundEndpointArrayOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigOutboundEndpointArrayOutput {
+	return o
+}
+
+func (o ManagedZoneForwardingConfigOutboundEndpointArrayOutput) Index(i pulumi.IntInput) ManagedZoneForwardingConfigOutboundEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZoneForwardingConfigOutboundEndpoint {
+		return vs[0].([]ManagedZoneForwardingConfigOutboundEndpoint)[vs[1].(int)]
+	}).(ManagedZoneForwardingConfigOutboundEndpointOutput)
 }
 
 type ManagedZoneForwardingConfigTargetNameServer struct {
@@ -2168,6 +2296,9 @@ func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) NamespaceUrl() pulu
 }
 
 type PolicyAlternativeNameServerConfig struct {
+	// The list of outbound endpoints to use for queries.
+	// Structure is documented below.
+	OutboundEndpoints []PolicyAlternativeNameServerConfigOutboundEndpoint `pulumi:"outboundEndpoints"`
 	// Sets an alternative name server for the associated networks. When specified,
 	// all DNS queries are forwarded to a name server that you choose. Names such as .internal
 	// are not available when an alternative name server is specified.
@@ -2187,6 +2318,9 @@ type PolicyAlternativeNameServerConfigInput interface {
 }
 
 type PolicyAlternativeNameServerConfigArgs struct {
+	// The list of outbound endpoints to use for queries.
+	// Structure is documented below.
+	OutboundEndpoints PolicyAlternativeNameServerConfigOutboundEndpointArrayInput `pulumi:"outboundEndpoints"`
 	// Sets an alternative name server for the associated networks. When specified,
 	// all DNS queries are forwarded to a name server that you choose. Names such as .internal
 	// are not available when an alternative name server is specified.
@@ -2271,6 +2405,14 @@ func (o PolicyAlternativeNameServerConfigOutput) ToPolicyAlternativeNameServerCo
 	}).(PolicyAlternativeNameServerConfigPtrOutput)
 }
 
+// The list of outbound endpoints to use for queries.
+// Structure is documented below.
+func (o PolicyAlternativeNameServerConfigOutput) OutboundEndpoints() PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput {
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfig) []PolicyAlternativeNameServerConfigOutboundEndpoint {
+		return v.OutboundEndpoints
+	}).(PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput)
+}
+
 // Sets an alternative name server for the associated networks. When specified,
 // all DNS queries are forwarded to a name server that you choose. Names such as .internal
 // are not available when an alternative name server is specified.
@@ -2305,6 +2447,17 @@ func (o PolicyAlternativeNameServerConfigPtrOutput) Elem() PolicyAlternativeName
 	}).(PolicyAlternativeNameServerConfigOutput)
 }
 
+// The list of outbound endpoints to use for queries.
+// Structure is documented below.
+func (o PolicyAlternativeNameServerConfigPtrOutput) OutboundEndpoints() PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput {
+	return o.ApplyT(func(v *PolicyAlternativeNameServerConfig) []PolicyAlternativeNameServerConfigOutboundEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.OutboundEndpoints
+	}).(PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput)
+}
+
 // Sets an alternative name server for the associated networks. When specified,
 // all DNS queries are forwarded to a name server that you choose. Names such as .internal
 // are not available when an alternative name server is specified.
@@ -2318,13 +2471,120 @@ func (o PolicyAlternativeNameServerConfigPtrOutput) TargetNameServers() PolicyAl
 	}).(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput)
 }
 
+type PolicyAlternativeNameServerConfigOutboundEndpoint struct {
+	// Specified as a resource path including project and region.
+	// This should be formatted like
+	// `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+	//
+	// <a name="nestedDns64Config"></a>The `dns64Config` block supports:
+	Name string `pulumi:"name"`
+}
+
+// PolicyAlternativeNameServerConfigOutboundEndpointInput is an input type that accepts PolicyAlternativeNameServerConfigOutboundEndpointArgs and PolicyAlternativeNameServerConfigOutboundEndpointOutput values.
+// You can construct a concrete instance of `PolicyAlternativeNameServerConfigOutboundEndpointInput` via:
+//
+//	PolicyAlternativeNameServerConfigOutboundEndpointArgs{...}
+type PolicyAlternativeNameServerConfigOutboundEndpointInput interface {
+	pulumi.Input
+
+	ToPolicyAlternativeNameServerConfigOutboundEndpointOutput() PolicyAlternativeNameServerConfigOutboundEndpointOutput
+	ToPolicyAlternativeNameServerConfigOutboundEndpointOutputWithContext(context.Context) PolicyAlternativeNameServerConfigOutboundEndpointOutput
+}
+
+type PolicyAlternativeNameServerConfigOutboundEndpointArgs struct {
+	// Specified as a resource path including project and region.
+	// This should be formatted like
+	// `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+	//
+	// <a name="nestedDns64Config"></a>The `dns64Config` block supports:
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PolicyAlternativeNameServerConfigOutboundEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAlternativeNameServerConfigOutboundEndpoint)(nil)).Elem()
+}
+
+func (i PolicyAlternativeNameServerConfigOutboundEndpointArgs) ToPolicyAlternativeNameServerConfigOutboundEndpointOutput() PolicyAlternativeNameServerConfigOutboundEndpointOutput {
+	return i.ToPolicyAlternativeNameServerConfigOutboundEndpointOutputWithContext(context.Background())
+}
+
+func (i PolicyAlternativeNameServerConfigOutboundEndpointArgs) ToPolicyAlternativeNameServerConfigOutboundEndpointOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigOutboundEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigOutboundEndpointOutput)
+}
+
+// PolicyAlternativeNameServerConfigOutboundEndpointArrayInput is an input type that accepts PolicyAlternativeNameServerConfigOutboundEndpointArray and PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput values.
+// You can construct a concrete instance of `PolicyAlternativeNameServerConfigOutboundEndpointArrayInput` via:
+//
+//	PolicyAlternativeNameServerConfigOutboundEndpointArray{ PolicyAlternativeNameServerConfigOutboundEndpointArgs{...} }
+type PolicyAlternativeNameServerConfigOutboundEndpointArrayInput interface {
+	pulumi.Input
+
+	ToPolicyAlternativeNameServerConfigOutboundEndpointArrayOutput() PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput
+	ToPolicyAlternativeNameServerConfigOutboundEndpointArrayOutputWithContext(context.Context) PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput
+}
+
+type PolicyAlternativeNameServerConfigOutboundEndpointArray []PolicyAlternativeNameServerConfigOutboundEndpointInput
+
+func (PolicyAlternativeNameServerConfigOutboundEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAlternativeNameServerConfigOutboundEndpoint)(nil)).Elem()
+}
+
+func (i PolicyAlternativeNameServerConfigOutboundEndpointArray) ToPolicyAlternativeNameServerConfigOutboundEndpointArrayOutput() PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput {
+	return i.ToPolicyAlternativeNameServerConfigOutboundEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyAlternativeNameServerConfigOutboundEndpointArray) ToPolicyAlternativeNameServerConfigOutboundEndpointArrayOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput)
+}
+
+type PolicyAlternativeNameServerConfigOutboundEndpointOutput struct{ *pulumi.OutputState }
+
+func (PolicyAlternativeNameServerConfigOutboundEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAlternativeNameServerConfigOutboundEndpoint)(nil)).Elem()
+}
+
+func (o PolicyAlternativeNameServerConfigOutboundEndpointOutput) ToPolicyAlternativeNameServerConfigOutboundEndpointOutput() PolicyAlternativeNameServerConfigOutboundEndpointOutput {
+	return o
+}
+
+func (o PolicyAlternativeNameServerConfigOutboundEndpointOutput) ToPolicyAlternativeNameServerConfigOutboundEndpointOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigOutboundEndpointOutput {
+	return o
+}
+
+// Specified as a resource path including project and region.
+// This should be formatted like
+// `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+//
+// <a name="nestedDns64Config"></a>The `dns64Config` block supports:
+func (o PolicyAlternativeNameServerConfigOutboundEndpointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfigOutboundEndpoint) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAlternativeNameServerConfigOutboundEndpoint)(nil)).Elem()
+}
+
+func (o PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput) ToPolicyAlternativeNameServerConfigOutboundEndpointArrayOutput() PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput {
+	return o
+}
+
+func (o PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput) ToPolicyAlternativeNameServerConfigOutboundEndpointArrayOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput {
+	return o
+}
+
+func (o PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput) Index(i pulumi.IntInput) PolicyAlternativeNameServerConfigOutboundEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAlternativeNameServerConfigOutboundEndpoint {
+		return vs[0].([]PolicyAlternativeNameServerConfigOutboundEndpoint)[vs[1].(int)]
+	}).(PolicyAlternativeNameServerConfigOutboundEndpointOutput)
+}
+
 type PolicyAlternativeNameServerConfigTargetNameServer struct {
 	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
 	// Possible values are: `default`, `private`.
-	//
-	// <a name="nestedDns64Config"></a>The `dns64Config` block supports:
 	ForwardingPath *string `pulumi:"forwardingPath"`
 	// IPv4 address to forward to.
 	Ipv4Address string `pulumi:"ipv4Address"`
@@ -2346,8 +2606,6 @@ type PolicyAlternativeNameServerConfigTargetNameServerArgs struct {
 	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
 	// Possible values are: `default`, `private`.
-	//
-	// <a name="nestedDns64Config"></a>The `dns64Config` block supports:
 	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
 	// IPv4 address to forward to.
 	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
@@ -2408,8 +2666,6 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ToPolicyAlterna
 // decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 // to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
 // Possible values are: `default`, `private`.
-//
-// <a name="nestedDns64Config"></a>The `dns64Config` block supports:
 func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ForwardingPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServer) *string { return v.ForwardingPath }).(pulumi.StringPtrOutput)
 }
@@ -6189,6 +6445,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneDnssecConfigDefaultKeySpecArrayInput)(nil)).Elem(), ManagedZoneDnssecConfigDefaultKeySpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneForwardingConfigInput)(nil)).Elem(), ManagedZoneForwardingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneForwardingConfigPtrInput)(nil)).Elem(), ManagedZoneForwardingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneForwardingConfigOutboundEndpointInput)(nil)).Elem(), ManagedZoneForwardingConfigOutboundEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneForwardingConfigOutboundEndpointArrayInput)(nil)).Elem(), ManagedZoneForwardingConfigOutboundEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneForwardingConfigTargetNameServerInput)(nil)).Elem(), ManagedZoneForwardingConfigTargetNameServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneForwardingConfigTargetNameServerArrayInput)(nil)).Elem(), ManagedZoneForwardingConfigTargetNameServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZonePeeringConfigInput)(nil)).Elem(), ManagedZonePeeringConfigArgs{})
@@ -6207,6 +6465,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneServiceDirectoryConfigNamespacePtrInput)(nil)).Elem(), ManagedZoneServiceDirectoryConfigNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigInput)(nil)).Elem(), PolicyAlternativeNameServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigPtrInput)(nil)).Elem(), PolicyAlternativeNameServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigOutboundEndpointInput)(nil)).Elem(), PolicyAlternativeNameServerConfigOutboundEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigOutboundEndpointArrayInput)(nil)).Elem(), PolicyAlternativeNameServerConfigOutboundEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerInput)(nil)).Elem(), PolicyAlternativeNameServerConfigTargetNameServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerArrayInput)(nil)).Elem(), PolicyAlternativeNameServerConfigTargetNameServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDns64ConfigInput)(nil)).Elem(), PolicyDns64ConfigArgs{})
@@ -6273,6 +6533,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedZoneDnssecConfigDefaultKeySpecArrayOutput{})
 	pulumi.RegisterOutputType(ManagedZoneForwardingConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZoneForwardingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedZoneForwardingConfigOutboundEndpointOutput{})
+	pulumi.RegisterOutputType(ManagedZoneForwardingConfigOutboundEndpointArrayOutput{})
 	pulumi.RegisterOutputType(ManagedZoneForwardingConfigTargetNameServerOutput{})
 	pulumi.RegisterOutputType(ManagedZoneForwardingConfigTargetNameServerArrayOutput{})
 	pulumi.RegisterOutputType(ManagedZonePeeringConfigOutput{})
@@ -6291,6 +6553,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigNamespacePtrOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigPtrOutput{})
+	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigOutboundEndpointOutput{})
+	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigOutboundEndpointArrayOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput{})
 	pulumi.RegisterOutputType(PolicyDns64ConfigOutput{})

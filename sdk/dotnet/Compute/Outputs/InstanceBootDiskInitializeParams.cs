@@ -43,20 +43,19 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Indicates how many IOPS to provision for the disk.
         /// This sets the number of I/O operations per second that the disk can handle.
         /// For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-        /// Note: Updating currently is only supported for hyperdisk skus via disk update
-        /// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-        /// for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-        /// you'll need to manually delete and recreate it.
+        /// Note: Updating in place is only supported for hyperdisk skus; changing this
+        /// value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+        /// Hyperdisk allows for an update of IOPS every 4 hours; to update more
+        /// frequently than that, you'll need to manually delete and recreate the disk.
         /// </summary>
         public readonly int? ProvisionedIops;
         /// <summary>
         /// Indicates how much throughput to provision for the disk.
         /// This sets the number of throughput mb per second that the disk can handle.
         /// For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-        /// Note: Updating currently is only supported for hyperdisk skus via disk update
-        /// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-        /// for an update of throughput every 4 hours. To update your hyperdisk more
-        /// frequently, you'll need to manually delete and recreate it.
+        /// Note: This is only supported for hyperdisk skus, and can be updated in place.
+        /// Hyperdisk allows for an update of throughput every 4 hours; to update more
+        /// frequently than that, you'll need to manually delete and recreate the disk.
         /// </summary>
         public readonly int? ProvisionedThroughput;
         /// <summary>

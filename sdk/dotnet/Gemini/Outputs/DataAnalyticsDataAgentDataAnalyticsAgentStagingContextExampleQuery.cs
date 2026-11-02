@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.Gemini.Outputs
         /// </summary>
         public readonly string? NaturalLanguageQuestion;
         /// <summary>
+        /// Optional. The list of query parameters.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameter> Parameters;
+        /// <summary>
         /// Optional. The SQL query that should be generated to answer
         /// the natural language question.
         /// </summary>
@@ -27,9 +32,12 @@ namespace Pulumi.Gcp.Gemini.Outputs
         private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery(
             string? naturalLanguageQuestion,
 
+            ImmutableArray<Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameter> parameters,
+
             string? sqlQuery)
         {
             NaturalLanguageQuestion = naturalLanguageQuestion;
+            Parameters = parameters;
             SqlQuery = sqlQuery;
         }
     }

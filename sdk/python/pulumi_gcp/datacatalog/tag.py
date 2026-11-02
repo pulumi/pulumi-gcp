@@ -372,6 +372,7 @@ class Tag(pulumi.CustomResource):
                 "string_value": "my-string",
             }])
         ```
+
         ### Data Catalog Entry Group Tag
 
         ```python
@@ -438,6 +439,7 @@ class Tag(pulumi.CustomResource):
                 "string_value": "my-string",
             }])
         ```
+
         ### Data Catalog Entry Tag Full
 
         ```python
@@ -678,6 +680,7 @@ class Tag(pulumi.CustomResource):
                 "string_value": "my-string",
             }])
         ```
+
         ### Data Catalog Entry Group Tag
 
         ```python
@@ -744,6 +747,7 @@ class Tag(pulumi.CustomResource):
                 "string_value": "my-string",
             }])
         ```
+
         ### Data Catalog Entry Tag Full
 
         ```python

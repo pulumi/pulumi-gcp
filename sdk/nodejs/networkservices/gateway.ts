@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     ports: [443],
  * });
  * ```
+ *
  * ### Network Services Gateway Advanced
  *
  * ```typescript
@@ -46,6 +47,7 @@ import * as utilities from "../utilities";
  *     scope: "default-scope-advance",
  * });
  * ```
+ *
  * ### Network Services Gateway Secure Web Proxy
  *
  * ```typescript
@@ -115,6 +117,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [proxyonlysubnet],
  * });
  * ```
+ *
  * ### Network Services Gateway Multiple Swp Same Network
  *
  * ```typescript

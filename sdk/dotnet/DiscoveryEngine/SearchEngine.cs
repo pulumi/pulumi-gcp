@@ -59,6 +59,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Discoveryengine Searchengine Agentspace Basic
     /// 
     /// ```csharp
@@ -232,6 +233,20 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Maps a model name to its specific configuration for this engine. This
+        /// allows admin users to turn on/off individual models. This only stores
+        /// models whose states are overridden by the admin. When the state is
+        /// unspecified, or `ModelConfigs` is empty for this model, the system
+        /// decides if this model is available based on the default configuration.
+        /// For example, a preview model is disabled by default if the admin has not
+        /// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+        /// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+        /// for details.
+        /// </summary>
+        [Output("modelConfigs")]
+        public Output<ImmutableDictionary<string, string>> ModelConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The unique full resource name of the search engine. Values are of the format
@@ -418,6 +433,26 @@ namespace Pulumi.Gcp.DiscoveryEngine
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        [Input("modelConfigs")]
+        private InputMap<string>? _modelConfigs;
+
+        /// <summary>
+        /// Maps a model name to its specific configuration for this engine. This
+        /// allows admin users to turn on/off individual models. This only stores
+        /// models whose states are overridden by the admin. When the state is
+        /// unspecified, or `ModelConfigs` is empty for this model, the system
+        /// decides if this model is available based on the default configuration.
+        /// For example, a preview model is disabled by default if the admin has not
+        /// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+        /// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+        /// for details.
+        /// </summary>
+        public InputMap<string> ModelConfigs
+        {
+            get => _modelConfigs ?? (_modelConfigs = new InputMap<string>());
+            set => _modelConfigs = value;
+        }
+
         [Input("procurementContactEmails")]
         private InputList<string>? _procurementContactEmails;
 
@@ -561,6 +596,26 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        [Input("modelConfigs")]
+        private InputMap<string>? _modelConfigs;
+
+        /// <summary>
+        /// Maps a model name to its specific configuration for this engine. This
+        /// allows admin users to turn on/off individual models. This only stores
+        /// models whose states are overridden by the admin. When the state is
+        /// unspecified, or `ModelConfigs` is empty for this model, the system
+        /// decides if this model is available based on the default configuration.
+        /// For example, a preview model is disabled by default if the admin has not
+        /// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+        /// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+        /// for details.
+        /// </summary>
+        public InputMap<string> ModelConfigs
+        {
+            get => _modelConfigs ?? (_modelConfigs = new InputMap<string>());
+            set => _modelConfigs = value;
+        }
 
         /// <summary>
         /// The unique full resource name of the search engine. Values are of the format

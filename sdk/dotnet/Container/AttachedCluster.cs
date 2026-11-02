@@ -59,6 +59,7 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
+    /// 
     /// ### Container Attached Cluster Full
     /// 
     /// ```csharp
@@ -149,6 +150,7 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
+    /// 
     /// ### Container Attached Cluster Ignore Errors
     /// 
     /// ```csharp

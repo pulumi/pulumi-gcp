@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// by name
+//			//by name
 //			_, err := compute.LookupSnapshot(ctx, &compute.LookupSnapshotArgs{
 //				Name: pulumi.StringRef("my-snapshot"),
 //			}, nil)

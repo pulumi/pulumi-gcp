@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     exactMatch: false,
  * });
  * ```
+ *
  * ### Discoveryengine Targetsite Advanced
  *
  * ```typescript

@@ -54,6 +54,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workbench Instance Basic Container
 //
 // ```go
@@ -90,6 +91,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workbench Instance Basic Gpu
 //
 // ```go
@@ -161,6 +163,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workbench Instance Labels Stopped
 //
 // ```go
@@ -210,6 +213,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workbench Instance Full
 //
 // ```go
@@ -387,6 +391,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workbench Instance Confidential Compute
 //
 // ```go
@@ -427,6 +432,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workbench Instance Euc
 //
 // ```go

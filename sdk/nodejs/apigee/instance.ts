@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     orgId: apigeeOrg.id,
  * });
  * ```
+ *
  * ### Apigee Instance Cidr Range
  *
  * ```typescript
@@ -84,6 +85,7 @@ import * as utilities from "../utilities";
  *     peeringCidrRange: "SLASH_22",
  * });
  * ```
+ *
  * ### Apigee Instance Ip Range
  *
  * ```typescript
@@ -118,6 +120,7 @@ import * as utilities from "../utilities";
  *     ipRange: "10.87.8.0/22",
  * });
  * ```
+ *
  * ### Apigee Instance Full
  *
  * ```typescript

@@ -42,7 +42,10 @@ public final class ClusterNodePool {
     /**
      * @return The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
-     * number of nodes per zone. Must be set if `nodePool` is not set. If you&#39;re using
+     * number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+     * `nodePool` blocks defined, the cluster is created without a default node pool.
+     * This requires a GKE version that supports clusters without a default node pool
+     * (`1.36.4-gke.1469000+`). For older GKE versions, if you&#39;re using
      * `gcp.container.NodePool` objects with no default node pool, you&#39;ll need to
      * set this to a value of at least `1`, alongside setting
      * `removeDefaultNodePool` to `true`.
@@ -170,7 +173,10 @@ public final class ClusterNodePool {
     /**
      * @return The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
-     * number of nodes per zone. Must be set if `nodePool` is not set. If you&#39;re using
+     * number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+     * `nodePool` blocks defined, the cluster is created without a default node pool.
+     * This requires a GKE version that supports clusters without a default node pool
+     * (`1.36.4-gke.1469000+`). For older GKE versions, if you&#39;re using
      * `gcp.container.NodePool` objects with no default node pool, you&#39;ll need to
      * set this to a value of at least `1`, alongside setting
      * `removeDefaultNodePool` to `true`.

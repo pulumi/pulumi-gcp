@@ -127,6 +127,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflowcx Tool Data Store
     /// 
     /// ```csharp
@@ -202,6 +203,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflowcx Tool Function
     /// 
     /// ```csharp
@@ -256,6 +258,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflowcx Tool Connector
     /// 
     /// ```csharp

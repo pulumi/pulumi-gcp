@@ -24,6 +24,7 @@ import (
 // resource of this type will acquire and update the resource that already
 // exists at the location. Deleting this resource will remove the config from
 // your Terraform state but leave the resource as is.
+//
 // ## Example Usage
 //
 // ### Artifact Registry Vpcsc Config

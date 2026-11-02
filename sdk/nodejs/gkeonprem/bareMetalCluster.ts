@@ -93,6 +93,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkeonprem Bare Metal Cluster Manuallb
  *
  * ```typescript
@@ -162,6 +163,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkeonprem Bare Metal Cluster Bgplb
  *
  * ```typescript

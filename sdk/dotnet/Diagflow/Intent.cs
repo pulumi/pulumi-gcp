@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Intent Full
     /// 
     /// ```csharp

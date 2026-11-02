@@ -31,6 +31,8 @@ __all__ = [
     'AnalystAgentPersonaArtifactExampleResourceRawFileResourceArgsDict',
     'AnalystAgentPersonaArtifactsConfigArgs',
     'AnalystAgentPersonaArtifactsConfigArgsDict',
+    'AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs',
+    'AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgsDict',
     'AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs',
     'AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgsDict',
     'AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleArgs',
@@ -674,6 +676,10 @@ class AnalystAgentPersonaArtifactExampleResourceRawFileResourceArgs:
 
 
 class AnalystAgentPersonaArtifactsConfigArgsDict(TypedDict):
+    audit_trail_export_options: NotRequired[pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgsDict']]]
+    """
+    Options for audit trail export.
+    """
     document_generation_options: NotRequired[pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgsDict']]]
     """
     Options for document generation.
@@ -694,16 +700,20 @@ class AnalystAgentPersonaArtifactsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AnalystAgentPersonaArtifactsConfigArgs:
     def __init__(__self__, *,
+                 audit_trail_export_options: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs']] = None,
                  document_generation_options: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs']] = None,
                  methodology_export_options: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs']] = None,
                  slide_generation_options: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs']] = None,
                  visualization_options: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs']] = None):
         """
+        :param pulumi.Input['AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs'] audit_trail_export_options: Options for audit trail export.
         :param pulumi.Input['AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs'] document_generation_options: Options for document generation.
         :param pulumi.Input['AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs'] methodology_export_options: Options for methodology export.
         :param pulumi.Input['AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs'] slide_generation_options: Options for slide generation.
         :param pulumi.Input['AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs'] visualization_options: Options for visualizations.
         """
+        if audit_trail_export_options is not None:
+            pulumi.set(__self__, "audit_trail_export_options", audit_trail_export_options)
         if document_generation_options is not None:
             pulumi.set(__self__, "document_generation_options", document_generation_options)
         if methodology_export_options is not None:
@@ -712,6 +722,18 @@ class AnalystAgentPersonaArtifactsConfigArgs:
             pulumi.set(__self__, "slide_generation_options", slide_generation_options)
         if visualization_options is not None:
             pulumi.set(__self__, "visualization_options", visualization_options)
+
+    @_builtins.property
+    @pulumi.getter(name="auditTrailExportOptions")
+    def audit_trail_export_options(self) -> pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs']]:
+        """
+        Options for audit trail export.
+        """
+        return pulumi.get(self, "audit_trail_export_options")
+
+    @audit_trail_export_options.setter
+    def audit_trail_export_options(self, value: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs']]):
+        pulumi.set(self, "audit_trail_export_options", value)
 
     @_builtins.property
     @pulumi.getter(name="documentGenerationOptions")
@@ -760,6 +782,87 @@ class AnalystAgentPersonaArtifactsConfigArgs:
     @visualization_options.setter
     def visualization_options(self, value: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs']]):
         pulumi.set(self, "visualization_options", value)
+
+
+class AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgsDict(TypedDict):
+    append_audit_trail: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, append the audit trail to the final response.
+    """
+    export_audit_trail_artifact: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, export the audit trail as a separate artifact.
+    """
+    export_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Format for audit trail export.
+    Possible values:
+    MARKDOWN
+    HTML
+    PDF
+    """
+
+@pulumi.input_type
+class AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs:
+    def __init__(__self__, *,
+                 append_audit_trail: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_audit_trail_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_format: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] append_audit_trail: If true, append the audit trail to the final response.
+        :param pulumi.Input[_builtins.bool] export_audit_trail_artifact: If true, export the audit trail as a separate artifact.
+        :param pulumi.Input[_builtins.str] export_format: Format for audit trail export.
+               Possible values:
+               MARKDOWN
+               HTML
+               PDF
+        """
+        if append_audit_trail is not None:
+            pulumi.set(__self__, "append_audit_trail", append_audit_trail)
+        if export_audit_trail_artifact is not None:
+            pulumi.set(__self__, "export_audit_trail_artifact", export_audit_trail_artifact)
+        if export_format is not None:
+            pulumi.set(__self__, "export_format", export_format)
+
+    @_builtins.property
+    @pulumi.getter(name="appendAuditTrail")
+    def append_audit_trail(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, append the audit trail to the final response.
+        """
+        return pulumi.get(self, "append_audit_trail")
+
+    @append_audit_trail.setter
+    def append_audit_trail(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "append_audit_trail", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exportAuditTrailArtifact")
+    def export_audit_trail_artifact(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, export the audit trail as a separate artifact.
+        """
+        return pulumi.get(self, "export_audit_trail_artifact")
+
+    @export_audit_trail_artifact.setter
+    def export_audit_trail_artifact(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "export_audit_trail_artifact", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exportFormat")
+    def export_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Format for audit trail export.
+        Possible values:
+        MARKDOWN
+        HTML
+        PDF
+        """
+        return pulumi.get(self, "export_format")
+
+    @export_format.setter
+    def export_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "export_format", value)
 
 
 class AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgsDict(TypedDict):

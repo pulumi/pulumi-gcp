@@ -59,6 +59,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Privateca Certificate Authority Basic No Org
  *
  * ```typescript
@@ -95,6 +96,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Privateca Certificate Authority Subordinate
  *
  * ```typescript
@@ -168,6 +170,7 @@ import * as utilities from "../utilities";
  *     type: "SUBORDINATE",
  * });
  * ```
+ *
  * ### Privateca Certificate Authority Byo Key
  *
  * ```typescript
@@ -231,6 +234,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Privateca Certificate Authority Custom Ski
  *
  * ```typescript
@@ -271,6 +275,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Privateca Certificate Authority Basic With Custom Cdp Aia Urls
  *
  * ```typescript

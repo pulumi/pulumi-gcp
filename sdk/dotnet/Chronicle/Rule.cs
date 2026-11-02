@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Rule With Force Deletion
     /// 
     /// ```csharp
@@ -62,6 +63,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Rule With Data Access Scope
     /// 
     /// ```csharp

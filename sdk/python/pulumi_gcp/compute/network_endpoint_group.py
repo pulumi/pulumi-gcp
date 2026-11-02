@@ -526,6 +526,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             zone="us-central1-a")
         ```
+
         ### Network Endpoint Group Non Gcp
 
         ```python
@@ -651,6 +652,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             zone="us-central1-a")
         ```
+
         ### Network Endpoint Group Non Gcp
 
         ```python

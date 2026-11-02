@@ -83,6 +83,8 @@ type NotificationConfig struct {
 
 	// This must be unique within the organization.
 	ConfigId pulumi.StringOutput `pulumi:"configId"`
+	// Indicates whether the notifications will be sent for deleted findings.
+	DeletionNotificationsEnabled pulumi.BoolPtrOutput `pulumi:"deletionNotificationsEnabled"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -153,6 +155,8 @@ func GetNotificationConfig(ctx *pulumi.Context,
 type notificationConfigState struct {
 	// This must be unique within the organization.
 	ConfigId *string `pulumi:"configId"`
+	// Indicates whether the notifications will be sent for deleted findings.
+	DeletionNotificationsEnabled *bool `pulumi:"deletionNotificationsEnabled"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -182,6 +186,8 @@ type notificationConfigState struct {
 type NotificationConfigState struct {
 	// This must be unique within the organization.
 	ConfigId pulumi.StringPtrInput
+	// Indicates whether the notifications will be sent for deleted findings.
+	DeletionNotificationsEnabled pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -215,6 +221,8 @@ func (NotificationConfigState) ElementType() reflect.Type {
 type notificationConfigArgs struct {
 	// This must be unique within the organization.
 	ConfigId string `pulumi:"configId"`
+	// Indicates whether the notifications will be sent for deleted findings.
+	DeletionNotificationsEnabled *bool `pulumi:"deletionNotificationsEnabled"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -239,6 +247,8 @@ type notificationConfigArgs struct {
 type NotificationConfigArgs struct {
 	// This must be unique within the organization.
 	ConfigId pulumi.StringInput
+	// Indicates whether the notifications will be sent for deleted findings.
+	DeletionNotificationsEnabled pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -349,6 +359,11 @@ func (o NotificationConfigOutput) ToNotificationConfigOutputWithContext(ctx cont
 // This must be unique within the organization.
 func (o NotificationConfigOutput) ConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// Indicates whether the notifications will be sent for deleted findings.
+func (o NotificationConfigOutput) DeletionNotificationsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationConfig) pulumi.BoolPtrOutput { return v.DeletionNotificationsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

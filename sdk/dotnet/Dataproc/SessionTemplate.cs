@@ -72,6 +72,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataproc Session Templates Jupyter Full
     /// 
     /// ```csharp
@@ -227,6 +228,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataproc Session Templates Spark Connect
     /// 
     /// ```csharp

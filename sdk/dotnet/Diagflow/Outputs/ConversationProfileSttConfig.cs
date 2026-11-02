@@ -23,6 +23,11 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly bool? EnableWordInfo;
         /// <summary>
+        /// Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `UseGeminiAsr` is true.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ConversationProfileSttConfigGeminiAsrConfig? GeminiAsrConfig;
+        /// <summary>
         /// The language of the supplied audio.
         /// </summary>
         public readonly string? LanguageCode;
@@ -41,6 +46,10 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly string? SpeechModelVariant;
         /// <summary>
+        /// If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+        /// </summary>
+        public readonly bool? UseGeminiAsr;
+        /// <summary>
         /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         /// </summary>
         public readonly bool? UseTimeoutBasedEndpointing;
@@ -51,6 +60,8 @@ namespace Pulumi.Gcp.Diagflow.Outputs
 
             bool? enableWordInfo,
 
+            Outputs.ConversationProfileSttConfigGeminiAsrConfig? geminiAsrConfig,
+
             string? languageCode,
 
             string? model,
@@ -59,14 +70,18 @@ namespace Pulumi.Gcp.Diagflow.Outputs
 
             string? speechModelVariant,
 
+            bool? useGeminiAsr,
+
             bool? useTimeoutBasedEndpointing)
         {
             AudioEncoding = audioEncoding;
             EnableWordInfo = enableWordInfo;
+            GeminiAsrConfig = geminiAsrConfig;
             LanguageCode = languageCode;
             Model = model;
             SampleRateHertz = sampleRateHertz;
             SpeechModelVariant = speechModelVariant;
+            UseGeminiAsr = useGeminiAsr;
             UseTimeoutBasedEndpointing = useTimeoutBasedEndpointing;
         }
     }

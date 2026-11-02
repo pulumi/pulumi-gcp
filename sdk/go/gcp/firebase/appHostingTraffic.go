@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ## Include these blocks only once per project if you are starting from scratch ###
+//			//## Include these blocks only once per project if you are starting from scratch ###
 //			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				Project:                   pulumi.String("my-project-name"),
 //				AccountId:                 pulumi.String("firebase-app-hosting-compute"),
@@ -105,6 +105,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase App Hosting Traffic Rollout Policy
 //
 // ```go
@@ -121,7 +122,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ## Include these blocks only once per project if you are starting from scratch ###
+//			//## Include these blocks only once per project if you are starting from scratch ###
 //			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				Project:                   pulumi.String("my-project-name"),
 //				AccountId:                 pulumi.String("firebase-app-hosting-compute"),
@@ -175,6 +176,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase App Hosting Traffic Rollout Policy Disabled
 //
 // ```go
@@ -191,7 +193,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ## Include these blocks only once per project if you are starting from scratch ###
+//			//## Include these blocks only once per project if you are starting from scratch ###
 //			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				Project:                   pulumi.String("my-project-name"),
 //				AccountId:                 pulumi.String("firebase-app-hosting-compute"),

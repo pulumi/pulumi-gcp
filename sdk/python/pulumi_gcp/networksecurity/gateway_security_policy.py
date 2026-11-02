@@ -347,6 +347,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             description="my description")
         ```
+
         ### Network Security Gateway Security Policy Tls Inspection Basic
 
         ```python
@@ -491,6 +492,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             description="my description")
         ```
+
         ### Network Security Gateway Security Policy Tls Inspection Basic
 
         ```python

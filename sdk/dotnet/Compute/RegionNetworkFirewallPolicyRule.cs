@@ -130,6 +130,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Firewall Policy Rule Network Scope Egress
     /// 
     /// ```csharp
@@ -178,6 +179,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Firewall Policy Rule Network Scope Ingress
     /// 
     /// ```csharp
@@ -235,6 +237,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Firewall Policy Rule Network Context Egress
     /// 
     /// ```csharp
@@ -283,6 +286,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Firewall Policy Rule Network Context Ingress
     /// 
     /// ```csharp
@@ -331,6 +335,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firewall Policy Rule Target Type Internal Managed Lb Instance Regional
     /// 
     /// ```csharp

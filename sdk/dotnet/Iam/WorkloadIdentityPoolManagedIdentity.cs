@@ -52,6 +52,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Managed Identity Full
     /// 
     /// ```csharp

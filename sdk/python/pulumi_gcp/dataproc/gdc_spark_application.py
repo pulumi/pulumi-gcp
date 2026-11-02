@@ -896,6 +896,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                 "args": ["10000"],
             })
         ```
+
         ### Dataprocgdc Sparkapplication
 
         ```python
@@ -932,6 +933,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                 "file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
             })
         ```
+
         ### Dataprocgdc Sparkapplication Pyspark
 
         ```python
@@ -955,6 +957,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                 "args": ["10"],
             })
         ```
+
         ### Dataprocgdc Sparkapplication Sparkr
 
         ```python
@@ -975,6 +978,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                 "args": ["10"],
             })
         ```
+
         ### Dataprocgdc Sparkapplication Sparksql
 
         ```python
@@ -998,6 +1002,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dataprocgdc Sparkapplication Sparksql Query File
 
         ```python
@@ -1106,6 +1111,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                 "args": ["10000"],
             })
         ```
+
         ### Dataprocgdc Sparkapplication
 
         ```python
@@ -1142,6 +1148,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                 "file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
             })
         ```
+
         ### Dataprocgdc Sparkapplication Pyspark
 
         ```python
@@ -1165,6 +1172,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                 "args": ["10"],
             })
         ```
+
         ### Dataprocgdc Sparkapplication Sparkr
 
         ```python
@@ -1185,6 +1193,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                 "args": ["10"],
             })
         ```
+
         ### Dataprocgdc Sparkapplication Sparksql
 
         ```python
@@ -1208,6 +1217,7 @@ class GdcSparkApplication(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dataprocgdc Sparkapplication Sparksql Query File
 
         ```python

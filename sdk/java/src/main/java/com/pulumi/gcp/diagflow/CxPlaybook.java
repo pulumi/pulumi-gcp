@@ -108,6 +108,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dialogflowcx Playbook Fulfillment
  * 
  * <pre>
@@ -182,7 +183,7 @@ import javax.annotation.Nullable;
  *             .parent(agent.id())
  *             .displayName("TF Prompt generator")
  *             .llmModelSettings(CxGeneratorLlmModelSettingsArgs.builder()
- *                 .model("gemini-2.0-flash-001")
+ *                 .model("gemini-2.5-flash")
  *                 .promptText("Return me some great results")
  *                 .build())
  *             .promptText(CxGeneratorPromptTextArgs.builder()
@@ -231,7 +232,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                 .build())
  *             .llmModelSettings(CxPlaybookLlmModelSettingsArgs.builder()
- *                 .model("gemini-2.0-flash-001")
+ *                 .model("gemini-2.5-flash")
  *                 .promptText("Return me some great results")
  *                 .build())
  *             .referencedTools(myTool.id())

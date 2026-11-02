@@ -59,6 +59,8 @@ namespace Pulumi.Gcp.Compute
     ///         IpCidrRange = "10.0.0.1/16",
     ///         Region = "us-central1",
     ///         Network = @default.Id,
+    ///         StackType = "IPV4_IPV6",
+    ///         Ipv6AccessType = "EXTERNAL",
     ///     });
     /// 
     ///     var endpoint_instance1 = new Gcp.Compute.Instance("endpoint-instance1", new()
@@ -72,10 +74,18 @@ namespace Pulumi.Gcp.Compute
     ///                     null,
     ///                 },
     ///                 Subnetwork = defaultSubnetwork.Id,
+    ///                 StackType = "IPV4_IPV6",
+    ///                 Ipv6AccessConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs
+    ///                     {
+    ///                         NetworkTier = "PREMIUM",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///         Name = "endpoint-instance1",
-    ///         MachineType = "e2-medium",
+    ///         MachineType = "e2-micro",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
@@ -96,10 +106,18 @@ namespace Pulumi.Gcp.Compute
     ///                     null,
     ///                 },
     ///                 Subnetwork = defaultSubnetwork.Id,
+    ///                 StackType = "IPV4_IPV6",
+    ///                 Ipv6AccessConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs
+    ///                     {
+    ///                         NetworkTier = "PREMIUM",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///         Name = "endpoint-instance2",
-    ///         MachineType = "e2-medium",
+    ///         MachineType = "e2-micro",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
@@ -107,6 +125,15 @@ namespace Pulumi.Gcp.Compute
     ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
     ///             },
     ///         },
+    ///     });
+    /// 
+    ///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
+    ///     {
+    ///         Name = "my-lb-neg",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         DefaultPort = 90,
+    ///         Zone = "us-central1-a",
     ///     });
     /// 
     ///     var default_endpoints = new Gcp.Compute.NetworkEndpointList("default-endpoints", new()
@@ -122,20 +149,23 @@ namespace Pulumi.Gcp.Compute
     ///             },
     ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
     ///             {
+    ///                 Instance = endpoint_instance1.Name,
+    ///                 Port = neg.DefaultPort,
+    ///                 Ipv6Address = endpoint_instance1.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].Ipv6AccessConfigs[0]?.ExternalIpv6),
+    ///             },
+    ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
+    ///             {
     ///                 Instance = endpoint_instance2.Name,
     ///                 Port = neg.DefaultPort,
     ///                 IpAddress = endpoint_instance2.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
     ///             },
+    ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
+    ///             {
+    ///                 Instance = endpoint_instance2.Name,
+    ///                 Port = neg.DefaultPort,
+    ///                 Ipv6Address = endpoint_instance2.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].Ipv6AccessConfigs[0]?.ExternalIpv6),
+    ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var @group = new Gcp.Compute.NetworkEndpointGroup("group", new()
-    ///     {
-    ///         Name = "my-lb-neg",
-    ///         Network = @default.Id,
-    ///         Subnetwork = defaultSubnetwork.Id,
-    ///         DefaultPort = 90,
-    ///         Zone = "us-central1-a",
     ///     });
     /// 
     /// });

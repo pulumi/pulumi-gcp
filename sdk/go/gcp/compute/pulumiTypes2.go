@@ -13,6 +13,124 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetBackendServiceConsistentHashHttpCookyTtl struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetBackendServiceConsistentHashHttpCookyTtlInput is an input type that accepts GetBackendServiceConsistentHashHttpCookyTtlArgs and GetBackendServiceConsistentHashHttpCookyTtlOutput values.
+// You can construct a concrete instance of `GetBackendServiceConsistentHashHttpCookyTtlInput` via:
+//
+//	GetBackendServiceConsistentHashHttpCookyTtlArgs{...}
+type GetBackendServiceConsistentHashHttpCookyTtlInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceConsistentHashHttpCookyTtlOutput() GetBackendServiceConsistentHashHttpCookyTtlOutput
+	ToGetBackendServiceConsistentHashHttpCookyTtlOutputWithContext(context.Context) GetBackendServiceConsistentHashHttpCookyTtlOutput
+}
+
+type GetBackendServiceConsistentHashHttpCookyTtlArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetBackendServiceConsistentHashHttpCookyTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
+}
+
+func (i GetBackendServiceConsistentHashHttpCookyTtlArgs) ToGetBackendServiceConsistentHashHttpCookyTtlOutput() GetBackendServiceConsistentHashHttpCookyTtlOutput {
+	return i.ToGetBackendServiceConsistentHashHttpCookyTtlOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceConsistentHashHttpCookyTtlArgs) ToGetBackendServiceConsistentHashHttpCookyTtlOutputWithContext(ctx context.Context) GetBackendServiceConsistentHashHttpCookyTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceConsistentHashHttpCookyTtlOutput)
+}
+
+// GetBackendServiceConsistentHashHttpCookyTtlArrayInput is an input type that accepts GetBackendServiceConsistentHashHttpCookyTtlArray and GetBackendServiceConsistentHashHttpCookyTtlArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceConsistentHashHttpCookyTtlArrayInput` via:
+//
+//	GetBackendServiceConsistentHashHttpCookyTtlArray{ GetBackendServiceConsistentHashHttpCookyTtlArgs{...} }
+type GetBackendServiceConsistentHashHttpCookyTtlArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutput() GetBackendServiceConsistentHashHttpCookyTtlArrayOutput
+	ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(context.Context) GetBackendServiceConsistentHashHttpCookyTtlArrayOutput
+}
+
+type GetBackendServiceConsistentHashHttpCookyTtlArray []GetBackendServiceConsistentHashHttpCookyTtlInput
+
+func (GetBackendServiceConsistentHashHttpCookyTtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
+}
+
+func (i GetBackendServiceConsistentHashHttpCookyTtlArray) ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutput() GetBackendServiceConsistentHashHttpCookyTtlArrayOutput {
+	return i.ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceConsistentHashHttpCookyTtlArray) ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(ctx context.Context) GetBackendServiceConsistentHashHttpCookyTtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceConsistentHashHttpCookyTtlArrayOutput)
+}
+
+type GetBackendServiceConsistentHashHttpCookyTtlOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceConsistentHashHttpCookyTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
+}
+
+func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) ToGetBackendServiceConsistentHashHttpCookyTtlOutput() GetBackendServiceConsistentHashHttpCookyTtlOutput {
+	return o
+}
+
+func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) ToGetBackendServiceConsistentHashHttpCookyTtlOutputWithContext(ctx context.Context) GetBackendServiceConsistentHashHttpCookyTtlOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
+func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCookyTtl) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
+func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCookyTtl) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetBackendServiceConsistentHashHttpCookyTtlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
+}
+
+func (o GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutput() GetBackendServiceConsistentHashHttpCookyTtlArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) ToGetBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(ctx context.Context) GetBackendServiceConsistentHashHttpCookyTtlArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) Index(i pulumi.IntInput) GetBackendServiceConsistentHashHttpCookyTtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceConsistentHashHttpCookyTtl {
+		return vs[0].([]GetBackendServiceConsistentHashHttpCookyTtl)[vs[1].(int)]
+	}).(GetBackendServiceConsistentHashHttpCookyTtlOutput)
+}
+
 type GetBackendServiceCustomMetric struct {
 	// If true, the metric data is not used for load balancing.
 	DryRun bool `pulumi:"dryRun"`
@@ -3093,6 +3211,8 @@ type GetDiskDiskEncryptionKey struct {
 	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
 	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
 	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+	//
+	// Specify the key without a '/cryptoKeyVersions/' suffix.
 	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
 	// The service account used for the encryption request for the given KMS key.
 	// If absent, the Compute Engine Service Agent service account is used.
@@ -3137,6 +3257,8 @@ type GetDiskDiskEncryptionKeyArgs struct {
 	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
 	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
 	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+	//
+	// Specify the key without a '/cryptoKeyVersions/' suffix.
 	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
 	// The service account used for the encryption request for the given KMS key.
 	// If absent, the Compute Engine Service Agent service account is used.
@@ -3220,6 +3342,8 @@ func (o GetDiskDiskEncryptionKeyOutput) ToGetDiskDiskEncryptionKeyOutputWithCont
 // ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
 // 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
 // See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+//
+// Specify the key without a '/cryptoKeyVersions/' suffix.
 func (o GetDiskDiskEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
@@ -4051,10 +4175,11 @@ type GetForwardingRulesRule struct {
 	// APIs, the forwarding rule name must be a 1-20 characters string with
 	// lowercase letters and numbers and must start with a letter.
 	Name string `pulumi:"name"`
-	// This field is not used for external load balancing.
+	// This field is not used for global external load balancing.
 	//
-	// For Internal TCP/UDP Load Balancing, this field identifies the network that
-	// the load balanced IP should belong to for this Forwarding Rule.
+	// For Internal TCP/UDP Load Balancing and Regional External Load Balancing ('EXTERNAL_MANAGED'),
+	// this field identifies the network that the load balanced IP should belong to
+	// for this Forwarding Rule.
 	// If the subnetwork is specified, the network of the subnetwork will be used.
 	// If neither subnetwork nor this field is specified, the default network will
 	// be used.
@@ -4165,8 +4290,9 @@ type GetForwardingRulesRule struct {
 	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 	SourceIpRanges []string `pulumi:"sourceIpRanges"`
 	// This field identifies the subnetwork that the load balanced IP should
-	// belong to for this Forwarding Rule, used in internal load balancing and
-	// network load balancing with IPv6.
+	// belong to for this Forwarding Rule, used in internal load balancing,
+	// network load balancing with IPv6, and regional external ('EXTERNAL_MANAGED')
+	// load balancing with IPv6.
 	//
 	// If the network specified is in auto subnet mode, this field is optional.
 	// However, a subnetwork must be specified if the network is in custom subnet
@@ -4355,10 +4481,11 @@ type GetForwardingRulesRuleArgs struct {
 	// APIs, the forwarding rule name must be a 1-20 characters string with
 	// lowercase letters and numbers and must start with a letter.
 	Name pulumi.StringInput `pulumi:"name"`
-	// This field is not used for external load balancing.
+	// This field is not used for global external load balancing.
 	//
-	// For Internal TCP/UDP Load Balancing, this field identifies the network that
-	// the load balanced IP should belong to for this Forwarding Rule.
+	// For Internal TCP/UDP Load Balancing and Regional External Load Balancing ('EXTERNAL_MANAGED'),
+	// this field identifies the network that the load balanced IP should belong to
+	// for this Forwarding Rule.
 	// If the subnetwork is specified, the network of the subnetwork will be used.
 	// If neither subnetwork nor this field is specified, the default network will
 	// be used.
@@ -4469,8 +4596,9 @@ type GetForwardingRulesRuleArgs struct {
 	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 	SourceIpRanges pulumi.StringArrayInput `pulumi:"sourceIpRanges"`
 	// This field identifies the subnetwork that the load balanced IP should
-	// belong to for this Forwarding Rule, used in internal load balancing and
-	// network load balancing with IPv6.
+	// belong to for this Forwarding Rule, used in internal load balancing,
+	// network load balancing with IPv6, and regional external ('EXTERNAL_MANAGED')
+	// load balancing with IPv6.
 	//
 	// If the network specified is in auto subnet mode, this field is optional.
 	// However, a subnetwork must be specified if the network is in custom subnet
@@ -4755,10 +4883,11 @@ func (o GetForwardingRulesRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// This field is not used for external load balancing.
+// This field is not used for global external load balancing.
 //
-// For Internal TCP/UDP Load Balancing, this field identifies the network that
-// the load balanced IP should belong to for this Forwarding Rule.
+// For Internal TCP/UDP Load Balancing and Regional External Load Balancing ('EXTERNAL_MANAGED'),
+// this field identifies the network that the load balanced IP should belong to
+// for this Forwarding Rule.
 // If the subnetwork is specified, the network of the subnetwork will be used.
 // If neither subnetwork nor this field is specified, the default network will
 // be used.
@@ -4920,8 +5049,9 @@ func (o GetForwardingRulesRuleOutput) SourceIpRanges() pulumi.StringArrayOutput 
 }
 
 // This field identifies the subnetwork that the load balanced IP should
-// belong to for this Forwarding Rule, used in internal load balancing and
-// network load balancing with IPv6.
+// belong to for this Forwarding Rule, used in internal load balancing,
+// network load balancing with IPv6, and regional external ('EXTERNAL_MANAGED')
+// load balancing with IPv6.
 //
 // If the network specified is in auto subnet mode, this field is optional.
 // However, a subnetwork must be specified if the network is in custom subnet
@@ -23879,6 +24009,8 @@ func (o GetRegionDiskAsyncPrimaryDiskArrayOutput) Index(i pulumi.IntInput) GetRe
 
 type GetRegionDiskDiskEncryptionKey struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
+	//
+	// Specify the key without a '/cryptoKeyVersions/' suffix.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
@@ -23916,6 +24048,8 @@ type GetRegionDiskDiskEncryptionKeyInput interface {
 
 type GetRegionDiskDiskEncryptionKeyArgs struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
+	//
+	// Specify the key without a '/cryptoKeyVersions/' suffix.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
@@ -23992,6 +24126,8 @@ func (o GetRegionDiskDiskEncryptionKeyOutput) ToGetRegionDiskDiskEncryptionKeyOu
 }
 
 // The name of the encryption key that is stored in Google Cloud KMS.
+//
+// Specify the key without a '/cryptoKeyVersions/' suffix.
 func (o GetRegionDiskDiskEncryptionKeyOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -24059,7 +24195,7 @@ func (o GetRegionDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetR
 }
 
 type GetRegionDiskGuestOsFeature struct {
-	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE"]
+	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "IDPF", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE", "SUSPEND_SAFE_FPR"]
 	Type string `pulumi:"type"`
 }
 
@@ -24075,7 +24211,7 @@ type GetRegionDiskGuestOsFeatureInput interface {
 }
 
 type GetRegionDiskGuestOsFeatureArgs struct {
-	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE"]
+	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "IDPF", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE", "SUSPEND_SAFE_FPR"]
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -24130,7 +24266,7 @@ func (o GetRegionDiskGuestOsFeatureOutput) ToGetRegionDiskGuestOsFeatureOutputWi
 	return o
 }
 
-// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE"]
+// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "IDPF", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE", "SUSPEND_SAFE_FPR"]
 func (o GetRegionDiskGuestOsFeatureOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionDiskGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -47258,6 +47394,8 @@ type GetServiceAttachmentsServiceAttachment struct {
 	// When true, the provider will set propagatedConnectionLimit to zero.
 	// Defaults to false.
 	SendPropagatedConnectionLimitIfZero bool `pulumi:"sendPropagatedConnectionLimitIfZero"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ServiceAttachmentId int `pulumi:"serviceAttachmentId"`
 	// NOTE: This field is temporarily non-functional due to an underlying API issue.
 	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
 	// [If true, show NAT IPs of all connected endpoints.]
@@ -47342,6 +47480,8 @@ type GetServiceAttachmentsServiceAttachmentArgs struct {
 	// When true, the provider will set propagatedConnectionLimit to zero.
 	// Defaults to false.
 	SendPropagatedConnectionLimitIfZero pulumi.BoolInput `pulumi:"sendPropagatedConnectionLimitIfZero"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ServiceAttachmentId pulumi.IntInput `pulumi:"serviceAttachmentId"`
 	// NOTE: This field is temporarily non-functional due to an underlying API issue.
 	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
 	// [If true, show NAT IPs of all connected endpoints.]
@@ -47526,6 +47666,11 @@ func (o GetServiceAttachmentsServiceAttachmentOutput) SelfLink() pulumi.StringOu
 // Defaults to false.
 func (o GetServiceAttachmentsServiceAttachmentOutput) SendPropagatedConnectionLimitIfZero() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) bool { return v.SendPropagatedConnectionLimitIfZero }).(pulumi.BoolOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o GetServiceAttachmentsServiceAttachmentOutput) ServiceAttachmentId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) int { return v.ServiceAttachmentId }).(pulumi.IntOutput)
 }
 
 // NOTE: This field is temporarily non-functional due to an underlying API issue.
@@ -48174,6 +48319,8 @@ func (o GetSnapshotParamArrayOutput) Index(i pulumi.IntInput) GetSnapshotParamOu
 
 type GetSnapshotSnapshotEncryptionKey struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
+	//
+	// Specify the key without a '/cryptoKeyVersions/' suffix.
 	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
 	// The service account used for the encryption request for the given KMS key.
 	// If absent, the Compute Engine Service Agent service account is used.
@@ -48202,6 +48349,8 @@ type GetSnapshotSnapshotEncryptionKeyInput interface {
 
 type GetSnapshotSnapshotEncryptionKeyArgs struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
+	//
+	// Specify the key without a '/cryptoKeyVersions/' suffix.
 	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
 	// The service account used for the encryption request for the given KMS key.
 	// If absent, the Compute Engine Service Agent service account is used.
@@ -48269,6 +48418,8 @@ func (o GetSnapshotSnapshotEncryptionKeyOutput) ToGetSnapshotSnapshotEncryptionK
 }
 
 // The name of the encryption key that is stored in Google Cloud KMS.
+//
+// Specify the key without a '/cryptoKeyVersions/' suffix.
 func (o GetSnapshotSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
@@ -49384,6 +49535,8 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyTtlInput)(nil)).Elem(), GetBackendServiceConsistentHashHttpCookyTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyTtlArrayInput)(nil)).Elem(), GetBackendServiceConsistentHashHttpCookyTtlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCustomMetricInput)(nil)).Elem(), GetBackendServiceCustomMetricArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCustomMetricArrayInput)(nil)).Elem(), GetBackendServiceCustomMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingInput)(nil)).Elem(), GetBackendServiceDynamicForwardingArgs{})
@@ -50108,6 +50261,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetBackendServiceConsistentHashHttpCookyTtlOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceConsistentHashHttpCookyTtlArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCustomMetricOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCustomMetricArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingOutput{})

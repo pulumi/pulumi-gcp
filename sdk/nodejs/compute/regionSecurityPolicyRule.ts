@@ -44,6 +44,7 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ *
  * ### Region Security Policy Rule Multiple Rules
  *
  * ```typescript
@@ -88,6 +89,7 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ *
  * ### Region Security Policy Rule Default Rule
  *
  * ```typescript
@@ -128,6 +130,7 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ *
  * ### Region Security Policy Rule With Preconfigured Waf Config
  *
  * ```typescript
@@ -187,6 +190,7 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ *
  * ### Region Security Policy Rule With Network Match
  *
  * ```typescript
@@ -241,6 +245,7 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ *
  * ### Region Security Policy Rule With Body Exclude
  *
  * ```typescript
@@ -282,7 +287,7 @@ import * as utilities from "../utilities";
  *     name: "backendpolicy",
  *     machineType: "e2-micro",
  *     disks: [{
- *         sourceImage: "projects/debian-cloud/global/images/family/debian-11",
+ *         sourceImage: "projects/debian-cloud/global/images/family/debian-13",
  *         autoDelete: true,
  *         boot: true,
  *     }],
@@ -334,6 +339,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultRegionBackendService],
  * });
  * ```
+ *
  * ### Region Security Policy Rule Request Body Expression
  *
  * ```typescript

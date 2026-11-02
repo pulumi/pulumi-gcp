@@ -104,6 +104,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Biglake Iceberg Table Sort Order
 //
 // ```go
@@ -176,6 +177,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Biglake Iceberg Table Update
 //
 // ```go

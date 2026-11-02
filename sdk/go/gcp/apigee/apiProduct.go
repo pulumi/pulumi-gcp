@@ -104,6 +104,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apigee Api Product With Legacy Operation
 //
 // ```go
@@ -228,6 +229,7 @@ import (
 //	}
 //
 // ```
+//
 // ## Import
 //
 // ApiProduct can be imported using any of these accepted formats:

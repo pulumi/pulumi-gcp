@@ -50,10 +50,8 @@ import (
 //				return err
 //			}
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:                  pulumi.String("my-gke-cluster"),
-//				Location:              pulumi.String("us-central1"),
-//				RemoveDefaultNodePool: pulumi.Bool(true),
-//				InitialNodeCount:      pulumi.Int(1),
+//				Name:     pulumi.String("my-gke-cluster"),
+//				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -408,7 +406,10 @@ type Cluster struct {
 	InTransitEncryptionConfig pulumi.StringPtrOutput `pulumi:"inTransitEncryptionConfig"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
-	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+	// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+	// `nodePool` blocks defined, the cluster is created without a default node pool.
+	// This requires a GKE version that supports clusters without a default node pool
+	// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
@@ -438,7 +439,7 @@ type Cluster struct {
 	MaintenancePolicy ClusterMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
 	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
 	ManagedMachineLearningDiagnosticsConfig ClusterManagedMachineLearningDiagnosticsConfigOutput `pulumi:"managedMachineLearningDiagnosticsConfig"`
-	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigOutput `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -579,9 +580,15 @@ type Cluster struct {
 	// channel. Structure is documented below.
 	ReleaseChannel ClusterReleaseChannelOutput `pulumi:"releaseChannel"`
 	// If `true`, deletes the default node
-	// pool upon cluster creation. If you're using `container.NodePool`
-	// resources with no default node pool, this should be set to `true`, alongside
-	// setting `initialNodeCount` to at least `1`.
+	// pool upon cluster creation. On GKE versions that support clusters without a
+	// default node pool, you can instead omit `initialNodeCount` and
+	// `nodeConfig` (or set `initialNodeCount` to `0`) to skip creating the
+	// default node pool without setting this field. For older GKE versions, if
+	// you're using `container.NodePool` resources with no default node
+	// pool, this should be set to `true`, alongside setting `initialNodeCount`
+	// to at least `1`.
+	//
+	// Deprecated: On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
 	RemoveDefaultNodePool pulumi.BoolPtrOutput `pulumi:"removeDefaultNodePool"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	//
@@ -594,6 +601,8 @@ type Cluster struct {
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrOutput `pulumi:"resourceUsageExportConfig"`
 	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 	RollbackSafeUpgrade ClusterRollbackSafeUpgradePtrOutput `pulumi:"rollbackSafeUpgrade"`
+	// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+	ScheduleUpgradeConfig ClusterScheduleUpgradeConfigOutput `pulumi:"scheduleUpgradeConfig"`
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -815,7 +824,10 @@ type clusterState struct {
 	InTransitEncryptionConfig *string `pulumi:"inTransitEncryptionConfig"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
-	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+	// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+	// `nodePool` blocks defined, the cluster is created without a default node pool.
+	// This requires a GKE version that supports clusters without a default node pool
+	// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
@@ -845,7 +857,7 @@ type clusterState struct {
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
 	ManagedMachineLearningDiagnosticsConfig *ClusterManagedMachineLearningDiagnosticsConfig `pulumi:"managedMachineLearningDiagnosticsConfig"`
-	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig *ClusterManagedOpentelemetryConfig `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -986,9 +998,15 @@ type clusterState struct {
 	// channel. Structure is documented below.
 	ReleaseChannel *ClusterReleaseChannel `pulumi:"releaseChannel"`
 	// If `true`, deletes the default node
-	// pool upon cluster creation. If you're using `container.NodePool`
-	// resources with no default node pool, this should be set to `true`, alongside
-	// setting `initialNodeCount` to at least `1`.
+	// pool upon cluster creation. On GKE versions that support clusters without a
+	// default node pool, you can instead omit `initialNodeCount` and
+	// `nodeConfig` (or set `initialNodeCount` to `0`) to skip creating the
+	// default node pool without setting this field. For older GKE versions, if
+	// you're using `container.NodePool` resources with no default node
+	// pool, this should be set to `true`, alongside setting `initialNodeCount`
+	// to at least `1`.
+	//
+	// Deprecated: On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
 	RemoveDefaultNodePool *bool `pulumi:"removeDefaultNodePool"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	//
@@ -1001,6 +1019,8 @@ type clusterState struct {
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
 	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 	RollbackSafeUpgrade *ClusterRollbackSafeUpgrade `pulumi:"rollbackSafeUpgrade"`
+	// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+	ScheduleUpgradeConfig *ClusterScheduleUpgradeConfig `pulumi:"scheduleUpgradeConfig"`
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -1188,7 +1208,10 @@ type ClusterState struct {
 	InTransitEncryptionConfig pulumi.StringPtrInput
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
-	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+	// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+	// `nodePool` blocks defined, the cluster is created without a default node pool.
+	// This requires a GKE version that supports clusters without a default node pool
+	// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
@@ -1218,7 +1241,7 @@ type ClusterState struct {
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
 	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
 	ManagedMachineLearningDiagnosticsConfig ClusterManagedMachineLearningDiagnosticsConfigPtrInput
-	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigPtrInput
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -1359,9 +1382,15 @@ type ClusterState struct {
 	// channel. Structure is documented below.
 	ReleaseChannel ClusterReleaseChannelPtrInput
 	// If `true`, deletes the default node
-	// pool upon cluster creation. If you're using `container.NodePool`
-	// resources with no default node pool, this should be set to `true`, alongside
-	// setting `initialNodeCount` to at least `1`.
+	// pool upon cluster creation. On GKE versions that support clusters without a
+	// default node pool, you can instead omit `initialNodeCount` and
+	// `nodeConfig` (or set `initialNodeCount` to `0`) to skip creating the
+	// default node pool without setting this field. For older GKE versions, if
+	// you're using `container.NodePool` resources with no default node
+	// pool, this should be set to `true`, alongside setting `initialNodeCount`
+	// to at least `1`.
+	//
+	// Deprecated: On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
 	RemoveDefaultNodePool pulumi.BoolPtrInput
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	//
@@ -1374,6 +1403,8 @@ type ClusterState struct {
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
 	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 	RollbackSafeUpgrade ClusterRollbackSafeUpgradePtrInput
+	// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+	ScheduleUpgradeConfig ClusterScheduleUpgradeConfigPtrInput
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -1559,7 +1590,10 @@ type clusterArgs struct {
 	InTransitEncryptionConfig *string `pulumi:"inTransitEncryptionConfig"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
-	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+	// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+	// `nodePool` blocks defined, the cluster is created without a default node pool.
+	// This requires a GKE version that supports clusters without a default node pool
+	// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
@@ -1587,7 +1621,7 @@ type clusterArgs struct {
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
 	ManagedMachineLearningDiagnosticsConfig *ClusterManagedMachineLearningDiagnosticsConfig `pulumi:"managedMachineLearningDiagnosticsConfig"`
-	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig *ClusterManagedOpentelemetryConfig `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -1721,9 +1755,15 @@ type clusterArgs struct {
 	// channel. Structure is documented below.
 	ReleaseChannel *ClusterReleaseChannel `pulumi:"releaseChannel"`
 	// If `true`, deletes the default node
-	// pool upon cluster creation. If you're using `container.NodePool`
-	// resources with no default node pool, this should be set to `true`, alongside
-	// setting `initialNodeCount` to at least `1`.
+	// pool upon cluster creation. On GKE versions that support clusters without a
+	// default node pool, you can instead omit `initialNodeCount` and
+	// `nodeConfig` (or set `initialNodeCount` to `0`) to skip creating the
+	// default node pool without setting this field. For older GKE versions, if
+	// you're using `container.NodePool` resources with no default node
+	// pool, this should be set to `true`, alongside setting `initialNodeCount`
+	// to at least `1`.
+	//
+	// Deprecated: On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
 	RemoveDefaultNodePool *bool `pulumi:"removeDefaultNodePool"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	//
@@ -1736,6 +1776,8 @@ type clusterArgs struct {
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
 	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 	RollbackSafeUpgrade *ClusterRollbackSafeUpgrade `pulumi:"rollbackSafeUpgrade"`
+	// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+	ScheduleUpgradeConfig *ClusterScheduleUpgradeConfig `pulumi:"scheduleUpgradeConfig"`
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -1907,7 +1949,10 @@ type ClusterArgs struct {
 	InTransitEncryptionConfig pulumi.StringPtrInput
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
-	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+	// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+	// `nodePool` blocks defined, the cluster is created without a default node pool.
+	// This requires a GKE version that supports clusters without a default node pool
+	// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
@@ -1935,7 +1980,7 @@ type ClusterArgs struct {
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
 	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
 	ManagedMachineLearningDiagnosticsConfig ClusterManagedMachineLearningDiagnosticsConfigPtrInput
-	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigPtrInput
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -2069,9 +2114,15 @@ type ClusterArgs struct {
 	// channel. Structure is documented below.
 	ReleaseChannel ClusterReleaseChannelPtrInput
 	// If `true`, deletes the default node
-	// pool upon cluster creation. If you're using `container.NodePool`
-	// resources with no default node pool, this should be set to `true`, alongside
-	// setting `initialNodeCount` to at least `1`.
+	// pool upon cluster creation. On GKE versions that support clusters without a
+	// default node pool, you can instead omit `initialNodeCount` and
+	// `nodeConfig` (or set `initialNodeCount` to `0`) to skip creating the
+	// default node pool without setting this field. For older GKE versions, if
+	// you're using `container.NodePool` resources with no default node
+	// pool, this should be set to `true`, alongside setting `initialNodeCount`
+	// to at least `1`.
+	//
+	// Deprecated: On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
 	RemoveDefaultNodePool pulumi.BoolPtrInput
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	//
@@ -2084,6 +2135,8 @@ type ClusterArgs struct {
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
 	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 	RollbackSafeUpgrade ClusterRollbackSafeUpgradePtrInput
+	// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+	ScheduleUpgradeConfig ClusterScheduleUpgradeConfigPtrInput
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -2481,7 +2534,10 @@ func (o ClusterOutput) InTransitEncryptionConfig() pulumi.StringPtrOutput {
 
 // The number of nodes to create in this
 // cluster's default node pool. In regional or multi-zonal clusters, this is the
-// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+// `nodePool` blocks defined, the cluster is created without a default node pool.
+// This requires a GKE version that supports clusters without a default node pool
+// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
 // `container.NodePool` objects with no default node pool, you'll need to
 // set this to a value of at least `1`, alongside setting
 // `removeDefaultNodePool` to `true`.
@@ -2537,7 +2593,7 @@ func (o ClusterOutput) ManagedMachineLearningDiagnosticsConfig() ClusterManagedM
 	}).(ClusterManagedMachineLearningDiagnosticsConfigOutput)
 }
 
-// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 func (o ClusterOutput) ManagedOpentelemetryConfig() ClusterManagedOpentelemetryConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterManagedOpentelemetryConfigOutput { return v.ManagedOpentelemetryConfig }).(ClusterManagedOpentelemetryConfigOutput)
 }
@@ -2771,9 +2827,15 @@ func (o ClusterOutput) ReleaseChannel() ClusterReleaseChannelOutput {
 }
 
 // If `true`, deletes the default node
-// pool upon cluster creation. If you're using `container.NodePool`
-// resources with no default node pool, this should be set to `true`, alongside
-// setting `initialNodeCount` to at least `1`.
+// pool upon cluster creation. On GKE versions that support clusters without a
+// default node pool, you can instead omit `initialNodeCount` and
+// `nodeConfig` (or set `initialNodeCount` to `0`) to skip creating the
+// default node pool without setting this field. For older GKE versions, if
+// you're using `container.NodePool` resources with no default node
+// pool, this should be set to `true`, alongside setting `initialNodeCount`
+// to at least `1`.
+//
+// Deprecated: On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
 func (o ClusterOutput) RemoveDefaultNodePool() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.RemoveDefaultNodePool }).(pulumi.BoolPtrOutput)
 }
@@ -2796,6 +2858,11 @@ func (o ClusterOutput) ResourceUsageExportConfig() ClusterResourceUsageExportCon
 // Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
 func (o ClusterOutput) RollbackSafeUpgrade() ClusterRollbackSafeUpgradePtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterRollbackSafeUpgradePtrOutput { return v.RollbackSafeUpgrade }).(ClusterRollbackSafeUpgradePtrOutput)
+}
+
+// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+func (o ClusterOutput) ScheduleUpgradeConfig() ClusterScheduleUpgradeConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterScheduleUpgradeConfigOutput { return v.ScheduleUpgradeConfig }).(ClusterScheduleUpgradeConfigOutput)
 }
 
 // Configuration for the

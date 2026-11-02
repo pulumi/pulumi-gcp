@@ -144,6 +144,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Colab Notebook Execution Custom Env
  * 
  * <pre>
@@ -276,6 +277,230 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
+ * ### Colab Notebook Execution Workbench Runtime Custom Container
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.colab.NotebookExecution;
+ * import com.pulumi.gcp.colab.NotebookExecutionArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionDirectNotebookSourceArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var outputBucket = new Bucket("outputBucket", BucketArgs.builder()
+ *             .name("my_bucket")
+ *             .location("US")
+ *             .forceDestroy(true)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var notebook_execution = new NotebookExecution("notebook-execution", NotebookExecutionArgs.builder()
+ *             .displayName("Notebook execution workbench runtime custom container")
+ *             .location("us-central1")
+ *             .directNotebookSource(NotebookExecutionDirectNotebookSourceArgs.builder()
+ *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("""
+ *     }{{@code
+ *       \"cells\": [
+ *         }{{@code
+ *           \"cell_type\": \"code\",
+ *           \"execution_count\": null,
+ *           \"metadata\": }{}{@code ,
+ *           \"outputs\": [],
+ *           \"source\": [
+ *             \"print(\\\"Hello, World!\\\")\"
+ *           ]
+ *         }}{@code
+ *       ],
+ *       \"metadata\": }{{@code
+ *         \"kernelspec\": }{{@code
+ *           \"display_name\": \"Python 3\",
+ *           \"language\": \"python\",
+ *           \"name\": \"python3\"
+ *         }}{@code ,
+ *         \"language_info\": }{{@code
+ *           \"codemirror_mode\": }{{@code
+ *             \"name\": \"ipython\",
+ *             \"version\": 3
+ *           }}{@code ,
+ *           \"file_extension\": \".py\",
+ *           \"mimetype\": \"text/x-python\",
+ *           \"name\": \"python\",
+ *           \"nbconvert_exporter\": \"python\",
+ *           \"pygments_lexer\": \"ipython3\",
+ *           \"version\": \"3.8.5\"
+ *         }}{@code
+ *       }}{@code ,
+ *       \"nbformat\": 4,
+ *       \"nbformat_minor\": 4
+ *     }}{@code
+ *                     """)
+ *                     .build()).result())
+ *                 .build())
+ *             .customEnvironmentSpec(NotebookExecutionCustomEnvironmentSpecArgs.builder()
+ *                 .machineSpec(NotebookExecutionCustomEnvironmentSpecMachineSpecArgs.builder()
+ *                     .machineType("n1-standard-2")
+ *                     .build())
+ *                 .persistentDiskSpec(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs.builder()
+ *                     .diskType("pd-ssd")
+ *                     .diskSizeGb("100")
+ *                     .build())
+ *                 .build())
+ *             .workbenchRuntime(NotebookExecutionWorkbenchRuntimeArgs.builder()
+ *                 .customContainerImage(NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs.builder()
+ *                     .repository("gcr.io/deeplearning-platform-release/base-cpu")
+ *                     .tag("latest")
+ *                     .build())
+ *                 .build())
+ *             .kernelName("python3")
+ *             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
+ *             .serviceAccount("my}{@literal @}{@code service-account.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(outputBucket)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ### Colab Notebook Execution Workbench Runtime Custom Container No Tag
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.colab.NotebookExecution;
+ * import com.pulumi.gcp.colab.NotebookExecutionArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionDirectNotebookSourceArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var outputBucket = new Bucket("outputBucket", BucketArgs.builder()
+ *             .name("my_bucket")
+ *             .location("US")
+ *             .forceDestroy(true)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var notebook_execution = new NotebookExecution("notebook-execution", NotebookExecutionArgs.builder()
+ *             .displayName("Notebook execution workbench runtime custom container no tag")
+ *             .location("us-central1")
+ *             .directNotebookSource(NotebookExecutionDirectNotebookSourceArgs.builder()
+ *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("""
+ *     }{{@code
+ *       \"cells\": [
+ *         }{{@code
+ *           \"cell_type\": \"code\",
+ *           \"execution_count\": null,
+ *           \"metadata\": }{}{@code ,
+ *           \"outputs\": [],
+ *           \"source\": [
+ *             \"print(\\\"Hello, World!\\\")\"
+ *           ]
+ *         }}{@code
+ *       ],
+ *       \"metadata\": }{{@code
+ *         \"kernelspec\": }{{@code
+ *           \"display_name\": \"Python 3\",
+ *           \"language\": \"python\",
+ *           \"name\": \"python3\"
+ *         }}{@code ,
+ *         \"language_info\": }{{@code
+ *           \"codemirror_mode\": }{{@code
+ *             \"name\": \"ipython\",
+ *             \"version\": 3
+ *           }}{@code ,
+ *           \"file_extension\": \".py\",
+ *           \"mimetype\": \"text/x-python\",
+ *           \"name\": \"python\",
+ *           \"nbconvert_exporter\": \"python\",
+ *           \"pygments_lexer\": \"ipython3\",
+ *           \"version\": \"3.8.5\"
+ *         }}{@code
+ *       }}{@code ,
+ *       \"nbformat\": 4,
+ *       \"nbformat_minor\": 4
+ *     }}{@code
+ *                     """)
+ *                     .build()).result())
+ *                 .build())
+ *             .customEnvironmentSpec(NotebookExecutionCustomEnvironmentSpecArgs.builder()
+ *                 .machineSpec(NotebookExecutionCustomEnvironmentSpecMachineSpecArgs.builder()
+ *                     .machineType("n1-standard-2")
+ *                     .build())
+ *                 .persistentDiskSpec(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs.builder()
+ *                     .diskType("pd-ssd")
+ *                     .diskSizeGb("100")
+ *                     .build())
+ *                 .build())
+ *             .workbenchRuntime(NotebookExecutionWorkbenchRuntimeArgs.builder()
+ *                 .customContainerImage(NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs.builder()
+ *                     .repository("gcr.io/deeplearning-platform-release/base-cpu")
+ *                     .build())
+ *                 .build())
+ *             .kernelName("python3")
+ *             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
+ *             .serviceAccount("my}{@literal @}{@code service-account.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(outputBucket)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ### Colab Notebook Execution Workbench Runtime Vm
  * 
  * <pre>
@@ -386,6 +611,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Colab Notebook Execution Workbench Runtime Vm Name
  * 
  * <pre>
@@ -496,6 +722,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Colab Notebook Execution Full
  * 
  * <pre>
@@ -622,6 +849,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Colab Notebook Execution Dataform
  * 
  * <pre>
@@ -910,6 +1138,20 @@ public class NotebookExecution extends com.pulumi.resources.CustomResource {
      */
     public Output<String> gcsOutputUri() {
         return this.gcsOutputUri;
+    }
+    /**
+     * The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+     * 
+     */
+    @Export(name="kernelName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kernelName;
+
+    /**
+     * @return The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+     * 
+     */
+    public Output<Optional<String>> kernelName() {
+        return Codegen.optional(this.kernelName);
     }
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations

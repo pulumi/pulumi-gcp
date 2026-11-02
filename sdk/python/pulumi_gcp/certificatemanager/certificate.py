@@ -544,6 +544,7 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Certificate Manager Google Managed Certificate Issuance Config
 
         ```python
@@ -611,6 +612,7 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
+
         ### Certificate Manager Self Managed Certificate
 
         ```python
@@ -627,6 +629,7 @@ class Certificate(pulumi.CustomResource):
                 "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
+
         ### Certificate Manager Self Managed Certificate Write Only
 
         ```python
@@ -646,6 +649,7 @@ class Certificate(pulumi.CustomResource):
                     exponent=32).result).apply(lambda x: str(x)),
             })
         ```
+
         ### Certificate Manager Self Managed Certificate Regional
 
         ```python
@@ -662,6 +666,7 @@ class Certificate(pulumi.CustomResource):
                 "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
+
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 
         ```python
@@ -729,6 +734,7 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
+
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
         ```python
@@ -758,6 +764,7 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Certificate Manager Google Managed Regional Certificate Dns Auth
 
         ```python
@@ -778,6 +785,7 @@ class Certificate(pulumi.CustomResource):
                 "dns_authorizations": [instance.id],
             })
         ```
+
         ### Certificate Manager Client Auth Certificate
 
         ```python
@@ -903,6 +911,7 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Certificate Manager Google Managed Certificate Issuance Config
 
         ```python
@@ -970,6 +979,7 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
+
         ### Certificate Manager Self Managed Certificate
 
         ```python
@@ -986,6 +996,7 @@ class Certificate(pulumi.CustomResource):
                 "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
+
         ### Certificate Manager Self Managed Certificate Write Only
 
         ```python
@@ -1005,6 +1016,7 @@ class Certificate(pulumi.CustomResource):
                     exponent=32).result).apply(lambda x: str(x)),
             })
         ```
+
         ### Certificate Manager Self Managed Certificate Regional
 
         ```python
@@ -1021,6 +1033,7 @@ class Certificate(pulumi.CustomResource):
                 "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
+
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 
         ```python
@@ -1088,6 +1101,7 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
+
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
         ```python
@@ -1117,6 +1131,7 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Certificate Manager Google Managed Regional Certificate Dns Auth
 
         ```python
@@ -1137,6 +1152,7 @@ class Certificate(pulumi.CustomResource):
                 "dns_authorizations": [instance.id],
             })
         ```
+
         ### Certificate Manager Client Auth Certificate
 
         ```python

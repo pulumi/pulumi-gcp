@@ -67,6 +67,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scc Folder Custom Module Full
     /// 
     /// ```csharp

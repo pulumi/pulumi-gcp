@@ -483,6 +483,7 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
             description="my description",
             well_known_roots="PUBLIC_ROOTS")
         ```
+
         ### Network Security Backend Authentication Config Full
 
         ```python
@@ -527,6 +528,7 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
             client_certificate=certificate.id,
             trust_config=trust_config.id)
         ```
+
         ### Backend Service Tls Settings
 
         ```python
@@ -632,6 +634,7 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
             description="my description",
             well_known_roots="PUBLIC_ROOTS")
         ```
+
         ### Network Security Backend Authentication Config Full
 
         ```python
@@ -676,6 +679,7 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
             client_certificate=certificate.id,
             trust_config=trust_config.id)
         ```
+
         ### Backend Service Tls Settings
 
         ```python

@@ -480,6 +480,7 @@ class WireGroup(pulumi.CustomResource):
             admin_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[example_cross_site_network]))
         ```
+
         ### Compute Wire Group Basic Beta
 
         ```python
@@ -588,6 +589,7 @@ class WireGroup(pulumi.CustomResource):
             admin_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[example_cross_site_network]))
         ```
+
         ### Compute Wire Group Basic Beta
 
         ```python

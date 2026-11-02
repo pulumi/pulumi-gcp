@@ -744,6 +744,7 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Full Profile
 
         ```python
@@ -793,6 +794,7 @@ class Datascan(pulumi.CustomResource):
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[source]))
         ```
+
         ### Dataplex Datascan Onetime Profile
 
         ```python
@@ -815,6 +817,7 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Basic Quality
 
         ```python
@@ -844,6 +847,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Full Quality
 
         ```python
@@ -964,6 +968,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Onetime Quality
 
         ```python
@@ -995,6 +1000,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Basic Discovery
 
         ```python
@@ -1023,6 +1029,7 @@ class Datascan(pulumi.CustomResource):
             data_discovery_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Full Discovery
 
         ```python
@@ -1097,6 +1104,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Onetime Discovery
 
         ```python
@@ -1127,6 +1135,7 @@ class Datascan(pulumi.CustomResource):
             data_discovery_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Documentation
 
         ```python
@@ -1134,11 +1143,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__10719",
+            dataset_id="tf_test_dataplex_dataset_id__10719",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__1443",
+            table_id="tf_test_dataplex_table_id__1443",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1211,6 +1220,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Onetime Documentation
 
         ```python
@@ -1218,11 +1228,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__26032",
+            dataset_id="tf_test_dataplex_dataset_id__26032",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__8647",
+            table_id="tf_test_dataplex_table_id__8647",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1294,6 +1304,7 @@ class Datascan(pulumi.CustomResource):
             data_documentation_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Execution Identity User Credential
 
         ```python
@@ -1345,6 +1356,7 @@ class Datascan(pulumi.CustomResource):
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[tf_test_table]))
         ```
+
         ### Dataplex Datascan Execution Identity Service Account
 
         ```python
@@ -1426,6 +1438,7 @@ class Datascan(pulumi.CustomResource):
                     wait120_seconds,
                 ]))
         ```
+
         ### Dataplex Datascan Quality Reusable Rules Catalog Based
 
         ```python
@@ -1477,12 +1490,12 @@ class Datascan(pulumi.CustomResource):
         \"\"\")
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_25141",
+            entry_group_id="tf-test-group-_25141",
             project="my-project-name")
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_30827",
+            entry_id="tf-test-entry-_30827",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -1612,6 +1625,7 @@ class Datascan(pulumi.CustomResource):
             project=project.project_id,
             opts = pulumi.ResourceOptions(depends_on=[wait_for_aspect_propagation]))
         ```
+
         ### Dataplex Datascan Data Quality Template Reference
 
         ```python
@@ -1641,12 +1655,12 @@ class Datascan(pulumi.CustomResource):
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_16178",
+            entry_group_id="tf-test-group-_16178",
             project=project.project_id)
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_26317",
+            entry_id="tf-test-entry-_26317",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -1813,6 +1827,7 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Full Profile
 
         ```python
@@ -1862,6 +1877,7 @@ class Datascan(pulumi.CustomResource):
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[source]))
         ```
+
         ### Dataplex Datascan Onetime Profile
 
         ```python
@@ -1884,6 +1900,7 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Basic Quality
 
         ```python
@@ -1913,6 +1930,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Full Quality
 
         ```python
@@ -2033,6 +2051,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Onetime Quality
 
         ```python
@@ -2064,6 +2083,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Basic Discovery
 
         ```python
@@ -2092,6 +2112,7 @@ class Datascan(pulumi.CustomResource):
             data_discovery_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Full Discovery
 
         ```python
@@ -2166,6 +2187,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Onetime Discovery
 
         ```python
@@ -2196,6 +2218,7 @@ class Datascan(pulumi.CustomResource):
             data_discovery_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Documentation
 
         ```python
@@ -2203,11 +2226,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__10719",
+            dataset_id="tf_test_dataplex_dataset_id__10719",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__1443",
+            table_id="tf_test_dataplex_table_id__1443",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -2280,6 +2303,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Onetime Documentation
 
         ```python
@@ -2287,11 +2311,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__26032",
+            dataset_id="tf_test_dataplex_dataset_id__26032",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__8647",
+            table_id="tf_test_dataplex_table_id__8647",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -2363,6 +2387,7 @@ class Datascan(pulumi.CustomResource):
             data_documentation_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Execution Identity User Credential
 
         ```python
@@ -2414,6 +2439,7 @@ class Datascan(pulumi.CustomResource):
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[tf_test_table]))
         ```
+
         ### Dataplex Datascan Execution Identity Service Account
 
         ```python
@@ -2495,6 +2521,7 @@ class Datascan(pulumi.CustomResource):
                     wait120_seconds,
                 ]))
         ```
+
         ### Dataplex Datascan Quality Reusable Rules Catalog Based
 
         ```python
@@ -2546,12 +2573,12 @@ class Datascan(pulumi.CustomResource):
         \"\"\")
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_25141",
+            entry_group_id="tf-test-group-_25141",
             project="my-project-name")
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_30827",
+            entry_id="tf-test-entry-_30827",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -2681,6 +2708,7 @@ class Datascan(pulumi.CustomResource):
             project=project.project_id,
             opts = pulumi.ResourceOptions(depends_on=[wait_for_aspect_propagation]))
         ```
+
         ### Dataplex Datascan Data Quality Template Reference
 
         ```python
@@ -2710,12 +2738,12 @@ class Datascan(pulumi.CustomResource):
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_16178",
+            entry_group_id="tf-test-group-_16178",
             project=project.project_id)
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_26317",
+            entry_id="tf-test-entry-_26317",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{

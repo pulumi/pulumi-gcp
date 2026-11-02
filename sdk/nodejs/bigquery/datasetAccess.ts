@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     userByEmail: bqowner.email,
  * });
  * ```
+ *
  * ### Bigquery Dataset Access View
  *
  * ```typescript
@@ -68,6 +69,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Dataset Access Authorized Dataset
  *
  * ```typescript
@@ -87,6 +89,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Dataset Access Authorized Routine
  *
  * ```typescript

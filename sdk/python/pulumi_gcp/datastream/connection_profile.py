@@ -790,6 +790,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "root_path": "/path",
             })
         ```
+
         ### Datastream Connection Profile Postgresql Private Connection
 
         ```python
@@ -897,6 +898,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "private_connection": private_connection.id,
             })
         ```
+
         ### Datastream Connection Profile Full
 
         ```python
@@ -915,6 +917,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "key": "value",
             })
         ```
+
         ### Datastream Connection Profile Postgres
 
         ```python
@@ -970,6 +973,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             })
         ```
+
         ### Datastream Connection Profile Sql Server
 
         ```python
@@ -1023,6 +1027,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             })
         ```
+
         ### Datastream Stream Postgresql Sslconfig Server And Client Verification
 
         ```python
@@ -1081,6 +1086,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Connection Profile Salesforce
 
         ```python
@@ -1101,6 +1107,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Connection Profile Spanner
 
         ```python
@@ -1117,6 +1124,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "host": "https://spanner.example-region.rep.googleapis.com",
             })
         ```
+
         ### Datastream Connection Profile Postgres Secret Manager
 
         ```python
@@ -1136,6 +1144,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": "fake-database",
             })
         ```
+
         ### Datastream Connection Profile Mongodb
 
         ```python
@@ -1252,6 +1261,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "root_path": "/path",
             })
         ```
+
         ### Datastream Connection Profile Postgresql Private Connection
 
         ```python
@@ -1359,6 +1369,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "private_connection": private_connection.id,
             })
         ```
+
         ### Datastream Connection Profile Full
 
         ```python
@@ -1377,6 +1388,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "key": "value",
             })
         ```
+
         ### Datastream Connection Profile Postgres
 
         ```python
@@ -1432,6 +1444,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             })
         ```
+
         ### Datastream Connection Profile Sql Server
 
         ```python
@@ -1485,6 +1498,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             })
         ```
+
         ### Datastream Stream Postgresql Sslconfig Server And Client Verification
 
         ```python
@@ -1543,6 +1557,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Connection Profile Salesforce
 
         ```python
@@ -1563,6 +1578,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Connection Profile Spanner
 
         ```python
@@ -1579,6 +1595,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "host": "https://spanner.example-region.rep.googleapis.com",
             })
         ```
+
         ### Datastream Connection Profile Postgres Secret Manager
 
         ```python
@@ -1598,6 +1615,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": "fake-database",
             })
         ```
+
         ### Datastream Connection Profile Mongodb
 
         ```python

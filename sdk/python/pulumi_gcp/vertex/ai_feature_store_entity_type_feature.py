@@ -407,6 +407,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             entitytype=entity.id,
             value_type="INT64_ARRAY")
         ```
+
         ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
 
         ```python
@@ -525,6 +526,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             entitytype=entity.id,
             value_type="INT64_ARRAY")
         ```
+
         ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
 
         ```python

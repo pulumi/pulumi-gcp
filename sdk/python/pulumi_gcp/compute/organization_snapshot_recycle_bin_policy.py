@@ -185,6 +185,7 @@ class OrganizationSnapshotRecycleBinPolicy(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Organization Snapshot Recycle Bin Policy Multiple
 
         ```python
@@ -274,6 +275,7 @@ class OrganizationSnapshotRecycleBinPolicy(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Organization Snapshot Recycle Bin Policy Multiple
 
         ```python

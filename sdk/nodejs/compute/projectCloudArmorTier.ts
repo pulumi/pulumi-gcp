@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *
  * const cloudArmorTierConfig = new gcp.compute.ProjectCloudArmorTier("cloud_armor_tier_config", {cloudArmorTier: "CA_STANDARD"});
  * ```
+ *
  * ### Compute Project Cloud Armor Tier Project Set
  *
  * ```typescript

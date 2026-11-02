@@ -8,6 +8,7 @@ import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyAllowedIs
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyAllowedKeyType;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValues;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyIdentityConstraints;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CaPoolIssuancePolicy {
+    /**
+     * @return If set to true, allows requesters to specify the requestedNotBeforeTime
+     * field when creating a Certificate. Certificates requested with this
+     * option enabled will have a &#39;not_before_time&#39; equal to the value
+     * specified in the request.
+     * 
+     */
+    private @Nullable Boolean allowRequesterSpecifiedNotBeforeTime;
     /**
      * @return IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
      * Structure is documented below.
@@ -62,6 +71,16 @@ public final class CaPoolIssuancePolicy {
     private @Nullable String maximumLifetime;
 
     private CaPoolIssuancePolicy() {}
+    /**
+     * @return If set to true, allows requesters to specify the requestedNotBeforeTime
+     * field when creating a Certificate. Certificates requested with this
+     * option enabled will have a &#39;not_before_time&#39; equal to the value
+     * specified in the request.
+     * 
+     */
+    public Optional<Boolean> allowRequesterSpecifiedNotBeforeTime() {
+        return Optional.ofNullable(this.allowRequesterSpecifiedNotBeforeTime);
+    }
     /**
      * @return IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
      * Structure is documented below.
@@ -128,6 +147,7 @@ public final class CaPoolIssuancePolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean allowRequesterSpecifiedNotBeforeTime;
         private @Nullable CaPoolIssuancePolicyAllowedIssuanceModes allowedIssuanceModes;
         private @Nullable List<CaPoolIssuancePolicyAllowedKeyType> allowedKeyTypes;
         private @Nullable String backdateDuration;
@@ -137,6 +157,7 @@ public final class CaPoolIssuancePolicy {
         public Builder() {}
         public Builder(CaPoolIssuancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowRequesterSpecifiedNotBeforeTime = defaults.allowRequesterSpecifiedNotBeforeTime;
     	      this.allowedIssuanceModes = defaults.allowedIssuanceModes;
     	      this.allowedKeyTypes = defaults.allowedKeyTypes;
     	      this.backdateDuration = defaults.backdateDuration;
@@ -145,6 +166,12 @@ public final class CaPoolIssuancePolicy {
     	      this.maximumLifetime = defaults.maximumLifetime;
         }
 
+        @CustomType.Setter
+        public Builder allowRequesterSpecifiedNotBeforeTime(@Nullable Boolean allowRequesterSpecifiedNotBeforeTime) {
+
+            this.allowRequesterSpecifiedNotBeforeTime = allowRequesterSpecifiedNotBeforeTime;
+            return this;
+        }
         @CustomType.Setter
         public Builder allowedIssuanceModes(@Nullable CaPoolIssuancePolicyAllowedIssuanceModes allowedIssuanceModes) {
 
@@ -186,6 +213,7 @@ public final class CaPoolIssuancePolicy {
         }
         public CaPoolIssuancePolicy build() {
             final var _resultValue = new CaPoolIssuancePolicy();
+            _resultValue.allowRequesterSpecifiedNotBeforeTime = allowRequesterSpecifiedNotBeforeTime;
             _resultValue.allowedIssuanceModes = allowedIssuanceModes;
             _resultValue.allowedKeyTypes = allowedKeyTypes;
             _resultValue.backdateDuration = backdateDuration;

@@ -399,6 +399,7 @@ class _ServiceAttachmentState:
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  self_link: pulumi.Input[Optional[_builtins.str]] = None,
                  send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_attachment_id: pulumi.Input[Optional[_builtins.int]] = None,
                  show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_service: pulumi.Input[Optional[_builtins.str]] = None,
                  tunneling_config: pulumi.Input[Optional['ServiceAttachmentTunnelingConfigArgs']] = None):
@@ -457,6 +458,7 @@ class _ServiceAttachmentState:
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
+        :param pulumi.Input[_builtins.int] service_attachment_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[_builtins.bool] show_nat_ips: NOTE: This field is temporarily non-functional due to an underlying API issue.
                Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
                [If true, show NAT IPs of all connected endpoints.]
@@ -503,6 +505,8 @@ class _ServiceAttachmentState:
             pulumi.set(__self__, "self_link", self_link)
         if send_propagated_connection_limit_if_zero is not None:
             pulumi.set(__self__, "send_propagated_connection_limit_if_zero", send_propagated_connection_limit_if_zero)
+        if service_attachment_id is not None:
+            pulumi.set(__self__, "service_attachment_id", service_attachment_id)
         if show_nat_ips is not None:
             pulumi.set(__self__, "show_nat_ips", show_nat_ips)
         if target_service is not None:
@@ -772,6 +776,18 @@ class _ServiceAttachmentState:
         pulumi.set(self, "send_propagated_connection_limit_if_zero", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceAttachmentId")
+    def service_attachment_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "service_attachment_id")
+
+    @service_attachment_id.setter
+    def service_attachment_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "service_attachment_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="showNatIps")
     def show_nat_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -909,6 +925,7 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
+
         ### Service Attachment Nat Ips
 
         ```python
@@ -958,6 +975,7 @@ class ServiceAttachment(pulumi.CustomResource):
             nat_subnets=[psc_ilb_nat.id],
             target_service=psc_ilb_target_service.id)
         ```
+
         ### Service Attachment Explicit Projects
 
         ```python
@@ -1027,6 +1045,7 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
+
         ### Service Attachment Explicit Networks
 
         ```python
@@ -1100,6 +1119,7 @@ class ServiceAttachment(pulumi.CustomResource):
             subnetwork=psc_ilb_consumer_subnetwork.id,
             ip_address=psc_ilb_consumer_address.id)
         ```
+
         ### Service Attachment Reconcile Connections
 
         ```python
@@ -1158,6 +1178,7 @@ class ServiceAttachment(pulumi.CustomResource):
             }],
             reconcile_connections=False)
         ```
+
         ### Service Attachment Tunneling Config
 
         ```python
@@ -1210,6 +1231,7 @@ class ServiceAttachment(pulumi.CustomResource):
                 "encapsulation_profile": "IPV4",
             })
         ```
+
         ### Service Attachment Cross Region Ilb
 
         ```python
@@ -1425,6 +1447,7 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
+
         ### Service Attachment Nat Ips
 
         ```python
@@ -1474,6 +1497,7 @@ class ServiceAttachment(pulumi.CustomResource):
             nat_subnets=[psc_ilb_nat.id],
             target_service=psc_ilb_target_service.id)
         ```
+
         ### Service Attachment Explicit Projects
 
         ```python
@@ -1543,6 +1567,7 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
+
         ### Service Attachment Explicit Networks
 
         ```python
@@ -1616,6 +1641,7 @@ class ServiceAttachment(pulumi.CustomResource):
             subnetwork=psc_ilb_consumer_subnetwork.id,
             ip_address=psc_ilb_consumer_address.id)
         ```
+
         ### Service Attachment Reconcile Connections
 
         ```python
@@ -1674,6 +1700,7 @@ class ServiceAttachment(pulumi.CustomResource):
             }],
             reconcile_connections=False)
         ```
+
         ### Service Attachment Tunneling Config
 
         ```python
@@ -1726,6 +1753,7 @@ class ServiceAttachment(pulumi.CustomResource):
                 "encapsulation_profile": "IPV4",
             })
         ```
+
         ### Service Attachment Cross Region Ilb
 
         ```python
@@ -1881,6 +1909,7 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["psc_service_attachment_ids"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["service_attachment_id"] = None
         super(ServiceAttachment, __self__).__init__(
             'gcp:compute/serviceAttachment:ServiceAttachment',
             resource_name,
@@ -1910,6 +1939,7 @@ class ServiceAttachment(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_attachment_id: pulumi.Input[Optional[_builtins.int]] = None,
             show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
             target_service: pulumi.Input[Optional[_builtins.str]] = None,
             tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict', 'outputs.ServiceAttachmentTunnelingConfig']]] = None) -> 'ServiceAttachment':
@@ -1972,6 +2002,7 @@ class ServiceAttachment(pulumi.CustomResource):
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
+        :param pulumi.Input[_builtins.int] service_attachment_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[_builtins.bool] show_nat_ips: NOTE: This field is temporarily non-functional due to an underlying API issue.
                Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
                [If true, show NAT IPs of all connected endpoints.]
@@ -2003,6 +2034,7 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["send_propagated_connection_limit_if_zero"] = send_propagated_connection_limit_if_zero
+        __props__.__dict__["service_attachment_id"] = service_attachment_id
         __props__.__dict__["show_nat_ips"] = show_nat_ips
         __props__.__dict__["target_service"] = target_service
         __props__.__dict__["tunneling_config"] = tunneling_config
@@ -2192,6 +2224,14 @@ class ServiceAttachment(pulumi.CustomResource):
         Defaults to false.
         """
         return pulumi.get(self, "send_propagated_connection_limit_if_zero")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAttachmentId")
+    def service_attachment_id(self) -> pulumi.Output[_builtins.int]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "service_attachment_id")
 
     @_builtins.property
     @pulumi.getter(name="showNatIps")

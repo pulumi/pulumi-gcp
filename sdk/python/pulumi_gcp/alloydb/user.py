@@ -437,6 +437,7 @@ class User(pulumi.CustomResource):
             database_roles=["alloydbsuperuser"],
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Alloydb User Iam
 
         ```python
@@ -583,6 +584,7 @@ class User(pulumi.CustomResource):
             database_roles=["alloydbsuperuser"],
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Alloydb User Iam
 
         ```python

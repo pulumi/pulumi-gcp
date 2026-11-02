@@ -20,6 +20,11 @@ public final class GetEngineVersionsResult {
      */
     private String defaultClusterVersion;
     /**
+     * @return The default image type provided by this version of the API.
+     * 
+     */
+    private String defaultImageType;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -52,6 +57,11 @@ public final class GetEngineVersionsResult {
      */
     private Map<String,String> releaseChannelUpgradeTargetVersion;
     /**
+     * @return A list of the valid image types available in the given zone.
+     * 
+     */
+    private List<String> validImageTypes;
+    /**
      * @return A list of versions available in the given zone for use with master instances.
      * 
      */
@@ -70,6 +80,13 @@ public final class GetEngineVersionsResult {
      */
     public String defaultClusterVersion() {
         return this.defaultClusterVersion;
+    }
+    /**
+     * @return The default image type provided by this version of the API.
+     * 
+     */
+    public String defaultImageType() {
+        return this.defaultImageType;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -120,6 +137,13 @@ public final class GetEngineVersionsResult {
         return this.releaseChannelUpgradeTargetVersion;
     }
     /**
+     * @return A list of the valid image types available in the given zone.
+     * 
+     */
+    public List<String> validImageTypes() {
+        return this.validImageTypes;
+    }
+    /**
      * @return A list of versions available in the given zone for use with master instances.
      * 
      */
@@ -147,6 +171,7 @@ public final class GetEngineVersionsResult {
     @CustomType.Builder
     public static final class Builder {
         private String defaultClusterVersion;
+        private String defaultImageType;
         private String id;
         private String latestMasterVersion;
         private String latestNodeVersion;
@@ -155,6 +180,7 @@ public final class GetEngineVersionsResult {
         private Map<String,String> releaseChannelDefaultVersion;
         private Map<String,String> releaseChannelLatestVersion;
         private Map<String,String> releaseChannelUpgradeTargetVersion;
+        private List<String> validImageTypes;
         private List<String> validMasterVersions;
         private List<String> validNodeVersions;
         private @Nullable String versionPrefix;
@@ -162,6 +188,7 @@ public final class GetEngineVersionsResult {
         public Builder(GetEngineVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultClusterVersion = defaults.defaultClusterVersion;
+    	      this.defaultImageType = defaults.defaultImageType;
     	      this.id = defaults.id;
     	      this.latestMasterVersion = defaults.latestMasterVersion;
     	      this.latestNodeVersion = defaults.latestNodeVersion;
@@ -170,6 +197,7 @@ public final class GetEngineVersionsResult {
     	      this.releaseChannelDefaultVersion = defaults.releaseChannelDefaultVersion;
     	      this.releaseChannelLatestVersion = defaults.releaseChannelLatestVersion;
     	      this.releaseChannelUpgradeTargetVersion = defaults.releaseChannelUpgradeTargetVersion;
+    	      this.validImageTypes = defaults.validImageTypes;
     	      this.validMasterVersions = defaults.validMasterVersions;
     	      this.validNodeVersions = defaults.validNodeVersions;
     	      this.versionPrefix = defaults.versionPrefix;
@@ -181,6 +209,14 @@ public final class GetEngineVersionsResult {
               throw new MissingRequiredPropertyException("GetEngineVersionsResult", "defaultClusterVersion");
             }
             this.defaultClusterVersion = defaultClusterVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultImageType(String defaultImageType) {
+            if (defaultImageType == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "defaultImageType");
+            }
+            this.defaultImageType = defaultImageType;
             return this;
         }
         @CustomType.Setter
@@ -244,6 +280,17 @@ public final class GetEngineVersionsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder validImageTypes(List<String> validImageTypes) {
+            if (validImageTypes == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "validImageTypes");
+            }
+            this.validImageTypes = validImageTypes;
+            return this;
+        }
+        public Builder validImageTypes(String... validImageTypes) {
+            return validImageTypes(List.of(validImageTypes));
+        }
+        @CustomType.Setter
         public Builder validMasterVersions(List<String> validMasterVersions) {
             if (validMasterVersions == null) {
               throw new MissingRequiredPropertyException("GetEngineVersionsResult", "validMasterVersions");
@@ -274,6 +321,7 @@ public final class GetEngineVersionsResult {
         public GetEngineVersionsResult build() {
             final var _resultValue = new GetEngineVersionsResult();
             _resultValue.defaultClusterVersion = defaultClusterVersion;
+            _resultValue.defaultImageType = defaultImageType;
             _resultValue.id = id;
             _resultValue.latestMasterVersion = latestMasterVersion;
             _resultValue.latestNodeVersion = latestNodeVersion;
@@ -282,6 +330,7 @@ public final class GetEngineVersionsResult {
             _resultValue.releaseChannelDefaultVersion = releaseChannelDefaultVersion;
             _resultValue.releaseChannelLatestVersion = releaseChannelLatestVersion;
             _resultValue.releaseChannelUpgradeTargetVersion = releaseChannelUpgradeTargetVersion;
+            _resultValue.validImageTypes = validImageTypes;
             _resultValue.validMasterVersions = validMasterVersions;
             _resultValue.validNodeVersions = validNodeVersions;
             _resultValue.versionPrefix = versionPrefix;

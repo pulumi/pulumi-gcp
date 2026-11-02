@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Datastream Private Connection Force Delete
  * 
  * <pre>
@@ -124,6 +125,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Datastream Private Connection Psc Interface
  * 
  * <pre>

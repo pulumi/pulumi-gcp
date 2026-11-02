@@ -530,6 +530,7 @@ class NetworkAttachment(pulumi.CustomResource):
             producer_accept_lists=[accepted_producer_project.project_id],
             producer_reject_lists=[rejected_producer_project.project_id])
         ```
+
         ### Network Attachment Instance Usage
 
         ```python
@@ -659,6 +660,7 @@ class NetworkAttachment(pulumi.CustomResource):
             producer_accept_lists=[accepted_producer_project.project_id],
             producer_reject_lists=[rejected_producer_project.project_id])
         ```
+
         ### Network Attachment Instance Usage
 
         ```python

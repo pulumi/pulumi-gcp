@@ -231,6 +231,7 @@ class OrganizationSettings(pulumi.CustomResource):
             kms_key_name="example-key",
             opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
+
         ### Observability Organization Settings Basic Global
 
         ```python
@@ -301,6 +302,7 @@ class OrganizationSettings(pulumi.CustomResource):
             kms_key_name="example-key",
             opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
+
         ### Observability Organization Settings Basic Global
 
         ```python

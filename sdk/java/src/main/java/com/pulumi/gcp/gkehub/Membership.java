@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Gkehub Membership Basic
  * 
  * <pre>
@@ -131,6 +132,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Gkehub Membership Issuer
  * 
  * <pre>

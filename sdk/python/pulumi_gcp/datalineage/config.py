@@ -287,6 +287,7 @@ class Config(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[datalineage_api]))
         ```
+
         ### Data Lineage Config Folder
 
         ```python
@@ -319,6 +320,7 @@ class Config(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait_for_folder_iam]))
         ```
+
         ### Data Lineage Config Organization
 
         ```python
@@ -420,6 +422,7 @@ class Config(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[datalineage_api]))
         ```
+
         ### Data Lineage Config Folder
 
         ```python
@@ -452,6 +455,7 @@ class Config(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait_for_folder_iam]))
         ```
+
         ### Data Lineage Config Organization
 
         ```python

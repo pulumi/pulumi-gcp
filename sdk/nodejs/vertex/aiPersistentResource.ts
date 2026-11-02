@@ -29,12 +29,18 @@ import * as utilities from "../utilities";
  *     displayName: "Example persistent resource",
  *     resourcePools: [{
  *         machineSpec: {
- *             machineType: "n1-standard-4",
+ *             machineType: "n1-standard-8",
  *         },
- *         replicaCount: "1",
+ *         replicaCount: "2",
  *     }],
+ *     resourceRuntimeSpec: {
+ *         raySpec: {
+ *             imageUri: "us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest",
+ *         },
+ *     },
  * });
  * ```
+ *
  * ### Vertex Ai Persistent Resource Autoscaling
  *
  * ```typescript
@@ -57,6 +63,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Vertex Ai Persistent Resource Machine Spec
  *
  * ```typescript
@@ -80,6 +87,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Vertex Ai Persistent Resource Network
  *
  * ```typescript

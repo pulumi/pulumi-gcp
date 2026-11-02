@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Regional Endpoint Global Access
  *
  * ```typescript

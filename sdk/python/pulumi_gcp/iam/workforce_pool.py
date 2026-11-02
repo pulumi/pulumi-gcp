@@ -471,6 +471,7 @@ class WorkforcePool(pulumi.CustomResource):
             parent="organizations/123456789",
             location="global")
         ```
+
         ### Iam Workforce Pool Full
 
         ```python
@@ -566,6 +567,7 @@ class WorkforcePool(pulumi.CustomResource):
             parent="organizations/123456789",
             location="global")
         ```
+
         ### Iam Workforce Pool Full
 
         ```python

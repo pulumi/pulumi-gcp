@@ -505,6 +505,7 @@ class CxPlaybook(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Dialogflowcx Playbook Fulfillment
 
         ```python
@@ -536,7 +537,7 @@ class CxPlaybook(pulumi.CustomResource):
             parent=agent.id,
             display_name="TF Prompt generator",
             llm_model_settings={
-                "model": "gemini-2.0-flash-001",
+                "model": "gemini-2.5-flash",
                 "prompt_text": "Return me some great results",
             },
             prompt_text={
@@ -583,7 +584,7 @@ class CxPlaybook(pulumi.CustomResource):
                 ],
             },
             llm_model_settings={
-                "model": "gemini-2.0-flash-001",
+                "model": "gemini-2.5-flash",
                 "prompt_text": "Return me some great results",
             },
             referenced_tools=[my_tool.id])
@@ -692,6 +693,7 @@ class CxPlaybook(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Dialogflowcx Playbook Fulfillment
 
         ```python
@@ -723,7 +725,7 @@ class CxPlaybook(pulumi.CustomResource):
             parent=agent.id,
             display_name="TF Prompt generator",
             llm_model_settings={
-                "model": "gemini-2.0-flash-001",
+                "model": "gemini-2.5-flash",
                 "prompt_text": "Return me some great results",
             },
             prompt_text={
@@ -770,7 +772,7 @@ class CxPlaybook(pulumi.CustomResource):
                 ],
             },
             llm_model_settings={
-                "model": "gemini-2.0-flash-001",
+                "model": "gemini-2.5-flash",
                 "prompt_text": "Return me some great results",
             },
             referenced_tools=[my_tool.id])

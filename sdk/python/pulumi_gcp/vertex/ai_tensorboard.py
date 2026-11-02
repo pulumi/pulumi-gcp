@@ -453,6 +453,7 @@ class AiTensorboard(pulumi.CustomResource):
             },
             region="us-central1")
         ```
+
         ### Vertex Ai Tensorboard Full
 
         ```python
@@ -549,6 +550,7 @@ class AiTensorboard(pulumi.CustomResource):
             },
             region="us-central1")
         ```
+
         ### Vertex Ai Tensorboard Full
 
         ```python

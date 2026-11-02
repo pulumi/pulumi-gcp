@@ -440,6 +440,7 @@ class EntryLink(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Dataplex Entry Link Full
 
         ```python
@@ -505,6 +506,7 @@ class EntryLink(pulumi.CustomResource):
             ],
             opts = pulumi.ResourceOptions(depends_on=[wait_for_sync]))
         ```
+
         ## Import
 
         EntryLink can be imported using any of these accepted formats:
@@ -600,6 +602,7 @@ class EntryLink(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Dataplex Entry Link Full
 
         ```python
@@ -665,6 +668,7 @@ class EntryLink(pulumi.CustomResource):
             ],
             opts = pulumi.ResourceOptions(depends_on=[wait_for_sync]))
         ```
+
         ## Import
 
         EntryLink can be imported using any of these accepted formats:

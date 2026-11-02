@@ -262,11 +262,11 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         subnet_network1 = gcp.compute.Subnetwork("subnet_network1",
             name="subnet-net1",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=network1.id)
         ip1_network1 = gcp.compute.Address("ip1_network1",
             name="ip1-net1",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network1.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
@@ -274,24 +274,25 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         instance_user_conn_instance = gcp.memorystore.Instance("instance-user-conn",
             instance_id="instance-user-conn",
             shard_count=1,
-            location="us-west1",
+            location="us-east4",
+            node_type="SHARED_CORE_NANO",
             deletion_protection_enabled=False)
         forwarding_rule1_network1 = gcp.compute.ForwardingRule("forwarding_rule1_network1",
             name="fwd1-net1",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip1_network1.id,
             load_balancing_scheme="",
             network=network1.id,
             target=instance_user_conn_instance.psc_attachment_details[0].service_attachment)
         ip2_network1 = gcp.compute.Address("ip2_network1",
             name="ip2-net1",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network1.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network1 = gcp.compute.ForwardingRule("forwarding_rule2_network1",
             name="fwd2-net1",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip2_network1.id,
             load_balancing_scheme="",
             network=network1.id,
@@ -302,37 +303,37 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         subnet_network2 = gcp.compute.Subnetwork("subnet_network2",
             name="subnet-net2",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=network2.id)
         ip1_network2 = gcp.compute.Address("ip1_network2",
             name="ip1-net2",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule1_network2 = gcp.compute.ForwardingRule("forwarding_rule1_network2",
             name="fwd1-net2",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip1_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=instance_user_conn_instance.psc_attachment_details[0].service_attachment)
         ip2_network2 = gcp.compute.Address("ip2_network2",
             name="ip2-net2",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network2 = gcp.compute.ForwardingRule("forwarding_rule2_network2",
             name="fwd2-net2",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip2_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=instance_user_conn_instance.psc_attachment_details[1].service_attachment)
         instance_user_conn = gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-conn",
             name="instance-user-conn",
-            region="us-west1",
+            region="us-east4",
             desired_user_created_endpoints=[
                 {
                     "connections": [
@@ -381,6 +382,7 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
             ])
         project = gcp.organizations.get_project()
         ```
+
         ### Memorystore Instance Desired User And Auto Created Endpoints
 
         ```python
@@ -393,11 +395,11 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         subnet_network2 = gcp.compute.Subnetwork("subnet_network2",
             name="subnet-net2",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=network2.id)
         ip1_network2 = gcp.compute.Address("ip1_network2",
             name="ip1-net2",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
@@ -407,11 +409,11 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         subnet_network1 = gcp.compute.Subnetwork("subnet_network1",
             name="subnet-net1",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=network1.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="scpolicy",
-            location="us-west1",
+            location="us-east4",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=network1.id,
@@ -427,32 +429,33 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
                 "network": network1.id,
                 "project_id": project.project_id,
             }],
-            location="us-west1",
+            location="us-east4",
+            node_type="SHARED_CORE_NANO",
             deletion_protection_enabled=False,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         forwarding_rule1_network2 = gcp.compute.ForwardingRule("forwarding_rule1_network2",
             name="fwd1-net2",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip1_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=instance_user_auto_conn_instance.psc_attachment_details[0].service_attachment)
         ip2_network2 = gcp.compute.Address("ip2_network2",
             name="ip2-net2",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network2 = gcp.compute.ForwardingRule("forwarding_rule2_network2",
             name="fwd2-net2",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip2_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=instance_user_auto_conn_instance.psc_attachment_details[1].service_attachment)
         instance_user_auto_conn = gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn",
             name="instance-user-auto-conn",
-            region="us-west1",
+            region="us-east4",
             desired_user_created_endpoints=[{
                 "connections": [
                     {
@@ -544,11 +547,11 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         subnet_network1 = gcp.compute.Subnetwork("subnet_network1",
             name="subnet-net1",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=network1.id)
         ip1_network1 = gcp.compute.Address("ip1_network1",
             name="ip1-net1",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network1.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
@@ -556,24 +559,25 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         instance_user_conn_instance = gcp.memorystore.Instance("instance-user-conn",
             instance_id="instance-user-conn",
             shard_count=1,
-            location="us-west1",
+            location="us-east4",
+            node_type="SHARED_CORE_NANO",
             deletion_protection_enabled=False)
         forwarding_rule1_network1 = gcp.compute.ForwardingRule("forwarding_rule1_network1",
             name="fwd1-net1",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip1_network1.id,
             load_balancing_scheme="",
             network=network1.id,
             target=instance_user_conn_instance.psc_attachment_details[0].service_attachment)
         ip2_network1 = gcp.compute.Address("ip2_network1",
             name="ip2-net1",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network1.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network1 = gcp.compute.ForwardingRule("forwarding_rule2_network1",
             name="fwd2-net1",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip2_network1.id,
             load_balancing_scheme="",
             network=network1.id,
@@ -584,37 +588,37 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         subnet_network2 = gcp.compute.Subnetwork("subnet_network2",
             name="subnet-net2",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=network2.id)
         ip1_network2 = gcp.compute.Address("ip1_network2",
             name="ip1-net2",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule1_network2 = gcp.compute.ForwardingRule("forwarding_rule1_network2",
             name="fwd1-net2",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip1_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=instance_user_conn_instance.psc_attachment_details[0].service_attachment)
         ip2_network2 = gcp.compute.Address("ip2_network2",
             name="ip2-net2",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network2 = gcp.compute.ForwardingRule("forwarding_rule2_network2",
             name="fwd2-net2",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip2_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=instance_user_conn_instance.psc_attachment_details[1].service_attachment)
         instance_user_conn = gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-conn",
             name="instance-user-conn",
-            region="us-west1",
+            region="us-east4",
             desired_user_created_endpoints=[
                 {
                     "connections": [
@@ -663,6 +667,7 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
             ])
         project = gcp.organizations.get_project()
         ```
+
         ### Memorystore Instance Desired User And Auto Created Endpoints
 
         ```python
@@ -675,11 +680,11 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         subnet_network2 = gcp.compute.Subnetwork("subnet_network2",
             name="subnet-net2",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=network2.id)
         ip1_network2 = gcp.compute.Address("ip1_network2",
             name="ip1-net2",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
@@ -689,11 +694,11 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         subnet_network1 = gcp.compute.Subnetwork("subnet_network1",
             name="subnet-net1",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east4",
             network=network1.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="scpolicy",
-            location="us-west1",
+            location="us-east4",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=network1.id,
@@ -709,32 +714,33 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
                 "network": network1.id,
                 "project_id": project.project_id,
             }],
-            location="us-west1",
+            location="us-east4",
+            node_type="SHARED_CORE_NANO",
             deletion_protection_enabled=False,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         forwarding_rule1_network2 = gcp.compute.ForwardingRule("forwarding_rule1_network2",
             name="fwd1-net2",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip1_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=instance_user_auto_conn_instance.psc_attachment_details[0].service_attachment)
         ip2_network2 = gcp.compute.Address("ip2_network2",
             name="ip2-net2",
-            region="us-west1",
+            region="us-east4",
             subnetwork=subnet_network2.id,
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         forwarding_rule2_network2 = gcp.compute.ForwardingRule("forwarding_rule2_network2",
             name="fwd2-net2",
-            region="us-west1",
+            region="us-east4",
             ip_address=ip2_network2.id,
             load_balancing_scheme="",
             network=network2.id,
             target=instance_user_auto_conn_instance.psc_attachment_details[1].service_attachment)
         instance_user_auto_conn = gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn",
             name="instance-user-auto-conn",
-            region="us-west1",
+            region="us-east4",
             desired_user_created_endpoints=[{
                 "connections": [
                     {

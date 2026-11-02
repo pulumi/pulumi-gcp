@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class ManagedZoneForwardingConfig
     {
         /// <summary>
+        /// The list of outbound endpoints to use for queries.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ManagedZoneForwardingConfigOutboundEndpoint> OutboundEndpoints;
+        /// <summary>
         /// List of target name servers to forward to. Cloud DNS will
         /// select the best available name server if more than
         /// one target is given.
@@ -22,8 +27,12 @@ namespace Pulumi.Gcp.Dns.Outputs
         public readonly ImmutableArray<Outputs.ManagedZoneForwardingConfigTargetNameServer> TargetNameServers;
 
         [OutputConstructor]
-        private ManagedZoneForwardingConfig(ImmutableArray<Outputs.ManagedZoneForwardingConfigTargetNameServer> targetNameServers)
+        private ManagedZoneForwardingConfig(
+            ImmutableArray<Outputs.ManagedZoneForwardingConfigOutboundEndpoint> outboundEndpoints,
+
+            ImmutableArray<Outputs.ManagedZoneForwardingConfigTargetNameServer> targetNameServers)
         {
+            OutboundEndpoints = outboundEndpoints;
             TargetNameServers = targetNameServers;
         }
     }

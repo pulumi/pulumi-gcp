@@ -173,6 +173,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dialogflowcx Tool Version Data Store
  *
  * ```typescript
@@ -238,6 +239,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Dialogflowcx Tool Version Function
  *
  * ```typescript
@@ -315,6 +317,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dialogflowcx Tool Version Connector
  *
  * ```typescript

@@ -85,7 +85,9 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
      * with any other ranges in use within the cluster&#39;s network, and it must be a /28
      * subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
      * for more details. This field only applies to private clusters, when
-     * `enablePrivateNodes` is `true`.
+     * `enablePrivateNodes` is `true`. On GKE versions 1.29 and later, this field is
+     * optional when `privateEndpointSubnetwork` is specified. It is also optional for
+     * Autopilot clusters.
      * 
      */
     @Import(name="masterIpv4CidrBlock")
@@ -98,7 +100,9 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
      * with any other ranges in use within the cluster&#39;s network, and it must be a /28
      * subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
      * for more details. This field only applies to private clusters, when
-     * `enablePrivateNodes` is `true`.
+     * `enablePrivateNodes` is `true`. On GKE versions 1.29 and later, this field is
+     * optional when `privateEndpointSubnetwork` is specified. It is also optional for
+     * Autopilot clusters.
      * 
      */
     public Optional<Output<String>> masterIpv4CidrBlock() {
@@ -290,7 +294,9 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
          * with any other ranges in use within the cluster&#39;s network, and it must be a /28
          * subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
          * for more details. This field only applies to private clusters, when
-         * `enablePrivateNodes` is `true`.
+         * `enablePrivateNodes` is `true`. On GKE versions 1.29 and later, this field is
+         * optional when `privateEndpointSubnetwork` is specified. It is also optional for
+         * Autopilot clusters.
          * 
          * @return builder
          * 
@@ -307,7 +313,9 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
          * with any other ranges in use within the cluster&#39;s network, and it must be a /28
          * subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
          * for more details. This field only applies to private clusters, when
-         * `enablePrivateNodes` is `true`.
+         * `enablePrivateNodes` is `true`. On GKE versions 1.29 and later, this field is
+         * optional when `privateEndpointSubnetwork` is specified. It is also optional for
+         * Autopilot clusters.
          * 
          * @return builder
          * 

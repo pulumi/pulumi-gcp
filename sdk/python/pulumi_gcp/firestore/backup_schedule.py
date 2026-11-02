@@ -331,6 +331,7 @@ class BackupSchedule(pulumi.CustomResource):
             retention="8467200s",
             daily_recurrence={})
         ```
+
         ### Firestore Backup Schedule Weekly
 
         ```python
@@ -431,6 +432,7 @@ class BackupSchedule(pulumi.CustomResource):
             retention="8467200s",
             daily_recurrence={})
         ```
+
         ### Firestore Backup Schedule Weekly
 
         ```python

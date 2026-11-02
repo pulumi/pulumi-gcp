@@ -91,6 +91,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Gemini Data Analytics Data Agent Bigquery
  * 
  * <pre>
@@ -111,11 +112,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs;
+ * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs;
+ * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs;
+ * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgs;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs;
+ * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs;
  * import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs;
@@ -129,12 +134,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .datasetId("data_agent")
  *             .location("US")
@@ -175,10 +180,48 @@ import javax.annotation.Nullable;
  *                                 .projectId(dataset.project())
  *                                 .datasetId(dataset.datasetId())
  *                                 .tableId(table.tableId())
+ *                                 .schema(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs.builder()
+ *                                     .description("Sales orders table.")
+ *                                     .displayName("Sales Orders")
+ *                                     .synonyms(                                    
+ *                                         "orders",
+ *                                         "purchases")
+ *                                     .tags(                                    
+ *                                         "sales",
+ *                                         "finance")
+ *                                     .fields(                                    
+ *                                         DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs.builder()
+ *                                             .name("order_id")
+ *                                             .type("STRING")
+ *                                             .description("Unique order identifier.")
+ *                                             .mode("REQUIRED")
+ *                                             .synonyms("id")
+ *                                             .tags("identifier")
+ *                                             .category("DIMENSION")
+ *                                             .build(),
+ *                                         DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs.builder()
+ *                                             .name("order_total")
+ *                                             .type("FLOAT")
+ *                                             .description("Total order amount.")
+ *                                             .mode("NULLABLE")
+ *                                             .synonyms(                                            
+ *                                                 "revenue",
+ *                                                 "amount")
+ *                                             .tags("metric")
+ *                                             .category("MEASURE")
+ *                                             .valueFormat("$#,##0.00")
+ *                                             .build())
+ *                                     .filters(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgs.builder()
+ *                                         .field("order_total")
+ *                                         .value("0")
+ *                                         .type("ALWAYS_FILTER")
+ *                                         .build())
+ *                                     .build())
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .options(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs.builder()
+ *                         .model("LATEST_GA_MODEL")
  *                         .analysis(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs.builder()
  *                             .python(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs.builder()
  *                                 .enabled(true)
@@ -189,8 +232,13 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .exampleQueries(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs.builder()
- *                         .naturalLanguageQuestion("What is the total order value?")
- *                         .sqlQuery("SELECT SUM(order_total) AS total_order_value FROM sales")
+ *                         .naturalLanguageQuestion("What is the total order value above a threshold?")
+ *                         .sqlQuery("SELECT SUM(order_total) AS total_order_value FROM sales WHERE order_total > }{@literal @}{@code min_total")
+ *                         .parameters(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs.builder()
+ *                             .name("min_total")
+ *                             .description("Minimum order total threshold.")
+ *                             .dataType("FLOAT64")
+ *                             .build())
  *                         .build())
  *                     .glossaryTerms(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs.builder()
  *                         .displayName("Order")
@@ -201,21 +249,21 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .schemaRelationships(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs.builder()
  *                         .leftSchemaPaths(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs.builder()
- *                             .tableFqn(Output.tuple(dataset.project(), dataset.datasetId(), table.tableId()).applyValue(values -> {
+ *                             .tableFqn(Output.tuple(dataset.project(), dataset.datasetId(), table.tableId()).applyValue(values -> }{{@code
  *                                 var project = values.t1;
  *                                 var datasetId = values.t2;
  *                                 var tableId = values.t3;
  *                                 return String.format("%s.%s.%s", project,datasetId,tableId);
- *                             }))
+ *                             }}{@code ))
  *                             .paths("order_id")
  *                             .build())
  *                         .rightSchemaPaths(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs.builder()
- *                             .tableFqn(Output.tuple(dataset.project(), dataset.datasetId(), table.tableId()).applyValue(values -> {
+ *                             .tableFqn(Output.tuple(dataset.project(), dataset.datasetId(), table.tableId()).applyValue(values -> }{{@code
  *                                 var project = values.t1;
  *                                 var datasetId = values.t2;
  *                                 var tableId = values.t3;
  *                                 return String.format("%s.%s.%s", project,datasetId,tableId);
- *                             }))
+ *                             }}{@code ))
  *                             .paths("order_total")
  *                             .build())
  *                         .sources("LLM_SUGGESTED")
@@ -227,10 +275,11 @@ import javax.annotation.Nullable;
  *                 .dependsOn(table)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
+ * 
  * ### Gemini Data Analytics Data Agent Cmek
  * 
  * <pre>

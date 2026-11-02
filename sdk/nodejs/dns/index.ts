@@ -55,6 +55,11 @@ export type ManagedZone = import("./managedZone").ManagedZone;
 export const ManagedZone: typeof import("./managedZone").ManagedZone = null as any;
 utilities.lazyLoad(exports, ["ManagedZone"], () => require("./managedZone"));
 
+export { OutboundEndpointArgs, OutboundEndpointState } from "./outboundEndpoint";
+export type OutboundEndpoint = import("./outboundEndpoint").OutboundEndpoint;
+export const OutboundEndpoint: typeof import("./outboundEndpoint").OutboundEndpoint = null as any;
+utilities.lazyLoad(exports, ["OutboundEndpoint"], () => require("./outboundEndpoint"));
+
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
@@ -88,6 +93,8 @@ const _module = {
                 return new DnsManagedZoneIamPolicy(name, <any>undefined, { urn })
             case "gcp:dns/managedZone:ManagedZone":
                 return new ManagedZone(name, <any>undefined, { urn })
+            case "gcp:dns/outboundEndpoint:OutboundEndpoint":
+                return new OutboundEndpoint(name, <any>undefined, { urn })
             case "gcp:dns/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "gcp:dns/recordSet:RecordSet":
@@ -105,6 +112,7 @@ pulumi.runtime.registerResourceModule("gcp", "dns/dnsManagedZoneIamBinding", _mo
 pulumi.runtime.registerResourceModule("gcp", "dns/dnsManagedZoneIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dns/dnsManagedZoneIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dns/managedZone", _module)
+pulumi.runtime.registerResourceModule("gcp", "dns/outboundEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "dns/policy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dns/recordSet", _module)
 pulumi.runtime.registerResourceModule("gcp", "dns/responsePolicy", _module)

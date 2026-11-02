@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
 import com.pulumi.gcp.compute.inputs.RouterMd5AuthenticationKeysArgs;
 import com.pulumi.gcp.compute.inputs.RouterParamsArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -230,6 +231,21 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="routerId")
+    private @Nullable Output<Integer> routerId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> routerId() {
+        return Optional.ofNullable(this.routerId);
+    }
+
+    /**
      * The URI of the created resource.
      * 
      */
@@ -259,6 +275,7 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
         this.params = $.params;
         this.project = $.project;
         this.region = $.region;
+        this.routerId = $.routerId;
         this.selfLink = $.selfLink;
     }
 
@@ -560,6 +577,27 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param routerId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routerId(@Nullable Output<Integer> routerId) {
+            $.routerId = routerId;
+            return this;
+        }
+
+        /**
+         * @param routerId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routerId(Integer routerId) {
+            return routerId(Output.of(routerId));
         }
 
         /**

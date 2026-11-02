@@ -13,6 +13,4406 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceCondition struct {
+	// (Output)
+	// A reason for the instance condition.
+	InstanceReason *string `pulumi:"instanceReason"`
+	// (Output)
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human readable message indicating details about the current status.
+	Message *string `pulumi:"message"`
+	// (Output)
+	// A common (instance-level) reason for this condition.
+	Reason *string `pulumi:"reason"`
+	// (Output)
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity *string `pulumi:"severity"`
+	// (Output)
+	// State of the condition.
+	State *string `pulumi:"state"`
+	// (Output)
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type *string `pulumi:"type"`
+}
+
+// InstanceConditionInput is an input type that accepts InstanceConditionArgs and InstanceConditionOutput values.
+// You can construct a concrete instance of `InstanceConditionInput` via:
+//
+//	InstanceConditionArgs{...}
+type InstanceConditionInput interface {
+	pulumi.Input
+
+	ToInstanceConditionOutput() InstanceConditionOutput
+	ToInstanceConditionOutputWithContext(context.Context) InstanceConditionOutput
+}
+
+type InstanceConditionArgs struct {
+	// (Output)
+	// A reason for the instance condition.
+	InstanceReason pulumi.StringPtrInput `pulumi:"instanceReason"`
+	// (Output)
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
+	// A common (instance-level) reason for this condition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// (Output)
+	// State of the condition.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (InstanceConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCondition)(nil)).Elem()
+}
+
+func (i InstanceConditionArgs) ToInstanceConditionOutput() InstanceConditionOutput {
+	return i.ToInstanceConditionOutputWithContext(context.Background())
+}
+
+func (i InstanceConditionArgs) ToInstanceConditionOutputWithContext(ctx context.Context) InstanceConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConditionOutput)
+}
+
+// InstanceConditionArrayInput is an input type that accepts InstanceConditionArray and InstanceConditionArrayOutput values.
+// You can construct a concrete instance of `InstanceConditionArrayInput` via:
+//
+//	InstanceConditionArray{ InstanceConditionArgs{...} }
+type InstanceConditionArrayInput interface {
+	pulumi.Input
+
+	ToInstanceConditionArrayOutput() InstanceConditionArrayOutput
+	ToInstanceConditionArrayOutputWithContext(context.Context) InstanceConditionArrayOutput
+}
+
+type InstanceConditionArray []InstanceConditionInput
+
+func (InstanceConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCondition)(nil)).Elem()
+}
+
+func (i InstanceConditionArray) ToInstanceConditionArrayOutput() InstanceConditionArrayOutput {
+	return i.ToInstanceConditionArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceConditionArray) ToInstanceConditionArrayOutputWithContext(ctx context.Context) InstanceConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConditionArrayOutput)
+}
+
+type InstanceConditionOutput struct{ *pulumi.OutputState }
+
+func (InstanceConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCondition)(nil)).Elem()
+}
+
+func (o InstanceConditionOutput) ToInstanceConditionOutput() InstanceConditionOutput {
+	return o
+}
+
+func (o InstanceConditionOutput) ToInstanceConditionOutputWithContext(ctx context.Context) InstanceConditionOutput {
+	return o
+}
+
+// (Output)
+// A reason for the instance condition.
+func (o InstanceConditionOutput) InstanceReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCondition) *string { return v.InstanceReason }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Last time the condition transitioned from one status to another.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o InstanceConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Human readable message indicating details about the current status.
+func (o InstanceConditionOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A common (instance-level) reason for this condition.
+func (o InstanceConditionOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// How to interpret failures of this condition, one of Error, Warning, Info
+func (o InstanceConditionOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the condition.
+func (o InstanceConditionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCondition) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+func (o InstanceConditionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type InstanceConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCondition)(nil)).Elem()
+}
+
+func (o InstanceConditionArrayOutput) ToInstanceConditionArrayOutput() InstanceConditionArrayOutput {
+	return o
+}
+
+func (o InstanceConditionArrayOutput) ToInstanceConditionArrayOutputWithContext(ctx context.Context) InstanceConditionArrayOutput {
+	return o
+}
+
+func (o InstanceConditionArrayOutput) Index(i pulumi.IntInput) InstanceConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceCondition {
+		return vs[0].([]InstanceCondition)[vs[1].(int)]
+	}).(InstanceConditionOutput)
+}
+
+type InstanceContainer struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Commands []string `pulumi:"commands"`
+	// List of environment variables to set in the container.
+	// Structure is documented below.
+	Envs []InstanceContainerEnv `pulumi:"envs"`
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	Image string `pulumi:"image"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
+	// Structure is documented below.
+	LivenessProbe *InstanceContainerLivenessProbe `pulumi:"livenessProbe"`
+	// Name of the container specified as a DNS_LABEL.
+	Name *string `pulumi:"name"`
+	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+	// Structure is documented below.
+	Ports []InstanceContainerPort `pulumi:"ports"`
+	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Structure is documented below.
+	Resources *InstanceContainerResources `pulumi:"resources"`
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+	// Structure is documented below.
+	StartupProbe *InstanceContainerStartupProbe `pulumi:"startupProbe"`
+	// Volume to mount into the container's filesystem.
+	// Structure is documented below.
+	VolumeMounts []InstanceContainerVolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir *string `pulumi:"workingDir"`
+}
+
+// InstanceContainerInput is an input type that accepts InstanceContainerArgs and InstanceContainerOutput values.
+// You can construct a concrete instance of `InstanceContainerInput` via:
+//
+//	InstanceContainerArgs{...}
+type InstanceContainerInput interface {
+	pulumi.Input
+
+	ToInstanceContainerOutput() InstanceContainerOutput
+	ToInstanceContainerOutputWithContext(context.Context) InstanceContainerOutput
+}
+
+type InstanceContainerArgs struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// List of environment variables to set in the container.
+	// Structure is documented below.
+	Envs InstanceContainerEnvArrayInput `pulumi:"envs"`
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	Image pulumi.StringInput `pulumi:"image"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
+	// Structure is documented below.
+	LivenessProbe InstanceContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
+	// Name of the container specified as a DNS_LABEL.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+	// Structure is documented below.
+	Ports InstanceContainerPortArrayInput `pulumi:"ports"`
+	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Structure is documented below.
+	Resources InstanceContainerResourcesPtrInput `pulumi:"resources"`
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+	// Structure is documented below.
+	StartupProbe InstanceContainerStartupProbePtrInput `pulumi:"startupProbe"`
+	// Volume to mount into the container's filesystem.
+	// Structure is documented below.
+	VolumeMounts InstanceContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
+}
+
+func (InstanceContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainer)(nil)).Elem()
+}
+
+func (i InstanceContainerArgs) ToInstanceContainerOutput() InstanceContainerOutput {
+	return i.ToInstanceContainerOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerArgs) ToInstanceContainerOutputWithContext(ctx context.Context) InstanceContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerOutput)
+}
+
+// InstanceContainerArrayInput is an input type that accepts InstanceContainerArray and InstanceContainerArrayOutput values.
+// You can construct a concrete instance of `InstanceContainerArrayInput` via:
+//
+//	InstanceContainerArray{ InstanceContainerArgs{...} }
+type InstanceContainerArrayInput interface {
+	pulumi.Input
+
+	ToInstanceContainerArrayOutput() InstanceContainerArrayOutput
+	ToInstanceContainerArrayOutputWithContext(context.Context) InstanceContainerArrayOutput
+}
+
+type InstanceContainerArray []InstanceContainerInput
+
+func (InstanceContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainer)(nil)).Elem()
+}
+
+func (i InstanceContainerArray) ToInstanceContainerArrayOutput() InstanceContainerArrayOutput {
+	return i.ToInstanceContainerArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerArray) ToInstanceContainerArrayOutputWithContext(ctx context.Context) InstanceContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerArrayOutput)
+}
+
+type InstanceContainerOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainer)(nil)).Elem()
+}
+
+func (o InstanceContainerOutput) ToInstanceContainerOutput() InstanceContainerOutput {
+	return o
+}
+
+func (o InstanceContainerOutput) ToInstanceContainerOutputWithContext(ctx context.Context) InstanceContainerOutput {
+	return o
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+func (o InstanceContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+func (o InstanceContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// List of environment variables to set in the container.
+// Structure is documented below.
+func (o InstanceContainerOutput) Envs() InstanceContainerEnvArrayOutput {
+	return o.ApplyT(func(v InstanceContainer) []InstanceContainerEnv { return v.Envs }).(InstanceContainerEnvArrayOutput)
+}
+
+// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+func (o InstanceContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceContainer) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// Periodic probe of container liveness. Container will be restarted if the probe fails.
+// Structure is documented below.
+func (o InstanceContainerOutput) LivenessProbe() InstanceContainerLivenessProbePtrOutput {
+	return o.ApplyT(func(v InstanceContainer) *InstanceContainerLivenessProbe { return v.LivenessProbe }).(InstanceContainerLivenessProbePtrOutput)
+}
+
+// Name of the container specified as a DNS_LABEL.
+func (o InstanceContainerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+// Structure is documented below.
+func (o InstanceContainerOutput) Ports() InstanceContainerPortArrayOutput {
+	return o.ApplyT(func(v InstanceContainer) []InstanceContainerPort { return v.Ports }).(InstanceContainerPortArrayOutput)
+}
+
+// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// Structure is documented below.
+func (o InstanceContainerOutput) Resources() InstanceContainerResourcesPtrOutput {
+	return o.ApplyT(func(v InstanceContainer) *InstanceContainerResources { return v.Resources }).(InstanceContainerResourcesPtrOutput)
+}
+
+// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+// Structure is documented below.
+func (o InstanceContainerOutput) StartupProbe() InstanceContainerStartupProbePtrOutput {
+	return o.ApplyT(func(v InstanceContainer) *InstanceContainerStartupProbe { return v.StartupProbe }).(InstanceContainerStartupProbePtrOutput)
+}
+
+// Volume to mount into the container's filesystem.
+// Structure is documented below.
+func (o InstanceContainerOutput) VolumeMounts() InstanceContainerVolumeMountArrayOutput {
+	return o.ApplyT(func(v InstanceContainer) []InstanceContainerVolumeMount { return v.VolumeMounts }).(InstanceContainerVolumeMountArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o InstanceContainerOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainer) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainer)(nil)).Elem()
+}
+
+func (o InstanceContainerArrayOutput) ToInstanceContainerArrayOutput() InstanceContainerArrayOutput {
+	return o
+}
+
+func (o InstanceContainerArrayOutput) ToInstanceContainerArrayOutputWithContext(ctx context.Context) InstanceContainerArrayOutput {
+	return o
+}
+
+func (o InstanceContainerArrayOutput) Index(i pulumi.IntInput) InstanceContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceContainer {
+		return vs[0].([]InstanceContainer)[vs[1].(int)]
+	}).(InstanceContainerOutput)
+}
+
+type InstanceContainerEnv struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+	Name string `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value *string `pulumi:"value"`
+	// Source for the environment variable's value.
+	// Structure is documented below.
+	ValueSource *InstanceContainerEnvValueSource `pulumi:"valueSource"`
+}
+
+// InstanceContainerEnvInput is an input type that accepts InstanceContainerEnvArgs and InstanceContainerEnvOutput values.
+// You can construct a concrete instance of `InstanceContainerEnvInput` via:
+//
+//	InstanceContainerEnvArgs{...}
+type InstanceContainerEnvInput interface {
+	pulumi.Input
+
+	ToInstanceContainerEnvOutput() InstanceContainerEnvOutput
+	ToInstanceContainerEnvOutputWithContext(context.Context) InstanceContainerEnvOutput
+}
+
+type InstanceContainerEnvArgs struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Source for the environment variable's value.
+	// Structure is documented below.
+	ValueSource InstanceContainerEnvValueSourcePtrInput `pulumi:"valueSource"`
+}
+
+func (InstanceContainerEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerEnv)(nil)).Elem()
+}
+
+func (i InstanceContainerEnvArgs) ToInstanceContainerEnvOutput() InstanceContainerEnvOutput {
+	return i.ToInstanceContainerEnvOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerEnvArgs) ToInstanceContainerEnvOutputWithContext(ctx context.Context) InstanceContainerEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerEnvOutput)
+}
+
+// InstanceContainerEnvArrayInput is an input type that accepts InstanceContainerEnvArray and InstanceContainerEnvArrayOutput values.
+// You can construct a concrete instance of `InstanceContainerEnvArrayInput` via:
+//
+//	InstanceContainerEnvArray{ InstanceContainerEnvArgs{...} }
+type InstanceContainerEnvArrayInput interface {
+	pulumi.Input
+
+	ToInstanceContainerEnvArrayOutput() InstanceContainerEnvArrayOutput
+	ToInstanceContainerEnvArrayOutputWithContext(context.Context) InstanceContainerEnvArrayOutput
+}
+
+type InstanceContainerEnvArray []InstanceContainerEnvInput
+
+func (InstanceContainerEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerEnv)(nil)).Elem()
+}
+
+func (i InstanceContainerEnvArray) ToInstanceContainerEnvArrayOutput() InstanceContainerEnvArrayOutput {
+	return i.ToInstanceContainerEnvArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerEnvArray) ToInstanceContainerEnvArrayOutputWithContext(ctx context.Context) InstanceContainerEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerEnvArrayOutput)
+}
+
+type InstanceContainerEnvOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerEnv)(nil)).Elem()
+}
+
+func (o InstanceContainerEnvOutput) ToInstanceContainerEnvOutput() InstanceContainerEnvOutput {
+	return o
+}
+
+func (o InstanceContainerEnvOutput) ToInstanceContainerEnvOutputWithContext(ctx context.Context) InstanceContainerEnvOutput {
+	return o
+}
+
+// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+func (o InstanceContainerEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceContainerEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+func (o InstanceContainerEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Source for the environment variable's value.
+// Structure is documented below.
+func (o InstanceContainerEnvOutput) ValueSource() InstanceContainerEnvValueSourcePtrOutput {
+	return o.ApplyT(func(v InstanceContainerEnv) *InstanceContainerEnvValueSource { return v.ValueSource }).(InstanceContainerEnvValueSourcePtrOutput)
+}
+
+type InstanceContainerEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerEnv)(nil)).Elem()
+}
+
+func (o InstanceContainerEnvArrayOutput) ToInstanceContainerEnvArrayOutput() InstanceContainerEnvArrayOutput {
+	return o
+}
+
+func (o InstanceContainerEnvArrayOutput) ToInstanceContainerEnvArrayOutputWithContext(ctx context.Context) InstanceContainerEnvArrayOutput {
+	return o
+}
+
+func (o InstanceContainerEnvArrayOutput) Index(i pulumi.IntInput) InstanceContainerEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceContainerEnv {
+		return vs[0].([]InstanceContainerEnv)[vs[1].(int)]
+	}).(InstanceContainerEnvOutput)
+}
+
+type InstanceContainerEnvValueSource struct {
+	// Selects a secret and a specific version from Cloud Secret Manager.
+	// Structure is documented below.
+	SecretKeyRef *InstanceContainerEnvValueSourceSecretKeyRef `pulumi:"secretKeyRef"`
+}
+
+// InstanceContainerEnvValueSourceInput is an input type that accepts InstanceContainerEnvValueSourceArgs and InstanceContainerEnvValueSourceOutput values.
+// You can construct a concrete instance of `InstanceContainerEnvValueSourceInput` via:
+//
+//	InstanceContainerEnvValueSourceArgs{...}
+type InstanceContainerEnvValueSourceInput interface {
+	pulumi.Input
+
+	ToInstanceContainerEnvValueSourceOutput() InstanceContainerEnvValueSourceOutput
+	ToInstanceContainerEnvValueSourceOutputWithContext(context.Context) InstanceContainerEnvValueSourceOutput
+}
+
+type InstanceContainerEnvValueSourceArgs struct {
+	// Selects a secret and a specific version from Cloud Secret Manager.
+	// Structure is documented below.
+	SecretKeyRef InstanceContainerEnvValueSourceSecretKeyRefPtrInput `pulumi:"secretKeyRef"`
+}
+
+func (InstanceContainerEnvValueSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerEnvValueSource)(nil)).Elem()
+}
+
+func (i InstanceContainerEnvValueSourceArgs) ToInstanceContainerEnvValueSourceOutput() InstanceContainerEnvValueSourceOutput {
+	return i.ToInstanceContainerEnvValueSourceOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerEnvValueSourceArgs) ToInstanceContainerEnvValueSourceOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerEnvValueSourceOutput)
+}
+
+func (i InstanceContainerEnvValueSourceArgs) ToInstanceContainerEnvValueSourcePtrOutput() InstanceContainerEnvValueSourcePtrOutput {
+	return i.ToInstanceContainerEnvValueSourcePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerEnvValueSourceArgs) ToInstanceContainerEnvValueSourcePtrOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerEnvValueSourceOutput).ToInstanceContainerEnvValueSourcePtrOutputWithContext(ctx)
+}
+
+// InstanceContainerEnvValueSourcePtrInput is an input type that accepts InstanceContainerEnvValueSourceArgs, InstanceContainerEnvValueSourcePtr and InstanceContainerEnvValueSourcePtrOutput values.
+// You can construct a concrete instance of `InstanceContainerEnvValueSourcePtrInput` via:
+//
+//	        InstanceContainerEnvValueSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceContainerEnvValueSourcePtrInput interface {
+	pulumi.Input
+
+	ToInstanceContainerEnvValueSourcePtrOutput() InstanceContainerEnvValueSourcePtrOutput
+	ToInstanceContainerEnvValueSourcePtrOutputWithContext(context.Context) InstanceContainerEnvValueSourcePtrOutput
+}
+
+type instanceContainerEnvValueSourcePtrType InstanceContainerEnvValueSourceArgs
+
+func InstanceContainerEnvValueSourcePtr(v *InstanceContainerEnvValueSourceArgs) InstanceContainerEnvValueSourcePtrInput {
+	return (*instanceContainerEnvValueSourcePtrType)(v)
+}
+
+func (*instanceContainerEnvValueSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerEnvValueSource)(nil)).Elem()
+}
+
+func (i *instanceContainerEnvValueSourcePtrType) ToInstanceContainerEnvValueSourcePtrOutput() InstanceContainerEnvValueSourcePtrOutput {
+	return i.ToInstanceContainerEnvValueSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceContainerEnvValueSourcePtrType) ToInstanceContainerEnvValueSourcePtrOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerEnvValueSourcePtrOutput)
+}
+
+type InstanceContainerEnvValueSourceOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerEnvValueSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerEnvValueSource)(nil)).Elem()
+}
+
+func (o InstanceContainerEnvValueSourceOutput) ToInstanceContainerEnvValueSourceOutput() InstanceContainerEnvValueSourceOutput {
+	return o
+}
+
+func (o InstanceContainerEnvValueSourceOutput) ToInstanceContainerEnvValueSourceOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourceOutput {
+	return o
+}
+
+func (o InstanceContainerEnvValueSourceOutput) ToInstanceContainerEnvValueSourcePtrOutput() InstanceContainerEnvValueSourcePtrOutput {
+	return o.ToInstanceContainerEnvValueSourcePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceContainerEnvValueSourceOutput) ToInstanceContainerEnvValueSourcePtrOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerEnvValueSource) *InstanceContainerEnvValueSource {
+		return &v
+	}).(InstanceContainerEnvValueSourcePtrOutput)
+}
+
+// Selects a secret and a specific version from Cloud Secret Manager.
+// Structure is documented below.
+func (o InstanceContainerEnvValueSourceOutput) SecretKeyRef() InstanceContainerEnvValueSourceSecretKeyRefPtrOutput {
+	return o.ApplyT(func(v InstanceContainerEnvValueSource) *InstanceContainerEnvValueSourceSecretKeyRef {
+		return v.SecretKeyRef
+	}).(InstanceContainerEnvValueSourceSecretKeyRefPtrOutput)
+}
+
+type InstanceContainerEnvValueSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerEnvValueSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerEnvValueSource)(nil)).Elem()
+}
+
+func (o InstanceContainerEnvValueSourcePtrOutput) ToInstanceContainerEnvValueSourcePtrOutput() InstanceContainerEnvValueSourcePtrOutput {
+	return o
+}
+
+func (o InstanceContainerEnvValueSourcePtrOutput) ToInstanceContainerEnvValueSourcePtrOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourcePtrOutput {
+	return o
+}
+
+func (o InstanceContainerEnvValueSourcePtrOutput) Elem() InstanceContainerEnvValueSourceOutput {
+	return o.ApplyT(func(v *InstanceContainerEnvValueSource) InstanceContainerEnvValueSource {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerEnvValueSource
+		return ret
+	}).(InstanceContainerEnvValueSourceOutput)
+}
+
+// Selects a secret and a specific version from Cloud Secret Manager.
+// Structure is documented below.
+func (o InstanceContainerEnvValueSourcePtrOutput) SecretKeyRef() InstanceContainerEnvValueSourceSecretKeyRefPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerEnvValueSource) *InstanceContainerEnvValueSourceSecretKeyRef {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKeyRef
+	}).(InstanceContainerEnvValueSourceSecretKeyRefPtrOutput)
+}
+
+type InstanceContainerEnvValueSourceSecretKeyRef struct {
+	// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+	Secret string `pulumi:"secret"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+	Version string `pulumi:"version"`
+}
+
+// InstanceContainerEnvValueSourceSecretKeyRefInput is an input type that accepts InstanceContainerEnvValueSourceSecretKeyRefArgs and InstanceContainerEnvValueSourceSecretKeyRefOutput values.
+// You can construct a concrete instance of `InstanceContainerEnvValueSourceSecretKeyRefInput` via:
+//
+//	InstanceContainerEnvValueSourceSecretKeyRefArgs{...}
+type InstanceContainerEnvValueSourceSecretKeyRefInput interface {
+	pulumi.Input
+
+	ToInstanceContainerEnvValueSourceSecretKeyRefOutput() InstanceContainerEnvValueSourceSecretKeyRefOutput
+	ToInstanceContainerEnvValueSourceSecretKeyRefOutputWithContext(context.Context) InstanceContainerEnvValueSourceSecretKeyRefOutput
+}
+
+type InstanceContainerEnvValueSourceSecretKeyRefArgs struct {
+	// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (InstanceContainerEnvValueSourceSecretKeyRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (i InstanceContainerEnvValueSourceSecretKeyRefArgs) ToInstanceContainerEnvValueSourceSecretKeyRefOutput() InstanceContainerEnvValueSourceSecretKeyRefOutput {
+	return i.ToInstanceContainerEnvValueSourceSecretKeyRefOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerEnvValueSourceSecretKeyRefArgs) ToInstanceContainerEnvValueSourceSecretKeyRefOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourceSecretKeyRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerEnvValueSourceSecretKeyRefOutput)
+}
+
+func (i InstanceContainerEnvValueSourceSecretKeyRefArgs) ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutput() InstanceContainerEnvValueSourceSecretKeyRefPtrOutput {
+	return i.ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerEnvValueSourceSecretKeyRefArgs) ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourceSecretKeyRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerEnvValueSourceSecretKeyRefOutput).ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx)
+}
+
+// InstanceContainerEnvValueSourceSecretKeyRefPtrInput is an input type that accepts InstanceContainerEnvValueSourceSecretKeyRefArgs, InstanceContainerEnvValueSourceSecretKeyRefPtr and InstanceContainerEnvValueSourceSecretKeyRefPtrOutput values.
+// You can construct a concrete instance of `InstanceContainerEnvValueSourceSecretKeyRefPtrInput` via:
+//
+//	        InstanceContainerEnvValueSourceSecretKeyRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceContainerEnvValueSourceSecretKeyRefPtrInput interface {
+	pulumi.Input
+
+	ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutput() InstanceContainerEnvValueSourceSecretKeyRefPtrOutput
+	ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(context.Context) InstanceContainerEnvValueSourceSecretKeyRefPtrOutput
+}
+
+type instanceContainerEnvValueSourceSecretKeyRefPtrType InstanceContainerEnvValueSourceSecretKeyRefArgs
+
+func InstanceContainerEnvValueSourceSecretKeyRefPtr(v *InstanceContainerEnvValueSourceSecretKeyRefArgs) InstanceContainerEnvValueSourceSecretKeyRefPtrInput {
+	return (*instanceContainerEnvValueSourceSecretKeyRefPtrType)(v)
+}
+
+func (*instanceContainerEnvValueSourceSecretKeyRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (i *instanceContainerEnvValueSourceSecretKeyRefPtrType) ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutput() InstanceContainerEnvValueSourceSecretKeyRefPtrOutput {
+	return i.ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceContainerEnvValueSourceSecretKeyRefPtrType) ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourceSecretKeyRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerEnvValueSourceSecretKeyRefPtrOutput)
+}
+
+type InstanceContainerEnvValueSourceSecretKeyRefOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerEnvValueSourceSecretKeyRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (o InstanceContainerEnvValueSourceSecretKeyRefOutput) ToInstanceContainerEnvValueSourceSecretKeyRefOutput() InstanceContainerEnvValueSourceSecretKeyRefOutput {
+	return o
+}
+
+func (o InstanceContainerEnvValueSourceSecretKeyRefOutput) ToInstanceContainerEnvValueSourceSecretKeyRefOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourceSecretKeyRefOutput {
+	return o
+}
+
+func (o InstanceContainerEnvValueSourceSecretKeyRefOutput) ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutput() InstanceContainerEnvValueSourceSecretKeyRefPtrOutput {
+	return o.ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceContainerEnvValueSourceSecretKeyRefOutput) ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourceSecretKeyRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerEnvValueSourceSecretKeyRef) *InstanceContainerEnvValueSourceSecretKeyRef {
+		return &v
+	}).(InstanceContainerEnvValueSourceSecretKeyRefPtrOutput)
+}
+
+// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+func (o InstanceContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+func (o InstanceContainerEnvValueSourceSecretKeyRefOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceContainerEnvValueSourceSecretKeyRef) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type InstanceContainerEnvValueSourceSecretKeyRefPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerEnvValueSourceSecretKeyRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (o InstanceContainerEnvValueSourceSecretKeyRefPtrOutput) ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutput() InstanceContainerEnvValueSourceSecretKeyRefPtrOutput {
+	return o
+}
+
+func (o InstanceContainerEnvValueSourceSecretKeyRefPtrOutput) ToInstanceContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx context.Context) InstanceContainerEnvValueSourceSecretKeyRefPtrOutput {
+	return o
+}
+
+func (o InstanceContainerEnvValueSourceSecretKeyRefPtrOutput) Elem() InstanceContainerEnvValueSourceSecretKeyRefOutput {
+	return o.ApplyT(func(v *InstanceContainerEnvValueSourceSecretKeyRef) InstanceContainerEnvValueSourceSecretKeyRef {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerEnvValueSourceSecretKeyRef
+		return ret
+	}).(InstanceContainerEnvValueSourceSecretKeyRefOutput)
+}
+
+// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+func (o InstanceContainerEnvValueSourceSecretKeyRefPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerEnvValueSourceSecretKeyRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+func (o InstanceContainerEnvValueSourceSecretKeyRefPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerEnvValueSourceSecretKeyRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerLivenessProbe struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet or grpc must be specified.
+	// Structure is documented below.
+	Grpc *InstanceContainerLivenessProbeGrpc `pulumi:"grpc"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet or grpc must be specified.
+	// Structure is documented below.
+	HttpGet *InstanceContainerLivenessProbeHttpGet `pulumi:"httpGet"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// InstanceContainerLivenessProbeInput is an input type that accepts InstanceContainerLivenessProbeArgs and InstanceContainerLivenessProbeOutput values.
+// You can construct a concrete instance of `InstanceContainerLivenessProbeInput` via:
+//
+//	InstanceContainerLivenessProbeArgs{...}
+type InstanceContainerLivenessProbeInput interface {
+	pulumi.Input
+
+	ToInstanceContainerLivenessProbeOutput() InstanceContainerLivenessProbeOutput
+	ToInstanceContainerLivenessProbeOutputWithContext(context.Context) InstanceContainerLivenessProbeOutput
+}
+
+type InstanceContainerLivenessProbeArgs struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet or grpc must be specified.
+	// Structure is documented below.
+	Grpc InstanceContainerLivenessProbeGrpcPtrInput `pulumi:"grpc"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet or grpc must be specified.
+	// Structure is documented below.
+	HttpGet InstanceContainerLivenessProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (InstanceContainerLivenessProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerLivenessProbe)(nil)).Elem()
+}
+
+func (i InstanceContainerLivenessProbeArgs) ToInstanceContainerLivenessProbeOutput() InstanceContainerLivenessProbeOutput {
+	return i.ToInstanceContainerLivenessProbeOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerLivenessProbeArgs) ToInstanceContainerLivenessProbeOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbeOutput)
+}
+
+func (i InstanceContainerLivenessProbeArgs) ToInstanceContainerLivenessProbePtrOutput() InstanceContainerLivenessProbePtrOutput {
+	return i.ToInstanceContainerLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerLivenessProbeArgs) ToInstanceContainerLivenessProbePtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbeOutput).ToInstanceContainerLivenessProbePtrOutputWithContext(ctx)
+}
+
+// InstanceContainerLivenessProbePtrInput is an input type that accepts InstanceContainerLivenessProbeArgs, InstanceContainerLivenessProbePtr and InstanceContainerLivenessProbePtrOutput values.
+// You can construct a concrete instance of `InstanceContainerLivenessProbePtrInput` via:
+//
+//	        InstanceContainerLivenessProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceContainerLivenessProbePtrInput interface {
+	pulumi.Input
+
+	ToInstanceContainerLivenessProbePtrOutput() InstanceContainerLivenessProbePtrOutput
+	ToInstanceContainerLivenessProbePtrOutputWithContext(context.Context) InstanceContainerLivenessProbePtrOutput
+}
+
+type instanceContainerLivenessProbePtrType InstanceContainerLivenessProbeArgs
+
+func InstanceContainerLivenessProbePtr(v *InstanceContainerLivenessProbeArgs) InstanceContainerLivenessProbePtrInput {
+	return (*instanceContainerLivenessProbePtrType)(v)
+}
+
+func (*instanceContainerLivenessProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerLivenessProbe)(nil)).Elem()
+}
+
+func (i *instanceContainerLivenessProbePtrType) ToInstanceContainerLivenessProbePtrOutput() InstanceContainerLivenessProbePtrOutput {
+	return i.ToInstanceContainerLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceContainerLivenessProbePtrType) ToInstanceContainerLivenessProbePtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbePtrOutput)
+}
+
+type InstanceContainerLivenessProbeOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerLivenessProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerLivenessProbe)(nil)).Elem()
+}
+
+func (o InstanceContainerLivenessProbeOutput) ToInstanceContainerLivenessProbeOutput() InstanceContainerLivenessProbeOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeOutput) ToInstanceContainerLivenessProbeOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeOutput) ToInstanceContainerLivenessProbePtrOutput() InstanceContainerLivenessProbePtrOutput {
+	return o.ToInstanceContainerLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceContainerLivenessProbeOutput) ToInstanceContainerLivenessProbePtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerLivenessProbe) *InstanceContainerLivenessProbe {
+		return &v
+	}).(InstanceContainerLivenessProbePtrOutput)
+}
+
+// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o InstanceContainerLivenessProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet or grpc must be specified.
+// Structure is documented below.
+func (o InstanceContainerLivenessProbeOutput) Grpc() InstanceContainerLivenessProbeGrpcPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbe) *InstanceContainerLivenessProbeGrpc { return v.Grpc }).(InstanceContainerLivenessProbeGrpcPtrOutput)
+}
+
+// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet or grpc must be specified.
+// Structure is documented below.
+func (o InstanceContainerLivenessProbeOutput) HttpGet() InstanceContainerLivenessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbe) *InstanceContainerLivenessProbeHttpGet { return v.HttpGet }).(InstanceContainerLivenessProbeHttpGetPtrOutput)
+}
+
+// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+func (o InstanceContainerLivenessProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+func (o InstanceContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+func (o InstanceContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type InstanceContainerLivenessProbePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerLivenessProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerLivenessProbe)(nil)).Elem()
+}
+
+func (o InstanceContainerLivenessProbePtrOutput) ToInstanceContainerLivenessProbePtrOutput() InstanceContainerLivenessProbePtrOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbePtrOutput) ToInstanceContainerLivenessProbePtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbePtrOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbePtrOutput) Elem() InstanceContainerLivenessProbeOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbe) InstanceContainerLivenessProbe {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerLivenessProbe
+		return ret
+	}).(InstanceContainerLivenessProbeOutput)
+}
+
+// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o InstanceContainerLivenessProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet or grpc must be specified.
+// Structure is documented below.
+func (o InstanceContainerLivenessProbePtrOutput) Grpc() InstanceContainerLivenessProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbe) *InstanceContainerLivenessProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(InstanceContainerLivenessProbeGrpcPtrOutput)
+}
+
+// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet or grpc must be specified.
+// Structure is documented below.
+func (o InstanceContainerLivenessProbePtrOutput) HttpGet() InstanceContainerLivenessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbe) *InstanceContainerLivenessProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(InstanceContainerLivenessProbeHttpGetPtrOutput)
+}
+
+// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+func (o InstanceContainerLivenessProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+func (o InstanceContainerLivenessProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+func (o InstanceContainerLivenessProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceContainerLivenessProbeGrpc struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service *string `pulumi:"service"`
+}
+
+// InstanceContainerLivenessProbeGrpcInput is an input type that accepts InstanceContainerLivenessProbeGrpcArgs and InstanceContainerLivenessProbeGrpcOutput values.
+// You can construct a concrete instance of `InstanceContainerLivenessProbeGrpcInput` via:
+//
+//	InstanceContainerLivenessProbeGrpcArgs{...}
+type InstanceContainerLivenessProbeGrpcInput interface {
+	pulumi.Input
+
+	ToInstanceContainerLivenessProbeGrpcOutput() InstanceContainerLivenessProbeGrpcOutput
+	ToInstanceContainerLivenessProbeGrpcOutputWithContext(context.Context) InstanceContainerLivenessProbeGrpcOutput
+}
+
+type InstanceContainerLivenessProbeGrpcArgs struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (InstanceContainerLivenessProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i InstanceContainerLivenessProbeGrpcArgs) ToInstanceContainerLivenessProbeGrpcOutput() InstanceContainerLivenessProbeGrpcOutput {
+	return i.ToInstanceContainerLivenessProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerLivenessProbeGrpcArgs) ToInstanceContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbeGrpcOutput)
+}
+
+func (i InstanceContainerLivenessProbeGrpcArgs) ToInstanceContainerLivenessProbeGrpcPtrOutput() InstanceContainerLivenessProbeGrpcPtrOutput {
+	return i.ToInstanceContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerLivenessProbeGrpcArgs) ToInstanceContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbeGrpcOutput).ToInstanceContainerLivenessProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// InstanceContainerLivenessProbeGrpcPtrInput is an input type that accepts InstanceContainerLivenessProbeGrpcArgs, InstanceContainerLivenessProbeGrpcPtr and InstanceContainerLivenessProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `InstanceContainerLivenessProbeGrpcPtrInput` via:
+//
+//	        InstanceContainerLivenessProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceContainerLivenessProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToInstanceContainerLivenessProbeGrpcPtrOutput() InstanceContainerLivenessProbeGrpcPtrOutput
+	ToInstanceContainerLivenessProbeGrpcPtrOutputWithContext(context.Context) InstanceContainerLivenessProbeGrpcPtrOutput
+}
+
+type instanceContainerLivenessProbeGrpcPtrType InstanceContainerLivenessProbeGrpcArgs
+
+func InstanceContainerLivenessProbeGrpcPtr(v *InstanceContainerLivenessProbeGrpcArgs) InstanceContainerLivenessProbeGrpcPtrInput {
+	return (*instanceContainerLivenessProbeGrpcPtrType)(v)
+}
+
+func (*instanceContainerLivenessProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i *instanceContainerLivenessProbeGrpcPtrType) ToInstanceContainerLivenessProbeGrpcPtrOutput() InstanceContainerLivenessProbeGrpcPtrOutput {
+	return i.ToInstanceContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceContainerLivenessProbeGrpcPtrType) ToInstanceContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbeGrpcPtrOutput)
+}
+
+type InstanceContainerLivenessProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerLivenessProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o InstanceContainerLivenessProbeGrpcOutput) ToInstanceContainerLivenessProbeGrpcOutput() InstanceContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeGrpcOutput) ToInstanceContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeGrpcOutput) ToInstanceContainerLivenessProbeGrpcPtrOutput() InstanceContainerLivenessProbeGrpcPtrOutput {
+	return o.ToInstanceContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceContainerLivenessProbeGrpcOutput) ToInstanceContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerLivenessProbeGrpc) *InstanceContainerLivenessProbeGrpc {
+		return &v
+	}).(InstanceContainerLivenessProbeGrpcPtrOutput)
+}
+
+// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o InstanceContainerLivenessProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+func (o InstanceContainerLivenessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerLivenessProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerLivenessProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o InstanceContainerLivenessProbeGrpcPtrOutput) ToInstanceContainerLivenessProbeGrpcPtrOutput() InstanceContainerLivenessProbeGrpcPtrOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeGrpcPtrOutput) ToInstanceContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeGrpcPtrOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeGrpcPtrOutput) Elem() InstanceContainerLivenessProbeGrpcOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbeGrpc) InstanceContainerLivenessProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerLivenessProbeGrpc
+		return ret
+	}).(InstanceContainerLivenessProbeGrpcOutput)
+}
+
+// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o InstanceContainerLivenessProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+func (o InstanceContainerLivenessProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerLivenessProbeHttpGet struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders []InstanceContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path *string `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+}
+
+// InstanceContainerLivenessProbeHttpGetInput is an input type that accepts InstanceContainerLivenessProbeHttpGetArgs and InstanceContainerLivenessProbeHttpGetOutput values.
+// You can construct a concrete instance of `InstanceContainerLivenessProbeHttpGetInput` via:
+//
+//	InstanceContainerLivenessProbeHttpGetArgs{...}
+type InstanceContainerLivenessProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToInstanceContainerLivenessProbeHttpGetOutput() InstanceContainerLivenessProbeHttpGetOutput
+	ToInstanceContainerLivenessProbeHttpGetOutputWithContext(context.Context) InstanceContainerLivenessProbeHttpGetOutput
+}
+
+type InstanceContainerLivenessProbeHttpGetArgs struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders InstanceContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (InstanceContainerLivenessProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i InstanceContainerLivenessProbeHttpGetArgs) ToInstanceContainerLivenessProbeHttpGetOutput() InstanceContainerLivenessProbeHttpGetOutput {
+	return i.ToInstanceContainerLivenessProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerLivenessProbeHttpGetArgs) ToInstanceContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbeHttpGetOutput)
+}
+
+func (i InstanceContainerLivenessProbeHttpGetArgs) ToInstanceContainerLivenessProbeHttpGetPtrOutput() InstanceContainerLivenessProbeHttpGetPtrOutput {
+	return i.ToInstanceContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerLivenessProbeHttpGetArgs) ToInstanceContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbeHttpGetOutput).ToInstanceContainerLivenessProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// InstanceContainerLivenessProbeHttpGetPtrInput is an input type that accepts InstanceContainerLivenessProbeHttpGetArgs, InstanceContainerLivenessProbeHttpGetPtr and InstanceContainerLivenessProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `InstanceContainerLivenessProbeHttpGetPtrInput` via:
+//
+//	        InstanceContainerLivenessProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceContainerLivenessProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToInstanceContainerLivenessProbeHttpGetPtrOutput() InstanceContainerLivenessProbeHttpGetPtrOutput
+	ToInstanceContainerLivenessProbeHttpGetPtrOutputWithContext(context.Context) InstanceContainerLivenessProbeHttpGetPtrOutput
+}
+
+type instanceContainerLivenessProbeHttpGetPtrType InstanceContainerLivenessProbeHttpGetArgs
+
+func InstanceContainerLivenessProbeHttpGetPtr(v *InstanceContainerLivenessProbeHttpGetArgs) InstanceContainerLivenessProbeHttpGetPtrInput {
+	return (*instanceContainerLivenessProbeHttpGetPtrType)(v)
+}
+
+func (*instanceContainerLivenessProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i *instanceContainerLivenessProbeHttpGetPtrType) ToInstanceContainerLivenessProbeHttpGetPtrOutput() InstanceContainerLivenessProbeHttpGetPtrOutput {
+	return i.ToInstanceContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceContainerLivenessProbeHttpGetPtrType) ToInstanceContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbeHttpGetPtrOutput)
+}
+
+type InstanceContainerLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerLivenessProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o InstanceContainerLivenessProbeHttpGetOutput) ToInstanceContainerLivenessProbeHttpGetOutput() InstanceContainerLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeHttpGetOutput) ToInstanceContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeHttpGetOutput) ToInstanceContainerLivenessProbeHttpGetPtrOutput() InstanceContainerLivenessProbeHttpGetPtrOutput {
+	return o.ToInstanceContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceContainerLivenessProbeHttpGetOutput) ToInstanceContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerLivenessProbeHttpGet) *InstanceContainerLivenessProbeHttpGet {
+		return &v
+	}).(InstanceContainerLivenessProbeHttpGetPtrOutput)
+}
+
+// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o InstanceContainerLivenessProbeHttpGetOutput) HttpHeaders() InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbeHttpGet) []InstanceContainerLivenessProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Optional. Path to access on the HTTP server. Defaults to '/'.
+func (o InstanceContainerLivenessProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o InstanceContainerLivenessProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type InstanceContainerLivenessProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerLivenessProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o InstanceContainerLivenessProbeHttpGetPtrOutput) ToInstanceContainerLivenessProbeHttpGetPtrOutput() InstanceContainerLivenessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeHttpGetPtrOutput) ToInstanceContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeHttpGetPtrOutput) Elem() InstanceContainerLivenessProbeHttpGetOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbeHttpGet) InstanceContainerLivenessProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerLivenessProbeHttpGet
+		return ret
+	}).(InstanceContainerLivenessProbeHttpGetOutput)
+}
+
+// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o InstanceContainerLivenessProbeHttpGetPtrOutput) HttpHeaders() InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbeHttpGet) []InstanceContainerLivenessProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Optional. Path to access on the HTTP server. Defaults to '/'.
+func (o InstanceContainerLivenessProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o InstanceContainerLivenessProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerLivenessProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceContainerLivenessProbeHttpGetHttpHeader struct {
+	// Required. The header field name
+	Name *string `pulumi:"name"`
+	// Optional. The header field value
+	Value *string `pulumi:"value"`
+}
+
+// InstanceContainerLivenessProbeHttpGetHttpHeaderInput is an input type that accepts InstanceContainerLivenessProbeHttpGetHttpHeaderArgs and InstanceContainerLivenessProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `InstanceContainerLivenessProbeHttpGetHttpHeaderInput` via:
+//
+//	InstanceContainerLivenessProbeHttpGetHttpHeaderArgs{...}
+type InstanceContainerLivenessProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToInstanceContainerLivenessProbeHttpGetHttpHeaderOutput() InstanceContainerLivenessProbeHttpGetHttpHeaderOutput
+	ToInstanceContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Context) InstanceContainerLivenessProbeHttpGetHttpHeaderOutput
+}
+
+type InstanceContainerLivenessProbeHttpGetHttpHeaderArgs struct {
+	// Required. The header field name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (InstanceContainerLivenessProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i InstanceContainerLivenessProbeHttpGetHttpHeaderArgs) ToInstanceContainerLivenessProbeHttpGetHttpHeaderOutput() InstanceContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return i.ToInstanceContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerLivenessProbeHttpGetHttpHeaderArgs) ToInstanceContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+// InstanceContainerLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts InstanceContainerLivenessProbeHttpGetHttpHeaderArray and InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `InstanceContainerLivenessProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	InstanceContainerLivenessProbeHttpGetHttpHeaderArray{ InstanceContainerLivenessProbeHttpGetHttpHeaderArgs{...} }
+type InstanceContainerLivenessProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToInstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput() InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput
+	ToInstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput
+}
+
+type InstanceContainerLivenessProbeHttpGetHttpHeaderArray []InstanceContainerLivenessProbeHttpGetHttpHeaderInput
+
+func (InstanceContainerLivenessProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i InstanceContainerLivenessProbeHttpGetHttpHeaderArray) ToInstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput() InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToInstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerLivenessProbeHttpGetHttpHeaderArray) ToInstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type InstanceContainerLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o InstanceContainerLivenessProbeHttpGetHttpHeaderOutput) ToInstanceContainerLivenessProbeHttpGetHttpHeaderOutput() InstanceContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeHttpGetHttpHeaderOutput) ToInstanceContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// Required. The header field name
+func (o InstanceContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbeHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The header field value
+func (o InstanceContainerLivenessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerLivenessProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToInstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput() InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToInstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) InstanceContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceContainerLivenessProbeHttpGetHttpHeader {
+		return vs[0].([]InstanceContainerLivenessProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(InstanceContainerLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+type InstanceContainerPort struct {
+	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+	ContainerPort *int `pulumi:"containerPort"`
+	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+	Name *string `pulumi:"name"`
+}
+
+// InstanceContainerPortInput is an input type that accepts InstanceContainerPortArgs and InstanceContainerPortOutput values.
+// You can construct a concrete instance of `InstanceContainerPortInput` via:
+//
+//	InstanceContainerPortArgs{...}
+type InstanceContainerPortInput interface {
+	pulumi.Input
+
+	ToInstanceContainerPortOutput() InstanceContainerPortOutput
+	ToInstanceContainerPortOutputWithContext(context.Context) InstanceContainerPortOutput
+}
+
+type InstanceContainerPortArgs struct {
+	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
+	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (InstanceContainerPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerPort)(nil)).Elem()
+}
+
+func (i InstanceContainerPortArgs) ToInstanceContainerPortOutput() InstanceContainerPortOutput {
+	return i.ToInstanceContainerPortOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerPortArgs) ToInstanceContainerPortOutputWithContext(ctx context.Context) InstanceContainerPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerPortOutput)
+}
+
+// InstanceContainerPortArrayInput is an input type that accepts InstanceContainerPortArray and InstanceContainerPortArrayOutput values.
+// You can construct a concrete instance of `InstanceContainerPortArrayInput` via:
+//
+//	InstanceContainerPortArray{ InstanceContainerPortArgs{...} }
+type InstanceContainerPortArrayInput interface {
+	pulumi.Input
+
+	ToInstanceContainerPortArrayOutput() InstanceContainerPortArrayOutput
+	ToInstanceContainerPortArrayOutputWithContext(context.Context) InstanceContainerPortArrayOutput
+}
+
+type InstanceContainerPortArray []InstanceContainerPortInput
+
+func (InstanceContainerPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerPort)(nil)).Elem()
+}
+
+func (i InstanceContainerPortArray) ToInstanceContainerPortArrayOutput() InstanceContainerPortArrayOutput {
+	return i.ToInstanceContainerPortArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerPortArray) ToInstanceContainerPortArrayOutputWithContext(ctx context.Context) InstanceContainerPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerPortArrayOutput)
+}
+
+type InstanceContainerPortOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerPort)(nil)).Elem()
+}
+
+func (o InstanceContainerPortOutput) ToInstanceContainerPortOutput() InstanceContainerPortOutput {
+	return o
+}
+
+func (o InstanceContainerPortOutput) ToInstanceContainerPortOutputWithContext(ctx context.Context) InstanceContainerPortOutput {
+	return o
+}
+
+// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+func (o InstanceContainerPortOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerPort) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
+}
+
+// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+func (o InstanceContainerPortOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerPort) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerPortArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerPort)(nil)).Elem()
+}
+
+func (o InstanceContainerPortArrayOutput) ToInstanceContainerPortArrayOutput() InstanceContainerPortArrayOutput {
+	return o
+}
+
+func (o InstanceContainerPortArrayOutput) ToInstanceContainerPortArrayOutputWithContext(ctx context.Context) InstanceContainerPortArrayOutput {
+	return o
+}
+
+func (o InstanceContainerPortArrayOutput) Index(i pulumi.IntInput) InstanceContainerPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceContainerPort {
+		return vs[0].([]InstanceContainerPort)[vs[1].(int)]
+	}).(InstanceContainerPortOutput)
+}
+
+type InstanceContainerResources struct {
+	// Only memory and CPU are supported. Use key `cpu` for CPU limit, `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	Limits map[string]string `pulumi:"limits"`
+}
+
+// InstanceContainerResourcesInput is an input type that accepts InstanceContainerResourcesArgs and InstanceContainerResourcesOutput values.
+// You can construct a concrete instance of `InstanceContainerResourcesInput` via:
+//
+//	InstanceContainerResourcesArgs{...}
+type InstanceContainerResourcesInput interface {
+	pulumi.Input
+
+	ToInstanceContainerResourcesOutput() InstanceContainerResourcesOutput
+	ToInstanceContainerResourcesOutputWithContext(context.Context) InstanceContainerResourcesOutput
+}
+
+type InstanceContainerResourcesArgs struct {
+	// Only memory and CPU are supported. Use key `cpu` for CPU limit, `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	Limits pulumi.StringMapInput `pulumi:"limits"`
+}
+
+func (InstanceContainerResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerResources)(nil)).Elem()
+}
+
+func (i InstanceContainerResourcesArgs) ToInstanceContainerResourcesOutput() InstanceContainerResourcesOutput {
+	return i.ToInstanceContainerResourcesOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerResourcesArgs) ToInstanceContainerResourcesOutputWithContext(ctx context.Context) InstanceContainerResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerResourcesOutput)
+}
+
+func (i InstanceContainerResourcesArgs) ToInstanceContainerResourcesPtrOutput() InstanceContainerResourcesPtrOutput {
+	return i.ToInstanceContainerResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerResourcesArgs) ToInstanceContainerResourcesPtrOutputWithContext(ctx context.Context) InstanceContainerResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerResourcesOutput).ToInstanceContainerResourcesPtrOutputWithContext(ctx)
+}
+
+// InstanceContainerResourcesPtrInput is an input type that accepts InstanceContainerResourcesArgs, InstanceContainerResourcesPtr and InstanceContainerResourcesPtrOutput values.
+// You can construct a concrete instance of `InstanceContainerResourcesPtrInput` via:
+//
+//	        InstanceContainerResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceContainerResourcesPtrInput interface {
+	pulumi.Input
+
+	ToInstanceContainerResourcesPtrOutput() InstanceContainerResourcesPtrOutput
+	ToInstanceContainerResourcesPtrOutputWithContext(context.Context) InstanceContainerResourcesPtrOutput
+}
+
+type instanceContainerResourcesPtrType InstanceContainerResourcesArgs
+
+func InstanceContainerResourcesPtr(v *InstanceContainerResourcesArgs) InstanceContainerResourcesPtrInput {
+	return (*instanceContainerResourcesPtrType)(v)
+}
+
+func (*instanceContainerResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerResources)(nil)).Elem()
+}
+
+func (i *instanceContainerResourcesPtrType) ToInstanceContainerResourcesPtrOutput() InstanceContainerResourcesPtrOutput {
+	return i.ToInstanceContainerResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceContainerResourcesPtrType) ToInstanceContainerResourcesPtrOutputWithContext(ctx context.Context) InstanceContainerResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerResourcesPtrOutput)
+}
+
+type InstanceContainerResourcesOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerResources)(nil)).Elem()
+}
+
+func (o InstanceContainerResourcesOutput) ToInstanceContainerResourcesOutput() InstanceContainerResourcesOutput {
+	return o
+}
+
+func (o InstanceContainerResourcesOutput) ToInstanceContainerResourcesOutputWithContext(ctx context.Context) InstanceContainerResourcesOutput {
+	return o
+}
+
+func (o InstanceContainerResourcesOutput) ToInstanceContainerResourcesPtrOutput() InstanceContainerResourcesPtrOutput {
+	return o.ToInstanceContainerResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceContainerResourcesOutput) ToInstanceContainerResourcesPtrOutputWithContext(ctx context.Context) InstanceContainerResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerResources) *InstanceContainerResources {
+		return &v
+	}).(InstanceContainerResourcesPtrOutput)
+}
+
+// Only memory and CPU are supported. Use key `cpu` for CPU limit, `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+func (o InstanceContainerResourcesOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+}
+
+type InstanceContainerResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerResources)(nil)).Elem()
+}
+
+func (o InstanceContainerResourcesPtrOutput) ToInstanceContainerResourcesPtrOutput() InstanceContainerResourcesPtrOutput {
+	return o
+}
+
+func (o InstanceContainerResourcesPtrOutput) ToInstanceContainerResourcesPtrOutputWithContext(ctx context.Context) InstanceContainerResourcesPtrOutput {
+	return o
+}
+
+func (o InstanceContainerResourcesPtrOutput) Elem() InstanceContainerResourcesOutput {
+	return o.ApplyT(func(v *InstanceContainerResources) InstanceContainerResources {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerResources
+		return ret
+	}).(InstanceContainerResourcesOutput)
+}
+
+// Only memory and CPU are supported. Use key `cpu` for CPU limit, `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+func (o InstanceContainerResourcesPtrOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceContainerResources) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(pulumi.StringMapOutput)
+}
+
+type InstanceContainerStartupProbe struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	Grpc *InstanceContainerStartupProbeGrpc `pulumi:"grpc"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	HttpGet *InstanceContainerStartupProbeHttpGet `pulumi:"httpGet"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	TcpSocket *InstanceContainerStartupProbeTcpSocket `pulumi:"tcpSocket"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// InstanceContainerStartupProbeInput is an input type that accepts InstanceContainerStartupProbeArgs and InstanceContainerStartupProbeOutput values.
+// You can construct a concrete instance of `InstanceContainerStartupProbeInput` via:
+//
+//	InstanceContainerStartupProbeArgs{...}
+type InstanceContainerStartupProbeInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStartupProbeOutput() InstanceContainerStartupProbeOutput
+	ToInstanceContainerStartupProbeOutputWithContext(context.Context) InstanceContainerStartupProbeOutput
+}
+
+type InstanceContainerStartupProbeArgs struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	Grpc InstanceContainerStartupProbeGrpcPtrInput `pulumi:"grpc"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	HttpGet InstanceContainerStartupProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	TcpSocket InstanceContainerStartupProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (InstanceContainerStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStartupProbe)(nil)).Elem()
+}
+
+func (i InstanceContainerStartupProbeArgs) ToInstanceContainerStartupProbeOutput() InstanceContainerStartupProbeOutput {
+	return i.ToInstanceContainerStartupProbeOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStartupProbeArgs) ToInstanceContainerStartupProbeOutputWithContext(ctx context.Context) InstanceContainerStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeOutput)
+}
+
+func (i InstanceContainerStartupProbeArgs) ToInstanceContainerStartupProbePtrOutput() InstanceContainerStartupProbePtrOutput {
+	return i.ToInstanceContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStartupProbeArgs) ToInstanceContainerStartupProbePtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeOutput).ToInstanceContainerStartupProbePtrOutputWithContext(ctx)
+}
+
+// InstanceContainerStartupProbePtrInput is an input type that accepts InstanceContainerStartupProbeArgs, InstanceContainerStartupProbePtr and InstanceContainerStartupProbePtrOutput values.
+// You can construct a concrete instance of `InstanceContainerStartupProbePtrInput` via:
+//
+//	        InstanceContainerStartupProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceContainerStartupProbePtrInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStartupProbePtrOutput() InstanceContainerStartupProbePtrOutput
+	ToInstanceContainerStartupProbePtrOutputWithContext(context.Context) InstanceContainerStartupProbePtrOutput
+}
+
+type instanceContainerStartupProbePtrType InstanceContainerStartupProbeArgs
+
+func InstanceContainerStartupProbePtr(v *InstanceContainerStartupProbeArgs) InstanceContainerStartupProbePtrInput {
+	return (*instanceContainerStartupProbePtrType)(v)
+}
+
+func (*instanceContainerStartupProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerStartupProbe)(nil)).Elem()
+}
+
+func (i *instanceContainerStartupProbePtrType) ToInstanceContainerStartupProbePtrOutput() InstanceContainerStartupProbePtrOutput {
+	return i.ToInstanceContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceContainerStartupProbePtrType) ToInstanceContainerStartupProbePtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbePtrOutput)
+}
+
+type InstanceContainerStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStartupProbe)(nil)).Elem()
+}
+
+func (o InstanceContainerStartupProbeOutput) ToInstanceContainerStartupProbeOutput() InstanceContainerStartupProbeOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeOutput) ToInstanceContainerStartupProbeOutputWithContext(ctx context.Context) InstanceContainerStartupProbeOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeOutput) ToInstanceContainerStartupProbePtrOutput() InstanceContainerStartupProbePtrOutput {
+	return o.ToInstanceContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceContainerStartupProbeOutput) ToInstanceContainerStartupProbePtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerStartupProbe) *InstanceContainerStartupProbe {
+		return &v
+	}).(InstanceContainerStartupProbePtrOutput)
+}
+
+// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o InstanceContainerStartupProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o InstanceContainerStartupProbeOutput) Grpc() InstanceContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbe) *InstanceContainerStartupProbeGrpc { return v.Grpc }).(InstanceContainerStartupProbeGrpcPtrOutput)
+}
+
+// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o InstanceContainerStartupProbeOutput) HttpGet() InstanceContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbe) *InstanceContainerStartupProbeHttpGet { return v.HttpGet }).(InstanceContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+func (o InstanceContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+func (o InstanceContainerStartupProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o InstanceContainerStartupProbeOutput) TcpSocket() InstanceContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbe) *InstanceContainerStartupProbeTcpSocket { return v.TcpSocket }).(InstanceContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+func (o InstanceContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type InstanceContainerStartupProbePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStartupProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerStartupProbe)(nil)).Elem()
+}
+
+func (o InstanceContainerStartupProbePtrOutput) ToInstanceContainerStartupProbePtrOutput() InstanceContainerStartupProbePtrOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbePtrOutput) ToInstanceContainerStartupProbePtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbePtrOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbePtrOutput) Elem() InstanceContainerStartupProbeOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbe) InstanceContainerStartupProbe {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerStartupProbe
+		return ret
+	}).(InstanceContainerStartupProbeOutput)
+}
+
+// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o InstanceContainerStartupProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o InstanceContainerStartupProbePtrOutput) Grpc() InstanceContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbe) *InstanceContainerStartupProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(InstanceContainerStartupProbeGrpcPtrOutput)
+}
+
+// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o InstanceContainerStartupProbePtrOutput) HttpGet() InstanceContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbe) *InstanceContainerStartupProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(InstanceContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+func (o InstanceContainerStartupProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+func (o InstanceContainerStartupProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o InstanceContainerStartupProbePtrOutput) TcpSocket() InstanceContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbe) *InstanceContainerStartupProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(InstanceContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+func (o InstanceContainerStartupProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceContainerStartupProbeGrpc struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service *string `pulumi:"service"`
+}
+
+// InstanceContainerStartupProbeGrpcInput is an input type that accepts InstanceContainerStartupProbeGrpcArgs and InstanceContainerStartupProbeGrpcOutput values.
+// You can construct a concrete instance of `InstanceContainerStartupProbeGrpcInput` via:
+//
+//	InstanceContainerStartupProbeGrpcArgs{...}
+type InstanceContainerStartupProbeGrpcInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStartupProbeGrpcOutput() InstanceContainerStartupProbeGrpcOutput
+	ToInstanceContainerStartupProbeGrpcOutputWithContext(context.Context) InstanceContainerStartupProbeGrpcOutput
+}
+
+type InstanceContainerStartupProbeGrpcArgs struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (InstanceContainerStartupProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i InstanceContainerStartupProbeGrpcArgs) ToInstanceContainerStartupProbeGrpcOutput() InstanceContainerStartupProbeGrpcOutput {
+	return i.ToInstanceContainerStartupProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStartupProbeGrpcArgs) ToInstanceContainerStartupProbeGrpcOutputWithContext(ctx context.Context) InstanceContainerStartupProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeGrpcOutput)
+}
+
+func (i InstanceContainerStartupProbeGrpcArgs) ToInstanceContainerStartupProbeGrpcPtrOutput() InstanceContainerStartupProbeGrpcPtrOutput {
+	return i.ToInstanceContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStartupProbeGrpcArgs) ToInstanceContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeGrpcOutput).ToInstanceContainerStartupProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// InstanceContainerStartupProbeGrpcPtrInput is an input type that accepts InstanceContainerStartupProbeGrpcArgs, InstanceContainerStartupProbeGrpcPtr and InstanceContainerStartupProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `InstanceContainerStartupProbeGrpcPtrInput` via:
+//
+//	        InstanceContainerStartupProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceContainerStartupProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStartupProbeGrpcPtrOutput() InstanceContainerStartupProbeGrpcPtrOutput
+	ToInstanceContainerStartupProbeGrpcPtrOutputWithContext(context.Context) InstanceContainerStartupProbeGrpcPtrOutput
+}
+
+type instanceContainerStartupProbeGrpcPtrType InstanceContainerStartupProbeGrpcArgs
+
+func InstanceContainerStartupProbeGrpcPtr(v *InstanceContainerStartupProbeGrpcArgs) InstanceContainerStartupProbeGrpcPtrInput {
+	return (*instanceContainerStartupProbeGrpcPtrType)(v)
+}
+
+func (*instanceContainerStartupProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i *instanceContainerStartupProbeGrpcPtrType) ToInstanceContainerStartupProbeGrpcPtrOutput() InstanceContainerStartupProbeGrpcPtrOutput {
+	return i.ToInstanceContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceContainerStartupProbeGrpcPtrType) ToInstanceContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeGrpcPtrOutput)
+}
+
+type InstanceContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o InstanceContainerStartupProbeGrpcOutput) ToInstanceContainerStartupProbeGrpcOutput() InstanceContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeGrpcOutput) ToInstanceContainerStartupProbeGrpcOutputWithContext(ctx context.Context) InstanceContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeGrpcOutput) ToInstanceContainerStartupProbeGrpcPtrOutput() InstanceContainerStartupProbeGrpcPtrOutput {
+	return o.ToInstanceContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceContainerStartupProbeGrpcOutput) ToInstanceContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerStartupProbeGrpc) *InstanceContainerStartupProbeGrpc {
+		return &v
+	}).(InstanceContainerStartupProbeGrpcPtrOutput)
+}
+
+// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o InstanceContainerStartupProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+func (o InstanceContainerStartupProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerStartupProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStartupProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o InstanceContainerStartupProbeGrpcPtrOutput) ToInstanceContainerStartupProbeGrpcPtrOutput() InstanceContainerStartupProbeGrpcPtrOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeGrpcPtrOutput) ToInstanceContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeGrpcPtrOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeGrpcPtrOutput) Elem() InstanceContainerStartupProbeGrpcOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbeGrpc) InstanceContainerStartupProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerStartupProbeGrpc
+		return ret
+	}).(InstanceContainerStartupProbeGrpcOutput)
+}
+
+// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o InstanceContainerStartupProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+func (o InstanceContainerStartupProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerStartupProbeHttpGet struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders []InstanceContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path *string `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+}
+
+// InstanceContainerStartupProbeHttpGetInput is an input type that accepts InstanceContainerStartupProbeHttpGetArgs and InstanceContainerStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `InstanceContainerStartupProbeHttpGetInput` via:
+//
+//	InstanceContainerStartupProbeHttpGetArgs{...}
+type InstanceContainerStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStartupProbeHttpGetOutput() InstanceContainerStartupProbeHttpGetOutput
+	ToInstanceContainerStartupProbeHttpGetOutputWithContext(context.Context) InstanceContainerStartupProbeHttpGetOutput
+}
+
+type InstanceContainerStartupProbeHttpGetArgs struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders InstanceContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (InstanceContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i InstanceContainerStartupProbeHttpGetArgs) ToInstanceContainerStartupProbeHttpGetOutput() InstanceContainerStartupProbeHttpGetOutput {
+	return i.ToInstanceContainerStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStartupProbeHttpGetArgs) ToInstanceContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) InstanceContainerStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeHttpGetOutput)
+}
+
+func (i InstanceContainerStartupProbeHttpGetArgs) ToInstanceContainerStartupProbeHttpGetPtrOutput() InstanceContainerStartupProbeHttpGetPtrOutput {
+	return i.ToInstanceContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStartupProbeHttpGetArgs) ToInstanceContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeHttpGetOutput).ToInstanceContainerStartupProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// InstanceContainerStartupProbeHttpGetPtrInput is an input type that accepts InstanceContainerStartupProbeHttpGetArgs, InstanceContainerStartupProbeHttpGetPtr and InstanceContainerStartupProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `InstanceContainerStartupProbeHttpGetPtrInput` via:
+//
+//	        InstanceContainerStartupProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceContainerStartupProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStartupProbeHttpGetPtrOutput() InstanceContainerStartupProbeHttpGetPtrOutput
+	ToInstanceContainerStartupProbeHttpGetPtrOutputWithContext(context.Context) InstanceContainerStartupProbeHttpGetPtrOutput
+}
+
+type instanceContainerStartupProbeHttpGetPtrType InstanceContainerStartupProbeHttpGetArgs
+
+func InstanceContainerStartupProbeHttpGetPtr(v *InstanceContainerStartupProbeHttpGetArgs) InstanceContainerStartupProbeHttpGetPtrInput {
+	return (*instanceContainerStartupProbeHttpGetPtrType)(v)
+}
+
+func (*instanceContainerStartupProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i *instanceContainerStartupProbeHttpGetPtrType) ToInstanceContainerStartupProbeHttpGetPtrOutput() InstanceContainerStartupProbeHttpGetPtrOutput {
+	return i.ToInstanceContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceContainerStartupProbeHttpGetPtrType) ToInstanceContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeHttpGetPtrOutput)
+}
+
+type InstanceContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o InstanceContainerStartupProbeHttpGetOutput) ToInstanceContainerStartupProbeHttpGetOutput() InstanceContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeHttpGetOutput) ToInstanceContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) InstanceContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeHttpGetOutput) ToInstanceContainerStartupProbeHttpGetPtrOutput() InstanceContainerStartupProbeHttpGetPtrOutput {
+	return o.ToInstanceContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceContainerStartupProbeHttpGetOutput) ToInstanceContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerStartupProbeHttpGet) *InstanceContainerStartupProbeHttpGet {
+		return &v
+	}).(InstanceContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o InstanceContainerStartupProbeHttpGetOutput) HttpHeaders() InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbeHttpGet) []InstanceContainerStartupProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Optional. Path to access on the HTTP server. Defaults to '/'.
+func (o InstanceContainerStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o InstanceContainerStartupProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type InstanceContainerStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o InstanceContainerStartupProbeHttpGetPtrOutput) ToInstanceContainerStartupProbeHttpGetPtrOutput() InstanceContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeHttpGetPtrOutput) ToInstanceContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeHttpGetPtrOutput) Elem() InstanceContainerStartupProbeHttpGetOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbeHttpGet) InstanceContainerStartupProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerStartupProbeHttpGet
+		return ret
+	}).(InstanceContainerStartupProbeHttpGetOutput)
+}
+
+// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o InstanceContainerStartupProbeHttpGetPtrOutput) HttpHeaders() InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbeHttpGet) []InstanceContainerStartupProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Optional. Path to access on the HTTP server. Defaults to '/'.
+func (o InstanceContainerStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o InstanceContainerStartupProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceContainerStartupProbeHttpGetHttpHeader struct {
+	// Required. The header field name
+	Name *string `pulumi:"name"`
+	// Optional. The header field value
+	Value *string `pulumi:"value"`
+}
+
+// InstanceContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts InstanceContainerStartupProbeHttpGetHttpHeaderArgs and InstanceContainerStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `InstanceContainerStartupProbeHttpGetHttpHeaderInput` via:
+//
+//	InstanceContainerStartupProbeHttpGetHttpHeaderArgs{...}
+type InstanceContainerStartupProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStartupProbeHttpGetHttpHeaderOutput() InstanceContainerStartupProbeHttpGetHttpHeaderOutput
+	ToInstanceContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) InstanceContainerStartupProbeHttpGetHttpHeaderOutput
+}
+
+type InstanceContainerStartupProbeHttpGetHttpHeaderArgs struct {
+	// Required. The header field name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (InstanceContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i InstanceContainerStartupProbeHttpGetHttpHeaderArgs) ToInstanceContainerStartupProbeHttpGetHttpHeaderOutput() InstanceContainerStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToInstanceContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStartupProbeHttpGetHttpHeaderArgs) ToInstanceContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) InstanceContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+// InstanceContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts InstanceContainerStartupProbeHttpGetHttpHeaderArray and InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `InstanceContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	InstanceContainerStartupProbeHttpGetHttpHeaderArray{ InstanceContainerStartupProbeHttpGetHttpHeaderArgs{...} }
+type InstanceContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput() InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput
+	ToInstanceContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput
+}
+
+type InstanceContainerStartupProbeHttpGetHttpHeaderArray []InstanceContainerStartupProbeHttpGetHttpHeaderInput
+
+func (InstanceContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i InstanceContainerStartupProbeHttpGetHttpHeaderArray) ToInstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput() InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToInstanceContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStartupProbeHttpGetHttpHeaderArray) ToInstanceContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type InstanceContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o InstanceContainerStartupProbeHttpGetHttpHeaderOutput) ToInstanceContainerStartupProbeHttpGetHttpHeaderOutput() InstanceContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeHttpGetHttpHeaderOutput) ToInstanceContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) InstanceContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// Required. The header field name
+func (o InstanceContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbeHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The header field value
+func (o InstanceContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToInstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput() InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToInstanceContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) InstanceContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceContainerStartupProbeHttpGetHttpHeader {
+		return vs[0].([]InstanceContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(InstanceContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+type InstanceContainerStartupProbeTcpSocket struct {
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+}
+
+// InstanceContainerStartupProbeTcpSocketInput is an input type that accepts InstanceContainerStartupProbeTcpSocketArgs and InstanceContainerStartupProbeTcpSocketOutput values.
+// You can construct a concrete instance of `InstanceContainerStartupProbeTcpSocketInput` via:
+//
+//	InstanceContainerStartupProbeTcpSocketArgs{...}
+type InstanceContainerStartupProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStartupProbeTcpSocketOutput() InstanceContainerStartupProbeTcpSocketOutput
+	ToInstanceContainerStartupProbeTcpSocketOutputWithContext(context.Context) InstanceContainerStartupProbeTcpSocketOutput
+}
+
+type InstanceContainerStartupProbeTcpSocketArgs struct {
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (InstanceContainerStartupProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i InstanceContainerStartupProbeTcpSocketArgs) ToInstanceContainerStartupProbeTcpSocketOutput() InstanceContainerStartupProbeTcpSocketOutput {
+	return i.ToInstanceContainerStartupProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStartupProbeTcpSocketArgs) ToInstanceContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) InstanceContainerStartupProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeTcpSocketOutput)
+}
+
+func (i InstanceContainerStartupProbeTcpSocketArgs) ToInstanceContainerStartupProbeTcpSocketPtrOutput() InstanceContainerStartupProbeTcpSocketPtrOutput {
+	return i.ToInstanceContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStartupProbeTcpSocketArgs) ToInstanceContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeTcpSocketOutput).ToInstanceContainerStartupProbeTcpSocketPtrOutputWithContext(ctx)
+}
+
+// InstanceContainerStartupProbeTcpSocketPtrInput is an input type that accepts InstanceContainerStartupProbeTcpSocketArgs, InstanceContainerStartupProbeTcpSocketPtr and InstanceContainerStartupProbeTcpSocketPtrOutput values.
+// You can construct a concrete instance of `InstanceContainerStartupProbeTcpSocketPtrInput` via:
+//
+//	        InstanceContainerStartupProbeTcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceContainerStartupProbeTcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStartupProbeTcpSocketPtrOutput() InstanceContainerStartupProbeTcpSocketPtrOutput
+	ToInstanceContainerStartupProbeTcpSocketPtrOutputWithContext(context.Context) InstanceContainerStartupProbeTcpSocketPtrOutput
+}
+
+type instanceContainerStartupProbeTcpSocketPtrType InstanceContainerStartupProbeTcpSocketArgs
+
+func InstanceContainerStartupProbeTcpSocketPtr(v *InstanceContainerStartupProbeTcpSocketArgs) InstanceContainerStartupProbeTcpSocketPtrInput {
+	return (*instanceContainerStartupProbeTcpSocketPtrType)(v)
+}
+
+func (*instanceContainerStartupProbeTcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i *instanceContainerStartupProbeTcpSocketPtrType) ToInstanceContainerStartupProbeTcpSocketPtrOutput() InstanceContainerStartupProbeTcpSocketPtrOutput {
+	return i.ToInstanceContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceContainerStartupProbeTcpSocketPtrType) ToInstanceContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStartupProbeTcpSocketPtrOutput)
+}
+
+type InstanceContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o InstanceContainerStartupProbeTcpSocketOutput) ToInstanceContainerStartupProbeTcpSocketOutput() InstanceContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeTcpSocketOutput) ToInstanceContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) InstanceContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeTcpSocketOutput) ToInstanceContainerStartupProbeTcpSocketPtrOutput() InstanceContainerStartupProbeTcpSocketPtrOutput {
+	return o.ToInstanceContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceContainerStartupProbeTcpSocketOutput) ToInstanceContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerStartupProbeTcpSocket) *InstanceContainerStartupProbeTcpSocket {
+		return &v
+	}).(InstanceContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o InstanceContainerStartupProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStartupProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type InstanceContainerStartupProbeTcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStartupProbeTcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o InstanceContainerStartupProbeTcpSocketPtrOutput) ToInstanceContainerStartupProbeTcpSocketPtrOutput() InstanceContainerStartupProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeTcpSocketPtrOutput) ToInstanceContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) InstanceContainerStartupProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o InstanceContainerStartupProbeTcpSocketPtrOutput) Elem() InstanceContainerStartupProbeTcpSocketOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbeTcpSocket) InstanceContainerStartupProbeTcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerStartupProbeTcpSocket
+		return ret
+	}).(InstanceContainerStartupProbeTcpSocketOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o InstanceContainerStartupProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceContainerStartupProbeTcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceContainerStatus struct {
+	// (Output)
+	// ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+	ImageDigest *string `pulumi:"imageDigest"`
+	// Name of the Instance.
+	Name *string `pulumi:"name"`
+}
+
+// InstanceContainerStatusInput is an input type that accepts InstanceContainerStatusArgs and InstanceContainerStatusOutput values.
+// You can construct a concrete instance of `InstanceContainerStatusInput` via:
+//
+//	InstanceContainerStatusArgs{...}
+type InstanceContainerStatusInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStatusOutput() InstanceContainerStatusOutput
+	ToInstanceContainerStatusOutputWithContext(context.Context) InstanceContainerStatusOutput
+}
+
+type InstanceContainerStatusArgs struct {
+	// (Output)
+	// ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+	ImageDigest pulumi.StringPtrInput `pulumi:"imageDigest"`
+	// Name of the Instance.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (InstanceContainerStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStatus)(nil)).Elem()
+}
+
+func (i InstanceContainerStatusArgs) ToInstanceContainerStatusOutput() InstanceContainerStatusOutput {
+	return i.ToInstanceContainerStatusOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStatusArgs) ToInstanceContainerStatusOutputWithContext(ctx context.Context) InstanceContainerStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStatusOutput)
+}
+
+// InstanceContainerStatusArrayInput is an input type that accepts InstanceContainerStatusArray and InstanceContainerStatusArrayOutput values.
+// You can construct a concrete instance of `InstanceContainerStatusArrayInput` via:
+//
+//	InstanceContainerStatusArray{ InstanceContainerStatusArgs{...} }
+type InstanceContainerStatusArrayInput interface {
+	pulumi.Input
+
+	ToInstanceContainerStatusArrayOutput() InstanceContainerStatusArrayOutput
+	ToInstanceContainerStatusArrayOutputWithContext(context.Context) InstanceContainerStatusArrayOutput
+}
+
+type InstanceContainerStatusArray []InstanceContainerStatusInput
+
+func (InstanceContainerStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerStatus)(nil)).Elem()
+}
+
+func (i InstanceContainerStatusArray) ToInstanceContainerStatusArrayOutput() InstanceContainerStatusArrayOutput {
+	return i.ToInstanceContainerStatusArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerStatusArray) ToInstanceContainerStatusArrayOutputWithContext(ctx context.Context) InstanceContainerStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerStatusArrayOutput)
+}
+
+type InstanceContainerStatusOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerStatus)(nil)).Elem()
+}
+
+func (o InstanceContainerStatusOutput) ToInstanceContainerStatusOutput() InstanceContainerStatusOutput {
+	return o
+}
+
+func (o InstanceContainerStatusOutput) ToInstanceContainerStatusOutputWithContext(ctx context.Context) InstanceContainerStatusOutput {
+	return o
+}
+
+// (Output)
+// ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+func (o InstanceContainerStatusOutput) ImageDigest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStatus) *string { return v.ImageDigest }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Instance.
+func (o InstanceContainerStatusOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerStatus) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerStatus)(nil)).Elem()
+}
+
+func (o InstanceContainerStatusArrayOutput) ToInstanceContainerStatusArrayOutput() InstanceContainerStatusArrayOutput {
+	return o
+}
+
+func (o InstanceContainerStatusArrayOutput) ToInstanceContainerStatusArrayOutputWithContext(ctx context.Context) InstanceContainerStatusArrayOutput {
+	return o
+}
+
+func (o InstanceContainerStatusArrayOutput) Index(i pulumi.IntInput) InstanceContainerStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceContainerStatus {
+		return vs[0].([]InstanceContainerStatus)[vs[1].(int)]
+	}).(InstanceContainerStatusOutput)
+}
+
+type InstanceContainerVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath string `pulumi:"mountPath"`
+	// This must match the Name of a Volume.
+	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath *string `pulumi:"subPath"`
+}
+
+// InstanceContainerVolumeMountInput is an input type that accepts InstanceContainerVolumeMountArgs and InstanceContainerVolumeMountOutput values.
+// You can construct a concrete instance of `InstanceContainerVolumeMountInput` via:
+//
+//	InstanceContainerVolumeMountArgs{...}
+type InstanceContainerVolumeMountInput interface {
+	pulumi.Input
+
+	ToInstanceContainerVolumeMountOutput() InstanceContainerVolumeMountOutput
+	ToInstanceContainerVolumeMountOutputWithContext(context.Context) InstanceContainerVolumeMountOutput
+}
+
+type InstanceContainerVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// This must match the Name of a Volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
+}
+
+func (InstanceContainerVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerVolumeMount)(nil)).Elem()
+}
+
+func (i InstanceContainerVolumeMountArgs) ToInstanceContainerVolumeMountOutput() InstanceContainerVolumeMountOutput {
+	return i.ToInstanceContainerVolumeMountOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerVolumeMountArgs) ToInstanceContainerVolumeMountOutputWithContext(ctx context.Context) InstanceContainerVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerVolumeMountOutput)
+}
+
+// InstanceContainerVolumeMountArrayInput is an input type that accepts InstanceContainerVolumeMountArray and InstanceContainerVolumeMountArrayOutput values.
+// You can construct a concrete instance of `InstanceContainerVolumeMountArrayInput` via:
+//
+//	InstanceContainerVolumeMountArray{ InstanceContainerVolumeMountArgs{...} }
+type InstanceContainerVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToInstanceContainerVolumeMountArrayOutput() InstanceContainerVolumeMountArrayOutput
+	ToInstanceContainerVolumeMountArrayOutputWithContext(context.Context) InstanceContainerVolumeMountArrayOutput
+}
+
+type InstanceContainerVolumeMountArray []InstanceContainerVolumeMountInput
+
+func (InstanceContainerVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerVolumeMount)(nil)).Elem()
+}
+
+func (i InstanceContainerVolumeMountArray) ToInstanceContainerVolumeMountArrayOutput() InstanceContainerVolumeMountArrayOutput {
+	return i.ToInstanceContainerVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceContainerVolumeMountArray) ToInstanceContainerVolumeMountArrayOutputWithContext(ctx context.Context) InstanceContainerVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerVolumeMountArrayOutput)
+}
+
+type InstanceContainerVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceContainerVolumeMount)(nil)).Elem()
+}
+
+func (o InstanceContainerVolumeMountOutput) ToInstanceContainerVolumeMountOutput() InstanceContainerVolumeMountOutput {
+	return o
+}
+
+func (o InstanceContainerVolumeMountOutput) ToInstanceContainerVolumeMountOutputWithContext(ctx context.Context) InstanceContainerVolumeMountOutput {
+	return o
+}
+
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+func (o InstanceContainerVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// This must match the Name of a Volume.
+func (o InstanceContainerVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o InstanceContainerVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceContainerVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
+}
+
+type InstanceContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceContainerVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceContainerVolumeMount)(nil)).Elem()
+}
+
+func (o InstanceContainerVolumeMountArrayOutput) ToInstanceContainerVolumeMountArrayOutput() InstanceContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o InstanceContainerVolumeMountArrayOutput) ToInstanceContainerVolumeMountArrayOutputWithContext(ctx context.Context) InstanceContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o InstanceContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) InstanceContainerVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceContainerVolumeMount {
+		return vs[0].([]InstanceContainerVolumeMount)[vs[1].(int)]
+	}).(InstanceContainerVolumeMountOutput)
+}
+
+type InstanceIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// InstanceIamBindingConditionInput is an input type that accepts InstanceIamBindingConditionArgs and InstanceIamBindingConditionOutput values.
+// You can construct a concrete instance of `InstanceIamBindingConditionInput` via:
+//
+//	InstanceIamBindingConditionArgs{...}
+type InstanceIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToInstanceIamBindingConditionOutput() InstanceIamBindingConditionOutput
+	ToInstanceIamBindingConditionOutputWithContext(context.Context) InstanceIamBindingConditionOutput
+}
+
+type InstanceIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (InstanceIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIamBindingCondition)(nil)).Elem()
+}
+
+func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionOutput() InstanceIamBindingConditionOutput {
+	return i.ToInstanceIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionOutputWithContext(ctx context.Context) InstanceIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionOutput)
+}
+
+func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionPtrOutput() InstanceIamBindingConditionPtrOutput {
+	return i.ToInstanceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionOutput).ToInstanceIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// InstanceIamBindingConditionPtrInput is an input type that accepts InstanceIamBindingConditionArgs, InstanceIamBindingConditionPtr and InstanceIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `InstanceIamBindingConditionPtrInput` via:
+//
+//	        InstanceIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToInstanceIamBindingConditionPtrOutput() InstanceIamBindingConditionPtrOutput
+	ToInstanceIamBindingConditionPtrOutputWithContext(context.Context) InstanceIamBindingConditionPtrOutput
+}
+
+type instanceIamBindingConditionPtrType InstanceIamBindingConditionArgs
+
+func InstanceIamBindingConditionPtr(v *InstanceIamBindingConditionArgs) InstanceIamBindingConditionPtrInput {
+	return (*instanceIamBindingConditionPtrType)(v)
+}
+
+func (*instanceIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIamBindingCondition)(nil)).Elem()
+}
+
+func (i *instanceIamBindingConditionPtrType) ToInstanceIamBindingConditionPtrOutput() InstanceIamBindingConditionPtrOutput {
+	return i.ToInstanceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceIamBindingConditionPtrType) ToInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionPtrOutput)
+}
+
+type InstanceIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (InstanceIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIamBindingCondition)(nil)).Elem()
+}
+
+func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionOutput() InstanceIamBindingConditionOutput {
+	return o
+}
+
+func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionOutputWithContext(ctx context.Context) InstanceIamBindingConditionOutput {
+	return o
+}
+
+func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutput() InstanceIamBindingConditionPtrOutput {
+	return o.ToInstanceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamBindingCondition) *InstanceIamBindingCondition {
+		return &v
+	}).(InstanceIamBindingConditionPtrOutput)
+}
+
+func (o InstanceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o InstanceIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type InstanceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIamBindingCondition)(nil)).Elem()
+}
+
+func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOutput() InstanceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o InstanceIamBindingConditionPtrOutput) Elem() InstanceIamBindingConditionOutput {
+	return o.ApplyT(func(v *InstanceIamBindingCondition) InstanceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIamBindingCondition
+		return ret
+	}).(InstanceIamBindingConditionOutput)
+}
+
+func (o InstanceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// InstanceIamMemberConditionInput is an input type that accepts InstanceIamMemberConditionArgs and InstanceIamMemberConditionOutput values.
+// You can construct a concrete instance of `InstanceIamMemberConditionInput` via:
+//
+//	InstanceIamMemberConditionArgs{...}
+type InstanceIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToInstanceIamMemberConditionOutput() InstanceIamMemberConditionOutput
+	ToInstanceIamMemberConditionOutputWithContext(context.Context) InstanceIamMemberConditionOutput
+}
+
+type InstanceIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (InstanceIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIamMemberCondition)(nil)).Elem()
+}
+
+func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionOutput() InstanceIamMemberConditionOutput {
+	return i.ToInstanceIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionOutputWithContext(ctx context.Context) InstanceIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionOutput)
+}
+
+func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionPtrOutput() InstanceIamMemberConditionPtrOutput {
+	return i.ToInstanceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionOutput).ToInstanceIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// InstanceIamMemberConditionPtrInput is an input type that accepts InstanceIamMemberConditionArgs, InstanceIamMemberConditionPtr and InstanceIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `InstanceIamMemberConditionPtrInput` via:
+//
+//	        InstanceIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToInstanceIamMemberConditionPtrOutput() InstanceIamMemberConditionPtrOutput
+	ToInstanceIamMemberConditionPtrOutputWithContext(context.Context) InstanceIamMemberConditionPtrOutput
+}
+
+type instanceIamMemberConditionPtrType InstanceIamMemberConditionArgs
+
+func InstanceIamMemberConditionPtr(v *InstanceIamMemberConditionArgs) InstanceIamMemberConditionPtrInput {
+	return (*instanceIamMemberConditionPtrType)(v)
+}
+
+func (*instanceIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIamMemberCondition)(nil)).Elem()
+}
+
+func (i *instanceIamMemberConditionPtrType) ToInstanceIamMemberConditionPtrOutput() InstanceIamMemberConditionPtrOutput {
+	return i.ToInstanceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceIamMemberConditionPtrType) ToInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionPtrOutput)
+}
+
+type InstanceIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (InstanceIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIamMemberCondition)(nil)).Elem()
+}
+
+func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionOutput() InstanceIamMemberConditionOutput {
+	return o
+}
+
+func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionOutputWithContext(ctx context.Context) InstanceIamMemberConditionOutput {
+	return o
+}
+
+func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutput() InstanceIamMemberConditionPtrOutput {
+	return o.ToInstanceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamMemberCondition) *InstanceIamMemberCondition {
+		return &v
+	}).(InstanceIamMemberConditionPtrOutput)
+}
+
+func (o InstanceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o InstanceIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type InstanceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIamMemberCondition)(nil)).Elem()
+}
+
+func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutput() InstanceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o InstanceIamMemberConditionPtrOutput) Elem() InstanceIamMemberConditionOutput {
+	return o.ApplyT(func(v *InstanceIamMemberCondition) InstanceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIamMemberCondition
+		return ret
+	}).(InstanceIamMemberConditionOutput)
+}
+
+func (o InstanceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceTerminalCondition struct {
+	// (Output)
+	// A reason for the instance condition.
+	InstanceReason *string `pulumi:"instanceReason"`
+	// (Output)
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human readable message indicating details about the current status.
+	Message *string `pulumi:"message"`
+	// (Output)
+	// A common (instance-level) reason for this condition.
+	Reason *string `pulumi:"reason"`
+	// (Output)
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity *string `pulumi:"severity"`
+	// (Output)
+	// State of the condition.
+	State *string `pulumi:"state"`
+	// (Output)
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type *string `pulumi:"type"`
+}
+
+// InstanceTerminalConditionInput is an input type that accepts InstanceTerminalConditionArgs and InstanceTerminalConditionOutput values.
+// You can construct a concrete instance of `InstanceTerminalConditionInput` via:
+//
+//	InstanceTerminalConditionArgs{...}
+type InstanceTerminalConditionInput interface {
+	pulumi.Input
+
+	ToInstanceTerminalConditionOutput() InstanceTerminalConditionOutput
+	ToInstanceTerminalConditionOutputWithContext(context.Context) InstanceTerminalConditionOutput
+}
+
+type InstanceTerminalConditionArgs struct {
+	// (Output)
+	// A reason for the instance condition.
+	InstanceReason pulumi.StringPtrInput `pulumi:"instanceReason"`
+	// (Output)
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
+	// A common (instance-level) reason for this condition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// (Output)
+	// State of the condition.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (InstanceTerminalConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTerminalCondition)(nil)).Elem()
+}
+
+func (i InstanceTerminalConditionArgs) ToInstanceTerminalConditionOutput() InstanceTerminalConditionOutput {
+	return i.ToInstanceTerminalConditionOutputWithContext(context.Background())
+}
+
+func (i InstanceTerminalConditionArgs) ToInstanceTerminalConditionOutputWithContext(ctx context.Context) InstanceTerminalConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTerminalConditionOutput)
+}
+
+// InstanceTerminalConditionArrayInput is an input type that accepts InstanceTerminalConditionArray and InstanceTerminalConditionArrayOutput values.
+// You can construct a concrete instance of `InstanceTerminalConditionArrayInput` via:
+//
+//	InstanceTerminalConditionArray{ InstanceTerminalConditionArgs{...} }
+type InstanceTerminalConditionArrayInput interface {
+	pulumi.Input
+
+	ToInstanceTerminalConditionArrayOutput() InstanceTerminalConditionArrayOutput
+	ToInstanceTerminalConditionArrayOutputWithContext(context.Context) InstanceTerminalConditionArrayOutput
+}
+
+type InstanceTerminalConditionArray []InstanceTerminalConditionInput
+
+func (InstanceTerminalConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceTerminalCondition)(nil)).Elem()
+}
+
+func (i InstanceTerminalConditionArray) ToInstanceTerminalConditionArrayOutput() InstanceTerminalConditionArrayOutput {
+	return i.ToInstanceTerminalConditionArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceTerminalConditionArray) ToInstanceTerminalConditionArrayOutputWithContext(ctx context.Context) InstanceTerminalConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTerminalConditionArrayOutput)
+}
+
+type InstanceTerminalConditionOutput struct{ *pulumi.OutputState }
+
+func (InstanceTerminalConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTerminalCondition)(nil)).Elem()
+}
+
+func (o InstanceTerminalConditionOutput) ToInstanceTerminalConditionOutput() InstanceTerminalConditionOutput {
+	return o
+}
+
+func (o InstanceTerminalConditionOutput) ToInstanceTerminalConditionOutputWithContext(ctx context.Context) InstanceTerminalConditionOutput {
+	return o
+}
+
+// (Output)
+// A reason for the instance condition.
+func (o InstanceTerminalConditionOutput) InstanceReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTerminalCondition) *string { return v.InstanceReason }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Last time the condition transitioned from one status to another.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o InstanceTerminalConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTerminalCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Human readable message indicating details about the current status.
+func (o InstanceTerminalConditionOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTerminalCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A common (instance-level) reason for this condition.
+func (o InstanceTerminalConditionOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTerminalCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// How to interpret failures of this condition, one of Error, Warning, Info
+func (o InstanceTerminalConditionOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTerminalCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the condition.
+func (o InstanceTerminalConditionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTerminalCondition) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+func (o InstanceTerminalConditionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTerminalCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type InstanceTerminalConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceTerminalConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceTerminalCondition)(nil)).Elem()
+}
+
+func (o InstanceTerminalConditionArrayOutput) ToInstanceTerminalConditionArrayOutput() InstanceTerminalConditionArrayOutput {
+	return o
+}
+
+func (o InstanceTerminalConditionArrayOutput) ToInstanceTerminalConditionArrayOutputWithContext(ctx context.Context) InstanceTerminalConditionArrayOutput {
+	return o
+}
+
+func (o InstanceTerminalConditionArrayOutput) Index(i pulumi.IntInput) InstanceTerminalConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceTerminalCondition {
+		return vs[0].([]InstanceTerminalCondition)[vs[1].(int)]
+	}).(InstanceTerminalConditionOutput)
+}
+
+type InstanceVolume struct {
+	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+	// Structure is documented below.
+	CloudSqlInstance *InstanceVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
+	// Ephemeral storage used as a shared volume.
+	// Structure is documented below.
+	EmptyDir *InstanceVolumeEmptyDir `pulumi:"emptyDir"`
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
+	// Structure is documented below.
+	Gcs *InstanceVolumeGcs `pulumi:"gcs"`
+	// Volume's name.
+	Name string `pulumi:"name"`
+	// Represents an NFS mount.
+	// Structure is documented below.
+	Nfs *InstanceVolumeNfs `pulumi:"nfs"`
+	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Structure is documented below.
+	Secret *InstanceVolumeSecret `pulumi:"secret"`
+}
+
+// InstanceVolumeInput is an input type that accepts InstanceVolumeArgs and InstanceVolumeOutput values.
+// You can construct a concrete instance of `InstanceVolumeInput` via:
+//
+//	InstanceVolumeArgs{...}
+type InstanceVolumeInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeOutput() InstanceVolumeOutput
+	ToInstanceVolumeOutputWithContext(context.Context) InstanceVolumeOutput
+}
+
+type InstanceVolumeArgs struct {
+	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+	// Structure is documented below.
+	CloudSqlInstance InstanceVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
+	// Ephemeral storage used as a shared volume.
+	// Structure is documented below.
+	EmptyDir InstanceVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
+	// Structure is documented below.
+	Gcs InstanceVolumeGcsPtrInput `pulumi:"gcs"`
+	// Volume's name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Represents an NFS mount.
+	// Structure is documented below.
+	Nfs InstanceVolumeNfsPtrInput `pulumi:"nfs"`
+	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Structure is documented below.
+	Secret InstanceVolumeSecretPtrInput `pulumi:"secret"`
+}
+
+func (InstanceVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolume)(nil)).Elem()
+}
+
+func (i InstanceVolumeArgs) ToInstanceVolumeOutput() InstanceVolumeOutput {
+	return i.ToInstanceVolumeOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeArgs) ToInstanceVolumeOutputWithContext(ctx context.Context) InstanceVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeOutput)
+}
+
+// InstanceVolumeArrayInput is an input type that accepts InstanceVolumeArray and InstanceVolumeArrayOutput values.
+// You can construct a concrete instance of `InstanceVolumeArrayInput` via:
+//
+//	InstanceVolumeArray{ InstanceVolumeArgs{...} }
+type InstanceVolumeArrayInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeArrayOutput() InstanceVolumeArrayOutput
+	ToInstanceVolumeArrayOutputWithContext(context.Context) InstanceVolumeArrayOutput
+}
+
+type InstanceVolumeArray []InstanceVolumeInput
+
+func (InstanceVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceVolume)(nil)).Elem()
+}
+
+func (i InstanceVolumeArray) ToInstanceVolumeArrayOutput() InstanceVolumeArrayOutput {
+	return i.ToInstanceVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeArray) ToInstanceVolumeArrayOutputWithContext(ctx context.Context) InstanceVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeArrayOutput)
+}
+
+type InstanceVolumeOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolume)(nil)).Elem()
+}
+
+func (o InstanceVolumeOutput) ToInstanceVolumeOutput() InstanceVolumeOutput {
+	return o
+}
+
+func (o InstanceVolumeOutput) ToInstanceVolumeOutputWithContext(ctx context.Context) InstanceVolumeOutput {
+	return o
+}
+
+// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+// Structure is documented below.
+func (o InstanceVolumeOutput) CloudSqlInstance() InstanceVolumeCloudSqlInstancePtrOutput {
+	return o.ApplyT(func(v InstanceVolume) *InstanceVolumeCloudSqlInstance { return v.CloudSqlInstance }).(InstanceVolumeCloudSqlInstancePtrOutput)
+}
+
+// Ephemeral storage used as a shared volume.
+// Structure is documented below.
+func (o InstanceVolumeOutput) EmptyDir() InstanceVolumeEmptyDirPtrOutput {
+	return o.ApplyT(func(v InstanceVolume) *InstanceVolumeEmptyDir { return v.EmptyDir }).(InstanceVolumeEmptyDirPtrOutput)
+}
+
+// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
+// Structure is documented below.
+func (o InstanceVolumeOutput) Gcs() InstanceVolumeGcsPtrOutput {
+	return o.ApplyT(func(v InstanceVolume) *InstanceVolumeGcs { return v.Gcs }).(InstanceVolumeGcsPtrOutput)
+}
+
+// Volume's name.
+func (o InstanceVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Represents an NFS mount.
+// Structure is documented below.
+func (o InstanceVolumeOutput) Nfs() InstanceVolumeNfsPtrOutput {
+	return o.ApplyT(func(v InstanceVolume) *InstanceVolumeNfs { return v.Nfs }).(InstanceVolumeNfsPtrOutput)
+}
+
+// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+// Structure is documented below.
+func (o InstanceVolumeOutput) Secret() InstanceVolumeSecretPtrOutput {
+	return o.ApplyT(func(v InstanceVolume) *InstanceVolumeSecret { return v.Secret }).(InstanceVolumeSecretPtrOutput)
+}
+
+type InstanceVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceVolume)(nil)).Elem()
+}
+
+func (o InstanceVolumeArrayOutput) ToInstanceVolumeArrayOutput() InstanceVolumeArrayOutput {
+	return o
+}
+
+func (o InstanceVolumeArrayOutput) ToInstanceVolumeArrayOutputWithContext(ctx context.Context) InstanceVolumeArrayOutput {
+	return o
+}
+
+func (o InstanceVolumeArrayOutput) Index(i pulumi.IntInput) InstanceVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceVolume {
+		return vs[0].([]InstanceVolume)[vs[1].(int)]
+	}).(InstanceVolumeOutput)
+}
+
+type InstanceVolumeCloudSqlInstance struct {
+	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+	Instances []string `pulumi:"instances"`
+}
+
+// InstanceVolumeCloudSqlInstanceInput is an input type that accepts InstanceVolumeCloudSqlInstanceArgs and InstanceVolumeCloudSqlInstanceOutput values.
+// You can construct a concrete instance of `InstanceVolumeCloudSqlInstanceInput` via:
+//
+//	InstanceVolumeCloudSqlInstanceArgs{...}
+type InstanceVolumeCloudSqlInstanceInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeCloudSqlInstanceOutput() InstanceVolumeCloudSqlInstanceOutput
+	ToInstanceVolumeCloudSqlInstanceOutputWithContext(context.Context) InstanceVolumeCloudSqlInstanceOutput
+}
+
+type InstanceVolumeCloudSqlInstanceArgs struct {
+	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+	Instances pulumi.StringArrayInput `pulumi:"instances"`
+}
+
+func (InstanceVolumeCloudSqlInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (i InstanceVolumeCloudSqlInstanceArgs) ToInstanceVolumeCloudSqlInstanceOutput() InstanceVolumeCloudSqlInstanceOutput {
+	return i.ToInstanceVolumeCloudSqlInstanceOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeCloudSqlInstanceArgs) ToInstanceVolumeCloudSqlInstanceOutputWithContext(ctx context.Context) InstanceVolumeCloudSqlInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeCloudSqlInstanceOutput)
+}
+
+func (i InstanceVolumeCloudSqlInstanceArgs) ToInstanceVolumeCloudSqlInstancePtrOutput() InstanceVolumeCloudSqlInstancePtrOutput {
+	return i.ToInstanceVolumeCloudSqlInstancePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeCloudSqlInstanceArgs) ToInstanceVolumeCloudSqlInstancePtrOutputWithContext(ctx context.Context) InstanceVolumeCloudSqlInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeCloudSqlInstanceOutput).ToInstanceVolumeCloudSqlInstancePtrOutputWithContext(ctx)
+}
+
+// InstanceVolumeCloudSqlInstancePtrInput is an input type that accepts InstanceVolumeCloudSqlInstanceArgs, InstanceVolumeCloudSqlInstancePtr and InstanceVolumeCloudSqlInstancePtrOutput values.
+// You can construct a concrete instance of `InstanceVolumeCloudSqlInstancePtrInput` via:
+//
+//	        InstanceVolumeCloudSqlInstanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceVolumeCloudSqlInstancePtrInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeCloudSqlInstancePtrOutput() InstanceVolumeCloudSqlInstancePtrOutput
+	ToInstanceVolumeCloudSqlInstancePtrOutputWithContext(context.Context) InstanceVolumeCloudSqlInstancePtrOutput
+}
+
+type instanceVolumeCloudSqlInstancePtrType InstanceVolumeCloudSqlInstanceArgs
+
+func InstanceVolumeCloudSqlInstancePtr(v *InstanceVolumeCloudSqlInstanceArgs) InstanceVolumeCloudSqlInstancePtrInput {
+	return (*instanceVolumeCloudSqlInstancePtrType)(v)
+}
+
+func (*instanceVolumeCloudSqlInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (i *instanceVolumeCloudSqlInstancePtrType) ToInstanceVolumeCloudSqlInstancePtrOutput() InstanceVolumeCloudSqlInstancePtrOutput {
+	return i.ToInstanceVolumeCloudSqlInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceVolumeCloudSqlInstancePtrType) ToInstanceVolumeCloudSqlInstancePtrOutputWithContext(ctx context.Context) InstanceVolumeCloudSqlInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeCloudSqlInstancePtrOutput)
+}
+
+type InstanceVolumeCloudSqlInstanceOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeCloudSqlInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (o InstanceVolumeCloudSqlInstanceOutput) ToInstanceVolumeCloudSqlInstanceOutput() InstanceVolumeCloudSqlInstanceOutput {
+	return o
+}
+
+func (o InstanceVolumeCloudSqlInstanceOutput) ToInstanceVolumeCloudSqlInstanceOutputWithContext(ctx context.Context) InstanceVolumeCloudSqlInstanceOutput {
+	return o
+}
+
+func (o InstanceVolumeCloudSqlInstanceOutput) ToInstanceVolumeCloudSqlInstancePtrOutput() InstanceVolumeCloudSqlInstancePtrOutput {
+	return o.ToInstanceVolumeCloudSqlInstancePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceVolumeCloudSqlInstanceOutput) ToInstanceVolumeCloudSqlInstancePtrOutputWithContext(ctx context.Context) InstanceVolumeCloudSqlInstancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceVolumeCloudSqlInstance) *InstanceVolumeCloudSqlInstance {
+		return &v
+	}).(InstanceVolumeCloudSqlInstancePtrOutput)
+}
+
+// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+func (o InstanceVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
+}
+
+type InstanceVolumeCloudSqlInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeCloudSqlInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (o InstanceVolumeCloudSqlInstancePtrOutput) ToInstanceVolumeCloudSqlInstancePtrOutput() InstanceVolumeCloudSqlInstancePtrOutput {
+	return o
+}
+
+func (o InstanceVolumeCloudSqlInstancePtrOutput) ToInstanceVolumeCloudSqlInstancePtrOutputWithContext(ctx context.Context) InstanceVolumeCloudSqlInstancePtrOutput {
+	return o
+}
+
+func (o InstanceVolumeCloudSqlInstancePtrOutput) Elem() InstanceVolumeCloudSqlInstanceOutput {
+	return o.ApplyT(func(v *InstanceVolumeCloudSqlInstance) InstanceVolumeCloudSqlInstance {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceVolumeCloudSqlInstance
+		return ret
+	}).(InstanceVolumeCloudSqlInstanceOutput)
+}
+
+// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+func (o InstanceVolumeCloudSqlInstancePtrOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceVolumeCloudSqlInstance) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Instances
+	}).(pulumi.StringArrayOutput)
+}
+
+type InstanceVolumeEmptyDir struct {
+	// The different types of medium supported for EmptyDir.
+	// Default value is `MEMORY`.
+	// Possible values are: `MEMORY`, `DISK`.
+	Medium *string `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+	SizeLimit *string `pulumi:"sizeLimit"`
+}
+
+// InstanceVolumeEmptyDirInput is an input type that accepts InstanceVolumeEmptyDirArgs and InstanceVolumeEmptyDirOutput values.
+// You can construct a concrete instance of `InstanceVolumeEmptyDirInput` via:
+//
+//	InstanceVolumeEmptyDirArgs{...}
+type InstanceVolumeEmptyDirInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeEmptyDirOutput() InstanceVolumeEmptyDirOutput
+	ToInstanceVolumeEmptyDirOutputWithContext(context.Context) InstanceVolumeEmptyDirOutput
+}
+
+type InstanceVolumeEmptyDirArgs struct {
+	// The different types of medium supported for EmptyDir.
+	// Default value is `MEMORY`.
+	// Possible values are: `MEMORY`, `DISK`.
+	Medium pulumi.StringPtrInput `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
+}
+
+func (InstanceVolumeEmptyDirArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i InstanceVolumeEmptyDirArgs) ToInstanceVolumeEmptyDirOutput() InstanceVolumeEmptyDirOutput {
+	return i.ToInstanceVolumeEmptyDirOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeEmptyDirArgs) ToInstanceVolumeEmptyDirOutputWithContext(ctx context.Context) InstanceVolumeEmptyDirOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeEmptyDirOutput)
+}
+
+func (i InstanceVolumeEmptyDirArgs) ToInstanceVolumeEmptyDirPtrOutput() InstanceVolumeEmptyDirPtrOutput {
+	return i.ToInstanceVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeEmptyDirArgs) ToInstanceVolumeEmptyDirPtrOutputWithContext(ctx context.Context) InstanceVolumeEmptyDirPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeEmptyDirOutput).ToInstanceVolumeEmptyDirPtrOutputWithContext(ctx)
+}
+
+// InstanceVolumeEmptyDirPtrInput is an input type that accepts InstanceVolumeEmptyDirArgs, InstanceVolumeEmptyDirPtr and InstanceVolumeEmptyDirPtrOutput values.
+// You can construct a concrete instance of `InstanceVolumeEmptyDirPtrInput` via:
+//
+//	        InstanceVolumeEmptyDirArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceVolumeEmptyDirPtrInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeEmptyDirPtrOutput() InstanceVolumeEmptyDirPtrOutput
+	ToInstanceVolumeEmptyDirPtrOutputWithContext(context.Context) InstanceVolumeEmptyDirPtrOutput
+}
+
+type instanceVolumeEmptyDirPtrType InstanceVolumeEmptyDirArgs
+
+func InstanceVolumeEmptyDirPtr(v *InstanceVolumeEmptyDirArgs) InstanceVolumeEmptyDirPtrInput {
+	return (*instanceVolumeEmptyDirPtrType)(v)
+}
+
+func (*instanceVolumeEmptyDirPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i *instanceVolumeEmptyDirPtrType) ToInstanceVolumeEmptyDirPtrOutput() InstanceVolumeEmptyDirPtrOutput {
+	return i.ToInstanceVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceVolumeEmptyDirPtrType) ToInstanceVolumeEmptyDirPtrOutputWithContext(ctx context.Context) InstanceVolumeEmptyDirPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeEmptyDirPtrOutput)
+}
+
+type InstanceVolumeEmptyDirOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeEmptyDirOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o InstanceVolumeEmptyDirOutput) ToInstanceVolumeEmptyDirOutput() InstanceVolumeEmptyDirOutput {
+	return o
+}
+
+func (o InstanceVolumeEmptyDirOutput) ToInstanceVolumeEmptyDirOutputWithContext(ctx context.Context) InstanceVolumeEmptyDirOutput {
+	return o
+}
+
+func (o InstanceVolumeEmptyDirOutput) ToInstanceVolumeEmptyDirPtrOutput() InstanceVolumeEmptyDirPtrOutput {
+	return o.ToInstanceVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceVolumeEmptyDirOutput) ToInstanceVolumeEmptyDirPtrOutputWithContext(ctx context.Context) InstanceVolumeEmptyDirPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceVolumeEmptyDir) *InstanceVolumeEmptyDir {
+		return &v
+	}).(InstanceVolumeEmptyDirPtrOutput)
+}
+
+// The different types of medium supported for EmptyDir.
+// Default value is `MEMORY`.
+// Possible values are: `MEMORY`, `DISK`.
+func (o InstanceVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceVolumeEmptyDir) *string { return v.Medium }).(pulumi.StringPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+func (o InstanceVolumeEmptyDirOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceVolumeEmptyDir) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
+}
+
+type InstanceVolumeEmptyDirPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeEmptyDirPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o InstanceVolumeEmptyDirPtrOutput) ToInstanceVolumeEmptyDirPtrOutput() InstanceVolumeEmptyDirPtrOutput {
+	return o
+}
+
+func (o InstanceVolumeEmptyDirPtrOutput) ToInstanceVolumeEmptyDirPtrOutputWithContext(ctx context.Context) InstanceVolumeEmptyDirPtrOutput {
+	return o
+}
+
+func (o InstanceVolumeEmptyDirPtrOutput) Elem() InstanceVolumeEmptyDirOutput {
+	return o.ApplyT(func(v *InstanceVolumeEmptyDir) InstanceVolumeEmptyDir {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceVolumeEmptyDir
+		return ret
+	}).(InstanceVolumeEmptyDirOutput)
+}
+
+// The different types of medium supported for EmptyDir.
+// Default value is `MEMORY`.
+// Possible values are: `MEMORY`, `DISK`.
+func (o InstanceVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceVolumeEmptyDir) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Medium
+	}).(pulumi.StringPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+func (o InstanceVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceVolumeEmptyDir) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceVolumeGcs struct {
+	// GCS Bucket name
+	Bucket string `pulumi:"bucket"`
+	// A list of flags to pass to the gcsfuse command for configuring this volume.
+	// Flags should be passed without leading dashes.
+	MountOptions []string `pulumi:"mountOptions"`
+	// If true, mount the GCS bucket as read-only
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// InstanceVolumeGcsInput is an input type that accepts InstanceVolumeGcsArgs and InstanceVolumeGcsOutput values.
+// You can construct a concrete instance of `InstanceVolumeGcsInput` via:
+//
+//	InstanceVolumeGcsArgs{...}
+type InstanceVolumeGcsInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeGcsOutput() InstanceVolumeGcsOutput
+	ToInstanceVolumeGcsOutputWithContext(context.Context) InstanceVolumeGcsOutput
+}
+
+type InstanceVolumeGcsArgs struct {
+	// GCS Bucket name
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// A list of flags to pass to the gcsfuse command for configuring this volume.
+	// Flags should be passed without leading dashes.
+	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
+	// If true, mount the GCS bucket as read-only
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (InstanceVolumeGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeGcs)(nil)).Elem()
+}
+
+func (i InstanceVolumeGcsArgs) ToInstanceVolumeGcsOutput() InstanceVolumeGcsOutput {
+	return i.ToInstanceVolumeGcsOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeGcsArgs) ToInstanceVolumeGcsOutputWithContext(ctx context.Context) InstanceVolumeGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeGcsOutput)
+}
+
+func (i InstanceVolumeGcsArgs) ToInstanceVolumeGcsPtrOutput() InstanceVolumeGcsPtrOutput {
+	return i.ToInstanceVolumeGcsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeGcsArgs) ToInstanceVolumeGcsPtrOutputWithContext(ctx context.Context) InstanceVolumeGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeGcsOutput).ToInstanceVolumeGcsPtrOutputWithContext(ctx)
+}
+
+// InstanceVolumeGcsPtrInput is an input type that accepts InstanceVolumeGcsArgs, InstanceVolumeGcsPtr and InstanceVolumeGcsPtrOutput values.
+// You can construct a concrete instance of `InstanceVolumeGcsPtrInput` via:
+//
+//	        InstanceVolumeGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceVolumeGcsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeGcsPtrOutput() InstanceVolumeGcsPtrOutput
+	ToInstanceVolumeGcsPtrOutputWithContext(context.Context) InstanceVolumeGcsPtrOutput
+}
+
+type instanceVolumeGcsPtrType InstanceVolumeGcsArgs
+
+func InstanceVolumeGcsPtr(v *InstanceVolumeGcsArgs) InstanceVolumeGcsPtrInput {
+	return (*instanceVolumeGcsPtrType)(v)
+}
+
+func (*instanceVolumeGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVolumeGcs)(nil)).Elem()
+}
+
+func (i *instanceVolumeGcsPtrType) ToInstanceVolumeGcsPtrOutput() InstanceVolumeGcsPtrOutput {
+	return i.ToInstanceVolumeGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceVolumeGcsPtrType) ToInstanceVolumeGcsPtrOutputWithContext(ctx context.Context) InstanceVolumeGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeGcsPtrOutput)
+}
+
+type InstanceVolumeGcsOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeGcs)(nil)).Elem()
+}
+
+func (o InstanceVolumeGcsOutput) ToInstanceVolumeGcsOutput() InstanceVolumeGcsOutput {
+	return o
+}
+
+func (o InstanceVolumeGcsOutput) ToInstanceVolumeGcsOutputWithContext(ctx context.Context) InstanceVolumeGcsOutput {
+	return o
+}
+
+func (o InstanceVolumeGcsOutput) ToInstanceVolumeGcsPtrOutput() InstanceVolumeGcsPtrOutput {
+	return o.ToInstanceVolumeGcsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceVolumeGcsOutput) ToInstanceVolumeGcsPtrOutputWithContext(ctx context.Context) InstanceVolumeGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceVolumeGcs) *InstanceVolumeGcs {
+		return &v
+	}).(InstanceVolumeGcsPtrOutput)
+}
+
+// GCS Bucket name
+func (o InstanceVolumeGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceVolumeGcs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// A list of flags to pass to the gcsfuse command for configuring this volume.
+// Flags should be passed without leading dashes.
+func (o InstanceVolumeGcsOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceVolumeGcs) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
+}
+
+// If true, mount the GCS bucket as read-only
+func (o InstanceVolumeGcsOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceVolumeGcs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceVolumeGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVolumeGcs)(nil)).Elem()
+}
+
+func (o InstanceVolumeGcsPtrOutput) ToInstanceVolumeGcsPtrOutput() InstanceVolumeGcsPtrOutput {
+	return o
+}
+
+func (o InstanceVolumeGcsPtrOutput) ToInstanceVolumeGcsPtrOutputWithContext(ctx context.Context) InstanceVolumeGcsPtrOutput {
+	return o
+}
+
+func (o InstanceVolumeGcsPtrOutput) Elem() InstanceVolumeGcsOutput {
+	return o.ApplyT(func(v *InstanceVolumeGcs) InstanceVolumeGcs {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceVolumeGcs
+		return ret
+	}).(InstanceVolumeGcsOutput)
+}
+
+// GCS Bucket name
+func (o InstanceVolumeGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceVolumeGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of flags to pass to the gcsfuse command for configuring this volume.
+// Flags should be passed without leading dashes.
+func (o InstanceVolumeGcsPtrOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceVolumeGcs) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MountOptions
+	}).(pulumi.StringArrayOutput)
+}
+
+// If true, mount the GCS bucket as read-only
+func (o InstanceVolumeGcsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceVolumeGcs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+type InstanceVolumeNfs struct {
+	// Path that is exported by the NFS server.
+	Path string `pulumi:"path"`
+	// If true, mount the NFS volume as read only
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server
+	Server string `pulumi:"server"`
+}
+
+// InstanceVolumeNfsInput is an input type that accepts InstanceVolumeNfsArgs and InstanceVolumeNfsOutput values.
+// You can construct a concrete instance of `InstanceVolumeNfsInput` via:
+//
+//	InstanceVolumeNfsArgs{...}
+type InstanceVolumeNfsInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeNfsOutput() InstanceVolumeNfsOutput
+	ToInstanceVolumeNfsOutputWithContext(context.Context) InstanceVolumeNfsOutput
+}
+
+type InstanceVolumeNfsArgs struct {
+	// Path that is exported by the NFS server.
+	Path pulumi.StringInput `pulumi:"path"`
+	// If true, mount the NFS volume as read only
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (InstanceVolumeNfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeNfs)(nil)).Elem()
+}
+
+func (i InstanceVolumeNfsArgs) ToInstanceVolumeNfsOutput() InstanceVolumeNfsOutput {
+	return i.ToInstanceVolumeNfsOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeNfsArgs) ToInstanceVolumeNfsOutputWithContext(ctx context.Context) InstanceVolumeNfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeNfsOutput)
+}
+
+func (i InstanceVolumeNfsArgs) ToInstanceVolumeNfsPtrOutput() InstanceVolumeNfsPtrOutput {
+	return i.ToInstanceVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeNfsArgs) ToInstanceVolumeNfsPtrOutputWithContext(ctx context.Context) InstanceVolumeNfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeNfsOutput).ToInstanceVolumeNfsPtrOutputWithContext(ctx)
+}
+
+// InstanceVolumeNfsPtrInput is an input type that accepts InstanceVolumeNfsArgs, InstanceVolumeNfsPtr and InstanceVolumeNfsPtrOutput values.
+// You can construct a concrete instance of `InstanceVolumeNfsPtrInput` via:
+//
+//	        InstanceVolumeNfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceVolumeNfsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeNfsPtrOutput() InstanceVolumeNfsPtrOutput
+	ToInstanceVolumeNfsPtrOutputWithContext(context.Context) InstanceVolumeNfsPtrOutput
+}
+
+type instanceVolumeNfsPtrType InstanceVolumeNfsArgs
+
+func InstanceVolumeNfsPtr(v *InstanceVolumeNfsArgs) InstanceVolumeNfsPtrInput {
+	return (*instanceVolumeNfsPtrType)(v)
+}
+
+func (*instanceVolumeNfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVolumeNfs)(nil)).Elem()
+}
+
+func (i *instanceVolumeNfsPtrType) ToInstanceVolumeNfsPtrOutput() InstanceVolumeNfsPtrOutput {
+	return i.ToInstanceVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceVolumeNfsPtrType) ToInstanceVolumeNfsPtrOutputWithContext(ctx context.Context) InstanceVolumeNfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeNfsPtrOutput)
+}
+
+type InstanceVolumeNfsOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeNfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeNfs)(nil)).Elem()
+}
+
+func (o InstanceVolumeNfsOutput) ToInstanceVolumeNfsOutput() InstanceVolumeNfsOutput {
+	return o
+}
+
+func (o InstanceVolumeNfsOutput) ToInstanceVolumeNfsOutputWithContext(ctx context.Context) InstanceVolumeNfsOutput {
+	return o
+}
+
+func (o InstanceVolumeNfsOutput) ToInstanceVolumeNfsPtrOutput() InstanceVolumeNfsPtrOutput {
+	return o.ToInstanceVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceVolumeNfsOutput) ToInstanceVolumeNfsPtrOutputWithContext(ctx context.Context) InstanceVolumeNfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceVolumeNfs) *InstanceVolumeNfs {
+		return &v
+	}).(InstanceVolumeNfsPtrOutput)
+}
+
+// Path that is exported by the NFS server.
+func (o InstanceVolumeNfsOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceVolumeNfs) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// If true, mount the NFS volume as read only
+func (o InstanceVolumeNfsOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceVolumeNfs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP address of the NFS server
+func (o InstanceVolumeNfsOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceVolumeNfs) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type InstanceVolumeNfsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeNfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVolumeNfs)(nil)).Elem()
+}
+
+func (o InstanceVolumeNfsPtrOutput) ToInstanceVolumeNfsPtrOutput() InstanceVolumeNfsPtrOutput {
+	return o
+}
+
+func (o InstanceVolumeNfsPtrOutput) ToInstanceVolumeNfsPtrOutputWithContext(ctx context.Context) InstanceVolumeNfsPtrOutput {
+	return o
+}
+
+func (o InstanceVolumeNfsPtrOutput) Elem() InstanceVolumeNfsOutput {
+	return o.ApplyT(func(v *InstanceVolumeNfs) InstanceVolumeNfs {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceVolumeNfs
+		return ret
+	}).(InstanceVolumeNfsOutput)
+}
+
+// Path that is exported by the NFS server.
+func (o InstanceVolumeNfsPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceVolumeNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, mount the NFS volume as read only
+func (o InstanceVolumeNfsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceVolumeNfs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP address of the NFS server
+func (o InstanceVolumeNfsPtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceVolumeNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Server
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceVolumeSecret struct {
+	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+	DefaultMode *int `pulumi:"defaultMode"`
+	// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+	// Structure is documented below.
+	Items []InstanceVolumeSecretItem `pulumi:"items"`
+	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	Secret string `pulumi:"secret"`
+}
+
+// InstanceVolumeSecretInput is an input type that accepts InstanceVolumeSecretArgs and InstanceVolumeSecretOutput values.
+// You can construct a concrete instance of `InstanceVolumeSecretInput` via:
+//
+//	InstanceVolumeSecretArgs{...}
+type InstanceVolumeSecretInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeSecretOutput() InstanceVolumeSecretOutput
+	ToInstanceVolumeSecretOutputWithContext(context.Context) InstanceVolumeSecretOutput
+}
+
+type InstanceVolumeSecretArgs struct {
+	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+	DefaultMode pulumi.IntPtrInput `pulumi:"defaultMode"`
+	// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+	// Structure is documented below.
+	Items InstanceVolumeSecretItemArrayInput `pulumi:"items"`
+	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (InstanceVolumeSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeSecret)(nil)).Elem()
+}
+
+func (i InstanceVolumeSecretArgs) ToInstanceVolumeSecretOutput() InstanceVolumeSecretOutput {
+	return i.ToInstanceVolumeSecretOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeSecretArgs) ToInstanceVolumeSecretOutputWithContext(ctx context.Context) InstanceVolumeSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeSecretOutput)
+}
+
+func (i InstanceVolumeSecretArgs) ToInstanceVolumeSecretPtrOutput() InstanceVolumeSecretPtrOutput {
+	return i.ToInstanceVolumeSecretPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeSecretArgs) ToInstanceVolumeSecretPtrOutputWithContext(ctx context.Context) InstanceVolumeSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeSecretOutput).ToInstanceVolumeSecretPtrOutputWithContext(ctx)
+}
+
+// InstanceVolumeSecretPtrInput is an input type that accepts InstanceVolumeSecretArgs, InstanceVolumeSecretPtr and InstanceVolumeSecretPtrOutput values.
+// You can construct a concrete instance of `InstanceVolumeSecretPtrInput` via:
+//
+//	        InstanceVolumeSecretArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceVolumeSecretPtrInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeSecretPtrOutput() InstanceVolumeSecretPtrOutput
+	ToInstanceVolumeSecretPtrOutputWithContext(context.Context) InstanceVolumeSecretPtrOutput
+}
+
+type instanceVolumeSecretPtrType InstanceVolumeSecretArgs
+
+func InstanceVolumeSecretPtr(v *InstanceVolumeSecretArgs) InstanceVolumeSecretPtrInput {
+	return (*instanceVolumeSecretPtrType)(v)
+}
+
+func (*instanceVolumeSecretPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVolumeSecret)(nil)).Elem()
+}
+
+func (i *instanceVolumeSecretPtrType) ToInstanceVolumeSecretPtrOutput() InstanceVolumeSecretPtrOutput {
+	return i.ToInstanceVolumeSecretPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceVolumeSecretPtrType) ToInstanceVolumeSecretPtrOutputWithContext(ctx context.Context) InstanceVolumeSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeSecretPtrOutput)
+}
+
+type InstanceVolumeSecretOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeSecret)(nil)).Elem()
+}
+
+func (o InstanceVolumeSecretOutput) ToInstanceVolumeSecretOutput() InstanceVolumeSecretOutput {
+	return o
+}
+
+func (o InstanceVolumeSecretOutput) ToInstanceVolumeSecretOutputWithContext(ctx context.Context) InstanceVolumeSecretOutput {
+	return o
+}
+
+func (o InstanceVolumeSecretOutput) ToInstanceVolumeSecretPtrOutput() InstanceVolumeSecretPtrOutput {
+	return o.ToInstanceVolumeSecretPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceVolumeSecretOutput) ToInstanceVolumeSecretPtrOutputWithContext(ctx context.Context) InstanceVolumeSecretPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceVolumeSecret) *InstanceVolumeSecret {
+		return &v
+	}).(InstanceVolumeSecretPtrOutput)
+}
+
+// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+func (o InstanceVolumeSecretOutput) DefaultMode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceVolumeSecret) *int { return v.DefaultMode }).(pulumi.IntPtrOutput)
+}
+
+// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+// Structure is documented below.
+func (o InstanceVolumeSecretOutput) Items() InstanceVolumeSecretItemArrayOutput {
+	return o.ApplyT(func(v InstanceVolumeSecret) []InstanceVolumeSecretItem { return v.Items }).(InstanceVolumeSecretItemArrayOutput)
+}
+
+// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+func (o InstanceVolumeSecretOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceVolumeSecret) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type InstanceVolumeSecretPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeSecretPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVolumeSecret)(nil)).Elem()
+}
+
+func (o InstanceVolumeSecretPtrOutput) ToInstanceVolumeSecretPtrOutput() InstanceVolumeSecretPtrOutput {
+	return o
+}
+
+func (o InstanceVolumeSecretPtrOutput) ToInstanceVolumeSecretPtrOutputWithContext(ctx context.Context) InstanceVolumeSecretPtrOutput {
+	return o
+}
+
+func (o InstanceVolumeSecretPtrOutput) Elem() InstanceVolumeSecretOutput {
+	return o.ApplyT(func(v *InstanceVolumeSecret) InstanceVolumeSecret {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceVolumeSecret
+		return ret
+	}).(InstanceVolumeSecretOutput)
+}
+
+// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+func (o InstanceVolumeSecretPtrOutput) DefaultMode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceVolumeSecret) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultMode
+	}).(pulumi.IntPtrOutput)
+}
+
+// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+// Structure is documented below.
+func (o InstanceVolumeSecretPtrOutput) Items() InstanceVolumeSecretItemArrayOutput {
+	return o.ApplyT(func(v *InstanceVolumeSecret) []InstanceVolumeSecretItem {
+		if v == nil {
+			return nil
+		}
+		return v.Items
+	}).(InstanceVolumeSecretItemArrayOutput)
+}
+
+// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+func (o InstanceVolumeSecretPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceVolumeSecret) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceVolumeSecretItem struct {
+	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+	Mode *int `pulumi:"mode"`
+	// The relative path of the secret in the container.
+	Path string `pulumi:"path"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+	Version *string `pulumi:"version"`
+}
+
+// InstanceVolumeSecretItemInput is an input type that accepts InstanceVolumeSecretItemArgs and InstanceVolumeSecretItemOutput values.
+// You can construct a concrete instance of `InstanceVolumeSecretItemInput` via:
+//
+//	InstanceVolumeSecretItemArgs{...}
+type InstanceVolumeSecretItemInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeSecretItemOutput() InstanceVolumeSecretItemOutput
+	ToInstanceVolumeSecretItemOutputWithContext(context.Context) InstanceVolumeSecretItemOutput
+}
+
+type InstanceVolumeSecretItemArgs struct {
+	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+	Mode pulumi.IntPtrInput `pulumi:"mode"`
+	// The relative path of the secret in the container.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (InstanceVolumeSecretItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeSecretItem)(nil)).Elem()
+}
+
+func (i InstanceVolumeSecretItemArgs) ToInstanceVolumeSecretItemOutput() InstanceVolumeSecretItemOutput {
+	return i.ToInstanceVolumeSecretItemOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeSecretItemArgs) ToInstanceVolumeSecretItemOutputWithContext(ctx context.Context) InstanceVolumeSecretItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeSecretItemOutput)
+}
+
+// InstanceVolumeSecretItemArrayInput is an input type that accepts InstanceVolumeSecretItemArray and InstanceVolumeSecretItemArrayOutput values.
+// You can construct a concrete instance of `InstanceVolumeSecretItemArrayInput` via:
+//
+//	InstanceVolumeSecretItemArray{ InstanceVolumeSecretItemArgs{...} }
+type InstanceVolumeSecretItemArrayInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeSecretItemArrayOutput() InstanceVolumeSecretItemArrayOutput
+	ToInstanceVolumeSecretItemArrayOutputWithContext(context.Context) InstanceVolumeSecretItemArrayOutput
+}
+
+type InstanceVolumeSecretItemArray []InstanceVolumeSecretItemInput
+
+func (InstanceVolumeSecretItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceVolumeSecretItem)(nil)).Elem()
+}
+
+func (i InstanceVolumeSecretItemArray) ToInstanceVolumeSecretItemArrayOutput() InstanceVolumeSecretItemArrayOutput {
+	return i.ToInstanceVolumeSecretItemArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeSecretItemArray) ToInstanceVolumeSecretItemArrayOutputWithContext(ctx context.Context) InstanceVolumeSecretItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeSecretItemArrayOutput)
+}
+
+type InstanceVolumeSecretItemOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeSecretItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolumeSecretItem)(nil)).Elem()
+}
+
+func (o InstanceVolumeSecretItemOutput) ToInstanceVolumeSecretItemOutput() InstanceVolumeSecretItemOutput {
+	return o
+}
+
+func (o InstanceVolumeSecretItemOutput) ToInstanceVolumeSecretItemOutputWithContext(ctx context.Context) InstanceVolumeSecretItemOutput {
+	return o
+}
+
+// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+func (o InstanceVolumeSecretItemOutput) Mode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceVolumeSecretItem) *int { return v.Mode }).(pulumi.IntPtrOutput)
+}
+
+// The relative path of the secret in the container.
+func (o InstanceVolumeSecretItemOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceVolumeSecretItem) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+func (o InstanceVolumeSecretItemOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceVolumeSecretItem) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type InstanceVolumeSecretItemArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeSecretItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceVolumeSecretItem)(nil)).Elem()
+}
+
+func (o InstanceVolumeSecretItemArrayOutput) ToInstanceVolumeSecretItemArrayOutput() InstanceVolumeSecretItemArrayOutput {
+	return o
+}
+
+func (o InstanceVolumeSecretItemArrayOutput) ToInstanceVolumeSecretItemArrayOutputWithContext(ctx context.Context) InstanceVolumeSecretItemArrayOutput {
+	return o
+}
+
+func (o InstanceVolumeSecretItemArrayOutput) Index(i pulumi.IntInput) InstanceVolumeSecretItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceVolumeSecretItem {
+		return vs[0].([]InstanceVolumeSecretItem)[vs[1].(int)]
+	}).(InstanceVolumeSecretItemOutput)
+}
+
 type JobBinaryAuthorization struct {
 	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification *string `pulumi:"breakglassJustification"`
@@ -33997,6 +38397,62 @@ func (o GetWorkerPoolTerminalConditionArrayOutput) Index(i pulumi.IntInput) GetW
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConditionInput)(nil)).Elem(), InstanceConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConditionArrayInput)(nil)).Elem(), InstanceConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerInput)(nil)).Elem(), InstanceContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerArrayInput)(nil)).Elem(), InstanceContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerEnvInput)(nil)).Elem(), InstanceContainerEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerEnvArrayInput)(nil)).Elem(), InstanceContainerEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerEnvValueSourceInput)(nil)).Elem(), InstanceContainerEnvValueSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerEnvValueSourcePtrInput)(nil)).Elem(), InstanceContainerEnvValueSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerEnvValueSourceSecretKeyRefInput)(nil)).Elem(), InstanceContainerEnvValueSourceSecretKeyRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerEnvValueSourceSecretKeyRefPtrInput)(nil)).Elem(), InstanceContainerEnvValueSourceSecretKeyRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerLivenessProbeInput)(nil)).Elem(), InstanceContainerLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerLivenessProbePtrInput)(nil)).Elem(), InstanceContainerLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerLivenessProbeGrpcInput)(nil)).Elem(), InstanceContainerLivenessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerLivenessProbeGrpcPtrInput)(nil)).Elem(), InstanceContainerLivenessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerLivenessProbeHttpGetInput)(nil)).Elem(), InstanceContainerLivenessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerLivenessProbeHttpGetPtrInput)(nil)).Elem(), InstanceContainerLivenessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), InstanceContainerLivenessProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), InstanceContainerLivenessProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerPortInput)(nil)).Elem(), InstanceContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerPortArrayInput)(nil)).Elem(), InstanceContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerResourcesInput)(nil)).Elem(), InstanceContainerResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerResourcesPtrInput)(nil)).Elem(), InstanceContainerResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStartupProbeInput)(nil)).Elem(), InstanceContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStartupProbePtrInput)(nil)).Elem(), InstanceContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStartupProbeGrpcInput)(nil)).Elem(), InstanceContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStartupProbeGrpcPtrInput)(nil)).Elem(), InstanceContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStartupProbeHttpGetInput)(nil)).Elem(), InstanceContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), InstanceContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), InstanceContainerStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), InstanceContainerStartupProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStartupProbeTcpSocketInput)(nil)).Elem(), InstanceContainerStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStartupProbeTcpSocketPtrInput)(nil)).Elem(), InstanceContainerStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStatusInput)(nil)).Elem(), InstanceContainerStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerStatusArrayInput)(nil)).Elem(), InstanceContainerStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerVolumeMountInput)(nil)).Elem(), InstanceContainerVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceContainerVolumeMountArrayInput)(nil)).Elem(), InstanceContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionPtrInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionPtrInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTerminalConditionInput)(nil)).Elem(), InstanceTerminalConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTerminalConditionArrayInput)(nil)).Elem(), InstanceTerminalConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeInput)(nil)).Elem(), InstanceVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeArrayInput)(nil)).Elem(), InstanceVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeCloudSqlInstanceInput)(nil)).Elem(), InstanceVolumeCloudSqlInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeCloudSqlInstancePtrInput)(nil)).Elem(), InstanceVolumeCloudSqlInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeEmptyDirInput)(nil)).Elem(), InstanceVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeEmptyDirPtrInput)(nil)).Elem(), InstanceVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeGcsInput)(nil)).Elem(), InstanceVolumeGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeGcsPtrInput)(nil)).Elem(), InstanceVolumeGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeNfsInput)(nil)).Elem(), InstanceVolumeNfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeNfsPtrInput)(nil)).Elem(), InstanceVolumeNfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeSecretInput)(nil)).Elem(), InstanceVolumeSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeSecretPtrInput)(nil)).Elem(), InstanceVolumeSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeSecretItemInput)(nil)).Elem(), InstanceVolumeSecretItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeSecretItemArrayInput)(nil)).Elem(), InstanceVolumeSecretItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobBinaryAuthorizationInput)(nil)).Elem(), JobBinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobBinaryAuthorizationPtrInput)(nil)).Elem(), JobBinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionInput)(nil)).Elem(), JobConditionArgs{})
@@ -34453,6 +38909,62 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateVpcAccessNetworkInterfaceArrayInput)(nil)).Elem(), GetWorkerPoolTemplateVpcAccessNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTerminalConditionInput)(nil)).Elem(), GetWorkerPoolTerminalConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTerminalConditionArrayInput)(nil)).Elem(), GetWorkerPoolTerminalConditionArray{})
+	pulumi.RegisterOutputType(InstanceConditionOutput{})
+	pulumi.RegisterOutputType(InstanceConditionArrayOutput{})
+	pulumi.RegisterOutputType(InstanceContainerOutput{})
+	pulumi.RegisterOutputType(InstanceContainerArrayOutput{})
+	pulumi.RegisterOutputType(InstanceContainerEnvOutput{})
+	pulumi.RegisterOutputType(InstanceContainerEnvArrayOutput{})
+	pulumi.RegisterOutputType(InstanceContainerEnvValueSourceOutput{})
+	pulumi.RegisterOutputType(InstanceContainerEnvValueSourcePtrOutput{})
+	pulumi.RegisterOutputType(InstanceContainerEnvValueSourceSecretKeyRefOutput{})
+	pulumi.RegisterOutputType(InstanceContainerEnvValueSourceSecretKeyRefPtrOutput{})
+	pulumi.RegisterOutputType(InstanceContainerLivenessProbeOutput{})
+	pulumi.RegisterOutputType(InstanceContainerLivenessProbePtrOutput{})
+	pulumi.RegisterOutputType(InstanceContainerLivenessProbeGrpcOutput{})
+	pulumi.RegisterOutputType(InstanceContainerLivenessProbeGrpcPtrOutput{})
+	pulumi.RegisterOutputType(InstanceContainerLivenessProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(InstanceContainerLivenessProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(InstanceContainerLivenessProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(InstanceContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(InstanceContainerPortOutput{})
+	pulumi.RegisterOutputType(InstanceContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(InstanceContainerResourcesOutput{})
+	pulumi.RegisterOutputType(InstanceContainerResourcesPtrOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStartupProbeOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStartupProbePtrOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStartupProbeGrpcOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStartupProbeGrpcPtrOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStartupProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStartupProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStartupProbeTcpSocketPtrOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStatusOutput{})
+	pulumi.RegisterOutputType(InstanceContainerStatusArrayOutput{})
+	pulumi.RegisterOutputType(InstanceContainerVolumeMountOutput{})
+	pulumi.RegisterOutputType(InstanceContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(InstanceIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(InstanceIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(InstanceIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(InstanceTerminalConditionOutput{})
+	pulumi.RegisterOutputType(InstanceTerminalConditionArrayOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeCloudSqlInstanceOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeCloudSqlInstancePtrOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeEmptyDirOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeEmptyDirPtrOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeGcsOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeGcsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeNfsOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeNfsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeSecretOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeSecretPtrOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeSecretItemOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeSecretItemArrayOutput{})
 	pulumi.RegisterOutputType(JobBinaryAuthorizationOutput{})
 	pulumi.RegisterOutputType(JobBinaryAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(JobConditionOutput{})

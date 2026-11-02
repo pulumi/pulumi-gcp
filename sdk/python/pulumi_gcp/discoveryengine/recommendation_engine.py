@@ -472,6 +472,7 @@ class RecommendationEngine(pulumi.CustomResource):
                 "company_name": "test-company",
             })
         ```
+
         ### Discoveryengine Recommendationengine Media
 
         ```python
@@ -591,6 +592,7 @@ class RecommendationEngine(pulumi.CustomResource):
                 "company_name": "test-company",
             })
         ```
+
         ### Discoveryengine Recommendationengine Media
 
         ```python

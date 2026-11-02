@@ -44,6 +44,7 @@ import * as utilities from "../utilities";
  *     secretData: "secret-data",
  * });
  * ```
+ *
  * ### Secret Version Basic Write Only
  *
  * ```typescript
@@ -65,6 +66,7 @@ import * as utilities from "../utilities";
  *     secretDataWo: "secret-data-write-only",
  * });
  * ```
+ *
  * ### Secret Version Deletion Policy Abandon
  *
  * ```typescript
@@ -87,6 +89,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "ABANDON",
  * });
  * ```
+ *
  * ### Secret Version Deletion Policy Disable
  *
  * ```typescript
@@ -109,6 +112,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DISABLE",
  * });
  * ```
+ *
  * ### Secret Version With Base64 String Secret Data
  *
  * ```typescript
@@ -134,6 +138,7 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ *
  * ### Secret Version With Base64 String Secret Data Write Only
  *
  * ```typescript

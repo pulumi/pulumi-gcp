@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Private Connection Force Delete
     /// 
     /// ```csharp
@@ -87,6 +88,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Private Connection Psc Interface
     /// 
     /// ```csharp

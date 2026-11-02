@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class RegionDiskDiskEncryptionKey {
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     private @Nullable String kmsKeyName;
@@ -75,6 +76,7 @@ public final class RegionDiskDiskEncryptionKey {
     private RegionDiskDiskEncryptionKey() {}
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     public Optional<String> kmsKeyName() {

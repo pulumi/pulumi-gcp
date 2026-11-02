@@ -95,6 +95,7 @@ public final class ServiceLbPoliciesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (Optional, Beta)
      * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      * 
@@ -103,7 +104,8 @@ public final class ServiceLbPoliciesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<ServiceLbPoliciesIsolationConfigArgs> isolationConfig;
 
     /**
-     * @return Configuration to provide isolation support for the associated Backend Service.
+     * @return (Optional, Beta)
+     * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      * 
      */
@@ -326,7 +328,8 @@ public final class ServiceLbPoliciesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isolationConfig Configuration to provide isolation support for the associated Backend Service.
+         * @param isolationConfig (Optional, Beta)
+         * Configuration to provide isolation support for the associated Backend Service.
          * Structure is documented below.
          * 
          * @return builder
@@ -338,7 +341,8 @@ public final class ServiceLbPoliciesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isolationConfig Configuration to provide isolation support for the associated Backend Service.
+         * @param isolationConfig (Optional, Beta)
+         * Configuration to provide isolation support for the associated Backend Service.
          * Structure is documented below.
          * 
          * @return builder

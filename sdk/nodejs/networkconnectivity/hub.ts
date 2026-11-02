@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Hub With Export Psc
  *
  * ```typescript
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  *     exportPsc: true,
  * });
  * ```
+ *
  * ### Network Connectivity Hub With Export Psc Config
  *
  * ```typescript
@@ -59,6 +61,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Hub Mesh Topology
  *
  * ```typescript
@@ -73,6 +76,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Hub Star Topology
  *
  * ```typescript
@@ -88,6 +92,7 @@ import * as utilities from "../utilities";
  *     presetTopology: "STAR",
  * });
  * ```
+ *
  * ### Network Connectivity Hub Policy Mode
  *
  * ```typescript

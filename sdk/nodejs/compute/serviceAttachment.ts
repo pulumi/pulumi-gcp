@@ -87,6 +87,7 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
+ *
  * ### Service Attachment Nat Ips
  *
  * ```typescript
@@ -143,6 +144,7 @@ import * as utilities from "../utilities";
  *     targetService: pscIlbTargetService.id,
  * });
  * ```
+ *
  * ### Service Attachment Explicit Projects
  *
  * ```typescript
@@ -221,6 +223,7 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
+ *
  * ### Service Attachment Explicit Networks
  *
  * ```typescript
@@ -305,6 +308,7 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
+ *
  * ### Service Attachment Reconcile Connections
  *
  * ```typescript
@@ -370,6 +374,7 @@ import * as utilities from "../utilities";
  *     reconcileConnections: false,
  * });
  * ```
+ *
  * ### Service Attachment Tunneling Config
  *
  * ```typescript
@@ -429,6 +434,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Service Attachment Cross Region Ilb
  *
  * ```typescript
@@ -660,6 +666,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     declare public readonly sendPropagatedConnectionLimitIfZero: pulumi.Output<boolean | undefined>;
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    declare public /*out*/ readonly serviceAttachmentId: pulumi.Output<number>;
+    /**
      * NOTE: This field is temporarily non-functional due to an underlying API issue.
      * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
      * [If true, show NAT IPs of all connected endpoints.]
@@ -708,6 +718,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["sendPropagatedConnectionLimitIfZero"] = state?.sendPropagatedConnectionLimitIfZero;
+            resourceInputs["serviceAttachmentId"] = state?.serviceAttachmentId;
             resourceInputs["showNatIps"] = state?.showNatIps;
             resourceInputs["targetService"] = state?.targetService;
             resourceInputs["tunnelingConfig"] = state?.tunnelingConfig;
@@ -747,6 +758,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["pscServiceAttachmentIds"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serviceAttachmentId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceAttachment.__pulumiType, name, resourceInputs, opts);
@@ -866,6 +878,10 @@ export interface ServiceAttachmentState {
      * Defaults to false.
      */
     sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean | undefined>;
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    serviceAttachmentId?: pulumi.Input<number | undefined>;
     /**
      * NOTE: This field is temporarily non-functional due to an underlying API issue.
      * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.

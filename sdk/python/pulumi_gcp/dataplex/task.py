@@ -678,6 +678,7 @@ class Task(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Task Spark
 
         ```python
@@ -734,6 +735,7 @@ class Task(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Task Notebook
 
         ```python
@@ -891,6 +893,7 @@ class Task(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Task Spark
 
         ```python
@@ -947,6 +950,7 @@ class Task(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Task Notebook
 
         ```python

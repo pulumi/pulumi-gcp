@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Gemini.Outputs
     {
         /// <summary>
         /// Required. The ordered list of paths within the table schema.
-        /// 
-        /// &lt;a name="NestedDataAnalyticsAgentLastPublishedContext"&gt;&lt;/a&gt;The `LastPublishedContext` block contains:
         /// </summary>
         public readonly ImmutableArray<string> Paths;
         /// <summary>

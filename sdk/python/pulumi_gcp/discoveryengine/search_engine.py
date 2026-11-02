@@ -35,6 +35,7 @@ class SearchEngineArgs:
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  knowledge_graph_config: pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigArgs']] = None,
+                 model_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -69,6 +70,15 @@ class SearchEngineArgs:
                protected by the KMS key, as indicated in the cmek_config field.
         :param pulumi.Input['SearchEngineKnowledgeGraphConfigArgs'] knowledge_graph_config: Configurations for the Knowledge Graph.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] model_configs: Maps a model name to its specific configuration for this engine. This
+               allows admin users to turn on/off individual models. This only stores
+               models whose states are overridden by the admin. When the state is
+               unspecified, or `model_configs` is empty for this model, the system
+               decides if this model is available based on the default configuration.
+               For example, a preview model is disabled by default if the admin has not
+               chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+               `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+               for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] procurement_contact_emails: The emails of the procurement contacts.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -95,6 +105,8 @@ class SearchEngineArgs:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if knowledge_graph_config is not None:
             pulumi.set(__self__, "knowledge_graph_config", knowledge_graph_config)
+        if model_configs is not None:
+            pulumi.set(__self__, "model_configs", model_configs)
         if procurement_contact_emails is not None:
             pulumi.set(__self__, "procurement_contact_emails", procurement_contact_emails)
         if project is not None:
@@ -284,6 +296,26 @@ class SearchEngineArgs:
         pulumi.set(self, "knowledge_graph_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="modelConfigs")
+    def model_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Maps a model name to its specific configuration for this engine. This
+        allows admin users to turn on/off individual models. This only stores
+        models whose states are overridden by the admin. When the state is
+        unspecified, or `model_configs` is empty for this model, the system
+        decides if this model is available based on the default configuration.
+        For example, a preview model is disabled by default if the admin has not
+        chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+        `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+        for details.
+        """
+        return pulumi.get(self, "model_configs")
+
+    @model_configs.setter
+    def model_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "model_configs", value)
+
+    @_builtins.property
     @pulumi.getter(name="procurementContactEmails")
     def procurement_contact_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -326,6 +358,7 @@ class _SearchEngineState:
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  knowledge_graph_config: pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -362,6 +395,15 @@ class _SearchEngineState:
         :param pulumi.Input['SearchEngineKnowledgeGraphConfigArgs'] knowledge_graph_config: Configurations for the Knowledge Graph.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Location.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] model_configs: Maps a model name to its specific configuration for this engine. This
+               allows admin users to turn on/off individual models. This only stores
+               models whose states are overridden by the admin. When the state is
+               unspecified, or `model_configs` is empty for this model, the system
+               decides if this model is available based on the default configuration.
+               For example, a preview model is disabled by default if the admin has not
+               chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+               `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+               for details.
         :param pulumi.Input[_builtins.str] name: The unique full resource name of the search engine. Values are of the format
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                This field must be a UTF-8 encoded string with a length limit of 1024
@@ -401,6 +443,8 @@ class _SearchEngineState:
             pulumi.set(__self__, "knowledge_graph_config", knowledge_graph_config)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if model_configs is not None:
+            pulumi.set(__self__, "model_configs", model_configs)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if procurement_contact_emails is not None:
@@ -595,6 +639,26 @@ class _SearchEngineState:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="modelConfigs")
+    def model_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Maps a model name to its specific configuration for this engine. This
+        allows admin users to turn on/off individual models. This only stores
+        models whose states are overridden by the admin. When the state is
+        unspecified, or `model_configs` is empty for this model, the system
+        decides if this model is available based on the default configuration.
+        For example, a preview model is disabled by default if the admin has not
+        chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+        `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+        for details.
+        """
+        return pulumi.get(self, "model_configs")
+
+    @model_configs.setter
+    def model_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "model_configs", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -679,6 +743,7 @@ class SearchEngine(pulumi.CustomResource):
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']]] = None,
@@ -716,6 +781,7 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids=[basic.data_store_id],
             search_engine_config={})
         ```
+
         ### Discoveryengine Searchengine Agentspace Basic
 
         ```python
@@ -797,6 +863,15 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']] knowledge_graph_config: Configurations for the Knowledge Graph.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Location.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] model_configs: Maps a model name to its specific configuration for this engine. This
+               allows admin users to turn on/off individual models. This only stores
+               models whose states are overridden by the admin. When the state is
+               unspecified, or `model_configs` is empty for this model, the system
+               decides if this model is available based on the default configuration.
+               For example, a preview model is disabled by default if the admin has not
+               chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+               `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+               for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] procurement_contact_emails: The emails of the procurement contacts.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -842,6 +917,7 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids=[basic.data_store_id],
             search_engine_config={})
         ```
+
         ### Discoveryengine Searchengine Agentspace Basic
 
         ```python
@@ -922,6 +998,7 @@ class SearchEngine(pulumi.CustomResource):
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']]] = None,
@@ -957,6 +1034,7 @@ class SearchEngine(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["model_configs"] = model_configs
             __props__.__dict__["procurement_contact_emails"] = procurement_contact_emails
             __props__.__dict__["project"] = project
             if search_engine_config is None and not opts.urn:
@@ -989,6 +1067,7 @@ class SearchEngine(pulumi.CustomResource):
             kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
             knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
+            model_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1029,6 +1108,15 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']] knowledge_graph_config: Configurations for the Knowledge Graph.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Location.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] model_configs: Maps a model name to its specific configuration for this engine. This
+               allows admin users to turn on/off individual models. This only stores
+               models whose states are overridden by the admin. When the state is
+               unspecified, or `model_configs` is empty for this model, the system
+               decides if this model is available based on the default configuration.
+               For example, a preview model is disabled by default if the admin has not
+               chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+               `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+               for details.
         :param pulumi.Input[_builtins.str] name: The unique full resource name of the search engine. Values are of the format
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                This field must be a UTF-8 encoded string with a length limit of 1024
@@ -1058,6 +1146,7 @@ class SearchEngine(pulumi.CustomResource):
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["knowledge_graph_config"] = knowledge_graph_config
         __props__.__dict__["location"] = location
+        __props__.__dict__["model_configs"] = model_configs
         __props__.__dict__["name"] = name
         __props__.__dict__["procurement_contact_emails"] = procurement_contact_emails
         __props__.__dict__["project"] = project
@@ -1190,6 +1279,22 @@ class SearchEngine(pulumi.CustomResource):
         Location.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="modelConfigs")
+    def model_configs(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        Maps a model name to its specific configuration for this engine. This
+        allows admin users to turn on/off individual models. This only stores
+        models whose states are overridden by the admin. When the state is
+        unspecified, or `model_configs` is empty for this model, the system
+        decides if this model is available based on the default configuration.
+        For example, a preview model is disabled by default if the admin has not
+        chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+        `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+        for details.
+        """
+        return pulumi.get(self, "model_configs")
 
     @_builtins.property
     @pulumi.getter

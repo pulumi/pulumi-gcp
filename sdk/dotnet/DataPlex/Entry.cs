@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Entry Full
     /// 
     /// ```csharp
@@ -227,6 +228,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Entry Bigquery Table
     /// 
     /// ```csharp
@@ -389,6 +391,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Entry Glossary Term
     /// 
     /// ```csharp

@@ -432,6 +432,7 @@ class ApiHubInstance(pulumi.CustomResource):
                 "disable_search": True,
             })
         ```
+
         ### Apihub Api Hub Instance Full
 
         ```python
@@ -515,6 +516,7 @@ class ApiHubInstance(pulumi.CustomResource):
                 "disable_search": True,
             })
         ```
+
         ### Apihub Api Hub Instance Full
 
         ```python

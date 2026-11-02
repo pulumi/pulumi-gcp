@@ -57,6 +57,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Feed Gcs
 //
 // ```go
@@ -168,6 +169,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Feed Https Push
 //
 // ```go

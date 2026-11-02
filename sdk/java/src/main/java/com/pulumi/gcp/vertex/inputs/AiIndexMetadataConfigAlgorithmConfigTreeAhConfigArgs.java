@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,25 @@ import javax.annotation.Nullable;
 public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs Empty = new AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs();
+
+    /**
+     * The default fraction of leaf nodes that any query may be searched. Must be in
+     * range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+     * This value can only be set when creating the index.
+     * 
+     */
+    @Import(name="fractionLeafNodesToSearch")
+    private @Nullable Output<Double> fractionLeafNodesToSearch;
+
+    /**
+     * @return The default fraction of leaf nodes that any query may be searched. Must be in
+     * range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+     * This value can only be set when creating the index.
+     * 
+     */
+    public Optional<Output<Double>> fractionLeafNodesToSearch() {
+        return Optional.ofNullable(this.fractionLeafNodesToSearch);
+    }
 
     /**
      * Number of embeddings on each leaf node. The default value is 1000 if not set.
@@ -31,18 +51,32 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
     }
 
     /**
+     * (Optional, Deprecated)
      * The default percentage of leaf nodes that any query may be searched. Must be in
      * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
      * 
+     * &gt; **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * 
+     * @deprecated
+     * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * 
      */
+    @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
     @Import(name="leafNodesToSearchPercent")
     private @Nullable Output<Integer> leafNodesToSearchPercent;
 
     /**
-     * @return The default percentage of leaf nodes that any query may be searched. Must be in
+     * @return (Optional, Deprecated)
+     * The default percentage of leaf nodes that any query may be searched. Must be in
      * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
      * 
+     * &gt; **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * 
+     * @deprecated
+     * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * 
      */
+    @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
     public Optional<Output<Integer>> leafNodesToSearchPercent() {
         return Optional.ofNullable(this.leafNodesToSearchPercent);
     }
@@ -50,6 +84,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
     private AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs() {}
 
     private AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs $) {
+        this.fractionLeafNodesToSearch = $.fractionLeafNodesToSearch;
         this.leafNodeEmbeddingCount = $.leafNodeEmbeddingCount;
         this.leafNodesToSearchPercent = $.leafNodesToSearchPercent;
     }
@@ -70,6 +105,31 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
 
         public Builder(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs defaults) {
             $ = new AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param fractionLeafNodesToSearch The default fraction of leaf nodes that any query may be searched. Must be in
+         * range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+         * This value can only be set when creating the index.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fractionLeafNodesToSearch(@Nullable Output<Double> fractionLeafNodesToSearch) {
+            $.fractionLeafNodesToSearch = fractionLeafNodesToSearch;
+            return this;
+        }
+
+        /**
+         * @param fractionLeafNodesToSearch The default fraction of leaf nodes that any query may be searched. Must be in
+         * range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+         * This value can only be set when creating the index.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fractionLeafNodesToSearch(Double fractionLeafNodesToSearch) {
+            return fractionLeafNodesToSearch(Output.of(fractionLeafNodesToSearch));
         }
 
         /**
@@ -94,24 +154,38 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
         }
 
         /**
-         * @param leafNodesToSearchPercent The default percentage of leaf nodes that any query may be searched. Must be in
+         * @param leafNodesToSearchPercent (Optional, Deprecated)
+         * The default percentage of leaf nodes that any query may be searched. Must be in
          * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+         * 
+         * &gt; **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+         * 
          */
+        @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
         public Builder leafNodesToSearchPercent(@Nullable Output<Integer> leafNodesToSearchPercent) {
             $.leafNodesToSearchPercent = leafNodesToSearchPercent;
             return this;
         }
 
         /**
-         * @param leafNodesToSearchPercent The default percentage of leaf nodes that any query may be searched. Must be in
+         * @param leafNodesToSearchPercent (Optional, Deprecated)
+         * The default percentage of leaf nodes that any query may be searched. Must be in
          * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+         * 
+         * &gt; **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+         * 
          */
+        @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
         public Builder leafNodesToSearchPercent(Integer leafNodesToSearchPercent) {
             return leafNodesToSearchPercent(Output.of(leafNodesToSearchPercent));
         }

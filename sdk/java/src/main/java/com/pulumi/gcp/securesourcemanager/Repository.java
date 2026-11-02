@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Secure Source Manager Repository Initial Config
  * 
  * <pre>
@@ -123,6 +124,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Secure Source Manager Repository Service Account
  * 
  * <pre>
@@ -174,6 +176,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Secure Source Manager Repository Secret Scanning
  * 
  * <pre>
@@ -255,6 +258,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Secure Source Manager Repository Secret Scanning Default
  * 
  * <pre>

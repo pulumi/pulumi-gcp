@@ -81,6 +81,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Data Table With Optional Fields
  * 
  * <pre>

@@ -88,6 +88,7 @@ namespace Pulumi.Gcp.VectorSearch
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vectorsearch Index Dedicated
     /// 
     /// ```csharp
@@ -174,6 +175,78 @@ namespace Pulumi.Gcp.VectorSearch
     ///                 MaxReplicaCount = 5,
     ///             },
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Vectorsearch Index Skip Wait
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+    ///     // can take many hours; setting skip_wait = true returns as soon as the create
+    ///     // request has been accepted so short-lived credentials in your Pulumi runner
+    ///     // do not have to be extended to the full build duration. The index continues to
+    ///     // build asynchronously on the backend; subsequent pulumi up invocations
+    ///     // refresh state from the API.
+    ///     var parent = new Gcp.VectorSearch.Collection("parent", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         CollectionId = "example-skip-wait-collection",
+    ///         DisplayName = "Collection for a skip_wait ANN index",
+    ///         Description = "Parent collection for the skip_wait index example.",
+    ///         DataSchema = @"{
+    ///   \""type\"": \""object\"",
+    ///   \""properties\"": {
+    ///     \""title\"": {
+    ///       \""type\"": \""string\""
+    ///     },
+    ///     \""plot\"": {
+    ///       \""type\"": \""string\""
+    ///     }
+    ///   }
+    /// }
+    /// ",
+    ///         VectorSchemas = new[]
+    ///         {
+    ///             new Gcp.VectorSearch.Inputs.CollectionVectorSchemaArgs
+    ///             {
+    ///                 FieldName = "text_embedding",
+    ///                 DenseVector = new Gcp.VectorSearch.Inputs.CollectionVectorSchemaDenseVectorArgs
+    ///                 {
+    ///                     Dimensions = 768,
+    ///                     VertexEmbeddingConfig = new Gcp.VectorSearch.Inputs.CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs
+    ///                     {
+    ///                         ModelId = "textembedding-gecko@003",
+    ///                         TaskType = "RETRIEVAL_DOCUMENT",
+    ///                         TextTemplate = "Title: {title} ---- Plot: {plot}",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var example_skip_wait_index = new Gcp.VectorSearch.Index("example-skip-wait-index", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         CollectionId = parent.CollectionId,
+    ///         IndexId = "example-skip-wait-index",
+    ///         DisplayName = "Skip-wait ANN index",
+    ///         Description = "ScaNN index over text_embedding, created without waiting for the build to finish.",
+    ///         IndexField = "text_embedding",
+    ///         DistanceMetric = "DOT_PRODUCT",
+    ///         DenseScann = new Gcp.VectorSearch.Inputs.IndexDenseScannArgs
+    ///         {
+    ///             FeatureNormType = "UNIT_L2_NORM",
+    ///         },
+    ///         SkipWait = true,
     ///     });
     /// 
     /// });
@@ -321,6 +394,20 @@ namespace Pulumi.Gcp.VectorSearch
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to skip waiting for the index to be created. Building an ANN
+        /// index over a large collection can take several hours; setting `SkipWait`
+        /// to `True` causes Terraform to return as soon as the creation request is
+        /// accepted rather than blocking until the long-running build completes
+        /// (which can exceed CI/CD timeouts or short-lived Terraform runner
+        /// credentials). Leave this set to `False` (the default) if downstream
+        /// resources or workloads depend on the index being ready to serve queries
+        /// immediately after `pulumi up`, or if you want Terraform to fail
+        /// synchronously when an asynchronous index build fails.
+        /// </summary>
+        [Output("skipWait")]
+        public Output<bool?> SkipWait { get; private set; } = null!;
 
         /// <summary>
         /// The fields to push into the index to enable inline data retrieval.
@@ -495,6 +582,20 @@ namespace Pulumi.Gcp.VectorSearch
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Whether to skip waiting for the index to be created. Building an ANN
+        /// index over a large collection can take several hours; setting `SkipWait`
+        /// to `True` causes Terraform to return as soon as the creation request is
+        /// accepted rather than blocking until the long-running build completes
+        /// (which can exceed CI/CD timeouts or short-lived Terraform runner
+        /// credentials). Leave this set to `False` (the default) if downstream
+        /// resources or workloads depend on the index being ready to serve queries
+        /// immediately after `pulumi up`, or if you want Terraform to fail
+        /// synchronously when an asynchronous index build fails.
+        /// </summary>
+        [Input("skipWait")]
+        public Input<bool>? SkipWait { get; set; }
 
         [Input("storeFields")]
         private InputList<string>? _storeFields;
@@ -671,6 +772,20 @@ namespace Pulumi.Gcp.VectorSearch
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Whether to skip waiting for the index to be created. Building an ANN
+        /// index over a large collection can take several hours; setting `SkipWait`
+        /// to `True` causes Terraform to return as soon as the creation request is
+        /// accepted rather than blocking until the long-running build completes
+        /// (which can exceed CI/CD timeouts or short-lived Terraform runner
+        /// credentials). Leave this set to `False` (the default) if downstream
+        /// resources or workloads depend on the index being ready to serve queries
+        /// immediately after `pulumi up`, or if you want Terraform to fail
+        /// synchronously when an asynchronous index build fails.
+        /// </summary>
+        [Input("skipWait")]
+        public Input<bool>? SkipWait { get; set; }
 
         [Input("storeFields")]
         private InputList<string>? _storeFields;

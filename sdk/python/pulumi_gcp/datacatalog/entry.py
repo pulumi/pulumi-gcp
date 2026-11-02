@@ -601,6 +601,7 @@ class Entry(pulumi.CustomResource):
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
         ```
+
         ### Data Catalog Entry Fileset
 
         ```python
@@ -616,6 +617,7 @@ class Entry(pulumi.CustomResource):
                 "file_patterns": ["gs://fake_bucket/dir/*"],
             })
         ```
+
         ### Data Catalog Entry Full
 
         ```python
@@ -757,6 +759,7 @@ class Entry(pulumi.CustomResource):
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
         ```
+
         ### Data Catalog Entry Fileset
 
         ```python
@@ -772,6 +775,7 @@ class Entry(pulumi.CustomResource):
                 "file_patterns": ["gs://fake_bucket/dir/*"],
             })
         ```
+
         ### Data Catalog Entry Full
 
         ```python

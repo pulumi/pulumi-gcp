@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Wasm Plugin Basic Generic Repository
  *
  * ```typescript

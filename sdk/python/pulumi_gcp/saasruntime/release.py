@@ -232,6 +232,7 @@ class ReleaseArgs:
 class _ReleaseState:
     def __init__(__self__, *,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_template_components: pulumi.Input[Optional[Sequence[pulumi.Input['ReleaseApplicationTemplateComponentArgs']]]] = None,
                  blueprint: pulumi.Input[Optional['ReleaseBlueprintArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -260,6 +261,10 @@ class _ReleaseState:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ReleaseApplicationTemplateComponentArgs']]] application_template_components: Reference to a component and revision in a composite Application Design
+               Center ApplicationTemplate. Set by the service on Releases created by an
+               ApplicationTemplate import.
+               Structure is documented below.
         :param pulumi.Input['ReleaseBlueprintArgs'] blueprint: Blueprints are OCI Images that contain all of the artifacts needed to
                provision a unit. Metadata such as, type of the engine used to actuate the
                blueprint (e.g. terraform, helm etc) and version will come from the image
@@ -314,6 +319,8 @@ class _ReleaseState:
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if application_template_components is not None:
+            pulumi.set(__self__, "application_template_components", application_template_components)
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
         if create_time is not None:
@@ -369,6 +376,21 @@ class _ReleaseState:
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplateComponents")
+    def application_template_components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReleaseApplicationTemplateComponentArgs']]]]:
+        """
+        Reference to a component and revision in a composite Application Design
+        Center ApplicationTemplate. Set by the service on Releases created by an
+        ApplicationTemplate import.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "application_template_components")
+
+    @application_template_components.setter
+    def application_template_components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReleaseApplicationTemplateComponentArgs']]]]):
+        pulumi.set(self, "application_template_components", value)
 
     @_builtins.property
     @pulumi.getter
@@ -863,6 +885,7 @@ class Release(pulumi.CustomResource):
             if unit_kind is None and not opts.urn:
                 raise TypeError("Missing required property 'unit_kind'")
             __props__.__dict__["unit_kind"] = unit_kind
+            __props__.__dict__["application_template_components"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["effective_labels"] = None
@@ -886,6 +909,7 @@ class Release(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            application_template_components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseApplicationTemplateComponentArgs', 'ReleaseApplicationTemplateComponentArgsDict', 'outputs.ReleaseApplicationTemplateComponent']]]]] = None,
             blueprint: pulumi.Input[Optional[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict', 'outputs.ReleaseBlueprint']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -918,6 +942,10 @@ class Release(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReleaseApplicationTemplateComponentArgs', 'ReleaseApplicationTemplateComponentArgsDict', 'outputs.ReleaseApplicationTemplateComponent']]]] application_template_components: Reference to a component and revision in a composite Application Design
+               Center ApplicationTemplate. Set by the service on Releases created by an
+               ApplicationTemplate import.
+               Structure is documented below.
         :param pulumi.Input[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict', 'outputs.ReleaseBlueprint']] blueprint: Blueprints are OCI Images that contain all of the artifacts needed to
                provision a unit. Metadata such as, type of the engine used to actuate the
                blueprint (e.g. terraform, helm etc) and version will come from the image
@@ -975,6 +1003,7 @@ class Release(pulumi.CustomResource):
         __props__ = _ReleaseState.__new__(_ReleaseState)
 
         __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["application_template_components"] = application_template_components
         __props__.__dict__["blueprint"] = blueprint
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1008,6 +1037,17 @@ class Release(pulumi.CustomResource):
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplateComponents")
+    def application_template_components(self) -> pulumi.Output[Sequence['outputs.ReleaseApplicationTemplateComponent']]:
+        """
+        Reference to a component and revision in a composite Application Design
+        Center ApplicationTemplate. Set by the service on Releases created by an
+        ApplicationTemplate import.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "application_template_components")
 
     @_builtins.property
     @pulumi.getter

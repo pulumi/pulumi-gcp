@@ -812,6 +812,7 @@ class Stream(pulumi.CustomResource):
             customer_managed_encryption_key="kms-name",
             opts = pulumi.ResourceOptions(depends_on=[key_user]))
         ```
+
         ### Datastream Stream Postgresql
 
         ```python
@@ -894,6 +895,7 @@ class Stream(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Stream Oracle
 
         ```python
@@ -976,6 +978,7 @@ class Stream(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Stream Sql Server
 
         ```python
@@ -1065,6 +1068,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Sql Server Change Tables
 
         ```python
@@ -1154,6 +1158,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Mysql Gtid
 
         ```python
@@ -1243,6 +1248,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
         ```python
@@ -1330,6 +1336,7 @@ class Stream(pulumi.CustomResource):
             instance=instance.name,
             name="db")
         ```
+
         ### Datastream Stream Bigquery
 
         ```python
@@ -1421,6 +1428,7 @@ class Stream(pulumi.CustomResource):
             backfill_none={},
             opts = pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
+
         ### Datastream Stream Bigquery Cross Project Source Hierachy
 
         ```python
@@ -1525,6 +1533,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Bigquery Append Only
 
         ```python
@@ -1610,6 +1619,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Bigquery Blmt
 
         ```python
@@ -1718,6 +1728,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Rule Sets Bigquery
 
         ```python
@@ -1799,6 +1810,7 @@ class Stream(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Datastream Stream Mongodb
 
         ```python
@@ -2089,6 +2101,7 @@ class Stream(pulumi.CustomResource):
             customer_managed_encryption_key="kms-name",
             opts = pulumi.ResourceOptions(depends_on=[key_user]))
         ```
+
         ### Datastream Stream Postgresql
 
         ```python
@@ -2171,6 +2184,7 @@ class Stream(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Stream Oracle
 
         ```python
@@ -2253,6 +2267,7 @@ class Stream(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Stream Sql Server
 
         ```python
@@ -2342,6 +2357,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Sql Server Change Tables
 
         ```python
@@ -2431,6 +2447,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Mysql Gtid
 
         ```python
@@ -2520,6 +2537,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
         ```python
@@ -2607,6 +2625,7 @@ class Stream(pulumi.CustomResource):
             instance=instance.name,
             name="db")
         ```
+
         ### Datastream Stream Bigquery
 
         ```python
@@ -2698,6 +2717,7 @@ class Stream(pulumi.CustomResource):
             backfill_none={},
             opts = pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
+
         ### Datastream Stream Bigquery Cross Project Source Hierachy
 
         ```python
@@ -2802,6 +2822,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Bigquery Append Only
 
         ```python
@@ -2887,6 +2908,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Bigquery Blmt
 
         ```python
@@ -2995,6 +3017,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+
         ### Datastream Stream Rule Sets Bigquery
 
         ```python
@@ -3076,6 +3099,7 @@ class Stream(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Datastream Stream Mongodb
 
         ```python

@@ -118,6 +118,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Data Catalog Entry Group Tag
 //
 // ```go
@@ -219,6 +220,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Data Catalog Entry Tag Full
 //
 // ```go

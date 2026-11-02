@@ -71,6 +71,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkeonprem Vmware Node Pool Full
  *
  * ```typescript

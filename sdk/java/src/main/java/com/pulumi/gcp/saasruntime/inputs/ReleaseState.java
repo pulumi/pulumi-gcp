@@ -5,6 +5,7 @@ package com.pulumi.gcp.saasruntime.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.saasruntime.inputs.ReleaseApplicationTemplateComponentArgs;
 import com.pulumi.gcp.saasruntime.inputs.ReleaseBlueprintArgs;
 import com.pulumi.gcp.saasruntime.inputs.ReleaseInputVariableArgs;
 import com.pulumi.gcp.saasruntime.inputs.ReleaseInputVariableDefaultArgs;
@@ -45,6 +46,27 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
+    }
+
+    /**
+     * Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate. Set by the service on Releases created by an
+     * ApplicationTemplate import.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="applicationTemplateComponents")
+    private @Nullable Output<List<ReleaseApplicationTemplateComponentArgs>> applicationTemplateComponents;
+
+    /**
+     * @return Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate. Set by the service on Releases created by an
+     * ApplicationTemplate import.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ReleaseApplicationTemplateComponentArgs>>> applicationTemplateComponents() {
+        return Optional.ofNullable(this.applicationTemplateComponents);
     }
 
     /**
@@ -400,6 +422,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
 
     private ReleaseState(ReleaseState $) {
         this.annotations = $.annotations;
+        this.applicationTemplateComponents = $.applicationTemplateComponents;
         this.blueprint = $.blueprint;
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
@@ -468,6 +491,46 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param applicationTemplateComponents Reference to a component and revision in a composite Application Design
+         * Center ApplicationTemplate. Set by the service on Releases created by an
+         * ApplicationTemplate import.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationTemplateComponents(@Nullable Output<List<ReleaseApplicationTemplateComponentArgs>> applicationTemplateComponents) {
+            $.applicationTemplateComponents = applicationTemplateComponents;
+            return this;
+        }
+
+        /**
+         * @param applicationTemplateComponents Reference to a component and revision in a composite Application Design
+         * Center ApplicationTemplate. Set by the service on Releases created by an
+         * ApplicationTemplate import.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationTemplateComponents(List<ReleaseApplicationTemplateComponentArgs> applicationTemplateComponents) {
+            return applicationTemplateComponents(Output.of(applicationTemplateComponents));
+        }
+
+        /**
+         * @param applicationTemplateComponents Reference to a component and revision in a composite Application Design
+         * Center ApplicationTemplate. Set by the service on Releases created by an
+         * ApplicationTemplate import.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationTemplateComponents(ReleaseApplicationTemplateComponentArgs... applicationTemplateComponents) {
+            return applicationTemplateComponents(List.of(applicationTemplateComponents));
         }
 
         /**

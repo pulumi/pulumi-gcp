@@ -55,6 +55,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Network Endpoint Group Cloudrun
  *
  * ```typescript
@@ -86,6 +87,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Network Endpoint Group Appengine
  *
  * ```typescript
@@ -156,6 +158,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Network Endpoint Group Appengine Empty
  *
  * ```typescript
@@ -170,6 +173,7 @@ import * as utilities from "../utilities";
  *     appEngine: {},
  * });
  * ```
+ *
  * ### Region Network Endpoint Group Psc
  *
  * ```typescript
@@ -183,6 +187,7 @@ import * as utilities from "../utilities";
  *     pscTargetService: "asia-northeast3-cloudkms.googleapis.com",
  * });
  * ```
+ *
  * ### Region Network Endpoint Group Psc Service Attachment
  *
  * ```typescript
@@ -249,6 +254,7 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.selfLink,
  * });
  * ```
+ *
  * ### Region Network Endpoint Group Internet Ip Port
  *
  * ```typescript
@@ -263,6 +269,7 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_IP_PORT",
  * });
  * ```
+ *
  * ### Region Network Endpoint Group Internet Fqdn Port
  *
  * ```typescript
@@ -277,6 +284,7 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  * });
  * ```
+ *
  * ### Region Network Endpoint Group Portmap
  *
  * ```typescript

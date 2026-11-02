@@ -113,6 +113,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gke Hub Rollout Sequence Update
     /// 
     /// ```csharp
@@ -220,6 +221,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gke Hub Rollout Sequence User Triggered Create
     /// 
     /// ```csharp
@@ -316,7 +318,7 @@ namespace Pulumi.Gcp.GkeHub
     ///         },
     ///         ResourceLabels = 
     ///         {
-    ///             { "rs_test_cluster", "tf-test-_90221" },
+    ///             { "rs_test_cluster", "tf-test-_25601" },
     ///         },
     ///         Fleet = new Gcp.Container.Inputs.ClusterFleetArgs
     ///         {
@@ -338,7 +340,7 @@ namespace Pulumi.Gcp.GkeHub
     ///         MinControlPlaneVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion?.REGULAR),
     ///         IgnoredClustersSelector = new Gcp.GkeHub.Inputs.RolloutSequenceIgnoredClustersSelectorArgs
     ///         {
-    ///             LabelSelector = "!(has(resource.labels.rs_test_cluster) &amp;&amp; resource.labels.rs_test_cluster == 'tf-test-_88987')",
+    ///             LabelSelector = "!(has(resource.labels.rs_test_cluster) &amp;&amp; resource.labels.rs_test_cluster == 'tf-test-_17228')",
     ///         },
     ///         Stages = new[]
     ///         {

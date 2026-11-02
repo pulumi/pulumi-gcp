@@ -65,6 +65,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Biglake Iceberg Catalog Primary Location
 //
 // ```go
@@ -105,6 +106,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Biglake Iceberg Catalog Biglake
 //
 // ```go
@@ -166,6 +168,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Biglake Iceberg Catalog Federated Unity
 //
 // ```go
@@ -205,6 +208,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Biglake Iceberg Catalog Federated Glue
 //
 // ```go

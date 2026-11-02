@@ -12,9 +12,6 @@ namespace Pulumi.Gcp.NetworkServices
     /// <summary>
     /// ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about ServiceLbPolicies, see:
     /// 
     /// * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
@@ -39,6 +36,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Service Lb Policies Advanced
     /// 
     /// ```csharp
@@ -80,6 +78,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Service Lb Policies Beta
     /// 
     /// ```csharp
@@ -126,6 +125,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Service Lb Policies Regional
     /// 
     /// ```csharp
@@ -232,6 +232,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<Outputs.ServiceLbPoliciesFailoverConfig?> FailoverConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configuration to provide isolation support for the associated Backend Service.
         /// Structure is documented below.
         /// </summary>
@@ -368,6 +369,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<Inputs.ServiceLbPoliciesFailoverConfigArgs>? FailoverConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configuration to provide isolation support for the associated Backend Service.
         /// Structure is documented below.
         /// </summary>
@@ -476,6 +478,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<Inputs.ServiceLbPoliciesFailoverConfigGetArgs>? FailoverConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configuration to provide isolation support for the associated Backend Service.
         /// Structure is documented below.
         /// </summary>

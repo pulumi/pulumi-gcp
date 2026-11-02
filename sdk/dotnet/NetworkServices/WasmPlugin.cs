@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Wasm Plugin Basic Generic Repository
     /// 
     /// ```csharp

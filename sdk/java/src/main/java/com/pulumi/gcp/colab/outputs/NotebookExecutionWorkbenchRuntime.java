@@ -4,27 +4,43 @@
 package com.pulumi.gcp.colab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.colab.outputs.NotebookExecutionWorkbenchRuntimeCustomContainerImage;
 import com.pulumi.gcp.colab.outputs.NotebookExecutionWorkbenchRuntimeVmImage;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NotebookExecutionWorkbenchRuntime {
     /**
-     * @return Custom Compute Engine VM image for the Workbench instance.
+     * @return Use a container image to start the workbench instance.
      * Structure is documented below.
      * 
      */
-    private NotebookExecutionWorkbenchRuntimeVmImage vmImage;
-
-    private NotebookExecutionWorkbenchRuntime() {}
+    private @Nullable NotebookExecutionWorkbenchRuntimeCustomContainerImage customContainerImage;
     /**
      * @return Custom Compute Engine VM image for the Workbench instance.
      * Structure is documented below.
      * 
      */
-    public NotebookExecutionWorkbenchRuntimeVmImage vmImage() {
-        return this.vmImage;
+    private @Nullable NotebookExecutionWorkbenchRuntimeVmImage vmImage;
+
+    private NotebookExecutionWorkbenchRuntime() {}
+    /**
+     * @return Use a container image to start the workbench instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<NotebookExecutionWorkbenchRuntimeCustomContainerImage> customContainerImage() {
+        return Optional.ofNullable(this.customContainerImage);
+    }
+    /**
+     * @return Custom Compute Engine VM image for the Workbench instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<NotebookExecutionWorkbenchRuntimeVmImage> vmImage() {
+        return Optional.ofNullable(this.vmImage);
     }
 
     public static Builder builder() {
@@ -36,23 +52,30 @@ public final class NotebookExecutionWorkbenchRuntime {
     }
     @CustomType.Builder
     public static final class Builder {
-        private NotebookExecutionWorkbenchRuntimeVmImage vmImage;
+        private @Nullable NotebookExecutionWorkbenchRuntimeCustomContainerImage customContainerImage;
+        private @Nullable NotebookExecutionWorkbenchRuntimeVmImage vmImage;
         public Builder() {}
         public Builder(NotebookExecutionWorkbenchRuntime defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customContainerImage = defaults.customContainerImage;
     	      this.vmImage = defaults.vmImage;
         }
 
         @CustomType.Setter
-        public Builder vmImage(NotebookExecutionWorkbenchRuntimeVmImage vmImage) {
-            if (vmImage == null) {
-              throw new MissingRequiredPropertyException("NotebookExecutionWorkbenchRuntime", "vmImage");
-            }
+        public Builder customContainerImage(@Nullable NotebookExecutionWorkbenchRuntimeCustomContainerImage customContainerImage) {
+
+            this.customContainerImage = customContainerImage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vmImage(@Nullable NotebookExecutionWorkbenchRuntimeVmImage vmImage) {
+
             this.vmImage = vmImage;
             return this;
         }
         public NotebookExecutionWorkbenchRuntime build() {
             final var _resultValue = new NotebookExecutionWorkbenchRuntime();
+            _resultValue.customContainerImage = customContainerImage;
             _resultValue.vmImage = vmImage;
             return _resultValue;
         }

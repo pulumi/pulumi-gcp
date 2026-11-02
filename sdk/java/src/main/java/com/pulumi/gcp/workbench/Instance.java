@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workbench Instance Basic Container
  * 
  * <pre>
@@ -118,6 +119,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workbench Instance Basic Gpu
  * 
  * <pre>
@@ -201,6 +203,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workbench Instance Labels Stopped
  * 
  * <pre>
@@ -255,6 +258,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Workbench Instance Full
  * 
  * <pre>
@@ -435,6 +439,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Workbench Instance Confidential Compute
  * 
  * <pre>
@@ -483,6 +488,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workbench Instance Euc
  * 
  * <pre>

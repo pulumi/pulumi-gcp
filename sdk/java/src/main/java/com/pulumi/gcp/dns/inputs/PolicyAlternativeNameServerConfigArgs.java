@@ -6,14 +6,34 @@ package com.pulumi.gcp.dns.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dns.inputs.PolicyAlternativeNameServerConfigOutboundEndpointArgs;
 import com.pulumi.gcp.dns.inputs.PolicyAlternativeNameServerConfigTargetNameServerArgs;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PolicyAlternativeNameServerConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PolicyAlternativeNameServerConfigArgs Empty = new PolicyAlternativeNameServerConfigArgs();
+
+    /**
+     * The list of outbound endpoints to use for queries.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="outboundEndpoints")
+    private @Nullable Output<List<PolicyAlternativeNameServerConfigOutboundEndpointArgs>> outboundEndpoints;
+
+    /**
+     * @return The list of outbound endpoints to use for queries.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<PolicyAlternativeNameServerConfigOutboundEndpointArgs>>> outboundEndpoints() {
+        return Optional.ofNullable(this.outboundEndpoints);
+    }
 
     /**
      * Sets an alternative name server for the associated networks. When specified,
@@ -39,6 +59,7 @@ public final class PolicyAlternativeNameServerConfigArgs extends com.pulumi.reso
     private PolicyAlternativeNameServerConfigArgs() {}
 
     private PolicyAlternativeNameServerConfigArgs(PolicyAlternativeNameServerConfigArgs $) {
+        this.outboundEndpoints = $.outboundEndpoints;
         this.targetNameServers = $.targetNameServers;
     }
 
@@ -58,6 +79,40 @@ public final class PolicyAlternativeNameServerConfigArgs extends com.pulumi.reso
 
         public Builder(PolicyAlternativeNameServerConfigArgs defaults) {
             $ = new PolicyAlternativeNameServerConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param outboundEndpoints The list of outbound endpoints to use for queries.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundEndpoints(@Nullable Output<List<PolicyAlternativeNameServerConfigOutboundEndpointArgs>> outboundEndpoints) {
+            $.outboundEndpoints = outboundEndpoints;
+            return this;
+        }
+
+        /**
+         * @param outboundEndpoints The list of outbound endpoints to use for queries.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundEndpoints(List<PolicyAlternativeNameServerConfigOutboundEndpointArgs> outboundEndpoints) {
+            return outboundEndpoints(Output.of(outboundEndpoints));
+        }
+
+        /**
+         * @param outboundEndpoints The list of outbound endpoints to use for queries.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundEndpoints(PolicyAlternativeNameServerConfigOutboundEndpointArgs... outboundEndpoints) {
+            return outboundEndpoints(List.of(outboundEndpoints));
         }
 
         /**

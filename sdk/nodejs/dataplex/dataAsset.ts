@@ -56,6 +56,7 @@ import * as utilities from "../utilities";
  *     resource: pulumi.interpolate`//bigquery.googleapis.com/projects/${exampleDataset.project}/datasets/${exampleDataset.datasetId}`,
  * });
  * ```
+ *
  * ### Dataplex Data Asset Full
  *
  * ```typescript

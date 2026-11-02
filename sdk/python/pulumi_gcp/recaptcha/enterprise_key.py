@@ -24,10 +24,12 @@ class EnterpriseKeyArgs:
                  display_name: pulumi.Input[_builtins.str],
                  android_settings: pulumi.Input[Optional['EnterpriseKeyAndroidSettingsArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 express_settings: pulumi.Input[Optional['EnterpriseKeyExpressSettingsArgs']] = None,
                  ios_settings: pulumi.Input[Optional['EnterpriseKeyIosSettingsArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  testing_options: pulumi.Input[Optional['EnterpriseKeyTestingOptionsArgs']] = None,
+                 universal_settings: pulumi.Input[Optional['EnterpriseKeyUniversalSettingsArgs']] = None,
                  waf_settings: pulumi.Input[Optional['EnterpriseKeyWafSettingsArgs']] = None,
                  web_settings: pulumi.Input[Optional['EnterpriseKeyWebSettingsArgs']] = None):
         """
@@ -43,6 +45,7 @@ class EnterpriseKeyArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input['EnterpriseKeyExpressSettingsArgs'] express_settings: Settings for keys that can be used by reCAPTCHA Express.
         :param pulumi.Input['EnterpriseKeyIosSettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
@@ -50,6 +53,7 @@ class EnterpriseKeyArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
+        :param pulumi.Input['EnterpriseKeyUniversalSettingsArgs'] universal_settings: Settings for keys that can be used by universal frontend integrations.
         :param pulumi.Input['EnterpriseKeyWafSettingsArgs'] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
         :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
         """
@@ -58,6 +62,8 @@ class EnterpriseKeyArgs:
             pulumi.set(__self__, "android_settings", android_settings)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if express_settings is not None:
+            pulumi.set(__self__, "express_settings", express_settings)
         if ios_settings is not None:
             pulumi.set(__self__, "ios_settings", ios_settings)
         if labels is not None:
@@ -66,6 +72,8 @@ class EnterpriseKeyArgs:
             pulumi.set(__self__, "project", project)
         if testing_options is not None:
             pulumi.set(__self__, "testing_options", testing_options)
+        if universal_settings is not None:
+            pulumi.set(__self__, "universal_settings", universal_settings)
         if waf_settings is not None:
             pulumi.set(__self__, "waf_settings", waf_settings)
         if web_settings is not None:
@@ -113,6 +121,18 @@ class EnterpriseKeyArgs:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expressSettings")
+    def express_settings(self) -> pulumi.Input[Optional['EnterpriseKeyExpressSettingsArgs']]:
+        """
+        Settings for keys that can be used by reCAPTCHA Express.
+        """
+        return pulumi.get(self, "express_settings")
+
+    @express_settings.setter
+    def express_settings(self, value: pulumi.Input[Optional['EnterpriseKeyExpressSettingsArgs']]):
+        pulumi.set(self, "express_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="iosSettings")
@@ -166,6 +186,18 @@ class EnterpriseKeyArgs:
         pulumi.set(self, "testing_options", value)
 
     @_builtins.property
+    @pulumi.getter(name="universalSettings")
+    def universal_settings(self) -> pulumi.Input[Optional['EnterpriseKeyUniversalSettingsArgs']]:
+        """
+        Settings for keys that can be used by universal frontend integrations.
+        """
+        return pulumi.get(self, "universal_settings")
+
+    @universal_settings.setter
+    def universal_settings(self, value: pulumi.Input[Optional['EnterpriseKeyUniversalSettingsArgs']]):
+        pulumi.set(self, "universal_settings", value)
+
+    @_builtins.property
     @pulumi.getter(name="wafSettings")
     def waf_settings(self) -> pulumi.Input[Optional['EnterpriseKeyWafSettingsArgs']]:
         """
@@ -198,12 +230,14 @@ class _EnterpriseKeyState:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 express_settings: pulumi.Input[Optional['EnterpriseKeyExpressSettingsArgs']] = None,
                  ios_settings: pulumi.Input[Optional['EnterpriseKeyIosSettingsArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  testing_options: pulumi.Input[Optional['EnterpriseKeyTestingOptionsArgs']] = None,
+                 universal_settings: pulumi.Input[Optional['EnterpriseKeyUniversalSettingsArgs']] = None,
                  waf_settings: pulumi.Input[Optional['EnterpriseKeyWafSettingsArgs']] = None,
                  web_settings: pulumi.Input[Optional['EnterpriseKeyWebSettingsArgs']] = None):
         """
@@ -221,6 +255,7 @@ class _EnterpriseKeyState:
                
                ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input['EnterpriseKeyExpressSettingsArgs'] express_settings: Settings for keys that can be used by reCAPTCHA Express.
         :param pulumi.Input['EnterpriseKeyIosSettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
@@ -230,6 +265,7 @@ class _EnterpriseKeyState:
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
+        :param pulumi.Input['EnterpriseKeyUniversalSettingsArgs'] universal_settings: Settings for keys that can be used by universal frontend integrations.
         :param pulumi.Input['EnterpriseKeyWafSettingsArgs'] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
         :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
         """
@@ -243,6 +279,8 @@ class _EnterpriseKeyState:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if express_settings is not None:
+            pulumi.set(__self__, "express_settings", express_settings)
         if ios_settings is not None:
             pulumi.set(__self__, "ios_settings", ios_settings)
         if labels is not None:
@@ -255,6 +293,8 @@ class _EnterpriseKeyState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if testing_options is not None:
             pulumi.set(__self__, "testing_options", testing_options)
+        if universal_settings is not None:
+            pulumi.set(__self__, "universal_settings", universal_settings)
         if waf_settings is not None:
             pulumi.set(__self__, "waf_settings", waf_settings)
         if web_settings is not None:
@@ -326,6 +366,18 @@ class _EnterpriseKeyState:
     @effective_labels.setter
     def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expressSettings")
+    def express_settings(self) -> pulumi.Input[Optional['EnterpriseKeyExpressSettingsArgs']]:
+        """
+        Settings for keys that can be used by reCAPTCHA Express.
+        """
+        return pulumi.get(self, "express_settings")
+
+    @express_settings.setter
+    def express_settings(self, value: pulumi.Input[Optional['EnterpriseKeyExpressSettingsArgs']]):
+        pulumi.set(self, "express_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="iosSettings")
@@ -403,6 +455,18 @@ class _EnterpriseKeyState:
         pulumi.set(self, "testing_options", value)
 
     @_builtins.property
+    @pulumi.getter(name="universalSettings")
+    def universal_settings(self) -> pulumi.Input[Optional['EnterpriseKeyUniversalSettingsArgs']]:
+        """
+        Settings for keys that can be used by universal frontend integrations.
+        """
+        return pulumi.get(self, "universal_settings")
+
+    @universal_settings.setter
+    def universal_settings(self, value: pulumi.Input[Optional['EnterpriseKeyUniversalSettingsArgs']]):
+        pulumi.set(self, "universal_settings", value)
+
+    @_builtins.property
     @pulumi.getter(name="wafSettings")
     def waf_settings(self) -> pulumi.Input[Optional['EnterpriseKeyWafSettingsArgs']]:
         """
@@ -436,10 +500,12 @@ class EnterpriseKey(pulumi.CustomResource):
                  android_settings: pulumi.Input[Optional[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict', 'outputs.EnterpriseKeyAndroidSettings']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 express_settings: pulumi.Input[Optional[Union['EnterpriseKeyExpressSettingsArgs', 'EnterpriseKeyExpressSettingsArgsDict', 'outputs.EnterpriseKeyExpressSettings']]] = None,
                  ios_settings: pulumi.Input[Optional[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict', 'outputs.EnterpriseKeyIosSettings']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  testing_options: pulumi.Input[Optional[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict', 'outputs.EnterpriseKeyTestingOptions']]] = None,
+                 universal_settings: pulumi.Input[Optional[Union['EnterpriseKeyUniversalSettingsArgs', 'EnterpriseKeyUniversalSettingsArgsDict', 'outputs.EnterpriseKeyUniversalSettings']]] = None,
                  waf_settings: pulumi.Input[Optional[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict', 'outputs.EnterpriseKeyWafSettings']]] = None,
                  web_settings: pulumi.Input[Optional[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict', 'outputs.EnterpriseKeyWebSettings']]] = None,
                  __props__=None):
@@ -575,6 +641,34 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        ### Express_key
+        A basic test of recaptcha enterprise key that can be used by reCAPTCHA Express
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            project="my-project-name",
+            express_settings={},
+            labels={
+                "label-one": "value-one",
+            })
+        ```
+        ### Universal_key
+        A basic test of recaptcha enterprise key that can be used by universal frontend integrations
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            project="my-project-name",
+            universal_settings={},
+            labels={
+                "label-one": "value-one",
+            })
+        ```
 
         ## Import
 
@@ -604,6 +698,7 @@ class EnterpriseKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this key. Modifiable by user.
                
                ***
+        :param pulumi.Input[Union['EnterpriseKeyExpressSettingsArgs', 'EnterpriseKeyExpressSettingsArgsDict', 'outputs.EnterpriseKeyExpressSettings']] express_settings: Settings for keys that can be used by reCAPTCHA Express.
         :param pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict', 'outputs.EnterpriseKeyIosSettings']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
@@ -611,6 +706,7 @@ class EnterpriseKey(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict', 'outputs.EnterpriseKeyTestingOptions']] testing_options: Options for user acceptance testing.
+        :param pulumi.Input[Union['EnterpriseKeyUniversalSettingsArgs', 'EnterpriseKeyUniversalSettingsArgsDict', 'outputs.EnterpriseKeyUniversalSettings']] universal_settings: Settings for keys that can be used by universal frontend integrations.
         :param pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict', 'outputs.EnterpriseKeyWafSettings']] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
         :param pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict', 'outputs.EnterpriseKeyWebSettings']] web_settings: Settings for keys that can be used by websites.
         """
@@ -752,6 +848,34 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        ### Express_key
+        A basic test of recaptcha enterprise key that can be used by reCAPTCHA Express
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            project="my-project-name",
+            express_settings={},
+            labels={
+                "label-one": "value-one",
+            })
+        ```
+        ### Universal_key
+        A basic test of recaptcha enterprise key that can be used by universal frontend integrations
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            project="my-project-name",
+            universal_settings={},
+            labels={
+                "label-one": "value-one",
+            })
+        ```
 
         ## Import
 
@@ -787,10 +911,12 @@ class EnterpriseKey(pulumi.CustomResource):
                  android_settings: pulumi.Input[Optional[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict', 'outputs.EnterpriseKeyAndroidSettings']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 express_settings: pulumi.Input[Optional[Union['EnterpriseKeyExpressSettingsArgs', 'EnterpriseKeyExpressSettingsArgsDict', 'outputs.EnterpriseKeyExpressSettings']]] = None,
                  ios_settings: pulumi.Input[Optional[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict', 'outputs.EnterpriseKeyIosSettings']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  testing_options: pulumi.Input[Optional[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict', 'outputs.EnterpriseKeyTestingOptions']]] = None,
+                 universal_settings: pulumi.Input[Optional[Union['EnterpriseKeyUniversalSettingsArgs', 'EnterpriseKeyUniversalSettingsArgsDict', 'outputs.EnterpriseKeyUniversalSettings']]] = None,
                  waf_settings: pulumi.Input[Optional[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict', 'outputs.EnterpriseKeyWafSettings']]] = None,
                  web_settings: pulumi.Input[Optional[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict', 'outputs.EnterpriseKeyWebSettings']]] = None,
                  __props__=None):
@@ -807,10 +933,12 @@ class EnterpriseKey(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["express_settings"] = express_settings
             __props__.__dict__["ios_settings"] = ios_settings
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
             __props__.__dict__["testing_options"] = testing_options
+            __props__.__dict__["universal_settings"] = universal_settings
             __props__.__dict__["waf_settings"] = waf_settings
             __props__.__dict__["web_settings"] = web_settings
             __props__.__dict__["create_time"] = None
@@ -834,12 +962,14 @@ class EnterpriseKey(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            express_settings: pulumi.Input[Optional[Union['EnterpriseKeyExpressSettingsArgs', 'EnterpriseKeyExpressSettingsArgsDict', 'outputs.EnterpriseKeyExpressSettings']]] = None,
             ios_settings: pulumi.Input[Optional[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict', 'outputs.EnterpriseKeyIosSettings']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             testing_options: pulumi.Input[Optional[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict', 'outputs.EnterpriseKeyTestingOptions']]] = None,
+            universal_settings: pulumi.Input[Optional[Union['EnterpriseKeyUniversalSettingsArgs', 'EnterpriseKeyUniversalSettingsArgsDict', 'outputs.EnterpriseKeyUniversalSettings']]] = None,
             waf_settings: pulumi.Input[Optional[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict', 'outputs.EnterpriseKeyWafSettings']]] = None,
             web_settings: pulumi.Input[Optional[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict', 'outputs.EnterpriseKeyWebSettings']]] = None) -> 'EnterpriseKey':
         """
@@ -861,6 +991,7 @@ class EnterpriseKey(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Union['EnterpriseKeyExpressSettingsArgs', 'EnterpriseKeyExpressSettingsArgsDict', 'outputs.EnterpriseKeyExpressSettings']] express_settings: Settings for keys that can be used by reCAPTCHA Express.
         :param pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict', 'outputs.EnterpriseKeyIosSettings']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
@@ -870,6 +1001,7 @@ class EnterpriseKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict', 'outputs.EnterpriseKeyTestingOptions']] testing_options: Options for user acceptance testing.
+        :param pulumi.Input[Union['EnterpriseKeyUniversalSettingsArgs', 'EnterpriseKeyUniversalSettingsArgsDict', 'outputs.EnterpriseKeyUniversalSettings']] universal_settings: Settings for keys that can be used by universal frontend integrations.
         :param pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict', 'outputs.EnterpriseKeyWafSettings']] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
         :param pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict', 'outputs.EnterpriseKeyWebSettings']] web_settings: Settings for keys that can be used by websites.
         """
@@ -882,12 +1014,14 @@ class EnterpriseKey(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["express_settings"] = express_settings
         __props__.__dict__["ios_settings"] = ios_settings
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["testing_options"] = testing_options
+        __props__.__dict__["universal_settings"] = universal_settings
         __props__.__dict__["waf_settings"] = waf_settings
         __props__.__dict__["web_settings"] = web_settings
         return EnterpriseKey(resource_name, opts=opts, __props__=__props__)
@@ -940,6 +1074,14 @@ class EnterpriseKey(pulumi.CustomResource):
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
+    @pulumi.getter(name="expressSettings")
+    def express_settings(self) -> pulumi.Output[Optional['outputs.EnterpriseKeyExpressSettings']]:
+        """
+        Settings for keys that can be used by reCAPTCHA Express.
+        """
+        return pulumi.get(self, "express_settings")
+
+    @_builtins.property
     @pulumi.getter(name="iosSettings")
     def ios_settings(self) -> pulumi.Output[Optional['outputs.EnterpriseKeyIosSettings']]:
         """
@@ -989,6 +1131,14 @@ class EnterpriseKey(pulumi.CustomResource):
         Options for user acceptance testing.
         """
         return pulumi.get(self, "testing_options")
+
+    @_builtins.property
+    @pulumi.getter(name="universalSettings")
+    def universal_settings(self) -> pulumi.Output[Optional['outputs.EnterpriseKeyUniversalSettings']]:
+        """
+        Settings for keys that can be used by universal frontend integrations.
+        """
+        return pulumi.get(self, "universal_settings")
 
     @_builtins.property
     @pulumi.getter(name="wafSettings")

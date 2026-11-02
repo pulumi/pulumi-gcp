@@ -40,7 +40,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// with any other ranges in use within the cluster's network, and it must be a /28
         /// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
         /// for more details. This field only applies to private clusters, when
-        /// `EnablePrivateNodes` is `True`.
+        /// `EnablePrivateNodes` is `True`. On GKE versions 1.29 and later, this field is
+        /// optional when `PrivateEndpointSubnetwork` is specified. It is also optional for
+        /// Autopilot clusters.
         /// </summary>
         public readonly string? MasterIpv4CidrBlock;
         /// <summary>

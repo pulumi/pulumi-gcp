@@ -59,6 +59,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ha Vpn Gateway Ipv6
 //
 // ```go
@@ -97,6 +98,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Compute Ha Vpn Gateway Encrypted Interconnect
 //
 // ```go

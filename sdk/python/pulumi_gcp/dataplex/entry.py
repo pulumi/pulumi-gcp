@@ -497,6 +497,7 @@ class Entry(pulumi.CustomResource):
             entry_id="entry-basic",
             entry_type=entry_type_basic.name)
         ```
+
         ### Dataplex Entry Full
 
         ```python
@@ -621,6 +622,7 @@ class Entry(pulumi.CustomResource):
                     aspect_type_full_one,
                 ]))
         ```
+
         ### Dataplex Entry Bigquery Table
 
         ```python
@@ -747,6 +749,7 @@ class Entry(pulumi.CustomResource):
                     aspect_type_full_one,
                 ]))
         ```
+
         ### Dataplex Entry Glossary Term
 
         ```python
@@ -871,6 +874,7 @@ class Entry(pulumi.CustomResource):
             entry_id="entry-basic",
             entry_type=entry_type_basic.name)
         ```
+
         ### Dataplex Entry Full
 
         ```python
@@ -995,6 +999,7 @@ class Entry(pulumi.CustomResource):
                     aspect_type_full_one,
                 ]))
         ```
+
         ### Dataplex Entry Bigquery Table
 
         ```python
@@ -1121,6 +1126,7 @@ class Entry(pulumi.CustomResource):
                     aspect_type_full_one,
                 ]))
         ```
+
         ### Dataplex Entry Glossary Term
 
         ```python

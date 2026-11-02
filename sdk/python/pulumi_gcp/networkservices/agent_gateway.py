@@ -714,6 +714,7 @@ class AgentGateway(pulumi.CustomResource):
             registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
             opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
         ```
+
         ### Network Services Agent Gateway Client To Agent
 
         ```python
@@ -732,6 +733,7 @@ class AgentGateway(pulumi.CustomResource):
             registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
             opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
         ```
+
         ### Network Services Agent Gateway Self Managed
 
         ```python
@@ -881,6 +883,7 @@ class AgentGateway(pulumi.CustomResource):
             registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
             opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
         ```
+
         ### Network Services Agent Gateway Client To Agent
 
         ```python
@@ -899,6 +902,7 @@ class AgentGateway(pulumi.CustomResource):
             registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
             opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
         ```
+
         ### Network Services Agent Gateway Self Managed
 
         ```python

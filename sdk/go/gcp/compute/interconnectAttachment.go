@@ -71,6 +71,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Compute Interconnect Attachment Ipsec Encryption
 //
 // ```go
@@ -132,6 +133,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Compute Interconnect Attachment Custom Ranges
 //
 // ```go

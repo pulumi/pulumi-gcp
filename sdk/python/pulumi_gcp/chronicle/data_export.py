@@ -487,6 +487,7 @@ class DataExport(pulumi.CustomResource):
             start_time="2025-01-01T00:00:00Z",
             end_time="2025-01-01T12:00:00Z")
         ```
+
         ### Chronicle Data Export Full
 
         ```python
@@ -580,6 +581,7 @@ class DataExport(pulumi.CustomResource):
             start_time="2025-01-01T00:00:00Z",
             end_time="2025-01-01T12:00:00Z")
         ```
+
         ### Chronicle Data Export Full
 
         ```python

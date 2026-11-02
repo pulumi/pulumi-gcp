@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Network Firewall Policy Roce
     /// 
     /// ```csharp

@@ -34,6 +34,7 @@ class IndexArgs:
                  filter_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  store_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Index resource.
@@ -72,6 +73,15 @@ class IndexArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created. Building an ANN
+               index over a large collection can take several hours; setting `skip_wait`
+               to `true` causes Terraform to return as soon as the creation request is
+               accepted rather than blocking until the long-running build completes
+               (which can exceed CI/CD timeouts or short-lived Terraform runner
+               credentials). Leave this set to `false` (the default) if downstream
+               resources or workloads depend on the index being ready to serve queries
+               immediately after `pulumi up`, or if you want Terraform to fail
+               synchronously when an asynchronous index build fails.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] store_fields: The fields to push into the index to enable inline data retrieval.
         """
         pulumi.set(__self__, "collection_id", collection_id)
@@ -96,6 +106,8 @@ class IndexArgs:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if skip_wait is not None:
+            pulumi.set(__self__, "skip_wait", skip_wait)
         if store_fields is not None:
             pulumi.set(__self__, "store_fields", store_fields)
 
@@ -277,6 +289,26 @@ class IndexArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipWait")
+    def skip_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to skip waiting for the index to be created. Building an ANN
+        index over a large collection can take several hours; setting `skip_wait`
+        to `true` causes Terraform to return as soon as the creation request is
+        accepted rather than blocking until the long-running build completes
+        (which can exceed CI/CD timeouts or short-lived Terraform runner
+        credentials). Leave this set to `false` (the default) if downstream
+        resources or workloads depend on the index being ready to serve queries
+        immediately after `pulumi up`, or if you want Terraform to fail
+        synchronously when an asynchronous index build fails.
+        """
+        return pulumi.get(self, "skip_wait")
+
+    @skip_wait.setter
+    def skip_wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_wait", value)
+
+    @_builtins.property
     @pulumi.getter(name="storeFields")
     def store_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -309,6 +341,7 @@ class _IndexState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  store_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -353,6 +386,15 @@ class _IndexState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created. Building an ANN
+               index over a large collection can take several hours; setting `skip_wait`
+               to `true` causes Terraform to return as soon as the creation request is
+               accepted rather than blocking until the long-running build completes
+               (which can exceed CI/CD timeouts or short-lived Terraform runner
+               credentials). Leave this set to `false` (the default) if downstream
+               resources or workloads depend on the index being ready to serve queries
+               immediately after `pulumi up`, or if you want Terraform to fail
+               synchronously when an asynchronous index build fails.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] store_fields: The fields to push into the index to enable inline data retrieval.
         :param pulumi.Input[_builtins.str] update_time: [Output only] Update time stamp
         """
@@ -390,6 +432,8 @@ class _IndexState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if skip_wait is not None:
+            pulumi.set(__self__, "skip_wait", skip_wait)
         if store_fields is not None:
             pulumi.set(__self__, "store_fields", store_fields)
         if update_time is not None:
@@ -622,6 +666,26 @@ class _IndexState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipWait")
+    def skip_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to skip waiting for the index to be created. Building an ANN
+        index over a large collection can take several hours; setting `skip_wait`
+        to `true` causes Terraform to return as soon as the creation request is
+        accepted rather than blocking until the long-running build completes
+        (which can exceed CI/CD timeouts or short-lived Terraform runner
+        credentials). Leave this set to `false` (the default) if downstream
+        resources or workloads depend on the index being ready to serve queries
+        immediately after `pulumi up`, or if you want Terraform to fail
+        synchronously when an asynchronous index build fails.
+        """
+        return pulumi.get(self, "skip_wait")
+
+    @skip_wait.setter
+    def skip_wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_wait", value)
+
+    @_builtins.property
     @pulumi.getter(name="storeFields")
     def store_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -665,6 +729,7 @@ class Index(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  store_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -728,6 +793,7 @@ class Index(pulumi.CustomResource):
                 "feature_norm_type": "UNIT_L2_NORM",
             })
         ```
+
         ### Vectorsearch Index Dedicated
 
         ```python
@@ -793,6 +859,60 @@ class Index(pulumi.CustomResource):
             })
         ```
 
+        ### Vectorsearch Index Skip Wait
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+        # can take many hours; setting skip_wait = true returns as soon as the create
+        # request has been accepted so short-lived credentials in your Pulumi runner
+        # do not have to be extended to the full build duration. The index continues to
+        # build asynchronously on the backend; subsequent pulumi up invocations
+        # refresh state from the API.
+        parent = gcp.vectorsearch.Collection("parent",
+            location="us-central1",
+            collection_id="example-skip-wait-collection",
+            display_name="Collection for a skip_wait ANN index",
+            description="Parent collection for the skip_wait index example.",
+            data_schema=\"\"\"{
+          \\"type\\": \\"object\\",
+          \\"properties\\": {
+            \\"title\\": {
+              \\"type\\": \\"string\\"
+            },
+            \\"plot\\": {
+              \\"type\\": \\"string\\"
+            }
+          }
+        }
+        \"\"\",
+            vector_schemas=[{
+                "field_name": "text_embedding",
+                "dense_vector": {
+                    "dimensions": 768,
+                    "vertex_embedding_config": {
+                        "model_id": "textembedding-gecko@003",
+                        "task_type": "RETRIEVAL_DOCUMENT",
+                        "text_template": "Title: {title} ---- Plot: {plot}",
+                    },
+                },
+            }])
+        example_skip_wait_index = gcp.vectorsearch.Index("example-skip-wait-index",
+            location="us-central1",
+            collection_id=parent.collection_id,
+            index_id="example-skip-wait-index",
+            display_name="Skip-wait ANN index",
+            description="ScaNN index over text_embedding, created without waiting for the build to finish.",
+            index_field="text_embedding",
+            distance_metric="DOT_PRODUCT",
+            dense_scann={
+                "feature_norm_type": "UNIT_L2_NORM",
+            },
+            skip_wait=True)
+        ```
+
         ## Import
 
         Index can be imported using any of these accepted formats:
@@ -846,6 +966,15 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created. Building an ANN
+               index over a large collection can take several hours; setting `skip_wait`
+               to `true` causes Terraform to return as soon as the creation request is
+               accepted rather than blocking until the long-running build completes
+               (which can exceed CI/CD timeouts or short-lived Terraform runner
+               credentials). Leave this set to `false` (the default) if downstream
+               resources or workloads depend on the index being ready to serve queries
+               immediately after `pulumi up`, or if you want Terraform to fail
+               synchronously when an asynchronous index build fails.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] store_fields: The fields to push into the index to enable inline data retrieval.
         """
         ...
@@ -915,6 +1044,7 @@ class Index(pulumi.CustomResource):
                 "feature_norm_type": "UNIT_L2_NORM",
             })
         ```
+
         ### Vectorsearch Index Dedicated
 
         ```python
@@ -980,6 +1110,60 @@ class Index(pulumi.CustomResource):
             })
         ```
 
+        ### Vectorsearch Index Skip Wait
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+        # can take many hours; setting skip_wait = true returns as soon as the create
+        # request has been accepted so short-lived credentials in your Pulumi runner
+        # do not have to be extended to the full build duration. The index continues to
+        # build asynchronously on the backend; subsequent pulumi up invocations
+        # refresh state from the API.
+        parent = gcp.vectorsearch.Collection("parent",
+            location="us-central1",
+            collection_id="example-skip-wait-collection",
+            display_name="Collection for a skip_wait ANN index",
+            description="Parent collection for the skip_wait index example.",
+            data_schema=\"\"\"{
+          \\"type\\": \\"object\\",
+          \\"properties\\": {
+            \\"title\\": {
+              \\"type\\": \\"string\\"
+            },
+            \\"plot\\": {
+              \\"type\\": \\"string\\"
+            }
+          }
+        }
+        \"\"\",
+            vector_schemas=[{
+                "field_name": "text_embedding",
+                "dense_vector": {
+                    "dimensions": 768,
+                    "vertex_embedding_config": {
+                        "model_id": "textembedding-gecko@003",
+                        "task_type": "RETRIEVAL_DOCUMENT",
+                        "text_template": "Title: {title} ---- Plot: {plot}",
+                    },
+                },
+            }])
+        example_skip_wait_index = gcp.vectorsearch.Index("example-skip-wait-index",
+            location="us-central1",
+            collection_id=parent.collection_id,
+            index_id="example-skip-wait-index",
+            display_name="Skip-wait ANN index",
+            description="ScaNN index over text_embedding, created without waiting for the build to finish.",
+            index_field="text_embedding",
+            distance_metric="DOT_PRODUCT",
+            dense_scann={
+                "feature_norm_type": "UNIT_L2_NORM",
+            },
+            skip_wait=True)
+        ```
+
         ## Import
 
         Index can be imported using any of these accepted formats:
@@ -1025,6 +1209,7 @@ class Index(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  store_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1056,6 +1241,7 @@ class Index(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["skip_wait"] = skip_wait
             __props__.__dict__["store_fields"] = store_fields
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
@@ -1091,6 +1277,7 @@ class Index(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
             store_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Index':
         """
@@ -1139,6 +1326,15 @@ class Index(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created. Building an ANN
+               index over a large collection can take several hours; setting `skip_wait`
+               to `true` causes Terraform to return as soon as the creation request is
+               accepted rather than blocking until the long-running build completes
+               (which can exceed CI/CD timeouts or short-lived Terraform runner
+               credentials). Leave this set to `false` (the default) if downstream
+               resources or workloads depend on the index being ready to serve queries
+               immediately after `pulumi up`, or if you want Terraform to fail
+               synchronously when an asynchronous index build fails.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] store_fields: The fields to push into the index to enable inline data retrieval.
         :param pulumi.Input[_builtins.str] update_time: [Output only] Update time stamp
         """
@@ -1163,6 +1359,7 @@ class Index(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["skip_wait"] = skip_wait
         __props__.__dict__["store_fields"] = store_fields
         __props__.__dict__["update_time"] = update_time
         return Index(resource_name, opts=opts, __props__=__props__)
@@ -1324,6 +1521,22 @@ class Index(pulumi.CustomResource):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="skipWait")
+    def skip_wait(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to skip waiting for the index to be created. Building an ANN
+        index over a large collection can take several hours; setting `skip_wait`
+        to `true` causes Terraform to return as soon as the creation request is
+        accepted rather than blocking until the long-running build completes
+        (which can exceed CI/CD timeouts or short-lived Terraform runner
+        credentials). Leave this set to `false` (the default) if downstream
+        resources or workloads depend on the index being ready to serve queries
+        immediately after `pulumi up`, or if you want Terraform to fail
+        synchronously when an asynchronous index build fails.
+        """
+        return pulumi.get(self, "skip_wait")
 
     @_builtins.property
     @pulumi.getter(name="storeFields")

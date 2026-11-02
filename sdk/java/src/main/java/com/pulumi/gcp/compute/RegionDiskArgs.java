@@ -153,8 +153,8 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
      * you do not need to provide a key to use the disk later.
-     * ~&gt;**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
-     * in place; other changes to this block recreate the disk.
+     * ~&gt;**NOTE** `kmsKeyName` can be added or changed in place. Removing it
+     * fails at plan time. Other changes to this block recreate the disk.
      * Structure is documented below.
      * 
      */
@@ -171,8 +171,8 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
      * you do not need to provide a key to use the disk later.
-     * ~&gt;**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
-     * in place; other changes to this block recreate the disk.
+     * ~&gt;**NOTE** `kmsKeyName` can be added or changed in place. Removing it
+     * fails at plan time. Other changes to this block recreate the disk.
      * Structure is documented below.
      * 
      */
@@ -796,8 +796,8 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
          * If you do not provide an encryption key when creating the disk, then
          * the disk will be encrypted using an automatically generated key and
          * you do not need to provide a key to use the disk later.
-         * ~&gt;**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
-         * in place; other changes to this block recreate the disk.
+         * ~&gt;**NOTE** `kmsKeyName` can be added or changed in place. Removing it
+         * fails at plan time. Other changes to this block recreate the disk.
          * Structure is documented below.
          * 
          * @return builder
@@ -818,8 +818,8 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
          * If you do not provide an encryption key when creating the disk, then
          * the disk will be encrypted using an automatically generated key and
          * you do not need to provide a key to use the disk later.
-         * ~&gt;**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
-         * in place; other changes to this block recreate the disk.
+         * ~&gt;**NOTE** `kmsKeyName` can be added or changed in place. Removing it
+         * fails at plan time. Other changes to this block recreate the disk.
          * Structure is documented below.
          * 
          * @return builder

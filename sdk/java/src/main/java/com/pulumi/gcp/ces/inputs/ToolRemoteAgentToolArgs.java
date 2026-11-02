@@ -7,8 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.ToolRemoteAgentToolAgentCardArgs;
 import com.pulumi.gcp.ces.inputs.ToolRemoteAgentToolApiAuthenticationArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -75,6 +77,23 @@ public final class ToolRemoteAgentToolArgs extends com.pulumi.resources.Resource
 
     /**
      * (Output)
+     * Mapping of input variable names of remote agent to GECX variable names.
+     * 
+     */
+    @Import(name="inputVariableMapping")
+    private @Nullable Output<Map<String,String>> inputVariableMapping;
+
+    /**
+     * @return (Output)
+     * Mapping of input variable names of remote agent to GECX variable names.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> inputVariableMapping() {
+        return Optional.ofNullable(this.inputVariableMapping);
+    }
+
+    /**
+     * (Output)
      * The name of the system tool.
      * 
      */
@@ -90,13 +109,56 @@ public final class ToolRemoteAgentToolArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * (Output)
+     * Mapping of output variable names of remote agent to GECX variable names.
+     * 
+     */
+    @Import(name="outputVariableMapping")
+    private @Nullable Output<Map<String,String>> outputVariableMapping;
+
+    /**
+     * @return (Output)
+     * Mapping of output variable names of remote agent to GECX variable names.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> outputVariableMapping() {
+        return Optional.ofNullable(this.outputVariableMapping);
+    }
+
+    /**
+     * (Output)
+     * When enabled, the interaction between the CXAS app and the remote agent
+     * will share the same context. If the remote agent returns a context_id, it
+     * will be persisted for the entirety of the session for this remote agent
+     * tool.
+     * 
+     */
+    @Import(name="statefulAgent")
+    private @Nullable Output<Boolean> statefulAgent;
+
+    /**
+     * @return (Output)
+     * When enabled, the interaction between the CXAS app and the remote agent
+     * will share the same context. If the remote agent returns a context_id, it
+     * will be persisted for the entirety of the session for this remote agent
+     * tool.
+     * 
+     */
+    public Optional<Output<Boolean>> statefulAgent() {
+        return Optional.ofNullable(this.statefulAgent);
+    }
+
     private ToolRemoteAgentToolArgs() {}
 
     private ToolRemoteAgentToolArgs(ToolRemoteAgentToolArgs $) {
         this.agentCards = $.agentCards;
         this.apiAuthentications = $.apiAuthentications;
         this.description = $.description;
+        this.inputVariableMapping = $.inputVariableMapping;
         this.name = $.name;
+        this.outputVariableMapping = $.outputVariableMapping;
+        this.statefulAgent = $.statefulAgent;
     }
 
     public static Builder builder() {
@@ -215,6 +277,29 @@ public final class ToolRemoteAgentToolArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param inputVariableMapping (Output)
+         * Mapping of input variable names of remote agent to GECX variable names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputVariableMapping(@Nullable Output<Map<String,String>> inputVariableMapping) {
+            $.inputVariableMapping = inputVariableMapping;
+            return this;
+        }
+
+        /**
+         * @param inputVariableMapping (Output)
+         * Mapping of input variable names of remote agent to GECX variable names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputVariableMapping(Map<String,String> inputVariableMapping) {
+            return inputVariableMapping(Output.of(inputVariableMapping));
+        }
+
+        /**
          * @param name (Output)
          * The name of the system tool.
          * 
@@ -235,6 +320,58 @@ public final class ToolRemoteAgentToolArgs extends com.pulumi.resources.Resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param outputVariableMapping (Output)
+         * Mapping of output variable names of remote agent to GECX variable names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputVariableMapping(@Nullable Output<Map<String,String>> outputVariableMapping) {
+            $.outputVariableMapping = outputVariableMapping;
+            return this;
+        }
+
+        /**
+         * @param outputVariableMapping (Output)
+         * Mapping of output variable names of remote agent to GECX variable names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputVariableMapping(Map<String,String> outputVariableMapping) {
+            return outputVariableMapping(Output.of(outputVariableMapping));
+        }
+
+        /**
+         * @param statefulAgent (Output)
+         * When enabled, the interaction between the CXAS app and the remote agent
+         * will share the same context. If the remote agent returns a context_id, it
+         * will be persisted for the entirety of the session for this remote agent
+         * tool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulAgent(@Nullable Output<Boolean> statefulAgent) {
+            $.statefulAgent = statefulAgent;
+            return this;
+        }
+
+        /**
+         * @param statefulAgent (Output)
+         * When enabled, the interaction between the CXAS app and the remote agent
+         * will share the same context. If the remote agent returns a context_id, it
+         * will be persisted for the entirety of the session for this remote agent
+         * tool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulAgent(Boolean statefulAgent) {
+            return statefulAgent(Output.of(statefulAgent));
         }
 
         public ToolRemoteAgentToolArgs build() {

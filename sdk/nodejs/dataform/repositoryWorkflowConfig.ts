@@ -105,6 +105,7 @@ import * as utilities from "../utilities";
  *     timeZone: "America/New_York",
  * });
  * ```
+ *
  * ### Dataform Repository Workflow Config With Disabled
  *
  * ```typescript

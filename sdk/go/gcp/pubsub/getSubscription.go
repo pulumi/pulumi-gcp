@@ -65,6 +65,7 @@ type LookupSubscriptionArgs struct {
 type LookupSubscriptionResult struct {
 	AckDeadlineSeconds        int                                 `pulumi:"ackDeadlineSeconds"`
 	BigqueryConfigs           []GetSubscriptionBigqueryConfig     `pulumi:"bigqueryConfigs"`
+	BigtableConfigs           []GetSubscriptionBigtableConfig     `pulumi:"bigtableConfigs"`
 	CloudStorageConfigs       []GetSubscriptionCloudStorageConfig `pulumi:"cloudStorageConfigs"`
 	DeadLetterPolicies        []GetSubscriptionDeadLetterPolicy   `pulumi:"deadLetterPolicies"`
 	DeletionPolicy            string                              `pulumi:"deletionPolicy"`
@@ -129,6 +130,10 @@ func (o LookupSubscriptionResultOutput) AckDeadlineSeconds() pulumi.IntOutput {
 
 func (o LookupSubscriptionResultOutput) BigqueryConfigs() GetSubscriptionBigqueryConfigArrayOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionBigqueryConfig { return v.BigqueryConfigs }).(GetSubscriptionBigqueryConfigArrayOutput)
+}
+
+func (o LookupSubscriptionResultOutput) BigtableConfigs() GetSubscriptionBigtableConfigArrayOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionBigtableConfig { return v.BigtableConfigs }).(GetSubscriptionBigtableConfigArrayOutput)
 }
 
 func (o LookupSubscriptionResultOutput) CloudStorageConfigs() GetSubscriptionCloudStorageConfigArrayOutput {

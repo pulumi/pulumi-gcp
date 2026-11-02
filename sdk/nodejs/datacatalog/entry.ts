@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     userSpecifiedSystem: "SomethingExternal",
  * });
  * ```
+ *
  * ### Data Catalog Entry Fileset
  *
  * ```typescript
@@ -54,6 +55,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Data Catalog Entry Full
  *
  * ```typescript

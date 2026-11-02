@@ -398,6 +398,7 @@ class Network(pulumi.CustomResource):
             type="STANDARD",
             description="VMwareEngine standard network sample")
         ```
+
         ### Vmware Engine Network Legacy
 
         ```python
@@ -487,6 +488,7 @@ class Network(pulumi.CustomResource):
             type="STANDARD",
             description="VMwareEngine standard network sample")
         ```
+
         ### Vmware Engine Network Legacy
 
         ```python

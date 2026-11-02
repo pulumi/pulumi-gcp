@@ -12,13 +12,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceLbPoliciesIsolationConfig {
     /**
-     * @return The isolation granularity of the load balancer.
+     * @return (Optional, Beta)
+     * The isolation granularity of the load balancer.
      * Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
      * 
      */
     private @Nullable String isolationGranularity;
     /**
-     * @return The isolation mode of the load balancer.
+     * @return (Optional, Beta)
+     * The isolation mode of the load balancer.
      * Default value is `NEAREST`.
      * Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
      * 
@@ -27,7 +29,8 @@ public final class ServiceLbPoliciesIsolationConfig {
 
     private ServiceLbPoliciesIsolationConfig() {}
     /**
-     * @return The isolation granularity of the load balancer.
+     * @return (Optional, Beta)
+     * The isolation granularity of the load balancer.
      * Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
      * 
      */
@@ -35,7 +38,8 @@ public final class ServiceLbPoliciesIsolationConfig {
         return Optional.ofNullable(this.isolationGranularity);
     }
     /**
-     * @return The isolation mode of the load balancer.
+     * @return (Optional, Beta)
+     * The isolation mode of the load balancer.
      * Default value is `NEAREST`.
      * Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
      * 

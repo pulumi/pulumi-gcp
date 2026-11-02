@@ -483,6 +483,7 @@ class FtpServer(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Storage Ftp Server External
 
         ```python
@@ -581,6 +582,7 @@ class FtpServer(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Storage Ftp Server External
 
         ```python

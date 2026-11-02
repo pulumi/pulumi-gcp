@@ -120,6 +120,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Service Attachment Nat Ips
     /// 
     /// ```csharp
@@ -199,6 +200,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Service Attachment Explicit Projects
     /// 
     /// ```csharp
@@ -312,6 +314,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Service Attachment Explicit Networks
     /// 
     /// ```csharp
@@ -431,6 +434,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Service Attachment Reconcile Connections
     /// 
     /// ```csharp
@@ -527,6 +531,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Service Attachment Tunneling Config
     /// 
     /// ```csharp
@@ -610,6 +615,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Service Attachment Cross Region Ilb
     /// 
     /// ```csharp
@@ -885,6 +891,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("sendPropagatedConnectionLimitIfZero")]
         public Output<bool?> SendPropagatedConnectionLimitIfZero { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("serviceAttachmentId")]
+        public Output<int> ServiceAttachmentId { get; private set; } = null!;
 
         /// <summary>
         /// NOTE: This field is temporarily non-functional due to an underlying API issue.
@@ -1309,6 +1321,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sendPropagatedConnectionLimitIfZero")]
         public Input<bool>? SendPropagatedConnectionLimitIfZero { get; set; }
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("serviceAttachmentId")]
+        public Input<int>? ServiceAttachmentId { get; set; }
 
         /// <summary>
         /// NOTE: This field is temporarily non-functional due to an underlying API issue.

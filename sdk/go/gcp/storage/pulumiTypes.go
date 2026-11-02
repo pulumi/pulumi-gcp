@@ -7125,6 +7125,586 @@ func (o ControlOrganizationIntelligenceConfigTrialConfigArrayOutput) Index(i pul
 	}).(ControlOrganizationIntelligenceConfigTrialConfigOutput)
 }
 
+type ControlProjectFeatureConfigAutoAnnotateConfig struct {
+	// The list of unique models used to generate annotations. Each model is identified by
+	// its `name`.
+	// Structure is documented below.
+	Models []ControlProjectFeatureConfigAutoAnnotateConfigModel `pulumi:"models"`
+	// The geographic location (case-sensitive) where data is processed. Currently, only
+	// multi-region locations such as `us`, `eu`, or `asia` are supported.
+	// To avoid duplicate billing, configure exactly one processing location for each bucket
+	// and model combination. If you configure multiple processing locations for the same
+	// bucket and model across different feature configurations, a separate annotation run is
+	// triggered in each location, and you're billed for each resulting annotation.
+	ProcessingLocation string `pulumi:"processingLocation"`
+}
+
+// ControlProjectFeatureConfigAutoAnnotateConfigInput is an input type that accepts ControlProjectFeatureConfigAutoAnnotateConfigArgs and ControlProjectFeatureConfigAutoAnnotateConfigOutput values.
+// You can construct a concrete instance of `ControlProjectFeatureConfigAutoAnnotateConfigInput` via:
+//
+//	ControlProjectFeatureConfigAutoAnnotateConfigArgs{...}
+type ControlProjectFeatureConfigAutoAnnotateConfigInput interface {
+	pulumi.Input
+
+	ToControlProjectFeatureConfigAutoAnnotateConfigOutput() ControlProjectFeatureConfigAutoAnnotateConfigOutput
+	ToControlProjectFeatureConfigAutoAnnotateConfigOutputWithContext(context.Context) ControlProjectFeatureConfigAutoAnnotateConfigOutput
+}
+
+type ControlProjectFeatureConfigAutoAnnotateConfigArgs struct {
+	// The list of unique models used to generate annotations. Each model is identified by
+	// its `name`.
+	// Structure is documented below.
+	Models ControlProjectFeatureConfigAutoAnnotateConfigModelArrayInput `pulumi:"models"`
+	// The geographic location (case-sensitive) where data is processed. Currently, only
+	// multi-region locations such as `us`, `eu`, or `asia` are supported.
+	// To avoid duplicate billing, configure exactly one processing location for each bucket
+	// and model combination. If you configure multiple processing locations for the same
+	// bucket and model across different feature configurations, a separate annotation run is
+	// triggered in each location, and you're billed for each resulting annotation.
+	ProcessingLocation pulumi.StringInput `pulumi:"processingLocation"`
+}
+
+func (ControlProjectFeatureConfigAutoAnnotateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlProjectFeatureConfigAutoAnnotateConfig)(nil)).Elem()
+}
+
+func (i ControlProjectFeatureConfigAutoAnnotateConfigArgs) ToControlProjectFeatureConfigAutoAnnotateConfigOutput() ControlProjectFeatureConfigAutoAnnotateConfigOutput {
+	return i.ToControlProjectFeatureConfigAutoAnnotateConfigOutputWithContext(context.Background())
+}
+
+func (i ControlProjectFeatureConfigAutoAnnotateConfigArgs) ToControlProjectFeatureConfigAutoAnnotateConfigOutputWithContext(ctx context.Context) ControlProjectFeatureConfigAutoAnnotateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigAutoAnnotateConfigOutput)
+}
+
+func (i ControlProjectFeatureConfigAutoAnnotateConfigArgs) ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutput() ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput {
+	return i.ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ControlProjectFeatureConfigAutoAnnotateConfigArgs) ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigAutoAnnotateConfigOutput).ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutputWithContext(ctx)
+}
+
+// ControlProjectFeatureConfigAutoAnnotateConfigPtrInput is an input type that accepts ControlProjectFeatureConfigAutoAnnotateConfigArgs, ControlProjectFeatureConfigAutoAnnotateConfigPtr and ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput values.
+// You can construct a concrete instance of `ControlProjectFeatureConfigAutoAnnotateConfigPtrInput` via:
+//
+//	        ControlProjectFeatureConfigAutoAnnotateConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlProjectFeatureConfigAutoAnnotateConfigPtrInput interface {
+	pulumi.Input
+
+	ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutput() ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput
+	ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutputWithContext(context.Context) ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput
+}
+
+type controlProjectFeatureConfigAutoAnnotateConfigPtrType ControlProjectFeatureConfigAutoAnnotateConfigArgs
+
+func ControlProjectFeatureConfigAutoAnnotateConfigPtr(v *ControlProjectFeatureConfigAutoAnnotateConfigArgs) ControlProjectFeatureConfigAutoAnnotateConfigPtrInput {
+	return (*controlProjectFeatureConfigAutoAnnotateConfigPtrType)(v)
+}
+
+func (*controlProjectFeatureConfigAutoAnnotateConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlProjectFeatureConfigAutoAnnotateConfig)(nil)).Elem()
+}
+
+func (i *controlProjectFeatureConfigAutoAnnotateConfigPtrType) ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutput() ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput {
+	return i.ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *controlProjectFeatureConfigAutoAnnotateConfigPtrType) ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput)
+}
+
+type ControlProjectFeatureConfigAutoAnnotateConfigOutput struct{ *pulumi.OutputState }
+
+func (ControlProjectFeatureConfigAutoAnnotateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlProjectFeatureConfigAutoAnnotateConfig)(nil)).Elem()
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigOutput) ToControlProjectFeatureConfigAutoAnnotateConfigOutput() ControlProjectFeatureConfigAutoAnnotateConfigOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigOutput) ToControlProjectFeatureConfigAutoAnnotateConfigOutputWithContext(ctx context.Context) ControlProjectFeatureConfigAutoAnnotateConfigOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigOutput) ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutput() ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput {
+	return o.ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigOutput) ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlProjectFeatureConfigAutoAnnotateConfig) *ControlProjectFeatureConfigAutoAnnotateConfig {
+		return &v
+	}).(ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput)
+}
+
+// The list of unique models used to generate annotations. Each model is identified by
+// its `name`.
+// Structure is documented below.
+func (o ControlProjectFeatureConfigAutoAnnotateConfigOutput) Models() ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return o.ApplyT(func(v ControlProjectFeatureConfigAutoAnnotateConfig) []ControlProjectFeatureConfigAutoAnnotateConfigModel {
+		return v.Models
+	}).(ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput)
+}
+
+// The geographic location (case-sensitive) where data is processed. Currently, only
+// multi-region locations such as `us`, `eu`, or `asia` are supported.
+// To avoid duplicate billing, configure exactly one processing location for each bucket
+// and model combination. If you configure multiple processing locations for the same
+// bucket and model across different feature configurations, a separate annotation run is
+// triggered in each location, and you're billed for each resulting annotation.
+func (o ControlProjectFeatureConfigAutoAnnotateConfigOutput) ProcessingLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlProjectFeatureConfigAutoAnnotateConfig) string { return v.ProcessingLocation }).(pulumi.StringOutput)
+}
+
+type ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlProjectFeatureConfigAutoAnnotateConfig)(nil)).Elem()
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput) ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutput() ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput) ToControlProjectFeatureConfigAutoAnnotateConfigPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput) Elem() ControlProjectFeatureConfigAutoAnnotateConfigOutput {
+	return o.ApplyT(func(v *ControlProjectFeatureConfigAutoAnnotateConfig) ControlProjectFeatureConfigAutoAnnotateConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ControlProjectFeatureConfigAutoAnnotateConfig
+		return ret
+	}).(ControlProjectFeatureConfigAutoAnnotateConfigOutput)
+}
+
+// The list of unique models used to generate annotations. Each model is identified by
+// its `name`.
+// Structure is documented below.
+func (o ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput) Models() ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return o.ApplyT(func(v *ControlProjectFeatureConfigAutoAnnotateConfig) []ControlProjectFeatureConfigAutoAnnotateConfigModel {
+		if v == nil {
+			return nil
+		}
+		return v.Models
+	}).(ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput)
+}
+
+// The geographic location (case-sensitive) where data is processed. Currently, only
+// multi-region locations such as `us`, `eu`, or `asia` are supported.
+// To avoid duplicate billing, configure exactly one processing location for each bucket
+// and model combination. If you configure multiple processing locations for the same
+// bucket and model across different feature configurations, a separate annotation run is
+// triggered in each location, and you're billed for each resulting annotation.
+func (o ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput) ProcessingLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlProjectFeatureConfigAutoAnnotateConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProcessingLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+type ControlProjectFeatureConfigAutoAnnotateConfigModel struct {
+	// The name of the model. Supported values include `face-detector`,
+	// `object-detector`, `label-detector`, and `content-safety`.
+	Name string `pulumi:"name"`
+}
+
+// ControlProjectFeatureConfigAutoAnnotateConfigModelInput is an input type that accepts ControlProjectFeatureConfigAutoAnnotateConfigModelArgs and ControlProjectFeatureConfigAutoAnnotateConfigModelOutput values.
+// You can construct a concrete instance of `ControlProjectFeatureConfigAutoAnnotateConfigModelInput` via:
+//
+//	ControlProjectFeatureConfigAutoAnnotateConfigModelArgs{...}
+type ControlProjectFeatureConfigAutoAnnotateConfigModelInput interface {
+	pulumi.Input
+
+	ToControlProjectFeatureConfigAutoAnnotateConfigModelOutput() ControlProjectFeatureConfigAutoAnnotateConfigModelOutput
+	ToControlProjectFeatureConfigAutoAnnotateConfigModelOutputWithContext(context.Context) ControlProjectFeatureConfigAutoAnnotateConfigModelOutput
+}
+
+type ControlProjectFeatureConfigAutoAnnotateConfigModelArgs struct {
+	// The name of the model. Supported values include `face-detector`,
+	// `object-detector`, `label-detector`, and `content-safety`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ControlProjectFeatureConfigAutoAnnotateConfigModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlProjectFeatureConfigAutoAnnotateConfigModel)(nil)).Elem()
+}
+
+func (i ControlProjectFeatureConfigAutoAnnotateConfigModelArgs) ToControlProjectFeatureConfigAutoAnnotateConfigModelOutput() ControlProjectFeatureConfigAutoAnnotateConfigModelOutput {
+	return i.ToControlProjectFeatureConfigAutoAnnotateConfigModelOutputWithContext(context.Background())
+}
+
+func (i ControlProjectFeatureConfigAutoAnnotateConfigModelArgs) ToControlProjectFeatureConfigAutoAnnotateConfigModelOutputWithContext(ctx context.Context) ControlProjectFeatureConfigAutoAnnotateConfigModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigAutoAnnotateConfigModelOutput)
+}
+
+// ControlProjectFeatureConfigAutoAnnotateConfigModelArrayInput is an input type that accepts ControlProjectFeatureConfigAutoAnnotateConfigModelArray and ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput values.
+// You can construct a concrete instance of `ControlProjectFeatureConfigAutoAnnotateConfigModelArrayInput` via:
+//
+//	ControlProjectFeatureConfigAutoAnnotateConfigModelArray{ ControlProjectFeatureConfigAutoAnnotateConfigModelArgs{...} }
+type ControlProjectFeatureConfigAutoAnnotateConfigModelArrayInput interface {
+	pulumi.Input
+
+	ToControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput() ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput
+	ToControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutputWithContext(context.Context) ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput
+}
+
+type ControlProjectFeatureConfigAutoAnnotateConfigModelArray []ControlProjectFeatureConfigAutoAnnotateConfigModelInput
+
+func (ControlProjectFeatureConfigAutoAnnotateConfigModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlProjectFeatureConfigAutoAnnotateConfigModel)(nil)).Elem()
+}
+
+func (i ControlProjectFeatureConfigAutoAnnotateConfigModelArray) ToControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput() ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return i.ToControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutputWithContext(context.Background())
+}
+
+func (i ControlProjectFeatureConfigAutoAnnotateConfigModelArray) ToControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutputWithContext(ctx context.Context) ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput)
+}
+
+type ControlProjectFeatureConfigAutoAnnotateConfigModelOutput struct{ *pulumi.OutputState }
+
+func (ControlProjectFeatureConfigAutoAnnotateConfigModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlProjectFeatureConfigAutoAnnotateConfigModel)(nil)).Elem()
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigModelOutput) ToControlProjectFeatureConfigAutoAnnotateConfigModelOutput() ControlProjectFeatureConfigAutoAnnotateConfigModelOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigModelOutput) ToControlProjectFeatureConfigAutoAnnotateConfigModelOutputWithContext(ctx context.Context) ControlProjectFeatureConfigAutoAnnotateConfigModelOutput {
+	return o
+}
+
+// The name of the model. Supported values include `face-detector`,
+// `object-detector`, `label-detector`, and `content-safety`.
+func (o ControlProjectFeatureConfigAutoAnnotateConfigModelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlProjectFeatureConfigAutoAnnotateConfigModel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlProjectFeatureConfigAutoAnnotateConfigModel)(nil)).Elem()
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput) ToControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput() ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput) ToControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutputWithContext(ctx context.Context) ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput) Index(i pulumi.IntInput) ControlProjectFeatureConfigAutoAnnotateConfigModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlProjectFeatureConfigAutoAnnotateConfigModel {
+		return vs[0].([]ControlProjectFeatureConfigAutoAnnotateConfigModel)[vs[1].(int)]
+	}).(ControlProjectFeatureConfigAutoAnnotateConfigModelOutput)
+}
+
+type ControlProjectFeatureConfigFilter struct {
+	// The buckets to include in the feature configuration.
+	// Structure is documented below.
+	IncludedCloudStorageBuckets ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets `pulumi:"includedCloudStorageBuckets"`
+}
+
+// ControlProjectFeatureConfigFilterInput is an input type that accepts ControlProjectFeatureConfigFilterArgs and ControlProjectFeatureConfigFilterOutput values.
+// You can construct a concrete instance of `ControlProjectFeatureConfigFilterInput` via:
+//
+//	ControlProjectFeatureConfigFilterArgs{...}
+type ControlProjectFeatureConfigFilterInput interface {
+	pulumi.Input
+
+	ToControlProjectFeatureConfigFilterOutput() ControlProjectFeatureConfigFilterOutput
+	ToControlProjectFeatureConfigFilterOutputWithContext(context.Context) ControlProjectFeatureConfigFilterOutput
+}
+
+type ControlProjectFeatureConfigFilterArgs struct {
+	// The buckets to include in the feature configuration.
+	// Structure is documented below.
+	IncludedCloudStorageBuckets ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsInput `pulumi:"includedCloudStorageBuckets"`
+}
+
+func (ControlProjectFeatureConfigFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlProjectFeatureConfigFilter)(nil)).Elem()
+}
+
+func (i ControlProjectFeatureConfigFilterArgs) ToControlProjectFeatureConfigFilterOutput() ControlProjectFeatureConfigFilterOutput {
+	return i.ToControlProjectFeatureConfigFilterOutputWithContext(context.Background())
+}
+
+func (i ControlProjectFeatureConfigFilterArgs) ToControlProjectFeatureConfigFilterOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigFilterOutput)
+}
+
+func (i ControlProjectFeatureConfigFilterArgs) ToControlProjectFeatureConfigFilterPtrOutput() ControlProjectFeatureConfigFilterPtrOutput {
+	return i.ToControlProjectFeatureConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ControlProjectFeatureConfigFilterArgs) ToControlProjectFeatureConfigFilterPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigFilterOutput).ToControlProjectFeatureConfigFilterPtrOutputWithContext(ctx)
+}
+
+// ControlProjectFeatureConfigFilterPtrInput is an input type that accepts ControlProjectFeatureConfigFilterArgs, ControlProjectFeatureConfigFilterPtr and ControlProjectFeatureConfigFilterPtrOutput values.
+// You can construct a concrete instance of `ControlProjectFeatureConfigFilterPtrInput` via:
+//
+//	        ControlProjectFeatureConfigFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlProjectFeatureConfigFilterPtrInput interface {
+	pulumi.Input
+
+	ToControlProjectFeatureConfigFilterPtrOutput() ControlProjectFeatureConfigFilterPtrOutput
+	ToControlProjectFeatureConfigFilterPtrOutputWithContext(context.Context) ControlProjectFeatureConfigFilterPtrOutput
+}
+
+type controlProjectFeatureConfigFilterPtrType ControlProjectFeatureConfigFilterArgs
+
+func ControlProjectFeatureConfigFilterPtr(v *ControlProjectFeatureConfigFilterArgs) ControlProjectFeatureConfigFilterPtrInput {
+	return (*controlProjectFeatureConfigFilterPtrType)(v)
+}
+
+func (*controlProjectFeatureConfigFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlProjectFeatureConfigFilter)(nil)).Elem()
+}
+
+func (i *controlProjectFeatureConfigFilterPtrType) ToControlProjectFeatureConfigFilterPtrOutput() ControlProjectFeatureConfigFilterPtrOutput {
+	return i.ToControlProjectFeatureConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *controlProjectFeatureConfigFilterPtrType) ToControlProjectFeatureConfigFilterPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigFilterPtrOutput)
+}
+
+type ControlProjectFeatureConfigFilterOutput struct{ *pulumi.OutputState }
+
+func (ControlProjectFeatureConfigFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlProjectFeatureConfigFilter)(nil)).Elem()
+}
+
+func (o ControlProjectFeatureConfigFilterOutput) ToControlProjectFeatureConfigFilterOutput() ControlProjectFeatureConfigFilterOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigFilterOutput) ToControlProjectFeatureConfigFilterOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigFilterOutput) ToControlProjectFeatureConfigFilterPtrOutput() ControlProjectFeatureConfigFilterPtrOutput {
+	return o.ToControlProjectFeatureConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ControlProjectFeatureConfigFilterOutput) ToControlProjectFeatureConfigFilterPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlProjectFeatureConfigFilter) *ControlProjectFeatureConfigFilter {
+		return &v
+	}).(ControlProjectFeatureConfigFilterPtrOutput)
+}
+
+// The buckets to include in the feature configuration.
+// Structure is documented below.
+func (o ControlProjectFeatureConfigFilterOutput) IncludedCloudStorageBuckets() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput {
+	return o.ApplyT(func(v ControlProjectFeatureConfigFilter) ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets {
+		return v.IncludedCloudStorageBuckets
+	}).(ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput)
+}
+
+type ControlProjectFeatureConfigFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlProjectFeatureConfigFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlProjectFeatureConfigFilter)(nil)).Elem()
+}
+
+func (o ControlProjectFeatureConfigFilterPtrOutput) ToControlProjectFeatureConfigFilterPtrOutput() ControlProjectFeatureConfigFilterPtrOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigFilterPtrOutput) ToControlProjectFeatureConfigFilterPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterPtrOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigFilterPtrOutput) Elem() ControlProjectFeatureConfigFilterOutput {
+	return o.ApplyT(func(v *ControlProjectFeatureConfigFilter) ControlProjectFeatureConfigFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ControlProjectFeatureConfigFilter
+		return ret
+	}).(ControlProjectFeatureConfigFilterOutput)
+}
+
+// The buckets to include in the feature configuration.
+// Structure is documented below.
+func (o ControlProjectFeatureConfigFilterPtrOutput) IncludedCloudStorageBuckets() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ApplyT(func(v *ControlProjectFeatureConfigFilter) *ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets {
+		if v == nil {
+			return nil
+		}
+		return &v.IncludedCloudStorageBuckets
+	}).(ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+type ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets struct {
+	// The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+	// supported, so specify exact bucket names (for example, `my-bucket`). Each bucket
+	// must already exist in the feature configuration's project. Up to 1,000 buckets can
+	// be specified.
+	BucketIdRegexes []string `pulumi:"bucketIdRegexes"`
+}
+
+// ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsInput is an input type that accepts ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs and ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput values.
+// You can construct a concrete instance of `ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsInput` via:
+//
+//	ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs{...}
+type ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsInput interface {
+	pulumi.Input
+
+	ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput
+	ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutputWithContext(context.Context) ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput
+}
+
+type ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs struct {
+	// The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+	// supported, so specify exact bucket names (for example, `my-bucket`). Each bucket
+	// must already exist in the feature configuration's project. Up to 1,000 buckets can
+	// be specified.
+	BucketIdRegexes pulumi.StringArrayInput `pulumi:"bucketIdRegexes"`
+}
+
+func (ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput {
+	return i.ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutputWithContext(context.Background())
+}
+
+func (i ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput)
+}
+
+func (i ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return i.ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput).ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx)
+}
+
+// ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrInput is an input type that accepts ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs, ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtr and ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput values.
+// You can construct a concrete instance of `ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrInput` via:
+//
+//	        ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrInput interface {
+	pulumi.Input
+
+	ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput
+	ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Context) ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput
+}
+
+type controlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrType ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs
+
+func ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtr(v *ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs) ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrInput {
+	return (*controlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrType)(v)
+}
+
+func (*controlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i *controlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrType) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return i.ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i *controlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrType) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+type ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput struct{ *pulumi.OutputState }
+
+func (ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (o ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets) *ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets {
+		return &v
+	}).(ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+// The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+// supported, so specify exact bucket names (for example, `my-bucket`). Each bucket
+// must already exist in the feature configuration's project. Up to 1,000 buckets can
+// be specified.
+func (o ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets) []string {
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput) ToControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput) Elem() ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput {
+	return o.ApplyT(func(v *ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets) ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets
+		return ret
+	}).(ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput)
+}
+
+// The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+// supported, so specify exact bucket names (for example, `my-bucket`). Each bucket
+// must already exist in the feature configuration's project. Up to 1,000 buckets can
+// be specified.
+func (o ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
 type ControlProjectIntelligenceConfigEffectiveIntelligenceConfig struct {
 	// (Output)
 	// The `StorageIntelligence` edition that is applicable for the resource.
@@ -23862,6 +24442,442 @@ func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDe
 	}).(GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput)
 }
 
+type GetControlProjectFeatureConfigAutoAnnotateConfig struct {
+	// The list of unique models used to generate annotations. Each model is identified by
+	// its 'name'.
+	Models []GetControlProjectFeatureConfigAutoAnnotateConfigModel `pulumi:"models"`
+	// The geographic location (case-sensitive) where data is processed. Currently, only
+	// multi-region locations such as 'us', 'eu', or 'asia' are supported.
+	//
+	// To avoid duplicate billing, configure exactly one processing location for each bucket
+	// and model combination. If you configure multiple processing locations for the same
+	// bucket and model across different feature configurations, a separate annotation run is
+	// triggered in each location, and you're billed for each resulting annotation.
+	ProcessingLocation string `pulumi:"processingLocation"`
+}
+
+// GetControlProjectFeatureConfigAutoAnnotateConfigInput is an input type that accepts GetControlProjectFeatureConfigAutoAnnotateConfigArgs and GetControlProjectFeatureConfigAutoAnnotateConfigOutput values.
+// You can construct a concrete instance of `GetControlProjectFeatureConfigAutoAnnotateConfigInput` via:
+//
+//	GetControlProjectFeatureConfigAutoAnnotateConfigArgs{...}
+type GetControlProjectFeatureConfigAutoAnnotateConfigInput interface {
+	pulumi.Input
+
+	ToGetControlProjectFeatureConfigAutoAnnotateConfigOutput() GetControlProjectFeatureConfigAutoAnnotateConfigOutput
+	ToGetControlProjectFeatureConfigAutoAnnotateConfigOutputWithContext(context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigOutput
+}
+
+type GetControlProjectFeatureConfigAutoAnnotateConfigArgs struct {
+	// The list of unique models used to generate annotations. Each model is identified by
+	// its 'name'.
+	Models GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayInput `pulumi:"models"`
+	// The geographic location (case-sensitive) where data is processed. Currently, only
+	// multi-region locations such as 'us', 'eu', or 'asia' are supported.
+	//
+	// To avoid duplicate billing, configure exactly one processing location for each bucket
+	// and model combination. If you configure multiple processing locations for the same
+	// bucket and model across different feature configurations, a separate annotation run is
+	// triggered in each location, and you're billed for each resulting annotation.
+	ProcessingLocation pulumi.StringInput `pulumi:"processingLocation"`
+}
+
+func (GetControlProjectFeatureConfigAutoAnnotateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectFeatureConfigAutoAnnotateConfig)(nil)).Elem()
+}
+
+func (i GetControlProjectFeatureConfigAutoAnnotateConfigArgs) ToGetControlProjectFeatureConfigAutoAnnotateConfigOutput() GetControlProjectFeatureConfigAutoAnnotateConfigOutput {
+	return i.ToGetControlProjectFeatureConfigAutoAnnotateConfigOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectFeatureConfigAutoAnnotateConfigArgs) ToGetControlProjectFeatureConfigAutoAnnotateConfigOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectFeatureConfigAutoAnnotateConfigOutput)
+}
+
+// GetControlProjectFeatureConfigAutoAnnotateConfigArrayInput is an input type that accepts GetControlProjectFeatureConfigAutoAnnotateConfigArray and GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectFeatureConfigAutoAnnotateConfigArrayInput` via:
+//
+//	GetControlProjectFeatureConfigAutoAnnotateConfigArray{ GetControlProjectFeatureConfigAutoAnnotateConfigArgs{...} }
+type GetControlProjectFeatureConfigAutoAnnotateConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput() GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput
+	ToGetControlProjectFeatureConfigAutoAnnotateConfigArrayOutputWithContext(context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput
+}
+
+type GetControlProjectFeatureConfigAutoAnnotateConfigArray []GetControlProjectFeatureConfigAutoAnnotateConfigInput
+
+func (GetControlProjectFeatureConfigAutoAnnotateConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectFeatureConfigAutoAnnotateConfig)(nil)).Elem()
+}
+
+func (i GetControlProjectFeatureConfigAutoAnnotateConfigArray) ToGetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput() GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput {
+	return i.ToGetControlProjectFeatureConfigAutoAnnotateConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectFeatureConfigAutoAnnotateConfigArray) ToGetControlProjectFeatureConfigAutoAnnotateConfigArrayOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput)
+}
+
+type GetControlProjectFeatureConfigAutoAnnotateConfigOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectFeatureConfigAutoAnnotateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectFeatureConfigAutoAnnotateConfig)(nil)).Elem()
+}
+
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigOutput) ToGetControlProjectFeatureConfigAutoAnnotateConfigOutput() GetControlProjectFeatureConfigAutoAnnotateConfigOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigOutput) ToGetControlProjectFeatureConfigAutoAnnotateConfigOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigOutput {
+	return o
+}
+
+// The list of unique models used to generate annotations. Each model is identified by
+// its 'name'.
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigOutput) Models() GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return o.ApplyT(func(v GetControlProjectFeatureConfigAutoAnnotateConfig) []GetControlProjectFeatureConfigAutoAnnotateConfigModel {
+		return v.Models
+	}).(GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput)
+}
+
+// The geographic location (case-sensitive) where data is processed. Currently, only
+// multi-region locations such as 'us', 'eu', or 'asia' are supported.
+//
+// To avoid duplicate billing, configure exactly one processing location for each bucket
+// and model combination. If you configure multiple processing locations for the same
+// bucket and model across different feature configurations, a separate annotation run is
+// triggered in each location, and you're billed for each resulting annotation.
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigOutput) ProcessingLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectFeatureConfigAutoAnnotateConfig) string { return v.ProcessingLocation }).(pulumi.StringOutput)
+}
+
+type GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectFeatureConfigAutoAnnotateConfig)(nil)).Elem()
+}
+
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput) ToGetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput() GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput) ToGetControlProjectFeatureConfigAutoAnnotateConfigArrayOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput) Index(i pulumi.IntInput) GetControlProjectFeatureConfigAutoAnnotateConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectFeatureConfigAutoAnnotateConfig {
+		return vs[0].([]GetControlProjectFeatureConfigAutoAnnotateConfig)[vs[1].(int)]
+	}).(GetControlProjectFeatureConfigAutoAnnotateConfigOutput)
+}
+
+type GetControlProjectFeatureConfigAutoAnnotateConfigModel struct {
+	// The name of the model. Supported values include 'face-detector',
+	// 'object-detector', 'label-detector', and 'content-safety'.
+	Name string `pulumi:"name"`
+}
+
+// GetControlProjectFeatureConfigAutoAnnotateConfigModelInput is an input type that accepts GetControlProjectFeatureConfigAutoAnnotateConfigModelArgs and GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput values.
+// You can construct a concrete instance of `GetControlProjectFeatureConfigAutoAnnotateConfigModelInput` via:
+//
+//	GetControlProjectFeatureConfigAutoAnnotateConfigModelArgs{...}
+type GetControlProjectFeatureConfigAutoAnnotateConfigModelInput interface {
+	pulumi.Input
+
+	ToGetControlProjectFeatureConfigAutoAnnotateConfigModelOutput() GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput
+	ToGetControlProjectFeatureConfigAutoAnnotateConfigModelOutputWithContext(context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput
+}
+
+type GetControlProjectFeatureConfigAutoAnnotateConfigModelArgs struct {
+	// The name of the model. Supported values include 'face-detector',
+	// 'object-detector', 'label-detector', and 'content-safety'.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetControlProjectFeatureConfigAutoAnnotateConfigModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectFeatureConfigAutoAnnotateConfigModel)(nil)).Elem()
+}
+
+func (i GetControlProjectFeatureConfigAutoAnnotateConfigModelArgs) ToGetControlProjectFeatureConfigAutoAnnotateConfigModelOutput() GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput {
+	return i.ToGetControlProjectFeatureConfigAutoAnnotateConfigModelOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectFeatureConfigAutoAnnotateConfigModelArgs) ToGetControlProjectFeatureConfigAutoAnnotateConfigModelOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput)
+}
+
+// GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayInput is an input type that accepts GetControlProjectFeatureConfigAutoAnnotateConfigModelArray and GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayInput` via:
+//
+//	GetControlProjectFeatureConfigAutoAnnotateConfigModelArray{ GetControlProjectFeatureConfigAutoAnnotateConfigModelArgs{...} }
+type GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput() GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput
+	ToGetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutputWithContext(context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput
+}
+
+type GetControlProjectFeatureConfigAutoAnnotateConfigModelArray []GetControlProjectFeatureConfigAutoAnnotateConfigModelInput
+
+func (GetControlProjectFeatureConfigAutoAnnotateConfigModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectFeatureConfigAutoAnnotateConfigModel)(nil)).Elem()
+}
+
+func (i GetControlProjectFeatureConfigAutoAnnotateConfigModelArray) ToGetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput() GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return i.ToGetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectFeatureConfigAutoAnnotateConfigModelArray) ToGetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput)
+}
+
+type GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectFeatureConfigAutoAnnotateConfigModel)(nil)).Elem()
+}
+
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput) ToGetControlProjectFeatureConfigAutoAnnotateConfigModelOutput() GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput) ToGetControlProjectFeatureConfigAutoAnnotateConfigModelOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput {
+	return o
+}
+
+// The name of the model. Supported values include 'face-detector',
+// 'object-detector', 'label-detector', and 'content-safety'.
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectFeatureConfigAutoAnnotateConfigModel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectFeatureConfigAutoAnnotateConfigModel)(nil)).Elem()
+}
+
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput) ToGetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput() GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput) ToGetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput) Index(i pulumi.IntInput) GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectFeatureConfigAutoAnnotateConfigModel {
+		return vs[0].([]GetControlProjectFeatureConfigAutoAnnotateConfigModel)[vs[1].(int)]
+	}).(GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput)
+}
+
+type GetControlProjectFeatureConfigFilter struct {
+	// The buckets to include in the feature configuration.
+	IncludedCloudStorageBuckets []GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket `pulumi:"includedCloudStorageBuckets"`
+}
+
+// GetControlProjectFeatureConfigFilterInput is an input type that accepts GetControlProjectFeatureConfigFilterArgs and GetControlProjectFeatureConfigFilterOutput values.
+// You can construct a concrete instance of `GetControlProjectFeatureConfigFilterInput` via:
+//
+//	GetControlProjectFeatureConfigFilterArgs{...}
+type GetControlProjectFeatureConfigFilterInput interface {
+	pulumi.Input
+
+	ToGetControlProjectFeatureConfigFilterOutput() GetControlProjectFeatureConfigFilterOutput
+	ToGetControlProjectFeatureConfigFilterOutputWithContext(context.Context) GetControlProjectFeatureConfigFilterOutput
+}
+
+type GetControlProjectFeatureConfigFilterArgs struct {
+	// The buckets to include in the feature configuration.
+	IncludedCloudStorageBuckets GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayInput `pulumi:"includedCloudStorageBuckets"`
+}
+
+func (GetControlProjectFeatureConfigFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectFeatureConfigFilter)(nil)).Elem()
+}
+
+func (i GetControlProjectFeatureConfigFilterArgs) ToGetControlProjectFeatureConfigFilterOutput() GetControlProjectFeatureConfigFilterOutput {
+	return i.ToGetControlProjectFeatureConfigFilterOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectFeatureConfigFilterArgs) ToGetControlProjectFeatureConfigFilterOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectFeatureConfigFilterOutput)
+}
+
+// GetControlProjectFeatureConfigFilterArrayInput is an input type that accepts GetControlProjectFeatureConfigFilterArray and GetControlProjectFeatureConfigFilterArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectFeatureConfigFilterArrayInput` via:
+//
+//	GetControlProjectFeatureConfigFilterArray{ GetControlProjectFeatureConfigFilterArgs{...} }
+type GetControlProjectFeatureConfigFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectFeatureConfigFilterArrayOutput() GetControlProjectFeatureConfigFilterArrayOutput
+	ToGetControlProjectFeatureConfigFilterArrayOutputWithContext(context.Context) GetControlProjectFeatureConfigFilterArrayOutput
+}
+
+type GetControlProjectFeatureConfigFilterArray []GetControlProjectFeatureConfigFilterInput
+
+func (GetControlProjectFeatureConfigFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectFeatureConfigFilter)(nil)).Elem()
+}
+
+func (i GetControlProjectFeatureConfigFilterArray) ToGetControlProjectFeatureConfigFilterArrayOutput() GetControlProjectFeatureConfigFilterArrayOutput {
+	return i.ToGetControlProjectFeatureConfigFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectFeatureConfigFilterArray) ToGetControlProjectFeatureConfigFilterArrayOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectFeatureConfigFilterArrayOutput)
+}
+
+type GetControlProjectFeatureConfigFilterOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectFeatureConfigFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectFeatureConfigFilter)(nil)).Elem()
+}
+
+func (o GetControlProjectFeatureConfigFilterOutput) ToGetControlProjectFeatureConfigFilterOutput() GetControlProjectFeatureConfigFilterOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigFilterOutput) ToGetControlProjectFeatureConfigFilterOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigFilterOutput {
+	return o
+}
+
+// The buckets to include in the feature configuration.
+func (o GetControlProjectFeatureConfigFilterOutput) IncludedCloudStorageBuckets() GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v GetControlProjectFeatureConfigFilter) []GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket {
+		return v.IncludedCloudStorageBuckets
+	}).(GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput)
+}
+
+type GetControlProjectFeatureConfigFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectFeatureConfigFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectFeatureConfigFilter)(nil)).Elem()
+}
+
+func (o GetControlProjectFeatureConfigFilterArrayOutput) ToGetControlProjectFeatureConfigFilterArrayOutput() GetControlProjectFeatureConfigFilterArrayOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigFilterArrayOutput) ToGetControlProjectFeatureConfigFilterArrayOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigFilterArrayOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigFilterArrayOutput) Index(i pulumi.IntInput) GetControlProjectFeatureConfigFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectFeatureConfigFilter {
+		return vs[0].([]GetControlProjectFeatureConfigFilter)[vs[1].(int)]
+	}).(GetControlProjectFeatureConfigFilterOutput)
+}
+
+type GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket struct {
+	// The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+	// supported, so specify exact bucket names (for example, 'my-bucket'). Each bucket
+	// must already exist in the feature configuration's project. Up to 1,000 buckets can
+	// be specified.
+	BucketIdRegexes []string `pulumi:"bucketIdRegexes"`
+}
+
+// GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketInput is an input type that accepts GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArgs and GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput values.
+// You can construct a concrete instance of `GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketInput` via:
+//
+//	GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArgs{...}
+type GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput() GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput
+	ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutputWithContext(context.Context) GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput
+}
+
+type GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArgs struct {
+	// The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+	// supported, so specify exact bucket names (for example, 'my-bucket'). Each bucket
+	// must already exist in the feature configuration's project. Up to 1,000 buckets can
+	// be specified.
+	BucketIdRegexes pulumi.StringArrayInput `pulumi:"bucketIdRegexes"`
+}
+
+func (GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArgs) ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput() GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput {
+	return i.ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArgs) ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput)
+}
+
+// GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayInput is an input type that accepts GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArray and GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayInput` via:
+//
+//	GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArray{ GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArgs{...} }
+type GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput() GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput
+	ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(context.Context) GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput
+}
+
+type GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArray []GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketInput
+
+func (GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArray) ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput() GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return i.ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArray) ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput)
+}
+
+type GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput) ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput() GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput) ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput {
+	return o
+}
+
+// The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+// supported, so specify exact bucket names (for example, 'my-bucket'). Each bucket
+// must already exist in the feature configuration's project. Up to 1,000 buckets can
+// be specified.
+func (o GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket) []string {
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput) ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput() GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput) ToGetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket {
+		return vs[0].([]GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket)[vs[1].(int)]
+	}).(GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput)
+}
+
 type GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig struct {
 	// The 'StorageIntelligence' edition that is applicable for the resource.
 	EffectiveEdition string `pulumi:"effectiveEdition"`
@@ -37598,6 +38614,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigTrialConfigInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigTrialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigTrialConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectFeatureConfigAutoAnnotateConfigInput)(nil)).Elem(), ControlProjectFeatureConfigAutoAnnotateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectFeatureConfigAutoAnnotateConfigPtrInput)(nil)).Elem(), ControlProjectFeatureConfigAutoAnnotateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectFeatureConfigAutoAnnotateConfigModelInput)(nil)).Elem(), ControlProjectFeatureConfigAutoAnnotateConfigModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectFeatureConfigAutoAnnotateConfigModelArrayInput)(nil)).Elem(), ControlProjectFeatureConfigAutoAnnotateConfigModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectFeatureConfigFilterInput)(nil)).Elem(), ControlProjectFeatureConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectFeatureConfigFilterPtrInput)(nil)).Elem(), ControlProjectFeatureConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsInput)(nil)).Elem(), ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrInput)(nil)).Elem(), ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigFilterInput)(nil)).Elem(), ControlProjectIntelligenceConfigFilterArgs{})
@@ -37828,6 +38852,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailInput)(nil)).Elem(), GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectFeatureConfigAutoAnnotateConfigInput)(nil)).Elem(), GetControlProjectFeatureConfigAutoAnnotateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectFeatureConfigAutoAnnotateConfigArrayInput)(nil)).Elem(), GetControlProjectFeatureConfigAutoAnnotateConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectFeatureConfigAutoAnnotateConfigModelInput)(nil)).Elem(), GetControlProjectFeatureConfigAutoAnnotateConfigModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayInput)(nil)).Elem(), GetControlProjectFeatureConfigAutoAnnotateConfigModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectFeatureConfigFilterInput)(nil)).Elem(), GetControlProjectFeatureConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectFeatureConfigFilterArrayInput)(nil)).Elem(), GetControlProjectFeatureConfigFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketInput)(nil)).Elem(), GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayInput)(nil)).Elem(), GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigFilterInput)(nil)).Elem(), GetControlProjectIntelligenceConfigFilterArgs{})
@@ -38134,6 +39166,14 @@ func init() {
 	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput{})
 	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigTrialConfigOutput{})
 	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigTrialConfigArrayOutput{})
+	pulumi.RegisterOutputType(ControlProjectFeatureConfigAutoAnnotateConfigOutput{})
+	pulumi.RegisterOutputType(ControlProjectFeatureConfigAutoAnnotateConfigPtrOutput{})
+	pulumi.RegisterOutputType(ControlProjectFeatureConfigAutoAnnotateConfigModelOutput{})
+	pulumi.RegisterOutputType(ControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput{})
+	pulumi.RegisterOutputType(ControlProjectFeatureConfigFilterOutput{})
+	pulumi.RegisterOutputType(ControlProjectFeatureConfigFilterPtrOutput{})
+	pulumi.RegisterOutputType(ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsOutput{})
+	pulumi.RegisterOutputType(ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsPtrOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigEffectiveIntelligenceConfigOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigFilterOutput{})
@@ -38364,6 +39404,14 @@ func init() {
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectFeatureConfigAutoAnnotateConfigOutput{})
+	pulumi.RegisterOutputType(GetControlProjectFeatureConfigAutoAnnotateConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectFeatureConfigAutoAnnotateConfigModelOutput{})
+	pulumi.RegisterOutputType(GetControlProjectFeatureConfigAutoAnnotateConfigModelArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectFeatureConfigFilterOutput{})
+	pulumi.RegisterOutputType(GetControlProjectFeatureConfigFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigFilterOutput{})

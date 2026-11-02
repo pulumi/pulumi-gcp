@@ -329,6 +329,7 @@ class UserCreds(pulumi.CustomResource):
             database=database.name,
             name="my-username")
         ```
+
         ### Firestore User Creds With Secret Manager
 
         ```python
@@ -429,6 +430,7 @@ class UserCreds(pulumi.CustomResource):
             database=database.name,
             name="my-username")
         ```
+
         ### Firestore User Creds With Secret Manager
 
         ```python

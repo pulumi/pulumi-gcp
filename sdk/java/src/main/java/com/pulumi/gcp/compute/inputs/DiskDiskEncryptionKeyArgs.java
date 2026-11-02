@@ -21,6 +21,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
      * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     @Import(name="kmsKeySelfLink")
@@ -32,6 +33,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
      * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     public Optional<Output<String>> kmsKeySelfLink() {
@@ -238,6 +240,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
          * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
          * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         * Specify the key without a `/cryptoKeyVersions/` suffix.
          * 
          * @return builder
          * 
@@ -253,6 +256,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
          * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
          * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         * Specify the key without a `/cryptoKeyVersions/` suffix.
          * 
          * @return builder
          * 

@@ -75,6 +75,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Firewall Policy Rule Network Scope Egress
  *
  * ```typescript
@@ -104,6 +105,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Firewall Policy Rule Network Scope Ingress
  *
  * ```typescript
@@ -135,6 +137,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Firewall Policy Rule Network Context Egress
  *
  * ```typescript
@@ -164,6 +167,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Firewall Policy Rule Network Context Ingress
  *
  * ```typescript
@@ -195,6 +199,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Firewall Policy Rule Target Type Internal Managed Lb
  *
  * ```typescript

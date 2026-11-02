@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .labels(Map.of("label-one", "value-one"))
  *             .deletionProtection(true)
  *             .build());
  * 
@@ -86,6 +87,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Oracledatabase Db System Full
  * 
  * <pre>

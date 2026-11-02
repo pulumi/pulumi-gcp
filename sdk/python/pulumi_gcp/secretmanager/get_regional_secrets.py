@@ -100,11 +100,6 @@ def get_regional_secrets(filter: Optional[_builtins.str] = None,
                          project: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionalSecretsResult:
     """
-    subcategory: "Secret Manager"
-    description: |-
-      List the Secret Manager Regional Secrets.
-    ---
-
     Use this data source to list the Secret Manager Regional Secrets.
 
     ## Example Usage
@@ -139,11 +134,6 @@ def get_regional_secrets_output(filter: pulumi.Input[Optional[Optional[_builtins
                                 project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalSecretsResult]:
     """
-    subcategory: "Secret Manager"
-    description: |-
-      List the Secret Manager Regional Secrets.
-    ---
-
     Use this data source to list the Secret Manager Regional Secrets.
 
     ## Example Usage

@@ -6,8 +6,10 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.ToolRemoteAgentToolAgentCard;
 import com.pulumi.gcp.ces.outputs.ToolRemoteAgentToolApiAuthentication;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,10 +38,31 @@ public final class ToolRemoteAgentTool {
     private @Nullable String description;
     /**
      * @return (Output)
+     * Mapping of input variable names of remote agent to GECX variable names.
+     * 
+     */
+    private @Nullable Map<String,String> inputVariableMapping;
+    /**
+     * @return (Output)
      * The name of the system tool.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return (Output)
+     * Mapping of output variable names of remote agent to GECX variable names.
+     * 
+     */
+    private @Nullable Map<String,String> outputVariableMapping;
+    /**
+     * @return (Output)
+     * When enabled, the interaction between the CXAS app and the remote agent
+     * will share the same context. If the remote agent returns a context_id, it
+     * will be persisted for the entirety of the session for this remote agent
+     * tool.
+     * 
+     */
+    private @Nullable Boolean statefulAgent;
 
     private ToolRemoteAgentTool() {}
     /**
@@ -70,11 +93,38 @@ public final class ToolRemoteAgentTool {
     }
     /**
      * @return (Output)
+     * Mapping of input variable names of remote agent to GECX variable names.
+     * 
+     */
+    public Map<String,String> inputVariableMapping() {
+        return this.inputVariableMapping == null ? Map.of() : this.inputVariableMapping;
+    }
+    /**
+     * @return (Output)
      * The name of the system tool.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return (Output)
+     * Mapping of output variable names of remote agent to GECX variable names.
+     * 
+     */
+    public Map<String,String> outputVariableMapping() {
+        return this.outputVariableMapping == null ? Map.of() : this.outputVariableMapping;
+    }
+    /**
+     * @return (Output)
+     * When enabled, the interaction between the CXAS app and the remote agent
+     * will share the same context. If the remote agent returns a context_id, it
+     * will be persisted for the entirety of the session for this remote agent
+     * tool.
+     * 
+     */
+    public Optional<Boolean> statefulAgent() {
+        return Optional.ofNullable(this.statefulAgent);
     }
 
     public static Builder builder() {
@@ -89,14 +139,20 @@ public final class ToolRemoteAgentTool {
         private @Nullable List<ToolRemoteAgentToolAgentCard> agentCards;
         private @Nullable List<ToolRemoteAgentToolApiAuthentication> apiAuthentications;
         private @Nullable String description;
+        private @Nullable Map<String,String> inputVariableMapping;
         private @Nullable String name;
+        private @Nullable Map<String,String> outputVariableMapping;
+        private @Nullable Boolean statefulAgent;
         public Builder() {}
         public Builder(ToolRemoteAgentTool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentCards = defaults.agentCards;
     	      this.apiAuthentications = defaults.apiAuthentications;
     	      this.description = defaults.description;
+    	      this.inputVariableMapping = defaults.inputVariableMapping;
     	      this.name = defaults.name;
+    	      this.outputVariableMapping = defaults.outputVariableMapping;
+    	      this.statefulAgent = defaults.statefulAgent;
         }
 
         @CustomType.Setter
@@ -124,9 +180,27 @@ public final class ToolRemoteAgentTool {
             return this;
         }
         @CustomType.Setter
+        public Builder inputVariableMapping(@Nullable Map<String,String> inputVariableMapping) {
+
+            this.inputVariableMapping = inputVariableMapping;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder outputVariableMapping(@Nullable Map<String,String> outputVariableMapping) {
+
+            this.outputVariableMapping = outputVariableMapping;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder statefulAgent(@Nullable Boolean statefulAgent) {
+
+            this.statefulAgent = statefulAgent;
             return this;
         }
         public ToolRemoteAgentTool build() {
@@ -134,7 +208,10 @@ public final class ToolRemoteAgentTool {
             _resultValue.agentCards = agentCards;
             _resultValue.apiAuthentications = apiAuthentications;
             _resultValue.description = description;
+            _resultValue.inputVariableMapping = inputVariableMapping;
             _resultValue.name = name;
+            _resultValue.outputVariableMapping = outputVariableMapping;
+            _resultValue.statefulAgent = statefulAgent;
             return _resultValue;
         }
     }

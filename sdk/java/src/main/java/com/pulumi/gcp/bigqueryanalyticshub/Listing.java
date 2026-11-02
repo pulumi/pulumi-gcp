@@ -91,6 +91,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Listing Restricted
  * 
  * <pre>
@@ -154,6 +155,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Listing Dcr
  * 
  * <pre>
@@ -253,6 +255,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Listing Log Linked Dataset Query User
  * 
  * <pre>
@@ -312,6 +315,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Listing Pubsub
  * 
  * <pre>
@@ -370,6 +374,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Listing Dcr Routine
  * 
  * <pre>
@@ -474,6 +479,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Public Listing
  * 
  * <pre>
@@ -535,6 +541,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Listing Marketplace
  * 
  * <pre>
@@ -594,6 +601,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Listing Multiregion
  * 
  * <pre>

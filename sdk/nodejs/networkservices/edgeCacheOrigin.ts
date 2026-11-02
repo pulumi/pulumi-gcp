@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *     description: "The default bucket for media edge test",
  * });
  * ```
+ *
  * ### Network Services Edge Cache Origin Advanced
  *
  * ```typescript
@@ -88,6 +89,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Services Edge Cache Origin V4auth
  *
  * ```typescript

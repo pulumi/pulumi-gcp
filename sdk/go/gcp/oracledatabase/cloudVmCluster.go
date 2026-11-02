@@ -77,6 +77,9 @@ import (
 //					GiVersion:      pulumi.String("19.0.0.0"),
 //					HostnamePrefix: pulumi.String("hostname1"),
 //				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
 //				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -87,6 +90,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Cloud Vmcluster Odbnetwork
 //
 // ```go
@@ -144,6 +148,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Cloud Vmcluster Full
 //
 // ```go
@@ -230,7 +235,9 @@ import (
 //						HealthMonitoringEnabled:  pulumi.Bool(true),
 //						IncidentLogsEnabled:      pulumi.Bool(true),
 //					},
-//					MemorySizeGb: pulumi.Int(60),
+//					MemorySizeGb:           pulumi.Int(60),
+//					ScanListenerPortTcp:    pulumi.Int(1521),
+//					ScanListenerPortTcpSsl: pulumi.Int(2484),
 //				},
 //				DeletionProtection: pulumi.Bool(true),
 //			})
@@ -242,6 +249,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Cloud Vmcluster Exascale
 //
 // ```go

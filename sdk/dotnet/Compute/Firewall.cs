@@ -75,6 +75,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firewall With Target Tags
     /// 
     /// ```csharp
@@ -209,6 +210,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("enableLogging")]
         public Output<bool> EnableLogging { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("firewallId")]
+        public Output<int> FirewallId { get; private set; } = null!;
 
         /// <summary>
         /// This field denotes the logging options for a particular firewall rule.
@@ -711,6 +718,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<int>? FirewallId { get; set; }
 
         /// <summary>
         /// This field denotes the logging options for a particular firewall rule.

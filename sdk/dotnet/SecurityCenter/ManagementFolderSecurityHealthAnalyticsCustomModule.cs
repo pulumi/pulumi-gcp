@@ -68,6 +68,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scc Management Folder Security Health Analytics Custom Module Full
     /// 
     /// ```csharp

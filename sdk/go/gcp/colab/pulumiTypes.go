@@ -1364,9 +1364,12 @@ func (o NotebookExecutionGcsNotebookSourcePtrOutput) Uri() pulumi.StringPtrOutpu
 }
 
 type NotebookExecutionWorkbenchRuntime struct {
+	// Use a container image to start the workbench instance.
+	// Structure is documented below.
+	CustomContainerImage *NotebookExecutionWorkbenchRuntimeCustomContainerImage `pulumi:"customContainerImage"`
 	// Custom Compute Engine VM image for the Workbench instance.
 	// Structure is documented below.
-	VmImage NotebookExecutionWorkbenchRuntimeVmImage `pulumi:"vmImage"`
+	VmImage *NotebookExecutionWorkbenchRuntimeVmImage `pulumi:"vmImage"`
 }
 
 // NotebookExecutionWorkbenchRuntimeInput is an input type that accepts NotebookExecutionWorkbenchRuntimeArgs and NotebookExecutionWorkbenchRuntimeOutput values.
@@ -1381,9 +1384,12 @@ type NotebookExecutionWorkbenchRuntimeInput interface {
 }
 
 type NotebookExecutionWorkbenchRuntimeArgs struct {
+	// Use a container image to start the workbench instance.
+	// Structure is documented below.
+	CustomContainerImage NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrInput `pulumi:"customContainerImage"`
 	// Custom Compute Engine VM image for the Workbench instance.
 	// Structure is documented below.
-	VmImage NotebookExecutionWorkbenchRuntimeVmImageInput `pulumi:"vmImage"`
+	VmImage NotebookExecutionWorkbenchRuntimeVmImagePtrInput `pulumi:"vmImage"`
 }
 
 func (NotebookExecutionWorkbenchRuntimeArgs) ElementType() reflect.Type {
@@ -1463,10 +1469,18 @@ func (o NotebookExecutionWorkbenchRuntimeOutput) ToNotebookExecutionWorkbenchRun
 	}).(NotebookExecutionWorkbenchRuntimePtrOutput)
 }
 
+// Use a container image to start the workbench instance.
+// Structure is documented below.
+func (o NotebookExecutionWorkbenchRuntimeOutput) CustomContainerImage() NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput {
+	return o.ApplyT(func(v NotebookExecutionWorkbenchRuntime) *NotebookExecutionWorkbenchRuntimeCustomContainerImage {
+		return v.CustomContainerImage
+	}).(NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput)
+}
+
 // Custom Compute Engine VM image for the Workbench instance.
 // Structure is documented below.
-func (o NotebookExecutionWorkbenchRuntimeOutput) VmImage() NotebookExecutionWorkbenchRuntimeVmImageOutput {
-	return o.ApplyT(func(v NotebookExecutionWorkbenchRuntime) NotebookExecutionWorkbenchRuntimeVmImage { return v.VmImage }).(NotebookExecutionWorkbenchRuntimeVmImageOutput)
+func (o NotebookExecutionWorkbenchRuntimeOutput) VmImage() NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
+	return o.ApplyT(func(v NotebookExecutionWorkbenchRuntime) *NotebookExecutionWorkbenchRuntimeVmImage { return v.VmImage }).(NotebookExecutionWorkbenchRuntimeVmImagePtrOutput)
 }
 
 type NotebookExecutionWorkbenchRuntimePtrOutput struct{ *pulumi.OutputState }
@@ -1493,6 +1507,17 @@ func (o NotebookExecutionWorkbenchRuntimePtrOutput) Elem() NotebookExecutionWork
 	}).(NotebookExecutionWorkbenchRuntimeOutput)
 }
 
+// Use a container image to start the workbench instance.
+// Structure is documented below.
+func (o NotebookExecutionWorkbenchRuntimePtrOutput) CustomContainerImage() NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionWorkbenchRuntime) *NotebookExecutionWorkbenchRuntimeCustomContainerImage {
+		if v == nil {
+			return nil
+		}
+		return v.CustomContainerImage
+	}).(NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput)
+}
+
 // Custom Compute Engine VM image for the Workbench instance.
 // Structure is documented below.
 func (o NotebookExecutionWorkbenchRuntimePtrOutput) VmImage() NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
@@ -1500,8 +1525,168 @@ func (o NotebookExecutionWorkbenchRuntimePtrOutput) VmImage() NotebookExecutionW
 		if v == nil {
 			return nil
 		}
-		return &v.VmImage
+		return v.VmImage
 	}).(NotebookExecutionWorkbenchRuntimeVmImagePtrOutput)
+}
+
+type NotebookExecutionWorkbenchRuntimeCustomContainerImage struct {
+	// The path to the container image repository.
+	// For example: gcr.io/{project_id}/{imageName}
+	Repository string `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag *string `pulumi:"tag"`
+}
+
+// NotebookExecutionWorkbenchRuntimeCustomContainerImageInput is an input type that accepts NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs and NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput values.
+// You can construct a concrete instance of `NotebookExecutionWorkbenchRuntimeCustomContainerImageInput` via:
+//
+//	NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs{...}
+type NotebookExecutionWorkbenchRuntimeCustomContainerImageInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionWorkbenchRuntimeCustomContainerImageOutput() NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput
+	ToNotebookExecutionWorkbenchRuntimeCustomContainerImageOutputWithContext(context.Context) NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput
+}
+
+type NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs struct {
+	// The path to the container image repository.
+	// For example: gcr.io/{project_id}/{imageName}
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeCustomContainerImage)(nil)).Elem()
+}
+
+func (i NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs) ToNotebookExecutionWorkbenchRuntimeCustomContainerImageOutput() NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput {
+	return i.ToNotebookExecutionWorkbenchRuntimeCustomContainerImageOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs) ToNotebookExecutionWorkbenchRuntimeCustomContainerImageOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput)
+}
+
+func (i NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs) ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput() NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput {
+	return i.ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs) ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput).ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrInput is an input type that accepts NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs, NotebookExecutionWorkbenchRuntimeCustomContainerImagePtr and NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrInput` via:
+//
+//	        NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput() NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput
+	ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutputWithContext(context.Context) NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput
+}
+
+type notebookExecutionWorkbenchRuntimeCustomContainerImagePtrType NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs
+
+func NotebookExecutionWorkbenchRuntimeCustomContainerImagePtr(v *NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs) NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrInput {
+	return (*notebookExecutionWorkbenchRuntimeCustomContainerImagePtrType)(v)
+}
+
+func (*notebookExecutionWorkbenchRuntimeCustomContainerImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionWorkbenchRuntimeCustomContainerImage)(nil)).Elem()
+}
+
+func (i *notebookExecutionWorkbenchRuntimeCustomContainerImagePtrType) ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput() NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput {
+	return i.ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionWorkbenchRuntimeCustomContainerImagePtrType) ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput)
+}
+
+type NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeCustomContainerImage)(nil)).Elem()
+}
+
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput) ToNotebookExecutionWorkbenchRuntimeCustomContainerImageOutput() NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput) ToNotebookExecutionWorkbenchRuntimeCustomContainerImageOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput) ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput() NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput {
+	return o.ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput) ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionWorkbenchRuntimeCustomContainerImage) *NotebookExecutionWorkbenchRuntimeCustomContainerImage {
+		return &v
+	}).(NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput)
+}
+
+// The path to the container image repository.
+// For example: gcr.io/{project_id}/{imageName}
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v NotebookExecutionWorkbenchRuntimeCustomContainerImage) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The tag of the container image. If not specified, this defaults to the latest tag.
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionWorkbenchRuntimeCustomContainerImage) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionWorkbenchRuntimeCustomContainerImage)(nil)).Elem()
+}
+
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput) ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput() NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput) ToNotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput) Elem() NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput {
+	return o.ApplyT(func(v *NotebookExecutionWorkbenchRuntimeCustomContainerImage) NotebookExecutionWorkbenchRuntimeCustomContainerImage {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionWorkbenchRuntimeCustomContainerImage
+		return ret
+	}).(NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput)
+}
+
+// The path to the container image repository.
+// For example: gcr.io/{project_id}/{imageName}
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionWorkbenchRuntimeCustomContainerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tag of the container image. If not specified, this defaults to the latest tag.
+func (o NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionWorkbenchRuntimeCustomContainerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
 }
 
 type NotebookExecutionWorkbenchRuntimeVmImage struct {
@@ -7624,6 +7809,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionGcsNotebookSourcePtrInput)(nil)).Elem(), NotebookExecutionGcsNotebookSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeInput)(nil)).Elem(), NotebookExecutionWorkbenchRuntimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionWorkbenchRuntimePtrInput)(nil)).Elem(), NotebookExecutionWorkbenchRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeCustomContainerImageInput)(nil)).Elem(), NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrInput)(nil)).Elem(), NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeVmImageInput)(nil)).Elem(), NotebookExecutionWorkbenchRuntimeVmImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeVmImagePtrInput)(nil)).Elem(), NotebookExecutionWorkbenchRuntimeVmImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeNotebookRuntimeTemplateRefInput)(nil)).Elem(), RuntimeNotebookRuntimeTemplateRefArgs{})
@@ -7710,6 +7897,8 @@ func init() {
 	pulumi.RegisterOutputType(NotebookExecutionGcsNotebookSourcePtrOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionWorkbenchRuntimeOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionWorkbenchRuntimePtrOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionWorkbenchRuntimeCustomContainerImageOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionWorkbenchRuntimeCustomContainerImagePtrOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionWorkbenchRuntimeVmImageOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionWorkbenchRuntimeVmImagePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeNotebookRuntimeTemplateRefOutput{})

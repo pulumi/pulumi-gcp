@@ -327,6 +327,7 @@ class UrlList(pulumi.CustomResource):
             location="us-central1",
             values=["www.example.com"])
         ```
+
         ### Network Security Url Lists Advanced
 
         ```python
@@ -405,6 +406,7 @@ class UrlList(pulumi.CustomResource):
             location="us-central1",
             values=["www.example.com"])
         ```
+
         ### Network Security Url Lists Advanced
 
         ```python

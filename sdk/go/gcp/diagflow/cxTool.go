@@ -135,6 +135,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflowcx Tool Data Store
 //
 // ```go
@@ -211,6 +212,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflowcx Tool Function
 //
 // ```go
@@ -277,6 +279,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflowcx Tool Connector
 //
 // ```go

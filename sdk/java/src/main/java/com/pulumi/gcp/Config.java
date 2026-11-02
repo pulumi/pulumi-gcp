@@ -469,6 +469,9 @@ public final class Config {
     public Optional<String> networkSecurityCustomEndpoint() {
         return Codegen.stringProp("networkSecurityCustomEndpoint").config(config).get();
     }
+    public Optional<String> networkServices2CustomEndpoint() {
+        return Codegen.stringProp("networkServices2CustomEndpoint").config(config).get();
+    }
     public Optional<String> networkServicesCustomEndpoint() {
         return Codegen.stringProp("networkServicesCustomEndpoint").config(config).get();
     }

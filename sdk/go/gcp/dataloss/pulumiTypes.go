@@ -47567,7 +47567,7 @@ func (o PreventionDiscoveryConfigActionExportDataSampleFindingsTablePtrOutput) T
 
 type PreventionDiscoveryConfigActionPubSubNotification struct {
 	// How much data to include in the pub/sub message.
-	// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+	// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
 	DetailOfMessage *string `pulumi:"detailOfMessage"`
 	// The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
 	// Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
@@ -47592,7 +47592,7 @@ type PreventionDiscoveryConfigActionPubSubNotificationInput interface {
 
 type PreventionDiscoveryConfigActionPubSubNotificationArgs struct {
 	// How much data to include in the pub/sub message.
-	// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+	// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
 	DetailOfMessage pulumi.StringPtrInput `pulumi:"detailOfMessage"`
 	// The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
 	// Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
@@ -47682,7 +47682,7 @@ func (o PreventionDiscoveryConfigActionPubSubNotificationOutput) ToPreventionDis
 }
 
 // How much data to include in the pub/sub message.
-// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
 func (o PreventionDiscoveryConfigActionPubSubNotificationOutput) DetailOfMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDiscoveryConfigActionPubSubNotification) *string { return v.DetailOfMessage }).(pulumi.StringPtrOutput)
 }
@@ -47731,7 +47731,7 @@ func (o PreventionDiscoveryConfigActionPubSubNotificationPtrOutput) Elem() Preve
 }
 
 // How much data to include in the pub/sub message.
-// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
 func (o PreventionDiscoveryConfigActionPubSubNotificationPtrOutput) DetailOfMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDiscoveryConfigActionPubSubNotification) *string {
 		if v == nil {

@@ -28,6 +28,7 @@ public final class ClusterNodePoolNodeConfigSandboxConfig {
      * Accepted values are:
      * 
      * * `&#34;GVISOR&#34;`: Pods run within a gVisor sandbox.
+     * * `&#34;MICROVM&#34;`: Pods run within a microVM sandbox.
      * 
      */
     private @Nullable String type;
@@ -52,6 +53,7 @@ public final class ClusterNodePoolNodeConfigSandboxConfig {
      * Accepted values are:
      * 
      * * `&#34;GVISOR&#34;`: Pods run within a gVisor sandbox.
+     * * `&#34;MICROVM&#34;`: Pods run within a microVM sandbox.
      * 
      */
     public Optional<String> type() {

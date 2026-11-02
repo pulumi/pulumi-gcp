@@ -101,6 +101,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Toolset Openapi Oauth Config
 //
 // ```go
@@ -189,6 +190,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Toolset Openapi Service Agent Id Token Auth Config
 //
 // ```go
@@ -269,6 +271,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Toolset Openapi Api Key Config
 //
 // ```go
@@ -355,6 +358,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Toolset Bearer Token Config
 //
 // ```go
@@ -437,6 +441,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Toolset Mcp Service Account Auth Config
 //
 // ```go
@@ -508,6 +513,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Toolset Mcp Oauth Config
 //
 // ```go
@@ -582,6 +588,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Toolset Mcp Service Agent Id Token Auth Config
 //
 // ```go
@@ -658,6 +665,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Toolset Mcp Api Key Config
 //
 // ```go
@@ -730,6 +738,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces Toolset Mcp Bearer Token Config
 //
 // ```go

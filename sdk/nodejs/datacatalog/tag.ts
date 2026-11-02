@@ -85,6 +85,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Data Catalog Entry Group Tag
  *
  * ```typescript
@@ -155,6 +156,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Data Catalog Entry Tag Full
  *
  * ```typescript

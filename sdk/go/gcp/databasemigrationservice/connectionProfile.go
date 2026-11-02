@@ -141,6 +141,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Database Migration Service Connection Profile Postgres
 //
 // ```go
@@ -200,6 +201,7 @@ import (
 //					Port:     pulumi.Int(5432),
 //					Username: sqldbUser.Name,
 //					Password: sqldbUser.Password,
+//					Database: pulumi.String("postgres"),
 //					Ssl: &databasemigrationservice.ConnectionProfilePostgresqlSslArgs{
 //						ClientKey:         sqlClientCert.PrivateKey,
 //						ClientCertificate: sqlClientCert.Cert,
@@ -219,6 +221,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Database Migration Service Connection Profile Postgres No Ssl
 //
 // ```go
@@ -278,6 +281,7 @@ import (
 //					Port:     pulumi.Int(5432),
 //					Username: sqldbUser.Name,
 //					Password: sqldbUser.Password,
+//					Database: pulumi.String("postgres"),
 //					Ssl: &databasemigrationservice.ConnectionProfilePostgresqlSslArgs{
 //						Type: pulumi.String("NONE"),
 //					},
@@ -294,6 +298,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Database Migration Service Connection Profile Postgres Required Ssl
 //
 // ```go
@@ -353,6 +358,7 @@ import (
 //					Port:     pulumi.Int(5432),
 //					Username: sqldbUser.Name,
 //					Password: sqldbUser.Password,
+//					Database: pulumi.String("postgres"),
 //					Ssl: &databasemigrationservice.ConnectionProfilePostgresqlSslArgs{
 //						Type: pulumi.String("REQUIRED"),
 //					},
@@ -369,6 +375,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Database Migration Service Connection Profile Oracle
 //
 // ```go
@@ -407,6 +414,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Database Migration Service Connection Profile Alloydb
 //
 // ```go
@@ -495,6 +503,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Database Migration Service Connection Profile Existing Mysql
 //
 // ```go
@@ -548,6 +557,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Database Migration Service Connection Profile Existing Postgres
 //
 // ```go
@@ -601,6 +611,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Database Migration Service Connection Profile Existing Alloydb
 //
 // ```go
@@ -612,7 +623,6 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -623,9 +633,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("destination-alloydb"),
-//			})
+//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: pulumi.StringRef("destination-alloydb"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -633,7 +643,7 @@ import (
 //				ClusterId: pulumi.String("destination-alloydb"),
 //				Location:  pulumi.String("us-central1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: _default.ID(),
+//					Network: pulumi.String(_default.Id),
 //				},
 //				DatabaseVersion: pulumi.String("POSTGRES_15"),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
@@ -645,33 +655,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
-//				Name:         pulumi.String("destination-alloydb"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      _default.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: _default.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					privateIpAlloc.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			destinationAlloydbPrimary, err := alloydb.NewInstance(ctx, "destination_alloydb_primary", &alloydb.InstanceArgs{
 //				Cluster:      destinationAlloydb.Name,
 //				InstanceId:   pulumi.String("destination-alloydb-primary"),
 //				InstanceType: pulumi.String("PRIMARY"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vpcConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

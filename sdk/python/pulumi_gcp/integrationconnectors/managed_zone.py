@@ -422,8 +422,8 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_project = gcp.organizations.Project("target_project",
-            project_id="tf-test_89239",
-            name="tf-test_41898",
+            project_id="tf-test_31660",
+            name="tf-test_97962",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -440,12 +440,12 @@ class ManagedZone(pulumi.CustomResource):
             service="compute.googleapis.com")
         network = gcp.compute.Network("network",
             project=target_project.project_id,
-            name="test",
+            name="test-vpc",
             auto_create_subnetworks=False,
             opts = pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
-            name="tf-test-dns_63399",
-            dns_name="private_97523.example.com.",
+            name="tf-test-dns_34534",
+            dns_name="private_87829.example.com.",
             visibility="private",
             private_visibility_config={
                 "networks": [{
@@ -460,7 +460,7 @@ class ManagedZone(pulumi.CustomResource):
                 "intent": "example",
             },
             target_project=target_project.project_id,
-            target_vpc="test",
+            target_vpc="test-vpc",
             dns=zone.dns_name,
             opts = pulumi.ResourceOptions(depends_on=[
                     dns_peer_binding,
@@ -529,8 +529,8 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_project = gcp.organizations.Project("target_project",
-            project_id="tf-test_89239",
-            name="tf-test_41898",
+            project_id="tf-test_31660",
+            name="tf-test_97962",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -547,12 +547,12 @@ class ManagedZone(pulumi.CustomResource):
             service="compute.googleapis.com")
         network = gcp.compute.Network("network",
             project=target_project.project_id,
-            name="test",
+            name="test-vpc",
             auto_create_subnetworks=False,
             opts = pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
-            name="tf-test-dns_63399",
-            dns_name="private_97523.example.com.",
+            name="tf-test-dns_34534",
+            dns_name="private_87829.example.com.",
             visibility="private",
             private_visibility_config={
                 "networks": [{
@@ -567,7 +567,7 @@ class ManagedZone(pulumi.CustomResource):
                 "intent": "example",
             },
             target_project=target_project.project_id,
-            target_vpc="test",
+            target_vpc="test-vpc",
             dns=zone.dns_name,
             opts = pulumi.ResourceOptions(depends_on=[
                     dns_peer_binding,

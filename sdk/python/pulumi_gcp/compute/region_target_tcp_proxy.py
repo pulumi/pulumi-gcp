@@ -510,6 +510,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL_MANAGED",
             backend_service=default_region_backend_service.id)
         ```
+
         ### Region Target Tcp Proxy Backendless
 
         ```python
@@ -521,6 +522,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             region="europe-west4",
             load_balancing_scheme="INTERNAL_MANAGED")
         ```
+
         ### Region Target Tcp Proxy Tls Route
 
         ```python
@@ -660,6 +662,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL_MANAGED",
             backend_service=default_region_backend_service.id)
         ```
+
         ### Region Target Tcp Proxy Backendless
 
         ```python
@@ -671,6 +674,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             region="europe-west4",
             load_balancing_scheme="INTERNAL_MANAGED")
         ```
+
         ### Region Target Tcp Proxy Tls Route
 
         ```python

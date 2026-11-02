@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Bitbucket Server Config Repositories
     /// 
     /// ```csharp
@@ -87,6 +88,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Bitbucket Server Config Peered Network
     /// 
     /// ```csharp

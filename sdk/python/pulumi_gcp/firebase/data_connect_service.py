@@ -542,6 +542,7 @@ class DataConnectService(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[fdc]))
         ```
+
         ### Firebasedataconnect Service With Force Deletion
 
         ```python
@@ -647,6 +648,7 @@ class DataConnectService(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[fdc]))
         ```
+
         ### Firebasedataconnect Service With Force Deletion
 
         ```python

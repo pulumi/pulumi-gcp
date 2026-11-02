@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Featureonlinestore With Optimized
  *
  * ```typescript
@@ -60,6 +61,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
  *
  * ```typescript

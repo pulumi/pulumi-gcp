@@ -66,6 +66,7 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
+ *
  * ### Firebase Web App Custom Api Key
  *
  * ```typescript

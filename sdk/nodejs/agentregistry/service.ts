@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Agent Registry Service Mcp Server
  *
  * ```typescript

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int? MaxUnavailable;
         /// <summary>
-        /// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+        /// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
         /// </summary>
         public readonly string? Strategy;
 

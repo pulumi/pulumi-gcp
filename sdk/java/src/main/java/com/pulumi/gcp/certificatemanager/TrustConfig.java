@@ -81,6 +81,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Certificate Manager Trust Config Allowlisted Certificates
  * 
  * <pre>

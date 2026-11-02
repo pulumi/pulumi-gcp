@@ -715,6 +715,7 @@ class Batch(pulumi.CustomResource):
                 "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
             })
         ```
+
         ### Dataproc Batch Spark Full
 
         ```python
@@ -808,6 +809,7 @@ class Batch(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member1]))
         ```
+
         ### Dataproc Batch Sparksql
 
         ```python
@@ -836,6 +838,7 @@ class Batch(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dataproc Batch Pyspark
 
         ```python
@@ -869,6 +872,7 @@ class Batch(pulumi.CustomResource):
                 "file_uris": ["https://storage.googleapis.com/terraform-serverless/people.txt"],
             })
         ```
+
         ### Dataproc Batch Sparkr
 
         ```python
@@ -899,6 +903,7 @@ class Batch(pulumi.CustomResource):
                 "args": ["https://storage.googleapis.com/terraform-serverless/flights.csv"],
             })
         ```
+
         ### Dataproc Batch Autotuning
 
         ```python
@@ -1035,6 +1040,7 @@ class Batch(pulumi.CustomResource):
                 "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
             })
         ```
+
         ### Dataproc Batch Spark Full
 
         ```python
@@ -1128,6 +1134,7 @@ class Batch(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member1]))
         ```
+
         ### Dataproc Batch Sparksql
 
         ```python
@@ -1156,6 +1163,7 @@ class Batch(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dataproc Batch Pyspark
 
         ```python
@@ -1189,6 +1197,7 @@ class Batch(pulumi.CustomResource):
                 "file_uris": ["https://storage.googleapis.com/terraform-serverless/people.txt"],
             })
         ```
+
         ### Dataproc Batch Sparkr
 
         ```python
@@ -1219,6 +1228,7 @@ class Batch(pulumi.CustomResource):
                 "args": ["https://storage.googleapis.com/terraform-serverless/flights.csv"],
             })
         ```
+
         ### Dataproc Batch Autotuning
 
         ```python

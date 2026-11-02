@@ -57,13 +57,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.InstanceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.NetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
  * import com.pulumi.gcp.compute.NetworkEndpointList;
  * import com.pulumi.gcp.compute.NetworkEndpointListArgs;
  * import com.pulumi.gcp.compute.inputs.NetworkEndpointListNetworkEndpointArgs;
- * import com.pulumi.gcp.compute.NetworkEndpointGroup;
- * import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -92,6 +93,8 @@ import javax.annotation.Nullable;
  *             .ipCidrRange("10.0.0.1/16")
  *             .region("us-central1")
  *             .network(default_.id())
+ *             .stackType("IPV4_IPV6")
+ *             .ipv6AccessType("EXTERNAL")
  *             .build());
  * 
  *         var endpoint_instance1 = new Instance("endpoint-instance1", InstanceArgs.builder()
@@ -99,9 +102,13 @@ import javax.annotation.Nullable;
  *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
  *                     .build())
  *                 .subnetwork(defaultSubnetwork.id())
+ *                 .stackType("IPV4_IPV6")
+ *                 .ipv6AccessConfigs(InstanceNetworkInterfaceIpv6AccessConfigArgs.builder()
+ *                     .networkTier("PREMIUM")
+ *                     .build())
  *                 .build())
  *             .name("endpoint-instance1")
- *             .machineType("e2-medium")
+ *             .machineType("e2-micro")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
  *                     .image(myImage.selfLink())
@@ -114,9 +121,13 @@ import javax.annotation.Nullable;
  *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
  *                     .build())
  *                 .subnetwork(defaultSubnetwork.id())
+ *                 .stackType("IPV4_IPV6")
+ *                 .ipv6AccessConfigs(InstanceNetworkInterfaceIpv6AccessConfigArgs.builder()
+ *                     .networkTier("PREMIUM")
+ *                     .build())
  *                 .build())
  *             .name("endpoint-instance2")
- *             .machineType("e2-medium")
+ *             .machineType("e2-micro")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
  *                     .image(myImage.selfLink())
@@ -124,27 +135,37 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_endpoints = new NetworkEndpointList("default-endpoints", NetworkEndpointListArgs.builder()
- *             .networkEndpointGroup(neg.get("name"))
- *             .networkEndpoints(            
- *                 NetworkEndpointListNetworkEndpointArgs.builder()
- *                     .instance(endpoint_instance1.name())
- *                     .port(neg.get("defaultPort"))
- *                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
- *                     .build(),
- *                 NetworkEndpointListNetworkEndpointArgs.builder()
- *                     .instance(endpoint_instance2.name())
- *                     .port(neg.get("defaultPort"))
- *                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
- *                     .build())
- *             .build());
- * 
- *         var group = new NetworkEndpointGroup("group", NetworkEndpointGroupArgs.builder()
+ *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .defaultPort(90)
  *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var default_endpoints = new NetworkEndpointList("default-endpoints", NetworkEndpointListArgs.builder()
+ *             .networkEndpointGroup(neg.name())
+ *             .networkEndpoints(            
+ *                 NetworkEndpointListNetworkEndpointArgs.builder()
+ *                     .instance(endpoint_instance1.name())
+ *                     .port(neg.defaultPort())
+ *                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
+ *                     .build(),
+ *                 NetworkEndpointListNetworkEndpointArgs.builder()
+ *                     .instance(endpoint_instance1.name())
+ *                     .port(neg.defaultPort())
+ *                     .ipv6Address(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).ipv6AccessConfigs().get(0).externalIpv6()))
+ *                     .build(),
+ *                 NetworkEndpointListNetworkEndpointArgs.builder()
+ *                     .instance(endpoint_instance2.name())
+ *                     .port(neg.defaultPort())
+ *                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
+ *                     .build(),
+ *                 NetworkEndpointListNetworkEndpointArgs.builder()
+ *                     .instance(endpoint_instance2.name())
+ *                     .port(neg.defaultPort())
+ *                     .ipv6Address(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).ipv6AccessConfigs().get(0).externalIpv6()))
+ *                     .build())
  *             .build());
  * 
  *     }

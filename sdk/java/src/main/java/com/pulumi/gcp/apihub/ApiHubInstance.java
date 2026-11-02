@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Apihub Api Hub Instance Full
  * 
  * <pre>

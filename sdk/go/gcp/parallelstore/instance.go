@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** `parallelstore.Instance` is deprecated and will be removed in a future major release. Use `lustre.Instance` instead.
+//
 // A Parallelstore Instance.
 //
 // ## Example Usage
@@ -85,6 +87,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Parallelstore Instance Basic
 //
 // ```go

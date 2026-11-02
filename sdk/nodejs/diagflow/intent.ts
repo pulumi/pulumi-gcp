@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [basicAgent],
  * });
  * ```
+ *
  * ### Dialogflow Intent Full
  *
  * ```typescript

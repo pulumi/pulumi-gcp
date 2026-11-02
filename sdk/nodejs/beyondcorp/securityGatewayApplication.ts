@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Beyondcorp Security Gateway Application Vpc
  *
  * ```typescript
@@ -70,6 +71,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Beyondcorp Security Gateway Application Spa Api
  *
  * ```typescript
@@ -97,6 +99,7 @@ import * as utilities from "../utilities";
  *     schema: "API_GATEWAY",
  * });
  * ```
+ *
  * ### Beyondcorp Security Gateway Application Spa Proxy
  *
  * ```typescript

@@ -463,6 +463,21 @@ export namespace accesscontextmanager {
 
     export interface GcpUserAccessBindingPrincipal {
         /**
+         * Immutable. The IAM principal identifier of the federated workforce or workload to
+         * assign the policy to. Examples include the following:
+         * * Single principal:
+         *   `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+         * * All workloads in a workload identity pool:
+         *   `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+         * * All Workforce Pools in a Google Cloud organization:
+         *   `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+         *   Bindings created for all Workforce Pools in a Google Cloud organization
+         *   support only `scopedAccessSettings` with the `restrictedProject`
+         *   client scope and active `sessionSettings`. No other configurations are
+         *   allowed.
+         */
+        federatedPrincipal?: string;
+        /**
          * Immutable. Service account email used to assign policies to a single service account.
          * If a service account is subject to multiple policies (e.g., if there is a policy for all
          * service accounts in a project and a policy for the service account), the closest (i.e.
@@ -553,6 +568,11 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         restrictedClientApplication?: outputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication;
+        /**
+         * Optional. The Google Cloud project that is subject to this binding's scope.
+         * Structure is documented below.
+         */
+        restrictedProject?: outputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject;
     }
 
     export interface GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
@@ -564,6 +584,15 @@ export namespace accesscontextmanager {
          * The name of the application. Example: "Cloud Console"
          */
         name?: string;
+    }
+
+    export interface GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject {
+        /**
+         * The Google Cloud project resource name.
+         * Format: `projects/{project_number}`. Only the project number is supported.
+         * Example: `projects/1234567890`
+         */
+        name: string;
     }
 
     export interface GcpUserAccessBindingSessionSettings {
@@ -672,7 +701,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -702,8 +734,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -792,8 +825,12 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to ingress the perimeter.
          * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
-         * The project may be in any Google Cloud organization, not just the
+         * Projects, folders, organizations, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
+         * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the case
          * of allowing all Google Cloud resources only is not supported.
          */
@@ -816,8 +853,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterDryRunIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -907,7 +945,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -937,8 +978,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -1027,11 +1069,13 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to ingress the perimeter.
          * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects and VPCs are allowed.
-         * Project format: `projects/{projectNumber}`
+         * Projects, folders, organizations, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * VPC network format:
          * `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-         * The project may be in any Google Cloud organization, not just the
+         * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the case
          * of allowing all Google Cloud resources only is not supported.
          */
@@ -1054,8 +1098,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -1134,8 +1179,10 @@ export namespace accesscontextmanager {
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimeterSpecIngressPolicy[];
         /**
          * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * Projects, folders, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
          */
         resources?: string[];
         /**
@@ -1212,7 +1259,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -1242,8 +1292,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -1342,7 +1393,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -1366,8 +1420,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -1505,8 +1560,10 @@ export namespace accesscontextmanager {
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimeterStatusIngressPolicy[];
         /**
          * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * Projects, folders, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
          */
         resources?: string[];
         /**
@@ -1583,7 +1640,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -1613,8 +1673,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -1713,7 +1774,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -1737,8 +1801,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -1950,8 +2015,10 @@ export namespace accesscontextmanager {
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicy[];
         /**
          * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * Projects, folders, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
          */
         resources?: string[];
         /**
@@ -2030,7 +2097,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -2060,8 +2130,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -2160,7 +2231,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -2184,8 +2258,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -2323,8 +2398,10 @@ export namespace accesscontextmanager {
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicy[];
         /**
          * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * Projects, folders, and VPC networks are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
          */
         resources?: string[];
         /**
@@ -2403,7 +2480,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -2433,8 +2513,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * A list of resources, in the form `projects/{project_number}`,
+         * `folders/{folder_number}`, or `organizations/{organization_number}`,
+         * that match this to stanza. A request matches
          * if it contains a resource in this list. If * is specified for resources,
          * then this `EgressTo` rule will authorize access to all resources outside
          * the perimeter.
@@ -2533,7 +2614,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to egress the perimeter.
          * Requests from these resources are allowed to access data outside the perimeter.
-         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * Projects, folders, and organizations are allowed.
+         * Project format: `projects/{project_number}`
+         * Folder format: `folders/{folder_number}`
+         * Organization format: `organizations/{organization_number}`
          * The resource may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the
          * case of allowing all Google Cloud resources only is not supported.
@@ -2557,8 +2641,9 @@ export namespace accesscontextmanager {
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation[];
         /**
-         * A list of resources, currently only projects in the form
-         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * A list of resources protected by this `ServicePerimeter`, in the form
+         * `projects/{project_number}`, `folders/{folder_number}`, or
+         * `organizations/{organization_number}`,
          * that are allowed to be accessed by sources defined in the
          * corresponding `IngressFrom`. A request matches if it contains
          * a resource in this list. If `*` is specified for resources,
@@ -2801,6 +2886,10 @@ export namespace agenticapplications {
 
     export interface AnalystAgentPersonaArtifactsConfig {
         /**
+         * Options for audit trail export.
+         */
+        auditTrailExportOptions?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions;
+        /**
          * Options for document generation.
          */
         documentGenerationOptions?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions;
@@ -2816,6 +2905,25 @@ export namespace agenticapplications {
          * Options for visualizations.
          */
         visualizationOptions?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptions;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions {
+        /**
+         * If true, append the audit trail to the final response.
+         */
+        appendAuditTrail?: boolean;
+        /**
+         * If true, export the audit trail as a separate artifact.
+         */
+        exportAuditTrailArtifact?: boolean;
+        /**
+         * Format for audit trail export.
+         * Possible values:
+         * MARKDOWN
+         * HTML
+         * PDF
+         */
+        exportFormat?: string;
     }
 
     export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions {
@@ -3711,6 +3819,18 @@ export namespace agentidentity {
          * The token endpoint of the OAuth client.
          */
         tokenUrl?: string;
+    }
+
+    export interface AuthProviderIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AuthProviderIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
 }
@@ -7594,14 +7714,24 @@ export namespace appengine {
 
     export interface StandardAppVersionVpcAccess {
         /**
+         * (Optional, Deprecated)
          * The egress setting for the VPC Access, controlling what traffic is diverted through it.
+         *
+         * > **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+         *
+         * @deprecated `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
          */
-        egressSetting?: string;
+        egressSetting: string;
         /**
          * List of network interfaces for the VPC Access. Currently only a single network interface is supported.
          * Structure is documented below.
          */
         networkInterfaces?: outputs.appengine.StandardAppVersionVpcAccessNetworkInterface[];
+        /**
+         * The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+         * Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+         */
+        vpcEgress: string;
     }
 
     export interface StandardAppVersionVpcAccessConnector {
@@ -7617,13 +7747,13 @@ export namespace appengine {
 
     export interface StandardAppVersionVpcAccessNetworkInterface {
         /**
-         * The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+         * The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `default` or `projects/my-project/global/networks/default`).
          */
-        network?: string;
+        network: string;
         /**
-         * The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+         * The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `default` or `projects/my-project/regions/us-central1/subnetworks/default`).
          */
-        subnetwork?: string;
+        subnetwork: string;
         /**
          * Network tags applied to this App Engine version.
          */
@@ -12213,10 +12343,18 @@ export namespace bigquery {
 
     export interface AppProfileStandardIsolation {
         /**
+         * The memory config to use for requests sent using this app profile.
+         * If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+         */
+        memoryConfig?: outputs.bigquery.AppProfileStandardIsolationMemoryConfig;
+        /**
          * The priority of requests sent using this app profile.
          * Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
          */
         priority: string;
+    }
+
+    export interface AppProfileStandardIsolationMemoryConfig {
     }
 
     export interface BiReservationPreferredTable {
@@ -12493,6 +12631,36 @@ export namespace bigquery {
         description?: string;
         expression: string;
         title: string;
+    }
+
+    export interface ConnectionSalesforceDataCloud {
+        /**
+         * Configuration options for cross-cloud caching of data and metadata files.
+         * Structure is documented below.
+         */
+        crossCloudCacheOptions: outputs.bigquery.ConnectionSalesforceDataCloudCrossCloudCacheOptions;
+        /**
+         * (Output)
+         * A unique Google-owned and Google-generated service account identity for the connection.
+         */
+        identity: string;
+        /**
+         * The URL to the user's Salesforce Data Cloud instance.
+         */
+        instanceUri: string;
+        /**
+         * The ID of the user's Salesforce tenant.
+         */
+        tenantId: string;
+    }
+
+    export interface ConnectionSalesforceDataCloudCrossCloudCacheOptions {
+        /**
+         * Whether cross-cloud caching is enabled for queries through BigQuery.
+         * When enabled, read data and metadata are cached, which can improve performance
+         * and reduce network egress costs for cross-cloud queries.
+         */
+        enabled?: boolean;
     }
 
     export interface ConnectionSpark {
@@ -14258,6 +14426,20 @@ export namespace bigquery {
         reason?: string;
     }
 
+    export interface ReservationAssignmentSchedulingPolicy {
+        /**
+         * If present and > 0, the reservation will attempt to limit the concurrency
+         * of jobs running for any particular project within it to the given value.
+         */
+        concurrency?: number;
+        /**
+         * If present and > 0, the reservation will attempt to limit the slot
+         * consumption of queries running for any particular project within it to
+         * the given value.
+         */
+        maxSlots?: number;
+    }
+
     export interface ReservationAutoscale {
         /**
          * (Output)
@@ -14304,6 +14486,20 @@ export namespace bigquery {
          * A developer-facing error message, which should be in English.
          */
         message: string;
+    }
+
+    export interface ReservationSchedulingPolicy {
+        /**
+         * If present and > 0, the reservation will attempt to limit the concurrency
+         * of jobs running for any particular project within it to the given value.
+         */
+        concurrency?: number;
+        /**
+         * If present and > 0, the reservation will attempt to limit the slot
+         * consumption of queries running for any particular project within it to
+         * the given value.
+         */
+        maxSlots?: number;
     }
 
     export interface RoutineArgument {
@@ -15877,10 +16073,18 @@ export namespace bigtable {
 
     export interface AppProfileStandardIsolation {
         /**
+         * The memory config to use for requests sent using this app profile.
+         * If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+         */
+        memoryConfig?: outputs.bigtable.AppProfileStandardIsolationMemoryConfig;
+        /**
          * The priority of requests sent using this app profile.
          * Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
          */
         priority: string;
+    }
+
+    export interface AppProfileStandardIsolationMemoryConfig {
     }
 
     export interface AuthorizedViewSubsetView {
@@ -16038,6 +16242,14 @@ export namespace bigtable {
          * A title for the expression, i.e. a short string describing its purpose.
          */
         title: string;
+    }
+
+    export interface MemoryLayerMemoryConfig {
+        /**
+         * (Output)
+         * Reporting the current size of the memory layer in GiB.
+         */
+        storageSizeGib: number;
     }
 
     export interface SchemaBundleProtoSchema {
@@ -17028,6 +17240,13 @@ export namespace certificateauthority {
     }
 
     export interface CaPoolIssuancePolicy {
+        /**
+         * If set to true, allows requesters to specify the requestedNotBeforeTime
+         * field when creating a Certificate. Certificates requested with this
+         * option enabled will have a 'not_before_time' equal to the value
+         * specified in the request.
+         */
+        allowRequesterSpecifiedNotBeforeTime?: boolean;
         /**
          * IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
          * Structure is documented below.
@@ -20458,6 +20677,11 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: string;
     }
 
     export interface AppTimeZoneSettings {
@@ -25413,6 +25637,11 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: string;
     }
 
     export interface GuardrailLlmPromptSecurity {
@@ -25490,6 +25719,11 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: string;
     }
 
     export interface GuardrailLlmPromptSecurityDefaultSettings {
@@ -26286,6 +26520,16 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values:
+         * DEFAULT
+         * LOW
+         * MEDIUM
+         * HIGH
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: string;
     }
 
     export interface ToolDataStoreToolModalityConfigSnippetsConfig {
@@ -26293,6 +26537,11 @@ export namespace ces {
          * Whether snippets are enabled.
          */
         enableSnippets?: boolean;
+        /**
+         * Number of snippets to return per query.
+         * If unset, returns all snippets from the service by default.
+         */
+        maxSnippets?: number;
     }
 
     export interface ToolDataStoreToolModalityConfigSummarizationConfig {
@@ -26324,6 +26573,16 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values:
+         * DEFAULT
+         * LOW
+         * MEDIUM
+         * HIGH
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: string;
     }
 
     export interface ToolFileSearchTool {
@@ -26906,9 +27165,27 @@ export namespace ces {
         description: string;
         /**
          * (Output)
+         * Mapping of input variable names of remote agent to GECX variable names.
+         */
+        inputVariableMapping: {[key: string]: string};
+        /**
+         * (Output)
          * The name of the system tool.
          */
         name: string;
+        /**
+         * (Output)
+         * Mapping of output variable names of remote agent to GECX variable names.
+         */
+        outputVariableMapping: {[key: string]: string};
+        /**
+         * (Output)
+         * When enabled, the interaction between the CXAS app and the remote agent
+         * will share the same context. If the remote agent returns a context_id, it
+         * will be persisted for the entirety of the session for this remote agent
+         * tool.
+         */
+        statefulAgent: boolean;
     }
 
     export interface ToolRemoteAgentToolAgentCard {
@@ -34322,6 +34599,10 @@ export namespace cloudbuild {
          * If true, workers are created without any public address, which prevents network egress to public IPs.
          */
         noExternalIp: boolean;
+        /**
+         * The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+         */
+        workerRelease: string;
     }
 
     export interface TriggerApprovalConfig {
@@ -35251,6 +35532,10 @@ export namespace cloudbuild {
          * If true, workers are created without any public address, which prevents network egress to public IPs.
          */
         noExternalIp: boolean;
+        /**
+         * The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+         */
+        workerRelease?: string;
     }
 
 }
@@ -43018,6 +43303,490 @@ export namespace cloudrunv2 {
         type: string;
     }
 
+    export interface InstanceCondition {
+        /**
+         * (Output)
+         * A reason for the instance condition.
+         */
+        instanceReason: string;
+        /**
+         * (Output)
+         * Last time the condition transitioned from one status to another.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * Human readable message indicating details about the current status.
+         */
+        message: string;
+        /**
+         * (Output)
+         * A common (instance-level) reason for this condition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * How to interpret failures of this condition, one of Error, Warning, Info
+         */
+        severity: string;
+        /**
+         * (Output)
+         * State of the condition.
+         */
+        state: string;
+        /**
+         * (Output)
+         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+         */
+        type: string;
+    }
+
+    export interface InstanceContainer {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
+        args: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
+        commands: string[];
+        /**
+         * List of environment variables to set in the container.
+         * Structure is documented below.
+         */
+        envs?: outputs.cloudrunv2.InstanceContainerEnv[];
+        /**
+         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         */
+        image: string;
+        /**
+         * Periodic probe of container liveness. Container will be restarted if the probe fails.
+         * Structure is documented below.
+         */
+        livenessProbe?: outputs.cloudrunv2.InstanceContainerLivenessProbe;
+        /**
+         * Name of the container specified as a DNS_LABEL.
+         */
+        name?: string;
+        /**
+         * List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+         * If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+         * Structure is documented below.
+         */
+        ports: outputs.cloudrunv2.InstanceContainerPort[];
+        /**
+         * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * Structure is documented below.
+         */
+        resources: outputs.cloudrunv2.InstanceContainerResources;
+        /**
+         * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+         * Structure is documented below.
+         */
+        startupProbe?: outputs.cloudrunv2.InstanceContainerStartupProbe;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: outputs.cloudrunv2.InstanceContainerVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: string;
+    }
+
+    export interface InstanceContainerEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: string;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: string;
+        /**
+         * Source for the environment variable's value.
+         * Structure is documented below.
+         */
+        valueSource?: outputs.cloudrunv2.InstanceContainerEnvValueSource;
+    }
+
+    export interface InstanceContainerEnvValueSource {
+        /**
+         * Selects a secret and a specific version from Cloud Secret Manager.
+         * Structure is documented below.
+         */
+        secretKeyRef?: outputs.cloudrunv2.InstanceContainerEnvValueSourceSecretKeyRef;
+    }
+
+    export interface InstanceContainerEnvValueSourceSecretKeyRef {
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+         */
+        secret: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+         */
+        version: string;
+    }
+
+    export interface InstanceContainerLivenessProbe {
+        /**
+         * Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: number;
+        /**
+         * Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet or grpc must be specified.
+         * Structure is documented below.
+         */
+        grpc?: outputs.cloudrunv2.InstanceContainerLivenessProbeGrpc;
+        /**
+         * Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet or grpc must be specified.
+         * Structure is documented below.
+         */
+        httpGet?: outputs.cloudrunv2.InstanceContainerLivenessProbeHttpGet;
+        /**
+         * Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+         */
+        initialDelaySeconds?: number;
+        /**
+         * Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+         */
+        periodSeconds?: number;
+        /**
+         * Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface InstanceContainerLivenessProbeGrpc {
+        /**
+         * Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+         */
+        port?: number;
+        /**
+         * Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+         */
+        service?: string;
+    }
+
+    export interface InstanceContainerLivenessProbeHttpGet {
+        /**
+         * Optional. Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: outputs.cloudrunv2.InstanceContainerLivenessProbeHttpGetHttpHeader[];
+        /**
+         * Optional. Path to access on the HTTP server. Defaults to '/'.
+         */
+        path?: string;
+        /**
+         * Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+         */
+        port?: number;
+    }
+
+    export interface InstanceContainerLivenessProbeHttpGetHttpHeader {
+        /**
+         * Required. The header field name
+         */
+        name?: string;
+        /**
+         * Optional. The header field value
+         */
+        value?: string;
+    }
+
+    export interface InstanceContainerPort {
+        /**
+         * Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+         */
+        containerPort: number;
+        /**
+         * If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+         */
+        name: string;
+    }
+
+    export interface InstanceContainerResources {
+        /**
+         * Only memory and CPU are supported. Use key `cpu` for CPU limit, `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
+        limits: {[key: string]: string};
+    }
+
+    export interface InstanceContainerStartupProbe {
+        /**
+         * Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: number;
+        /**
+         * Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+         * Structure is documented below.
+         */
+        grpc?: outputs.cloudrunv2.InstanceContainerStartupProbeGrpc;
+        /**
+         * Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+         * Structure is documented below.
+         */
+        httpGet?: outputs.cloudrunv2.InstanceContainerStartupProbeHttpGet;
+        /**
+         * Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+         */
+        initialDelaySeconds?: number;
+        /**
+         * Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+         */
+        periodSeconds?: number;
+        /**
+         * Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+         * Structure is documented below.
+         */
+        tcpSocket?: outputs.cloudrunv2.InstanceContainerStartupProbeTcpSocket;
+        /**
+         * Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface InstanceContainerStartupProbeGrpc {
+        /**
+         * Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+         */
+        port?: number;
+        /**
+         * Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+         */
+        service?: string;
+    }
+
+    export interface InstanceContainerStartupProbeHttpGet {
+        /**
+         * Optional. Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: outputs.cloudrunv2.InstanceContainerStartupProbeHttpGetHttpHeader[];
+        /**
+         * Optional. Path to access on the HTTP server. Defaults to '/'.
+         */
+        path?: string;
+        /**
+         * Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+         */
+        port?: number;
+    }
+
+    export interface InstanceContainerStartupProbeHttpGetHttpHeader {
+        /**
+         * Required. The header field name
+         */
+        name?: string;
+        /**
+         * Optional. The header field value
+         */
+        value?: string;
+    }
+
+    export interface InstanceContainerStartupProbeTcpSocket {
+        /**
+         * Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+         */
+        port?: number;
+    }
+
+    export interface InstanceContainerStatus {
+        /**
+         * (Output)
+         * ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+         */
+        imageDigest: string;
+        /**
+         * Name of the Instance.
+         */
+        name: string;
+    }
+
+    export interface InstanceContainerVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: string;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath?: string;
+    }
+
+    export interface InstanceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface InstanceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface InstanceTerminalCondition {
+        /**
+         * (Output)
+         * A reason for the instance condition.
+         */
+        instanceReason: string;
+        /**
+         * (Output)
+         * Last time the condition transitioned from one status to another.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * Human readable message indicating details about the current status.
+         */
+        message: string;
+        /**
+         * (Output)
+         * A common (instance-level) reason for this condition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * How to interpret failures of this condition, one of Error, Warning, Info
+         */
+        severity: string;
+        /**
+         * (Output)
+         * State of the condition.
+         */
+        state: string;
+        /**
+         * (Output)
+         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+         */
+        type: string;
+    }
+
+    export interface InstanceVolume {
+        /**
+         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         * Structure is documented below.
+         */
+        cloudSqlInstance?: outputs.cloudrunv2.InstanceVolumeCloudSqlInstance;
+        /**
+         * Ephemeral storage used as a shared volume.
+         * Structure is documented below.
+         */
+        emptyDir?: outputs.cloudrunv2.InstanceVolumeEmptyDir;
+        /**
+         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
+         * Structure is documented below.
+         */
+        gcs?: outputs.cloudrunv2.InstanceVolumeGcs;
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * Represents an NFS mount.
+         * Structure is documented below.
+         */
+        nfs?: outputs.cloudrunv2.InstanceVolumeNfs;
+        /**
+         * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         * Structure is documented below.
+         */
+        secret?: outputs.cloudrunv2.InstanceVolumeSecret;
+    }
+
+    export interface InstanceVolumeCloudSqlInstance {
+        /**
+         * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         */
+        instances?: string[];
+    }
+
+    export interface InstanceVolumeEmptyDir {
+        /**
+         * The different types of medium supported for EmptyDir.
+         * Default value is `MEMORY`.
+         * Possible values are: `MEMORY`, `DISK`.
+         */
+        medium?: string;
+        /**
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+         */
+        sizeLimit?: string;
+    }
+
+    export interface InstanceVolumeGcs {
+        /**
+         * GCS Bucket name
+         */
+        bucket: string;
+        /**
+         * A list of flags to pass to the gcsfuse command for configuring this volume.
+         * Flags should be passed without leading dashes.
+         */
+        mountOptions?: string[];
+        /**
+         * If true, mount the GCS bucket as read-only
+         */
+        readOnly?: boolean;
+    }
+
+    export interface InstanceVolumeNfs {
+        /**
+         * Path that is exported by the NFS server.
+         */
+        path: string;
+        /**
+         * If true, mount the NFS volume as read only
+         */
+        readOnly?: boolean;
+        /**
+         * Hostname or IP address of the NFS server
+         */
+        server: string;
+    }
+
+    export interface InstanceVolumeSecret {
+        /**
+         * Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+         */
+        defaultMode?: number;
+        /**
+         * If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+         * Structure is documented below.
+         */
+        items?: outputs.cloudrunv2.InstanceVolumeSecretItem[];
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
+        secret: string;
+    }
+
+    export interface InstanceVolumeSecretItem {
+        /**
+         * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+         */
+        mode?: number;
+        /**
+         * The relative path of the secret in the container.
+         */
+        path: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+         */
+        version?: string;
+    }
+
     export interface JobBinaryAuthorization {
         /**
          * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
@@ -47191,10 +47960,27 @@ export namespace colab {
 
     export interface NotebookExecutionWorkbenchRuntime {
         /**
+         * Use a container image to start the workbench instance.
+         * Structure is documented below.
+         */
+        customContainerImage?: outputs.colab.NotebookExecutionWorkbenchRuntimeCustomContainerImage;
+        /**
          * Custom Compute Engine VM image for the Workbench instance.
          * Structure is documented below.
          */
-        vmImage: outputs.colab.NotebookExecutionWorkbenchRuntimeVmImage;
+        vmImage?: outputs.colab.NotebookExecutionWorkbenchRuntimeVmImage;
+    }
+
+    export interface NotebookExecutionWorkbenchRuntimeCustomContainerImage {
+        /**
+         * The path to the container image repository.
+         * For example: gcr.io/{project_id}/{imageName}
+         */
+        repository: string;
+        /**
+         * The tag of the container image. If not specified, this defaults to the latest tag.
+         */
+        tag?: string;
     }
 
     export interface NotebookExecutionWorkbenchRuntimeVmImage {
@@ -50135,6 +50921,7 @@ export namespace compute {
          * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
          * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         * Specify the key without a `/cryptoKeyVersions/` suffix.
          */
         kmsKeySelfLink?: string;
         /**
@@ -52362,6 +53149,8 @@ export namespace compute {
          * ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
          * 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
          * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         *
+         * Specify the key without a '/cryptoKeyVersions/' suffix.
          */
         kmsKeySelfLink: string;
         /**
@@ -52685,10 +53474,11 @@ export namespace compute {
          */
         name: string;
         /**
-         * This field is not used for external load balancing.
+         * This field is not used for global external load balancing.
          *
-         * For Internal TCP/UDP Load Balancing, this field identifies the network that
-         * the load balanced IP should belong to for this Forwarding Rule.
+         * For Internal TCP/UDP Load Balancing and Regional External Load Balancing ('EXTERNAL_MANAGED'),
+         * this field identifies the network that the load balanced IP should belong to
+         * for this Forwarding Rule.
          * If the subnetwork is specified, the network of the subnetwork will be used.
          * If neither subnetwork nor this field is specified, the default network will
          * be used.
@@ -52831,8 +53621,9 @@ export namespace compute {
         sourceIpRanges: string[];
         /**
          * This field identifies the subnetwork that the load balanced IP should
-         * belong to for this Forwarding Rule, used in internal load balancing and
-         * network load balancing with IPv6.
+         * belong to for this Forwarding Rule, used in internal load balancing,
+         * network load balancing with IPv6, and regional external ('EXTERNAL_MANAGED')
+         * load balancing with IPv6.
          *
          * If the network specified is in auto subnet mode, this field is optional.
          * However, a subnetwork must be specified if the network is in custom subnet
@@ -56053,6 +56844,8 @@ export namespace compute {
     export interface GetRegionDiskDiskEncryptionKey {
         /**
          * The name of the encryption key that is stored in Google Cloud KMS.
+         *
+         * Specify the key without a '/cryptoKeyVersions/' suffix.
          */
         kmsKeyName: string;
         /**
@@ -56094,7 +56887,7 @@ export namespace compute {
 
     export interface GetRegionDiskGuestOsFeature {
         /**
-         * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE"]
+         * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "IDPF", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE", "SUSPEND_SAFE_FPR"]
          */
         type: string;
     }
@@ -59651,6 +60444,10 @@ export namespace compute {
          */
         sendPropagatedConnectionLimitIfZero: boolean;
         /**
+         * The unique identifier number for the resource. This identifier is defined by the server.
+         */
+        serviceAttachmentId: number;
+        /**
          * NOTE: This field is temporarily non-functional due to an underlying API issue.
          * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
          * [If true, show NAT IPs of all connected endpoints.]
@@ -59754,6 +60551,8 @@ export namespace compute {
     export interface GetSnapshotSnapshotEncryptionKey {
         /**
          * The name of the encryption key that is stored in Google Cloud KMS.
+         *
+         * Specify the key without a '/cryptoKeyVersions/' suffix.
          */
         kmsKeySelfLink: string;
         /**
@@ -60526,7 +61325,7 @@ export namespace compute {
     export interface ImageGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
          */
         type: string;
     }
@@ -60973,20 +61772,19 @@ export namespace compute {
          * Indicates how many IOPS to provision for the disk.
          * This sets the number of I/O operations per second that the disk can handle.
          * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-         * Note: Updating currently is only supported for hyperdisk skus via disk update
-         * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-         * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-         * you'll need to manually delete and recreate it.
+         * Note: Updating in place is only supported for hyperdisk skus; changing this
+         * value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+         * Hyperdisk allows for an update of IOPS every 4 hours; to update more
+         * frequently than that, you'll need to manually delete and recreate the disk.
          */
         provisionedIops: number;
         /**
          * Indicates how much throughput to provision for the disk.
          * This sets the number of throughput mb per second that the disk can handle.
          * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-         * Note: Updating currently is only supported for hyperdisk skus via disk update
-         * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-         * for an update of throughput every 4 hours. To update your hyperdisk more
-         * frequently, you'll need to manually delete and recreate it.
+         * Note: This is only supported for hyperdisk skus, and can be updated in place.
+         * Hyperdisk allows for an update of throughput every 4 hours; to update more
+         * frequently than that, you'll need to manually delete and recreate the disk.
          */
         provisionedThroughput: number;
         /**
@@ -64799,6 +65597,15 @@ export namespace compute {
         subnetwork: string;
     }
 
+    export interface NetworkEdgeSecurityServiceParams {
+        /**
+         * Resource manager tags to be bound to the networkEdgeSecurityService. Tag keys and values have the
+         * same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+         * and values are in the format tagValues/456.
+         */
+        resourceManagerTags?: {[key: string]: string};
+    }
+
     export interface NetworkEndpointListNetworkEndpoint {
         /**
          * The name for a specific VM instance that the IP address belongs to.
@@ -64813,6 +65620,11 @@ export namespace compute {
          * **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
          */
         ipAddress?: string;
+        /**
+         * IPv6 address of network endpoint. The result of parsing the endpoint config,
+         * or empty if IPv6 is not used.
+         */
+        ipv6Address?: string;
         /**
          * Port number of network endpoint.
          * **Note** `port` is required unless the Network Endpoint Group is created
@@ -67343,6 +68155,7 @@ export namespace compute {
     export interface RegionDiskDiskEncryptionKey {
         /**
          * The name of the encryption key that is stored in Google Cloud KMS.
+         * Specify the key without a `/cryptoKeyVersions/` suffix.
          */
         kmsKeyName?: string;
         /**
@@ -67398,7 +68211,7 @@ export namespace compute {
     export interface RegionDiskGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
          */
         type: string;
     }
@@ -70392,7 +71205,6 @@ export namespace compute {
 
     export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
-         * (Optional, Beta)
          * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          */
@@ -70809,7 +71621,6 @@ export namespace compute {
          */
         backendService?: string;
         /**
-         * (Optional, Beta)
          * The percentage of requests to be mirrored to backendService.
          * The value must be between 0.0 and 100.0 inclusive.
          */
@@ -71311,7 +72122,6 @@ export namespace compute {
          */
         backendService: string;
         /**
-         * (Optional, Beta)
          * The percentage of requests to be mirrored to backendService.
          * The value must be between 0.0 and 100.0 inclusive.
          */
@@ -71769,7 +72579,6 @@ export namespace compute {
          */
         backendService: string;
         /**
-         * (Optional, Beta)
          * The percentage of requests to be mirrored to backendService.
          * The value must be between 0.0 and 100.0 inclusive.
          */
@@ -72440,7 +73249,6 @@ export namespace compute {
          */
         backendService: string;
         /**
-         * (Optional, Beta)
          * The percentage of requests to be mirrored to backendService.
          * The value must be between 0.0 and 100.0 inclusive.
          */
@@ -74763,7 +75571,6 @@ export namespace compute {
 
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
-         * (Optional, Beta)
          * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          */
@@ -75254,6 +76061,7 @@ export namespace compute {
     export interface SnapshotSnapshotEncryptionKey {
         /**
          * The name of the encryption key that is stored in Google Cloud KMS.
+         * Specify the key without a `/cryptoKeyVersions/` suffix.
          */
         kmsKeySelfLink?: string;
         /**
@@ -76104,7 +76912,6 @@ export namespace compute {
          */
         backendService: string;
         /**
-         * (Optional, Beta)
          * The percentage of requests to be mirrored to backendService.
          * The value must be between 0.0 and 100.0 inclusive.
          */
@@ -76969,7 +77776,6 @@ export namespace compute {
          */
         backendService: string;
         /**
-         * (Optional, Beta)
          * The percentage of requests to be mirrored to backendService.
          * The value must be between 0.0 and 100.0 inclusive.
          */
@@ -77792,7 +78598,6 @@ export namespace compute {
          */
         backendService: string;
         /**
-         * (Optional, Beta)
          * The percentage of requests to be mirrored to backendService.
          * The value must be between 0.0 and 100.0 inclusive.
          */
@@ -78881,7 +79686,6 @@ export namespace compute {
          */
         backendService: string;
         /**
-         * (Optional, Beta)
          * The percentage of requests to be mirrored to backendService.
          * The value must be between 0.0 and 100.0 inclusive.
          */
@@ -80719,6 +81523,9 @@ export namespace container {
          * It is disabled by default for Standard clusters; set `enabled = true` to enable.
          * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
          * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+         * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+         *
+         * @deprecated `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
          */
         parallelstoreCsiDriverConfig: outputs.container.ClusterAddonsConfigParallelstoreCsiDriverConfig;
         /**
@@ -81107,7 +81914,7 @@ export namespace container {
          */
         maxUnavailable?: number;
         /**
-         * Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+         * Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
          */
         strategy: string;
     }
@@ -81757,9 +82564,15 @@ export namespace container {
 
     export interface ClusterManagedOpentelemetryConfig {
         /**
-         * The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+         * The scope of the Managed OpenTelemetry pipeline. Available options include:
+         * * `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`: Enables the Managed OpenTelemetry pipeline for collection and instrumentation components.
+         * * `NONE`: Disables the Managed OpenTelemetry pipeline.
+         *
+         * See the [GKE Managed OpenTelemetry documentation](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) and [ManagedOpenTelemetryConfig REST API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig) for additional details.
+         *
+         * > **Note:** Removing the `managedOpentelemetryConfig` block or omitting `scope` from your configuration stops Terraform from managing this setting, but does **not** disable the pipeline on the cluster. To disable the feature, keep the block and explicitly set `scope = "NONE"`.
          */
-        scope?: string;
+        scope: string;
     }
 
     export interface ClusterMasterAuth {
@@ -82891,6 +83704,7 @@ export namespace container {
          * Accepted values are:
          *
          * * `"GVISOR"`: Pods run within a gVisor sandbox.
+         * * `"MICROVM"`: Pods run within a microVM sandbox.
          */
         type?: string;
     }
@@ -83014,7 +83828,10 @@ export namespace container {
         /**
          * The number of nodes to create in this
          * cluster's default node pool. In regional or multi-zonal clusters, this is the
-         * number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+         * number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+         * `nodePool` blocks defined, the cluster is created without a default node pool.
+         * This requires a GKE version that supports clusters without a default node pool
+         * (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
          * `gcp.container.NodePool` objects with no default node pool, you'll need to
          * set this to a value of at least `1`, alongside setting
          * `removeDefaultNodePool` to `true`.
@@ -84499,6 +85316,7 @@ export namespace container {
          * Accepted values are:
          *
          * * `"GVISOR"`: Pods run within a gVisor sandbox.
+         * * `"MICROVM"`: Pods run within a microVM sandbox.
          */
         type?: string;
     }
@@ -84651,7 +85469,7 @@ export namespace container {
          */
         maxUnavailable: number;
         /**
-         * Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+         * Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
          */
         strategy?: string;
     }
@@ -84769,7 +85587,9 @@ export namespace container {
          * with any other ranges in use within the cluster's network, and it must be a /28
          * subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
          * for more details. This field only applies to private clusters, when
-         * `enablePrivateNodes` is `true`.
+         * `enablePrivateNodes` is `true`. On GKE versions 1.29 and later, this field is
+         * optional when `privateEndpointSubnetwork` is specified. It is also optional for
+         * Autopilot clusters.
          */
         masterIpv4CidrBlock: string;
         /**
@@ -84878,6 +85698,13 @@ export namespace container {
          * A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
          */
         controlPlaneSoakDuration?: string;
+    }
+
+    export interface ClusterScheduleUpgradeConfig {
+        /**
+         * Whether scheduled upgrades are enabled on the cluster.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterSecretManagerConfig {
@@ -85804,7 +86631,7 @@ export namespace container {
 
     export interface GetClusterManagedOpentelemetryConfig {
         /**
-         * The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+         * The scope of the Managed OpenTelemetry pipeline. Available options include NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig for more information. To disable the feature, explicitly set this to NONE.
          */
         scope: string;
     }
@@ -88497,7 +89324,7 @@ export namespace container {
          */
         masterGlobalAccessConfigs: outputs.container.GetClusterPrivateClusterConfigMasterGlobalAccessConfig[];
         /**
-         * The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true.
+         * The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true. On GKE versions 1.29 and later, this field is optional when privateEndpointSubnetwork is specified. It is also optional for Autopilot clusters.
          */
         masterIpv4CidrBlock: string;
         /**
@@ -88593,6 +89420,13 @@ export namespace container {
          * A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
          */
         controlPlaneSoakDuration: string;
+    }
+
+    export interface GetClusterScheduleUpgradeConfig {
+        /**
+         * Whether scheduled upgrades are enabled.
+         */
+        enabled: boolean;
     }
 
     export interface GetClusterSecretManagerConfig {
@@ -89948,7 +90782,7 @@ export namespace container {
          */
         maxUnavailable: number;
         /**
-         * The upgrade strategy to be used for upgrading the nodes.
+         * The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
          */
         strategy?: string;
     }
@@ -96100,7 +96934,7 @@ export namespace dataloss {
     export interface PreventionDiscoveryConfigActionPubSubNotification {
         /**
          * How much data to include in the pub/sub message.
-         * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+         * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
          */
         detailOfMessage?: string;
         /**
@@ -100878,6 +101712,13 @@ export namespace dataproc {
          */
         masterConfig: outputs.dataproc.ClusterClusterConfigMasterConfig;
         /**
+         * The configuration for the master flexible instance group
+         * in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+         * Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+         * Structure defined below.
+         */
+        masterFlexibleConfig: outputs.dataproc.ClusterClusterConfigMasterFlexibleConfig;
+        /**
          * The config setting for metastore service with the cluster.
          * Structure defined below.
          * ***
@@ -100891,6 +101732,13 @@ export namespace dataproc {
          *   such for legacy/compatibility reasons.
          */
         preemptibleWorkerConfig: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfig;
+        /**
+         * The configuration for the secondary worker flexible
+         * instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+         * `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+         * Structure defined below.
+         */
+        secondaryWorkerFlexibleConfig: outputs.dataproc.ClusterClusterConfigSecondaryWorkerFlexibleConfig;
         /**
          * Security related configuration. Structure defined below.
          */
@@ -100921,6 +101769,12 @@ export namespace dataproc {
          * in a cluster. Structure defined below.
          */
         workerConfig: outputs.dataproc.ClusterClusterConfigWorkerConfig;
+        /**
+         * The configuration for the worker flexible instance group
+         * in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+         * Requires `masterFlexibleConfig`. Structure defined below.
+         */
+        workerFlexibleConfig: outputs.dataproc.ClusterClusterConfigWorkerFlexibleConfig;
     }
 
     export interface ClusterClusterConfigAutoscalingConfig {
@@ -101485,6 +102339,30 @@ export namespace dataproc {
         vmCount: number;
     }
 
+    export interface ClusterClusterConfigMasterFlexibleConfig {
+        /**
+         * The boot disk size in GB.
+         * Changing this forces a new resource to be created.
+         * ***
+         */
+        bootDiskSizeGb?: number;
+        /**
+         * The number of vCPUs per instance. Must be a power of 2
+         * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+         */
+        coreCount: number;
+        /**
+         * Controls the hardware class for the flexible instance group.
+         * Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+         * Changing this forces a new resource to be created.
+         */
+        hardwareClass?: string;
+        /**
+         * Must be `1`. Defaults to `1`. Changing this forces a new resource to be created.
+         */
+        numInstances?: number;
+    }
+
     export interface ClusterClusterConfigMetastoreConfig {
         /**
          * Resource name of an existing Dataproc Metastore service.
@@ -101693,6 +102571,31 @@ export namespace dataproc {
          * ***
          */
         standardCapacityPercentAboveBase?: number;
+    }
+
+    export interface ClusterClusterConfigSecondaryWorkerFlexibleConfig {
+        /**
+         * The boot disk size in GB.
+         * Changing this forces a new resource to be created.
+         * ***
+         */
+        bootDiskSizeGb?: number;
+        /**
+         * The number of vCPUs per instance. Must be a power of 2
+         * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+         */
+        coreCount: number;
+        /**
+         * Controls the hardware class for the flexible instance group.
+         * Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+         * Changing this forces a new resource to be created.
+         */
+        hardwareClass?: string;
+        /**
+         * Specifies the number of secondary worker instances to create.
+         * Defaults to `0`; can be scaled down to `0`; updatable in place.
+         */
+        numInstances?: number;
     }
 
     export interface ClusterClusterConfigSecurityConfig {
@@ -102047,6 +102950,31 @@ export namespace dataproc {
          * Number of VM provisioned with the machine_type.
          */
         vmCount: number;
+    }
+
+    export interface ClusterClusterConfigWorkerFlexibleConfig {
+        /**
+         * The boot disk size in GB.
+         * Changing this forces a new resource to be created.
+         * ***
+         */
+        bootDiskSizeGb?: number;
+        /**
+         * The number of vCPUs per instance. Must be a power of 2
+         * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+         */
+        coreCount: number;
+        /**
+         * Controls the hardware class for the flexible instance group.
+         * Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
+         * Changing this forces a new resource to be created.
+         */
+        hardwareClass?: string;
+        /**
+         * Specifies the number of worker instances to create.
+         * Represents the desired capacity of the group and is updatable in place.
+         */
+        numInstances: number;
     }
 
     export interface ClusterIAMBindingCondition {
@@ -104860,6 +105788,7 @@ export namespace datastream {
         /**
          * A reference to a Secret Manager resource name storing the MongoDB
          * connection password. Mutually exclusive with password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         secretManagerStoredPassword?: string;
         /**
@@ -108463,6 +109392,11 @@ export namespace diagflow {
          */
         enableWordInfo?: boolean;
         /**
+         * Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+         * Structure is documented below.
+         */
+        geminiAsrConfig?: outputs.diagflow.ConversationProfileSttConfigGeminiAsrConfig;
+        /**
          * The language of the supplied audio.
          */
         languageCode: string;
@@ -108481,9 +109415,38 @@ export namespace diagflow {
          */
         speechModelVariant?: string;
         /**
+         * If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+         */
+        useGeminiAsr?: boolean;
+        /**
          * Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
          */
         useTimeoutBasedEndpointing?: boolean;
+    }
+
+    export interface ConversationProfileSttConfigGeminiAsrConfig {
+        /**
+         * End of speech sensitivity.
+         * Possible values are: `END_SENSITIVITY_HIGH`, `END_SENSITIVITY_LOW`.
+         */
+        endOfSpeechSensitivity?: string;
+        /**
+         * The Gemini ASR model ID used for transcription. This value overrides the default model ID configured on the server.
+         */
+        modelId?: string;
+        /**
+         * The required duration of detected speech before start-of-speech is committed.
+         */
+        prefixPaddingMs?: number;
+        /**
+         * The required duration of detected silence (or non-speech) before end-of-speech is committed.
+         */
+        silenceDurationMs?: number;
+        /**
+         * Start of speech sensitivity.
+         * Possible values are: `START_SENSITIVITY_HIGH`, `START_SENSITIVITY_LOW`.
+         */
+        startOfSpeechSensitivity?: string;
     }
 
     export interface ConversationProfileTtsConfig {
@@ -114945,12 +115908,26 @@ export namespace dns {
 
     export interface ManagedZoneForwardingConfig {
         /**
+         * The list of outbound endpoints to use for queries.
+         * Structure is documented below.
+         */
+        outboundEndpoints?: outputs.dns.ManagedZoneForwardingConfigOutboundEndpoint[];
+        /**
          * List of target name servers to forward to. Cloud DNS will
          * select the best available name server if more than
          * one target is given.
          * Structure is documented below.
          */
         targetNameServers: outputs.dns.ManagedZoneForwardingConfigTargetNameServer[];
+    }
+
+    export interface ManagedZoneForwardingConfigOutboundEndpoint {
+        /**
+         * Specified as a resource path including project and region.
+         * This should be formatted like
+         * `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+         */
+        name: string;
     }
 
     export interface ManagedZoneForwardingConfigTargetNameServer {
@@ -115052,6 +116029,11 @@ export namespace dns {
 
     export interface PolicyAlternativeNameServerConfig {
         /**
+         * The list of outbound endpoints to use for queries.
+         * Structure is documented below.
+         */
+        outboundEndpoints?: outputs.dns.PolicyAlternativeNameServerConfigOutboundEndpoint[];
+        /**
          * Sets an alternative name server for the associated networks. When specified,
          * all DNS queries are forwarded to a name server that you choose. Names such as .internal
          * are not available when an alternative name server is specified.
@@ -115060,14 +116042,23 @@ export namespace dns {
         targetNameServers: outputs.dns.PolicyAlternativeNameServerConfigTargetNameServer[];
     }
 
+    export interface PolicyAlternativeNameServerConfigOutboundEndpoint {
+        /**
+         * Specified as a resource path including project and region.
+         * This should be formatted like
+         * `projects/{project}/locations/{location}/outboundEndpoints/{endpoint}`
+         *
+         * <a name="nestedDns64Config"></a>The `dns64Config` block supports:
+         */
+        name: string;
+    }
+
     export interface PolicyAlternativeNameServerConfigTargetNameServer {
         /**
          * Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
          * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
          * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
          * Possible values are: `default`, `private`.
-         *
-         * <a name="nestedDns64Config"></a>The `dns64Config` block supports:
          */
         forwardingPath?: string;
         /**
@@ -115410,6 +116401,110 @@ export namespace dns {
          * Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
          */
         type: string;
+    }
+
+}
+
+export namespace documentai {
+    export interface SchemaVersionSchema {
+        /**
+         * Description of the schema.
+         */
+        description?: string;
+        /**
+         * Display name to show users.
+         */
+        displayName?: string;
+        /**
+         * Document-level prompt provided by the user. This custom text is injected into the AI model's prompt to provide extra, document-wide guidance for processing.
+         */
+        documentPrompt?: string;
+        /**
+         * Entity types of the schema.
+         * Structure is documented below.
+         */
+        entityTypes?: outputs.documentai.SchemaVersionSchemaEntityType[];
+        /**
+         * Metadata of the schema.
+         * Structure is documented below.
+         */
+        metadata?: outputs.documentai.SchemaVersionSchemaMetadata;
+    }
+
+    export interface SchemaVersionSchemaEntityType {
+        /**
+         * The entity type that this type is derived from. For now, one and only one should be set.
+         */
+        baseTypes?: string[];
+        /**
+         * User defined name for the type.
+         */
+        displayName?: string;
+        /**
+         * Defines a list of enum values.
+         * Structure is documented below.
+         */
+        enumValues?: outputs.documentai.SchemaVersionSchemaEntityTypeEnumValues;
+        /**
+         * Name of the type. It must be unique within the schema file and cannot be a "Common Type".
+         */
+        name: string;
+        /**
+         * Defines properties that can be part of the entity type.
+         * Structure is documented below.
+         */
+        properties?: outputs.documentai.SchemaVersionSchemaEntityTypeProperty[];
+    }
+
+    export interface SchemaVersionSchemaEntityTypeEnumValues {
+        /**
+         * The individual values that this enum values type can include.
+         */
+        values?: string[];
+    }
+
+    export interface SchemaVersionSchemaEntityTypeProperty {
+        /**
+         * User defined name for the property.
+         */
+        displayName?: string;
+        /**
+         * Specifies how the entity's value is obtained.
+         * Possible values are: `EXTRACT`, `DERIVE`, `RELAXED_EXTRACT`.
+         */
+        method?: string;
+        /**
+         * The name of the property. Follows the same guidelines as the EntityType name.
+         */
+        name: string;
+        /**
+         * Occurrence type limits the number of instances an entity type appears in the document.
+         * Possible values are: `OPTIONAL_ONCE`, `OPTIONAL_MULTIPLE`, `REQUIRED_ONCE`, `REQUIRED_MULTIPLE`.
+         */
+        occurrenceType?: string;
+        /**
+         * A reference to the value type of the property. This type is subject to the same conventions as the `Entity.base_types` field.
+         */
+        valueType: string;
+    }
+
+    export interface SchemaVersionSchemaMetadata {
+        /**
+         * If true, on a given page, there can be multiple `document` annotations covering it.
+         */
+        documentAllowMultipleLabels?: boolean;
+        /**
+         * If true, a `document` entity type can be applied to subdocument (splitting). Otherwise, it can only be applied to the entire document (classification).
+         */
+        documentSplitter?: boolean;
+        /**
+         * If set, all the nested entities must be prefixed with the parents.
+         */
+        prefixedNamingOnProperties?: boolean;
+        /**
+         * If set, this will skip the naming format validation in the schema. So the string values in `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.Property.name` will not be checked.
+         */
+        skipNamingValidation?: boolean;
     }
 
 }
@@ -119020,7 +120115,6 @@ export namespace gemini {
     export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext {
         /**
          * Required. Data sources that are available for answering questions.
-         * This Terraform resource currently supports BigQuery table references.
          * Structure is documented below.
          */
         datasourceReferences: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences;
@@ -119034,6 +120128,11 @@ export namespace gemini {
          * Structure is documented below.
          */
         glossaryTerms?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm[];
+        /**
+         * Optional. A list of golden queries for Looker data sources.
+         * Structure is documented below.
+         */
+        lookerGoldenQueries?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQuery[];
         /**
          * Optional. Additional options for the conversation.
          * Structure is documented below.
@@ -119050,6 +120149,11 @@ export namespace gemini {
          * knowledge for the agent.
          */
         systemInstruction?: string;
+        /**
+         * Optional. A collection of user functions to be included in context.
+         * Structure is documented below.
+         */
+        userFunctions?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctions;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences {
@@ -119057,15 +120161,45 @@ export namespace gemini {
          * References to BigQuery tables.
          * Structure is documented below.
          */
-        bq: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq;
+        bq?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq;
+        /**
+         * References to Looker explores.
+         * Structure is documented below.
+         */
+        looker?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLooker;
+        /**
+         * References to Looker Studio datasources.
+         * Structure is documented below.
+         */
+        studio?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudio;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq {
+        /**
+         * Optional. References to BigQuery property graphs.
+         * Structure is documented below.
+         */
+        propertyGraphReferences?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReference[];
         /**
          * References to BigQuery tables.
          * Structure is documented below.
          */
         tableReferences?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReference {
+        /**
+         * Required. The dataset that the property graph belongs to.
+         */
+        datasetId: string;
+        /**
+         * Required. The project that the property graph belongs to.
+         */
+        projectId: string;
+        /**
+         * Required. The property graph ID.
+         */
+        propertyGraphId: string;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference {
@@ -119078,9 +120212,239 @@ export namespace gemini {
          */
         projectId: string;
         /**
+         * Optional. The schema of the datasource.
+         * Structure is documented below.
+         */
+        schema?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchema;
+        /**
          * The table ID.
          */
         tableId: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchema {
+        /**
+         * Optional. A textual description of the explore's content and purpose.
+         */
+        description?: string;
+        /**
+         * Optional. Explore display name.
+         */
+        displayName?: string;
+        /**
+         * Optional. The fields in the schema.
+         * Structure is documented below.
+         */
+        fields?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaField[];
+        /**
+         * Optional. The filters on the datasource's underlying data.
+         * Structure is documented below.
+         */
+        filters?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilter[];
+        /**
+         * Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+         */
+        synonyms?: string[];
+        /**
+         * Optional. A list of tags or keywords associated with the explore, used for categorization.
+         */
+        tags?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaField {
+        /**
+         * Optional. Field category.
+         */
+        category?: string;
+        /**
+         * Optional. A brief description of the field.
+         */
+        description?: string;
+        /**
+         * Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+         */
+        mode?: string;
+        /**
+         * Optional. The name of the field.
+         */
+        name?: string;
+        /**
+         * Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+         */
+        subfields?: string;
+        /**
+         * Optional. A list of alternative names or synonyms that can be used to refer to this field.
+         */
+        synonyms?: string[];
+        /**
+         * Optional. A list of tags or keywords associated with the field, used for categorization.
+         */
+        tags?: string[];
+        /**
+         * Optional. The type of the field.
+         */
+        type?: string;
+        /**
+         * Optional. Value format of the field.
+         */
+        valueFormat?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilter {
+        /**
+         * Required. The field to filter on.
+         */
+        field?: string;
+        /**
+         * Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+         */
+        type?: string;
+        /**
+         * Optional. The value for the field to filter on.
+         */
+        value?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLooker {
+        /**
+         * Required. References to Looker explores.
+         * Structure is documented below.
+         */
+        exploreReferences: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReference[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReference {
+        /**
+         * Required. Name of the LookML Explore.
+         */
+        explore: string;
+        /**
+         * Optional. The base URL of the Looker instance.
+         */
+        lookerInstanceUri?: string;
+        /**
+         * Required. Name of the LookML model.
+         */
+        lookmlModel: string;
+        /**
+         * Optional. Private Looker instance info if the Looker instance is behind a private network.
+         * Structure is documented below.
+         */
+        privateLookerInstanceInfo?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfo;
+        /**
+         * Optional. The schema of the datasource.
+         * Structure is documented below.
+         */
+        schema?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchema;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfo {
+        /**
+         * Optional. The Looker instance ID.
+         */
+        lookerInstanceId?: string;
+        /**
+         * Optional. The service directory name of the Looker instance.
+         */
+        serviceDirectoryName?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchema {
+        /**
+         * Optional. A textual description of the explore's content and purpose.
+         */
+        description?: string;
+        /**
+         * Optional. Explore display name.
+         */
+        displayName?: string;
+        /**
+         * Optional. The fields in the schema.
+         * Structure is documented below.
+         */
+        fields?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaField[];
+        /**
+         * Optional. The filters on the datasource's underlying data.
+         * Structure is documented below.
+         */
+        filters?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilter[];
+        /**
+         * Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+         */
+        synonyms?: string[];
+        /**
+         * Optional. A list of tags or keywords associated with the explore, used for categorization.
+         */
+        tags?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaField {
+        /**
+         * Optional. Field category.
+         */
+        category?: string;
+        /**
+         * Optional. A brief description of the field.
+         */
+        description?: string;
+        /**
+         * Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+         */
+        mode?: string;
+        /**
+         * Optional. The name of the field.
+         */
+        name?: string;
+        /**
+         * Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+         */
+        subfields?: string;
+        /**
+         * Optional. A list of alternative names or synonyms that can be used to refer to this field.
+         */
+        synonyms?: string[];
+        /**
+         * Optional. A list of tags or keywords associated with the field, used for categorization.
+         */
+        tags?: string[];
+        /**
+         * Optional. The type of the field.
+         */
+        type?: string;
+        /**
+         * Optional. Value format of the field.
+         */
+        valueFormat?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilter {
+        /**
+         * Required. The field to filter on.
+         */
+        field?: string;
+        /**
+         * Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+         */
+        type?: string;
+        /**
+         * Optional. The value for the field to filter on.
+         */
+        value?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudio {
+        /**
+         * Optional. The references to the studio datasources.
+         * Structure is documented below.
+         */
+        studioReferences?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReference[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReference {
+        /**
+         * Required. The ID of the datasource.
+         */
+        datasourceId: string;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery {
@@ -119089,10 +120453,30 @@ export namespace gemini {
          */
         naturalLanguageQuestion?: string;
         /**
+         * Optional. The list of query parameters.
+         * Structure is documented below.
+         */
+        parameters?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameter[];
+        /**
          * Optional. The SQL query that should be generated to answer
          * the natural language question.
          */
         sqlQuery?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameter {
+        /**
+         * Required. The data type of the parameter, e.g. "STRING", "INT64", "DATE".
+         */
+        dataType: string;
+        /**
+         * Optional. The description of the parameter that can be used by the LLM to extract the parameter value from the user question.
+         */
+        description?: string;
+        /**
+         * Required. The name of the parameter reference in the SQL query.
+         */
+        name: string;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm {
@@ -119110,6 +120494,65 @@ export namespace gemini {
         labels?: string[];
     }
 
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQuery {
+        /**
+         * Optional. The Looker Query corresponding to the natural language questions.
+         * Structure is documented below.
+         */
+        lookerQuery?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQuery;
+        /**
+         * Optional. Natural language questions that a user might ask.
+         */
+        naturalLanguageQuestions?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQuery {
+        /**
+         * Optional. The short alphanumeric identifier for the query, used for share links and Explore URLs.
+         */
+        clientId?: string;
+        /**
+         * Required. The LookML explore used to generate the query.
+         */
+        explore: string;
+        /**
+         * Optional. The fields to retrieve from the explore.
+         */
+        fields?: string[];
+        /**
+         * Optional. The filters to apply to the explore.
+         * Structure is documented below.
+         */
+        filters?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilter[];
+        /**
+         * Optional. Limit in the query.
+         */
+        limit?: string;
+        /**
+         * Required. The LookML model used to generate the query.
+         */
+        model: string;
+        /**
+         * Optional. The primary identifier for the query resource in Looker.
+         */
+        queryId?: string;
+        /**
+         * Optional. The sorts to apply to the explore.
+         */
+        sorts?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilter {
+        /**
+         * Required. The field to filter on.
+         */
+        field: string;
+        /**
+         * Optional. The value for the field to filter on.
+         */
+        value?: string;
+    }
+
     export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions {
         /**
          * Optional. Options for analysis.
@@ -119121,6 +120564,10 @@ export namespace gemini {
          * Structure is documented below.
          */
         datasource?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource;
+        /**
+         * Optional. The model to use for the agent loop.
+         */
+        model: string;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis {
@@ -119181,8 +120628,6 @@ export namespace gemini {
     export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths {
         /**
          * Required. The ordered list of paths within the table schema.
-         *
-         * <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
          */
         paths: string[];
         /**
@@ -119191,10 +120636,46 @@ export namespace gemini {
         tableFqn: string;
     }
 
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctions {
+        /**
+         * Optional. A list of BigQuery routines to include in the context.
+         * Structure is documented below.
+         */
+        bqRoutines?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutine[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutine {
+        /**
+         * Optional. User override or addition to description, to tell the agent when to use the UDF.
+         */
+        description?: string;
+        /**
+         * Optional. The reference to the BigQuery routine.
+         * Structure is documented below.
+         */
+        routineReference?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReference;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReference {
+        /**
+         * Optional. The dataset ID of the routine.
+         */
+        datasetId?: string;
+        /**
+         * Optional. The project ID of the routine.
+         */
+        projectId?: string;
+        /**
+         * Optional. The routine ID of the routine.
+         *
+         * <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
+         */
+        routineId?: string;
+    }
+
     export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
         /**
          * Required. Data sources that are available for answering questions.
-         * This Terraform resource currently supports BigQuery table references.
          * Structure is documented below.
          */
         datasourceReferences: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences;
@@ -119208,6 +120689,11 @@ export namespace gemini {
          * Structure is documented below.
          */
         glossaryTerms?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm[];
+        /**
+         * Optional. A list of golden queries for Looker data sources.
+         * Structure is documented below.
+         */
+        lookerGoldenQueries?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQuery[];
         /**
          * Optional. Additional options for the conversation.
          * Structure is documented below.
@@ -119224,6 +120710,11 @@ export namespace gemini {
          * knowledge for the agent.
          */
         systemInstruction?: string;
+        /**
+         * Optional. A collection of user functions to be included in context.
+         * Structure is documented below.
+         */
+        userFunctions?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctions;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences {
@@ -119231,15 +120722,45 @@ export namespace gemini {
          * References to BigQuery tables.
          * Structure is documented below.
          */
-        bq: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq;
+        bq?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq;
+        /**
+         * References to Looker explores.
+         * Structure is documented below.
+         */
+        looker?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLooker;
+        /**
+         * References to Looker Studio datasources.
+         * Structure is documented below.
+         */
+        studio?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudio;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq {
+        /**
+         * Optional. References to BigQuery property graphs.
+         * Structure is documented below.
+         */
+        propertyGraphReferences?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReference[];
         /**
          * References to BigQuery tables.
          * Structure is documented below.
          */
         tableReferences?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReference {
+        /**
+         * Required. The dataset that the property graph belongs to.
+         */
+        datasetId: string;
+        /**
+         * Required. The project that the property graph belongs to.
+         */
+        projectId: string;
+        /**
+         * Required. The property graph ID.
+         */
+        propertyGraphId: string;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference {
@@ -119252,9 +120773,239 @@ export namespace gemini {
          */
         projectId: string;
         /**
+         * Optional. The schema of the datasource.
+         * Structure is documented below.
+         */
+        schema?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchema;
+        /**
          * The table ID.
          */
         tableId: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchema {
+        /**
+         * Optional. A textual description of the explore's content and purpose.
+         */
+        description?: string;
+        /**
+         * Optional. Explore display name.
+         */
+        displayName?: string;
+        /**
+         * Optional. The fields in the schema.
+         * Structure is documented below.
+         */
+        fields?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaField[];
+        /**
+         * Optional. The filters on the datasource's underlying data.
+         * Structure is documented below.
+         */
+        filters?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilter[];
+        /**
+         * Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+         */
+        synonyms?: string[];
+        /**
+         * Optional. A list of tags or keywords associated with the explore, used for categorization.
+         */
+        tags?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaField {
+        /**
+         * Optional. Field category.
+         */
+        category?: string;
+        /**
+         * Optional. A brief description of the field.
+         */
+        description?: string;
+        /**
+         * Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+         */
+        mode?: string;
+        /**
+         * Optional. The name of the field.
+         */
+        name?: string;
+        /**
+         * Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+         */
+        subfields?: string;
+        /**
+         * Optional. A list of alternative names or synonyms that can be used to refer to this field.
+         */
+        synonyms?: string[];
+        /**
+         * Optional. A list of tags or keywords associated with the field, used for categorization.
+         */
+        tags?: string[];
+        /**
+         * Optional. The type of the field.
+         */
+        type?: string;
+        /**
+         * Optional. Value format of the field.
+         */
+        valueFormat?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilter {
+        /**
+         * Required. The field to filter on.
+         */
+        field?: string;
+        /**
+         * Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+         */
+        type?: string;
+        /**
+         * Optional. The value for the field to filter on.
+         */
+        value?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLooker {
+        /**
+         * Required. References to Looker explores.
+         * Structure is documented below.
+         */
+        exploreReferences: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReference[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReference {
+        /**
+         * Required. Name of the LookML Explore.
+         */
+        explore: string;
+        /**
+         * Optional. The base URL of the Looker instance.
+         */
+        lookerInstanceUri?: string;
+        /**
+         * Required. Name of the LookML model.
+         */
+        lookmlModel: string;
+        /**
+         * Optional. Private Looker instance info if the Looker instance is behind a private network.
+         * Structure is documented below.
+         */
+        privateLookerInstanceInfo?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfo;
+        /**
+         * Optional. The schema of the datasource.
+         * Structure is documented below.
+         */
+        schema?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchema;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfo {
+        /**
+         * Optional. The Looker instance ID.
+         */
+        lookerInstanceId?: string;
+        /**
+         * Optional. The service directory name of the Looker instance.
+         */
+        serviceDirectoryName?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchema {
+        /**
+         * Optional. A textual description of the explore's content and purpose.
+         */
+        description?: string;
+        /**
+         * Optional. Explore display name.
+         */
+        displayName?: string;
+        /**
+         * Optional. The fields in the schema.
+         * Structure is documented below.
+         */
+        fields?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaField[];
+        /**
+         * Optional. The filters on the datasource's underlying data.
+         * Structure is documented below.
+         */
+        filters?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilter[];
+        /**
+         * Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+         */
+        synonyms?: string[];
+        /**
+         * Optional. A list of tags or keywords associated with the explore, used for categorization.
+         */
+        tags?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaField {
+        /**
+         * Optional. Field category.
+         */
+        category?: string;
+        /**
+         * Optional. A brief description of the field.
+         */
+        description?: string;
+        /**
+         * Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+         */
+        mode?: string;
+        /**
+         * Optional. The name of the field.
+         */
+        name?: string;
+        /**
+         * Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+         */
+        subfields?: string;
+        /**
+         * Optional. A list of alternative names or synonyms that can be used to refer to this field.
+         */
+        synonyms?: string[];
+        /**
+         * Optional. A list of tags or keywords associated with the field, used for categorization.
+         */
+        tags?: string[];
+        /**
+         * Optional. The type of the field.
+         */
+        type?: string;
+        /**
+         * Optional. Value format of the field.
+         */
+        valueFormat?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilter {
+        /**
+         * Required. The field to filter on.
+         */
+        field?: string;
+        /**
+         * Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+         */
+        type?: string;
+        /**
+         * Optional. The value for the field to filter on.
+         */
+        value?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudio {
+        /**
+         * Optional. The references to the studio datasources.
+         * Structure is documented below.
+         */
+        studioReferences?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReference[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReference {
+        /**
+         * Required. The ID of the datasource.
+         */
+        datasourceId: string;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery {
@@ -119263,10 +121014,30 @@ export namespace gemini {
          */
         naturalLanguageQuestion?: string;
         /**
+         * Optional. The list of query parameters.
+         * Structure is documented below.
+         */
+        parameters?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameter[];
+        /**
          * Optional. The SQL query that should be generated to answer
          * the natural language question.
          */
         sqlQuery?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameter {
+        /**
+         * Required. The data type of the parameter, e.g. "STRING", "INT64", "DATE".
+         */
+        dataType: string;
+        /**
+         * Optional. The description of the parameter that can be used by the LLM to extract the parameter value from the user question.
+         */
+        description?: string;
+        /**
+         * Required. The name of the parameter reference in the SQL query.
+         */
+        name: string;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm {
@@ -119284,6 +121055,65 @@ export namespace gemini {
         labels?: string[];
     }
 
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQuery {
+        /**
+         * Optional. The Looker Query corresponding to the natural language questions.
+         * Structure is documented below.
+         */
+        lookerQuery?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQuery;
+        /**
+         * Optional. Natural language questions that a user might ask.
+         */
+        naturalLanguageQuestions?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQuery {
+        /**
+         * Optional. The short alphanumeric identifier for the query, used for share links and Explore URLs.
+         */
+        clientId?: string;
+        /**
+         * Required. The LookML explore used to generate the query.
+         */
+        explore: string;
+        /**
+         * Optional. The fields to retrieve from the explore.
+         */
+        fields?: string[];
+        /**
+         * Optional. The filters to apply to the explore.
+         * Structure is documented below.
+         */
+        filters?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilter[];
+        /**
+         * Optional. Limit in the query.
+         */
+        limit?: string;
+        /**
+         * Required. The LookML model used to generate the query.
+         */
+        model: string;
+        /**
+         * Optional. The primary identifier for the query resource in Looker.
+         */
+        queryId?: string;
+        /**
+         * Optional. The sorts to apply to the explore.
+         */
+        sorts?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilter {
+        /**
+         * Required. The field to filter on.
+         */
+        field: string;
+        /**
+         * Optional. The value for the field to filter on.
+         */
+        value?: string;
+    }
+
     export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions {
         /**
          * Optional. Options for analysis.
@@ -119295,6 +121125,10 @@ export namespace gemini {
          * Structure is documented below.
          */
         datasource?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource;
+        /**
+         * Optional. The model to use for the agent loop.
+         */
+        model: string;
     }
 
     export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis {
@@ -119355,14 +121189,49 @@ export namespace gemini {
     export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths {
         /**
          * Required. The ordered list of paths within the table schema.
-         *
-         * <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
          */
         paths: string[];
         /**
          * Required. The service-qualified full resource name of the table.
          */
         tableFqn: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctions {
+        /**
+         * Optional. A list of BigQuery routines to include in the context.
+         * Structure is documented below.
+         */
+        bqRoutines?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutine[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutine {
+        /**
+         * Optional. User override or addition to description, to tell the agent when to use the UDF.
+         */
+        description?: string;
+        /**
+         * Optional. The reference to the BigQuery routine.
+         * Structure is documented below.
+         */
+        routineReference?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReference;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReference {
+        /**
+         * Optional. The dataset ID of the routine.
+         */
+        datasetId?: string;
+        /**
+         * Optional. The project ID of the routine.
+         */
+        projectId?: string;
+        /**
+         * Optional. The routine ID of the routine.
+         *
+         * <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
+         */
+        routineId?: string;
     }
 
     export interface DataAnalyticsDataAgentIamBindingCondition {
@@ -124828,6 +126697,12 @@ export namespace hypercomputecluster {
          */
         maxDuration: string;
         /**
+         * (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         */
+        networkTags?: string[];
+        /**
          * Name of the zone in which VM instances should run, e.g., `us-central1-a`.
          * Must be in the same region as the cluster, and must match the zone of any
          * other resources specified in the cluster.
@@ -124843,6 +126718,12 @@ export namespace hypercomputecluster {
          */
         machineType: string;
         /**
+         * (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         */
+        networkTags?: string[];
+        /**
          * Name of the zone in which VM instances should run, e.g., `us-central1-a`.
          * Must be in the same region as the cluster, and must match the zone of any
          * other resources specified in the cluster.
@@ -124851,6 +126732,12 @@ export namespace hypercomputecluster {
     }
 
     export interface ClusterComputeResourceConfigNewReservedInstances {
+        /**
+         * (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         */
+        networkTags?: string[];
         /**
          * Name of the reservation from which VM instances should be created, in the
          * format `projects/{project}/zones/{zone}/reservations/{reservation}`.
@@ -124865,6 +126752,12 @@ export namespace hypercomputecluster {
          * `n2-standard-2`.
          */
         machineType: string;
+        /**
+         * (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         */
+        networkTags?: string[];
         /**
          * Specifies the termination action of the instance
          * Possible values:
@@ -125045,6 +126938,12 @@ export namespace hypercomputecluster {
          * login nodes, e.g. `n2-standard-2`.
          */
         machineType: string;
+        /**
+         * (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         */
+        networkTags?: string[];
         /**
          * [Startup
          * script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
@@ -125265,6 +127164,13 @@ export namespace hypercomputecluster {
          */
         existingLustre?: outputs.hypercomputecluster.ClusterStorageResourceConfigExistingLustre;
         /**
+         * (Optional, Beta)
+         * When set in a StorageResourceConfig, indicates that an existing NFS
+         * share should be imported.
+         * Structure is documented below.
+         */
+        existingNfs?: outputs.hypercomputecluster.ClusterStorageResourceConfigExistingNfs;
+        /**
          * When set in a StorageResourceConfig, indicates that a new
          * [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
          * created.
@@ -125307,6 +127213,22 @@ export namespace hypercomputecluster {
          * `projects/{project}/locations/{location}/instances/{instance}`
          */
         lustre: string;
+    }
+
+    export interface ClusterStorageResourceConfigExistingNfs {
+        /**
+         * Options to mount the NFS share, as expected by fsMntops field in fstab(5),
+         * for example: "rw,vers=4.1,nconnect=2,noatime".
+         */
+        mountOptions?: string;
+        /**
+         * Remote mount path of the NFS share.
+         */
+        remoteMount: string;
+        /**
+         * Server IP address of the NFS share.
+         */
+        serverIpAddress: string;
     }
 
     export interface ClusterStorageResourceConfigNewBucket {
@@ -139347,7 +141269,6 @@ export namespace networksecurity {
 
     export interface FirewallEndpointEndpointSettings {
         /**
-         * (Optional, Beta)
          * The Palo Alto Networks content cloud region of the firewall endpoint,
          * for example `US_CENTRAL` or `CANADA`. See
          * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
@@ -139355,7 +141276,6 @@ export namespace networksecurity {
          */
         contentCloudRegion: string;
         /**
-         * (Optional, Beta)
          * Whether to block HTTP partial responses for the firewall endpoint.
          * When `true`, resumption of blocked malicious HTTP file downloads is
          * blocked by the firewall. `false` provides maximum availability, `true`
@@ -140249,6 +142169,79 @@ export namespace networkservices {
          * A supported Google Cloud networking proxy in the Project and Location.
          */
         resourceUri: string;
+    }
+
+    export interface CdnEdgeExtensionExtensionChain {
+        /**
+         * A set of extensions to execute for the matching request.
+         * At least one extension is required. Up to 3 extensions can be defined for each extension chain.
+         * Structure is documented below.
+         */
+        extensions: outputs.networkservices.CdnEdgeExtensionExtensionChainExtension[];
+        /**
+         * Conditions under which this chain is invoked for a request.
+         * Structure is documented below.
+         */
+        matchCondition: outputs.networkservices.CdnEdgeExtensionExtensionChainMatchCondition;
+        /**
+         * The name for this extension chain. The name is logged as part of the HTTP request logs.
+         * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+         * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+         * and the last character must be a letter or a number.
+         */
+        name: string;
+    }
+
+    export interface CdnEdgeExtensionExtensionChainExtension {
+        /**
+         * Determines how the proxy behaves if the call to the extension fails or times out.
+         * When set to TRUE, request or response processing continues without error.
+         * Any subsequent extensions in the extension chain are also executed.
+         */
+        failOpen?: boolean;
+        /**
+         * List of the Envoy attributes to forward to the extension server.
+         */
+        forwardAttributes?: string[];
+        /**
+         * List of the HTTP headers to forward to the extension (from the client or backend).
+         * If omitted, all headers are sent. Each element is a string indicating the header name.
+         */
+        forwardHeaders?: string[];
+        /**
+         * The name for this extension. The name is logged as part of the HTTP request logs.
+         * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+         * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+         * and the last a letter or a number.
+         */
+        name: string;
+        /**
+         * The reference to the service that runs the extension.
+         * Must be a reference to a WasmPlugin resource.
+         */
+        service: string;
+        /**
+         * A set of events during request or response processing for which this extension is called.
+         * Eligible values are `REQUEST_HEADERS` and `RESPONSE_HEADERS`.
+         */
+        supportedEvents?: string[];
+    }
+
+    export interface CdnEdgeExtensionExtensionChainMatchCondition {
+        /**
+         * A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+         */
+        celExpression: string;
+    }
+
+    export interface CdnEdgeExtensionTarget {
+        /**
+         * A list of references to the resources that are targeted by CdnEdgeExtension.
+         * Types of resources supported: EdgeCacheService.
+         * The format can be `projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}` or
+         * `//networkservices.googleapis.com/projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}`.
+         */
+        resources: string[];
     }
 
     export interface EdgeCacheKeysetPublicKey {
@@ -142037,11 +144030,13 @@ export namespace networkservices {
 
     export interface ServiceLbPoliciesIsolationConfig {
         /**
+         * (Optional, Beta)
          * The isolation granularity of the load balancer.
          * Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
          */
         isolationGranularity?: string;
         /**
+         * (Optional, Beta)
          * The isolation mode of the load balancer.
          * Default value is `NEAREST`.
          * Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
@@ -142104,6 +144099,68 @@ export namespace networkservices {
          * Specifies the destination port to match against.
          */
         port: string;
+    }
+
+    export interface TelemetryPolicyMetricsConfiguration {
+        /**
+         * Indicates whether metrics are enabled or disabled. Set to true to explicitly enable, or false to explicitly disable.
+         */
+        enabled?: boolean;
+    }
+
+    export interface TelemetryPolicyTelemetryTarget {
+        /**
+         * Lists references to the resources that are targeted by the policy.
+         * Types of resources supported:
+         * - `run.googleapis.com/`
+         * - `compute.googleapis.com/`
+         * - `networkservices.googleapis.com/`
+         *   The format must be the full resource name of a supported resource.
+         */
+        resources: string[];
+    }
+
+    export interface TelemetryPolicyTracingConfiguration {
+        /**
+         * Provides key-value pairs for adding context to spans. Supports literalValue (static) and fromHeaderValue (dynamic extraction).
+         * Structure is documented below.
+         */
+        customSpanAttributes?: outputs.networkservices.TelemetryPolicyTracingConfigurationCustomSpanAttribute[];
+        /**
+         * Configures honoring a sampled bit in downstream traceparentID headers.
+         * Structure is documented below.
+         */
+        parentBasedSampling?: outputs.networkservices.TelemetryPolicyTracingConfigurationParentBasedSampling;
+        /**
+         * Specifies the tracing sampling rate. The sampling rate is a float number in the interval [0, 1]. The sampling rate is applied to all requests to the targeted resources. The default value is 0.0.
+         */
+        samplingRate?: number;
+    }
+
+    export interface TelemetryPolicyTracingConfigurationCustomSpanAttribute {
+        /**
+         * Defines the key for a custom attribute that is added to the trace spans generated by the Google Cloud Load Balancer (GCLB).
+         */
+        attributeName: string;
+        /**
+         * Specifies an incoming request header name from which the value for the custom span attribute should be dynamically extracted. Mutually exclusive with literalValue.
+         */
+        fromHeaderValue?: string;
+        /**
+         * Assigns a static, constant value to the custom trace span attribute defined by the corresponding attributeName. Mutually exclusive with fromHeaderValue.
+         */
+        literalValue?: string;
+    }
+
+    export interface TelemetryPolicyTracingConfigurationParentBasedSampling {
+        /**
+         * Provides a master switch to respect a sampled bit in incoming traceparentID headers. Default is false.
+         */
+        enabled?: boolean;
+        /**
+         * Specifies the sampling rate to use when the sampled bit is set in the incoming traceparentID header.
+         */
+        samplingRate?: number;
     }
 
     export interface TlsRouteRule {
@@ -143339,12 +145396,10 @@ export namespace oracledatabase {
          */
         scanIpIds: string[];
         /**
-         * (Output)
          * SCAN listener port - TCP
          */
         scanListenerPortTcp: number;
         /**
-         * (Output)
          * SCAN listener port - TLS
          */
         scanListenerPortTcpSsl: number;
@@ -156466,6 +158521,82 @@ export namespace pubsub {
         writeMetadata: boolean;
     }
 
+    export interface GetSubscriptionBigtableConfig {
+        /**
+         * The app profile to use for the Bigtable writes. If not specified, the "default" application
+         * profile will be used. The app profile must use single-cluster routing.
+         */
+        appProfileId: string;
+        /**
+         * Configuration that allows writing row keys and/or columns based on fields in the input message.
+         * The input message format must be JSON if this field is set.
+         *
+         * If this field is set, top-level message fields are written to the 'data' column family with
+         * the field name as the column qualifier by default, or to an existing column family whose name
+         * matches the field name. The cell timestamp is the message publish time.
+         *
+         * If this field is not set, the row key is constructed from the subscription name, message ID hash,
+         * and message ID delimited by '#', and the message bytes are written to the 'data' column family
+         * with an empty-string column qualifier.
+         */
+        columnFamilyMappings: outputs.pubsub.GetSubscriptionBigtableConfigColumnFamilyMapping[];
+        /**
+         * The service account to use to write to Bigtable. The subscription creator or updater that
+         * specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+         * If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail: string;
+        /**
+         * An output-only field that indicates whether or not the subscription can receive messages.
+         */
+        state: string;
+        /**
+         * The unique name of the table to write messages to, of the form
+         * 'projects/{project}/instances/{instance}/tables/{table}'.
+         */
+        table: string;
+        /**
+         * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+         * additional columns in the table under the 'pubsub_metadata' column family. The subscription name,
+         * messageId, and publishTime fields are put in their own columns while all other message properties
+         * (other than data) are written to a JSON object in the attributes column.
+         */
+        writeMetadata: boolean;
+    }
+
+    export interface GetSubscriptionBigtableConfigColumnFamilyMapping {
+        /**
+         * If set, the row key is constructed from the given key fields and delimiter. All key fields
+         * must be present in the message; otherwise, the message remains in the subscription backlog.
+         */
+        delimitedKeys: outputs.pubsub.GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey[];
+        /**
+         * If set, the row key is constructed from the field names of the table's
+         * [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+         * If a field is nullable in the structured row key, it need not be present in the message;
+         * null will be used instead.
+         */
+        rowKeySchemas: outputs.pubsub.GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema[];
+    }
+
+    export interface GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey {
+        /**
+         * The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+         * (for example, 'Iw==' for '#'). Must be specified if multiple key fields are used. The
+         * delimiter must contain at least 1 character and at most 50 characters.
+         */
+        delimiter: string;
+        /**
+         * The key fields to construct the row key from. The fields must be present in the message
+         * as top-level fields; JSON path expressions will not traverse into nested objects.
+         */
+        keyFields: string[];
+    }
+
+    export interface GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema {
+    }
+
     export interface GetSubscriptionCloudStorageConfig {
         /**
          * If set, message data will be written to Cloud Storage in Avro format.
@@ -157173,6 +159304,83 @@ export namespace pubsub {
         writeMetadata?: boolean;
     }
 
+    export interface SubscriptionBigtableConfig {
+        /**
+         * The app profile to use for the Bigtable writes. If not specified, the "default" application
+         * profile will be used. The app profile must use single-cluster routing.
+         */
+        appProfileId?: string;
+        /**
+         * Configuration that allows writing row keys and/or columns based on fields in the input message.
+         * The input message format must be JSON if this field is set.
+         * If this field is set, top-level message fields are written to the `data` column family with
+         * the field name as the column qualifier by default, or to an existing column family whose name
+         * matches the field name. The cell timestamp is the message publish time.
+         * If this field is not set, the row key is constructed from the subscription name, message ID hash,
+         * and message ID delimited by `#`, and the message bytes are written to the `data` column family
+         * with an empty-string column qualifier.
+         * Structure is documented below.
+         */
+        columnFamilyMapping?: outputs.pubsub.SubscriptionBigtableConfigColumnFamilyMapping;
+        /**
+         * The service account to use to write to Bigtable. The subscription creator or updater that
+         * specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+         * If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail?: string;
+        /**
+         * (Output)
+         * An output-only field that indicates whether or not the subscription can receive messages.
+         */
+        state: string;
+        /**
+         * The unique name of the table to write messages to, of the form
+         * `projects/{project}/instances/{instance}/tables/{table}`.
+         */
+        table: string;
+        /**
+         * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+         * additional columns in the table under the `pubsubMetadata` column family. The subscription name,
+         * messageId, and publishTime fields are put in their own columns while all other message properties
+         * (other than data) are written to a JSON object in the attributes column.
+         */
+        writeMetadata?: boolean;
+    }
+
+    export interface SubscriptionBigtableConfigColumnFamilyMapping {
+        /**
+         * If set, the row key is constructed from the given key fields and delimiter. All key fields
+         * must be present in the message; otherwise, the message remains in the subscription backlog.
+         * Structure is documented below.
+         */
+        delimitedKey?: outputs.pubsub.SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey;
+        /**
+         * If set, the row key is constructed from the field names of the table's
+         * [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+         * If a field is nullable in the structured row key, it need not be present in the message;
+         * null will be used instead.
+         */
+        rowKeySchema?: outputs.pubsub.SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema;
+    }
+
+    export interface SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey {
+        /**
+         * The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+         * (for example, `Iw==` for `#`). Must be specified if multiple key fields are used. The
+         * delimiter must contain at least 1 character and at most 50 characters.
+         */
+        delimiter?: string;
+        /**
+         * The key fields to construct the row key from. The fields must be present in the message
+         * as top-level fields; JSON path expressions will not traverse into nested objects.
+         */
+        keyFields: string[];
+    }
+
+    export interface SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema {
+    }
+
     export interface SubscriptionCloudStorageConfig {
         /**
          * If set, message data will be written to Cloud Storage in Avro format.
@@ -157830,6 +160038,9 @@ export namespace recaptcha {
         allowedPackageNames?: string[];
     }
 
+    export interface EnterpriseKeyExpressSettings {
+    }
+
     export interface EnterpriseKeyIosSettings {
         /**
          * If set to true, it means allowedBundleIds will not be enforced.
@@ -157850,6 +160061,9 @@ export namespace recaptcha {
          * All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
          */
         testingScore?: number;
+    }
+
+    export interface EnterpriseKeyUniversalSettings {
     }
 
     export interface EnterpriseKeyWafSettings {
@@ -159153,6 +161367,32 @@ export namespace redis {
 
 }
 
+export namespace resourcemanager {
+    export interface BoundaryResourceFilter {
+        /**
+         * A tag based filter. A project must match it to be included in the
+         * Boundary.
+         * Structure is documented below.
+         */
+        tagFilter: outputs.resourcemanager.BoundaryResourceFilterTagFilter;
+    }
+
+    export interface BoundaryResourceFilterTagFilter {
+        /**
+         * The namespaced name of the tag key, in the form
+         * `{parent_id}/{tag_key_short_name}`, for example `123456789012/env`.
+         */
+        tagKey: string;
+        /**
+         * The allowed short name of the tag value, for example `production`.
+         * A project matches this tag filter if its effective tag value for
+         * the given `tagKey` matches this value.
+         */
+        tagValue: string;
+    }
+
+}
+
 export namespace runtimeconfig {
     export interface ConfigIamBindingCondition {
         description?: string;
@@ -159169,6 +161409,43 @@ export namespace runtimeconfig {
 }
 
 export namespace saasruntime {
+    export interface ReleaseApplicationTemplateComponent {
+        /**
+         * (Output)
+         * Name of the component in the composite ApplicationTemplate.
+         */
+        component: string;
+        /**
+         * (Output)
+         * Reference to the composite ApplicationTemplate.
+         * Structure is documented below.
+         */
+        compositeReves: outputs.saasruntime.ReleaseApplicationTemplateComponentCompositeRef[];
+        /**
+         * (Output)
+         * Revision of the ApplicationTemplate.
+         */
+        revision: string;
+    }
+
+    export interface ReleaseApplicationTemplateComponentCompositeRef {
+        /**
+         * (Output)
+         * Reference to the ApplicationTemplate resource.
+         */
+        applicationTemplate: string;
+        /**
+         * (Output)
+         * Revision of the ApplicationTemplate.
+         */
+        revision: string;
+        /**
+         * (Output)
+         * Reference to the ongoing import and replication operation. Opaque for external usage.
+         */
+        syncOperation: string;
+    }
+
     export interface ReleaseBlueprint {
         /**
          * (Output)
@@ -159258,6 +161535,75 @@ export namespace saasruntime {
         allowedPercentage?: number;
     }
 
+    export interface SaaSApplicationTemplate {
+        /**
+         * Reference to the ApplicationTemplate resource, in the format
+         * `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+         */
+        applicationTemplate: string;
+        /**
+         * Revision of the ApplicationTemplate to import, as a full resource name
+         * prefixed by `applicationTemplate`:
+         * `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}/revisions/{revision}`.
+         * Changes to the revision trigger a new import. If empty, the service
+         * stores `applicationTemplate` but doesn't import it.
+         */
+        revision?: string;
+        /**
+         * (Output)
+         * Reference to the ongoing import and replication operation. Opaque for external usage.
+         */
+        syncOperation: string;
+    }
+
+    export interface SaaSCondition {
+        /**
+         * (Output)
+         * Last time the condition transited from one status to another.
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message: string;
+        /**
+         * (Output)
+         * Brief reason for the condition's last transition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * Status of the condition.
+         * Possible values:
+         * STATUS_UNKNOWN
+         * STATUS_TRUE
+         * STATUS_FALSE
+         */
+        status: string;
+        /**
+         * (Output)
+         * Type of the condition.
+         * Possible values:
+         * TYPE_READY
+         * TYPE_SYNCHRONIZED
+         */
+        type: string;
+    }
+
+    export interface SaaSError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message: string;
+    }
+
     export interface SaaSLocation {
         /**
          * Name of location.
@@ -159339,6 +161685,68 @@ export namespace saasruntime {
          * Name of the variable from actuation configs.
          */
         variable: string;
+    }
+
+    export interface UnitKindAppParams {
+        /**
+         * Grouping used to construct the name of the App Hub Application.
+         * Multiple UnitKinds can specify the same group to use the same
+         * Application across their respective Units. Corresponds to the
+         * appBoundaryId in the ADC composite ApplicationTemplate. If empty,
+         * the service creates no App Hub application.
+         */
+        group?: string;
+        /**
+         * Corresponds to the scope in the ADC composite ApplicationTemplate.
+         * Structure is documented below.
+         */
+        scope?: outputs.saasruntime.UnitKindAppParamsScope;
+    }
+
+    export interface UnitKindAppParamsScope {
+        /**
+         * Scope type.
+         * Possible values:
+         * TYPE_REGIONAL
+         * TYPE_GLOBAL
+         */
+        type: string;
+    }
+
+    export interface UnitKindApplicationTemplateComponent {
+        /**
+         * Name of the component in the composite ApplicationTemplate (the root
+         * module ID, e.g. a composite component ID or `native-components`).
+         */
+        component?: string;
+        /**
+         * Reference to the composite ApplicationTemplate.
+         * Structure is documented below.
+         */
+        compositeRef?: outputs.saasruntime.UnitKindApplicationTemplateComponentCompositeRef;
+        /**
+         * Revision of the component. If the component does not have a revision,
+         * this is the revision of the composite ApplicationTemplate.
+         */
+        revision?: string;
+    }
+
+    export interface UnitKindApplicationTemplateComponentCompositeRef {
+        /**
+         * Reference to the ApplicationTemplate resource, in the format
+         * `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+         */
+        applicationTemplate: string;
+        /**
+         * Revision of the ApplicationTemplate, as a full resource name
+         * prefixed by `applicationTemplate`.
+         */
+        revision?: string;
+        /**
+         * (Output)
+         * Reference to the ongoing import and replication operation. Opaque for external usage.
+         */
+        syncOperation: string;
     }
 
     export interface UnitKindDependency {
@@ -161701,7 +164109,11 @@ export namespace servicedirectory {
 export namespace serviceusage {
     export interface V2ConsumerPolicyEnableRule {
         /**
-         * (Optional): List of service names to be enabled in the format of services/<service_name>
+         * List of service catalog names to be enabled in the format of catalogs/<catalog_name>, for example catalogs/default-cloud-services.
+         */
+        catalogs?: string[];
+        /**
+         * List of service names to be enabled in the format of services/<service_name>
          */
         services?: string[];
     }
@@ -165807,6 +168219,50 @@ export namespace storage {
         expireTime: string;
     }
 
+    export interface ControlProjectFeatureConfigAutoAnnotateConfig {
+        /**
+         * The list of unique models used to generate annotations. Each model is identified by
+         * its `name`.
+         * Structure is documented below.
+         */
+        models: outputs.storage.ControlProjectFeatureConfigAutoAnnotateConfigModel[];
+        /**
+         * The geographic location (case-sensitive) where data is processed. Currently, only
+         * multi-region locations such as `us`, `eu`, or `asia` are supported.
+         * To avoid duplicate billing, configure exactly one processing location for each bucket
+         * and model combination. If you configure multiple processing locations for the same
+         * bucket and model across different feature configurations, a separate annotation run is
+         * triggered in each location, and you're billed for each resulting annotation.
+         */
+        processingLocation: string;
+    }
+
+    export interface ControlProjectFeatureConfigAutoAnnotateConfigModel {
+        /**
+         * The name of the model. Supported values include `face-detector`,
+         * `object-detector`, `label-detector`, and `content-safety`.
+         */
+        name: string;
+    }
+
+    export interface ControlProjectFeatureConfigFilter {
+        /**
+         * The buckets to include in the feature configuration.
+         * Structure is documented below.
+         */
+        includedCloudStorageBuckets: outputs.storage.ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets;
+    }
+
+    export interface ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets {
+        /**
+         * The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+         * supported, so specify exact bucket names (for example, `my-bucket`). Each bucket
+         * must already exist in the feature configuration's project. Up to 1,000 buckets can
+         * be specified.
+         */
+        bucketIdRegexes: string[];
+    }
+
     export interface ControlProjectIntelligenceConfigEffectiveIntelligenceConfig {
         /**
          * (Output)
@@ -166666,6 +169122,49 @@ export namespace storage {
          * The type of Cloud resource this summary detail applies to.
          */
         resourceType: string;
+    }
+
+    export interface GetControlProjectFeatureConfigAutoAnnotateConfig {
+        /**
+         * The list of unique models used to generate annotations. Each model is identified by
+         * its 'name'.
+         */
+        models: outputs.storage.GetControlProjectFeatureConfigAutoAnnotateConfigModel[];
+        /**
+         * The geographic location (case-sensitive) where data is processed. Currently, only
+         * multi-region locations such as 'us', 'eu', or 'asia' are supported.
+         *
+         * To avoid duplicate billing, configure exactly one processing location for each bucket
+         * and model combination. If you configure multiple processing locations for the same
+         * bucket and model across different feature configurations, a separate annotation run is
+         * triggered in each location, and you're billed for each resulting annotation.
+         */
+        processingLocation: string;
+    }
+
+    export interface GetControlProjectFeatureConfigAutoAnnotateConfigModel {
+        /**
+         * The name of the model. Supported values include 'face-detector',
+         * 'object-detector', 'label-detector', and 'content-safety'.
+         */
+        name: string;
+    }
+
+    export interface GetControlProjectFeatureConfigFilter {
+        /**
+         * The buckets to include in the feature configuration.
+         */
+        includedCloudStorageBuckets: outputs.storage.GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket[];
+    }
+
+    export interface GetControlProjectFeatureConfigFilterIncludedCloudStorageBucket {
+        /**
+         * The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+         * supported, so specify exact bucket names (for example, 'my-bucket'). Each bucket
+         * must already exist in the feature configuration's project. Up to 1,000 buckets can
+         * be specified.
+         */
+        bucketIdRegexes: string[];
     }
 
     export interface GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig {
@@ -170775,6 +173274,320 @@ export namespace vectorsearch {
 }
 
 export namespace vertex {
+    export interface AiCustomJobEncryptionSpec {
+        /**
+         * Resource name of the Cloud KMS key used to protect the resource.
+         * The Cloud KMS key must be in the same region as the resource. It must have the format
+         * `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+         */
+        kmsKeyName: string;
+    }
+
+    export interface AiCustomJobError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English.
+         */
+        message: string;
+    }
+
+    export interface AiCustomJobJobSpec {
+        /**
+         * The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob.
+         * Structure is documented below.
+         */
+        baseOutputDirectory?: outputs.vertex.AiCustomJobJobSpecBaseOutputDirectory;
+        /**
+         * Whether you want Vertex AI to enable access to the customized dashboard in training chief container.
+         */
+        enableDashboardAccess?: boolean;
+        /**
+         * Whether you want Vertex AI to enable interactive shell access to training containers.
+         */
+        enableWebAccess?: boolean;
+        /**
+         * The full name of the Compute Engine network to which the Job should be peered.
+         */
+        network?: string;
+        /**
+         * Configuration for PSC-I for CustomJob.
+         * Structure is documented below.
+         */
+        pscInterfaceConfig?: outputs.vertex.AiCustomJobJobSpecPscInterfaceConfig;
+        /**
+         * A list of names for the reserved ip ranges under the VPC network that can be used for this job.
+         */
+        reservedIpRanges?: string[];
+        /**
+         * Scheduling options for a CustomJob.
+         * Structure is documented below.
+         */
+        scheduling?: outputs.vertex.AiCustomJobJobSpecScheduling;
+        /**
+         * Specifies the service account for workload run-as account.
+         */
+        serviceAccount?: string;
+        /**
+         * The name of a Vertex AI Tensorboard resource to which this CustomJob will upload Tensorboard logs.
+         */
+        tensorboard?: string;
+        /**
+         * The spec of the worker pools including machine type and Docker image.
+         * All worker pools except the first one are optional and can be skipped by providing an empty value.
+         * Structure is documented below.
+         */
+        workerPoolSpecs: outputs.vertex.AiCustomJobJobSpecWorkerPoolSpec[];
+    }
+
+    export interface AiCustomJobJobSpecBaseOutputDirectory {
+        /**
+         * Cloud Storage folder URL to store the output.
+         */
+        outputUriPrefix: string;
+    }
+
+    export interface AiCustomJobJobSpecPscInterfaceConfig {
+        /**
+         * DNS peering config for the PSC interface.
+         * Structure is documented below.
+         */
+        dnsPeeringConfigs?: outputs.vertex.AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig[];
+        /**
+         * The name of the attachment to connect to.
+         */
+        networkAttachment?: string;
+    }
+
+    export interface AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig {
+        /**
+         * The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+         */
+        domain: string;
+        /**
+         * The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
+         */
+        targetNetwork: string;
+        /**
+         * The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+         */
+        targetProject: string;
+    }
+
+    export interface AiCustomJobJobSpecScheduling {
+        /**
+         * Indicates if the job should retry for internal errors after the job starts running.
+         */
+        disableRetries?: boolean;
+        /**
+         * The maximum duration that a job will wait for the requested resources to be provisioned if the scheduling strategy is set to FLEX_START.
+         */
+        maxWaitDuration?: string;
+        /**
+         * Restarts the entire CustomJob if a worker gets restarted.
+         */
+        restartJobOnWorkerRestart?: boolean;
+        /**
+         * This determines which type of scheduling strategy to use. Possible values: ["STANDARD", "SPOT", "FLEX_START"]
+         */
+        strategy?: string;
+        /**
+         * The maximum job running time. The default is 7 days. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        timeout?: string;
+    }
+
+    export interface AiCustomJobJobSpecWorkerPoolSpec {
+        /**
+         * The custom container task. Either `containerSpec` or `pythonPackageSpec` can be provided, but not both.
+         * Structure is documented below.
+         */
+        containerSpec?: outputs.vertex.AiCustomJobJobSpecWorkerPoolSpecContainerSpec;
+        /**
+         * Disk spec.
+         * Structure is documented below.
+         */
+        diskSpec?: outputs.vertex.AiCustomJobJobSpecWorkerPoolSpecDiskSpec;
+        /**
+         * List of Lustre mounts.
+         * Structure is documented below.
+         */
+        lustreMounts?: outputs.vertex.AiCustomJobJobSpecWorkerPoolSpecLustreMount[];
+        /**
+         * Specification of a single machine.
+         * Structure is documented below.
+         */
+        machineSpec?: outputs.vertex.AiCustomJobJobSpecWorkerPoolSpecMachineSpec;
+        /**
+         * List of NFS mount spec.
+         * Structure is documented below.
+         */
+        nfsMounts?: outputs.vertex.AiCustomJobJobSpecWorkerPoolSpecNfsMount[];
+        /**
+         * The Python packaged task. Either `containerSpec` or `pythonPackageSpec` can be provided, but not both.
+         * Structure is documented below.
+         */
+        pythonPackageSpec?: outputs.vertex.AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec;
+        /**
+         * The number of worker replicas to use for this worker pool.
+         */
+        replicaCount?: number;
+    }
+
+    export interface AiCustomJobJobSpecWorkerPoolSpecContainerSpec {
+        /**
+         * The arguments to be passed when starting the container.
+         */
+        args?: string[];
+        /**
+         * The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
+         */
+        commands?: string[];
+        /**
+         * Environment variables to be passed to the container. Maximum limit is 100.
+         * Structure is documented below.
+         */
+        envs?: outputs.vertex.AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv[];
+        /**
+         * The URI of a container image in the Container Registry that is to be run on each worker replica.
+         */
+        imageUri: string;
+    }
+
+    export interface AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv {
+        /**
+         * Name of the environment variable.
+         */
+        name: string;
+        /**
+         * Value of the environment variable.
+         */
+        value: string;
+    }
+
+    export interface AiCustomJobJobSpecWorkerPoolSpecDiskSpec {
+        /**
+         * Size in GB of the boot disk (default is 100GB).
+         */
+        bootDiskSizeGb?: number;
+        /**
+         * Type of the disk. The default value depends on the machine type. Valid values include: "pd-ssd", "pd-standard", "pd-balanced", and "hyperdisk-balanced".
+         */
+        bootDiskType?: string;
+    }
+
+    export interface AiCustomJobJobSpecWorkerPoolSpecLustreMount {
+        /**
+         * The name of the Lustre filesystem.
+         */
+        filesystem: string;
+        /**
+         * IP address of the Lustre instance.
+         */
+        instanceIp: string;
+        /**
+         * Destination mount path. The Lustre file system will be mounted for the user under /mnt/lustre/<mount_point>.
+         */
+        mountPoint: string;
+        /**
+         * The unique identifier of the Lustre volume.
+         */
+        volumeHandle: string;
+    }
+
+    export interface AiCustomJobJobSpecWorkerPoolSpecMachineSpec {
+        /**
+         * The number of accelerators to attach to the machine.
+         */
+        acceleratorCount?: number;
+        /**
+         * The type of accelerator(s) that may be attached to the machine.
+         */
+        acceleratorType?: string;
+        /**
+         * The type of the machine.
+         */
+        machineType?: string;
+        /**
+         * Configuration for using robust to failure reservation.
+         * Structure is documented below.
+         */
+        reservationAffinity?: outputs.vertex.AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity;
+        /**
+         * The topology of the TPUs.
+         */
+        tpuTopology?: string;
+    }
+
+    export interface AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity {
+        /**
+         * Corresponds to the label key of a reservation resource.
+         */
+        key?: string;
+        /**
+         * Specifies the reservation affinity type. Possible values: "NO_RESERVATION", "ANY_RESERVATION", and "SPECIFIC_RESERVATION"
+         */
+        reservationAffinityType: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
+        values?: string[];
+    }
+
+    export interface AiCustomJobJobSpecWorkerPoolSpecNfsMount {
+        /**
+         * Destination mount path. The path must be absolute.
+         */
+        mountPoint: string;
+        /**
+         * Source path exported from NFS database.
+         */
+        path: string;
+        /**
+         * IP address of the NFS server.
+         */
+        server: string;
+    }
+
+    export interface AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec {
+        /**
+         * Command line arguments to be passed to the Python task.
+         */
+        args?: string[];
+        /**
+         * Environment variables to be passed to the python module. Maximum limit is 100.
+         * Structure is documented below.
+         */
+        envs?: outputs.vertex.AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv[];
+        /**
+         * The URI of a container image in Artifact Registry that will run the provided Python package.
+         */
+        executorImageUri: string;
+        /**
+         * The Google Cloud Storage location of the Python package files which are the training program and its dependent packages.
+         */
+        packageUris: string[];
+        /**
+         * The Python module name to run after installing the packages.
+         */
+        pythonModule: string;
+    }
+
+    export interface AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv {
+        /**
+         * Name of the environment variable.
+         */
+        name: string;
+        /**
+         * Value of the environment variable.
+         */
+        value: string;
+    }
+
     export interface AiDatasetEncryptionSpec {
         /**
          * Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
@@ -172633,12 +175446,23 @@ export namespace vertex {
 
     export interface AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
         /**
+         * The default fraction of leaf nodes that any query may be searched. Must be in
+         * range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+         * This value can only be set when creating the index.
+         */
+        fractionLeafNodesToSearch: number;
+        /**
          * Number of embeddings on each leaf node. The default value is 1000 if not set.
          */
         leafNodeEmbeddingCount?: number;
         /**
+         * (Optional, Deprecated)
          * The default percentage of leaf nodes that any query may be searched. Must be in
          * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+         *
+         * > **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+         *
+         * @deprecated `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
          */
         leafNodesToSearchPercent?: number;
     }
@@ -172657,6 +175481,678 @@ export namespace vertex {
          * The disk utilization of the MetadataStore in bytes.
          */
         diskUtilizationBytes: string;
+    }
+
+    export interface AiModelDevelopmentClusterClusterEvent {
+        /**
+         * (Output)
+         * The detailed description of the cluster event.
+         */
+        eventMessage: string;
+        /**
+         * (Output)
+         * The occurrence time of the cluster event.
+         */
+        eventTime: string;
+        /**
+         * (Output)
+         * The type of the cluster event.
+         * Possible values:
+         * VM_PROLOG_ERROR
+         * VM_EPILOG_ERROR
+         * VM_CONTINUOUS_GPU_ERROR
+         * VM_SCAN_ERROR
+         * VM_SLURM_POWER_DOWN
+         * VM_SLURM_DRAIN
+         * VM_DELETION
+         * VM_REPORT_AND_REPLACEMENT
+         * VM_REBOOT
+         */
+        eventType: string;
+    }
+
+    export interface AiModelDevelopmentClusterClusterStatus {
+        /**
+         * (Output)
+         * Human-readable detail about the current state.
+         */
+        detail: string;
+        /**
+         * (Output)
+         * The `Status` type defines a logical error model that is suitable for
+         * different programming environments, including REST APIs and RPC APIs. It is
+         * used by [gRPC](https://github.com/grpc). Each `Status` message contains
+         * three pieces of data: error code, error message, and error details.
+         * You can find out more about this error model and how to work with it in the
+         * [API Design Guide](https://cloud.google.com/apis/design/errors).
+         * Structure is documented below.
+         */
+        errors: outputs.vertex.AiModelDevelopmentClusterClusterStatusError[];
+        /**
+         * (Output)
+         * The status information of all the nodes in the cluster.
+         * Structure is documented below.
+         */
+        nodesStatuses: outputs.vertex.AiModelDevelopmentClusterClusterStatusNodesStatus[];
+        /**
+         * (Output)
+         * The current state of the XManager instance.
+         * Possible values:
+         * PROVISIONING
+         * RUNNING
+         * DELETING
+         * ERROR
+         */
+        state: string;
+    }
+
+    export interface AiModelDevelopmentClusterClusterStatusError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.  There is a common set of
+         * message types for APIs to use.
+         */
+        details: {[key: string]: string}[];
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message: string;
+    }
+
+    export interface AiModelDevelopmentClusterClusterStatusNodesStatus {
+        /**
+         * (Output)
+         * Time when the TrainingService was created.
+         */
+        createTime: string;
+        /**
+         * (Output)
+         * Human-readable detail about the current state.
+         */
+        detail: string;
+        /**
+         * (Output)
+         * The XManager instance ID (for example, "xmc-").
+         */
+        instanceId: string;
+        /**
+         * (Output)
+         * The name of the Compute Engine instance associated with the node.
+         */
+        instanceName: string;
+        /**
+         * (Output)
+         * The time when the node's current state or detail last changed.
+         */
+        lastUpdateTime: string;
+        /**
+         * (Output)
+         * The ID of the node pool.
+         */
+        nodePoolId: string;
+        /**
+         * (Output)
+         * The type of the node pool.
+         * Possible values:
+         * NODE_POOL_TYPE_LOGIN
+         * NODE_POOL_TYPE_COMPUTE
+         */
+        nodePoolType: string;
+        /**
+         * (Output)
+         * The state of the node.
+         * Possible values:
+         * PREPARING
+         * RUNNING
+         * ERROR
+         * UPDATING
+         */
+        nodeState: string;
+        /**
+         * (Output)
+         * Physical Host Hardware information.
+         * Structure is documented below.
+         */
+        physicalHosts: outputs.vertex.AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost[];
+    }
+
+    export interface AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost {
+        /**
+         * (Output)
+         * Name of the block.
+         */
+        blockId: string;
+        /**
+         * (Output)
+         * Name of the physical cluster.
+         */
+        clusterName: string;
+        /**
+         * (Output)
+         * Name of the host.
+         */
+        hostId: string;
+        /**
+         * (Output)
+         * Name of the sub-block.
+         */
+        subblockId: string;
+    }
+
+    export interface AiModelDevelopmentClusterLustreExportConfig {
+        /**
+         * Days of the week on which a backup runs, each at most once and
+         * none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+         */
+        daysOfWeeks?: string[];
+        /**
+         * The Cloud Storage bucket that backups are written to, without
+         * the "gs://" scheme.
+         */
+        destinationBucket: string;
+        /**
+         * The Managed Lustre instances to back up, each named as
+         * "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+         * must be attached to one of the cluster's node pools, and no entry may
+         * repeat. If empty, every attached instance is backed up.
+         */
+        lustres?: string[];
+        /**
+         * Time when the ModelDevelopmentCluster for the first time entered the
+         * `RUNNING` state.
+         */
+        startTime?: outputs.vertex.AiModelDevelopmentClusterLustreExportConfigStartTime;
+    }
+
+    export interface AiModelDevelopmentClusterLustreExportConfigStartTime {
+        /**
+         * Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+         * typically must be less than or equal to 23. An API may choose to allow the
+         * value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of an hour. Must be greater than or equal to 0 and less than or
+         * equal to 59.
+         */
+        minutes?: number;
+    }
+
+    export interface AiModelDevelopmentClusterNetwork {
+        /**
+         * Network spec of the cluster.
+         * Structure is documented below.
+         */
+        network: string;
+        /**
+         * The name of the subnetwork in the above network to create the cluster.
+         * If not specified:
+         * * for auto mode VPC, the subnet in corresponding region is auto-selected;
+         * * for custom mode VPC, a new subnet will be automatically created.
+         */
+        subnetwork: string;
+    }
+
+    export interface AiModelDevelopmentClusterNodePool {
+        /**
+         * Represents the spec of disk options.
+         * Structure is documented below.
+         */
+        bootDisk: outputs.vertex.AiModelDevelopmentClusterNodePoolBootDisk;
+        /**
+         * (Output)
+         * The effective maximum duration for instances in this node pool.
+         * This field reflects the value of `flexStartMaxDuration` if it is
+         * set by the user, or the server-applied default (for example, 7 days) if it
+         * is not.
+         * This field is only applicable when `provisioningModel` is set to
+         * `FLEX_START`.
+         */
+        effectiveFlexStartMaxDuration: string;
+        /**
+         * Whether to enable public IPs for the node pool.
+         */
+        enablePublicIps?: boolean;
+        /**
+         * List of the existing Filestore instances to be mounted.
+         * For example:
+         * if "projects/my-project/locations/us-central1-a/instances/my-instance" is
+         * specified, the instance will be mounted to the node pool under the path
+         * "mnt/filestore/"
+         */
+        filestores?: string[];
+        /**
+         * The maximum duration for instances in this node pool.
+         * This field is only applicable when `provisioningModel` is set to
+         * `FLEX_START`.
+         */
+        flexStartMaxDuration?: string;
+        /**
+         * The unique ID referring to this node pool.
+         */
+        id: string;
+        /**
+         * The labels with user-defined metadata to organize the node pool. These
+         * labels are applied to the underlying compute resources (for example, the
+         * VM instances) of the node pool, so they appear in billing exports and
+         * Cloud Monitoring filters.
+         * Label keys and values can be no longer than 64 characters
+         * (Unicode codepoints), can only contain lowercase letters, numeric
+         * characters, underscores and dashes. International characters are allowed.
+         * See https://goo.gl/xmQnxf for more information and examples of labels.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * List of the existing Google Managed Lustre instances to be mounted.
+         * Similar to the filestores, the instance will be mounted to the node pool
+         * under the path "/mnt/lustre/"
+         */
+        lustres?: string[];
+        /**
+         * Specification of a single machine.
+         * Structure is documented below.
+         */
+        machineSpec: outputs.vertex.AiModelDevelopmentClusterNodePoolMachineSpec;
+        /**
+         * The node image to be used for the VMs in the node pool.
+         * In format of "projects//global/images/" or
+         * "projects/test-project/global/images/family/"
+         */
+        nodeImage: string;
+        /**
+         * Specifies the provisioning model for the node pool.
+         * Behavior for `PROVISIONING_MODEL_UNSPECIFIED`:
+         * - For CPU node pools: Defaults to `ON_DEMAND`.
+         * - For GPU node pools:
+         * - If
+         *   `machine_spec.reservation_affinity`
+         *   is set, it defaults to `RESERVATION`.
+         * - If
+         *   `machine_spec.reservation_affinity`
+         *   is NOT set, this is an INVALID state and the request will be rejected.
+         *   An explicit `provisioningModel` must be provided.
+         */
+        provisioningModel: string;
+        /**
+         * The scaling spec of the node pool.
+         */
+        scalingSpec?: outputs.vertex.AiModelDevelopmentClusterNodePoolScalingSpec;
+        /**
+         * Startup script for the node pool instances.
+         */
+        startupScript?: string;
+        /**
+         * The zone of the node pool.
+         */
+        zone?: string;
+    }
+
+    export interface AiModelDevelopmentClusterNodePoolBootDisk {
+        /**
+         * Size in GB of the boot disk (default is 100GB).
+         */
+        bootDiskSizeGb: number;
+        /**
+         * Type of the boot disk. For non-A3U machines, the default value is
+         * "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+         * Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+         * "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+         */
+        bootDiskType: string;
+    }
+
+    export interface AiModelDevelopmentClusterNodePoolMachineSpec {
+        /**
+         * The type of the machine.
+         *
+         * See the [list of machine types supported for
+         * prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+         *
+         * See the [list of machine types supported for custom
+         * training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+         *
+         * For DeployedModel this field is optional, and the default
+         * value is 'n1-standard-2'. For BatchPredictionJob or as part of
+         * WorkerPoolSpec this field is required.
+         */
+        machineType: string;
+        /**
+         * A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+         * DeployedModel) to draw its Compute Engine resources from a Shared
+         * Reservation, or exclusively from on-demand capacity.
+         */
+        reservationAffinity?: outputs.vertex.AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity;
+    }
+
+    export interface AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity {
+        /**
+         * Specifies the reservation affinity type.
+         * Possible values:
+         * NO_RESERVATION
+         * ANY_RESERVATION
+         * SPECIFIC_RESERVATION
+         */
+        reservationAffinityType: string;
+        /**
+         * Corresponds to the label values of a reservation resource. This must be the
+         * resource name of the reservation, reservation block, or reservation sub-
+         * block.
+         */
+        values?: string[];
+    }
+
+    export interface AiModelDevelopmentClusterNodePoolScalingSpec {
+        /**
+         * maximum size of the node pool,
+         * must be ≥ min_node_count
+         */
+        maxNodeCount?: number;
+        /**
+         * minimum size of the node pool,
+         * must be >= 0 and <= max_node_count
+         */
+        minNodeCount?: number;
+    }
+
+    export interface AiModelDevelopmentClusterOrchestratorSpec {
+        /**
+         * The Slurm orchestrator related spec of the cluster.
+         */
+        slurmSpec?: outputs.vertex.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec;
+    }
+
+    export interface AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
+        /**
+         * Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+         * slurm.conf.
+         *
+         * Keys are Slurm parameter names exactly as documented by SchedMD
+         * (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+         * Values are written the way slurm.conf writes them, including composite
+         * forms such as 'bf_window=1440,bf_resolution=600'.
+         *
+         * Example:
+         * { "PriorityType":            "priority/multifactor",
+         * "PriorityWeightAge":       "1000",
+         * "PreemptMode":             "SUSPEND,GANG",
+         * "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+         *
+         * Unsupported, reserved, or misspelled parameters, and values that are not
+         * legal for the parameter, are rejected at request time with the offending
+         * parameter named; they are never silently dropped. Settings
+         * that apply to a single partition or node pool belong in
+         * 'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+         * several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+         * are valid at more than one scope with different meanings and different
+         * legal values.
+         *
+         * On update this map is replaced wholesale; supply the complete desired set.
+         */
+        config?: {[key: string]: string};
+        /**
+         * Id of the partition that Slurm jobs submitted without an explicit
+         * partition run on, for example 'sbatch' without '--partition'. Must match
+         * the 'id' of one of 'partitions'.
+         *
+         * If unset, the service uses the first entry of 'partitions' and this field
+         * stays empty; the cluster always has a default partition whether or not this
+         * field is set. Setting it makes the choice independent of list order, which
+         * matters because 'partitions' is replaced wholesale on update: reordering
+         * the list, or prepending a partition to it, otherwise moves the default and
+         * silently redirects every job submitted without '--partition'.
+         */
+        defaultPartitionId?: string;
+        /**
+         * Custom bash scripts executed after each slurm job on every allocated node.
+         */
+        epilogBashScripts?: string[];
+        /**
+         * Full name of the Filestore to be mounted as /home directory on every node.
+         */
+        homeDirectoryStorage: string;
+        /**
+         * The node pool id to be used as slurm login node.
+         */
+        loginNodePoolId: string;
+        /**
+         * Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+         * pool. Node pools without an entry use the settings derived by the cluster's
+         * Slurm controller.
+         */
+        nodeSets?: outputs.vertex.AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet[];
+        /**
+         * The Slurm partitions spec.
+         */
+        partitions?: outputs.vertex.AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition[];
+        /**
+         * Custom bash scripts executed before each slurm job on every allocated node.
+         */
+        prologBashScripts?: string[];
+    }
+
+    export interface AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet {
+        /**
+         * Node-scoped Slurm settings, emitted as additional 'Key=Value' pairs on the
+         * 'NodeName=' line for this node pool's nodes in slurm.conf.
+         *
+         * Example:
+         * { "Features":     "a3mega,nvlink",
+         * "Weight":       "10",
+         * "MemSpecLimit": "4096" }
+         *
+         * On update this map is replaced wholesale; supply the complete desired set.
+         */
+        config?: {[key: string]: string};
+        /**
+         * (Output)
+         * The ID of the node pool.
+         */
+        nodePoolId: string;
+    }
+
+    export interface AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition {
+        /**
+         * Partition-scoped Slurm settings, emitted as additional 'Key=Value' pairs
+         * on this partition's 'PartitionName=' line in slurm.conf.
+         *
+         * Example:
+         * { "MaxTime":       "4-00:00:00",
+         * "DenyAccounts":  "low-pri",
+         * "PriorityTier":  "20",
+         * "OverSubscribe": "YES:4" }
+         *
+         * Note: values set here take precedence over service-computed defaults for
+         * the same parameter (for example 'OverSubscribe' and 'DefMemPerCPU', which
+         * the service otherwise derives from the partition's exclusivity and from
+         * the memory per CPU of its nodes).
+         *
+         * 'Default' is rejected here: which partition is the default is a
+         * cluster-scoped choice, so it belongs in 'SlurmSpec.default_partition_id'.
+         */
+        config?: {[key: string]: string};
+        /**
+         * an identifier for the resource with format `projects/{{project}}/locations/{{region}}/modelDevelopmentClusters/{{model_development_cluster_id}}`
+         */
+        id: string;
+        /**
+         * Node pools for the slurm partition
+         */
+        nodePoolIds: string[];
+    }
+
+    export interface AiModelDevelopmentClusterRuntime {
+        /**
+         * (Output)
+         * The training services running on this Vertex AI Training Cluster.
+         * Structure is documented below.
+         */
+        trainingServices: outputs.vertex.AiModelDevelopmentClusterRuntimeTrainingService[];
+        /**
+         * (Output)
+         * A purpose-built, output-only view of the XManager instance attached to a
+         * cluster.
+         * Structure is documented below.
+         */
+        xmanagers: outputs.vertex.AiModelDevelopmentClusterRuntimeXmanager[];
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeSpec {
+        /**
+         * The default service account used by the cluster when running any workloads
+         * on it. If not specified, the default compute engine service account will be
+         * used.
+         */
+        serviceAccount: string;
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeTrainingService {
+        /**
+         * (Output)
+         * Time when the TrainingService was created.
+         */
+        createTime: string;
+        /**
+         * (Output)
+         * Orchestrator-agnostic deployment spec.
+         * Structure is documented below.
+         */
+        deploymentSpecs: outputs.vertex.AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec[];
+        /**
+         * (Output)
+         * Cloud Storage bucket name dynamically GCSFuse-mounted on all nodes, for
+         * storing checkpoints and other service outputs.
+         */
+        gcsBucket: string;
+        /**
+         * (Output)
+         * Cloud Storage URI of the squashfs (.sqsh) container image.
+         */
+        imageUri: string;
+        /**
+         * (Output)
+         * Identifier. Resource name of the TrainingService. Format:
+         * `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
+         */
+        name: string;
+        /**
+         * (Output)
+         * Status of a TrainingService.
+         * Structure is documented below.
+         */
+        serviceStatuses: outputs.vertex.AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus[];
+        /**
+         * (Output)
+         * Time when the TrainingService was most recently updated.
+         */
+        updateTime: string;
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec {
+        /**
+         * (Output)
+         * Number of worker nodes to allocate.
+         */
+        workerNodeCount: number;
+        /**
+         * (Output)
+         * ID of a node pool on the parent ModelDevelopmentCluster (see
+         * `ModelDevelopmentCluster.node_pools[].id`) on which to place the worker
+         * nodes.
+         */
+        workerNodePoolId: string;
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus {
+        /**
+         * (Output)
+         * Human-readable detail about the current state.
+         */
+        detail: string;
+        /**
+         * (Output)
+         * Endpoints clients use to connect to the running service.
+         */
+        endpoints: {[key: string]: string};
+        /**
+         * (Output)
+         * The current state of the XManager instance.
+         * Possible values:
+         * PROVISIONING
+         * RUNNING
+         * DELETING
+         * ERROR
+         */
+        state: string;
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeXmanager {
+        /**
+         * (Output)
+         * The gRPC API endpoint (Experiment State Server) of the
+         * XManager instance. Empty unless the instance is running.
+         */
+        apiEndpoint: string;
+        /**
+         * (Output)
+         * The `Status` type defines a logical error model that is suitable for
+         * different programming environments, including REST APIs and RPC APIs. It is
+         * used by [gRPC](https://github.com/grpc). Each `Status` message contains
+         * three pieces of data: error code, error message, and error details.
+         * You can find out more about this error model and how to work with it in the
+         * [API Design Guide](https://cloud.google.com/apis/design/errors).
+         * Structure is documented below.
+         */
+        errors: outputs.vertex.AiModelDevelopmentClusterRuntimeXmanagerError[];
+        /**
+         * (Output)
+         * The XManager instance ID (for example, "xmc-").
+         */
+        instanceId: string;
+        /**
+         * (Output)
+         * The current state of the XManager instance.
+         * Possible values:
+         * PROVISIONING
+         * RUNNING
+         * DELETING
+         * ERROR
+         */
+        state: string;
+        /**
+         * (Output)
+         * The UI endpoint of the XManager instance. Empty unless the
+         * instance is running.
+         */
+        uiEndpoint: string;
+    }
+
+    export interface AiModelDevelopmentClusterRuntimeXmanagerError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.  There is a common set of
+         * message types for APIs to use.
+         */
+        details: {[key: string]: string}[];
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message: string;
     }
 
     export interface AiOnlineEvaluatorCloudObservability {
@@ -173136,10 +176632,27 @@ export namespace vertex {
 
     export interface AiPersistentResourceResourceRuntimeSpec {
         /**
+         * Configuration information for the Ray cluster.
+         * Structure is documented below.
+         */
+        raySpec?: outputs.vertex.AiPersistentResourceResourceRuntimeSpecRaySpec;
+        /**
          * Configuration for the use of custom service account to run the workloads.
          * Structure is documented below.
          */
         serviceAccountSpec?: outputs.vertex.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec;
+    }
+
+    export interface AiPersistentResourceResourceRuntimeSpecRaySpec {
+        /**
+         * Default image for user to choose a preferred ML framework
+         * (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+         * images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+         * Either this or the resourcePoolImages is required. Use this field if
+         * you need all the resource pools to have the same Ray image. Otherwise, use
+         * the `resourcePoolImages` field.
+         */
+        imageUri?: string;
     }
 
     export interface AiPersistentResourceResourceRuntimeSpecServiceAccountSpec {
@@ -173150,6 +176663,333 @@ export namespace vertex {
          * Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
          */
         enableCustomServiceAccount: boolean;
+    }
+
+    export interface AiPipelineJobEncryptionSpec {
+        /**
+         * The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+         */
+        kmsKeyName: string;
+    }
+
+    export interface AiPipelineJobError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details: {[key: string]: string}[];
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English.
+         */
+        message: string;
+    }
+
+    export interface AiPipelineJobJobDetail {
+        /**
+         * (Output)
+         * The context of the pipeline.
+         * Structure is documented below.
+         */
+        pipelineContexts: outputs.vertex.AiPipelineJobJobDetailPipelineContext[];
+        /**
+         * (Output)
+         * The context of the current pipeline run.
+         * Structure is documented below.
+         */
+        pipelineRunContexts: outputs.vertex.AiPipelineJobJobDetailPipelineRunContext[];
+        /**
+         * (Output)
+         * The runtime details of the tasks under the pipeline.
+         * Structure is documented below.
+         */
+        taskDetails: outputs.vertex.AiPipelineJobJobDetailTaskDetail[];
+    }
+
+    export interface AiPipelineJobJobDetailPipelineContext {
+        /**
+         * (Output)
+         * Task create time.
+         */
+        createTime: string;
+        /**
+         * (Output)
+         * Description of the Context.
+         */
+        description: string;
+        /**
+         * The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+         */
+        displayName: string;
+        /**
+         * (Output)
+         * An eTag used to perform consistent read-modify-write updates.
+         */
+        etag: string;
+        /**
+         * The labels with user-defined metadata to organize PipelineJob.
+         *
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         */
+        labels: {[key: string]: string};
+        /**
+         * (Output)
+         * Properties of the Context.
+         */
+        metadata: string;
+        /**
+         * (Output)
+         * The resource name of the Context.
+         */
+        name: string;
+        /**
+         * (Output)
+         * A list of resource names of Contexts that are parents of this Context.
+         */
+        parentContexts: string[];
+        /**
+         * (Output)
+         * The title of the schema describing the metadata.
+         */
+        schemaTitle: string;
+        /**
+         * (Output)
+         * The version of the schema in schemaName to use.
+         */
+        schemaVersion: string;
+        /**
+         * (Output)
+         * Timestamp when this Context was last updated.
+         */
+        updateTime: string;
+    }
+
+    export interface AiPipelineJobJobDetailPipelineRunContext {
+        /**
+         * (Output)
+         * Task create time.
+         */
+        createTime: string;
+        /**
+         * (Output)
+         * Description of the Context.
+         */
+        description: string;
+        /**
+         * The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+         */
+        displayName: string;
+        /**
+         * (Output)
+         * An eTag used to perform consistent read-modify-write updates.
+         */
+        etag: string;
+        /**
+         * The labels with user-defined metadata to organize PipelineJob.
+         *
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         */
+        labels: {[key: string]: string};
+        /**
+         * (Output)
+         * Properties of the Context.
+         */
+        metadata: string;
+        /**
+         * (Output)
+         * The resource name of the Context.
+         */
+        name: string;
+        /**
+         * (Output)
+         * A list of resource names of Contexts that are parents of this Context.
+         */
+        parentContexts: string[];
+        /**
+         * (Output)
+         * The title of the schema describing the metadata.
+         */
+        schemaTitle: string;
+        /**
+         * (Output)
+         * The version of the schema in schemaName to use.
+         */
+        schemaVersion: string;
+        /**
+         * (Output)
+         * Timestamp when this Context was last updated.
+         */
+        updateTime: string;
+    }
+
+    export interface AiPipelineJobJobDetailTaskDetail {
+        /**
+         * (Output)
+         * Task create time.
+         */
+        createTime: string;
+        /**
+         * (Output)
+         * Task end time.
+         */
+        endTime: string;
+        /**
+         * (Output)
+         * The error that occurred during task execution. Only populated when the task's state is FAILED or CANCELLED.
+         * Structure is documented below.
+         */
+        errors: outputs.vertex.AiPipelineJobJobDetailTaskDetailError[];
+        /**
+         * (Output)
+         * The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
+         */
+        parentTaskId: string;
+        /**
+         * (Output)
+         * Task start time.
+         */
+        startTime: string;
+        /**
+         * (Output)
+         * The detailed state of the task.
+         */
+        state: string;
+        /**
+         * (Output)
+         * The system generated ID of the task.
+         */
+        taskId: string;
+        /**
+         * (Output)
+         * The user specified name of the task that is defined in pipeline_spec.
+         */
+        taskName: string;
+        /**
+         * (Output)
+         * The unique name of a task.
+         */
+        taskUniqueName: string;
+    }
+
+    export interface AiPipelineJobJobDetailTaskDetailError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English.
+         */
+        message: string;
+    }
+
+    export interface AiPipelineJobPscInterfaceConfig {
+        /**
+         * DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+         * Structure is documented below.
+         */
+        dnsPeeringConfigs?: outputs.vertex.AiPipelineJobPscInterfaceConfigDnsPeeringConfig[];
+        /**
+         * The name of the Compute Engine network attachment to attach to the resource within the region and user project. To specify this field, you must have already created a network attachment. This field is only used for resources using PSC-I.
+         */
+        networkAttachment?: string;
+    }
+
+    export interface AiPipelineJobPscInterfaceConfigDnsPeeringConfig {
+        /**
+         * The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+         */
+        domain: string;
+        /**
+         * The VPC network name in the targetProject where the DNS zone specified by domain is visible.
+         */
+        targetNetwork: string;
+        /**
+         * The project ID hosting the Cloud DNS managed zone that contains the above domain. The Vertex AI Service Agent must be granted the dns.peer role on this project.
+         */
+        targetProject: string;
+    }
+
+    export interface AiPipelineJobRuntimeConfig {
+        /**
+         * (Optional, Beta)
+         * The default runtime for the PipelineJob.
+         * Structure is documented below.
+         */
+        defaultRuntime?: outputs.vertex.AiPipelineJobRuntimeConfigDefaultRuntime;
+        /**
+         * Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as `PIPELINE_FAILURE_POLICY_FAIL_SLOW`. However, if a pipeline is set to `PIPELINE_FAILURE_POLICY_FAIL_FAST`, it will stop scheduling any new tasks as soon as the pipeline fails.
+         * Possible values are: `PIPELINE_FAILURE_POLICY_UNSPECIFIED`, `PIPELINE_FAILURE_POLICY_FAIL_SLOW`, `PIPELINE_FAILURE_POLICY_FAIL_FAST`.
+         */
+        failurePolicy: string;
+        /**
+         * A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-directory pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+         */
+        gcsOutputDirectory: string;
+        /**
+         * The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+         * Structure is documented below.
+         */
+        inputArtifacts?: outputs.vertex.AiPipelineJobRuntimeConfigInputArtifact[];
+        /**
+         * The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+         */
+        parameterValues: {[key: string]: string};
+    }
+
+    export interface AiPipelineJobRuntimeConfigDefaultRuntime {
+        /**
+         * (Optional, Beta)
+         * Persistent resource based runtime detail.
+         * Structure is documented below.
+         */
+        persistentResourceRuntimeDetail?: outputs.vertex.AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail;
+    }
+
+    export interface AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail {
+        /**
+         * (Optional, Beta)
+         * PersistentResource name, format: `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`.
+         */
+        persistentResourceName?: string;
+        /**
+         * (Optional, Beta)
+         * Sets the behavior when a task has reached the defined wait duration while waiting for task resources to become available in the specified persistent resource.
+         * Possible values are: `TASK_RESOURCE_UNAVAILABLE_TIMEOUT_BEHAVIOR_UNSPECIFIED`, `FAIL`, `FALL_BACK_TO_ON_DEMAND`.
+         */
+        taskResourceUnavailableTimeoutBehavior: string;
+        /**
+         * (Optional, Beta)
+         * The maxWaitTime for the task if the persistent resource is unavailable.
+         */
+        taskResourceUnavailableWaitTimeMs?: string;
+    }
+
+    export interface AiPipelineJobRuntimeConfigInputArtifact {
+        /**
+         * Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must be within the same project, location and default metadatastore as the pipeline.
+         */
+        artifactId: string;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        artifactKey: string;
+    }
+
+    export interface AiPipelineJobTemplateMetadata {
+        /**
+         * (Output)
+         * The versionName in artifact registry.
+         */
+        version: string;
     }
 
     export interface AiRagCorpusCorpusStatus {
@@ -173332,6 +177172,122 @@ export namespace vertex {
     }
 
     export interface AiRagEngineConfigRagManagedDbConfigUnprovisioned {
+    }
+
+    export interface AiRagFileFileStatus {
+        /**
+         * (Output)
+         * Only populated when the state is ERROR.
+         */
+        errorStatus: string;
+        /**
+         * (Output)
+         * RagFile state.
+         */
+        state: string;
+    }
+
+    export interface AiRagFileGcsSource {
+        /**
+         * The Cloud Storage URI of the file to import, for example
+         * `gs://my-bucket/my-file.pdf`. Must reference a single file; directories
+         * and wildcards are not supported because each resource manages one RagFile.
+         */
+        uris: string;
+    }
+
+    export interface AiRagFileGoogleDriveSource {
+        /**
+         * The Google Drive file to import.
+         * Structure is documented below.
+         */
+        resourceIds: outputs.vertex.AiRagFileGoogleDriveSourceResourceIds;
+    }
+
+    export interface AiRagFileGoogleDriveSourceResourceIds {
+        /**
+         * The ID of the Google Drive file.
+         */
+        resourceId: string;
+        /**
+         * The type of the Google Drive resource. Only individual files are
+         * supported because each resource manages one RagFile.
+         * Default value is `RESOURCE_TYPE_FILE`.
+         * Possible values are: `RESOURCE_TYPE_FILE`.
+         */
+        resourceType?: string;
+    }
+
+    export interface AiRagFileRagFileParsingConfig {
+        /**
+         * The Document AI Layout Parser to use for the file.
+         * Structure is documented below.
+         */
+        layoutParser?: outputs.vertex.AiRagFileRagFileParsingConfigLayoutParser;
+        /**
+         * The LLM parser to use for the file.
+         * Structure is documented below.
+         */
+        llmParser?: outputs.vertex.AiRagFileRagFileParsingConfigLlmParser;
+    }
+
+    export interface AiRagFileRagFileParsingConfigLayoutParser {
+        /**
+         * The maximum number of requests the job is allowed to make to the
+         * Document AI processor per minute.
+         */
+        maxParsingRequestsPerMin?: number;
+        /**
+         * The full resource name of a Document AI processor or processor version
+         * of type `LAYOUT_PARSER_PROCESSOR`. Format:
+         * `projects/{project_id}/locations/{location}/processors/{processor_id}` or
+         * `projects/{project_id}/locations/{location}/processors/{processor_id}/processorVersions/{processor_version_id}`.
+         */
+        processorName?: string;
+    }
+
+    export interface AiRagFileRagFileParsingConfigLlmParser {
+        /**
+         * The prompt to use for parsing. If not specified, a default prompt is used.
+         */
+        customParsingPrompt?: string;
+        /**
+         * The maximum number of requests the job is allowed to make to the LLM
+         * model per minute.
+         */
+        maxParsingRequestsPerMin?: number;
+        /**
+         * The name of a LLM model used for parsing. Format:
+         * `projects/{project_id}/locations/{location}/publishers/{publisher}/models/{model}`.
+         */
+        modelName?: string;
+    }
+
+    export interface AiRagFileRagFileTransformationConfig {
+        /**
+         * The chunking config for the file.
+         * Structure is documented below.
+         */
+        ragFileChunkingConfig?: outputs.vertex.AiRagFileRagFileTransformationConfigRagFileChunkingConfig;
+    }
+
+    export interface AiRagFileRagFileTransformationConfigRagFileChunkingConfig {
+        /**
+         * The fixed length chunking config.
+         * Structure is documented below.
+         */
+        fixedLengthChunking?: outputs.vertex.AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking;
+    }
+
+    export interface AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking {
+        /**
+         * The overlap between chunks.
+         */
+        chunkOverlap?: number;
+        /**
+         * The size of the chunks.
+         */
+        chunkSize?: number;
     }
 
     export interface AiReasoningEngineContextSpec {
@@ -174518,6 +178474,12 @@ export namespace vertex {
     }
 
     export interface GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+        /**
+         * The default fraction of leaf nodes that any query may be searched. Must be in
+         * range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+         * This value can only be set when creating the index.
+         */
+        fractionLeafNodesToSearch: number;
         /**
          * Number of embeddings on each leaf node. The default value is 1000 if not set.
          */
@@ -176459,6 +180421,11 @@ export namespace workstations {
          * Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
          */
         bootDiskSizeGb: number;
+        /**
+         * (Optional, Beta)
+         * Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+         */
+        enableAutomaticFailover?: boolean;
         /**
          * Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
          * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization

@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  * 
  *         var myappV1 = new StandardAppVersion("myappV1", StandardAppVersionArgs.builder()
  *             .versionId("v1")
- *             .service("myapp")
+ *             .service("ae-service")
  *             .runtime("nodejs22")
  *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
  *                 .shell("node ./app.js")
@@ -143,7 +143,7 @@ import javax.annotation.Nullable;
  * 
  *         var myappV2 = new StandardAppVersion("myappV2", StandardAppVersionArgs.builder()
  *             .versionId("v2")
- *             .service("myapp")
+ *             .service("ae-service")
  *             .runtime("nodejs22")
  *             .appEngineApis(true)
  *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
@@ -170,6 +170,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### App Engine Standard App Version Bundled Services
  * 
  * <pre>
@@ -244,7 +245,7 @@ import javax.annotation.Nullable;
  *         var gae_std_app_ver_bundled = new StandardAppVersion("gae-std-app-ver-bundled", StandardAppVersionArgs.builder()
  *             .versionId("v1")
  *             .service("bundled-service")
- *             .runtime("python310")
+ *             .runtime("python312")
  *             .deployment(StandardAppVersionDeploymentArgs.builder()
  *                 .files(                
  *                     StandardAppVersionDeploymentFileArgs.builder()
@@ -282,6 +283,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### App Engine Standard App Version Vpc Access
  * 
  * <pre>
@@ -375,9 +377,9 @@ import javax.annotation.Nullable;
  *         var gae_std_app_ver_vpc_access = new StandardAppVersion("gae-std-app-ver-vpc-access", StandardAppVersionArgs.builder()
  *             .versionId("v1")
  *             .service("vpc-service")
- *             .runtime("python310")
+ *             .runtime("python312")
  *             .vpcAccess(StandardAppVersionVpcAccessArgs.builder()
- *                 .egressSetting("ALL_TRAFFIC")
+ *                 .vpcEgress("ALL_TRAFFIC")
  *                 .networkInterfaces(StandardAppVersionVpcAccessNetworkInterfaceArgs.builder()
  *                     .network(custom.name())
  *                     .subnetwork(customSubnetwork.name())

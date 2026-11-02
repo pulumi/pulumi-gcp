@@ -929,6 +929,7 @@ class Connection(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Integration Connectors Connection Advanced
 
         ```python
@@ -1260,6 +1261,7 @@ class Connection(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Integration Connectors Connection Advanced
 
         ```python

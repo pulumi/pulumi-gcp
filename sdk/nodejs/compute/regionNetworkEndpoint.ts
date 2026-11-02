@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     port: 443,
  * });
  * ```
+ *
  * ### Region Network Endpoint Internet Fqdn Port
  *
  * ```typescript
@@ -65,6 +66,7 @@ import * as utilities from "../utilities";
  *     port: 443,
  * });
  * ```
+ *
  * ### Region Network Endpoint Portmap
  *
  * ```typescript

@@ -585,6 +585,7 @@ class NetworkPeering(pulumi.CustomResource):
             export_custom_routes_with_public_ip=False,
             import_custom_routes_with_public_ip=False)
         ```
+
         ### Vmware Engine Network Peering Standard
 
         ```python
@@ -685,6 +686,7 @@ class NetworkPeering(pulumi.CustomResource):
             export_custom_routes_with_public_ip=False,
             import_custom_routes_with_public_ip=False)
         ```
+
         ### Vmware Engine Network Peering Standard
 
         ```python

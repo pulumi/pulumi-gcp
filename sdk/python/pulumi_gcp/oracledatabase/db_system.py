@@ -621,8 +621,12 @@ class DbSystem(pulumi.CustomResource):
                     },
                 },
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Db System Full
 
         ```python
@@ -760,8 +764,12 @@ class DbSystem(pulumi.CustomResource):
                     },
                 },
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Db System Full
 
         ```python

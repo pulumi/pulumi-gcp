@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Custom Mtu
     /// 
     /// ```csharp
@@ -57,6 +58,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Custom Firewall Enforcement Order
     /// 
     /// ```csharp
@@ -77,6 +79,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Bgp Best Path Selection Mode
     /// 
     /// ```csharp
@@ -96,6 +99,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Bgp Best Path Selection Mode Standard
     /// 
     /// ```csharp
@@ -116,6 +120,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Bgp Best Path Selection Mode Standard Custom Fields
     /// 
     /// ```csharp
@@ -138,6 +143,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Bgp Standard Mode Delete Med
     /// 
     /// ```csharp

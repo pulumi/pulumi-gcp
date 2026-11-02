@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Spanner Instance Partition Autoscaling
  * 
  * <pre>

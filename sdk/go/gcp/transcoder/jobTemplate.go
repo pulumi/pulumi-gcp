@@ -147,6 +147,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Transcoder Job Template Overlays
 //
 // ```go
@@ -296,6 +297,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Transcoder Job Template Encryptions
 //
 // ```go
@@ -485,6 +487,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Transcoder Job Template Pubsub
 //
 // ```go

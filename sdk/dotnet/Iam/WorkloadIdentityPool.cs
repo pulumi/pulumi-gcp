@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Full Federation Only Mode
     /// 
     /// ```csharp
@@ -61,6 +62,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Full Trust Domain Mode
     /// 
     /// ```csharp
@@ -151,6 +153,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
     /// 
     /// ```csharp

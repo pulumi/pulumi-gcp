@@ -699,6 +699,7 @@ class Guardrail(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Ces Guardrail Transfer Agent Content Filter
 
         ```python
@@ -746,6 +747,7 @@ class Guardrail(pulumi.CustomResource):
                 "disregard_diacritics": True,
             })
         ```
+
         ### Ces Guardrail Generative Answer Llm Prompt Security
 
         ```python
@@ -787,6 +789,7 @@ class Guardrail(pulumi.CustomResource):
                     "model_settings": {
                         "model": "gemini-3.0-flash-001",
                         "temperature": float(50),
+                        "thinking_level": "LOW",
                     },
                     "prompt": "example_prompt",
                     "policy_scope": "USER_QUERY",
@@ -795,6 +798,7 @@ class Guardrail(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Guardrail Llm Prompt Security Fail Open
 
         ```python
@@ -834,6 +838,7 @@ class Guardrail(pulumi.CustomResource):
                 "fail_open": True,
             })
         ```
+
         ### Ces Guardrail Llm Prompt Security Default Settings
 
         ```python
@@ -873,6 +878,7 @@ class Guardrail(pulumi.CustomResource):
                 "default_settings": {},
             })
         ```
+
         ### Ces Guardrail Code Callback
 
         ```python
@@ -936,6 +942,7 @@ class Guardrail(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Guardrail Llm Policy
 
         ```python
@@ -976,6 +983,7 @@ class Guardrail(pulumi.CustomResource):
                 "model_settings": {
                     "model": "gemini-3.0-flash-001",
                     "temperature": float(50),
+                    "thinking_level": "LOW",
                 },
                 "prompt": "example_prompt",
                 "policy_scope": "USER_QUERY",
@@ -1093,6 +1101,7 @@ class Guardrail(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Ces Guardrail Transfer Agent Content Filter
 
         ```python
@@ -1140,6 +1149,7 @@ class Guardrail(pulumi.CustomResource):
                 "disregard_diacritics": True,
             })
         ```
+
         ### Ces Guardrail Generative Answer Llm Prompt Security
 
         ```python
@@ -1181,6 +1191,7 @@ class Guardrail(pulumi.CustomResource):
                     "model_settings": {
                         "model": "gemini-3.0-flash-001",
                         "temperature": float(50),
+                        "thinking_level": "LOW",
                     },
                     "prompt": "example_prompt",
                     "policy_scope": "USER_QUERY",
@@ -1189,6 +1200,7 @@ class Guardrail(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Guardrail Llm Prompt Security Fail Open
 
         ```python
@@ -1228,6 +1240,7 @@ class Guardrail(pulumi.CustomResource):
                 "fail_open": True,
             })
         ```
+
         ### Ces Guardrail Llm Prompt Security Default Settings
 
         ```python
@@ -1267,6 +1280,7 @@ class Guardrail(pulumi.CustomResource):
                 "default_settings": {},
             })
         ```
+
         ### Ces Guardrail Code Callback
 
         ```python
@@ -1330,6 +1344,7 @@ class Guardrail(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Ces Guardrail Llm Policy
 
         ```python
@@ -1370,6 +1385,7 @@ class Guardrail(pulumi.CustomResource):
                 "model_settings": {
                     "model": "gemini-3.0-flash-001",
                     "temperature": float(50),
+                    "thinking_level": "LOW",
                 },
                 "prompt": "example_prompt",
                 "policy_scope": "USER_QUERY",

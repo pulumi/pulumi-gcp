@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     bundleId: "apple.app.12345",
  * });
  * ```
+ *
  * ### Firebase Apple App Full
  *
  * ```typescript

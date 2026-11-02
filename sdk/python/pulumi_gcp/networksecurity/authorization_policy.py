@@ -452,6 +452,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                 }],
             }])
         ```
+
         ### Network Security Authorization Policy Destinations
 
         ```python
@@ -560,6 +561,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                 }],
             }])
         ```
+
         ### Network Security Authorization Policy Destinations
 
         ```python

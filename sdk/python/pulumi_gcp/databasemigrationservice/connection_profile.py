@@ -701,6 +701,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
         ```
+
         ### Database Migration Service Connection Profile Postgres
 
         ```python
@@ -735,6 +736,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "port": 5432,
                 "username": sqldb_user.name,
                 "password": sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "client_key": sql_client_cert.private_key,
                     "client_certificate": sql_client_cert.cert,
@@ -745,6 +747,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
+
         ### Database Migration Service Connection Profile Postgres No Ssl
 
         ```python
@@ -779,6 +782,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "port": 5432,
                 "username": sqldb_user.name,
                 "password": sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "type": "NONE",
                 },
@@ -786,6 +790,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
+
         ### Database Migration Service Connection Profile Postgres Required Ssl
 
         ```python
@@ -820,6 +825,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "port": 5432,
                 "username": sqldb_user.name,
                 "password": sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "type": "REQUIRED",
                 },
@@ -827,6 +833,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
+
         ### Database Migration Service Connection Profile Oracle
 
         ```python
@@ -849,6 +856,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "static_service_ip_connectivity": {},
             })
         ```
+
         ### Database Migration Service Connection Profile Alloydb
 
         ```python
@@ -899,6 +907,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         ```
+
         ### Database Migration Service Connection Profile Existing Mysql
 
         ```python
@@ -926,6 +935,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
         ```
+
         ### Database Migration Service Connection Profile Existing Postgres
 
         ```python
@@ -953,6 +963,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
         ```
+
         ### Database Migration Service Connection Profile Existing Alloydb
 
         ```python
@@ -960,7 +971,7 @@ class ConnectionProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        default = gcp.compute.Network("default", name="destination-alloydb")
+        default = gcp.compute.get_network(name="destination-alloydb")
         destination_alloydb = gcp.alloydb.Cluster("destination_alloydb",
             cluster_id="destination-alloydb",
             location="us-central1",
@@ -973,21 +984,10 @@ class ConnectionProfile(pulumi.CustomResource):
                 "password": "destination-alloydb",
             },
             deletion_protection=False)
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name="destination-alloydb",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
-            network=default.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
         destination_alloydb_primary = gcp.alloydb.Instance("destination_alloydb_primary",
             cluster=destination_alloydb.name,
             instance_id="destination-alloydb-primary",
-            instance_type="PRIMARY",
-            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            instance_type="PRIMARY")
         existing_alloydb = gcp.databasemigrationservice.ConnectionProfile("existing-alloydb",
             location="us-central1",
             connection_profile_id="destination-cp",
@@ -1144,6 +1144,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
         ```
+
         ### Database Migration Service Connection Profile Postgres
 
         ```python
@@ -1178,6 +1179,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "port": 5432,
                 "username": sqldb_user.name,
                 "password": sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "client_key": sql_client_cert.private_key,
                     "client_certificate": sql_client_cert.cert,
@@ -1188,6 +1190,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
+
         ### Database Migration Service Connection Profile Postgres No Ssl
 
         ```python
@@ -1222,6 +1225,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "port": 5432,
                 "username": sqldb_user.name,
                 "password": sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "type": "NONE",
                 },
@@ -1229,6 +1233,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
+
         ### Database Migration Service Connection Profile Postgres Required Ssl
 
         ```python
@@ -1263,6 +1268,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "port": 5432,
                 "username": sqldb_user.name,
                 "password": sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "type": "REQUIRED",
                 },
@@ -1270,6 +1276,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
+
         ### Database Migration Service Connection Profile Oracle
 
         ```python
@@ -1292,6 +1299,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "static_service_ip_connectivity": {},
             })
         ```
+
         ### Database Migration Service Connection Profile Alloydb
 
         ```python
@@ -1342,6 +1350,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         ```
+
         ### Database Migration Service Connection Profile Existing Mysql
 
         ```python
@@ -1369,6 +1378,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
         ```
+
         ### Database Migration Service Connection Profile Existing Postgres
 
         ```python
@@ -1396,6 +1406,7 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
         ```
+
         ### Database Migration Service Connection Profile Existing Alloydb
 
         ```python
@@ -1403,7 +1414,7 @@ class ConnectionProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        default = gcp.compute.Network("default", name="destination-alloydb")
+        default = gcp.compute.get_network(name="destination-alloydb")
         destination_alloydb = gcp.alloydb.Cluster("destination_alloydb",
             cluster_id="destination-alloydb",
             location="us-central1",
@@ -1416,21 +1427,10 @@ class ConnectionProfile(pulumi.CustomResource):
                 "password": "destination-alloydb",
             },
             deletion_protection=False)
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name="destination-alloydb",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
-            network=default.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
         destination_alloydb_primary = gcp.alloydb.Instance("destination_alloydb_primary",
             cluster=destination_alloydb.name,
             instance_id="destination-alloydb-primary",
-            instance_type="PRIMARY",
-            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            instance_type="PRIMARY")
         existing_alloydb = gcp.databasemigrationservice.ConnectionProfile("existing-alloydb",
             location="us-central1",
             connection_profile_id="destination-cp",

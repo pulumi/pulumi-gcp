@@ -27,13 +27,16 @@ class GetSubscriptionResult:
     """
     A collection of values returned by getSubscription.
     """
-    def __init__(__self__, ack_deadline_seconds=None, bigquery_configs=None, cloud_storage_configs=None, dead_letter_policies=None, deletion_policy=None, effective_labels=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policies=None, filter=None, id=None, labels=None, message_retention_duration=None, message_transforms=None, name=None, project=None, pulumi_labels=None, push_configs=None, retain_acked_messages=None, retry_policies=None, tags=None, topic=None):
+    def __init__(__self__, ack_deadline_seconds=None, bigquery_configs=None, bigtable_configs=None, cloud_storage_configs=None, dead_letter_policies=None, deletion_policy=None, effective_labels=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policies=None, filter=None, id=None, labels=None, message_retention_duration=None, message_transforms=None, name=None, project=None, pulumi_labels=None, push_configs=None, retain_acked_messages=None, retry_policies=None, tags=None, topic=None):
         if ack_deadline_seconds and not isinstance(ack_deadline_seconds, int):
             raise TypeError("Expected argument 'ack_deadline_seconds' to be a int")
         pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
         if bigquery_configs and not isinstance(bigquery_configs, list):
             raise TypeError("Expected argument 'bigquery_configs' to be a list")
         pulumi.set(__self__, "bigquery_configs", bigquery_configs)
+        if bigtable_configs and not isinstance(bigtable_configs, list):
+            raise TypeError("Expected argument 'bigtable_configs' to be a list")
+        pulumi.set(__self__, "bigtable_configs", bigtable_configs)
         if cloud_storage_configs and not isinstance(cloud_storage_configs, list):
             raise TypeError("Expected argument 'cloud_storage_configs' to be a list")
         pulumi.set(__self__, "cloud_storage_configs", cloud_storage_configs)
@@ -104,6 +107,11 @@ class GetSubscriptionResult:
     @pulumi.getter(name="bigqueryConfigs")
     def bigquery_configs(self) -> Sequence['outputs.GetSubscriptionBigqueryConfigResult']:
         return pulumi.get(self, "bigquery_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="bigtableConfigs")
+    def bigtable_configs(self) -> Sequence['outputs.GetSubscriptionBigtableConfigResult']:
+        return pulumi.get(self, "bigtable_configs")
 
     @_builtins.property
     @pulumi.getter(name="cloudStorageConfigs")
@@ -217,6 +225,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
         return GetSubscriptionResult(
             ack_deadline_seconds=self.ack_deadline_seconds,
             bigquery_configs=self.bigquery_configs,
+            bigtable_configs=self.bigtable_configs,
             cloud_storage_configs=self.cloud_storage_configs,
             dead_letter_policies=self.dead_letter_policies,
             deletion_policy=self.deletion_policy,
@@ -272,6 +281,7 @@ def get_subscription(name: Optional[_builtins.str] = None,
     return AwaitableGetSubscriptionResult(
         ack_deadline_seconds=pulumi.get(__ret__, 'ack_deadline_seconds'),
         bigquery_configs=pulumi.get(__ret__, 'bigquery_configs'),
+        bigtable_configs=pulumi.get(__ret__, 'bigtable_configs'),
         cloud_storage_configs=pulumi.get(__ret__, 'cloud_storage_configs'),
         dead_letter_policies=pulumi.get(__ret__, 'dead_letter_policies'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
@@ -324,6 +334,7 @@ def get_subscription_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetSubscriptionResult(
         ack_deadline_seconds=pulumi.get(__response__, 'ack_deadline_seconds'),
         bigquery_configs=pulumi.get(__response__, 'bigquery_configs'),
+        bigtable_configs=pulumi.get(__response__, 'bigtable_configs'),
         cloud_storage_configs=pulumi.get(__response__, 'cloud_storage_configs'),
         dead_letter_policies=pulumi.get(__response__, 'dead_letter_policies'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),

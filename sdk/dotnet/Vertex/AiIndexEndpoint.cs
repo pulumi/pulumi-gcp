@@ -79,6 +79,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Index Endpoint With Psc
     /// 
     /// ```csharp
@@ -112,6 +113,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Index Endpoint With Public Endpoint
     /// 
     /// ```csharp

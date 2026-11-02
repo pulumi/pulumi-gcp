@@ -73,6 +73,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Observability Organization Settings Basic Global
 //
 // ```go

@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// Accepted values are:
         /// 
         /// * `"GVISOR"`: Pods run within a gVisor sandbox.
+        /// * `"MICROVM"`: Pods run within a microVM sandbox.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

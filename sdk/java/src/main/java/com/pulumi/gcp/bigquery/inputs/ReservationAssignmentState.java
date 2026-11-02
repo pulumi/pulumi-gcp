@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.bigquery.inputs.ReservationAssignmentSchedulingPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -156,6 +157,29 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
     }
 
     /**
+     * The scheduling policy to use for jobs and queries of this assignee when
+     * running under the associated reservation. The scheduling policy controls
+     * how the reservation&#39;s resources are distributed. This overrides the default
+     * scheduling policy specified on the reservation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="schedulingPolicy")
+    private @Nullable Output<ReservationAssignmentSchedulingPolicyArgs> schedulingPolicy;
+
+    /**
+     * @return The scheduling policy to use for jobs and queries of this assignee when
+     * running under the associated reservation. The scheduling policy controls
+     * how the reservation&#39;s resources are distributed. This overrides the default
+     * scheduling policy specified on the reservation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ReservationAssignmentSchedulingPolicyArgs>> schedulingPolicy() {
+        return Optional.ofNullable(this.schedulingPolicy);
+    }
+
+    /**
      * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
      * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      * 
@@ -183,6 +207,7 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
         this.principal = $.principal;
         this.project = $.project;
         this.reservation = $.reservation;
+        this.schedulingPolicy = $.schedulingPolicy;
         this.state = $.state;
     }
 
@@ -390,6 +415,35 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
          */
         public Builder reservation(String reservation) {
             return reservation(Output.of(reservation));
+        }
+
+        /**
+         * @param schedulingPolicy The scheduling policy to use for jobs and queries of this assignee when
+         * running under the associated reservation. The scheduling policy controls
+         * how the reservation&#39;s resources are distributed. This overrides the default
+         * scheduling policy specified on the reservation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingPolicy(@Nullable Output<ReservationAssignmentSchedulingPolicyArgs> schedulingPolicy) {
+            $.schedulingPolicy = schedulingPolicy;
+            return this;
+        }
+
+        /**
+         * @param schedulingPolicy The scheduling policy to use for jobs and queries of this assignee when
+         * running under the associated reservation. The scheduling policy controls
+         * how the reservation&#39;s resources are distributed. This overrides the default
+         * scheduling policy specified on the reservation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingPolicy(ReservationAssignmentSchedulingPolicyArgs schedulingPolicy) {
+            return schedulingPolicy(Output.of(schedulingPolicy));
         }
 
         /**

@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Edgenetwork Subnet With Vlan Id
  *
  * ```typescript

@@ -116,6 +116,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Deidentify Template Image Transformations
  *
  * ```typescript

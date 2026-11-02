@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// 
     /// ### Logging Linked Dataset All Params
     /// 
     /// ```csharp

@@ -602,6 +602,7 @@ class QueryTemplate(pulumi.CustomResource):
             },
             submit=False)
         ```
+
         ### Bigquery Analyticshub Querytemplate Cmek
 
         ```python
@@ -742,6 +743,7 @@ class QueryTemplate(pulumi.CustomResource):
             },
             submit=False)
         ```
+
         ### Bigquery Analyticshub Querytemplate Cmek
 
         ```python

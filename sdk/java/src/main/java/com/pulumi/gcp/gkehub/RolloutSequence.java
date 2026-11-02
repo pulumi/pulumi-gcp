@@ -123,6 +123,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Gke Hub Rollout Sequence Update
  * 
  * <pre>
@@ -223,6 +224,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Gke Hub Rollout Sequence User Triggered Create
  * 
  * <pre>
@@ -324,7 +326,7 @@ import javax.annotation.Nullable;
  *             .releaseChannel(ClusterReleaseChannelArgs.builder()
  *                 .channel("REGULAR")
  *                 .build())
- *             .resourceLabels(Map.of("rs_test_cluster", "tf-test-_90221"))
+ *             .resourceLabels(Map.of("rs_test_cluster", "tf-test-_25601"))
  *             .fleet(ClusterFleetArgs.builder()
  *                 .project(project.number())
  *                 .build())
@@ -338,7 +340,7 @@ import javax.annotation.Nullable;
  *             .displayName("User Triggered Rollout Sequence")
  *             .minControlPlaneVersion(versions.applyValue(_versions -> _versions.releaseChannelLatestVersion().get("REGULAR")))
  *             .ignoredClustersSelector(RolloutSequenceIgnoredClustersSelectorArgs.builder()
- *                 .labelSelector("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')")
+ *                 .labelSelector("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')")
  *                 .build())
  *             .stages(RolloutSequenceStageArgs.builder()
  *                 .fleetProjects(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))

@@ -511,6 +511,7 @@ class PrivateConnection(pulumi.CustomResource):
                 "subnet": "10.0.0.0/29",
             })
         ```
+
         ### Datastream Private Connection Force Delete
 
         ```python
@@ -531,6 +532,7 @@ class PrivateConnection(pulumi.CustomResource):
                 "subnet": "10.0.0.0/29",
             })
         ```
+
         ### Datastream Private Connection Psc Interface
 
         ```python
@@ -643,6 +645,7 @@ class PrivateConnection(pulumi.CustomResource):
                 "subnet": "10.0.0.0/29",
             })
         ```
+
         ### Datastream Private Connection Force Delete
 
         ```python
@@ -663,6 +666,7 @@ class PrivateConnection(pulumi.CustomResource):
                 "subnet": "10.0.0.0/29",
             })
         ```
+
         ### Datastream Private Connection Psc Interface
 
         ```python

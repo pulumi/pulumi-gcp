@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** When importing the resource with `pulumi import`, provide the destination/subscriber&#39;s project and location
  * in the format projects/{{subscriber_project}}/locations/{{subscriber_location}}/subscriptions/{{subscription_id}}
+ * 
  * ## Example Usage
  * 
  * ### Bigquery Analyticshub Dataexchange Subscription Basic

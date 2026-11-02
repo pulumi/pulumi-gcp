@@ -63,6 +63,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Dataplex Entry Link Full
  *
  * ```typescript
@@ -127,6 +128,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait_for_sync],
  * });
  * ```
+ *
  * ## Import
  *
  * EntryLink can be imported using any of these accepted formats:

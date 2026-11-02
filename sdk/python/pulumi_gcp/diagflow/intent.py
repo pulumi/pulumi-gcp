@@ -642,6 +642,7 @@ class Intent(pulumi.CustomResource):
         basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent",
         opts = pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
+
         ### Dialogflow Intent Full
 
         ```python
@@ -767,6 +768,7 @@ class Intent(pulumi.CustomResource):
         basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent",
         opts = pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
+
         ### Dialogflow Intent Full
 
         ```python

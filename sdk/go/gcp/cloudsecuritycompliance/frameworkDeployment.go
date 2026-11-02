@@ -34,7 +34,127 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+//			example, err := cloudsecuritycompliance.NewCloudControl(ctx, "example", &cloudsecuritycompliance.CloudControlArgs{
+//				Parent:         pulumi.String("organizations/123456789"),
+//				Location:       pulumi.String("global"),
+//				CloudControlId: pulumi.String("example-cloudcontrol"),
+//				DisplayName:    pulumi.String("TF test CloudControl Name"),
+//				Description:    pulumi.String("A test cloud control for security compliance"),
+//				Categories: pulumi.StringArray{
+//					pulumi.String("CC_CATEGORY_INFRASTRUCTURE"),
+//				},
+//				Severity:         pulumi.String("HIGH"),
+//				FindingCategory:  pulumi.String("SECURITY_POLICY"),
+//				RemediationSteps: pulumi.String("Review and update the security configuration according to best practices."),
+//				SupportedCloudProviders: pulumi.StringArray{
+//					pulumi.String("GCP"),
+//				},
+//				Rules: cloudsecuritycompliance.CloudControlRuleArray{
+//					&cloudsecuritycompliance.CloudControlRuleArgs{
+//						Description: pulumi.String("Ensure compute instances have secure boot enabled"),
+//						RuleActionTypes: pulumi.StringArray{
+//							pulumi.String("RULE_ACTION_TYPE_DETECTIVE"),
+//						},
+//						CelExpression: &cloudsecuritycompliance.CloudControlRuleCelExpressionArgs{
+//							Expression: pulumi.String("resource.data.shieldedInstanceConfig.enableSecureBoot == true"),
+//							ResourceTypesValues: &cloudsecuritycompliance.CloudControlRuleCelExpressionResourceTypesValuesArgs{
+//								Values: pulumi.StringArray{
+//									pulumi.String("compute.googleapis.com/Instance"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				ParameterSpecs: cloudsecuritycompliance.CloudControlParameterSpecArray{
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("enabled"),
+//						ValueType:  pulumi.String("BOOLEAN"),
+//						IsRequired: pulumi.Bool(true),
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("regions"),
+//						ValueType:  pulumi.String("STRINGLIST"),
+//						IsRequired: pulumi.Bool(true),
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("location"),
+//						ValueType:  pulumi.String("STRING"),
+//						IsRequired: pulumi.Bool(true),
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("oneof-parameter"),
+//						ValueType:  pulumi.String("ONEOF"),
+//						IsRequired: pulumi.Bool(true),
+//						SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("test-oneof"),
+//								ValueType:  pulumi.String("STRING"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("updated-test-oneof"),
+//								ValueType:  pulumi.String("STRING"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("bool-parameter"),
+//						ValueType:  pulumi.String("ONEOF"),
+//						IsRequired: pulumi.Bool(true),
+//						SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("bool-oneof"),
+//								ValueType:  pulumi.String("BOOLEAN"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("updated-bool-oneof"),
+//								ValueType:  pulumi.String("BOOLEAN"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("number-parameter"),
+//						ValueType:  pulumi.String("ONEOF"),
+//						IsRequired: pulumi.Bool(true),
+//						SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("number-oneof"),
+//								ValueType:  pulumi.String("NUMBER"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("updated-number-oneof"),
+//								ValueType:  pulumi.String("NUMBER"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("string-list-parameter"),
+//						ValueType:  pulumi.String("ONEOF"),
+//						IsRequired: pulumi.Bool(true),
+//						SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("string-list-oneof"),
+//								ValueType:  pulumi.String("STRINGLIST"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("updated-string-list-oneof"),
+//								ValueType:  pulumi.String("STRINGLIST"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFramework, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
 //				Parent:      pulumi.String("organizations/123456789"),
 //				Location:    pulumi.String("global"),
 //				FrameworkId: pulumi.String("example-framework"),
@@ -42,62 +162,13 @@ import (
 //				Description: pulumi.String("An Terraform description for the framework"),
 //				CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
 //					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
-//						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"),
-//						MajorRevisionId: pulumi.String("2"),
+//						Name:            example.Name,
+//						MajorRevisionId: pulumi.String("1"),
 //						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
 //							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-//								Name: pulumi.String("location"),
+//								Name: pulumi.String("enabled"),
 //								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-//									StringValue: pulumi.String("us-central1"),
-//								},
-//							},
-//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-//								Name: pulumi.String("oneof-parameter"),
-//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-//										Name: pulumi.String("test-oneof"),
-//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-//											StringValue: pulumi.String("test-value"),
-//										},
-//									},
-//								},
-//							},
-//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-//								Name: pulumi.String("bool-parameter"),
-//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-//										Name: pulumi.String("bool-oneof"),
-//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-//											BoolValue: pulumi.Bool(true),
-//										},
-//									},
-//								},
-//							},
-//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-//								Name: pulumi.String("number-parameter"),
-//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-//										Name: pulumi.String("number-oneof"),
-//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-//											NumberValue: pulumi.Float64(123.45),
-//										},
-//									},
-//								},
-//							},
-//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-//								Name: pulumi.String("string-list-parameter"),
-//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-//										Name: pulumi.String("string-list-oneof"),
-//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-//											StringListValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs{
-//												Values: pulumi.StringArray{
-//													pulumi.String("value1"),
-//													pulumi.String("value2"),
-//												},
-//											},
-//										},
-//									},
+//									BoolValue: pulumi.Bool(true),
 //								},
 //							},
 //						},
@@ -113,7 +184,7 @@ import (
 //				FrameworkDeploymentId: pulumi.String("example-deployment"),
 //				Description:           pulumi.String("A framework deployment for cloud security compliance"),
 //				Framework: &cloudsecuritycompliance.FrameworkDeploymentFrameworkArgs{
-//					Framework:       example.Name,
+//					Framework:       exampleFramework.Name,
 //					MajorRevisionId: pulumi.String("1"),
 //				},
 //				TargetResourceConfig: &cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfigArgs{
@@ -123,8 +194,8 @@ import (
 //					&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArgs{
 //						EnforcementMode: pulumi.String("DETECTIVE"),
 //						CloudControlDetails: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs{
-//							Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"),
-//							MajorRevisionId: pulumi.String("2"),
+//							Name:            example.Name,
+//							MajorRevisionId: pulumi.String("1"),
 //							Parameters: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArray{
 //								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
 //									Name: pulumi.String("enabled"),
@@ -212,6 +283,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudsecuritycompliance Framework Deployment Project Basic
 //
 // ```go
@@ -231,7 +303,127 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+//			example, err := cloudsecuritycompliance.NewCloudControl(ctx, "example", &cloudsecuritycompliance.CloudControlArgs{
+//				Parent:         pulumi.Sprintf("projects/%v", project.Number),
+//				Location:       pulumi.String("global"),
+//				CloudControlId: pulumi.String("example-cloudcontrol"),
+//				DisplayName:    pulumi.String("TF test CloudControl Name"),
+//				Description:    pulumi.String("A test cloud control for security compliance"),
+//				Categories: pulumi.StringArray{
+//					pulumi.String("CC_CATEGORY_INFRASTRUCTURE"),
+//				},
+//				Severity:         pulumi.String("HIGH"),
+//				FindingCategory:  pulumi.String("SECURITY_POLICY"),
+//				RemediationSteps: pulumi.String("Review and update the security configuration according to best practices."),
+//				SupportedCloudProviders: pulumi.StringArray{
+//					pulumi.String("GCP"),
+//				},
+//				Rules: cloudsecuritycompliance.CloudControlRuleArray{
+//					&cloudsecuritycompliance.CloudControlRuleArgs{
+//						Description: pulumi.String("Ensure compute instances have secure boot enabled"),
+//						RuleActionTypes: pulumi.StringArray{
+//							pulumi.String("RULE_ACTION_TYPE_DETECTIVE"),
+//						},
+//						CelExpression: &cloudsecuritycompliance.CloudControlRuleCelExpressionArgs{
+//							Expression: pulumi.String("resource.data.shieldedInstanceConfig.enableSecureBoot == true"),
+//							ResourceTypesValues: &cloudsecuritycompliance.CloudControlRuleCelExpressionResourceTypesValuesArgs{
+//								Values: pulumi.StringArray{
+//									pulumi.String("compute.googleapis.com/Instance"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				ParameterSpecs: cloudsecuritycompliance.CloudControlParameterSpecArray{
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("enabled"),
+//						ValueType:  pulumi.String("BOOLEAN"),
+//						IsRequired: pulumi.Bool(true),
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("regions"),
+//						ValueType:  pulumi.String("STRINGLIST"),
+//						IsRequired: pulumi.Bool(true),
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("location"),
+//						ValueType:  pulumi.String("STRING"),
+//						IsRequired: pulumi.Bool(true),
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("oneof-parameter"),
+//						ValueType:  pulumi.String("ONEOF"),
+//						IsRequired: pulumi.Bool(true),
+//						SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("test-oneof"),
+//								ValueType:  pulumi.String("STRING"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("updated-test-oneof"),
+//								ValueType:  pulumi.String("STRING"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("bool-parameter"),
+//						ValueType:  pulumi.String("ONEOF"),
+//						IsRequired: pulumi.Bool(true),
+//						SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("bool-oneof"),
+//								ValueType:  pulumi.String("BOOLEAN"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("updated-bool-oneof"),
+//								ValueType:  pulumi.String("BOOLEAN"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("number-parameter"),
+//						ValueType:  pulumi.String("ONEOF"),
+//						IsRequired: pulumi.Bool(true),
+//						SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("number-oneof"),
+//								ValueType:  pulumi.String("NUMBER"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("updated-number-oneof"),
+//								ValueType:  pulumi.String("NUMBER"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:       pulumi.String("string-list-parameter"),
+//						ValueType:  pulumi.String("ONEOF"),
+//						IsRequired: pulumi.Bool(true),
+//						SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("string-list-oneof"),
+//								ValueType:  pulumi.String("STRINGLIST"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+//								Name:       pulumi.String("updated-string-list-oneof"),
+//								ValueType:  pulumi.String("STRINGLIST"),
+//								IsRequired: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFramework, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
 //				Parent:      pulumi.Sprintf("projects/%v", project.Number),
 //				Location:    pulumi.String("global"),
 //				FrameworkId: pulumi.String("example-framework"),
@@ -239,62 +431,13 @@ import (
 //				Description: pulumi.String("An Terraform description for the framework"),
 //				CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
 //					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
-//						Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown", project.Number),
-//						MajorRevisionId: pulumi.String("2"),
+//						Name:            example.Name,
+//						MajorRevisionId: pulumi.String("1"),
 //						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
 //							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-//								Name: pulumi.String("location"),
+//								Name: pulumi.String("enabled"),
 //								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-//									StringValue: pulumi.String("us-central1"),
-//								},
-//							},
-//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-//								Name: pulumi.String("oneof-parameter"),
-//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-//										Name: pulumi.String("test-oneof"),
-//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-//											StringValue: pulumi.String("test-value"),
-//										},
-//									},
-//								},
-//							},
-//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-//								Name: pulumi.String("bool-parameter"),
-//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-//										Name: pulumi.String("bool-oneof"),
-//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-//											BoolValue: pulumi.Bool(true),
-//										},
-//									},
-//								},
-//							},
-//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-//								Name: pulumi.String("number-parameter"),
-//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-//										Name: pulumi.String("number-oneof"),
-//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-//											NumberValue: pulumi.Float64(123.45),
-//										},
-//									},
-//								},
-//							},
-//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-//								Name: pulumi.String("string-list-parameter"),
-//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-//										Name: pulumi.String("string-list-oneof"),
-//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-//											StringListValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs{
-//												Values: pulumi.StringArray{
-//													pulumi.String("value1"),
-//													pulumi.String("value2"),
-//												},
-//											},
-//										},
-//									},
+//									BoolValue: pulumi.Bool(true),
 //								},
 //							},
 //						},
@@ -310,7 +453,7 @@ import (
 //				FrameworkDeploymentId: pulumi.String("example-deployment"),
 //				Description:           pulumi.String("A framework deployment for cloud security compliance"),
 //				Framework: &cloudsecuritycompliance.FrameworkDeploymentFrameworkArgs{
-//					Framework:       example.Name,
+//					Framework:       exampleFramework.Name,
 //					MajorRevisionId: pulumi.String("1"),
 //				},
 //				TargetResourceConfig: &cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfigArgs{
@@ -320,8 +463,8 @@ import (
 //					&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArgs{
 //						EnforcementMode: pulumi.String("DETECTIVE"),
 //						CloudControlDetails: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs{
-//							Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown", project.Number),
-//							MajorRevisionId: pulumi.String("2"),
+//							Name:            example.Name,
+//							MajorRevisionId: pulumi.String("1"),
 //							Parameters: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArray{
 //								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
 //									Name: pulumi.String("enabled"),
@@ -409,6 +552,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudsecuritycompliance Framework Deployment Org Project Basic
 //
 // ```go
@@ -490,6 +634,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudsecuritycompliance Framework Deployment Project Application Basic
 //
 // ```go
@@ -587,6 +732,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
 //
 // ```go

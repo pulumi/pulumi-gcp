@@ -43,6 +43,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [fdc],
  * });
  * ```
+ *
  * ### Firebasedataconnect Service With Force Deletion
  *
  * ```typescript

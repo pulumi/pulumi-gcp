@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataprocgdc Sparkapplication
  *
  * ```typescript
@@ -74,6 +75,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataprocgdc Sparkapplication Pyspark
  *
  * ```typescript
@@ -98,6 +100,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataprocgdc Sparkapplication Sparkr
  *
  * ```typescript
@@ -119,6 +122,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataprocgdc Sparkapplication Sparksql
  *
  * ```typescript
@@ -143,6 +147,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataprocgdc Sparkapplication Sparksql Query File
  *
  * ```typescript

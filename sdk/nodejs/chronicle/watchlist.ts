@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Chronicle Watchlist Without Id
  *
  * ```typescript

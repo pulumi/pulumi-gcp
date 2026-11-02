@@ -60,6 +60,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Wire Group Basic Beta
     /// 
     /// ```csharp

@@ -64,6 +64,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Biglake Iceberg Table Sort Order
  *
  * ```typescript
@@ -107,6 +108,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Biglake Iceberg Table Update
  *
  * ```typescript

@@ -870,6 +870,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Region Network Firewall Policy Rule Network Scope Egress
 
         ```python
@@ -899,6 +900,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Region Network Firewall Policy Rule Network Scope Ingress
 
         ```python
@@ -930,6 +932,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Region Network Firewall Policy Rule Network Context Egress
 
         ```python
@@ -959,6 +962,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Region Network Firewall Policy Rule Network Context Ingress
 
         ```python
@@ -988,6 +992,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Firewall Policy Rule Target Type Internal Managed Lb Instance Regional
 
         ```python
@@ -1163,6 +1168,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Region Network Firewall Policy Rule Network Scope Egress
 
         ```python
@@ -1192,6 +1198,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Region Network Firewall Policy Rule Network Scope Ingress
 
         ```python
@@ -1223,6 +1230,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Region Network Firewall Policy Rule Network Context Egress
 
         ```python
@@ -1252,6 +1260,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Region Network Firewall Policy Rule Network Context Ingress
 
         ```python
@@ -1281,6 +1290,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Firewall Policy Rule Target Type Internal Managed Lb Instance Regional
 
         ```python

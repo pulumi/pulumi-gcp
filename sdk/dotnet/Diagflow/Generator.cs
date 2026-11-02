@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Generator Agent Coaching
     /// 
     /// ```csharp
@@ -88,6 +89,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Generator With Tools
     /// 
     /// ```csharp

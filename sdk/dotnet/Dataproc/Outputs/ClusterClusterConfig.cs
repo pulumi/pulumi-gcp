@@ -79,6 +79,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterConfigMasterConfig? MasterConfig;
         /// <summary>
+        /// The configuration for the master flexible instance group
+        /// in High Obtainability (HO) mode. Mutually exclusive with `MasterConfig` and `gce_cluster_config.zone`.
+        /// Required whenever `WorkerFlexibleConfig` or `SecondaryWorkerFlexibleConfig` is specified.
+        /// Structure defined below.
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigMasterFlexibleConfig? MasterFlexibleConfig;
+        /// <summary>
         /// The config setting for metastore service with the cluster.
         /// Structure defined below.
         /// - - -
@@ -92,6 +99,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// such for legacy/compatibility reasons.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigPreemptibleWorkerConfig? PreemptibleWorkerConfig;
+        /// <summary>
+        /// The configuration for the secondary worker flexible
+        /// instance group in High Obtainability (HO) mode. Mutually exclusive with `PreemptibleWorkerConfig` and
+        /// `gce_cluster_config.zone`. Requires `MasterFlexibleConfig`.
+        /// Structure defined below.
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigSecondaryWorkerFlexibleConfig? SecondaryWorkerFlexibleConfig;
         /// <summary>
         /// Security related configuration. Structure defined below.
         /// </summary>
@@ -122,6 +136,12 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// in a cluster. Structure defined below.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigWorkerConfig? WorkerConfig;
+        /// <summary>
+        /// The configuration for the worker flexible instance group
+        /// in High Obtainability (HO) mode. Mutually exclusive with `WorkerConfig` and `gce_cluster_config.zone`.
+        /// Requires `MasterFlexibleConfig`. Structure defined below.
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigWorkerFlexibleConfig? WorkerFlexibleConfig;
 
         [OutputConstructor]
         private ClusterClusterConfig(
@@ -151,9 +171,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             Outputs.ClusterClusterConfigMasterConfig? masterConfig,
 
+            Outputs.ClusterClusterConfigMasterFlexibleConfig? masterFlexibleConfig,
+
             Outputs.ClusterClusterConfigMetastoreConfig? metastoreConfig,
 
             Outputs.ClusterClusterConfigPreemptibleWorkerConfig? preemptibleWorkerConfig,
+
+            Outputs.ClusterClusterConfigSecondaryWorkerFlexibleConfig? secondaryWorkerFlexibleConfig,
 
             Outputs.ClusterClusterConfigSecurityConfig? securityConfig,
 
@@ -163,7 +187,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? tempBucket,
 
-            Outputs.ClusterClusterConfigWorkerConfig? workerConfig)
+            Outputs.ClusterClusterConfigWorkerConfig? workerConfig,
+
+            Outputs.ClusterClusterConfigWorkerFlexibleConfig? workerFlexibleConfig)
         {
             AutoscalingConfig = autoscalingConfig;
             AuxiliaryNodeGroups = auxiliaryNodeGroups;
@@ -178,13 +204,16 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             InitializationActions = initializationActions;
             LifecycleConfig = lifecycleConfig;
             MasterConfig = masterConfig;
+            MasterFlexibleConfig = masterFlexibleConfig;
             MetastoreConfig = metastoreConfig;
             PreemptibleWorkerConfig = preemptibleWorkerConfig;
+            SecondaryWorkerFlexibleConfig = secondaryWorkerFlexibleConfig;
             SecurityConfig = securityConfig;
             SoftwareConfig = softwareConfig;
             StagingBucket = stagingBucket;
             TempBucket = tempBucket;
             WorkerConfig = workerConfig;
+            WorkerFlexibleConfig = workerFlexibleConfig;
         }
     }
 }

@@ -439,6 +439,7 @@ class AppHostingDomain(pulumi.CustomResource):
             backend=example_app_hosting_backend.backend_id,
             domain_id="example.com")
         ```
+
         ### Firebase App Hosting Domain Full
 
         ```python
@@ -540,6 +541,7 @@ class AppHostingDomain(pulumi.CustomResource):
             backend=example_app_hosting_backend.backend_id,
             domain_id="example.com")
         ```
+
         ### Firebase App Hosting Domain Full
 
         ```python

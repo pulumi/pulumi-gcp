@@ -148,6 +148,25 @@ public final class ClusterOrchestratorSlurmLoginNodesArgs extends com.pulumi.res
     }
 
     /**
+     * (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    @Import(name="networkTags")
+    private @Nullable Output<List<String>> networkTags;
+
+    /**
+     * @return (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    public Optional<Output<List<String>>> networkTags() {
+        return Optional.ofNullable(this.networkTags);
+    }
+
+    /**
      * [Startup
      * script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
      * to be run on each login node instance. Max 256KB.
@@ -220,6 +239,7 @@ public final class ClusterOrchestratorSlurmLoginNodesArgs extends com.pulumi.res
         this.instances = $.instances;
         this.labels = $.labels;
         this.machineType = $.machineType;
+        this.networkTags = $.networkTags;
         this.startupScript = $.startupScript;
         this.storageConfigs = $.storageConfigs;
         this.zone = $.zone;
@@ -421,6 +441,43 @@ public final class ClusterOrchestratorSlurmLoginNodesArgs extends com.pulumi.res
          */
         public Builder machineType(String machineType) {
             return machineType(Output.of(machineType));
+        }
+
+        /**
+         * @param networkTags (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTags(@Nullable Output<List<String>> networkTags) {
+            $.networkTags = networkTags;
+            return this;
+        }
+
+        /**
+         * @param networkTags (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTags(List<String> networkTags) {
+            return networkTags(Output.of(networkTags));
+        }
+
+        /**
+         * @param networkTags (Optional, Beta)
+         * A list of network tags to attach to the VM instances.
+         * A maximum of 64 network tags are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTags(String... networkTags) {
+            return networkTags(List.of(networkTags));
         }
 
         /**

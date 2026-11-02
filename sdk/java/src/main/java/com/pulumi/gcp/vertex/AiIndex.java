@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *                     .algorithmConfig(AiIndexMetadataConfigAlgorithmConfigArgs.builder()
  *                         .treeAhConfig(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs.builder()
  *                             .leafNodeEmbeddingCount(500)
- *                             .leafNodesToSearchPercent(7)
+ *                             .fractionLeafNodesToSearch(0.07)
  *                             .build())
  *                         .build())
  *                     .build())
@@ -126,6 +126,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Index Streaming
  * 
  * <pre>

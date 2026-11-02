@@ -250,6 +250,10 @@ type ClusterComputeResourceConfigNewFlexStartInstances struct {
 	// Specifies the time limit for created instances. Instances will be
 	// terminated at the end of this duration.
 	MaxDuration string `pulumi:"maxDuration"`
+	// (Optional, Beta)
+	// A list of network tags to attach to the VM instances.
+	// A maximum of 64 network tags are allowed.
+	NetworkTags []string `pulumi:"networkTags"`
 	// Name of the zone in which VM instances should run, e.g., `us-central1-a`.
 	// Must be in the same region as the cluster, and must match the zone of any
 	// other resources specified in the cluster.
@@ -275,6 +279,10 @@ type ClusterComputeResourceConfigNewFlexStartInstancesArgs struct {
 	// Specifies the time limit for created instances. Instances will be
 	// terminated at the end of this duration.
 	MaxDuration pulumi.StringInput `pulumi:"maxDuration"`
+	// (Optional, Beta)
+	// A list of network tags to attach to the VM instances.
+	// A maximum of 64 network tags are allowed.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
 	// Name of the zone in which VM instances should run, e.g., `us-central1-a`.
 	// Must be in the same region as the cluster, and must match the zone of any
 	// other resources specified in the cluster.
@@ -371,6 +379,13 @@ func (o ClusterComputeResourceConfigNewFlexStartInstancesOutput) MaxDuration() p
 	return o.ApplyT(func(v ClusterComputeResourceConfigNewFlexStartInstances) string { return v.MaxDuration }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
+// A list of network tags to attach to the VM instances.
+// A maximum of 64 network tags are allowed.
+func (o ClusterComputeResourceConfigNewFlexStartInstancesOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterComputeResourceConfigNewFlexStartInstances) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
 // Name of the zone in which VM instances should run, e.g., `us-central1-a`.
 // Must be in the same region as the cluster, and must match the zone of any
 // other resources specified in the cluster.
@@ -425,6 +440,18 @@ func (o ClusterComputeResourceConfigNewFlexStartInstancesPtrOutput) MaxDuration(
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
+// A list of network tags to attach to the VM instances.
+// A maximum of 64 network tags are allowed.
+func (o ClusterComputeResourceConfigNewFlexStartInstancesPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterComputeResourceConfigNewFlexStartInstances) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
+}
+
 // Name of the zone in which VM instances should run, e.g., `us-central1-a`.
 // Must be in the same region as the cluster, and must match the zone of any
 // other resources specified in the cluster.
@@ -442,6 +469,10 @@ type ClusterComputeResourceConfigNewOnDemandInstances struct {
 	// type](https://cloud.google.com/compute/docs/machine-resource) to use, e.g.
 	// `n2-standard-2`.
 	MachineType string `pulumi:"machineType"`
+	// (Optional, Beta)
+	// A list of network tags to attach to the VM instances.
+	// A maximum of 64 network tags are allowed.
+	NetworkTags []string `pulumi:"networkTags"`
 	// Name of the zone in which VM instances should run, e.g., `us-central1-a`.
 	// Must be in the same region as the cluster, and must match the zone of any
 	// other resources specified in the cluster.
@@ -464,6 +495,10 @@ type ClusterComputeResourceConfigNewOnDemandInstancesArgs struct {
 	// type](https://cloud.google.com/compute/docs/machine-resource) to use, e.g.
 	// `n2-standard-2`.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// (Optional, Beta)
+	// A list of network tags to attach to the VM instances.
+	// A maximum of 64 network tags are allowed.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
 	// Name of the zone in which VM instances should run, e.g., `us-central1-a`.
 	// Must be in the same region as the cluster, and must match the zone of any
 	// other resources specified in the cluster.
@@ -554,6 +589,13 @@ func (o ClusterComputeResourceConfigNewOnDemandInstancesOutput) MachineType() pu
 	return o.ApplyT(func(v ClusterComputeResourceConfigNewOnDemandInstances) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
+// A list of network tags to attach to the VM instances.
+// A maximum of 64 network tags are allowed.
+func (o ClusterComputeResourceConfigNewOnDemandInstancesOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterComputeResourceConfigNewOnDemandInstances) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
 // Name of the zone in which VM instances should run, e.g., `us-central1-a`.
 // Must be in the same region as the cluster, and must match the zone of any
 // other resources specified in the cluster.
@@ -597,6 +639,18 @@ func (o ClusterComputeResourceConfigNewOnDemandInstancesPtrOutput) MachineType()
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
+// A list of network tags to attach to the VM instances.
+// A maximum of 64 network tags are allowed.
+func (o ClusterComputeResourceConfigNewOnDemandInstancesPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterComputeResourceConfigNewOnDemandInstances) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
+}
+
 // Name of the zone in which VM instances should run, e.g., `us-central1-a`.
 // Must be in the same region as the cluster, and must match the zone of any
 // other resources specified in the cluster.
@@ -610,6 +664,10 @@ func (o ClusterComputeResourceConfigNewOnDemandInstancesPtrOutput) Zone() pulumi
 }
 
 type ClusterComputeResourceConfigNewReservedInstances struct {
+	// (Optional, Beta)
+	// A list of network tags to attach to the VM instances.
+	// A maximum of 64 network tags are allowed.
+	NetworkTags []string `pulumi:"networkTags"`
 	// Name of the reservation from which VM instances should be created, in the
 	// format `projects/{project}/zones/{zone}/reservations/{reservation}`.
 	Reservation *string `pulumi:"reservation"`
@@ -627,6 +685,10 @@ type ClusterComputeResourceConfigNewReservedInstancesInput interface {
 }
 
 type ClusterComputeResourceConfigNewReservedInstancesArgs struct {
+	// (Optional, Beta)
+	// A list of network tags to attach to the VM instances.
+	// A maximum of 64 network tags are allowed.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
 	// Name of the reservation from which VM instances should be created, in the
 	// format `projects/{project}/zones/{zone}/reservations/{reservation}`.
 	Reservation pulumi.StringPtrInput `pulumi:"reservation"`
@@ -709,6 +771,13 @@ func (o ClusterComputeResourceConfigNewReservedInstancesOutput) ToClusterCompute
 	}).(ClusterComputeResourceConfigNewReservedInstancesPtrOutput)
 }
 
+// (Optional, Beta)
+// A list of network tags to attach to the VM instances.
+// A maximum of 64 network tags are allowed.
+func (o ClusterComputeResourceConfigNewReservedInstancesOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterComputeResourceConfigNewReservedInstances) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
 // Name of the reservation from which VM instances should be created, in the
 // format `projects/{project}/zones/{zone}/reservations/{reservation}`.
 func (o ClusterComputeResourceConfigNewReservedInstancesOutput) Reservation() pulumi.StringPtrOutput {
@@ -739,6 +808,18 @@ func (o ClusterComputeResourceConfigNewReservedInstancesPtrOutput) Elem() Cluste
 	}).(ClusterComputeResourceConfigNewReservedInstancesOutput)
 }
 
+// (Optional, Beta)
+// A list of network tags to attach to the VM instances.
+// A maximum of 64 network tags are allowed.
+func (o ClusterComputeResourceConfigNewReservedInstancesPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterComputeResourceConfigNewReservedInstances) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
+}
+
 // Name of the reservation from which VM instances should be created, in the
 // format `projects/{project}/zones/{zone}/reservations/{reservation}`.
 func (o ClusterComputeResourceConfigNewReservedInstancesPtrOutput) Reservation() pulumi.StringPtrOutput {
@@ -755,6 +836,10 @@ type ClusterComputeResourceConfigNewSpotInstances struct {
 	// type](https://cloud.google.com/compute/docs/machine-resource) to use, e.g.
 	// `n2-standard-2`.
 	MachineType string `pulumi:"machineType"`
+	// (Optional, Beta)
+	// A list of network tags to attach to the VM instances.
+	// A maximum of 64 network tags are allowed.
+	NetworkTags []string `pulumi:"networkTags"`
 	// Specifies the termination action of the instance
 	// Possible values:
 	// STOP
@@ -782,6 +867,10 @@ type ClusterComputeResourceConfigNewSpotInstancesArgs struct {
 	// type](https://cloud.google.com/compute/docs/machine-resource) to use, e.g.
 	// `n2-standard-2`.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// (Optional, Beta)
+	// A list of network tags to attach to the VM instances.
+	// A maximum of 64 network tags are allowed.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
 	// Specifies the termination action of the instance
 	// Possible values:
 	// STOP
@@ -877,6 +966,13 @@ func (o ClusterComputeResourceConfigNewSpotInstancesOutput) MachineType() pulumi
 	return o.ApplyT(func(v ClusterComputeResourceConfigNewSpotInstances) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
+// A list of network tags to attach to the VM instances.
+// A maximum of 64 network tags are allowed.
+func (o ClusterComputeResourceConfigNewSpotInstancesOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterComputeResourceConfigNewSpotInstances) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
 // Specifies the termination action of the instance
 // Possible values:
 // STOP
@@ -926,6 +1022,18 @@ func (o ClusterComputeResourceConfigNewSpotInstancesPtrOutput) MachineType() pul
 		}
 		return &v.MachineType
 	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// A list of network tags to attach to the VM instances.
+// A maximum of 64 network tags are allowed.
+func (o ClusterComputeResourceConfigNewSpotInstancesPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterComputeResourceConfigNewSpotInstances) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
 }
 
 // Specifies the termination action of the instance
@@ -2162,6 +2270,10 @@ type ClusterOrchestratorSlurmLoginNodes struct {
 	// type](https://cloud.google.com/compute/docs/machine-resource) to use for
 	// login nodes, e.g. `n2-standard-2`.
 	MachineType string `pulumi:"machineType"`
+	// (Optional, Beta)
+	// A list of network tags to attach to the VM instances.
+	// A maximum of 64 network tags are allowed.
+	NetworkTags []string `pulumi:"networkTags"`
 	// [Startup
 	// script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
 	// to be run on each login node instance. Max 256KB.
@@ -2215,6 +2327,10 @@ type ClusterOrchestratorSlurmLoginNodesArgs struct {
 	// type](https://cloud.google.com/compute/docs/machine-resource) to use for
 	// login nodes, e.g. `n2-standard-2`.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// (Optional, Beta)
+	// A list of network tags to attach to the VM instances.
+	// A maximum of 64 network tags are allowed.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
 	// [Startup
 	// script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
 	// to be run on each login node instance. Max 256KB.
@@ -2358,6 +2474,13 @@ func (o ClusterOrchestratorSlurmLoginNodesOutput) MachineType() pulumi.StringOut
 	return o.ApplyT(func(v ClusterOrchestratorSlurmLoginNodes) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
+// A list of network tags to attach to the VM instances.
+// A maximum of 64 network tags are allowed.
+func (o ClusterOrchestratorSlurmLoginNodesOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterOrchestratorSlurmLoginNodes) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
 // [Startup
 // script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
 // to be run on each login node instance. Max 256KB.
@@ -2486,6 +2609,18 @@ func (o ClusterOrchestratorSlurmLoginNodesPtrOutput) MachineType() pulumi.String
 		}
 		return &v.MachineType
 	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// A list of network tags to attach to the VM instances.
+// A maximum of 64 network tags are allowed.
+func (o ClusterOrchestratorSlurmLoginNodesPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterOrchestratorSlurmLoginNodes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
 }
 
 // [Startup
@@ -3954,6 +4089,11 @@ type ClusterStorageResourceConfig struct {
 	// should be imported.
 	// Structure is documented below.
 	ExistingLustre *ClusterStorageResourceConfigExistingLustre `pulumi:"existingLustre"`
+	// (Optional, Beta)
+	// When set in a StorageResourceConfig, indicates that an existing NFS
+	// share should be imported.
+	// Structure is documented below.
+	ExistingNfs *ClusterStorageResourceConfigExistingNfs `pulumi:"existingNfs"`
 	// When set in a StorageResourceConfig, indicates that a new
 	// [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
 	// created.
@@ -3996,6 +4136,11 @@ type ClusterStorageResourceConfigArgs struct {
 	// should be imported.
 	// Structure is documented below.
 	ExistingLustre ClusterStorageResourceConfigExistingLustrePtrInput `pulumi:"existingLustre"`
+	// (Optional, Beta)
+	// When set in a StorageResourceConfig, indicates that an existing NFS
+	// share should be imported.
+	// Structure is documented below.
+	ExistingNfs ClusterStorageResourceConfigExistingNfsPtrInput `pulumi:"existingNfs"`
 	// When set in a StorageResourceConfig, indicates that a new
 	// [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
 	// created.
@@ -4065,6 +4210,14 @@ func (o ClusterStorageResourceConfigOutput) ExistingLustre() ClusterStorageResou
 	return o.ApplyT(func(v ClusterStorageResourceConfig) *ClusterStorageResourceConfigExistingLustre {
 		return v.ExistingLustre
 	}).(ClusterStorageResourceConfigExistingLustrePtrOutput)
+}
+
+// (Optional, Beta)
+// When set in a StorageResourceConfig, indicates that an existing NFS
+// share should be imported.
+// Structure is documented below.
+func (o ClusterStorageResourceConfigOutput) ExistingNfs() ClusterStorageResourceConfigExistingNfsPtrOutput {
+	return o.ApplyT(func(v ClusterStorageResourceConfig) *ClusterStorageResourceConfigExistingNfs { return v.ExistingNfs }).(ClusterStorageResourceConfigExistingNfsPtrOutput)
 }
 
 // When set in a StorageResourceConfig, indicates that a new
@@ -4506,6 +4659,185 @@ func (o ClusterStorageResourceConfigExistingLustrePtrOutput) Lustre() pulumi.Str
 			return nil
 		}
 		return &v.Lustre
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterStorageResourceConfigExistingNfs struct {
+	// Options to mount the NFS share, as expected by fsMntops field in fstab(5),
+	// for example: "rw,vers=4.1,nconnect=2,noatime".
+	MountOptions *string `pulumi:"mountOptions"`
+	// Remote mount path of the NFS share.
+	RemoteMount string `pulumi:"remoteMount"`
+	// Server IP address of the NFS share.
+	ServerIpAddress string `pulumi:"serverIpAddress"`
+}
+
+// ClusterStorageResourceConfigExistingNfsInput is an input type that accepts ClusterStorageResourceConfigExistingNfsArgs and ClusterStorageResourceConfigExistingNfsOutput values.
+// You can construct a concrete instance of `ClusterStorageResourceConfigExistingNfsInput` via:
+//
+//	ClusterStorageResourceConfigExistingNfsArgs{...}
+type ClusterStorageResourceConfigExistingNfsInput interface {
+	pulumi.Input
+
+	ToClusterStorageResourceConfigExistingNfsOutput() ClusterStorageResourceConfigExistingNfsOutput
+	ToClusterStorageResourceConfigExistingNfsOutputWithContext(context.Context) ClusterStorageResourceConfigExistingNfsOutput
+}
+
+type ClusterStorageResourceConfigExistingNfsArgs struct {
+	// Options to mount the NFS share, as expected by fsMntops field in fstab(5),
+	// for example: "rw,vers=4.1,nconnect=2,noatime".
+	MountOptions pulumi.StringPtrInput `pulumi:"mountOptions"`
+	// Remote mount path of the NFS share.
+	RemoteMount pulumi.StringInput `pulumi:"remoteMount"`
+	// Server IP address of the NFS share.
+	ServerIpAddress pulumi.StringInput `pulumi:"serverIpAddress"`
+}
+
+func (ClusterStorageResourceConfigExistingNfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStorageResourceConfigExistingNfs)(nil)).Elem()
+}
+
+func (i ClusterStorageResourceConfigExistingNfsArgs) ToClusterStorageResourceConfigExistingNfsOutput() ClusterStorageResourceConfigExistingNfsOutput {
+	return i.ToClusterStorageResourceConfigExistingNfsOutputWithContext(context.Background())
+}
+
+func (i ClusterStorageResourceConfigExistingNfsArgs) ToClusterStorageResourceConfigExistingNfsOutputWithContext(ctx context.Context) ClusterStorageResourceConfigExistingNfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStorageResourceConfigExistingNfsOutput)
+}
+
+func (i ClusterStorageResourceConfigExistingNfsArgs) ToClusterStorageResourceConfigExistingNfsPtrOutput() ClusterStorageResourceConfigExistingNfsPtrOutput {
+	return i.ToClusterStorageResourceConfigExistingNfsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterStorageResourceConfigExistingNfsArgs) ToClusterStorageResourceConfigExistingNfsPtrOutputWithContext(ctx context.Context) ClusterStorageResourceConfigExistingNfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStorageResourceConfigExistingNfsOutput).ToClusterStorageResourceConfigExistingNfsPtrOutputWithContext(ctx)
+}
+
+// ClusterStorageResourceConfigExistingNfsPtrInput is an input type that accepts ClusterStorageResourceConfigExistingNfsArgs, ClusterStorageResourceConfigExistingNfsPtr and ClusterStorageResourceConfigExistingNfsPtrOutput values.
+// You can construct a concrete instance of `ClusterStorageResourceConfigExistingNfsPtrInput` via:
+//
+//	        ClusterStorageResourceConfigExistingNfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterStorageResourceConfigExistingNfsPtrInput interface {
+	pulumi.Input
+
+	ToClusterStorageResourceConfigExistingNfsPtrOutput() ClusterStorageResourceConfigExistingNfsPtrOutput
+	ToClusterStorageResourceConfigExistingNfsPtrOutputWithContext(context.Context) ClusterStorageResourceConfigExistingNfsPtrOutput
+}
+
+type clusterStorageResourceConfigExistingNfsPtrType ClusterStorageResourceConfigExistingNfsArgs
+
+func ClusterStorageResourceConfigExistingNfsPtr(v *ClusterStorageResourceConfigExistingNfsArgs) ClusterStorageResourceConfigExistingNfsPtrInput {
+	return (*clusterStorageResourceConfigExistingNfsPtrType)(v)
+}
+
+func (*clusterStorageResourceConfigExistingNfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterStorageResourceConfigExistingNfs)(nil)).Elem()
+}
+
+func (i *clusterStorageResourceConfigExistingNfsPtrType) ToClusterStorageResourceConfigExistingNfsPtrOutput() ClusterStorageResourceConfigExistingNfsPtrOutput {
+	return i.ToClusterStorageResourceConfigExistingNfsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterStorageResourceConfigExistingNfsPtrType) ToClusterStorageResourceConfigExistingNfsPtrOutputWithContext(ctx context.Context) ClusterStorageResourceConfigExistingNfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStorageResourceConfigExistingNfsPtrOutput)
+}
+
+type ClusterStorageResourceConfigExistingNfsOutput struct{ *pulumi.OutputState }
+
+func (ClusterStorageResourceConfigExistingNfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStorageResourceConfigExistingNfs)(nil)).Elem()
+}
+
+func (o ClusterStorageResourceConfigExistingNfsOutput) ToClusterStorageResourceConfigExistingNfsOutput() ClusterStorageResourceConfigExistingNfsOutput {
+	return o
+}
+
+func (o ClusterStorageResourceConfigExistingNfsOutput) ToClusterStorageResourceConfigExistingNfsOutputWithContext(ctx context.Context) ClusterStorageResourceConfigExistingNfsOutput {
+	return o
+}
+
+func (o ClusterStorageResourceConfigExistingNfsOutput) ToClusterStorageResourceConfigExistingNfsPtrOutput() ClusterStorageResourceConfigExistingNfsPtrOutput {
+	return o.ToClusterStorageResourceConfigExistingNfsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterStorageResourceConfigExistingNfsOutput) ToClusterStorageResourceConfigExistingNfsPtrOutputWithContext(ctx context.Context) ClusterStorageResourceConfigExistingNfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterStorageResourceConfigExistingNfs) *ClusterStorageResourceConfigExistingNfs {
+		return &v
+	}).(ClusterStorageResourceConfigExistingNfsPtrOutput)
+}
+
+// Options to mount the NFS share, as expected by fsMntops field in fstab(5),
+// for example: "rw,vers=4.1,nconnect=2,noatime".
+func (o ClusterStorageResourceConfigExistingNfsOutput) MountOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterStorageResourceConfigExistingNfs) *string { return v.MountOptions }).(pulumi.StringPtrOutput)
+}
+
+// Remote mount path of the NFS share.
+func (o ClusterStorageResourceConfigExistingNfsOutput) RemoteMount() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStorageResourceConfigExistingNfs) string { return v.RemoteMount }).(pulumi.StringOutput)
+}
+
+// Server IP address of the NFS share.
+func (o ClusterStorageResourceConfigExistingNfsOutput) ServerIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStorageResourceConfigExistingNfs) string { return v.ServerIpAddress }).(pulumi.StringOutput)
+}
+
+type ClusterStorageResourceConfigExistingNfsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterStorageResourceConfigExistingNfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterStorageResourceConfigExistingNfs)(nil)).Elem()
+}
+
+func (o ClusterStorageResourceConfigExistingNfsPtrOutput) ToClusterStorageResourceConfigExistingNfsPtrOutput() ClusterStorageResourceConfigExistingNfsPtrOutput {
+	return o
+}
+
+func (o ClusterStorageResourceConfigExistingNfsPtrOutput) ToClusterStorageResourceConfigExistingNfsPtrOutputWithContext(ctx context.Context) ClusterStorageResourceConfigExistingNfsPtrOutput {
+	return o
+}
+
+func (o ClusterStorageResourceConfigExistingNfsPtrOutput) Elem() ClusterStorageResourceConfigExistingNfsOutput {
+	return o.ApplyT(func(v *ClusterStorageResourceConfigExistingNfs) ClusterStorageResourceConfigExistingNfs {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterStorageResourceConfigExistingNfs
+		return ret
+	}).(ClusterStorageResourceConfigExistingNfsOutput)
+}
+
+// Options to mount the NFS share, as expected by fsMntops field in fstab(5),
+// for example: "rw,vers=4.1,nconnect=2,noatime".
+func (o ClusterStorageResourceConfigExistingNfsPtrOutput) MountOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterStorageResourceConfigExistingNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MountOptions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Remote mount path of the NFS share.
+func (o ClusterStorageResourceConfigExistingNfsPtrOutput) RemoteMount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterStorageResourceConfigExistingNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RemoteMount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server IP address of the NFS share.
+func (o ClusterStorageResourceConfigExistingNfsPtrOutput) ServerIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterStorageResourceConfigExistingNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerIpAddress
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5927,6 +6259,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStorageResourceConfigExistingFilestorePtrInput)(nil)).Elem(), ClusterStorageResourceConfigExistingFilestoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStorageResourceConfigExistingLustreInput)(nil)).Elem(), ClusterStorageResourceConfigExistingLustreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStorageResourceConfigExistingLustrePtrInput)(nil)).Elem(), ClusterStorageResourceConfigExistingLustreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStorageResourceConfigExistingNfsInput)(nil)).Elem(), ClusterStorageResourceConfigExistingNfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStorageResourceConfigExistingNfsPtrInput)(nil)).Elem(), ClusterStorageResourceConfigExistingNfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStorageResourceConfigNewBucketInput)(nil)).Elem(), ClusterStorageResourceConfigNewBucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStorageResourceConfigNewBucketPtrInput)(nil)).Elem(), ClusterStorageResourceConfigNewBucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStorageResourceConfigNewBucketAutoclassInput)(nil)).Elem(), ClusterStorageResourceConfigNewBucketAutoclassArgs{})
@@ -5997,6 +6331,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterStorageResourceConfigExistingFilestorePtrOutput{})
 	pulumi.RegisterOutputType(ClusterStorageResourceConfigExistingLustreOutput{})
 	pulumi.RegisterOutputType(ClusterStorageResourceConfigExistingLustrePtrOutput{})
+	pulumi.RegisterOutputType(ClusterStorageResourceConfigExistingNfsOutput{})
+	pulumi.RegisterOutputType(ClusterStorageResourceConfigExistingNfsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterStorageResourceConfigNewBucketOutput{})
 	pulumi.RegisterOutputType(ClusterStorageResourceConfigNewBucketPtrOutput{})
 	pulumi.RegisterOutputType(ClusterStorageResourceConfigNewBucketAutoclassOutput{})

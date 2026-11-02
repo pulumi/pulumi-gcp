@@ -91,6 +91,14 @@ export class Unit extends pulumi.CustomResource {
      */
     declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Reference to the App Hub Application this Unit belongs to, in the format
+     * `projects/{project}/locations/{location}/applications/{application}`.
+     * All resources deployed in this Unit are associated with the specified
+     * Application. If empty, the service sets it during any UnitOperation
+     * when the UnitKind has `app_params.group` and App Hub is enabled.
+     */
+    declare public readonly application: pulumi.Output<string>;
+    /**
      * A set of conditions which indicate the various conditions this resource can
      * have.
      * Structure is documented below.
@@ -268,6 +276,7 @@ export class Unit extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as UnitState | undefined;
             resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["application"] = state?.application;
             resourceInputs["conditions"] = state?.conditions;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -305,6 +314,7 @@ export class Unit extends pulumi.CustomResource {
                 throw new Error("Missing required property 'unitId'");
             }
             resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["application"] = args?.application;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -354,6 +364,14 @@ export interface UnitState {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Reference to the App Hub Application this Unit belongs to, in the format
+     * `projects/{project}/locations/{location}/applications/{application}`.
+     * All resources deployed in this Unit are associated with the specified
+     * Application. If empty, the service sets it during any UnitOperation
+     * when the UnitKind has `app_params.group` and App Hub is enabled.
+     */
+    application?: pulumi.Input<string | undefined>;
     /**
      * A set of conditions which indicate the various conditions this resource can
      * have.
@@ -532,6 +550,14 @@ export interface UnitArgs {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Reference to the App Hub Application this Unit belongs to, in the format
+     * `projects/{project}/locations/{location}/applications/{application}`.
+     * All resources deployed in this Unit are associated with the specified
+     * Application. If empty, the service sets it during any UnitOperation
+     * when the UnitKind has `app_params.group` and App Hub is enabled.
+     */
+    application?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

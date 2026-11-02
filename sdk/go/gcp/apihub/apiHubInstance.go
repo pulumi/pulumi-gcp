@@ -46,6 +46,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apihub Api Hub Instance Full
 //
 // ```go

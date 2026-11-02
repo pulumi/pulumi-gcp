@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Routine Json
     /// 
     /// ```csharp
@@ -87,6 +88,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Routine Tvf
     /// 
     /// ```csharp
@@ -141,6 +143,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Routine Table Type
     /// 
     /// ```csharp
@@ -191,6 +194,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Routine Pyspark
     /// 
     /// ```csharp
@@ -248,6 +252,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Routine Pyspark Mainfile
     /// 
     /// ```csharp
@@ -299,6 +304,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Routine Spark Jar
     /// 
     /// ```csharp
@@ -348,6 +354,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Routine Data Governance Type
     /// 
     /// ```csharp
@@ -384,6 +391,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Routine Remote Function
     /// 
     /// ```csharp
@@ -427,6 +435,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Routine Python Function
     /// 
     /// ```csharp

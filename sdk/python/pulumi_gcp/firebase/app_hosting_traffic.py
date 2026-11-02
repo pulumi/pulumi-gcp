@@ -401,6 +401,7 @@ class AppHostingTraffic(pulumi.CustomResource):
             role="roles/firebaseapphosting.computeRunner",
             member=service_account.member)
         ```
+
         ### Firebase App Hosting Traffic Rollout Policy
 
         ```python
@@ -436,6 +437,7 @@ class AppHostingTraffic(pulumi.CustomResource):
             role="roles/firebaseapphosting.computeRunner",
             member=service_account.member)
         ```
+
         ### Firebase App Hosting Traffic Rollout Policy Disabled
 
         ```python
@@ -562,6 +564,7 @@ class AppHostingTraffic(pulumi.CustomResource):
             role="roles/firebaseapphosting.computeRunner",
             member=service_account.member)
         ```
+
         ### Firebase App Hosting Traffic Rollout Policy
 
         ```python
@@ -597,6 +600,7 @@ class AppHostingTraffic(pulumi.CustomResource):
             role="roles/firebaseapphosting.computeRunner",
             member=service_account.member)
         ```
+
         ### Firebase App Hosting Traffic Rollout Policy Disabled
 
         ```python

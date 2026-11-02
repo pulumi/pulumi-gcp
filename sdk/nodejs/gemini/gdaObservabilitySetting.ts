@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     location: "global",
  * });
  * ```
+ *
  * ### Gemini Gda Observability Setting Full
  *
  * ```typescript

@@ -49,6 +49,7 @@ import com.pulumi.gcp.container.outputs.GetClusterRbacBindingConfig;
 import com.pulumi.gcp.container.outputs.GetClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.GetClusterResourceUsageExportConfig;
 import com.pulumi.gcp.container.outputs.GetClusterRollbackSafeUpgrade;
+import com.pulumi.gcp.container.outputs.GetClusterScheduleUpgradeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterSecretManagerConfig;
 import com.pulumi.gcp.container.outputs.GetClusterSecretSyncConfig;
 import com.pulumi.gcp.container.outputs.GetClusterSecurityPostureConfig;
@@ -162,6 +163,7 @@ public final class GetClusterResult {
     private Map<String,String> resourceLabels;
     private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
     private List<GetClusterRollbackSafeUpgrade> rollbackSafeUpgrades;
+    private List<GetClusterScheduleUpgradeConfig> scheduleUpgradeConfigs;
     private List<GetClusterSecretManagerConfig> secretManagerConfigs;
     private List<GetClusterSecretSyncConfig> secretSyncConfigs;
     private List<GetClusterSecurityPostureConfig> securityPostureConfigs;
@@ -449,6 +451,9 @@ public final class GetClusterResult {
     public List<GetClusterRollbackSafeUpgrade> rollbackSafeUpgrades() {
         return this.rollbackSafeUpgrades;
     }
+    public List<GetClusterScheduleUpgradeConfig> scheduleUpgradeConfigs() {
+        return this.scheduleUpgradeConfigs;
+    }
     public List<GetClusterSecretManagerConfig> secretManagerConfigs() {
         return this.secretManagerConfigs;
     }
@@ -590,6 +595,7 @@ public final class GetClusterResult {
         private Map<String,String> resourceLabels;
         private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
         private List<GetClusterRollbackSafeUpgrade> rollbackSafeUpgrades;
+        private List<GetClusterScheduleUpgradeConfig> scheduleUpgradeConfigs;
         private List<GetClusterSecretManagerConfig> secretManagerConfigs;
         private List<GetClusterSecretSyncConfig> secretSyncConfigs;
         private List<GetClusterSecurityPostureConfig> securityPostureConfigs;
@@ -696,6 +702,7 @@ public final class GetClusterResult {
     	      this.resourceLabels = defaults.resourceLabels;
     	      this.resourceUsageExportConfigs = defaults.resourceUsageExportConfigs;
     	      this.rollbackSafeUpgrades = defaults.rollbackSafeUpgrades;
+    	      this.scheduleUpgradeConfigs = defaults.scheduleUpgradeConfigs;
     	      this.secretManagerConfigs = defaults.secretManagerConfigs;
     	      this.secretSyncConfigs = defaults.secretSyncConfigs;
     	      this.securityPostureConfigs = defaults.securityPostureConfigs;
@@ -1559,6 +1566,17 @@ public final class GetClusterResult {
             return rollbackSafeUpgrades(List.of(rollbackSafeUpgrades));
         }
         @CustomType.Setter
+        public Builder scheduleUpgradeConfigs(List<GetClusterScheduleUpgradeConfig> scheduleUpgradeConfigs) {
+            if (scheduleUpgradeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "scheduleUpgradeConfigs");
+            }
+            this.scheduleUpgradeConfigs = scheduleUpgradeConfigs;
+            return this;
+        }
+        public Builder scheduleUpgradeConfigs(GetClusterScheduleUpgradeConfig... scheduleUpgradeConfigs) {
+            return scheduleUpgradeConfigs(List.of(scheduleUpgradeConfigs));
+        }
+        @CustomType.Setter
         public Builder secretManagerConfigs(List<GetClusterSecretManagerConfig> secretManagerConfigs) {
             if (secretManagerConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "secretManagerConfigs");
@@ -1786,6 +1804,7 @@ public final class GetClusterResult {
             _resultValue.resourceLabels = resourceLabels;
             _resultValue.resourceUsageExportConfigs = resourceUsageExportConfigs;
             _resultValue.rollbackSafeUpgrades = rollbackSafeUpgrades;
+            _resultValue.scheduleUpgradeConfigs = scheduleUpgradeConfigs;
             _resultValue.secretManagerConfigs = secretManagerConfigs;
             _resultValue.secretSyncConfigs = secretSyncConfigs;
             _resultValue.securityPostureConfigs = securityPostureConfigs;

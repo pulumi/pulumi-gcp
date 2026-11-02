@@ -139,6 +139,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Transcoder Job Pubsub
  *
  * ```typescript
@@ -260,6 +261,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Transcoder Job Encryptions
  *
  * ```typescript
@@ -447,6 +449,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Transcoder Job Overlays
  *
  * ```typescript
@@ -585,6 +588,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Transcoder Job Manifests
  *
  * ```typescript

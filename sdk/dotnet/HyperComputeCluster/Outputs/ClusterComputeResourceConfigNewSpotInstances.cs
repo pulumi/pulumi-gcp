@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
+        /// (Optional, Beta)
+        /// A list of network tags to attach to the VM instances.
+        /// A maximum of 64 network tags are allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> NetworkTags;
+        /// <summary>
         /// Specifies the termination action of the instance
         /// Possible values:
         /// STOP
@@ -37,11 +43,14 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
         private ClusterComputeResourceConfigNewSpotInstances(
             string machineType,
 
+            ImmutableArray<string> networkTags,
+
             string? terminationAction,
 
             string zone)
         {
             MachineType = machineType;
+            NetworkTags = networkTags;
             TerminationAction = terminationAction;
             Zone = zone;
         }

@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.GetRouterBgp;
 import com.pulumi.gcp.compute.outputs.GetRouterMd5AuthenticationKey;
 import com.pulumi.gcp.compute.outputs.GetRouterParam;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +35,7 @@ public final class GetRouterResult {
     private List<GetRouterParam> params;
     private @Nullable String project;
     private @Nullable String region;
+    private Integer routerId;
     private String selfLink;
 
     private GetRouterResult() {}
@@ -80,6 +82,9 @@ public final class GetRouterResult {
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    public Integer routerId() {
+        return this.routerId;
+    }
     public String selfLink() {
         return this.selfLink;
     }
@@ -106,6 +111,7 @@ public final class GetRouterResult {
         private List<GetRouterParam> params;
         private @Nullable String project;
         private @Nullable String region;
+        private Integer routerId;
         private String selfLink;
         public Builder() {}
         public Builder(GetRouterResult defaults) {
@@ -123,6 +129,7 @@ public final class GetRouterResult {
     	      this.params = defaults.params;
     	      this.project = defaults.project;
     	      this.region = defaults.region;
+    	      this.routerId = defaults.routerId;
     	      this.selfLink = defaults.selfLink;
         }
 
@@ -236,6 +243,14 @@ public final class GetRouterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder routerId(Integer routerId) {
+            if (routerId == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "routerId");
+            }
+            this.routerId = routerId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             if (selfLink == null) {
               throw new MissingRequiredPropertyException("GetRouterResult", "selfLink");
@@ -258,6 +273,7 @@ public final class GetRouterResult {
             _resultValue.params = params;
             _resultValue.project = project;
             _resultValue.region = region;
+            _resultValue.routerId = routerId;
             _resultValue.selfLink = selfLink;
             return _resultValue;
         }

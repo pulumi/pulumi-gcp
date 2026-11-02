@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.saasruntime.UnitKindArgs;
 import com.pulumi.gcp.saasruntime.inputs.UnitKindState;
+import com.pulumi.gcp.saasruntime.outputs.UnitKindAppParams;
+import com.pulumi.gcp.saasruntime.outputs.UnitKindApplicationTemplateComponent;
 import com.pulumi.gcp.saasruntime.outputs.UnitKindDependency;
 import com.pulumi.gcp.saasruntime.outputs.UnitKindInputVariableMapping;
 import com.pulumi.gcp.saasruntime.outputs.UnitKindOutputVariableMapping;
@@ -139,6 +141,42 @@ public class UnitKind extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> annotations() {
         return Codegen.optional(this.annotations);
+    }
+    /**
+     * Parameters for creating an App Hub Application for the Units of this
+     * UnitKind.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="appParams", refs={UnitKindAppParams.class}, tree="[0]")
+    private Output</* @Nullable */ UnitKindAppParams> appParams;
+
+    /**
+     * @return Parameters for creating an App Hub Application for the Units of this
+     * UnitKind.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<UnitKindAppParams>> appParams() {
+        return Codegen.optional(this.appParams);
+    }
+    /**
+     * Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="applicationTemplateComponent", refs={UnitKindApplicationTemplateComponent.class}, tree="[0]")
+    private Output</* @Nullable */ UnitKindApplicationTemplateComponent> applicationTemplateComponent;
+
+    /**
+     * @return Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<UnitKindApplicationTemplateComponent>> applicationTemplateComponent() {
+        return Codegen.optional(this.applicationTemplateComponent);
     }
     /**
      * The timestamp when the resource was created.

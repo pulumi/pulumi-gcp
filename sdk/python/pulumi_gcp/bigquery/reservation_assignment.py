@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ReservationAssignmentArgs', 'ReservationAssignment']
 
@@ -20,17 +22,17 @@ __all__ = ['ReservationAssignmentArgs', 'ReservationAssignment']
 class ReservationAssignmentArgs:
     def __init__(__self__, *,
                  assignee: pulumi.Input[_builtins.str],
-                 job_type: pulumi.Input[_builtins.str],
                  reservation: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  principal: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_policy: pulumi.Input[Optional['ReservationAssignmentSchedulingPolicyArgs']] = None):
         """
         The set of arguments for constructing a ReservationAssignment resource.
 
         :param pulumi.Input[_builtins.str] assignee: The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
-        :param pulumi.Input[_builtins.str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[_builtins.str] reservation: The reservation for the resource
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -38,6 +40,7 @@ class ReservationAssignmentArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] principal: Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
                * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
@@ -46,18 +49,26 @@ class ReservationAssignmentArgs:
                * The special value `unknown_or_deleted_user` represents principals which cannot be read from the user info service, for example deleted users.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ReservationAssignmentSchedulingPolicyArgs'] scheduling_policy: The scheduling policy to use for jobs and queries of this assignee when
+               running under the associated reservation. The scheduling policy controls
+               how the reservation's resources are distributed. This overrides the default
+               scheduling policy specified on the reservation.
+               Structure is documented below.
         """
         pulumi.set(__self__, "assignee", assignee)
-        pulumi.set(__self__, "job_type", job_type)
         pulumi.set(__self__, "reservation", reservation)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if job_type is not None:
+            pulumi.set(__self__, "job_type", job_type)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if principal is not None:
             pulumi.set(__self__, "principal", principal)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if scheduling_policy is not None:
+            pulumi.set(__self__, "scheduling_policy", scheduling_policy)
 
     @_builtins.property
     @pulumi.getter
@@ -70,18 +81,6 @@ class ReservationAssignmentArgs:
     @assignee.setter
     def assignee(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "assignee", value)
-
-    @_builtins.property
-    @pulumi.getter(name="jobType")
-    def job_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
-        """
-        return pulumi.get(self, "job_type")
-
-    @job_type.setter
-    def job_type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "job_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -111,6 +110,18 @@ class ReservationAssignmentArgs:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobType")
+    def job_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
+        """
+        return pulumi.get(self, "job_type")
+
+    @job_type.setter
+    def job_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "job_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -153,6 +164,22 @@ class ReservationAssignmentArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="schedulingPolicy")
+    def scheduling_policy(self) -> pulumi.Input[Optional['ReservationAssignmentSchedulingPolicyArgs']]:
+        """
+        The scheduling policy to use for jobs and queries of this assignee when
+        running under the associated reservation. The scheduling policy controls
+        how the reservation's resources are distributed. This overrides the default
+        scheduling policy specified on the reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduling_policy")
+
+    @scheduling_policy.setter
+    def scheduling_policy(self, value: pulumi.Input[Optional['ReservationAssignmentSchedulingPolicyArgs']]):
+        pulumi.set(self, "scheduling_policy", value)
+
 
 @pulumi.input_type
 class _ReservationAssignmentState:
@@ -165,6 +192,7 @@ class _ReservationAssignmentState:
                  principal: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_policy: pulumi.Input[Optional['ReservationAssignmentSchedulingPolicyArgs']] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReservationAssignment resources.
@@ -187,6 +215,11 @@ class _ReservationAssignmentState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] reservation: The reservation for the resource
+        :param pulumi.Input['ReservationAssignmentSchedulingPolicyArgs'] scheduling_policy: The scheduling policy to use for jobs and queries of this assignee when
+               running under the associated reservation. The scheduling policy controls
+               how the reservation's resources are distributed. This overrides the default
+               scheduling policy specified on the reservation.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
                Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
@@ -206,6 +239,8 @@ class _ReservationAssignmentState:
             pulumi.set(__self__, "project", project)
         if reservation is not None:
             pulumi.set(__self__, "reservation", reservation)
+        if scheduling_policy is not None:
+            pulumi.set(__self__, "scheduling_policy", scheduling_policy)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -316,6 +351,22 @@ class _ReservationAssignmentState:
         pulumi.set(self, "reservation", value)
 
     @_builtins.property
+    @pulumi.getter(name="schedulingPolicy")
+    def scheduling_policy(self) -> pulumi.Input[Optional['ReservationAssignmentSchedulingPolicyArgs']]:
+        """
+        The scheduling policy to use for jobs and queries of this assignee when
+        running under the associated reservation. The scheduling policy controls
+        how the reservation's resources are distributed. This overrides the default
+        scheduling policy specified on the reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduling_policy")
+
+    @scheduling_policy.setter
+    def scheduling_policy(self, value: pulumi.Input[Optional['ReservationAssignmentSchedulingPolicyArgs']]):
+        pulumi.set(self, "scheduling_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -342,6 +393,7 @@ class ReservationAssignment(pulumi.CustomResource):
                  principal: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_policy: pulumi.Input[Optional[Union['ReservationAssignmentSchedulingPolicyArgs', 'ReservationAssignmentSchedulingPolicyArgsDict', 'outputs.ReservationAssignmentSchedulingPolicy']]] = None,
                  __props__=None):
         """
         The BigqueryReservation Assignment resource.
@@ -408,6 +460,11 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] reservation: The reservation for the resource
+        :param pulumi.Input[Union['ReservationAssignmentSchedulingPolicyArgs', 'ReservationAssignmentSchedulingPolicyArgsDict', 'outputs.ReservationAssignmentSchedulingPolicy']] scheduling_policy: The scheduling policy to use for jobs and queries of this assignee when
+               running under the associated reservation. The scheduling policy controls
+               how the reservation's resources are distributed. This overrides the default
+               scheduling policy specified on the reservation.
+               Structure is documented below.
         """
         ...
     @overload
@@ -483,6 +540,7 @@ class ReservationAssignment(pulumi.CustomResource):
                  principal: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_policy: pulumi.Input[Optional[Union['ReservationAssignmentSchedulingPolicyArgs', 'ReservationAssignmentSchedulingPolicyArgsDict', 'outputs.ReservationAssignmentSchedulingPolicy']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -496,8 +554,6 @@ class ReservationAssignment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'assignee'")
             __props__.__dict__["assignee"] = assignee
             __props__.__dict__["deletion_policy"] = deletion_policy
-            if job_type is None and not opts.urn:
-                raise TypeError("Missing required property 'job_type'")
             __props__.__dict__["job_type"] = job_type
             __props__.__dict__["location"] = location
             __props__.__dict__["principal"] = principal
@@ -505,6 +561,7 @@ class ReservationAssignment(pulumi.CustomResource):
             if reservation is None and not opts.urn:
                 raise TypeError("Missing required property 'reservation'")
             __props__.__dict__["reservation"] = reservation
+            __props__.__dict__["scheduling_policy"] = scheduling_policy
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
         super(ReservationAssignment, __self__).__init__(
@@ -525,6 +582,7 @@ class ReservationAssignment(pulumi.CustomResource):
             principal: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reservation: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling_policy: pulumi.Input[Optional[Union['ReservationAssignmentSchedulingPolicyArgs', 'ReservationAssignmentSchedulingPolicyArgsDict', 'outputs.ReservationAssignmentSchedulingPolicy']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReservationAssignment':
         """
         Get an existing ReservationAssignment resource's state with the given name, id, and optional extra
@@ -551,6 +609,11 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] reservation: The reservation for the resource
+        :param pulumi.Input[Union['ReservationAssignmentSchedulingPolicyArgs', 'ReservationAssignmentSchedulingPolicyArgsDict', 'outputs.ReservationAssignmentSchedulingPolicy']] scheduling_policy: The scheduling policy to use for jobs and queries of this assignee when
+               running under the associated reservation. The scheduling policy controls
+               how the reservation's resources are distributed. This overrides the default
+               scheduling policy specified on the reservation.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
                Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
@@ -566,6 +629,7 @@ class ReservationAssignment(pulumi.CustomResource):
         __props__.__dict__["principal"] = principal
         __props__.__dict__["project"] = project
         __props__.__dict__["reservation"] = reservation
+        __props__.__dict__["scheduling_policy"] = scheduling_policy
         __props__.__dict__["state"] = state
         return ReservationAssignment(resource_name, opts=opts, __props__=__props__)
 
@@ -592,7 +656,7 @@ class ReservationAssignment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="jobType")
-    def job_type(self) -> pulumi.Output[_builtins.str]:
+    def job_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         """
@@ -642,6 +706,18 @@ class ReservationAssignment(pulumi.CustomResource):
         The reservation for the resource
         """
         return pulumi.get(self, "reservation")
+
+    @_builtins.property
+    @pulumi.getter(name="schedulingPolicy")
+    def scheduling_policy(self) -> pulumi.Output[Optional['outputs.ReservationAssignmentSchedulingPolicy']]:
+        """
+        The scheduling policy to use for jobs and queries of this assignee when
+        running under the associated reservation. The scheduling policy controls
+        how the reservation's resources are distributed. This overrides the default
+        scheduling policy specified on the reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduling_policy")
 
     @_builtins.property
     @pulumi.getter

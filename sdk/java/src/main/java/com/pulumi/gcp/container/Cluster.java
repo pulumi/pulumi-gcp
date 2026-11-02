@@ -54,6 +54,7 @@ import com.pulumi.gcp.container.outputs.ClusterRbacBindingConfig;
 import com.pulumi.gcp.container.outputs.ClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.ClusterResourceUsageExportConfig;
 import com.pulumi.gcp.container.outputs.ClusterRollbackSafeUpgrade;
+import com.pulumi.gcp.container.outputs.ClusterScheduleUpgradeConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecretManagerConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecretSyncConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecurityPostureConfig;
@@ -125,8 +126,6 @@ import javax.annotation.Nullable;
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("my-gke-cluster")
  *             .location("us-central1")
- *             .removeDefaultNodePool(true)
- *             .initialNodeCount(1)
  *             .build());
  * 
  *         var primaryPreemptibleNodes = new NodePool("primaryPreemptibleNodes", NodePoolArgs.builder()
@@ -1089,7 +1088,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
-     * number of nodes per zone. Must be set if `nodePool` is not set. If you&#39;re using
+     * number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+     * `nodePool` blocks defined, the cluster is created without a default node pool.
+     * This requires a GKE version that supports clusters without a default node pool
+     * (`1.36.4-gke.1469000+`). For older GKE versions, if you&#39;re using
      * `gcp.container.NodePool` objects with no default node pool, you&#39;ll need to
      * set this to a value of at least `1`, alongside setting
      * `removeDefaultNodePool` to `true`.
@@ -1101,7 +1103,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
-     * number of nodes per zone. Must be set if `nodePool` is not set. If you&#39;re using
+     * number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+     * `nodePool` blocks defined, the cluster is created without a default node pool.
+     * This requires a GKE version that supports clusters without a default node pool
+     * (`1.36.4-gke.1469000+`). For older GKE versions, if you&#39;re using
      * `gcp.container.NodePool` objects with no default node pool, you&#39;ll need to
      * set this to a value of at least `1`, alongside setting
      * `removeDefaultNodePool` to `true`.
@@ -1231,14 +1236,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.managedMachineLearningDiagnosticsConfig;
     }
     /**
-     * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      * 
      */
     @Export(name="managedOpentelemetryConfig", refs={ClusterManagedOpentelemetryConfig.class}, tree="[0]")
     private Output<ClusterManagedOpentelemetryConfig> managedOpentelemetryConfig;
 
     /**
-     * @return ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * @return Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      * 
      */
     public Output<ClusterManagedOpentelemetryConfig> managedOpentelemetryConfig() {
@@ -1816,19 +1821,31 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * If `true`, deletes the default node
-     * pool upon cluster creation. If you&#39;re using `gcp.container.NodePool`
-     * resources with no default node pool, this should be set to `true`, alongside
-     * setting `initialNodeCount` to at least `1`.
+     * pool upon cluster creation. On GKE versions that support clusters without a
+     * default node pool, you can instead omit `initialNodeCount` and
+     * `nodeConfig` (or set `initialNodeCount` to `0`) to skip creating the
+     * default node pool without setting this field. For older GKE versions, if
+     * you&#39;re using `gcp.container.NodePool` resources with no default node
+     * pool, this should be set to `true`, alongside setting `initialNodeCount`
+     * to at least `1`.
+     * 
+     * @deprecated
+     * On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
      * 
      */
+    @Deprecated /* On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead. */
     @Export(name="removeDefaultNodePool", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> removeDefaultNodePool;
 
     /**
      * @return If `true`, deletes the default node
-     * pool upon cluster creation. If you&#39;re using `gcp.container.NodePool`
-     * resources with no default node pool, this should be set to `true`, alongside
-     * setting `initialNodeCount` to at least `1`.
+     * pool upon cluster creation. On GKE versions that support clusters without a
+     * default node pool, you can instead omit `initialNodeCount` and
+     * `nodeConfig` (or set `initialNodeCount` to `0`) to skip creating the
+     * default node pool without setting this field. For older GKE versions, if
+     * you&#39;re using `gcp.container.NodePool` resources with no default node
+     * pool, this should be set to `true`, alongside setting `initialNodeCount`
+     * to at least `1`.
      * 
      */
     public Output<Optional<Boolean>> removeDefaultNodePool() {
@@ -1885,6 +1902,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterRollbackSafeUpgrade>> rollbackSafeUpgrade() {
         return Codegen.optional(this.rollbackSafeUpgrade);
+    }
+    /**
+     * Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+     * 
+     */
+    @Export(name="scheduleUpgradeConfig", refs={ClusterScheduleUpgradeConfig.class}, tree="[0]")
+    private Output<ClusterScheduleUpgradeConfig> scheduleUpgradeConfig;
+
+    /**
+     * @return Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+     * 
+     */
+    public Output<ClusterScheduleUpgradeConfig> scheduleUpgradeConfig() {
+        return this.scheduleUpgradeConfig;
     }
     /**
      * Configuration for the

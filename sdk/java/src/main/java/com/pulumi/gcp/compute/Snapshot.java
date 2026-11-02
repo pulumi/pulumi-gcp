@@ -96,6 +96,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Snapshot Basic2
  * 
  * <pre>
@@ -150,6 +151,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Snapshot Basic Source Instant Snapshot
  * 
  * <pre>
@@ -211,6 +213,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Snapshot Chainname
  * 
  * <pre>
@@ -558,8 +561,9 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * If you do not provide an encryption key when creating the snapshot,
      * then the snapshot will be encrypted using an automatically generated
      * key and you do not need to provide a key to use the snapshot later.
-     * ~&gt;**NOTE** Only changing `kmsKeySelfLink` between Cloud KMS keys is
-     * done in place; other changes to this block recreate the snapshot.
+     * ~&gt;**NOTE** `kmsKeySelfLink` can be added or changed in place.
+     * Removing it, or changing it while `kmsKeyServiceAccount` is set,
+     * fails at plan time. Other changes to this block recreate the snapshot.
      * Structure is documented below.
      * 
      */
@@ -577,8 +581,9 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * If you do not provide an encryption key when creating the snapshot,
      * then the snapshot will be encrypted using an automatically generated
      * key and you do not need to provide a key to use the snapshot later.
-     * ~&gt;**NOTE** Only changing `kmsKeySelfLink` between Cloud KMS keys is
-     * done in place; other changes to this block recreate the snapshot.
+     * ~&gt;**NOTE** `kmsKeySelfLink` can be added or changed in place.
+     * Removing it, or changing it while `kmsKeyServiceAccount` is set,
+     * fails at plan time. Other changes to this block recreate the snapshot.
      * Structure is documented below.
      * 
      */

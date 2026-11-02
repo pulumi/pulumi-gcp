@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.AppEngine
     ///     var myappV1 = new Gcp.AppEngine.StandardAppVersion("myapp_v1", new()
     ///     {
     ///         VersionId = "v1",
-    ///         Service = "myapp",
+    ///         Service = "ae-service",
     ///         Runtime = "nodejs22",
     ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
     ///         {
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.AppEngine
     ///     var myappV2 = new Gcp.AppEngine.StandardAppVersion("myapp_v2", new()
     ///     {
     ///         VersionId = "v2",
-    ///         Service = "myapp",
+    ///         Service = "ae-service",
     ///         Runtime = "nodejs22",
     ///         AppEngineApis = true,
     ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### App Engine Standard App Version Bundled Services
     /// 
     /// ```csharp
@@ -200,7 +201,7 @@ namespace Pulumi.Gcp.AppEngine
     ///     {
     ///         VersionId = "v1",
     ///         Service = "bundled-service",
-    ///         Runtime = "python310",
+    ///         Runtime = "python312",
     ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
     ///         {
     ///             Files = new[]
@@ -249,6 +250,7 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### App Engine Standard App Version Vpc Access
     /// 
     /// ```csharp
@@ -318,10 +320,10 @@ namespace Pulumi.Gcp.AppEngine
     ///     {
     ///         VersionId = "v1",
     ///         Service = "vpc-service",
-    ///         Runtime = "python310",
+    ///         Runtime = "python312",
     ///         VpcAccess = new Gcp.AppEngine.Inputs.StandardAppVersionVpcAccessArgs
     ///         {
-    ///             EgressSetting = "ALL_TRAFFIC",
+    ///             VpcEgress = "ALL_TRAFFIC",
     ///             NetworkInterfaces = new[]
     ///             {
     ///                 new Gcp.AppEngine.Inputs.StandardAppVersionVpcAccessNetworkInterfaceArgs

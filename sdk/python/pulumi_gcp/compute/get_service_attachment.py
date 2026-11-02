@@ -27,7 +27,7 @@ class GetServiceAttachmentResult:
     """
     A collection of values returned by getServiceAttachment.
     """
-    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, deletion_policy=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, id=None, name=None, nat_ips_per_endpoint=None, nat_subnets=None, project=None, propagated_connection_limit=None, psc_service_attachment_ids=None, reconcile_connections=None, region=None, self_link=None, send_propagated_connection_limit_if_zero=None, show_nat_ips=None, target_service=None, tunneling_configs=None):
+    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, deletion_policy=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, id=None, name=None, nat_ips_per_endpoint=None, nat_subnets=None, project=None, propagated_connection_limit=None, psc_service_attachment_ids=None, reconcile_connections=None, region=None, self_link=None, send_propagated_connection_limit_if_zero=None, service_attachment_id=None, show_nat_ips=None, target_service=None, tunneling_configs=None):
         if connected_endpoints and not isinstance(connected_endpoints, list):
             raise TypeError("Expected argument 'connected_endpoints' to be a list")
         pulumi.set(__self__, "connected_endpoints", connected_endpoints)
@@ -88,6 +88,9 @@ class GetServiceAttachmentResult:
         if send_propagated_connection_limit_if_zero and not isinstance(send_propagated_connection_limit_if_zero, bool):
             raise TypeError("Expected argument 'send_propagated_connection_limit_if_zero' to be a bool")
         pulumi.set(__self__, "send_propagated_connection_limit_if_zero", send_propagated_connection_limit_if_zero)
+        if service_attachment_id and not isinstance(service_attachment_id, int):
+            raise TypeError("Expected argument 'service_attachment_id' to be a int")
+        pulumi.set(__self__, "service_attachment_id", service_attachment_id)
         if show_nat_ips and not isinstance(show_nat_ips, bool):
             raise TypeError("Expected argument 'show_nat_ips' to be a bool")
         pulumi.set(__self__, "show_nat_ips", show_nat_ips)
@@ -202,6 +205,11 @@ class GetServiceAttachmentResult:
         return pulumi.get(self, "send_propagated_connection_limit_if_zero")
 
     @_builtins.property
+    @pulumi.getter(name="serviceAttachmentId")
+    def service_attachment_id(self) -> _builtins.int:
+        return pulumi.get(self, "service_attachment_id")
+
+    @_builtins.property
     @pulumi.getter(name="showNatIps")
     def show_nat_ips(self) -> _builtins.bool:
         return pulumi.get(self, "show_nat_ips")
@@ -243,6 +251,7 @@ class AwaitableGetServiceAttachmentResult(GetServiceAttachmentResult):
             region=self.region,
             self_link=self.self_link,
             send_propagated_connection_limit_if_zero=self.send_propagated_connection_limit_if_zero,
+            service_attachment_id=self.service_attachment_id,
             show_nat_ips=self.show_nat_ips,
             target_service=self.target_service,
             tunneling_configs=self.tunneling_configs)
@@ -303,6 +312,7 @@ def get_service_attachment(name: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
         send_propagated_connection_limit_if_zero=pulumi.get(__ret__, 'send_propagated_connection_limit_if_zero'),
+        service_attachment_id=pulumi.get(__ret__, 'service_attachment_id'),
         show_nat_ips=pulumi.get(__ret__, 'show_nat_ips'),
         target_service=pulumi.get(__ret__, 'target_service'),
         tunneling_configs=pulumi.get(__ret__, 'tunneling_configs'))
@@ -360,6 +370,7 @@ def get_service_attachment_output(name: pulumi.Input[Optional[_builtins.str]] = 
         region=pulumi.get(__response__, 'region'),
         self_link=pulumi.get(__response__, 'self_link'),
         send_propagated_connection_limit_if_zero=pulumi.get(__response__, 'send_propagated_connection_limit_if_zero'),
+        service_attachment_id=pulumi.get(__response__, 'service_attachment_id'),
         show_nat_ips=pulumi.get(__response__, 'show_nat_ips'),
         target_service=pulumi.get(__response__, 'target_service'),
         tunneling_configs=pulumi.get(__response__, 'tunneling_configs')))

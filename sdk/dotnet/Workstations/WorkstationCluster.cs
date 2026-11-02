@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Cluster Private
     /// 
     /// ```csharp
@@ -112,6 +113,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Cluster Custom Domain
     /// 
     /// ```csharp
@@ -164,6 +166,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Cluster Tags
     /// 
     /// ```csharp
@@ -222,6 +225,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Cluster Custom Urls
     /// 
     /// ```csharp

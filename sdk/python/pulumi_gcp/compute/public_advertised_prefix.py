@@ -455,6 +455,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
         ```
+
         ### Public Advertised Prefixes Pdp Scope
 
         ```python
@@ -468,6 +469,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             ip_cidr_range="127.127.0.0/16",
             pdp_scope="REGIONAL")
         ```
+
         ### Public Advertised Prefixes Ipv6 Access Type
 
         ```python
@@ -563,6 +565,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
         ```
+
         ### Public Advertised Prefixes Pdp Scope
 
         ```python
@@ -576,6 +579,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             ip_cidr_range="127.127.0.0/16",
             pdp_scope="REGIONAL")
         ```
+
         ### Public Advertised Prefixes Ipv6 Access Type
 
         ```python

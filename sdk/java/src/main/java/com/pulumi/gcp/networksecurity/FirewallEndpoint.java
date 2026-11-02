@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Firewall Endpoint Project
  * 
  * <pre>
@@ -371,7 +372,6 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * (Optional, Beta)
      * Settings for WildFire analysis on the firewall endpoint.
      * Structure is documented below.
      * 
@@ -380,8 +380,7 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
     private Output<FirewallEndpointWildfireSettings> wildfireSettings;
 
     /**
-     * @return (Optional, Beta)
-     * Settings for WildFire analysis on the firewall endpoint.
+     * @return Settings for WildFire analysis on the firewall endpoint.
      * Structure is documented below.
      * 
      */

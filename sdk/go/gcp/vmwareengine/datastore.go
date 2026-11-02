@@ -47,14 +47,14 @@ import (
 //			// Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
 //			// block within the `google_vmwareengine_cluster` resource. For example:
 //			//
-//			//	datastore_mount_config {
-//			//	  datastore        = google_vmwareengine_datastore.example_thirdparty.id
-//			//	  datastore_network {
-//			//	    subnet           = google_vmwareengine_subnet.example_subnet.id
-//			//	    connection_count = 4
-//			//	    mtu              = 1500
-//			//	  }
-//			//	}
+//			//  datastore_mount_config {
+//			//    datastore        = google_vmwareengine_datastore.example_thirdparty.id
+//			//    datastore_network {
+//			//      subnet           = google_vmwareengine_subnet.example_subnet.id
+//			//      connection_count = 4
+//			//      mtu              = 1500
+//			//    }
+//			//  }
 //			_, err = vmwareengine.NewDatastore(ctx, "example_thirdparty", &vmwareengine.DatastoreArgs{
 //				Name:        pulumi.String("thirdparty-datastore"),
 //				Location:    pulumi.String("us-west1-a"),
@@ -77,6 +77,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vmware Engine Datastore Filestore
 //
 // ```go
@@ -104,14 +105,14 @@ import (
 //			// Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
 //			// block within the `google_vmwareengine_cluster` resource. For example:
 //			//
-//			//	datastore_mount_config {
-//			//	  datastore        = google_vmwareengine_datastore.example_filestore.id
-//			//	  datastore_network {
-//			//	    subnet           = google_vmwareengine_subnet.example_subnet.id
-//			//	    connection_count = 4
-//			//	    mtu              = 1500
-//			//	  }
-//			//	}
+//			//  datastore_mount_config {
+//			//    datastore        = google_vmwareengine_datastore.example_filestore.id
+//			//    datastore_network {
+//			//      subnet           = google_vmwareengine_subnet.example_subnet.id
+//			//      connection_count = 4
+//			//      mtu              = 1500
+//			//    }
+//			//  }
 //			_, err = vmwareengine.NewDatastore(ctx, "example_filestore", &vmwareengine.DatastoreArgs{
 //				Name:        pulumi.String("filestore-datastore"),
 //				Location:    pulumi.String(""),
@@ -130,6 +131,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vmware Engine Datastore Netapp
 //
 // ```go
@@ -157,14 +159,14 @@ import (
 //			// Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
 //			// block within the `google_vmwareengine_cluster` resource. For example:
 //			//
-//			//	datastore_mount_config {
-//			//	  datastore        = google_vmwareengine_datastore.example_netapp.id
-//			//	  datastore_network {
-//			//	    subnet           = google_vmwareengine_subnet.example_subnet.id
-//			//	    connection_count = 4
-//			//	    mtu              = 1500
-//			//	  }
-//			//	}
+//			//  datastore_mount_config {
+//			//    datastore        = google_vmwareengine_datastore.example_netapp.id
+//			//    datastore_network {
+//			//      subnet           = google_vmwareengine_subnet.example_subnet.id
+//			//      connection_count = 4
+//			//      mtu              = 1500
+//			//    }
+//			//  }
 //			_, err = vmwareengine.NewDatastore(ctx, "example_netapp", &vmwareengine.DatastoreArgs{
 //				Name:        pulumi.String("netapp-datastore"),
 //				Location:    pulumi.String("us-west1"),

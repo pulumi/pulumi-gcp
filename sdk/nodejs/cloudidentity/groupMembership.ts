@@ -59,6 +59,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Cloud Identity Group Membership User
  *
  * ```typescript

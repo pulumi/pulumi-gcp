@@ -175,11 +175,6 @@ def get_regional_secret_version(is_secret_data_base64: Optional[_builtins.bool] 
                                 version: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionalSecretVersionResult:
     """
-    subcategory: "Secret Manager"
-    description: |-
-      Get a Secret Manager regional secret's version.
-    ---
-
     Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the secretmanager_get_regional_secret_version_access datasource.
 
     ## Example Usage
@@ -233,11 +228,6 @@ def get_regional_secret_version_output(is_secret_data_base64: pulumi.Input[Optio
                                        version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalSecretVersionResult]:
     """
-    subcategory: "Secret Manager"
-    description: |-
-      Get a Secret Manager regional secret's version.
-    ---
-
     Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the secretmanager_get_regional_secret_version_access datasource.
 
     ## Example Usage

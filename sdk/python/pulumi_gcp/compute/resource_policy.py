@@ -484,6 +484,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Resource Policy Full
 
         ```python
@@ -513,6 +514,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Resource Policy Placement Policy
 
         ```python
@@ -527,6 +529,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "collocation": "COLLOCATED",
             })
         ```
+
         ### Resource Policy Placement Policy Max Distance
 
         ```python
@@ -542,6 +545,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "max_distance": 2,
             })
         ```
+
         ### Resource Policy Instance Schedule Policy
 
         ```python
@@ -562,6 +566,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "time_zone": "US/Central",
             })
         ```
+
         ### Resource Policy Snapshot Schedule Chain Name
 
         ```python
@@ -593,6 +598,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Resource Policy Consistency Group
 
         ```python
@@ -606,6 +612,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "enabled": True,
             })
         ```
+
         ### Resource Policy Workload Policy
 
         ```python
@@ -619,6 +626,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "type": "HIGH_AVAILABILITY",
             })
         ```
+
         ### Resource Policy Workload Policy Accelerator Topology
 
         ```python
@@ -633,6 +641,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "accelerator_topology": "2x2",
             })
         ```
+
         ### Resource Policy Workload Policy Accelerator Topology Mode
 
         ```python
@@ -648,6 +657,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "accelerator_topology_mode": "AUTO_CONNECT",
             })
         ```
+
         ### Resource Policy Workload Policy Max Topology Distance
 
         ```python
@@ -662,6 +672,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "max_topology_distance": "BLOCK",
             })
         ```
+
         ### Resource Policy Placement Policy Gpu Topology
 
         ```python
@@ -676,6 +687,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "gpu_topology": "1x72",
             })
         ```
+
         ### Resource Policy Placement Policy Tpu Topology
 
         ```python
@@ -774,6 +786,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Resource Policy Full
 
         ```python
@@ -803,6 +816,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Resource Policy Placement Policy
 
         ```python
@@ -817,6 +831,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "collocation": "COLLOCATED",
             })
         ```
+
         ### Resource Policy Placement Policy Max Distance
 
         ```python
@@ -832,6 +847,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "max_distance": 2,
             })
         ```
+
         ### Resource Policy Instance Schedule Policy
 
         ```python
@@ -852,6 +868,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "time_zone": "US/Central",
             })
         ```
+
         ### Resource Policy Snapshot Schedule Chain Name
 
         ```python
@@ -883,6 +900,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Resource Policy Consistency Group
 
         ```python
@@ -896,6 +914,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "enabled": True,
             })
         ```
+
         ### Resource Policy Workload Policy
 
         ```python
@@ -909,6 +928,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "type": "HIGH_AVAILABILITY",
             })
         ```
+
         ### Resource Policy Workload Policy Accelerator Topology
 
         ```python
@@ -923,6 +943,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "accelerator_topology": "2x2",
             })
         ```
+
         ### Resource Policy Workload Policy Accelerator Topology Mode
 
         ```python
@@ -938,6 +959,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "accelerator_topology_mode": "AUTO_CONNECT",
             })
         ```
+
         ### Resource Policy Workload Policy Max Topology Distance
 
         ```python
@@ -952,6 +974,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "max_topology_distance": "BLOCK",
             })
         ```
+
         ### Resource Policy Placement Policy Gpu Topology
 
         ```python
@@ -966,6 +989,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "gpu_topology": "1x72",
             })
         ```
+
         ### Resource Policy Placement Policy Tpu Topology
 
         ```python

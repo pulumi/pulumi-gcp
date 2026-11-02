@@ -474,6 +474,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         ```
+
         ### Regional Secret Version Basic Write Only
 
         ```python
@@ -491,6 +492,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret_data_wo_version="1",
             secret_data_wo="regional-secret-data-write-only")
         ```
+
         ### Regional Secret Version With Base64 String Secret Data Write Only
 
         ```python
@@ -507,6 +509,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret_data_wo_version="1",
             secret_data_wo=std.filebase64(input="regional-secret-data-base64-write-only.pfx").result)
         ```
+
         ### Regional Secret Version With Base64 Data
 
         ```python
@@ -522,6 +525,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret_data=std.filebase64(input="secret-data.pfx").result,
             is_secret_data_base64=True)
         ```
+
         ### Regional Secret Version Disabled
 
         ```python
@@ -536,6 +540,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             enabled=False)
         ```
+
         ### Regional Secret Version Deletion Policy Abandon
 
         ```python
@@ -550,6 +555,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="ABANDON")
         ```
+
         ### Regional Secret Version Deletion Policy Disable
 
         ```python
@@ -644,6 +650,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         ```
+
         ### Regional Secret Version Basic Write Only
 
         ```python
@@ -661,6 +668,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret_data_wo_version="1",
             secret_data_wo="regional-secret-data-write-only")
         ```
+
         ### Regional Secret Version With Base64 String Secret Data Write Only
 
         ```python
@@ -677,6 +685,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret_data_wo_version="1",
             secret_data_wo=std.filebase64(input="regional-secret-data-base64-write-only.pfx").result)
         ```
+
         ### Regional Secret Version With Base64 Data
 
         ```python
@@ -692,6 +701,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret_data=std.filebase64(input="secret-data.pfx").result,
             is_secret_data_base64=True)
         ```
+
         ### Regional Secret Version Disabled
 
         ```python
@@ -706,6 +716,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             enabled=False)
         ```
+
         ### Regional Secret Version Deletion Policy Abandon
 
         ```python
@@ -720,6 +731,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="ABANDON")
         ```
+
         ### Regional Secret Version Deletion Policy Disable
 
         ```python

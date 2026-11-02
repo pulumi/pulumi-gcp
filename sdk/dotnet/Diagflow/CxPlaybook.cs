@@ -94,6 +94,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflowcx Playbook Fulfillment
     /// 
     /// ```csharp
@@ -144,7 +145,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         DisplayName = "TF Prompt generator",
     ///         LlmModelSettings = new Gcp.Diagflow.Inputs.CxGeneratorLlmModelSettingsArgs
     ///         {
-    ///             Model = "gemini-2.0-flash-001",
+    ///             Model = "gemini-2.5-flash",
     ///             PromptText = "Return me some great results",
     ///         },
     ///         PromptText = new Gcp.Diagflow.Inputs.CxGeneratorPromptTextArgs
@@ -209,7 +210,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///         LlmModelSettings = new Gcp.Diagflow.Inputs.CxPlaybookLlmModelSettingsArgs
     ///         {
-    ///             Model = "gemini-2.0-flash-001",
+    ///             Model = "gemini-2.5-flash",
     ///             PromptText = "Return me some great results",
     ///         },
     ///         ReferencedTools = new[]

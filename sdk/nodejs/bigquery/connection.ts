@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     cloudResource: {},
  * });
  * ```
+ *
  * ### Bigquery Connection Basic
  *
  * ```typescript
@@ -78,6 +79,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Connection Full
  *
  * ```typescript
@@ -123,6 +125,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Connection Aws
  *
  * ```typescript
@@ -141,6 +144,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Connection Azure
  *
  * ```typescript
@@ -158,6 +162,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Connection Cloudspanner
  *
  * ```typescript
@@ -175,6 +180,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Connection Cloudspanner Databoost
  *
  * ```typescript
@@ -194,6 +200,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Connection Spark
  *
  * ```typescript
@@ -230,6 +237,23 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ### Bigquery Connection Salesforce Data Cloud
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     connectionId: "my-connection",
+ *     location: "US",
+ *     salesforceDataCloud: {
+ *         instanceUri: "my-instance.c360a.salesforce.com",
+ *         tenantId: "tenant-id",
+ *     },
+ * });
+ * ```
+ *
  * ### Bigquery Connection Sql With Cmek
  *
  * ```typescript
@@ -270,6 +294,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Connection Sql With Cmek Password Wo
  *
  * ```typescript
@@ -311,46 +336,35 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Connection Connector Configuration
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const _default = gcp.compute.getNetwork({
+ *     name: "alloydb-network",
+ * });
  * const namePrefix = "my-connection";
- * const defaultNetwork = new gcp.compute.Network("default", {name: `${namePrefix}-alloydb-network`});
- * const _default = new gcp.alloydb.Cluster("default", {
+ * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: `${namePrefix}-alloydb-cluster`,
  *     location: "us-central1",
  *     networkConfig: {
- *         network: defaultNetwork.id,
+ *         network: _default.then(_default => _default.id),
  *     },
  *     initialUser: {
  *         password: "alloydb-cluster-password",
  *     },
  *     deletionProtection: false,
  * });
- * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
- *     name: `${namePrefix}-alloydb-ip`,
- *     addressType: "INTERNAL",
- *     purpose: "VPC_PEERING",
- *     prefixLength: 16,
- *     network: defaultNetwork.id,
- * });
- * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
- *     network: defaultNetwork.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
  * const defaultInstance = new gcp.alloydb.Instance("default", {
- *     cluster: _default.name,
+ *     cluster: defaultCluster.name,
  *     instanceId: `${namePrefix}-alloydb-instance`,
  *     instanceType: "PRIMARY",
  *     machineConfig: {
  *         cpuCount: 2,
  *     },
- * }, {
- *     dependsOn: [vpcConnection],
  * });
  * const connection = new gcp.bigquery.Connection("connection", {
  *     connectionId: "my-connection",
@@ -502,6 +516,12 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * Connection properties specific to Salesforce Data Cloud.
+     * This connection type is intended for use only by Salesforce partner projects.
+     * Structure is documented below.
+     */
+    declare public readonly salesforceDataCloud: pulumi.Output<outputs.bigquery.ConnectionSalesforceDataCloud | undefined>;
+    /**
      * Container for connection properties to execute stored procedures for Apache Spark. resources.
      * Structure is documented below.
      */
@@ -535,6 +555,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["salesforceDataCloud"] = state?.salesforceDataCloud;
             resourceInputs["spark"] = state?.spark;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
@@ -551,6 +572,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["kmsKeyName"] = args?.kmsKeyName;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["salesforceDataCloud"] = args?.salesforceDataCloud;
             resourceInputs["spark"] = args?.spark;
             resourceInputs["hasCredential"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -647,6 +669,12 @@ export interface ConnectionState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * Connection properties specific to Salesforce Data Cloud.
+     * This connection type is intended for use only by Salesforce partner projects.
+     * Structure is documented below.
+     */
+    salesforceDataCloud?: pulumi.Input<inputs.bigquery.ConnectionSalesforceDataCloud | undefined>;
+    /**
      * Container for connection properties to execute stored procedures for Apache Spark. resources.
      * Structure is documented below.
      */
@@ -730,6 +758,12 @@ export interface ConnectionArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Connection properties specific to Salesforce Data Cloud.
+     * This connection type is intended for use only by Salesforce partner projects.
+     * Structure is documented below.
+     */
+    salesforceDataCloud?: pulumi.Input<inputs.bigquery.ConnectionSalesforceDataCloud | undefined>;
     /**
      * Container for connection properties to execute stored procedures for Apache Spark. resources.
      * Structure is documented below.

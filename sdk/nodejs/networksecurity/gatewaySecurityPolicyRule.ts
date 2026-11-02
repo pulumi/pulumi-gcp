@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     basicProfile: "ALLOW",
  * });
  * ```
+ *
  * ### Network Security Gateway Security Policy Rules Advanced
  *
  * ```typescript

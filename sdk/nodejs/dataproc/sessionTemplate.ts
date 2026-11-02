@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Session Templates Jupyter Full
  *
  * ```typescript
@@ -159,6 +160,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKeyMember1],
  * });
  * ```
+ *
  * ### Dataproc Session Templates Spark Connect
  *
  * ```typescript

@@ -58,6 +58,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Secure Source Manager Repository Initial Config
 //
 // ```go
@@ -103,6 +104,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Secure Source Manager Repository Service Account
 //
 // ```go
@@ -148,6 +150,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Secure Source Manager Repository Secret Scanning
 //
 // ```go
@@ -221,6 +224,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Secure Source Manager Repository Secret Scanning Default
 //
 // ```go

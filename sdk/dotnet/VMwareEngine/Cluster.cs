@@ -76,6 +76,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vmware Engine Cluster Full
     /// 
     /// ```csharp
@@ -166,6 +167,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vmware Engine Cluster Nfs Datastore Filestore
     /// 
     /// ```csharp
@@ -340,6 +342,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vmware Engine Cluster Nfs Datastore Netapp
     /// 
     /// ```csharp

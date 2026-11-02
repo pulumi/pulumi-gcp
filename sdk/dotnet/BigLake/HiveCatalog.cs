@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// 
     /// ### Biglake Hive Catalog Full
     /// 
     /// ```csharp

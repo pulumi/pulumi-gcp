@@ -14,6 +14,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CaPoolIssuancePolicy
     {
         /// <summary>
+        /// If set to true, allows requesters to specify the RequestedNotBeforeTime
+        /// field when creating a Certificate. Certificates requested with this
+        /// option enabled will have a 'not_before_time' equal to the value
+        /// specified in the request.
+        /// </summary>
+        public readonly bool? AllowRequesterSpecifiedNotBeforeTime;
+        /// <summary>
         /// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
         /// Structure is documented below.
         /// </summary>
@@ -54,6 +61,8 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
         [OutputConstructor]
         private CaPoolIssuancePolicy(
+            bool? allowRequesterSpecifiedNotBeforeTime,
+
             Outputs.CaPoolIssuancePolicyAllowedIssuanceModes? allowedIssuanceModes,
 
             ImmutableArray<Outputs.CaPoolIssuancePolicyAllowedKeyType> allowedKeyTypes,
@@ -66,6 +75,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
             string? maximumLifetime)
         {
+            AllowRequesterSpecifiedNotBeforeTime = allowRequesterSpecifiedNotBeforeTime;
             AllowedIssuanceModes = allowedIssuanceModes;
             AllowedKeyTypes = allowedKeyTypes;
             BackdateDuration = backdateDuration;

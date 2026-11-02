@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *         var cache = new Instance("cache", InstanceArgs.builder()
  *             .name("memory-cache")
  *             .memorySizeGb(1)
- *             .region("us-west1")
+ *             .region("us-east1")
  *             .deletionProtection(false)
  *             .build());
  * 
@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Instance Full
  * 
  * <pre>
@@ -114,9 +115,9 @@ import javax.annotation.Nullable;
  *             .name("ha-memory-cache")
  *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
- *             .region("us-west1")
- *             .locationId("us-west1-a")
- *             .alternativeLocationId("us-west1-b")
+ *             .region("us-east1")
+ *             .locationId("us-east1-b")
+ *             .alternativeLocationId("us-east1-c")
  *             .authorizedNetwork(redis_network.id())
  *             .redisVersion("REDIS_7_2")
  *             .displayName("Test Instance")
@@ -142,6 +143,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Instance Full With Persistence Config
  * 
  * <pre>
@@ -171,9 +173,9 @@ import javax.annotation.Nullable;
  *             .name("ha-memory-cache-persis")
  *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
- *             .region("us-west1")
- *             .locationId("us-west1-a")
- *             .alternativeLocationId("us-west1-b")
+ *             .region("us-east1")
+ *             .locationId("us-east1-b")
+ *             .alternativeLocationId("us-east1-c")
  *             .persistenceConfig(InstancePersistenceConfigArgs.builder()
  *                 .persistenceMode("RDB")
  *                 .rdbSnapshotPeriod("TWELVE_HOURS")
@@ -184,6 +186,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Instance Private Service
  * 
  * <pre>
@@ -245,9 +248,9 @@ import javax.annotation.Nullable;
  *             .name("private-cache")
  *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
- *             .region("us-west1")
- *             .locationId("us-west1-a")
- *             .alternativeLocationId("us-west1-b")
+ *             .region("us-east1")
+ *             .locationId("us-east1-b")
+ *             .alternativeLocationId("us-east1-c")
  *             .authorizedNetwork(redis_network.id())
  *             .connectMode("PRIVATE_SERVICE_ACCESS")
  *             .redisVersion("REDIS_7_2")
@@ -260,6 +263,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Instance Mrr
  * 
  * <pre>
@@ -302,9 +306,9 @@ import javax.annotation.Nullable;
  *             .name("mrr-memory-cache")
  *             .tier("STANDARD_HA")
  *             .memorySizeGb(5)
- *             .region("us-west1")
- *             .locationId("us-west1-a")
- *             .alternativeLocationId("us-west1-b")
+ *             .region("us-east1")
+ *             .locationId("us-east1-b")
+ *             .alternativeLocationId("us-east1-c")
  *             .authorizedNetwork(redis_network.id())
  *             .redisVersion("REDIS_7_2")
  *             .displayName("Test Instance")
@@ -320,6 +324,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Redis Instance Cmek
  * 
  * <pre>
@@ -352,7 +357,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var redisKeyring = new KeyRing("redisKeyring", KeyRingArgs.builder()
  *             .name("redis-keyring")
- *             .location("us-west1")
+ *             .location("us-east1")
  *             .build());
  * 
  *         var redisKey = new CryptoKey("redisKey", CryptoKeyArgs.builder()
@@ -376,9 +381,9 @@ import javax.annotation.Nullable;
  *             .name("cmek-memory-cache")
  *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
- *             .region("us-west1")
- *             .locationId("us-west1-a")
- *             .alternativeLocationId("us-west1-b")
+ *             .region("us-east1")
+ *             .locationId("us-east1-b")
+ *             .alternativeLocationId("us-east1-c")
  *             .authorizedNetwork(redis_network.id())
  *             .redisVersion("REDIS_7_2")
  *             .displayName("Test Instance")

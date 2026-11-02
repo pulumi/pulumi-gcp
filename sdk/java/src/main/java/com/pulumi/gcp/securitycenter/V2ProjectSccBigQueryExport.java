@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.securitycenter.V2ProjectSccBigQueryExportArgs;
 import com.pulumi.gcp.securitycenter.inputs.V2ProjectSccBigQueryExportState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -149,6 +150,20 @@ public class V2ProjectSccBigQueryExport extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<String>> dataset() {
         return Codegen.optional(this.dataset);
+    }
+    /**
+     * Indicates whether the notifications will be sent for deleted findings.
+     * 
+     */
+    @Export(name="deletionNotificationsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionNotificationsEnabled;
+
+    /**
+     * @return Indicates whether the notifications will be sent for deleted findings.
+     * 
+     */
+    public Output<Optional<Boolean>> deletionNotificationsEnabled() {
+        return Codegen.optional(this.deletionNotificationsEnabled);
     }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

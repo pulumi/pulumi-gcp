@@ -67,6 +67,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Edgenetwork Subnet With Vlan Id
 //
 // ```go

@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Services Agent Connectivity Template Advanced
     /// 
     /// ```csharp

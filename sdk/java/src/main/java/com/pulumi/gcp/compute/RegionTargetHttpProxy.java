@@ -106,6 +106,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Target Http Proxy Http Keep Alive Timeout
  * 
  * <pre>
@@ -187,6 +188,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Target Http Proxy Https Redirect
  * 
  * <pre>

@@ -537,6 +537,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             description="basic region security policy",
             type="CLOUD_ARMOR")
         ```
+
         ### Region Security Policy With Ddos Protection Config
 
         ```python
@@ -551,6 +552,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 "ddos_protection": "ADVANCED_PREVIEW",
             })
         ```
+
         ### Region Security Policy With User Defined Fields
 
         ```python
@@ -578,6 +580,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Region Security Policy With Rules
 
         ```python
@@ -611,6 +614,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Region Security Policy With Body Exclude
 
         ```python
@@ -681,7 +685,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             name="backendpolicy",
             machine_type="e2-micro",
             disks=[{
-                "source_image": "projects/debian-cloud/global/images/family/debian-11",
+                "source_image": "projects/debian-cloud/global/images/family/debian-13",
                 "auto_delete": True,
                 "boot": True,
             }])
@@ -706,6 +710,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             }],
             security_policy=policy_rule_one.id)
         ```
+
         ### Region Security Policy Request Body Expression
 
         ```python
@@ -821,6 +826,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             description="basic region security policy",
             type="CLOUD_ARMOR")
         ```
+
         ### Region Security Policy With Ddos Protection Config
 
         ```python
@@ -835,6 +841,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 "ddos_protection": "ADVANCED_PREVIEW",
             })
         ```
+
         ### Region Security Policy With User Defined Fields
 
         ```python
@@ -862,6 +869,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Region Security Policy With Rules
 
         ```python
@@ -895,6 +903,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Region Security Policy With Body Exclude
 
         ```python
@@ -965,7 +974,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             name="backendpolicy",
             machine_type="e2-micro",
             disks=[{
-                "source_image": "projects/debian-cloud/global/images/family/debian-11",
+                "source_image": "projects/debian-cloud/global/images/family/debian-13",
                 "auto_delete": True,
                 "boot": True,
             }])
@@ -990,6 +999,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             }],
             security_policy=policy_rule_one.id)
         ```
+
         ### Region Security Policy Request Body Expression
 
         ```python

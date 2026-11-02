@@ -114,6 +114,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Ces Toolset Openapi Oauth Config
  * 
  * <pre>
@@ -208,6 +209,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Toolset Openapi Service Agent Id Token Auth Config
  * 
  * <pre>
@@ -297,6 +299,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Toolset Openapi Api Key Config
  * 
  * <pre>
@@ -391,6 +394,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Toolset Bearer Token Config
  * 
  * <pre>
@@ -481,6 +485,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Toolset Mcp Service Account Auth Config
  * 
  * <pre>
@@ -562,6 +567,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Ces Toolset Mcp Oauth Config
  * 
  * <pre>
@@ -646,6 +652,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Toolset Mcp Service Agent Id Token Auth Config
  * 
  * <pre>
@@ -732,6 +739,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Toolset Mcp Api Key Config
  * 
  * <pre>
@@ -816,6 +824,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Ces Toolset Mcp Bearer Token Config
  * 
  * <pre>

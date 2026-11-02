@@ -380,6 +380,7 @@ class GdaObservabilitySetting(pulumi.CustomResource):
             gda_observability_setting_id="ls1-tf",
             location="global")
         ```
+
         ### Gemini Gda Observability Setting Full
 
         ```python
@@ -462,6 +463,7 @@ class GdaObservabilitySetting(pulumi.CustomResource):
             gda_observability_setting_id="ls1-tf",
             location="global")
         ```
+
         ### Gemini Gda Observability Setting Full
 
         ```python

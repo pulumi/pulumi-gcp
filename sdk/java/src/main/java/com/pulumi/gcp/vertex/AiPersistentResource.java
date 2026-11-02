@@ -47,6 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.AiPersistentResourceArgs;
  * import com.pulumi.gcp.vertex.inputs.AiPersistentResourceResourcePoolArgs;
  * import com.pulumi.gcp.vertex.inputs.AiPersistentResourceResourcePoolMachineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiPersistentResourceResourceRuntimeSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiPersistentResourceResourceRuntimeSpecRaySpecArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -66,9 +68,14 @@ import javax.annotation.Nullable;
  *             .displayName("Example persistent resource")
  *             .resourcePools(AiPersistentResourceResourcePoolArgs.builder()
  *                 .machineSpec(AiPersistentResourceResourcePoolMachineSpecArgs.builder()
- *                     .machineType("n1-standard-4")
+ *                     .machineType("n1-standard-8")
  *                     .build())
- *                 .replicaCount("1")
+ *                 .replicaCount("2")
+ *                 .build())
+ *             .resourceRuntimeSpec(AiPersistentResourceResourceRuntimeSpecArgs.builder()
+ *                 .raySpec(AiPersistentResourceResourceRuntimeSpecRaySpecArgs.builder()
+ *                     .imageUri("us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest")
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -76,6 +83,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Persistent Resource Autoscaling
  * 
  * <pre>
@@ -123,6 +131,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Persistent Resource Machine Spec
  * 
  * <pre>
@@ -171,6 +180,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Persistent Resource Network
  * 
  * <pre>

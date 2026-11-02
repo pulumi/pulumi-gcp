@@ -133,6 +133,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Colab Notebook Execution Custom Env
 //
 // ```go
@@ -261,6 +262,220 @@ import (
 //	}
 //
 // ```
+//
+// ### Colab Notebook Execution Workbench Runtime Custom Container
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			outputBucket, err := storage.NewBucket(ctx, "output_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my_bucket"),
+//				Location:                 pulumi.String("US"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: `    {
+//	      \"cells\": [
+//	        {
+//	          \"cell_type\": \"code\",
+//	          \"execution_count\": null,
+//	          \"metadata\": {},
+//	          \"outputs\": [],
+//	          \"source\": [
+//	            \"print(\\\"Hello, World!\\\")\"
+//	          ]
+//	        }
+//	      ],
+//	      \"metadata\": {
+//	        \"kernelspec\": {
+//	          \"display_name\": \"Python 3\",
+//	          \"language\": \"python\",
+//	          \"name\": \"python3\"
+//	        },
+//	        \"language_info\": {
+//	          \"codemirror_mode\": {
+//	            \"name\": \"ipython\",
+//	            \"version\": 3
+//	          },
+//	          \"file_extension\": \".py\",
+//	          \"mimetype\": \"text/x-python\",
+//	          \"name\": \"python\",
+//	          \"nbconvert_exporter\": \"python\",
+//	          \"pygments_lexer\": \"ipython3\",
+//	          \"version\": \"3.8.5\"
+//	        }
+//	      },
+//	      \"nbformat\": 4,
+//	      \"nbformat_minor\": 4
+//	    }
+//
+// `,
+//
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = colab.NewNotebookExecution(ctx, "notebook-execution", &colab.NotebookExecutionArgs{
+//				DisplayName: pulumi.String("Notebook execution workbench runtime custom container"),
+//				Location:    pulumi.String("us-central1"),
+//				DirectNotebookSource: &colab.NotebookExecutionDirectNotebookSourceArgs{
+//					Content: pulumi.String(invokeBase64encode.Result),
+//				},
+//				CustomEnvironmentSpec: &colab.NotebookExecutionCustomEnvironmentSpecArgs{
+//					MachineSpec: &colab.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{
+//						MachineType: pulumi.String("n1-standard-2"),
+//					},
+//					PersistentDiskSpec: &colab.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{
+//						DiskType:   pulumi.String("pd-ssd"),
+//						DiskSizeGb: pulumi.String("100"),
+//					},
+//				},
+//				WorkbenchRuntime: &colab.NotebookExecutionWorkbenchRuntimeArgs{
+//					CustomContainerImage: &colab.NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs{
+//						Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
+//						Tag:        pulumi.String("latest"),
+//					},
+//				},
+//				KernelName: pulumi.String("python3"),
+//				GcsOutputUri: outputBucket.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("gs://%v", name), nil
+//				}).(pulumi.StringOutput),
+//				ServiceAccount: pulumi.String("my@service-account.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				outputBucket,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Colab Notebook Execution Workbench Runtime Custom Container No Tag
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			outputBucket, err := storage.NewBucket(ctx, "output_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my_bucket"),
+//				Location:                 pulumi.String("US"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: `    {
+//	      \"cells\": [
+//	        {
+//	          \"cell_type\": \"code\",
+//	          \"execution_count\": null,
+//	          \"metadata\": {},
+//	          \"outputs\": [],
+//	          \"source\": [
+//	            \"print(\\\"Hello, World!\\\")\"
+//	          ]
+//	        }
+//	      ],
+//	      \"metadata\": {
+//	        \"kernelspec\": {
+//	          \"display_name\": \"Python 3\",
+//	          \"language\": \"python\",
+//	          \"name\": \"python3\"
+//	        },
+//	        \"language_info\": {
+//	          \"codemirror_mode\": {
+//	            \"name\": \"ipython\",
+//	            \"version\": 3
+//	          },
+//	          \"file_extension\": \".py\",
+//	          \"mimetype\": \"text/x-python\",
+//	          \"name\": \"python\",
+//	          \"nbconvert_exporter\": \"python\",
+//	          \"pygments_lexer\": \"ipython3\",
+//	          \"version\": \"3.8.5\"
+//	        }
+//	      },
+//	      \"nbformat\": 4,
+//	      \"nbformat_minor\": 4
+//	    }
+//
+// `,
+//
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = colab.NewNotebookExecution(ctx, "notebook-execution", &colab.NotebookExecutionArgs{
+//				DisplayName: pulumi.String("Notebook execution workbench runtime custom container no tag"),
+//				Location:    pulumi.String("us-central1"),
+//				DirectNotebookSource: &colab.NotebookExecutionDirectNotebookSourceArgs{
+//					Content: pulumi.String(invokeBase64encode.Result),
+//				},
+//				CustomEnvironmentSpec: &colab.NotebookExecutionCustomEnvironmentSpecArgs{
+//					MachineSpec: &colab.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{
+//						MachineType: pulumi.String("n1-standard-2"),
+//					},
+//					PersistentDiskSpec: &colab.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{
+//						DiskType:   pulumi.String("pd-ssd"),
+//						DiskSizeGb: pulumi.String("100"),
+//					},
+//				},
+//				WorkbenchRuntime: &colab.NotebookExecutionWorkbenchRuntimeArgs{
+//					CustomContainerImage: &colab.NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs{
+//						Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
+//					},
+//				},
+//				KernelName: pulumi.String("python3"),
+//				GcsOutputUri: outputBucket.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("gs://%v", name), nil
+//				}).(pulumi.StringOutput),
+//				ServiceAccount: pulumi.String("my@service-account.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				outputBucket,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Colab Notebook Execution Workbench Runtime Vm
 //
 // ```go
@@ -366,6 +581,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Colab Notebook Execution Workbench Runtime Vm Name
 //
 // ```go
@@ -471,6 +687,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Colab Notebook Execution Full
 //
 // ```go
@@ -591,6 +808,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Colab Notebook Execution Dataform
 //
 // ```go
@@ -754,6 +972,8 @@ type NotebookExecution struct {
 	GcsNotebookSource NotebookExecutionGcsNotebookSourcePtrOutput `pulumi:"gcsNotebookSource"`
 	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 	GcsOutputUri pulumi.StringOutput `pulumi:"gcsOutputUri"`
+	// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+	KernelName pulumi.StringPtrOutput `pulumi:"kernelName"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	Location pulumi.StringOutput `pulumi:"location"`
 	// User specified ID for the Notebook Execution Job
@@ -836,6 +1056,8 @@ type notebookExecutionState struct {
 	GcsNotebookSource *NotebookExecutionGcsNotebookSource `pulumi:"gcsNotebookSource"`
 	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 	GcsOutputUri *string `pulumi:"gcsOutputUri"`
+	// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+	KernelName *string `pulumi:"kernelName"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	Location *string `pulumi:"location"`
 	// User specified ID for the Notebook Execution Job
@@ -880,6 +1102,8 @@ type NotebookExecutionState struct {
 	GcsNotebookSource NotebookExecutionGcsNotebookSourcePtrInput
 	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 	GcsOutputUri pulumi.StringPtrInput
+	// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+	KernelName pulumi.StringPtrInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	Location pulumi.StringPtrInput
 	// User specified ID for the Notebook Execution Job
@@ -928,6 +1152,8 @@ type notebookExecutionArgs struct {
 	GcsNotebookSource *NotebookExecutionGcsNotebookSource `pulumi:"gcsNotebookSource"`
 	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 	GcsOutputUri string `pulumi:"gcsOutputUri"`
+	// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+	KernelName *string `pulumi:"kernelName"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	Location string `pulumi:"location"`
 	// User specified ID for the Notebook Execution Job
@@ -973,6 +1199,8 @@ type NotebookExecutionArgs struct {
 	GcsNotebookSource NotebookExecutionGcsNotebookSourcePtrInput
 	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 	GcsOutputUri pulumi.StringInput
+	// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+	KernelName pulumi.StringPtrInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	Location pulumi.StringInput
 	// User specified ID for the Notebook Execution Job
@@ -1134,6 +1362,11 @@ func (o NotebookExecutionOutput) GcsNotebookSource() NotebookExecutionGcsNoteboo
 // The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 func (o NotebookExecutionOutput) GcsOutputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotebookExecution) pulumi.StringOutput { return v.GcsOutputUri }).(pulumi.StringOutput)
+}
+
+// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+func (o NotebookExecutionOutput) KernelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecution) pulumi.StringPtrOutput { return v.KernelName }).(pulumi.StringPtrOutput)
 }
 
 // The location for the resource: https://cloud.google.com/colab/docs/locations

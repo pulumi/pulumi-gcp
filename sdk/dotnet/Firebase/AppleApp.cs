@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase Apple App Full
     /// 
     /// ```csharp

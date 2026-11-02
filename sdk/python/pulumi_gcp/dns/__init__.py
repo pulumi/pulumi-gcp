@@ -16,6 +16,7 @@ from .get_managed_zones import *
 from .get_record_set import *
 from .get_record_sets import *
 from .managed_zone import *
+from .outbound_endpoint import *
 from .policy import *
 from .record_set import *
 from .response_policy import *

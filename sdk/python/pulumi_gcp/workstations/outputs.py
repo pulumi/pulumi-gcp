@@ -890,6 +890,8 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
         suggest = None
         if key == "bootDiskSizeGb":
             suggest = "boot_disk_size_gb"
+        elif key == "enableAutomaticFailover":
+            suggest = "enable_automatic_failover"
         elif key == "enableNestedVirtualization":
             suggest = "enable_nested_virtualization"
         elif key == "machineType":
@@ -912,6 +914,7 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
                  id: _builtins.str,
                  accelerators: Optional[Sequence['outputs.WorkstationConfigHostGceInstanceBoostConfigAccelerator']] = None,
                  boot_disk_size_gb: Optional[_builtins.int] = None,
+                 enable_automatic_failover: Optional[_builtins.bool] = None,
                  enable_nested_virtualization: Optional[_builtins.bool] = None,
                  machine_type: Optional[_builtins.str] = None,
                  pool_size: Optional[_builtins.int] = None):
@@ -920,6 +923,8 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
         :param Sequence['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs'] accelerators: An accelerator card attached to the boost instance.
                Structure is documented below.
         :param _builtins.int boot_disk_size_gb: Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+        :param _builtins.bool enable_automatic_failover: (Optional, Beta)
+               Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
         :param _builtins.bool enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
                See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         :param _builtins.str machine_type: The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
@@ -930,6 +935,8 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
             pulumi.set(__self__, "accelerators", accelerators)
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if enable_automatic_failover is not None:
+            pulumi.set(__self__, "enable_automatic_failover", enable_automatic_failover)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if machine_type is not None:
@@ -961,6 +968,15 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
         Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
         """
         return pulumi.get(self, "boot_disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="enableAutomaticFailover")
+    def enable_automatic_failover(self) -> Optional[_builtins.bool]:
+        """
+        (Optional, Beta)
+        Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+        """
+        return pulumi.get(self, "enable_automatic_failover")
 
     @_builtins.property
     @pulumi.getter(name="enableNestedVirtualization")

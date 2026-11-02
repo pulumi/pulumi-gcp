@@ -65,6 +65,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Ruledeployment Disabled
     /// 
     /// ```csharp
@@ -108,6 +109,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// });
     /// ```
+    /// 
     /// ### Chronicle Ruledeployment Run Frequency Missing
     /// 
     /// ```csharp

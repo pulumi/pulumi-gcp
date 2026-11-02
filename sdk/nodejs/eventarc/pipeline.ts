@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     displayName: "Testing Pipeline",
  * });
  * ```
+ *
  * ### Eventarc Pipeline With Http Destination
  *
  * ```typescript
@@ -58,6 +59,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Eventarc Pipeline With Workflow Destination
  *
  * ```typescript
@@ -103,6 +105,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Eventarc Pipeline With Oidc And Json Format
  *
  * ```typescript
@@ -153,6 +156,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Eventarc Pipeline With Oauth And Protobuf Format
  *
  * ```typescript
@@ -217,6 +221,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Eventarc Pipeline With Cmek And Avro Format
  *
  * ```typescript

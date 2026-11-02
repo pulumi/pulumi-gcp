@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     cbnSnippet: "ZHVtbXkgZXh0ZW5zaW9uIHNuaXBwZXQ=",
  * });
  * ```
+ *
  * ### Chronicle Parserextension Full
  *
  * ```typescript
@@ -68,6 +69,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Chronicle Parserextension Dynamic
  *
  * ```typescript

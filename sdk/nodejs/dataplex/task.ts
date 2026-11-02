@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Task Spark
  *
  * ```typescript
@@ -116,6 +117,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Task Notebook
  *
  * ```typescript

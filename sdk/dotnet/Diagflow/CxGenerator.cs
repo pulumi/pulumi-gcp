@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         DisplayName = "TF Prompt generator",
     ///         LlmModelSettings = new Gcp.Diagflow.Inputs.CxGeneratorLlmModelSettingsArgs
     ///         {
-    ///             Model = "gemini-2.0-flash-001",
+    ///             Model = "gemini-2.5-flash",
     ///             PromptText = "Return me some great results",
     ///         },
     ///         PromptText = new Gcp.Diagflow.Inputs.CxGeneratorPromptTextArgs

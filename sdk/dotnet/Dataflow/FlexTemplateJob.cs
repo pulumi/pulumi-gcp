@@ -15,9 +15,6 @@ namespace Pulumi.Gcp.Dataflow
     /// Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
     /// and [Dataflow](https://cloud.google.com/dataflow/).
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

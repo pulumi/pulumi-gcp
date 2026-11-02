@@ -116,6 +116,15 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<Inputs.ClusterClusterConfigMasterConfigGetArgs>? MasterConfig { get; set; }
 
         /// <summary>
+        /// The configuration for the master flexible instance group
+        /// in High Obtainability (HO) mode. Mutually exclusive with `MasterConfig` and `gce_cluster_config.zone`.
+        /// Required whenever `WorkerFlexibleConfig` or `SecondaryWorkerFlexibleConfig` is specified.
+        /// Structure defined below.
+        /// </summary>
+        [Input("masterFlexibleConfig")]
+        public Input<Inputs.ClusterClusterConfigMasterFlexibleConfigGetArgs>? MasterFlexibleConfig { get; set; }
+
+        /// <summary>
         /// The config setting for metastore service with the cluster.
         /// Structure defined below.
         /// - - -
@@ -132,6 +141,15 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// </summary>
         [Input("preemptibleWorkerConfig")]
         public Input<Inputs.ClusterClusterConfigPreemptibleWorkerConfigGetArgs>? PreemptibleWorkerConfig { get; set; }
+
+        /// <summary>
+        /// The configuration for the secondary worker flexible
+        /// instance group in High Obtainability (HO) mode. Mutually exclusive with `PreemptibleWorkerConfig` and
+        /// `gce_cluster_config.zone`. Requires `MasterFlexibleConfig`.
+        /// Structure defined below.
+        /// </summary>
+        [Input("secondaryWorkerFlexibleConfig")]
+        public Input<Inputs.ClusterClusterConfigSecondaryWorkerFlexibleConfigGetArgs>? SecondaryWorkerFlexibleConfig { get; set; }
 
         /// <summary>
         /// Security related configuration. Structure defined below.
@@ -172,6 +190,14 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.ClusterClusterConfigWorkerConfigGetArgs>? WorkerConfig { get; set; }
+
+        /// <summary>
+        /// The configuration for the worker flexible instance group
+        /// in High Obtainability (HO) mode. Mutually exclusive with `WorkerConfig` and `gce_cluster_config.zone`.
+        /// Requires `MasterFlexibleConfig`. Structure defined below.
+        /// </summary>
+        [Input("workerFlexibleConfig")]
+        public Input<Inputs.ClusterClusterConfigWorkerFlexibleConfigGetArgs>? WorkerFlexibleConfig { get; set; }
 
         public ClusterClusterConfigGetArgs()
         {

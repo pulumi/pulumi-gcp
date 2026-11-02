@@ -54,6 +54,7 @@ import * as utilities from "../utilities";
  *     sourceTags: ["web"],
  * });
  * ```
+ *
  * ### Firewall With Target Tags
  *
  * ```typescript
@@ -181,6 +182,10 @@ export class Firewall extends pulumi.CustomResource {
      */
     declare public readonly enableLogging: pulumi.Output<boolean>;
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    declare public /*out*/ readonly firewallId: pulumi.Output<number>;
+    /**
      * This field denotes the logging options for a particular firewall rule.
      * If defined, logging is enabled, and logs will be exported to Cloud Logging.
      * Structure is documented below.
@@ -302,6 +307,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["direction"] = state?.direction;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["enableLogging"] = state?.enableLogging;
+            resourceInputs["firewallId"] = state?.firewallId;
             resourceInputs["logConfig"] = state?.logConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["network"] = state?.network;
@@ -339,6 +345,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["targetServiceAccounts"] = args?.targetServiceAccounts;
             resourceInputs["targetTags"] = args?.targetTags;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["firewallId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -408,6 +415,10 @@ export interface FirewallState {
      * @deprecated Deprecated in favor of log_config
      */
     enableLogging?: pulumi.Input<boolean | undefined>;
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    firewallId?: pulumi.Input<number | undefined>;
     /**
      * This field denotes the logging options for a particular firewall rule.
      * If defined, logging is enabled, and logs will be exported to Cloud Logging.

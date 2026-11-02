@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     displayName: "analysis-rule-display-name",
  * });
  * ```
+ *
  * ### Contact Center Insights Analysis Rule Full
  *
  * ```typescript
@@ -67,6 +68,7 @@ import * as utilities from "../utilities";
  *     active: true,
  * });
  * ```
+ *
  * ### Contact Center Insights Analysis Rule Profile
  *
  * ```typescript

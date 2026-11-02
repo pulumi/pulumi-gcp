@@ -10942,6 +10942,7 @@ type DiskDiskEncryptionKey struct {
 	// (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
 	// `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+	// Specify the key without a `/cryptoKeyVersions/` suffix.
 	KmsKeySelfLink *string `pulumi:"kmsKeySelfLink"`
 	// The service account used for the encryption request for the given KMS key.
 	// If absent, the Compute Engine Service Agent service account is used.
@@ -10999,6 +11000,7 @@ type DiskDiskEncryptionKeyArgs struct {
 	// (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
 	// `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+	// Specify the key without a `/cryptoKeyVersions/` suffix.
 	KmsKeySelfLink pulumi.StringPtrInput `pulumi:"kmsKeySelfLink"`
 	// The service account used for the encryption request for the given KMS key.
 	// If absent, the Compute Engine Service Agent service account is used.
@@ -11121,6 +11123,7 @@ func (o DiskDiskEncryptionKeyOutput) ToDiskDiskEncryptionKeyPtrOutputWithContext
 // (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
 // `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 // See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+// Specify the key without a `/cryptoKeyVersions/` suffix.
 func (o DiskDiskEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskDiskEncryptionKey) *string { return v.KmsKeySelfLink }).(pulumi.StringPtrOutput)
 }
@@ -11215,6 +11218,7 @@ func (o DiskDiskEncryptionKeyPtrOutput) Elem() DiskDiskEncryptionKeyOutput {
 // (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
 // `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 // See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+// Specify the key without a `/cryptoKeyVersions/` suffix.
 func (o DiskDiskEncryptionKeyPtrOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskDiskEncryptionKey) *string {
 		if v == nil {
@@ -25137,7 +25141,7 @@ func (o HealthCheckTcpHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 
 type ImageGuestOsFeature struct {
 	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-	// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+	// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
 	Type string `pulumi:"type"`
 }
 
@@ -25154,7 +25158,7 @@ type ImageGuestOsFeatureInput interface {
 
 type ImageGuestOsFeatureArgs struct {
 	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-	// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+	// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -25210,7 +25214,7 @@ func (o ImageGuestOsFeatureOutput) ToImageGuestOsFeatureOutputWithContext(ctx co
 }
 
 // The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
 func (o ImageGuestOsFeatureOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -28511,18 +28515,17 @@ type InstanceBootDiskInitializeParams struct {
 	// Indicates how many IOPS to provision for the disk.
 	// This sets the number of I/O operations per second that the disk can handle.
 	// For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-	// Note: Updating currently is only supported for hyperdisk skus via disk update
-	// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-	// for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-	// you'll need to manually delete and recreate it.
+	// Note: Updating in place is only supported for hyperdisk skus; changing this
+	// value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+	// Hyperdisk allows for an update of IOPS every 4 hours; to update more
+	// frequently than that, you'll need to manually delete and recreate the disk.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk.
 	// This sets the number of throughput mb per second that the disk can handle.
 	// For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-	// Note: Updating currently is only supported for hyperdisk skus via disk update
-	// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-	// for an update of throughput every 4 hours. To update your hyperdisk more
-	// frequently, you'll need to manually delete and recreate it.
+	// Note: This is only supported for hyperdisk skus, and can be updated in place.
+	// Hyperdisk allows for an update of throughput every 4 hours; to update more
+	// frequently than that, you'll need to manually delete and recreate the disk.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
 	// A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 	ReplicaZones []string `pulumi:"replicaZones"`
@@ -28583,18 +28586,17 @@ type InstanceBootDiskInitializeParamsArgs struct {
 	// Indicates how many IOPS to provision for the disk.
 	// This sets the number of I/O operations per second that the disk can handle.
 	// For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-	// Note: Updating currently is only supported for hyperdisk skus via disk update
-	// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-	// for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-	// you'll need to manually delete and recreate it.
+	// Note: Updating in place is only supported for hyperdisk skus; changing this
+	// value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+	// Hyperdisk allows for an update of IOPS every 4 hours; to update more
+	// frequently than that, you'll need to manually delete and recreate the disk.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk.
 	// This sets the number of throughput mb per second that the disk can handle.
 	// For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-	// Note: Updating currently is only supported for hyperdisk skus via disk update
-	// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-	// for an update of throughput every 4 hours. To update your hyperdisk more
-	// frequently, you'll need to manually delete and recreate it.
+	// Note: This is only supported for hyperdisk skus, and can be updated in place.
+	// Hyperdisk allows for an update of throughput every 4 hours; to update more
+	// frequently than that, you'll need to manually delete and recreate the disk.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
 	// A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
@@ -28732,10 +28734,10 @@ func (o InstanceBootDiskInitializeParamsOutput) Labels() pulumi.StringMapOutput 
 // Indicates how many IOPS to provision for the disk.
 // This sets the number of I/O operations per second that the disk can handle.
 // For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-// Note: Updating currently is only supported for hyperdisk skus via disk update
-// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-// for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-// you'll need to manually delete and recreate it.
+// Note: Updating in place is only supported for hyperdisk skus; changing this
+// value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+// Hyperdisk allows for an update of IOPS every 4 hours; to update more
+// frequently than that, you'll need to manually delete and recreate the disk.
 func (o InstanceBootDiskInitializeParamsOutput) ProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceBootDiskInitializeParams) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
 }
@@ -28743,10 +28745,9 @@ func (o InstanceBootDiskInitializeParamsOutput) ProvisionedIops() pulumi.IntPtrO
 // Indicates how much throughput to provision for the disk.
 // This sets the number of throughput mb per second that the disk can handle.
 // For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-// Note: Updating currently is only supported for hyperdisk skus via disk update
-// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-// for an update of throughput every 4 hours. To update your hyperdisk more
-// frequently, you'll need to manually delete and recreate it.
+// Note: This is only supported for hyperdisk skus, and can be updated in place.
+// Hyperdisk allows for an update of throughput every 4 hours; to update more
+// frequently than that, you'll need to manually delete and recreate the disk.
 func (o InstanceBootDiskInitializeParamsOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceBootDiskInitializeParams) *int { return v.ProvisionedThroughput }).(pulumi.IntPtrOutput)
 }
@@ -28883,10 +28884,10 @@ func (o InstanceBootDiskInitializeParamsPtrOutput) Labels() pulumi.StringMapOutp
 // Indicates how many IOPS to provision for the disk.
 // This sets the number of I/O operations per second that the disk can handle.
 // For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-// Note: Updating currently is only supported for hyperdisk skus via disk update
-// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-// for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-// you'll need to manually delete and recreate it.
+// Note: Updating in place is only supported for hyperdisk skus; changing this
+// value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+// Hyperdisk allows for an update of IOPS every 4 hours; to update more
+// frequently than that, you'll need to manually delete and recreate the disk.
 func (o InstanceBootDiskInitializeParamsPtrOutput) ProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceBootDiskInitializeParams) *int {
 		if v == nil {
@@ -28899,10 +28900,9 @@ func (o InstanceBootDiskInitializeParamsPtrOutput) ProvisionedIops() pulumi.IntP
 // Indicates how much throughput to provision for the disk.
 // This sets the number of throughput mb per second that the disk can handle.
 // For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-// Note: Updating currently is only supported for hyperdisk skus via disk update
-// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-// for an update of throughput every 4 hours. To update your hyperdisk more
-// frequently, you'll need to manually delete and recreate it.
+// Note: This is only supported for hyperdisk skus, and can be updated in place.
+// Hyperdisk allows for an update of throughput every 4 hours; to update more
+// frequently than that, you'll need to manually delete and recreate the disk.
 func (o InstanceBootDiskInitializeParamsPtrOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceBootDiskInitializeParams) *int {
 		if v == nil {
@@ -60224,6 +60224,151 @@ func (o NetworkAttachmentConnectionEndpointArrayOutput) Index(i pulumi.IntInput)
 	}).(NetworkAttachmentConnectionEndpointOutput)
 }
 
+type NetworkEdgeSecurityServiceParams struct {
+	// Resource manager tags to be bound to the networkEdgeSecurityService. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// NetworkEdgeSecurityServiceParamsInput is an input type that accepts NetworkEdgeSecurityServiceParamsArgs and NetworkEdgeSecurityServiceParamsOutput values.
+// You can construct a concrete instance of `NetworkEdgeSecurityServiceParamsInput` via:
+//
+//	NetworkEdgeSecurityServiceParamsArgs{...}
+type NetworkEdgeSecurityServiceParamsInput interface {
+	pulumi.Input
+
+	ToNetworkEdgeSecurityServiceParamsOutput() NetworkEdgeSecurityServiceParamsOutput
+	ToNetworkEdgeSecurityServiceParamsOutputWithContext(context.Context) NetworkEdgeSecurityServiceParamsOutput
+}
+
+type NetworkEdgeSecurityServiceParamsArgs struct {
+	// Resource manager tags to be bound to the networkEdgeSecurityService. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (NetworkEdgeSecurityServiceParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEdgeSecurityServiceParams)(nil)).Elem()
+}
+
+func (i NetworkEdgeSecurityServiceParamsArgs) ToNetworkEdgeSecurityServiceParamsOutput() NetworkEdgeSecurityServiceParamsOutput {
+	return i.ToNetworkEdgeSecurityServiceParamsOutputWithContext(context.Background())
+}
+
+func (i NetworkEdgeSecurityServiceParamsArgs) ToNetworkEdgeSecurityServiceParamsOutputWithContext(ctx context.Context) NetworkEdgeSecurityServiceParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEdgeSecurityServiceParamsOutput)
+}
+
+func (i NetworkEdgeSecurityServiceParamsArgs) ToNetworkEdgeSecurityServiceParamsPtrOutput() NetworkEdgeSecurityServiceParamsPtrOutput {
+	return i.ToNetworkEdgeSecurityServiceParamsPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkEdgeSecurityServiceParamsArgs) ToNetworkEdgeSecurityServiceParamsPtrOutputWithContext(ctx context.Context) NetworkEdgeSecurityServiceParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEdgeSecurityServiceParamsOutput).ToNetworkEdgeSecurityServiceParamsPtrOutputWithContext(ctx)
+}
+
+// NetworkEdgeSecurityServiceParamsPtrInput is an input type that accepts NetworkEdgeSecurityServiceParamsArgs, NetworkEdgeSecurityServiceParamsPtr and NetworkEdgeSecurityServiceParamsPtrOutput values.
+// You can construct a concrete instance of `NetworkEdgeSecurityServiceParamsPtrInput` via:
+//
+//	        NetworkEdgeSecurityServiceParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkEdgeSecurityServiceParamsPtrInput interface {
+	pulumi.Input
+
+	ToNetworkEdgeSecurityServiceParamsPtrOutput() NetworkEdgeSecurityServiceParamsPtrOutput
+	ToNetworkEdgeSecurityServiceParamsPtrOutputWithContext(context.Context) NetworkEdgeSecurityServiceParamsPtrOutput
+}
+
+type networkEdgeSecurityServiceParamsPtrType NetworkEdgeSecurityServiceParamsArgs
+
+func NetworkEdgeSecurityServiceParamsPtr(v *NetworkEdgeSecurityServiceParamsArgs) NetworkEdgeSecurityServiceParamsPtrInput {
+	return (*networkEdgeSecurityServiceParamsPtrType)(v)
+}
+
+func (*networkEdgeSecurityServiceParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEdgeSecurityServiceParams)(nil)).Elem()
+}
+
+func (i *networkEdgeSecurityServiceParamsPtrType) ToNetworkEdgeSecurityServiceParamsPtrOutput() NetworkEdgeSecurityServiceParamsPtrOutput {
+	return i.ToNetworkEdgeSecurityServiceParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *networkEdgeSecurityServiceParamsPtrType) ToNetworkEdgeSecurityServiceParamsPtrOutputWithContext(ctx context.Context) NetworkEdgeSecurityServiceParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEdgeSecurityServiceParamsPtrOutput)
+}
+
+type NetworkEdgeSecurityServiceParamsOutput struct{ *pulumi.OutputState }
+
+func (NetworkEdgeSecurityServiceParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEdgeSecurityServiceParams)(nil)).Elem()
+}
+
+func (o NetworkEdgeSecurityServiceParamsOutput) ToNetworkEdgeSecurityServiceParamsOutput() NetworkEdgeSecurityServiceParamsOutput {
+	return o
+}
+
+func (o NetworkEdgeSecurityServiceParamsOutput) ToNetworkEdgeSecurityServiceParamsOutputWithContext(ctx context.Context) NetworkEdgeSecurityServiceParamsOutput {
+	return o
+}
+
+func (o NetworkEdgeSecurityServiceParamsOutput) ToNetworkEdgeSecurityServiceParamsPtrOutput() NetworkEdgeSecurityServiceParamsPtrOutput {
+	return o.ToNetworkEdgeSecurityServiceParamsPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEdgeSecurityServiceParamsOutput) ToNetworkEdgeSecurityServiceParamsPtrOutputWithContext(ctx context.Context) NetworkEdgeSecurityServiceParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkEdgeSecurityServiceParams) *NetworkEdgeSecurityServiceParams {
+		return &v
+	}).(NetworkEdgeSecurityServiceParamsPtrOutput)
+}
+
+// Resource manager tags to be bound to the networkEdgeSecurityService. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456.
+func (o NetworkEdgeSecurityServiceParamsOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NetworkEdgeSecurityServiceParams) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type NetworkEdgeSecurityServiceParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkEdgeSecurityServiceParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEdgeSecurityServiceParams)(nil)).Elem()
+}
+
+func (o NetworkEdgeSecurityServiceParamsPtrOutput) ToNetworkEdgeSecurityServiceParamsPtrOutput() NetworkEdgeSecurityServiceParamsPtrOutput {
+	return o
+}
+
+func (o NetworkEdgeSecurityServiceParamsPtrOutput) ToNetworkEdgeSecurityServiceParamsPtrOutputWithContext(ctx context.Context) NetworkEdgeSecurityServiceParamsPtrOutput {
+	return o
+}
+
+func (o NetworkEdgeSecurityServiceParamsPtrOutput) Elem() NetworkEdgeSecurityServiceParamsOutput {
+	return o.ApplyT(func(v *NetworkEdgeSecurityServiceParams) NetworkEdgeSecurityServiceParams {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkEdgeSecurityServiceParams
+		return ret
+	}).(NetworkEdgeSecurityServiceParamsOutput)
+}
+
+// Resource manager tags to be bound to the networkEdgeSecurityService. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456.
+func (o NetworkEdgeSecurityServiceParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NetworkEdgeSecurityServiceParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
 type NetworkEndpointListNetworkEndpoint struct {
 	// The name for a specific VM instance that the IP address belongs to.
 	// This is required for network endpoints of type GCE_VM_IP_PORT.
@@ -60234,6 +60379,9 @@ type NetworkEndpointListNetworkEndpoint struct {
 	// range).
 	// **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
 	IpAddress *string `pulumi:"ipAddress"`
+	// IPv6 address of network endpoint. The result of parsing the endpoint config,
+	// or empty if IPv6 is not used.
+	Ipv6Address *string `pulumi:"ipv6Address"`
 	// Port number of network endpoint.
 	// **Note** `port` is required unless the Network Endpoint Group is created
 	// with the type of `GCE_VM_IP`
@@ -60261,6 +60409,9 @@ type NetworkEndpointListNetworkEndpointArgs struct {
 	// range).
 	// **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// IPv6 address of network endpoint. The result of parsing the endpoint config,
+	// or empty if IPv6 is not used.
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 	// Port number of network endpoint.
 	// **Note** `port` is required unless the Network Endpoint Group is created
 	// with the type of `GCE_VM_IP`
@@ -60331,6 +60482,12 @@ func (o NetworkEndpointListNetworkEndpointOutput) Instance() pulumi.StringPtrOut
 // **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
 func (o NetworkEndpointListNetworkEndpointOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointListNetworkEndpoint) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// IPv6 address of network endpoint. The result of parsing the endpoint config,
+// or empty if IPv6 is not used.
+func (o NetworkEndpointListNetworkEndpointOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkEndpointListNetworkEndpoint) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
 // Port number of network endpoint.
@@ -80245,6 +80402,7 @@ func (o RegionDiskAsyncPrimaryDiskPtrOutput) Disk() pulumi.StringPtrOutput {
 
 type RegionDiskDiskEncryptionKey struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
+	// Specify the key without a `/cryptoKeyVersions/` suffix.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
@@ -80295,6 +80453,7 @@ type RegionDiskDiskEncryptionKeyInput interface {
 
 type RegionDiskDiskEncryptionKeyArgs struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
+	// Specify the key without a `/cryptoKeyVersions/` suffix.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
@@ -80410,6 +80569,7 @@ func (o RegionDiskDiskEncryptionKeyOutput) ToRegionDiskDiskEncryptionKeyPtrOutpu
 }
 
 // The name of the encryption key that is stored in Google Cloud KMS.
+// Specify the key without a `/cryptoKeyVersions/` suffix.
 func (o RegionDiskDiskEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionDiskDiskEncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
@@ -80494,6 +80654,7 @@ func (o RegionDiskDiskEncryptionKeyPtrOutput) Elem() RegionDiskDiskEncryptionKey
 }
 
 // The name of the encryption key that is stored in Google Cloud KMS.
+// Specify the key without a `/cryptoKeyVersions/` suffix.
 func (o RegionDiskDiskEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionDiskDiskEncryptionKey) *string {
 		if v == nil {
@@ -80595,7 +80756,7 @@ func (o RegionDiskDiskEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutput {
 
 type RegionDiskGuestOsFeature struct {
 	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-	// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+	// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
 	Type string `pulumi:"type"`
 }
 
@@ -80612,7 +80773,7 @@ type RegionDiskGuestOsFeatureInput interface {
 
 type RegionDiskGuestOsFeatureArgs struct {
 	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-	// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+	// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -80668,7 +80829,7 @@ func (o RegionDiskGuestOsFeatureOutput) ToRegionDiskGuestOsFeatureOutputWithCont
 }
 
 // The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+// Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
 func (o RegionDiskGuestOsFeatureOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RegionDiskGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -89177,232 +89338,6 @@ func (o RegionInstanceTemplateDiskSourceImageEncryptionKeyPtrOutput) RsaEncrypte
 	}).(pulumi.StringPtrOutput)
 }
 
-type RegionInstanceTemplateDiskSourceSnapshotEncryptionKey struct {
-	// The self link of the encryption key that is
-	// stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-	// may be set.
-	KmsKeySelfLink *string `pulumi:"kmsKeySelfLink"`
-	// The service account being used for the
-	// encryption request for the given KMS key. If absent, the Compute Engine
-	// default service account is used.
-	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
-	// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-	// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-	// to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-	// may be set.
-	RawKey *string `pulumi:"rawKey"`
-	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-	// may be set.
-	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
-}
-
-// RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput is an input type that accepts RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs and RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput` via:
-//
-//	RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{...}
-type RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput
-	ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput
-}
-
-type RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs struct {
-	// The self link of the encryption key that is
-	// stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-	// may be set.
-	KmsKeySelfLink pulumi.StringPtrInput `pulumi:"kmsKeySelfLink"`
-	// The service account being used for the
-	// encryption request for the given KMS key. If absent, the Compute Engine
-	// default service account is used.
-	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
-	// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-	// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-	// to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-	// may be set.
-	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
-	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-	// may be set.
-	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
-}
-
-func (RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
-	return i.ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput)
-}
-
-func (i RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
-	return i.ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput).ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(ctx)
-}
-
-// RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput is an input type that accepts RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs, RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtr and RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput` via:
-//
-//	        RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{...}
-//
-//	or:
-//
-//	        nil
-type RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput
-	ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput
-}
-
-type regionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrType RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs
-
-func RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtr(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput {
-	return (*regionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrType)(v)
-}
-
-func (*regionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
-}
-
-func (i *regionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrType) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
-	return i.ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *regionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrType) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput)
-}
-
-type RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
-	return o.ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(context.Background())
-}
-
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey {
-		return &v
-	}).(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput)
-}
-
-// The self link of the encryption key that is
-// stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-// may be set.
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string { return v.KmsKeySelfLink }).(pulumi.StringPtrOutput)
-}
-
-// The service account being used for the
-// encryption request for the given KMS key. If absent, the Compute Engine
-// default service account is used.
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
-}
-
-// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-// to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-// may be set.
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
-}
-
-// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-// may be set.
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string { return v.RsaEncryptedKey }).(pulumi.StringPtrOutput)
-}
-
-type RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) ToRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) Elem() RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) RegionInstanceTemplateDiskSourceSnapshotEncryptionKey {
-		if v != nil {
-			return *v
-		}
-		var ret RegionInstanceTemplateDiskSourceSnapshotEncryptionKey
-		return ret
-	}).(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput)
-}
-
-// The self link of the encryption key that is
-// stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-// may be set.
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KmsKeySelfLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// The service account being used for the
-// encryption request for the given KMS key. If absent, the Compute Engine
-// default service account is used.
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KmsKeyServiceAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-// to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-// may be set.
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RawKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
-// may be set.
-func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateDiskSourceSnapshotEncryptionKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RsaEncryptedKey
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerAutoscalingPolicyInput)(nil)).Elem(), AutoscalerAutoscalingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerAutoscalingPolicyPtrInput)(nil)).Elem(), AutoscalerAutoscalingPolicyArgs{})
@@ -90079,6 +90014,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MangedSslCertificateManagedPtrInput)(nil)).Elem(), MangedSslCertificateManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAttachmentConnectionEndpointInput)(nil)).Elem(), NetworkAttachmentConnectionEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAttachmentConnectionEndpointArrayInput)(nil)).Elem(), NetworkAttachmentConnectionEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEdgeSecurityServiceParamsInput)(nil)).Elem(), NetworkEdgeSecurityServiceParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEdgeSecurityServiceParamsPtrInput)(nil)).Elem(), NetworkEdgeSecurityServiceParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointListNetworkEndpointInput)(nil)).Elem(), NetworkEndpointListNetworkEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointListNetworkEndpointArrayInput)(nil)).Elem(), NetworkEndpointListNetworkEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkFirewallPolicyIamBindingConditionInput)(nil)).Elem(), NetworkFirewallPolicyIamBindingConditionArgs{})
@@ -90400,8 +90337,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateDiskDiskEncryptionKeyPtrInput)(nil)).Elem(), RegionInstanceTemplateDiskDiskEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateDiskSourceImageEncryptionKeyInput)(nil)).Elem(), RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateDiskSourceImageEncryptionKeyPtrInput)(nil)).Elem(), RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput)(nil)).Elem(), RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyCpuUtilizationOutput{})
@@ -91077,6 +91012,8 @@ func init() {
 	pulumi.RegisterOutputType(MangedSslCertificateManagedPtrOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentConnectionEndpointOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentConnectionEndpointArrayOutput{})
+	pulumi.RegisterOutputType(NetworkEdgeSecurityServiceParamsOutput{})
+	pulumi.RegisterOutputType(NetworkEdgeSecurityServiceParamsPtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointListNetworkEndpointOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointListNetworkEndpointArrayOutput{})
 	pulumi.RegisterOutputType(NetworkFirewallPolicyIamBindingConditionOutput{})
@@ -91398,6 +91335,4 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceTemplateDiskDiskEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateDiskSourceImageEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateDiskSourceImageEncryptionKeyPtrOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput{})
 }

@@ -35,6 +35,25 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DEFAULT",
  * });
  * ```
+ *
+ * ### Looker Instance Force Delete
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const looker_instance = new gcp.looker.Instance("looker-instance", {
+ *     name: "my-instance",
+ *     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
+ *     region: "us-central1",
+ *     oauthConfig: {
+ *         clientId: "my-client-id",
+ *         clientSecret: "my-client-secret",
+ *     },
+ *     deletionPolicy: "FORCE",
+ * });
+ * ```
+ *
  * ### Looker Instance Full
  *
  * ```typescript
@@ -81,26 +100,10 @@ import * as utilities from "../utilities";
  *         clientId: "my-client-id",
  *         clientSecret: "my-client-secret",
  *     },
+ *     deletionPolicy: "FORCE",
  * });
  * ```
- * ### Looker Instance Fips
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const looker_instance = new gcp.looker.Instance("looker-instance", {
- *     name: "my-instance-fips",
- *     platformEdition: "LOOKER_CORE_ENTERPRISE_ANNUAL",
- *     region: "us-central1",
- *     publicIpEnabled: true,
- *     fipsEnabled: true,
- *     oauthConfig: {
- *         clientId: "my-client-id",
- *         clientSecret: "my-client-secret",
- *     },
- * });
- * ```
  * ### Looker Instance Enterprise Full
  *
  * ```typescript
@@ -166,6 +169,9 @@ import * as utilities from "../utilities";
  *         clientId: "my-client-id",
  *         clientSecret: "my-client-secret",
  *     },
+ *     customDomain: {
+ *         domain: "my-custom-domain.com",
+ *     },
  * }, {
  *     dependsOn: [lookerVpcConnection],
  * });
@@ -176,25 +182,7 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-looker.iam.gserviceaccount.com`),
  * });
  * ```
- * ### Looker Instance Custom Domain
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const looker_instance = new gcp.looker.Instance("looker-instance", {
- *     name: "my-instance",
- *     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
- *     region: "us-central1",
- *     oauthConfig: {
- *         clientId: "my-client-id",
- *         clientSecret: "my-client-secret",
- *     },
- *     customDomain: {
- *         domain: "my-custom-domain.com",
- *     },
- * });
- * ```
  * ### Looker Instance Psc
  *
  * ```typescript
@@ -215,23 +203,6 @@ import * as utilities from "../utilities";
  *     pscConfig: {
  *         allowedVpcs: ["projects/test-project/global/networks/test"],
  *     },
- * });
- * ```
- * ### Looker Instance Force Delete
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const looker_instance = new gcp.looker.Instance("looker-instance", {
- *     name: "my-instance",
- *     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
- *     region: "us-central1",
- *     oauthConfig: {
- *         clientId: "my-client-id",
- *         clientSecret: "my-client-secret",
- *     },
- *     deletionPolicy: "FORCE",
  * });
  * ```
  *

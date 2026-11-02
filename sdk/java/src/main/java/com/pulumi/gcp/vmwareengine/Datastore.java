@@ -88,6 +88,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vmware Engine Datastore Filestore
  * 
  * <pre>
@@ -149,6 +150,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vmware Engine Datastore Netapp
  * 
  * <pre>

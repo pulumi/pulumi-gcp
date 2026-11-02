@@ -462,6 +462,7 @@ class TrustConfig(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Certificate Manager Trust Config Allowlisted Certificates
 
         ```python
@@ -566,6 +567,7 @@ class TrustConfig(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Certificate Manager Trust Config Allowlisted Certificates
 
         ```python

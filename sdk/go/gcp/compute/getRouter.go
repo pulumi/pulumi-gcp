@@ -79,6 +79,7 @@ type LookupRouterResult struct {
 	Params                []GetRouterParam                `pulumi:"params"`
 	Project               *string                         `pulumi:"project"`
 	Region                *string                         `pulumi:"region"`
+	RouterId              int                             `pulumi:"routerId"`
 	SelfLink              string                          `pulumi:"selfLink"`
 }
 
@@ -171,6 +172,10 @@ func (o LookupRouterResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupRouterResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouterResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupRouterResultOutput) RouterId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRouterResult) int { return v.RouterId }).(pulumi.IntOutput)
 }
 
 func (o LookupRouterResultOutput) SelfLink() pulumi.StringOutput {

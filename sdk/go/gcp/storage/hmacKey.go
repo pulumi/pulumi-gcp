@@ -48,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Create the HMAC key for the associated service account
+//			//Create the HMAC key for the associated service account
 //			_, err = storage.NewHmacKey(ctx, "key", &storage.HmacKeyArgs{
 //				ServiceAccountEmail: serviceAccount.Email,
 //			})

@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Deletion Protection
  *
  * ```typescript
@@ -64,6 +65,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Cmek Example
  *
  * ```typescript
@@ -90,6 +92,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Private Service Connect
  *
  * ```typescript
@@ -121,6 +124,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Private Service Connect Custom Routes
  *
  * ```typescript
@@ -152,6 +156,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Dpms2
  *
  * ```typescript
@@ -170,6 +175,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Dpms2 Scaling Factor
  *
  * ```typescript
@@ -188,6 +194,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Scheduled Backup
  *
  * ```typescript
@@ -221,6 +228,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Autoscaling Max Scaling Factor
  *
  * ```typescript
@@ -244,6 +252,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
  *
  * ```typescript
@@ -268,6 +277,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Autoscaling Min Scaling Factor
  *
  * ```typescript
@@ -291,6 +301,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Autoscaling No Limit Config
  *
  * ```typescript

@@ -1045,6 +1045,7 @@ class Image(pulumi.CustomResource):
             name="example-image",
             source_disk=persistent.id)
         ```
+
         ### Image Guest Os
 
         ```python
@@ -1080,6 +1081,7 @@ class Image(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Image Basic Storage Location
 
         ```python
@@ -1239,6 +1241,7 @@ class Image(pulumi.CustomResource):
             name="example-image",
             source_disk=persistent.id)
         ```
+
         ### Image Guest Os
 
         ```python
@@ -1274,6 +1277,7 @@ class Image(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Image Basic Storage Location
 
         ```python

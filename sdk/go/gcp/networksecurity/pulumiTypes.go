@@ -10606,13 +10606,11 @@ func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) TargetUri() pulu
 }
 
 type FirewallEndpointEndpointSettings struct {
-	// (Optional, Beta)
 	// The Palo Alto Networks content cloud region of the firewall endpoint,
 	// for example `US_CENTRAL` or `CANADA`. See
 	// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
 	// for the list of supported regions.
 	ContentCloudRegion *string `pulumi:"contentCloudRegion"`
-	// (Optional, Beta)
 	// Whether to block HTTP partial responses for the firewall endpoint.
 	// When `true`, resumption of blocked malicious HTTP file downloads is
 	// blocked by the firewall. `false` provides maximum availability, `true`
@@ -10634,13 +10632,11 @@ type FirewallEndpointEndpointSettingsInput interface {
 }
 
 type FirewallEndpointEndpointSettingsArgs struct {
-	// (Optional, Beta)
 	// The Palo Alto Networks content cloud region of the firewall endpoint,
 	// for example `US_CENTRAL` or `CANADA`. See
 	// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
 	// for the list of supported regions.
 	ContentCloudRegion pulumi.StringPtrInput `pulumi:"contentCloudRegion"`
-	// (Optional, Beta)
 	// Whether to block HTTP partial responses for the firewall endpoint.
 	// When `true`, resumption of blocked malicious HTTP file downloads is
 	// blocked by the firewall. `false` provides maximum availability, `true`
@@ -10727,7 +10723,6 @@ func (o FirewallEndpointEndpointSettingsOutput) ToFirewallEndpointEndpointSettin
 	}).(FirewallEndpointEndpointSettingsPtrOutput)
 }
 
-// (Optional, Beta)
 // The Palo Alto Networks content cloud region of the firewall endpoint,
 // for example `US_CENTRAL` or `CANADA`. See
 // [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
@@ -10736,7 +10731,6 @@ func (o FirewallEndpointEndpointSettingsOutput) ContentCloudRegion() pulumi.Stri
 	return o.ApplyT(func(v FirewallEndpointEndpointSettings) *string { return v.ContentCloudRegion }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Whether to block HTTP partial responses for the firewall endpoint.
 // When `true`, resumption of blocked malicious HTTP file downloads is
 // blocked by the firewall. `false` provides maximum availability, `true`
@@ -10774,7 +10768,6 @@ func (o FirewallEndpointEndpointSettingsPtrOutput) Elem() FirewallEndpointEndpoi
 	}).(FirewallEndpointEndpointSettingsOutput)
 }
 
-// (Optional, Beta)
 // The Palo Alto Networks content cloud region of the firewall endpoint,
 // for example `US_CENTRAL` or `CANADA`. See
 // [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
@@ -10788,7 +10781,6 @@ func (o FirewallEndpointEndpointSettingsPtrOutput) ContentCloudRegion() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Whether to block HTTP partial responses for the firewall endpoint.
 // When `true`, resumption of blocked malicious HTTP file downloads is
 // blocked by the firewall. `false` provides maximum availability, `true`

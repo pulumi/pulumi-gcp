@@ -73,6 +73,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Security Profile Group Mirroring
  * 
  * <pre>
@@ -144,6 +145,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Security Profile Group Intercept
  * 
  * <pre>
@@ -215,6 +217,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Security Profile Group Url Filtering
  * 
  * <pre>
@@ -272,6 +275,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Security Security Profile Group Wildfire
  * 
  * <pre>
@@ -587,7 +591,6 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.urlFilteringProfile);
     }
     /**
-     * (Optional, Beta)
      * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
      * 
      */
@@ -595,8 +598,7 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> wildfireAnalysisProfile;
 
     /**
-     * @return (Optional, Beta)
-     * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+     * @return Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
      * 
      */
     public Output<Optional<String>> wildfireAnalysisProfile() {

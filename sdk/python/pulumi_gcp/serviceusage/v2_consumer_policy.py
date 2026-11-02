@@ -33,7 +33,7 @@ class V2ConsumerPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['V2ConsumerPolicyEnableRuleArgs']]] enable_rules: The consumer policy rule that defines enabled services. The structure is documented below.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The name of the parent. It can be a project, folder or organization in the format of  projects/<project_id or project_number>, folders/<folder_number> or organizations/<org_number> .
-        :param pulumi.Input[_builtins.bool] check_usage_on_remove: (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        :param pulumi.Input[_builtins.bool] check_usage_on_remove: Default value is false. This field is deprecated and has no effect.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -41,10 +41,13 @@ class V2ConsumerPolicyArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The name of the policy. Currently only the “default” policy name is supported.
-        :param pulumi.Input[_builtins.bool] validate_dependencies: (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+        :param pulumi.Input[_builtins.bool] validate_dependencies: Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
         """
         pulumi.set(__self__, "enable_rules", enable_rules)
         pulumi.set(__self__, "parent", parent)
+        if check_usage_on_remove is not None:
+            warnings.warn("""`check_usage_on_remove` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""check_usage_on_remove is deprecated: `check_usage_on_remove` is deprecated and will be removed in a future major release.""")
         if check_usage_on_remove is not None:
             pulumi.set(__self__, "check_usage_on_remove", check_usage_on_remove)
         if deletion_policy is not None:
@@ -81,9 +84,10 @@ class V2ConsumerPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkUsageOnRemove")
+    @_utilities.deprecated("""`check_usage_on_remove` is deprecated and will be removed in a future major release.""")
     def check_usage_on_remove(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        Default value is false. This field is deprecated and has no effect.
         """
         return pulumi.get(self, "check_usage_on_remove")
 
@@ -124,7 +128,7 @@ class V2ConsumerPolicyArgs:
     @pulumi.getter(name="validateDependencies")
     def validate_dependencies(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+        Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
         """
         return pulumi.get(self, "validate_dependencies")
 
@@ -146,7 +150,7 @@ class _V2ConsumerPolicyState:
         """
         Input properties used for looking up and filtering V2ConsumerPolicy resources.
 
-        :param pulumi.Input[_builtins.bool] check_usage_on_remove: (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        :param pulumi.Input[_builtins.bool] check_usage_on_remove: Default value is false. This field is deprecated and has no effect.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -159,8 +163,11 @@ class _V2ConsumerPolicyState:
                Used internally during updates.
         :param pulumi.Input[_builtins.str] name: The name of the policy. Currently only the “default” policy name is supported.
         :param pulumi.Input[_builtins.str] parent: The name of the parent. It can be a project, folder or organization in the format of  projects/<project_id or project_number>, folders/<folder_number> or organizations/<org_number> .
-        :param pulumi.Input[_builtins.bool] validate_dependencies: (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+        :param pulumi.Input[_builtins.bool] validate_dependencies: Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
         """
+        if check_usage_on_remove is not None:
+            warnings.warn("""`check_usage_on_remove` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""check_usage_on_remove is deprecated: `check_usage_on_remove` is deprecated and will be removed in a future major release.""")
         if check_usage_on_remove is not None:
             pulumi.set(__self__, "check_usage_on_remove", check_usage_on_remove)
         if deletion_policy is not None:
@@ -178,9 +185,10 @@ class _V2ConsumerPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="checkUsageOnRemove")
+    @_utilities.deprecated("""`check_usage_on_remove` is deprecated and will be removed in a future major release.""")
     def check_usage_on_remove(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        Default value is false. This field is deprecated and has no effect.
         """
         return pulumi.get(self, "check_usage_on_remove")
 
@@ -259,7 +267,7 @@ class _V2ConsumerPolicyState:
     @pulumi.getter(name="validateDependencies")
     def validate_dependencies(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+        Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
         """
         return pulumi.get(self, "validate_dependencies")
 
@@ -308,7 +316,7 @@ class V2ConsumerPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] check_usage_on_remove: (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        :param pulumi.Input[_builtins.bool] check_usage_on_remove: Default value is false. This field is deprecated and has no effect.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -319,7 +327,7 @@ class V2ConsumerPolicy(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the policy. Currently only the “default” policy name is supported.
         :param pulumi.Input[_builtins.str] parent: The name of the parent. It can be a project, folder or organization in the format of  projects/<project_id or project_number>, folders/<folder_number> or organizations/<org_number> .
-        :param pulumi.Input[_builtins.bool] validate_dependencies: (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+        :param pulumi.Input[_builtins.bool] validate_dependencies: Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
         """
         ...
     @overload
@@ -417,7 +425,7 @@ class V2ConsumerPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] check_usage_on_remove: (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        :param pulumi.Input[_builtins.bool] check_usage_on_remove: Default value is false. This field is deprecated and has no effect.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -430,7 +438,7 @@ class V2ConsumerPolicy(pulumi.CustomResource):
                Used internally during updates.
         :param pulumi.Input[_builtins.str] name: The name of the policy. Currently only the “default” policy name is supported.
         :param pulumi.Input[_builtins.str] parent: The name of the parent. It can be a project, folder or organization in the format of  projects/<project_id or project_number>, folders/<folder_number> or organizations/<org_number> .
-        :param pulumi.Input[_builtins.bool] validate_dependencies: (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+        :param pulumi.Input[_builtins.bool] validate_dependencies: Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -447,9 +455,10 @@ class V2ConsumerPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="checkUsageOnRemove")
+    @_utilities.deprecated("""`check_usage_on_remove` is deprecated and will be removed in a future major release.""")
     def check_usage_on_remove(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        Default value is false. This field is deprecated and has no effect.
         """
         return pulumi.get(self, "check_usage_on_remove")
 
@@ -504,7 +513,7 @@ class V2ConsumerPolicy(pulumi.CustomResource):
     @pulumi.getter(name="validateDependencies")
     def validate_dependencies(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+        Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
         """
         return pulumi.get(self, "validate_dependencies")
 

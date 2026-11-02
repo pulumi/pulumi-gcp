@@ -393,6 +393,7 @@ class GroupMembership(pulumi.CustomResource):
                 "name": "MEMBER",
             }])
         ```
+
         ### Cloud Identity Group Membership User
 
         ```python
@@ -511,6 +512,7 @@ class GroupMembership(pulumi.CustomResource):
                 "name": "MEMBER",
             }])
         ```
+
         ### Cloud Identity Group Membership User
 
         ```python

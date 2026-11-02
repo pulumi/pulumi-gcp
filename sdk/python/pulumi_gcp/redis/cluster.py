@@ -53,7 +53,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] acl_policy: Optional. The name of the ACL policy to attach to the cluster.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
-               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         :param pulumi.Input['ClusterAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input['ClusterCrossClusterReplicationConfigArgs'] cross_cluster_replication_config: Cross cluster replication config
@@ -190,7 +190,7 @@ class ClusterArgs:
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         Default value is `AUTH_MODE_DISABLED`.
-        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -547,7 +547,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] acl_policy: Optional. The name of the ACL policy to attach to the cluster.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
-               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         :param pulumi.Input['ClusterAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
@@ -737,7 +737,7 @@ class _ClusterState:
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         Default value is `AUTH_MODE_DISABLED`.
-        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -1402,11 +1402,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1415,7 +1415,7 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_ha_with_labels = gcp.redis.Cluster("cluster-ha-with-labels",
             name="ha-cluster",
-            shard_count=3,
+            shard_count=1,
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
@@ -1423,7 +1423,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-west1",
+            region="us-east1",
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1448,6 +1448,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Redis Cluster Ha
 
         ```python
@@ -1460,11 +1461,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1473,11 +1474,11 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_ha = gcp.redis.Cluster("cluster-ha",
             name="ha-cluster",
-            shard_count=3,
+            shard_count=1,
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-west1",
+            region="us-east1",
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1502,6 +1503,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Redis Cluster Ha Single Zone
 
         ```python
@@ -1514,11 +1516,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1527,14 +1529,15 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_ha_single_zone = gcp.redis.Cluster("cluster-ha-single-zone",
             name="ha-cluster-single-zone",
-            shard_count=3,
+            shard_count=1,
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-west1",
+            region="us-east1",
+            node_type="REDIS_SHARED_CORE_NANO",
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
-                "zone": "us-west1-a",
+                "zone": "us-east1-b",
             },
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -1550,6 +1553,7 @@ class Cluster(pulumi.CustomResource):
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Redis Cluster Secondary
 
         ```python
@@ -1562,11 +1566,11 @@ class Cluster(pulumi.CustomResource):
         primary_cluster_consumer_subnet = gcp.compute.Subnetwork("primary_cluster_consumer_subnet",
             name="mysubnet-primary-cluster",
             ip_cidr_range="10.0.1.0/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         primary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp",
             name="mypolicy-primary-cluster",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="Primary cluster service connection policy",
             network=consumer_net.id,
@@ -1576,17 +1580,17 @@ class Cluster(pulumi.CustomResource):
         # Primary cluster
         primary_cluster = gcp.redis.Cluster("primary_cluster",
             name="my-primary-cluster",
-            region="us-west1",
+            region="us-east1",
             psc_configs=[{
                 "network": consumer_net.id,
             }],
             authorization_mode="AUTH_MODE_DISABLED",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            shard_count=3,
+            shard_count=1,
             redis_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
-            node_type="REDIS_HIGHMEM_MEDIUM",
+            node_type="REDIS_SHARED_CORE_NANO",
             persistence_config={
                 "mode": "RDB",
                 "rdb_config": {
@@ -1634,11 +1638,11 @@ class Cluster(pulumi.CustomResource):
             }],
             authorization_mode="AUTH_MODE_DISABLED",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            shard_count=3,
+            shard_count=1,
             redis_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
-            node_type="REDIS_HIGHMEM_MEDIUM",
+            node_type="REDIS_SHARED_CORE_NANO",
             persistence_config={
                 "mode": "RDB",
                 "rdb_config": {
@@ -1649,7 +1653,7 @@ class Cluster(pulumi.CustomResource):
             zone_distribution_config={
                 "mode": "MULTI_ZONE",
             },
-            replica_count=2,
+            replica_count=1,
             maintenance_policy={
                 "weekly_maintenance_windows": [{
                     "day": "WEDNESDAY",
@@ -1670,6 +1674,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secondary_cluster_region_scp]))
         ```
+
         ### Redis Cluster Rdb
 
         ```python
@@ -1682,11 +1687,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1695,11 +1700,11 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_rdb = gcp.redis.Cluster("cluster-rdb",
             name="rdb-cluster",
-            shard_count=3,
+            shard_count=1,
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-west1",
+            region="us-east1",
             replica_count=0,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1731,6 +1736,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Redis Cluster Aof
 
         ```python
@@ -1743,11 +1749,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1756,11 +1762,11 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_aof = gcp.redis.Cluster("cluster-aof",
             name="aof-cluster",
-            shard_count=3,
+            shard_count=1,
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-west1",
+            region="us-east1",
             replica_count=0,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1791,6 +1797,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Redis Cluster Cmek
 
         ```python
@@ -1803,11 +1810,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1816,16 +1823,18 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_cmek = gcp.redis.Cluster("cluster-cmek",
             name="cmek-cluster",
-            shard_count=3,
+            shard_count=1,
             psc_configs=[{
                 "network": consumer_net.id,
             }],
             kms_key="my-key",
-            region="us-west1",
+            region="us-east1",
+            node_type="REDIS_SHARED_CORE_NANO",
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         project = gcp.organizations.get_project()
         ```
+
         ### Redis Cluster Flexible Ca
 
         ```python
@@ -1834,12 +1843,12 @@ class Cluster(pulumi.CustomResource):
 
         default = gcp.certificateauthority.CaPool("default",
             name="ca-pool",
-            location="us-west1",
+            location="us-east1",
             tier="ENTERPRISE")
         default_authority = gcp.certificateauthority.Authority("default",
             pool=default.name,
             certificate_authority_id="ca-auth",
-            location="us-west1",
+            location="us-east1",
             config={
                 "subject_config": {
                     "subject": {
@@ -1874,11 +1883,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="ca-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="ca-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             network=consumer_net.id,
             psc_config={
@@ -1886,8 +1895,9 @@ class Cluster(pulumi.CustomResource):
             })
         test_cluster = gcp.redis.Cluster("test-cluster",
             name="ca-cluster",
-            shard_count=3,
-            region="us-west1",
+            shard_count=1,
+            region="us-east1",
+            node_type="REDIS_SHARED_CORE_NANO",
             psc_configs=[{
                 "network": consumer_net.id,
             }],
@@ -1925,7 +1935,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_policy: Optional. The name of the ACL policy to attach to the cluster.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
-               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         :param pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict', 'outputs.ClusterAutomatedBackupConfig']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict', 'outputs.ClusterCrossClusterReplicationConfig']] cross_cluster_replication_config: Cross cluster replication config
@@ -2088,11 +2098,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2101,7 +2111,7 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_ha_with_labels = gcp.redis.Cluster("cluster-ha-with-labels",
             name="ha-cluster",
-            shard_count=3,
+            shard_count=1,
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
@@ -2109,7 +2119,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-west1",
+            region="us-east1",
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2134,6 +2144,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Redis Cluster Ha
 
         ```python
@@ -2146,11 +2157,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2159,11 +2170,11 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_ha = gcp.redis.Cluster("cluster-ha",
             name="ha-cluster",
-            shard_count=3,
+            shard_count=1,
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-west1",
+            region="us-east1",
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2188,6 +2199,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Redis Cluster Ha Single Zone
 
         ```python
@@ -2200,11 +2212,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2213,14 +2225,15 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_ha_single_zone = gcp.redis.Cluster("cluster-ha-single-zone",
             name="ha-cluster-single-zone",
-            shard_count=3,
+            shard_count=1,
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-west1",
+            region="us-east1",
+            node_type="REDIS_SHARED_CORE_NANO",
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
-                "zone": "us-west1-a",
+                "zone": "us-east1-b",
             },
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -2236,6 +2249,7 @@ class Cluster(pulumi.CustomResource):
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Redis Cluster Secondary
 
         ```python
@@ -2248,11 +2262,11 @@ class Cluster(pulumi.CustomResource):
         primary_cluster_consumer_subnet = gcp.compute.Subnetwork("primary_cluster_consumer_subnet",
             name="mysubnet-primary-cluster",
             ip_cidr_range="10.0.1.0/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         primary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp",
             name="mypolicy-primary-cluster",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="Primary cluster service connection policy",
             network=consumer_net.id,
@@ -2262,17 +2276,17 @@ class Cluster(pulumi.CustomResource):
         # Primary cluster
         primary_cluster = gcp.redis.Cluster("primary_cluster",
             name="my-primary-cluster",
-            region="us-west1",
+            region="us-east1",
             psc_configs=[{
                 "network": consumer_net.id,
             }],
             authorization_mode="AUTH_MODE_DISABLED",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            shard_count=3,
+            shard_count=1,
             redis_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
-            node_type="REDIS_HIGHMEM_MEDIUM",
+            node_type="REDIS_SHARED_CORE_NANO",
             persistence_config={
                 "mode": "RDB",
                 "rdb_config": {
@@ -2320,11 +2334,11 @@ class Cluster(pulumi.CustomResource):
             }],
             authorization_mode="AUTH_MODE_DISABLED",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            shard_count=3,
+            shard_count=1,
             redis_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
-            node_type="REDIS_HIGHMEM_MEDIUM",
+            node_type="REDIS_SHARED_CORE_NANO",
             persistence_config={
                 "mode": "RDB",
                 "rdb_config": {
@@ -2335,7 +2349,7 @@ class Cluster(pulumi.CustomResource):
             zone_distribution_config={
                 "mode": "MULTI_ZONE",
             },
-            replica_count=2,
+            replica_count=1,
             maintenance_policy={
                 "weekly_maintenance_windows": [{
                     "day": "WEDNESDAY",
@@ -2356,6 +2370,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secondary_cluster_region_scp]))
         ```
+
         ### Redis Cluster Rdb
 
         ```python
@@ -2368,11 +2383,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2381,11 +2396,11 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_rdb = gcp.redis.Cluster("cluster-rdb",
             name="rdb-cluster",
-            shard_count=3,
+            shard_count=1,
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-west1",
+            region="us-east1",
             replica_count=0,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2417,6 +2432,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Redis Cluster Aof
 
         ```python
@@ -2429,11 +2445,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2442,11 +2458,11 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_aof = gcp.redis.Cluster("cluster-aof",
             name="aof-cluster",
-            shard_count=3,
+            shard_count=1,
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-west1",
+            region="us-east1",
             replica_count=0,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2477,6 +2493,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
         ### Redis Cluster Cmek
 
         ```python
@@ -2489,11 +2506,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2502,16 +2519,18 @@ class Cluster(pulumi.CustomResource):
             })
         cluster_cmek = gcp.redis.Cluster("cluster-cmek",
             name="cmek-cluster",
-            shard_count=3,
+            shard_count=1,
             psc_configs=[{
                 "network": consumer_net.id,
             }],
             kms_key="my-key",
-            region="us-west1",
+            region="us-east1",
+            node_type="REDIS_SHARED_CORE_NANO",
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         project = gcp.organizations.get_project()
         ```
+
         ### Redis Cluster Flexible Ca
 
         ```python
@@ -2520,12 +2539,12 @@ class Cluster(pulumi.CustomResource):
 
         default = gcp.certificateauthority.CaPool("default",
             name="ca-pool",
-            location="us-west1",
+            location="us-east1",
             tier="ENTERPRISE")
         default_authority = gcp.certificateauthority.Authority("default",
             pool=default.name,
             certificate_authority_id="ca-auth",
-            location="us-west1",
+            location="us-east1",
             config={
                 "subject_config": {
                     "subject": {
@@ -2560,11 +2579,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="ca-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-west1",
+            region="us-east1",
             network=consumer_net.id)
         default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="ca-policy",
-            location="us-west1",
+            location="us-east1",
             service_class="gcp-memorystore-redis",
             network=consumer_net.id,
             psc_config={
@@ -2572,8 +2591,9 @@ class Cluster(pulumi.CustomResource):
             })
         test_cluster = gcp.redis.Cluster("test-cluster",
             name="ca-cluster",
-            shard_count=3,
-            region="us-west1",
+            shard_count=1,
+            region="us-east1",
+            node_type="REDIS_SHARED_CORE_NANO",
             psc_configs=[{
                 "network": consumer_net.id,
             }],
@@ -2763,7 +2783,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_policy: Optional. The name of the ACL policy to attach to the cluster.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
-               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         :param pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict', 'outputs.ClusterAutomatedBackupConfig']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
@@ -2912,7 +2932,7 @@ class Cluster(pulumi.CustomResource):
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         Default value is `AUTH_MODE_DISABLED`.
-        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
         """
         return pulumi.get(self, "authorization_mode")
 

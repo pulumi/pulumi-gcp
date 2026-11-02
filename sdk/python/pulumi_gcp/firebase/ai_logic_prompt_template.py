@@ -441,6 +441,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
             template_id="file-template",
             template_string=std.file(input="test-fixtures/hello_world.prompt").result)
         ```
+
         ### Firebaseailogic Prompt Template Global Only
 
         ```python
@@ -454,6 +455,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
             regional_propagation_disabled=True,
             template_string=std.file(input="test-fixtures/hello_world.prompt").result)
         ```
+
         ### Firebaseailogic Prompt Template Basic
 
         ```python
@@ -540,6 +542,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
             template_id="file-template",
             template_string=std.file(input="test-fixtures/hello_world.prompt").result)
         ```
+
         ### Firebaseailogic Prompt Template Global Only
 
         ```python
@@ -553,6 +556,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
             regional_propagation_disabled=True,
             template_string=std.file(input="test-fixtures/hello_world.prompt").result)
         ```
+
         ### Firebaseailogic Prompt Template Basic
 
         ```python

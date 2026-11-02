@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
+    /// 
     /// ### Spanner Instance Processing Units
     /// 
     /// ```csharp
@@ -69,6 +70,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
+    /// 
     /// ### Spanner Instance Multi Regional
     /// 
     /// ```csharp

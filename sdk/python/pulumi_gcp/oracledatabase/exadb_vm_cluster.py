@@ -660,6 +660,7 @@ class ExadbVmCluster(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Exadb Vm Cluster Full
 
         ```python
@@ -823,6 +824,7 @@ class ExadbVmCluster(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Exadb Vm Cluster Full
 
         ```python

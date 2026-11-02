@@ -4,9 +4,12 @@
 package com.pulumi.gcp.gemini.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq;
+import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLooker;
+import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudio;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences {
@@ -15,7 +18,19 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasou
      * Structure is documented below.
      * 
      */
-    private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq bq;
+    private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq bq;
+    /**
+     * @return References to Looker explores.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLooker looker;
+    /**
+     * @return References to Looker Studio datasources.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudio studio;
 
     private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences() {}
     /**
@@ -23,8 +38,24 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasou
      * Structure is documented below.
      * 
      */
-    public DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq bq() {
-        return this.bq;
+    public Optional<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq> bq() {
+        return Optional.ofNullable(this.bq);
+    }
+    /**
+     * @return References to Looker explores.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLooker> looker() {
+        return Optional.ofNullable(this.looker);
+    }
+    /**
+     * @return References to Looker Studio datasources.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudio> studio() {
+        return Optional.ofNullable(this.studio);
     }
 
     public static Builder builder() {
@@ -36,24 +67,40 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasou
     }
     @CustomType.Builder
     public static final class Builder {
-        private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq bq;
+        private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq bq;
+        private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLooker looker;
+        private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudio studio;
         public Builder() {}
         public Builder(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bq = defaults.bq;
+    	      this.looker = defaults.looker;
+    	      this.studio = defaults.studio;
         }
 
         @CustomType.Setter
-        public Builder bq(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq bq) {
-            if (bq == null) {
-              throw new MissingRequiredPropertyException("DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences", "bq");
-            }
+        public Builder bq(@Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq bq) {
+
             this.bq = bq;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder looker(@Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLooker looker) {
+
+            this.looker = looker;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder studio(@Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudio studio) {
+
+            this.studio = studio;
             return this;
         }
         public DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences build() {
             final var _resultValue = new DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences();
             _resultValue.bq = bq;
+            _resultValue.looker = looker;
+            _resultValue.studio = studio;
             return _resultValue;
         }
     }

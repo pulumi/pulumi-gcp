@@ -497,6 +497,7 @@ class TargetSite(pulumi.CustomResource):
             type="INCLUDE",
             exact_match=False)
         ```
+
         ### Discoveryengine Targetsite Advanced
 
         ```python
@@ -599,6 +600,7 @@ class TargetSite(pulumi.CustomResource):
             type="INCLUDE",
             exact_match=False)
         ```
+
         ### Discoveryengine Targetsite Advanced
 
         ```python

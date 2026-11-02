@@ -113,6 +113,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool SendPropagatedConnectionLimitIfZero;
         /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly int ServiceAttachmentId;
+        /// <summary>
         /// NOTE: This field is temporarily non-functional due to an underlying API issue.
         /// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
         /// [If true, show NAT IPs of all connected endpoints.]
@@ -168,6 +172,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             bool sendPropagatedConnectionLimitIfZero,
 
+            int serviceAttachmentId,
+
             bool showNatIps,
 
             string targetService,
@@ -193,6 +199,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Region = region;
             SelfLink = selfLink;
             SendPropagatedConnectionLimitIfZero = sendPropagatedConnectionLimitIfZero;
+            ServiceAttachmentId = serviceAttachmentId;
             ShowNatIps = showNatIps;
             TargetService = targetService;
             TunnelingConfigs = tunnelingConfigs;

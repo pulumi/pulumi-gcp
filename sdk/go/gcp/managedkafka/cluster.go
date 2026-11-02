@@ -57,7 +57,6 @@ import (
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
 //				},
-//				KafkaVersion: pulumi.String("3.7.x"),
 //			})
 //			if err != nil {
 //				return err
@@ -67,6 +66,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Managedkafka Cluster Mtls
 //
 // ```go
@@ -134,6 +134,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Managedkafka Cluster Cmek
 //
 // ```go
@@ -187,6 +188,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Managedkafka Cluster Public
 //
 // ```go
@@ -282,7 +284,9 @@ type Cluster struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfigOutput `pulumi:"gcpConfig"`
-	// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+	// The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+	// If not specified during cluster creation, defaults to `3.7.x`.
+	// If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
 	KafkaVersion pulumi.StringOutput `pulumi:"kafkaVersion"`
 	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -384,7 +388,9 @@ type clusterState struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig *ClusterGcpConfig `pulumi:"gcpConfig"`
-	// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+	// The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+	// If not specified during cluster creation, defaults to `3.7.x`.
+	// If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
 	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -440,7 +446,9 @@ type ClusterState struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfigPtrInput
-	// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+	// The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+	// If not specified during cluster creation, defaults to `3.7.x`.
+	// If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
 	KafkaVersion pulumi.StringPtrInput
 	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -494,7 +502,9 @@ type clusterArgs struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfig `pulumi:"gcpConfig"`
-	// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+	// The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+	// If not specified during cluster creation, defaults to `3.7.x`.
+	// If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
 	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -533,7 +543,9 @@ type ClusterArgs struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfigInput
-	// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+	// The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+	// If not specified during cluster creation, defaults to `3.7.x`.
+	// If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
 	KafkaVersion pulumi.StringPtrInput
 	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -687,7 +699,9 @@ func (o ClusterOutput) GcpConfig() ClusterGcpConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterGcpConfigOutput { return v.GcpConfig }).(ClusterGcpConfigOutput)
 }
 
-// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+// The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+// If not specified during cluster creation, defaults to `3.7.x`.
+// If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
 func (o ClusterOutput) KafkaVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.KafkaVersion }).(pulumi.StringOutput)
 }

@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Connection Profile Postgresql Private Connection
     /// 
     /// ```csharp
@@ -219,6 +220,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Connection Profile Full
     /// 
     /// ```csharp
@@ -247,6 +249,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Connection Profile Postgres
     /// 
     /// ```csharp
@@ -331,6 +334,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Connection Profile Sql Server
     /// 
     /// ```csharp
@@ -410,6 +414,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Postgresql Sslconfig Server And Client Verification
     /// 
     /// ```csharp
@@ -503,6 +508,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Connection Profile Salesforce
     /// 
     /// ```csharp
@@ -533,6 +539,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Connection Profile Spanner
     /// 
     /// ```csharp
@@ -558,6 +565,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Connection Profile Postgres Secret Manager
     /// 
     /// ```csharp
@@ -586,6 +594,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Connection Profile Mongodb
     /// 
     /// ```csharp

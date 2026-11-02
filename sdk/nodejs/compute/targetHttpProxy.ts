@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
+ *
  * ### Target Http Proxy Http Keep Alive Timeout
  *
  * ```typescript
@@ -99,6 +100,7 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
+ *
  * ### Target Http Proxy Https Redirect
  *
  * ```typescript
@@ -117,6 +119,7 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
+ *
  * ### Target Http Proxy Fingerprint
  *
  * ```typescript

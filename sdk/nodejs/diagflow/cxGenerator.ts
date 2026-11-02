@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     languageCode: "fr",
  *     displayName: "TF Prompt generator",
  *     llmModelSettings: {
- *         model: "gemini-2.0-flash-001",
+ *         model: "gemini-2.5-flash",
  *         promptText: "Return me some great results",
  *     },
  *     promptText: {

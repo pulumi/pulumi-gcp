@@ -169,6 +169,124 @@ func (o EnterpriseKeyAndroidSettingsPtrOutput) AllowedPackageNames() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
+type EnterpriseKeyExpressSettings struct {
+}
+
+// EnterpriseKeyExpressSettingsInput is an input type that accepts EnterpriseKeyExpressSettingsArgs and EnterpriseKeyExpressSettingsOutput values.
+// You can construct a concrete instance of `EnterpriseKeyExpressSettingsInput` via:
+//
+//	EnterpriseKeyExpressSettingsArgs{...}
+type EnterpriseKeyExpressSettingsInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyExpressSettingsOutput() EnterpriseKeyExpressSettingsOutput
+	ToEnterpriseKeyExpressSettingsOutputWithContext(context.Context) EnterpriseKeyExpressSettingsOutput
+}
+
+type EnterpriseKeyExpressSettingsArgs struct {
+}
+
+func (EnterpriseKeyExpressSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyExpressSettings)(nil)).Elem()
+}
+
+func (i EnterpriseKeyExpressSettingsArgs) ToEnterpriseKeyExpressSettingsOutput() EnterpriseKeyExpressSettingsOutput {
+	return i.ToEnterpriseKeyExpressSettingsOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyExpressSettingsArgs) ToEnterpriseKeyExpressSettingsOutputWithContext(ctx context.Context) EnterpriseKeyExpressSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyExpressSettingsOutput)
+}
+
+func (i EnterpriseKeyExpressSettingsArgs) ToEnterpriseKeyExpressSettingsPtrOutput() EnterpriseKeyExpressSettingsPtrOutput {
+	return i.ToEnterpriseKeyExpressSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyExpressSettingsArgs) ToEnterpriseKeyExpressSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyExpressSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyExpressSettingsOutput).ToEnterpriseKeyExpressSettingsPtrOutputWithContext(ctx)
+}
+
+// EnterpriseKeyExpressSettingsPtrInput is an input type that accepts EnterpriseKeyExpressSettingsArgs, EnterpriseKeyExpressSettingsPtr and EnterpriseKeyExpressSettingsPtrOutput values.
+// You can construct a concrete instance of `EnterpriseKeyExpressSettingsPtrInput` via:
+//
+//	        EnterpriseKeyExpressSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseKeyExpressSettingsPtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyExpressSettingsPtrOutput() EnterpriseKeyExpressSettingsPtrOutput
+	ToEnterpriseKeyExpressSettingsPtrOutputWithContext(context.Context) EnterpriseKeyExpressSettingsPtrOutput
+}
+
+type enterpriseKeyExpressSettingsPtrType EnterpriseKeyExpressSettingsArgs
+
+func EnterpriseKeyExpressSettingsPtr(v *EnterpriseKeyExpressSettingsArgs) EnterpriseKeyExpressSettingsPtrInput {
+	return (*enterpriseKeyExpressSettingsPtrType)(v)
+}
+
+func (*enterpriseKeyExpressSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseKeyExpressSettings)(nil)).Elem()
+}
+
+func (i *enterpriseKeyExpressSettingsPtrType) ToEnterpriseKeyExpressSettingsPtrOutput() EnterpriseKeyExpressSettingsPtrOutput {
+	return i.ToEnterpriseKeyExpressSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseKeyExpressSettingsPtrType) ToEnterpriseKeyExpressSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyExpressSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyExpressSettingsPtrOutput)
+}
+
+type EnterpriseKeyExpressSettingsOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyExpressSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyExpressSettings)(nil)).Elem()
+}
+
+func (o EnterpriseKeyExpressSettingsOutput) ToEnterpriseKeyExpressSettingsOutput() EnterpriseKeyExpressSettingsOutput {
+	return o
+}
+
+func (o EnterpriseKeyExpressSettingsOutput) ToEnterpriseKeyExpressSettingsOutputWithContext(ctx context.Context) EnterpriseKeyExpressSettingsOutput {
+	return o
+}
+
+func (o EnterpriseKeyExpressSettingsOutput) ToEnterpriseKeyExpressSettingsPtrOutput() EnterpriseKeyExpressSettingsPtrOutput {
+	return o.ToEnterpriseKeyExpressSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseKeyExpressSettingsOutput) ToEnterpriseKeyExpressSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyExpressSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseKeyExpressSettings) *EnterpriseKeyExpressSettings {
+		return &v
+	}).(EnterpriseKeyExpressSettingsPtrOutput)
+}
+
+type EnterpriseKeyExpressSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyExpressSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseKeyExpressSettings)(nil)).Elem()
+}
+
+func (o EnterpriseKeyExpressSettingsPtrOutput) ToEnterpriseKeyExpressSettingsPtrOutput() EnterpriseKeyExpressSettingsPtrOutput {
+	return o
+}
+
+func (o EnterpriseKeyExpressSettingsPtrOutput) ToEnterpriseKeyExpressSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyExpressSettingsPtrOutput {
+	return o
+}
+
+func (o EnterpriseKeyExpressSettingsPtrOutput) Elem() EnterpriseKeyExpressSettingsOutput {
+	return o.ApplyT(func(v *EnterpriseKeyExpressSettings) EnterpriseKeyExpressSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseKeyExpressSettings
+		return ret
+	}).(EnterpriseKeyExpressSettingsOutput)
+}
+
 type EnterpriseKeyIosSettings struct {
 	// If set to true, it means allowedBundleIds will not be enforced.
 	AllowAllBundleIds *bool `pulumi:"allowAllBundleIds"`
@@ -479,6 +597,124 @@ func (o EnterpriseKeyTestingOptionsPtrOutput) TestingScore() pulumi.Float64PtrOu
 		}
 		return v.TestingScore
 	}).(pulumi.Float64PtrOutput)
+}
+
+type EnterpriseKeyUniversalSettings struct {
+}
+
+// EnterpriseKeyUniversalSettingsInput is an input type that accepts EnterpriseKeyUniversalSettingsArgs and EnterpriseKeyUniversalSettingsOutput values.
+// You can construct a concrete instance of `EnterpriseKeyUniversalSettingsInput` via:
+//
+//	EnterpriseKeyUniversalSettingsArgs{...}
+type EnterpriseKeyUniversalSettingsInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyUniversalSettingsOutput() EnterpriseKeyUniversalSettingsOutput
+	ToEnterpriseKeyUniversalSettingsOutputWithContext(context.Context) EnterpriseKeyUniversalSettingsOutput
+}
+
+type EnterpriseKeyUniversalSettingsArgs struct {
+}
+
+func (EnterpriseKeyUniversalSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyUniversalSettings)(nil)).Elem()
+}
+
+func (i EnterpriseKeyUniversalSettingsArgs) ToEnterpriseKeyUniversalSettingsOutput() EnterpriseKeyUniversalSettingsOutput {
+	return i.ToEnterpriseKeyUniversalSettingsOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyUniversalSettingsArgs) ToEnterpriseKeyUniversalSettingsOutputWithContext(ctx context.Context) EnterpriseKeyUniversalSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyUniversalSettingsOutput)
+}
+
+func (i EnterpriseKeyUniversalSettingsArgs) ToEnterpriseKeyUniversalSettingsPtrOutput() EnterpriseKeyUniversalSettingsPtrOutput {
+	return i.ToEnterpriseKeyUniversalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyUniversalSettingsArgs) ToEnterpriseKeyUniversalSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyUniversalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyUniversalSettingsOutput).ToEnterpriseKeyUniversalSettingsPtrOutputWithContext(ctx)
+}
+
+// EnterpriseKeyUniversalSettingsPtrInput is an input type that accepts EnterpriseKeyUniversalSettingsArgs, EnterpriseKeyUniversalSettingsPtr and EnterpriseKeyUniversalSettingsPtrOutput values.
+// You can construct a concrete instance of `EnterpriseKeyUniversalSettingsPtrInput` via:
+//
+//	        EnterpriseKeyUniversalSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseKeyUniversalSettingsPtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyUniversalSettingsPtrOutput() EnterpriseKeyUniversalSettingsPtrOutput
+	ToEnterpriseKeyUniversalSettingsPtrOutputWithContext(context.Context) EnterpriseKeyUniversalSettingsPtrOutput
+}
+
+type enterpriseKeyUniversalSettingsPtrType EnterpriseKeyUniversalSettingsArgs
+
+func EnterpriseKeyUniversalSettingsPtr(v *EnterpriseKeyUniversalSettingsArgs) EnterpriseKeyUniversalSettingsPtrInput {
+	return (*enterpriseKeyUniversalSettingsPtrType)(v)
+}
+
+func (*enterpriseKeyUniversalSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseKeyUniversalSettings)(nil)).Elem()
+}
+
+func (i *enterpriseKeyUniversalSettingsPtrType) ToEnterpriseKeyUniversalSettingsPtrOutput() EnterpriseKeyUniversalSettingsPtrOutput {
+	return i.ToEnterpriseKeyUniversalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseKeyUniversalSettingsPtrType) ToEnterpriseKeyUniversalSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyUniversalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyUniversalSettingsPtrOutput)
+}
+
+type EnterpriseKeyUniversalSettingsOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyUniversalSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyUniversalSettings)(nil)).Elem()
+}
+
+func (o EnterpriseKeyUniversalSettingsOutput) ToEnterpriseKeyUniversalSettingsOutput() EnterpriseKeyUniversalSettingsOutput {
+	return o
+}
+
+func (o EnterpriseKeyUniversalSettingsOutput) ToEnterpriseKeyUniversalSettingsOutputWithContext(ctx context.Context) EnterpriseKeyUniversalSettingsOutput {
+	return o
+}
+
+func (o EnterpriseKeyUniversalSettingsOutput) ToEnterpriseKeyUniversalSettingsPtrOutput() EnterpriseKeyUniversalSettingsPtrOutput {
+	return o.ToEnterpriseKeyUniversalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseKeyUniversalSettingsOutput) ToEnterpriseKeyUniversalSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyUniversalSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseKeyUniversalSettings) *EnterpriseKeyUniversalSettings {
+		return &v
+	}).(EnterpriseKeyUniversalSettingsPtrOutput)
+}
+
+type EnterpriseKeyUniversalSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyUniversalSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseKeyUniversalSettings)(nil)).Elem()
+}
+
+func (o EnterpriseKeyUniversalSettingsPtrOutput) ToEnterpriseKeyUniversalSettingsPtrOutput() EnterpriseKeyUniversalSettingsPtrOutput {
+	return o
+}
+
+func (o EnterpriseKeyUniversalSettingsPtrOutput) ToEnterpriseKeyUniversalSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyUniversalSettingsPtrOutput {
+	return o
+}
+
+func (o EnterpriseKeyUniversalSettingsPtrOutput) Elem() EnterpriseKeyUniversalSettingsOutput {
+	return o.ApplyT(func(v *EnterpriseKeyUniversalSettings) EnterpriseKeyUniversalSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseKeyUniversalSettings
+		return ret
+	}).(EnterpriseKeyUniversalSettingsOutput)
 }
 
 type EnterpriseKeyWafSettings struct {
@@ -1289,10 +1525,14 @@ func (o EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput) Score
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyAndroidSettingsInput)(nil)).Elem(), EnterpriseKeyAndroidSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyAndroidSettingsPtrInput)(nil)).Elem(), EnterpriseKeyAndroidSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyExpressSettingsInput)(nil)).Elem(), EnterpriseKeyExpressSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyExpressSettingsPtrInput)(nil)).Elem(), EnterpriseKeyExpressSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyIosSettingsInput)(nil)).Elem(), EnterpriseKeyIosSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyIosSettingsPtrInput)(nil)).Elem(), EnterpriseKeyIosSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyTestingOptionsInput)(nil)).Elem(), EnterpriseKeyTestingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyTestingOptionsPtrInput)(nil)).Elem(), EnterpriseKeyTestingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyUniversalSettingsInput)(nil)).Elem(), EnterpriseKeyUniversalSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyUniversalSettingsPtrInput)(nil)).Elem(), EnterpriseKeyUniversalSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWafSettingsInput)(nil)).Elem(), EnterpriseKeyWafSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWafSettingsPtrInput)(nil)).Elem(), EnterpriseKeyWafSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsInput)(nil)).Elem(), EnterpriseKeyWebSettingsArgs{})
@@ -1305,10 +1545,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrInput)(nil)).Elem(), EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs{})
 	pulumi.RegisterOutputType(EnterpriseKeyAndroidSettingsOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyAndroidSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyExpressSettingsOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyExpressSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyIosSettingsOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyIosSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyTestingOptionsOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyTestingOptionsPtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyUniversalSettingsOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyUniversalSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyWafSettingsOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyWafSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsOutput{})

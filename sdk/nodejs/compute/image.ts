@@ -54,6 +54,7 @@ import * as utilities from "../utilities";
  *     sourceDisk: persistent.id,
  * });
  * ```
+ *
  * ### Image Guest Os
  *
  * ```typescript
@@ -93,6 +94,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Image Basic Storage Location
  *
  * ```typescript

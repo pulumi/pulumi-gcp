@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     interceptionPort: 443,
  * });
  * ```
+ *
  * ### Network Services Mesh No Port
  *
  * ```typescript
@@ -44,6 +45,7 @@ import * as utilities from "../utilities";
  *     description: "my description",
  * });
  * ```
+ *
  * ### Network Services Mesh Location
  *
  * ```typescript

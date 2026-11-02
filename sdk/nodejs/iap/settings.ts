@@ -87,6 +87,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iap Settings Oauth Storage
  *
  * ```typescript

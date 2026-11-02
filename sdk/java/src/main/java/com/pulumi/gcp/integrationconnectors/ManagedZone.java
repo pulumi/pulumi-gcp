@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var targetProject = new Project("targetProject", ProjectArgs.builder()
- *             .projectId("tf-test_89239")
- *             .name("tf-test_41898")
+ *             .projectId("tf-test_31660")
+ *             .name("tf-test_97962")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -91,15 +91,15 @@ import javax.annotation.Nullable;
  * 
  *         var network = new Network("network", NetworkArgs.builder()
  *             .project(targetProject.projectId())
- *             .name("test")
+ *             .name("test-vpc")
  *             .autoCreateSubnetworks(false)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(compute)
  *                 .build());
  * 
  *         var zone = new com.pulumi.gcp.dns.ManagedZone("zone", com.pulumi.gcp.dns.ManagedZoneArgs.builder()
- *             .name("tf-test-dns_63399")
- *             .dnsName("private_97523.example.com.")
+ *             .name("tf-test-dns_34534")
+ *             .dnsName("private_87829.example.com.")
  *             .visibility("private")
  *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
  *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .description("tf created description")
  *             .labels(Map.of("intent", "example"))
  *             .targetProject(targetProject.projectId())
- *             .targetVpc("test")
+ *             .targetVpc("test-vpc")
  *             .dns(zone.dnsName())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                

@@ -120,6 +120,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Target Https Proxy Http Keep Alive Timeout
  * 
  * <pre>
@@ -212,6 +213,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Target Https Proxy Mtls
  * 
  * <pre>
@@ -347,6 +349,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Target Https Proxy Certificate Manager Certificate
  * 
  * <pre>
@@ -432,6 +435,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Target Https Proxy Fingerprint
  * 
  * <pre>

@@ -114,6 +114,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Featureonlinestore Featureview Feature Registry
     /// 
     /// ```csharp
@@ -243,6 +244,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Featureonlinestore Featureview Cross Project
     /// 
     /// ```csharp
@@ -258,8 +260,8 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "tf-test_48234",
-    ///         Name = "tf-test_74065",
+    ///         ProjectId = "tf-test_7864",
+    ///         Name = "tf-test_70324",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -448,6 +450,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Featureonlinestore Featureview With Vector Search
     /// 
     /// ```csharp

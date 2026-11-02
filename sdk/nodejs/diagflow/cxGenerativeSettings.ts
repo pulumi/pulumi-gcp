@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     },
  *     languageCode: "en",
  *     llmModelSettings: {
- *         model: "gemini-2.0-flash-001",
+ *         model: "gemini-2.5-flash",
  *         promptText: "example prompt text",
  *     },
  * });

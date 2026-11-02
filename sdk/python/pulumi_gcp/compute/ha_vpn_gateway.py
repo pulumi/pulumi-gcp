@@ -599,6 +599,7 @@ class HaVpnGateway(pulumi.CustomResource):
             name="ha-vpn-1",
             network=network1.id)
         ```
+
         ### Ha Vpn Gateway Ipv6
 
         ```python
@@ -617,6 +618,7 @@ class HaVpnGateway(pulumi.CustomResource):
                 "mykey": "myvalue",
             })
         ```
+
         ### Compute Ha Vpn Gateway Encrypted Interconnect
 
         ```python
@@ -766,6 +768,7 @@ class HaVpnGateway(pulumi.CustomResource):
             name="ha-vpn-1",
             network=network1.id)
         ```
+
         ### Ha Vpn Gateway Ipv6
 
         ```python
@@ -784,6 +787,7 @@ class HaVpnGateway(pulumi.CustomResource):
                 "mykey": "myvalue",
             })
         ```
+
         ### Compute Ha Vpn Gateway Encrypted Interconnect
 
         ```python

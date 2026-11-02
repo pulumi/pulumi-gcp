@@ -19,8 +19,7 @@ public final class URLMapDefaultRouteActionRequestMirrorPolicy {
      */
     private String backendService;
     /**
-     * @return (Optional, Beta)
-     * The percentage of requests to be mirrored to backendService.
+     * @return The percentage of requests to be mirrored to backendService.
      * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
@@ -35,8 +34,7 @@ public final class URLMapDefaultRouteActionRequestMirrorPolicy {
         return this.backendService;
     }
     /**
-     * @return (Optional, Beta)
-     * The percentage of requests to be mirrored to backendService.
+     * @return The percentage of requests to be mirrored to backendService.
      * The value must be between 0.0 and 100.0 inclusive.
      * 
      */

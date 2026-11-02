@@ -183,6 +183,7 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Redirect to Google")
         ```
+
         ### Firebasehosting Version Headers
 
         ```python
@@ -207,6 +208,7 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="With custom headers")
         ```
+
         ### Firebasehosting Version Headers Regex
 
         ```python
@@ -231,6 +233,7 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="With custom headers")
         ```
+
         ### Firebasehosting Version Path
 
         ```python
@@ -253,6 +256,7 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Path Rewrite")
         ```
+
         ### Firebasehosting Version Cloud Run
 
         ```python
@@ -289,6 +293,7 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Cloud Run Integration")
         ```
+
         ### Firebasehosting Version Cloud Functions
 
         ```python
@@ -405,6 +410,7 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Redirect to Google")
         ```
+
         ### Firebasehosting Version Headers
 
         ```python
@@ -429,6 +435,7 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="With custom headers")
         ```
+
         ### Firebasehosting Version Headers Regex
 
         ```python
@@ -453,6 +460,7 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="With custom headers")
         ```
+
         ### Firebasehosting Version Path
 
         ```python
@@ -475,6 +483,7 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Path Rewrite")
         ```
+
         ### Firebasehosting Version Cloud Run
 
         ```python
@@ -511,6 +520,7 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Cloud Run Integration")
         ```
+
         ### Firebasehosting Version Cloud Functions
 
         ```python

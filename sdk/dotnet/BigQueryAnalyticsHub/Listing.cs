@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Listing Restricted
     /// 
     /// ```csharp
@@ -107,6 +108,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Listing Dcr
     /// 
     /// ```csharp
@@ -188,6 +190,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Listing Log Linked Dataset Query User
     /// 
     /// ```csharp
@@ -230,6 +233,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Listing Pubsub
     /// 
     /// ```csharp
@@ -273,6 +277,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Listing Dcr Routine
     /// 
     /// ```csharp
@@ -367,6 +372,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Public Listing
     /// 
     /// ```csharp
@@ -411,6 +417,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Listing Marketplace
     /// 
     /// ```csharp
@@ -453,6 +460,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Analyticshub Listing Multiregion
     /// 
     /// ```csharp

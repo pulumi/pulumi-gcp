@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Tool Connector
     /// 
     /// ```csharp
@@ -181,6 +182,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Tool Function
     /// 
     /// ```csharp
@@ -228,6 +230,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Tool Auth
     /// 
     /// ```csharp
@@ -274,6 +277,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Tool Bearer
     /// 
     /// ```csharp
@@ -318,6 +322,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Tool Oauth
     /// 
     /// ```csharp
@@ -389,6 +394,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Tool Service Agent
     /// 
     /// ```csharp

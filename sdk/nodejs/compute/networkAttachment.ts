@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  *     producerRejectLists: [rejectedProducerProject.projectId],
  * });
  * ```
+ *
  * ### Network Attachment Instance Usage
  *
  * ```typescript

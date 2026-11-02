@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Secure Source Manager Branch Rule With Fields
  * 
  * <pre>

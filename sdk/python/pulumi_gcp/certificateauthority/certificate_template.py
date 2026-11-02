@@ -579,6 +579,7 @@ class CertificateTemplate(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+
         ### Privateca Template Zero Max Issuer Path Length Null Ca
 
         ```python
@@ -845,6 +846,7 @@ class CertificateTemplate(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+
         ### Privateca Template Zero Max Issuer Path Length Null Ca
 
         ```python

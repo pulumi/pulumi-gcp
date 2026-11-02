@@ -365,6 +365,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         ```
+
         ### Organization Security Policy With Advanced Options
 
         ```python
@@ -448,6 +449,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         ```
+
         ### Organization Security Policy With Advanced Options
 
         ```python

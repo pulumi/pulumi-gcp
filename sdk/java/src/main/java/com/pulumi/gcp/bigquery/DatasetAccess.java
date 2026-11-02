@@ -87,6 +87,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Dataset Access View
  * 
  * <pre>
@@ -148,6 +149,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Dataset Access Authorized Dataset
  * 
  * <pre>
@@ -199,6 +201,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Dataset Access Authorized Routine
  * 
  * <pre>

@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .ai_agent_anomaly_detection_scope import *
 from .ai_cache_config import *
+from .ai_custom_job import *
 from .ai_dataset import *
 from .ai_deployment_resource_pool import *
 from .ai_endpoint import *
@@ -42,11 +43,14 @@ from .ai_index import *
 from .ai_index_endpoint import *
 from .ai_index_endpoint_deployed_index import *
 from .ai_metadata_store import *
+from .ai_model_development_cluster import *
 from .ai_model_garden_enable_model import *
 from .ai_online_evaluator import *
 from .ai_persistent_resource import *
+from .ai_pipeline_job import *
 from .ai_rag_corpus import *
 from .ai_rag_engine_config import *
+from .ai_rag_file import *
 from .ai_reasoning_engine import *
 from .ai_reasoning_engine_iam_binding import *
 from .ai_reasoning_engine_iam_member import *

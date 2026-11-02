@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Data Exchange Dcr
  * 
  * <pre>
@@ -104,6 +105,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
  * 
  * <pre>
@@ -140,6 +142,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Analyticshub Public Data Exchange
  * 
  * <pre>

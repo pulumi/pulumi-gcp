@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Cmek
     /// 
     /// ```csharp
@@ -75,6 +76,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Geo Restricted
     /// 
     /// ```csharp
@@ -100,6 +102,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Schema Settings
     /// 
     /// ```csharp
@@ -151,6 +154,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Ingestion Kinesis
     /// 
     /// ```csharp
@@ -178,6 +182,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Ingestion Cloud Storage
     /// 
     /// ```csharp
@@ -212,6 +217,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Ingestion Azure Event Hubs
     /// 
     /// ```csharp
@@ -242,6 +248,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Ingestion Aws Msk
     /// 
     /// ```csharp
@@ -269,6 +276,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Ingestion Confluent Cloud
     /// 
     /// ```csharp
@@ -297,6 +305,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Single Smt
     /// 
     /// ```csharp
@@ -329,6 +338,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Multiple Smts
     /// 
     /// ```csharp
@@ -383,6 +393,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Tags
     /// 
     /// ```csharp
@@ -426,6 +437,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Ai Inference
     /// 
     /// ```csharp

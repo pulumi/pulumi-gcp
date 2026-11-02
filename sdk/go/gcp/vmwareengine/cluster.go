@@ -82,6 +82,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vmware Engine Cluster Full
 //
 // ```go
@@ -170,6 +171,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vmware Engine Cluster Nfs Datastore Filestore
 //
 // ```go
@@ -195,7 +197,7 @@ import (
 //				return err
 //			}
 //			// Create a filestore instance with delete protection enabled
-//			// ### Use ip range of private cloud service subnet in the 'nfs_export_options'
+//			//### Use ip range of private cloud service subnet in the 'nfs_export_options'
 //			testInstance, err := filestore.NewInstance(ctx, "test_instance", &filestore.InstanceArgs{
 //				Name:                      pulumi.String("test-fs-filestore"),
 //				Location:                  pulumi.String(""),
@@ -257,8 +259,8 @@ import (
 //				return err
 //			}
 //			// Update service subnet
-//			// ###  Service subnet is used by nfs datastore mounts
-//			// ### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
+//			//###  Service subnet is used by nfs datastore mounts
+//			//### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
 //			cluster_pc_subnet, err := vmwareengine.NewSubnet(ctx, "cluster-pc-subnet", &vmwareengine.SubnetArgs{
 //				Name:        pulumi.String("service-1"),
 //				Parent:      cluster_pc.ID(),
@@ -268,7 +270,7 @@ import (
 //				return err
 //			}
 //			// Read network peering
-//			// ### This peering is created by filestore instance
+//			//### This peering is created by filestore instance
 //			snPeering, err := compute.LookupNetworkPeering(ctx, &compute.LookupNetworkPeeringArgs{
 //				Name:    "servicenetworking-googleapis-com",
 //				Network: fsNetwork.Id,
@@ -284,7 +286,7 @@ import (
 //				return err
 //			}
 //			// Create vmware engine network peering
-//			// ## vmware network peering is required for filestore mount on cluster
+//			//## vmware network peering is required for filestore mount on cluster
 //			psaNetworkPeering, err := vmwareengine.NewNetworkPeering(ctx, "psa_network_peering", &vmwareengine.NetworkPeeringArgs{
 //				Name:                pulumi.String("tf-test-psa-network-peering"),
 //				Description:         pulumi.String("test description"),
@@ -343,6 +345,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vmware Engine Cluster Nfs Datastore Netapp
 //
 // ```go
@@ -377,7 +380,7 @@ import (
 //				return err
 //			}
 //			// Read network peering
-//			// ### This peering is created by netapp volume
+//			//### This peering is created by netapp volume
 //			snPeering, err := compute.LookupNetworkPeering(ctx, &compute.LookupNetworkPeeringArgs{
 //				Name:    "sn-netapp-prod",
 //				Network: npNetwork.Id,
@@ -393,7 +396,7 @@ import (
 //				return err
 //			}
 //			// Create vmware engine network peering
-//			// ### vmware network peering is required for netapp mount on cluster
+//			//### vmware network peering is required for netapp mount on cluster
 //			gcnvNetworkPeering, err := vmwareengine.NewNetworkPeering(ctx, "gcnv_network_peering", &vmwareengine.NetworkPeeringArgs{
 //				Name:                pulumi.String("tf-test-gcnv-network-peering"),
 //				Description:         pulumi.String("test description"),
@@ -427,8 +430,8 @@ import (
 //				return err
 //			}
 //			// Update service subnet
-//			// ###  Service subnet is used by nfs datastore mounts
-//			// ### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
+//			//###  Service subnet is used by nfs datastore mounts
+//			//### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
 //			cluster_pc_subnet, err := vmwareengine.NewSubnet(ctx, "cluster-pc-subnet", &vmwareengine.SubnetArgs{
 //				Name:        pulumi.String("service-1"),
 //				Parent:      cluster_pc.ID(),
@@ -448,7 +451,7 @@ import (
 //				return err
 //			}
 //			// Create a netapp volume with delete protection enabled
-//			// ## Use ip range of private cloud service subnet in the 'export_policy'
+//			//## Use ip range of private cloud service subnet in the 'export_policy'
 //			testVolume, err := netapp.NewVolume(ctx, "test_volume", &netapp.VolumeArgs{
 //				Location:    pulumi.String("us-west1"),
 //				Name:        pulumi.String("tf-test-test-volume"),

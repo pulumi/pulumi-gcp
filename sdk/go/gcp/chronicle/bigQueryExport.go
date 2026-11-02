@@ -52,6 +52,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Bigquery Export Full
 //
 // ```go

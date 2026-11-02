@@ -26,10 +26,13 @@ class GetAddressResult:
     """
     A collection of values returned by getAddress.
     """
-    def __init__(__self__, address=None, address_type=None, id=None, name=None, network=None, network_tier=None, prefix_length=None, project=None, purpose=None, region=None, self_link=None, status=None, subnetwork=None, users=None):
+    def __init__(__self__, address=None, address_id=None, address_type=None, id=None, name=None, network=None, network_tier=None, prefix_length=None, project=None, purpose=None, region=None, self_link=None, status=None, subnetwork=None, users=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
+        if address_id and not isinstance(address_id, str):
+            raise TypeError("Expected argument 'address_id' to be a str")
+        pulumi.set(__self__, "address_id", address_id)
         if address_type and not isinstance(address_type, str):
             raise TypeError("Expected argument 'address_type' to be a str")
         pulumi.set(__self__, "address_type", address_type)
@@ -77,6 +80,14 @@ class GetAddressResult:
         The IP of the created resource.
         """
         return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="addressId")
+    def address_id(self) -> _builtins.str:
+        """
+        The numeric ID of the created resource.
+        """
+        return pulumi.get(self, "address_id")
 
     @_builtins.property
     @pulumi.getter(name="addressType")
@@ -160,6 +171,7 @@ class AwaitableGetAddressResult(GetAddressResult):
             yield self
         return GetAddressResult(
             address=self.address,
+            address_id=self.address_id,
             address_type=self.address_type,
             id=self.id,
             name=self.name,
@@ -219,6 +231,7 @@ def get_address(name: Optional[_builtins.str] = None,
 
     return AwaitableGetAddressResult(
         address=pulumi.get(__ret__, 'address'),
+        address_id=pulumi.get(__ret__, 'address_id'),
         address_type=pulumi.get(__ret__, 'address_type'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -275,6 +288,7 @@ def get_address_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getAddress:getAddress', __args__, opts=opts, typ=GetAddressResult)
     return __ret__.apply(lambda __response__: GetAddressResult(
         address=pulumi.get(__response__, 'address'),
+        address_id=pulumi.get(__response__, 'address_id'),
         address_type=pulumi.get(__response__, 'address_type'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

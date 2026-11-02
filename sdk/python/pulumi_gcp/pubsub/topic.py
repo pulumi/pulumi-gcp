@@ -603,6 +603,7 @@ class Topic(pulumi.CustomResource):
             },
             message_retention_duration="86600s")
         ```
+
         ### Pubsub Topic Cmek
 
         ```python
@@ -619,6 +620,7 @@ class Topic(pulumi.CustomResource):
             name="example-topic",
             kms_key_name=crypto_key.id)
         ```
+
         ### Pubsub Topic Geo Restricted
 
         ```python
@@ -632,6 +634,7 @@ class Topic(pulumi.CustomResource):
                 "enforce_in_transit": True,
             })
         ```
+
         ### Pubsub Topic Schema Settings
 
         ```python
@@ -666,6 +669,7 @@ class Topic(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
+
         ### Pubsub Topic Ingestion Kinesis
 
         ```python
@@ -683,6 +687,7 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Topic Ingestion Cloud Storage
 
         ```python
@@ -705,6 +710,7 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Topic Ingestion Azure Event Hubs
 
         ```python
@@ -725,6 +731,7 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Topic Ingestion Aws Msk
 
         ```python
@@ -742,6 +749,7 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Topic Ingestion Confluent Cloud
 
         ```python
@@ -760,6 +768,7 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Topic Single Smt
 
         ```python
@@ -779,6 +788,7 @@ class Topic(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Pubsub Topic Multiple Smts
 
         ```python
@@ -818,6 +828,7 @@ class Topic(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Pubsub Topic Tags
 
         ```python
@@ -838,6 +849,7 @@ class Topic(pulumi.CustomResource):
             parent=example.name.apply(lambda name: f"//pubsub.googleapis.com/projects/{project.number}/topics/{name}"),
             tag_value=tag_value.id)
         ```
+
         ### Pubsub Topic Ai Inference
 
         ```python
@@ -968,6 +980,7 @@ class Topic(pulumi.CustomResource):
             },
             message_retention_duration="86600s")
         ```
+
         ### Pubsub Topic Cmek
 
         ```python
@@ -984,6 +997,7 @@ class Topic(pulumi.CustomResource):
             name="example-topic",
             kms_key_name=crypto_key.id)
         ```
+
         ### Pubsub Topic Geo Restricted
 
         ```python
@@ -997,6 +1011,7 @@ class Topic(pulumi.CustomResource):
                 "enforce_in_transit": True,
             })
         ```
+
         ### Pubsub Topic Schema Settings
 
         ```python
@@ -1031,6 +1046,7 @@ class Topic(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
+
         ### Pubsub Topic Ingestion Kinesis
 
         ```python
@@ -1048,6 +1064,7 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Topic Ingestion Cloud Storage
 
         ```python
@@ -1070,6 +1087,7 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Topic Ingestion Azure Event Hubs
 
         ```python
@@ -1090,6 +1108,7 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Topic Ingestion Aws Msk
 
         ```python
@@ -1107,6 +1126,7 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Topic Ingestion Confluent Cloud
 
         ```python
@@ -1125,6 +1145,7 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Pubsub Topic Single Smt
 
         ```python
@@ -1144,6 +1165,7 @@ class Topic(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Pubsub Topic Multiple Smts
 
         ```python
@@ -1183,6 +1205,7 @@ class Topic(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Pubsub Topic Tags
 
         ```python
@@ -1203,6 +1226,7 @@ class Topic(pulumi.CustomResource):
             parent=example.name.apply(lambda name: f"//pubsub.googleapis.com/projects/{project.number}/topics/{name}"),
             tag_value=tag_value.id)
         ```
+
         ### Pubsub Topic Ai Inference
 
         ```python

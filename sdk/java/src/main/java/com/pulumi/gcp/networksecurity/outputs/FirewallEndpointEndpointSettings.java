@@ -13,8 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FirewallEndpointEndpointSettings {
     /**
-     * @return (Optional, Beta)
-     * The Palo Alto Networks content cloud region of the firewall endpoint,
+     * @return The Palo Alto Networks content cloud region of the firewall endpoint,
      * for example `US_CENTRAL` or `CANADA`. See
      * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
      * for the list of supported regions.
@@ -22,8 +21,7 @@ public final class FirewallEndpointEndpointSettings {
      */
     private @Nullable String contentCloudRegion;
     /**
-     * @return (Optional, Beta)
-     * Whether to block HTTP partial responses for the firewall endpoint.
+     * @return Whether to block HTTP partial responses for the firewall endpoint.
      * When `true`, resumption of blocked malicious HTTP file downloads is
      * blocked by the firewall. `false` provides maximum availability, `true`
      * provides maximum security.
@@ -38,8 +36,7 @@ public final class FirewallEndpointEndpointSettings {
 
     private FirewallEndpointEndpointSettings() {}
     /**
-     * @return (Optional, Beta)
-     * The Palo Alto Networks content cloud region of the firewall endpoint,
+     * @return The Palo Alto Networks content cloud region of the firewall endpoint,
      * for example `US_CENTRAL` or `CANADA`. See
      * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
      * for the list of supported regions.
@@ -49,8 +46,7 @@ public final class FirewallEndpointEndpointSettings {
         return Optional.ofNullable(this.contentCloudRegion);
     }
     /**
-     * @return (Optional, Beta)
-     * Whether to block HTTP partial responses for the firewall endpoint.
+     * @return Whether to block HTTP partial responses for the firewall endpoint.
      * When `true`, resumption of blocked malicious HTTP file downloads is
      * blocked by the firewall. `false` provides maximum availability, `true`
      * provides maximum security.

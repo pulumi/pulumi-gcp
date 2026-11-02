@@ -719,6 +719,7 @@ class InsightsConfig(pulumi.CustomResource):
             }],
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         ```
+
         ### Developer Connect Insights Config Projects
 
         ```python
@@ -1001,6 +1002,7 @@ class InsightsConfig(pulumi.CustomResource):
             }],
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         ```
+
         ### Developer Connect Insights Config Projects
 
         ```python

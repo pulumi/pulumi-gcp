@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     name: "my-username",
  * });
  * ```
+ *
  * ### Firestore User Creds With Secret Manager
  *
  * ```typescript

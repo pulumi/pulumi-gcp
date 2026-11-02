@@ -939,6 +939,7 @@ class FutureReservation(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Future Reservation Aggregate Reservation
 
         ```python
@@ -1094,6 +1095,7 @@ class FutureReservation(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Future Reservation Aggregate Reservation
 
         ```python

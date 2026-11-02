@@ -53,10 +53,23 @@ namespace Pulumi.Gcp.Diagflow
     ///                 EnableSentimentAnalysis = true,
     ///             },
     ///         },
+    ///         SttConfig = new Gcp.Diagflow.Inputs.ConversationProfileSttConfigArgs
+    ///         {
+    ///             UseGeminiAsr = true,
+    ///             GeminiAsrConfig = new Gcp.Diagflow.Inputs.ConversationProfileSttConfigGeminiAsrConfigArgs
+    ///             {
+    ///                 ModelId = "gemini-3-flash-lite-asr-preview",
+    ///                 SilenceDurationMs = 1000,
+    ///                 PrefixPaddingMs = 500,
+    ///                 StartOfSpeechSensitivity = "START_SENSITIVITY_LOW",
+    ///                 EndOfSpeechSensitivity = "END_SENSITIVITY_LOW",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Conversation Profile Recognition Result Notification
     /// 
     /// ```csharp
@@ -85,6 +98,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Conversation Profile Beta Bidi
     /// 
     /// ```csharp

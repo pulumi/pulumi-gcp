@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Rule Full
  *
  * ```typescript

@@ -366,6 +366,7 @@ class RouterRoutePolicy(pulumi.CustomResource):
                 }],
             }])
         ```
+
         ### Router Route Policy Import
 
         ```python
@@ -487,6 +488,7 @@ class RouterRoutePolicy(pulumi.CustomResource):
                 }],
             }])
         ```
+
         ### Router Route Policy Import
 
         ```python

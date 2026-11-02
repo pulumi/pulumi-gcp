@@ -208,6 +208,7 @@ class TagBinding(pulumi.CustomResource):
             parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
             tag_value=value.id)
         ```
+
         ### Tag Binding Using Dynamic Tag Value
 
         ```python
@@ -295,6 +296,7 @@ class TagBinding(pulumi.CustomResource):
             parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
             tag_value=value.id)
         ```
+
         ### Tag Binding Using Dynamic Tag Value
 
         ```python

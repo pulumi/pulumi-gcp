@@ -578,6 +578,7 @@ class AccountConnector(pulumi.CustomResource):
                 "scopes": ["repo"],
             })
         ```
+
         ### Developer Connect Account Connector Gitlab
 
         ```python
@@ -592,6 +593,7 @@ class AccountConnector(pulumi.CustomResource):
                 "scopes": ["api"],
             })
         ```
+
         ### Developer Connect Account Connector Ghe
 
         ```python
@@ -627,6 +629,7 @@ class AccountConnector(pulumi.CustomResource):
                 "scopes": ["repo"],
             })
         ```
+
         ### Developer Connect Account Connector Gle
 
         ```python
@@ -662,6 +665,7 @@ class AccountConnector(pulumi.CustomResource):
                 "scopes": ["api"],
             })
         ```
+
         ### Developer Connect Account Connector Bbdc
 
         ```python
@@ -771,6 +775,7 @@ class AccountConnector(pulumi.CustomResource):
                 "scopes": ["repo"],
             })
         ```
+
         ### Developer Connect Account Connector Gitlab
 
         ```python
@@ -785,6 +790,7 @@ class AccountConnector(pulumi.CustomResource):
                 "scopes": ["api"],
             })
         ```
+
         ### Developer Connect Account Connector Ghe
 
         ```python
@@ -820,6 +826,7 @@ class AccountConnector(pulumi.CustomResource):
                 "scopes": ["repo"],
             })
         ```
+
         ### Developer Connect Account Connector Gle
 
         ```python
@@ -855,6 +862,7 @@ class AccountConnector(pulumi.CustomResource):
                 "scopes": ["api"],
             })
         ```
+
         ### Developer Connect Account Connector Bbdc
 
         ```python

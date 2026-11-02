@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.ContactCenterInsights
     /// 
     /// });
     /// ```
+    /// 
     /// ### Contact Center Insights View Full
     /// 
     /// ```csharp

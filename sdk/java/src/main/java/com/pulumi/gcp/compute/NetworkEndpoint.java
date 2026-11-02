@@ -53,12 +53,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.InstanceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
- * import com.pulumi.gcp.compute.NetworkEndpoint;
- * import com.pulumi.gcp.compute.NetworkEndpointArgs;
  * import com.pulumi.gcp.compute.NetworkEndpointGroup;
  * import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.NetworkEndpoint;
+ * import com.pulumi.gcp.compute.NetworkEndpointArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -87,16 +88,22 @@ import javax.annotation.Nullable;
  *             .ipCidrRange("10.0.0.1/16")
  *             .region("us-central1")
  *             .network(default_.id())
+ *             .stackType("IPV4_IPV6")
+ *             .ipv6AccessType("EXTERNAL")
  *             .build());
  * 
- *         var endpoint_instance = new Instance("endpoint-instance", InstanceArgs.builder()
+ *         var endpoint_instance1 = new Instance("endpoint-instance1", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
  *                     .build())
  *                 .subnetwork(defaultSubnetwork.id())
+ *                 .stackType("IPV4_IPV6")
+ *                 .ipv6AccessConfigs(InstanceNetworkInterfaceIpv6AccessConfigArgs.builder()
+ *                     .networkTier("PREMIUM")
+ *                     .build())
  *                 .build())
- *             .name("endpoint-instance")
- *             .machineType("e2-medium")
+ *             .name("endpoint-instance1")
+ *             .machineType("e2-micro")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
  *                     .image(myImage.selfLink())
@@ -104,19 +111,52 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_endpoint = new NetworkEndpoint("default-endpoint", NetworkEndpointArgs.builder()
- *             .networkEndpointGroup(neg.get("name"))
- *             .instance(endpoint_instance.name())
- *             .port(neg.get("defaultPort"))
- *             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
- *             .build());
- * 
- *         var group = new NetworkEndpointGroup("group", NetworkEndpointGroupArgs.builder()
+ *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .defaultPort(90)
  *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var default_endpoint = new NetworkEndpoint("default-endpoint", NetworkEndpointArgs.builder()
+ *             .networkEndpointGroup(neg.name())
+ *             .instance(endpoint_instance1.name())
+ *             .port(neg.defaultPort())
+ *             .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
+ *             .build());
+ * 
+ *         var ipv6_endpoint1 = new NetworkEndpoint("ipv6-endpoint1", NetworkEndpointArgs.builder()
+ *             .networkEndpointGroup(neg.name())
+ *             .instance(endpoint_instance1.name())
+ *             .port(neg.defaultPort())
+ *             .ipv6Address(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).ipv6AccessConfigs().get(0).externalIpv6()))
+ *             .build());
+ * 
+ *         var endpoint_instance2 = new Instance("endpoint-instance2", InstanceArgs.builder()
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
+ *                 .subnetwork(defaultSubnetwork.id())
+ *                 .stackType("IPV4_IPV6")
+ *                 .ipv6AccessConfigs(InstanceNetworkInterfaceIpv6AccessConfigArgs.builder()
+ *                     .networkTier("PREMIUM")
+ *                     .build())
+ *                 .build())
+ *             .name("endpoint-instance2")
+ *             .machineType("e2-micro")
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image(myImage.selfLink())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var ipv6_endpoint2 = new NetworkEndpoint("ipv6-endpoint2", NetworkEndpointArgs.builder()
+ *             .networkEndpointGroup(neg.name())
+ *             .instance(endpoint_instance2.name())
+ *             .port(neg.defaultPort())
+ *             .ipv6Address(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).ipv6AccessConfigs().get(0).externalIpv6()))
  *             .build());
  * 
  *     }
@@ -194,7 +234,7 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ipAddress", refs={String.class}, tree="[0]")
-    private Output<String> ipAddress;
+    private Output</* @Nullable */ String> ipAddress;
 
     /**
      * @return IPv4 address of network endpoint. The IP address must belong
@@ -202,8 +242,24 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
      * range).
      * 
      */
-    public Output<String> ipAddress() {
-        return this.ipAddress;
+    public Output<Optional<String>> ipAddress() {
+        return Codegen.optional(this.ipAddress);
+    }
+    /**
+     * IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     * 
+     */
+    @Export(name="ipv6Address", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipv6Address;
+
+    /**
+     * @return IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     * 
+     */
+    public Output<Optional<String>> ipv6Address() {
+        return Codegen.optional(this.ipv6Address);
     }
     /**
      * The network endpoint group this endpoint is part of.

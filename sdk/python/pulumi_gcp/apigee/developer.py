@@ -408,6 +408,7 @@ class Developer(pulumi.CustomResource):
             org_id=apigee_org.id,
             opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
         ```
+
         ### Apigee Developer With Attributes
 
         ```python
@@ -540,6 +541,7 @@ class Developer(pulumi.CustomResource):
             org_id=apigee_org.id,
             opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
         ```
+
         ### Apigee Developer With Attributes
 
         ```python

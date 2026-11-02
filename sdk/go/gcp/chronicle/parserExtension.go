@@ -52,6 +52,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Parserextension Full
 //
 // ```go
@@ -103,6 +104,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Parserextension Dynamic
 //
 // ```go

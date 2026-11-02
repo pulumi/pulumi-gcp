@@ -54,6 +54,42 @@ import (
 //
 // ```
 //
+// ### Saas Runtime Saas Application Template
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := saasruntime.NewSaaS(ctx, "example", &saasruntime.SaaSArgs{
+//				SaasId:   pulumi.String("example-saas"),
+//				Location: pulumi.String("us-central1"),
+//				Locations: saasruntime.SaaSLocationArray{
+//					&saasruntime.SaaSLocationArgs{
+//						Name: pulumi.String("us-central1"),
+//					},
+//				},
+//				ApplicationTemplate: &saasruntime.SaaSApplicationTemplateArgs{
+//					ApplicationTemplate: pulumi.String("projects/my-project-name/locations/us-central1/spaces/my-space/applicationTemplates/my-composite"),
+//					Revision:            pulumi.String("projects/my-project-name/locations/us-central1/spaces/my-space/applicationTemplates/my-composite/revisions/r-1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Saas can be imported using any of these accepted formats:
@@ -79,6 +115,39 @@ type SaaS struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Reference to a composite Application Design Center ApplicationTemplate.
+	// When `revision` is set, the service imports the template components into
+	// equivalent UnitKind, Release and Blueprint resources. Create waits for
+	// the import to finish. Update waits when the template changes or when the
+	// Saas was failed, running, or not yet started. Both fail if `state`
+	// becomes `STATE_FAILED`.
+	// * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+	//   their Releases, and copies the Saas, the UnitKinds and the Releases to
+	//   `global` and to the other `locations`. Terraform doesn't manage or
+	//   delete any of them, including when this field changes. Before
+	//   destroying or replacing the Saas (including `pulumi up -replace`
+	//   and recreating a tainted Saas), delete the imported UnitKinds and
+	//   Releases in every location: the API rejects the deletion of a Saas
+	//   that still has UnitKinds.
+	// * After a failed import, fix the template and change `revision`. Any
+	//   apply that changes a failed Saas restarts the import, and the provider
+	//   waits for the restarted import to finish or fail again.
+	// * While an import is running, the provider retries template or revision
+	//   updates and DELETE until it finishes, within the resource timeouts.
+	// * Don't create Terraform-managed UnitKinds whose
+	//   `applicationTemplateComponent` matches a component of this
+	//   template: the import adopts them and overwrites their fields.
+	// * Set this field only on the source-region Saas, not on the copies in
+	//   `global` or other `locations`.
+	//   Structure is documented below.
+	ApplicationTemplate SaaSApplicationTemplatePtrOutput `pulumi:"applicationTemplate"`
+	// Name of the repository in Artifact Registry for system-generated
+	// Blueprints, for example the Blueprints of imported ApplicationTemplates.
+	BlueprintRepo pulumi.StringOutput `pulumi:"blueprintRepo"`
+	// A set of conditions which indicate the various conditions this resource can
+	// have.
+	// Structure is documented below.
+	Conditions SaaSConditionArrayOutput `pulumi:"conditions"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -92,6 +161,9 @@ type SaaS struct {
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// If the state is `STATE_FAILED`, the corresponding error code and message.
+	// Structure is documented below.
+	Errors SaaSErrorArrayOutput `pulumi:"errors"`
 	// An opaque value that uniquely identifies a version or
 	// generation of a resource. It can be used to confirm that the client
 	// and server agree on the ordering of a resource being written.
@@ -119,6 +191,15 @@ type SaaS struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The ID value for the new saas.
 	SaasId pulumi.StringOutput `pulumi:"saasId"`
+	// State of the Saas. It is always `STATE_ACTIVE` if
+	// `application_template.revision` is empty.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// STATE_TYPE_UNSPECIFIED
+	// STATE_ACTIVE
+	// STATE_RUNNING
+	// STATE_FAILED
+	State pulumi.StringOutput `pulumi:"state"`
 	// The unique identifier of the resource. UID is unique in the time
 	// and space for this resource within the scope of the service. It is
 	// typically generated by the server on successful creation of a resource
@@ -179,6 +260,39 @@ type saaSState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Reference to a composite Application Design Center ApplicationTemplate.
+	// When `revision` is set, the service imports the template components into
+	// equivalent UnitKind, Release and Blueprint resources. Create waits for
+	// the import to finish. Update waits when the template changes or when the
+	// Saas was failed, running, or not yet started. Both fail if `state`
+	// becomes `STATE_FAILED`.
+	// * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+	//   their Releases, and copies the Saas, the UnitKinds and the Releases to
+	//   `global` and to the other `locations`. Terraform doesn't manage or
+	//   delete any of them, including when this field changes. Before
+	//   destroying or replacing the Saas (including `pulumi up -replace`
+	//   and recreating a tainted Saas), delete the imported UnitKinds and
+	//   Releases in every location: the API rejects the deletion of a Saas
+	//   that still has UnitKinds.
+	// * After a failed import, fix the template and change `revision`. Any
+	//   apply that changes a failed Saas restarts the import, and the provider
+	//   waits for the restarted import to finish or fail again.
+	// * While an import is running, the provider retries template or revision
+	//   updates and DELETE until it finishes, within the resource timeouts.
+	// * Don't create Terraform-managed UnitKinds whose
+	//   `applicationTemplateComponent` matches a component of this
+	//   template: the import adopts them and overwrites their fields.
+	// * Set this field only on the source-region Saas, not on the copies in
+	//   `global` or other `locations`.
+	//   Structure is documented below.
+	ApplicationTemplate *SaaSApplicationTemplate `pulumi:"applicationTemplate"`
+	// Name of the repository in Artifact Registry for system-generated
+	// Blueprints, for example the Blueprints of imported ApplicationTemplates.
+	BlueprintRepo *string `pulumi:"blueprintRepo"`
+	// A set of conditions which indicate the various conditions this resource can
+	// have.
+	// Structure is documented below.
+	Conditions []SaaSCondition `pulumi:"conditions"`
 	// The timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -192,6 +306,9 @@ type saaSState struct {
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// If the state is `STATE_FAILED`, the corresponding error code and message.
+	// Structure is documented below.
+	Errors []SaaSError `pulumi:"errors"`
 	// An opaque value that uniquely identifies a version or
 	// generation of a resource. It can be used to confirm that the client
 	// and server agree on the ordering of a resource being written.
@@ -219,6 +336,15 @@ type saaSState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The ID value for the new saas.
 	SaasId *string `pulumi:"saasId"`
+	// State of the Saas. It is always `STATE_ACTIVE` if
+	// `application_template.revision` is empty.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// STATE_TYPE_UNSPECIFIED
+	// STATE_ACTIVE
+	// STATE_RUNNING
+	// STATE_FAILED
+	State *string `pulumi:"state"`
 	// The unique identifier of the resource. UID is unique in the time
 	// and space for this resource within the scope of the service. It is
 	// typically generated by the server on successful creation of a resource
@@ -239,6 +365,39 @@ type SaaSState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Reference to a composite Application Design Center ApplicationTemplate.
+	// When `revision` is set, the service imports the template components into
+	// equivalent UnitKind, Release and Blueprint resources. Create waits for
+	// the import to finish. Update waits when the template changes or when the
+	// Saas was failed, running, or not yet started. Both fail if `state`
+	// becomes `STATE_FAILED`.
+	// * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+	//   their Releases, and copies the Saas, the UnitKinds and the Releases to
+	//   `global` and to the other `locations`. Terraform doesn't manage or
+	//   delete any of them, including when this field changes. Before
+	//   destroying or replacing the Saas (including `pulumi up -replace`
+	//   and recreating a tainted Saas), delete the imported UnitKinds and
+	//   Releases in every location: the API rejects the deletion of a Saas
+	//   that still has UnitKinds.
+	// * After a failed import, fix the template and change `revision`. Any
+	//   apply that changes a failed Saas restarts the import, and the provider
+	//   waits for the restarted import to finish or fail again.
+	// * While an import is running, the provider retries template or revision
+	//   updates and DELETE until it finishes, within the resource timeouts.
+	// * Don't create Terraform-managed UnitKinds whose
+	//   `applicationTemplateComponent` matches a component of this
+	//   template: the import adopts them and overwrites their fields.
+	// * Set this field only on the source-region Saas, not on the copies in
+	//   `global` or other `locations`.
+	//   Structure is documented below.
+	ApplicationTemplate SaaSApplicationTemplatePtrInput
+	// Name of the repository in Artifact Registry for system-generated
+	// Blueprints, for example the Blueprints of imported ApplicationTemplates.
+	BlueprintRepo pulumi.StringPtrInput
+	// A set of conditions which indicate the various conditions this resource can
+	// have.
+	// Structure is documented below.
+	Conditions SaaSConditionArrayInput
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -252,6 +411,9 @@ type SaaSState struct {
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// If the state is `STATE_FAILED`, the corresponding error code and message.
+	// Structure is documented below.
+	Errors SaaSErrorArrayInput
 	// An opaque value that uniquely identifies a version or
 	// generation of a resource. It can be used to confirm that the client
 	// and server agree on the ordering of a resource being written.
@@ -279,6 +441,15 @@ type SaaSState struct {
 	PulumiLabels pulumi.StringMapInput
 	// The ID value for the new saas.
 	SaasId pulumi.StringPtrInput
+	// State of the Saas. It is always `STATE_ACTIVE` if
+	// `application_template.revision` is empty.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// STATE_TYPE_UNSPECIFIED
+	// STATE_ACTIVE
+	// STATE_RUNNING
+	// STATE_FAILED
+	State pulumi.StringPtrInput
 	// The unique identifier of the resource. UID is unique in the time
 	// and space for this resource within the scope of the service. It is
 	// typically generated by the server on successful creation of a resource
@@ -303,6 +474,32 @@ type saaSArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Reference to a composite Application Design Center ApplicationTemplate.
+	// When `revision` is set, the service imports the template components into
+	// equivalent UnitKind, Release and Blueprint resources. Create waits for
+	// the import to finish. Update waits when the template changes or when the
+	// Saas was failed, running, or not yet started. Both fail if `state`
+	// becomes `STATE_FAILED`.
+	// * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+	//   their Releases, and copies the Saas, the UnitKinds and the Releases to
+	//   `global` and to the other `locations`. Terraform doesn't manage or
+	//   delete any of them, including when this field changes. Before
+	//   destroying or replacing the Saas (including `pulumi up -replace`
+	//   and recreating a tainted Saas), delete the imported UnitKinds and
+	//   Releases in every location: the API rejects the deletion of a Saas
+	//   that still has UnitKinds.
+	// * After a failed import, fix the template and change `revision`. Any
+	//   apply that changes a failed Saas restarts the import, and the provider
+	//   waits for the restarted import to finish or fail again.
+	// * While an import is running, the provider retries template or revision
+	//   updates and DELETE until it finishes, within the resource timeouts.
+	// * Don't create Terraform-managed UnitKinds whose
+	//   `applicationTemplateComponent` matches a component of this
+	//   template: the import adopts them and overwrites their fields.
+	// * Set this field only on the source-region Saas, not on the copies in
+	//   `global` or other `locations`.
+	//   Structure is documented below.
+	ApplicationTemplate *SaaSApplicationTemplate `pulumi:"applicationTemplate"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -337,6 +534,32 @@ type SaaSArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Reference to a composite Application Design Center ApplicationTemplate.
+	// When `revision` is set, the service imports the template components into
+	// equivalent UnitKind, Release and Blueprint resources. Create waits for
+	// the import to finish. Update waits when the template changes or when the
+	// Saas was failed, running, or not yet started. Both fail if `state`
+	// becomes `STATE_FAILED`.
+	// * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+	//   their Releases, and copies the Saas, the UnitKinds and the Releases to
+	//   `global` and to the other `locations`. Terraform doesn't manage or
+	//   delete any of them, including when this field changes. Before
+	//   destroying or replacing the Saas (including `pulumi up -replace`
+	//   and recreating a tainted Saas), delete the imported UnitKinds and
+	//   Releases in every location: the API rejects the deletion of a Saas
+	//   that still has UnitKinds.
+	// * After a failed import, fix the template and change `revision`. Any
+	//   apply that changes a failed Saas restarts the import, and the provider
+	//   waits for the restarted import to finish or fail again.
+	// * While an import is running, the provider retries template or revision
+	//   updates and DELETE until it finishes, within the resource timeouts.
+	// * Don't create Terraform-managed UnitKinds whose
+	//   `applicationTemplateComponent` matches a component of this
+	//   template: the import adopts them and overwrites their fields.
+	// * Set this field only on the source-region Saas, not on the copies in
+	//   `global` or other `locations`.
+	//   Structure is documented below.
+	ApplicationTemplate SaaSApplicationTemplatePtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -459,6 +682,48 @@ func (o SaaSOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SaaS) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Reference to a composite Application Design Center ApplicationTemplate.
+// When `revision` is set, the service imports the template components into
+// equivalent UnitKind, Release and Blueprint resources. Create waits for
+// the import to finish. Update waits when the template changes or when the
+// Saas was failed, running, or not yet started. Both fail if `state`
+// becomes `STATE_FAILED`.
+//   - The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+//     their Releases, and copies the Saas, the UnitKinds and the Releases to
+//     `global` and to the other `locations`. Terraform doesn't manage or
+//     delete any of them, including when this field changes. Before
+//     destroying or replacing the Saas (including `pulumi up -replace`
+//     and recreating a tainted Saas), delete the imported UnitKinds and
+//     Releases in every location: the API rejects the deletion of a Saas
+//     that still has UnitKinds.
+//   - After a failed import, fix the template and change `revision`. Any
+//     apply that changes a failed Saas restarts the import, and the provider
+//     waits for the restarted import to finish or fail again.
+//   - While an import is running, the provider retries template or revision
+//     updates and DELETE until it finishes, within the resource timeouts.
+//   - Don't create Terraform-managed UnitKinds whose
+//     `applicationTemplateComponent` matches a component of this
+//     template: the import adopts them and overwrites their fields.
+//   - Set this field only on the source-region Saas, not on the copies in
+//     `global` or other `locations`.
+//     Structure is documented below.
+func (o SaaSOutput) ApplicationTemplate() SaaSApplicationTemplatePtrOutput {
+	return o.ApplyT(func(v *SaaS) SaaSApplicationTemplatePtrOutput { return v.ApplicationTemplate }).(SaaSApplicationTemplatePtrOutput)
+}
+
+// Name of the repository in Artifact Registry for system-generated
+// Blueprints, for example the Blueprints of imported ApplicationTemplates.
+func (o SaaSOutput) BlueprintRepo() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaaS) pulumi.StringOutput { return v.BlueprintRepo }).(pulumi.StringOutput)
+}
+
+// A set of conditions which indicate the various conditions this resource can
+// have.
+// Structure is documented below.
+func (o SaaSOutput) Conditions() SaaSConditionArrayOutput {
+	return o.ApplyT(func(v *SaaS) SaaSConditionArrayOutput { return v.Conditions }).(SaaSConditionArrayOutput)
+}
+
 // The timestamp when the resource was created.
 func (o SaaSOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SaaS) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -482,6 +747,12 @@ func (o SaaSOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o SaaSOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SaaS) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// If the state is `STATE_FAILED`, the corresponding error code and message.
+// Structure is documented below.
+func (o SaaSOutput) Errors() SaaSErrorArrayOutput {
+	return o.ApplyT(func(v *SaaS) SaaSErrorArrayOutput { return v.Errors }).(SaaSErrorArrayOutput)
 }
 
 // An opaque value that uniquely identifies a version or
@@ -534,6 +805,18 @@ func (o SaaSOutput) PulumiLabels() pulumi.StringMapOutput {
 // The ID value for the new saas.
 func (o SaaSOutput) SaasId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SaaS) pulumi.StringOutput { return v.SaasId }).(pulumi.StringOutput)
+}
+
+// State of the Saas. It is always `STATE_ACTIVE` if
+// `application_template.revision` is empty.
+// Possible values:
+// STATE_UNSPECIFIED
+// STATE_TYPE_UNSPECIFIED
+// STATE_ACTIVE
+// STATE_RUNNING
+// STATE_FAILED
+func (o SaaSOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaaS) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // The unique identifier of the resource. UID is unique in the time

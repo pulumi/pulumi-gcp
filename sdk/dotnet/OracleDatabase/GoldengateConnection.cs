@@ -42,11 +42,16 @@ namespace Pulumi.Gcp.OracleDatabase
     ///                 Password = "GenerateWallet@123",
     ///             },
     ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
     ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Goldengate Connection Full
     /// 
     /// ```csharp
@@ -88,6 +93,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Goldengate Connection Mysql
     /// 
     /// ```csharp
@@ -135,6 +141,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Goldengate Connection Postgresql
     /// 
     /// ```csharp
@@ -171,6 +178,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Goldengate Connection Redis
     /// 
     /// ```csharp
@@ -206,6 +214,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Goldengate Connection Kafka
     /// 
     /// ```csharp
@@ -251,6 +260,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Goldengate Connection Iceberg
     /// 
     /// ```csharp
@@ -302,6 +312,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Goldengate Connection Snowflake
     /// 
     /// ```csharp
@@ -336,6 +347,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Goldengate Connection Jms
     /// 
     /// ```csharp

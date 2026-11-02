@@ -114,6 +114,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Gke Hub Rollout Sequence Update
 //
 // ```go
@@ -218,6 +219,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Gke Hub Rollout Sequence User Triggered Create
 //
 // ```go
@@ -312,7 +314,7 @@ import (
 //					Channel: pulumi.String("REGULAR"),
 //				},
 //				ResourceLabels: pulumi.StringMap{
-//					"rs_test_cluster": pulumi.String("tf-test-_90221"),
+//					"rs_test_cluster": pulumi.String("tf-test-_25601"),
 //				},
 //				Fleet: &container.ClusterFleetArgs{
 //					Project: project.Number,
@@ -331,7 +333,7 @@ import (
 //					return &versions.ReleaseChannelLatestVersion.REGULAR, nil
 //				}).(pulumi.StringPtrOutput),
 //				IgnoredClustersSelector: &gkehub.RolloutSequenceIgnoredClustersSelectorArgs{
-//					LabelSelector: pulumi.String("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')"),
+//					LabelSelector: pulumi.String("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')"),
 //				},
 //				Stages: gkehub.RolloutSequenceStageArray{
 //					&gkehub.RolloutSequenceStageArgs{

@@ -11,8 +11,10 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyState;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyAndroidSettings;
+import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyExpressSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyIosSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyTestingOptions;
+import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyUniversalSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyWafSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyWebSettings;
 import java.lang.String;
@@ -294,6 +296,80 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Express_key
+ * A basic test of recaptcha enterprise key that can be used by reCAPTCHA Express
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKey;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyExpressSettingsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
+ *             .displayName("display-name-one")
+ *             .project("my-project-name")
+ *             .expressSettings(EnterpriseKeyExpressSettingsArgs.builder()
+ *                 .build())
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Universal_key
+ * A basic test of recaptcha enterprise key that can be used by universal frontend integrations
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKey;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyUniversalSettingsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
+ *             .displayName("display-name-one")
+ *             .project("my-project-name")
+ *             .universalSettings(EnterpriseKeyUniversalSettingsArgs.builder()
+ *                 .build())
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -398,6 +474,20 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * Settings for keys that can be used by reCAPTCHA Express.
+     * 
+     */
+    @Export(name="expressSettings", refs={EnterpriseKeyExpressSettings.class}, tree="[0]")
+    private Output</* @Nullable */ EnterpriseKeyExpressSettings> expressSettings;
+
+    /**
+     * @return Settings for keys that can be used by reCAPTCHA Express.
+     * 
+     */
+    public Output<Optional<EnterpriseKeyExpressSettings>> expressSettings() {
+        return Codegen.optional(this.expressSettings);
+    }
+    /**
      * Settings for keys that can be used by iOS apps.
      * 
      */
@@ -486,6 +576,20 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<EnterpriseKeyTestingOptions>> testingOptions() {
         return Codegen.optional(this.testingOptions);
+    }
+    /**
+     * Settings for keys that can be used by universal frontend integrations.
+     * 
+     */
+    @Export(name="universalSettings", refs={EnterpriseKeyUniversalSettings.class}, tree="[0]")
+    private Output</* @Nullable */ EnterpriseKeyUniversalSettings> universalSettings;
+
+    /**
+     * @return Settings for keys that can be used by universal frontend integrations.
+     * 
+     */
+    public Output<Optional<EnterpriseKeyUniversalSettings>> universalSettings() {
+        return Codegen.optional(this.universalSettings);
     }
     /**
      * Settings specific to keys that can be used for WAF (Web Application Firewall).

@@ -96,6 +96,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Index Endpoint With Psc
  * 
  * <pre>
@@ -141,6 +142,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Index Endpoint With Public Endpoint
  * 
  * <pre>

@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Biglake Iceberg Catalog Primary Location
  * 
  * <pre>
@@ -126,6 +127,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Biglake Iceberg Catalog Biglake
  * 
  * <pre>
@@ -183,6 +185,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Biglake Iceberg Catalog Federated Unity
  * 
  * <pre>
@@ -233,6 +236,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Biglake Iceberg Catalog Federated Glue
  * 
  * <pre>

@@ -553,6 +553,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             session_matcher="host() == 'example.com'",
             basic_profile="ALLOW")
         ```
+
         ### Network Security Gateway Security Policy Rules Advanced
 
         ```python
@@ -653,6 +654,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             session_matcher="host() == 'example.com'",
             basic_profile="ALLOW")
         ```
+
         ### Network Security Gateway Security Policy Rules Advanced
 
         ```python

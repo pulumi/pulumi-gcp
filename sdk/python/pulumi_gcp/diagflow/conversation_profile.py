@@ -763,8 +763,19 @@ class ConversationProfile(pulumi.CustomResource):
                     "enable_entity_extraction": True,
                     "enable_sentiment_analysis": True,
                 },
+            },
+            stt_config={
+                "use_gemini_asr": True,
+                "gemini_asr_config": {
+                    "model_id": "gemini-3-flash-lite-asr-preview",
+                    "silence_duration_ms": 1000,
+                    "prefix_padding_ms": 500,
+                    "start_of_speech_sensitivity": "START_SENSITIVITY_LOW",
+                    "end_of_speech_sensitivity": "END_SENSITIVITY_LOW",
+                },
             })
         ```
+
         ### Dialogflow Conversation Profile Recognition Result Notification
 
         ```python
@@ -780,6 +791,7 @@ class ConversationProfile(pulumi.CustomResource):
                 "message_format": "JSON",
             })
         ```
+
         ### Dialogflow Conversation Profile Beta Bidi
 
         ```python
@@ -899,8 +911,19 @@ class ConversationProfile(pulumi.CustomResource):
                     "enable_entity_extraction": True,
                     "enable_sentiment_analysis": True,
                 },
+            },
+            stt_config={
+                "use_gemini_asr": True,
+                "gemini_asr_config": {
+                    "model_id": "gemini-3-flash-lite-asr-preview",
+                    "silence_duration_ms": 1000,
+                    "prefix_padding_ms": 500,
+                    "start_of_speech_sensitivity": "START_SENSITIVITY_LOW",
+                    "end_of_speech_sensitivity": "END_SENSITIVITY_LOW",
+                },
             })
         ```
+
         ### Dialogflow Conversation Profile Recognition Result Notification
 
         ```python
@@ -916,6 +939,7 @@ class ConversationProfile(pulumi.CustomResource):
                 "message_format": "JSON",
             })
         ```
+
         ### Dialogflow Conversation Profile Beta Bidi
 
         ```python

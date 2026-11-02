@@ -42,6 +42,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Entry Type Full
 //
 // ```go

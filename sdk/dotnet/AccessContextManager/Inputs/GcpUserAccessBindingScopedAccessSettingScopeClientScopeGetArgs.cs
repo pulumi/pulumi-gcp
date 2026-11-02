@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         [Input("restrictedClientApplication")]
         public Input<Inputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationGetArgs>? RestrictedClientApplication { get; set; }
 
+        /// <summary>
+        /// Optional. The Google Cloud project that is subject to this binding's scope.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restrictedProject")]
+        public Input<Inputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectGetArgs>? RestrictedProject { get; set; }
+
         public GcpUserAccessBindingScopedAccessSettingScopeClientScopeGetArgs()
         {
         }

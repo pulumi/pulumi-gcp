@@ -54,11 +54,29 @@ public final class GuardrailLlmPolicyModelSettingsArgs extends com.pulumi.resour
         return Optional.ofNullable(this.temperature);
     }
 
+    /**
+     * The thinking level of the model.
+     * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+     * 
+     */
+    @Import(name="thinkingLevel")
+    private @Nullable Output<String> thinkingLevel;
+
+    /**
+     * @return The thinking level of the model.
+     * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+     * 
+     */
+    public Optional<Output<String>> thinkingLevel() {
+        return Optional.ofNullable(this.thinkingLevel);
+    }
+
     private GuardrailLlmPolicyModelSettingsArgs() {}
 
     private GuardrailLlmPolicyModelSettingsArgs(GuardrailLlmPolicyModelSettingsArgs $) {
         this.model = $.model;
         this.temperature = $.temperature;
+        this.thinkingLevel = $.thinkingLevel;
     }
 
     public static Builder builder() {
@@ -127,6 +145,29 @@ public final class GuardrailLlmPolicyModelSettingsArgs extends com.pulumi.resour
          */
         public Builder temperature(Double temperature) {
             return temperature(Output.of(temperature));
+        }
+
+        /**
+         * @param thinkingLevel The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thinkingLevel(@Nullable Output<String> thinkingLevel) {
+            $.thinkingLevel = thinkingLevel;
+            return this;
+        }
+
+        /**
+         * @param thinkingLevel The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thinkingLevel(String thinkingLevel) {
+            return thinkingLevel(Output.of(thinkingLevel));
         }
 
         public GuardrailLlmPolicyModelSettingsArgs build() {

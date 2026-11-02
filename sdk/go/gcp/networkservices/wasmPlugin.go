@@ -72,6 +72,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Wasm Plugin Basic Generic Repository
 //
 // ```go

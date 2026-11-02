@@ -29,7 +29,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
      */
     private @Nullable Integer maxUnavailable;
     /**
-     * @return Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+     * @return Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
      * 
      */
     private @Nullable String strategy;
@@ -57,7 +57,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
         return Optional.ofNullable(this.maxUnavailable);
     }
     /**
-     * @return Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+     * @return Strategy used for node pool update. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED. The default is value is SURGE.
      * 
      */
     public Optional<String> strategy() {

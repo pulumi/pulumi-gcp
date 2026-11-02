@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// });
     /// ```
+    /// 
     /// ### Folder Access Approval Active Key Version
     /// 
     /// ```csharp

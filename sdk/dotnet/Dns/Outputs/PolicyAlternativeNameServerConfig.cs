@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class PolicyAlternativeNameServerConfig
     {
         /// <summary>
+        /// The list of outbound endpoints to use for queries.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PolicyAlternativeNameServerConfigOutboundEndpoint> OutboundEndpoints;
+        /// <summary>
         /// Sets an alternative name server for the associated networks. When specified,
         /// all DNS queries are forwarded to a name server that you choose. Names such as .internal
         /// are not available when an alternative name server is specified.
@@ -22,8 +27,12 @@ namespace Pulumi.Gcp.Dns.Outputs
         public readonly ImmutableArray<Outputs.PolicyAlternativeNameServerConfigTargetNameServer> TargetNameServers;
 
         [OutputConstructor]
-        private PolicyAlternativeNameServerConfig(ImmutableArray<Outputs.PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers)
+        private PolicyAlternativeNameServerConfig(
+            ImmutableArray<Outputs.PolicyAlternativeNameServerConfigOutboundEndpoint> outboundEndpoints,
+
+            ImmutableArray<Outputs.PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers)
         {
+            OutboundEndpoints = outboundEndpoints;
             TargetNameServers = targetNameServers;
         }
     }

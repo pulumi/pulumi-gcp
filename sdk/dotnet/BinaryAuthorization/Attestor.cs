@@ -75,6 +75,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     /// });
     /// ```
+    /// 
     /// ### Binary Authorization Attestor Kms
     /// 
     /// ```csharp

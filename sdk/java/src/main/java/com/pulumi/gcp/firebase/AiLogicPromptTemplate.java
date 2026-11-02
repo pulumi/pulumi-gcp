@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebaseailogic Prompt Template Global Only
  * 
  * <pre>
@@ -108,6 +109,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebaseailogic Prompt Template Basic
  * 
  * <pre>

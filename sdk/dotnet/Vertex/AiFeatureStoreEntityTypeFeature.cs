@@ -67,6 +67,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
     /// 
     /// ```csharp

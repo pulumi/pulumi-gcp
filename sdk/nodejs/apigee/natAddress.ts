@@ -78,6 +78,7 @@ import * as utilities from "../utilities";
  *     instanceId: apigeeInstance.id,
  * });
  * ```
+ *
  * ### Apigee Nat Address With Activate
  *
  * ```typescript

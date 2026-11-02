@@ -89,6 +89,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebase App Check Play Integrity Config Full
  * 
  * <pre>

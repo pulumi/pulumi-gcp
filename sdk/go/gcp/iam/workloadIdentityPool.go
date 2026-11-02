@@ -50,6 +50,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Full Federation Only Mode
 //
 // ```go
@@ -79,6 +80,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Full Trust Domain Mode
 //
 // ```go
@@ -175,6 +177,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
 //
 // ```go

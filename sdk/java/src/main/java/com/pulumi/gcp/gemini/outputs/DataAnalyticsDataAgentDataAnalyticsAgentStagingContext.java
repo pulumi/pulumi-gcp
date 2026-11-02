@@ -8,8 +8,10 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences;
 import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery;
 import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm;
+import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQuery;
 import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions;
 import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship;
+import com.pulumi.gcp.gemini.outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctions;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +22,6 @@ import javax.annotation.Nullable;
 public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
     /**
      * @return Required. Data sources that are available for answering questions.
-     * This Terraform resource currently supports BigQuery table references.
      * Structure is documented below.
      * 
      */
@@ -37,6 +38,12 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
      * 
      */
     private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm> glossaryTerms;
+    /**
+     * @return Optional. A list of golden queries for Looker data sources.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQuery> lookerGoldenQueries;
     /**
      * @return Optional. Additional options for the conversation.
      * Structure is documented below.
@@ -56,11 +63,16 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
      * 
      */
     private @Nullable String systemInstruction;
+    /**
+     * @return Optional. A collection of user functions to be included in context.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctions userFunctions;
 
     private DataAnalyticsDataAgentDataAnalyticsAgentStagingContext() {}
     /**
      * @return Required. Data sources that are available for answering questions.
-     * This Terraform resource currently supports BigQuery table references.
      * Structure is documented below.
      * 
      */
@@ -82,6 +94,14 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
      */
     public List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm> glossaryTerms() {
         return this.glossaryTerms == null ? List.of() : this.glossaryTerms;
+    }
+    /**
+     * @return Optional. A list of golden queries for Looker data sources.
+     * Structure is documented below.
+     * 
+     */
+    public List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQuery> lookerGoldenQueries() {
+        return this.lookerGoldenQueries == null ? List.of() : this.lookerGoldenQueries;
     }
     /**
      * @return Optional. Additional options for the conversation.
@@ -108,6 +128,14 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
     public Optional<String> systemInstruction() {
         return Optional.ofNullable(this.systemInstruction);
     }
+    /**
+     * @return Optional. A collection of user functions to be included in context.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctions> userFunctions() {
+        return Optional.ofNullable(this.userFunctions);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -121,18 +149,22 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
         private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences datasourceReferences;
         private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery> exampleQueries;
         private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm> glossaryTerms;
+        private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQuery> lookerGoldenQueries;
         private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions options;
         private @Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship> schemaRelationships;
         private @Nullable String systemInstruction;
+        private @Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctions userFunctions;
         public Builder() {}
         public Builder(DataAnalyticsDataAgentDataAnalyticsAgentStagingContext defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasourceReferences = defaults.datasourceReferences;
     	      this.exampleQueries = defaults.exampleQueries;
     	      this.glossaryTerms = defaults.glossaryTerms;
+    	      this.lookerGoldenQueries = defaults.lookerGoldenQueries;
     	      this.options = defaults.options;
     	      this.schemaRelationships = defaults.schemaRelationships;
     	      this.systemInstruction = defaults.systemInstruction;
+    	      this.userFunctions = defaults.userFunctions;
         }
 
         @CustomType.Setter
@@ -162,6 +194,15 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
             return glossaryTerms(List.of(glossaryTerms));
         }
         @CustomType.Setter
+        public Builder lookerGoldenQueries(@Nullable List<DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQuery> lookerGoldenQueries) {
+
+            this.lookerGoldenQueries = lookerGoldenQueries;
+            return this;
+        }
+        public Builder lookerGoldenQueries(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQuery... lookerGoldenQueries) {
+            return lookerGoldenQueries(List.of(lookerGoldenQueries));
+        }
+        @CustomType.Setter
         public Builder options(@Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions options) {
 
             this.options = options;
@@ -182,14 +223,22 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
             this.systemInstruction = systemInstruction;
             return this;
         }
+        @CustomType.Setter
+        public Builder userFunctions(@Nullable DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctions userFunctions) {
+
+            this.userFunctions = userFunctions;
+            return this;
+        }
         public DataAnalyticsDataAgentDataAnalyticsAgentStagingContext build() {
             final var _resultValue = new DataAnalyticsDataAgentDataAnalyticsAgentStagingContext();
             _resultValue.datasourceReferences = datasourceReferences;
             _resultValue.exampleQueries = exampleQueries;
             _resultValue.glossaryTerms = glossaryTerms;
+            _resultValue.lookerGoldenQueries = lookerGoldenQueries;
             _resultValue.options = options;
             _resultValue.schemaRelationships = schemaRelationships;
             _resultValue.systemInstruction = systemInstruction;
+            _resultValue.userFunctions = userFunctions;
             return _resultValue;
         }
     }

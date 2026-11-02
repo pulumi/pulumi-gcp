@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait30s],
  * });
  * ```
+ *
  * ### Firebase App Check App Attest Config Full
  *
  * ```typescript

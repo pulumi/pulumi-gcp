@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.ContactCenterInsights
     /// 
     /// });
     /// ```
+    /// 
     /// ### Contact Center Insights Analysis Rule Full
     /// 
     /// ```csharp
@@ -97,6 +98,7 @@ namespace Pulumi.Gcp.ContactCenterInsights
     /// 
     /// });
     /// ```
+    /// 
     /// ### Contact Center Insights Analysis Rule Profile
     /// 
     /// ```csharp

@@ -92,6 +92,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Apigee Organization Cloud Basic Disable Vpc Peering
  * 
  * <pre>
@@ -130,6 +131,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Apigee Organization Cloud Basic Data Residency
  * 
  * <pre>
@@ -169,6 +171,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Apigee Organization Cloud Full
  * 
  * <pre>
@@ -267,6 +270,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Apigee Organization Cloud Full Disable Vpc Peering
  * 
  * <pre>

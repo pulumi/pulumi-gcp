@@ -61,9 +61,9 @@ import (
 //			//
 //			// For bulk ingestion of many items, prefer one of these out-of-band
 //			// paths instead of Pulumi:
-//			//   - 'importDataObjects' (from Cloud Storage) -- highest throughput,
+//			//   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 //			//     but only available *before* any Index is created on the Collection.
-//			//   - 'batchCreate' (up to ~1000 items per call) -- available at any
+//			//   * 'batchCreate' (up to ~1000 items per call) -- available at any
 //			//     time, but must be driven from client code, not Pulumi.
 //			parent, err := vectorsearch.NewCollection(ctx, "parent", &vectorsearch.CollectionArgs{
 //				Location:     pulumi.String("us-central1"),
@@ -127,6 +127,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vectorsearch Data Object With Vectors
 //
 // ```go
@@ -150,9 +151,9 @@ import (
 //			//
 //			// For bulk ingestion of many items, prefer one of these out-of-band
 //			// paths instead of Pulumi:
-//			//   - 'importDataObjects' (from Cloud Storage) -- highest throughput,
+//			//   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 //			//     but only available *before* any Index is created on the Collection.
-//			//   - 'batchCreate' (up to ~1000 items per call) -- available at any
+//			//   * 'batchCreate' (up to ~1000 items per call) -- available at any
 //			//     time, but must be driven from client code, not Pulumi.
 //			parent, err := vectorsearch.NewCollection(ctx, "parent", &vectorsearch.CollectionArgs{
 //				Location:     pulumi.String("us-central1"),

@@ -428,12 +428,13 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+     * The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
      * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
      * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
      * A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
      * A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+     * A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
      * Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
      * If unspecified, the purpose defaults to `PRIVATE`.
      * 
@@ -442,12 +443,13 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> purpose;
 
     /**
-     * @return The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+     * @return The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
      * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
      * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
      * A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
      * A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+     * A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
      * Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
      * If unspecified, the purpose defaults to `PRIVATE`.
      * 
@@ -507,7 +509,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The role of subnetwork.
-     * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+     * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * The value can be set to `ACTIVE` or `BACKUP`.
      * An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
      * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -519,7 +521,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The role of subnetwork.
-     * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+     * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * The value can be set to `ACTIVE` or `BACKUP`.
      * An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
      * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -1229,12 +1231,13 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purpose The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+         * @param purpose The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
          * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
          * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
          * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
          * A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
          * A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+         * A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
          * Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
          * If unspecified, the purpose defaults to `PRIVATE`.
          * 
@@ -1247,12 +1250,13 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purpose The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+         * @param purpose The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
          * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
          * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
          * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
          * A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
          * A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+         * A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
          * Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
          * If unspecified, the purpose defaults to `PRIVATE`.
          * 
@@ -1332,7 +1336,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param role The role of subnetwork.
-         * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+         * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
          * The value can be set to `ACTIVE` or `BACKUP`.
          * An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
          * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -1348,7 +1352,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param role The role of subnetwork.
-         * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+         * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
          * The value can be set to `ACTIVE` or `BACKUP`.
          * An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
          * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.

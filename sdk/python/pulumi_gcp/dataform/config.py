@@ -209,6 +209,7 @@ class Config(pulumi.CustomResource):
             project=project.project_id,
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
+
         ### Dataform Config Without Kms Key
 
         ```python
@@ -333,6 +334,7 @@ class Config(pulumi.CustomResource):
             project=project.project_id,
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
+
         ### Dataform Config Without Kms Key
 
         ```python

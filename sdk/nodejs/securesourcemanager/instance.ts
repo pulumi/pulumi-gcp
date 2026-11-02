@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "PREVENT",
  * });
  * ```
+ *
  * ### Secure Source Manager Instance Cmek
  *
  * ```typescript
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKeyBinding],
  * });
  * ```
+ *
  * ### Secure Source Manager Instance Private
  *
  * ```typescript
@@ -127,6 +129,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Secure Source Manager Instance Private Custom Host
  *
  * ```typescript
@@ -207,6 +210,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Secure Source Manager Instance Private Psc Backend
  *
  * ```typescript
@@ -370,6 +374,7 @@ import * as utilities from "../utilities";
  *     rrdatas: [fwRuleTargetProxy.ipAddress],
  * });
  * ```
+ *
  * ### Secure Source Manager Instance Private Psc Endpoint
  *
  * ```typescript
@@ -503,6 +508,7 @@ import * as utilities from "../utilities";
  *     rrdatas: [fwRuleServiceAttachment.ipAddress],
  * });
  * ```
+ *
  * ### Secure Source Manager Instance Workforce Identity Federation
  *
  * ```typescript

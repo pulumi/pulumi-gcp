@@ -94,6 +94,7 @@ import javax.annotation.Nullable;
  *                 .giVersion("19.0.0.0")
  *                 .hostnamePrefix("hostname1")
  *                 .build())
+ *             .labels(Map.of("label-one", "value-one"))
  *             .deletionProtection(true)
  *             .build());
  * 
@@ -101,6 +102,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Oracledatabase Cloud Vmcluster Odbnetwork
  * 
  * <pre>
@@ -165,6 +167,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Oracledatabase Cloud Vmcluster Full
  * 
  * <pre>
@@ -259,6 +262,8 @@ import javax.annotation.Nullable;
  *                     .incidentLogsEnabled(true)
  *                     .build())
  *                 .memorySizeGb(60)
+ *                 .scanListenerPortTcp(1521)
+ *                 .scanListenerPortTcpSsl(2484)
  *                 .build())
  *             .deletionProtection(true)
  *             .build());
@@ -267,6 +272,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Oracledatabase Cloud Vmcluster Exascale
  * 
  * <pre>

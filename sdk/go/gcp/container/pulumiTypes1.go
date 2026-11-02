@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterNodeConfigContainerdConfigRegistryHostHostHeader struct {
+	// Configures the header key.
+	Key string `pulumi:"key"`
+	// Configures the header value.
+	Values []string `pulumi:"values"`
+}
+
+// GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput is an input type that accepts GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs and GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput` via:
+//
+//	GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs{...}
+type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput
+	ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput
+}
+
+type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs struct {
+	// Configures the header key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Configures the header value.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostHeader)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput {
+	return i.ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput)
+}
+
+// GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput is an input type that accepts GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray and GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput` via:
+//
+//	GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray{ GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs{...} }
+type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput
+	ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput
+}
+
+type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray []GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput
+
+func (GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigRegistryHostHostHeader)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput {
+	return i.ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostHeader)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput {
+	return o
+}
+
+// Configures the header key.
+func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfigRegistryHostHostHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Configures the header value.
+func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfigRegistryHostHostHeader) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigRegistryHostHostHeader)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput() GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput) ToGetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigContainerdConfigRegistryHostHostHeader {
+		return vs[0].([]GetClusterNodeConfigContainerdConfigRegistryHostHostHeader)[vs[1].(int)]
+	}).(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput)
+}
+
 type GetClusterNodeConfigContainerdConfigWritableCgroup struct {
 	// Whether writable cgroups are enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -16859,7 +16965,7 @@ type GetClusterPrivateClusterConfig struct {
 	EnablePrivateNodes bool `pulumi:"enablePrivateNodes"`
 	// Controls cluster master global access settings.
 	MasterGlobalAccessConfigs []GetClusterPrivateClusterConfigMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfigs"`
-	// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true.
+	// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true. On GKE versions 1.29 and later, this field is optional when privateEndpointSubnetwork is specified. It is also optional for Autopilot clusters.
 	MasterIpv4CidrBlock string `pulumi:"masterIpv4CidrBlock"`
 	// The name of the peering between this cluster and the Google owned VPC.
 	PeeringName string `pulumi:"peeringName"`
@@ -16889,7 +16995,7 @@ type GetClusterPrivateClusterConfigArgs struct {
 	EnablePrivateNodes pulumi.BoolInput `pulumi:"enablePrivateNodes"`
 	// Controls cluster master global access settings.
 	MasterGlobalAccessConfigs GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayInput `pulumi:"masterGlobalAccessConfigs"`
-	// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true.
+	// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true. On GKE versions 1.29 and later, this field is optional when privateEndpointSubnetwork is specified. It is also optional for Autopilot clusters.
 	MasterIpv4CidrBlock pulumi.StringInput `pulumi:"masterIpv4CidrBlock"`
 	// The name of the peering between this cluster and the Google owned VPC.
 	PeeringName pulumi.StringInput `pulumi:"peeringName"`
@@ -16969,7 +17075,7 @@ func (o GetClusterPrivateClusterConfigOutput) MasterGlobalAccessConfigs() GetClu
 	}).(GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput)
 }
 
-// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true.
+// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true. On GKE versions 1.29 and later, this field is optional when privateEndpointSubnetwork is specified. It is also optional for Autopilot clusters.
 func (o GetClusterPrivateClusterConfigOutput) MasterIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterPrivateClusterConfig) string { return v.MasterIpv4CidrBlock }).(pulumi.StringOutput)
 }
@@ -17841,6 +17947,103 @@ func (o GetClusterRollbackSafeUpgradeArrayOutput) Index(i pulumi.IntInput) GetCl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterRollbackSafeUpgrade {
 		return vs[0].([]GetClusterRollbackSafeUpgrade)[vs[1].(int)]
 	}).(GetClusterRollbackSafeUpgradeOutput)
+}
+
+type GetClusterScheduleUpgradeConfig struct {
+	// Whether scheduled upgrades are enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterScheduleUpgradeConfigInput is an input type that accepts GetClusterScheduleUpgradeConfigArgs and GetClusterScheduleUpgradeConfigOutput values.
+// You can construct a concrete instance of `GetClusterScheduleUpgradeConfigInput` via:
+//
+//	GetClusterScheduleUpgradeConfigArgs{...}
+type GetClusterScheduleUpgradeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterScheduleUpgradeConfigOutput() GetClusterScheduleUpgradeConfigOutput
+	ToGetClusterScheduleUpgradeConfigOutputWithContext(context.Context) GetClusterScheduleUpgradeConfigOutput
+}
+
+type GetClusterScheduleUpgradeConfigArgs struct {
+	// Whether scheduled upgrades are enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterScheduleUpgradeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScheduleUpgradeConfig)(nil)).Elem()
+}
+
+func (i GetClusterScheduleUpgradeConfigArgs) ToGetClusterScheduleUpgradeConfigOutput() GetClusterScheduleUpgradeConfigOutput {
+	return i.ToGetClusterScheduleUpgradeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterScheduleUpgradeConfigArgs) ToGetClusterScheduleUpgradeConfigOutputWithContext(ctx context.Context) GetClusterScheduleUpgradeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterScheduleUpgradeConfigOutput)
+}
+
+// GetClusterScheduleUpgradeConfigArrayInput is an input type that accepts GetClusterScheduleUpgradeConfigArray and GetClusterScheduleUpgradeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterScheduleUpgradeConfigArrayInput` via:
+//
+//	GetClusterScheduleUpgradeConfigArray{ GetClusterScheduleUpgradeConfigArgs{...} }
+type GetClusterScheduleUpgradeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterScheduleUpgradeConfigArrayOutput() GetClusterScheduleUpgradeConfigArrayOutput
+	ToGetClusterScheduleUpgradeConfigArrayOutputWithContext(context.Context) GetClusterScheduleUpgradeConfigArrayOutput
+}
+
+type GetClusterScheduleUpgradeConfigArray []GetClusterScheduleUpgradeConfigInput
+
+func (GetClusterScheduleUpgradeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterScheduleUpgradeConfig)(nil)).Elem()
+}
+
+func (i GetClusterScheduleUpgradeConfigArray) ToGetClusterScheduleUpgradeConfigArrayOutput() GetClusterScheduleUpgradeConfigArrayOutput {
+	return i.ToGetClusterScheduleUpgradeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterScheduleUpgradeConfigArray) ToGetClusterScheduleUpgradeConfigArrayOutputWithContext(ctx context.Context) GetClusterScheduleUpgradeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterScheduleUpgradeConfigArrayOutput)
+}
+
+type GetClusterScheduleUpgradeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterScheduleUpgradeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScheduleUpgradeConfig)(nil)).Elem()
+}
+
+func (o GetClusterScheduleUpgradeConfigOutput) ToGetClusterScheduleUpgradeConfigOutput() GetClusterScheduleUpgradeConfigOutput {
+	return o
+}
+
+func (o GetClusterScheduleUpgradeConfigOutput) ToGetClusterScheduleUpgradeConfigOutputWithContext(ctx context.Context) GetClusterScheduleUpgradeConfigOutput {
+	return o
+}
+
+// Whether scheduled upgrades are enabled.
+func (o GetClusterScheduleUpgradeConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterScheduleUpgradeConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterScheduleUpgradeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterScheduleUpgradeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterScheduleUpgradeConfig)(nil)).Elem()
+}
+
+func (o GetClusterScheduleUpgradeConfigArrayOutput) ToGetClusterScheduleUpgradeConfigArrayOutput() GetClusterScheduleUpgradeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterScheduleUpgradeConfigArrayOutput) ToGetClusterScheduleUpgradeConfigArrayOutputWithContext(ctx context.Context) GetClusterScheduleUpgradeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterScheduleUpgradeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterScheduleUpgradeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterScheduleUpgradeConfig {
+		return vs[0].([]GetClusterScheduleUpgradeConfig)[vs[1].(int)]
+	}).(GetClusterScheduleUpgradeConfigOutput)
 }
 
 type GetClusterSecretManagerConfig struct {
@@ -19050,6 +19253,8 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigWritableCgroupInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigWritableCgroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigWritableCgroupArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigWritableCgroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEffectiveTaintInput)(nil)).Elem(), GetClusterNodeConfigEffectiveTaintArgs{})
@@ -19354,6 +19559,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterRollbackSafeUpgradeInput)(nil)).Elem(), GetClusterRollbackSafeUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterRollbackSafeUpgradeArrayInput)(nil)).Elem(), GetClusterRollbackSafeUpgradeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterScheduleUpgradeConfigInput)(nil)).Elem(), GetClusterScheduleUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterScheduleUpgradeConfigArrayInput)(nil)).Elem(), GetClusterScheduleUpgradeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigInput)(nil)).Elem(), GetClusterSecretManagerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigArrayInput)(nil)).Elem(), GetClusterSecretManagerConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigRotationConfigInput)(nil)).Elem(), GetClusterSecretManagerConfigRotationConfigArgs{})
@@ -19376,6 +19583,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigArrayInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigWritableCgroupOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEffectiveTaintOutput{})
@@ -19680,6 +19889,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterRollbackSafeUpgradeOutput{})
 	pulumi.RegisterOutputType(GetClusterRollbackSafeUpgradeArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterScheduleUpgradeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterScheduleUpgradeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterSecretManagerConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterSecretManagerConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterSecretManagerConfigRotationConfigOutput{})

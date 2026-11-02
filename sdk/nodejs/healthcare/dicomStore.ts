@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Healthcare Dicom Store Bq Stream
  *
  * ```typescript

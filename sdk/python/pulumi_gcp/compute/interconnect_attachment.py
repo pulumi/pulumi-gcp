@@ -1505,6 +1505,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                 "mykey": "myvalue",
             })
         ```
+
         ### Compute Interconnect Attachment Ipsec Encryption
 
         ```python
@@ -1536,6 +1537,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             encryption="IPSEC",
             ipsec_internal_addresses=[address.self_link])
         ```
+
         ### Compute Interconnect Attachment Custom Ranges
 
         ```python
@@ -1739,6 +1741,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                 "mykey": "myvalue",
             })
         ```
+
         ### Compute Interconnect Attachment Ipsec Encryption
 
         ```python
@@ -1770,6 +1773,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             encryption="IPSEC",
             ipsec_internal_addresses=[address.self_link])
         ```
+
         ### Compute Interconnect Attachment Custom Ranges
 
         ```python

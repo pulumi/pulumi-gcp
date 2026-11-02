@@ -76,13 +76,14 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com`),
  * });
  * ```
+ *
  * ### Vertex Ai Endpoint Private Service Connect
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {name: "psc-network-_78545"});
+ * const _default = new gcp.compute.Network("default", {name: "psc-network-_72437"});
  * const project = gcp.organizations.getProject({});
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
  *     name: "endpoint-name",
@@ -103,6 +104,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Endpoint Dedicated Endpoint
  *
  * ```typescript

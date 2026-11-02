@@ -370,6 +370,7 @@ class DatabaseInstance(pulumi.CustomResource):
             region="us-central1",
             instance_id="active-db")
         ```
+
         ### Firebase Database Instance Full
 
         ```python
@@ -383,6 +384,7 @@ class DatabaseInstance(pulumi.CustomResource):
             type="USER_DATABASE",
             desired_state="DISABLED")
         ```
+
         ### Firebase Database Instance Default Database
 
         ```python
@@ -488,6 +490,7 @@ class DatabaseInstance(pulumi.CustomResource):
             region="us-central1",
             instance_id="active-db")
         ```
+
         ### Firebase Database Instance Full
 
         ```python
@@ -501,6 +504,7 @@ class DatabaseInstance(pulumi.CustomResource):
             type="USER_DATABASE",
             desired_state="DISABLED")
         ```
+
         ### Firebase Database Instance Default Database
 
         ```python

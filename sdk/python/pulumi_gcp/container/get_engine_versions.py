@@ -26,10 +26,13 @@ class GetEngineVersionsResult:
     """
     A collection of values returned by getEngineVersions.
     """
-    def __init__(__self__, default_cluster_version=None, id=None, latest_master_version=None, latest_node_version=None, location=None, project=None, release_channel_default_version=None, release_channel_latest_version=None, release_channel_upgrade_target_version=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None):
+    def __init__(__self__, default_cluster_version=None, default_image_type=None, id=None, latest_master_version=None, latest_node_version=None, location=None, project=None, release_channel_default_version=None, release_channel_latest_version=None, release_channel_upgrade_target_version=None, valid_image_types=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None):
         if default_cluster_version and not isinstance(default_cluster_version, str):
             raise TypeError("Expected argument 'default_cluster_version' to be a str")
         pulumi.set(__self__, "default_cluster_version", default_cluster_version)
+        if default_image_type and not isinstance(default_image_type, str):
+            raise TypeError("Expected argument 'default_image_type' to be a str")
+        pulumi.set(__self__, "default_image_type", default_image_type)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -54,6 +57,9 @@ class GetEngineVersionsResult:
         if release_channel_upgrade_target_version and not isinstance(release_channel_upgrade_target_version, dict):
             raise TypeError("Expected argument 'release_channel_upgrade_target_version' to be a dict")
         pulumi.set(__self__, "release_channel_upgrade_target_version", release_channel_upgrade_target_version)
+        if valid_image_types and not isinstance(valid_image_types, list):
+            raise TypeError("Expected argument 'valid_image_types' to be a list")
+        pulumi.set(__self__, "valid_image_types", valid_image_types)
         if valid_master_versions and not isinstance(valid_master_versions, list):
             raise TypeError("Expected argument 'valid_master_versions' to be a list")
         pulumi.set(__self__, "valid_master_versions", valid_master_versions)
@@ -71,6 +77,14 @@ class GetEngineVersionsResult:
         Version of Kubernetes the service deploys by default.
         """
         return pulumi.get(self, "default_cluster_version")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultImageType")
+    def default_image_type(self) -> _builtins.str:
+        """
+        The default image type provided by this version of the API.
+        """
+        return pulumi.get(self, "default_image_type")
 
     @_builtins.property
     @pulumi.getter
@@ -131,6 +145,14 @@ class GetEngineVersionsResult:
         return pulumi.get(self, "release_channel_upgrade_target_version")
 
     @_builtins.property
+    @pulumi.getter(name="validImageTypes")
+    def valid_image_types(self) -> Sequence[_builtins.str]:
+        """
+        A list of the valid image types available in the given zone.
+        """
+        return pulumi.get(self, "valid_image_types")
+
+    @_builtins.property
     @pulumi.getter(name="validMasterVersions")
     def valid_master_versions(self) -> Sequence[_builtins.str]:
         """
@@ -159,6 +181,7 @@ class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
             yield self
         return GetEngineVersionsResult(
             default_cluster_version=self.default_cluster_version,
+            default_image_type=self.default_image_type,
             id=self.id,
             latest_master_version=self.latest_master_version,
             latest_node_version=self.latest_node_version,
@@ -167,6 +190,7 @@ class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
             release_channel_default_version=self.release_channel_default_version,
             release_channel_latest_version=self.release_channel_latest_version,
             release_channel_upgrade_target_version=self.release_channel_upgrade_target_version,
+            valid_image_types=self.valid_image_types,
             valid_master_versions=self.valid_master_versions,
             valid_node_versions=self.valid_node_versions,
             version_prefix=self.version_prefix)
@@ -228,6 +252,7 @@ def get_engine_versions(location: Optional[_builtins.str] = None,
 
     return AwaitableGetEngineVersionsResult(
         default_cluster_version=pulumi.get(__ret__, 'default_cluster_version'),
+        default_image_type=pulumi.get(__ret__, 'default_image_type'),
         id=pulumi.get(__ret__, 'id'),
         latest_master_version=pulumi.get(__ret__, 'latest_master_version'),
         latest_node_version=pulumi.get(__ret__, 'latest_node_version'),
@@ -236,6 +261,7 @@ def get_engine_versions(location: Optional[_builtins.str] = None,
         release_channel_default_version=pulumi.get(__ret__, 'release_channel_default_version'),
         release_channel_latest_version=pulumi.get(__ret__, 'release_channel_latest_version'),
         release_channel_upgrade_target_version=pulumi.get(__ret__, 'release_channel_upgrade_target_version'),
+        valid_image_types=pulumi.get(__ret__, 'valid_image_types'),
         valid_master_versions=pulumi.get(__ret__, 'valid_master_versions'),
         valid_node_versions=pulumi.get(__ret__, 'valid_node_versions'),
         version_prefix=pulumi.get(__ret__, 'version_prefix'))
@@ -294,6 +320,7 @@ def get_engine_versions_output(location: pulumi.Input[Optional[Optional[_builtin
     __ret__ = pulumi.runtime.invoke_output('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts, typ=GetEngineVersionsResult)
     return __ret__.apply(lambda __response__: GetEngineVersionsResult(
         default_cluster_version=pulumi.get(__response__, 'default_cluster_version'),
+        default_image_type=pulumi.get(__response__, 'default_image_type'),
         id=pulumi.get(__response__, 'id'),
         latest_master_version=pulumi.get(__response__, 'latest_master_version'),
         latest_node_version=pulumi.get(__response__, 'latest_node_version'),
@@ -302,6 +329,7 @@ def get_engine_versions_output(location: pulumi.Input[Optional[Optional[_builtin
         release_channel_default_version=pulumi.get(__response__, 'release_channel_default_version'),
         release_channel_latest_version=pulumi.get(__response__, 'release_channel_latest_version'),
         release_channel_upgrade_target_version=pulumi.get(__response__, 'release_channel_upgrade_target_version'),
+        valid_image_types=pulumi.get(__response__, 'valid_image_types'),
         valid_master_versions=pulumi.get(__response__, 'valid_master_versions'),
         valid_node_versions=pulumi.get(__response__, 'valid_node_versions'),
         version_prefix=pulumi.get(__response__, 'version_prefix')))

@@ -809,11 +809,17 @@ class AiPersistentResource(pulumi.CustomResource):
             display_name="Example persistent resource",
             resource_pools=[{
                 "machine_spec": {
-                    "machine_type": "n1-standard-4",
+                    "machine_type": "n1-standard-8",
                 },
-                "replica_count": "1",
-            }])
+                "replica_count": "2",
+            }],
+            resource_runtime_spec={
+                "ray_spec": {
+                    "image_uri": "us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest",
+                },
+            })
         ```
+
         ### Vertex Ai Persistent Resource Autoscaling
 
         ```python
@@ -835,6 +841,7 @@ class AiPersistentResource(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Vertex Ai Persistent Resource Machine Spec
 
         ```python
@@ -857,6 +864,7 @@ class AiPersistentResource(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Vertex Ai Persistent Resource Network
 
         ```python
@@ -1046,11 +1054,17 @@ class AiPersistentResource(pulumi.CustomResource):
             display_name="Example persistent resource",
             resource_pools=[{
                 "machine_spec": {
-                    "machine_type": "n1-standard-4",
+                    "machine_type": "n1-standard-8",
                 },
-                "replica_count": "1",
-            }])
+                "replica_count": "2",
+            }],
+            resource_runtime_spec={
+                "ray_spec": {
+                    "image_uri": "us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest",
+                },
+            })
         ```
+
         ### Vertex Ai Persistent Resource Autoscaling
 
         ```python
@@ -1072,6 +1086,7 @@ class AiPersistentResource(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Vertex Ai Persistent Resource Machine Spec
 
         ```python
@@ -1094,6 +1109,7 @@ class AiPersistentResource(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Vertex Ai Persistent Resource Network
 
         ```python

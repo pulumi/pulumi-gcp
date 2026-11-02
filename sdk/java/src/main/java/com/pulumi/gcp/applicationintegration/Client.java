@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Integrations Client Full
  * 
  * <pre>

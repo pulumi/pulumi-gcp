@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *
  * const ipAddress = new gcp.compute.Address("ip_address", {name: "my-address"});
  * ```
+ *
  * ### Address With Subnetwork
  *
  * ```typescript
@@ -57,6 +58,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ *
  * ### Address With Gce Endpoint
  *
  * ```typescript
@@ -69,6 +71,7 @@ import * as utilities from "../utilities";
  *     purpose: "GCE_ENDPOINT",
  * });
  * ```
+ *
  * ### Instance With Ip
  *
  * ```typescript
@@ -97,6 +100,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Compute Address Ipsec Interconnect
  *
  * ```typescript
@@ -116,6 +120,7 @@ import * as utilities from "../utilities";
  *     network: network.selfLink,
  * });
  * ```
+ *
  * ## Import
  *
  * Address can be imported using any of these accepted formats:
@@ -285,6 +290,9 @@ export class Address extends pulumi.CustomResource {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
+     * * SYSTEM_MANAGED for regional internal IP address that is reserved and
+     *   managed internally. It can not be assigned to compute resources such as
+     *   VM and internal load balancer.
      *   This should only be set when using an Internal address.
      */
     declare public readonly purpose: pulumi.Output<string>;
@@ -301,7 +309,8 @@ export class Address extends pulumi.CustomResource {
      * The URL of the subnetwork in which to reserve the address. If an IP
      * address is specified, it must be within the subnetwork's IP range.
      * This field can only be used with INTERNAL type with
-     * GCE_ENDPOINT/DNS_RESOLVER purposes.
+     * GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+     * when `ipv6EndpointType` is `VM` or `NETLB`.
      */
     declare public readonly subnetwork: pulumi.Output<string>;
     /**
@@ -505,6 +514,9 @@ export interface AddressState {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
+     * * SYSTEM_MANAGED for regional internal IP address that is reserved and
+     *   managed internally. It can not be assigned to compute resources such as
+     *   VM and internal load balancer.
      *   This should only be set when using an Internal address.
      */
     purpose?: pulumi.Input<string | undefined>;
@@ -521,7 +533,8 @@ export interface AddressState {
      * The URL of the subnetwork in which to reserve the address. If an IP
      * address is specified, it must be within the subnetwork's IP range.
      * This field can only be used with INTERNAL type with
-     * GCE_ENDPOINT/DNS_RESOLVER purposes.
+     * GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+     * when `ipv6EndpointType` is `VM` or `NETLB`.
      */
     subnetwork?: pulumi.Input<string | undefined>;
     /**
@@ -635,6 +648,9 @@ export interface AddressArgs {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
+     * * SYSTEM_MANAGED for regional internal IP address that is reserved and
+     *   managed internally. It can not be assigned to compute resources such as
+     *   VM and internal load balancer.
      *   This should only be set when using an Internal address.
      */
     purpose?: pulumi.Input<string | undefined>;
@@ -647,7 +663,8 @@ export interface AddressArgs {
      * The URL of the subnetwork in which to reserve the address. If an IP
      * address is specified, it must be within the subnetwork's IP range.
      * This field can only be used with INTERNAL type with
-     * GCE_ENDPOINT/DNS_RESOLVER purposes.
+     * GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+     * when `ipv6EndpointType` is `VM` or `NETLB`.
      */
     subnetwork?: pulumi.Input<string | undefined>;
 }

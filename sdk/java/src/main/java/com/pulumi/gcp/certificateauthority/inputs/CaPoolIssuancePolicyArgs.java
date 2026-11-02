@@ -9,6 +9,7 @@ import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedIss
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedKeyTypeArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,27 @@ import javax.annotation.Nullable;
 public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CaPoolIssuancePolicyArgs Empty = new CaPoolIssuancePolicyArgs();
+
+    /**
+     * If set to true, allows requesters to specify the requestedNotBeforeTime
+     * field when creating a Certificate. Certificates requested with this
+     * option enabled will have a &#39;not_before_time&#39; equal to the value
+     * specified in the request.
+     * 
+     */
+    @Import(name="allowRequesterSpecifiedNotBeforeTime")
+    private @Nullable Output<Boolean> allowRequesterSpecifiedNotBeforeTime;
+
+    /**
+     * @return If set to true, allows requesters to specify the requestedNotBeforeTime
+     * field when creating a Certificate. Certificates requested with this
+     * option enabled will have a &#39;not_before_time&#39; equal to the value
+     * specified in the request.
+     * 
+     */
+    public Optional<Output<Boolean>> allowRequesterSpecifiedNotBeforeTime() {
+        return Optional.ofNullable(this.allowRequesterSpecifiedNotBeforeTime);
+    }
 
     /**
      * IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
@@ -141,6 +163,7 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
     private CaPoolIssuancePolicyArgs() {}
 
     private CaPoolIssuancePolicyArgs(CaPoolIssuancePolicyArgs $) {
+        this.allowRequesterSpecifiedNotBeforeTime = $.allowRequesterSpecifiedNotBeforeTime;
         this.allowedIssuanceModes = $.allowedIssuanceModes;
         this.allowedKeyTypes = $.allowedKeyTypes;
         this.backdateDuration = $.backdateDuration;
@@ -165,6 +188,33 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
 
         public Builder(CaPoolIssuancePolicyArgs defaults) {
             $ = new CaPoolIssuancePolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowRequesterSpecifiedNotBeforeTime If set to true, allows requesters to specify the requestedNotBeforeTime
+         * field when creating a Certificate. Certificates requested with this
+         * option enabled will have a &#39;not_before_time&#39; equal to the value
+         * specified in the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowRequesterSpecifiedNotBeforeTime(@Nullable Output<Boolean> allowRequesterSpecifiedNotBeforeTime) {
+            $.allowRequesterSpecifiedNotBeforeTime = allowRequesterSpecifiedNotBeforeTime;
+            return this;
+        }
+
+        /**
+         * @param allowRequesterSpecifiedNotBeforeTime If set to true, allows requesters to specify the requestedNotBeforeTime
+         * field when creating a Certificate. Certificates requested with this
+         * option enabled will have a &#39;not_before_time&#39; equal to the value
+         * specified in the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowRequesterSpecifiedNotBeforeTime(Boolean allowRequesterSpecifiedNotBeforeTime) {
+            return allowRequesterSpecifiedNotBeforeTime(Output.of(allowRequesterSpecifiedNotBeforeTime));
         }
 
         /**

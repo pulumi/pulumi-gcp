@@ -124,6 +124,7 @@ public final class ServiceLbPoliciesState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * (Optional, Beta)
      * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      * 
@@ -132,7 +133,8 @@ public final class ServiceLbPoliciesState extends com.pulumi.resources.ResourceA
     private @Nullable Output<ServiceLbPoliciesIsolationConfigArgs> isolationConfig;
 
     /**
-     * @return Configuration to provide isolation support for the associated Backend Service.
+     * @return (Optional, Beta)
+     * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      * 
      */
@@ -433,7 +435,8 @@ public final class ServiceLbPoliciesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param isolationConfig Configuration to provide isolation support for the associated Backend Service.
+         * @param isolationConfig (Optional, Beta)
+         * Configuration to provide isolation support for the associated Backend Service.
          * Structure is documented below.
          * 
          * @return builder
@@ -445,7 +448,8 @@ public final class ServiceLbPoliciesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param isolationConfig Configuration to provide isolation support for the associated Backend Service.
+         * @param isolationConfig (Optional, Beta)
+         * Configuration to provide isolation support for the associated Backend Service.
          * Structure is documented below.
          * 
          * @return builder

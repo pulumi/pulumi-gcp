@@ -33,6 +33,8 @@ __all__ = [
     'NotebookExecutionGcsNotebookSourceArgsDict',
     'NotebookExecutionWorkbenchRuntimeArgs',
     'NotebookExecutionWorkbenchRuntimeArgsDict',
+    'NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs',
+    'NotebookExecutionWorkbenchRuntimeCustomContainerImageArgsDict',
     'NotebookExecutionWorkbenchRuntimeVmImageArgs',
     'NotebookExecutionWorkbenchRuntimeVmImageArgsDict',
     'RuntimeNotebookRuntimeTemplateRefArgs',
@@ -585,7 +587,12 @@ class NotebookExecutionGcsNotebookSourceArgs:
 
 
 class NotebookExecutionWorkbenchRuntimeArgsDict(TypedDict):
-    vm_image: pulumi.Input['NotebookExecutionWorkbenchRuntimeVmImageArgsDict']
+    custom_container_image: NotRequired[pulumi.Input[Optional['NotebookExecutionWorkbenchRuntimeCustomContainerImageArgsDict']]]
+    """
+    Use a container image to start the workbench instance.
+    Structure is documented below.
+    """
+    vm_image: NotRequired[pulumi.Input[Optional['NotebookExecutionWorkbenchRuntimeVmImageArgsDict']]]
     """
     Custom Compute Engine VM image for the Workbench instance.
     Structure is documented below.
@@ -594,16 +601,35 @@ class NotebookExecutionWorkbenchRuntimeArgsDict(TypedDict):
 @pulumi.input_type
 class NotebookExecutionWorkbenchRuntimeArgs:
     def __init__(__self__, *,
-                 vm_image: pulumi.Input['NotebookExecutionWorkbenchRuntimeVmImageArgs']):
+                 custom_container_image: pulumi.Input[Optional['NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs']] = None,
+                 vm_image: pulumi.Input[Optional['NotebookExecutionWorkbenchRuntimeVmImageArgs']] = None):
         """
+        :param pulumi.Input['NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs'] custom_container_image: Use a container image to start the workbench instance.
+               Structure is documented below.
         :param pulumi.Input['NotebookExecutionWorkbenchRuntimeVmImageArgs'] vm_image: Custom Compute Engine VM image for the Workbench instance.
                Structure is documented below.
         """
-        pulumi.set(__self__, "vm_image", vm_image)
+        if custom_container_image is not None:
+            pulumi.set(__self__, "custom_container_image", custom_container_image)
+        if vm_image is not None:
+            pulumi.set(__self__, "vm_image", vm_image)
+
+    @_builtins.property
+    @pulumi.getter(name="customContainerImage")
+    def custom_container_image(self) -> pulumi.Input[Optional['NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs']]:
+        """
+        Use a container image to start the workbench instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_container_image")
+
+    @custom_container_image.setter
+    def custom_container_image(self, value: pulumi.Input[Optional['NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs']]):
+        pulumi.set(self, "custom_container_image", value)
 
     @_builtins.property
     @pulumi.getter(name="vmImage")
-    def vm_image(self) -> pulumi.Input['NotebookExecutionWorkbenchRuntimeVmImageArgs']:
+    def vm_image(self) -> pulumi.Input[Optional['NotebookExecutionWorkbenchRuntimeVmImageArgs']]:
         """
         Custom Compute Engine VM image for the Workbench instance.
         Structure is documented below.
@@ -611,8 +637,59 @@ class NotebookExecutionWorkbenchRuntimeArgs:
         return pulumi.get(self, "vm_image")
 
     @vm_image.setter
-    def vm_image(self, value: pulumi.Input['NotebookExecutionWorkbenchRuntimeVmImageArgs']):
+    def vm_image(self, value: pulumi.Input[Optional['NotebookExecutionWorkbenchRuntimeVmImageArgs']]):
         pulumi.set(self, "vm_image", value)
+
+
+class NotebookExecutionWorkbenchRuntimeCustomContainerImageArgsDict(TypedDict):
+    repository: pulumi.Input[_builtins.str]
+    """
+    The path to the container image repository.
+    For example: gcr.io/{project_id}/{imageName}
+    """
+    tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The tag of the container image. If not specified, this defaults to the latest tag.
+    """
+
+@pulumi.input_type
+class NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs:
+    def __init__(__self__, *,
+                 repository: pulumi.Input[_builtins.str],
+                 tag: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] repository: The path to the container image repository.
+               For example: gcr.io/{project_id}/{imageName}
+        :param pulumi.Input[_builtins.str] tag: The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+        pulumi.set(__self__, "repository", repository)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @_builtins.property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[_builtins.str]:
+        """
+        The path to the container image repository.
+        For example: gcr.io/{project_id}/{imageName}
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "repository", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag", value)
 
 
 class NotebookExecutionWorkbenchRuntimeVmImageArgsDict(TypedDict):

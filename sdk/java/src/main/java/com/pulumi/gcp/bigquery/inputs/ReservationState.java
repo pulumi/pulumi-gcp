@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigquery.inputs.ReservationAutoscaleArgs;
 import com.pulumi.gcp.bigquery.inputs.ReservationReplicationStatusArgs;
+import com.pulumi.gcp.bigquery.inputs.ReservationSchedulingPolicyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -455,6 +456,27 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The scheduling policy to use for jobs and queries running under this
+     * reservation. The scheduling policy controls how the reservation&#39;s resources
+     * are distributed.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="schedulingPolicy")
+    private @Nullable Output<ReservationSchedulingPolicyArgs> schedulingPolicy;
+
+    /**
+     * @return The scheduling policy to use for jobs and queries running under this
+     * reservation. The scheduling policy controls how the reservation&#39;s resources
+     * are distributed.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ReservationSchedulingPolicyArgs>> schedulingPolicy() {
+        return Optional.ofNullable(this.schedulingPolicy);
+    }
+
+    /**
      * The current location of the reservation&#39;s secondary replica. This field is only set for
      * reservations using the managed disaster recovery feature. Users can set this in create
      * reservation calls to create a failover reservation or in update reservation calls to convert
@@ -512,6 +534,7 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         this.replicationStatuses = $.replicationStatuses;
         this.reservationGroup = $.reservationGroup;
         this.scalingMode = $.scalingMode;
+        this.schedulingPolicy = $.schedulingPolicy;
         this.secondaryLocation = $.secondaryLocation;
         this.slotCapacity = $.slotCapacity;
     }
@@ -1083,6 +1106,33 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder scalingMode(String scalingMode) {
             return scalingMode(Output.of(scalingMode));
+        }
+
+        /**
+         * @param schedulingPolicy The scheduling policy to use for jobs and queries running under this
+         * reservation. The scheduling policy controls how the reservation&#39;s resources
+         * are distributed.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingPolicy(@Nullable Output<ReservationSchedulingPolicyArgs> schedulingPolicy) {
+            $.schedulingPolicy = schedulingPolicy;
+            return this;
+        }
+
+        /**
+         * @param schedulingPolicy The scheduling policy to use for jobs and queries running under this
+         * reservation. The scheduling policy controls how the reservation&#39;s resources
+         * are distributed.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingPolicy(ReservationSchedulingPolicyArgs schedulingPolicy) {
+            return schedulingPolicy(Output.of(schedulingPolicy));
         }
 
         /**

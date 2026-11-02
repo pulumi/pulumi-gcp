@@ -7652,6 +7652,8 @@ type WorkerPoolWorkerConfig struct {
 	MachineType *string `pulumi:"machineType"`
 	// If true, workers are created without any public address, which prevents network egress to public IPs.
 	NoExternalIp *bool `pulumi:"noExternalIp"`
+	// The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+	WorkerRelease *string `pulumi:"workerRelease"`
 }
 
 // WorkerPoolWorkerConfigInput is an input type that accepts WorkerPoolWorkerConfigArgs and WorkerPoolWorkerConfigOutput values.
@@ -7674,6 +7676,8 @@ type WorkerPoolWorkerConfigArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// If true, workers are created without any public address, which prevents network egress to public IPs.
 	NoExternalIp pulumi.BoolPtrInput `pulumi:"noExternalIp"`
+	// The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+	WorkerRelease pulumi.StringPtrInput `pulumi:"workerRelease"`
 }
 
 func (WorkerPoolWorkerConfigArgs) ElementType() reflect.Type {
@@ -7773,6 +7777,11 @@ func (o WorkerPoolWorkerConfigOutput) NoExternalIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkerPoolWorkerConfig) *bool { return v.NoExternalIp }).(pulumi.BoolPtrOutput)
 }
 
+// The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+func (o WorkerPoolWorkerConfigOutput) WorkerRelease() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolWorkerConfig) *string { return v.WorkerRelease }).(pulumi.StringPtrOutput)
+}
+
 type WorkerPoolWorkerConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolWorkerConfigPtrOutput) ElementType() reflect.Type {
@@ -7835,6 +7844,16 @@ func (o WorkerPoolWorkerConfigPtrOutput) NoExternalIp() pulumi.BoolPtrOutput {
 		}
 		return v.NoExternalIp
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+func (o WorkerPoolWorkerConfigPtrOutput) WorkerRelease() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerRelease
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetTriggerApprovalConfig struct {
@@ -13079,6 +13098,8 @@ type GetWorkerPoolWorkerConfig struct {
 	MachineType string `pulumi:"machineType"`
 	// If true, workers are created without any public address, which prevents network egress to public IPs.
 	NoExternalIp bool `pulumi:"noExternalIp"`
+	// The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+	WorkerRelease string `pulumi:"workerRelease"`
 }
 
 // GetWorkerPoolWorkerConfigInput is an input type that accepts GetWorkerPoolWorkerConfigArgs and GetWorkerPoolWorkerConfigOutput values.
@@ -13101,6 +13122,8 @@ type GetWorkerPoolWorkerConfigArgs struct {
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// If true, workers are created without any public address, which prevents network egress to public IPs.
 	NoExternalIp pulumi.BoolInput `pulumi:"noExternalIp"`
+	// The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+	WorkerRelease pulumi.StringInput `pulumi:"workerRelease"`
 }
 
 func (GetWorkerPoolWorkerConfigArgs) ElementType() reflect.Type {
@@ -13172,6 +13195,11 @@ func (o GetWorkerPoolWorkerConfigOutput) MachineType() pulumi.StringOutput {
 // If true, workers are created without any public address, which prevents network egress to public IPs.
 func (o GetWorkerPoolWorkerConfigOutput) NoExternalIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWorkerPoolWorkerConfig) bool { return v.NoExternalIp }).(pulumi.BoolOutput)
+}
+
+// The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+func (o GetWorkerPoolWorkerConfigOutput) WorkerRelease() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolWorkerConfig) string { return v.WorkerRelease }).(pulumi.StringOutput)
 }
 
 type GetWorkerPoolWorkerConfigArrayOutput struct{ *pulumi.OutputState }

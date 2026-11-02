@@ -4151,9 +4151,27 @@ class AppLoggingSettingsRedactionConfig(dict):
 
 @pulumi.output_type
 class AppModelSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thinkingLevel":
+            suggest = "thinking_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppModelSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppModelSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppModelSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  model: Optional[_builtins.str] = None,
-                 temperature: Optional[_builtins.float] = None):
+                 temperature: Optional[_builtins.float] = None,
+                 thinking_level: Optional[_builtins.str] = None):
         """
         :param _builtins.str model: The LLM model that the agent should use.
                If not set, the agent will inherit the model from its parent agent.
@@ -4161,11 +4179,15 @@ class AppModelSettings(dict):
                controls the randomness of the model's responses. Lower temperatures
                produce responses that are more predictable. Higher temperatures produce
                responses that are more creative.
+        :param _builtins.str thinking_level: The thinking level of the model.
+               Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
         """
         if model is not None:
             pulumi.set(__self__, "model", model)
         if temperature is not None:
             pulumi.set(__self__, "temperature", temperature)
+        if thinking_level is not None:
+            pulumi.set(__self__, "thinking_level", thinking_level)
 
     @_builtins.property
     @pulumi.getter
@@ -4186,6 +4208,15 @@ class AppModelSettings(dict):
         responses that are more creative.
         """
         return pulumi.get(self, "temperature")
+
+    @_builtins.property
+    @pulumi.getter(name="thinkingLevel")
+    def thinking_level(self) -> Optional[_builtins.str]:
+        """
+        The thinking level of the model.
+        Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+        """
+        return pulumi.get(self, "thinking_level")
 
 
 @pulumi.output_type
@@ -20422,9 +20453,27 @@ class GuardrailLlmPolicy(dict):
 
 @pulumi.output_type
 class GuardrailLlmPolicyModelSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thinkingLevel":
+            suggest = "thinking_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailLlmPolicyModelSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailLlmPolicyModelSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailLlmPolicyModelSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  model: Optional[_builtins.str] = None,
-                 temperature: Optional[_builtins.float] = None):
+                 temperature: Optional[_builtins.float] = None,
+                 thinking_level: Optional[_builtins.str] = None):
         """
         :param _builtins.str model: The LLM model that the agent should use.
                If not set, the agent will inherit the model from its parent agent.
@@ -20432,11 +20481,15 @@ class GuardrailLlmPolicyModelSettings(dict):
                controls the randomness of the model's responses. Lower temperatures
                produce responses that are more predictable. Higher temperatures produce
                responses that are more creative.
+        :param _builtins.str thinking_level: The thinking level of the model.
+               Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
         """
         if model is not None:
             pulumi.set(__self__, "model", model)
         if temperature is not None:
             pulumi.set(__self__, "temperature", temperature)
+        if thinking_level is not None:
+            pulumi.set(__self__, "thinking_level", thinking_level)
 
     @_builtins.property
     @pulumi.getter
@@ -20457,6 +20510,15 @@ class GuardrailLlmPolicyModelSettings(dict):
         responses that are more creative.
         """
         return pulumi.get(self, "temperature")
+
+    @_builtins.property
+    @pulumi.getter(name="thinkingLevel")
+    def thinking_level(self) -> Optional[_builtins.str]:
+        """
+        The thinking level of the model.
+        Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+        """
+        return pulumi.get(self, "thinking_level")
 
 
 @pulumi.output_type
@@ -20667,9 +20729,27 @@ class GuardrailLlmPromptSecurityCustomPolicy(dict):
 
 @pulumi.output_type
 class GuardrailLlmPromptSecurityCustomPolicyModelSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thinkingLevel":
+            suggest = "thinking_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailLlmPromptSecurityCustomPolicyModelSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailLlmPromptSecurityCustomPolicyModelSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailLlmPromptSecurityCustomPolicyModelSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  model: Optional[_builtins.str] = None,
-                 temperature: Optional[_builtins.float] = None):
+                 temperature: Optional[_builtins.float] = None,
+                 thinking_level: Optional[_builtins.str] = None):
         """
         :param _builtins.str model: The LLM model that the agent should use.
                If not set, the agent will inherit the model from its parent agent.
@@ -20677,11 +20757,15 @@ class GuardrailLlmPromptSecurityCustomPolicyModelSettings(dict):
                controls the randomness of the model's responses. Lower temperatures
                produce responses that are more predictable. Higher temperatures produce
                responses that are more creative.
+        :param _builtins.str thinking_level: The thinking level of the model.
+               Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
         """
         if model is not None:
             pulumi.set(__self__, "model", model)
         if temperature is not None:
             pulumi.set(__self__, "temperature", temperature)
+        if thinking_level is not None:
+            pulumi.set(__self__, "thinking_level", thinking_level)
 
     @_builtins.property
     @pulumi.getter
@@ -20702,6 +20786,15 @@ class GuardrailLlmPromptSecurityCustomPolicyModelSettings(dict):
         responses that are more creative.
         """
         return pulumi.get(self, "temperature")
+
+    @_builtins.property
+    @pulumi.getter(name="thinkingLevel")
+    def thinking_level(self) -> Optional[_builtins.str]:
+        """
+        The thinking level of the model.
+        Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+        """
+        return pulumi.get(self, "thinking_level")
 
 
 @pulumi.output_type
@@ -23221,9 +23314,27 @@ class ToolDataStoreToolModalityConfigRewriterConfig(dict):
 
 @pulumi.output_type
 class ToolDataStoreToolModalityConfigRewriterConfigModelSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thinkingLevel":
+            suggest = "thinking_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolModalityConfigRewriterConfigModelSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolModalityConfigRewriterConfigModelSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolModalityConfigRewriterConfigModelSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  model: Optional[_builtins.str] = None,
-                 temperature: Optional[_builtins.float] = None):
+                 temperature: Optional[_builtins.float] = None,
+                 thinking_level: Optional[_builtins.str] = None):
         """
         :param _builtins.str model: The LLM model that the agent should use.
                If not set, the agent will inherit the model from its parent agent.
@@ -23231,11 +23342,20 @@ class ToolDataStoreToolModalityConfigRewriterConfigModelSettings(dict):
                controls the randomness of the model's responses. Lower temperatures
                produce responses that are more predictable. Higher temperatures produce
                responses that are more creative.
+        :param _builtins.str thinking_level: The thinking level of the model.
+               Possible values:
+               DEFAULT
+               LOW
+               MEDIUM
+               HIGH
+               Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
         """
         if model is not None:
             pulumi.set(__self__, "model", model)
         if temperature is not None:
             pulumi.set(__self__, "temperature", temperature)
+        if thinking_level is not None:
+            pulumi.set(__self__, "thinking_level", thinking_level)
 
     @_builtins.property
     @pulumi.getter
@@ -23257,6 +23377,20 @@ class ToolDataStoreToolModalityConfigRewriterConfigModelSettings(dict):
         """
         return pulumi.get(self, "temperature")
 
+    @_builtins.property
+    @pulumi.getter(name="thinkingLevel")
+    def thinking_level(self) -> Optional[_builtins.str]:
+        """
+        The thinking level of the model.
+        Possible values:
+        DEFAULT
+        LOW
+        MEDIUM
+        HIGH
+        Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+        """
+        return pulumi.get(self, "thinking_level")
+
 
 @pulumi.output_type
 class ToolDataStoreToolModalityConfigSnippetsConfig(dict):
@@ -23265,6 +23399,8 @@ class ToolDataStoreToolModalityConfigSnippetsConfig(dict):
         suggest = None
         if key == "enableSnippets":
             suggest = "enable_snippets"
+        elif key == "maxSnippets":
+            suggest = "max_snippets"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolModalityConfigSnippetsConfig. Access the value via the '{suggest}' property getter instead.")
@@ -23278,12 +23414,17 @@ class ToolDataStoreToolModalityConfigSnippetsConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_snippets: Optional[_builtins.bool] = None):
+                 enable_snippets: Optional[_builtins.bool] = None,
+                 max_snippets: Optional[_builtins.int] = None):
         """
         :param _builtins.bool enable_snippets: Whether snippets are enabled.
+        :param _builtins.int max_snippets: Number of snippets to return per query.
+               If unset, returns all snippets from the service by default.
         """
         if enable_snippets is not None:
             pulumi.set(__self__, "enable_snippets", enable_snippets)
+        if max_snippets is not None:
+            pulumi.set(__self__, "max_snippets", max_snippets)
 
     @_builtins.property
     @pulumi.getter(name="enableSnippets")
@@ -23292,6 +23433,15 @@ class ToolDataStoreToolModalityConfigSnippetsConfig(dict):
         Whether snippets are enabled.
         """
         return pulumi.get(self, "enable_snippets")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSnippets")
+    def max_snippets(self) -> Optional[_builtins.int]:
+        """
+        Number of snippets to return per query.
+        If unset, returns all snippets from the service by default.
+        """
+        return pulumi.get(self, "max_snippets")
 
 
 @pulumi.output_type
@@ -23358,9 +23508,27 @@ class ToolDataStoreToolModalityConfigSummarizationConfig(dict):
 
 @pulumi.output_type
 class ToolDataStoreToolModalityConfigSummarizationConfigModelSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thinkingLevel":
+            suggest = "thinking_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolModalityConfigSummarizationConfigModelSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolModalityConfigSummarizationConfigModelSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolModalityConfigSummarizationConfigModelSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  model: Optional[_builtins.str] = None,
-                 temperature: Optional[_builtins.float] = None):
+                 temperature: Optional[_builtins.float] = None,
+                 thinking_level: Optional[_builtins.str] = None):
         """
         :param _builtins.str model: The LLM model that the agent should use.
                If not set, the agent will inherit the model from its parent agent.
@@ -23368,11 +23536,20 @@ class ToolDataStoreToolModalityConfigSummarizationConfigModelSettings(dict):
                controls the randomness of the model's responses. Lower temperatures
                produce responses that are more predictable. Higher temperatures produce
                responses that are more creative.
+        :param _builtins.str thinking_level: The thinking level of the model.
+               Possible values:
+               DEFAULT
+               LOW
+               MEDIUM
+               HIGH
+               Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
         """
         if model is not None:
             pulumi.set(__self__, "model", model)
         if temperature is not None:
             pulumi.set(__self__, "temperature", temperature)
+        if thinking_level is not None:
+            pulumi.set(__self__, "thinking_level", thinking_level)
 
     @_builtins.property
     @pulumi.getter
@@ -23393,6 +23570,20 @@ class ToolDataStoreToolModalityConfigSummarizationConfigModelSettings(dict):
         responses that are more creative.
         """
         return pulumi.get(self, "temperature")
+
+    @_builtins.property
+    @pulumi.getter(name="thinkingLevel")
+    def thinking_level(self) -> Optional[_builtins.str]:
+        """
+        The thinking level of the model.
+        Possible values:
+        DEFAULT
+        LOW
+        MEDIUM
+        HIGH
+        Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+        """
+        return pulumi.get(self, "thinking_level")
 
 
 @pulumi.output_type
@@ -25224,6 +25415,12 @@ class ToolRemoteAgentTool(dict):
             suggest = "agent_cards"
         elif key == "apiAuthentications":
             suggest = "api_authentications"
+        elif key == "inputVariableMapping":
+            suggest = "input_variable_mapping"
+        elif key == "outputVariableMapping":
+            suggest = "output_variable_mapping"
+        elif key == "statefulAgent":
+            suggest = "stateful_agent"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ToolRemoteAgentTool. Access the value via the '{suggest}' property getter instead.")
@@ -25240,7 +25437,10 @@ class ToolRemoteAgentTool(dict):
                  agent_cards: Optional[Sequence['outputs.ToolRemoteAgentToolAgentCard']] = None,
                  api_authentications: Optional[Sequence['outputs.ToolRemoteAgentToolApiAuthentication']] = None,
                  description: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None):
+                 input_variable_mapping: Optional[Mapping[str, _builtins.str]] = None,
+                 name: Optional[_builtins.str] = None,
+                 output_variable_mapping: Optional[Mapping[str, _builtins.str]] = None,
+                 stateful_agent: Optional[_builtins.bool] = None):
         """
         :param Sequence['ToolRemoteAgentToolAgentCardArgs'] agent_cards: (Output)
                The agent card of the remote agent that this tool invokes.
@@ -25250,8 +25450,17 @@ class ToolRemoteAgentTool(dict):
                Structure is documented below.
         :param _builtins.str description: (Output)
                The description of the system tool.
+        :param Mapping[str, _builtins.str] input_variable_mapping: (Output)
+               Mapping of input variable names of remote agent to GECX variable names.
         :param _builtins.str name: (Output)
                The name of the system tool.
+        :param Mapping[str, _builtins.str] output_variable_mapping: (Output)
+               Mapping of output variable names of remote agent to GECX variable names.
+        :param _builtins.bool stateful_agent: (Output)
+               When enabled, the interaction between the CXAS app and the remote agent
+               will share the same context. If the remote agent returns a context_id, it
+               will be persisted for the entirety of the session for this remote agent
+               tool.
         """
         if agent_cards is not None:
             pulumi.set(__self__, "agent_cards", agent_cards)
@@ -25259,8 +25468,14 @@ class ToolRemoteAgentTool(dict):
             pulumi.set(__self__, "api_authentications", api_authentications)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if input_variable_mapping is not None:
+            pulumi.set(__self__, "input_variable_mapping", input_variable_mapping)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if output_variable_mapping is not None:
+            pulumi.set(__self__, "output_variable_mapping", output_variable_mapping)
+        if stateful_agent is not None:
+            pulumi.set(__self__, "stateful_agent", stateful_agent)
 
     @_builtins.property
     @pulumi.getter(name="agentCards")
@@ -25292,6 +25507,15 @@ class ToolRemoteAgentTool(dict):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="inputVariableMapping")
+    def input_variable_mapping(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Output)
+        Mapping of input variable names of remote agent to GECX variable names.
+        """
+        return pulumi.get(self, "input_variable_mapping")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
@@ -25299,6 +25523,27 @@ class ToolRemoteAgentTool(dict):
         The name of the system tool.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="outputVariableMapping")
+    def output_variable_mapping(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Output)
+        Mapping of output variable names of remote agent to GECX variable names.
+        """
+        return pulumi.get(self, "output_variable_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="statefulAgent")
+    def stateful_agent(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        When enabled, the interaction between the CXAS app and the remote agent
+        will share the same context. If the remote agent returns a context_id, it
+        will be persisted for the entirety of the session for this remote agent
+        tool.
+        """
+        return pulumi.get(self, "stateful_agent")
 
 
 @pulumi.output_type

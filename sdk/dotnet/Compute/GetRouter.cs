@@ -176,6 +176,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRouterParamResult> Params;
         public readonly string? Project;
         public readonly string? Region;
+        public readonly int RouterId;
         public readonly string SelfLink;
 
         [OutputConstructor]
@@ -206,6 +207,8 @@ namespace Pulumi.Gcp.Compute
 
             string? region,
 
+            int routerId,
+
             string selfLink)
         {
             Bgps = bgps;
@@ -221,6 +224,7 @@ namespace Pulumi.Gcp.Compute
             Params = @params;
             Project = project;
             Region = region;
+            RouterId = routerId;
             SelfLink = selfLink;
         }
     }

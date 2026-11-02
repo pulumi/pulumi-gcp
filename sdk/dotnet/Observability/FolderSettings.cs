@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Observability
     /// {
     ///     var testFolder = new Gcp.Organizations.Folder("test_folder", new()
     ///     {
-    ///         DisplayName = "tf-test-_29506",
+    ///         DisplayName = "tf-test-_91207",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });
@@ -90,6 +90,7 @@ namespace Pulumi.Gcp.Observability
     /// 
     /// });
     /// ```
+    /// 
     /// ### Observability Folder Settings Basic Global
     /// 
     /// ```csharp
@@ -103,7 +104,7 @@ namespace Pulumi.Gcp.Observability
     /// {
     ///     var testFolder = new Gcp.Organizations.Folder("test_folder", new()
     ///     {
-    ///         DisplayName = "tf-test-_86474",
+    ///         DisplayName = "tf-test-_14939",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });

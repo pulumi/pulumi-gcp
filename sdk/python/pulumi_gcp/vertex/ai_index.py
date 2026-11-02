@@ -593,7 +593,7 @@ class AiIndex(pulumi.CustomResource):
                     "algorithm_config": {
                         "tree_ah_config": {
                             "leaf_node_embedding_count": 500,
-                            "leaf_nodes_to_search_percent": 7,
+                            "fraction_leaf_nodes_to_search": 0.07,
                         },
                     },
                 },
@@ -604,6 +604,7 @@ class AiIndex(pulumi.CustomResource):
             index_update_method="BATCH_UPDATE",
             opts = pulumi.ResourceOptions(depends_on=[vertexai_encrypterdecrypter]))
         ```
+
         ### Vertex Ai Index Streaming
 
         ```python
@@ -744,7 +745,7 @@ class AiIndex(pulumi.CustomResource):
                     "algorithm_config": {
                         "tree_ah_config": {
                             "leaf_node_embedding_count": 500,
-                            "leaf_nodes_to_search_percent": 7,
+                            "fraction_leaf_nodes_to_search": 0.07,
                         },
                     },
                 },
@@ -755,6 +756,7 @@ class AiIndex(pulumi.CustomResource):
             index_update_method="BATCH_UPDATE",
             opts = pulumi.ResourceOptions(depends_on=[vertexai_encrypterdecrypter]))
         ```
+
         ### Vertex Ai Index Streaming
 
         ```python

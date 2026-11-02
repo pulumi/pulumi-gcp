@@ -626,6 +626,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('networkSecurityCustomEndpoint')
 
     @_builtins.property
+    def network_services2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('networkServices2CustomEndpoint')
+
+    @_builtins.property
     def network_services_custom_endpoint(self) -> Optional[str]:
         return __config__.get('networkServicesCustomEndpoint')
 

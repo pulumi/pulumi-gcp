@@ -49,6 +49,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Backup Dr Backup Plan For Disk Resource
  *
  * ```typescript
@@ -84,6 +85,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Backup Dr Backup Plan For Csql Resource
  *
  * ```typescript
@@ -117,6 +119,7 @@ import * as utilities from "../utilities";
  *     logRetentionDays: 4,
  * });
  * ```
+ *
  * ### Backup Dr Backup Plan For Filestore Resource
  *
  * ```typescript

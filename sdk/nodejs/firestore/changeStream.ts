@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait30Seconds],
  * });
  * ```
+ *
  * ### Firestore Change Stream Full
  *
  * ```typescript

@@ -93,6 +93,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Existing Credentials
  * 
  * <pre>
@@ -135,6 +136,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Existing Installation
  * 
  * <pre>
@@ -223,6 +225,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Github
  * 
  * <pre>
@@ -264,6 +267,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Github Doc
  * 
  * <pre>
@@ -346,6 +350,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Github Enterprise
  * 
  * <pre>
@@ -387,6 +392,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Github Enterprise Doc
  * 
  * <pre>
@@ -491,6 +497,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Gitlab
  * 
  * <pre>
@@ -536,6 +543,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Gitlab Enterprise
  * 
  * <pre>
@@ -582,6 +590,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Bbc
  * 
  * <pre>
@@ -628,6 +637,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Bbdc
  * 
  * <pre>
@@ -674,6 +684,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Http Conn Basic
  * 
  * <pre>
@@ -716,6 +727,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Developer Connect Connection Http Conn Bearer
  * 
  * <pre>

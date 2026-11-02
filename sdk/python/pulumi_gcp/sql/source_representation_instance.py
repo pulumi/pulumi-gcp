@@ -529,6 +529,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             password="password-for-the-user",
             dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
+
         ### Sql Source Representation Instance Postgres
 
         ```python
@@ -619,6 +620,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             password="password-for-the-user",
             dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
+
         ### Sql Source Representation Instance Postgres
 
         ```python

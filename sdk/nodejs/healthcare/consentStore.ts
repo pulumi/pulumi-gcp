@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     name: "my-consent-store",
  * });
  * ```
+ *
  * ### Healthcare Consent Store Full
  *
  * ```typescript
@@ -50,6 +51,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Healthcare Consent Store Iam
  *
  * ```typescript

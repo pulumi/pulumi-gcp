@@ -90,6 +90,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Forwarding Rule Global Internallb
  * 
  * <pre>
@@ -166,6 +167,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Forwarding Rule Basic
  * 
  * <pre>
@@ -206,6 +208,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Forwarding Rule L3 Default
  * 
  * <pre>
@@ -262,6 +265,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Forwarding Rule Internallb
  * 
  * <pre>
@@ -338,6 +342,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Forwarding Rule Http Lb
  * 
  * <pre>
@@ -568,6 +573,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Forwarding Rule Regional Http Xlb
  * 
  * <pre>
@@ -806,6 +812,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Forwarding Rule Vpc Psc
  * 
  * <pre>
@@ -934,6 +941,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Forwarding Rule Vpc Psc No Automate Dns
  * 
  * <pre>
@@ -1060,6 +1068,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Forwarding Rule Regional Steering
  * 
  * <pre>
@@ -1125,6 +1134,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Forwarding Rule Internallb Ipv6
  * 
  * <pre>
@@ -1703,9 +1713,10 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * This field is not used for external load balancing.
-     * For Internal TCP/UDP Load Balancing, this field identifies the network that
-     * the load balanced IP should belong to for this Forwarding Rule.
+     * This field is not used for global external load balancing.
+     * For Internal TCP/UDP Load Balancing and Regional External Load Balancing (`EXTERNAL_MANAGED`),
+     * this field identifies the network that the load balanced IP should belong to
+     * for this Forwarding Rule.
      * If the subnetwork is specified, the network of the subnetwork will be used.
      * If neither subnetwork nor this field is specified, the default network will
      * be used.
@@ -1717,9 +1728,10 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
     private Output<String> network;
 
     /**
-     * @return This field is not used for external load balancing.
-     * For Internal TCP/UDP Load Balancing, this field identifies the network that
-     * the load balanced IP should belong to for this Forwarding Rule.
+     * @return This field is not used for global external load balancing.
+     * For Internal TCP/UDP Load Balancing and Regional External Load Balancing (`EXTERNAL_MANAGED`),
+     * this field identifies the network that the load balanced IP should belong to
+     * for this Forwarding Rule.
      * If the subnetwork is specified, the network of the subnetwork will be used.
      * If neither subnetwork nor this field is specified, the default network will
      * be used.
@@ -2062,8 +2074,9 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * This field identifies the subnetwork that the load balanced IP should
-     * belong to for this Forwarding Rule, used in internal load balancing and
-     * network load balancing with IPv6.
+     * belong to for this Forwarding Rule, used in internal load balancing,
+     * network load balancing with IPv6, and regional external (`EXTERNAL_MANAGED`)
+     * load balancing with IPv6.
      * If the network specified is in auto subnet mode, this field is optional.
      * However, a subnetwork must be specified if the network is in custom subnet
      * mode or when creating external forwarding rule with IPv6.
@@ -2074,8 +2087,9 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return This field identifies the subnetwork that the load balanced IP should
-     * belong to for this Forwarding Rule, used in internal load balancing and
-     * network load balancing with IPv6.
+     * belong to for this Forwarding Rule, used in internal load balancing,
+     * network load balancing with IPv6, and regional external (`EXTERNAL_MANAGED`)
+     * load balancing with IPv6.
      * If the network specified is in auto subnet mode, this field is optional.
      * However, a subnetwork must be specified if the network is in custom subnet
      * mode or when creating external forwarding rule with IPv6.

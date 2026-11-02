@@ -1099,6 +1099,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workstation Config Container
 
         ```python
@@ -1144,6 +1145,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workstation Config Hyperdisk
 
         ```python
@@ -1181,6 +1183,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Workstation Config Hyperdisk Source Snapshot
 
         ```python
@@ -1242,6 +1245,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Workstation Config Persistent Directories
 
         ```python
@@ -1292,6 +1296,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Workstation Config Source Snapshot
 
         ```python
@@ -1332,6 +1337,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Workstation Config Shielded Instance Config
 
         ```python
@@ -1373,6 +1379,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workstation Config Accelerators
 
         ```python
@@ -1414,6 +1421,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workstation Config Boost
 
         ```python
@@ -1468,6 +1476,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workstation Config Encryption Key
 
         ```python
@@ -1522,6 +1531,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 "kms_key_service_account": default_account.email,
             })
         ```
+
         ### Workstation Config Allowed Ports
 
         ```python
@@ -1573,6 +1583,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Workstation Config Idle Action
 
         ```python
@@ -1757,6 +1768,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workstation Config Container
 
         ```python
@@ -1802,6 +1814,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workstation Config Hyperdisk
 
         ```python
@@ -1839,6 +1852,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Workstation Config Hyperdisk Source Snapshot
 
         ```python
@@ -1900,6 +1914,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Workstation Config Persistent Directories
 
         ```python
@@ -1950,6 +1965,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Workstation Config Source Snapshot
 
         ```python
@@ -1990,6 +2006,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Workstation Config Shielded Instance Config
 
         ```python
@@ -2031,6 +2048,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workstation Config Accelerators
 
         ```python
@@ -2072,6 +2090,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workstation Config Boost
 
         ```python
@@ -2126,6 +2145,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Workstation Config Encryption Key
 
         ```python
@@ -2180,6 +2200,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 "kms_key_service_account": default_account.email,
             })
         ```
+
         ### Workstation Config Allowed Ports
 
         ```python
@@ -2231,6 +2252,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Workstation Config Idle Action
 
         ```python

@@ -7,5 +7,9 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .auth_provider import *
+from .auth_provider_iam_binding import *
+from .auth_provider_iam_member import *
+from .auth_provider_iam_policy import *
+from .get_auth_provider_iam_policy import *
 from ._inputs import *
 from . import outputs

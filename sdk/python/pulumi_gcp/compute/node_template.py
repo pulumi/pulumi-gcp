@@ -579,6 +579,7 @@ class NodeTemplate(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         ```
+
         ### Node Template Server Binding
 
         ```python
@@ -597,6 +598,7 @@ class NodeTemplate(pulumi.CustomResource):
                 "type": "RESTART_NODE_ON_MINIMAL_SERVERS",
             })
         ```
+
         ### Node Template Accelerators
 
         ```python
@@ -613,6 +615,7 @@ class NodeTemplate(pulumi.CustomResource):
                 "accelerator_count": 4,
             }])
         ```
+
         ### Node Template Disks
 
         ```python
@@ -716,6 +719,7 @@ class NodeTemplate(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         ```
+
         ### Node Template Server Binding
 
         ```python
@@ -734,6 +738,7 @@ class NodeTemplate(pulumi.CustomResource):
                 "type": "RESTART_NODE_ON_MINIMAL_SERVERS",
             })
         ```
+
         ### Node Template Accelerators
 
         ```python
@@ -750,6 +755,7 @@ class NodeTemplate(pulumi.CustomResource):
                 "accelerator_count": 4,
             }])
         ```
+
         ### Node Template Disks
 
         ```python

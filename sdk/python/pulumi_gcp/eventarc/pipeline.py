@@ -779,6 +779,7 @@ class Pipeline(pulumi.CustomResource):
             },
             display_name="Testing Pipeline")
         ```
+
         ### Eventarc Pipeline With Http Destination
 
         ```python
@@ -797,6 +798,7 @@ class Pipeline(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Eventarc Pipeline With Workflow Destination
 
         ```python
@@ -840,6 +842,7 @@ class Pipeline(pulumi.CustomResource):
                 "workflow": workflow.id,
             }])
         ```
+
         ### Eventarc Pipeline With Oidc And Json Format
 
         ```python
@@ -889,6 +892,7 @@ class Pipeline(pulumi.CustomResource):
                 "log_severity": "DEBUG",
             })
         ```
+
         ### Eventarc Pipeline With Oauth And Protobuf Format
 
         ```python
@@ -952,6 +956,7 @@ class Pipeline(pulumi.CustomResource):
                 "log_severity": "DEBUG",
             })
         ```
+
         ### Eventarc Pipeline With Cmek And Avro Format
 
         ```python
@@ -1103,6 +1108,7 @@ class Pipeline(pulumi.CustomResource):
             },
             display_name="Testing Pipeline")
         ```
+
         ### Eventarc Pipeline With Http Destination
 
         ```python
@@ -1121,6 +1127,7 @@ class Pipeline(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Eventarc Pipeline With Workflow Destination
 
         ```python
@@ -1164,6 +1171,7 @@ class Pipeline(pulumi.CustomResource):
                 "workflow": workflow.id,
             }])
         ```
+
         ### Eventarc Pipeline With Oidc And Json Format
 
         ```python
@@ -1213,6 +1221,7 @@ class Pipeline(pulumi.CustomResource):
                 "log_severity": "DEBUG",
             })
         ```
+
         ### Eventarc Pipeline With Oauth And Protobuf Format
 
         ```python
@@ -1276,6 +1285,7 @@ class Pipeline(pulumi.CustomResource):
                 "log_severity": "DEBUG",
             })
         ```
+
         ### Eventarc Pipeline With Cmek And Avro Format
 
         ```python

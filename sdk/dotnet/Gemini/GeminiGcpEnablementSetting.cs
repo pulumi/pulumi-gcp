@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Gemini
     ///         EnableCustomerDataSharing = true,
     ///         WebGroundingType = "WEB_GROUNDING_FOR_ENTERPRISE",
     ///         MutationsEnabled = true,
+    ///         ReleaseChannel = "EXPERIMENTAL",
     ///     });
     /// 
     /// });
@@ -98,6 +99,14 @@ namespace Pulumi.Gcp.Gemini
         public Output<bool?> EnableCustomerDataSharing { get; private set; } = null!;
 
         /// <summary>
+        /// The Gemini enterprise project for this setting.
+        /// Format: projects/{project}
+        /// The `{project}` segment can be the project ID or project number.
+        /// </summary>
+        [Output("geminiEnterpriseProject")]
+        public Output<string?> GeminiEnterpriseProject { get; private set; } = null!;
+
+        /// <summary>
         /// Id of the Gemini Gcp Enablement setting.
         /// </summary>
         [Output("geminiGcpEnablementSettingId")]
@@ -143,6 +152,13 @@ namespace Pulumi.Gcp.Gemini
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+        /// Possible values are: `STABLE`, `EXPERIMENTAL`.
+        /// </summary>
+        [Output("releaseChannel")]
+        public Output<string?> ReleaseChannel { get; private set; } = null!;
 
         /// <summary>
         /// Update time stamp.
@@ -237,6 +253,14 @@ namespace Pulumi.Gcp.Gemini
         public Input<bool>? EnableCustomerDataSharing { get; set; }
 
         /// <summary>
+        /// The Gemini enterprise project for this setting.
+        /// Format: projects/{project}
+        /// The `{project}` segment can be the project ID or project number.
+        /// </summary>
+        [Input("geminiEnterpriseProject")]
+        public Input<string>? GeminiEnterpriseProject { get; set; }
+
+        /// <summary>
         /// Id of the Gemini Gcp Enablement setting.
         /// </summary>
         [Input("geminiGcpEnablementSettingId", required: true)]
@@ -274,6 +298,13 @@ namespace Pulumi.Gcp.Gemini
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+        /// Possible values are: `STABLE`, `EXPERIMENTAL`.
+        /// </summary>
+        [Input("releaseChannel")]
+        public Input<string>? ReleaseChannel { get; set; }
 
         /// <summary>
         /// Web grounding type.
@@ -341,6 +372,14 @@ namespace Pulumi.Gcp.Gemini
         public Input<bool>? EnableCustomerDataSharing { get; set; }
 
         /// <summary>
+        /// The Gemini enterprise project for this setting.
+        /// Format: projects/{project}
+        /// The `{project}` segment can be the project ID or project number.
+        /// </summary>
+        [Input("geminiEnterpriseProject")]
+        public Input<string>? GeminiEnterpriseProject { get; set; }
+
+        /// <summary>
         /// Id of the Gemini Gcp Enablement setting.
         /// </summary>
         [Input("geminiGcpEnablementSettingId")]
@@ -402,6 +441,13 @@ namespace Pulumi.Gcp.Gemini
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+        /// Possible values are: `STABLE`, `EXPERIMENTAL`.
+        /// </summary>
+        [Input("releaseChannel")]
+        public Input<string>? ReleaseChannel { get; set; }
 
         /// <summary>
         /// Update time stamp.

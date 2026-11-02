@@ -67,6 +67,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Route Ilb
     /// 
     /// ```csharp
@@ -131,6 +132,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Route Ilb Vip
     /// 
     /// ```csharp

@@ -132,6 +132,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firewall Policy Rule Network Scope
     /// 
     /// ```csharp
@@ -205,6 +206,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firewall Policy Rule Network Context
     /// 
     /// ```csharp
@@ -318,6 +320,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firewall Policy Rule Secure Tags
     /// 
     /// ```csharp

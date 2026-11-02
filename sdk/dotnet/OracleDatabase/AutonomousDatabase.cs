@@ -53,11 +53,16 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             DbWorkload = "OLTP",
     ///             LicenseType = "LICENSE_INCLUDED",
     ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
     ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Autonomous Database Full
     /// 
     /// ```csharp
@@ -119,6 +124,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Autonomous Database Odbnetwork
     /// 
     /// ```csharp
@@ -151,6 +157,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Autonomous Database Publicip
     /// 
     /// ```csharp
@@ -182,6 +189,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Autonomous Database Disaster Recovery
     /// 
     /// ```csharp

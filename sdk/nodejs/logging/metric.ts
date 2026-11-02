@@ -60,6 +60,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Logging Metric Counter Basic
  *
  * ```typescript
@@ -75,6 +76,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Logging Metric Counter Labels
  *
  * ```typescript
@@ -98,6 +100,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Logging Metric Logging Bucket
  *
  * ```typescript
@@ -115,6 +118,7 @@ import * as utilities from "../utilities";
  *     bucketName: loggingMetric.name,
  * });
  * ```
+ *
  * ### Logging Metric Disabled
  *
  * ```typescript

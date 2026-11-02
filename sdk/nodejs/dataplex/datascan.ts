@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Datascan Full Profile
  *
  * ```typescript
@@ -90,6 +91,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [source],
  * });
  * ```
+ *
  * ### Dataplex Datascan Onetime Profile
  *
  * ```typescript
@@ -113,6 +115,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Datascan Basic Quality
  *
  * ```typescript
@@ -143,6 +146,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Datascan Full Quality
  *
  * ```typescript
@@ -264,6 +268,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Datascan Onetime Quality
  *
  * ```typescript
@@ -296,6 +301,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Datascan Basic Discovery
  *
  * ```typescript
@@ -322,6 +328,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Datascan Full Discovery
  *
  * ```typescript
@@ -390,6 +397,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Datascan Onetime Discovery
  *
  * ```typescript
@@ -418,6 +426,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Datascan Documentation
  *
  * ```typescript
@@ -425,12 +434,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
- *     datasetId: "tf_dataplex_test_dataset_id__10719",
+ *     datasetId: "tf_test_dataplex_dataset_id__10719",
  *     defaultTableExpirationMs: 3600000,
  * });
  * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
  *     datasetId: tfDataplexTestDataset.datasetId,
- *     tableId: "tf_dataplex_test_table_id__1443",
+ *     tableId: "tf_test_dataplex_table_id__1443",
  *     deletionProtection: false,
  *     schema: `    [
  *     {
@@ -501,6 +510,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Datascan Onetime Documentation
  *
  * ```typescript
@@ -508,12 +518,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
- *     datasetId: "tf_dataplex_test_dataset_id__26032",
+ *     datasetId: "tf_test_dataplex_dataset_id__26032",
  *     defaultTableExpirationMs: 3600000,
  * });
  * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
  *     datasetId: tfDataplexTestDataset.datasetId,
- *     tableId: "tf_dataplex_test_table_id__8647",
+ *     tableId: "tf_test_dataplex_table_id__8647",
  *     deletionProtection: false,
  *     schema: `    [
  *     {
@@ -583,6 +593,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Datascan Execution Identity User Credential
  *
  * ```typescript
@@ -634,6 +645,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [tfTestTable],
  * });
  * ```
+ *
  * ### Dataplex Datascan Execution Identity Service Account
  *
  * ```typescript
@@ -723,6 +735,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Dataplex Datascan Quality Reusable Rules Catalog Based
  *
  * ```typescript
@@ -782,13 +795,13 @@ import * as utilities from "../utilities";
  * });
  * const testGroup = new gcp.dataplex.EntryGroup("test_group", {
  *     location: "us-central1",
- *     entryGroupId: "test-group-_25141",
+ *     entryGroupId: "tf-test-group-_25141",
  *     project: "my-project-name",
  * });
  * const testEntry = new gcp.dataplex.Entry("test_entry", {
  *     location: "us-central1",
  *     entryGroupId: testGroup.entryGroupId,
- *     entryId: "test-entry-_30827",
+ *     entryId: "tf-test-entry-_30827",
  *     entryType: "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
  *     project: project.then(project => project.number),
  *     aspects: [{
@@ -905,6 +918,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [waitForAspectPropagation],
  * });
  * ```
+ *
  * ### Dataplex Datascan Data Quality Template Reference
  *
  * ```typescript
@@ -940,13 +954,13 @@ import * as utilities from "../utilities";
  * });
  * const testGroup = new gcp.dataplex.EntryGroup("test_group", {
  *     location: "us-central1",
- *     entryGroupId: "test-group-_16178",
+ *     entryGroupId: "tf-test-group-_16178",
  *     project: project.then(project => project.projectId),
  * });
  * const testEntry = new gcp.dataplex.Entry("test_entry", {
  *     location: "us-central1",
  *     entryGroupId: testGroup.entryGroupId,
- *     entryId: "test-entry-_26317",
+ *     entryId: "tf-test-entry-_26317",
  *     entryType: "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
  *     project: project.then(project => project.number),
  *     aspects: [{

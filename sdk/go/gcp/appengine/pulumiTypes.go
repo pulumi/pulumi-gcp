@@ -7898,11 +7898,19 @@ func (o StandardAppVersionManualScalingPtrOutput) Instances() pulumi.IntPtrOutpu
 }
 
 type StandardAppVersionVpcAccess struct {
+	// (Optional, Deprecated)
 	// The egress setting for the VPC Access, controlling what traffic is diverted through it.
+	//
+	// > **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+	//
+	// Deprecated: `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
 	EgressSetting *string `pulumi:"egressSetting"`
 	// List of network interfaces for the VPC Access. Currently only a single network interface is supported.
 	// Structure is documented below.
 	NetworkInterfaces []StandardAppVersionVpcAccessNetworkInterface `pulumi:"networkInterfaces"`
+	// The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+	VpcEgress *string `pulumi:"vpcEgress"`
 }
 
 // StandardAppVersionVpcAccessInput is an input type that accepts StandardAppVersionVpcAccessArgs and StandardAppVersionVpcAccessOutput values.
@@ -7917,11 +7925,19 @@ type StandardAppVersionVpcAccessInput interface {
 }
 
 type StandardAppVersionVpcAccessArgs struct {
+	// (Optional, Deprecated)
 	// The egress setting for the VPC Access, controlling what traffic is diverted through it.
+	//
+	// > **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+	//
+	// Deprecated: `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
 	EgressSetting pulumi.StringPtrInput `pulumi:"egressSetting"`
 	// List of network interfaces for the VPC Access. Currently only a single network interface is supported.
 	// Structure is documented below.
 	NetworkInterfaces StandardAppVersionVpcAccessNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+	VpcEgress pulumi.StringPtrInput `pulumi:"vpcEgress"`
 }
 
 func (StandardAppVersionVpcAccessArgs) ElementType() reflect.Type {
@@ -8001,7 +8017,12 @@ func (o StandardAppVersionVpcAccessOutput) ToStandardAppVersionVpcAccessPtrOutpu
 	}).(StandardAppVersionVpcAccessPtrOutput)
 }
 
+// (Optional, Deprecated)
 // The egress setting for the VPC Access, controlling what traffic is diverted through it.
+//
+// > **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+//
+// Deprecated: `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
 func (o StandardAppVersionVpcAccessOutput) EgressSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionVpcAccess) *string { return v.EgressSetting }).(pulumi.StringPtrOutput)
 }
@@ -8012,6 +8033,12 @@ func (o StandardAppVersionVpcAccessOutput) NetworkInterfaces() StandardAppVersio
 	return o.ApplyT(func(v StandardAppVersionVpcAccess) []StandardAppVersionVpcAccessNetworkInterface {
 		return v.NetworkInterfaces
 	}).(StandardAppVersionVpcAccessNetworkInterfaceArrayOutput)
+}
+
+// The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+// Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+func (o StandardAppVersionVpcAccessOutput) VpcEgress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionVpcAccess) *string { return v.VpcEgress }).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionVpcAccessPtrOutput struct{ *pulumi.OutputState }
@@ -8038,7 +8065,12 @@ func (o StandardAppVersionVpcAccessPtrOutput) Elem() StandardAppVersionVpcAccess
 	}).(StandardAppVersionVpcAccessOutput)
 }
 
+// (Optional, Deprecated)
 // The egress setting for the VPC Access, controlling what traffic is diverted through it.
+//
+// > **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+//
+// Deprecated: `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
 func (o StandardAppVersionVpcAccessPtrOutput) EgressSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersionVpcAccess) *string {
 		if v == nil {
@@ -8057,6 +8089,17 @@ func (o StandardAppVersionVpcAccessPtrOutput) NetworkInterfaces() StandardAppVer
 		}
 		return v.NetworkInterfaces
 	}).(StandardAppVersionVpcAccessNetworkInterfaceArrayOutput)
+}
+
+// The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+// Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+func (o StandardAppVersionVpcAccessPtrOutput) VpcEgress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionVpcAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcEgress
+	}).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionVpcAccessConnector struct {
@@ -8216,9 +8259,9 @@ func (o StandardAppVersionVpcAccessConnectorPtrOutput) Name() pulumi.StringPtrOu
 }
 
 type StandardAppVersionVpcAccessNetworkInterface struct {
-	// The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+	// The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `default` or `projects/my-project/global/networks/default`).
 	Network *string `pulumi:"network"`
-	// The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+	// The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `default` or `projects/my-project/regions/us-central1/subnetworks/default`).
 	Subnetwork *string `pulumi:"subnetwork"`
 	// Network tags applied to this App Engine version.
 	Tags []string `pulumi:"tags"`
@@ -8236,9 +8279,9 @@ type StandardAppVersionVpcAccessNetworkInterfaceInput interface {
 }
 
 type StandardAppVersionVpcAccessNetworkInterfaceArgs struct {
-	// The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+	// The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `default` or `projects/my-project/global/networks/default`).
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+	// The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `default` or `projects/my-project/regions/us-central1/subnetworks/default`).
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 	// Network tags applied to this App Engine version.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -8295,12 +8338,12 @@ func (o StandardAppVersionVpcAccessNetworkInterfaceOutput) ToStandardAppVersionV
 	return o
 }
 
-// The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+// The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. `default` or `projects/my-project/global/networks/default`).
 func (o StandardAppVersionVpcAccessNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionVpcAccessNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+// The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. `default` or `projects/my-project/regions/us-central1/subnetworks/default`).
 func (o StandardAppVersionVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionVpcAccessNetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }

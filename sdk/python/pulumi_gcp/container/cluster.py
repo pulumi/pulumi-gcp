@@ -102,6 +102,7 @@ class ClusterArgs:
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']] = None,
                  rollback_safe_upgrade: pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']] = None,
+                 schedule_upgrade_config: pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']] = None,
                  secret_manager_config: pulumi.Input[Optional['ClusterSecretManagerConfigArgs']] = None,
                  secret_sync_config: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']] = None,
                  security_posture_config: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']] = None,
@@ -207,7 +208,10 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
-               number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+               number of nodes per zone. When omitted (or set to `0`) with no `node_config` or
+               `node_pool` blocks defined, the cluster is created without a default node pool.
+               This requires a GKE version that supports clusters without a default node pool
+               (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
@@ -228,7 +232,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs'] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -334,9 +338,13 @@ class ClusterArgs:
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
                channel. Structure is documented below.
         :param pulumi.Input[_builtins.bool] remove_default_node_pool: If `true`, deletes the default node
-               pool upon cluster creation. If you're using `container.NodePool`
-               resources with no default node pool, this should be set to `true`, alongside
-               setting `initial_node_count` to at least `1`.
+               pool upon cluster creation. On GKE versions that support clusters without a
+               default node pool, you can instead omit `initial_node_count` and
+               `node_config` (or set `initial_node_count` to `0`) to skip creating the
+               default node pool without setting this field. For older GKE versions, if
+               you're using `container.NodePool` resources with no default node
+               pool, this should be set to `true`, alongside setting `initial_node_count`
+               to at least `1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -345,6 +353,7 @@ class ClusterArgs:
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterRollbackSafeUpgradeArgs'] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        :param pulumi.Input['ClusterScheduleUpgradeConfigArgs'] schedule_upgrade_config: Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
         :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -525,6 +534,9 @@ class ClusterArgs:
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
         if remove_default_node_pool is not None:
+            warnings.warn("""On newer cluster versions (1.36.4-gke.1469000+) omit initial_node_count and node_config (or set initial_node_count = 0) instead.""", DeprecationWarning)
+            pulumi.log.warn("""remove_default_node_pool is deprecated: On newer cluster versions (1.36.4-gke.1469000+) omit initial_node_count and node_config (or set initial_node_count = 0) instead.""")
+        if remove_default_node_pool is not None:
             pulumi.set(__self__, "remove_default_node_pool", remove_default_node_pool)
         if resource_labels is not None:
             pulumi.set(__self__, "resource_labels", resource_labels)
@@ -532,6 +544,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
         if rollback_safe_upgrade is not None:
             pulumi.set(__self__, "rollback_safe_upgrade", rollback_safe_upgrade)
+        if schedule_upgrade_config is not None:
+            pulumi.set(__self__, "schedule_upgrade_config", schedule_upgrade_config)
         if secret_manager_config is not None:
             pulumi.set(__self__, "secret_manager_config", secret_manager_config)
         if secret_sync_config is not None:
@@ -1113,7 +1127,10 @@ class ClusterArgs:
         """
         The number of nodes to create in this
         cluster's default node pool. In regional or multi-zonal clusters, this is the
-        number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+        number of nodes per zone. When omitted (or set to `0`) with no `node_config` or
+        `node_pool` blocks defined, the cluster is created without a default node pool.
+        This requires a GKE version that supports clusters without a default node pool
+        (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
         `container.NodePool` objects with no default node pool, you'll need to
         set this to a value of at least `1`, alongside setting
         `remove_default_node_pool` to `true`.
@@ -1211,7 +1228,7 @@ class ClusterArgs:
     @pulumi.getter(name="managedOpentelemetryConfig")
     def managed_opentelemetry_config(self) -> pulumi.Input[Optional['ClusterManagedOpentelemetryConfigArgs']]:
         """
-        ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
@@ -1622,12 +1639,17 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="removeDefaultNodePool")
+    @_utilities.deprecated("""On newer cluster versions (1.36.4-gke.1469000+) omit initial_node_count and node_config (or set initial_node_count = 0) instead.""")
     def remove_default_node_pool(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, deletes the default node
-        pool upon cluster creation. If you're using `container.NodePool`
-        resources with no default node pool, this should be set to `true`, alongside
-        setting `initial_node_count` to at least `1`.
+        pool upon cluster creation. On GKE versions that support clusters without a
+        default node pool, you can instead omit `initial_node_count` and
+        `node_config` (or set `initial_node_count` to `0`) to skip creating the
+        default node pool without setting this field. For older GKE versions, if
+        you're using `container.NodePool` resources with no default node
+        pool, this should be set to `true`, alongside setting `initial_node_count`
+        to at least `1`.
         """
         return pulumi.get(self, "remove_default_node_pool")
 
@@ -1675,6 +1697,18 @@ class ClusterArgs:
     @rollback_safe_upgrade.setter
     def rollback_safe_upgrade(self, value: pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']]):
         pulumi.set(self, "rollback_safe_upgrade", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleUpgradeConfig")
+    def schedule_upgrade_config(self) -> pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']]:
+        """
+        Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_upgrade_config")
+
+    @schedule_upgrade_config.setter
+    def schedule_upgrade_config(self, value: pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']]):
+        pulumi.set(self, "schedule_upgrade_config", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerConfig")
@@ -1910,6 +1944,7 @@ class _ClusterState:
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']] = None,
                  rollback_safe_upgrade: pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']] = None,
+                 schedule_upgrade_config: pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']] = None,
                  secret_manager_config: pulumi.Input[Optional['ClusterSecretManagerConfigArgs']] = None,
                  secret_sync_config: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']] = None,
                  security_posture_config: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']] = None,
@@ -2021,7 +2056,10 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
-               number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+               number of nodes per zone. When omitted (or set to `0`) with no `node_config` or
+               `node_pool` blocks defined, the cluster is created without a default node pool.
+               This requires a GKE version that supports clusters without a default node pool
+               (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
@@ -2043,7 +2081,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs'] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -2153,9 +2191,13 @@ class _ClusterState:
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
                channel. Structure is documented below.
         :param pulumi.Input[_builtins.bool] remove_default_node_pool: If `true`, deletes the default node
-               pool upon cluster creation. If you're using `container.NodePool`
-               resources with no default node pool, this should be set to `true`, alongside
-               setting `initial_node_count` to at least `1`.
+               pool upon cluster creation. On GKE versions that support clusters without a
+               default node pool, you can instead omit `initial_node_count` and
+               `node_config` (or set `initial_node_count` to `0`) to skip creating the
+               default node pool without setting this field. For older GKE versions, if
+               you're using `container.NodePool` resources with no default node
+               pool, this should be set to `true`, alongside setting `initial_node_count`
+               to at least `1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -2164,6 +2206,7 @@ class _ClusterState:
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterRollbackSafeUpgradeArgs'] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        :param pulumi.Input['ClusterScheduleUpgradeConfigArgs'] schedule_upgrade_config: Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
         :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -2366,6 +2409,9 @@ class _ClusterState:
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
         if remove_default_node_pool is not None:
+            warnings.warn("""On newer cluster versions (1.36.4-gke.1469000+) omit initial_node_count and node_config (or set initial_node_count = 0) instead.""", DeprecationWarning)
+            pulumi.log.warn("""remove_default_node_pool is deprecated: On newer cluster versions (1.36.4-gke.1469000+) omit initial_node_count and node_config (or set initial_node_count = 0) instead.""")
+        if remove_default_node_pool is not None:
             pulumi.set(__self__, "remove_default_node_pool", remove_default_node_pool)
         if resource_labels is not None:
             pulumi.set(__self__, "resource_labels", resource_labels)
@@ -2373,6 +2419,8 @@ class _ClusterState:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
         if rollback_safe_upgrade is not None:
             pulumi.set(__self__, "rollback_safe_upgrade", rollback_safe_upgrade)
+        if schedule_upgrade_config is not None:
+            pulumi.set(__self__, "schedule_upgrade_config", schedule_upgrade_config)
         if secret_manager_config is not None:
             pulumi.set(__self__, "secret_manager_config", secret_manager_config)
         if secret_sync_config is not None:
@@ -2996,7 +3044,10 @@ class _ClusterState:
         """
         The number of nodes to create in this
         cluster's default node pool. In regional or multi-zonal clusters, this is the
-        number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+        number of nodes per zone. When omitted (or set to `0`) with no `node_config` or
+        `node_pool` blocks defined, the cluster is created without a default node pool.
+        This requires a GKE version that supports clusters without a default node pool
+        (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
         `container.NodePool` objects with no default node pool, you'll need to
         set this to a value of at least `1`, alongside setting
         `remove_default_node_pool` to `true`.
@@ -3106,7 +3157,7 @@ class _ClusterState:
     @pulumi.getter(name="managedOpentelemetryConfig")
     def managed_opentelemetry_config(self) -> pulumi.Input[Optional['ClusterManagedOpentelemetryConfigArgs']]:
         """
-        ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
@@ -3552,12 +3603,17 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="removeDefaultNodePool")
+    @_utilities.deprecated("""On newer cluster versions (1.36.4-gke.1469000+) omit initial_node_count and node_config (or set initial_node_count = 0) instead.""")
     def remove_default_node_pool(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, deletes the default node
-        pool upon cluster creation. If you're using `container.NodePool`
-        resources with no default node pool, this should be set to `true`, alongside
-        setting `initial_node_count` to at least `1`.
+        pool upon cluster creation. On GKE versions that support clusters without a
+        default node pool, you can instead omit `initial_node_count` and
+        `node_config` (or set `initial_node_count` to `0`) to skip creating the
+        default node pool without setting this field. For older GKE versions, if
+        you're using `container.NodePool` resources with no default node
+        pool, this should be set to `true`, alongside setting `initial_node_count`
+        to at least `1`.
         """
         return pulumi.get(self, "remove_default_node_pool")
 
@@ -3605,6 +3661,18 @@ class _ClusterState:
     @rollback_safe_upgrade.setter
     def rollback_safe_upgrade(self, value: pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']]):
         pulumi.set(self, "rollback_safe_upgrade", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleUpgradeConfig")
+    def schedule_upgrade_config(self) -> pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']]:
+        """
+        Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_upgrade_config")
+
+    @schedule_upgrade_config.setter
+    def schedule_upgrade_config(self, value: pulumi.Input[Optional['ClusterScheduleUpgradeConfigArgs']]):
+        pulumi.set(self, "schedule_upgrade_config", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerConfig")
@@ -3877,6 +3945,7 @@ class Cluster(pulumi.CustomResource):
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']]] = None,
                  rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']]] = None,
+                 schedule_upgrade_config: pulumi.Input[Optional[Union['ClusterScheduleUpgradeConfigArgs', 'ClusterScheduleUpgradeConfigArgsDict', 'outputs.ClusterScheduleUpgradeConfig']]] = None,
                  secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']]] = None,
                  secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']]] = None,
                  security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']]] = None,
@@ -3917,9 +3986,7 @@ class Cluster(pulumi.CustomResource):
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="my-gke-cluster",
-            location="us-central1",
-            remove_default_node_pool=True,
-            initial_node_count=1)
+            location="us-central1")
         primary_preemptible_nodes = gcp.container.NodePool("primary_preemptible_nodes",
             name="my-node-pool",
             location="us-central1",
@@ -4135,7 +4202,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
-               number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+               number of nodes per zone. When omitted (or set to `0`) with no `node_config` or
+               `node_pool` blocks defined, the cluster is created without a default node pool.
+               This requires a GKE version that supports clusters without a default node pool
+               (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
@@ -4156,7 +4226,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict', 'outputs.ClusterManagedMachineLearningDiagnosticsConfig']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict', 'outputs.ClusterMasterAuth']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -4262,9 +4332,13 @@ class Cluster(pulumi.CustomResource):
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
                channel. Structure is documented below.
         :param pulumi.Input[_builtins.bool] remove_default_node_pool: If `true`, deletes the default node
-               pool upon cluster creation. If you're using `container.NodePool`
-               resources with no default node pool, this should be set to `true`, alongside
-               setting `initial_node_count` to at least `1`.
+               pool upon cluster creation. On GKE versions that support clusters without a
+               default node pool, you can instead omit `initial_node_count` and
+               `node_config` (or set `initial_node_count` to `0`) to skip creating the
+               default node pool without setting this field. For older GKE versions, if
+               you're using `container.NodePool` resources with no default node
+               pool, this should be set to `true`, alongside setting `initial_node_count`
+               to at least `1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -4273,6 +4347,7 @@ class Cluster(pulumi.CustomResource):
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        :param pulumi.Input[Union['ClusterScheduleUpgradeConfigArgs', 'ClusterScheduleUpgradeConfigArgsDict', 'outputs.ClusterScheduleUpgradeConfig']] schedule_upgrade_config: Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
         :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -4329,9 +4404,7 @@ class Cluster(pulumi.CustomResource):
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="my-gke-cluster",
-            location="us-central1",
-            remove_default_node_pool=True,
-            initial_node_count=1)
+            location="us-central1")
         primary_preemptible_nodes = gcp.container.NodePool("primary_preemptible_nodes",
             name="my-node-pool",
             location="us-central1",
@@ -4550,6 +4623,7 @@ class Cluster(pulumi.CustomResource):
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']]] = None,
                  rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']]] = None,
+                 schedule_upgrade_config: pulumi.Input[Optional[Union['ClusterScheduleUpgradeConfigArgs', 'ClusterScheduleUpgradeConfigArgsDict', 'outputs.ClusterScheduleUpgradeConfig']]] = None,
                  secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']]] = None,
                  secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']]] = None,
                  security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']]] = None,
@@ -4651,6 +4725,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
             __props__.__dict__["rollback_safe_upgrade"] = rollback_safe_upgrade
+            __props__.__dict__["schedule_upgrade_config"] = schedule_upgrade_config
             __props__.__dict__["secret_manager_config"] = secret_manager_config
             __props__.__dict__["secret_sync_config"] = secret_sync_config
             __props__.__dict__["security_posture_config"] = security_posture_config
@@ -4772,6 +4847,7 @@ class Cluster(pulumi.CustomResource):
             resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']]] = None,
             rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']]] = None,
+            schedule_upgrade_config: pulumi.Input[Optional[Union['ClusterScheduleUpgradeConfigArgs', 'ClusterScheduleUpgradeConfigArgsDict', 'outputs.ClusterScheduleUpgradeConfig']]] = None,
             secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']]] = None,
             secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']]] = None,
             security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']]] = None,
@@ -4887,7 +4963,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
-               number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+               number of nodes per zone. When omitted (or set to `0`) with no `node_config` or
+               `node_pool` blocks defined, the cluster is created without a default node pool.
+               This requires a GKE version that supports clusters without a default node pool
+               (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
@@ -4909,7 +4988,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict', 'outputs.ClusterManagedMachineLearningDiagnosticsConfig']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict', 'outputs.ClusterMasterAuth']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -5019,9 +5098,13 @@ class Cluster(pulumi.CustomResource):
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
                channel. Structure is documented below.
         :param pulumi.Input[_builtins.bool] remove_default_node_pool: If `true`, deletes the default node
-               pool upon cluster creation. If you're using `container.NodePool`
-               resources with no default node pool, this should be set to `true`, alongside
-               setting `initial_node_count` to at least `1`.
+               pool upon cluster creation. On GKE versions that support clusters without a
+               default node pool, you can instead omit `initial_node_count` and
+               `node_config` (or set `initial_node_count` to `0`) to skip creating the
+               default node pool without setting this field. For older GKE versions, if
+               you're using `container.NodePool` resources with no default node
+               pool, this should be set to `true`, alongside setting `initial_node_count`
+               to at least `1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -5030,6 +5113,7 @@ class Cluster(pulumi.CustomResource):
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        :param pulumi.Input[Union['ClusterScheduleUpgradeConfigArgs', 'ClusterScheduleUpgradeConfigArgsDict', 'outputs.ClusterScheduleUpgradeConfig']] schedule_upgrade_config: Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
         :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -5152,6 +5236,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["resource_labels"] = resource_labels
         __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
         __props__.__dict__["rollback_safe_upgrade"] = rollback_safe_upgrade
+        __props__.__dict__["schedule_upgrade_config"] = schedule_upgrade_config
         __props__.__dict__["secret_manager_config"] = secret_manager_config
         __props__.__dict__["secret_sync_config"] = secret_sync_config
         __props__.__dict__["security_posture_config"] = security_posture_config
@@ -5582,7 +5667,10 @@ class Cluster(pulumi.CustomResource):
         """
         The number of nodes to create in this
         cluster's default node pool. In regional or multi-zonal clusters, this is the
-        number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+        number of nodes per zone. When omitted (or set to `0`) with no `node_config` or
+        `node_pool` blocks defined, the cluster is created without a default node pool.
+        This requires a GKE version that supports clusters without a default node pool
+        (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
         `container.NodePool` objects with no default node pool, you'll need to
         set this to a value of at least `1`, alongside setting
         `remove_default_node_pool` to `true`.
@@ -5660,7 +5748,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="managedOpentelemetryConfig")
     def managed_opentelemetry_config(self) -> pulumi.Output['outputs.ClusterManagedOpentelemetryConfig']:
         """
-        ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
@@ -5982,12 +6070,17 @@ class Cluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="removeDefaultNodePool")
+    @_utilities.deprecated("""On newer cluster versions (1.36.4-gke.1469000+) omit initial_node_count and node_config (or set initial_node_count = 0) instead.""")
     def remove_default_node_pool(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         If `true`, deletes the default node
-        pool upon cluster creation. If you're using `container.NodePool`
-        resources with no default node pool, this should be set to `true`, alongside
-        setting `initial_node_count` to at least `1`.
+        pool upon cluster creation. On GKE versions that support clusters without a
+        default node pool, you can instead omit `initial_node_count` and
+        `node_config` (or set `initial_node_count` to `0`) to skip creating the
+        default node pool without setting this field. For older GKE versions, if
+        you're using `container.NodePool` resources with no default node
+        pool, this should be set to `true`, alongside setting `initial_node_count`
+        to at least `1`.
         """
         return pulumi.get(self, "remove_default_node_pool")
 
@@ -6019,6 +6112,14 @@ class Cluster(pulumi.CustomResource):
         Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
         """
         return pulumi.get(self, "rollback_safe_upgrade")
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleUpgradeConfig")
+    def schedule_upgrade_config(self) -> pulumi.Output['outputs.ClusterScheduleUpgradeConfig']:
+        """
+        Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_upgrade_config")
 
     @_builtins.property
     @pulumi.getter(name="secretManagerConfig")

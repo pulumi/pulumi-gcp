@@ -106,6 +106,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Discoveryengine Dataconnector Jira With Actions
     /// 
     /// ```csharp

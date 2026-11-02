@@ -60,6 +60,11 @@ export type ControlOrganizationIntelligenceConfig = import("./controlOrganizatio
 export const ControlOrganizationIntelligenceConfig: typeof import("./controlOrganizationIntelligenceConfig").ControlOrganizationIntelligenceConfig = null as any;
 utilities.lazyLoad(exports, ["ControlOrganizationIntelligenceConfig"], () => require("./controlOrganizationIntelligenceConfig"));
 
+export { ControlProjectFeatureConfigArgs, ControlProjectFeatureConfigState } from "./controlProjectFeatureConfig";
+export type ControlProjectFeatureConfig = import("./controlProjectFeatureConfig").ControlProjectFeatureConfig;
+export const ControlProjectFeatureConfig: typeof import("./controlProjectFeatureConfig").ControlProjectFeatureConfig = null as any;
+utilities.lazyLoad(exports, ["ControlProjectFeatureConfig"], () => require("./controlProjectFeatureConfig"));
+
 export { ControlProjectIntelligenceConfigArgs, ControlProjectIntelligenceConfigState } from "./controlProjectIntelligenceConfig";
 export type ControlProjectIntelligenceConfig = import("./controlProjectIntelligenceConfig").ControlProjectIntelligenceConfig;
 export const ControlProjectIntelligenceConfig: typeof import("./controlProjectIntelligenceConfig").ControlProjectIntelligenceConfig = null as any;
@@ -144,6 +149,11 @@ export { GetControlOrganizationIntelligenceFindingsSummaryArgs, GetControlOrgani
 export const getControlOrganizationIntelligenceFindingsSummary: typeof import("./getControlOrganizationIntelligenceFindingsSummary").getControlOrganizationIntelligenceFindingsSummary = null as any;
 export const getControlOrganizationIntelligenceFindingsSummaryOutput: typeof import("./getControlOrganizationIntelligenceFindingsSummary").getControlOrganizationIntelligenceFindingsSummaryOutput = null as any;
 utilities.lazyLoad(exports, ["getControlOrganizationIntelligenceFindingsSummary","getControlOrganizationIntelligenceFindingsSummaryOutput"], () => require("./getControlOrganizationIntelligenceFindingsSummary"));
+
+export { GetControlProjectFeatureConfigArgs, GetControlProjectFeatureConfigResult, GetControlProjectFeatureConfigOutputArgs } from "./getControlProjectFeatureConfig";
+export const getControlProjectFeatureConfig: typeof import("./getControlProjectFeatureConfig").getControlProjectFeatureConfig = null as any;
+export const getControlProjectFeatureConfigOutput: typeof import("./getControlProjectFeatureConfig").getControlProjectFeatureConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getControlProjectFeatureConfig","getControlProjectFeatureConfigOutput"], () => require("./getControlProjectFeatureConfig"));
 
 export { GetControlProjectIntelligenceConfigArgs, GetControlProjectIntelligenceConfigResult, GetControlProjectIntelligenceConfigOutputArgs } from "./getControlProjectIntelligenceConfig";
 export const getControlProjectIntelligenceConfig: typeof import("./getControlProjectIntelligenceConfig").getControlProjectIntelligenceConfig = null as any;
@@ -293,6 +303,8 @@ const _module = {
                 return new ControlFolderIntelligenceConfig(name, <any>undefined, { urn })
             case "gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig":
                 return new ControlOrganizationIntelligenceConfig(name, <any>undefined, { urn })
+            case "gcp:storage/controlProjectFeatureConfig:ControlProjectFeatureConfig":
+                return new ControlProjectFeatureConfig(name, <any>undefined, { urn })
             case "gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig":
                 return new ControlProjectIntelligenceConfig(name, <any>undefined, { urn })
             case "gcp:storage/defaultObjectACL:DefaultObjectACL":
@@ -345,6 +357,7 @@ pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketObject", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/controlFolderIntelligenceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/controlOrganizationIntelligenceConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/controlProjectFeatureConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/controlProjectIntelligenceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectAccessControl", _module)

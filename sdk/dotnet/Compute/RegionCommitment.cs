@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Region Commitment Full
     /// 
     /// ```csharp

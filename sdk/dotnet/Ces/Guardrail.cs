@@ -84,6 +84,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Guardrail Transfer Agent Content Filter
     /// 
     /// ```csharp
@@ -158,6 +159,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Guardrail Generative Answer Llm Prompt Security
     /// 
     /// ```csharp
@@ -215,6 +217,7 @@ namespace Pulumi.Gcp.Ces
     ///                 {
     ///                     Model = "gemini-3.0-flash-001",
     ///                     Temperature = 50.0,
+    ///                     ThinkingLevel = "LOW",
     ///                 },
     ///                 Prompt = "example_prompt",
     ///                 PolicyScope = "USER_QUERY",
@@ -226,6 +229,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Guardrail Llm Prompt Security Fail Open
     /// 
     /// ```csharp
@@ -282,6 +286,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Guardrail Llm Prompt Security Default Settings
     /// 
     /// ```csharp
@@ -338,6 +343,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Guardrail Code Callback
     /// 
     /// ```csharp
@@ -422,6 +428,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Guardrail Llm Policy
     /// 
     /// ```csharp
@@ -477,6 +484,7 @@ namespace Pulumi.Gcp.Ces
     ///             {
     ///                 Model = "gemini-3.0-flash-001",
     ///                 Temperature = 50.0,
+    ///                 ThinkingLevel = "LOW",
     ///             },
     ///             Prompt = "example_prompt",
     ///             PolicyScope = "USER_QUERY",

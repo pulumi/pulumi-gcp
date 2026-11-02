@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/dataproc/docs)
  * 
  * &gt; **Warning:** Due to limitations of the API, all arguments except
- * `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
+ * `labels`, `cluster_config.worker_config.num_instances`, `cluster_config.preemptible_worker_config.num_instances`, `cluster_config.worker_flexible_config.num_instances` and `cluster_config.secondary_worker_flexible_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
  * whole cluster!
  * 
  * ## Example Usage
@@ -155,6 +155,66 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ### High Obtainability (HO) Mode
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.Cluster;
+ * import com.pulumi.gcp.dataproc.ClusterArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterFlexibleConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerFlexibleConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var hoCluster = new Cluster("hoCluster", ClusterArgs.builder()
+ *             .name("my-ho-cluster")
+ *             .region("us-central1")
+ *             .clusterConfig(ClusterClusterConfigArgs.builder()
+ *                 .masterFlexibleConfig(ClusterClusterConfigMasterFlexibleConfigArgs.builder()
+ *                     .numInstances(1)
+ *                     .coreCount(4)
+ *                     .hardwareClass("STANDARD")
+ *                     .bootDiskSizeGb(100)
+ *                     .build())
+ *                 .workerFlexibleConfig(ClusterClusterConfigWorkerFlexibleConfigArgs.builder()
+ *                     .numInstances(2)
+ *                     .coreCount(8)
+ *                     .hardwareClass("STANDARD")
+ *                     .bootDiskSizeGb(100)
+ *                     .build())
+ *                 .secondaryWorkerFlexibleConfig(ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs.builder()
+ *                     .numInstances(2)
+ *                     .coreCount(8)
+ *                     .hardwareClass("PERFORMANCE")
+ *                     .bootDiskSizeGb(100)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * &gt; **Tip:** When an autoscaling policy is attached to an HO cluster, use `lifecycle { ignoreChanges = [cluster_config[0].worker_flexible_config[0].num_instances, cluster_config[0].secondary_worker_flexible_config[0].num_instances] }` to avoid fighting the autoscaler.
  * 
  * ### Using A GPU Accelerator
  * 

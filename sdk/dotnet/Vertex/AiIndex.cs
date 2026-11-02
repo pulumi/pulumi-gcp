@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Vertex
     ///                     TreeAhConfig = new Gcp.Vertex.Inputs.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs
     ///                     {
     ///                         LeafNodeEmbeddingCount = 500,
-    ///                         LeafNodesToSearchPercent = 7,
+    ///                         FractionLeafNodesToSearch = 0.07,
     ///                     },
     ///                 },
     ///             },
@@ -101,6 +101,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Index Streaming
     /// 
     /// ```csharp

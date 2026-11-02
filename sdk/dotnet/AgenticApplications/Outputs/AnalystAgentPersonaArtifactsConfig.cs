@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
     public sealed class AnalystAgentPersonaArtifactsConfig
     {
         /// <summary>
+        /// Options for audit trail export.
+        /// </summary>
+        public readonly Outputs.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions? AuditTrailExportOptions;
+        /// <summary>
         /// Options for document generation.
         /// </summary>
         public readonly Outputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions? DocumentGenerationOptions;
@@ -32,6 +36,8 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
 
         [OutputConstructor]
         private AnalystAgentPersonaArtifactsConfig(
+            Outputs.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions? auditTrailExportOptions,
+
             Outputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions? documentGenerationOptions,
 
             Outputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptions? methodologyExportOptions,
@@ -40,6 +46,7 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
 
             Outputs.AnalystAgentPersonaArtifactsConfigVisualizationOptions? visualizationOptions)
         {
+            AuditTrailExportOptions = auditTrailExportOptions;
             DocumentGenerationOptions = documentGenerationOptions;
             MethodologyExportOptions = methodologyExportOptions;
             SlideGenerationOptions = slideGenerationOptions;

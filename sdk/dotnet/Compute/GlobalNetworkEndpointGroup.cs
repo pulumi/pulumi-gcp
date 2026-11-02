@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Global Network Endpoint Group Ip Address
     /// 
     /// ```csharp

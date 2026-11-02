@@ -56,7 +56,7 @@ import (
 //				LanguageCode: pulumi.String("fr"),
 //				DisplayName:  pulumi.String("TF Prompt generator"),
 //				LlmModelSettings: &diagflow.CxGeneratorLlmModelSettingsArgs{
-//					Model:      pulumi.String("gemini-2.0-flash-001"),
+//					Model:      pulumi.String("gemini-2.5-flash"),
 //					PromptText: pulumi.String("Return me some great results"),
 //				},
 //				PromptText: &diagflow.CxGeneratorPromptTextArgs{

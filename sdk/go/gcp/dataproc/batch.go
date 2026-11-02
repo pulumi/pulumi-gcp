@@ -75,6 +75,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataproc Batch Spark Full
 //
 // ```go
@@ -220,6 +221,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataproc Batch Sparksql
 //
 // ```go
@@ -266,6 +268,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataproc Batch Pyspark
 //
 // ```go
@@ -323,6 +326,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataproc Batch Sparkr
 //
 // ```go
@@ -373,6 +377,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataproc Batch Autotuning
 //
 // ```go

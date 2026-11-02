@@ -683,6 +683,7 @@ class RegionCommitment(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Compute Region Commitment Full
 
         ```python
@@ -822,6 +823,7 @@ class RegionCommitment(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Compute Region Commitment Full
 
         ```python

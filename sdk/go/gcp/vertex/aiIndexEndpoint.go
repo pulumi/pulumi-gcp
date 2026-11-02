@@ -90,6 +90,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Index Endpoint With Psc
 //
 // ```go
@@ -131,6 +132,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Index Endpoint With Public Endpoint
 //
 // ```go

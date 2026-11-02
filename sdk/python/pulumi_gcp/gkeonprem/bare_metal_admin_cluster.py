@@ -983,6 +983,7 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 "login_user": "root",
             })
         ```
+
         ### Gkeonprem Bare Metal Admin Cluster Full
 
         ```python
@@ -1269,6 +1270,7 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 "login_user": "root",
             })
         ```
+
         ### Gkeonprem Bare Metal Admin Cluster Full
 
         ```python

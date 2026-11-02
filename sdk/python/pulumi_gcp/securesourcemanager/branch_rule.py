@@ -586,6 +586,7 @@ class BranchRule(pulumi.CustomResource):
             location=repository.location,
             include_pattern="main")
         ```
+
         ### Secure Source Manager Branch Rule With Fields
 
         ```python
@@ -694,6 +695,7 @@ class BranchRule(pulumi.CustomResource):
             location=repository.location,
             include_pattern="main")
         ```
+
         ### Secure Source Manager Branch Rule With Fields
 
         ```python

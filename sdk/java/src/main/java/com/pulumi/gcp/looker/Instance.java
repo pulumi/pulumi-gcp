@@ -77,6 +77,48 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ### Looker Instance Force Delete
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.looker.Instance;
+ * import com.pulumi.gcp.looker.InstanceArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
+ *             .name("my-instance")
+ *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
+ *             .region("us-central1")
+ *             .oauthConfig(InstanceOauthConfigArgs.builder()
+ *                 .clientId("my-client-id")
+ *                 .clientSecret("my-client-secret")
+ *                 .build())
+ *             .deletionPolicy("FORCE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Looker Instance Full
  * 
  * <pre>
@@ -149,53 +191,14 @@ import javax.annotation.Nullable;
  *                 .clientId("my-client-id")
  *                 .clientSecret("my-client-secret")
  *                 .build())
+ *             .deletionPolicy("FORCE")
  *             .build());
  * 
  *     }
  * }
  * }
  * </pre>
- * ### Looker Instance Fips
  * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.looker.Instance;
- * import com.pulumi.gcp.looker.InstanceArgs;
- * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
- *             .name("my-instance-fips")
- *             .platformEdition("LOOKER_CORE_ENTERPRISE_ANNUAL")
- *             .region("us-central1")
- *             .publicIpEnabled(true)
- *             .fipsEnabled(true)
- *             .oauthConfig(InstanceOauthConfigArgs.builder()
- *                 .clientId("my-client-id")
- *                 .clientSecret("my-client-secret")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * ### Looker Instance Enterprise Full
  * 
  * <pre>
@@ -222,6 +225,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodEndDateArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodTimeArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceCustomDomainArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
@@ -304,6 +308,9 @@ import javax.annotation.Nullable;
  *                 .clientId("my-client-id")
  *                 .clientSecret("my-client-secret")
  *                 .build())
+ *             .customDomain(InstanceCustomDomainArgs.builder()
+ *                 .domain("my-custom-domain.com")
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(lookerVpcConnection)
  *                 .build());
@@ -321,49 +328,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * ### Looker Instance Custom Domain
  * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.looker.Instance;
- * import com.pulumi.gcp.looker.InstanceArgs;
- * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
- * import com.pulumi.gcp.looker.inputs.InstanceCustomDomainArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
- *             .name("my-instance")
- *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
- *             .region("us-central1")
- *             .oauthConfig(InstanceOauthConfigArgs.builder()
- *                 .clientId("my-client-id")
- *                 .clientSecret("my-client-secret")
- *                 .build())
- *             .customDomain(InstanceCustomDomainArgs.builder()
- *                 .domain("my-custom-domain.com")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * ### Looker Instance Psc
  * 
  * <pre>
@@ -404,46 +369,6 @@ import javax.annotation.Nullable;
  *             .pscConfig(InstancePscConfigArgs.builder()
  *                 .allowedVpcs("projects/test-project/global/networks/test")
  *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### Looker Instance Force Delete
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.looker.Instance;
- * import com.pulumi.gcp.looker.InstanceArgs;
- * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
- *             .name("my-instance")
- *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
- *             .region("us-central1")
- *             .oauthConfig(InstanceOauthConfigArgs.builder()
- *                 .clientId("my-client-id")
- *                 .clientSecret("my-client-secret")
- *                 .build())
- *             .deletionPolicy("FORCE")
  *             .build());
  * 
  *     }

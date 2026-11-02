@@ -12,6 +12,7 @@ import com.pulumi.gcp.bigquery.ReservationArgs;
 import com.pulumi.gcp.bigquery.inputs.ReservationState;
 import com.pulumi.gcp.bigquery.outputs.ReservationAutoscale;
 import com.pulumi.gcp.bigquery.outputs.ReservationReplicationStatus;
+import com.pulumi.gcp.bigquery.outputs.ReservationSchedulingPolicy;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -508,6 +509,26 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> scalingMode() {
         return Codegen.optional(this.scalingMode);
+    }
+    /**
+     * The scheduling policy to use for jobs and queries running under this
+     * reservation. The scheduling policy controls how the reservation&#39;s resources
+     * are distributed.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="schedulingPolicy", refs={ReservationSchedulingPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ ReservationSchedulingPolicy> schedulingPolicy;
+
+    /**
+     * @return The scheduling policy to use for jobs and queries running under this
+     * reservation. The scheduling policy controls how the reservation&#39;s resources
+     * are distributed.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ReservationSchedulingPolicy>> schedulingPolicy() {
+        return Codegen.optional(this.schedulingPolicy);
     }
     /**
      * The current location of the reservation&#39;s secondary replica. This field is only set for

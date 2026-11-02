@@ -21,72 +21,128 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example = new gcp.cloudsecuritycompliance.Framework("example", {
+ * const example = new gcp.cloudsecuritycompliance.CloudControl("example", {
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ *     cloudControlId: "example-cloudcontrol",
+ *     displayName: "TF test CloudControl Name",
+ *     description: "A test cloud control for security compliance",
+ *     categories: ["CC_CATEGORY_INFRASTRUCTURE"],
+ *     severity: "HIGH",
+ *     findingCategory: "SECURITY_POLICY",
+ *     remediationSteps: "Review and update the security configuration according to best practices.",
+ *     supportedCloudProviders: ["GCP"],
+ *     rules: [{
+ *         description: "Ensure compute instances have secure boot enabled",
+ *         ruleActionTypes: ["RULE_ACTION_TYPE_DETECTIVE"],
+ *         celExpression: {
+ *             expression: "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+ *             resourceTypesValues: {
+ *                 values: ["compute.googleapis.com/Instance"],
+ *             },
+ *         },
+ *     }],
+ *     parameterSpecs: [
+ *         {
+ *             name: "enabled",
+ *             valueType: "BOOLEAN",
+ *             isRequired: true,
+ *         },
+ *         {
+ *             name: "regions",
+ *             valueType: "STRINGLIST",
+ *             isRequired: true,
+ *         },
+ *         {
+ *             name: "location",
+ *             valueType: "STRING",
+ *             isRequired: true,
+ *         },
+ *         {
+ *             name: "oneof-parameter",
+ *             valueType: "ONEOF",
+ *             isRequired: true,
+ *             subParameters: [
+ *                 {
+ *                     name: "test-oneof",
+ *                     valueType: "STRING",
+ *                     isRequired: true,
+ *                 },
+ *                 {
+ *                     name: "updated-test-oneof",
+ *                     valueType: "STRING",
+ *                     isRequired: true,
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             name: "bool-parameter",
+ *             valueType: "ONEOF",
+ *             isRequired: true,
+ *             subParameters: [
+ *                 {
+ *                     name: "bool-oneof",
+ *                     valueType: "BOOLEAN",
+ *                     isRequired: true,
+ *                 },
+ *                 {
+ *                     name: "updated-bool-oneof",
+ *                     valueType: "BOOLEAN",
+ *                     isRequired: true,
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             name: "number-parameter",
+ *             valueType: "ONEOF",
+ *             isRequired: true,
+ *             subParameters: [
+ *                 {
+ *                     name: "number-oneof",
+ *                     valueType: "NUMBER",
+ *                     isRequired: true,
+ *                 },
+ *                 {
+ *                     name: "updated-number-oneof",
+ *                     valueType: "NUMBER",
+ *                     isRequired: true,
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             name: "string-list-parameter",
+ *             valueType: "ONEOF",
+ *             isRequired: true,
+ *             subParameters: [
+ *                 {
+ *                     name: "string-list-oneof",
+ *                     valueType: "STRINGLIST",
+ *                     isRequired: true,
+ *                 },
+ *                 {
+ *                     name: "updated-string-list-oneof",
+ *                     valueType: "STRINGLIST",
+ *                     isRequired: true,
+ *                 },
+ *             ],
+ *         },
+ *     ],
+ * });
+ * const exampleFramework = new gcp.cloudsecuritycompliance.Framework("example", {
  *     parent: "organizations/123456789",
  *     location: "global",
  *     frameworkId: "example-framework",
  *     displayName: "Terraform Framework Name",
  *     description: "An Terraform description for the framework",
  *     cloudControlDetails: [{
- *         name: "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
- *         majorRevisionId: "2",
- *         parameters: [
- *             {
- *                 name: "location",
- *                 parameterValue: {
- *                     stringValue: "us-central1",
- *                 },
+ *         name: example.name,
+ *         majorRevisionId: "1",
+ *         parameters: [{
+ *             name: "enabled",
+ *             parameterValue: {
+ *                 boolValue: true,
  *             },
- *             {
- *                 name: "oneof-parameter",
- *                 parameterValue: {
- *                     oneofValue: {
- *                         name: "test-oneof",
- *                         parameterValue: {
- *                             stringValue: "test-value",
- *                         },
- *                     },
- *                 },
- *             },
- *             {
- *                 name: "bool-parameter",
- *                 parameterValue: {
- *                     oneofValue: {
- *                         name: "bool-oneof",
- *                         parameterValue: {
- *                             boolValue: true,
- *                         },
- *                     },
- *                 },
- *             },
- *             {
- *                 name: "number-parameter",
- *                 parameterValue: {
- *                     oneofValue: {
- *                         name: "number-oneof",
- *                         parameterValue: {
- *                             numberValue: 123.45,
- *                         },
- *                     },
- *                 },
- *             },
- *             {
- *                 name: "string-list-parameter",
- *                 parameterValue: {
- *                     oneofValue: {
- *                         name: "string-list-oneof",
- *                         parameterValue: {
- *                             stringListValue: {
- *                                 values: [
- *                                     "value1",
- *                                     "value2",
- *                                 ],
- *                             },
- *                         },
- *                     },
- *                 },
- *             },
- *         ],
+ *         }],
  *     }],
  * });
  * const exampleFrameworkDeployment = new gcp.cloudsecuritycompliance.FrameworkDeployment("example", {
@@ -95,7 +151,7 @@ import * as utilities from "../utilities";
  *     frameworkDeploymentId: "example-deployment",
  *     description: "A framework deployment for cloud security compliance",
  *     framework: {
- *         framework: example.name,
+ *         framework: exampleFramework.name,
  *         majorRevisionId: "1",
  *     },
  *     targetResourceConfig: {
@@ -104,8 +160,8 @@ import * as utilities from "../utilities";
  *     cloudControlMetadatas: [{
  *         enforcementMode: "DETECTIVE",
  *         cloudControlDetails: {
- *             name: "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
- *             majorRevisionId: "2",
+ *             name: example.name,
+ *             majorRevisionId: "1",
  *             parameters: [
  *                 {
  *                     name: "enabled",
@@ -185,6 +241,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Cloudsecuritycompliance Framework Deployment Project Basic
  *
  * ```typescript
@@ -192,72 +249,128 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const example = new gcp.cloudsecuritycompliance.Framework("example", {
+ * const example = new gcp.cloudsecuritycompliance.CloudControl("example", {
+ *     parent: project.then(project => `projects/${project.number}`),
+ *     location: "global",
+ *     cloudControlId: "example-cloudcontrol",
+ *     displayName: "TF test CloudControl Name",
+ *     description: "A test cloud control for security compliance",
+ *     categories: ["CC_CATEGORY_INFRASTRUCTURE"],
+ *     severity: "HIGH",
+ *     findingCategory: "SECURITY_POLICY",
+ *     remediationSteps: "Review and update the security configuration according to best practices.",
+ *     supportedCloudProviders: ["GCP"],
+ *     rules: [{
+ *         description: "Ensure compute instances have secure boot enabled",
+ *         ruleActionTypes: ["RULE_ACTION_TYPE_DETECTIVE"],
+ *         celExpression: {
+ *             expression: "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+ *             resourceTypesValues: {
+ *                 values: ["compute.googleapis.com/Instance"],
+ *             },
+ *         },
+ *     }],
+ *     parameterSpecs: [
+ *         {
+ *             name: "enabled",
+ *             valueType: "BOOLEAN",
+ *             isRequired: true,
+ *         },
+ *         {
+ *             name: "regions",
+ *             valueType: "STRINGLIST",
+ *             isRequired: true,
+ *         },
+ *         {
+ *             name: "location",
+ *             valueType: "STRING",
+ *             isRequired: true,
+ *         },
+ *         {
+ *             name: "oneof-parameter",
+ *             valueType: "ONEOF",
+ *             isRequired: true,
+ *             subParameters: [
+ *                 {
+ *                     name: "test-oneof",
+ *                     valueType: "STRING",
+ *                     isRequired: true,
+ *                 },
+ *                 {
+ *                     name: "updated-test-oneof",
+ *                     valueType: "STRING",
+ *                     isRequired: true,
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             name: "bool-parameter",
+ *             valueType: "ONEOF",
+ *             isRequired: true,
+ *             subParameters: [
+ *                 {
+ *                     name: "bool-oneof",
+ *                     valueType: "BOOLEAN",
+ *                     isRequired: true,
+ *                 },
+ *                 {
+ *                     name: "updated-bool-oneof",
+ *                     valueType: "BOOLEAN",
+ *                     isRequired: true,
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             name: "number-parameter",
+ *             valueType: "ONEOF",
+ *             isRequired: true,
+ *             subParameters: [
+ *                 {
+ *                     name: "number-oneof",
+ *                     valueType: "NUMBER",
+ *                     isRequired: true,
+ *                 },
+ *                 {
+ *                     name: "updated-number-oneof",
+ *                     valueType: "NUMBER",
+ *                     isRequired: true,
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             name: "string-list-parameter",
+ *             valueType: "ONEOF",
+ *             isRequired: true,
+ *             subParameters: [
+ *                 {
+ *                     name: "string-list-oneof",
+ *                     valueType: "STRINGLIST",
+ *                     isRequired: true,
+ *                 },
+ *                 {
+ *                     name: "updated-string-list-oneof",
+ *                     valueType: "STRINGLIST",
+ *                     isRequired: true,
+ *                 },
+ *             ],
+ *         },
+ *     ],
+ * });
+ * const exampleFramework = new gcp.cloudsecuritycompliance.Framework("example", {
  *     parent: project.then(project => `projects/${project.number}`),
  *     location: "global",
  *     frameworkId: "example-framework",
  *     displayName: "Terraform Framework Name",
  *     description: "An Terraform description for the framework",
  *     cloudControlDetails: [{
- *         name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown`),
- *         majorRevisionId: "2",
- *         parameters: [
- *             {
- *                 name: "location",
- *                 parameterValue: {
- *                     stringValue: "us-central1",
- *                 },
+ *         name: example.name,
+ *         majorRevisionId: "1",
+ *         parameters: [{
+ *             name: "enabled",
+ *             parameterValue: {
+ *                 boolValue: true,
  *             },
- *             {
- *                 name: "oneof-parameter",
- *                 parameterValue: {
- *                     oneofValue: {
- *                         name: "test-oneof",
- *                         parameterValue: {
- *                             stringValue: "test-value",
- *                         },
- *                     },
- *                 },
- *             },
- *             {
- *                 name: "bool-parameter",
- *                 parameterValue: {
- *                     oneofValue: {
- *                         name: "bool-oneof",
- *                         parameterValue: {
- *                             boolValue: true,
- *                         },
- *                     },
- *                 },
- *             },
- *             {
- *                 name: "number-parameter",
- *                 parameterValue: {
- *                     oneofValue: {
- *                         name: "number-oneof",
- *                         parameterValue: {
- *                             numberValue: 123.45,
- *                         },
- *                     },
- *                 },
- *             },
- *             {
- *                 name: "string-list-parameter",
- *                 parameterValue: {
- *                     oneofValue: {
- *                         name: "string-list-oneof",
- *                         parameterValue: {
- *                             stringListValue: {
- *                                 values: [
- *                                     "value1",
- *                                     "value2",
- *                                 ],
- *                             },
- *                         },
- *                     },
- *                 },
- *             },
- *         ],
+ *         }],
  *     }],
  * });
  * const exampleFrameworkDeployment = new gcp.cloudsecuritycompliance.FrameworkDeployment("example", {
@@ -266,7 +379,7 @@ import * as utilities from "../utilities";
  *     frameworkDeploymentId: "example-deployment",
  *     description: "A framework deployment for cloud security compliance",
  *     framework: {
- *         framework: example.name,
+ *         framework: exampleFramework.name,
  *         majorRevisionId: "1",
  *     },
  *     targetResourceConfig: {
@@ -275,8 +388,8 @@ import * as utilities from "../utilities";
  *     cloudControlMetadatas: [{
  *         enforcementMode: "DETECTIVE",
  *         cloudControlDetails: {
- *             name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown`),
- *             majorRevisionId: "2",
+ *             name: example.name,
+ *             majorRevisionId: "1",
  *             parameters: [
  *                 {
  *                     name: "enabled",
@@ -356,6 +469,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Cloudsecuritycompliance Framework Deployment Org Project Basic
  *
  * ```typescript
@@ -407,6 +521,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Cloudsecuritycompliance Framework Deployment Project Application Basic
  *
  * ```typescript
@@ -466,6 +581,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
  *
  * ```typescript

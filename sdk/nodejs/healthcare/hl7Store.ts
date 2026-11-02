@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Healthcare Hl7 V2 Store Parser Config
  *
  * ```typescript
@@ -139,6 +140,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Healthcare Hl7 V2 Store Unschematized
  *
  * ```typescript

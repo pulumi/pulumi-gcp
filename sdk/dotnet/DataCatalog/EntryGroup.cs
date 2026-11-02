@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Catalog Entry Group Full
     /// 
     /// ```csharp

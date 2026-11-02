@@ -93,6 +93,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Api Product With Legacy Operation
     /// 
     /// ```csharp
@@ -212,6 +213,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ## Import
     /// 
     /// ApiProduct can be imported using any of these accepted formats:

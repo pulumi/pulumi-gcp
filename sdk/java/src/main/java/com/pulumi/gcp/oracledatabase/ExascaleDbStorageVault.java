@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *                     .totalSizeGbs(512)
  *                     .build())
  *                 .build())
+ *             .labels(Map.of("label-one", "value-one"))
  *             .deletionProtection(true)
  *             .build());
  * 
@@ -66,6 +67,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Oracledatabase Exascale Db Storage Vault Full
  * 
  * <pre>
@@ -116,6 +118,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
  * 
  * <pre>

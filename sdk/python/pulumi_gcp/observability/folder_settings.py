@@ -216,7 +216,7 @@ class FolderSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
-            display_name="tf-test-_29506",
+            display_name="tf-test-_91207",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API
@@ -238,6 +238,7 @@ class FolderSettings(pulumi.CustomResource):
             kms_key_name="example-key",
             opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
+
         ### Observability Folder Settings Basic Global
 
         ```python
@@ -246,7 +247,7 @@ class FolderSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
-            display_name="tf-test-_86474",
+            display_name="tf-test-_14939",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API
@@ -302,7 +303,7 @@ class FolderSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
-            display_name="tf-test-_29506",
+            display_name="tf-test-_91207",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API
@@ -324,6 +325,7 @@ class FolderSettings(pulumi.CustomResource):
             kms_key_name="example-key",
             opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
+
         ### Observability Folder Settings Basic Global
 
         ```python
@@ -332,7 +334,7 @@ class FolderSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
-            display_name="tf-test-_86474",
+            display_name="tf-test-_14939",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API

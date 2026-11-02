@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary_network = new Network("primary-network", NetworkArgs.builder()
- *             .name("tf-test-my-vpc-network_48153")
+ *             .name("tf-test-my-vpc-network_29506")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var primary = new Transport("primary", TransportArgs.builder()
- *             .name("tf-test-basic-transport_58845")
+ *             .name("tf-test-basic-transport_86474")
  *             .region("us-east4")
  *             .description("A sample transport")
  *             .remoteProfile(String.format("https://networkconnectivity.googleapis.com/v1/%s/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.id()))
@@ -133,7 +133,6 @@ public class Transport extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.advertisedRoutes);
     }
     /**
-     * (Optional, Beta)
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      * 
      */
@@ -141,8 +140,7 @@ public class Transport extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> autoAccept;
 
     /**
-     * @return (Optional, Beta)
-     * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+     * @return Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      * 
      */
     public Output<Optional<Boolean>> autoAccept() {
@@ -229,7 +227,6 @@ public class Transport extends com.pulumi.resources.CustomResource {
         return this.generatedActivationKey;
     }
     /**
-     * (Optional, Beta)
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      * 
      */
@@ -237,8 +234,7 @@ public class Transport extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> hub;
 
     /**
-     * @return (Optional, Beta)
-     * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+     * @return The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      * 
      */
     public Output<Optional<String>> hub() {
@@ -349,7 +345,6 @@ public class Transport extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.providedActivationKey);
     }
     /**
-     * (Optional, Beta)
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      * 
      */
@@ -357,8 +352,7 @@ public class Transport extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> pscRoutingEnabled;
 
     /**
-     * @return (Optional, Beta)
-     * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+     * @return Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      * 
      */
     public Output<Optional<Boolean>> pscRoutingEnabled() {

@@ -26,6 +26,12 @@ public final class GuardrailLlmPolicyModelSettings {
      * 
      */
     private @Nullable Double temperature;
+    /**
+     * @return The thinking level of the model.
+     * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+     * 
+     */
+    private @Nullable String thinkingLevel;
 
     private GuardrailLlmPolicyModelSettings() {}
     /**
@@ -46,6 +52,14 @@ public final class GuardrailLlmPolicyModelSettings {
     public Optional<Double> temperature() {
         return Optional.ofNullable(this.temperature);
     }
+    /**
+     * @return The thinking level of the model.
+     * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+     * 
+     */
+    public Optional<String> thinkingLevel() {
+        return Optional.ofNullable(this.thinkingLevel);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -58,11 +72,13 @@ public final class GuardrailLlmPolicyModelSettings {
     public static final class Builder {
         private @Nullable String model;
         private @Nullable Double temperature;
+        private @Nullable String thinkingLevel;
         public Builder() {}
         public Builder(GuardrailLlmPolicyModelSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.model = defaults.model;
     	      this.temperature = defaults.temperature;
+    	      this.thinkingLevel = defaults.thinkingLevel;
         }
 
         @CustomType.Setter
@@ -77,10 +93,17 @@ public final class GuardrailLlmPolicyModelSettings {
             this.temperature = temperature;
             return this;
         }
+        @CustomType.Setter
+        public Builder thinkingLevel(@Nullable String thinkingLevel) {
+
+            this.thinkingLevel = thinkingLevel;
+            return this;
+        }
         public GuardrailLlmPolicyModelSettings build() {
             final var _resultValue = new GuardrailLlmPolicyModelSettings();
             _resultValue.model = model;
             _resultValue.temperature = temperature;
+            _resultValue.thinkingLevel = thinkingLevel;
             return _resultValue;
         }
     }

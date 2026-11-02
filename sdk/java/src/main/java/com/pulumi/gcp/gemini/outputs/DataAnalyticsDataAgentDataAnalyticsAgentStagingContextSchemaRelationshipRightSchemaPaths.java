@@ -14,8 +14,6 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaR
     /**
      * @return Required. The ordered list of paths within the table schema.
      * 
-     * &lt;a name=&#34;nestedDataAnalyticsAgentLastPublishedContext&#34;&gt;&lt;/a&gt;The `lastPublishedContext` block contains:
-     * 
      */
     private List<String> paths;
     /**
@@ -27,8 +25,6 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaR
     private DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths() {}
     /**
      * @return Required. The ordered list of paths within the table schema.
-     * 
-     * &lt;a name=&#34;nestedDataAnalyticsAgentLastPublishedContext&#34;&gt;&lt;/a&gt;The `lastPublishedContext` block contains:
      * 
      */
     public List<String> paths() {

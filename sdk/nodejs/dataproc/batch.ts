@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Batch Spark Full
  *
  * ```typescript
@@ -149,6 +150,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKeyMember1],
  * });
  * ```
+ *
  * ### Dataproc Batch Sparksql
  *
  * ```typescript
@@ -178,6 +180,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Batch Pyspark
  *
  * ```typescript
@@ -212,6 +215,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Batch Sparkr
  *
  * ```typescript
@@ -243,6 +247,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Batch Autotuning
  *
  * ```typescript

@@ -18,6 +18,23 @@ public final class BackupPlanAssociationState extends com.pulumi.resources.Resou
     public static final BackupPlanAssociationState Empty = new BackupPlanAssociationState();
 
     /**
+     * (Beta)
+     * The resource name of the auto protection policy binding that manages this backup plan association, if any.
+     * 
+     */
+    @Import(name="autoProtectionPolicyBinding")
+    private @Nullable Output<String> autoProtectionPolicyBinding;
+
+    /**
+     * @return (Beta)
+     * The resource name of the auto protection policy binding that manages this backup plan association, if any.
+     * 
+     */
+    public Optional<Output<String>> autoProtectionPolicyBinding() {
+        return Optional.ofNullable(this.autoProtectionPolicyBinding);
+    }
+
+    /**
      * The BP with which resource needs to be created
      * Note:
      * - A Backup Plan configured for &#39;compute.googleapis.com/Instance&#39;, can only protect instance type resources.
@@ -226,6 +243,7 @@ public final class BackupPlanAssociationState extends com.pulumi.resources.Resou
     private BackupPlanAssociationState() {}
 
     private BackupPlanAssociationState(BackupPlanAssociationState $) {
+        this.autoProtectionPolicyBinding = $.autoProtectionPolicyBinding;
         this.backupPlan = $.backupPlan;
         this.backupPlanAssociationId = $.backupPlanAssociationId;
         this.createTime = $.createTime;
@@ -256,6 +274,29 @@ public final class BackupPlanAssociationState extends com.pulumi.resources.Resou
 
         public Builder(BackupPlanAssociationState defaults) {
             $ = new BackupPlanAssociationState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoProtectionPolicyBinding (Beta)
+         * The resource name of the auto protection policy binding that manages this backup plan association, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoProtectionPolicyBinding(@Nullable Output<String> autoProtectionPolicyBinding) {
+            $.autoProtectionPolicyBinding = autoProtectionPolicyBinding;
+            return this;
+        }
+
+        /**
+         * @param autoProtectionPolicyBinding (Beta)
+         * The resource name of the auto protection policy binding that manages this backup plan association, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoProtectionPolicyBinding(String autoProtectionPolicyBinding) {
+            return autoProtectionPolicyBinding(Output.of(autoProtectionPolicyBinding));
         }
 
         /**

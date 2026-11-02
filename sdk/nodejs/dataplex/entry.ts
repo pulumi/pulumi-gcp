@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     entryType: entry_type_basic.name,
  * });
  * ```
+ *
  * ### Dataplex Entry Full
  *
  * ```typescript
@@ -180,6 +181,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Dataplex Entry Bigquery Table
  *
  * ```typescript
@@ -303,6 +305,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Dataplex Entry Glossary Term
  *
  * ```typescript

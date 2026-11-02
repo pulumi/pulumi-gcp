@@ -64,6 +64,13 @@ public final class ClusterOrchestratorSlurmLoginNodes {
      */
     private String machineType;
     /**
+     * @return (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    private @Nullable List<String> networkTags;
+    /**
      * @return [Startup
      * script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
      * to be run on each login node instance. Max 256KB.
@@ -149,6 +156,15 @@ public final class ClusterOrchestratorSlurmLoginNodes {
         return this.machineType;
     }
     /**
+     * @return (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    public List<String> networkTags() {
+        return this.networkTags == null ? List.of() : this.networkTags;
+    }
+    /**
      * @return [Startup
      * script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
      * to be run on each login node instance. Max 256KB.
@@ -195,6 +211,7 @@ public final class ClusterOrchestratorSlurmLoginNodes {
         private @Nullable List<ClusterOrchestratorSlurmLoginNodesInstance> instances;
         private @Nullable Map<String,String> labels;
         private String machineType;
+        private @Nullable List<String> networkTags;
         private @Nullable String startupScript;
         private @Nullable List<ClusterOrchestratorSlurmLoginNodesStorageConfig> storageConfigs;
         private String zone;
@@ -208,6 +225,7 @@ public final class ClusterOrchestratorSlurmLoginNodes {
     	      this.instances = defaults.instances;
     	      this.labels = defaults.labels;
     	      this.machineType = defaults.machineType;
+    	      this.networkTags = defaults.networkTags;
     	      this.startupScript = defaults.startupScript;
     	      this.storageConfigs = defaults.storageConfigs;
     	      this.zone = defaults.zone;
@@ -263,6 +281,15 @@ public final class ClusterOrchestratorSlurmLoginNodes {
             return this;
         }
         @CustomType.Setter
+        public Builder networkTags(@Nullable List<String> networkTags) {
+
+            this.networkTags = networkTags;
+            return this;
+        }
+        public Builder networkTags(String... networkTags) {
+            return networkTags(List.of(networkTags));
+        }
+        @CustomType.Setter
         public Builder startupScript(@Nullable String startupScript) {
 
             this.startupScript = startupScript;
@@ -294,6 +321,7 @@ public final class ClusterOrchestratorSlurmLoginNodes {
             _resultValue.instances = instances;
             _resultValue.labels = labels;
             _resultValue.machineType = machineType;
+            _resultValue.networkTags = networkTags;
             _resultValue.startupScript = startupScript;
             _resultValue.storageConfigs = storageConfigs;
             _resultValue.zone = zone;

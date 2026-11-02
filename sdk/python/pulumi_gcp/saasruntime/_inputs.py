@@ -15,6 +15,10 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ReleaseApplicationTemplateComponentArgs',
+    'ReleaseApplicationTemplateComponentArgsDict',
+    'ReleaseApplicationTemplateComponentCompositeRefArgs',
+    'ReleaseApplicationTemplateComponentCompositeRefArgsDict',
     'ReleaseBlueprintArgs',
     'ReleaseBlueprintArgsDict',
     'ReleaseInputVariableArgs',
@@ -27,6 +31,12 @@ __all__ = [
     'ReleaseReleaseRequirementsArgsDict',
     'RolloutKindErrorBudgetArgs',
     'RolloutKindErrorBudgetArgsDict',
+    'SaaSApplicationTemplateArgs',
+    'SaaSApplicationTemplateArgsDict',
+    'SaaSConditionArgs',
+    'SaaSConditionArgsDict',
+    'SaaSErrorArgs',
+    'SaaSErrorArgsDict',
     'SaaSLocationArgs',
     'SaaSLocationArgsDict',
     'UnitConditionArgs',
@@ -37,6 +47,14 @@ __all__ = [
     'UnitDependentArgsDict',
     'UnitInputVariableArgs',
     'UnitInputVariableArgsDict',
+    'UnitKindAppParamsArgs',
+    'UnitKindAppParamsArgsDict',
+    'UnitKindAppParamsScopeArgs',
+    'UnitKindAppParamsScopeArgsDict',
+    'UnitKindApplicationTemplateComponentArgs',
+    'UnitKindApplicationTemplateComponentArgsDict',
+    'UnitKindApplicationTemplateComponentCompositeRefArgs',
+    'UnitKindApplicationTemplateComponentCompositeRefArgsDict',
     'UnitKindDependencyArgs',
     'UnitKindDependencyArgsDict',
     'UnitKindInputVariableMappingArgs',
@@ -68,6 +86,165 @@ __all__ = [
     'UnitOutputVariableArgs',
     'UnitOutputVariableArgsDict',
 ]
+
+class ReleaseApplicationTemplateComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Name of the component in the composite ApplicationTemplate.
+    """
+    composite_reves: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReleaseApplicationTemplateComponentCompositeRefArgsDict']]]]]
+    """
+    (Output)
+    Reference to the composite ApplicationTemplate.
+    Structure is documented below.
+    """
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Revision of the ApplicationTemplate.
+    """
+
+@pulumi.input_type
+class ReleaseApplicationTemplateComponentArgs:
+    def __init__(__self__, *,
+                 component: pulumi.Input[Optional[_builtins.str]] = None,
+                 composite_reves: pulumi.Input[Optional[Sequence[pulumi.Input['ReleaseApplicationTemplateComponentCompositeRefArgs']]]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] component: (Output)
+               Name of the component in the composite ApplicationTemplate.
+        :param pulumi.Input[Sequence[pulumi.Input['ReleaseApplicationTemplateComponentCompositeRefArgs']]] composite_reves: (Output)
+               Reference to the composite ApplicationTemplate.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] revision: (Output)
+               Revision of the ApplicationTemplate.
+        """
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if composite_reves is not None:
+            pulumi.set(__self__, "composite_reves", composite_reves)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+
+    @_builtins.property
+    @pulumi.getter
+    def component(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Name of the component in the composite ApplicationTemplate.
+        """
+        return pulumi.get(self, "component")
+
+    @component.setter
+    def component(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "component", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compositeReves")
+    def composite_reves(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReleaseApplicationTemplateComponentCompositeRefArgs']]]]:
+        """
+        (Output)
+        Reference to the composite ApplicationTemplate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "composite_reves")
+
+    @composite_reves.setter
+    def composite_reves(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReleaseApplicationTemplateComponentCompositeRefArgs']]]]):
+        pulumi.set(self, "composite_reves", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Revision of the ApplicationTemplate.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "revision", value)
+
+
+class ReleaseApplicationTemplateComponentCompositeRefArgsDict(TypedDict):
+    application_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Reference to the ApplicationTemplate resource.
+    """
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Revision of the ApplicationTemplate.
+    """
+    sync_operation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Reference to the ongoing import and replication operation. Opaque for external usage.
+    """
+
+@pulumi.input_type
+class ReleaseApplicationTemplateComponentCompositeRefArgs:
+    def __init__(__self__, *,
+                 application_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_operation: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] application_template: (Output)
+               Reference to the ApplicationTemplate resource.
+        :param pulumi.Input[_builtins.str] revision: (Output)
+               Revision of the ApplicationTemplate.
+        :param pulumi.Input[_builtins.str] sync_operation: (Output)
+               Reference to the ongoing import and replication operation. Opaque for external usage.
+        """
+        if application_template is not None:
+            pulumi.set(__self__, "application_template", application_template)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if sync_operation is not None:
+            pulumi.set(__self__, "sync_operation", sync_operation)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplate")
+    def application_template(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Reference to the ApplicationTemplate resource.
+        """
+        return pulumi.get(self, "application_template")
+
+    @application_template.setter
+    def application_template(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "application_template", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Revision of the ApplicationTemplate.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "revision", value)
+
+    @_builtins.property
+    @pulumi.getter(name="syncOperation")
+    def sync_operation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Reference to the ongoing import and replication operation. Opaque for external usage.
+        """
+        return pulumi.get(self, "sync_operation")
+
+    @sync_operation.setter
+    def sync_operation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sync_operation", value)
+
 
 class ReleaseBlueprintArgsDict(TypedDict):
     engine: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -453,6 +630,292 @@ class RolloutKindErrorBudgetArgs:
         pulumi.set(self, "allowed_percentage", value)
 
 
+class SaaSApplicationTemplateArgsDict(TypedDict):
+    application_template: pulumi.Input[_builtins.str]
+    """
+    Reference to the ApplicationTemplate resource, in the format
+    `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+    """
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Revision of the ApplicationTemplate to import, as a full resource name
+    prefixed by `application_template`:
+    `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}/revisions/{revision}`.
+    Changes to the revision trigger a new import. If empty, the service
+    stores `application_template` but doesn't import it.
+    """
+    sync_operation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Reference to the ongoing import and replication operation. Opaque for external usage.
+    """
+
+@pulumi.input_type
+class SaaSApplicationTemplateArgs:
+    def __init__(__self__, *,
+                 application_template: pulumi.Input[_builtins.str],
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_operation: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] application_template: Reference to the ApplicationTemplate resource, in the format
+               `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+        :param pulumi.Input[_builtins.str] revision: Revision of the ApplicationTemplate to import, as a full resource name
+               prefixed by `application_template`:
+               `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}/revisions/{revision}`.
+               Changes to the revision trigger a new import. If empty, the service
+               stores `application_template` but doesn't import it.
+        :param pulumi.Input[_builtins.str] sync_operation: (Output)
+               Reference to the ongoing import and replication operation. Opaque for external usage.
+        """
+        pulumi.set(__self__, "application_template", application_template)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if sync_operation is not None:
+            pulumi.set(__self__, "sync_operation", sync_operation)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplate")
+    def application_template(self) -> pulumi.Input[_builtins.str]:
+        """
+        Reference to the ApplicationTemplate resource, in the format
+        `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+        """
+        return pulumi.get(self, "application_template")
+
+    @application_template.setter
+    def application_template(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "application_template", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Revision of the ApplicationTemplate to import, as a full resource name
+        prefixed by `application_template`:
+        `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}/revisions/{revision}`.
+        Changes to the revision trigger a new import. If empty, the service
+        stores `application_template` but doesn't import it.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "revision", value)
+
+    @_builtins.property
+    @pulumi.getter(name="syncOperation")
+    def sync_operation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Reference to the ongoing import and replication operation. Opaque for external usage.
+        """
+        return pulumi.get(self, "sync_operation")
+
+    @sync_operation.setter
+    def sync_operation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sync_operation", value)
+
+
+class SaaSConditionArgsDict(TypedDict):
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Last time the condition transited from one status to another.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A developer-facing error message.
+    """
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Brief reason for the condition's last transition.
+    """
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Status of the condition.
+    Possible values:
+    STATUS_UNKNOWN
+    STATUS_TRUE
+    STATUS_FALSE
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Type of the condition.
+    Possible values:
+    TYPE_READY
+    TYPE_SYNCHRONIZED
+    """
+
+@pulumi.input_type
+class SaaSConditionArgs:
+    def __init__(__self__, *,
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] last_transition_time: (Output)
+               Last time the condition transited from one status to another.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message.
+        :param pulumi.Input[_builtins.str] reason: (Output)
+               Brief reason for the condition's last transition.
+        :param pulumi.Input[_builtins.str] status: (Output)
+               Status of the condition.
+               Possible values:
+               STATUS_UNKNOWN
+               STATUS_TRUE
+               STATUS_FALSE
+        :param pulumi.Input[_builtins.str] type: (Output)
+               Type of the condition.
+               Possible values:
+               TYPE_READY
+               TYPE_SYNCHRONIZED
+        """
+        if last_transition_time is not None:
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="lastTransitionTime")
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Last time the condition transited from one status to another.
+        """
+        return pulumi.get(self, "last_transition_time")
+
+    @last_transition_time.setter
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "last_transition_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Brief reason for the condition's last transition.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "reason", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Status of the condition.
+        Possible values:
+        STATUS_UNKNOWN
+        STATUS_TRUE
+        STATUS_FALSE
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Type of the condition.
+        Possible values:
+        TYPE_READY
+        TYPE_SYNCHRONIZED
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class SaaSErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A developer-facing error message.
+    """
+
+@pulumi.input_type
+class SaaSErrorArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
 class SaaSLocationArgsDict(TypedDict):
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -798,6 +1261,262 @@ class UnitInputVariableArgs:
     @value.setter
     def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+class UnitKindAppParamsArgsDict(TypedDict):
+    group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Grouping used to construct the name of the App Hub Application.
+    Multiple UnitKinds can specify the same group to use the same
+    Application across their respective Units. Corresponds to the
+    app_boundary_id in the ADC composite ApplicationTemplate. If empty,
+    the service creates no App Hub application.
+    """
+    scope: NotRequired[pulumi.Input[Optional['UnitKindAppParamsScopeArgsDict']]]
+    """
+    Corresponds to the scope in the ADC composite ApplicationTemplate.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class UnitKindAppParamsArgs:
+    def __init__(__self__, *,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional['UnitKindAppParamsScopeArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] group: Grouping used to construct the name of the App Hub Application.
+               Multiple UnitKinds can specify the same group to use the same
+               Application across their respective Units. Corresponds to the
+               app_boundary_id in the ADC composite ApplicationTemplate. If empty,
+               the service creates no App Hub application.
+        :param pulumi.Input['UnitKindAppParamsScopeArgs'] scope: Corresponds to the scope in the ADC composite ApplicationTemplate.
+               Structure is documented below.
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Grouping used to construct the name of the App Hub Application.
+        Multiple UnitKinds can specify the same group to use the same
+        Application across their respective Units. Corresponds to the
+        app_boundary_id in the ADC composite ApplicationTemplate. If empty,
+        the service creates no App Hub application.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[Optional['UnitKindAppParamsScopeArgs']]:
+        """
+        Corresponds to the scope in the ADC composite ApplicationTemplate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[Optional['UnitKindAppParamsScopeArgs']]):
+        pulumi.set(self, "scope", value)
+
+
+class UnitKindAppParamsScopeArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Scope type.
+    Possible values:
+    TYPE_REGIONAL
+    TYPE_GLOBAL
+    """
+
+@pulumi.input_type
+class UnitKindAppParamsScopeArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] type: Scope type.
+               Possible values:
+               TYPE_REGIONAL
+               TYPE_GLOBAL
+        """
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Scope type.
+        Possible values:
+        TYPE_REGIONAL
+        TYPE_GLOBAL
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+
+class UnitKindApplicationTemplateComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Name of the component in the composite ApplicationTemplate (the root
+    module ID, e.g. a composite component ID or `native-components`).
+    """
+    composite_ref: NotRequired[pulumi.Input[Optional['UnitKindApplicationTemplateComponentCompositeRefArgsDict']]]
+    """
+    Reference to the composite ApplicationTemplate.
+    Structure is documented below.
+    """
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Revision of the component. If the component does not have a revision,
+    this is the revision of the composite ApplicationTemplate.
+    """
+
+@pulumi.input_type
+class UnitKindApplicationTemplateComponentArgs:
+    def __init__(__self__, *,
+                 component: pulumi.Input[Optional[_builtins.str]] = None,
+                 composite_ref: pulumi.Input[Optional['UnitKindApplicationTemplateComponentCompositeRefArgs']] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] component: Name of the component in the composite ApplicationTemplate (the root
+               module ID, e.g. a composite component ID or `native-components`).
+        :param pulumi.Input['UnitKindApplicationTemplateComponentCompositeRefArgs'] composite_ref: Reference to the composite ApplicationTemplate.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] revision: Revision of the component. If the component does not have a revision,
+               this is the revision of the composite ApplicationTemplate.
+        """
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if composite_ref is not None:
+            pulumi.set(__self__, "composite_ref", composite_ref)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+
+    @_builtins.property
+    @pulumi.getter
+    def component(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the component in the composite ApplicationTemplate (the root
+        module ID, e.g. a composite component ID or `native-components`).
+        """
+        return pulumi.get(self, "component")
+
+    @component.setter
+    def component(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "component", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compositeRef")
+    def composite_ref(self) -> pulumi.Input[Optional['UnitKindApplicationTemplateComponentCompositeRefArgs']]:
+        """
+        Reference to the composite ApplicationTemplate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "composite_ref")
+
+    @composite_ref.setter
+    def composite_ref(self, value: pulumi.Input[Optional['UnitKindApplicationTemplateComponentCompositeRefArgs']]):
+        pulumi.set(self, "composite_ref", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Revision of the component. If the component does not have a revision,
+        this is the revision of the composite ApplicationTemplate.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "revision", value)
+
+
+class UnitKindApplicationTemplateComponentCompositeRefArgsDict(TypedDict):
+    application_template: pulumi.Input[_builtins.str]
+    """
+    Reference to the ApplicationTemplate resource, in the format
+    `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+    """
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Revision of the ApplicationTemplate, as a full resource name
+    prefixed by `application_template`.
+    """
+    sync_operation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Reference to the ongoing import and replication operation. Opaque for external usage.
+    """
+
+@pulumi.input_type
+class UnitKindApplicationTemplateComponentCompositeRefArgs:
+    def __init__(__self__, *,
+                 application_template: pulumi.Input[_builtins.str],
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_operation: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] application_template: Reference to the ApplicationTemplate resource, in the format
+               `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+        :param pulumi.Input[_builtins.str] revision: Revision of the ApplicationTemplate, as a full resource name
+               prefixed by `application_template`.
+        :param pulumi.Input[_builtins.str] sync_operation: (Output)
+               Reference to the ongoing import and replication operation. Opaque for external usage.
+        """
+        pulumi.set(__self__, "application_template", application_template)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if sync_operation is not None:
+            pulumi.set(__self__, "sync_operation", sync_operation)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplate")
+    def application_template(self) -> pulumi.Input[_builtins.str]:
+        """
+        Reference to the ApplicationTemplate resource, in the format
+        `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+        """
+        return pulumi.get(self, "application_template")
+
+    @application_template.setter
+    def application_template(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "application_template", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Revision of the ApplicationTemplate, as a full resource name
+        prefixed by `application_template`.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "revision", value)
+
+    @_builtins.property
+    @pulumi.getter(name="syncOperation")
+    def sync_operation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Reference to the ongoing import and replication operation. Opaque for external usage.
+        """
+        return pulumi.get(self, "sync_operation")
+
+    @sync_operation.setter
+    def sync_operation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sync_operation", value)
 
 
 class UnitKindDependencyArgsDict(TypedDict):

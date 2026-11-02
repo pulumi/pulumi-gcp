@@ -629,6 +629,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Network Security Mirroring Endpoint Group Broker Basic
 
         ```python
@@ -744,6 +745,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Network Security Mirroring Endpoint Group Broker Basic
 
         ```python
