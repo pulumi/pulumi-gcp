@@ -1,3 +1,0 @@
-name: webserver-py-old
-runtime: python
-description: Basic example of a web server on a compute instance running on Google Cloud Platform, specifying inputs with dicts

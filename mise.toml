@@ -1,8 +1,0 @@
-[tools]
-"vfox-pulumi:pulumi/pulumi-random" = "4.18.5"
-"vfox-pulumi:pulumi/pulumi-kubernetes" = "4.24.1"
-"vfox-pulumi:pulumi/pulumi-std" = "2.2.0"
-"vfox-pulumi:pulumi/pulumi-tls" = "5.2.3"
-"vfox-pulumi:pulumi/pulumi-http" = "0.1.3"
-"vfox-pulumi:pulumiverse/pulumi-time" = "0.1.1"
-"vfox-pulumi:pulumi/pulumi-converter-terraform" = "1.2.4"
