@@ -99,6 +99,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Binary Authorization Policy Global Evaluation
  * 
  * <pre>

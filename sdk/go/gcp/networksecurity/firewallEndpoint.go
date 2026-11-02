@@ -62,6 +62,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Security Firewall Endpoint Project
 //
 // ```go
@@ -154,7 +155,6 @@ type FirewallEndpoint struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Time the firewall endpoint was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// (Optional, Beta)
 	// Settings for WildFire analysis on the firewall endpoint.
 	// Structure is documented below.
 	WildfireSettings FirewallEndpointWildfireSettingsOutput `pulumi:"wildfireSettings"`
@@ -248,7 +248,6 @@ type firewallEndpointState struct {
 	State *string `pulumi:"state"`
 	// Time the firewall endpoint was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
-	// (Optional, Beta)
 	// Settings for WildFire analysis on the firewall endpoint.
 	// Structure is documented below.
 	WildfireSettings *FirewallEndpointWildfireSettings `pulumi:"wildfireSettings"`
@@ -302,7 +301,6 @@ type FirewallEndpointState struct {
 	State pulumi.StringPtrInput
 	// Time the firewall endpoint was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Settings for WildFire analysis on the firewall endpoint.
 	// Structure is documented below.
 	WildfireSettings FirewallEndpointWildfireSettingsPtrInput
@@ -340,7 +338,6 @@ type firewallEndpointArgs struct {
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent string `pulumi:"parent"`
-	// (Optional, Beta)
 	// Settings for WildFire analysis on the firewall endpoint.
 	// Structure is documented below.
 	WildfireSettings *FirewallEndpointWildfireSettings `pulumi:"wildfireSettings"`
@@ -375,7 +372,6 @@ type FirewallEndpointArgs struct {
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringInput
-	// (Optional, Beta)
 	// Settings for WildFire analysis on the firewall endpoint.
 	// Structure is documented below.
 	WildfireSettings FirewallEndpointWildfireSettingsPtrInput
@@ -561,7 +557,6 @@ func (o FirewallEndpointOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // Settings for WildFire analysis on the firewall endpoint.
 // Structure is documented below.
 func (o FirewallEndpointOutput) WildfireSettings() FirewallEndpointWildfireSettingsOutput {

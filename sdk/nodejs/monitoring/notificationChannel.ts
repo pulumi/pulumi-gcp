@@ -51,6 +51,7 @@ import * as utilities from "../utilities";
  *     forceDelete: false,
  * });
  * ```
+ *
  * ### Notification Channel Sensitive
  *
  * ```typescript

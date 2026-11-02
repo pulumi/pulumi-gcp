@@ -363,6 +363,7 @@ class AppleApp(pulumi.CustomResource):
             display_name="Display Name Basic",
             bundle_id="apple.app.12345")
         ```
+
         ### Firebase Apple App Full
 
         ```python
@@ -457,6 +458,7 @@ class AppleApp(pulumi.CustomResource):
             display_name="Display Name Basic",
             bundle_id="apple.app.12345")
         ```
+
         ### Firebase Apple App Full
 
         ```python

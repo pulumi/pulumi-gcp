@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Authz Extension Basic With Auth Grpc
  * 
  * <pre>
@@ -131,6 +132,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Authz Extension Iap
  * 
  * <pre>

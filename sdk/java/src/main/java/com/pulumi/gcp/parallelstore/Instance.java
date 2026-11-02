@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** `gcp.parallelstore.Instance` is deprecated and will be removed in a future major release. Use `gcp.lustre.Instance` instead.
+ * 
  * A Parallelstore Instance.
  * 
  * ## Example Usage
@@ -92,6 +94,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Parallelstore Instance Basic
  * 
  * <pre>

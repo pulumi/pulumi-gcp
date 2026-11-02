@@ -467,6 +467,7 @@ class BackupSchedule(pulumi.CustomResource):
                 "encryption_type": "USE_DATABASE_ENCRYPTION",
             })
         ```
+
         ### Spanner Backup Schedule Daily Incremental
 
         ```python
@@ -604,6 +605,7 @@ class BackupSchedule(pulumi.CustomResource):
                 "encryption_type": "USE_DATABASE_ENCRYPTION",
             })
         ```
+
         ### Spanner Backup Schedule Daily Incremental
 
         ```python

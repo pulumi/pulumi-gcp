@@ -77,6 +77,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
     /// ### Privateca Certificate Authority Basic No Org
     /// 
     /// ```csharp
@@ -128,6 +129,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
     /// ### Privateca Certificate Authority Subordinate
     /// 
     /// ```csharp
@@ -227,6 +229,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
     /// ### Privateca Certificate Authority Byo Key
     /// 
     /// ```csharp
@@ -340,6 +343,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
     /// ### Privateca Certificate Authority Custom Ski
     /// 
     /// ```csharp
@@ -396,6 +400,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
     /// ### Privateca Certificate Authority Basic With Custom Cdp Aia Urls
     /// 
     /// ```csharp

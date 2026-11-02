@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  * export const recordTypeToInsert = _default.dnsResourceRecords[0].type;
  * export const recordDataToInsert = _default.dnsResourceRecords[0].data;
  * ```
+ *
  * ### Certificate Manager Dns Authorization Regional
  *
  * ```typescript

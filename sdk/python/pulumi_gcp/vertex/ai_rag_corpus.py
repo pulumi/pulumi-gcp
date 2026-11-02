@@ -458,6 +458,7 @@ class AiRagCorpus(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Rag Corpus Full
 
         ```python
@@ -486,6 +487,7 @@ class AiRagCorpus(pulumi.CustomResource):
                 "kms_key_name": "kms-key",
             })
         ```
+
         ### Vertex Ai Rag Corpus Search
 
         ```python
@@ -501,6 +503,7 @@ class AiRagCorpus(pulumi.CustomResource):
                 "serving_config": f"projects/{project.number}/locations/global/collections/default_collection/engines/test/servingConfigs/default_serving_config",
             })
         ```
+
         ### Vertex Ai Rag Corpus Pinecone
 
         ```python
@@ -528,6 +531,7 @@ class AiRagCorpus(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Rag Corpus Vertex Vector Search
 
         ```python
@@ -582,6 +586,7 @@ class AiRagCorpus(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[deployed_index]))
         ```
+
         ### Vertex Ai Rag Corpus Secret Manager
 
         ```python
@@ -705,6 +710,7 @@ class AiRagCorpus(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Rag Corpus Full
 
         ```python
@@ -733,6 +739,7 @@ class AiRagCorpus(pulumi.CustomResource):
                 "kms_key_name": "kms-key",
             })
         ```
+
         ### Vertex Ai Rag Corpus Search
 
         ```python
@@ -748,6 +755,7 @@ class AiRagCorpus(pulumi.CustomResource):
                 "serving_config": f"projects/{project.number}/locations/global/collections/default_collection/engines/test/servingConfigs/default_serving_config",
             })
         ```
+
         ### Vertex Ai Rag Corpus Pinecone
 
         ```python
@@ -775,6 +783,7 @@ class AiRagCorpus(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Vertex Ai Rag Corpus Vertex Vector Search
 
         ```python
@@ -829,6 +838,7 @@ class AiRagCorpus(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[deployed_index]))
         ```
+
         ### Vertex Ai Rag Corpus Secret Manager
 
         ```python

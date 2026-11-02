@@ -1015,6 +1015,7 @@ class MigrationJob(pulumi.CustomResource):
             destination=destination_cp.name,
             type="CONTINUOUS")
         ```
+
         ### Database Migration Service Migration Job Postgres To Postgres
 
         ```python
@@ -1051,6 +1052,7 @@ class MigrationJob(pulumi.CustomResource):
                 "port": 3306,
                 "username": source_sqldb_user.name,
                 "password": source_sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "client_key": source_sql_client_cert.private_key,
                     "client_certificate": source_sql_client_cert.cert,
@@ -1091,6 +1093,7 @@ class MigrationJob(pulumi.CustomResource):
             destination=destination_cp.name,
             type="CONTINUOUS")
         ```
+
         ### Database Migration Service Migration Job Postgres To Postgres Objects
 
         ```python
@@ -1127,6 +1130,7 @@ class MigrationJob(pulumi.CustomResource):
                 "port": 3306,
                 "username": source_sqldb_user.name,
                 "password": source_sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "client_key": source_sql_client_cert.private_key,
                     "client_certificate": source_sql_client_cert.cert,
@@ -1186,6 +1190,7 @@ class MigrationJob(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Database Migration Service Migration Job Postgres To Alloydb
 
         ```python
@@ -1222,6 +1227,7 @@ class MigrationJob(pulumi.CustomResource):
                 "port": 3306,
                 "username": source_sqldb_user.name,
                 "password": source_sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "client_key": source_sql_client_cert.private_key,
                     "client_certificate": source_sql_client_cert.cert,
@@ -1231,7 +1237,7 @@ class MigrationJob(pulumi.CustomResource):
                 "cloud_sql_id": "source-csql",
             },
             opts = pulumi.ResourceOptions(depends_on=[source_sqldb_user]))
-        default = gcp.compute.Network("default", name="destination-alloydb")
+        default = gcp.compute.get_network(name="destination-alloydb")
         destination_alloydb = gcp.alloydb.Cluster("destination_alloydb",
             cluster_id="destination-alloydb",
             location="us-central1",
@@ -1244,21 +1250,10 @@ class MigrationJob(pulumi.CustomResource):
                 "password": "destination-alloydb",
             },
             deletion_protection=False)
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name="destination-alloydb",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
-            network=default.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
         destination_alloydb_primary = gcp.alloydb.Instance("destination_alloydb_primary",
             cluster=destination_alloydb.name,
             instance_id="destination-alloydb-primary",
-            instance_type="PRIMARY",
-            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            instance_type="PRIMARY")
         destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
             location="us-central1",
             connection_profile_id="destination-cp",
@@ -1457,6 +1452,7 @@ class MigrationJob(pulumi.CustomResource):
             destination=destination_cp.name,
             type="CONTINUOUS")
         ```
+
         ### Database Migration Service Migration Job Postgres To Postgres
 
         ```python
@@ -1493,6 +1489,7 @@ class MigrationJob(pulumi.CustomResource):
                 "port": 3306,
                 "username": source_sqldb_user.name,
                 "password": source_sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "client_key": source_sql_client_cert.private_key,
                     "client_certificate": source_sql_client_cert.cert,
@@ -1533,6 +1530,7 @@ class MigrationJob(pulumi.CustomResource):
             destination=destination_cp.name,
             type="CONTINUOUS")
         ```
+
         ### Database Migration Service Migration Job Postgres To Postgres Objects
 
         ```python
@@ -1569,6 +1567,7 @@ class MigrationJob(pulumi.CustomResource):
                 "port": 3306,
                 "username": source_sqldb_user.name,
                 "password": source_sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "client_key": source_sql_client_cert.private_key,
                     "client_certificate": source_sql_client_cert.cert,
@@ -1628,6 +1627,7 @@ class MigrationJob(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Database Migration Service Migration Job Postgres To Alloydb
 
         ```python
@@ -1664,6 +1664,7 @@ class MigrationJob(pulumi.CustomResource):
                 "port": 3306,
                 "username": source_sqldb_user.name,
                 "password": source_sqldb_user.password,
+                "database": "postgres",
                 "ssl": {
                     "client_key": source_sql_client_cert.private_key,
                     "client_certificate": source_sql_client_cert.cert,
@@ -1673,7 +1674,7 @@ class MigrationJob(pulumi.CustomResource):
                 "cloud_sql_id": "source-csql",
             },
             opts = pulumi.ResourceOptions(depends_on=[source_sqldb_user]))
-        default = gcp.compute.Network("default", name="destination-alloydb")
+        default = gcp.compute.get_network(name="destination-alloydb")
         destination_alloydb = gcp.alloydb.Cluster("destination_alloydb",
             cluster_id="destination-alloydb",
             location="us-central1",
@@ -1686,21 +1687,10 @@ class MigrationJob(pulumi.CustomResource):
                 "password": "destination-alloydb",
             },
             deletion_protection=False)
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name="destination-alloydb",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
-            network=default.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
         destination_alloydb_primary = gcp.alloydb.Instance("destination_alloydb_primary",
             cluster=destination_alloydb.name,
             instance_id="destination-alloydb-primary",
-            instance_type="PRIMARY",
-            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            instance_type="PRIMARY")
         destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
             location="us-central1",
             connection_profile_id="destination-cp",

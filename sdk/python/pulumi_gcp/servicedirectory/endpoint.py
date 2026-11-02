@@ -361,6 +361,7 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
+
         ### Service Directory Endpoint With Network
 
         ```python
@@ -463,6 +464,7 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
+
         ### Service Directory Endpoint With Network
 
         ```python

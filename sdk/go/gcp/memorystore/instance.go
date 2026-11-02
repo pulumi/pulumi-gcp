@@ -49,7 +49,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east4"),
 //				Network:     producerNet.ID(),
 //			})
 //			if err != nil {
@@ -57,7 +57,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east4"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      producerNet.ID(),
@@ -83,7 +83,8 @@ import (
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
-//				Location:                  pulumi.String("us-west1"),
+//				Location:                  pulumi.String("us-east4"),
+//				NodeType:                  pulumi.String("SHARED_CORE_NANO"),
 //				DeletionProtectionEnabled: pulumi.Bool(false),
 //				MaintenancePolicy: &memorystore.InstanceMaintenancePolicyArgs{
 //					WeeklyMaintenanceWindows: memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
@@ -109,6 +110,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Memorystore Instance Full
 //
 // ```go
@@ -136,7 +138,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east4"),
 //				Network:     producerNet.ID(),
 //			})
 //			if err != nil {
@@ -144,7 +146,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east4"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      producerNet.ID(),
@@ -170,7 +172,7 @@ import (
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
-//				Location:              pulumi.String("us-west1"),
+//				Location:              pulumi.String("us-east4"),
 //				ReplicaCount:          pulumi.Int(1),
 //				NodeType:              pulumi.String("SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_DISABLED"),
@@ -181,7 +183,7 @@ import (
 //				},
 //				ZoneDistributionConfig: &memorystore.InstanceZoneDistributionConfigArgs{
 //					Mode: pulumi.String("SINGLE_ZONE"),
-//					Zone: pulumi.String("us-west1-b"),
+//					Zone: pulumi.String("us-east4-a"),
 //				},
 //				MaintenancePolicy: &memorystore.InstanceMaintenancePolicyArgs{
 //					WeeklyMaintenanceWindows: memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
@@ -220,6 +222,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Memorystore Instance Persistence Aof
 //
 // ```go
@@ -247,7 +250,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east4"),
 //				Network:     producerNet.ID(),
 //			})
 //			if err != nil {
@@ -255,7 +258,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east4"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      producerNet.ID(),
@@ -281,7 +284,8 @@ import (
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
-//				Location: pulumi.String("us-west1"),
+//				Location: pulumi.String("us-east4"),
+//				NodeType: pulumi.String("SHARED_CORE_NANO"),
 //				PersistenceConfig: &memorystore.InstancePersistenceConfigArgs{
 //					Mode: pulumi.String("AOF"),
 //					AofConfig: &memorystore.InstancePersistenceConfigAofConfigArgs{
@@ -300,6 +304,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Memorystore Instance Secondary Instance
 //
 // ```go
@@ -472,6 +477,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Memorystore Instance Flexible Ca
 //
 // ```go
@@ -496,7 +502,7 @@ import (
 //			}
 //			_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 //				Name:     pulumi.String("ca-pool"),
-//				Location: pulumi.String("us-west1"),
+//				Location: pulumi.String("us-east4"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
@@ -513,7 +519,7 @@ import (
 //			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Pool:                   _default.Name,
 //				CertificateAuthorityId: pulumi.String("ca-auth"),
-//				Location:               pulumi.String("us-west1"),
+//				Location:               pulumi.String("us-east4"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -556,7 +562,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("ca-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-east4"),
 //				Network:     producerNet.ID(),
 //			})
 //			if err != nil {
@@ -564,7 +570,7 @@ import (
 //			}
 //			defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("ca-policy"),
-//				Location:     pulumi.String("us-west1"),
+//				Location:     pulumi.String("us-east4"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Network:      producerNet.ID(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
@@ -578,8 +584,9 @@ import (
 //			}
 //			_, err = memorystore.NewInstance(ctx, "test-instance", &memorystore.InstanceArgs{
 //				InstanceId: pulumi.String("ca-instance"),
-//				ShardCount: pulumi.Int(3),
-//				Location:   pulumi.String("us-west1"),
+//				ShardCount: pulumi.Int(1),
+//				Location:   pulumi.String("us-east4"),
+//				NodeType:   pulumi.String("SHARED_CORE_NANO"),
 //				DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 //					&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
 //						Network:   producerNet.ID(),
@@ -625,10 +632,10 @@ type Instance struct {
 	// The name of the ACL policy to attach to the instance.
 	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 	AclPolicy pulumi.StringPtrOutput `pulumi:"aclPolicy"`
-	// Optional. Immutable. Authorization mode of the instance. Possible values:
+	// Optional. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH.
-	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+	// IAM_AUTH
+	// TOKEN_AUTH
 	AuthorizationMode pulumi.StringOutput `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -838,10 +845,10 @@ type instanceState struct {
 	// The name of the ACL policy to attach to the instance.
 	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 	AclPolicy *string `pulumi:"aclPolicy"`
-	// Optional. Immutable. Authorization mode of the instance. Possible values:
+	// Optional. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH.
-	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+	// IAM_AUTH
+	// TOKEN_AUTH
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1008,10 +1015,10 @@ type InstanceState struct {
 	// The name of the ACL policy to attach to the instance.
 	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 	AclPolicy pulumi.StringPtrInput
-	// Optional. Immutable. Authorization mode of the instance. Possible values:
+	// Optional. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH.
-	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+	// IAM_AUTH
+	// TOKEN_AUTH
 	AuthorizationMode pulumi.StringPtrInput
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1182,10 +1189,10 @@ type instanceArgs struct {
 	// The name of the ACL policy to attach to the instance.
 	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 	AclPolicy *string `pulumi:"aclPolicy"`
-	// Optional. Immutable. Authorization mode of the instance. Possible values:
+	// Optional. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH.
-	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+	// IAM_AUTH
+	// TOKEN_AUTH
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1293,10 +1300,10 @@ type InstanceArgs struct {
 	// The name of the ACL policy to attach to the instance.
 	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 	AclPolicy pulumi.StringPtrInput
-	// Optional. Immutable. Authorization mode of the instance. Possible values:
+	// Optional. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH.
-	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+	// IAM_AUTH
+	// TOKEN_AUTH
 	AuthorizationMode pulumi.StringPtrInput
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1492,10 +1499,10 @@ func (o InstanceOutput) AclPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AclPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Immutable. Authorization mode of the instance. Possible values:
+// Optional. Authorization mode of the instance. Possible values:
 // AUTH_DISABLED
-// IAM_AUTH.
-// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+// IAM_AUTH
+// TOKEN_AUTH
 func (o InstanceOutput) AuthorizationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AuthorizationMode }).(pulumi.StringOutput)
 }

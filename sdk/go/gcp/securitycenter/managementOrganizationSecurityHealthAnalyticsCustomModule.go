@@ -67,6 +67,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Scc Management Organization Security Health Analytics Custom Module Full
 //
 // ```go

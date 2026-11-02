@@ -72,11 +72,16 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             GiVersion = "19.0.0.0",
     ///             HostnamePrefix = "hostname1",
     ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
     ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Cloud Vmcluster Odbnetwork
     /// 
     /// ```csharp
@@ -128,6 +133,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Cloud Vmcluster Full
     /// 
     /// ```csharp
@@ -214,12 +220,15 @@ namespace Pulumi.Gcp.OracleDatabase
     ///                 IncidentLogsEnabled = true,
     ///             },
     ///             MemorySizeGb = 60,
+    ///             ScanListenerPortTcp = 1521,
+    ///             ScanListenerPortTcpSsl = 2484,
     ///         },
     ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Oracledatabase Cloud Vmcluster Exascale
     /// 
     /// ```csharp

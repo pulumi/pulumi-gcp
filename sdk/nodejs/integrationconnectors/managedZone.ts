@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const targetProject = new gcp.organizations.Project("target_project", {
- *     projectId: "tf-test_89239",
- *     name: "tf-test_41898",
+ *     projectId: "tf-test_31660",
+ *     name: "tf-test_97962",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -44,14 +44,14 @@ import * as utilities from "../utilities";
  * });
  * const network = new gcp.compute.Network("network", {
  *     project: targetProject.projectId,
- *     name: "test",
+ *     name: "test-vpc",
  *     autoCreateSubnetworks: false,
  * }, {
  *     dependsOn: [compute],
  * });
  * const zone = new gcp.dns.ManagedZone("zone", {
- *     name: "tf-test-dns_63399",
- *     dnsName: "private_97523.example.com.",
+ *     name: "tf-test-dns_34534",
+ *     dnsName: "private_87829.example.com.",
  *     visibility: "private",
  *     privateVisibilityConfig: {
  *         networks: [{
@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  *         intent: "example",
  *     },
  *     targetProject: targetProject.projectId,
- *     targetVpc: "test",
+ *     targetVpc: "test-vpc",
  *     dns: zone.dnsName,
  * }, {
  *     dependsOn: [

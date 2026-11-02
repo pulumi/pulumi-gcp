@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     searchEngineConfig: {},
  * });
  * ```
+ *
  * ### Discoveryengine Searchengine Agentspace Basic
  *
  * ```typescript
@@ -193,6 +194,18 @@ export class SearchEngine extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * Maps a model name to its specific configuration for this engine. This
+     * allows admin users to turn on/off individual models. This only stores
+     * models whose states are overridden by the admin. When the state is
+     * unspecified, or `modelConfigs` is empty for this model, the system
+     * decides if this model is available based on the default configuration.
+     * For example, a preview model is disabled by default if the admin has not
+     * chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+     * `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+     * for details.
+     */
+    declare public readonly modelConfigs: pulumi.Output<{[key: string]: string}>;
+    /**
      * The unique full resource name of the search engine. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
@@ -245,6 +258,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["kmsKeyName"] = state?.kmsKeyName;
             resourceInputs["knowledgeGraphConfig"] = state?.knowledgeGraphConfig;
             resourceInputs["location"] = state?.location;
+            resourceInputs["modelConfigs"] = state?.modelConfigs;
             resourceInputs["name"] = state?.name;
             resourceInputs["procurementContactEmails"] = state?.procurementContactEmails;
             resourceInputs["project"] = state?.project;
@@ -283,6 +297,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["kmsKeyName"] = args?.kmsKeyName;
             resourceInputs["knowledgeGraphConfig"] = args?.knowledgeGraphConfig;
             resourceInputs["location"] = args?.location;
+            resourceInputs["modelConfigs"] = args?.modelConfigs;
             resourceInputs["procurementContactEmails"] = args?.procurementContactEmails;
             resourceInputs["project"] = args?.project;
             resourceInputs["searchEngineConfig"] = args?.searchEngineConfig;
@@ -369,6 +384,18 @@ export interface SearchEngineState {
      * Location.
      */
     location?: pulumi.Input<string | undefined>;
+    /**
+     * Maps a model name to its specific configuration for this engine. This
+     * allows admin users to turn on/off individual models. This only stores
+     * models whose states are overridden by the admin. When the state is
+     * unspecified, or `modelConfigs` is empty for this model, the system
+     * decides if this model is available based on the default configuration.
+     * For example, a preview model is disabled by default if the admin has not
+     * chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+     * `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+     * for details.
+     */
+    modelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The unique full resource name of the search engine. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
@@ -466,6 +493,18 @@ export interface SearchEngineArgs {
      * Location.
      */
     location: pulumi.Input<string>;
+    /**
+     * Maps a model name to its specific configuration for this engine. This
+     * allows admin users to turn on/off individual models. This only stores
+     * models whose states are overridden by the admin. When the state is
+     * unspecified, or `modelConfigs` is empty for this model, the system
+     * decides if this model is available based on the default configuration.
+     * For example, a preview model is disabled by default if the admin has not
+     * chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+     * `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+     * for details.
+     */
+    modelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The emails of the procurement contacts.
      */

@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [iam],
  * });
  * ```
+ *
  * ### Observability Organization Settings Basic Global
  *
  * ```typescript

@@ -555,8 +555,12 @@ class GoldengateDeployment(pulumi.CustomResource):
                     "deployment": "deployment",
                 },
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_policy="PREVENT")
         ```
+
         ### Oracledatabase Goldengate Deployment Full
 
         ```python
@@ -677,8 +681,12 @@ class GoldengateDeployment(pulumi.CustomResource):
                     "deployment": "deployment",
                 },
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_policy="PREVENT")
         ```
+
         ### Oracledatabase Goldengate Deployment Full
 
         ```python

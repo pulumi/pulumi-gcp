@@ -19,6 +19,7 @@ __all__ = [
     'AppProfileDataBoostIsolationReadOnly',
     'AppProfileSingleClusterRouting',
     'AppProfileStandardIsolation',
+    'AppProfileStandardIsolationMemoryConfig',
     'AuthorizedViewSubsetView',
     'AuthorizedViewSubsetViewFamilySubset',
     'GCPolicyMaxAge',
@@ -27,6 +28,7 @@ __all__ = [
     'InstanceClusterAutoscalingConfig',
     'InstanceIamBindingCondition',
     'InstanceIamMemberCondition',
+    'MemoryLayerMemoryConfig',
     'SchemaBundleProtoSchema',
     'TableAutomatedBackupPolicy',
     'TableColumnFamily',
@@ -124,13 +126,35 @@ class AppProfileSingleClusterRouting(dict):
 
 @pulumi.output_type
 class AppProfileStandardIsolation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryConfig":
+            suggest = "memory_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppProfileStandardIsolation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppProfileStandardIsolation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppProfileStandardIsolation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 priority: _builtins.str):
+                 priority: _builtins.str,
+                 memory_config: Optional['outputs.AppProfileStandardIsolationMemoryConfig'] = None):
         """
         :param _builtins.str priority: The priority of requests sent using this app profile.
                Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        :param 'AppProfileStandardIsolationMemoryConfigArgs' memory_config: The memory config to use for requests sent using this app profile.
+               If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memory_config` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
         """
         pulumi.set(__self__, "priority", priority)
+        if memory_config is not None:
+            pulumi.set(__self__, "memory_config", memory_config)
 
     @_builtins.property
     @pulumi.getter
@@ -140,6 +164,21 @@ class AppProfileStandardIsolation(dict):
         Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
         """
         return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryConfig")
+    def memory_config(self) -> Optional['outputs.AppProfileStandardIsolationMemoryConfig']:
+        """
+        The memory config to use for requests sent using this app profile.
+        If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memory_config` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+        """
+        return pulumi.get(self, "memory_config")
+
+
+@pulumi.output_type
+class AppProfileStandardIsolationMemoryConfig(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -641,6 +680,44 @@ class InstanceIamMemberCondition(dict):
         For `bigtable.InstanceIamPolicy` only:
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class MemoryLayerMemoryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageSizeGib":
+            suggest = "storage_size_gib"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MemoryLayerMemoryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MemoryLayerMemoryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MemoryLayerMemoryConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 storage_size_gib: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int storage_size_gib: (Output)
+               Reporting the current size of the memory layer in GiB.
+        """
+        if storage_size_gib is not None:
+            pulumi.set(__self__, "storage_size_gib", storage_size_gib)
+
+    @_builtins.property
+    @pulumi.getter(name="storageSizeGib")
+    def storage_size_gib(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        Reporting the current size of the memory layer in GiB.
+        """
+        return pulumi.get(self, "storage_size_gib")
 
 
 @pulumi.output_type

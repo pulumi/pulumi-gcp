@@ -53,10 +53,10 @@ import (
 //			}
 //			_, err = lustre.NewInstance(ctx, "instance", &lustre.InstanceArgs{
 //				InstanceId:               pulumi.String("my-instance"),
-//				Location:                 pulumi.String("us-central1-a"),
+//				Location:                 pulumi.String("us-east4-a"),
 //				Description:              pulumi.String("test lustre instance"),
 //				Filesystem:               pulumi.String("testfs"),
-//				CapacityGib:              pulumi.String("18000"),
+//				CapacityGib:              pulumi.String("9000"),
 //				Network:                  pulumi.String(lustre_network.Id),
 //				PerUnitStorageThroughput: pulumi.String("1000"),
 //				Labels: pulumi.StringMap{

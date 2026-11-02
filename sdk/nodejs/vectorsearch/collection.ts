@@ -51,6 +51,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Vectorsearch Collection Cmek
  *
  * ```typescript

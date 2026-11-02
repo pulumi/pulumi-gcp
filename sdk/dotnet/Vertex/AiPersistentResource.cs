@@ -41,15 +41,23 @@ namespace Pulumi.Gcp.Vertex
     ///             {
     ///                 MachineSpec = new Gcp.Vertex.Inputs.AiPersistentResourceResourcePoolMachineSpecArgs
     ///                 {
-    ///                     MachineType = "n1-standard-4",
+    ///                     MachineType = "n1-standard-8",
     ///                 },
-    ///                 ReplicaCount = "1",
+    ///                 ReplicaCount = "2",
+    ///             },
+    ///         },
+    ///         ResourceRuntimeSpec = new Gcp.Vertex.Inputs.AiPersistentResourceResourceRuntimeSpecArgs
+    ///         {
+    ///             RaySpec = new Gcp.Vertex.Inputs.AiPersistentResourceResourceRuntimeSpecRaySpecArgs
+    ///             {
+    ///                 ImageUri = "us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest",
     ///             },
     ///         },
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Persistent Resource Autoscaling
     /// 
     /// ```csharp
@@ -85,6 +93,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Persistent Resource Machine Spec
     /// 
     /// ```csharp
@@ -121,6 +130,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Persistent Resource Network
     /// 
     /// ```csharp

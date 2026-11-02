@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  * });
  * ```
+ *
  * ### Regional Secret With Cmek
  *
  * ```typescript
@@ -59,6 +60,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [kms_secret_binding],
  * });
  * ```
+ *
  * ### Regional Secret With Rotation
  *
  * ```typescript
@@ -86,6 +88,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [secretsManagerAccess],
  * });
  * ```
+ *
  * ### Regional Secret With Ttl
  *
  * ```typescript
@@ -107,6 +110,7 @@ import * as utilities from "../utilities";
  *     secretType: "ACCESS_KEY",
  * });
  * ```
+ *
  * ### Regional Secret With Expire Time
  *
  * ```typescript
@@ -127,6 +131,7 @@ import * as utilities from "../utilities";
  *     expireTime: "2055-11-30T00:00:00Z",
  * });
  * ```
+ *
  * ### Regional Secret With Version Destroy Ttl
  *
  * ```typescript

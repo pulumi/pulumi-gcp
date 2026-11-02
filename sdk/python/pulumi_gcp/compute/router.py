@@ -248,6 +248,7 @@ class _RouterState:
                  params: pulumi.Input[Optional['RouterParamsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.int]] = None,
                  self_link: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Router resources.
@@ -279,6 +280,7 @@ class _RouterState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router resides.
+        :param pulumi.Input[_builtins.int] router_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         """
         if bgp is not None:
@@ -305,6 +307,8 @@ class _RouterState:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if router_id is not None:
+            pulumi.set(__self__, "router_id", router_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
 
@@ -468,6 +472,18 @@ class _RouterState:
         pulumi.set(self, "region", value)
 
     @_builtins.property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "router_id")
+
+    @router_id.setter
+    def router_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "router_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -535,6 +551,7 @@ class Router(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Compute Router Encrypted Interconnect
 
         ```python
@@ -552,6 +569,7 @@ class Router(pulumi.CustomResource):
                 "asn": 64514,
             })
         ```
+
         ### Router Ncc Gw
 
         ```python
@@ -697,6 +715,7 @@ class Router(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Compute Router Encrypted Interconnect
 
         ```python
@@ -714,6 +733,7 @@ class Router(pulumi.CustomResource):
                 "asn": 64514,
             })
         ```
+
         ### Router Ncc Gw
 
         ```python
@@ -834,6 +854,7 @@ class Router(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["router_id"] = None
             __props__.__dict__["self_link"] = None
         super(Router, __self__).__init__(
             'gcp:compute/router:Router',
@@ -857,6 +878,7 @@ class Router(pulumi.CustomResource):
             params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict', 'outputs.RouterParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.int]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'Router':
         """
         Get an existing Router resource's state with the given name, id, and optional extra
@@ -892,6 +914,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router resides.
+        :param pulumi.Input[_builtins.int] router_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -910,6 +933,7 @@ class Router(pulumi.CustomResource):
         __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["router_id"] = router_id
         __props__.__dict__["self_link"] = self_link
         return Router(resource_name, opts=opts, __props__=__props__)
 
@@ -1023,6 +1047,14 @@ class Router(pulumi.CustomResource):
         Region where the router resides.
         """
         return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> pulumi.Output[_builtins.int]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "router_id")
 
     @_builtins.property
     @pulumi.getter(name="selfLink")

@@ -28,6 +28,12 @@ public final class NetworkEndpointListNetworkEndpoint {
      */
     private @Nullable String ipAddress;
     /**
+     * @return IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     * 
+     */
+    private @Nullable String ipv6Address;
+    /**
      * @return Port number of network endpoint.
      * **Note** `port` is required unless the Network Endpoint Group is created
      * with the type of `GCE_VM_IP`
@@ -56,6 +62,14 @@ public final class NetworkEndpointListNetworkEndpoint {
         return Optional.ofNullable(this.ipAddress);
     }
     /**
+     * @return IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     * 
+     */
+    public Optional<String> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
+    }
+    /**
      * @return Port number of network endpoint.
      * **Note** `port` is required unless the Network Endpoint Group is created
      * with the type of `GCE_VM_IP`
@@ -76,12 +90,14 @@ public final class NetworkEndpointListNetworkEndpoint {
     public static final class Builder {
         private @Nullable String instance;
         private @Nullable String ipAddress;
+        private @Nullable String ipv6Address;
         private @Nullable Integer port;
         public Builder() {}
         public Builder(NetworkEndpointListNetworkEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instance = defaults.instance;
     	      this.ipAddress = defaults.ipAddress;
+    	      this.ipv6Address = defaults.ipv6Address;
     	      this.port = defaults.port;
         }
 
@@ -98,6 +114,12 @@ public final class NetworkEndpointListNetworkEndpoint {
             return this;
         }
         @CustomType.Setter
+        public Builder ipv6Address(@Nullable String ipv6Address) {
+
+            this.ipv6Address = ipv6Address;
+            return this;
+        }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
 
             this.port = port;
@@ -107,6 +129,7 @@ public final class NetworkEndpointListNetworkEndpoint {
             final var _resultValue = new NetworkEndpointListNetworkEndpoint();
             _resultValue.instance = instance;
             _resultValue.ipAddress = ipAddress;
+            _resultValue.ipv6Address = ipv6Address;
             _resultValue.port = port;
             return _resultValue;
         }

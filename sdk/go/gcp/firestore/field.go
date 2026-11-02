@@ -83,6 +83,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Field Timestamp Enterprise
 //
 // ```go
@@ -112,7 +113,7 @@ import (
 //			_, err = firestore.NewField(ctx, "timestamp-enterprise", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms"),
+//				Collection: pulumi.String("chatrooms__26240"),
 //				Field:      pulumi.String("timestamp"),
 //				TtlConfig:  &firestore.FieldTtlConfigArgs{},
 //			})
@@ -124,6 +125,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Field Timestamp With Ttl Offset Enterprise
 //
 // ```go
@@ -153,7 +155,7 @@ import (
 //			_, err = firestore.NewField(ctx, "timestamp-with-offset-enterprise", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms"),
+//				Collection: pulumi.String("chatrooms__35711"),
 //				Field:      pulumi.String("timestamp"),
 //				TtlConfig: &firestore.FieldTtlConfigArgs{
 //					ExpirationOffset: pulumi.String("2592000s"),
@@ -167,6 +169,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Field Timestamp
 //
 // ```go
@@ -195,7 +198,7 @@ import (
 //			_, err = firestore.NewField(ctx, "timestamp", &firestore.FieldArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				Database:    database.Name,
-//				Collection:  pulumi.String("chatrooms"),
+//				Collection:  pulumi.String("chatrooms__85072"),
 //				Field:       pulumi.String("timestamp"),
 //				TtlConfig:   &firestore.FieldTtlConfigArgs{},
 //				IndexConfig: &firestore.FieldIndexConfigArgs{},
@@ -208,6 +211,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Field Timestamp With Ttl Offset
 //
 // ```go
@@ -236,7 +240,7 @@ import (
 //			_, err = firestore.NewField(ctx, "timestamp-with-offset", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms"),
+//				Collection: pulumi.String("chatrooms__35762"),
 //				Field:      pulumi.String("timestamp"),
 //				TtlConfig: &firestore.FieldTtlConfigArgs{
 //					ExpirationOffset: pulumi.String("2592000s"),
@@ -251,6 +255,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Field Match Override
 //
 // ```go
@@ -279,7 +284,7 @@ import (
 //			_, err = firestore.NewField(ctx, "match_override", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__26240"),
+//				Collection: pulumi.String("chatrooms__24469"),
 //				Field:      pulumi.String("field_with_same_configuration_as_ancestor"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -303,6 +308,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Field Wildcard
 //
 // ```go
@@ -331,7 +337,7 @@ import (
 //			_, err = firestore.NewField(ctx, "wildcard", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__35711"),
+//				Collection: pulumi.String("chatrooms__79580"),
 //				Field:      pulumi.String("*"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -353,6 +359,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Field Skip Wait
 //
 // ```go
@@ -381,7 +388,7 @@ import (
 //			_, err = firestore.NewField(ctx, "skip_wait", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__85072"),
+//				Collection: pulumi.String("chatrooms__98863"),
 //				Field:      pulumi.String("skip_wait"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{

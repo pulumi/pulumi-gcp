@@ -524,6 +524,7 @@ type ConnectionProfileMongodbProfile struct {
 	ReplicaSet *string `pulumi:"replicaSet"`
 	// A reference to a Secret Manager resource name storing the MongoDB
 	// connection password. Mutually exclusive with password.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretManagerStoredPassword *string `pulumi:"secretManagerStoredPassword"`
 	// Srv connection format. Mutually exclusive with
 	// standard_connection_Format.
@@ -566,6 +567,7 @@ type ConnectionProfileMongodbProfileArgs struct {
 	ReplicaSet pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// A reference to a Secret Manager resource name storing the MongoDB
 	// connection password. Mutually exclusive with password.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretManagerStoredPassword pulumi.StringPtrInput `pulumi:"secretManagerStoredPassword"`
 	// Srv connection format. Mutually exclusive with
 	// standard_connection_Format.
@@ -687,6 +689,7 @@ func (o ConnectionProfileMongodbProfileOutput) ReplicaSet() pulumi.StringPtrOutp
 
 // A reference to a Secret Manager resource name storing the MongoDB
 // connection password. Mutually exclusive with password.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfileMongodbProfileOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMongodbProfile) *string { return v.SecretManagerStoredPassword }).(pulumi.StringPtrOutput)
 }
@@ -790,6 +793,7 @@ func (o ConnectionProfileMongodbProfilePtrOutput) ReplicaSet() pulumi.StringPtrO
 
 // A reference to a Secret Manager resource name storing the MongoDB
 // connection password. Mutually exclusive with password.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfileMongodbProfilePtrOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) *string {
 		if v == nil {

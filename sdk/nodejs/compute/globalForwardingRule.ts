@@ -66,6 +66,7 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
+ *
  * ### Global Forwarding Rule Internal
  *
  * ```typescript
@@ -157,6 +158,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Global Forwarding Rule External Managed
  *
  * ```typescript
@@ -200,6 +202,7 @@ import * as utilities from "../utilities";
  *     networkTier: "PREMIUM",
  * });
  * ```
+ *
  * ### Global Forwarding Rule Hybrid
  *
  * ```typescript
@@ -317,6 +320,7 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
+ *
  * ### Private Service Connect Google Apis
  *
  * ```typescript
@@ -357,6 +361,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Private Service Connect Google Apis No Automate Dns
  *
  * ```typescript

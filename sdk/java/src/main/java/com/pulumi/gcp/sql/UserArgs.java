@@ -227,7 +227,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;, &#34;CLOUD_IAM_GROUP&#34;,
      * &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34; for
      * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
-     * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
+     * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype),
+     * and &#34;BUILT_IN&#34; and &#34;ENTRAID_USER&#34; for [SQL Server](https://cloud.google.com/sql/docs/sqlserver/admin-api/rest/v1beta4/users#sqlusertype).
      * 
      */
     @Import(name="type")
@@ -239,7 +240,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;, &#34;CLOUD_IAM_GROUP&#34;,
      * &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34; for
      * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
-     * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
+     * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype),
+     * and &#34;BUILT_IN&#34; and &#34;ENTRAID_USER&#34; for [SQL Server](https://cloud.google.com/sql/docs/sqlserver/admin-api/rest/v1beta4/users#sqlusertype).
      * 
      */
     public Optional<Output<String>> type() {
@@ -561,7 +563,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;, &#34;CLOUD_IAM_GROUP&#34;,
          * &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34; for
          * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
-         * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
+         * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype),
+         * and &#34;BUILT_IN&#34; and &#34;ENTRAID_USER&#34; for [SQL Server](https://cloud.google.com/sql/docs/sqlserver/admin-api/rest/v1beta4/users#sqlusertype).
          * 
          * @return builder
          * 
@@ -577,7 +580,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;, &#34;CLOUD_IAM_GROUP&#34;,
          * &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34; for
          * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
-         * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
+         * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype),
+         * and &#34;BUILT_IN&#34; and &#34;ENTRAID_USER&#34; for [SQL Server](https://cloud.google.com/sql/docs/sqlserver/admin-api/rest/v1beta4/users#sqlusertype).
          * 
          * @return builder
          * 

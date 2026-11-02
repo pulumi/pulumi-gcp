@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *
  * const example = new gcp.applicationintegration.Client("example", {location: "us-central1"});
  * ```
+ *
  * ### Integrations Client Full
  *
  * ```typescript

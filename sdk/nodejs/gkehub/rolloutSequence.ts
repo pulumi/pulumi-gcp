@@ -70,6 +70,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Gke Hub Rollout Sequence Update
  *
  * ```typescript
@@ -133,6 +134,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Gke Hub Rollout Sequence User Triggered Create
  *
  * ```typescript
@@ -190,7 +192,7 @@ import * as utilities from "../utilities";
  *         channel: "REGULAR",
  *     },
  *     resourceLabels: {
- *         rs_test_cluster: "tf-test-_90221",
+ *         rs_test_cluster: "tf-test-_25601",
  *     },
  *     fleet: {
  *         project: project.number,
@@ -204,7 +206,7 @@ import * as utilities from "../utilities";
  *     displayName: "User Triggered Rollout Sequence",
  *     minControlPlaneVersion: versions.apply(versions => versions.releaseChannelLatestVersion?.REGULAR),
  *     ignoredClustersSelector: {
- *         labelSelector: "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')",
+ *         labelSelector: "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')",
  *     },
  *     stages: [{
  *         fleetProjects: [pulumi.interpolate`projects/${project.projectId}`],

@@ -28,6 +28,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("temperature")]
         public Input<double>? Temperature { get; set; }
 
+        /// <summary>
+        /// The thinking level of the model.
+        /// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+        /// </summary>
+        [Input("thinkingLevel")]
+        public Input<string>? ThinkingLevel { get; set; }
+
         public GuardrailLlmPromptSecurityCustomPolicyModelSettingsGetArgs()
         {
         }

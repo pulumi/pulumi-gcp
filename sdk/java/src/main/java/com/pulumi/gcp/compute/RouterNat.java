@@ -103,6 +103,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Router Nat Rules
  * 
  * <pre>
@@ -199,6 +200,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Router Nat Private
  * 
  * <pre>

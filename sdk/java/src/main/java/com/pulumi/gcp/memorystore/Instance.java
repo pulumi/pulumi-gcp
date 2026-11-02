@@ -92,13 +92,13 @@ import javax.annotation.Nullable;
  *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
  *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east4")
  *             .network(producerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("my-policy")
- *             .location("us-west1")
+ *             .location("us-east4")
  *             .serviceClass("gcp-memorystore")
  *             .description("my basic service connection policy")
  *             .network(producerNet.id())
@@ -117,7 +117,8 @@ import javax.annotation.Nullable;
  *                 .network(producerNet.id())
  *                 .projectId(project.projectId())
  *                 .build())
- *             .location("us-west1")
+ *             .location("us-east4")
+ *             .nodeType("SHARED_CORE_NANO")
  *             .deletionProtectionEnabled(false)
  *             .maintenancePolicy(InstanceMaintenancePolicyArgs.builder()
  *                 .weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
@@ -138,6 +139,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Memorystore Instance Full
  * 
  * <pre>
@@ -187,13 +189,13 @@ import javax.annotation.Nullable;
  *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
  *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east4")
  *             .network(producerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("my-policy")
- *             .location("us-west1")
+ *             .location("us-east4")
  *             .serviceClass("gcp-memorystore")
  *             .description("my basic service connection policy")
  *             .network(producerNet.id())
@@ -212,7 +214,7 @@ import javax.annotation.Nullable;
  *                 .network(producerNet.id())
  *                 .projectId(project.projectId())
  *                 .build())
- *             .location("us-west1")
+ *             .location("us-east4")
  *             .replicaCount(1)
  *             .nodeType("SHARED_CORE_NANO")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_DISABLED")
@@ -221,7 +223,7 @@ import javax.annotation.Nullable;
  *             .engineConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
  *             .zoneDistributionConfig(InstanceZoneDistributionConfigArgs.builder()
  *                 .mode("SINGLE_ZONE")
- *                 .zone("us-west1-b")
+ *                 .zone("us-east4-a")
  *                 .build())
  *             .maintenancePolicy(InstanceMaintenancePolicyArgs.builder()
  *                 .weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
@@ -253,6 +255,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Memorystore Instance Persistence Aof
  * 
  * <pre>
@@ -298,13 +301,13 @@ import javax.annotation.Nullable;
  *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
  *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east4")
  *             .network(producerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("my-policy")
- *             .location("us-west1")
+ *             .location("us-east4")
  *             .serviceClass("gcp-memorystore")
  *             .description("my basic service connection policy")
  *             .network(producerNet.id())
@@ -323,7 +326,8 @@ import javax.annotation.Nullable;
  *                 .network(producerNet.id())
  *                 .projectId(project.projectId())
  *                 .build())
- *             .location("us-west1")
+ *             .location("us-east4")
+ *             .nodeType("SHARED_CORE_NANO")
  *             .persistenceConfig(InstancePersistenceConfigArgs.builder()
  *                 .mode("AOF")
  *                 .aofConfig(InstancePersistenceConfigAofConfigArgs.builder()
@@ -339,6 +343,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Memorystore Instance Secondary Instance
  * 
  * <pre>
@@ -500,6 +505,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Memorystore Instance Flexible Ca
  * 
  * <pre>
@@ -555,7 +561,7 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .name("ca-pool")
- *             .location("us-west1")
+ *             .location("us-east4")
  *             .tier("ENTERPRISE")
  *             .build());
  * 
@@ -568,7 +574,7 @@ import javax.annotation.Nullable;
  *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
  *             .pool(default_.name())
  *             .certificateAuthorityId("ca-auth")
- *             .location("us-west1")
+ *             .location("us-east4")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -607,13 +613,13 @@ import javax.annotation.Nullable;
  *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
  *             .name("ca-subnet")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-west1")
+ *             .region("us-east4")
  *             .network(producerNet.id())
  *             .build());
  * 
  *         var defaultServiceConnectionPolicy = new ServiceConnectionPolicy("defaultServiceConnectionPolicy", ServiceConnectionPolicyArgs.builder()
  *             .name("ca-policy")
- *             .location("us-west1")
+ *             .location("us-east4")
  *             .serviceClass("gcp-memorystore")
  *             .network(producerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
@@ -623,8 +629,9 @@ import javax.annotation.Nullable;
  * 
  *         var test_instance = new Instance("test-instance", InstanceArgs.builder()
  *             .instanceId("ca-instance")
- *             .shardCount(3)
- *             .location("us-west1")
+ *             .shardCount(1)
+ *             .location("us-east4")
+ *             .nodeType("SHARED_CORE_NANO")
  *             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
  *                 .network(producerNet.id())
  *                 .projectId(project.projectId())
@@ -681,20 +688,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aclPolicy);
     }
     /**
-     * Optional. Immutable. Authorization mode of the instance. Possible values:
+     * Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      * 
      */
     @Export(name="authorizationMode", refs={String.class}, tree="[0]")
     private Output<String> authorizationMode;
 
     /**
-     * @return Optional. Immutable. Authorization mode of the instance. Possible values:
+     * @return Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      * 
      */
     public Output<String> authorizationMode() {

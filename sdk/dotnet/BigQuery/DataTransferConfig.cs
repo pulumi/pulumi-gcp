@@ -80,6 +80,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquerydatatransfer Config Cmek
     /// 
     /// ```csharp
@@ -152,6 +153,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquerydatatransfer Config Salesforce
     /// 
     /// ```csharp

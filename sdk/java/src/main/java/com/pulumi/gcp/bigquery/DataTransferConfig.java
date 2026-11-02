@@ -104,6 +104,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Bigquerydatatransfer Config Cmek
  * 
  * <pre>
@@ -190,6 +191,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Bigquerydatatransfer Config Salesforce
  * 
  * <pre>

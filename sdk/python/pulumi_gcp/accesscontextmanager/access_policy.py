@@ -281,6 +281,7 @@ class AccessPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             title="Org Access Policy")
         ```
+
         ### Access Context Manager Access Policy Scoped
 
         ```python
@@ -365,6 +366,7 @@ class AccessPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             title="Org Access Policy")
         ```
+
         ### Access Context Manager Access Policy Scoped
 
         ```python

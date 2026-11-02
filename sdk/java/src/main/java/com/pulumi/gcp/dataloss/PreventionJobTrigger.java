@@ -97,6 +97,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger Bigquery Row Limit
  * 
  * <pre>
@@ -170,6 +171,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger Bigquery Row Limit Percentage
  * 
  * <pre>
@@ -243,6 +245,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger Job Notification Emails
  * 
  * <pre>
@@ -304,6 +307,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger Deidentify
  * 
  * <pre>
@@ -424,6 +428,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger Hybrid
  * 
  * <pre>
@@ -496,6 +501,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger Inspect
  * 
  * <pre>
@@ -631,6 +637,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger Publish To Stackdriver
  * 
  * <pre>
@@ -692,6 +699,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger With Id
  * 
  * <pre>
@@ -762,6 +770,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger Multiple Actions
  * 
  * <pre>
@@ -838,6 +847,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
  * 
  * <pre>
@@ -911,6 +921,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dlp Job Trigger Timespan Config Big Query
  * 
  * <pre>

@@ -52,6 +52,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Organization Access Approval Active Key Version
     /// 
     /// ```csharp

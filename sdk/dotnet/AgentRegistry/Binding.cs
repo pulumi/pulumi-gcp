@@ -76,6 +76,7 @@ namespace Pulumi.Gcp.AgentRegistry
     /// 
     /// });
     /// ```
+    /// 
     /// ### Agent Registry Binding Target Only
     /// 
     /// ```csharp

@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     dataPolicyId: "basic_data_policy",
  * });
  * ```
+ *
  * ### Bigquery Datapolicyv2 Datapolicy Predefined Masking
  *
  * ```typescript
@@ -44,6 +45,7 @@ import * as utilities from "../utilities";
  *     dataPolicyId: "predefined_masking_data_policy",
  * });
  * ```
+ *
  * ### Bigquery Datapolicyv2 Datapolicy Routine
  *
  * ```typescript
@@ -76,6 +78,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Datapolicyv2 Datapolicy Withgrantees
  *
  * ```typescript

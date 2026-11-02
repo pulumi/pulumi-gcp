@@ -36,7 +36,7 @@ public final class NodePoolUpgradeSettings {
      */
     private @Nullable Integer maxUnavailable;
     /**
-     * @return The upgrade strategy to be used for upgrading the nodes.
+     * @return The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
      * 
      */
     private @Nullable String strategy;
@@ -71,7 +71,7 @@ public final class NodePoolUpgradeSettings {
         return Optional.ofNullable(this.maxUnavailable);
     }
     /**
-     * @return The upgrade strategy to be used for upgrading the nodes.
+     * @return The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
      * 
      */
     public Optional<String> strategy() {

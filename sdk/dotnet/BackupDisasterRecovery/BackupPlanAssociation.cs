@@ -126,6 +126,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backup Dr Bpa Filestore
     /// 
     /// ```csharp
@@ -225,6 +226,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     [GcpResourceType("gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation")]
     public partial class BackupPlanAssociation : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (Beta)
+        /// The resource name of the auto protection policy binding that manages this backup plan association, if any.
+        /// </summary>
+        [Output("autoProtectionPolicyBinding")]
+        public Output<string> AutoProtectionPolicyBinding { get; private set; } = null!;
+
         /// <summary>
         /// The BP with which resource needs to be created
         /// Note:
@@ -418,6 +426,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
     public sealed class BackupPlanAssociationState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Beta)
+        /// The resource name of the auto protection policy binding that manages this backup plan association, if any.
+        /// </summary>
+        [Input("autoProtectionPolicyBinding")]
+        public Input<string>? AutoProtectionPolicyBinding { get; set; }
+
         /// <summary>
         /// The BP with which resource needs to be created
         /// Note:

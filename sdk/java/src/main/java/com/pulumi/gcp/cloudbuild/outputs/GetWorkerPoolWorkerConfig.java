@@ -32,6 +32,11 @@ public final class GetWorkerPoolWorkerConfig {
      * 
      */
     private Boolean noExternalIp;
+    /**
+     * @return The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+     * 
+     */
+    private String workerRelease;
 
     private GetWorkerPoolWorkerConfig() {}
     /**
@@ -62,6 +67,13 @@ public final class GetWorkerPoolWorkerConfig {
     public Boolean noExternalIp() {
         return this.noExternalIp;
     }
+    /**
+     * @return The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version.
+     * 
+     */
+    public String workerRelease() {
+        return this.workerRelease;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,6 +88,7 @@ public final class GetWorkerPoolWorkerConfig {
         private Boolean enableNestedVirtualization;
         private String machineType;
         private Boolean noExternalIp;
+        private String workerRelease;
         public Builder() {}
         public Builder(GetWorkerPoolWorkerConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,6 +96,7 @@ public final class GetWorkerPoolWorkerConfig {
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.machineType = defaults.machineType;
     	      this.noExternalIp = defaults.noExternalIp;
+    	      this.workerRelease = defaults.workerRelease;
         }
 
         @CustomType.Setter
@@ -117,12 +131,21 @@ public final class GetWorkerPoolWorkerConfig {
             this.noExternalIp = noExternalIp;
             return this;
         }
+        @CustomType.Setter
+        public Builder workerRelease(String workerRelease) {
+            if (workerRelease == null) {
+              throw new MissingRequiredPropertyException("GetWorkerPoolWorkerConfig", "workerRelease");
+            }
+            this.workerRelease = workerRelease;
+            return this;
+        }
         public GetWorkerPoolWorkerConfig build() {
             final var _resultValue = new GetWorkerPoolWorkerConfig();
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.enableNestedVirtualization = enableNestedVirtualization;
             _resultValue.machineType = machineType;
             _resultValue.noExternalIp = noExternalIp;
+            _resultValue.workerRelease = workerRelease;
             return _resultValue;
         }
     }

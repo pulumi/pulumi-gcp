@@ -56,6 +56,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service External Iap
     /// 
     /// ```csharp
@@ -82,6 +83,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Ilb Round Robin
     /// 
     /// ```csharp
@@ -113,6 +115,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service External
     /// 
     /// ```csharp
@@ -144,6 +147,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service External Weighted
     /// 
     /// ```csharp
@@ -176,6 +180,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Ilb Ring Hash
     /// 
     /// ```csharp
@@ -228,6 +233,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Ilb Stateful Session Affinity
     /// 
     /// ```csharp
@@ -269,6 +275,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Balancing Mode
     /// 
     /// ```csharp
@@ -375,6 +382,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service In Flight
     /// 
     /// ```csharp
@@ -480,6 +488,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Connection Tracking
     /// 
     /// ```csharp
@@ -520,6 +529,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Ip Address Selection Policy
     /// 
     /// ```csharp
@@ -552,6 +562,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Ilb Custom Metrics
     /// 
     /// ```csharp
@@ -627,6 +638,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Dynamic Forwarding
     /// 
     /// ```csharp
@@ -653,6 +665,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Dynamic Forwarding Forward Proxy Cloud Run
     /// 
     /// ```csharp
@@ -681,6 +694,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
     /// 
     /// ```csharp
@@ -709,6 +723,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Ha Policy
     /// 
     /// ```csharp
@@ -740,6 +755,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Ha Policy Manual Leader
     /// 
     /// ```csharp
@@ -842,6 +858,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Ha Policy Internal Lb
     /// 
     /// ```csharp
@@ -950,6 +967,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Tls Settings
     /// 
     /// ```csharp
@@ -1004,6 +1022,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Service Identity
     /// 
     /// ```csharp

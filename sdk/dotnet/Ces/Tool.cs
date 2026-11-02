@@ -187,6 +187,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Tool Data Store Tool Engine Source Basic
     /// 
     /// ```csharp
@@ -294,6 +295,7 @@ namespace Pulumi.Gcp.Ces
     ///                         {
     ///                             Model = "gemini-3.0-flash-001",
     ///                             Temperature = 1.0,
+    ///                             ThinkingLevel = "LOW",
     ///                         },
     ///                         Prompt = "example-prompt",
     ///                         Disabled = false,
@@ -304,6 +306,7 @@ namespace Pulumi.Gcp.Ces
     ///                         {
     ///                             Model = "gemini-3.0-flash-001",
     ///                             Temperature = 1.0,
+    ///                             ThinkingLevel = "LOW",
     ///                         },
     ///                         Prompt = "example-prompt",
     ///                         Disabled = false,
@@ -312,6 +315,11 @@ namespace Pulumi.Gcp.Ces
     ///                     {
     ///                         GroundingLevel = 3.0,
     ///                         Disabled = false,
+    ///                     },
+    ///                     SnippetsConfig = new Gcp.Ces.Inputs.ToolDataStoreToolModalityConfigSnippetsConfigArgs
+    ///                     {
+    ///                         EnableSnippets = true,
+    ///                         MaxSnippets = 5,
     ///                     },
     ///                 },
     ///             },
@@ -336,6 +344,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Tool Google Search Tool Basic
     /// 
     /// ```csharp
@@ -387,6 +396,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Tool Python Function Basic
     /// 
     /// ```csharp
@@ -423,6 +433,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Tool Agent Basic
     /// 
     /// ```csharp
@@ -476,6 +487,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Tool File Search Basic
     /// 
     /// ```csharp
@@ -514,6 +526,7 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// 
     /// ### Ces Tool Widget Basic
     /// 
     /// ```csharp

@@ -70,6 +70,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Network Endpoint Internet Fqdn Port
 //
 // ```go
@@ -114,6 +115,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Network Endpoint Portmap
 //
 // ```go

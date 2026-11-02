@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     endTime: "2025-01-01T12:00:00Z",
  * });
  * ```
+ *
  * ### Chronicle Data Export Full
  *
  * ```typescript

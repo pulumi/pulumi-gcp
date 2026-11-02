@@ -47,6 +47,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Healthcare Fhir Store Streaming Config
  *
  * ```typescript
@@ -91,6 +92,7 @@ import * as utilities from "../utilities";
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
  * ```
+ *
  * ### Healthcare Fhir Store Notification Configs
  *
  * ```typescript
@@ -120,6 +122,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Healthcare Fhir Store Consent Config
  *
  * ```typescript
@@ -159,6 +162,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Healthcare Fhir Store Validation Config
  *
  * ```typescript

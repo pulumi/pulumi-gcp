@@ -46,8 +46,6 @@ namespace Pulumi.Gcp.Container
     ///     {
     ///         Name = "my-gke-cluster",
     ///         Location = "us-central1",
-    ///         RemoveDefaultNodePool = true,
-    ///         InitialNodeCount = 1,
     ///     });
     /// 
     ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primary_preemptible_nodes", new()
@@ -548,7 +546,10 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-        /// number of nodes per zone. Must be set if `NodePool` is not set. If you're using
+        /// number of nodes per zone. When omitted (or set to `0`) with no `NodeConfig` or
+        /// `NodePool` blocks defined, the cluster is created without a default node pool.
+        /// This requires a GKE version that supports clusters without a default node pool
+        /// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
         /// `gcp.container.NodePool` objects with no default node pool, you'll need to
         /// set this to a value of at least `1`, alongside setting
         /// `RemoveDefaultNodePool` to `True`.
@@ -610,7 +611,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterManagedMachineLearningDiagnosticsConfig> ManagedMachineLearningDiagnosticsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         /// </summary>
         [Output("managedOpentelemetryConfig")]
         public Output<Outputs.ClusterManagedOpentelemetryConfig> ManagedOpentelemetryConfig { get; private set; } = null!;
@@ -873,9 +874,13 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// If `True`, deletes the default node
-        /// pool upon cluster creation. If you're using `gcp.container.NodePool`
-        /// resources with no default node pool, this should be set to `True`, alongside
-        /// setting `InitialNodeCount` to at least `1`.
+        /// pool upon cluster creation. On GKE versions that support clusters without a
+        /// default node pool, you can instead omit `InitialNodeCount` and
+        /// `NodeConfig` (or set `InitialNodeCount` to `0`) to skip creating the
+        /// default node pool without setting this field. For older GKE versions, if
+        /// you're using `gcp.container.NodePool` resources with no default node
+        /// pool, this should be set to `True`, alongside setting `InitialNodeCount`
+        /// to at least `1`.
         /// </summary>
         [Output("removeDefaultNodePool")]
         public Output<bool?> RemoveDefaultNodePool { get; private set; } = null!;
@@ -902,6 +907,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("rollbackSafeUpgrade")]
         public Output<Outputs.ClusterRollbackSafeUpgrade?> RollbackSafeUpgrade { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        /// </summary>
+        [Output("scheduleUpgradeConfig")]
+        public Output<Outputs.ClusterScheduleUpgradeConfig> ScheduleUpgradeConfig { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for the
@@ -1361,7 +1372,10 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-        /// number of nodes per zone. Must be set if `NodePool` is not set. If you're using
+        /// number of nodes per zone. When omitted (or set to `0`) with no `NodeConfig` or
+        /// `NodePool` blocks defined, the cluster is created without a default node pool.
+        /// This requires a GKE version that supports clusters without a default node pool
+        /// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
         /// `gcp.container.NodePool` objects with no default node pool, you'll need to
         /// set this to a value of at least `1`, alongside setting
         /// `RemoveDefaultNodePool` to `True`.
@@ -1417,7 +1431,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterManagedMachineLearningDiagnosticsConfigArgs>? ManagedMachineLearningDiagnosticsConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         /// </summary>
         [Input("managedOpentelemetryConfig")]
         public Input<Inputs.ClusterManagedOpentelemetryConfigArgs>? ManagedOpentelemetryConfig { get; set; }
@@ -1675,9 +1689,13 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// If `True`, deletes the default node
-        /// pool upon cluster creation. If you're using `gcp.container.NodePool`
-        /// resources with no default node pool, this should be set to `True`, alongside
-        /// setting `InitialNodeCount` to at least `1`.
+        /// pool upon cluster creation. On GKE versions that support clusters without a
+        /// default node pool, you can instead omit `InitialNodeCount` and
+        /// `NodeConfig` (or set `InitialNodeCount` to `0`) to skip creating the
+        /// default node pool without setting this field. For older GKE versions, if
+        /// you're using `gcp.container.NodePool` resources with no default node
+        /// pool, this should be set to `True`, alongside setting `InitialNodeCount`
+        /// to at least `1`.
         /// </summary>
         [Input("removeDefaultNodePool")]
         public Input<bool>? RemoveDefaultNodePool { get; set; }
@@ -1710,6 +1728,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("rollbackSafeUpgrade")]
         public Input<Inputs.ClusterRollbackSafeUpgradeArgs>? RollbackSafeUpgrade { get; set; }
+
+        /// <summary>
+        /// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        /// </summary>
+        [Input("scheduleUpgradeConfig")]
+        public Input<Inputs.ClusterScheduleUpgradeConfigArgs>? ScheduleUpgradeConfig { get; set; }
 
         /// <summary>
         /// Configuration for the
@@ -2131,7 +2155,10 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-        /// number of nodes per zone. Must be set if `NodePool` is not set. If you're using
+        /// number of nodes per zone. When omitted (or set to `0`) with no `NodeConfig` or
+        /// `NodePool` blocks defined, the cluster is created without a default node pool.
+        /// This requires a GKE version that supports clusters without a default node pool
+        /// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
         /// `gcp.container.NodePool` objects with no default node pool, you'll need to
         /// set this to a value of at least `1`, alongside setting
         /// `RemoveDefaultNodePool` to `True`.
@@ -2193,7 +2220,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterManagedMachineLearningDiagnosticsConfigGetArgs>? ManagedMachineLearningDiagnosticsConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         /// </summary>
         [Input("managedOpentelemetryConfig")]
         public Input<Inputs.ClusterManagedOpentelemetryConfigGetArgs>? ManagedOpentelemetryConfig { get; set; }
@@ -2478,9 +2505,13 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// If `True`, deletes the default node
-        /// pool upon cluster creation. If you're using `gcp.container.NodePool`
-        /// resources with no default node pool, this should be set to `True`, alongside
-        /// setting `InitialNodeCount` to at least `1`.
+        /// pool upon cluster creation. On GKE versions that support clusters without a
+        /// default node pool, you can instead omit `InitialNodeCount` and
+        /// `NodeConfig` (or set `InitialNodeCount` to `0`) to skip creating the
+        /// default node pool without setting this field. For older GKE versions, if
+        /// you're using `gcp.container.NodePool` resources with no default node
+        /// pool, this should be set to `True`, alongside setting `InitialNodeCount`
+        /// to at least `1`.
         /// </summary>
         [Input("removeDefaultNodePool")]
         public Input<bool>? RemoveDefaultNodePool { get; set; }
@@ -2513,6 +2544,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("rollbackSafeUpgrade")]
         public Input<Inputs.ClusterRollbackSafeUpgradeGetArgs>? RollbackSafeUpgrade { get; set; }
+
+        /// <summary>
+        /// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        /// </summary>
+        [Input("scheduleUpgradeConfig")]
+        public Input<Inputs.ClusterScheduleUpgradeConfigGetArgs>? ScheduleUpgradeConfig { get; set; }
 
         /// <summary>
         /// Configuration for the

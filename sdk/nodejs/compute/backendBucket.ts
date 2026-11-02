@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     enableCdn: true,
  * });
  * ```
+ *
  * ### Backend Bucket Security Policy
  *
  * ```typescript
@@ -63,6 +64,7 @@ import * as utilities from "../utilities";
  *     edgeSecurityPolicy: policy.id,
  * });
  * ```
+ *
  * ### Backend Bucket Query String Whitelist
  *
  * ```typescript
@@ -85,6 +87,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Backend Bucket Include Http Headers
  *
  * ```typescript

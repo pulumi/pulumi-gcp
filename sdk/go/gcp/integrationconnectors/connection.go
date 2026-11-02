@@ -65,6 +65,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Integration Connectors Connection Advanced
 //
 // ```go

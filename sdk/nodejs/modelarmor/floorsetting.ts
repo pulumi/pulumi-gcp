@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     filterConfig: {},
  * });
  * ```
+ *
  * ### Modelarmor Floorsetting Filter Config
  *
  * ```typescript
@@ -57,6 +58,7 @@ import * as utilities from "../utilities";
  *     enableFloorSettingEnforcement: true,
  * });
  * ```
+ *
  * ### Modelarmor Floorsetting Ai Platform Metadata
  *
  * ```typescript

@@ -472,6 +472,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Multi Cluster Service Discovery
 
         ```python
@@ -485,6 +486,7 @@ class Feature(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Gkehub Feature Anthos Service Mesh
 
         ```python
@@ -495,6 +497,7 @@ class Feature(pulumi.CustomResource):
             name="servicemesh",
             location="global")
         ```
+
         ### Enable Fleet Observability For Default Logs With Copy
 
         ```python
@@ -514,6 +517,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Observability For Scope Logs With Move
 
         ```python
@@ -533,6 +537,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Observability For Both Default And Scope Logs
 
         ```python
@@ -555,6 +560,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Service Mesh
 
         ```python
@@ -570,6 +576,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Configmanagement
 
         ```python
@@ -589,6 +596,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller
 
         ```python
@@ -621,6 +629,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller Full
 
         ```python
@@ -689,6 +698,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller Minimal
 
         ```python
@@ -715,6 +725,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Clusterupgrade
 
         ```python
@@ -733,6 +744,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Rbacrolebinding Actuation
 
         ```python
@@ -752,6 +764,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Workload Identity
 
         ```python
@@ -851,6 +864,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Multi Cluster Service Discovery
 
         ```python
@@ -864,6 +878,7 @@ class Feature(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Gkehub Feature Anthos Service Mesh
 
         ```python
@@ -874,6 +889,7 @@ class Feature(pulumi.CustomResource):
             name="servicemesh",
             location="global")
         ```
+
         ### Enable Fleet Observability For Default Logs With Copy
 
         ```python
@@ -893,6 +909,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Observability For Scope Logs With Move
 
         ```python
@@ -912,6 +929,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Observability For Both Default And Scope Logs
 
         ```python
@@ -934,6 +952,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Service Mesh
 
         ```python
@@ -949,6 +968,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Configmanagement
 
         ```python
@@ -968,6 +988,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller
 
         ```python
@@ -1000,6 +1021,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller Full
 
         ```python
@@ -1068,6 +1090,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller Minimal
 
         ```python
@@ -1094,6 +1117,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Clusterupgrade
 
         ```python
@@ -1112,6 +1136,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Rbacrolebinding Actuation
 
         ```python
@@ -1131,6 +1156,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Workload Identity
 
         ```python

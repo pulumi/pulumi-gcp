@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.securitycenter.V2FolderNotificationConfigArgs;
 import com.pulumi.gcp.securitycenter.inputs.V2FolderNotificationConfigState;
 import com.pulumi.gcp.securitycenter.outputs.V2FolderNotificationConfigStreamingConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -110,6 +111,20 @@ public class V2FolderNotificationConfig extends com.pulumi.resources.CustomResou
      */
     public Output<String> configId() {
         return this.configId;
+    }
+    /**
+     * Indicates whether the notifications will be sent for deleted findings.
+     * 
+     */
+    @Export(name="deletionNotificationsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionNotificationsEnabled;
+
+    /**
+     * @return Indicates whether the notifications will be sent for deleted findings.
+     * 
+     */
+    public Output<Optional<Boolean>> deletionNotificationsEnabled() {
+        return Codegen.optional(this.deletionNotificationsEnabled);
     }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

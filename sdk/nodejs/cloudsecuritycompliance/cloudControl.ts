@@ -167,6 +167,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Cloudsecuritycompliance Cloudcontrol Project Basic
  *
  * ```typescript
@@ -320,6 +321,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Cloudsecuritycompliance Cloudcontrol Org Basic Backward
  *
  * ```typescript

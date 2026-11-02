@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.hypercomputecluster.outputs.ClusterStorageResourceConfigExistingBucket;
 import com.pulumi.gcp.hypercomputecluster.outputs.ClusterStorageResourceConfigExistingFilestore;
 import com.pulumi.gcp.hypercomputecluster.outputs.ClusterStorageResourceConfigExistingLustre;
+import com.pulumi.gcp.hypercomputecluster.outputs.ClusterStorageResourceConfigExistingNfs;
 import com.pulumi.gcp.hypercomputecluster.outputs.ClusterStorageResourceConfigNewBucket;
 import com.pulumi.gcp.hypercomputecluster.outputs.ClusterStorageResourceConfigNewFilestore;
 import com.pulumi.gcp.hypercomputecluster.outputs.ClusterStorageResourceConfigNewLustre;
@@ -39,6 +40,14 @@ public final class ClusterStorageResourceConfig {
      * 
      */
     private @Nullable ClusterStorageResourceConfigExistingLustre existingLustre;
+    /**
+     * @return (Optional, Beta)
+     * When set in a StorageResourceConfig, indicates that an existing NFS
+     * share should be imported.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterStorageResourceConfigExistingNfs existingNfs;
     /**
      * @return When set in a StorageResourceConfig, indicates that a new
      * [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
@@ -94,6 +103,16 @@ public final class ClusterStorageResourceConfig {
         return Optional.ofNullable(this.existingLustre);
     }
     /**
+     * @return (Optional, Beta)
+     * When set in a StorageResourceConfig, indicates that an existing NFS
+     * share should be imported.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ClusterStorageResourceConfigExistingNfs> existingNfs() {
+        return Optional.ofNullable(this.existingNfs);
+    }
+    /**
      * @return When set in a StorageResourceConfig, indicates that a new
      * [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
      * created.
@@ -135,6 +154,7 @@ public final class ClusterStorageResourceConfig {
         private @Nullable ClusterStorageResourceConfigExistingBucket existingBucket;
         private @Nullable ClusterStorageResourceConfigExistingFilestore existingFilestore;
         private @Nullable ClusterStorageResourceConfigExistingLustre existingLustre;
+        private @Nullable ClusterStorageResourceConfigExistingNfs existingNfs;
         private @Nullable ClusterStorageResourceConfigNewBucket newBucket;
         private @Nullable ClusterStorageResourceConfigNewFilestore newFilestore;
         private @Nullable ClusterStorageResourceConfigNewLustre newLustre;
@@ -144,6 +164,7 @@ public final class ClusterStorageResourceConfig {
     	      this.existingBucket = defaults.existingBucket;
     	      this.existingFilestore = defaults.existingFilestore;
     	      this.existingLustre = defaults.existingLustre;
+    	      this.existingNfs = defaults.existingNfs;
     	      this.newBucket = defaults.newBucket;
     	      this.newFilestore = defaults.newFilestore;
     	      this.newLustre = defaults.newLustre;
@@ -165,6 +186,12 @@ public final class ClusterStorageResourceConfig {
         public Builder existingLustre(@Nullable ClusterStorageResourceConfigExistingLustre existingLustre) {
 
             this.existingLustre = existingLustre;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder existingNfs(@Nullable ClusterStorageResourceConfigExistingNfs existingNfs) {
+
+            this.existingNfs = existingNfs;
             return this;
         }
         @CustomType.Setter
@@ -190,6 +217,7 @@ public final class ClusterStorageResourceConfig {
             _resultValue.existingBucket = existingBucket;
             _resultValue.existingFilestore = existingFilestore;
             _resultValue.existingLustre = existingLustre;
+            _resultValue.existingNfs = existingNfs;
             _resultValue.newBucket = newBucket;
             _resultValue.newFilestore = newFilestore;
             _resultValue.newLustre = newLustre;

@@ -46,10 +46,10 @@ namespace Pulumi.Gcp.Lustre
     ///     var instance = new Gcp.Lustre.Instance("instance", new()
     ///     {
     ///         InstanceId = "my-instance",
-    ///         Location = "us-central1-a",
+    ///         Location = "us-east4-a",
     ///         Description = "test lustre instance",
     ///         Filesystem = "testfs",
-    ///         CapacityGib = "18000",
+    ///         CapacityGib = "9000",
     ///         Network = lustre_network.Apply(lustre_network =&gt; lustre_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         PerUnitStorageThroughput = "1000",
     ///         Labels = 

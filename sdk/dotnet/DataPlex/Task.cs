@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Task Spark
     /// 
     /// ```csharp
@@ -169,6 +170,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Task Notebook
     /// 
     /// ```csharp

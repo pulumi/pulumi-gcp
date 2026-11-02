@@ -59,7 +59,9 @@ export class V2ConsumerPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+     * Default value is false. This field is deprecated and has no effect.
+     *
+     * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      */
     declare public readonly checkUsageOnRemove: pulumi.Output<boolean | undefined>;
     /**
@@ -90,7 +92,7 @@ export class V2ConsumerPolicy extends pulumi.CustomResource {
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
-     * (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+     * Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
      */
     declare public readonly validateDependencies: pulumi.Output<boolean | undefined>;
 
@@ -140,7 +142,9 @@ export class V2ConsumerPolicy extends pulumi.CustomResource {
  */
 export interface V2ConsumerPolicyState {
     /**
-     * (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+     * Default value is false. This field is deprecated and has no effect.
+     *
+     * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      */
     checkUsageOnRemove?: pulumi.Input<boolean | undefined>;
     /**
@@ -171,7 +175,7 @@ export interface V2ConsumerPolicyState {
      */
     parent?: pulumi.Input<string | undefined>;
     /**
-     * (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+     * Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
      */
     validateDependencies?: pulumi.Input<boolean | undefined>;
 }
@@ -181,7 +185,9 @@ export interface V2ConsumerPolicyState {
  */
 export interface V2ConsumerPolicyArgs {
     /**
-     * (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+     * Default value is false. This field is deprecated and has no effect.
+     *
+     * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      */
     checkUsageOnRemove?: pulumi.Input<boolean | undefined>;
     /**
@@ -207,7 +213,7 @@ export interface V2ConsumerPolicyArgs {
      */
     parent: pulumi.Input<string>;
     /**
-     * (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+     * Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
      */
     validateDependencies?: pulumi.Input<boolean | undefined>;
 }

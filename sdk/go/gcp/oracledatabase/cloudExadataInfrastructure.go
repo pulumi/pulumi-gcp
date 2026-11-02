@@ -46,6 +46,9 @@ import (
 //					ComputeCount: pulumi.Int(2),
 //					StorageCount: pulumi.Int(3),
 //				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
 //				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -56,6 +59,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Cloud Exadata Infrastructure Full
 //
 // ```go

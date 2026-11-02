@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     templateId: basic.templateId,
  * });
  * ```
+ *
  * ### Firebaseailogic Prompt Template Lock Global Only
  *
  * ```typescript

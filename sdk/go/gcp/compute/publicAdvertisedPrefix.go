@@ -50,6 +50,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Public Advertised Prefixes Pdp Scope
 //
 // ```go
@@ -79,6 +80,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Public Advertised Prefixes Ipv6 Access Type
 //
 // ```go

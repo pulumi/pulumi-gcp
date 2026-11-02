@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Scheduler Job Http
  * 
  * <pre>
@@ -131,6 +132,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Scheduler Job Paused
  * 
  * <pre>
@@ -183,6 +185,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Scheduler Job App Engine
  * 
  * <pre>
@@ -237,6 +240,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Scheduler Job Oauth
  * 
  * <pre>
@@ -287,6 +291,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Scheduler Job Oidc
  * 
  * <pre>

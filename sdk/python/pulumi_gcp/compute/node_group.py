@@ -555,11 +555,6 @@ class NodeGroup(pulumi.CustomResource):
         * How-to Guides
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
-        > **Warning:** Due to limitations of the API, this provider cannot update the
-        number of nodes in a node group and changes to node group size either
-        through provider config or through external changes will cause
-        the provider to delete and recreate the node group.
-
         ## Example Usage
 
         ### Node Group Basic
@@ -579,10 +574,6 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
-        > **Warning:** Due to limitations of the API, this provider cannot update the
-        number of nodes in a node group and changes to node group size either
-        through provider config or through external changes will cause
-        the provider to delete and recreate the node group.
 
         ### Node Group Maintenance Interval
 
@@ -602,10 +593,6 @@ class NodeGroup(pulumi.CustomResource):
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
         ```
-        > **Warning:** Due to limitations of the API, this provider cannot update the
-        number of nodes in a node group and changes to node group size either
-        through provider config or through external changes will cause
-        the provider to delete and recreate the node group.
 
         ### Node Group Autoscaling Policy
 
@@ -633,6 +620,7 @@ class NodeGroup(pulumi.CustomResource):
                 "max_nodes": 10,
             })
         ```
+
         ### Node Group Share Settings
 
         ```python
@@ -727,11 +715,6 @@ class NodeGroup(pulumi.CustomResource):
         * How-to Guides
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
-        > **Warning:** Due to limitations of the API, this provider cannot update the
-        number of nodes in a node group and changes to node group size either
-        through provider config or through external changes will cause
-        the provider to delete and recreate the node group.
-
         ## Example Usage
 
         ### Node Group Basic
@@ -751,10 +734,6 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
-        > **Warning:** Due to limitations of the API, this provider cannot update the
-        number of nodes in a node group and changes to node group size either
-        through provider config or through external changes will cause
-        the provider to delete and recreate the node group.
 
         ### Node Group Maintenance Interval
 
@@ -774,10 +753,6 @@ class NodeGroup(pulumi.CustomResource):
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
         ```
-        > **Warning:** Due to limitations of the API, this provider cannot update the
-        number of nodes in a node group and changes to node group size either
-        through provider config or through external changes will cause
-        the provider to delete and recreate the node group.
 
         ### Node Group Autoscaling Policy
 
@@ -805,6 +780,7 @@ class NodeGroup(pulumi.CustomResource):
                 "max_nodes": 10,
             })
         ```
+
         ### Node Group Share Settings
 
         ```python

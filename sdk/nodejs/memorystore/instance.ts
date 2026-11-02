@@ -30,12 +30,12 @@ import * as utilities from "../utilities";
  * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east4",
  *     network: producerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-west1",
+ *     location: "us-east4",
  *     serviceClass: "gcp-memorystore",
  *     description: "my basic service connection policy",
  *     network: producerNet.id,
@@ -51,7 +51,8 @@ import * as utilities from "../utilities";
  *         network: producerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
- *     location: "us-west1",
+ *     location: "us-east4",
+ *     nodeType: "SHARED_CORE_NANO",
  *     deletionProtectionEnabled: false,
  *     maintenancePolicy: {
  *         weeklyMaintenanceWindows: [{
@@ -68,6 +69,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Memorystore Instance Full
  *
  * ```typescript
@@ -81,12 +83,12 @@ import * as utilities from "../utilities";
  * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east4",
  *     network: producerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-west1",
+ *     location: "us-east4",
  *     serviceClass: "gcp-memorystore",
  *     description: "my basic service connection policy",
  *     network: producerNet.id,
@@ -102,7 +104,7 @@ import * as utilities from "../utilities";
  *         network: producerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
- *     location: "us-west1",
+ *     location: "us-east4",
  *     replicaCount: 1,
  *     nodeType: "SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_DISABLED",
@@ -113,7 +115,7 @@ import * as utilities from "../utilities";
  *     },
  *     zoneDistributionConfig: {
  *         mode: "SINGLE_ZONE",
- *         zone: "us-west1-b",
+ *         zone: "us-east4-a",
  *     },
  *     maintenancePolicy: {
  *         weeklyMaintenanceWindows: [{
@@ -143,6 +145,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Memorystore Instance Persistence Aof
  *
  * ```typescript
@@ -156,12 +159,12 @@ import * as utilities from "../utilities";
  * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east4",
  *     network: producerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-west1",
+ *     location: "us-east4",
  *     serviceClass: "gcp-memorystore",
  *     description: "my basic service connection policy",
  *     network: producerNet.id,
@@ -177,7 +180,8 @@ import * as utilities from "../utilities";
  *         network: producerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
- *     location: "us-west1",
+ *     location: "us-east4",
+ *     nodeType: "SHARED_CORE_NANO",
  *     persistenceConfig: {
  *         mode: "AOF",
  *         aofConfig: {
@@ -189,6 +193,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Memorystore Instance Secondary Instance
  *
  * ```typescript
@@ -311,6 +316,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [secondaryPolicy],
  * });
  * ```
+ *
  * ### Memorystore Instance Flexible Ca
  *
  * ```typescript
@@ -320,7 +326,7 @@ import * as utilities from "../utilities";
  * const project = gcp.organizations.getProject({});
  * const _default = new gcp.certificateauthority.CaPool("default", {
  *     name: "ca-pool",
- *     location: "us-west1",
+ *     location: "us-east4",
  *     tier: "ENTERPRISE",
  * });
  * const memorystoreP4saRequester = new gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester", {
@@ -331,7 +337,7 @@ import * as utilities from "../utilities";
  * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
  *     pool: _default.name,
  *     certificateAuthorityId: "ca-auth",
- *     location: "us-west1",
+ *     location: "us-east4",
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -368,12 +374,12 @@ import * as utilities from "../utilities";
  * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
  *     name: "ca-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east4",
  *     network: producerNet.id,
  * });
  * const defaultServiceConnectionPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "ca-policy",
- *     location: "us-west1",
+ *     location: "us-east4",
  *     serviceClass: "gcp-memorystore",
  *     network: producerNet.id,
  *     pscConfig: {
@@ -382,8 +388,9 @@ import * as utilities from "../utilities";
  * });
  * const test_instance = new gcp.memorystore.Instance("test-instance", {
  *     instanceId: "ca-instance",
- *     shardCount: 3,
- *     location: "us-west1",
+ *     shardCount: 1,
+ *     location: "us-east4",
+ *     nodeType: "SHARED_CORE_NANO",
  *     desiredAutoCreatedEndpoints: [{
  *         network: producerNet.id,
  *         projectId: project.then(project => project.projectId),
@@ -451,10 +458,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly aclPolicy: pulumi.Output<string | undefined>;
     /**
-     * Optional. Immutable. Authorization mode of the instance. Possible values:
+     * Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      */
     declare public readonly authorizationMode: pulumi.Output<string>;
     /**
@@ -843,10 +850,10 @@ export interface InstanceState {
      */
     aclPolicy?: pulumi.Input<string | undefined>;
     /**
-     * Optional. Immutable. Authorization mode of the instance. Possible values:
+     * Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      */
     authorizationMode?: pulumi.Input<string | undefined>;
     /**
@@ -1110,10 +1117,10 @@ export interface InstanceArgs {
      */
     aclPolicy?: pulumi.Input<string | undefined>;
     /**
-     * Optional. Immutable. Authorization mode of the instance. Possible values:
+     * Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      */
     authorizationMode?: pulumi.Input<string | undefined>;
     /**

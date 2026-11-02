@@ -105,10 +105,10 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
      * Indicates how many IOPS to provision for the disk.
      * This sets the number of I/O operations per second that the disk can handle.
      * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-     * Note: Updating currently is only supported for hyperdisk skus via disk update
-     * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-     * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-     * you&#39;ll need to manually delete and recreate it.
+     * Note: Updating in place is only supported for hyperdisk skus; changing this
+     * value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+     * Hyperdisk allows for an update of IOPS every 4 hours; to update more
+     * frequently than that, you&#39;ll need to manually delete and recreate the disk.
      * 
      */
     @Import(name="provisionedIops")
@@ -118,10 +118,10 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
      * @return Indicates how many IOPS to provision for the disk.
      * This sets the number of I/O operations per second that the disk can handle.
      * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-     * Note: Updating currently is only supported for hyperdisk skus via disk update
-     * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-     * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-     * you&#39;ll need to manually delete and recreate it.
+     * Note: Updating in place is only supported for hyperdisk skus; changing this
+     * value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+     * Hyperdisk allows for an update of IOPS every 4 hours; to update more
+     * frequently than that, you&#39;ll need to manually delete and recreate the disk.
      * 
      */
     public Optional<Output<Integer>> provisionedIops() {
@@ -132,10 +132,9 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
      * Indicates how much throughput to provision for the disk.
      * This sets the number of throughput mb per second that the disk can handle.
      * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-     * Note: Updating currently is only supported for hyperdisk skus via disk update
-     * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-     * for an update of throughput every 4 hours. To update your hyperdisk more
-     * frequently, you&#39;ll need to manually delete and recreate it.
+     * Note: This is only supported for hyperdisk skus, and can be updated in place.
+     * Hyperdisk allows for an update of throughput every 4 hours; to update more
+     * frequently than that, you&#39;ll need to manually delete and recreate the disk.
      * 
      */
     @Import(name="provisionedThroughput")
@@ -145,10 +144,9 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
      * @return Indicates how much throughput to provision for the disk.
      * This sets the number of throughput mb per second that the disk can handle.
      * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-     * Note: Updating currently is only supported for hyperdisk skus via disk update
-     * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-     * for an update of throughput every 4 hours. To update your hyperdisk more
-     * frequently, you&#39;ll need to manually delete and recreate it.
+     * Note: This is only supported for hyperdisk skus, and can be updated in place.
+     * Hyperdisk allows for an update of throughput every 4 hours; to update more
+     * frequently than that, you&#39;ll need to manually delete and recreate the disk.
      * 
      */
     public Optional<Output<Integer>> provisionedThroughput() {
@@ -448,10 +446,10 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          * @param provisionedIops Indicates how many IOPS to provision for the disk.
          * This sets the number of I/O operations per second that the disk can handle.
          * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-         * Note: Updating currently is only supported for hyperdisk skus via disk update
-         * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-         * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-         * you&#39;ll need to manually delete and recreate it.
+         * Note: Updating in place is only supported for hyperdisk skus; changing this
+         * value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+         * Hyperdisk allows for an update of IOPS every 4 hours; to update more
+         * frequently than that, you&#39;ll need to manually delete and recreate the disk.
          * 
          * @return builder
          * 
@@ -465,10 +463,10 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          * @param provisionedIops Indicates how many IOPS to provision for the disk.
          * This sets the number of I/O operations per second that the disk can handle.
          * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-         * Note: Updating currently is only supported for hyperdisk skus via disk update
-         * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-         * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-         * you&#39;ll need to manually delete and recreate it.
+         * Note: Updating in place is only supported for hyperdisk skus; changing this
+         * value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+         * Hyperdisk allows for an update of IOPS every 4 hours; to update more
+         * frequently than that, you&#39;ll need to manually delete and recreate the disk.
          * 
          * @return builder
          * 
@@ -481,10 +479,9 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          * @param provisionedThroughput Indicates how much throughput to provision for the disk.
          * This sets the number of throughput mb per second that the disk can handle.
          * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-         * Note: Updating currently is only supported for hyperdisk skus via disk update
-         * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-         * for an update of throughput every 4 hours. To update your hyperdisk more
-         * frequently, you&#39;ll need to manually delete and recreate it.
+         * Note: This is only supported for hyperdisk skus, and can be updated in place.
+         * Hyperdisk allows for an update of throughput every 4 hours; to update more
+         * frequently than that, you&#39;ll need to manually delete and recreate the disk.
          * 
          * @return builder
          * 
@@ -498,10 +495,9 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          * @param provisionedThroughput Indicates how much throughput to provision for the disk.
          * This sets the number of throughput mb per second that the disk can handle.
          * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-         * Note: Updating currently is only supported for hyperdisk skus via disk update
-         * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-         * for an update of throughput every 4 hours. To update your hyperdisk more
-         * frequently, you&#39;ll need to manually delete and recreate it.
+         * Note: This is only supported for hyperdisk skus, and can be updated in place.
+         * Hyperdisk allows for an update of throughput every 4 hours; to update more
+         * frequently than that, you&#39;ll need to manually delete and recreate the disk.
          * 
          * @return builder
          * 

@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Account Connector Gitlab
  * 
  * <pre>
@@ -100,6 +101,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Account Connector Ghe
  * 
  * <pre>
@@ -175,6 +177,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Account Connector Gle
  * 
  * <pre>
@@ -250,6 +253,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Developer Connect Account Connector Bbdc
  * 
  * <pre>

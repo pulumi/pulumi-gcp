@@ -73,6 +73,12 @@ namespace Pulumi.Gcp.SecurityCenter
         public Output<string> ConfigId { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether the notifications will be sent for deleted findings.
+        /// </summary>
+        [Output("deletionNotificationsEnabled")]
+        public Output<bool?> DeletionNotificationsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -183,6 +189,12 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string> ConfigId { get; set; } = null!;
 
         /// <summary>
+        /// Indicates whether the notifications will be sent for deleted findings.
+        /// </summary>
+        [Input("deletionNotificationsEnabled")]
+        public Input<bool>? DeletionNotificationsEnabled { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -239,6 +251,12 @@ namespace Pulumi.Gcp.SecurityCenter
         /// </summary>
         [Input("configId")]
         public Input<string>? ConfigId { get; set; }
+
+        /// <summary>
+        /// Indicates whether the notifications will be sent for deleted findings.
+        /// </summary>
+        [Input("deletionNotificationsEnabled")]
+        public Input<bool>? DeletionNotificationsEnabled { get; set; }
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

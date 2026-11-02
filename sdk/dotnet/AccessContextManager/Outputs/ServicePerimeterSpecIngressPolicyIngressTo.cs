@@ -20,8 +20,9 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServicePerimeterSpecIngressPolicyIngressToOperation> Operations;
         /// <summary>
-        /// A list of resources, currently only projects in the form
-        /// `projects/&lt;projectnumber&gt;`, protected by this `ServicePerimeter`
+        /// A list of resources protected by this `ServicePerimeter`, in the form
+        /// `projects/{project_number}`, `folders/{folder_number}`, or
+        /// `organizations/{organization_number}`,
         /// that are allowed to be accessed by sources defined in the
         /// corresponding `IngressFrom`. A request matches if it contains
         /// a resource in this list. If `*` is specified for resources,

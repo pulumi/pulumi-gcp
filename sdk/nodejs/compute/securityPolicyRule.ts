@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ *
  * ### Security Policy Rule Default Rule
  *
  * ```typescript
@@ -79,6 +80,7 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ *
  * ### Security Policy Rule Multiple Rules
  *
  * ```typescript
@@ -120,6 +122,7 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ *
  * ### Security Policy Rule Advanced Features
  *
  * ```typescript
@@ -158,6 +161,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Security Policy Rule With Body Exclude
  *
  * ```typescript
@@ -246,6 +250,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultBackendService],
  * });
  * ```
+ *
  * ### Security Policy Rule Request Body Expression
  *
  * ```typescript

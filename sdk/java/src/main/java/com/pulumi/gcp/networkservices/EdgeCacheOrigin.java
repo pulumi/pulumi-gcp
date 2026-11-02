@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Edge Cache Origin Advanced
  * 
  * <pre>
@@ -151,6 +152,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Network Services Edge Cache Origin V4auth
  * 
  * <pre>

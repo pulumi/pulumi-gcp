@@ -653,6 +653,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+
         ### Organization Security Policy Rule Expression
 
         ```python
@@ -674,6 +675,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+
         ### Organization Security Policy Rule With Preconfigured Waf Config
 
         ```python
@@ -717,6 +719,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+
         ### Organization Security Policy Rule With Header Action
 
         ```python
@@ -750,6 +753,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+
         ### Organization Security Policy Rule With Redirect
 
         ```python
@@ -775,6 +779,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+
         ### Organization Security Policy Rule Firewall
 
         ```python
@@ -908,6 +913,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+
         ### Organization Security Policy Rule Expression
 
         ```python
@@ -929,6 +935,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+
         ### Organization Security Policy Rule With Preconfigured Waf Config
 
         ```python
@@ -972,6 +979,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+
         ### Organization Security Policy Rule With Header Action
 
         ```python
@@ -1005,6 +1013,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+
         ### Organization Security Policy Rule With Redirect
 
         ```python
@@ -1030,6 +1039,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+
         ### Organization Security Policy Rule Firewall
 
         ```python

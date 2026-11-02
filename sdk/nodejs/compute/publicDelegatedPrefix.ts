@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  *     parentPrefix: advertised.id,
  * });
  * ```
+ *
  * ### Public Delegated Prefixes Ipv6
  *
  * ```typescript
@@ -68,6 +69,7 @@ import * as utilities from "../utilities";
  *     mode: "EXTERNAL_IPV6_FORWARDING_RULE_CREATION",
  * });
  * ```
+ *
  * ### Public Delegated Prefix Ipv6 Subnet Mode
  *
  * ```typescript
@@ -98,6 +100,7 @@ import * as utilities from "../utilities";
  *     mode: "EXTERNAL_IPV6_SUBNETWORK_CREATION",
  * });
  * ```
+ *
  * ### Public Delegated Prefix Internal Ipv6 Subnet Mode
  *
  * ```typescript

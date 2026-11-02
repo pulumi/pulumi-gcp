@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Organization Access Approval Active Key Version
  *
  * ```typescript

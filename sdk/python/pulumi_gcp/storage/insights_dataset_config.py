@@ -851,6 +851,7 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Storage Insights Dataset Config Excludes
 
         ```python
@@ -991,6 +992,7 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Storage Insights Dataset Config Excludes
 
         ```python

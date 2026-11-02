@@ -57,6 +57,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Featurestore With Beta Fields
 //
 // ```go
@@ -94,6 +95,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Featurestore Scaling
 //
 // ```go

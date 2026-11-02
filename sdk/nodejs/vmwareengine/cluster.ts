@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Vmware Engine Cluster Full
  *
  * ```typescript
@@ -113,6 +114,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vmware Engine Cluster Nfs Datastore Filestore
  *
  * ```typescript
@@ -227,6 +229,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [psaNetworkPeering],
  * });
  * ```
+ *
  * ### Vmware Engine Cluster Nfs Datastore Netapp
  *
  * ```typescript

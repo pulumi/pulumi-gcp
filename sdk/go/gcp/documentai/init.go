@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:documentai/schema:Schema":
 		r = &Schema{}
+	case "gcp:documentai/schemaVersion:SchemaVersion":
+		r = &SchemaVersion{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"documentai/schema",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"documentai/schemaVersion",
 		&module{version},
 	)
 }

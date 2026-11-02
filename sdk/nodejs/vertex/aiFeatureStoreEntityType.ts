@@ -62,6 +62,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Featurestore Entitytype With Beta Fields
  *
  * ```typescript

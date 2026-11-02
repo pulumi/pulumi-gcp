@@ -856,6 +856,7 @@ class Routine(pulumi.CustomResource):
             security_mode="INVOKER",
             definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
         ```
+
         ### Bigquery Routine Json
 
         ```python
@@ -881,6 +882,7 @@ class Routine(pulumi.CustomResource):
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
+
         ### Bigquery Routine Tvf
 
         ```python
@@ -911,6 +913,7 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
+
         ### Bigquery Routine Table Type
 
         ```python
@@ -939,6 +942,7 @@ class Routine(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Bigquery Routine Pyspark
 
         ```python
@@ -980,6 +984,7 @@ class Routine(pulumi.CustomResource):
                 "runtime_version": "2.1",
             })
         ```
+
         ### Bigquery Routine Pyspark Mainfile
 
         ```python
@@ -1006,6 +1011,7 @@ class Routine(pulumi.CustomResource):
                 "archive_uris": ["gs://test-bucket/distribute_in_executor.tar.gz"],
             })
         ```
+
         ### Bigquery Routine Spark Jar
 
         ```python
@@ -1035,6 +1041,7 @@ class Routine(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Routine Data Governance Type
 
         ```python
@@ -1055,6 +1062,7 @@ class Routine(pulumi.CustomResource):
             }],
             return_type="{\\"typeKind\\" :  \\"STRING\\"}")
         ```
+
         ### Bigquery Routine Remote Function
 
         ```python
@@ -1081,6 +1089,7 @@ class Routine(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Routine Python Function
 
         ```python
@@ -1221,6 +1230,7 @@ class Routine(pulumi.CustomResource):
             security_mode="INVOKER",
             definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
         ```
+
         ### Bigquery Routine Json
 
         ```python
@@ -1246,6 +1256,7 @@ class Routine(pulumi.CustomResource):
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
+
         ### Bigquery Routine Tvf
 
         ```python
@@ -1276,6 +1287,7 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
+
         ### Bigquery Routine Table Type
 
         ```python
@@ -1304,6 +1316,7 @@ class Routine(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Bigquery Routine Pyspark
 
         ```python
@@ -1345,6 +1358,7 @@ class Routine(pulumi.CustomResource):
                 "runtime_version": "2.1",
             })
         ```
+
         ### Bigquery Routine Pyspark Mainfile
 
         ```python
@@ -1371,6 +1385,7 @@ class Routine(pulumi.CustomResource):
                 "archive_uris": ["gs://test-bucket/distribute_in_executor.tar.gz"],
             })
         ```
+
         ### Bigquery Routine Spark Jar
 
         ```python
@@ -1400,6 +1415,7 @@ class Routine(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Routine Data Governance Type
 
         ```python
@@ -1420,6 +1436,7 @@ class Routine(pulumi.CustomResource):
             }],
             return_type="{\\"typeKind\\" :  \\"STRING\\"}")
         ```
+
         ### Bigquery Routine Remote Function
 
         ```python
@@ -1446,6 +1463,7 @@ class Routine(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Routine Python Function
 
         ```python

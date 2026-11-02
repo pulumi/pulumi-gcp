@@ -98,6 +98,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Config Hyperdisk
 //
 // ```go
@@ -166,6 +167,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Config Hyperdisk Source Snapshot
 //
 // ### Workstation Config Persistent Directories
@@ -249,6 +251,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Config Source Snapshot
 //
 // ```go
@@ -328,6 +331,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Config Shielded Instance Config
 //
 // ```go
@@ -398,6 +402,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Config Accelerators
 //
 // ```go
@@ -470,6 +475,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Config Boost
 //
 // ```go
@@ -555,6 +561,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Config Encryption Key
 //
 // ```go
@@ -652,6 +659,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Config Allowed Ports
 //
 // ```go
@@ -732,6 +740,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workstation Config Idle Action
 //
 // ```go

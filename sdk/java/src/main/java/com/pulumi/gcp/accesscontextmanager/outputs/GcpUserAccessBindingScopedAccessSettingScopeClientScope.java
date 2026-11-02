@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.accesscontextmanager.outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication;
+import com.pulumi.gcp.accesscontextmanager.outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,12 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScope {
      * 
      */
     private @Nullable GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication restrictedClientApplication;
+    /**
+     * @return Optional. The Google Cloud project that is subject to this binding&#39;s scope.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject restrictedProject;
 
     private GcpUserAccessBindingScopedAccessSettingScopeClientScope() {}
     /**
@@ -26,6 +33,14 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScope {
      */
     public Optional<GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication> restrictedClientApplication() {
         return Optional.ofNullable(this.restrictedClientApplication);
+    }
+    /**
+     * @return Optional. The Google Cloud project that is subject to this binding&#39;s scope.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject> restrictedProject() {
+        return Optional.ofNullable(this.restrictedProject);
     }
 
     public static Builder builder() {
@@ -38,10 +53,12 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScope {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication restrictedClientApplication;
+        private @Nullable GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject restrictedProject;
         public Builder() {}
         public Builder(GcpUserAccessBindingScopedAccessSettingScopeClientScope defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.restrictedClientApplication = defaults.restrictedClientApplication;
+    	      this.restrictedProject = defaults.restrictedProject;
         }
 
         @CustomType.Setter
@@ -50,9 +67,16 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScope {
             this.restrictedClientApplication = restrictedClientApplication;
             return this;
         }
+        @CustomType.Setter
+        public Builder restrictedProject(@Nullable GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject restrictedProject) {
+
+            this.restrictedProject = restrictedProject;
+            return this;
+        }
         public GcpUserAccessBindingScopedAccessSettingScopeClientScope build() {
             final var _resultValue = new GcpUserAccessBindingScopedAccessSettingScopeClientScope();
             _resultValue.restrictedClientApplication = restrictedClientApplication;
+            _resultValue.restrictedProject = restrictedProject;
             return _resultValue;
         }
     }

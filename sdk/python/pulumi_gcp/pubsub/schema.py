@@ -315,6 +315,7 @@ class Schema(pulumi.CustomResource):
         }
         \"\"\")
         ```
+
         ### Pubsub Schema Protobuf
 
         ```python
@@ -422,6 +423,7 @@ class Schema(pulumi.CustomResource):
         }
         \"\"\")
         ```
+
         ### Pubsub Schema Protobuf
 
         ```python

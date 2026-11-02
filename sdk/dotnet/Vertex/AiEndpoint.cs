@@ -122,6 +122,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Endpoint Private Service Connect
     /// 
     /// ```csharp
@@ -134,7 +135,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
-    ///         Name = "psc-network-_78545",
+    ///         Name = "psc-network-_72437",
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
@@ -170,6 +171,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Endpoint Dedicated Endpoint
     /// 
     /// ```csharp

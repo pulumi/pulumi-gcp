@@ -932,6 +932,7 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
+
         ### Healthcare Fhir Store Streaming Config
 
         ```python
@@ -977,6 +978,7 @@ class FhirStore(pulumi.CustomResource):
             }])
         topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
+
         ### Healthcare Fhir Store Notification Configs
 
         ```python
@@ -1004,6 +1006,7 @@ class FhirStore(pulumi.CustomResource):
                 "send_previous_resource_on_delete": True,
             }])
         ```
+
         ### Healthcare Fhir Store Consent Config
 
         ```python
@@ -1041,6 +1044,7 @@ class FhirStore(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Healthcare Fhir Store Validation Config
 
         ```python
@@ -1214,6 +1218,7 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
+
         ### Healthcare Fhir Store Streaming Config
 
         ```python
@@ -1259,6 +1264,7 @@ class FhirStore(pulumi.CustomResource):
             }])
         topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
+
         ### Healthcare Fhir Store Notification Configs
 
         ```python
@@ -1286,6 +1292,7 @@ class FhirStore(pulumi.CustomResource):
                 "send_previous_resource_on_delete": True,
             }])
         ```
+
         ### Healthcare Fhir Store Consent Config
 
         ```python
@@ -1323,6 +1330,7 @@ class FhirStore(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Healthcare Fhir Store Validation Config
 
         ```python

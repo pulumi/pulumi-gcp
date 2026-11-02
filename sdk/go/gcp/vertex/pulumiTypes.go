@@ -13,6 +13,2819 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AiCustomJobEncryptionSpec struct {
+	// Resource name of the Cloud KMS key used to protect the resource.
+	// The Cloud KMS key must be in the same region as the resource. It must have the format
+	// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiCustomJobEncryptionSpecInput is an input type that accepts AiCustomJobEncryptionSpecArgs and AiCustomJobEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiCustomJobEncryptionSpecInput` via:
+//
+//	AiCustomJobEncryptionSpecArgs{...}
+type AiCustomJobEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiCustomJobEncryptionSpecOutput() AiCustomJobEncryptionSpecOutput
+	ToAiCustomJobEncryptionSpecOutputWithContext(context.Context) AiCustomJobEncryptionSpecOutput
+}
+
+type AiCustomJobEncryptionSpecArgs struct {
+	// Resource name of the Cloud KMS key used to protect the resource.
+	// The Cloud KMS key must be in the same region as the resource. It must have the format
+	// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiCustomJobEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiCustomJobEncryptionSpecArgs) ToAiCustomJobEncryptionSpecOutput() AiCustomJobEncryptionSpecOutput {
+	return i.ToAiCustomJobEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobEncryptionSpecArgs) ToAiCustomJobEncryptionSpecOutputWithContext(ctx context.Context) AiCustomJobEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobEncryptionSpecOutput)
+}
+
+func (i AiCustomJobEncryptionSpecArgs) ToAiCustomJobEncryptionSpecPtrOutput() AiCustomJobEncryptionSpecPtrOutput {
+	return i.ToAiCustomJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobEncryptionSpecArgs) ToAiCustomJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiCustomJobEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobEncryptionSpecOutput).ToAiCustomJobEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiCustomJobEncryptionSpecPtrInput is an input type that accepts AiCustomJobEncryptionSpecArgs, AiCustomJobEncryptionSpecPtr and AiCustomJobEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiCustomJobEncryptionSpecPtrInput` via:
+//
+//	        AiCustomJobEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiCustomJobEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiCustomJobEncryptionSpecPtrOutput() AiCustomJobEncryptionSpecPtrOutput
+	ToAiCustomJobEncryptionSpecPtrOutputWithContext(context.Context) AiCustomJobEncryptionSpecPtrOutput
+}
+
+type aiCustomJobEncryptionSpecPtrType AiCustomJobEncryptionSpecArgs
+
+func AiCustomJobEncryptionSpecPtr(v *AiCustomJobEncryptionSpecArgs) AiCustomJobEncryptionSpecPtrInput {
+	return (*aiCustomJobEncryptionSpecPtrType)(v)
+}
+
+func (*aiCustomJobEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiCustomJobEncryptionSpecPtrType) ToAiCustomJobEncryptionSpecPtrOutput() AiCustomJobEncryptionSpecPtrOutput {
+	return i.ToAiCustomJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiCustomJobEncryptionSpecPtrType) ToAiCustomJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiCustomJobEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobEncryptionSpecPtrOutput)
+}
+
+type AiCustomJobEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobEncryptionSpecOutput) ToAiCustomJobEncryptionSpecOutput() AiCustomJobEncryptionSpecOutput {
+	return o
+}
+
+func (o AiCustomJobEncryptionSpecOutput) ToAiCustomJobEncryptionSpecOutputWithContext(ctx context.Context) AiCustomJobEncryptionSpecOutput {
+	return o
+}
+
+func (o AiCustomJobEncryptionSpecOutput) ToAiCustomJobEncryptionSpecPtrOutput() AiCustomJobEncryptionSpecPtrOutput {
+	return o.ToAiCustomJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiCustomJobEncryptionSpecOutput) ToAiCustomJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiCustomJobEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiCustomJobEncryptionSpec) *AiCustomJobEncryptionSpec {
+		return &v
+	}).(AiCustomJobEncryptionSpecPtrOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource.
+// The Cloud KMS key must be in the same region as the resource. It must have the format
+// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o AiCustomJobEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiCustomJobEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobEncryptionSpecPtrOutput) ToAiCustomJobEncryptionSpecPtrOutput() AiCustomJobEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobEncryptionSpecPtrOutput) ToAiCustomJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiCustomJobEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobEncryptionSpecPtrOutput) Elem() AiCustomJobEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiCustomJobEncryptionSpec) AiCustomJobEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiCustomJobEncryptionSpec
+		return ret
+	}).(AiCustomJobEncryptionSpecOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource.
+// The Cloud KMS key must be in the same region as the resource. It must have the format
+// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o AiCustomJobEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// AiCustomJobErrorInput is an input type that accepts AiCustomJobErrorArgs and AiCustomJobErrorOutput values.
+// You can construct a concrete instance of `AiCustomJobErrorInput` via:
+//
+//	AiCustomJobErrorArgs{...}
+type AiCustomJobErrorInput interface {
+	pulumi.Input
+
+	ToAiCustomJobErrorOutput() AiCustomJobErrorOutput
+	ToAiCustomJobErrorOutputWithContext(context.Context) AiCustomJobErrorOutput
+}
+
+type AiCustomJobErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiCustomJobErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobError)(nil)).Elem()
+}
+
+func (i AiCustomJobErrorArgs) ToAiCustomJobErrorOutput() AiCustomJobErrorOutput {
+	return i.ToAiCustomJobErrorOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobErrorArgs) ToAiCustomJobErrorOutputWithContext(ctx context.Context) AiCustomJobErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobErrorOutput)
+}
+
+// AiCustomJobErrorArrayInput is an input type that accepts AiCustomJobErrorArray and AiCustomJobErrorArrayOutput values.
+// You can construct a concrete instance of `AiCustomJobErrorArrayInput` via:
+//
+//	AiCustomJobErrorArray{ AiCustomJobErrorArgs{...} }
+type AiCustomJobErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiCustomJobErrorArrayOutput() AiCustomJobErrorArrayOutput
+	ToAiCustomJobErrorArrayOutputWithContext(context.Context) AiCustomJobErrorArrayOutput
+}
+
+type AiCustomJobErrorArray []AiCustomJobErrorInput
+
+func (AiCustomJobErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobError)(nil)).Elem()
+}
+
+func (i AiCustomJobErrorArray) ToAiCustomJobErrorArrayOutput() AiCustomJobErrorArrayOutput {
+	return i.ToAiCustomJobErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobErrorArray) ToAiCustomJobErrorArrayOutputWithContext(ctx context.Context) AiCustomJobErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobErrorArrayOutput)
+}
+
+type AiCustomJobErrorOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobError)(nil)).Elem()
+}
+
+func (o AiCustomJobErrorOutput) ToAiCustomJobErrorOutput() AiCustomJobErrorOutput {
+	return o
+}
+
+func (o AiCustomJobErrorOutput) ToAiCustomJobErrorOutputWithContext(ctx context.Context) AiCustomJobErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiCustomJobErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiCustomJobError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English.
+func (o AiCustomJobErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobError)(nil)).Elem()
+}
+
+func (o AiCustomJobErrorArrayOutput) ToAiCustomJobErrorArrayOutput() AiCustomJobErrorArrayOutput {
+	return o
+}
+
+func (o AiCustomJobErrorArrayOutput) ToAiCustomJobErrorArrayOutputWithContext(ctx context.Context) AiCustomJobErrorArrayOutput {
+	return o
+}
+
+func (o AiCustomJobErrorArrayOutput) Index(i pulumi.IntInput) AiCustomJobErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiCustomJobError {
+		return vs[0].([]AiCustomJobError)[vs[1].(int)]
+	}).(AiCustomJobErrorOutput)
+}
+
+type AiCustomJobJobSpec struct {
+	// The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob.
+	// Structure is documented below.
+	BaseOutputDirectory *AiCustomJobJobSpecBaseOutputDirectory `pulumi:"baseOutputDirectory"`
+	// Whether you want Vertex AI to enable access to the customized dashboard in training chief container.
+	EnableDashboardAccess *bool `pulumi:"enableDashboardAccess"`
+	// Whether you want Vertex AI to enable interactive shell access to training containers.
+	EnableWebAccess *bool `pulumi:"enableWebAccess"`
+	// The full name of the Compute Engine network to which the Job should be peered.
+	Network *string `pulumi:"network"`
+	// Configuration for PSC-I for CustomJob.
+	// Structure is documented below.
+	PscInterfaceConfig *AiCustomJobJobSpecPscInterfaceConfig `pulumi:"pscInterfaceConfig"`
+	// A list of names for the reserved ip ranges under the VPC network that can be used for this job.
+	ReservedIpRanges []string `pulumi:"reservedIpRanges"`
+	// Scheduling options for a CustomJob.
+	// Structure is documented below.
+	Scheduling *AiCustomJobJobSpecScheduling `pulumi:"scheduling"`
+	// Specifies the service account for workload run-as account.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The name of a Vertex AI Tensorboard resource to which this CustomJob will upload Tensorboard logs.
+	Tensorboard *string `pulumi:"tensorboard"`
+	// The spec of the worker pools including machine type and Docker image.
+	// All worker pools except the first one are optional and can be skipped by providing an empty value.
+	// Structure is documented below.
+	WorkerPoolSpecs []AiCustomJobJobSpecWorkerPoolSpec `pulumi:"workerPoolSpecs"`
+}
+
+// AiCustomJobJobSpecInput is an input type that accepts AiCustomJobJobSpecArgs and AiCustomJobJobSpecOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecInput` via:
+//
+//	AiCustomJobJobSpecArgs{...}
+type AiCustomJobJobSpecInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecOutput() AiCustomJobJobSpecOutput
+	ToAiCustomJobJobSpecOutputWithContext(context.Context) AiCustomJobJobSpecOutput
+}
+
+type AiCustomJobJobSpecArgs struct {
+	// The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob.
+	// Structure is documented below.
+	BaseOutputDirectory AiCustomJobJobSpecBaseOutputDirectoryPtrInput `pulumi:"baseOutputDirectory"`
+	// Whether you want Vertex AI to enable access to the customized dashboard in training chief container.
+	EnableDashboardAccess pulumi.BoolPtrInput `pulumi:"enableDashboardAccess"`
+	// Whether you want Vertex AI to enable interactive shell access to training containers.
+	EnableWebAccess pulumi.BoolPtrInput `pulumi:"enableWebAccess"`
+	// The full name of the Compute Engine network to which the Job should be peered.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Configuration for PSC-I for CustomJob.
+	// Structure is documented below.
+	PscInterfaceConfig AiCustomJobJobSpecPscInterfaceConfigPtrInput `pulumi:"pscInterfaceConfig"`
+	// A list of names for the reserved ip ranges under the VPC network that can be used for this job.
+	ReservedIpRanges pulumi.StringArrayInput `pulumi:"reservedIpRanges"`
+	// Scheduling options for a CustomJob.
+	// Structure is documented below.
+	Scheduling AiCustomJobJobSpecSchedulingPtrInput `pulumi:"scheduling"`
+	// Specifies the service account for workload run-as account.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// The name of a Vertex AI Tensorboard resource to which this CustomJob will upload Tensorboard logs.
+	Tensorboard pulumi.StringPtrInput `pulumi:"tensorboard"`
+	// The spec of the worker pools including machine type and Docker image.
+	// All worker pools except the first one are optional and can be skipped by providing an empty value.
+	// Structure is documented below.
+	WorkerPoolSpecs AiCustomJobJobSpecWorkerPoolSpecArrayInput `pulumi:"workerPoolSpecs"`
+}
+
+func (AiCustomJobJobSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpec)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecArgs) ToAiCustomJobJobSpecOutput() AiCustomJobJobSpecOutput {
+	return i.ToAiCustomJobJobSpecOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecArgs) ToAiCustomJobJobSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecOutput)
+}
+
+func (i AiCustomJobJobSpecArgs) ToAiCustomJobJobSpecPtrOutput() AiCustomJobJobSpecPtrOutput {
+	return i.ToAiCustomJobJobSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecArgs) ToAiCustomJobJobSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecOutput).ToAiCustomJobJobSpecPtrOutputWithContext(ctx)
+}
+
+// AiCustomJobJobSpecPtrInput is an input type that accepts AiCustomJobJobSpecArgs, AiCustomJobJobSpecPtr and AiCustomJobJobSpecPtrOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecPtrInput` via:
+//
+//	        AiCustomJobJobSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiCustomJobJobSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecPtrOutput() AiCustomJobJobSpecPtrOutput
+	ToAiCustomJobJobSpecPtrOutputWithContext(context.Context) AiCustomJobJobSpecPtrOutput
+}
+
+type aiCustomJobJobSpecPtrType AiCustomJobJobSpecArgs
+
+func AiCustomJobJobSpecPtr(v *AiCustomJobJobSpecArgs) AiCustomJobJobSpecPtrInput {
+	return (*aiCustomJobJobSpecPtrType)(v)
+}
+
+func (*aiCustomJobJobSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpec)(nil)).Elem()
+}
+
+func (i *aiCustomJobJobSpecPtrType) ToAiCustomJobJobSpecPtrOutput() AiCustomJobJobSpecPtrOutput {
+	return i.ToAiCustomJobJobSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiCustomJobJobSpecPtrType) ToAiCustomJobJobSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecPtrOutput)
+}
+
+type AiCustomJobJobSpecOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecOutput) ToAiCustomJobJobSpecOutput() AiCustomJobJobSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecOutput) ToAiCustomJobJobSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecOutput) ToAiCustomJobJobSpecPtrOutput() AiCustomJobJobSpecPtrOutput {
+	return o.ToAiCustomJobJobSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiCustomJobJobSpecOutput) ToAiCustomJobJobSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiCustomJobJobSpec) *AiCustomJobJobSpec {
+		return &v
+	}).(AiCustomJobJobSpecPtrOutput)
+}
+
+// The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob.
+// Structure is documented below.
+func (o AiCustomJobJobSpecOutput) BaseOutputDirectory() AiCustomJobJobSpecBaseOutputDirectoryPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *AiCustomJobJobSpecBaseOutputDirectory { return v.BaseOutputDirectory }).(AiCustomJobJobSpecBaseOutputDirectoryPtrOutput)
+}
+
+// Whether you want Vertex AI to enable access to the customized dashboard in training chief container.
+func (o AiCustomJobJobSpecOutput) EnableDashboardAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *bool { return v.EnableDashboardAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Whether you want Vertex AI to enable interactive shell access to training containers.
+func (o AiCustomJobJobSpecOutput) EnableWebAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *bool { return v.EnableWebAccess }).(pulumi.BoolPtrOutput)
+}
+
+// The full name of the Compute Engine network to which the Job should be peered.
+func (o AiCustomJobJobSpecOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for PSC-I for CustomJob.
+// Structure is documented below.
+func (o AiCustomJobJobSpecOutput) PscInterfaceConfig() AiCustomJobJobSpecPscInterfaceConfigPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *AiCustomJobJobSpecPscInterfaceConfig { return v.PscInterfaceConfig }).(AiCustomJobJobSpecPscInterfaceConfigPtrOutput)
+}
+
+// A list of names for the reserved ip ranges under the VPC network that can be used for this job.
+func (o AiCustomJobJobSpecOutput) ReservedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) []string { return v.ReservedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Scheduling options for a CustomJob.
+// Structure is documented below.
+func (o AiCustomJobJobSpecOutput) Scheduling() AiCustomJobJobSpecSchedulingPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *AiCustomJobJobSpecScheduling { return v.Scheduling }).(AiCustomJobJobSpecSchedulingPtrOutput)
+}
+
+// Specifies the service account for workload run-as account.
+func (o AiCustomJobJobSpecOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// The name of a Vertex AI Tensorboard resource to which this CustomJob will upload Tensorboard logs.
+func (o AiCustomJobJobSpecOutput) Tensorboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *string { return v.Tensorboard }).(pulumi.StringPtrOutput)
+}
+
+// The spec of the worker pools including machine type and Docker image.
+// All worker pools except the first one are optional and can be skipped by providing an empty value.
+// Structure is documented below.
+func (o AiCustomJobJobSpecOutput) WorkerPoolSpecs() AiCustomJobJobSpecWorkerPoolSpecArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) []AiCustomJobJobSpecWorkerPoolSpec { return v.WorkerPoolSpecs }).(AiCustomJobJobSpecWorkerPoolSpecArrayOutput)
+}
+
+type AiCustomJobJobSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecPtrOutput) ToAiCustomJobJobSpecPtrOutput() AiCustomJobJobSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecPtrOutput) ToAiCustomJobJobSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecPtrOutput) Elem() AiCustomJobJobSpecOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) AiCustomJobJobSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiCustomJobJobSpec
+		return ret
+	}).(AiCustomJobJobSpecOutput)
+}
+
+// The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob.
+// Structure is documented below.
+func (o AiCustomJobJobSpecPtrOutput) BaseOutputDirectory() AiCustomJobJobSpecBaseOutputDirectoryPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *AiCustomJobJobSpecBaseOutputDirectory {
+		if v == nil {
+			return nil
+		}
+		return v.BaseOutputDirectory
+	}).(AiCustomJobJobSpecBaseOutputDirectoryPtrOutput)
+}
+
+// Whether you want Vertex AI to enable access to the customized dashboard in training chief container.
+func (o AiCustomJobJobSpecPtrOutput) EnableDashboardAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDashboardAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether you want Vertex AI to enable interactive shell access to training containers.
+func (o AiCustomJobJobSpecPtrOutput) EnableWebAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableWebAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The full name of the Compute Engine network to which the Job should be peered.
+func (o AiCustomJobJobSpecPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for PSC-I for CustomJob.
+// Structure is documented below.
+func (o AiCustomJobJobSpecPtrOutput) PscInterfaceConfig() AiCustomJobJobSpecPscInterfaceConfigPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *AiCustomJobJobSpecPscInterfaceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PscInterfaceConfig
+	}).(AiCustomJobJobSpecPscInterfaceConfigPtrOutput)
+}
+
+// A list of names for the reserved ip ranges under the VPC network that can be used for this job.
+func (o AiCustomJobJobSpecPtrOutput) ReservedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ReservedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Scheduling options for a CustomJob.
+// Structure is documented below.
+func (o AiCustomJobJobSpecPtrOutput) Scheduling() AiCustomJobJobSpecSchedulingPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *AiCustomJobJobSpecScheduling {
+		if v == nil {
+			return nil
+		}
+		return v.Scheduling
+	}).(AiCustomJobJobSpecSchedulingPtrOutput)
+}
+
+// Specifies the service account for workload run-as account.
+func (o AiCustomJobJobSpecPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of a Vertex AI Tensorboard resource to which this CustomJob will upload Tensorboard logs.
+func (o AiCustomJobJobSpecPtrOutput) Tensorboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tensorboard
+	}).(pulumi.StringPtrOutput)
+}
+
+// The spec of the worker pools including machine type and Docker image.
+// All worker pools except the first one are optional and can be skipped by providing an empty value.
+// Structure is documented below.
+func (o AiCustomJobJobSpecPtrOutput) WorkerPoolSpecs() AiCustomJobJobSpecWorkerPoolSpecArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) []AiCustomJobJobSpecWorkerPoolSpec {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerPoolSpecs
+	}).(AiCustomJobJobSpecWorkerPoolSpecArrayOutput)
+}
+
+type AiCustomJobJobSpecBaseOutputDirectory struct {
+	// Cloud Storage folder URL to store the output.
+	OutputUriPrefix string `pulumi:"outputUriPrefix"`
+}
+
+// AiCustomJobJobSpecBaseOutputDirectoryInput is an input type that accepts AiCustomJobJobSpecBaseOutputDirectoryArgs and AiCustomJobJobSpecBaseOutputDirectoryOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecBaseOutputDirectoryInput` via:
+//
+//	AiCustomJobJobSpecBaseOutputDirectoryArgs{...}
+type AiCustomJobJobSpecBaseOutputDirectoryInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecBaseOutputDirectoryOutput() AiCustomJobJobSpecBaseOutputDirectoryOutput
+	ToAiCustomJobJobSpecBaseOutputDirectoryOutputWithContext(context.Context) AiCustomJobJobSpecBaseOutputDirectoryOutput
+}
+
+type AiCustomJobJobSpecBaseOutputDirectoryArgs struct {
+	// Cloud Storage folder URL to store the output.
+	OutputUriPrefix pulumi.StringInput `pulumi:"outputUriPrefix"`
+}
+
+func (AiCustomJobJobSpecBaseOutputDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecBaseOutputDirectory)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecBaseOutputDirectoryArgs) ToAiCustomJobJobSpecBaseOutputDirectoryOutput() AiCustomJobJobSpecBaseOutputDirectoryOutput {
+	return i.ToAiCustomJobJobSpecBaseOutputDirectoryOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecBaseOutputDirectoryArgs) ToAiCustomJobJobSpecBaseOutputDirectoryOutputWithContext(ctx context.Context) AiCustomJobJobSpecBaseOutputDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecBaseOutputDirectoryOutput)
+}
+
+func (i AiCustomJobJobSpecBaseOutputDirectoryArgs) ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutput() AiCustomJobJobSpecBaseOutputDirectoryPtrOutput {
+	return i.ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecBaseOutputDirectoryArgs) ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecBaseOutputDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecBaseOutputDirectoryOutput).ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutputWithContext(ctx)
+}
+
+// AiCustomJobJobSpecBaseOutputDirectoryPtrInput is an input type that accepts AiCustomJobJobSpecBaseOutputDirectoryArgs, AiCustomJobJobSpecBaseOutputDirectoryPtr and AiCustomJobJobSpecBaseOutputDirectoryPtrOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecBaseOutputDirectoryPtrInput` via:
+//
+//	        AiCustomJobJobSpecBaseOutputDirectoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiCustomJobJobSpecBaseOutputDirectoryPtrInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutput() AiCustomJobJobSpecBaseOutputDirectoryPtrOutput
+	ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutputWithContext(context.Context) AiCustomJobJobSpecBaseOutputDirectoryPtrOutput
+}
+
+type aiCustomJobJobSpecBaseOutputDirectoryPtrType AiCustomJobJobSpecBaseOutputDirectoryArgs
+
+func AiCustomJobJobSpecBaseOutputDirectoryPtr(v *AiCustomJobJobSpecBaseOutputDirectoryArgs) AiCustomJobJobSpecBaseOutputDirectoryPtrInput {
+	return (*aiCustomJobJobSpecBaseOutputDirectoryPtrType)(v)
+}
+
+func (*aiCustomJobJobSpecBaseOutputDirectoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecBaseOutputDirectory)(nil)).Elem()
+}
+
+func (i *aiCustomJobJobSpecBaseOutputDirectoryPtrType) ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutput() AiCustomJobJobSpecBaseOutputDirectoryPtrOutput {
+	return i.ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i *aiCustomJobJobSpecBaseOutputDirectoryPtrType) ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecBaseOutputDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecBaseOutputDirectoryPtrOutput)
+}
+
+type AiCustomJobJobSpecBaseOutputDirectoryOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecBaseOutputDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecBaseOutputDirectory)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecBaseOutputDirectoryOutput) ToAiCustomJobJobSpecBaseOutputDirectoryOutput() AiCustomJobJobSpecBaseOutputDirectoryOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecBaseOutputDirectoryOutput) ToAiCustomJobJobSpecBaseOutputDirectoryOutputWithContext(ctx context.Context) AiCustomJobJobSpecBaseOutputDirectoryOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecBaseOutputDirectoryOutput) ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutput() AiCustomJobJobSpecBaseOutputDirectoryPtrOutput {
+	return o.ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (o AiCustomJobJobSpecBaseOutputDirectoryOutput) ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecBaseOutputDirectoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiCustomJobJobSpecBaseOutputDirectory) *AiCustomJobJobSpecBaseOutputDirectory {
+		return &v
+	}).(AiCustomJobJobSpecBaseOutputDirectoryPtrOutput)
+}
+
+// Cloud Storage folder URL to store the output.
+func (o AiCustomJobJobSpecBaseOutputDirectoryOutput) OutputUriPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecBaseOutputDirectory) string { return v.OutputUriPrefix }).(pulumi.StringOutput)
+}
+
+type AiCustomJobJobSpecBaseOutputDirectoryPtrOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecBaseOutputDirectoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecBaseOutputDirectory)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecBaseOutputDirectoryPtrOutput) ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutput() AiCustomJobJobSpecBaseOutputDirectoryPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecBaseOutputDirectoryPtrOutput) ToAiCustomJobJobSpecBaseOutputDirectoryPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecBaseOutputDirectoryPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecBaseOutputDirectoryPtrOutput) Elem() AiCustomJobJobSpecBaseOutputDirectoryOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecBaseOutputDirectory) AiCustomJobJobSpecBaseOutputDirectory {
+		if v != nil {
+			return *v
+		}
+		var ret AiCustomJobJobSpecBaseOutputDirectory
+		return ret
+	}).(AiCustomJobJobSpecBaseOutputDirectoryOutput)
+}
+
+// Cloud Storage folder URL to store the output.
+func (o AiCustomJobJobSpecBaseOutputDirectoryPtrOutput) OutputUriPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecBaseOutputDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OutputUriPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecPscInterfaceConfig struct {
+	// DNS peering config for the PSC interface.
+	// Structure is documented below.
+	DnsPeeringConfigs []AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig `pulumi:"dnsPeeringConfigs"`
+	// The name of the attachment to connect to.
+	NetworkAttachment *string `pulumi:"networkAttachment"`
+}
+
+// AiCustomJobJobSpecPscInterfaceConfigInput is an input type that accepts AiCustomJobJobSpecPscInterfaceConfigArgs and AiCustomJobJobSpecPscInterfaceConfigOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecPscInterfaceConfigInput` via:
+//
+//	AiCustomJobJobSpecPscInterfaceConfigArgs{...}
+type AiCustomJobJobSpecPscInterfaceConfigInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecPscInterfaceConfigOutput() AiCustomJobJobSpecPscInterfaceConfigOutput
+	ToAiCustomJobJobSpecPscInterfaceConfigOutputWithContext(context.Context) AiCustomJobJobSpecPscInterfaceConfigOutput
+}
+
+type AiCustomJobJobSpecPscInterfaceConfigArgs struct {
+	// DNS peering config for the PSC interface.
+	// Structure is documented below.
+	DnsPeeringConfigs AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayInput `pulumi:"dnsPeeringConfigs"`
+	// The name of the attachment to connect to.
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
+}
+
+func (AiCustomJobJobSpecPscInterfaceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecPscInterfaceConfigArgs) ToAiCustomJobJobSpecPscInterfaceConfigOutput() AiCustomJobJobSpecPscInterfaceConfigOutput {
+	return i.ToAiCustomJobJobSpecPscInterfaceConfigOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecPscInterfaceConfigArgs) ToAiCustomJobJobSpecPscInterfaceConfigOutputWithContext(ctx context.Context) AiCustomJobJobSpecPscInterfaceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecPscInterfaceConfigOutput)
+}
+
+func (i AiCustomJobJobSpecPscInterfaceConfigArgs) ToAiCustomJobJobSpecPscInterfaceConfigPtrOutput() AiCustomJobJobSpecPscInterfaceConfigPtrOutput {
+	return i.ToAiCustomJobJobSpecPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecPscInterfaceConfigArgs) ToAiCustomJobJobSpecPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecPscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecPscInterfaceConfigOutput).ToAiCustomJobJobSpecPscInterfaceConfigPtrOutputWithContext(ctx)
+}
+
+// AiCustomJobJobSpecPscInterfaceConfigPtrInput is an input type that accepts AiCustomJobJobSpecPscInterfaceConfigArgs, AiCustomJobJobSpecPscInterfaceConfigPtr and AiCustomJobJobSpecPscInterfaceConfigPtrOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecPscInterfaceConfigPtrInput` via:
+//
+//	        AiCustomJobJobSpecPscInterfaceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiCustomJobJobSpecPscInterfaceConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecPscInterfaceConfigPtrOutput() AiCustomJobJobSpecPscInterfaceConfigPtrOutput
+	ToAiCustomJobJobSpecPscInterfaceConfigPtrOutputWithContext(context.Context) AiCustomJobJobSpecPscInterfaceConfigPtrOutput
+}
+
+type aiCustomJobJobSpecPscInterfaceConfigPtrType AiCustomJobJobSpecPscInterfaceConfigArgs
+
+func AiCustomJobJobSpecPscInterfaceConfigPtr(v *AiCustomJobJobSpecPscInterfaceConfigArgs) AiCustomJobJobSpecPscInterfaceConfigPtrInput {
+	return (*aiCustomJobJobSpecPscInterfaceConfigPtrType)(v)
+}
+
+func (*aiCustomJobJobSpecPscInterfaceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i *aiCustomJobJobSpecPscInterfaceConfigPtrType) ToAiCustomJobJobSpecPscInterfaceConfigPtrOutput() AiCustomJobJobSpecPscInterfaceConfigPtrOutput {
+	return i.ToAiCustomJobJobSpecPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiCustomJobJobSpecPscInterfaceConfigPtrType) ToAiCustomJobJobSpecPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecPscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecPscInterfaceConfigPtrOutput)
+}
+
+type AiCustomJobJobSpecPscInterfaceConfigOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecPscInterfaceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigOutput) ToAiCustomJobJobSpecPscInterfaceConfigOutput() AiCustomJobJobSpecPscInterfaceConfigOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigOutput) ToAiCustomJobJobSpecPscInterfaceConfigOutputWithContext(ctx context.Context) AiCustomJobJobSpecPscInterfaceConfigOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigOutput) ToAiCustomJobJobSpecPscInterfaceConfigPtrOutput() AiCustomJobJobSpecPscInterfaceConfigPtrOutput {
+	return o.ToAiCustomJobJobSpecPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigOutput) ToAiCustomJobJobSpecPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecPscInterfaceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiCustomJobJobSpecPscInterfaceConfig) *AiCustomJobJobSpecPscInterfaceConfig {
+		return &v
+	}).(AiCustomJobJobSpecPscInterfaceConfigPtrOutput)
+}
+
+// DNS peering config for the PSC interface.
+// Structure is documented below.
+func (o AiCustomJobJobSpecPscInterfaceConfigOutput) DnsPeeringConfigs() AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecPscInterfaceConfig) []AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig {
+		return v.DnsPeeringConfigs
+	}).(AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+// The name of the attachment to connect to.
+func (o AiCustomJobJobSpecPscInterfaceConfigOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecPscInterfaceConfig) *string { return v.NetworkAttachment }).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecPscInterfaceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecPscInterfaceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigPtrOutput) ToAiCustomJobJobSpecPscInterfaceConfigPtrOutput() AiCustomJobJobSpecPscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigPtrOutput) ToAiCustomJobJobSpecPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecPscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigPtrOutput) Elem() AiCustomJobJobSpecPscInterfaceConfigOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecPscInterfaceConfig) AiCustomJobJobSpecPscInterfaceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiCustomJobJobSpecPscInterfaceConfig
+		return ret
+	}).(AiCustomJobJobSpecPscInterfaceConfigOutput)
+}
+
+// DNS peering config for the PSC interface.
+// Structure is documented below.
+func (o AiCustomJobJobSpecPscInterfaceConfigPtrOutput) DnsPeeringConfigs() AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecPscInterfaceConfig) []AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DnsPeeringConfigs
+	}).(AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+// The name of the attachment to connect to.
+func (o AiCustomJobJobSpecPscInterfaceConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecPscInterfaceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig struct {
+	// The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+	Domain string `pulumi:"domain"`
+	// The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
+	TargetNetwork string `pulumi:"targetNetwork"`
+	// The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+	TargetProject string `pulumi:"targetProject"`
+}
+
+// AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigInput is an input type that accepts AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArgs and AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigInput` via:
+//
+//	AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArgs{...}
+type AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput() AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput
+	ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutputWithContext(context.Context) AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput
+}
+
+type AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArgs struct {
+	// The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
+	TargetNetwork pulumi.StringInput `pulumi:"targetNetwork"`
+	// The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+	TargetProject pulumi.StringInput `pulumi:"targetProject"`
+}
+
+func (AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArgs) ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput() AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput {
+	return i.ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArgs) ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput)
+}
+
+// AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayInput is an input type that accepts AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArray and AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayInput` via:
+//
+//	AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArray{ AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArgs{...} }
+type AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput() AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput
+	ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(context.Context) AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput
+}
+
+type AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArray []AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigInput
+
+func (AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArray) ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput() AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return i.ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArray) ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+type AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput) ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput() AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput) ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput {
+	return o
+}
+
+// The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+func (o AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
+func (o AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput) TargetNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig) string { return v.TargetNetwork }).(pulumi.StringOutput)
+}
+
+// The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+func (o AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput) TargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig) string { return v.TargetProject }).(pulumi.StringOutput)
+}
+
+type AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput) ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput() AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput) ToAiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput) Index(i pulumi.IntInput) AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig {
+		return vs[0].([]AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig)[vs[1].(int)]
+	}).(AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput)
+}
+
+type AiCustomJobJobSpecScheduling struct {
+	// Indicates if the job should retry for internal errors after the job starts running.
+	DisableRetries *bool `pulumi:"disableRetries"`
+	// The maximum duration that a job will wait for the requested resources to be provisioned if the scheduling strategy is set to FLEX_START.
+	MaxWaitDuration *string `pulumi:"maxWaitDuration"`
+	// Restarts the entire CustomJob if a worker gets restarted.
+	RestartJobOnWorkerRestart *bool `pulumi:"restartJobOnWorkerRestart"`
+	// This determines which type of scheduling strategy to use. Possible values: ["STANDARD", "SPOT", "FLEX_START"]
+	Strategy *string `pulumi:"strategy"`
+	// The maximum job running time. The default is 7 days. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Timeout *string `pulumi:"timeout"`
+}
+
+// AiCustomJobJobSpecSchedulingInput is an input type that accepts AiCustomJobJobSpecSchedulingArgs and AiCustomJobJobSpecSchedulingOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecSchedulingInput` via:
+//
+//	AiCustomJobJobSpecSchedulingArgs{...}
+type AiCustomJobJobSpecSchedulingInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecSchedulingOutput() AiCustomJobJobSpecSchedulingOutput
+	ToAiCustomJobJobSpecSchedulingOutputWithContext(context.Context) AiCustomJobJobSpecSchedulingOutput
+}
+
+type AiCustomJobJobSpecSchedulingArgs struct {
+	// Indicates if the job should retry for internal errors after the job starts running.
+	DisableRetries pulumi.BoolPtrInput `pulumi:"disableRetries"`
+	// The maximum duration that a job will wait for the requested resources to be provisioned if the scheduling strategy is set to FLEX_START.
+	MaxWaitDuration pulumi.StringPtrInput `pulumi:"maxWaitDuration"`
+	// Restarts the entire CustomJob if a worker gets restarted.
+	RestartJobOnWorkerRestart pulumi.BoolPtrInput `pulumi:"restartJobOnWorkerRestart"`
+	// This determines which type of scheduling strategy to use. Possible values: ["STANDARD", "SPOT", "FLEX_START"]
+	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
+	// The maximum job running time. The default is 7 days. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+}
+
+func (AiCustomJobJobSpecSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecScheduling)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecSchedulingArgs) ToAiCustomJobJobSpecSchedulingOutput() AiCustomJobJobSpecSchedulingOutput {
+	return i.ToAiCustomJobJobSpecSchedulingOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecSchedulingArgs) ToAiCustomJobJobSpecSchedulingOutputWithContext(ctx context.Context) AiCustomJobJobSpecSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecSchedulingOutput)
+}
+
+func (i AiCustomJobJobSpecSchedulingArgs) ToAiCustomJobJobSpecSchedulingPtrOutput() AiCustomJobJobSpecSchedulingPtrOutput {
+	return i.ToAiCustomJobJobSpecSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecSchedulingArgs) ToAiCustomJobJobSpecSchedulingPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecSchedulingOutput).ToAiCustomJobJobSpecSchedulingPtrOutputWithContext(ctx)
+}
+
+// AiCustomJobJobSpecSchedulingPtrInput is an input type that accepts AiCustomJobJobSpecSchedulingArgs, AiCustomJobJobSpecSchedulingPtr and AiCustomJobJobSpecSchedulingPtrOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecSchedulingPtrInput` via:
+//
+//	        AiCustomJobJobSpecSchedulingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiCustomJobJobSpecSchedulingPtrInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecSchedulingPtrOutput() AiCustomJobJobSpecSchedulingPtrOutput
+	ToAiCustomJobJobSpecSchedulingPtrOutputWithContext(context.Context) AiCustomJobJobSpecSchedulingPtrOutput
+}
+
+type aiCustomJobJobSpecSchedulingPtrType AiCustomJobJobSpecSchedulingArgs
+
+func AiCustomJobJobSpecSchedulingPtr(v *AiCustomJobJobSpecSchedulingArgs) AiCustomJobJobSpecSchedulingPtrInput {
+	return (*aiCustomJobJobSpecSchedulingPtrType)(v)
+}
+
+func (*aiCustomJobJobSpecSchedulingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecScheduling)(nil)).Elem()
+}
+
+func (i *aiCustomJobJobSpecSchedulingPtrType) ToAiCustomJobJobSpecSchedulingPtrOutput() AiCustomJobJobSpecSchedulingPtrOutput {
+	return i.ToAiCustomJobJobSpecSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i *aiCustomJobJobSpecSchedulingPtrType) ToAiCustomJobJobSpecSchedulingPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecSchedulingPtrOutput)
+}
+
+type AiCustomJobJobSpecSchedulingOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecScheduling)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecSchedulingOutput) ToAiCustomJobJobSpecSchedulingOutput() AiCustomJobJobSpecSchedulingOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecSchedulingOutput) ToAiCustomJobJobSpecSchedulingOutputWithContext(ctx context.Context) AiCustomJobJobSpecSchedulingOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecSchedulingOutput) ToAiCustomJobJobSpecSchedulingPtrOutput() AiCustomJobJobSpecSchedulingPtrOutput {
+	return o.ToAiCustomJobJobSpecSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (o AiCustomJobJobSpecSchedulingOutput) ToAiCustomJobJobSpecSchedulingPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecSchedulingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiCustomJobJobSpecScheduling) *AiCustomJobJobSpecScheduling {
+		return &v
+	}).(AiCustomJobJobSpecSchedulingPtrOutput)
+}
+
+// Indicates if the job should retry for internal errors after the job starts running.
+func (o AiCustomJobJobSpecSchedulingOutput) DisableRetries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecScheduling) *bool { return v.DisableRetries }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum duration that a job will wait for the requested resources to be provisioned if the scheduling strategy is set to FLEX_START.
+func (o AiCustomJobJobSpecSchedulingOutput) MaxWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecScheduling) *string { return v.MaxWaitDuration }).(pulumi.StringPtrOutput)
+}
+
+// Restarts the entire CustomJob if a worker gets restarted.
+func (o AiCustomJobJobSpecSchedulingOutput) RestartJobOnWorkerRestart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecScheduling) *bool { return v.RestartJobOnWorkerRestart }).(pulumi.BoolPtrOutput)
+}
+
+// This determines which type of scheduling strategy to use. Possible values: ["STANDARD", "SPOT", "FLEX_START"]
+func (o AiCustomJobJobSpecSchedulingOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecScheduling) *string { return v.Strategy }).(pulumi.StringPtrOutput)
+}
+
+// The maximum job running time. The default is 7 days. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o AiCustomJobJobSpecSchedulingOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecScheduling) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecSchedulingPtrOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecSchedulingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecScheduling)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecSchedulingPtrOutput) ToAiCustomJobJobSpecSchedulingPtrOutput() AiCustomJobJobSpecSchedulingPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecSchedulingPtrOutput) ToAiCustomJobJobSpecSchedulingPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecSchedulingPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecSchedulingPtrOutput) Elem() AiCustomJobJobSpecSchedulingOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecScheduling) AiCustomJobJobSpecScheduling {
+		if v != nil {
+			return *v
+		}
+		var ret AiCustomJobJobSpecScheduling
+		return ret
+	}).(AiCustomJobJobSpecSchedulingOutput)
+}
+
+// Indicates if the job should retry for internal errors after the job starts running.
+func (o AiCustomJobJobSpecSchedulingPtrOutput) DisableRetries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecScheduling) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableRetries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum duration that a job will wait for the requested resources to be provisioned if the scheduling strategy is set to FLEX_START.
+func (o AiCustomJobJobSpecSchedulingPtrOutput) MaxWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecScheduling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWaitDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Restarts the entire CustomJob if a worker gets restarted.
+func (o AiCustomJobJobSpecSchedulingPtrOutput) RestartJobOnWorkerRestart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecScheduling) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RestartJobOnWorkerRestart
+	}).(pulumi.BoolPtrOutput)
+}
+
+// This determines which type of scheduling strategy to use. Possible values: ["STANDARD", "SPOT", "FLEX_START"]
+func (o AiCustomJobJobSpecSchedulingPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecScheduling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum job running time. The default is 7 days. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o AiCustomJobJobSpecSchedulingPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecScheduling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpec struct {
+	// The custom container task. Either `containerSpec` or `pythonPackageSpec` can be provided, but not both.
+	// Structure is documented below.
+	ContainerSpec *AiCustomJobJobSpecWorkerPoolSpecContainerSpec `pulumi:"containerSpec"`
+	// Disk spec.
+	// Structure is documented below.
+	DiskSpec *AiCustomJobJobSpecWorkerPoolSpecDiskSpec `pulumi:"diskSpec"`
+	// List of Lustre mounts.
+	// Structure is documented below.
+	LustreMounts []AiCustomJobJobSpecWorkerPoolSpecLustreMount `pulumi:"lustreMounts"`
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec *AiCustomJobJobSpecWorkerPoolSpecMachineSpec `pulumi:"machineSpec"`
+	// List of NFS mount spec.
+	// Structure is documented below.
+	NfsMounts []AiCustomJobJobSpecWorkerPoolSpecNfsMount `pulumi:"nfsMounts"`
+	// The Python packaged task. Either `containerSpec` or `pythonPackageSpec` can be provided, but not both.
+	// Structure is documented below.
+	PythonPackageSpec *AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec `pulumi:"pythonPackageSpec"`
+	// The number of worker replicas to use for this worker pool.
+	ReplicaCount *int `pulumi:"replicaCount"`
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecArgs and AiCustomJobJobSpecWorkerPoolSpecOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecArgs{...}
+type AiCustomJobJobSpecWorkerPoolSpecInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecOutput() AiCustomJobJobSpecWorkerPoolSpecOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecArgs struct {
+	// The custom container task. Either `containerSpec` or `pythonPackageSpec` can be provided, but not both.
+	// Structure is documented below.
+	ContainerSpec AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrInput `pulumi:"containerSpec"`
+	// Disk spec.
+	// Structure is documented below.
+	DiskSpec AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrInput `pulumi:"diskSpec"`
+	// List of Lustre mounts.
+	// Structure is documented below.
+	LustreMounts AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayInput `pulumi:"lustreMounts"`
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrInput `pulumi:"machineSpec"`
+	// List of NFS mount spec.
+	// Structure is documented below.
+	NfsMounts AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayInput `pulumi:"nfsMounts"`
+	// The Python packaged task. Either `containerSpec` or `pythonPackageSpec` can be provided, but not both.
+	// Structure is documented below.
+	PythonPackageSpec AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrInput `pulumi:"pythonPackageSpec"`
+	// The number of worker replicas to use for this worker pool.
+	ReplicaCount pulumi.IntPtrInput `pulumi:"replicaCount"`
+}
+
+func (AiCustomJobJobSpecWorkerPoolSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpec)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecOutput() AiCustomJobJobSpecWorkerPoolSpecOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecOutput)
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecArrayInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecArray and AiCustomJobJobSpecWorkerPoolSpecArrayOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecArrayInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecArray{ AiCustomJobJobSpecWorkerPoolSpecArgs{...} }
+type AiCustomJobJobSpecWorkerPoolSpecArrayInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecArrayOutput() AiCustomJobJobSpecWorkerPoolSpecArrayOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecArrayOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecArrayOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecArray []AiCustomJobJobSpecWorkerPoolSpecInput
+
+func (AiCustomJobJobSpecWorkerPoolSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecWorkerPoolSpec)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecArray) ToAiCustomJobJobSpecWorkerPoolSpecArrayOutput() AiCustomJobJobSpecWorkerPoolSpecArrayOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecArrayOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecArray) ToAiCustomJobJobSpecWorkerPoolSpecArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecArrayOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecOutput() AiCustomJobJobSpecWorkerPoolSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecOutput {
+	return o
+}
+
+// The custom container task. Either `containerSpec` or `pythonPackageSpec` can be provided, but not both.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecOutput) ContainerSpec() AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpec) *AiCustomJobJobSpecWorkerPoolSpecContainerSpec {
+		return v.ContainerSpec
+	}).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput)
+}
+
+// Disk spec.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecOutput) DiskSpec() AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpec) *AiCustomJobJobSpecWorkerPoolSpecDiskSpec { return v.DiskSpec }).(AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput)
+}
+
+// List of Lustre mounts.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecOutput) LustreMounts() AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpec) []AiCustomJobJobSpecWorkerPoolSpecLustreMount {
+		return v.LustreMounts
+	}).(AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput)
+}
+
+// Specification of a single machine.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecOutput) MachineSpec() AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpec) *AiCustomJobJobSpecWorkerPoolSpecMachineSpec {
+		return v.MachineSpec
+	}).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput)
+}
+
+// List of NFS mount spec.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecOutput) NfsMounts() AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpec) []AiCustomJobJobSpecWorkerPoolSpecNfsMount {
+		return v.NfsMounts
+	}).(AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput)
+}
+
+// The Python packaged task. Either `containerSpec` or `pythonPackageSpec` can be provided, but not both.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecOutput) PythonPackageSpec() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpec) *AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec {
+		return v.PythonPackageSpec
+	}).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput)
+}
+
+// The number of worker replicas to use for this worker pool.
+func (o AiCustomJobJobSpecWorkerPoolSpecOutput) ReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpec) *int { return v.ReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecWorkerPoolSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecArrayOutput) ToAiCustomJobJobSpecWorkerPoolSpecArrayOutput() AiCustomJobJobSpecWorkerPoolSpecArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecArrayOutput) ToAiCustomJobJobSpecWorkerPoolSpecArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecArrayOutput) Index(i pulumi.IntInput) AiCustomJobJobSpecWorkerPoolSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiCustomJobJobSpecWorkerPoolSpec {
+		return vs[0].([]AiCustomJobJobSpecWorkerPoolSpec)[vs[1].(int)]
+	}).(AiCustomJobJobSpecWorkerPoolSpecOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpec struct {
+	// The arguments to be passed when starting the container.
+	Args []string `pulumi:"args"`
+	// The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
+	Commands []string `pulumi:"commands"`
+	// Environment variables to be passed to the container. Maximum limit is 100.
+	// Structure is documented below.
+	Envs []AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv `pulumi:"envs"`
+	// The URI of a container image in the Container Registry that is to be run on each worker replica.
+	ImageUri string `pulumi:"imageUri"`
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecContainerSpecInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs and AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecContainerSpecInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs{...}
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs struct {
+	// The arguments to be passed when starting the container.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Environment variables to be passed to the container. Maximum limit is 100.
+	// Structure is documented below.
+	Envs AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayInput `pulumi:"envs"`
+	// The URI of a container image in the Container Registry that is to be run on each worker replica.
+	ImageUri pulumi.StringInput `pulumi:"imageUri"`
+}
+
+func (AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecContainerSpec)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput)
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput).ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutputWithContext(ctx)
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs, AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtr and AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrInput` via:
+//
+//	        AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput
+}
+
+type aiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrType AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs
+
+func AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtr(v *AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs) AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrInput {
+	return (*aiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrType)(v)
+}
+
+func (*aiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecWorkerPoolSpecContainerSpec)(nil)).Elem()
+}
+
+func (i *aiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrType) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrType) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecContainerSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput {
+	return o.ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiCustomJobJobSpecWorkerPoolSpecContainerSpec) *AiCustomJobJobSpecWorkerPoolSpecContainerSpec {
+		return &v
+	}).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput)
+}
+
+// The arguments to be passed when starting the container.
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecContainerSpec) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecContainerSpec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Environment variables to be passed to the container. Maximum limit is 100.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput) Envs() AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecContainerSpec) []AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv {
+		return v.Envs
+	}).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput)
+}
+
+// The URI of a container image in the Container Registry that is to be run on each worker replica.
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput) ImageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecContainerSpec) string { return v.ImageUri }).(pulumi.StringOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecWorkerPoolSpecContainerSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput) Elem() AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecContainerSpec) AiCustomJobJobSpecWorkerPoolSpecContainerSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiCustomJobJobSpecWorkerPoolSpecContainerSpec
+		return ret
+	}).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput)
+}
+
+// The arguments to be passed when starting the container.
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecContainerSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecContainerSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Environment variables to be passed to the container. Maximum limit is 100.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput) Envs() AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecContainerSpec) []AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv {
+		if v == nil {
+			return nil
+		}
+		return v.Envs
+	}).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput)
+}
+
+// The URI of a container image in the Container Registry that is to be run on each worker replica.
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv struct {
+	// Name of the environment variable.
+	Name string `pulumi:"name"`
+	// Value of the environment variable.
+	Value string `pulumi:"value"`
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArgs and AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArgs{...}
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArgs struct {
+	// Name of the environment variable.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of the environment variable.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArgs) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArgs) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput)
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArray and AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArray{ AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArgs{...} }
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArray []AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvInput
+
+func (AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArray) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArray) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of the environment variable.
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput() AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput) ToAiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput) Index(i pulumi.IntInput) AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv {
+		return vs[0].([]AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv)[vs[1].(int)]
+	}).(AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecDiskSpec struct {
+	// Size in GB of the boot disk (default is 100GB).
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Type of the disk. The default value depends on the machine type. Valid values include: "pd-ssd", "pd-standard", "pd-balanced", and "hyperdisk-balanced".
+	BootDiskType *string `pulumi:"bootDiskType"`
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecDiskSpecInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs and AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecDiskSpecInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs{...}
+type AiCustomJobJobSpecWorkerPoolSpecDiskSpecInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput() AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs struct {
+	// Size in GB of the boot disk (default is 100GB).
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Type of the disk. The default value depends on the machine type. Valid values include: "pd-ssd", "pd-standard", "pd-balanced", and "hyperdisk-balanced".
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+}
+
+func (AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecDiskSpec)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput() AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput)
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput).ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutputWithContext(ctx)
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs, AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtr and AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrInput` via:
+//
+//	        AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput
+}
+
+type aiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrType AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs
+
+func AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtr(v *AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs) AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrInput {
+	return (*aiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrType)(v)
+}
+
+func (*aiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecWorkerPoolSpecDiskSpec)(nil)).Elem()
+}
+
+func (i *aiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrType) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrType) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecDiskSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput() AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput {
+	return o.ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiCustomJobJobSpecWorkerPoolSpecDiskSpec) *AiCustomJobJobSpecWorkerPoolSpecDiskSpec {
+		return &v
+	}).(AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput)
+}
+
+// Size in GB of the boot disk (default is 100GB).
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecDiskSpec) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Type of the disk. The default value depends on the machine type. Valid values include: "pd-ssd", "pd-standard", "pd-balanced", and "hyperdisk-balanced".
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecDiskSpec) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecWorkerPoolSpecDiskSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput) ToAiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput) Elem() AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecDiskSpec) AiCustomJobJobSpecWorkerPoolSpecDiskSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiCustomJobJobSpecWorkerPoolSpecDiskSpec
+		return ret
+	}).(AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput)
+}
+
+// Size in GB of the boot disk (default is 100GB).
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecDiskSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the disk. The default value depends on the machine type. Valid values include: "pd-ssd", "pd-standard", "pd-balanced", and "hyperdisk-balanced".
+func (o AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecDiskSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecLustreMount struct {
+	// The name of the Lustre filesystem.
+	Filesystem string `pulumi:"filesystem"`
+	// IP address of the Lustre instance.
+	InstanceIp string `pulumi:"instanceIp"`
+	// Destination mount path. The Lustre file system will be mounted for the user under /mnt/lustre/<mount_point>.
+	MountPoint string `pulumi:"mountPoint"`
+	// The unique identifier of the Lustre volume.
+	VolumeHandle string `pulumi:"volumeHandle"`
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecLustreMountInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecLustreMountArgs and AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecLustreMountInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecLustreMountArgs{...}
+type AiCustomJobJobSpecWorkerPoolSpecLustreMountInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecLustreMountOutput() AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecLustreMountOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecLustreMountArgs struct {
+	// The name of the Lustre filesystem.
+	Filesystem pulumi.StringInput `pulumi:"filesystem"`
+	// IP address of the Lustre instance.
+	InstanceIp pulumi.StringInput `pulumi:"instanceIp"`
+	// Destination mount path. The Lustre file system will be mounted for the user under /mnt/lustre/<mount_point>.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The unique identifier of the Lustre volume.
+	VolumeHandle pulumi.StringInput `pulumi:"volumeHandle"`
+}
+
+func (AiCustomJobJobSpecWorkerPoolSpecLustreMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecLustreMount)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecLustreMountArgs) ToAiCustomJobJobSpecWorkerPoolSpecLustreMountOutput() AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecLustreMountOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecLustreMountArgs) ToAiCustomJobJobSpecWorkerPoolSpecLustreMountOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput)
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecLustreMountArray and AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecLustreMountArray{ AiCustomJobJobSpecWorkerPoolSpecLustreMountArgs{...} }
+type AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput() AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecLustreMountArray []AiCustomJobJobSpecWorkerPoolSpecLustreMountInput
+
+func (AiCustomJobJobSpecWorkerPoolSpecLustreMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecWorkerPoolSpecLustreMount)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecLustreMountArray) ToAiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput() AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecLustreMountArray) ToAiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecLustreMount)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput) ToAiCustomJobJobSpecWorkerPoolSpecLustreMountOutput() AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput) ToAiCustomJobJobSpecWorkerPoolSpecLustreMountOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput {
+	return o
+}
+
+// The name of the Lustre filesystem.
+func (o AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput) Filesystem() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecLustreMount) string { return v.Filesystem }).(pulumi.StringOutput)
+}
+
+// IP address of the Lustre instance.
+func (o AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput) InstanceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecLustreMount) string { return v.InstanceIp }).(pulumi.StringOutput)
+}
+
+// Destination mount path. The Lustre file system will be mounted for the user under /mnt/lustre/<mount_point>.
+func (o AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecLustreMount) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the Lustre volume.
+func (o AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput) VolumeHandle() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecLustreMount) string { return v.VolumeHandle }).(pulumi.StringOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecWorkerPoolSpecLustreMount)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput) ToAiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput() AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput) ToAiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput) Index(i pulumi.IntInput) AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiCustomJobJobSpecWorkerPoolSpecLustreMount {
+		return vs[0].([]AiCustomJobJobSpecWorkerPoolSpecLustreMount)[vs[1].(int)]
+	}).(AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpec struct {
+	// The number of accelerators to attach to the machine.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// The type of accelerator(s) that may be attached to the machine.
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// The type of the machine.
+	MachineType *string `pulumi:"machineType"`
+	// Configuration for using robust to failure reservation.
+	// Structure is documented below.
+	ReservationAffinity *AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity `pulumi:"reservationAffinity"`
+	// The topology of the TPUs.
+	TpuTopology *string `pulumi:"tpuTopology"`
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecMachineSpecInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs and AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecMachineSpecInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs{...}
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs struct {
+	// The number of accelerators to attach to the machine.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// The type of accelerator(s) that may be attached to the machine.
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// The type of the machine.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Configuration for using robust to failure reservation.
+	// Structure is documented below.
+	ReservationAffinity AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	// The topology of the TPUs.
+	TpuTopology pulumi.StringPtrInput `pulumi:"tpuTopology"`
+}
+
+func (AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecMachineSpec)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput)
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput).ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutputWithContext(ctx)
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs, AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtr and AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrInput` via:
+//
+//	        AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput
+}
+
+type aiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrType AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs
+
+func AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtr(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs) AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrInput {
+	return (*aiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrType)(v)
+}
+
+func (*aiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecWorkerPoolSpecMachineSpec)(nil)).Elem()
+}
+
+func (i *aiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrType) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrType) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecMachineSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput {
+	return o.ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *AiCustomJobJobSpecWorkerPoolSpecMachineSpec {
+		return &v
+	}).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput)
+}
+
+// The number of accelerators to attach to the machine.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *int { return v.AcceleratorCount }).(pulumi.IntPtrOutput)
+}
+
+// The type of accelerator(s) that may be attached to the machine.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
+// The type of the machine.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for using robust to failure reservation.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput) ReservationAffinity() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity {
+		return v.ReservationAffinity
+	}).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput)
+}
+
+// The topology of the TPUs.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *string { return v.TpuTopology }).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecWorkerPoolSpecMachineSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput) Elem() AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpec) AiCustomJobJobSpecWorkerPoolSpecMachineSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiCustomJobJobSpecWorkerPoolSpecMachineSpec
+		return ret
+	}).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput)
+}
+
+// The number of accelerators to attach to the machine.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of accelerator(s) that may be attached to the machine.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the machine.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for using robust to failure reservation.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput) ReservationAffinity() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.ReservationAffinity
+	}).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput)
+}
+
+// The topology of the TPUs.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TpuTopology
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity struct {
+	// Corresponds to the label key of a reservation resource.
+	Key *string `pulumi:"key"`
+	// Specifies the reservation affinity type. Possible values: "NO_RESERVATION", "ANY_RESERVATION", and "SPECIFIC_RESERVATION"
+	ReservationAffinityType string `pulumi:"reservationAffinityType"`
+	// Corresponds to the label values of a reservation resource.
+	Values []string `pulumi:"values"`
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs and AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs{...}
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs struct {
+	// Corresponds to the label key of a reservation resource.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Specifies the reservation affinity type. Possible values: "NO_RESERVATION", "ANY_RESERVATION", and "SPECIFIC_RESERVATION"
+	ReservationAffinityType pulumi.StringInput `pulumi:"reservationAffinityType"`
+	// Corresponds to the label values of a reservation resource.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput)
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput).ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs, AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtr and AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrInput` via:
+//
+//	        AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput
+}
+
+type aiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrType AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs
+
+func AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtr(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs) AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrInput {
+	return (*aiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrType)(v)
+}
+
+func (*aiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (i *aiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrType) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *aiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrType) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput {
+	return o.ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity) *AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity {
+		return &v
+	}).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput)
+}
+
+// Corresponds to the label key of a reservation resource.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the reservation affinity type. Possible values: "NO_RESERVATION", "ANY_RESERVATION", and "SPECIFIC_RESERVATION"
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput) ReservationAffinityType() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity) string {
+		return v.ReservationAffinityType
+	}).(pulumi.StringOutput)
+}
+
+// Corresponds to the label values of a reservation resource.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput) ToAiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput) Elem() AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity) AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity
+		return ret
+	}).(AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput)
+}
+
+// Corresponds to the label key of a reservation resource.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the reservation affinity type. Possible values: "NO_RESERVATION", "ANY_RESERVATION", and "SPECIFIC_RESERVATION"
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput) ReservationAffinityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReservationAffinityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label values of a reservation resource.
+func (o AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecNfsMount struct {
+	// Destination mount path. The path must be absolute.
+	MountPoint string `pulumi:"mountPoint"`
+	// Source path exported from NFS database.
+	Path string `pulumi:"path"`
+	// IP address of the NFS server.
+	Server string `pulumi:"server"`
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecNfsMountInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecNfsMountArgs and AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecNfsMountInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecNfsMountArgs{...}
+type AiCustomJobJobSpecWorkerPoolSpecNfsMountInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecNfsMountOutput() AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecNfsMountOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecNfsMountArgs struct {
+	// Destination mount path. The path must be absolute.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// Source path exported from NFS database.
+	Path pulumi.StringInput `pulumi:"path"`
+	// IP address of the NFS server.
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (AiCustomJobJobSpecWorkerPoolSpecNfsMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecNfsMount)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecNfsMountArgs) ToAiCustomJobJobSpecWorkerPoolSpecNfsMountOutput() AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecNfsMountOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecNfsMountArgs) ToAiCustomJobJobSpecWorkerPoolSpecNfsMountOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput)
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecNfsMountArray and AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecNfsMountArray{ AiCustomJobJobSpecWorkerPoolSpecNfsMountArgs{...} }
+type AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput() AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecNfsMountArray []AiCustomJobJobSpecWorkerPoolSpecNfsMountInput
+
+func (AiCustomJobJobSpecWorkerPoolSpecNfsMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecWorkerPoolSpecNfsMount)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecNfsMountArray) ToAiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput() AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecNfsMountArray) ToAiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecNfsMount)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput) ToAiCustomJobJobSpecWorkerPoolSpecNfsMountOutput() AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput) ToAiCustomJobJobSpecWorkerPoolSpecNfsMountOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput {
+	return o
+}
+
+// Destination mount path. The path must be absolute.
+func (o AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecNfsMount) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// Source path exported from NFS database.
+func (o AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecNfsMount) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// IP address of the NFS server.
+func (o AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecNfsMount) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecWorkerPoolSpecNfsMount)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput) ToAiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput() AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput) ToAiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput) Index(i pulumi.IntInput) AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiCustomJobJobSpecWorkerPoolSpecNfsMount {
+		return vs[0].([]AiCustomJobJobSpecWorkerPoolSpecNfsMount)[vs[1].(int)]
+	}).(AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec struct {
+	// Command line arguments to be passed to the Python task.
+	Args []string `pulumi:"args"`
+	// Environment variables to be passed to the python module. Maximum limit is 100.
+	// Structure is documented below.
+	Envs []AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv `pulumi:"envs"`
+	// The URI of a container image in Artifact Registry that will run the provided Python package.
+	ExecutorImageUri string `pulumi:"executorImageUri"`
+	// The Google Cloud Storage location of the Python package files which are the training program and its dependent packages.
+	PackageUris []string `pulumi:"packageUris"`
+	// The Python module name to run after installing the packages.
+	PythonModule string `pulumi:"pythonModule"`
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs and AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs{...}
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs struct {
+	// Command line arguments to be passed to the Python task.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Environment variables to be passed to the python module. Maximum limit is 100.
+	// Structure is documented below.
+	Envs AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayInput `pulumi:"envs"`
+	// The URI of a container image in Artifact Registry that will run the provided Python package.
+	ExecutorImageUri pulumi.StringInput `pulumi:"executorImageUri"`
+	// The Google Cloud Storage location of the Python package files which are the training program and its dependent packages.
+	PackageUris pulumi.StringArrayInput `pulumi:"packageUris"`
+	// The Python module name to run after installing the packages.
+	PythonModule pulumi.StringInput `pulumi:"pythonModule"`
+}
+
+func (AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput)
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput).ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutputWithContext(ctx)
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs, AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtr and AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrInput` via:
+//
+//	        AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput
+}
+
+type aiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrType AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs
+
+func AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtr(v *AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrInput {
+	return (*aiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrType)(v)
+}
+
+func (*aiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec)(nil)).Elem()
+}
+
+func (i *aiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrType) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrType) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput {
+	return o.ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) *AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec {
+		return &v
+	}).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput)
+}
+
+// Command line arguments to be passed to the Python task.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Environment variables to be passed to the python module. Maximum limit is 100.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput) Envs() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) []AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv {
+		return v.Envs
+	}).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput)
+}
+
+// The URI of a container image in Artifact Registry that will run the provided Python package.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput) ExecutorImageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) string { return v.ExecutorImageUri }).(pulumi.StringOutput)
+}
+
+// The Google Cloud Storage location of the Python package files which are the training program and its dependent packages.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput) PackageUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) []string { return v.PackageUris }).(pulumi.StringArrayOutput)
+}
+
+// The Python module name to run after installing the packages.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput) PythonModule() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) string { return v.PythonModule }).(pulumi.StringOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput) Elem() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec
+		return ret
+	}).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput)
+}
+
+// Command line arguments to be passed to the Python task.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Environment variables to be passed to the python module. Maximum limit is 100.
+// Structure is documented below.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput) Envs() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) []AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv {
+		if v == nil {
+			return nil
+		}
+		return v.Envs
+	}).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput)
+}
+
+// The URI of a container image in Artifact Registry that will run the provided Python package.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput) ExecutorImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExecutorImageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Google Cloud Storage location of the Python package files which are the training program and its dependent packages.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput) PackageUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Python module name to run after installing the packages.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput) PythonModule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PythonModule
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv struct {
+	// Name of the environment variable.
+	Name string `pulumi:"name"`
+	// Value of the environment variable.
+	Value string `pulumi:"value"`
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArgs and AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArgs{...}
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArgs struct {
+	// Name of the environment variable.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of the environment variable.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArgs) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArgs) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput)
+}
+
+// AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayInput is an input type that accepts AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArray and AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput values.
+// You can construct a concrete instance of `AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayInput` via:
+//
+//	AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArray{ AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArgs{...} }
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayInput interface {
+	pulumi.Input
+
+	ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput
+	ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutputWithContext(context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArray []AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvInput
+
+func (AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv)(nil)).Elem()
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArray) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput {
+	return i.ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutputWithContext(context.Background())
+}
+
+func (i AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArray) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of the environment variable.
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv)(nil)).Elem()
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput() AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput) ToAiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutputWithContext(ctx context.Context) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput {
+	return o
+}
+
+func (o AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput) Index(i pulumi.IntInput) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv {
+		return vs[0].([]AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv)[vs[1].(int)]
+	}).(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput)
+}
+
 type AiDatasetEncryptionSpec struct {
 	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
 	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -18086,10 +20899,19 @@ func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput) Elem() Ai
 }
 
 type AiIndexMetadataConfigAlgorithmConfigTreeAhConfig struct {
+	// The default fraction of leaf nodes that any query may be searched. Must be in
+	// range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+	// This value can only be set when creating the index.
+	FractionLeafNodesToSearch *float64 `pulumi:"fractionLeafNodesToSearch"`
 	// Number of embeddings on each leaf node. The default value is 1000 if not set.
 	LeafNodeEmbeddingCount *int `pulumi:"leafNodeEmbeddingCount"`
+	// (Optional, Deprecated)
 	// The default percentage of leaf nodes that any query may be searched. Must be in
 	// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+	//
+	// > **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+	//
+	// Deprecated: `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
 	LeafNodesToSearchPercent *int `pulumi:"leafNodesToSearchPercent"`
 }
 
@@ -18105,10 +20927,19 @@ type AiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput interface {
 }
 
 type AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs struct {
+	// The default fraction of leaf nodes that any query may be searched. Must be in
+	// range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+	// This value can only be set when creating the index.
+	FractionLeafNodesToSearch pulumi.Float64PtrInput `pulumi:"fractionLeafNodesToSearch"`
 	// Number of embeddings on each leaf node. The default value is 1000 if not set.
 	LeafNodeEmbeddingCount pulumi.IntPtrInput `pulumi:"leafNodeEmbeddingCount"`
+	// (Optional, Deprecated)
 	// The default percentage of leaf nodes that any query may be searched. Must be in
 	// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+	//
+	// > **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+	//
+	// Deprecated: `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
 	LeafNodesToSearchPercent pulumi.IntPtrInput `pulumi:"leafNodesToSearchPercent"`
 }
 
@@ -18189,13 +21020,25 @@ func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToAiIndexMetadat
 	}).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput)
 }
 
+// The default fraction of leaf nodes that any query may be searched. Must be in
+// range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+// This value can only be set when creating the index.
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) FractionLeafNodesToSearch() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *float64 { return v.FractionLeafNodesToSearch }).(pulumi.Float64PtrOutput)
+}
+
 // Number of embeddings on each leaf node. The default value is 1000 if not set.
 func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodeEmbeddingCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *int { return v.LeafNodeEmbeddingCount }).(pulumi.IntPtrOutput)
 }
 
+// (Optional, Deprecated)
 // The default percentage of leaf nodes that any query may be searched. Must be in
 // range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+//
+// > **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+//
+// Deprecated: `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
 func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodesToSearchPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *int { return v.LeafNodesToSearchPercent }).(pulumi.IntPtrOutput)
 }
@@ -18224,6 +21067,18 @@ func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) Elem() AiInde
 	}).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput)
 }
 
+// The default fraction of leaf nodes that any query may be searched. Must be in
+// range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+// This value can only be set when creating the index.
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) FractionLeafNodesToSearch() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.FractionLeafNodesToSearch
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Number of embeddings on each leaf node. The default value is 1000 if not set.
 func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) LeafNodeEmbeddingCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *int {
@@ -18234,8 +21089,13 @@ func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) LeafNodeEmbed
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Optional, Deprecated)
 // The default percentage of leaf nodes that any query may be searched. Must be in
 // range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+//
+// > **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+//
+// Deprecated: `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
 func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) LeafNodesToSearchPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *int {
 		if v == nil {
@@ -18484,6 +21344,4211 @@ func (o AiMetadataStoreStateTypeArrayOutput) Index(i pulumi.IntInput) AiMetadata
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiMetadataStoreStateType {
 		return vs[0].([]AiMetadataStoreStateType)[vs[1].(int)]
 	}).(AiMetadataStoreStateTypeOutput)
+}
+
+type AiModelDevelopmentClusterClusterEvent struct {
+	// (Output)
+	// The detailed description of the cluster event.
+	EventMessage *string `pulumi:"eventMessage"`
+	// (Output)
+	// The occurrence time of the cluster event.
+	EventTime *string `pulumi:"eventTime"`
+	// (Output)
+	// The type of the cluster event.
+	// Possible values:
+	// VM_PROLOG_ERROR
+	// VM_EPILOG_ERROR
+	// VM_CONTINUOUS_GPU_ERROR
+	// VM_SCAN_ERROR
+	// VM_SLURM_POWER_DOWN
+	// VM_SLURM_DRAIN
+	// VM_DELETION
+	// VM_REPORT_AND_REPLACEMENT
+	// VM_REBOOT
+	EventType *string `pulumi:"eventType"`
+}
+
+// AiModelDevelopmentClusterClusterEventInput is an input type that accepts AiModelDevelopmentClusterClusterEventArgs and AiModelDevelopmentClusterClusterEventOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterEventInput` via:
+//
+//	AiModelDevelopmentClusterClusterEventArgs{...}
+type AiModelDevelopmentClusterClusterEventInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterEventOutput() AiModelDevelopmentClusterClusterEventOutput
+	ToAiModelDevelopmentClusterClusterEventOutputWithContext(context.Context) AiModelDevelopmentClusterClusterEventOutput
+}
+
+type AiModelDevelopmentClusterClusterEventArgs struct {
+	// (Output)
+	// The detailed description of the cluster event.
+	EventMessage pulumi.StringPtrInput `pulumi:"eventMessage"`
+	// (Output)
+	// The occurrence time of the cluster event.
+	EventTime pulumi.StringPtrInput `pulumi:"eventTime"`
+	// (Output)
+	// The type of the cluster event.
+	// Possible values:
+	// VM_PROLOG_ERROR
+	// VM_EPILOG_ERROR
+	// VM_CONTINUOUS_GPU_ERROR
+	// VM_SCAN_ERROR
+	// VM_SLURM_POWER_DOWN
+	// VM_SLURM_DRAIN
+	// VM_DELETION
+	// VM_REPORT_AND_REPLACEMENT
+	// VM_REBOOT
+	EventType pulumi.StringPtrInput `pulumi:"eventType"`
+}
+
+func (AiModelDevelopmentClusterClusterEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterEvent)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterEventArgs) ToAiModelDevelopmentClusterClusterEventOutput() AiModelDevelopmentClusterClusterEventOutput {
+	return i.ToAiModelDevelopmentClusterClusterEventOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterEventArgs) ToAiModelDevelopmentClusterClusterEventOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterEventOutput)
+}
+
+// AiModelDevelopmentClusterClusterEventArrayInput is an input type that accepts AiModelDevelopmentClusterClusterEventArray and AiModelDevelopmentClusterClusterEventArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterEventArrayInput` via:
+//
+//	AiModelDevelopmentClusterClusterEventArray{ AiModelDevelopmentClusterClusterEventArgs{...} }
+type AiModelDevelopmentClusterClusterEventArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterEventArrayOutput() AiModelDevelopmentClusterClusterEventArrayOutput
+	ToAiModelDevelopmentClusterClusterEventArrayOutputWithContext(context.Context) AiModelDevelopmentClusterClusterEventArrayOutput
+}
+
+type AiModelDevelopmentClusterClusterEventArray []AiModelDevelopmentClusterClusterEventInput
+
+func (AiModelDevelopmentClusterClusterEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterEvent)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterEventArray) ToAiModelDevelopmentClusterClusterEventArrayOutput() AiModelDevelopmentClusterClusterEventArrayOutput {
+	return i.ToAiModelDevelopmentClusterClusterEventArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterEventArray) ToAiModelDevelopmentClusterClusterEventArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterEventArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterEventOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterEvent)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterEventOutput) ToAiModelDevelopmentClusterClusterEventOutput() AiModelDevelopmentClusterClusterEventOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterEventOutput) ToAiModelDevelopmentClusterClusterEventOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterEventOutput {
+	return o
+}
+
+// (Output)
+// The detailed description of the cluster event.
+func (o AiModelDevelopmentClusterClusterEventOutput) EventMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterEvent) *string { return v.EventMessage }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The occurrence time of the cluster event.
+func (o AiModelDevelopmentClusterClusterEventOutput) EventTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterEvent) *string { return v.EventTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The type of the cluster event.
+// Possible values:
+// VM_PROLOG_ERROR
+// VM_EPILOG_ERROR
+// VM_CONTINUOUS_GPU_ERROR
+// VM_SCAN_ERROR
+// VM_SLURM_POWER_DOWN
+// VM_SLURM_DRAIN
+// VM_DELETION
+// VM_REPORT_AND_REPLACEMENT
+// VM_REBOOT
+func (o AiModelDevelopmentClusterClusterEventOutput) EventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterEvent) *string { return v.EventType }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterClusterEventArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterEvent)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterEventArrayOutput) ToAiModelDevelopmentClusterClusterEventArrayOutput() AiModelDevelopmentClusterClusterEventArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterEventArrayOutput) ToAiModelDevelopmentClusterClusterEventArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterEventArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterEventArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterClusterEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterClusterEvent {
+		return vs[0].([]AiModelDevelopmentClusterClusterEvent)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterClusterEventOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatus struct {
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail *string `pulumi:"detail"`
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors []AiModelDevelopmentClusterClusterStatusError `pulumi:"errors"`
+	// (Output)
+	// The status information of all the nodes in the cluster.
+	// Structure is documented below.
+	NodesStatuses []AiModelDevelopmentClusterClusterStatusNodesStatus `pulumi:"nodesStatuses"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State *string `pulumi:"state"`
+}
+
+// AiModelDevelopmentClusterClusterStatusInput is an input type that accepts AiModelDevelopmentClusterClusterStatusArgs and AiModelDevelopmentClusterClusterStatusOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusArgs{...}
+type AiModelDevelopmentClusterClusterStatusInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusOutput() AiModelDevelopmentClusterClusterStatusOutput
+	ToAiModelDevelopmentClusterClusterStatusOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusArgs struct {
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail pulumi.StringPtrInput `pulumi:"detail"`
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors AiModelDevelopmentClusterClusterStatusErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// The status information of all the nodes in the cluster.
+	// Structure is documented below.
+	NodesStatuses AiModelDevelopmentClusterClusterStatusNodesStatusArrayInput `pulumi:"nodesStatuses"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (AiModelDevelopmentClusterClusterStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusArgs) ToAiModelDevelopmentClusterClusterStatusOutput() AiModelDevelopmentClusterClusterStatusOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusArgs) ToAiModelDevelopmentClusterClusterStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusOutput)
+}
+
+// AiModelDevelopmentClusterClusterStatusArrayInput is an input type that accepts AiModelDevelopmentClusterClusterStatusArray and AiModelDevelopmentClusterClusterStatusArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusArrayInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusArray{ AiModelDevelopmentClusterClusterStatusArgs{...} }
+type AiModelDevelopmentClusterClusterStatusArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusArrayOutput() AiModelDevelopmentClusterClusterStatusArrayOutput
+	ToAiModelDevelopmentClusterClusterStatusArrayOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusArrayOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusArray []AiModelDevelopmentClusterClusterStatusInput
+
+func (AiModelDevelopmentClusterClusterStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusArray) ToAiModelDevelopmentClusterClusterStatusArrayOutput() AiModelDevelopmentClusterClusterStatusArrayOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusArray) ToAiModelDevelopmentClusterClusterStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusOutput) ToAiModelDevelopmentClusterClusterStatusOutput() AiModelDevelopmentClusterClusterStatusOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusOutput) ToAiModelDevelopmentClusterClusterStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusOutput {
+	return o
+}
+
+// (Output)
+// Human-readable detail about the current state.
+func (o AiModelDevelopmentClusterClusterStatusOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatus) *string { return v.Detail }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+// three pieces of data: error code, error message, and error details.
+// You can find out more about this error model and how to work with it in the
+// [API Design Guide](https://cloud.google.com/apis/design/errors).
+// Structure is documented below.
+func (o AiModelDevelopmentClusterClusterStatusOutput) Errors() AiModelDevelopmentClusterClusterStatusErrorArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatus) []AiModelDevelopmentClusterClusterStatusError {
+		return v.Errors
+	}).(AiModelDevelopmentClusterClusterStatusErrorArrayOutput)
+}
+
+// (Output)
+// The status information of all the nodes in the cluster.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterClusterStatusOutput) NodesStatuses() AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatus) []AiModelDevelopmentClusterClusterStatusNodesStatus {
+		return v.NodesStatuses
+	}).(AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput)
+}
+
+// (Output)
+// The current state of the XManager instance.
+// Possible values:
+// PROVISIONING
+// RUNNING
+// DELETING
+// ERROR
+func (o AiModelDevelopmentClusterClusterStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusArrayOutput) ToAiModelDevelopmentClusterClusterStatusArrayOutput() AiModelDevelopmentClusterClusterStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusArrayOutput) ToAiModelDevelopmentClusterClusterStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterClusterStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterClusterStatus {
+		return vs[0].([]AiModelDevelopmentClusterClusterStatus)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterClusterStatusOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// AiModelDevelopmentClusterClusterStatusErrorInput is an input type that accepts AiModelDevelopmentClusterClusterStatusErrorArgs and AiModelDevelopmentClusterClusterStatusErrorOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusErrorInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusErrorArgs{...}
+type AiModelDevelopmentClusterClusterStatusErrorInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusErrorOutput() AiModelDevelopmentClusterClusterStatusErrorOutput
+	ToAiModelDevelopmentClusterClusterStatusErrorOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusErrorOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiModelDevelopmentClusterClusterStatusErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusError)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusErrorArgs) ToAiModelDevelopmentClusterClusterStatusErrorOutput() AiModelDevelopmentClusterClusterStatusErrorOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusErrorOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusErrorArgs) ToAiModelDevelopmentClusterClusterStatusErrorOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusErrorOutput)
+}
+
+// AiModelDevelopmentClusterClusterStatusErrorArrayInput is an input type that accepts AiModelDevelopmentClusterClusterStatusErrorArray and AiModelDevelopmentClusterClusterStatusErrorArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusErrorArrayInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusErrorArray{ AiModelDevelopmentClusterClusterStatusErrorArgs{...} }
+type AiModelDevelopmentClusterClusterStatusErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusErrorArrayOutput() AiModelDevelopmentClusterClusterStatusErrorArrayOutput
+	ToAiModelDevelopmentClusterClusterStatusErrorArrayOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusErrorArrayOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusErrorArray []AiModelDevelopmentClusterClusterStatusErrorInput
+
+func (AiModelDevelopmentClusterClusterStatusErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusError)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusErrorArray) ToAiModelDevelopmentClusterClusterStatusErrorArrayOutput() AiModelDevelopmentClusterClusterStatusErrorArrayOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusErrorArray) ToAiModelDevelopmentClusterClusterStatusErrorArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusErrorArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusErrorOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusError)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusErrorOutput) ToAiModelDevelopmentClusterClusterStatusErrorOutput() AiModelDevelopmentClusterClusterStatusErrorOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusErrorOutput) ToAiModelDevelopmentClusterClusterStatusErrorOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiModelDevelopmentClusterClusterStatusErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.  There is a common set of
+// message types for APIs to use.
+func (o AiModelDevelopmentClusterClusterStatusErrorOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusError) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o AiModelDevelopmentClusterClusterStatusErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusError)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusErrorArrayOutput) ToAiModelDevelopmentClusterClusterStatusErrorArrayOutput() AiModelDevelopmentClusterClusterStatusErrorArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusErrorArrayOutput) ToAiModelDevelopmentClusterClusterStatusErrorArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusErrorArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusErrorArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterClusterStatusErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterClusterStatusError {
+		return vs[0].([]AiModelDevelopmentClusterClusterStatusError)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterClusterStatusErrorOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatus struct {
+	// (Output)
+	// Time when the TrainingService was created.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail *string `pulumi:"detail"`
+	// (Output)
+	// The XManager instance ID (for example, "xmc-").
+	InstanceId *string `pulumi:"instanceId"`
+	// (Output)
+	// The name of the Compute Engine instance associated with the node.
+	InstanceName *string `pulumi:"instanceName"`
+	// (Output)
+	// The time when the node's current state or detail last changed.
+	LastUpdateTime *string `pulumi:"lastUpdateTime"`
+	// (Output)
+	// The ID of the node pool.
+	NodePoolId *string `pulumi:"nodePoolId"`
+	// (Output)
+	// The type of the node pool.
+	// Possible values:
+	// NODE_POOL_TYPE_LOGIN
+	// NODE_POOL_TYPE_COMPUTE
+	NodePoolType *string `pulumi:"nodePoolType"`
+	// (Output)
+	// The state of the node.
+	// Possible values:
+	// PREPARING
+	// RUNNING
+	// ERROR
+	// UPDATING
+	NodeState *string `pulumi:"nodeState"`
+	// (Output)
+	// Physical Host Hardware information.
+	// Structure is documented below.
+	PhysicalHosts []AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost `pulumi:"physicalHosts"`
+}
+
+// AiModelDevelopmentClusterClusterStatusNodesStatusInput is an input type that accepts AiModelDevelopmentClusterClusterStatusNodesStatusArgs and AiModelDevelopmentClusterClusterStatusNodesStatusOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusNodesStatusInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusNodesStatusArgs{...}
+type AiModelDevelopmentClusterClusterStatusNodesStatusInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusOutput() AiModelDevelopmentClusterClusterStatusNodesStatusOutput
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusArgs struct {
+	// (Output)
+	// Time when the TrainingService was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail pulumi.StringPtrInput `pulumi:"detail"`
+	// (Output)
+	// The XManager instance ID (for example, "xmc-").
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// (Output)
+	// The name of the Compute Engine instance associated with the node.
+	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
+	// (Output)
+	// The time when the node's current state or detail last changed.
+	LastUpdateTime pulumi.StringPtrInput `pulumi:"lastUpdateTime"`
+	// (Output)
+	// The ID of the node pool.
+	NodePoolId pulumi.StringPtrInput `pulumi:"nodePoolId"`
+	// (Output)
+	// The type of the node pool.
+	// Possible values:
+	// NODE_POOL_TYPE_LOGIN
+	// NODE_POOL_TYPE_COMPUTE
+	NodePoolType pulumi.StringPtrInput `pulumi:"nodePoolType"`
+	// (Output)
+	// The state of the node.
+	// Possible values:
+	// PREPARING
+	// RUNNING
+	// ERROR
+	// UPDATING
+	NodeState pulumi.StringPtrInput `pulumi:"nodeState"`
+	// (Output)
+	// Physical Host Hardware information.
+	// Structure is documented below.
+	PhysicalHosts AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayInput `pulumi:"physicalHosts"`
+}
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusArgs) ToAiModelDevelopmentClusterClusterStatusNodesStatusOutput() AiModelDevelopmentClusterClusterStatusNodesStatusOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusNodesStatusOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusArgs) ToAiModelDevelopmentClusterClusterStatusNodesStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusNodesStatusOutput)
+}
+
+// AiModelDevelopmentClusterClusterStatusNodesStatusArrayInput is an input type that accepts AiModelDevelopmentClusterClusterStatusNodesStatusArray and AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusNodesStatusArrayInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusNodesStatusArray{ AiModelDevelopmentClusterClusterStatusNodesStatusArgs{...} }
+type AiModelDevelopmentClusterClusterStatusNodesStatusArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusArray []AiModelDevelopmentClusterClusterStatusNodesStatusInput
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusNodesStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusArray) ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusArray) ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusOutput() AiModelDevelopmentClusterClusterStatusNodesStatusOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusOutput {
+	return o
+}
+
+// (Output)
+// Time when the TrainingService was created.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Human-readable detail about the current state.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.Detail }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The XManager instance ID (for example, "xmc-").
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the Compute Engine instance associated with the node.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time when the node's current state or detail last changed.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) LastUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.LastUpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The ID of the node pool.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) NodePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.NodePoolId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The type of the node pool.
+// Possible values:
+// NODE_POOL_TYPE_LOGIN
+// NODE_POOL_TYPE_COMPUTE
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) NodePoolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.NodePoolType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The state of the node.
+// Possible values:
+// PREPARING
+// RUNNING
+// ERROR
+// UPDATING
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) NodeState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) *string { return v.NodeState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Physical Host Hardware information.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusOutput) PhysicalHosts() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatus) []AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost {
+		return v.PhysicalHosts
+	}).(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusNodesStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterClusterStatusNodesStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterClusterStatusNodesStatus {
+		return vs[0].([]AiModelDevelopmentClusterClusterStatusNodesStatus)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterClusterStatusNodesStatusOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost struct {
+	// (Output)
+	// Name of the block.
+	BlockId *string `pulumi:"blockId"`
+	// (Output)
+	// Name of the physical cluster.
+	ClusterName *string `pulumi:"clusterName"`
+	// (Output)
+	// Name of the host.
+	HostId *string `pulumi:"hostId"`
+	// (Output)
+	// Name of the sub-block.
+	SubblockId *string `pulumi:"subblockId"`
+}
+
+// AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostInput is an input type that accepts AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs and AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs{...}
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs struct {
+	// (Output)
+	// Name of the block.
+	BlockId pulumi.StringPtrInput `pulumi:"blockId"`
+	// (Output)
+	// Name of the physical cluster.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// (Output)
+	// Name of the host.
+	HostId pulumi.StringPtrInput `pulumi:"hostId"`
+	// (Output)
+	// Name of the sub-block.
+	SubblockId pulumi.StringPtrInput `pulumi:"subblockId"`
+}
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput)
+}
+
+// AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayInput is an input type that accepts AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray and AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayInput` via:
+//
+//	AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray{ AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs{...} }
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput
+	ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutputWithContext(context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray []AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostInput
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput {
+	return i.ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput {
+	return o
+}
+
+// (Output)
+// Name of the block.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) BlockId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost) *string { return v.BlockId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Name of the physical cluster.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Name of the host.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) HostId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost) *string { return v.HostId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Name of the sub-block.
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput) SubblockId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost) *string { return v.SubblockId }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput() AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput) ToAiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost {
+		return vs[0].([]AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfig struct {
+	// Days of the week on which a backup runs, each at most once and
+	// none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
+	// The Cloud Storage bucket that backups are written to, without
+	// the "gs://" scheme.
+	DestinationBucket string `pulumi:"destinationBucket"`
+	// The Managed Lustre instances to back up, each named as
+	// "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+	// must be attached to one of the cluster's node pools, and no entry may
+	// repeat. If empty, every attached instance is backed up.
+	Lustres []string `pulumi:"lustres"`
+	// Time when the ModelDevelopmentCluster for the first time entered the
+	// `RUNNING` state.
+	StartTime *AiModelDevelopmentClusterLustreExportConfigStartTime `pulumi:"startTime"`
+}
+
+// AiModelDevelopmentClusterLustreExportConfigInput is an input type that accepts AiModelDevelopmentClusterLustreExportConfigArgs and AiModelDevelopmentClusterLustreExportConfigOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterLustreExportConfigInput` via:
+//
+//	AiModelDevelopmentClusterLustreExportConfigArgs{...}
+type AiModelDevelopmentClusterLustreExportConfigInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterLustreExportConfigOutput() AiModelDevelopmentClusterLustreExportConfigOutput
+	ToAiModelDevelopmentClusterLustreExportConfigOutputWithContext(context.Context) AiModelDevelopmentClusterLustreExportConfigOutput
+}
+
+type AiModelDevelopmentClusterLustreExportConfigArgs struct {
+	// Days of the week on which a backup runs, each at most once and
+	// none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
+	// The Cloud Storage bucket that backups are written to, without
+	// the "gs://" scheme.
+	DestinationBucket pulumi.StringInput `pulumi:"destinationBucket"`
+	// The Managed Lustre instances to back up, each named as
+	// "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+	// must be attached to one of the cluster's node pools, and no entry may
+	// repeat. If empty, every attached instance is backed up.
+	Lustres pulumi.StringArrayInput `pulumi:"lustres"`
+	// Time when the ModelDevelopmentCluster for the first time entered the
+	// `RUNNING` state.
+	StartTime AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput `pulumi:"startTime"`
+}
+
+func (AiModelDevelopmentClusterLustreExportConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfig)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigArgs) ToAiModelDevelopmentClusterLustreExportConfigOutput() AiModelDevelopmentClusterLustreExportConfigOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigArgs) ToAiModelDevelopmentClusterLustreExportConfigOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigOutput)
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigArgs) ToAiModelDevelopmentClusterLustreExportConfigPtrOutput() AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigArgs) ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigOutput).ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterLustreExportConfigPtrInput is an input type that accepts AiModelDevelopmentClusterLustreExportConfigArgs, AiModelDevelopmentClusterLustreExportConfigPtr and AiModelDevelopmentClusterLustreExportConfigPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterLustreExportConfigPtrInput` via:
+//
+//	        AiModelDevelopmentClusterLustreExportConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterLustreExportConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterLustreExportConfigPtrOutput() AiModelDevelopmentClusterLustreExportConfigPtrOutput
+	ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(context.Context) AiModelDevelopmentClusterLustreExportConfigPtrOutput
+}
+
+type aiModelDevelopmentClusterLustreExportConfigPtrType AiModelDevelopmentClusterLustreExportConfigArgs
+
+func AiModelDevelopmentClusterLustreExportConfigPtr(v *AiModelDevelopmentClusterLustreExportConfigArgs) AiModelDevelopmentClusterLustreExportConfigPtrInput {
+	return (*aiModelDevelopmentClusterLustreExportConfigPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterLustreExportConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterLustreExportConfig)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterLustreExportConfigPtrType) ToAiModelDevelopmentClusterLustreExportConfigPtrOutput() AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterLustreExportConfigPtrType) ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigPtrOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfigOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterLustreExportConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfig)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) ToAiModelDevelopmentClusterLustreExportConfigOutput() AiModelDevelopmentClusterLustreExportConfigOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) ToAiModelDevelopmentClusterLustreExportConfigOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) ToAiModelDevelopmentClusterLustreExportConfigPtrOutput() AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return o.ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterLustreExportConfig) *AiModelDevelopmentClusterLustreExportConfig {
+		return &v
+	}).(AiModelDevelopmentClusterLustreExportConfigPtrOutput)
+}
+
+// Days of the week on which a backup runs, each at most once and
+// none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfig) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
+}
+
+// The Cloud Storage bucket that backups are written to, without
+// the "gs://" scheme.
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) DestinationBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfig) string { return v.DestinationBucket }).(pulumi.StringOutput)
+}
+
+// The Managed Lustre instances to back up, each named as
+// "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+// must be attached to one of the cluster's node pools, and no entry may
+// repeat. If empty, every attached instance is backed up.
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) Lustres() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfig) []string { return v.Lustres }).(pulumi.StringArrayOutput)
+}
+
+// Time when the ModelDevelopmentCluster for the first time entered the
+// `RUNNING` state.
+func (o AiModelDevelopmentClusterLustreExportConfigOutput) StartTime() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfig) *AiModelDevelopmentClusterLustreExportConfigStartTime {
+		return v.StartTime
+	}).(AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterLustreExportConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterLustreExportConfig)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) ToAiModelDevelopmentClusterLustreExportConfigPtrOutput() AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) ToAiModelDevelopmentClusterLustreExportConfigPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) Elem() AiModelDevelopmentClusterLustreExportConfigOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfig) AiModelDevelopmentClusterLustreExportConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterLustreExportConfig
+		return ret
+	}).(AiModelDevelopmentClusterLustreExportConfigOutput)
+}
+
+// Days of the week on which a backup runs, each at most once and
+// none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DaysOfWeeks
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Cloud Storage bucket that backups are written to, without
+// the "gs://" scheme.
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) DestinationBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DestinationBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Managed Lustre instances to back up, each named as
+// "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+// must be attached to one of the cluster's node pools, and no entry may
+// repeat. If empty, every attached instance is backed up.
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) Lustres() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Lustres
+	}).(pulumi.StringArrayOutput)
+}
+
+// Time when the ModelDevelopmentCluster for the first time entered the
+// `RUNNING` state.
+func (o AiModelDevelopmentClusterLustreExportConfigPtrOutput) StartTime() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfig) *AiModelDevelopmentClusterLustreExportConfigStartTime {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfigStartTime struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
+	Minutes *int `pulumi:"minutes"`
+}
+
+// AiModelDevelopmentClusterLustreExportConfigStartTimeInput is an input type that accepts AiModelDevelopmentClusterLustreExportConfigStartTimeArgs and AiModelDevelopmentClusterLustreExportConfigStartTimeOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterLustreExportConfigStartTimeInput` via:
+//
+//	AiModelDevelopmentClusterLustreExportConfigStartTimeArgs{...}
+type AiModelDevelopmentClusterLustreExportConfigStartTimeInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutput() AiModelDevelopmentClusterLustreExportConfigStartTimeOutput
+	ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutputWithContext(context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimeOutput
+}
+
+type AiModelDevelopmentClusterLustreExportConfigStartTimeArgs struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+}
+
+func (AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigStartTime)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutput() AiModelDevelopmentClusterLustreExportConfigStartTimeOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigStartTimeOutput)
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigStartTimeOutput).ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput is an input type that accepts AiModelDevelopmentClusterLustreExportConfigStartTimeArgs, AiModelDevelopmentClusterLustreExportConfigStartTimePtr and AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput` via:
+//
+//	        AiModelDevelopmentClusterLustreExportConfigStartTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput
+	ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput
+}
+
+type aiModelDevelopmentClusterLustreExportConfigStartTimePtrType AiModelDevelopmentClusterLustreExportConfigStartTimeArgs
+
+func AiModelDevelopmentClusterLustreExportConfigStartTimePtr(v *AiModelDevelopmentClusterLustreExportConfigStartTimeArgs) AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput {
+	return (*aiModelDevelopmentClusterLustreExportConfigStartTimePtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterLustreExportConfigStartTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterLustreExportConfigStartTime)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterLustreExportConfigStartTimePtrType) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return i.ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterLustreExportConfigStartTimePtrType) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfigStartTimeOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigStartTime)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutput() AiModelDevelopmentClusterLustreExportConfigStartTimeOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimeOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimeOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o.ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterLustreExportConfigStartTime) *AiModelDevelopmentClusterLustreExportConfigStartTime {
+		return &v
+	}).(AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput)
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+// typically must be less than or equal to 23. An API may choose to allow the
+// value "24:00:00" for scenarios like business closing time.
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfigStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and less than or
+// equal to 59.
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterLustreExportConfigStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+type AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterLustreExportConfigStartTime)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput() AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) ToAiModelDevelopmentClusterLustreExportConfigStartTimePtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) Elem() AiModelDevelopmentClusterLustreExportConfigStartTimeOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfigStartTime) AiModelDevelopmentClusterLustreExportConfigStartTime {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterLustreExportConfigStartTime
+		return ret
+	}).(AiModelDevelopmentClusterLustreExportConfigStartTimeOutput)
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+// typically must be less than or equal to 23. An API may choose to allow the
+// value "24:00:00" for scenarios like business closing time.
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfigStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and less than or
+// equal to 59.
+func (o AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterLustreExportConfigStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiModelDevelopmentClusterNetwork struct {
+	// Network spec of the cluster.
+	// Structure is documented below.
+	Network string `pulumi:"network"`
+	// The name of the subnetwork in the above network to create the cluster.
+	// If not specified:
+	// * for auto mode VPC, the subnet in corresponding region is auto-selected;
+	// * for custom mode VPC, a new subnet will be automatically created.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// AiModelDevelopmentClusterNetworkInput is an input type that accepts AiModelDevelopmentClusterNetworkArgs and AiModelDevelopmentClusterNetworkOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNetworkInput` via:
+//
+//	AiModelDevelopmentClusterNetworkArgs{...}
+type AiModelDevelopmentClusterNetworkInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNetworkOutput() AiModelDevelopmentClusterNetworkOutput
+	ToAiModelDevelopmentClusterNetworkOutputWithContext(context.Context) AiModelDevelopmentClusterNetworkOutput
+}
+
+type AiModelDevelopmentClusterNetworkArgs struct {
+	// Network spec of the cluster.
+	// Structure is documented below.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The name of the subnetwork in the above network to create the cluster.
+	// If not specified:
+	// * for auto mode VPC, the subnet in corresponding region is auto-selected;
+	// * for custom mode VPC, a new subnet will be automatically created.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (AiModelDevelopmentClusterNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNetwork)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNetworkArgs) ToAiModelDevelopmentClusterNetworkOutput() AiModelDevelopmentClusterNetworkOutput {
+	return i.ToAiModelDevelopmentClusterNetworkOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNetworkArgs) ToAiModelDevelopmentClusterNetworkOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNetworkOutput)
+}
+
+func (i AiModelDevelopmentClusterNetworkArgs) ToAiModelDevelopmentClusterNetworkPtrOutput() AiModelDevelopmentClusterNetworkPtrOutput {
+	return i.ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNetworkArgs) ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNetworkOutput).ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterNetworkPtrInput is an input type that accepts AiModelDevelopmentClusterNetworkArgs, AiModelDevelopmentClusterNetworkPtr and AiModelDevelopmentClusterNetworkPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNetworkPtrInput` via:
+//
+//	        AiModelDevelopmentClusterNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterNetworkPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNetworkPtrOutput() AiModelDevelopmentClusterNetworkPtrOutput
+	ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(context.Context) AiModelDevelopmentClusterNetworkPtrOutput
+}
+
+type aiModelDevelopmentClusterNetworkPtrType AiModelDevelopmentClusterNetworkArgs
+
+func AiModelDevelopmentClusterNetworkPtr(v *AiModelDevelopmentClusterNetworkArgs) AiModelDevelopmentClusterNetworkPtrInput {
+	return (*aiModelDevelopmentClusterNetworkPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNetwork)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterNetworkPtrType) ToAiModelDevelopmentClusterNetworkPtrOutput() AiModelDevelopmentClusterNetworkPtrOutput {
+	return i.ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterNetworkPtrType) ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNetworkPtrOutput)
+}
+
+type AiModelDevelopmentClusterNetworkOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNetwork)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNetworkOutput) ToAiModelDevelopmentClusterNetworkOutput() AiModelDevelopmentClusterNetworkOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNetworkOutput) ToAiModelDevelopmentClusterNetworkOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNetworkOutput) ToAiModelDevelopmentClusterNetworkPtrOutput() AiModelDevelopmentClusterNetworkPtrOutput {
+	return o.ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterNetworkOutput) ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterNetwork) *AiModelDevelopmentClusterNetwork {
+		return &v
+	}).(AiModelDevelopmentClusterNetworkPtrOutput)
+}
+
+// Network spec of the cluster.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The name of the subnetwork in the above network to create the cluster.
+// If not specified:
+// * for auto mode VPC, the subnet in corresponding region is auto-selected;
+// * for custom mode VPC, a new subnet will be automatically created.
+func (o AiModelDevelopmentClusterNetworkOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNetwork) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNetwork)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNetworkPtrOutput) ToAiModelDevelopmentClusterNetworkPtrOutput() AiModelDevelopmentClusterNetworkPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNetworkPtrOutput) ToAiModelDevelopmentClusterNetworkPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNetworkPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNetworkPtrOutput) Elem() AiModelDevelopmentClusterNetworkOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNetwork) AiModelDevelopmentClusterNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterNetwork
+		return ret
+	}).(AiModelDevelopmentClusterNetworkOutput)
+}
+
+// Network spec of the cluster.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterNetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the subnetwork in the above network to create the cluster.
+// If not specified:
+// * for auto mode VPC, the subnet in corresponding region is auto-selected;
+// * for custom mode VPC, a new subnet will be automatically created.
+func (o AiModelDevelopmentClusterNetworkPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePool struct {
+	// Represents the spec of disk options.
+	// Structure is documented below.
+	BootDisk *AiModelDevelopmentClusterNodePoolBootDisk `pulumi:"bootDisk"`
+	// (Output)
+	// The effective maximum duration for instances in this node pool.
+	// This field reflects the value of `flexStartMaxDuration` if it is
+	// set by the user, or the server-applied default (for example, 7 days) if it
+	// is not.
+	// This field is only applicable when `provisioningModel` is set to
+	// `FLEX_START`.
+	EffectiveFlexStartMaxDuration *string `pulumi:"effectiveFlexStartMaxDuration"`
+	// Whether to enable public IPs for the node pool.
+	EnablePublicIps *bool `pulumi:"enablePublicIps"`
+	// List of the existing Filestore instances to be mounted.
+	// For example:
+	// if "projects/my-project/locations/us-central1-a/instances/my-instance" is
+	// specified, the instance will be mounted to the node pool under the path
+	// "mnt/filestore/"
+	Filestores []string `pulumi:"filestores"`
+	// The maximum duration for instances in this node pool.
+	// This field is only applicable when `provisioningModel` is set to
+	// `FLEX_START`.
+	FlexStartMaxDuration *string `pulumi:"flexStartMaxDuration"`
+	// The unique ID referring to this node pool.
+	Id string `pulumi:"id"`
+	// The labels with user-defined metadata to organize the node pool. These
+	// labels are applied to the underlying compute resources (for example, the
+	// VM instances) of the node pool, so they appear in billing exports and
+	// Cloud Monitoring filters.
+	// Label keys and values can be no longer than 64 characters
+	// (Unicode codepoints), can only contain lowercase letters, numeric
+	// characters, underscores and dashes. International characters are allowed.
+	// See https://goo.gl/xmQnxf for more information and examples of labels.
+	Labels map[string]string `pulumi:"labels"`
+	// List of the existing Google Managed Lustre instances to be mounted.
+	// Similar to the filestores, the instance will be mounted to the node pool
+	// under the path "/mnt/lustre/"
+	Lustres []string `pulumi:"lustres"`
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec AiModelDevelopmentClusterNodePoolMachineSpec `pulumi:"machineSpec"`
+	// The node image to be used for the VMs in the node pool.
+	// In format of "projects//global/images/" or
+	// "projects/test-project/global/images/family/"
+	NodeImage *string `pulumi:"nodeImage"`
+	// Specifies the provisioning model for the node pool.
+	// Behavior for `PROVISIONING_MODEL_UNSPECIFIED`:
+	// - For CPU node pools: Defaults to `ON_DEMAND`.
+	// - For GPU node pools:
+	// - If
+	//   `machine_spec.reservation_affinity`
+	//   is set, it defaults to `RESERVATION`.
+	// - If
+	//   `machine_spec.reservation_affinity`
+	//   is NOT set, this is an INVALID state and the request will be rejected.
+	//   An explicit `provisioningModel` must be provided.
+	ProvisioningModel *string `pulumi:"provisioningModel"`
+	// The scaling spec of the node pool.
+	ScalingSpec *AiModelDevelopmentClusterNodePoolScalingSpec `pulumi:"scalingSpec"`
+	// Startup script for the node pool instances.
+	StartupScript *string `pulumi:"startupScript"`
+	// The zone of the node pool.
+	Zone *string `pulumi:"zone"`
+}
+
+// AiModelDevelopmentClusterNodePoolInput is an input type that accepts AiModelDevelopmentClusterNodePoolArgs and AiModelDevelopmentClusterNodePoolOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolArgs{...}
+type AiModelDevelopmentClusterNodePoolInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolOutput() AiModelDevelopmentClusterNodePoolOutput
+	ToAiModelDevelopmentClusterNodePoolOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolOutput
+}
+
+type AiModelDevelopmentClusterNodePoolArgs struct {
+	// Represents the spec of disk options.
+	// Structure is documented below.
+	BootDisk AiModelDevelopmentClusterNodePoolBootDiskPtrInput `pulumi:"bootDisk"`
+	// (Output)
+	// The effective maximum duration for instances in this node pool.
+	// This field reflects the value of `flexStartMaxDuration` if it is
+	// set by the user, or the server-applied default (for example, 7 days) if it
+	// is not.
+	// This field is only applicable when `provisioningModel` is set to
+	// `FLEX_START`.
+	EffectiveFlexStartMaxDuration pulumi.StringPtrInput `pulumi:"effectiveFlexStartMaxDuration"`
+	// Whether to enable public IPs for the node pool.
+	EnablePublicIps pulumi.BoolPtrInput `pulumi:"enablePublicIps"`
+	// List of the existing Filestore instances to be mounted.
+	// For example:
+	// if "projects/my-project/locations/us-central1-a/instances/my-instance" is
+	// specified, the instance will be mounted to the node pool under the path
+	// "mnt/filestore/"
+	Filestores pulumi.StringArrayInput `pulumi:"filestores"`
+	// The maximum duration for instances in this node pool.
+	// This field is only applicable when `provisioningModel` is set to
+	// `FLEX_START`.
+	FlexStartMaxDuration pulumi.StringPtrInput `pulumi:"flexStartMaxDuration"`
+	// The unique ID referring to this node pool.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The labels with user-defined metadata to organize the node pool. These
+	// labels are applied to the underlying compute resources (for example, the
+	// VM instances) of the node pool, so they appear in billing exports and
+	// Cloud Monitoring filters.
+	// Label keys and values can be no longer than 64 characters
+	// (Unicode codepoints), can only contain lowercase letters, numeric
+	// characters, underscores and dashes. International characters are allowed.
+	// See https://goo.gl/xmQnxf for more information and examples of labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// List of the existing Google Managed Lustre instances to be mounted.
+	// Similar to the filestores, the instance will be mounted to the node pool
+	// under the path "/mnt/lustre/"
+	Lustres pulumi.StringArrayInput `pulumi:"lustres"`
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec AiModelDevelopmentClusterNodePoolMachineSpecInput `pulumi:"machineSpec"`
+	// The node image to be used for the VMs in the node pool.
+	// In format of "projects//global/images/" or
+	// "projects/test-project/global/images/family/"
+	NodeImage pulumi.StringPtrInput `pulumi:"nodeImage"`
+	// Specifies the provisioning model for the node pool.
+	// Behavior for `PROVISIONING_MODEL_UNSPECIFIED`:
+	// - For CPU node pools: Defaults to `ON_DEMAND`.
+	// - For GPU node pools:
+	// - If
+	//   `machine_spec.reservation_affinity`
+	//   is set, it defaults to `RESERVATION`.
+	// - If
+	//   `machine_spec.reservation_affinity`
+	//   is NOT set, this is an INVALID state and the request will be rejected.
+	//   An explicit `provisioningModel` must be provided.
+	ProvisioningModel pulumi.StringPtrInput `pulumi:"provisioningModel"`
+	// The scaling spec of the node pool.
+	ScalingSpec AiModelDevelopmentClusterNodePoolScalingSpecPtrInput `pulumi:"scalingSpec"`
+	// Startup script for the node pool instances.
+	StartupScript pulumi.StringPtrInput `pulumi:"startupScript"`
+	// The zone of the node pool.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (AiModelDevelopmentClusterNodePoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePool)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolArgs) ToAiModelDevelopmentClusterNodePoolOutput() AiModelDevelopmentClusterNodePoolOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolArgs) ToAiModelDevelopmentClusterNodePoolOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolOutput)
+}
+
+// AiModelDevelopmentClusterNodePoolArrayInput is an input type that accepts AiModelDevelopmentClusterNodePoolArray and AiModelDevelopmentClusterNodePoolArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolArrayInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolArray{ AiModelDevelopmentClusterNodePoolArgs{...} }
+type AiModelDevelopmentClusterNodePoolArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolArrayOutput() AiModelDevelopmentClusterNodePoolArrayOutput
+	ToAiModelDevelopmentClusterNodePoolArrayOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolArrayOutput
+}
+
+type AiModelDevelopmentClusterNodePoolArray []AiModelDevelopmentClusterNodePoolInput
+
+func (AiModelDevelopmentClusterNodePoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterNodePool)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolArray) ToAiModelDevelopmentClusterNodePoolArrayOutput() AiModelDevelopmentClusterNodePoolArrayOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolArray) ToAiModelDevelopmentClusterNodePoolArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolArrayOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePool)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolOutput) ToAiModelDevelopmentClusterNodePoolOutput() AiModelDevelopmentClusterNodePoolOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolOutput) ToAiModelDevelopmentClusterNodePoolOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolOutput {
+	return o
+}
+
+// Represents the spec of disk options.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterNodePoolOutput) BootDisk() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *AiModelDevelopmentClusterNodePoolBootDisk {
+		return v.BootDisk
+	}).(AiModelDevelopmentClusterNodePoolBootDiskPtrOutput)
+}
+
+// (Output)
+// The effective maximum duration for instances in this node pool.
+// This field reflects the value of `flexStartMaxDuration` if it is
+// set by the user, or the server-applied default (for example, 7 days) if it
+// is not.
+// This field is only applicable when `provisioningModel` is set to
+// `FLEX_START`.
+func (o AiModelDevelopmentClusterNodePoolOutput) EffectiveFlexStartMaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.EffectiveFlexStartMaxDuration }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable public IPs for the node pool.
+func (o AiModelDevelopmentClusterNodePoolOutput) EnablePublicIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *bool { return v.EnablePublicIps }).(pulumi.BoolPtrOutput)
+}
+
+// List of the existing Filestore instances to be mounted.
+// For example:
+// if "projects/my-project/locations/us-central1-a/instances/my-instance" is
+// specified, the instance will be mounted to the node pool under the path
+// "mnt/filestore/"
+func (o AiModelDevelopmentClusterNodePoolOutput) Filestores() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) []string { return v.Filestores }).(pulumi.StringArrayOutput)
+}
+
+// The maximum duration for instances in this node pool.
+// This field is only applicable when `provisioningModel` is set to
+// `FLEX_START`.
+func (o AiModelDevelopmentClusterNodePoolOutput) FlexStartMaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.FlexStartMaxDuration }).(pulumi.StringPtrOutput)
+}
+
+// The unique ID referring to this node pool.
+func (o AiModelDevelopmentClusterNodePoolOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The labels with user-defined metadata to organize the node pool. These
+// labels are applied to the underlying compute resources (for example, the
+// VM instances) of the node pool, so they appear in billing exports and
+// Cloud Monitoring filters.
+// Label keys and values can be no longer than 64 characters
+// (Unicode codepoints), can only contain lowercase letters, numeric
+// characters, underscores and dashes. International characters are allowed.
+// See https://goo.gl/xmQnxf for more information and examples of labels.
+func (o AiModelDevelopmentClusterNodePoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// List of the existing Google Managed Lustre instances to be mounted.
+// Similar to the filestores, the instance will be mounted to the node pool
+// under the path "/mnt/lustre/"
+func (o AiModelDevelopmentClusterNodePoolOutput) Lustres() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) []string { return v.Lustres }).(pulumi.StringArrayOutput)
+}
+
+// Specification of a single machine.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterNodePoolOutput) MachineSpec() AiModelDevelopmentClusterNodePoolMachineSpecOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) AiModelDevelopmentClusterNodePoolMachineSpec {
+		return v.MachineSpec
+	}).(AiModelDevelopmentClusterNodePoolMachineSpecOutput)
+}
+
+// The node image to be used for the VMs in the node pool.
+// In format of "projects//global/images/" or
+// "projects/test-project/global/images/family/"
+func (o AiModelDevelopmentClusterNodePoolOutput) NodeImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.NodeImage }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the provisioning model for the node pool.
+// Behavior for `PROVISIONING_MODEL_UNSPECIFIED`:
+//   - For CPU node pools: Defaults to `ON_DEMAND`.
+//   - For GPU node pools:
+//   - If
+//     `machine_spec.reservation_affinity`
+//     is set, it defaults to `RESERVATION`.
+//   - If
+//     `machine_spec.reservation_affinity`
+//     is NOT set, this is an INVALID state and the request will be rejected.
+//     An explicit `provisioningModel` must be provided.
+func (o AiModelDevelopmentClusterNodePoolOutput) ProvisioningModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
+}
+
+// The scaling spec of the node pool.
+func (o AiModelDevelopmentClusterNodePoolOutput) ScalingSpec() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *AiModelDevelopmentClusterNodePoolScalingSpec {
+		return v.ScalingSpec
+	}).(AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput)
+}
+
+// Startup script for the node pool instances.
+func (o AiModelDevelopmentClusterNodePoolOutput) StartupScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.StartupScript }).(pulumi.StringPtrOutput)
+}
+
+// The zone of the node pool.
+func (o AiModelDevelopmentClusterNodePoolOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterNodePool)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolArrayOutput) ToAiModelDevelopmentClusterNodePoolArrayOutput() AiModelDevelopmentClusterNodePoolArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolArrayOutput) ToAiModelDevelopmentClusterNodePoolArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterNodePoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterNodePool {
+		return vs[0].([]AiModelDevelopmentClusterNodePool)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterNodePoolOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolBootDisk struct {
+	// Size in GB of the boot disk (default is 100GB).
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk. For non-A3U machines, the default value is
+	// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+	// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+	// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+	BootDiskType *string `pulumi:"bootDiskType"`
+}
+
+// AiModelDevelopmentClusterNodePoolBootDiskInput is an input type that accepts AiModelDevelopmentClusterNodePoolBootDiskArgs and AiModelDevelopmentClusterNodePoolBootDiskOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolBootDiskInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolBootDiskArgs{...}
+type AiModelDevelopmentClusterNodePoolBootDiskInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolBootDiskOutput() AiModelDevelopmentClusterNodePoolBootDiskOutput
+	ToAiModelDevelopmentClusterNodePoolBootDiskOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolBootDiskOutput
+}
+
+type AiModelDevelopmentClusterNodePoolBootDiskArgs struct {
+	// Size in GB of the boot disk (default is 100GB).
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk. For non-A3U machines, the default value is
+	// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+	// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+	// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+}
+
+func (AiModelDevelopmentClusterNodePoolBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolBootDisk)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolBootDiskArgs) ToAiModelDevelopmentClusterNodePoolBootDiskOutput() AiModelDevelopmentClusterNodePoolBootDiskOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolBootDiskOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolBootDiskArgs) ToAiModelDevelopmentClusterNodePoolBootDiskOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolBootDiskOutput)
+}
+
+func (i AiModelDevelopmentClusterNodePoolBootDiskArgs) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutput() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolBootDiskArgs) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolBootDiskOutput).ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterNodePoolBootDiskPtrInput is an input type that accepts AiModelDevelopmentClusterNodePoolBootDiskArgs, AiModelDevelopmentClusterNodePoolBootDiskPtr and AiModelDevelopmentClusterNodePoolBootDiskPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolBootDiskPtrInput` via:
+//
+//	        AiModelDevelopmentClusterNodePoolBootDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterNodePoolBootDiskPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutput() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput
+	ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolBootDiskPtrOutput
+}
+
+type aiModelDevelopmentClusterNodePoolBootDiskPtrType AiModelDevelopmentClusterNodePoolBootDiskArgs
+
+func AiModelDevelopmentClusterNodePoolBootDiskPtr(v *AiModelDevelopmentClusterNodePoolBootDiskArgs) AiModelDevelopmentClusterNodePoolBootDiskPtrInput {
+	return (*aiModelDevelopmentClusterNodePoolBootDiskPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterNodePoolBootDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolBootDisk)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterNodePoolBootDiskPtrType) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutput() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterNodePoolBootDiskPtrType) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolBootDiskPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolBootDiskOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolBootDisk)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) ToAiModelDevelopmentClusterNodePoolBootDiskOutput() AiModelDevelopmentClusterNodePoolBootDiskOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) ToAiModelDevelopmentClusterNodePoolBootDiskOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutput() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return o.ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterNodePoolBootDisk) *AiModelDevelopmentClusterNodePoolBootDisk {
+		return &v
+	}).(AiModelDevelopmentClusterNodePoolBootDiskPtrOutput)
+}
+
+// Size in GB of the boot disk (default is 100GB).
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolBootDisk) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk. For non-A3U machines, the default value is
+// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+func (o AiModelDevelopmentClusterNodePoolBootDiskOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolBootDisk) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolBootDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolBootDisk)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutput() AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) ToAiModelDevelopmentClusterNodePoolBootDiskPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolBootDiskPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) Elem() AiModelDevelopmentClusterNodePoolBootDiskOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolBootDisk) AiModelDevelopmentClusterNodePoolBootDisk {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterNodePoolBootDisk
+		return ret
+	}).(AiModelDevelopmentClusterNodePoolBootDiskOutput)
+}
+
+// Size in GB of the boot disk (default is 100GB).
+func (o AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk. For non-A3U machines, the default value is
+// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+func (o AiModelDevelopmentClusterNodePoolBootDiskPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolBootDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpec struct {
+	// The type of the machine.
+	//
+	// See the [list of machine types supported for
+	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+	//
+	// See the [list of machine types supported for custom
+	// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+	//
+	// For DeployedModel this field is optional, and the default
+	// value is 'n1-standard-2'. For BatchPredictionJob or as part of
+	// WorkerPoolSpec this field is required.
+	MachineType string `pulumi:"machineType"`
+	// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+	// DeployedModel) to draw its Compute Engine resources from a Shared
+	// Reservation, or exclusively from on-demand capacity.
+	ReservationAffinity *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity `pulumi:"reservationAffinity"`
+}
+
+// AiModelDevelopmentClusterNodePoolMachineSpecInput is an input type that accepts AiModelDevelopmentClusterNodePoolMachineSpecArgs and AiModelDevelopmentClusterNodePoolMachineSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolMachineSpecInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolMachineSpecArgs{...}
+type AiModelDevelopmentClusterNodePoolMachineSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolMachineSpecOutput() AiModelDevelopmentClusterNodePoolMachineSpecOutput
+	ToAiModelDevelopmentClusterNodePoolMachineSpecOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolMachineSpecOutput
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecArgs struct {
+	// The type of the machine.
+	//
+	// See the [list of machine types supported for
+	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+	//
+	// See the [list of machine types supported for custom
+	// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+	//
+	// For DeployedModel this field is optional, and the default
+	// value is 'n1-standard-2'. For BatchPredictionJob or as part of
+	// WorkerPoolSpec this field is required.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+	// DeployedModel) to draw its Compute Engine resources from a Shared
+	// Reservation, or exclusively from on-demand capacity.
+	ReservationAffinity AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+}
+
+func (AiModelDevelopmentClusterNodePoolMachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecOutput() AiModelDevelopmentClusterNodePoolMachineSpecOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolMachineSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolMachineSpecOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolMachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecOutput() AiModelDevelopmentClusterNodePoolMachineSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecOutput {
+	return o
+}
+
+// The type of the machine.
+//
+// See the [list of machine types supported for
+// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+//
+// See the [list of machine types supported for custom
+// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+//
+// For DeployedModel this field is optional, and the default
+// value is 'n1-standard-2'. For BatchPredictionJob or as part of
+// WorkerPoolSpec this field is required.
+func (o AiModelDevelopmentClusterNodePoolMachineSpecOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolMachineSpec) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+// DeployedModel) to draw its Compute Engine resources from a Shared
+// Reservation, or exclusively from on-demand capacity.
+func (o AiModelDevelopmentClusterNodePoolMachineSpecOutput) ReservationAffinity() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolMachineSpec) *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity {
+		return v.ReservationAffinity
+	}).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity struct {
+	// Specifies the reservation affinity type.
+	// Possible values:
+	// NO_RESERVATION
+	// ANY_RESERVATION
+	// SPECIFIC_RESERVATION
+	ReservationAffinityType string `pulumi:"reservationAffinityType"`
+	// Corresponds to the label values of a reservation resource. This must be the
+	// resource name of the reservation, reservation block, or reservation sub-
+	// block.
+	Values []string `pulumi:"values"`
+}
+
+// AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityInput is an input type that accepts AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs and AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs{...}
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput
+	ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs struct {
+	// Specifies the reservation affinity type.
+	// Possible values:
+	// NO_RESERVATION
+	// ANY_RESERVATION
+	// SPECIFIC_RESERVATION
+	ReservationAffinityType pulumi.StringInput `pulumi:"reservationAffinityType"`
+	// Corresponds to the label values of a reservation resource. This must be the
+	// resource name of the reservation, reservation block, or reservation sub-
+	// block.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput)
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput).ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput is an input type that accepts AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs, AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtr and AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput` via:
+//
+//	        AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput
+	ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput
+}
+
+type aiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrType AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs
+
+func AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtr(v *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput {
+	return (*aiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrType) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrType) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return o.ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity {
+		return &v
+	}).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput)
+}
+
+// Specifies the reservation affinity type.
+// Possible values:
+// NO_RESERVATION
+// ANY_RESERVATION
+// SPECIFIC_RESERVATION
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) ReservationAffinityType() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) string {
+		return v.ReservationAffinityType
+	}).(pulumi.StringOutput)
+}
+
+// Corresponds to the label values of a reservation resource. This must be the
+// resource name of the reservation, reservation block, or reservation sub-
+// block.
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) ToAiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) Elem() AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity
+		return ret
+	}).(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput)
+}
+
+// Specifies the reservation affinity type.
+// Possible values:
+// NO_RESERVATION
+// ANY_RESERVATION
+// SPECIFIC_RESERVATION
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) ReservationAffinityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReservationAffinityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label values of a reservation resource. This must be the
+// resource name of the reservation, reservation block, or reservation sub-
+// block.
+func (o AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolScalingSpec struct {
+	// maximum size of the node pool,
+	// must be ≥ min_node_count
+	MaxNodeCount *int `pulumi:"maxNodeCount"`
+	// minimum size of the node pool,
+	// must be >= 0 and <= max_node_count
+	MinNodeCount *int `pulumi:"minNodeCount"`
+}
+
+// AiModelDevelopmentClusterNodePoolScalingSpecInput is an input type that accepts AiModelDevelopmentClusterNodePoolScalingSpecArgs and AiModelDevelopmentClusterNodePoolScalingSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolScalingSpecInput` via:
+//
+//	AiModelDevelopmentClusterNodePoolScalingSpecArgs{...}
+type AiModelDevelopmentClusterNodePoolScalingSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolScalingSpecOutput() AiModelDevelopmentClusterNodePoolScalingSpecOutput
+	ToAiModelDevelopmentClusterNodePoolScalingSpecOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolScalingSpecOutput
+}
+
+type AiModelDevelopmentClusterNodePoolScalingSpecArgs struct {
+	// maximum size of the node pool,
+	// must be ≥ min_node_count
+	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
+	// minimum size of the node pool,
+	// must be >= 0 and <= max_node_count
+	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
+}
+
+func (AiModelDevelopmentClusterNodePoolScalingSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolScalingSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterNodePoolScalingSpecArgs) ToAiModelDevelopmentClusterNodePoolScalingSpecOutput() AiModelDevelopmentClusterNodePoolScalingSpecOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolScalingSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolScalingSpecArgs) ToAiModelDevelopmentClusterNodePoolScalingSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolScalingSpecOutput)
+}
+
+func (i AiModelDevelopmentClusterNodePoolScalingSpecArgs) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutput() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterNodePoolScalingSpecArgs) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolScalingSpecOutput).ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterNodePoolScalingSpecPtrInput is an input type that accepts AiModelDevelopmentClusterNodePoolScalingSpecArgs, AiModelDevelopmentClusterNodePoolScalingSpecPtr and AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterNodePoolScalingSpecPtrInput` via:
+//
+//	        AiModelDevelopmentClusterNodePoolScalingSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterNodePoolScalingSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutput() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput
+	ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(context.Context) AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput
+}
+
+type aiModelDevelopmentClusterNodePoolScalingSpecPtrType AiModelDevelopmentClusterNodePoolScalingSpecArgs
+
+func AiModelDevelopmentClusterNodePoolScalingSpecPtr(v *AiModelDevelopmentClusterNodePoolScalingSpecArgs) AiModelDevelopmentClusterNodePoolScalingSpecPtrInput {
+	return (*aiModelDevelopmentClusterNodePoolScalingSpecPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterNodePoolScalingSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolScalingSpec)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterNodePoolScalingSpecPtrType) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutput() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterNodePoolScalingSpecPtrType) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolScalingSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolScalingSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterNodePoolScalingSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecOutput() AiModelDevelopmentClusterNodePoolScalingSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutput() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return o.ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterNodePoolScalingSpec) *AiModelDevelopmentClusterNodePoolScalingSpec {
+		return &v
+	}).(AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput)
+}
+
+// maximum size of the node pool,
+// must be ≥ min_node_count
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolScalingSpec) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// minimum size of the node pool,
+// must be >= 0 and <= max_node_count
+func (o AiModelDevelopmentClusterNodePoolScalingSpecOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterNodePoolScalingSpec) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
+}
+
+type AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterNodePoolScalingSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutput() AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) ToAiModelDevelopmentClusterNodePoolScalingSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) Elem() AiModelDevelopmentClusterNodePoolScalingSpecOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolScalingSpec) AiModelDevelopmentClusterNodePoolScalingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterNodePoolScalingSpec
+		return ret
+	}).(AiModelDevelopmentClusterNodePoolScalingSpecOutput)
+}
+
+// maximum size of the node pool,
+// must be ≥ min_node_count
+func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolScalingSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// minimum size of the node pool,
+// must be >= 0 and <= max_node_count
+func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterNodePoolScalingSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpec struct {
+	// The Slurm orchestrator related spec of the cluster.
+	SlurmSpec *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec `pulumi:"slurmSpec"`
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecArgs and AiModelDevelopmentClusterOrchestratorSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecArgs{...}
+type AiModelDevelopmentClusterOrchestratorSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecOutput() AiModelDevelopmentClusterOrchestratorSpecOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecArgs struct {
+	// The Slurm orchestrator related spec of the cluster.
+	SlurmSpec AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput `pulumi:"slurmSpec"`
+}
+
+func (AiModelDevelopmentClusterOrchestratorSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecOutput() AiModelDevelopmentClusterOrchestratorSpecOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecOutput)
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecOutput).ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecPtrInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecArgs, AiModelDevelopmentClusterOrchestratorSpecPtr and AiModelDevelopmentClusterOrchestratorSpecPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecPtrInput` via:
+//
+//	        AiModelDevelopmentClusterOrchestratorSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterOrchestratorSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecPtrOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecPtrOutput
+}
+
+type aiModelDevelopmentClusterOrchestratorSpecPtrType AiModelDevelopmentClusterOrchestratorSpecArgs
+
+func AiModelDevelopmentClusterOrchestratorSpecPtr(v *AiModelDevelopmentClusterOrchestratorSpecArgs) AiModelDevelopmentClusterOrchestratorSpecPtrInput {
+	return (*aiModelDevelopmentClusterOrchestratorSpecPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterOrchestratorSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterOrchestratorSpec)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterOrchestratorSpecPtrType) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterOrchestratorSpecPtrType) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecOutput() AiModelDevelopmentClusterOrchestratorSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return o.ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterOrchestratorSpec) *AiModelDevelopmentClusterOrchestratorSpec {
+		return &v
+	}).(AiModelDevelopmentClusterOrchestratorSpecPtrOutput)
+}
+
+// The Slurm orchestrator related spec of the cluster.
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) SlurmSpec() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpec) *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
+		return v.SlurmSpec
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterOrchestratorSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) ToAiModelDevelopmentClusterOrchestratorSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) Elem() AiModelDevelopmentClusterOrchestratorSpecOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpec) AiModelDevelopmentClusterOrchestratorSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterOrchestratorSpec
+		return ret
+	}).(AiModelDevelopmentClusterOrchestratorSpecOutput)
+}
+
+// The Slurm orchestrator related spec of the cluster.
+func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) SlurmSpec() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpec) *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
+		if v == nil {
+			return nil
+		}
+		return v.SlurmSpec
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpec struct {
+	// Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+	// slurm.conf.
+	//
+	// Keys are Slurm parameter names exactly as documented by SchedMD
+	// (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+	// Values are written the way slurm.conf writes them, including composite
+	// forms such as 'bf_window=1440,bf_resolution=600'.
+	//
+	// Example:
+	// { "PriorityType":            "priority/multifactor",
+	// "PriorityWeightAge":       "1000",
+	// "PreemptMode":             "SUSPEND,GANG",
+	// "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+	//
+	// Unsupported, reserved, or misspelled parameters, and values that are not
+	// legal for the parameter, are rejected at request time with the offending
+	// parameter named; they are never silently dropped. Settings
+	// that apply to a single partition or node pool belong in
+	// 'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+	// several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+	// are valid at more than one scope with different meanings and different
+	// legal values.
+	//
+	// On update this map is replaced wholesale; supply the complete desired set.
+	Config map[string]string `pulumi:"config"`
+	// Id of the partition that Slurm jobs submitted without an explicit
+	// partition run on, for example 'sbatch' without '--partition'. Must match
+	// the 'id' of one of 'partitions'.
+	//
+	// If unset, the service uses the first entry of 'partitions' and this field
+	// stays empty; the cluster always has a default partition whether or not this
+	// field is set. Setting it makes the choice independent of list order, which
+	// matters because 'partitions' is replaced wholesale on update: reordering
+	// the list, or prepending a partition to it, otherwise moves the default and
+	// silently redirects every job submitted without '--partition'.
+	DefaultPartitionId *string `pulumi:"defaultPartitionId"`
+	// Custom bash scripts executed after each slurm job on every allocated node.
+	EpilogBashScripts []string `pulumi:"epilogBashScripts"`
+	// Full name of the Filestore to be mounted as /home directory on every node.
+	HomeDirectoryStorage string `pulumi:"homeDirectoryStorage"`
+	// The node pool id to be used as slurm login node.
+	LoginNodePoolId string `pulumi:"loginNodePoolId"`
+	// Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+	// pool. Node pools without an entry use the settings derived by the cluster's
+	// Slurm controller.
+	NodeSets []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet `pulumi:"nodeSets"`
+	// The Slurm partitions spec.
+	Partitions []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition `pulumi:"partitions"`
+	// Custom bash scripts executed before each slurm job on every allocated node.
+	PrologBashScripts []string `pulumi:"prologBashScripts"`
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs{...}
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs struct {
+	// Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+	// slurm.conf.
+	//
+	// Keys are Slurm parameter names exactly as documented by SchedMD
+	// (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+	// Values are written the way slurm.conf writes them, including composite
+	// forms such as 'bf_window=1440,bf_resolution=600'.
+	//
+	// Example:
+	// { "PriorityType":            "priority/multifactor",
+	// "PriorityWeightAge":       "1000",
+	// "PreemptMode":             "SUSPEND,GANG",
+	// "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+	//
+	// Unsupported, reserved, or misspelled parameters, and values that are not
+	// legal for the parameter, are rejected at request time with the offending
+	// parameter named; they are never silently dropped. Settings
+	// that apply to a single partition or node pool belong in
+	// 'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+	// several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+	// are valid at more than one scope with different meanings and different
+	// legal values.
+	//
+	// On update this map is replaced wholesale; supply the complete desired set.
+	Config pulumi.StringMapInput `pulumi:"config"`
+	// Id of the partition that Slurm jobs submitted without an explicit
+	// partition run on, for example 'sbatch' without '--partition'. Must match
+	// the 'id' of one of 'partitions'.
+	//
+	// If unset, the service uses the first entry of 'partitions' and this field
+	// stays empty; the cluster always has a default partition whether or not this
+	// field is set. Setting it makes the choice independent of list order, which
+	// matters because 'partitions' is replaced wholesale on update: reordering
+	// the list, or prepending a partition to it, otherwise moves the default and
+	// silently redirects every job submitted without '--partition'.
+	DefaultPartitionId pulumi.StringPtrInput `pulumi:"defaultPartitionId"`
+	// Custom bash scripts executed after each slurm job on every allocated node.
+	EpilogBashScripts pulumi.StringArrayInput `pulumi:"epilogBashScripts"`
+	// Full name of the Filestore to be mounted as /home directory on every node.
+	HomeDirectoryStorage pulumi.StringInput `pulumi:"homeDirectoryStorage"`
+	// The node pool id to be used as slurm login node.
+	LoginNodePoolId pulumi.StringInput `pulumi:"loginNodePoolId"`
+	// Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+	// pool. Node pools without an entry use the settings derived by the cluster's
+	// Slurm controller.
+	NodeSets AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayInput `pulumi:"nodeSets"`
+	// The Slurm partitions spec.
+	Partitions AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayInput `pulumi:"partitions"`
+	// Custom bash scripts executed before each slurm job on every allocated node.
+	PrologBashScripts pulumi.StringArrayInput `pulumi:"prologBashScripts"`
+}
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput)
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput).ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs, AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtr and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput` via:
+//
+//	        AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput
+}
+
+type aiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrType AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs
+
+func AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtr(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput {
+	return (*aiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterOrchestratorSpecSlurmSpec)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrType) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrType) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
+		return &v
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput)
+}
+
+// Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+// slurm.conf.
+//
+// Keys are Slurm parameter names exactly as documented by SchedMD
+// (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+// Values are written the way slurm.conf writes them, including composite
+// forms such as 'bf_window=1440,bf_resolution=600'.
+//
+// Example:
+// { "PriorityType":            "priority/multifactor",
+// "PriorityWeightAge":       "1000",
+// "PreemptMode":             "SUSPEND,GANG",
+// "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+//
+// Unsupported, reserved, or misspelled parameters, and values that are not
+// legal for the parameter, are rejected at request time with the offending
+// parameter named; they are never silently dropped. Settings
+// that apply to a single partition or node pool belong in
+// 'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+// several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+// are valid at more than one scope with different meanings and different
+// legal values.
+//
+// On update this map is replaced wholesale; supply the complete desired set.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) map[string]string { return v.Config }).(pulumi.StringMapOutput)
+}
+
+// Id of the partition that Slurm jobs submitted without an explicit
+// partition run on, for example 'sbatch' without '--partition'. Must match
+// the 'id' of one of 'partitions'.
+//
+// If unset, the service uses the first entry of 'partitions' and this field
+// stays empty; the cluster always has a default partition whether or not this
+// field is set. Setting it makes the choice independent of list order, which
+// matters because 'partitions' is replaced wholesale on update: reordering
+// the list, or prepending a partition to it, otherwise moves the default and
+// silently redirects every job submitted without '--partition'.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) DefaultPartitionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) *string { return v.DefaultPartitionId }).(pulumi.StringPtrOutput)
+}
+
+// Custom bash scripts executed after each slurm job on every allocated node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) EpilogBashScripts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []string { return v.EpilogBashScripts }).(pulumi.StringArrayOutput)
+}
+
+// Full name of the Filestore to be mounted as /home directory on every node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) HomeDirectoryStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) string { return v.HomeDirectoryStorage }).(pulumi.StringOutput)
+}
+
+// The node pool id to be used as slurm login node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) LoginNodePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) string { return v.LoginNodePoolId }).(pulumi.StringOutput)
+}
+
+// Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+// pool. Node pools without an entry use the settings derived by the cluster's
+// Slurm controller.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) NodeSets() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet {
+		return v.NodeSets
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput)
+}
+
+// The Slurm partitions spec.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) Partitions() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition {
+		return v.Partitions
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput)
+}
+
+// Custom bash scripts executed before each slurm job on every allocated node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput) PrologBashScripts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []string { return v.PrologBashScripts }).(pulumi.StringArrayOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterOrchestratorSpecSlurmSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) Elem() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterOrchestratorSpecSlurmSpec
+		return ret
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput)
+}
+
+// Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+// slurm.conf.
+//
+// Keys are Slurm parameter names exactly as documented by SchedMD
+// (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+// Values are written the way slurm.conf writes them, including composite
+// forms such as 'bf_window=1440,bf_resolution=600'.
+//
+// Example:
+// { "PriorityType":            "priority/multifactor",
+// "PriorityWeightAge":       "1000",
+// "PreemptMode":             "SUSPEND,GANG",
+// "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+//
+// Unsupported, reserved, or misspelled parameters, and values that are not
+// legal for the parameter, are rejected at request time with the offending
+// parameter named; they are never silently dropped. Settings
+// that apply to a single partition or node pool belong in
+// 'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+// several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+// are valid at more than one scope with different meanings and different
+// legal values.
+//
+// On update this map is replaced wholesale; supply the complete desired set.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(pulumi.StringMapOutput)
+}
+
+// Id of the partition that Slurm jobs submitted without an explicit
+// partition run on, for example 'sbatch' without '--partition'. Must match
+// the 'id' of one of 'partitions'.
+//
+// If unset, the service uses the first entry of 'partitions' and this field
+// stays empty; the cluster always has a default partition whether or not this
+// field is set. Setting it makes the choice independent of list order, which
+// matters because 'partitions' is replaced wholesale on update: reordering
+// the list, or prepending a partition to it, otherwise moves the default and
+// silently redirects every job submitted without '--partition'.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) DefaultPartitionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultPartitionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom bash scripts executed after each slurm job on every allocated node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) EpilogBashScripts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EpilogBashScripts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Full name of the Filestore to be mounted as /home directory on every node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) HomeDirectoryStorage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HomeDirectoryStorage
+	}).(pulumi.StringPtrOutput)
+}
+
+// The node pool id to be used as slurm login node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) LoginNodePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LoginNodePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+// pool. Node pools without an entry use the settings derived by the cluster's
+// Slurm controller.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) NodeSets() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSets
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput)
+}
+
+// The Slurm partitions spec.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) Partitions() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition {
+		if v == nil {
+			return nil
+		}
+		return v.Partitions
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput)
+}
+
+// Custom bash scripts executed before each slurm job on every allocated node.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput) PrologBashScripts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PrologBashScripts
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet struct {
+	// Node-scoped Slurm settings, emitted as additional 'Key=Value' pairs on the
+	// 'NodeName=' line for this node pool's nodes in slurm.conf.
+	//
+	// Example:
+	// { "Features":     "a3mega,nvlink",
+	// "Weight":       "10",
+	// "MemSpecLimit": "4096" }
+	//
+	// On update this map is replaced wholesale; supply the complete desired set.
+	Config map[string]string `pulumi:"config"`
+	// (Output)
+	// The ID of the node pool.
+	NodePoolId string `pulumi:"nodePoolId"`
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs{...}
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs struct {
+	// Node-scoped Slurm settings, emitted as additional 'Key=Value' pairs on the
+	// 'NodeName=' line for this node pool's nodes in slurm.conf.
+	//
+	// Example:
+	// { "Features":     "a3mega,nvlink",
+	// "Weight":       "10",
+	// "MemSpecLimit": "4096" }
+	//
+	// On update this map is replaced wholesale; supply the complete desired set.
+	Config pulumi.StringMapInput `pulumi:"config"`
+	// (Output)
+	// The ID of the node pool.
+	NodePoolId pulumi.StringInput `pulumi:"nodePoolId"`
+}
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput)
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray{ AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs{...} }
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput {
+	return o
+}
+
+// Node-scoped Slurm settings, emitted as additional 'Key=Value' pairs on the
+// 'NodeName=' line for this node pool's nodes in slurm.conf.
+//
+// Example:
+// { "Features":     "a3mega,nvlink",
+// "Weight":       "10",
+// "MemSpecLimit": "4096" }
+//
+// On update this map is replaced wholesale; supply the complete desired set.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet) map[string]string { return v.Config }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The ID of the node pool.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput) NodePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet) string { return v.NodePoolId }).(pulumi.StringOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet {
+		return vs[0].([]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition struct {
+	// Partition-scoped Slurm settings, emitted as additional 'Key=Value' pairs
+	// on this partition's 'PartitionName=' line in slurm.conf.
+	//
+	// Example:
+	// { "MaxTime":       "4-00:00:00",
+	// "DenyAccounts":  "low-pri",
+	// "PriorityTier":  "20",
+	// "OverSubscribe": "YES:4" }
+	//
+	// Note: values set here take precedence over service-computed defaults for
+	// the same parameter (for example 'OverSubscribe' and 'DefMemPerCPU', which
+	// the service otherwise derives from the partition's exclusivity and from
+	// the memory per CPU of its nodes).
+	//
+	// 'Default' is rejected here: which partition is the default is a
+	// cluster-scoped choice, so it belongs in 'SlurmSpec.default_partition_id'.
+	Config map[string]string `pulumi:"config"`
+	// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/modelDevelopmentClusters/{{model_development_cluster_id}}`
+	Id string `pulumi:"id"`
+	// Node pools for the slurm partition
+	NodePoolIds []string `pulumi:"nodePoolIds"`
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs{...}
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs struct {
+	// Partition-scoped Slurm settings, emitted as additional 'Key=Value' pairs
+	// on this partition's 'PartitionName=' line in slurm.conf.
+	//
+	// Example:
+	// { "MaxTime":       "4-00:00:00",
+	// "DenyAccounts":  "low-pri",
+	// "PriorityTier":  "20",
+	// "OverSubscribe": "YES:4" }
+	//
+	// Note: values set here take precedence over service-computed defaults for
+	// the same parameter (for example 'OverSubscribe' and 'DefMemPerCPU', which
+	// the service otherwise derives from the partition's exclusivity and from
+	// the memory per CPU of its nodes).
+	//
+	// 'Default' is rejected here: which partition is the default is a
+	// cluster-scoped choice, so it belongs in 'SlurmSpec.default_partition_id'.
+	Config pulumi.StringMapInput `pulumi:"config"`
+	// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/modelDevelopmentClusters/{{model_development_cluster_id}}`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Node pools for the slurm partition
+	NodePoolIds pulumi.StringArrayInput `pulumi:"nodePoolIds"`
+}
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput)
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray and AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray{ AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs{...} }
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray []AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionInput
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput {
+	return o
+}
+
+// Partition-scoped Slurm settings, emitted as additional 'Key=Value' pairs
+// on this partition's 'PartitionName=' line in slurm.conf.
+//
+// Example:
+// { "MaxTime":       "4-00:00:00",
+// "DenyAccounts":  "low-pri",
+// "PriorityTier":  "20",
+// "OverSubscribe": "YES:4" }
+//
+// Note: values set here take precedence over service-computed defaults for
+// the same parameter (for example 'OverSubscribe' and 'DefMemPerCPU', which
+// the service otherwise derives from the partition's exclusivity and from
+// the memory per CPU of its nodes).
+//
+// 'Default' is rejected here: which partition is the default is a
+// cluster-scoped choice, so it belongs in 'SlurmSpec.default_partition_id'.
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition) map[string]string { return v.Config }).(pulumi.StringMapOutput)
+}
+
+// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/modelDevelopmentClusters/{{model_development_cluster_id}}`
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Node pools for the slurm partition
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput) NodePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition) []string { return v.NodePoolIds }).(pulumi.StringArrayOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput) ToAiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition {
+		return vs[0].([]AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput)
+}
+
+type AiModelDevelopmentClusterRuntime struct {
+	// (Output)
+	// The training services running on this Vertex AI Training Cluster.
+	// Structure is documented below.
+	TrainingServices []AiModelDevelopmentClusterRuntimeTrainingService `pulumi:"trainingServices"`
+	// (Output)
+	// A purpose-built, output-only view of the XManager instance attached to a
+	// cluster.
+	// Structure is documented below.
+	Xmanagers []AiModelDevelopmentClusterRuntimeXmanager `pulumi:"xmanagers"`
+}
+
+// AiModelDevelopmentClusterRuntimeInput is an input type that accepts AiModelDevelopmentClusterRuntimeArgs and AiModelDevelopmentClusterRuntimeOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeArgs{...}
+type AiModelDevelopmentClusterRuntimeInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeOutput() AiModelDevelopmentClusterRuntimeOutput
+	ToAiModelDevelopmentClusterRuntimeOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeOutput
+}
+
+type AiModelDevelopmentClusterRuntimeArgs struct {
+	// (Output)
+	// The training services running on this Vertex AI Training Cluster.
+	// Structure is documented below.
+	TrainingServices AiModelDevelopmentClusterRuntimeTrainingServiceArrayInput `pulumi:"trainingServices"`
+	// (Output)
+	// A purpose-built, output-only view of the XManager instance attached to a
+	// cluster.
+	// Structure is documented below.
+	Xmanagers AiModelDevelopmentClusterRuntimeXmanagerArrayInput `pulumi:"xmanagers"`
+}
+
+func (AiModelDevelopmentClusterRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntime)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeArgs) ToAiModelDevelopmentClusterRuntimeOutput() AiModelDevelopmentClusterRuntimeOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeArgs) ToAiModelDevelopmentClusterRuntimeOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeArray and AiModelDevelopmentClusterRuntimeArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeArray{ AiModelDevelopmentClusterRuntimeArgs{...} }
+type AiModelDevelopmentClusterRuntimeArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeArrayOutput() AiModelDevelopmentClusterRuntimeArrayOutput
+	ToAiModelDevelopmentClusterRuntimeArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeArray []AiModelDevelopmentClusterRuntimeInput
+
+func (AiModelDevelopmentClusterRuntimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntime)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeArray) ToAiModelDevelopmentClusterRuntimeArrayOutput() AiModelDevelopmentClusterRuntimeArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeArray) ToAiModelDevelopmentClusterRuntimeArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntime)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeOutput) ToAiModelDevelopmentClusterRuntimeOutput() AiModelDevelopmentClusterRuntimeOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeOutput) ToAiModelDevelopmentClusterRuntimeOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeOutput {
+	return o
+}
+
+// (Output)
+// The training services running on this Vertex AI Training Cluster.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterRuntimeOutput) TrainingServices() AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntime) []AiModelDevelopmentClusterRuntimeTrainingService {
+		return v.TrainingServices
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput)
+}
+
+// (Output)
+// A purpose-built, output-only view of the XManager instance attached to a
+// cluster.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterRuntimeOutput) Xmanagers() AiModelDevelopmentClusterRuntimeXmanagerArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntime) []AiModelDevelopmentClusterRuntimeXmanager {
+		return v.Xmanagers
+	}).(AiModelDevelopmentClusterRuntimeXmanagerArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntime)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeArrayOutput) ToAiModelDevelopmentClusterRuntimeArrayOutput() AiModelDevelopmentClusterRuntimeArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeArrayOutput) ToAiModelDevelopmentClusterRuntimeArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntime {
+		return vs[0].([]AiModelDevelopmentClusterRuntime)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeSpec struct {
+	// The default service account used by the cluster when running any workloads
+	// on it. If not specified, the default compute engine service account will be
+	// used.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+}
+
+// AiModelDevelopmentClusterRuntimeSpecInput is an input type that accepts AiModelDevelopmentClusterRuntimeSpecArgs and AiModelDevelopmentClusterRuntimeSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeSpecInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeSpecArgs{...}
+type AiModelDevelopmentClusterRuntimeSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeSpecOutput() AiModelDevelopmentClusterRuntimeSpecOutput
+	ToAiModelDevelopmentClusterRuntimeSpecOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeSpecOutput
+}
+
+type AiModelDevelopmentClusterRuntimeSpecArgs struct {
+	// The default service account used by the cluster when running any workloads
+	// on it. If not specified, the default compute engine service account will be
+	// used.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+}
+
+func (AiModelDevelopmentClusterRuntimeSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeSpecArgs) ToAiModelDevelopmentClusterRuntimeSpecOutput() AiModelDevelopmentClusterRuntimeSpecOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeSpecArgs) ToAiModelDevelopmentClusterRuntimeSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeSpecOutput)
+}
+
+func (i AiModelDevelopmentClusterRuntimeSpecArgs) ToAiModelDevelopmentClusterRuntimeSpecPtrOutput() AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeSpecArgs) ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeSpecOutput).ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterRuntimeSpecPtrInput is an input type that accepts AiModelDevelopmentClusterRuntimeSpecArgs, AiModelDevelopmentClusterRuntimeSpecPtr and AiModelDevelopmentClusterRuntimeSpecPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeSpecPtrInput` via:
+//
+//	        AiModelDevelopmentClusterRuntimeSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterRuntimeSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeSpecPtrOutput() AiModelDevelopmentClusterRuntimeSpecPtrOutput
+	ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeSpecPtrOutput
+}
+
+type aiModelDevelopmentClusterRuntimeSpecPtrType AiModelDevelopmentClusterRuntimeSpecArgs
+
+func AiModelDevelopmentClusterRuntimeSpecPtr(v *AiModelDevelopmentClusterRuntimeSpecArgs) AiModelDevelopmentClusterRuntimeSpecPtrInput {
+	return (*aiModelDevelopmentClusterRuntimeSpecPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterRuntimeSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterRuntimeSpec)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterRuntimeSpecPtrType) ToAiModelDevelopmentClusterRuntimeSpecPtrOutput() AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterRuntimeSpecPtrType) ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecOutput) ToAiModelDevelopmentClusterRuntimeSpecOutput() AiModelDevelopmentClusterRuntimeSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecOutput) ToAiModelDevelopmentClusterRuntimeSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecOutput) ToAiModelDevelopmentClusterRuntimeSpecPtrOutput() AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return o.ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecOutput) ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterRuntimeSpec) *AiModelDevelopmentClusterRuntimeSpec {
+		return &v
+	}).(AiModelDevelopmentClusterRuntimeSpecPtrOutput)
+}
+
+// The default service account used by the cluster when running any workloads
+// on it. If not specified, the default compute engine service account will be
+// used.
+func (o AiModelDevelopmentClusterRuntimeSpecOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeSpec) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterRuntimeSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecPtrOutput) ToAiModelDevelopmentClusterRuntimeSpecPtrOutput() AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecPtrOutput) ToAiModelDevelopmentClusterRuntimeSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeSpecPtrOutput) Elem() AiModelDevelopmentClusterRuntimeSpecOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterRuntimeSpec) AiModelDevelopmentClusterRuntimeSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterRuntimeSpec
+		return ret
+	}).(AiModelDevelopmentClusterRuntimeSpecOutput)
+}
+
+// The default service account used by the cluster when running any workloads
+// on it. If not specified, the default compute engine service account will be
+// used.
+func (o AiModelDevelopmentClusterRuntimeSpecPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterRuntimeSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingService struct {
+	// (Output)
+	// Time when the TrainingService was created.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// Orchestrator-agnostic deployment spec.
+	// Structure is documented below.
+	DeploymentSpecs []AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec `pulumi:"deploymentSpecs"`
+	// (Output)
+	// Cloud Storage bucket name dynamically GCSFuse-mounted on all nodes, for
+	// storing checkpoints and other service outputs.
+	GcsBucket *string `pulumi:"gcsBucket"`
+	// (Output)
+	// Cloud Storage URI of the squashfs (.sqsh) container image.
+	ImageUri *string `pulumi:"imageUri"`
+	// (Output)
+	// Identifier. Resource name of the TrainingService. Format:
+	// `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
+	Name *string `pulumi:"name"`
+	// (Output)
+	// Status of a TrainingService.
+	// Structure is documented below.
+	ServiceStatuses []AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus `pulumi:"serviceStatuses"`
+	// (Output)
+	// Time when the TrainingService was most recently updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceArgs and AiModelDevelopmentClusterRuntimeTrainingServiceOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceArgs{...}
+type AiModelDevelopmentClusterRuntimeTrainingServiceInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceOutput() AiModelDevelopmentClusterRuntimeTrainingServiceOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceArgs struct {
+	// (Output)
+	// Time when the TrainingService was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// Orchestrator-agnostic deployment spec.
+	// Structure is documented below.
+	DeploymentSpecs AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayInput `pulumi:"deploymentSpecs"`
+	// (Output)
+	// Cloud Storage bucket name dynamically GCSFuse-mounted on all nodes, for
+	// storing checkpoints and other service outputs.
+	GcsBucket pulumi.StringPtrInput `pulumi:"gcsBucket"`
+	// (Output)
+	// Cloud Storage URI of the squashfs (.sqsh) container image.
+	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// (Output)
+	// Identifier. Resource name of the TrainingService. Format:
+	// `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// Status of a TrainingService.
+	// Structure is documented below.
+	ServiceStatuses AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayInput `pulumi:"serviceStatuses"`
+	// (Output)
+	// Time when the TrainingService was most recently updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingService)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceOutput() AiModelDevelopmentClusterRuntimeTrainingServiceOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceArray and AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceArray{ AiModelDevelopmentClusterRuntimeTrainingServiceArgs{...} }
+type AiModelDevelopmentClusterRuntimeTrainingServiceArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceArray []AiModelDevelopmentClusterRuntimeTrainingServiceInput
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingService)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingService)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceOutput() AiModelDevelopmentClusterRuntimeTrainingServiceOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceOutput {
+	return o
+}
+
+// (Output)
+// Time when the TrainingService was created.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Orchestrator-agnostic deployment spec.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) DeploymentSpecs() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) []AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec {
+		return v.DeploymentSpecs
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput)
+}
+
+// (Output)
+// Cloud Storage bucket name dynamically GCSFuse-mounted on all nodes, for
+// storing checkpoints and other service outputs.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) GcsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) *string { return v.GcsBucket }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Cloud Storage URI of the squashfs (.sqsh) container image.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Identifier. Resource name of the TrainingService. Format:
+// `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Status of a TrainingService.
+// Structure is documented below.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) ServiceStatuses() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) []AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus {
+		return v.ServiceStatuses
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput)
+}
+
+// (Output)
+// Time when the TrainingService was most recently updated.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingService) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingService)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeTrainingServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntimeTrainingService {
+		return vs[0].([]AiModelDevelopmentClusterRuntimeTrainingService)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec struct {
+	// (Output)
+	// Number of worker nodes to allocate.
+	WorkerNodeCount *int `pulumi:"workerNodeCount"`
+	// (Output)
+	// ID of a node pool on the parent ModelDevelopmentCluster (see
+	// `ModelDevelopmentCluster.node_pools[].id`) on which to place the worker
+	// nodes.
+	WorkerNodePoolId *string `pulumi:"workerNodePoolId"`
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs and AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs{...}
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs struct {
+	// (Output)
+	// Number of worker nodes to allocate.
+	WorkerNodeCount pulumi.IntPtrInput `pulumi:"workerNodeCount"`
+	// (Output)
+	// ID of a node pool on the parent ModelDevelopmentCluster (see
+	// `ModelDevelopmentCluster.node_pools[].id`) on which to place the worker
+	// nodes.
+	WorkerNodePoolId pulumi.StringPtrInput `pulumi:"workerNodePoolId"`
+}
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray and AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray{ AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs{...} }
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray []AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecInput
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput {
+	return o
+}
+
+// (Output)
+// Number of worker nodes to allocate.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput) WorkerNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec) *int { return v.WorkerNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// ID of a node pool on the parent ModelDevelopmentCluster (see
+// `ModelDevelopmentCluster.node_pools[].id`) on which to place the worker
+// nodes.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput) WorkerNodePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec) *string {
+		return v.WorkerNodePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec {
+		return vs[0].([]AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus struct {
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail *string `pulumi:"detail"`
+	// (Output)
+	// Endpoints clients use to connect to the running service.
+	Endpoints map[string]string `pulumi:"endpoints"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State *string `pulumi:"state"`
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs and AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs{...}
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs struct {
+	// (Output)
+	// Human-readable detail about the current state.
+	Detail pulumi.StringPtrInput `pulumi:"detail"`
+	// (Output)
+	// Endpoints clients use to connect to the running service.
+	Endpoints pulumi.StringMapInput `pulumi:"endpoints"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray and AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray{ AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs{...} }
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput
+	ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray []AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusInput
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput {
+	return o
+}
+
+// (Output)
+// Human-readable detail about the current state.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus) *string { return v.Detail }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Endpoints clients use to connect to the running service.
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) Endpoints() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus) map[string]string {
+		return v.Endpoints
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The current state of the XManager instance.
+// Possible values:
+// PROVISIONING
+// RUNNING
+// DELETING
+// ERROR
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput() AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput) ToAiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus {
+		return vs[0].([]AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanager struct {
+	// (Output)
+	// The gRPC API endpoint (Experiment State Server) of the
+	// XManager instance. Empty unless the instance is running.
+	ApiEndpoint *string `pulumi:"apiEndpoint"`
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors []AiModelDevelopmentClusterRuntimeXmanagerError `pulumi:"errors"`
+	// (Output)
+	// The XManager instance ID (for example, "xmc-").
+	InstanceId *string `pulumi:"instanceId"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State *string `pulumi:"state"`
+	// (Output)
+	// The UI endpoint of the XManager instance. Empty unless the
+	// instance is running.
+	UiEndpoint *string `pulumi:"uiEndpoint"`
+}
+
+// AiModelDevelopmentClusterRuntimeXmanagerInput is an input type that accepts AiModelDevelopmentClusterRuntimeXmanagerArgs and AiModelDevelopmentClusterRuntimeXmanagerOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeXmanagerInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeXmanagerArgs{...}
+type AiModelDevelopmentClusterRuntimeXmanagerInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeXmanagerOutput() AiModelDevelopmentClusterRuntimeXmanagerOutput
+	ToAiModelDevelopmentClusterRuntimeXmanagerOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeXmanagerOutput
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerArgs struct {
+	// (Output)
+	// The gRPC API endpoint (Experiment State Server) of the
+	// XManager instance. Empty unless the instance is running.
+	ApiEndpoint pulumi.StringPtrInput `pulumi:"apiEndpoint"`
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors AiModelDevelopmentClusterRuntimeXmanagerErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// The XManager instance ID (for example, "xmc-").
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// (Output)
+	// The current state of the XManager instance.
+	// Possible values:
+	// PROVISIONING
+	// RUNNING
+	// DELETING
+	// ERROR
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// The UI endpoint of the XManager instance. Empty unless the
+	// instance is running.
+	UiEndpoint pulumi.StringPtrInput `pulumi:"uiEndpoint"`
+}
+
+func (AiModelDevelopmentClusterRuntimeXmanagerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanager)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerArgs) ToAiModelDevelopmentClusterRuntimeXmanagerOutput() AiModelDevelopmentClusterRuntimeXmanagerOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeXmanagerOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerArgs) ToAiModelDevelopmentClusterRuntimeXmanagerOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeXmanagerOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeXmanagerArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeXmanagerArray and AiModelDevelopmentClusterRuntimeXmanagerArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeXmanagerArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeXmanagerArray{ AiModelDevelopmentClusterRuntimeXmanagerArgs{...} }
+type AiModelDevelopmentClusterRuntimeXmanagerArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerArrayOutput
+	ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeXmanagerArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerArray []AiModelDevelopmentClusterRuntimeXmanagerInput
+
+func (AiModelDevelopmentClusterRuntimeXmanagerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeXmanager)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerArray) ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerArray) ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeXmanagerArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeXmanagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanager)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) ToAiModelDevelopmentClusterRuntimeXmanagerOutput() AiModelDevelopmentClusterRuntimeXmanagerOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) ToAiModelDevelopmentClusterRuntimeXmanagerOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerOutput {
+	return o
+}
+
+// (Output)
+// The gRPC API endpoint (Experiment State Server) of the
+// XManager instance. Empty unless the instance is running.
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) ApiEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanager) *string { return v.ApiEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+// three pieces of data: error code, error message, and error details.
+// You can find out more about this error model and how to work with it in the
+// [API Design Guide](https://cloud.google.com/apis/design/errors).
+// Structure is documented below.
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) Errors() AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanager) []AiModelDevelopmentClusterRuntimeXmanagerError {
+		return v.Errors
+	}).(AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput)
+}
+
+// (Output)
+// The XManager instance ID (for example, "xmc-").
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanager) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The current state of the XManager instance.
+// Possible values:
+// PROVISIONING
+// RUNNING
+// DELETING
+// ERROR
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanager) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The UI endpoint of the XManager instance. Empty unless the
+// instance is running.
+func (o AiModelDevelopmentClusterRuntimeXmanagerOutput) UiEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanager) *string { return v.UiEndpoint }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeXmanagerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeXmanager)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerArrayOutput) ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerArrayOutput) ToAiModelDevelopmentClusterRuntimeXmanagerArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeXmanagerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntimeXmanager {
+		return vs[0].([]AiModelDevelopmentClusterRuntimeXmanager)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeXmanagerOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// AiModelDevelopmentClusterRuntimeXmanagerErrorInput is an input type that accepts AiModelDevelopmentClusterRuntimeXmanagerErrorArgs and AiModelDevelopmentClusterRuntimeXmanagerErrorOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeXmanagerErrorInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeXmanagerErrorArgs{...}
+type AiModelDevelopmentClusterRuntimeXmanagerErrorInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorOutput
+	ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorOutput
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiModelDevelopmentClusterRuntimeXmanagerErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerError)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerErrorArgs) ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerErrorArgs) ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeXmanagerErrorOutput)
+}
+
+// AiModelDevelopmentClusterRuntimeXmanagerErrorArrayInput is an input type that accepts AiModelDevelopmentClusterRuntimeXmanagerErrorArray and AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterRuntimeXmanagerErrorArrayInput` via:
+//
+//	AiModelDevelopmentClusterRuntimeXmanagerErrorArray{ AiModelDevelopmentClusterRuntimeXmanagerErrorArgs{...} }
+type AiModelDevelopmentClusterRuntimeXmanagerErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput
+	ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutputWithContext(context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerErrorArray []AiModelDevelopmentClusterRuntimeXmanagerErrorInput
+
+func (AiModelDevelopmentClusterRuntimeXmanagerErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeXmanagerError)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerErrorArray) ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput {
+	return i.ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterRuntimeXmanagerErrorArray) ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerErrorOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerError)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) ToAiModelDevelopmentClusterRuntimeXmanagerErrorOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanagerError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.  There is a common set of
+// message types for APIs to use.
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanagerError) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterRuntimeXmanagerError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiModelDevelopmentClusterRuntimeXmanagerError)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput) ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput() AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput) ToAiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutputWithContext(ctx context.Context) AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput) Index(i pulumi.IntInput) AiModelDevelopmentClusterRuntimeXmanagerErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiModelDevelopmentClusterRuntimeXmanagerError {
+		return vs[0].([]AiModelDevelopmentClusterRuntimeXmanagerError)[vs[1].(int)]
+	}).(AiModelDevelopmentClusterRuntimeXmanagerErrorOutput)
 }
 
 type AiOnlineEvaluatorCloudObservability struct {
@@ -23063,6 +30128,9 @@ func (o AiPersistentResourceResourceRuntimeArrayOutput) Index(i pulumi.IntInput)
 }
 
 type AiPersistentResourceResourceRuntimeSpec struct {
+	// Configuration information for the Ray cluster.
+	// Structure is documented below.
+	RaySpec *AiPersistentResourceResourceRuntimeSpecRaySpec `pulumi:"raySpec"`
 	// Configuration for the use of custom service account to run the workloads.
 	// Structure is documented below.
 	ServiceAccountSpec *AiPersistentResourceResourceRuntimeSpecServiceAccountSpec `pulumi:"serviceAccountSpec"`
@@ -23080,6 +30148,9 @@ type AiPersistentResourceResourceRuntimeSpecInput interface {
 }
 
 type AiPersistentResourceResourceRuntimeSpecArgs struct {
+	// Configuration information for the Ray cluster.
+	// Structure is documented below.
+	RaySpec AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput `pulumi:"raySpec"`
 	// Configuration for the use of custom service account to run the workloads.
 	// Structure is documented below.
 	ServiceAccountSpec AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrInput `pulumi:"serviceAccountSpec"`
@@ -23162,6 +30233,14 @@ func (o AiPersistentResourceResourceRuntimeSpecOutput) ToAiPersistentResourceRes
 	}).(AiPersistentResourceResourceRuntimeSpecPtrOutput)
 }
 
+// Configuration information for the Ray cluster.
+// Structure is documented below.
+func (o AiPersistentResourceResourceRuntimeSpecOutput) RaySpec() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourceRuntimeSpec) *AiPersistentResourceResourceRuntimeSpecRaySpec {
+		return v.RaySpec
+	}).(AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput)
+}
+
 // Configuration for the use of custom service account to run the workloads.
 // Structure is documented below.
 func (o AiPersistentResourceResourceRuntimeSpecOutput) ServiceAccountSpec() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
@@ -23194,6 +30273,17 @@ func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) Elem() AiPersistentRes
 	}).(AiPersistentResourceResourceRuntimeSpecOutput)
 }
 
+// Configuration information for the Ray cluster.
+// Structure is documented below.
+func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) RaySpec() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourceRuntimeSpec) *AiPersistentResourceResourceRuntimeSpecRaySpec {
+		if v == nil {
+			return nil
+		}
+		return v.RaySpec
+	}).(AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput)
+}
+
 // Configuration for the use of custom service account to run the workloads.
 // Structure is documented below.
 func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) ServiceAccountSpec() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
@@ -23203,6 +30293,163 @@ func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) ServiceAccountSpec() A
 		}
 		return v.ServiceAccountSpec
 	}).(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecRaySpec struct {
+	// Default image for user to choose a preferred ML framework
+	// (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+	// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+	// Either this or the resourcePoolImages is required. Use this field if
+	// you need all the resource pools to have the same Ray image. Otherwise, use
+	// the `resourcePoolImages` field.
+	ImageUri *string `pulumi:"imageUri"`
+}
+
+// AiPersistentResourceResourceRuntimeSpecRaySpecInput is an input type that accepts AiPersistentResourceResourceRuntimeSpecRaySpecArgs and AiPersistentResourceResourceRuntimeSpecRaySpecOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourceRuntimeSpecRaySpecInput` via:
+//
+//	AiPersistentResourceResourceRuntimeSpecRaySpecArgs{...}
+type AiPersistentResourceResourceRuntimeSpecRaySpecInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourceRuntimeSpecRaySpecOutput() AiPersistentResourceResourceRuntimeSpecRaySpecOutput
+	ToAiPersistentResourceResourceRuntimeSpecRaySpecOutputWithContext(context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecOutput
+}
+
+type AiPersistentResourceResourceRuntimeSpecRaySpecArgs struct {
+	// Default image for user to choose a preferred ML framework
+	// (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+	// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+	// Either this or the resourcePoolImages is required. Use this field if
+	// you need all the resource pools to have the same Ray image. Otherwise, use
+	// the `resourcePoolImages` field.
+	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+}
+
+func (AiPersistentResourceResourceRuntimeSpecRaySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecRaySpec)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecRaySpecArgs) ToAiPersistentResourceResourceRuntimeSpecRaySpecOutput() AiPersistentResourceResourceRuntimeSpecRaySpecOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecRaySpecOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecRaySpecArgs) ToAiPersistentResourceResourceRuntimeSpecRaySpecOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecRaySpecOutput)
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecRaySpecArgs) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecRaySpecArgs) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecRaySpecOutput).ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(ctx)
+}
+
+// AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput is an input type that accepts AiPersistentResourceResourceRuntimeSpecRaySpecArgs, AiPersistentResourceResourceRuntimeSpecRaySpecPtr and AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput` via:
+//
+//	        AiPersistentResourceResourceRuntimeSpecRaySpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput
+	ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput
+}
+
+type aiPersistentResourceResourceRuntimeSpecRaySpecPtrType AiPersistentResourceResourceRuntimeSpecRaySpecArgs
+
+func AiPersistentResourceResourceRuntimeSpecRaySpecPtr(v *AiPersistentResourceResourceRuntimeSpecRaySpecArgs) AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput {
+	return (*aiPersistentResourceResourceRuntimeSpecRaySpecPtrType)(v)
+}
+
+func (*aiPersistentResourceResourceRuntimeSpecRaySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourceRuntimeSpecRaySpec)(nil)).Elem()
+}
+
+func (i *aiPersistentResourceResourceRuntimeSpecRaySpecPtrType) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPersistentResourceResourceRuntimeSpecRaySpecPtrType) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecRaySpecOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecRaySpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecOutput() AiPersistentResourceResourceRuntimeSpecRaySpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o.ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPersistentResourceResourceRuntimeSpecRaySpec) *AiPersistentResourceResourceRuntimeSpecRaySpec {
+		return &v
+	}).(AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput)
+}
+
+// Default image for user to choose a preferred ML framework
+// (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+// Either this or the resourcePoolImages is required. Use this field if
+// you need all the resource pools to have the same Ray image. Otherwise, use
+// the `resourcePoolImages` field.
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourceRuntimeSpecRaySpec) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourceRuntimeSpecRaySpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput() AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput) ToAiPersistentResourceResourceRuntimeSpecRaySpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput) Elem() AiPersistentResourceResourceRuntimeSpecRaySpecOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourceRuntimeSpecRaySpec) AiPersistentResourceResourceRuntimeSpecRaySpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiPersistentResourceResourceRuntimeSpecRaySpec
+		return ret
+	}).(AiPersistentResourceResourceRuntimeSpecRaySpecOutput)
+}
+
+// Default image for user to choose a preferred ML framework
+// (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+// Either this or the resourcePoolImages is required. Use this field if
+// you need all the resource pools to have the same Ray image. Otherwise, use
+// the `resourcePoolImages` field.
+func (o AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourceRuntimeSpecRaySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageUri
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiPersistentResourceResourceRuntimeSpecServiceAccountSpec struct {
@@ -23354,6 +30601,2215 @@ func (o AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput) Enab
 		}
 		return &v.EnableCustomServiceAccount
 	}).(pulumi.BoolPtrOutput)
+}
+
+type AiPipelineJobEncryptionSpec struct {
+	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiPipelineJobEncryptionSpecInput is an input type that accepts AiPipelineJobEncryptionSpecArgs and AiPipelineJobEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiPipelineJobEncryptionSpecInput` via:
+//
+//	AiPipelineJobEncryptionSpecArgs{...}
+type AiPipelineJobEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobEncryptionSpecOutput() AiPipelineJobEncryptionSpecOutput
+	ToAiPipelineJobEncryptionSpecOutputWithContext(context.Context) AiPipelineJobEncryptionSpecOutput
+}
+
+type AiPipelineJobEncryptionSpecArgs struct {
+	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiPipelineJobEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiPipelineJobEncryptionSpecArgs) ToAiPipelineJobEncryptionSpecOutput() AiPipelineJobEncryptionSpecOutput {
+	return i.ToAiPipelineJobEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobEncryptionSpecArgs) ToAiPipelineJobEncryptionSpecOutputWithContext(ctx context.Context) AiPipelineJobEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobEncryptionSpecOutput)
+}
+
+func (i AiPipelineJobEncryptionSpecArgs) ToAiPipelineJobEncryptionSpecPtrOutput() AiPipelineJobEncryptionSpecPtrOutput {
+	return i.ToAiPipelineJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobEncryptionSpecArgs) ToAiPipelineJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiPipelineJobEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobEncryptionSpecOutput).ToAiPipelineJobEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiPipelineJobEncryptionSpecPtrInput is an input type that accepts AiPipelineJobEncryptionSpecArgs, AiPipelineJobEncryptionSpecPtr and AiPipelineJobEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiPipelineJobEncryptionSpecPtrInput` via:
+//
+//	        AiPipelineJobEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPipelineJobEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobEncryptionSpecPtrOutput() AiPipelineJobEncryptionSpecPtrOutput
+	ToAiPipelineJobEncryptionSpecPtrOutputWithContext(context.Context) AiPipelineJobEncryptionSpecPtrOutput
+}
+
+type aiPipelineJobEncryptionSpecPtrType AiPipelineJobEncryptionSpecArgs
+
+func AiPipelineJobEncryptionSpecPtr(v *AiPipelineJobEncryptionSpecArgs) AiPipelineJobEncryptionSpecPtrInput {
+	return (*aiPipelineJobEncryptionSpecPtrType)(v)
+}
+
+func (*aiPipelineJobEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPipelineJobEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiPipelineJobEncryptionSpecPtrType) ToAiPipelineJobEncryptionSpecPtrOutput() AiPipelineJobEncryptionSpecPtrOutput {
+	return i.ToAiPipelineJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPipelineJobEncryptionSpecPtrType) ToAiPipelineJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiPipelineJobEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobEncryptionSpecPtrOutput)
+}
+
+type AiPipelineJobEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiPipelineJobEncryptionSpecOutput) ToAiPipelineJobEncryptionSpecOutput() AiPipelineJobEncryptionSpecOutput {
+	return o
+}
+
+func (o AiPipelineJobEncryptionSpecOutput) ToAiPipelineJobEncryptionSpecOutputWithContext(ctx context.Context) AiPipelineJobEncryptionSpecOutput {
+	return o
+}
+
+func (o AiPipelineJobEncryptionSpecOutput) ToAiPipelineJobEncryptionSpecPtrOutput() AiPipelineJobEncryptionSpecPtrOutput {
+	return o.ToAiPipelineJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiPipelineJobEncryptionSpecOutput) ToAiPipelineJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiPipelineJobEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPipelineJobEncryptionSpec) *AiPipelineJobEncryptionSpec {
+		return &v
+	}).(AiPipelineJobEncryptionSpecPtrOutput)
+}
+
+// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+func (o AiPipelineJobEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPipelineJobEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiPipelineJobEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPipelineJobEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiPipelineJobEncryptionSpecPtrOutput) ToAiPipelineJobEncryptionSpecPtrOutput() AiPipelineJobEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiPipelineJobEncryptionSpecPtrOutput) ToAiPipelineJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiPipelineJobEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiPipelineJobEncryptionSpecPtrOutput) Elem() AiPipelineJobEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiPipelineJobEncryptionSpec) AiPipelineJobEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiPipelineJobEncryptionSpec
+		return ret
+	}).(AiPipelineJobEncryptionSpecOutput)
+}
+
+// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+func (o AiPipelineJobEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPipelineJobEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details []map[string]string `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// AiPipelineJobErrorInput is an input type that accepts AiPipelineJobErrorArgs and AiPipelineJobErrorOutput values.
+// You can construct a concrete instance of `AiPipelineJobErrorInput` via:
+//
+//	AiPipelineJobErrorArgs{...}
+type AiPipelineJobErrorInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobErrorOutput() AiPipelineJobErrorOutput
+	ToAiPipelineJobErrorOutputWithContext(context.Context) AiPipelineJobErrorOutput
+}
+
+type AiPipelineJobErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiPipelineJobErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobError)(nil)).Elem()
+}
+
+func (i AiPipelineJobErrorArgs) ToAiPipelineJobErrorOutput() AiPipelineJobErrorOutput {
+	return i.ToAiPipelineJobErrorOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobErrorArgs) ToAiPipelineJobErrorOutputWithContext(ctx context.Context) AiPipelineJobErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobErrorOutput)
+}
+
+// AiPipelineJobErrorArrayInput is an input type that accepts AiPipelineJobErrorArray and AiPipelineJobErrorArrayOutput values.
+// You can construct a concrete instance of `AiPipelineJobErrorArrayInput` via:
+//
+//	AiPipelineJobErrorArray{ AiPipelineJobErrorArgs{...} }
+type AiPipelineJobErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobErrorArrayOutput() AiPipelineJobErrorArrayOutput
+	ToAiPipelineJobErrorArrayOutputWithContext(context.Context) AiPipelineJobErrorArrayOutput
+}
+
+type AiPipelineJobErrorArray []AiPipelineJobErrorInput
+
+func (AiPipelineJobErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobError)(nil)).Elem()
+}
+
+func (i AiPipelineJobErrorArray) ToAiPipelineJobErrorArrayOutput() AiPipelineJobErrorArrayOutput {
+	return i.ToAiPipelineJobErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobErrorArray) ToAiPipelineJobErrorArrayOutputWithContext(ctx context.Context) AiPipelineJobErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobErrorArrayOutput)
+}
+
+type AiPipelineJobErrorOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobError)(nil)).Elem()
+}
+
+func (o AiPipelineJobErrorOutput) ToAiPipelineJobErrorOutput() AiPipelineJobErrorOutput {
+	return o
+}
+
+func (o AiPipelineJobErrorOutput) ToAiPipelineJobErrorOutputWithContext(ctx context.Context) AiPipelineJobErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiPipelineJobErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.
+func (o AiPipelineJobErrorOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v AiPipelineJobError) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English.
+func (o AiPipelineJobErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobError)(nil)).Elem()
+}
+
+func (o AiPipelineJobErrorArrayOutput) ToAiPipelineJobErrorArrayOutput() AiPipelineJobErrorArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobErrorArrayOutput) ToAiPipelineJobErrorArrayOutputWithContext(ctx context.Context) AiPipelineJobErrorArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobErrorArrayOutput) Index(i pulumi.IntInput) AiPipelineJobErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPipelineJobError {
+		return vs[0].([]AiPipelineJobError)[vs[1].(int)]
+	}).(AiPipelineJobErrorOutput)
+}
+
+type AiPipelineJobJobDetail struct {
+	// (Output)
+	// The context of the pipeline.
+	// Structure is documented below.
+	PipelineContexts []AiPipelineJobJobDetailPipelineContext `pulumi:"pipelineContexts"`
+	// (Output)
+	// The context of the current pipeline run.
+	// Structure is documented below.
+	PipelineRunContexts []AiPipelineJobJobDetailPipelineRunContext `pulumi:"pipelineRunContexts"`
+	// (Output)
+	// The runtime details of the tasks under the pipeline.
+	// Structure is documented below.
+	TaskDetails []AiPipelineJobJobDetailTaskDetail `pulumi:"taskDetails"`
+}
+
+// AiPipelineJobJobDetailInput is an input type that accepts AiPipelineJobJobDetailArgs and AiPipelineJobJobDetailOutput values.
+// You can construct a concrete instance of `AiPipelineJobJobDetailInput` via:
+//
+//	AiPipelineJobJobDetailArgs{...}
+type AiPipelineJobJobDetailInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobJobDetailOutput() AiPipelineJobJobDetailOutput
+	ToAiPipelineJobJobDetailOutputWithContext(context.Context) AiPipelineJobJobDetailOutput
+}
+
+type AiPipelineJobJobDetailArgs struct {
+	// (Output)
+	// The context of the pipeline.
+	// Structure is documented below.
+	PipelineContexts AiPipelineJobJobDetailPipelineContextArrayInput `pulumi:"pipelineContexts"`
+	// (Output)
+	// The context of the current pipeline run.
+	// Structure is documented below.
+	PipelineRunContexts AiPipelineJobJobDetailPipelineRunContextArrayInput `pulumi:"pipelineRunContexts"`
+	// (Output)
+	// The runtime details of the tasks under the pipeline.
+	// Structure is documented below.
+	TaskDetails AiPipelineJobJobDetailTaskDetailArrayInput `pulumi:"taskDetails"`
+}
+
+func (AiPipelineJobJobDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobJobDetail)(nil)).Elem()
+}
+
+func (i AiPipelineJobJobDetailArgs) ToAiPipelineJobJobDetailOutput() AiPipelineJobJobDetailOutput {
+	return i.ToAiPipelineJobJobDetailOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobJobDetailArgs) ToAiPipelineJobJobDetailOutputWithContext(ctx context.Context) AiPipelineJobJobDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobJobDetailOutput)
+}
+
+// AiPipelineJobJobDetailArrayInput is an input type that accepts AiPipelineJobJobDetailArray and AiPipelineJobJobDetailArrayOutput values.
+// You can construct a concrete instance of `AiPipelineJobJobDetailArrayInput` via:
+//
+//	AiPipelineJobJobDetailArray{ AiPipelineJobJobDetailArgs{...} }
+type AiPipelineJobJobDetailArrayInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobJobDetailArrayOutput() AiPipelineJobJobDetailArrayOutput
+	ToAiPipelineJobJobDetailArrayOutputWithContext(context.Context) AiPipelineJobJobDetailArrayOutput
+}
+
+type AiPipelineJobJobDetailArray []AiPipelineJobJobDetailInput
+
+func (AiPipelineJobJobDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobJobDetail)(nil)).Elem()
+}
+
+func (i AiPipelineJobJobDetailArray) ToAiPipelineJobJobDetailArrayOutput() AiPipelineJobJobDetailArrayOutput {
+	return i.ToAiPipelineJobJobDetailArrayOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobJobDetailArray) ToAiPipelineJobJobDetailArrayOutputWithContext(ctx context.Context) AiPipelineJobJobDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobJobDetailArrayOutput)
+}
+
+type AiPipelineJobJobDetailOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobJobDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobJobDetail)(nil)).Elem()
+}
+
+func (o AiPipelineJobJobDetailOutput) ToAiPipelineJobJobDetailOutput() AiPipelineJobJobDetailOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailOutput) ToAiPipelineJobJobDetailOutputWithContext(ctx context.Context) AiPipelineJobJobDetailOutput {
+	return o
+}
+
+// (Output)
+// The context of the pipeline.
+// Structure is documented below.
+func (o AiPipelineJobJobDetailOutput) PipelineContexts() AiPipelineJobJobDetailPipelineContextArrayOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetail) []AiPipelineJobJobDetailPipelineContext { return v.PipelineContexts }).(AiPipelineJobJobDetailPipelineContextArrayOutput)
+}
+
+// (Output)
+// The context of the current pipeline run.
+// Structure is documented below.
+func (o AiPipelineJobJobDetailOutput) PipelineRunContexts() AiPipelineJobJobDetailPipelineRunContextArrayOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetail) []AiPipelineJobJobDetailPipelineRunContext {
+		return v.PipelineRunContexts
+	}).(AiPipelineJobJobDetailPipelineRunContextArrayOutput)
+}
+
+// (Output)
+// The runtime details of the tasks under the pipeline.
+// Structure is documented below.
+func (o AiPipelineJobJobDetailOutput) TaskDetails() AiPipelineJobJobDetailTaskDetailArrayOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetail) []AiPipelineJobJobDetailTaskDetail { return v.TaskDetails }).(AiPipelineJobJobDetailTaskDetailArrayOutput)
+}
+
+type AiPipelineJobJobDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobJobDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobJobDetail)(nil)).Elem()
+}
+
+func (o AiPipelineJobJobDetailArrayOutput) ToAiPipelineJobJobDetailArrayOutput() AiPipelineJobJobDetailArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailArrayOutput) ToAiPipelineJobJobDetailArrayOutputWithContext(ctx context.Context) AiPipelineJobJobDetailArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailArrayOutput) Index(i pulumi.IntInput) AiPipelineJobJobDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPipelineJobJobDetail {
+		return vs[0].([]AiPipelineJobJobDetail)[vs[1].(int)]
+	}).(AiPipelineJobJobDetailOutput)
+}
+
+type AiPipelineJobJobDetailPipelineContext struct {
+	// (Output)
+	// Task create time.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// Description of the Context.
+	Description *string `pulumi:"description"`
+	// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// (Output)
+	// An eTag used to perform consistent read-modify-write updates.
+	Etag *string `pulumi:"etag"`
+	// The labels with user-defined metadata to organize PipelineJob.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
+	// (Output)
+	// Properties of the Context.
+	Metadata *string `pulumi:"metadata"`
+	// (Output)
+	// The resource name of the Context.
+	Name *string `pulumi:"name"`
+	// (Output)
+	// A list of resource names of Contexts that are parents of this Context.
+	ParentContexts []string `pulumi:"parentContexts"`
+	// (Output)
+	// The title of the schema describing the metadata.
+	SchemaTitle *string `pulumi:"schemaTitle"`
+	// (Output)
+	// The version of the schema in schemaName to use.
+	SchemaVersion *string `pulumi:"schemaVersion"`
+	// (Output)
+	// Timestamp when this Context was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// AiPipelineJobJobDetailPipelineContextInput is an input type that accepts AiPipelineJobJobDetailPipelineContextArgs and AiPipelineJobJobDetailPipelineContextOutput values.
+// You can construct a concrete instance of `AiPipelineJobJobDetailPipelineContextInput` via:
+//
+//	AiPipelineJobJobDetailPipelineContextArgs{...}
+type AiPipelineJobJobDetailPipelineContextInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobJobDetailPipelineContextOutput() AiPipelineJobJobDetailPipelineContextOutput
+	ToAiPipelineJobJobDetailPipelineContextOutputWithContext(context.Context) AiPipelineJobJobDetailPipelineContextOutput
+}
+
+type AiPipelineJobJobDetailPipelineContextArgs struct {
+	// (Output)
+	// Task create time.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// Description of the Context.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (Output)
+	// An eTag used to perform consistent read-modify-write updates.
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
+	// The labels with user-defined metadata to organize PipelineJob.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// (Output)
+	// Properties of the Context.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+	// (Output)
+	// The resource name of the Context.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// A list of resource names of Contexts that are parents of this Context.
+	ParentContexts pulumi.StringArrayInput `pulumi:"parentContexts"`
+	// (Output)
+	// The title of the schema describing the metadata.
+	SchemaTitle pulumi.StringPtrInput `pulumi:"schemaTitle"`
+	// (Output)
+	// The version of the schema in schemaName to use.
+	SchemaVersion pulumi.StringPtrInput `pulumi:"schemaVersion"`
+	// (Output)
+	// Timestamp when this Context was last updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (AiPipelineJobJobDetailPipelineContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobJobDetailPipelineContext)(nil)).Elem()
+}
+
+func (i AiPipelineJobJobDetailPipelineContextArgs) ToAiPipelineJobJobDetailPipelineContextOutput() AiPipelineJobJobDetailPipelineContextOutput {
+	return i.ToAiPipelineJobJobDetailPipelineContextOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobJobDetailPipelineContextArgs) ToAiPipelineJobJobDetailPipelineContextOutputWithContext(ctx context.Context) AiPipelineJobJobDetailPipelineContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobJobDetailPipelineContextOutput)
+}
+
+// AiPipelineJobJobDetailPipelineContextArrayInput is an input type that accepts AiPipelineJobJobDetailPipelineContextArray and AiPipelineJobJobDetailPipelineContextArrayOutput values.
+// You can construct a concrete instance of `AiPipelineJobJobDetailPipelineContextArrayInput` via:
+//
+//	AiPipelineJobJobDetailPipelineContextArray{ AiPipelineJobJobDetailPipelineContextArgs{...} }
+type AiPipelineJobJobDetailPipelineContextArrayInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobJobDetailPipelineContextArrayOutput() AiPipelineJobJobDetailPipelineContextArrayOutput
+	ToAiPipelineJobJobDetailPipelineContextArrayOutputWithContext(context.Context) AiPipelineJobJobDetailPipelineContextArrayOutput
+}
+
+type AiPipelineJobJobDetailPipelineContextArray []AiPipelineJobJobDetailPipelineContextInput
+
+func (AiPipelineJobJobDetailPipelineContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobJobDetailPipelineContext)(nil)).Elem()
+}
+
+func (i AiPipelineJobJobDetailPipelineContextArray) ToAiPipelineJobJobDetailPipelineContextArrayOutput() AiPipelineJobJobDetailPipelineContextArrayOutput {
+	return i.ToAiPipelineJobJobDetailPipelineContextArrayOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobJobDetailPipelineContextArray) ToAiPipelineJobJobDetailPipelineContextArrayOutputWithContext(ctx context.Context) AiPipelineJobJobDetailPipelineContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobJobDetailPipelineContextArrayOutput)
+}
+
+type AiPipelineJobJobDetailPipelineContextOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobJobDetailPipelineContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobJobDetailPipelineContext)(nil)).Elem()
+}
+
+func (o AiPipelineJobJobDetailPipelineContextOutput) ToAiPipelineJobJobDetailPipelineContextOutput() AiPipelineJobJobDetailPipelineContextOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailPipelineContextOutput) ToAiPipelineJobJobDetailPipelineContextOutputWithContext(ctx context.Context) AiPipelineJobJobDetailPipelineContextOutput {
+	return o
+}
+
+// (Output)
+// Task create time.
+func (o AiPipelineJobJobDetailPipelineContextOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Description of the Context.
+func (o AiPipelineJobJobDetailPipelineContextOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+func (o AiPipelineJobJobDetailPipelineContextOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An eTag used to perform consistent read-modify-write updates.
+func (o AiPipelineJobJobDetailPipelineContextOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// The labels with user-defined metadata to organize PipelineJob.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o AiPipelineJobJobDetailPipelineContextOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Properties of the Context.
+func (o AiPipelineJobJobDetailPipelineContextOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The resource name of the Context.
+func (o AiPipelineJobJobDetailPipelineContextOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A list of resource names of Contexts that are parents of this Context.
+func (o AiPipelineJobJobDetailPipelineContextOutput) ParentContexts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) []string { return v.ParentContexts }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The title of the schema describing the metadata.
+func (o AiPipelineJobJobDetailPipelineContextOutput) SchemaTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) *string { return v.SchemaTitle }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The version of the schema in schemaName to use.
+func (o AiPipelineJobJobDetailPipelineContextOutput) SchemaVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) *string { return v.SchemaVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Timestamp when this Context was last updated.
+func (o AiPipelineJobJobDetailPipelineContextOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineContext) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobJobDetailPipelineContextArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobJobDetailPipelineContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobJobDetailPipelineContext)(nil)).Elem()
+}
+
+func (o AiPipelineJobJobDetailPipelineContextArrayOutput) ToAiPipelineJobJobDetailPipelineContextArrayOutput() AiPipelineJobJobDetailPipelineContextArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailPipelineContextArrayOutput) ToAiPipelineJobJobDetailPipelineContextArrayOutputWithContext(ctx context.Context) AiPipelineJobJobDetailPipelineContextArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailPipelineContextArrayOutput) Index(i pulumi.IntInput) AiPipelineJobJobDetailPipelineContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPipelineJobJobDetailPipelineContext {
+		return vs[0].([]AiPipelineJobJobDetailPipelineContext)[vs[1].(int)]
+	}).(AiPipelineJobJobDetailPipelineContextOutput)
+}
+
+type AiPipelineJobJobDetailPipelineRunContext struct {
+	// (Output)
+	// Task create time.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// Description of the Context.
+	Description *string `pulumi:"description"`
+	// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// (Output)
+	// An eTag used to perform consistent read-modify-write updates.
+	Etag *string `pulumi:"etag"`
+	// The labels with user-defined metadata to organize PipelineJob.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
+	// (Output)
+	// Properties of the Context.
+	Metadata *string `pulumi:"metadata"`
+	// (Output)
+	// The resource name of the Context.
+	Name *string `pulumi:"name"`
+	// (Output)
+	// A list of resource names of Contexts that are parents of this Context.
+	ParentContexts []string `pulumi:"parentContexts"`
+	// (Output)
+	// The title of the schema describing the metadata.
+	SchemaTitle *string `pulumi:"schemaTitle"`
+	// (Output)
+	// The version of the schema in schemaName to use.
+	SchemaVersion *string `pulumi:"schemaVersion"`
+	// (Output)
+	// Timestamp when this Context was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// AiPipelineJobJobDetailPipelineRunContextInput is an input type that accepts AiPipelineJobJobDetailPipelineRunContextArgs and AiPipelineJobJobDetailPipelineRunContextOutput values.
+// You can construct a concrete instance of `AiPipelineJobJobDetailPipelineRunContextInput` via:
+//
+//	AiPipelineJobJobDetailPipelineRunContextArgs{...}
+type AiPipelineJobJobDetailPipelineRunContextInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobJobDetailPipelineRunContextOutput() AiPipelineJobJobDetailPipelineRunContextOutput
+	ToAiPipelineJobJobDetailPipelineRunContextOutputWithContext(context.Context) AiPipelineJobJobDetailPipelineRunContextOutput
+}
+
+type AiPipelineJobJobDetailPipelineRunContextArgs struct {
+	// (Output)
+	// Task create time.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// Description of the Context.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (Output)
+	// An eTag used to perform consistent read-modify-write updates.
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
+	// The labels with user-defined metadata to organize PipelineJob.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// (Output)
+	// Properties of the Context.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+	// (Output)
+	// The resource name of the Context.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// A list of resource names of Contexts that are parents of this Context.
+	ParentContexts pulumi.StringArrayInput `pulumi:"parentContexts"`
+	// (Output)
+	// The title of the schema describing the metadata.
+	SchemaTitle pulumi.StringPtrInput `pulumi:"schemaTitle"`
+	// (Output)
+	// The version of the schema in schemaName to use.
+	SchemaVersion pulumi.StringPtrInput `pulumi:"schemaVersion"`
+	// (Output)
+	// Timestamp when this Context was last updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (AiPipelineJobJobDetailPipelineRunContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobJobDetailPipelineRunContext)(nil)).Elem()
+}
+
+func (i AiPipelineJobJobDetailPipelineRunContextArgs) ToAiPipelineJobJobDetailPipelineRunContextOutput() AiPipelineJobJobDetailPipelineRunContextOutput {
+	return i.ToAiPipelineJobJobDetailPipelineRunContextOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobJobDetailPipelineRunContextArgs) ToAiPipelineJobJobDetailPipelineRunContextOutputWithContext(ctx context.Context) AiPipelineJobJobDetailPipelineRunContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobJobDetailPipelineRunContextOutput)
+}
+
+// AiPipelineJobJobDetailPipelineRunContextArrayInput is an input type that accepts AiPipelineJobJobDetailPipelineRunContextArray and AiPipelineJobJobDetailPipelineRunContextArrayOutput values.
+// You can construct a concrete instance of `AiPipelineJobJobDetailPipelineRunContextArrayInput` via:
+//
+//	AiPipelineJobJobDetailPipelineRunContextArray{ AiPipelineJobJobDetailPipelineRunContextArgs{...} }
+type AiPipelineJobJobDetailPipelineRunContextArrayInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobJobDetailPipelineRunContextArrayOutput() AiPipelineJobJobDetailPipelineRunContextArrayOutput
+	ToAiPipelineJobJobDetailPipelineRunContextArrayOutputWithContext(context.Context) AiPipelineJobJobDetailPipelineRunContextArrayOutput
+}
+
+type AiPipelineJobJobDetailPipelineRunContextArray []AiPipelineJobJobDetailPipelineRunContextInput
+
+func (AiPipelineJobJobDetailPipelineRunContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobJobDetailPipelineRunContext)(nil)).Elem()
+}
+
+func (i AiPipelineJobJobDetailPipelineRunContextArray) ToAiPipelineJobJobDetailPipelineRunContextArrayOutput() AiPipelineJobJobDetailPipelineRunContextArrayOutput {
+	return i.ToAiPipelineJobJobDetailPipelineRunContextArrayOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobJobDetailPipelineRunContextArray) ToAiPipelineJobJobDetailPipelineRunContextArrayOutputWithContext(ctx context.Context) AiPipelineJobJobDetailPipelineRunContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobJobDetailPipelineRunContextArrayOutput)
+}
+
+type AiPipelineJobJobDetailPipelineRunContextOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobJobDetailPipelineRunContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobJobDetailPipelineRunContext)(nil)).Elem()
+}
+
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) ToAiPipelineJobJobDetailPipelineRunContextOutput() AiPipelineJobJobDetailPipelineRunContextOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) ToAiPipelineJobJobDetailPipelineRunContextOutputWithContext(ctx context.Context) AiPipelineJobJobDetailPipelineRunContextOutput {
+	return o
+}
+
+// (Output)
+// Task create time.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Description of the Context.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An eTag used to perform consistent read-modify-write updates.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// The labels with user-defined metadata to organize PipelineJob.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Properties of the Context.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The resource name of the Context.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A list of resource names of Contexts that are parents of this Context.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) ParentContexts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) []string { return v.ParentContexts }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The title of the schema describing the metadata.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) SchemaTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) *string { return v.SchemaTitle }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The version of the schema in schemaName to use.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) SchemaVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) *string { return v.SchemaVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Timestamp when this Context was last updated.
+func (o AiPipelineJobJobDetailPipelineRunContextOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailPipelineRunContext) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobJobDetailPipelineRunContextArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobJobDetailPipelineRunContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobJobDetailPipelineRunContext)(nil)).Elem()
+}
+
+func (o AiPipelineJobJobDetailPipelineRunContextArrayOutput) ToAiPipelineJobJobDetailPipelineRunContextArrayOutput() AiPipelineJobJobDetailPipelineRunContextArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailPipelineRunContextArrayOutput) ToAiPipelineJobJobDetailPipelineRunContextArrayOutputWithContext(ctx context.Context) AiPipelineJobJobDetailPipelineRunContextArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailPipelineRunContextArrayOutput) Index(i pulumi.IntInput) AiPipelineJobJobDetailPipelineRunContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPipelineJobJobDetailPipelineRunContext {
+		return vs[0].([]AiPipelineJobJobDetailPipelineRunContext)[vs[1].(int)]
+	}).(AiPipelineJobJobDetailPipelineRunContextOutput)
+}
+
+type AiPipelineJobJobDetailTaskDetail struct {
+	// (Output)
+	// Task create time.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// Task end time.
+	EndTime *string `pulumi:"endTime"`
+	// (Output)
+	// The error that occurred during task execution. Only populated when the task's state is FAILED or CANCELLED.
+	// Structure is documented below.
+	Errors []AiPipelineJobJobDetailTaskDetailError `pulumi:"errors"`
+	// (Output)
+	// The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
+	ParentTaskId *string `pulumi:"parentTaskId"`
+	// (Output)
+	// Task start time.
+	StartTime *string `pulumi:"startTime"`
+	// (Output)
+	// The detailed state of the task.
+	State *string `pulumi:"state"`
+	// (Output)
+	// The system generated ID of the task.
+	TaskId *string `pulumi:"taskId"`
+	// (Output)
+	// The user specified name of the task that is defined in pipeline_spec.
+	TaskName *string `pulumi:"taskName"`
+	// (Output)
+	// The unique name of a task.
+	TaskUniqueName *string `pulumi:"taskUniqueName"`
+}
+
+// AiPipelineJobJobDetailTaskDetailInput is an input type that accepts AiPipelineJobJobDetailTaskDetailArgs and AiPipelineJobJobDetailTaskDetailOutput values.
+// You can construct a concrete instance of `AiPipelineJobJobDetailTaskDetailInput` via:
+//
+//	AiPipelineJobJobDetailTaskDetailArgs{...}
+type AiPipelineJobJobDetailTaskDetailInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobJobDetailTaskDetailOutput() AiPipelineJobJobDetailTaskDetailOutput
+	ToAiPipelineJobJobDetailTaskDetailOutputWithContext(context.Context) AiPipelineJobJobDetailTaskDetailOutput
+}
+
+type AiPipelineJobJobDetailTaskDetailArgs struct {
+	// (Output)
+	// Task create time.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// Task end time.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// (Output)
+	// The error that occurred during task execution. Only populated when the task's state is FAILED or CANCELLED.
+	// Structure is documented below.
+	Errors AiPipelineJobJobDetailTaskDetailErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
+	ParentTaskId pulumi.StringPtrInput `pulumi:"parentTaskId"`
+	// (Output)
+	// Task start time.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// (Output)
+	// The detailed state of the task.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// The system generated ID of the task.
+	TaskId pulumi.StringPtrInput `pulumi:"taskId"`
+	// (Output)
+	// The user specified name of the task that is defined in pipeline_spec.
+	TaskName pulumi.StringPtrInput `pulumi:"taskName"`
+	// (Output)
+	// The unique name of a task.
+	TaskUniqueName pulumi.StringPtrInput `pulumi:"taskUniqueName"`
+}
+
+func (AiPipelineJobJobDetailTaskDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobJobDetailTaskDetail)(nil)).Elem()
+}
+
+func (i AiPipelineJobJobDetailTaskDetailArgs) ToAiPipelineJobJobDetailTaskDetailOutput() AiPipelineJobJobDetailTaskDetailOutput {
+	return i.ToAiPipelineJobJobDetailTaskDetailOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobJobDetailTaskDetailArgs) ToAiPipelineJobJobDetailTaskDetailOutputWithContext(ctx context.Context) AiPipelineJobJobDetailTaskDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobJobDetailTaskDetailOutput)
+}
+
+// AiPipelineJobJobDetailTaskDetailArrayInput is an input type that accepts AiPipelineJobJobDetailTaskDetailArray and AiPipelineJobJobDetailTaskDetailArrayOutput values.
+// You can construct a concrete instance of `AiPipelineJobJobDetailTaskDetailArrayInput` via:
+//
+//	AiPipelineJobJobDetailTaskDetailArray{ AiPipelineJobJobDetailTaskDetailArgs{...} }
+type AiPipelineJobJobDetailTaskDetailArrayInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobJobDetailTaskDetailArrayOutput() AiPipelineJobJobDetailTaskDetailArrayOutput
+	ToAiPipelineJobJobDetailTaskDetailArrayOutputWithContext(context.Context) AiPipelineJobJobDetailTaskDetailArrayOutput
+}
+
+type AiPipelineJobJobDetailTaskDetailArray []AiPipelineJobJobDetailTaskDetailInput
+
+func (AiPipelineJobJobDetailTaskDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobJobDetailTaskDetail)(nil)).Elem()
+}
+
+func (i AiPipelineJobJobDetailTaskDetailArray) ToAiPipelineJobJobDetailTaskDetailArrayOutput() AiPipelineJobJobDetailTaskDetailArrayOutput {
+	return i.ToAiPipelineJobJobDetailTaskDetailArrayOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobJobDetailTaskDetailArray) ToAiPipelineJobJobDetailTaskDetailArrayOutputWithContext(ctx context.Context) AiPipelineJobJobDetailTaskDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobJobDetailTaskDetailArrayOutput)
+}
+
+type AiPipelineJobJobDetailTaskDetailOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobJobDetailTaskDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobJobDetailTaskDetail)(nil)).Elem()
+}
+
+func (o AiPipelineJobJobDetailTaskDetailOutput) ToAiPipelineJobJobDetailTaskDetailOutput() AiPipelineJobJobDetailTaskDetailOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailTaskDetailOutput) ToAiPipelineJobJobDetailTaskDetailOutputWithContext(ctx context.Context) AiPipelineJobJobDetailTaskDetailOutput {
+	return o
+}
+
+// (Output)
+// Task create time.
+func (o AiPipelineJobJobDetailTaskDetailOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetail) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Task end time.
+func (o AiPipelineJobJobDetailTaskDetailOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetail) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The error that occurred during task execution. Only populated when the task's state is FAILED or CANCELLED.
+// Structure is documented below.
+func (o AiPipelineJobJobDetailTaskDetailOutput) Errors() AiPipelineJobJobDetailTaskDetailErrorArrayOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetail) []AiPipelineJobJobDetailTaskDetailError { return v.Errors }).(AiPipelineJobJobDetailTaskDetailErrorArrayOutput)
+}
+
+// (Output)
+// The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
+func (o AiPipelineJobJobDetailTaskDetailOutput) ParentTaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetail) *string { return v.ParentTaskId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Task start time.
+func (o AiPipelineJobJobDetailTaskDetailOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetail) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The detailed state of the task.
+func (o AiPipelineJobJobDetailTaskDetailOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetail) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The system generated ID of the task.
+func (o AiPipelineJobJobDetailTaskDetailOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetail) *string { return v.TaskId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The user specified name of the task that is defined in pipeline_spec.
+func (o AiPipelineJobJobDetailTaskDetailOutput) TaskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetail) *string { return v.TaskName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique name of a task.
+func (o AiPipelineJobJobDetailTaskDetailOutput) TaskUniqueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetail) *string { return v.TaskUniqueName }).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobJobDetailTaskDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobJobDetailTaskDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobJobDetailTaskDetail)(nil)).Elem()
+}
+
+func (o AiPipelineJobJobDetailTaskDetailArrayOutput) ToAiPipelineJobJobDetailTaskDetailArrayOutput() AiPipelineJobJobDetailTaskDetailArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailTaskDetailArrayOutput) ToAiPipelineJobJobDetailTaskDetailArrayOutputWithContext(ctx context.Context) AiPipelineJobJobDetailTaskDetailArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailTaskDetailArrayOutput) Index(i pulumi.IntInput) AiPipelineJobJobDetailTaskDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPipelineJobJobDetailTaskDetail {
+		return vs[0].([]AiPipelineJobJobDetailTaskDetail)[vs[1].(int)]
+	}).(AiPipelineJobJobDetailTaskDetailOutput)
+}
+
+type AiPipelineJobJobDetailTaskDetailError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// AiPipelineJobJobDetailTaskDetailErrorInput is an input type that accepts AiPipelineJobJobDetailTaskDetailErrorArgs and AiPipelineJobJobDetailTaskDetailErrorOutput values.
+// You can construct a concrete instance of `AiPipelineJobJobDetailTaskDetailErrorInput` via:
+//
+//	AiPipelineJobJobDetailTaskDetailErrorArgs{...}
+type AiPipelineJobJobDetailTaskDetailErrorInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobJobDetailTaskDetailErrorOutput() AiPipelineJobJobDetailTaskDetailErrorOutput
+	ToAiPipelineJobJobDetailTaskDetailErrorOutputWithContext(context.Context) AiPipelineJobJobDetailTaskDetailErrorOutput
+}
+
+type AiPipelineJobJobDetailTaskDetailErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiPipelineJobJobDetailTaskDetailErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobJobDetailTaskDetailError)(nil)).Elem()
+}
+
+func (i AiPipelineJobJobDetailTaskDetailErrorArgs) ToAiPipelineJobJobDetailTaskDetailErrorOutput() AiPipelineJobJobDetailTaskDetailErrorOutput {
+	return i.ToAiPipelineJobJobDetailTaskDetailErrorOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobJobDetailTaskDetailErrorArgs) ToAiPipelineJobJobDetailTaskDetailErrorOutputWithContext(ctx context.Context) AiPipelineJobJobDetailTaskDetailErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobJobDetailTaskDetailErrorOutput)
+}
+
+// AiPipelineJobJobDetailTaskDetailErrorArrayInput is an input type that accepts AiPipelineJobJobDetailTaskDetailErrorArray and AiPipelineJobJobDetailTaskDetailErrorArrayOutput values.
+// You can construct a concrete instance of `AiPipelineJobJobDetailTaskDetailErrorArrayInput` via:
+//
+//	AiPipelineJobJobDetailTaskDetailErrorArray{ AiPipelineJobJobDetailTaskDetailErrorArgs{...} }
+type AiPipelineJobJobDetailTaskDetailErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobJobDetailTaskDetailErrorArrayOutput() AiPipelineJobJobDetailTaskDetailErrorArrayOutput
+	ToAiPipelineJobJobDetailTaskDetailErrorArrayOutputWithContext(context.Context) AiPipelineJobJobDetailTaskDetailErrorArrayOutput
+}
+
+type AiPipelineJobJobDetailTaskDetailErrorArray []AiPipelineJobJobDetailTaskDetailErrorInput
+
+func (AiPipelineJobJobDetailTaskDetailErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobJobDetailTaskDetailError)(nil)).Elem()
+}
+
+func (i AiPipelineJobJobDetailTaskDetailErrorArray) ToAiPipelineJobJobDetailTaskDetailErrorArrayOutput() AiPipelineJobJobDetailTaskDetailErrorArrayOutput {
+	return i.ToAiPipelineJobJobDetailTaskDetailErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobJobDetailTaskDetailErrorArray) ToAiPipelineJobJobDetailTaskDetailErrorArrayOutputWithContext(ctx context.Context) AiPipelineJobJobDetailTaskDetailErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobJobDetailTaskDetailErrorArrayOutput)
+}
+
+type AiPipelineJobJobDetailTaskDetailErrorOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobJobDetailTaskDetailErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobJobDetailTaskDetailError)(nil)).Elem()
+}
+
+func (o AiPipelineJobJobDetailTaskDetailErrorOutput) ToAiPipelineJobJobDetailTaskDetailErrorOutput() AiPipelineJobJobDetailTaskDetailErrorOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailTaskDetailErrorOutput) ToAiPipelineJobJobDetailTaskDetailErrorOutputWithContext(ctx context.Context) AiPipelineJobJobDetailTaskDetailErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiPipelineJobJobDetailTaskDetailErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetailError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English.
+func (o AiPipelineJobJobDetailTaskDetailErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobJobDetailTaskDetailError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobJobDetailTaskDetailErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobJobDetailTaskDetailErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobJobDetailTaskDetailError)(nil)).Elem()
+}
+
+func (o AiPipelineJobJobDetailTaskDetailErrorArrayOutput) ToAiPipelineJobJobDetailTaskDetailErrorArrayOutput() AiPipelineJobJobDetailTaskDetailErrorArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailTaskDetailErrorArrayOutput) ToAiPipelineJobJobDetailTaskDetailErrorArrayOutputWithContext(ctx context.Context) AiPipelineJobJobDetailTaskDetailErrorArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobJobDetailTaskDetailErrorArrayOutput) Index(i pulumi.IntInput) AiPipelineJobJobDetailTaskDetailErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPipelineJobJobDetailTaskDetailError {
+		return vs[0].([]AiPipelineJobJobDetailTaskDetailError)[vs[1].(int)]
+	}).(AiPipelineJobJobDetailTaskDetailErrorOutput)
+}
+
+type AiPipelineJobPscInterfaceConfig struct {
+	// DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+	// Structure is documented below.
+	DnsPeeringConfigs []AiPipelineJobPscInterfaceConfigDnsPeeringConfig `pulumi:"dnsPeeringConfigs"`
+	// The name of the Compute Engine network attachment to attach to the resource within the region and user project. To specify this field, you must have already created a network attachment. This field is only used for resources using PSC-I.
+	NetworkAttachment *string `pulumi:"networkAttachment"`
+}
+
+// AiPipelineJobPscInterfaceConfigInput is an input type that accepts AiPipelineJobPscInterfaceConfigArgs and AiPipelineJobPscInterfaceConfigOutput values.
+// You can construct a concrete instance of `AiPipelineJobPscInterfaceConfigInput` via:
+//
+//	AiPipelineJobPscInterfaceConfigArgs{...}
+type AiPipelineJobPscInterfaceConfigInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobPscInterfaceConfigOutput() AiPipelineJobPscInterfaceConfigOutput
+	ToAiPipelineJobPscInterfaceConfigOutputWithContext(context.Context) AiPipelineJobPscInterfaceConfigOutput
+}
+
+type AiPipelineJobPscInterfaceConfigArgs struct {
+	// DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+	// Structure is documented below.
+	DnsPeeringConfigs AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayInput `pulumi:"dnsPeeringConfigs"`
+	// The name of the Compute Engine network attachment to attach to the resource within the region and user project. To specify this field, you must have already created a network attachment. This field is only used for resources using PSC-I.
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
+}
+
+func (AiPipelineJobPscInterfaceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i AiPipelineJobPscInterfaceConfigArgs) ToAiPipelineJobPscInterfaceConfigOutput() AiPipelineJobPscInterfaceConfigOutput {
+	return i.ToAiPipelineJobPscInterfaceConfigOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobPscInterfaceConfigArgs) ToAiPipelineJobPscInterfaceConfigOutputWithContext(ctx context.Context) AiPipelineJobPscInterfaceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobPscInterfaceConfigOutput)
+}
+
+func (i AiPipelineJobPscInterfaceConfigArgs) ToAiPipelineJobPscInterfaceConfigPtrOutput() AiPipelineJobPscInterfaceConfigPtrOutput {
+	return i.ToAiPipelineJobPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobPscInterfaceConfigArgs) ToAiPipelineJobPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiPipelineJobPscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobPscInterfaceConfigOutput).ToAiPipelineJobPscInterfaceConfigPtrOutputWithContext(ctx)
+}
+
+// AiPipelineJobPscInterfaceConfigPtrInput is an input type that accepts AiPipelineJobPscInterfaceConfigArgs, AiPipelineJobPscInterfaceConfigPtr and AiPipelineJobPscInterfaceConfigPtrOutput values.
+// You can construct a concrete instance of `AiPipelineJobPscInterfaceConfigPtrInput` via:
+//
+//	        AiPipelineJobPscInterfaceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPipelineJobPscInterfaceConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobPscInterfaceConfigPtrOutput() AiPipelineJobPscInterfaceConfigPtrOutput
+	ToAiPipelineJobPscInterfaceConfigPtrOutputWithContext(context.Context) AiPipelineJobPscInterfaceConfigPtrOutput
+}
+
+type aiPipelineJobPscInterfaceConfigPtrType AiPipelineJobPscInterfaceConfigArgs
+
+func AiPipelineJobPscInterfaceConfigPtr(v *AiPipelineJobPscInterfaceConfigArgs) AiPipelineJobPscInterfaceConfigPtrInput {
+	return (*aiPipelineJobPscInterfaceConfigPtrType)(v)
+}
+
+func (*aiPipelineJobPscInterfaceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPipelineJobPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i *aiPipelineJobPscInterfaceConfigPtrType) ToAiPipelineJobPscInterfaceConfigPtrOutput() AiPipelineJobPscInterfaceConfigPtrOutput {
+	return i.ToAiPipelineJobPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPipelineJobPscInterfaceConfigPtrType) ToAiPipelineJobPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiPipelineJobPscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobPscInterfaceConfigPtrOutput)
+}
+
+type AiPipelineJobPscInterfaceConfigOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobPscInterfaceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o AiPipelineJobPscInterfaceConfigOutput) ToAiPipelineJobPscInterfaceConfigOutput() AiPipelineJobPscInterfaceConfigOutput {
+	return o
+}
+
+func (o AiPipelineJobPscInterfaceConfigOutput) ToAiPipelineJobPscInterfaceConfigOutputWithContext(ctx context.Context) AiPipelineJobPscInterfaceConfigOutput {
+	return o
+}
+
+func (o AiPipelineJobPscInterfaceConfigOutput) ToAiPipelineJobPscInterfaceConfigPtrOutput() AiPipelineJobPscInterfaceConfigPtrOutput {
+	return o.ToAiPipelineJobPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiPipelineJobPscInterfaceConfigOutput) ToAiPipelineJobPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiPipelineJobPscInterfaceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPipelineJobPscInterfaceConfig) *AiPipelineJobPscInterfaceConfig {
+		return &v
+	}).(AiPipelineJobPscInterfaceConfigPtrOutput)
+}
+
+// DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+// Structure is documented below.
+func (o AiPipelineJobPscInterfaceConfigOutput) DnsPeeringConfigs() AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o.ApplyT(func(v AiPipelineJobPscInterfaceConfig) []AiPipelineJobPscInterfaceConfigDnsPeeringConfig {
+		return v.DnsPeeringConfigs
+	}).(AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+// The name of the Compute Engine network attachment to attach to the resource within the region and user project. To specify this field, you must have already created a network attachment. This field is only used for resources using PSC-I.
+func (o AiPipelineJobPscInterfaceConfigOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobPscInterfaceConfig) *string { return v.NetworkAttachment }).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobPscInterfaceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobPscInterfaceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPipelineJobPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o AiPipelineJobPscInterfaceConfigPtrOutput) ToAiPipelineJobPscInterfaceConfigPtrOutput() AiPipelineJobPscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o AiPipelineJobPscInterfaceConfigPtrOutput) ToAiPipelineJobPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiPipelineJobPscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o AiPipelineJobPscInterfaceConfigPtrOutput) Elem() AiPipelineJobPscInterfaceConfigOutput {
+	return o.ApplyT(func(v *AiPipelineJobPscInterfaceConfig) AiPipelineJobPscInterfaceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiPipelineJobPscInterfaceConfig
+		return ret
+	}).(AiPipelineJobPscInterfaceConfigOutput)
+}
+
+// DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+// Structure is documented below.
+func (o AiPipelineJobPscInterfaceConfigPtrOutput) DnsPeeringConfigs() AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o.ApplyT(func(v *AiPipelineJobPscInterfaceConfig) []AiPipelineJobPscInterfaceConfigDnsPeeringConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DnsPeeringConfigs
+	}).(AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+// The name of the Compute Engine network attachment to attach to the resource within the region and user project. To specify this field, you must have already created a network attachment. This field is only used for resources using PSC-I.
+func (o AiPipelineJobPscInterfaceConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPipelineJobPscInterfaceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobPscInterfaceConfigDnsPeeringConfig struct {
+	// The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+	Domain string `pulumi:"domain"`
+	// The VPC network name in the targetProject where the DNS zone specified by domain is visible.
+	TargetNetwork string `pulumi:"targetNetwork"`
+	// The project ID hosting the Cloud DNS managed zone that contains the above domain. The Vertex AI Service Agent must be granted the dns.peer role on this project.
+	TargetProject string `pulumi:"targetProject"`
+}
+
+// AiPipelineJobPscInterfaceConfigDnsPeeringConfigInput is an input type that accepts AiPipelineJobPscInterfaceConfigDnsPeeringConfigArgs and AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput values.
+// You can construct a concrete instance of `AiPipelineJobPscInterfaceConfigDnsPeeringConfigInput` via:
+//
+//	AiPipelineJobPscInterfaceConfigDnsPeeringConfigArgs{...}
+type AiPipelineJobPscInterfaceConfigDnsPeeringConfigInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput() AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput
+	ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigOutputWithContext(context.Context) AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput
+}
+
+type AiPipelineJobPscInterfaceConfigDnsPeeringConfigArgs struct {
+	// The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The VPC network name in the targetProject where the DNS zone specified by domain is visible.
+	TargetNetwork pulumi.StringInput `pulumi:"targetNetwork"`
+	// The project ID hosting the Cloud DNS managed zone that contains the above domain. The Vertex AI Service Agent must be granted the dns.peer role on this project.
+	TargetProject pulumi.StringInput `pulumi:"targetProject"`
+}
+
+func (AiPipelineJobPscInterfaceConfigDnsPeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AiPipelineJobPscInterfaceConfigDnsPeeringConfigArgs) ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput() AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput {
+	return i.ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobPscInterfaceConfigDnsPeeringConfigArgs) ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput)
+}
+
+// AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayInput is an input type that accepts AiPipelineJobPscInterfaceConfigDnsPeeringConfigArray and AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput values.
+// You can construct a concrete instance of `AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayInput` via:
+//
+//	AiPipelineJobPscInterfaceConfigDnsPeeringConfigArray{ AiPipelineJobPscInterfaceConfigDnsPeeringConfigArgs{...} }
+type AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput() AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput
+	ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(context.Context) AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput
+}
+
+type AiPipelineJobPscInterfaceConfigDnsPeeringConfigArray []AiPipelineJobPscInterfaceConfigDnsPeeringConfigInput
+
+func (AiPipelineJobPscInterfaceConfigDnsPeeringConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AiPipelineJobPscInterfaceConfigDnsPeeringConfigArray) ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput() AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return i.ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobPscInterfaceConfigDnsPeeringConfigArray) ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(ctx context.Context) AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+type AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput() AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput {
+	return o
+}
+
+func (o AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput {
+	return o
+}
+
+// The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+func (o AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPipelineJobPscInterfaceConfigDnsPeeringConfig) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The VPC network name in the targetProject where the DNS zone specified by domain is visible.
+func (o AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) TargetNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPipelineJobPscInterfaceConfigDnsPeeringConfig) string { return v.TargetNetwork }).(pulumi.StringOutput)
+}
+
+// The project ID hosting the Cloud DNS managed zone that contains the above domain. The Vertex AI Service Agent must be granted the dns.peer role on this project.
+func (o AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) TargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPipelineJobPscInterfaceConfigDnsPeeringConfig) string { return v.TargetProject }).(pulumi.StringOutput)
+}
+
+type AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput) ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput() AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput) ToAiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(ctx context.Context) AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput) Index(i pulumi.IntInput) AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPipelineJobPscInterfaceConfigDnsPeeringConfig {
+		return vs[0].([]AiPipelineJobPscInterfaceConfigDnsPeeringConfig)[vs[1].(int)]
+	}).(AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput)
+}
+
+type AiPipelineJobRuntimeConfig struct {
+	// (Optional, Beta)
+	// The default runtime for the PipelineJob.
+	// Structure is documented below.
+	DefaultRuntime *AiPipelineJobRuntimeConfigDefaultRuntime `pulumi:"defaultRuntime"`
+	// Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as `PIPELINE_FAILURE_POLICY_FAIL_SLOW`. However, if a pipeline is set to `PIPELINE_FAILURE_POLICY_FAIL_FAST`, it will stop scheduling any new tasks as soon as the pipeline fails.
+	// Possible values are: `PIPELINE_FAILURE_POLICY_UNSPECIFIED`, `PIPELINE_FAILURE_POLICY_FAIL_SLOW`, `PIPELINE_FAILURE_POLICY_FAIL_FAST`.
+	FailurePolicy *string `pulumi:"failurePolicy"`
+	// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-directory pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+	GcsOutputDirectory string `pulumi:"gcsOutputDirectory"`
+	// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+	// Structure is documented below.
+	InputArtifacts []AiPipelineJobRuntimeConfigInputArtifact `pulumi:"inputArtifacts"`
+	// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+	ParameterValues map[string]string `pulumi:"parameterValues"`
+}
+
+// AiPipelineJobRuntimeConfigInput is an input type that accepts AiPipelineJobRuntimeConfigArgs and AiPipelineJobRuntimeConfigOutput values.
+// You can construct a concrete instance of `AiPipelineJobRuntimeConfigInput` via:
+//
+//	AiPipelineJobRuntimeConfigArgs{...}
+type AiPipelineJobRuntimeConfigInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobRuntimeConfigOutput() AiPipelineJobRuntimeConfigOutput
+	ToAiPipelineJobRuntimeConfigOutputWithContext(context.Context) AiPipelineJobRuntimeConfigOutput
+}
+
+type AiPipelineJobRuntimeConfigArgs struct {
+	// (Optional, Beta)
+	// The default runtime for the PipelineJob.
+	// Structure is documented below.
+	DefaultRuntime AiPipelineJobRuntimeConfigDefaultRuntimePtrInput `pulumi:"defaultRuntime"`
+	// Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as `PIPELINE_FAILURE_POLICY_FAIL_SLOW`. However, if a pipeline is set to `PIPELINE_FAILURE_POLICY_FAIL_FAST`, it will stop scheduling any new tasks as soon as the pipeline fails.
+	// Possible values are: `PIPELINE_FAILURE_POLICY_UNSPECIFIED`, `PIPELINE_FAILURE_POLICY_FAIL_SLOW`, `PIPELINE_FAILURE_POLICY_FAIL_FAST`.
+	FailurePolicy pulumi.StringPtrInput `pulumi:"failurePolicy"`
+	// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-directory pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+	GcsOutputDirectory pulumi.StringInput `pulumi:"gcsOutputDirectory"`
+	// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+	// Structure is documented below.
+	InputArtifacts AiPipelineJobRuntimeConfigInputArtifactArrayInput `pulumi:"inputArtifacts"`
+	// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+	ParameterValues pulumi.StringMapInput `pulumi:"parameterValues"`
+}
+
+func (AiPipelineJobRuntimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobRuntimeConfig)(nil)).Elem()
+}
+
+func (i AiPipelineJobRuntimeConfigArgs) ToAiPipelineJobRuntimeConfigOutput() AiPipelineJobRuntimeConfigOutput {
+	return i.ToAiPipelineJobRuntimeConfigOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobRuntimeConfigArgs) ToAiPipelineJobRuntimeConfigOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigOutput)
+}
+
+func (i AiPipelineJobRuntimeConfigArgs) ToAiPipelineJobRuntimeConfigPtrOutput() AiPipelineJobRuntimeConfigPtrOutput {
+	return i.ToAiPipelineJobRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobRuntimeConfigArgs) ToAiPipelineJobRuntimeConfigPtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigOutput).ToAiPipelineJobRuntimeConfigPtrOutputWithContext(ctx)
+}
+
+// AiPipelineJobRuntimeConfigPtrInput is an input type that accepts AiPipelineJobRuntimeConfigArgs, AiPipelineJobRuntimeConfigPtr and AiPipelineJobRuntimeConfigPtrOutput values.
+// You can construct a concrete instance of `AiPipelineJobRuntimeConfigPtrInput` via:
+//
+//	        AiPipelineJobRuntimeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPipelineJobRuntimeConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobRuntimeConfigPtrOutput() AiPipelineJobRuntimeConfigPtrOutput
+	ToAiPipelineJobRuntimeConfigPtrOutputWithContext(context.Context) AiPipelineJobRuntimeConfigPtrOutput
+}
+
+type aiPipelineJobRuntimeConfigPtrType AiPipelineJobRuntimeConfigArgs
+
+func AiPipelineJobRuntimeConfigPtr(v *AiPipelineJobRuntimeConfigArgs) AiPipelineJobRuntimeConfigPtrInput {
+	return (*aiPipelineJobRuntimeConfigPtrType)(v)
+}
+
+func (*aiPipelineJobRuntimeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPipelineJobRuntimeConfig)(nil)).Elem()
+}
+
+func (i *aiPipelineJobRuntimeConfigPtrType) ToAiPipelineJobRuntimeConfigPtrOutput() AiPipelineJobRuntimeConfigPtrOutput {
+	return i.ToAiPipelineJobRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPipelineJobRuntimeConfigPtrType) ToAiPipelineJobRuntimeConfigPtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigPtrOutput)
+}
+
+type AiPipelineJobRuntimeConfigOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobRuntimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobRuntimeConfig)(nil)).Elem()
+}
+
+func (o AiPipelineJobRuntimeConfigOutput) ToAiPipelineJobRuntimeConfigOutput() AiPipelineJobRuntimeConfigOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigOutput) ToAiPipelineJobRuntimeConfigOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigOutput) ToAiPipelineJobRuntimeConfigPtrOutput() AiPipelineJobRuntimeConfigPtrOutput {
+	return o.ToAiPipelineJobRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiPipelineJobRuntimeConfigOutput) ToAiPipelineJobRuntimeConfigPtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPipelineJobRuntimeConfig) *AiPipelineJobRuntimeConfig {
+		return &v
+	}).(AiPipelineJobRuntimeConfigPtrOutput)
+}
+
+// (Optional, Beta)
+// The default runtime for the PipelineJob.
+// Structure is documented below.
+func (o AiPipelineJobRuntimeConfigOutput) DefaultRuntime() AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfig) *AiPipelineJobRuntimeConfigDefaultRuntime { return v.DefaultRuntime }).(AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput)
+}
+
+// Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as `PIPELINE_FAILURE_POLICY_FAIL_SLOW`. However, if a pipeline is set to `PIPELINE_FAILURE_POLICY_FAIL_FAST`, it will stop scheduling any new tasks as soon as the pipeline fails.
+// Possible values are: `PIPELINE_FAILURE_POLICY_UNSPECIFIED`, `PIPELINE_FAILURE_POLICY_FAIL_SLOW`, `PIPELINE_FAILURE_POLICY_FAIL_FAST`.
+func (o AiPipelineJobRuntimeConfigOutput) FailurePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfig) *string { return v.FailurePolicy }).(pulumi.StringPtrOutput)
+}
+
+// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-directory pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+func (o AiPipelineJobRuntimeConfigOutput) GcsOutputDirectory() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfig) string { return v.GcsOutputDirectory }).(pulumi.StringOutput)
+}
+
+// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+// Structure is documented below.
+func (o AiPipelineJobRuntimeConfigOutput) InputArtifacts() AiPipelineJobRuntimeConfigInputArtifactArrayOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfig) []AiPipelineJobRuntimeConfigInputArtifact { return v.InputArtifacts }).(AiPipelineJobRuntimeConfigInputArtifactArrayOutput)
+}
+
+// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+func (o AiPipelineJobRuntimeConfigOutput) ParameterValues() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfig) map[string]string { return v.ParameterValues }).(pulumi.StringMapOutput)
+}
+
+type AiPipelineJobRuntimeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobRuntimeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPipelineJobRuntimeConfig)(nil)).Elem()
+}
+
+func (o AiPipelineJobRuntimeConfigPtrOutput) ToAiPipelineJobRuntimeConfigPtrOutput() AiPipelineJobRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigPtrOutput) ToAiPipelineJobRuntimeConfigPtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigPtrOutput) Elem() AiPipelineJobRuntimeConfigOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfig) AiPipelineJobRuntimeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiPipelineJobRuntimeConfig
+		return ret
+	}).(AiPipelineJobRuntimeConfigOutput)
+}
+
+// (Optional, Beta)
+// The default runtime for the PipelineJob.
+// Structure is documented below.
+func (o AiPipelineJobRuntimeConfigPtrOutput) DefaultRuntime() AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfig) *AiPipelineJobRuntimeConfigDefaultRuntime {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRuntime
+	}).(AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput)
+}
+
+// Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as `PIPELINE_FAILURE_POLICY_FAIL_SLOW`. However, if a pipeline is set to `PIPELINE_FAILURE_POLICY_FAIL_FAST`, it will stop scheduling any new tasks as soon as the pipeline fails.
+// Possible values are: `PIPELINE_FAILURE_POLICY_UNSPECIFIED`, `PIPELINE_FAILURE_POLICY_FAIL_SLOW`, `PIPELINE_FAILURE_POLICY_FAIL_FAST`.
+func (o AiPipelineJobRuntimeConfigPtrOutput) FailurePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailurePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-directory pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+func (o AiPipelineJobRuntimeConfigPtrOutput) GcsOutputDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsOutputDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+// Structure is documented below.
+func (o AiPipelineJobRuntimeConfigPtrOutput) InputArtifacts() AiPipelineJobRuntimeConfigInputArtifactArrayOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfig) []AiPipelineJobRuntimeConfigInputArtifact {
+		if v == nil {
+			return nil
+		}
+		return v.InputArtifacts
+	}).(AiPipelineJobRuntimeConfigInputArtifactArrayOutput)
+}
+
+// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+func (o AiPipelineJobRuntimeConfigPtrOutput) ParameterValues() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterValues
+	}).(pulumi.StringMapOutput)
+}
+
+type AiPipelineJobRuntimeConfigDefaultRuntime struct {
+	// (Optional, Beta)
+	// Persistent resource based runtime detail.
+	// Structure is documented below.
+	PersistentResourceRuntimeDetail *AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail `pulumi:"persistentResourceRuntimeDetail"`
+}
+
+// AiPipelineJobRuntimeConfigDefaultRuntimeInput is an input type that accepts AiPipelineJobRuntimeConfigDefaultRuntimeArgs and AiPipelineJobRuntimeConfigDefaultRuntimeOutput values.
+// You can construct a concrete instance of `AiPipelineJobRuntimeConfigDefaultRuntimeInput` via:
+//
+//	AiPipelineJobRuntimeConfigDefaultRuntimeArgs{...}
+type AiPipelineJobRuntimeConfigDefaultRuntimeInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobRuntimeConfigDefaultRuntimeOutput() AiPipelineJobRuntimeConfigDefaultRuntimeOutput
+	ToAiPipelineJobRuntimeConfigDefaultRuntimeOutputWithContext(context.Context) AiPipelineJobRuntimeConfigDefaultRuntimeOutput
+}
+
+type AiPipelineJobRuntimeConfigDefaultRuntimeArgs struct {
+	// (Optional, Beta)
+	// Persistent resource based runtime detail.
+	// Structure is documented below.
+	PersistentResourceRuntimeDetail AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrInput `pulumi:"persistentResourceRuntimeDetail"`
+}
+
+func (AiPipelineJobRuntimeConfigDefaultRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobRuntimeConfigDefaultRuntime)(nil)).Elem()
+}
+
+func (i AiPipelineJobRuntimeConfigDefaultRuntimeArgs) ToAiPipelineJobRuntimeConfigDefaultRuntimeOutput() AiPipelineJobRuntimeConfigDefaultRuntimeOutput {
+	return i.ToAiPipelineJobRuntimeConfigDefaultRuntimeOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobRuntimeConfigDefaultRuntimeArgs) ToAiPipelineJobRuntimeConfigDefaultRuntimeOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigDefaultRuntimeOutput)
+}
+
+func (i AiPipelineJobRuntimeConfigDefaultRuntimeArgs) ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutput() AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput {
+	return i.ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobRuntimeConfigDefaultRuntimeArgs) ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigDefaultRuntimeOutput).ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutputWithContext(ctx)
+}
+
+// AiPipelineJobRuntimeConfigDefaultRuntimePtrInput is an input type that accepts AiPipelineJobRuntimeConfigDefaultRuntimeArgs, AiPipelineJobRuntimeConfigDefaultRuntimePtr and AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput values.
+// You can construct a concrete instance of `AiPipelineJobRuntimeConfigDefaultRuntimePtrInput` via:
+//
+//	        AiPipelineJobRuntimeConfigDefaultRuntimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPipelineJobRuntimeConfigDefaultRuntimePtrInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutput() AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput
+	ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutputWithContext(context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput
+}
+
+type aiPipelineJobRuntimeConfigDefaultRuntimePtrType AiPipelineJobRuntimeConfigDefaultRuntimeArgs
+
+func AiPipelineJobRuntimeConfigDefaultRuntimePtr(v *AiPipelineJobRuntimeConfigDefaultRuntimeArgs) AiPipelineJobRuntimeConfigDefaultRuntimePtrInput {
+	return (*aiPipelineJobRuntimeConfigDefaultRuntimePtrType)(v)
+}
+
+func (*aiPipelineJobRuntimeConfigDefaultRuntimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPipelineJobRuntimeConfigDefaultRuntime)(nil)).Elem()
+}
+
+func (i *aiPipelineJobRuntimeConfigDefaultRuntimePtrType) ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutput() AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput {
+	return i.ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i *aiPipelineJobRuntimeConfigDefaultRuntimePtrType) ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput)
+}
+
+type AiPipelineJobRuntimeConfigDefaultRuntimeOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobRuntimeConfigDefaultRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobRuntimeConfigDefaultRuntime)(nil)).Elem()
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimeOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimeOutput() AiPipelineJobRuntimeConfigDefaultRuntimeOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimeOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimeOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimeOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimeOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutput() AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput {
+	return o.ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutputWithContext(context.Background())
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimeOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPipelineJobRuntimeConfigDefaultRuntime) *AiPipelineJobRuntimeConfigDefaultRuntime {
+		return &v
+	}).(AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput)
+}
+
+// (Optional, Beta)
+// Persistent resource based runtime detail.
+// Structure is documented below.
+func (o AiPipelineJobRuntimeConfigDefaultRuntimeOutput) PersistentResourceRuntimeDetail() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfigDefaultRuntime) *AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail {
+		return v.PersistentResourceRuntimeDetail
+	}).(AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput)
+}
+
+type AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPipelineJobRuntimeConfigDefaultRuntime)(nil)).Elem()
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutput() AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimePtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput) Elem() AiPipelineJobRuntimeConfigDefaultRuntimeOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfigDefaultRuntime) AiPipelineJobRuntimeConfigDefaultRuntime {
+		if v != nil {
+			return *v
+		}
+		var ret AiPipelineJobRuntimeConfigDefaultRuntime
+		return ret
+	}).(AiPipelineJobRuntimeConfigDefaultRuntimeOutput)
+}
+
+// (Optional, Beta)
+// Persistent resource based runtime detail.
+// Structure is documented below.
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput) PersistentResourceRuntimeDetail() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfigDefaultRuntime) *AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentResourceRuntimeDetail
+	}).(AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput)
+}
+
+type AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail struct {
+	// (Optional, Beta)
+	// PersistentResource name, format: `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`.
+	PersistentResourceName *string `pulumi:"persistentResourceName"`
+	// (Optional, Beta)
+	// Sets the behavior when a task has reached the defined wait duration while waiting for task resources to become available in the specified persistent resource.
+	// Possible values are: `TASK_RESOURCE_UNAVAILABLE_TIMEOUT_BEHAVIOR_UNSPECIFIED`, `FAIL`, `FALL_BACK_TO_ON_DEMAND`.
+	TaskResourceUnavailableTimeoutBehavior *string `pulumi:"taskResourceUnavailableTimeoutBehavior"`
+	// (Optional, Beta)
+	// The maxWaitTime for the task if the persistent resource is unavailable.
+	TaskResourceUnavailableWaitTimeMs *string `pulumi:"taskResourceUnavailableWaitTimeMs"`
+}
+
+// AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailInput is an input type that accepts AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs and AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput values.
+// You can construct a concrete instance of `AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailInput` via:
+//
+//	AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs{...}
+type AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput
+	ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutputWithContext(context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput
+}
+
+type AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs struct {
+	// (Optional, Beta)
+	// PersistentResource name, format: `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`.
+	PersistentResourceName pulumi.StringPtrInput `pulumi:"persistentResourceName"`
+	// (Optional, Beta)
+	// Sets the behavior when a task has reached the defined wait duration while waiting for task resources to become available in the specified persistent resource.
+	// Possible values are: `TASK_RESOURCE_UNAVAILABLE_TIMEOUT_BEHAVIOR_UNSPECIFIED`, `FAIL`, `FALL_BACK_TO_ON_DEMAND`.
+	TaskResourceUnavailableTimeoutBehavior pulumi.StringPtrInput `pulumi:"taskResourceUnavailableTimeoutBehavior"`
+	// (Optional, Beta)
+	// The maxWaitTime for the task if the persistent resource is unavailable.
+	TaskResourceUnavailableWaitTimeMs pulumi.StringPtrInput `pulumi:"taskResourceUnavailableWaitTimeMs"`
+}
+
+func (AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail)(nil)).Elem()
+}
+
+func (i AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput {
+	return i.ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput)
+}
+
+func (i AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput {
+	return i.ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput).ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutputWithContext(ctx)
+}
+
+// AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrInput is an input type that accepts AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs, AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtr and AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput values.
+// You can construct a concrete instance of `AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrInput` via:
+//
+//	        AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput
+	ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutputWithContext(context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput
+}
+
+type aiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrType AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs
+
+func AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtr(v *AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs) AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrInput {
+	return (*aiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrType)(v)
+}
+
+func (*aiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail)(nil)).Elem()
+}
+
+func (i *aiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrType) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput {
+	return i.ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrType) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput)
+}
+
+type AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail)(nil)).Elem()
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput {
+	return o.ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutputWithContext(context.Background())
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail) *AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail {
+		return &v
+	}).(AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput)
+}
+
+// (Optional, Beta)
+// PersistentResource name, format: `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`.
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput) PersistentResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail) *string {
+		return v.PersistentResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Sets the behavior when a task has reached the defined wait duration while waiting for task resources to become available in the specified persistent resource.
+// Possible values are: `TASK_RESOURCE_UNAVAILABLE_TIMEOUT_BEHAVIOR_UNSPECIFIED`, `FAIL`, `FALL_BACK_TO_ON_DEMAND`.
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput) TaskResourceUnavailableTimeoutBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail) *string {
+		return v.TaskResourceUnavailableTimeoutBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// The maxWaitTime for the task if the persistent resource is unavailable.
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput) TaskResourceUnavailableWaitTimeMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail) *string {
+		return v.TaskResourceUnavailableWaitTimeMs
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail)(nil)).Elem()
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput) ToAiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput) Elem() AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail) AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail {
+		if v != nil {
+			return *v
+		}
+		var ret AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail
+		return ret
+	}).(AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput)
+}
+
+// (Optional, Beta)
+// PersistentResource name, format: `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`.
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput) PersistentResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Sets the behavior when a task has reached the defined wait duration while waiting for task resources to become available in the specified persistent resource.
+// Possible values are: `TASK_RESOURCE_UNAVAILABLE_TIMEOUT_BEHAVIOR_UNSPECIFIED`, `FAIL`, `FALL_BACK_TO_ON_DEMAND`.
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput) TaskResourceUnavailableTimeoutBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskResourceUnavailableTimeoutBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// The maxWaitTime for the task if the persistent resource is unavailable.
+func (o AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput) TaskResourceUnavailableWaitTimeMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskResourceUnavailableWaitTimeMs
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobRuntimeConfigInputArtifact struct {
+	// Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must be within the same project, location and default metadatastore as the pipeline.
+	ArtifactId string `pulumi:"artifactId"`
+	// The identifier for this object. Format specified above.
+	ArtifactKey string `pulumi:"artifactKey"`
+}
+
+// AiPipelineJobRuntimeConfigInputArtifactInput is an input type that accepts AiPipelineJobRuntimeConfigInputArtifactArgs and AiPipelineJobRuntimeConfigInputArtifactOutput values.
+// You can construct a concrete instance of `AiPipelineJobRuntimeConfigInputArtifactInput` via:
+//
+//	AiPipelineJobRuntimeConfigInputArtifactArgs{...}
+type AiPipelineJobRuntimeConfigInputArtifactInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobRuntimeConfigInputArtifactOutput() AiPipelineJobRuntimeConfigInputArtifactOutput
+	ToAiPipelineJobRuntimeConfigInputArtifactOutputWithContext(context.Context) AiPipelineJobRuntimeConfigInputArtifactOutput
+}
+
+type AiPipelineJobRuntimeConfigInputArtifactArgs struct {
+	// Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must be within the same project, location and default metadatastore as the pipeline.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// The identifier for this object. Format specified above.
+	ArtifactKey pulumi.StringInput `pulumi:"artifactKey"`
+}
+
+func (AiPipelineJobRuntimeConfigInputArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobRuntimeConfigInputArtifact)(nil)).Elem()
+}
+
+func (i AiPipelineJobRuntimeConfigInputArtifactArgs) ToAiPipelineJobRuntimeConfigInputArtifactOutput() AiPipelineJobRuntimeConfigInputArtifactOutput {
+	return i.ToAiPipelineJobRuntimeConfigInputArtifactOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobRuntimeConfigInputArtifactArgs) ToAiPipelineJobRuntimeConfigInputArtifactOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigInputArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigInputArtifactOutput)
+}
+
+// AiPipelineJobRuntimeConfigInputArtifactArrayInput is an input type that accepts AiPipelineJobRuntimeConfigInputArtifactArray and AiPipelineJobRuntimeConfigInputArtifactArrayOutput values.
+// You can construct a concrete instance of `AiPipelineJobRuntimeConfigInputArtifactArrayInput` via:
+//
+//	AiPipelineJobRuntimeConfigInputArtifactArray{ AiPipelineJobRuntimeConfigInputArtifactArgs{...} }
+type AiPipelineJobRuntimeConfigInputArtifactArrayInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobRuntimeConfigInputArtifactArrayOutput() AiPipelineJobRuntimeConfigInputArtifactArrayOutput
+	ToAiPipelineJobRuntimeConfigInputArtifactArrayOutputWithContext(context.Context) AiPipelineJobRuntimeConfigInputArtifactArrayOutput
+}
+
+type AiPipelineJobRuntimeConfigInputArtifactArray []AiPipelineJobRuntimeConfigInputArtifactInput
+
+func (AiPipelineJobRuntimeConfigInputArtifactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobRuntimeConfigInputArtifact)(nil)).Elem()
+}
+
+func (i AiPipelineJobRuntimeConfigInputArtifactArray) ToAiPipelineJobRuntimeConfigInputArtifactArrayOutput() AiPipelineJobRuntimeConfigInputArtifactArrayOutput {
+	return i.ToAiPipelineJobRuntimeConfigInputArtifactArrayOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobRuntimeConfigInputArtifactArray) ToAiPipelineJobRuntimeConfigInputArtifactArrayOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigInputArtifactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobRuntimeConfigInputArtifactArrayOutput)
+}
+
+type AiPipelineJobRuntimeConfigInputArtifactOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobRuntimeConfigInputArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobRuntimeConfigInputArtifact)(nil)).Elem()
+}
+
+func (o AiPipelineJobRuntimeConfigInputArtifactOutput) ToAiPipelineJobRuntimeConfigInputArtifactOutput() AiPipelineJobRuntimeConfigInputArtifactOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigInputArtifactOutput) ToAiPipelineJobRuntimeConfigInputArtifactOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigInputArtifactOutput {
+	return o
+}
+
+// Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must be within the same project, location and default metadatastore as the pipeline.
+func (o AiPipelineJobRuntimeConfigInputArtifactOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfigInputArtifact) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o AiPipelineJobRuntimeConfigInputArtifactOutput) ArtifactKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPipelineJobRuntimeConfigInputArtifact) string { return v.ArtifactKey }).(pulumi.StringOutput)
+}
+
+type AiPipelineJobRuntimeConfigInputArtifactArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobRuntimeConfigInputArtifactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobRuntimeConfigInputArtifact)(nil)).Elem()
+}
+
+func (o AiPipelineJobRuntimeConfigInputArtifactArrayOutput) ToAiPipelineJobRuntimeConfigInputArtifactArrayOutput() AiPipelineJobRuntimeConfigInputArtifactArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigInputArtifactArrayOutput) ToAiPipelineJobRuntimeConfigInputArtifactArrayOutputWithContext(ctx context.Context) AiPipelineJobRuntimeConfigInputArtifactArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobRuntimeConfigInputArtifactArrayOutput) Index(i pulumi.IntInput) AiPipelineJobRuntimeConfigInputArtifactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPipelineJobRuntimeConfigInputArtifact {
+		return vs[0].([]AiPipelineJobRuntimeConfigInputArtifact)[vs[1].(int)]
+	}).(AiPipelineJobRuntimeConfigInputArtifactOutput)
+}
+
+type AiPipelineJobTemplateMetadata struct {
+	// (Output)
+	// The versionName in artifact registry.
+	Version *string `pulumi:"version"`
+}
+
+// AiPipelineJobTemplateMetadataInput is an input type that accepts AiPipelineJobTemplateMetadataArgs and AiPipelineJobTemplateMetadataOutput values.
+// You can construct a concrete instance of `AiPipelineJobTemplateMetadataInput` via:
+//
+//	AiPipelineJobTemplateMetadataArgs{...}
+type AiPipelineJobTemplateMetadataInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobTemplateMetadataOutput() AiPipelineJobTemplateMetadataOutput
+	ToAiPipelineJobTemplateMetadataOutputWithContext(context.Context) AiPipelineJobTemplateMetadataOutput
+}
+
+type AiPipelineJobTemplateMetadataArgs struct {
+	// (Output)
+	// The versionName in artifact registry.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (AiPipelineJobTemplateMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobTemplateMetadata)(nil)).Elem()
+}
+
+func (i AiPipelineJobTemplateMetadataArgs) ToAiPipelineJobTemplateMetadataOutput() AiPipelineJobTemplateMetadataOutput {
+	return i.ToAiPipelineJobTemplateMetadataOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobTemplateMetadataArgs) ToAiPipelineJobTemplateMetadataOutputWithContext(ctx context.Context) AiPipelineJobTemplateMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobTemplateMetadataOutput)
+}
+
+// AiPipelineJobTemplateMetadataArrayInput is an input type that accepts AiPipelineJobTemplateMetadataArray and AiPipelineJobTemplateMetadataArrayOutput values.
+// You can construct a concrete instance of `AiPipelineJobTemplateMetadataArrayInput` via:
+//
+//	AiPipelineJobTemplateMetadataArray{ AiPipelineJobTemplateMetadataArgs{...} }
+type AiPipelineJobTemplateMetadataArrayInput interface {
+	pulumi.Input
+
+	ToAiPipelineJobTemplateMetadataArrayOutput() AiPipelineJobTemplateMetadataArrayOutput
+	ToAiPipelineJobTemplateMetadataArrayOutputWithContext(context.Context) AiPipelineJobTemplateMetadataArrayOutput
+}
+
+type AiPipelineJobTemplateMetadataArray []AiPipelineJobTemplateMetadataInput
+
+func (AiPipelineJobTemplateMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobTemplateMetadata)(nil)).Elem()
+}
+
+func (i AiPipelineJobTemplateMetadataArray) ToAiPipelineJobTemplateMetadataArrayOutput() AiPipelineJobTemplateMetadataArrayOutput {
+	return i.ToAiPipelineJobTemplateMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i AiPipelineJobTemplateMetadataArray) ToAiPipelineJobTemplateMetadataArrayOutputWithContext(ctx context.Context) AiPipelineJobTemplateMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPipelineJobTemplateMetadataArrayOutput)
+}
+
+type AiPipelineJobTemplateMetadataOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobTemplateMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPipelineJobTemplateMetadata)(nil)).Elem()
+}
+
+func (o AiPipelineJobTemplateMetadataOutput) ToAiPipelineJobTemplateMetadataOutput() AiPipelineJobTemplateMetadataOutput {
+	return o
+}
+
+func (o AiPipelineJobTemplateMetadataOutput) ToAiPipelineJobTemplateMetadataOutputWithContext(ctx context.Context) AiPipelineJobTemplateMetadataOutput {
+	return o
+}
+
+// (Output)
+// The versionName in artifact registry.
+func (o AiPipelineJobTemplateMetadataOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPipelineJobTemplateMetadata) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AiPipelineJobTemplateMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPipelineJobTemplateMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPipelineJobTemplateMetadata)(nil)).Elem()
+}
+
+func (o AiPipelineJobTemplateMetadataArrayOutput) ToAiPipelineJobTemplateMetadataArrayOutput() AiPipelineJobTemplateMetadataArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobTemplateMetadataArrayOutput) ToAiPipelineJobTemplateMetadataArrayOutputWithContext(ctx context.Context) AiPipelineJobTemplateMetadataArrayOutput {
+	return o
+}
+
+func (o AiPipelineJobTemplateMetadataArrayOutput) Index(i pulumi.IntInput) AiPipelineJobTemplateMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPipelineJobTemplateMetadata {
+		return vs[0].([]AiPipelineJobTemplateMetadata)[vs[1].(int)]
+	}).(AiPipelineJobTemplateMetadataOutput)
 }
 
 type AiRagCorpusCorpusStatus struct {
@@ -25928,6 +35384,1539 @@ func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput) Elem() AiRagE
 		var ret AiRagEngineConfigRagManagedDbConfigUnprovisioned
 		return ret
 	}).(AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput)
+}
+
+type AiRagFileFileStatus struct {
+	// (Output)
+	// Only populated when the state is ERROR.
+	ErrorStatus *string `pulumi:"errorStatus"`
+	// (Output)
+	// RagFile state.
+	State *string `pulumi:"state"`
+}
+
+// AiRagFileFileStatusInput is an input type that accepts AiRagFileFileStatusArgs and AiRagFileFileStatusOutput values.
+// You can construct a concrete instance of `AiRagFileFileStatusInput` via:
+//
+//	AiRagFileFileStatusArgs{...}
+type AiRagFileFileStatusInput interface {
+	pulumi.Input
+
+	ToAiRagFileFileStatusOutput() AiRagFileFileStatusOutput
+	ToAiRagFileFileStatusOutputWithContext(context.Context) AiRagFileFileStatusOutput
+}
+
+type AiRagFileFileStatusArgs struct {
+	// (Output)
+	// Only populated when the state is ERROR.
+	ErrorStatus pulumi.StringPtrInput `pulumi:"errorStatus"`
+	// (Output)
+	// RagFile state.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (AiRagFileFileStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileFileStatus)(nil)).Elem()
+}
+
+func (i AiRagFileFileStatusArgs) ToAiRagFileFileStatusOutput() AiRagFileFileStatusOutput {
+	return i.ToAiRagFileFileStatusOutputWithContext(context.Background())
+}
+
+func (i AiRagFileFileStatusArgs) ToAiRagFileFileStatusOutputWithContext(ctx context.Context) AiRagFileFileStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileFileStatusOutput)
+}
+
+// AiRagFileFileStatusArrayInput is an input type that accepts AiRagFileFileStatusArray and AiRagFileFileStatusArrayOutput values.
+// You can construct a concrete instance of `AiRagFileFileStatusArrayInput` via:
+//
+//	AiRagFileFileStatusArray{ AiRagFileFileStatusArgs{...} }
+type AiRagFileFileStatusArrayInput interface {
+	pulumi.Input
+
+	ToAiRagFileFileStatusArrayOutput() AiRagFileFileStatusArrayOutput
+	ToAiRagFileFileStatusArrayOutputWithContext(context.Context) AiRagFileFileStatusArrayOutput
+}
+
+type AiRagFileFileStatusArray []AiRagFileFileStatusInput
+
+func (AiRagFileFileStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiRagFileFileStatus)(nil)).Elem()
+}
+
+func (i AiRagFileFileStatusArray) ToAiRagFileFileStatusArrayOutput() AiRagFileFileStatusArrayOutput {
+	return i.ToAiRagFileFileStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AiRagFileFileStatusArray) ToAiRagFileFileStatusArrayOutputWithContext(ctx context.Context) AiRagFileFileStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileFileStatusArrayOutput)
+}
+
+type AiRagFileFileStatusOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileFileStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileFileStatus)(nil)).Elem()
+}
+
+func (o AiRagFileFileStatusOutput) ToAiRagFileFileStatusOutput() AiRagFileFileStatusOutput {
+	return o
+}
+
+func (o AiRagFileFileStatusOutput) ToAiRagFileFileStatusOutputWithContext(ctx context.Context) AiRagFileFileStatusOutput {
+	return o
+}
+
+// (Output)
+// Only populated when the state is ERROR.
+func (o AiRagFileFileStatusOutput) ErrorStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiRagFileFileStatus) *string { return v.ErrorStatus }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// RagFile state.
+func (o AiRagFileFileStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiRagFileFileStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type AiRagFileFileStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileFileStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiRagFileFileStatus)(nil)).Elem()
+}
+
+func (o AiRagFileFileStatusArrayOutput) ToAiRagFileFileStatusArrayOutput() AiRagFileFileStatusArrayOutput {
+	return o
+}
+
+func (o AiRagFileFileStatusArrayOutput) ToAiRagFileFileStatusArrayOutputWithContext(ctx context.Context) AiRagFileFileStatusArrayOutput {
+	return o
+}
+
+func (o AiRagFileFileStatusArrayOutput) Index(i pulumi.IntInput) AiRagFileFileStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiRagFileFileStatus {
+		return vs[0].([]AiRagFileFileStatus)[vs[1].(int)]
+	}).(AiRagFileFileStatusOutput)
+}
+
+type AiRagFileGcsSource struct {
+	// The Cloud Storage URI of the file to import, for example
+	// `gs://my-bucket/my-file.pdf`. Must reference a single file; directories
+	// and wildcards are not supported because each resource manages one RagFile.
+	Uris string `pulumi:"uris"`
+}
+
+// AiRagFileGcsSourceInput is an input type that accepts AiRagFileGcsSourceArgs and AiRagFileGcsSourceOutput values.
+// You can construct a concrete instance of `AiRagFileGcsSourceInput` via:
+//
+//	AiRagFileGcsSourceArgs{...}
+type AiRagFileGcsSourceInput interface {
+	pulumi.Input
+
+	ToAiRagFileGcsSourceOutput() AiRagFileGcsSourceOutput
+	ToAiRagFileGcsSourceOutputWithContext(context.Context) AiRagFileGcsSourceOutput
+}
+
+type AiRagFileGcsSourceArgs struct {
+	// The Cloud Storage URI of the file to import, for example
+	// `gs://my-bucket/my-file.pdf`. Must reference a single file; directories
+	// and wildcards are not supported because each resource manages one RagFile.
+	Uris pulumi.StringInput `pulumi:"uris"`
+}
+
+func (AiRagFileGcsSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileGcsSource)(nil)).Elem()
+}
+
+func (i AiRagFileGcsSourceArgs) ToAiRagFileGcsSourceOutput() AiRagFileGcsSourceOutput {
+	return i.ToAiRagFileGcsSourceOutputWithContext(context.Background())
+}
+
+func (i AiRagFileGcsSourceArgs) ToAiRagFileGcsSourceOutputWithContext(ctx context.Context) AiRagFileGcsSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileGcsSourceOutput)
+}
+
+func (i AiRagFileGcsSourceArgs) ToAiRagFileGcsSourcePtrOutput() AiRagFileGcsSourcePtrOutput {
+	return i.ToAiRagFileGcsSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiRagFileGcsSourceArgs) ToAiRagFileGcsSourcePtrOutputWithContext(ctx context.Context) AiRagFileGcsSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileGcsSourceOutput).ToAiRagFileGcsSourcePtrOutputWithContext(ctx)
+}
+
+// AiRagFileGcsSourcePtrInput is an input type that accepts AiRagFileGcsSourceArgs, AiRagFileGcsSourcePtr and AiRagFileGcsSourcePtrOutput values.
+// You can construct a concrete instance of `AiRagFileGcsSourcePtrInput` via:
+//
+//	        AiRagFileGcsSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagFileGcsSourcePtrInput interface {
+	pulumi.Input
+
+	ToAiRagFileGcsSourcePtrOutput() AiRagFileGcsSourcePtrOutput
+	ToAiRagFileGcsSourcePtrOutputWithContext(context.Context) AiRagFileGcsSourcePtrOutput
+}
+
+type aiRagFileGcsSourcePtrType AiRagFileGcsSourceArgs
+
+func AiRagFileGcsSourcePtr(v *AiRagFileGcsSourceArgs) AiRagFileGcsSourcePtrInput {
+	return (*aiRagFileGcsSourcePtrType)(v)
+}
+
+func (*aiRagFileGcsSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileGcsSource)(nil)).Elem()
+}
+
+func (i *aiRagFileGcsSourcePtrType) ToAiRagFileGcsSourcePtrOutput() AiRagFileGcsSourcePtrOutput {
+	return i.ToAiRagFileGcsSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagFileGcsSourcePtrType) ToAiRagFileGcsSourcePtrOutputWithContext(ctx context.Context) AiRagFileGcsSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileGcsSourcePtrOutput)
+}
+
+type AiRagFileGcsSourceOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileGcsSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileGcsSource)(nil)).Elem()
+}
+
+func (o AiRagFileGcsSourceOutput) ToAiRagFileGcsSourceOutput() AiRagFileGcsSourceOutput {
+	return o
+}
+
+func (o AiRagFileGcsSourceOutput) ToAiRagFileGcsSourceOutputWithContext(ctx context.Context) AiRagFileGcsSourceOutput {
+	return o
+}
+
+func (o AiRagFileGcsSourceOutput) ToAiRagFileGcsSourcePtrOutput() AiRagFileGcsSourcePtrOutput {
+	return o.ToAiRagFileGcsSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiRagFileGcsSourceOutput) ToAiRagFileGcsSourcePtrOutputWithContext(ctx context.Context) AiRagFileGcsSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagFileGcsSource) *AiRagFileGcsSource {
+		return &v
+	}).(AiRagFileGcsSourcePtrOutput)
+}
+
+// The Cloud Storage URI of the file to import, for example
+// `gs://my-bucket/my-file.pdf`. Must reference a single file; directories
+// and wildcards are not supported because each resource manages one RagFile.
+func (o AiRagFileGcsSourceOutput) Uris() pulumi.StringOutput {
+	return o.ApplyT(func(v AiRagFileGcsSource) string { return v.Uris }).(pulumi.StringOutput)
+}
+
+type AiRagFileGcsSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileGcsSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileGcsSource)(nil)).Elem()
+}
+
+func (o AiRagFileGcsSourcePtrOutput) ToAiRagFileGcsSourcePtrOutput() AiRagFileGcsSourcePtrOutput {
+	return o
+}
+
+func (o AiRagFileGcsSourcePtrOutput) ToAiRagFileGcsSourcePtrOutputWithContext(ctx context.Context) AiRagFileGcsSourcePtrOutput {
+	return o
+}
+
+func (o AiRagFileGcsSourcePtrOutput) Elem() AiRagFileGcsSourceOutput {
+	return o.ApplyT(func(v *AiRagFileGcsSource) AiRagFileGcsSource {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagFileGcsSource
+		return ret
+	}).(AiRagFileGcsSourceOutput)
+}
+
+// The Cloud Storage URI of the file to import, for example
+// `gs://my-bucket/my-file.pdf`. Must reference a single file; directories
+// and wildcards are not supported because each resource manages one RagFile.
+func (o AiRagFileGcsSourcePtrOutput) Uris() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiRagFileGcsSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uris
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiRagFileGoogleDriveSource struct {
+	// The Google Drive file to import.
+	// Structure is documented below.
+	ResourceIds AiRagFileGoogleDriveSourceResourceIds `pulumi:"resourceIds"`
+}
+
+// AiRagFileGoogleDriveSourceInput is an input type that accepts AiRagFileGoogleDriveSourceArgs and AiRagFileGoogleDriveSourceOutput values.
+// You can construct a concrete instance of `AiRagFileGoogleDriveSourceInput` via:
+//
+//	AiRagFileGoogleDriveSourceArgs{...}
+type AiRagFileGoogleDriveSourceInput interface {
+	pulumi.Input
+
+	ToAiRagFileGoogleDriveSourceOutput() AiRagFileGoogleDriveSourceOutput
+	ToAiRagFileGoogleDriveSourceOutputWithContext(context.Context) AiRagFileGoogleDriveSourceOutput
+}
+
+type AiRagFileGoogleDriveSourceArgs struct {
+	// The Google Drive file to import.
+	// Structure is documented below.
+	ResourceIds AiRagFileGoogleDriveSourceResourceIdsInput `pulumi:"resourceIds"`
+}
+
+func (AiRagFileGoogleDriveSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileGoogleDriveSource)(nil)).Elem()
+}
+
+func (i AiRagFileGoogleDriveSourceArgs) ToAiRagFileGoogleDriveSourceOutput() AiRagFileGoogleDriveSourceOutput {
+	return i.ToAiRagFileGoogleDriveSourceOutputWithContext(context.Background())
+}
+
+func (i AiRagFileGoogleDriveSourceArgs) ToAiRagFileGoogleDriveSourceOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileGoogleDriveSourceOutput)
+}
+
+func (i AiRagFileGoogleDriveSourceArgs) ToAiRagFileGoogleDriveSourcePtrOutput() AiRagFileGoogleDriveSourcePtrOutput {
+	return i.ToAiRagFileGoogleDriveSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiRagFileGoogleDriveSourceArgs) ToAiRagFileGoogleDriveSourcePtrOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileGoogleDriveSourceOutput).ToAiRagFileGoogleDriveSourcePtrOutputWithContext(ctx)
+}
+
+// AiRagFileGoogleDriveSourcePtrInput is an input type that accepts AiRagFileGoogleDriveSourceArgs, AiRagFileGoogleDriveSourcePtr and AiRagFileGoogleDriveSourcePtrOutput values.
+// You can construct a concrete instance of `AiRagFileGoogleDriveSourcePtrInput` via:
+//
+//	        AiRagFileGoogleDriveSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagFileGoogleDriveSourcePtrInput interface {
+	pulumi.Input
+
+	ToAiRagFileGoogleDriveSourcePtrOutput() AiRagFileGoogleDriveSourcePtrOutput
+	ToAiRagFileGoogleDriveSourcePtrOutputWithContext(context.Context) AiRagFileGoogleDriveSourcePtrOutput
+}
+
+type aiRagFileGoogleDriveSourcePtrType AiRagFileGoogleDriveSourceArgs
+
+func AiRagFileGoogleDriveSourcePtr(v *AiRagFileGoogleDriveSourceArgs) AiRagFileGoogleDriveSourcePtrInput {
+	return (*aiRagFileGoogleDriveSourcePtrType)(v)
+}
+
+func (*aiRagFileGoogleDriveSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileGoogleDriveSource)(nil)).Elem()
+}
+
+func (i *aiRagFileGoogleDriveSourcePtrType) ToAiRagFileGoogleDriveSourcePtrOutput() AiRagFileGoogleDriveSourcePtrOutput {
+	return i.ToAiRagFileGoogleDriveSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagFileGoogleDriveSourcePtrType) ToAiRagFileGoogleDriveSourcePtrOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileGoogleDriveSourcePtrOutput)
+}
+
+type AiRagFileGoogleDriveSourceOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileGoogleDriveSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileGoogleDriveSource)(nil)).Elem()
+}
+
+func (o AiRagFileGoogleDriveSourceOutput) ToAiRagFileGoogleDriveSourceOutput() AiRagFileGoogleDriveSourceOutput {
+	return o
+}
+
+func (o AiRagFileGoogleDriveSourceOutput) ToAiRagFileGoogleDriveSourceOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourceOutput {
+	return o
+}
+
+func (o AiRagFileGoogleDriveSourceOutput) ToAiRagFileGoogleDriveSourcePtrOutput() AiRagFileGoogleDriveSourcePtrOutput {
+	return o.ToAiRagFileGoogleDriveSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiRagFileGoogleDriveSourceOutput) ToAiRagFileGoogleDriveSourcePtrOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagFileGoogleDriveSource) *AiRagFileGoogleDriveSource {
+		return &v
+	}).(AiRagFileGoogleDriveSourcePtrOutput)
+}
+
+// The Google Drive file to import.
+// Structure is documented below.
+func (o AiRagFileGoogleDriveSourceOutput) ResourceIds() AiRagFileGoogleDriveSourceResourceIdsOutput {
+	return o.ApplyT(func(v AiRagFileGoogleDriveSource) AiRagFileGoogleDriveSourceResourceIds { return v.ResourceIds }).(AiRagFileGoogleDriveSourceResourceIdsOutput)
+}
+
+type AiRagFileGoogleDriveSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileGoogleDriveSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileGoogleDriveSource)(nil)).Elem()
+}
+
+func (o AiRagFileGoogleDriveSourcePtrOutput) ToAiRagFileGoogleDriveSourcePtrOutput() AiRagFileGoogleDriveSourcePtrOutput {
+	return o
+}
+
+func (o AiRagFileGoogleDriveSourcePtrOutput) ToAiRagFileGoogleDriveSourcePtrOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourcePtrOutput {
+	return o
+}
+
+func (o AiRagFileGoogleDriveSourcePtrOutput) Elem() AiRagFileGoogleDriveSourceOutput {
+	return o.ApplyT(func(v *AiRagFileGoogleDriveSource) AiRagFileGoogleDriveSource {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagFileGoogleDriveSource
+		return ret
+	}).(AiRagFileGoogleDriveSourceOutput)
+}
+
+// The Google Drive file to import.
+// Structure is documented below.
+func (o AiRagFileGoogleDriveSourcePtrOutput) ResourceIds() AiRagFileGoogleDriveSourceResourceIdsPtrOutput {
+	return o.ApplyT(func(v *AiRagFileGoogleDriveSource) *AiRagFileGoogleDriveSourceResourceIds {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceIds
+	}).(AiRagFileGoogleDriveSourceResourceIdsPtrOutput)
+}
+
+type AiRagFileGoogleDriveSourceResourceIds struct {
+	// The ID of the Google Drive file.
+	ResourceId string `pulumi:"resourceId"`
+	// The type of the Google Drive resource. Only individual files are
+	// supported because each resource manages one RagFile.
+	// Default value is `RESOURCE_TYPE_FILE`.
+	// Possible values are: `RESOURCE_TYPE_FILE`.
+	ResourceType *string `pulumi:"resourceType"`
+}
+
+// AiRagFileGoogleDriveSourceResourceIdsInput is an input type that accepts AiRagFileGoogleDriveSourceResourceIdsArgs and AiRagFileGoogleDriveSourceResourceIdsOutput values.
+// You can construct a concrete instance of `AiRagFileGoogleDriveSourceResourceIdsInput` via:
+//
+//	AiRagFileGoogleDriveSourceResourceIdsArgs{...}
+type AiRagFileGoogleDriveSourceResourceIdsInput interface {
+	pulumi.Input
+
+	ToAiRagFileGoogleDriveSourceResourceIdsOutput() AiRagFileGoogleDriveSourceResourceIdsOutput
+	ToAiRagFileGoogleDriveSourceResourceIdsOutputWithContext(context.Context) AiRagFileGoogleDriveSourceResourceIdsOutput
+}
+
+type AiRagFileGoogleDriveSourceResourceIdsArgs struct {
+	// The ID of the Google Drive file.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The type of the Google Drive resource. Only individual files are
+	// supported because each resource manages one RagFile.
+	// Default value is `RESOURCE_TYPE_FILE`.
+	// Possible values are: `RESOURCE_TYPE_FILE`.
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+}
+
+func (AiRagFileGoogleDriveSourceResourceIdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileGoogleDriveSourceResourceIds)(nil)).Elem()
+}
+
+func (i AiRagFileGoogleDriveSourceResourceIdsArgs) ToAiRagFileGoogleDriveSourceResourceIdsOutput() AiRagFileGoogleDriveSourceResourceIdsOutput {
+	return i.ToAiRagFileGoogleDriveSourceResourceIdsOutputWithContext(context.Background())
+}
+
+func (i AiRagFileGoogleDriveSourceResourceIdsArgs) ToAiRagFileGoogleDriveSourceResourceIdsOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourceResourceIdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileGoogleDriveSourceResourceIdsOutput)
+}
+
+func (i AiRagFileGoogleDriveSourceResourceIdsArgs) ToAiRagFileGoogleDriveSourceResourceIdsPtrOutput() AiRagFileGoogleDriveSourceResourceIdsPtrOutput {
+	return i.ToAiRagFileGoogleDriveSourceResourceIdsPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagFileGoogleDriveSourceResourceIdsArgs) ToAiRagFileGoogleDriveSourceResourceIdsPtrOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourceResourceIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileGoogleDriveSourceResourceIdsOutput).ToAiRagFileGoogleDriveSourceResourceIdsPtrOutputWithContext(ctx)
+}
+
+// AiRagFileGoogleDriveSourceResourceIdsPtrInput is an input type that accepts AiRagFileGoogleDriveSourceResourceIdsArgs, AiRagFileGoogleDriveSourceResourceIdsPtr and AiRagFileGoogleDriveSourceResourceIdsPtrOutput values.
+// You can construct a concrete instance of `AiRagFileGoogleDriveSourceResourceIdsPtrInput` via:
+//
+//	        AiRagFileGoogleDriveSourceResourceIdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagFileGoogleDriveSourceResourceIdsPtrInput interface {
+	pulumi.Input
+
+	ToAiRagFileGoogleDriveSourceResourceIdsPtrOutput() AiRagFileGoogleDriveSourceResourceIdsPtrOutput
+	ToAiRagFileGoogleDriveSourceResourceIdsPtrOutputWithContext(context.Context) AiRagFileGoogleDriveSourceResourceIdsPtrOutput
+}
+
+type aiRagFileGoogleDriveSourceResourceIdsPtrType AiRagFileGoogleDriveSourceResourceIdsArgs
+
+func AiRagFileGoogleDriveSourceResourceIdsPtr(v *AiRagFileGoogleDriveSourceResourceIdsArgs) AiRagFileGoogleDriveSourceResourceIdsPtrInput {
+	return (*aiRagFileGoogleDriveSourceResourceIdsPtrType)(v)
+}
+
+func (*aiRagFileGoogleDriveSourceResourceIdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileGoogleDriveSourceResourceIds)(nil)).Elem()
+}
+
+func (i *aiRagFileGoogleDriveSourceResourceIdsPtrType) ToAiRagFileGoogleDriveSourceResourceIdsPtrOutput() AiRagFileGoogleDriveSourceResourceIdsPtrOutput {
+	return i.ToAiRagFileGoogleDriveSourceResourceIdsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagFileGoogleDriveSourceResourceIdsPtrType) ToAiRagFileGoogleDriveSourceResourceIdsPtrOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourceResourceIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileGoogleDriveSourceResourceIdsPtrOutput)
+}
+
+type AiRagFileGoogleDriveSourceResourceIdsOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileGoogleDriveSourceResourceIdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileGoogleDriveSourceResourceIds)(nil)).Elem()
+}
+
+func (o AiRagFileGoogleDriveSourceResourceIdsOutput) ToAiRagFileGoogleDriveSourceResourceIdsOutput() AiRagFileGoogleDriveSourceResourceIdsOutput {
+	return o
+}
+
+func (o AiRagFileGoogleDriveSourceResourceIdsOutput) ToAiRagFileGoogleDriveSourceResourceIdsOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourceResourceIdsOutput {
+	return o
+}
+
+func (o AiRagFileGoogleDriveSourceResourceIdsOutput) ToAiRagFileGoogleDriveSourceResourceIdsPtrOutput() AiRagFileGoogleDriveSourceResourceIdsPtrOutput {
+	return o.ToAiRagFileGoogleDriveSourceResourceIdsPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagFileGoogleDriveSourceResourceIdsOutput) ToAiRagFileGoogleDriveSourceResourceIdsPtrOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourceResourceIdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagFileGoogleDriveSourceResourceIds) *AiRagFileGoogleDriveSourceResourceIds {
+		return &v
+	}).(AiRagFileGoogleDriveSourceResourceIdsPtrOutput)
+}
+
+// The ID of the Google Drive file.
+func (o AiRagFileGoogleDriveSourceResourceIdsOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiRagFileGoogleDriveSourceResourceIds) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The type of the Google Drive resource. Only individual files are
+// supported because each resource manages one RagFile.
+// Default value is `RESOURCE_TYPE_FILE`.
+// Possible values are: `RESOURCE_TYPE_FILE`.
+func (o AiRagFileGoogleDriveSourceResourceIdsOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiRagFileGoogleDriveSourceResourceIds) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+type AiRagFileGoogleDriveSourceResourceIdsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileGoogleDriveSourceResourceIdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileGoogleDriveSourceResourceIds)(nil)).Elem()
+}
+
+func (o AiRagFileGoogleDriveSourceResourceIdsPtrOutput) ToAiRagFileGoogleDriveSourceResourceIdsPtrOutput() AiRagFileGoogleDriveSourceResourceIdsPtrOutput {
+	return o
+}
+
+func (o AiRagFileGoogleDriveSourceResourceIdsPtrOutput) ToAiRagFileGoogleDriveSourceResourceIdsPtrOutputWithContext(ctx context.Context) AiRagFileGoogleDriveSourceResourceIdsPtrOutput {
+	return o
+}
+
+func (o AiRagFileGoogleDriveSourceResourceIdsPtrOutput) Elem() AiRagFileGoogleDriveSourceResourceIdsOutput {
+	return o.ApplyT(func(v *AiRagFileGoogleDriveSourceResourceIds) AiRagFileGoogleDriveSourceResourceIds {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagFileGoogleDriveSourceResourceIds
+		return ret
+	}).(AiRagFileGoogleDriveSourceResourceIdsOutput)
+}
+
+// The ID of the Google Drive file.
+func (o AiRagFileGoogleDriveSourceResourceIdsPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiRagFileGoogleDriveSourceResourceIds) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the Google Drive resource. Only individual files are
+// supported because each resource manages one RagFile.
+// Default value is `RESOURCE_TYPE_FILE`.
+// Possible values are: `RESOURCE_TYPE_FILE`.
+func (o AiRagFileGoogleDriveSourceResourceIdsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiRagFileGoogleDriveSourceResourceIds) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiRagFileRagFileParsingConfig struct {
+	// The Document AI Layout Parser to use for the file.
+	// Structure is documented below.
+	LayoutParser *AiRagFileRagFileParsingConfigLayoutParser `pulumi:"layoutParser"`
+	// The LLM parser to use for the file.
+	// Structure is documented below.
+	LlmParser *AiRagFileRagFileParsingConfigLlmParser `pulumi:"llmParser"`
+}
+
+// AiRagFileRagFileParsingConfigInput is an input type that accepts AiRagFileRagFileParsingConfigArgs and AiRagFileRagFileParsingConfigOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileParsingConfigInput` via:
+//
+//	AiRagFileRagFileParsingConfigArgs{...}
+type AiRagFileRagFileParsingConfigInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileParsingConfigOutput() AiRagFileRagFileParsingConfigOutput
+	ToAiRagFileRagFileParsingConfigOutputWithContext(context.Context) AiRagFileRagFileParsingConfigOutput
+}
+
+type AiRagFileRagFileParsingConfigArgs struct {
+	// The Document AI Layout Parser to use for the file.
+	// Structure is documented below.
+	LayoutParser AiRagFileRagFileParsingConfigLayoutParserPtrInput `pulumi:"layoutParser"`
+	// The LLM parser to use for the file.
+	// Structure is documented below.
+	LlmParser AiRagFileRagFileParsingConfigLlmParserPtrInput `pulumi:"llmParser"`
+}
+
+func (AiRagFileRagFileParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileParsingConfig)(nil)).Elem()
+}
+
+func (i AiRagFileRagFileParsingConfigArgs) ToAiRagFileRagFileParsingConfigOutput() AiRagFileRagFileParsingConfigOutput {
+	return i.ToAiRagFileRagFileParsingConfigOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileParsingConfigArgs) ToAiRagFileRagFileParsingConfigOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileParsingConfigOutput)
+}
+
+func (i AiRagFileRagFileParsingConfigArgs) ToAiRagFileRagFileParsingConfigPtrOutput() AiRagFileRagFileParsingConfigPtrOutput {
+	return i.ToAiRagFileRagFileParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileParsingConfigArgs) ToAiRagFileRagFileParsingConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileParsingConfigOutput).ToAiRagFileRagFileParsingConfigPtrOutputWithContext(ctx)
+}
+
+// AiRagFileRagFileParsingConfigPtrInput is an input type that accepts AiRagFileRagFileParsingConfigArgs, AiRagFileRagFileParsingConfigPtr and AiRagFileRagFileParsingConfigPtrOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileParsingConfigPtrInput` via:
+//
+//	        AiRagFileRagFileParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagFileRagFileParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileParsingConfigPtrOutput() AiRagFileRagFileParsingConfigPtrOutput
+	ToAiRagFileRagFileParsingConfigPtrOutputWithContext(context.Context) AiRagFileRagFileParsingConfigPtrOutput
+}
+
+type aiRagFileRagFileParsingConfigPtrType AiRagFileRagFileParsingConfigArgs
+
+func AiRagFileRagFileParsingConfigPtr(v *AiRagFileRagFileParsingConfigArgs) AiRagFileRagFileParsingConfigPtrInput {
+	return (*aiRagFileRagFileParsingConfigPtrType)(v)
+}
+
+func (*aiRagFileRagFileParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileParsingConfig)(nil)).Elem()
+}
+
+func (i *aiRagFileRagFileParsingConfigPtrType) ToAiRagFileRagFileParsingConfigPtrOutput() AiRagFileRagFileParsingConfigPtrOutput {
+	return i.ToAiRagFileRagFileParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagFileRagFileParsingConfigPtrType) ToAiRagFileRagFileParsingConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileParsingConfigPtrOutput)
+}
+
+type AiRagFileRagFileParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileParsingConfig)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileParsingConfigOutput) ToAiRagFileRagFileParsingConfigOutput() AiRagFileRagFileParsingConfigOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigOutput) ToAiRagFileRagFileParsingConfigOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigOutput) ToAiRagFileRagFileParsingConfigPtrOutput() AiRagFileRagFileParsingConfigPtrOutput {
+	return o.ToAiRagFileRagFileParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagFileRagFileParsingConfigOutput) ToAiRagFileRagFileParsingConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagFileRagFileParsingConfig) *AiRagFileRagFileParsingConfig {
+		return &v
+	}).(AiRagFileRagFileParsingConfigPtrOutput)
+}
+
+// The Document AI Layout Parser to use for the file.
+// Structure is documented below.
+func (o AiRagFileRagFileParsingConfigOutput) LayoutParser() AiRagFileRagFileParsingConfigLayoutParserPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileParsingConfig) *AiRagFileRagFileParsingConfigLayoutParser {
+		return v.LayoutParser
+	}).(AiRagFileRagFileParsingConfigLayoutParserPtrOutput)
+}
+
+// The LLM parser to use for the file.
+// Structure is documented below.
+func (o AiRagFileRagFileParsingConfigOutput) LlmParser() AiRagFileRagFileParsingConfigLlmParserPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileParsingConfig) *AiRagFileRagFileParsingConfigLlmParser { return v.LlmParser }).(AiRagFileRagFileParsingConfigLlmParserPtrOutput)
+}
+
+type AiRagFileRagFileParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileParsingConfig)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileParsingConfigPtrOutput) ToAiRagFileRagFileParsingConfigPtrOutput() AiRagFileRagFileParsingConfigPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigPtrOutput) ToAiRagFileRagFileParsingConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigPtrOutput) Elem() AiRagFileRagFileParsingConfigOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileParsingConfig) AiRagFileRagFileParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagFileRagFileParsingConfig
+		return ret
+	}).(AiRagFileRagFileParsingConfigOutput)
+}
+
+// The Document AI Layout Parser to use for the file.
+// Structure is documented below.
+func (o AiRagFileRagFileParsingConfigPtrOutput) LayoutParser() AiRagFileRagFileParsingConfigLayoutParserPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileParsingConfig) *AiRagFileRagFileParsingConfigLayoutParser {
+		if v == nil {
+			return nil
+		}
+		return v.LayoutParser
+	}).(AiRagFileRagFileParsingConfigLayoutParserPtrOutput)
+}
+
+// The LLM parser to use for the file.
+// Structure is documented below.
+func (o AiRagFileRagFileParsingConfigPtrOutput) LlmParser() AiRagFileRagFileParsingConfigLlmParserPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileParsingConfig) *AiRagFileRagFileParsingConfigLlmParser {
+		if v == nil {
+			return nil
+		}
+		return v.LlmParser
+	}).(AiRagFileRagFileParsingConfigLlmParserPtrOutput)
+}
+
+type AiRagFileRagFileParsingConfigLayoutParser struct {
+	// The maximum number of requests the job is allowed to make to the
+	// Document AI processor per minute.
+	MaxParsingRequestsPerMin *int `pulumi:"maxParsingRequestsPerMin"`
+	// The full resource name of a Document AI processor or processor version
+	// of type `LAYOUT_PARSER_PROCESSOR`. Format:
+	// `projects/{project_id}/locations/{location}/processors/{processor_id}` or
+	// `projects/{project_id}/locations/{location}/processors/{processor_id}/processorVersions/{processor_version_id}`.
+	ProcessorName *string `pulumi:"processorName"`
+}
+
+// AiRagFileRagFileParsingConfigLayoutParserInput is an input type that accepts AiRagFileRagFileParsingConfigLayoutParserArgs and AiRagFileRagFileParsingConfigLayoutParserOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileParsingConfigLayoutParserInput` via:
+//
+//	AiRagFileRagFileParsingConfigLayoutParserArgs{...}
+type AiRagFileRagFileParsingConfigLayoutParserInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileParsingConfigLayoutParserOutput() AiRagFileRagFileParsingConfigLayoutParserOutput
+	ToAiRagFileRagFileParsingConfigLayoutParserOutputWithContext(context.Context) AiRagFileRagFileParsingConfigLayoutParserOutput
+}
+
+type AiRagFileRagFileParsingConfigLayoutParserArgs struct {
+	// The maximum number of requests the job is allowed to make to the
+	// Document AI processor per minute.
+	MaxParsingRequestsPerMin pulumi.IntPtrInput `pulumi:"maxParsingRequestsPerMin"`
+	// The full resource name of a Document AI processor or processor version
+	// of type `LAYOUT_PARSER_PROCESSOR`. Format:
+	// `projects/{project_id}/locations/{location}/processors/{processor_id}` or
+	// `projects/{project_id}/locations/{location}/processors/{processor_id}/processorVersions/{processor_version_id}`.
+	ProcessorName pulumi.StringPtrInput `pulumi:"processorName"`
+}
+
+func (AiRagFileRagFileParsingConfigLayoutParserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileParsingConfigLayoutParser)(nil)).Elem()
+}
+
+func (i AiRagFileRagFileParsingConfigLayoutParserArgs) ToAiRagFileRagFileParsingConfigLayoutParserOutput() AiRagFileRagFileParsingConfigLayoutParserOutput {
+	return i.ToAiRagFileRagFileParsingConfigLayoutParserOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileParsingConfigLayoutParserArgs) ToAiRagFileRagFileParsingConfigLayoutParserOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLayoutParserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileParsingConfigLayoutParserOutput)
+}
+
+func (i AiRagFileRagFileParsingConfigLayoutParserArgs) ToAiRagFileRagFileParsingConfigLayoutParserPtrOutput() AiRagFileRagFileParsingConfigLayoutParserPtrOutput {
+	return i.ToAiRagFileRagFileParsingConfigLayoutParserPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileParsingConfigLayoutParserArgs) ToAiRagFileRagFileParsingConfigLayoutParserPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLayoutParserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileParsingConfigLayoutParserOutput).ToAiRagFileRagFileParsingConfigLayoutParserPtrOutputWithContext(ctx)
+}
+
+// AiRagFileRagFileParsingConfigLayoutParserPtrInput is an input type that accepts AiRagFileRagFileParsingConfigLayoutParserArgs, AiRagFileRagFileParsingConfigLayoutParserPtr and AiRagFileRagFileParsingConfigLayoutParserPtrOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileParsingConfigLayoutParserPtrInput` via:
+//
+//	        AiRagFileRagFileParsingConfigLayoutParserArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagFileRagFileParsingConfigLayoutParserPtrInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileParsingConfigLayoutParserPtrOutput() AiRagFileRagFileParsingConfigLayoutParserPtrOutput
+	ToAiRagFileRagFileParsingConfigLayoutParserPtrOutputWithContext(context.Context) AiRagFileRagFileParsingConfigLayoutParserPtrOutput
+}
+
+type aiRagFileRagFileParsingConfigLayoutParserPtrType AiRagFileRagFileParsingConfigLayoutParserArgs
+
+func AiRagFileRagFileParsingConfigLayoutParserPtr(v *AiRagFileRagFileParsingConfigLayoutParserArgs) AiRagFileRagFileParsingConfigLayoutParserPtrInput {
+	return (*aiRagFileRagFileParsingConfigLayoutParserPtrType)(v)
+}
+
+func (*aiRagFileRagFileParsingConfigLayoutParserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileParsingConfigLayoutParser)(nil)).Elem()
+}
+
+func (i *aiRagFileRagFileParsingConfigLayoutParserPtrType) ToAiRagFileRagFileParsingConfigLayoutParserPtrOutput() AiRagFileRagFileParsingConfigLayoutParserPtrOutput {
+	return i.ToAiRagFileRagFileParsingConfigLayoutParserPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagFileRagFileParsingConfigLayoutParserPtrType) ToAiRagFileRagFileParsingConfigLayoutParserPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLayoutParserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileParsingConfigLayoutParserPtrOutput)
+}
+
+type AiRagFileRagFileParsingConfigLayoutParserOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileParsingConfigLayoutParserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileParsingConfigLayoutParser)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileParsingConfigLayoutParserOutput) ToAiRagFileRagFileParsingConfigLayoutParserOutput() AiRagFileRagFileParsingConfigLayoutParserOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigLayoutParserOutput) ToAiRagFileRagFileParsingConfigLayoutParserOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLayoutParserOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigLayoutParserOutput) ToAiRagFileRagFileParsingConfigLayoutParserPtrOutput() AiRagFileRagFileParsingConfigLayoutParserPtrOutput {
+	return o.ToAiRagFileRagFileParsingConfigLayoutParserPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagFileRagFileParsingConfigLayoutParserOutput) ToAiRagFileRagFileParsingConfigLayoutParserPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLayoutParserPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagFileRagFileParsingConfigLayoutParser) *AiRagFileRagFileParsingConfigLayoutParser {
+		return &v
+	}).(AiRagFileRagFileParsingConfigLayoutParserPtrOutput)
+}
+
+// The maximum number of requests the job is allowed to make to the
+// Document AI processor per minute.
+func (o AiRagFileRagFileParsingConfigLayoutParserOutput) MaxParsingRequestsPerMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileParsingConfigLayoutParser) *int { return v.MaxParsingRequestsPerMin }).(pulumi.IntPtrOutput)
+}
+
+// The full resource name of a Document AI processor or processor version
+// of type `LAYOUT_PARSER_PROCESSOR`. Format:
+// `projects/{project_id}/locations/{location}/processors/{processor_id}` or
+// `projects/{project_id}/locations/{location}/processors/{processor_id}/processorVersions/{processor_version_id}`.
+func (o AiRagFileRagFileParsingConfigLayoutParserOutput) ProcessorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileParsingConfigLayoutParser) *string { return v.ProcessorName }).(pulumi.StringPtrOutput)
+}
+
+type AiRagFileRagFileParsingConfigLayoutParserPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileParsingConfigLayoutParserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileParsingConfigLayoutParser)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileParsingConfigLayoutParserPtrOutput) ToAiRagFileRagFileParsingConfigLayoutParserPtrOutput() AiRagFileRagFileParsingConfigLayoutParserPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigLayoutParserPtrOutput) ToAiRagFileRagFileParsingConfigLayoutParserPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLayoutParserPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigLayoutParserPtrOutput) Elem() AiRagFileRagFileParsingConfigLayoutParserOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileParsingConfigLayoutParser) AiRagFileRagFileParsingConfigLayoutParser {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagFileRagFileParsingConfigLayoutParser
+		return ret
+	}).(AiRagFileRagFileParsingConfigLayoutParserOutput)
+}
+
+// The maximum number of requests the job is allowed to make to the
+// Document AI processor per minute.
+func (o AiRagFileRagFileParsingConfigLayoutParserPtrOutput) MaxParsingRequestsPerMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileParsingConfigLayoutParser) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParsingRequestsPerMin
+	}).(pulumi.IntPtrOutput)
+}
+
+// The full resource name of a Document AI processor or processor version
+// of type `LAYOUT_PARSER_PROCESSOR`. Format:
+// `projects/{project_id}/locations/{location}/processors/{processor_id}` or
+// `projects/{project_id}/locations/{location}/processors/{processor_id}/processorVersions/{processor_version_id}`.
+func (o AiRagFileRagFileParsingConfigLayoutParserPtrOutput) ProcessorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileParsingConfigLayoutParser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProcessorName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiRagFileRagFileParsingConfigLlmParser struct {
+	// The prompt to use for parsing. If not specified, a default prompt is used.
+	CustomParsingPrompt *string `pulumi:"customParsingPrompt"`
+	// The maximum number of requests the job is allowed to make to the LLM
+	// model per minute.
+	MaxParsingRequestsPerMin *int `pulumi:"maxParsingRequestsPerMin"`
+	// The name of a LLM model used for parsing. Format:
+	// `projects/{project_id}/locations/{location}/publishers/{publisher}/models/{model}`.
+	ModelName *string `pulumi:"modelName"`
+}
+
+// AiRagFileRagFileParsingConfigLlmParserInput is an input type that accepts AiRagFileRagFileParsingConfigLlmParserArgs and AiRagFileRagFileParsingConfigLlmParserOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileParsingConfigLlmParserInput` via:
+//
+//	AiRagFileRagFileParsingConfigLlmParserArgs{...}
+type AiRagFileRagFileParsingConfigLlmParserInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileParsingConfigLlmParserOutput() AiRagFileRagFileParsingConfigLlmParserOutput
+	ToAiRagFileRagFileParsingConfigLlmParserOutputWithContext(context.Context) AiRagFileRagFileParsingConfigLlmParserOutput
+}
+
+type AiRagFileRagFileParsingConfigLlmParserArgs struct {
+	// The prompt to use for parsing. If not specified, a default prompt is used.
+	CustomParsingPrompt pulumi.StringPtrInput `pulumi:"customParsingPrompt"`
+	// The maximum number of requests the job is allowed to make to the LLM
+	// model per minute.
+	MaxParsingRequestsPerMin pulumi.IntPtrInput `pulumi:"maxParsingRequestsPerMin"`
+	// The name of a LLM model used for parsing. Format:
+	// `projects/{project_id}/locations/{location}/publishers/{publisher}/models/{model}`.
+	ModelName pulumi.StringPtrInput `pulumi:"modelName"`
+}
+
+func (AiRagFileRagFileParsingConfigLlmParserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileParsingConfigLlmParser)(nil)).Elem()
+}
+
+func (i AiRagFileRagFileParsingConfigLlmParserArgs) ToAiRagFileRagFileParsingConfigLlmParserOutput() AiRagFileRagFileParsingConfigLlmParserOutput {
+	return i.ToAiRagFileRagFileParsingConfigLlmParserOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileParsingConfigLlmParserArgs) ToAiRagFileRagFileParsingConfigLlmParserOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLlmParserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileParsingConfigLlmParserOutput)
+}
+
+func (i AiRagFileRagFileParsingConfigLlmParserArgs) ToAiRagFileRagFileParsingConfigLlmParserPtrOutput() AiRagFileRagFileParsingConfigLlmParserPtrOutput {
+	return i.ToAiRagFileRagFileParsingConfigLlmParserPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileParsingConfigLlmParserArgs) ToAiRagFileRagFileParsingConfigLlmParserPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLlmParserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileParsingConfigLlmParserOutput).ToAiRagFileRagFileParsingConfigLlmParserPtrOutputWithContext(ctx)
+}
+
+// AiRagFileRagFileParsingConfigLlmParserPtrInput is an input type that accepts AiRagFileRagFileParsingConfigLlmParserArgs, AiRagFileRagFileParsingConfigLlmParserPtr and AiRagFileRagFileParsingConfigLlmParserPtrOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileParsingConfigLlmParserPtrInput` via:
+//
+//	        AiRagFileRagFileParsingConfigLlmParserArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagFileRagFileParsingConfigLlmParserPtrInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileParsingConfigLlmParserPtrOutput() AiRagFileRagFileParsingConfigLlmParserPtrOutput
+	ToAiRagFileRagFileParsingConfigLlmParserPtrOutputWithContext(context.Context) AiRagFileRagFileParsingConfigLlmParserPtrOutput
+}
+
+type aiRagFileRagFileParsingConfigLlmParserPtrType AiRagFileRagFileParsingConfigLlmParserArgs
+
+func AiRagFileRagFileParsingConfigLlmParserPtr(v *AiRagFileRagFileParsingConfigLlmParserArgs) AiRagFileRagFileParsingConfigLlmParserPtrInput {
+	return (*aiRagFileRagFileParsingConfigLlmParserPtrType)(v)
+}
+
+func (*aiRagFileRagFileParsingConfigLlmParserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileParsingConfigLlmParser)(nil)).Elem()
+}
+
+func (i *aiRagFileRagFileParsingConfigLlmParserPtrType) ToAiRagFileRagFileParsingConfigLlmParserPtrOutput() AiRagFileRagFileParsingConfigLlmParserPtrOutput {
+	return i.ToAiRagFileRagFileParsingConfigLlmParserPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagFileRagFileParsingConfigLlmParserPtrType) ToAiRagFileRagFileParsingConfigLlmParserPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLlmParserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileParsingConfigLlmParserPtrOutput)
+}
+
+type AiRagFileRagFileParsingConfigLlmParserOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileParsingConfigLlmParserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileParsingConfigLlmParser)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileParsingConfigLlmParserOutput) ToAiRagFileRagFileParsingConfigLlmParserOutput() AiRagFileRagFileParsingConfigLlmParserOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigLlmParserOutput) ToAiRagFileRagFileParsingConfigLlmParserOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLlmParserOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigLlmParserOutput) ToAiRagFileRagFileParsingConfigLlmParserPtrOutput() AiRagFileRagFileParsingConfigLlmParserPtrOutput {
+	return o.ToAiRagFileRagFileParsingConfigLlmParserPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagFileRagFileParsingConfigLlmParserOutput) ToAiRagFileRagFileParsingConfigLlmParserPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLlmParserPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagFileRagFileParsingConfigLlmParser) *AiRagFileRagFileParsingConfigLlmParser {
+		return &v
+	}).(AiRagFileRagFileParsingConfigLlmParserPtrOutput)
+}
+
+// The prompt to use for parsing. If not specified, a default prompt is used.
+func (o AiRagFileRagFileParsingConfigLlmParserOutput) CustomParsingPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileParsingConfigLlmParser) *string { return v.CustomParsingPrompt }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of requests the job is allowed to make to the LLM
+// model per minute.
+func (o AiRagFileRagFileParsingConfigLlmParserOutput) MaxParsingRequestsPerMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileParsingConfigLlmParser) *int { return v.MaxParsingRequestsPerMin }).(pulumi.IntPtrOutput)
+}
+
+// The name of a LLM model used for parsing. Format:
+// `projects/{project_id}/locations/{location}/publishers/{publisher}/models/{model}`.
+func (o AiRagFileRagFileParsingConfigLlmParserOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileParsingConfigLlmParser) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+type AiRagFileRagFileParsingConfigLlmParserPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileParsingConfigLlmParserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileParsingConfigLlmParser)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileParsingConfigLlmParserPtrOutput) ToAiRagFileRagFileParsingConfigLlmParserPtrOutput() AiRagFileRagFileParsingConfigLlmParserPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigLlmParserPtrOutput) ToAiRagFileRagFileParsingConfigLlmParserPtrOutputWithContext(ctx context.Context) AiRagFileRagFileParsingConfigLlmParserPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileParsingConfigLlmParserPtrOutput) Elem() AiRagFileRagFileParsingConfigLlmParserOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileParsingConfigLlmParser) AiRagFileRagFileParsingConfigLlmParser {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagFileRagFileParsingConfigLlmParser
+		return ret
+	}).(AiRagFileRagFileParsingConfigLlmParserOutput)
+}
+
+// The prompt to use for parsing. If not specified, a default prompt is used.
+func (o AiRagFileRagFileParsingConfigLlmParserPtrOutput) CustomParsingPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileParsingConfigLlmParser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomParsingPrompt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of requests the job is allowed to make to the LLM
+// model per minute.
+func (o AiRagFileRagFileParsingConfigLlmParserPtrOutput) MaxParsingRequestsPerMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileParsingConfigLlmParser) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParsingRequestsPerMin
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of a LLM model used for parsing. Format:
+// `projects/{project_id}/locations/{location}/publishers/{publisher}/models/{model}`.
+func (o AiRagFileRagFileParsingConfigLlmParserPtrOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileParsingConfigLlmParser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiRagFileRagFileTransformationConfig struct {
+	// The chunking config for the file.
+	// Structure is documented below.
+	RagFileChunkingConfig *AiRagFileRagFileTransformationConfigRagFileChunkingConfig `pulumi:"ragFileChunkingConfig"`
+}
+
+// AiRagFileRagFileTransformationConfigInput is an input type that accepts AiRagFileRagFileTransformationConfigArgs and AiRagFileRagFileTransformationConfigOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileTransformationConfigInput` via:
+//
+//	AiRagFileRagFileTransformationConfigArgs{...}
+type AiRagFileRagFileTransformationConfigInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileTransformationConfigOutput() AiRagFileRagFileTransformationConfigOutput
+	ToAiRagFileRagFileTransformationConfigOutputWithContext(context.Context) AiRagFileRagFileTransformationConfigOutput
+}
+
+type AiRagFileRagFileTransformationConfigArgs struct {
+	// The chunking config for the file.
+	// Structure is documented below.
+	RagFileChunkingConfig AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrInput `pulumi:"ragFileChunkingConfig"`
+}
+
+func (AiRagFileRagFileTransformationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileTransformationConfig)(nil)).Elem()
+}
+
+func (i AiRagFileRagFileTransformationConfigArgs) ToAiRagFileRagFileTransformationConfigOutput() AiRagFileRagFileTransformationConfigOutput {
+	return i.ToAiRagFileRagFileTransformationConfigOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileTransformationConfigArgs) ToAiRagFileRagFileTransformationConfigOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileTransformationConfigOutput)
+}
+
+func (i AiRagFileRagFileTransformationConfigArgs) ToAiRagFileRagFileTransformationConfigPtrOutput() AiRagFileRagFileTransformationConfigPtrOutput {
+	return i.ToAiRagFileRagFileTransformationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileTransformationConfigArgs) ToAiRagFileRagFileTransformationConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileTransformationConfigOutput).ToAiRagFileRagFileTransformationConfigPtrOutputWithContext(ctx)
+}
+
+// AiRagFileRagFileTransformationConfigPtrInput is an input type that accepts AiRagFileRagFileTransformationConfigArgs, AiRagFileRagFileTransformationConfigPtr and AiRagFileRagFileTransformationConfigPtrOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileTransformationConfigPtrInput` via:
+//
+//	        AiRagFileRagFileTransformationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagFileRagFileTransformationConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileTransformationConfigPtrOutput() AiRagFileRagFileTransformationConfigPtrOutput
+	ToAiRagFileRagFileTransformationConfigPtrOutputWithContext(context.Context) AiRagFileRagFileTransformationConfigPtrOutput
+}
+
+type aiRagFileRagFileTransformationConfigPtrType AiRagFileRagFileTransformationConfigArgs
+
+func AiRagFileRagFileTransformationConfigPtr(v *AiRagFileRagFileTransformationConfigArgs) AiRagFileRagFileTransformationConfigPtrInput {
+	return (*aiRagFileRagFileTransformationConfigPtrType)(v)
+}
+
+func (*aiRagFileRagFileTransformationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileTransformationConfig)(nil)).Elem()
+}
+
+func (i *aiRagFileRagFileTransformationConfigPtrType) ToAiRagFileRagFileTransformationConfigPtrOutput() AiRagFileRagFileTransformationConfigPtrOutput {
+	return i.ToAiRagFileRagFileTransformationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagFileRagFileTransformationConfigPtrType) ToAiRagFileRagFileTransformationConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileTransformationConfigPtrOutput)
+}
+
+type AiRagFileRagFileTransformationConfigOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileTransformationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileTransformationConfig)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileTransformationConfigOutput) ToAiRagFileRagFileTransformationConfigOutput() AiRagFileRagFileTransformationConfigOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigOutput) ToAiRagFileRagFileTransformationConfigOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigOutput) ToAiRagFileRagFileTransformationConfigPtrOutput() AiRagFileRagFileTransformationConfigPtrOutput {
+	return o.ToAiRagFileRagFileTransformationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagFileRagFileTransformationConfigOutput) ToAiRagFileRagFileTransformationConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagFileRagFileTransformationConfig) *AiRagFileRagFileTransformationConfig {
+		return &v
+	}).(AiRagFileRagFileTransformationConfigPtrOutput)
+}
+
+// The chunking config for the file.
+// Structure is documented below.
+func (o AiRagFileRagFileTransformationConfigOutput) RagFileChunkingConfig() AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileTransformationConfig) *AiRagFileRagFileTransformationConfigRagFileChunkingConfig {
+		return v.RagFileChunkingConfig
+	}).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput)
+}
+
+type AiRagFileRagFileTransformationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileTransformationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileTransformationConfig)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileTransformationConfigPtrOutput) ToAiRagFileRagFileTransformationConfigPtrOutput() AiRagFileRagFileTransformationConfigPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigPtrOutput) ToAiRagFileRagFileTransformationConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigPtrOutput) Elem() AiRagFileRagFileTransformationConfigOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileTransformationConfig) AiRagFileRagFileTransformationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagFileRagFileTransformationConfig
+		return ret
+	}).(AiRagFileRagFileTransformationConfigOutput)
+}
+
+// The chunking config for the file.
+// Structure is documented below.
+func (o AiRagFileRagFileTransformationConfigPtrOutput) RagFileChunkingConfig() AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileTransformationConfig) *AiRagFileRagFileTransformationConfigRagFileChunkingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RagFileChunkingConfig
+	}).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput)
+}
+
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfig struct {
+	// The fixed length chunking config.
+	// Structure is documented below.
+	FixedLengthChunking *AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking `pulumi:"fixedLengthChunking"`
+}
+
+// AiRagFileRagFileTransformationConfigRagFileChunkingConfigInput is an input type that accepts AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs and AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileTransformationConfigRagFileChunkingConfigInput` via:
+//
+//	AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs{...}
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput
+	ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigOutputWithContext(context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput
+}
+
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs struct {
+	// The fixed length chunking config.
+	// Structure is documented below.
+	FixedLengthChunking AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrInput `pulumi:"fixedLengthChunking"`
+}
+
+func (AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileTransformationConfigRagFileChunkingConfig)(nil)).Elem()
+}
+
+func (i AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput {
+	return i.ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput)
+}
+
+func (i AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput {
+	return i.ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput).ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutputWithContext(ctx)
+}
+
+// AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrInput is an input type that accepts AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs, AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtr and AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrInput` via:
+//
+//	        AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput
+	ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutputWithContext(context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput
+}
+
+type aiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrType AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs
+
+func AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtr(v *AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs) AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrInput {
+	return (*aiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrType)(v)
+}
+
+func (*aiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileTransformationConfigRagFileChunkingConfig)(nil)).Elem()
+}
+
+func (i *aiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrType) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput {
+	return i.ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrType) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput)
+}
+
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileTransformationConfigRagFileChunkingConfig)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput {
+	return o.ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagFileRagFileTransformationConfigRagFileChunkingConfig) *AiRagFileRagFileTransformationConfigRagFileChunkingConfig {
+		return &v
+	}).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput)
+}
+
+// The fixed length chunking config.
+// Structure is documented below.
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput) FixedLengthChunking() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileTransformationConfigRagFileChunkingConfig) *AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking {
+		return v.FixedLengthChunking
+	}).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput)
+}
+
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileTransformationConfigRagFileChunkingConfig)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput) Elem() AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileTransformationConfigRagFileChunkingConfig) AiRagFileRagFileTransformationConfigRagFileChunkingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagFileRagFileTransformationConfigRagFileChunkingConfig
+		return ret
+	}).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput)
+}
+
+// The fixed length chunking config.
+// Structure is documented below.
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput) FixedLengthChunking() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileTransformationConfigRagFileChunkingConfig) *AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking {
+		if v == nil {
+			return nil
+		}
+		return v.FixedLengthChunking
+	}).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput)
+}
+
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking struct {
+	// The overlap between chunks.
+	ChunkOverlap *int `pulumi:"chunkOverlap"`
+	// The size of the chunks.
+	ChunkSize *int `pulumi:"chunkSize"`
+}
+
+// AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingInput is an input type that accepts AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs and AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingInput` via:
+//
+//	AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs{...}
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput
+	ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutputWithContext(context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput
+}
+
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs struct {
+	// The overlap between chunks.
+	ChunkOverlap pulumi.IntPtrInput `pulumi:"chunkOverlap"`
+	// The size of the chunks.
+	ChunkSize pulumi.IntPtrInput `pulumi:"chunkSize"`
+}
+
+func (AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking)(nil)).Elem()
+}
+
+func (i AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput {
+	return i.ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput)
+}
+
+func (i AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput {
+	return i.ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput).ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutputWithContext(ctx)
+}
+
+// AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrInput is an input type that accepts AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs, AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtr and AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput values.
+// You can construct a concrete instance of `AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrInput` via:
+//
+//	        AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrInput interface {
+	pulumi.Input
+
+	ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput
+	ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutputWithContext(context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput
+}
+
+type aiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrType AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs
+
+func AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtr(v *AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs) AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrInput {
+	return (*aiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrType)(v)
+}
+
+func (*aiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking)(nil)).Elem()
+}
+
+func (i *aiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrType) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput {
+	return i.ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrType) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput)
+}
+
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput {
+	return o.ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking) *AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking {
+		return &v
+	}).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput)
+}
+
+// The overlap between chunks.
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput) ChunkOverlap() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking) *int {
+		return v.ChunkOverlap
+	}).(pulumi.IntPtrOutput)
+}
+
+// The size of the chunks.
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput) ChunkSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking) *int {
+		return v.ChunkSize
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking)(nil)).Elem()
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput) ToAiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutputWithContext(ctx context.Context) AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput {
+	return o
+}
+
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput) Elem() AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking) AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking
+		return ret
+	}).(AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput)
+}
+
+// The overlap between chunks.
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput) ChunkOverlap() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ChunkOverlap
+	}).(pulumi.IntPtrOutput)
+}
+
+// The size of the chunks.
+func (o AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput) ChunkSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ChunkSize
+	}).(pulumi.IntPtrOutput)
 }
 
 type AiReasoningEngineContextSpec struct {
@@ -37861,6 +48850,10 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) Inde
 }
 
 type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig struct {
+	// The default fraction of leaf nodes that any query may be searched. Must be in
+	// range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+	// This value can only be set when creating the index.
+	FractionLeafNodesToSearch float64 `pulumi:"fractionLeafNodesToSearch"`
 	// Number of embeddings on each leaf node. The default value is 1000 if not set.
 	LeafNodeEmbeddingCount int `pulumi:"leafNodeEmbeddingCount"`
 	// The default percentage of leaf nodes that any query may be searched. Must be in
@@ -37880,6 +48873,10 @@ type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput interface {
 }
 
 type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs struct {
+	// The default fraction of leaf nodes that any query may be searched. Must be in
+	// range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+	// This value can only be set when creating the index.
+	FractionLeafNodesToSearch pulumi.Float64Input `pulumi:"fractionLeafNodesToSearch"`
 	// Number of embeddings on each leaf node. The default value is 1000 if not set.
 	LeafNodeEmbeddingCount pulumi.IntInput `pulumi:"leafNodeEmbeddingCount"`
 	// The default percentage of leaf nodes that any query may be searched. Must be in
@@ -37938,6 +48935,15 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToGetAiIndexM
 	return o
 }
 
+// The default fraction of leaf nodes that any query may be searched. Must be in
+// range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+// This value can only be set when creating the index.
+func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) FractionLeafNodesToSearch() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig) float64 {
+		return v.FractionLeafNodesToSearch
+	}).(pulumi.Float64Output)
+}
+
 // Number of embeddings on each leaf node. The default value is 1000 if not set.
 func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodeEmbeddingCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig) int { return v.LeafNodeEmbeddingCount }).(pulumi.IntOutput)
@@ -37970,6 +48976,40 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) Index(i 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobEncryptionSpecInput)(nil)).Elem(), AiCustomJobEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobEncryptionSpecPtrInput)(nil)).Elem(), AiCustomJobEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobErrorInput)(nil)).Elem(), AiCustomJobErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobErrorArrayInput)(nil)).Elem(), AiCustomJobErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecInput)(nil)).Elem(), AiCustomJobJobSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecPtrInput)(nil)).Elem(), AiCustomJobJobSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecBaseOutputDirectoryInput)(nil)).Elem(), AiCustomJobJobSpecBaseOutputDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecBaseOutputDirectoryPtrInput)(nil)).Elem(), AiCustomJobJobSpecBaseOutputDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecPscInterfaceConfigInput)(nil)).Elem(), AiCustomJobJobSpecPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecPscInterfaceConfigPtrInput)(nil)).Elem(), AiCustomJobJobSpecPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigInput)(nil)).Elem(), AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayInput)(nil)).Elem(), AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecSchedulingInput)(nil)).Elem(), AiCustomJobJobSpecSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecSchedulingPtrInput)(nil)).Elem(), AiCustomJobJobSpecSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecArrayInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecContainerSpecInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecDiskSpecInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecLustreMountInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecLustreMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecLustreMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecMachineSpecInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecNfsMountInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecNfsMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecNfsMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayInput)(nil)).Elem(), AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecPtrInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesInput)(nil)).Elem(), AiDeploymentResourcePoolDedicatedResourcesArgs{})
@@ -38176,6 +49216,53 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreEncryptionSpecPtrInput)(nil)).Elem(), AiMetadataStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeInput)(nil)).Elem(), AiMetadataStoreStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeArrayInput)(nil)).Elem(), AiMetadataStoreStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterEventInput)(nil)).Elem(), AiModelDevelopmentClusterClusterEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterEventArrayInput)(nil)).Elem(), AiModelDevelopmentClusterClusterEventArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusArrayInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusErrorInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusErrorArrayInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusNodesStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusArrayInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusNodesStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayInput)(nil)).Elem(), AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigInput)(nil)).Elem(), AiModelDevelopmentClusterLustreExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigPtrInput)(nil)).Elem(), AiModelDevelopmentClusterLustreExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigStartTimeInput)(nil)).Elem(), AiModelDevelopmentClusterLustreExportConfigStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterLustreExportConfigStartTimePtrInput)(nil)).Elem(), AiModelDevelopmentClusterLustreExportConfigStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNetworkInput)(nil)).Elem(), AiModelDevelopmentClusterNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNetworkPtrInput)(nil)).Elem(), AiModelDevelopmentClusterNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolArrayInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolBootDiskInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolBootDiskPtrInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpecInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolScalingSpecInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolScalingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolScalingSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolScalingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeSpecInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeXmanagerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeXmanagerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerErrorInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeXmanagerErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterRuntimeXmanagerErrorArrayInput)(nil)).Elem(), AiModelDevelopmentClusterRuntimeXmanagerErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityOpenTelemetryInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs{})
@@ -38235,8 +49322,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeArrayInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecPtrInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecRaySpecInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecRaySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecRaySpecPtrInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecRaySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecServiceAccountSpecInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobEncryptionSpecInput)(nil)).Elem(), AiPipelineJobEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobEncryptionSpecPtrInput)(nil)).Elem(), AiPipelineJobEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobErrorInput)(nil)).Elem(), AiPipelineJobErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobErrorArrayInput)(nil)).Elem(), AiPipelineJobErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobJobDetailInput)(nil)).Elem(), AiPipelineJobJobDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobJobDetailArrayInput)(nil)).Elem(), AiPipelineJobJobDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobJobDetailPipelineContextInput)(nil)).Elem(), AiPipelineJobJobDetailPipelineContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobJobDetailPipelineContextArrayInput)(nil)).Elem(), AiPipelineJobJobDetailPipelineContextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobJobDetailPipelineRunContextInput)(nil)).Elem(), AiPipelineJobJobDetailPipelineRunContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobJobDetailPipelineRunContextArrayInput)(nil)).Elem(), AiPipelineJobJobDetailPipelineRunContextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobJobDetailTaskDetailInput)(nil)).Elem(), AiPipelineJobJobDetailTaskDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobJobDetailTaskDetailArrayInput)(nil)).Elem(), AiPipelineJobJobDetailTaskDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobJobDetailTaskDetailErrorInput)(nil)).Elem(), AiPipelineJobJobDetailTaskDetailErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobJobDetailTaskDetailErrorArrayInput)(nil)).Elem(), AiPipelineJobJobDetailTaskDetailErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobPscInterfaceConfigInput)(nil)).Elem(), AiPipelineJobPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobPscInterfaceConfigPtrInput)(nil)).Elem(), AiPipelineJobPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobPscInterfaceConfigDnsPeeringConfigInput)(nil)).Elem(), AiPipelineJobPscInterfaceConfigDnsPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayInput)(nil)).Elem(), AiPipelineJobPscInterfaceConfigDnsPeeringConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobRuntimeConfigInput)(nil)).Elem(), AiPipelineJobRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobRuntimeConfigPtrInput)(nil)).Elem(), AiPipelineJobRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobRuntimeConfigDefaultRuntimeInput)(nil)).Elem(), AiPipelineJobRuntimeConfigDefaultRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobRuntimeConfigDefaultRuntimePtrInput)(nil)).Elem(), AiPipelineJobRuntimeConfigDefaultRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailInput)(nil)).Elem(), AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrInput)(nil)).Elem(), AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobRuntimeConfigInputArtifactInput)(nil)).Elem(), AiPipelineJobRuntimeConfigInputArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobRuntimeConfigInputArtifactArrayInput)(nil)).Elem(), AiPipelineJobRuntimeConfigInputArtifactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobTemplateMetadataInput)(nil)).Elem(), AiPipelineJobTemplateMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPipelineJobTemplateMetadataArrayInput)(nil)).Elem(), AiPipelineJobTemplateMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagCorpusCorpusStatusInput)(nil)).Elem(), AiRagCorpusCorpusStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagCorpusCorpusStatusArrayInput)(nil)).Elem(), AiRagCorpusCorpusStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagCorpusEncryptionSpecInput)(nil)).Elem(), AiRagCorpusEncryptionSpecArgs{})
@@ -38271,6 +49388,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigScaledPtrInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigScaledArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigUnprovisionedInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileFileStatusInput)(nil)).Elem(), AiRagFileFileStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileFileStatusArrayInput)(nil)).Elem(), AiRagFileFileStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileGcsSourceInput)(nil)).Elem(), AiRagFileGcsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileGcsSourcePtrInput)(nil)).Elem(), AiRagFileGcsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileGoogleDriveSourceInput)(nil)).Elem(), AiRagFileGoogleDriveSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileGoogleDriveSourcePtrInput)(nil)).Elem(), AiRagFileGoogleDriveSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileGoogleDriveSourceResourceIdsInput)(nil)).Elem(), AiRagFileGoogleDriveSourceResourceIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileGoogleDriveSourceResourceIdsPtrInput)(nil)).Elem(), AiRagFileGoogleDriveSourceResourceIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileParsingConfigInput)(nil)).Elem(), AiRagFileRagFileParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileParsingConfigPtrInput)(nil)).Elem(), AiRagFileRagFileParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileParsingConfigLayoutParserInput)(nil)).Elem(), AiRagFileRagFileParsingConfigLayoutParserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileParsingConfigLayoutParserPtrInput)(nil)).Elem(), AiRagFileRagFileParsingConfigLayoutParserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileParsingConfigLlmParserInput)(nil)).Elem(), AiRagFileRagFileParsingConfigLlmParserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileParsingConfigLlmParserPtrInput)(nil)).Elem(), AiRagFileRagFileParsingConfigLlmParserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileTransformationConfigInput)(nil)).Elem(), AiRagFileRagFileTransformationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileTransformationConfigPtrInput)(nil)).Elem(), AiRagFileRagFileTransformationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileTransformationConfigRagFileChunkingConfigInput)(nil)).Elem(), AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrInput)(nil)).Elem(), AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingInput)(nil)).Elem(), AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrInput)(nil)).Elem(), AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecInput)(nil)).Elem(), AiReasoningEngineContextSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecExampleStoreConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecExampleStoreConfigArgs{})
@@ -38421,6 +49558,40 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray{})
+	pulumi.RegisterOutputType(AiCustomJobEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiCustomJobEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiCustomJobErrorOutput{})
+	pulumi.RegisterOutputType(AiCustomJobErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecBaseOutputDirectoryOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecBaseOutputDirectoryPtrOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecPscInterfaceConfigOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecPscInterfaceConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArrayOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecSchedulingOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecSchedulingPtrOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecArrayOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecContainerSpecOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecContainerSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArrayOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecDiskSpecOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecDiskSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecLustreMountOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecLustreMountArrayOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecMachineSpecOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecMachineSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecNfsMountOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecNfsMountArrayOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvOutput{})
+	pulumi.RegisterOutputType(AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiDeploymentResourcePoolDedicatedResourcesOutput{})
@@ -38627,6 +49798,53 @@ func init() {
 	pulumi.RegisterOutputType(AiMetadataStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterEventOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterEventArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusErrorOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusNodesStatusOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusNodesStatusArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterLustreExportConfigOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterLustreExportConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterLustreExportConfigStartTimeOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterLustreExportConfigStartTimePtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNetworkOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNetworkPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolBootDiskOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolBootDiskPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolMachineSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolScalingSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeXmanagerOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeXmanagerArrayOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeXmanagerErrorOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterRuntimeXmanagerErrorArrayOutput{})
 	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityOutput{})
 	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityPtrOutput{})
 	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput{})
@@ -38686,8 +49904,38 @@ func init() {
 	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeArrayOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecRaySpecOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecRaySpecPtrOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobErrorOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobJobDetailOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobJobDetailArrayOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobJobDetailPipelineContextOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobJobDetailPipelineContextArrayOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobJobDetailPipelineRunContextOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobJobDetailPipelineRunContextArrayOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobJobDetailTaskDetailOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobJobDetailTaskDetailArrayOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobJobDetailTaskDetailErrorOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobJobDetailTaskDetailErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobPscInterfaceConfigOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobPscInterfaceConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobPscInterfaceConfigDnsPeeringConfigOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobRuntimeConfigOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobRuntimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobRuntimeConfigDefaultRuntimeOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobRuntimeConfigDefaultRuntimePtrOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailPtrOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobRuntimeConfigInputArtifactOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobRuntimeConfigInputArtifactArrayOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobTemplateMetadataOutput{})
+	pulumi.RegisterOutputType(AiPipelineJobTemplateMetadataArrayOutput{})
 	pulumi.RegisterOutputType(AiRagCorpusCorpusStatusOutput{})
 	pulumi.RegisterOutputType(AiRagCorpusCorpusStatusArrayOutput{})
 	pulumi.RegisterOutputType(AiRagCorpusEncryptionSpecOutput{})
@@ -38722,6 +49970,26 @@ func init() {
 	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigScaledPtrOutput{})
 	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput{})
 	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput{})
+	pulumi.RegisterOutputType(AiRagFileFileStatusOutput{})
+	pulumi.RegisterOutputType(AiRagFileFileStatusArrayOutput{})
+	pulumi.RegisterOutputType(AiRagFileGcsSourceOutput{})
+	pulumi.RegisterOutputType(AiRagFileGcsSourcePtrOutput{})
+	pulumi.RegisterOutputType(AiRagFileGoogleDriveSourceOutput{})
+	pulumi.RegisterOutputType(AiRagFileGoogleDriveSourcePtrOutput{})
+	pulumi.RegisterOutputType(AiRagFileGoogleDriveSourceResourceIdsOutput{})
+	pulumi.RegisterOutputType(AiRagFileGoogleDriveSourceResourceIdsPtrOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileParsingConfigOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileParsingConfigLayoutParserOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileParsingConfigLayoutParserPtrOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileParsingConfigLlmParserOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileParsingConfigLlmParserPtrOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileTransformationConfigOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileTransformationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileTransformationConfigRagFileChunkingConfigOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileTransformationConfigRagFileChunkingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingOutput{})
+	pulumi.RegisterOutputType(AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecExampleStoreConfigOutput{})

@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.ResourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Manager Capability Config Folder
     /// 
     /// ```csharp
@@ -105,6 +106,7 @@ namespace Pulumi.Gcp.ResourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Manager Capability Config Project
     /// 
     /// ```csharp

@@ -84,6 +84,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Uptime Check Config Http Password Wo
 //
 // ```go
@@ -147,6 +148,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Uptime Check Config Status Code
 //
 // ```go
@@ -209,6 +211,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Uptime Check Config Https
 //
 // ```go
@@ -258,6 +261,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Uptime Check Tcp
 //
 // ```go
@@ -301,6 +305,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Uptime Check Config Synthetic Monitor
 //
 // ```go

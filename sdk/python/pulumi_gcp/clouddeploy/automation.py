@@ -668,6 +668,7 @@ class Automation(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Clouddeploy Automation Full
 
         ```python
@@ -878,6 +879,7 @@ class Automation(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Clouddeploy Automation Full
 
         ```python

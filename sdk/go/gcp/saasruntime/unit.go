@@ -90,6 +90,12 @@ type Unit struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Reference to the App Hub Application this Unit belongs to, in the format
+	// `projects/{project}/locations/{location}/applications/{application}`.
+	// All resources deployed in this Unit are associated with the specified
+	// Application. If empty, the service sets it during any UnitOperation
+	// when the UnitKind has `app_params.group` and App Hub is enabled.
+	Application pulumi.StringOutput `pulumi:"application"`
 	// A set of conditions which indicate the various conditions this resource can
 	// have.
 	// Structure is documented below.
@@ -247,6 +253,12 @@ type unitState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Reference to the App Hub Application this Unit belongs to, in the format
+	// `projects/{project}/locations/{location}/applications/{application}`.
+	// All resources deployed in this Unit are associated with the specified
+	// Application. If empty, the service sets it during any UnitOperation
+	// when the UnitKind has `app_params.group` and App Hub is enabled.
+	Application *string `pulumi:"application"`
 	// A set of conditions which indicate the various conditions this resource can
 	// have.
 	// Structure is documented below.
@@ -364,6 +376,12 @@ type UnitState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Reference to the App Hub Application this Unit belongs to, in the format
+	// `projects/{project}/locations/{location}/applications/{application}`.
+	// All resources deployed in this Unit are associated with the specified
+	// Application. If empty, the service sets it during any UnitOperation
+	// when the UnitKind has `app_params.group` and App Hub is enabled.
+	Application pulumi.StringPtrInput
 	// A set of conditions which indicate the various conditions this resource can
 	// have.
 	// Structure is documented below.
@@ -485,6 +503,12 @@ type unitArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Reference to the App Hub Application this Unit belongs to, in the format
+	// `projects/{project}/locations/{location}/applications/{application}`.
+	// All resources deployed in this Unit are associated with the specified
+	// Application. If empty, the service sets it during any UnitOperation
+	// when the UnitKind has `app_params.group` and App Hub is enabled.
+	Application *string `pulumi:"application"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -534,6 +558,12 @@ type UnitArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Reference to the App Hub Application this Unit belongs to, in the format
+	// `projects/{project}/locations/{location}/applications/{application}`.
+	// All resources deployed in this Unit are associated with the specified
+	// Application. If empty, the service sets it during any UnitOperation
+	// when the UnitKind has `app_params.group` and App Hub is enabled.
+	Application pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -669,6 +699,15 @@ func (o UnitOutput) ToUnitOutputWithContext(ctx context.Context) UnitOutput {
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o UnitOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Unit) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Reference to the App Hub Application this Unit belongs to, in the format
+// `projects/{project}/locations/{location}/applications/{application}`.
+// All resources deployed in this Unit are associated with the specified
+// Application. If empty, the service sets it during any UnitOperation
+// when the UnitKind has `app_params.group` and App Hub is enabled.
+func (o UnitOutput) Application() pulumi.StringOutput {
+	return o.ApplyT(func(v *Unit) pulumi.StringOutput { return v.Application }).(pulumi.StringOutput)
 }
 
 // A set of conditions which indicate the various conditions this resource can

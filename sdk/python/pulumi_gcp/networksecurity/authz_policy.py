@@ -663,6 +663,7 @@ class AuthzPolicy(pulumi.CustomResource):
                 },
             }])
         ```
+
         ## Import
 
         AuthzPolicy can be imported using any of these accepted formats:
@@ -777,6 +778,7 @@ class AuthzPolicy(pulumi.CustomResource):
                 },
             }])
         ```
+
         ## Import
 
         AuthzPolicy can be imported using any of these accepted formats:

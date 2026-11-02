@@ -69,6 +69,7 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-healthcare.iam.gserviceaccount.com`),
  * });
  * ```
+ *
  * ### Healthcare Pipeline Job Backfill
  *
  * ```typescript
@@ -88,6 +89,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Healthcare Pipeline Job Whistle Mapping
  *
  * ```typescript
@@ -152,6 +154,7 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-healthcare.iam.gserviceaccount.com`),
  * });
  * ```
+ *
  * ### Healthcare Pipeline Job Mapping Recon Dest
  *
  * ```typescript

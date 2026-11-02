@@ -47,6 +47,7 @@ import * as utilities from "../utilities";
  *     valueType: "INT64_ARRAY",
  * });
  * ```
+ *
  * ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
  *
  * ```typescript

@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     skipDefaultSchemaCreation: false,
  * });
  * ```
+ *
  * ### Discoveryengine Datastore Kms Key Name
  *
  * ```typescript
@@ -54,6 +55,7 @@ import * as utilities from "../utilities";
  *     skipDefaultSchemaCreation: false,
  * });
  * ```
+ *
  * ### Discoveryengine Datastore Document Processing Config
  *
  * ```typescript
@@ -81,6 +83,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Discoveryengine Datastore Advanced Site Search Config
  *
  * ```typescript

@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ControlFolderIntelligenceConfig{}
 	case "gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig":
 		r = &ControlOrganizationIntelligenceConfig{}
+	case "gcp:storage/controlProjectFeatureConfig:ControlProjectFeatureConfig":
+		r = &ControlProjectFeatureConfig{}
 	case "gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig":
 		r = &ControlProjectIntelligenceConfig{}
 	case "gcp:storage/defaultObjectACL:DefaultObjectACL":
@@ -145,6 +147,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"storage/controlOrganizationIntelligenceConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/controlProjectFeatureConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

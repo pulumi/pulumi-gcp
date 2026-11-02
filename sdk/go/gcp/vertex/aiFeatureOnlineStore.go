@@ -57,6 +57,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Featureonlinestore With Optimized
 //
 // ```go
@@ -100,6 +101,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 //
 // ```go

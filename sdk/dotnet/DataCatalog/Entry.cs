@@ -52,6 +52,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Catalog Entry Fileset
     /// 
     /// ```csharp
@@ -83,6 +84,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Catalog Entry Full
     /// 
     /// ```csharp

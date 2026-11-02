@@ -233,6 +233,10 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public readonly string DefaultClusterVersion;
         /// <summary>
+        /// The default image type provided by this version of the API.
+        /// </summary>
+        public readonly string DefaultImageType;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -259,6 +263,10 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public readonly ImmutableDictionary<string, string> ReleaseChannelUpgradeTargetVersion;
         /// <summary>
+        /// A list of the valid image types available in the given zone.
+        /// </summary>
+        public readonly ImmutableArray<string> ValidImageTypes;
+        /// <summary>
         /// A list of versions available in the given zone for use with master instances.
         /// </summary>
         public readonly ImmutableArray<string> ValidMasterVersions;
@@ -271,6 +279,8 @@ namespace Pulumi.Gcp.Container
         [OutputConstructor]
         private GetEngineVersionsResult(
             string defaultClusterVersion,
+
+            string defaultImageType,
 
             string id,
 
@@ -288,6 +298,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableDictionary<string, string> releaseChannelUpgradeTargetVersion,
 
+            ImmutableArray<string> validImageTypes,
+
             ImmutableArray<string> validMasterVersions,
 
             ImmutableArray<string> validNodeVersions,
@@ -295,6 +307,7 @@ namespace Pulumi.Gcp.Container
             string? versionPrefix)
         {
             DefaultClusterVersion = defaultClusterVersion;
+            DefaultImageType = defaultImageType;
             Id = id;
             LatestMasterVersion = latestMasterVersion;
             LatestNodeVersion = latestNodeVersion;
@@ -303,6 +316,7 @@ namespace Pulumi.Gcp.Container
             ReleaseChannelDefaultVersion = releaseChannelDefaultVersion;
             ReleaseChannelLatestVersion = releaseChannelLatestVersion;
             ReleaseChannelUpgradeTargetVersion = releaseChannelUpgradeTargetVersion;
+            ValidImageTypes = validImageTypes;
             ValidMasterVersions = validMasterVersions;
             ValidNodeVersions = validNodeVersions;
             VersionPrefix = versionPrefix;

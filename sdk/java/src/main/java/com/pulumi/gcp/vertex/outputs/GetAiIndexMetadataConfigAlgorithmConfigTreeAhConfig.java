@@ -5,11 +5,19 @@ package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
 
 @CustomType
 public final class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+    /**
+     * @return The default fraction of leaf nodes that any query may be searched. Must be in
+     * range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+     * This value can only be set when creating the index.
+     * 
+     */
+    private Double fractionLeafNodesToSearch;
     /**
      * @return Number of embeddings on each leaf node. The default value is 1000 if not set.
      * 
@@ -23,6 +31,15 @@ public final class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
     private Integer leafNodesToSearchPercent;
 
     private GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig() {}
+    /**
+     * @return The default fraction of leaf nodes that any query may be searched. Must be in
+     * range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+     * This value can only be set when creating the index.
+     * 
+     */
+    public Double fractionLeafNodesToSearch() {
+        return this.fractionLeafNodesToSearch;
+    }
     /**
      * @return Number of embeddings on each leaf node. The default value is 1000 if not set.
      * 
@@ -48,15 +65,25 @@ public final class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Double fractionLeafNodesToSearch;
         private Integer leafNodeEmbeddingCount;
         private Integer leafNodesToSearchPercent;
         public Builder() {}
         public Builder(GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.fractionLeafNodesToSearch = defaults.fractionLeafNodesToSearch;
     	      this.leafNodeEmbeddingCount = defaults.leafNodeEmbeddingCount;
     	      this.leafNodesToSearchPercent = defaults.leafNodesToSearchPercent;
         }
 
+        @CustomType.Setter
+        public Builder fractionLeafNodesToSearch(Double fractionLeafNodesToSearch) {
+            if (fractionLeafNodesToSearch == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig", "fractionLeafNodesToSearch");
+            }
+            this.fractionLeafNodesToSearch = fractionLeafNodesToSearch;
+            return this;
+        }
         @CustomType.Setter
         public Builder leafNodeEmbeddingCount(Integer leafNodeEmbeddingCount) {
             if (leafNodeEmbeddingCount == null) {
@@ -75,6 +102,7 @@ public final class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
         }
         public GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig build() {
             final var _resultValue = new GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig();
+            _resultValue.fractionLeafNodesToSearch = fractionLeafNodesToSearch;
             _resultValue.leafNodeEmbeddingCount = leafNodeEmbeddingCount;
             _resultValue.leafNodesToSearchPercent = leafNodesToSearchPercent;
             return _resultValue;

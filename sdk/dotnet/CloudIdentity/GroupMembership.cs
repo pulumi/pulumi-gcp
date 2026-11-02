@@ -82,6 +82,7 @@ namespace Pulumi.Gcp.CloudIdentity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloud Identity Group Membership User
     /// 
     /// ```csharp

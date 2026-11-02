@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     channelId: "channel-basic",
  * });
  * ```
+ *
  * ### Firebasehosting Channel Full
  *
  * ```typescript

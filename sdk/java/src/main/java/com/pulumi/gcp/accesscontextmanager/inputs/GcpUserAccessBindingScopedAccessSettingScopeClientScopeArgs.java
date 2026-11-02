@@ -6,6 +6,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs;
+import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +33,28 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs e
         return Optional.ofNullable(this.restrictedClientApplication);
     }
 
+    /**
+     * Optional. The Google Cloud project that is subject to this binding&#39;s scope.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="restrictedProject")
+    private @Nullable Output<GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs> restrictedProject;
+
+    /**
+     * @return Optional. The Google Cloud project that is subject to this binding&#39;s scope.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs>> restrictedProject() {
+        return Optional.ofNullable(this.restrictedProject);
+    }
+
     private GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs() {}
 
     private GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs(GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs $) {
         this.restrictedClientApplication = $.restrictedClientApplication;
+        this.restrictedProject = $.restrictedProject;
     }
 
     public static Builder builder() {
@@ -77,6 +96,29 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs e
          */
         public Builder restrictedClientApplication(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs restrictedClientApplication) {
             return restrictedClientApplication(Output.of(restrictedClientApplication));
+        }
+
+        /**
+         * @param restrictedProject Optional. The Google Cloud project that is subject to this binding&#39;s scope.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictedProject(@Nullable Output<GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs> restrictedProject) {
+            $.restrictedProject = restrictedProject;
+            return this;
+        }
+
+        /**
+         * @param restrictedProject Optional. The Google Cloud project that is subject to this binding&#39;s scope.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictedProject(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs restrictedProject) {
+            return restrictedProject(Output.of(restrictedProject));
         }
 
         public GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs build() {

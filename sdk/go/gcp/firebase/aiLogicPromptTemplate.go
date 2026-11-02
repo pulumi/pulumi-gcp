@@ -61,6 +61,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebaseailogic Prompt Template Global Only
 //
 // ```go
@@ -96,6 +97,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebaseailogic Prompt Template Basic
 //
 // ```go

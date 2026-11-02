@@ -796,6 +796,7 @@ class Schedule(pulumi.CustomResource):
                     output_bucket,
                 ]))
         ```
+
         ### Colab Schedule Paused
 
         ```python
@@ -887,6 +888,7 @@ class Schedule(pulumi.CustomResource):
                     output_bucket,
                 ]))
         ```
+
         ### Colab Schedule Full
 
         ```python
@@ -969,6 +971,7 @@ class Schedule(pulumi.CustomResource):
                     dataform_repository,
                 ]))
         ```
+
         ### Colab Schedule Notebook Full
 
         ```python
@@ -1075,6 +1078,7 @@ class Schedule(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Colab Schedule Pipeline
 
         ```python
@@ -1296,6 +1300,7 @@ class Schedule(pulumi.CustomResource):
                     output_bucket,
                 ]))
         ```
+
         ### Colab Schedule Paused
 
         ```python
@@ -1387,6 +1392,7 @@ class Schedule(pulumi.CustomResource):
                     output_bucket,
                 ]))
         ```
+
         ### Colab Schedule Full
 
         ```python
@@ -1469,6 +1475,7 @@ class Schedule(pulumi.CustomResource):
                     dataform_repository,
                 ]))
         ```
+
         ### Colab Schedule Notebook Full
 
         ```python
@@ -1575,6 +1582,7 @@ class Schedule(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Colab Schedule Pipeline
 
         ```python

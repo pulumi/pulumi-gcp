@@ -57,6 +57,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Logging Saved Query Private
 //
 // ```go
@@ -90,6 +91,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Logging Saved Query Summary Fields
 //
 // ```go
@@ -132,6 +134,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Logging Saved Query Sql Basic
 //
 // ```go

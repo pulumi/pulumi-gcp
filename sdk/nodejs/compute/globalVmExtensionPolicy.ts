@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Compute Global Vm Extension Policy Basic
  *
  * ```typescript
@@ -67,6 +68,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Compute Global Vm Extension Policy Custom Rollout
  *
  * ```typescript

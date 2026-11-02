@@ -102,6 +102,8 @@ type V2OrganizationSccBigQueryExports struct {
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
 	// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset pulumi.StringPtrOutput `pulumi:"dataset"`
+	// Indicates whether the notifications will be sent for deleted findings.
+	DeletionNotificationsEnabled pulumi.BoolPtrOutput `pulumi:"deletionNotificationsEnabled"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -197,6 +199,8 @@ type v2organizationSccBigQueryExportsState struct {
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
 	// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset *string `pulumi:"dataset"`
+	// Indicates whether the notifications will be sent for deleted findings.
+	DeletionNotificationsEnabled *bool `pulumi:"deletionNotificationsEnabled"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -257,6 +261,8 @@ type V2OrganizationSccBigQueryExportsState struct {
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
 	// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset pulumi.StringPtrInput
+	// Indicates whether the notifications will be sent for deleted findings.
+	DeletionNotificationsEnabled pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -317,6 +323,8 @@ type v2organizationSccBigQueryExportsArgs struct {
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
 	// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset *string `pulumi:"dataset"`
+	// Indicates whether the notifications will be sent for deleted findings.
+	DeletionNotificationsEnabled *bool `pulumi:"deletionNotificationsEnabled"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -365,6 +373,8 @@ type V2OrganizationSccBigQueryExportsArgs struct {
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
 	// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset pulumi.StringPtrInput
+	// Indicates whether the notifications will be sent for deleted findings.
+	DeletionNotificationsEnabled pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -509,6 +519,11 @@ func (o V2OrganizationSccBigQueryExportsOutput) CreateTime() pulumi.StringOutput
 // BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 func (o V2OrganizationSccBigQueryExportsOutput) Dataset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2OrganizationSccBigQueryExports) pulumi.StringPtrOutput { return v.Dataset }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the notifications will be sent for deleted findings.
+func (o V2OrganizationSccBigQueryExportsOutput) DeletionNotificationsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2OrganizationSccBigQueryExports) pulumi.BoolPtrOutput { return v.DeletionNotificationsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.BigQuery
         /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         /// </summary>
         [Output("jobType")]
-        public Output<string> JobType { get; private set; } = null!;
+        public Output<string?> JobType { get; private set; } = null!;
 
         /// <summary>
         /// The location for the resource
@@ -125,6 +125,16 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("reservation")]
         public Output<string> Reservation { get; private set; } = null!;
+
+        /// <summary>
+        /// The scheduling policy to use for jobs and queries of this assignee when
+        /// running under the associated reservation. The scheduling policy controls
+        /// how the reservation's resources are distributed. This overrides the default
+        /// scheduling policy specified on the reservation.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("schedulingPolicy")]
+        public Output<Outputs.ReservationAssignmentSchedulingPolicy?> SchedulingPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
@@ -199,8 +209,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         /// </summary>
-        [Input("jobType", required: true)]
-        public Input<string> JobType { get; set; } = null!;
+        [Input("jobType")]
+        public Input<string>? JobType { get; set; }
 
         /// <summary>
         /// The location for the resource
@@ -230,6 +240,16 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("reservation", required: true)]
         public Input<string> Reservation { get; set; } = null!;
+
+        /// <summary>
+        /// The scheduling policy to use for jobs and queries of this assignee when
+        /// running under the associated reservation. The scheduling policy controls
+        /// how the reservation's resources are distributed. This overrides the default
+        /// scheduling policy specified on the reservation.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("schedulingPolicy")]
+        public Input<Inputs.ReservationAssignmentSchedulingPolicyArgs>? SchedulingPolicy { get; set; }
 
         public ReservationAssignmentArgs()
         {
@@ -296,6 +316,16 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("reservation")]
         public Input<string>? Reservation { get; set; }
+
+        /// <summary>
+        /// The scheduling policy to use for jobs and queries of this assignee when
+        /// running under the associated reservation. The scheduling policy controls
+        /// how the reservation's resources are distributed. This overrides the default
+        /// scheduling policy specified on the reservation.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("schedulingPolicy")]
+        public Input<Inputs.ReservationAssignmentSchedulingPolicyGetArgs>? SchedulingPolicy { get; set; }
 
         /// <summary>
         /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.

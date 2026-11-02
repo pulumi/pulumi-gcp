@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Organization Snapshot Recycle Bin Policy Multiple
  *
  * ```typescript

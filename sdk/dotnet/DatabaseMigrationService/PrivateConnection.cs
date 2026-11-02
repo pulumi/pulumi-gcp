@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Private Connection Psc
     /// 
     /// ```csharp
@@ -108,6 +109,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Private Connection Reserved Public Ip
     /// 
     /// ```csharp

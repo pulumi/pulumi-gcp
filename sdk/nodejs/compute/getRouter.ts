@@ -75,6 +75,7 @@ export interface GetRouterResult {
     readonly params: outputs.compute.GetRouterParam[];
     readonly project?: string;
     readonly region?: string;
+    readonly routerId: number;
     readonly selfLink: string;
 }
 /**

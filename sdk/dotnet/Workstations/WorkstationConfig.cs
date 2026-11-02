@@ -116,6 +116,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Container
     /// 
     /// ```csharp
@@ -184,6 +185,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Hyperdisk
     /// 
     /// ```csharp
@@ -245,6 +247,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Hyperdisk Source Snapshot
     /// 
     /// ```csharp
@@ -344,6 +347,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Persistent Directories
     /// 
     /// ```csharp
@@ -421,6 +425,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Source Snapshot
     /// 
     /// ```csharp
@@ -489,6 +494,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Shielded Instance Config
     /// 
     /// ```csharp
@@ -552,6 +558,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Accelerators
     /// 
     /// ```csharp
@@ -618,6 +625,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Boost
     /// 
     /// ```csharp
@@ -700,6 +708,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Encryption Key
     /// 
     /// ```csharp
@@ -786,6 +795,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Allowed Ports
     /// 
     /// ```csharp
@@ -862,6 +872,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workstation Config Idle Action
     /// 
     /// ```csharp

@@ -162,6 +162,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Colab Schedule Paused
  * 
  * <pre>
@@ -295,6 +296,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Colab Schedule Full
  * 
  * <pre>
@@ -429,6 +431,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Colab Schedule Notebook Full
  * 
  * <pre>
@@ -585,6 +588,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Colab Schedule Pipeline
  * 
  * <pre>

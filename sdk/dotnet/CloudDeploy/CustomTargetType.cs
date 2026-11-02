@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Clouddeploy Custom Target Type Git Skaffold Modules
     /// 
     /// ```csharp
@@ -95,6 +96,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Clouddeploy Custom Target Type Gcs Skaffold Modules
     /// 
     /// ```csharp
@@ -134,6 +136,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
     /// 
     /// ```csharp
@@ -174,6 +177,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Clouddeploy Custom Target Type Tasks
     /// 
     /// ```csharp

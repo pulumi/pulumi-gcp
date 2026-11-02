@@ -499,6 +499,7 @@ class Service(pulumi.CustomResource):
                 "type": "NO_SPEC",
             })
         ```
+
         ### Agent Registry Service Mcp Server
 
         ```python
@@ -590,6 +591,7 @@ class Service(pulumi.CustomResource):
                 "type": "NO_SPEC",
             })
         ```
+
         ### Agent Registry Service Mcp Server
 
         ```python

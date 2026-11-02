@@ -66,6 +66,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkeonprem Vmware Admin Cluster Full
  *
  * ```typescript
@@ -168,6 +169,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkeonprem Vmware Admin Cluster Metallb
  *
  * ```typescript

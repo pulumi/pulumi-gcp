@@ -135,6 +135,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Service Attachment Nat Ips
 //
 // ```go
@@ -226,6 +227,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Service Attachment Explicit Projects
 //
 // ```go
@@ -349,6 +351,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Service Attachment Explicit Networks
 //
 // ```go
@@ -482,6 +485,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Service Attachment Reconcile Connections
 //
 // ```go
@@ -586,6 +590,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Service Attachment Tunneling Config
 //
 // ```go
@@ -680,6 +685,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Service Attachment Cross Region Ilb
 //
 // ```go
@@ -890,6 +896,8 @@ type ServiceAttachment struct {
 	// When true, the provider will set propagatedConnectionLimit to zero.
 	// Defaults to false.
 	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrOutput `pulumi:"sendPropagatedConnectionLimitIfZero"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ServiceAttachmentId pulumi.IntOutput `pulumi:"serviceAttachmentId"`
 	// NOTE: This field is temporarily non-functional due to an underlying API issue.
 	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
 	// [If true, show NAT IPs of all connected endpoints.]
@@ -1015,6 +1023,8 @@ type serviceAttachmentState struct {
 	// When true, the provider will set propagatedConnectionLimit to zero.
 	// Defaults to false.
 	SendPropagatedConnectionLimitIfZero *bool `pulumi:"sendPropagatedConnectionLimitIfZero"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ServiceAttachmentId *int `pulumi:"serviceAttachmentId"`
 	// NOTE: This field is temporarily non-functional due to an underlying API issue.
 	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
 	// [If true, show NAT IPs of all connected endpoints.]
@@ -1099,6 +1109,8 @@ type ServiceAttachmentState struct {
 	// When true, the provider will set propagatedConnectionLimit to zero.
 	// Defaults to false.
 	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrInput
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ServiceAttachmentId pulumi.IntPtrInput
 	// NOTE: This field is temporarily non-functional due to an underlying API issue.
 	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
 	// [If true, show NAT IPs of all connected endpoints.]
@@ -1477,6 +1489,11 @@ func (o ServiceAttachmentOutput) SelfLink() pulumi.StringOutput {
 // Defaults to false.
 func (o ServiceAttachmentOutput) SendPropagatedConnectionLimitIfZero() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolPtrOutput { return v.SendPropagatedConnectionLimitIfZero }).(pulumi.BoolPtrOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o ServiceAttachmentOutput) ServiceAttachmentId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.IntOutput { return v.ServiceAttachmentId }).(pulumi.IntOutput)
 }
 
 // NOTE: This field is temporarily non-functional due to an underlying API issue.

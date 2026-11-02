@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Os Config Patch Deployment Daily
  *
  * ```typescript
@@ -58,6 +59,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Os Config Patch Deployment Daily Midnight
  *
  * ```typescript
@@ -82,6 +84,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Os Config Patch Deployment Instance
  *
  * ```typescript
@@ -141,6 +144,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Os Config Patch Deployment Full
  *
  * ```typescript

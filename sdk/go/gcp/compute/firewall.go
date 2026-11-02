@@ -81,6 +81,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firewall With Target Tags
 //
 // ```go
@@ -184,6 +185,8 @@ type Firewall struct {
 	//
 	// Deprecated: Deprecated in favor of log_config
 	EnableLogging pulumi.BoolOutput `pulumi:"enableLogging"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	FirewallId pulumi.IntOutput `pulumi:"firewallId"`
 	// This field denotes the logging options for a particular firewall rule.
 	// If defined, logging is enabled, and logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -334,6 +337,8 @@ type firewallState struct {
 	//
 	// Deprecated: Deprecated in favor of log_config
 	EnableLogging *bool `pulumi:"enableLogging"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	FirewallId *int `pulumi:"firewallId"`
 	// This field denotes the logging options for a particular firewall rule.
 	// If defined, logging is enabled, and logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -452,6 +457,8 @@ type FirewallState struct {
 	//
 	// Deprecated: Deprecated in favor of log_config
 	EnableLogging pulumi.BoolPtrInput
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	FirewallId pulumi.IntPtrInput
 	// This field denotes the logging options for a particular firewall rule.
 	// If defined, logging is enabled, and logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -914,6 +921,11 @@ func (o FirewallOutput) Disabled() pulumi.BoolPtrOutput {
 // Deprecated: Deprecated in favor of log_config
 func (o FirewallOutput) EnableLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolOutput { return v.EnableLogging }).(pulumi.BoolOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o FirewallOutput) FirewallId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.IntOutput { return v.FirewallId }).(pulumi.IntOutput)
 }
 
 // This field denotes the logging options for a particular firewall rule.

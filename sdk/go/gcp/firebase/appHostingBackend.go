@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ## Include these blocks only once per project if you are starting from scratch ###
+//			//## Include these blocks only once per project if you are starting from scratch ###
 //			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				Project:                   pulumi.String("my-project-name"),
 //				AccountId:                 pulumi.String("firebase-app-hosting-compute"),
@@ -75,6 +75,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase App Hosting Backend Full
 //
 // ```go
@@ -91,7 +92,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ## Include these blocks only once per project if you are starting from scratch ###
+//			//## Include these blocks only once per project if you are starting from scratch ###
 //			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				Project:                   pulumi.String("my-project-name"),
 //				AccountId:                 pulumi.String("firebase-app-hosting-compute"),
@@ -158,6 +159,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase App Hosting Backend Github
 //
 // ```go
@@ -174,7 +176,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ## Include these blocks only once per project if you are starting from scratch ###
+//			//## Include these blocks only once per project if you are starting from scratch ###
 //			devconnect_p4sa, err := projects.NewServiceIdentity(ctx, "devconnect-p4sa", &projects.ServiceIdentityArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Service: pulumi.String("developerconnect.googleapis.com"),
@@ -190,7 +192,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// ## Include these blocks only once per Github account ###
+//			//## Include these blocks only once per Github account ###
 //			my_connection, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
 //				Project:      pulumi.String("my-project-name"),
 //				Location:     pulumi.String("us-central1"),

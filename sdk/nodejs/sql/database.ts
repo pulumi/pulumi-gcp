@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  * });
  * ```
+ *
  * ### Sql Database Deletion Policy
  *
  * ```typescript

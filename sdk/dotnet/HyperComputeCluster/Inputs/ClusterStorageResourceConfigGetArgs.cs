@@ -39,6 +39,15 @@ namespace Pulumi.Gcp.HyperComputeCluster.Inputs
         public Input<Inputs.ClusterStorageResourceConfigExistingLustreGetArgs>? ExistingLustre { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// When set in a StorageResourceConfig, indicates that an existing NFS
+        /// share should be imported.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("existingNfs")]
+        public Input<Inputs.ClusterStorageResourceConfigExistingNfsGetArgs>? ExistingNfs { get; set; }
+
+        /// <summary>
         /// When set in a StorageResourceConfig, indicates that a new
         /// [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
         /// created.

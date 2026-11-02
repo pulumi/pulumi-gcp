@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebase App Check Service Config Enforced
  * 
  * <pre>
@@ -112,6 +113,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Firebase App Check Service Config Unenforced
  * 
  * <pre>

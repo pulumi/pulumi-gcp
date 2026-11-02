@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait120s],
  * });
  * ```
+ *
  * ### Iam Folders Policy Binding Access Policy
  *
  * ```typescript

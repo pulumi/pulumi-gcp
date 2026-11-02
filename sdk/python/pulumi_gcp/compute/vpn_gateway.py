@@ -431,6 +431,7 @@ class VPNGateway(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
         ```
+
         ### Target Vpn Gateway Tags
 
         ```python
@@ -599,6 +600,7 @@ class VPNGateway(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
         ```
+
         ### Target Vpn Gateway Tags
 
         ```python

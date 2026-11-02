@@ -14,6 +14,8 @@ import (
 
 // Represents a persona configuration for an analyst agent in Agentic Applications.
 //
+// > **Note:** The `project` field must be set to the numeric project number (not the project ID).
+//
 // ## Example Usage
 //
 // ### Analyst Agent Persona Basic
@@ -31,6 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+//				Project:               pulumi.String("1111111111111"),
 //				Location:              pulumi.String("us"),
 //				AnalystAgentPersonaId: pulumi.String("basic"),
 //				DisplayName:           pulumi.String("Test Analyst Persona"),
@@ -77,6 +80,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Analyst Agent Persona Full
 //
 // ```go
@@ -128,6 +132,7 @@ import (
 //				return err
 //			}
 //			_, err = agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+//				Project:               pulumi.String("1111111111111"),
 //				Location:              pulumi.String("us"),
 //				AnalystAgentPersonaId: pulumi.String("full"),
 //				DisplayName:           pulumi.String("Full Test Analyst Persona"),
@@ -265,6 +270,7 @@ import (
 //						ApiKeyName:    pulumi.String("x-api-key"),
 //						ApiKeyHeader:  pulumi.String("x-api-key-header"),
 //						ClientId:      pulumi.String("sample-client-id"),
+//						ClientSecret:  pulumi.String("sample-client-secret"),
 //						OauthTokenUrl: pulumi.String("https://example.com/oauth/token"),
 //					},
 //				},
@@ -350,6 +356,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Analyst Agent Persona Methodology Export Options
 //
 // ```go
@@ -365,6 +372,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+//				Project:               pulumi.String("1111111111111"),
 //				Location:              pulumi.String("us"),
 //				AnalystAgentPersonaId: pulumi.String("methodology"),
 //				DisplayName:           pulumi.String("Test Analyst Persona Methodology Export"),
@@ -376,6 +384,45 @@ import (
 //						AppendMethodology:         pulumi.Bool(true),
 //						ExportFormat:              pulumi.String("MARKDOWN"),
 //						ExportMethodologyArtifact: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Analyst Agent Persona Audit Trail Export Options
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+//				Project:               pulumi.String("1111111111111"),
+//				Location:              pulumi.String("us"),
+//				AnalystAgentPersonaId: pulumi.String("audit_trail"),
+//				DisplayName:           pulumi.String("Test Analyst Persona Audit Trail Export"),
+//				DisplayDescription:    pulumi.String("Sample analyst agent persona description"),
+//				ModelDescription:      pulumi.String("Sample model description"),
+//				Role:                  pulumi.String("ANALYST_ROLE_GENERIC_FINANCE_ANALYST"),
+//				ArtifactsConfig: &agenticapplications.AnalystAgentPersonaArtifactsConfigArgs{
+//					AuditTrailExportOptions: &agenticapplications.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs{
+//						AppendAuditTrail:         pulumi.Bool(true),
+//						ExportFormat:             pulumi.String("MARKDOWN"),
+//						ExportAuditTrailArtifact: pulumi.Bool(true),
 //					},
 //				},
 //			})
@@ -438,6 +485,11 @@ import (
 //
 // <a name="nestedArtifactsConfig"></a>The `artifactsConfig` block supports:
 //
+// * `auditTrailExportOptions` -
+// (Optional)
+// Options for audit trail export.
+// Structure is documented below.
+//
 // * `documentGenerationOptions` -
 // (Optional)
 // Options for document generation.
@@ -457,6 +509,24 @@ import (
 // (Optional)
 // Options for visualizations.
 // Structure is documented below.
+//
+// <a name="nestedArtifactsConfigAuditTrailExportOptions"></a>The `auditTrailExportOptions` block supports:
+//
+// * `appendAuditTrail` -
+// (Optional)
+// If true, append the audit trail to the final response.
+//
+// * `exportAuditTrailArtifact` -
+// (Optional)
+// If true, export the audit trail as a separate artifact.
+//
+// * `exportFormat` -
+// (Optional)
+// Format for audit trail export.
+// Possible values:
+// MARKDOWN
+// HTML
+// PDF
 //
 // <a name="nestedArtifactsConfigDocumentGenerationOptions"></a>The `documentGenerationOptions` block supports:
 //

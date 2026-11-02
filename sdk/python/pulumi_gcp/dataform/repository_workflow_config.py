@@ -511,6 +511,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule="0 7 * * *",
             time_zone="America/New_York")
         ```
+
         ### Dataform Repository Workflow Config With Disabled
 
         ```python
@@ -730,6 +731,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule="0 7 * * *",
             time_zone="America/New_York")
         ```
+
         ### Dataform Repository Workflow Config With Disabled
 
         ```python

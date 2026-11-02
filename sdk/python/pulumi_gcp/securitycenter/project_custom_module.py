@@ -363,6 +363,7 @@ class ProjectCustomModule(pulumi.CustomResource):
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Project Custom Module Full
 
         ```python
@@ -478,6 +479,7 @@ class ProjectCustomModule(pulumi.CustomResource):
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Project Custom Module Full
 
         ```python

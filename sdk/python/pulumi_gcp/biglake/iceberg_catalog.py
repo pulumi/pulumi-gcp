@@ -590,6 +590,7 @@ class IcebergCatalog(pulumi.CustomResource):
             credential_mode="CREDENTIAL_MODE_VENDED_CREDENTIALS",
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
         ```
+
         ### Biglake Iceberg Catalog Primary Location
 
         ```python
@@ -608,6 +609,7 @@ class IcebergCatalog(pulumi.CustomResource):
             primary_location="us-central1",
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
         ```
+
         ### Biglake Iceberg Catalog Biglake
 
         ```python
@@ -636,6 +638,7 @@ class IcebergCatalog(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Biglake Iceberg Catalog Federated Unity
 
         ```python
@@ -659,6 +662,7 @@ class IcebergCatalog(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Biglake Iceberg Catalog Federated Glue
 
         ```python
@@ -773,6 +777,7 @@ class IcebergCatalog(pulumi.CustomResource):
             credential_mode="CREDENTIAL_MODE_VENDED_CREDENTIALS",
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
         ```
+
         ### Biglake Iceberg Catalog Primary Location
 
         ```python
@@ -791,6 +796,7 @@ class IcebergCatalog(pulumi.CustomResource):
             primary_location="us-central1",
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
         ```
+
         ### Biglake Iceberg Catalog Biglake
 
         ```python
@@ -819,6 +825,7 @@ class IcebergCatalog(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Biglake Iceberg Catalog Federated Unity
 
         ```python
@@ -842,6 +849,7 @@ class IcebergCatalog(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Biglake Iceberg Catalog Federated Glue
 
         ```python

@@ -36,8 +36,6 @@ namespace Pulumi.Gcp.Container
     ///     {
     ///         Name = "my-gke-cluster",
     ///         Location = "us-central1",
-    ///         RemoveDefaultNodePool = true,
-    ///         InitialNodeCount = 1,
     ///     });
     /// 
     ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primary_preemptible_nodes", new()

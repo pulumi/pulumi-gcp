@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     description: "example data exchange",
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Data Exchange Dcr
  *
  * ```typescript
@@ -46,6 +47,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
  *
  * ```typescript
@@ -60,6 +62,7 @@ import * as utilities from "../utilities";
  *     logLinkedDatasetQueryUserEmail: true,
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Public Data Exchange
  *
  * ```typescript

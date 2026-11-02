@@ -502,6 +502,7 @@ class HttpRoute(pulumi.CustomResource):
                 }],
             }])
         ```
+
         ### Network Services Http Route Matches And Actions
 
         ```python
@@ -602,6 +603,7 @@ class HttpRoute(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Network Services Http Route Actions
 
         ```python
@@ -683,6 +685,7 @@ class HttpRoute(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Network Services Http Route Mesh Basic
 
         ```python
@@ -795,6 +798,7 @@ class HttpRoute(pulumi.CustomResource):
                 }],
             }])
         ```
+
         ### Network Services Http Route Matches And Actions
 
         ```python
@@ -895,6 +899,7 @@ class HttpRoute(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Network Services Http Route Actions
 
         ```python
@@ -976,6 +981,7 @@ class HttpRoute(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Network Services Http Route Mesh Basic
 
         ```python

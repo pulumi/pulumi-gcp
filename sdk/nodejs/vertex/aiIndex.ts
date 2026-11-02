@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *             algorithmConfig: {
  *                 treeAhConfig: {
  *                     leafNodeEmbeddingCount: 500,
- *                     leafNodesToSearchPercent: 7,
+ *                     fractionLeafNodesToSearch: 0.07,
  *                 },
  *             },
  *         },
@@ -71,6 +71,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [vertexaiEncrypterdecrypter],
  * });
  * ```
+ *
  * ### Vertex Ai Index Streaming
  *
  * ```typescript

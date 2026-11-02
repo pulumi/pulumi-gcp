@@ -252,6 +252,7 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
             attachment_target=folder.name,
             name="my-association")
         ```
+
         ## Import
 
         FirewallPolicyAssociation can be imported using any of these accepted formats:
@@ -318,6 +319,7 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
             attachment_target=folder.name,
             name="my-association")
         ```
+
         ## Import
 
         FirewallPolicyAssociation can be imported using any of these accepted formats:

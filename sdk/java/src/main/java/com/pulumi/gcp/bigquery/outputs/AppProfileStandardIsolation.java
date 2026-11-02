@@ -5,11 +5,20 @@ package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigquery.outputs.AppProfileStandardIsolationMemoryConfig;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AppProfileStandardIsolation {
+    /**
+     * @return The memory config to use for requests sent using this app profile.
+     * If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+     * 
+     */
+    private @Nullable AppProfileStandardIsolationMemoryConfig memoryConfig;
     /**
      * @return The priority of requests sent using this app profile.
      * Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
@@ -18,6 +27,14 @@ public final class AppProfileStandardIsolation {
     private String priority;
 
     private AppProfileStandardIsolation() {}
+    /**
+     * @return The memory config to use for requests sent using this app profile.
+     * If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+     * 
+     */
+    public Optional<AppProfileStandardIsolationMemoryConfig> memoryConfig() {
+        return Optional.ofNullable(this.memoryConfig);
+    }
     /**
      * @return The priority of requests sent using this app profile.
      * Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
@@ -36,13 +53,21 @@ public final class AppProfileStandardIsolation {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AppProfileStandardIsolationMemoryConfig memoryConfig;
         private String priority;
         public Builder() {}
         public Builder(AppProfileStandardIsolation defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.memoryConfig = defaults.memoryConfig;
     	      this.priority = defaults.priority;
         }
 
+        @CustomType.Setter
+        public Builder memoryConfig(@Nullable AppProfileStandardIsolationMemoryConfig memoryConfig) {
+
+            this.memoryConfig = memoryConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder priority(String priority) {
             if (priority == null) {
@@ -53,6 +78,7 @@ public final class AppProfileStandardIsolation {
         }
         public AppProfileStandardIsolation build() {
             final var _resultValue = new AppProfileStandardIsolation();
+            _resultValue.memoryConfig = memoryConfig;
             _resultValue.priority = priority;
             return _resultValue;
         }

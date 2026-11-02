@@ -472,6 +472,9 @@ func GetNetworkManagementv1CustomEndpoint(ctx *pulumi.Context) string {
 func GetNetworkSecurityCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkSecurityCustomEndpoint")
 }
+func GetNetworkServices2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:networkServices2CustomEndpoint")
+}
 func GetNetworkServicesCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkServicesCustomEndpoint")
 }

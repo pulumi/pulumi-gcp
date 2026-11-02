@@ -29,7 +29,7 @@ public final class GetClusterPrivateClusterConfig {
      */
     private List<GetClusterPrivateClusterConfigMasterGlobalAccessConfig> masterGlobalAccessConfigs;
     /**
-     * @return The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster&#39;s network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true.
+     * @return The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster&#39;s network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true. On GKE versions 1.29 and later, this field is optional when privateEndpointSubnetwork is specified. It is also optional for Autopilot clusters.
      * 
      */
     private String masterIpv4CidrBlock;
@@ -77,7 +77,7 @@ public final class GetClusterPrivateClusterConfig {
         return this.masterGlobalAccessConfigs;
     }
     /**
-     * @return The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster&#39;s network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true.
+     * @return The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster&#39;s network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true. On GKE versions 1.29 and later, this field is optional when privateEndpointSubnetwork is specified. It is also optional for Autopilot clusters.
      * 
      */
     public String masterIpv4CidrBlock() {

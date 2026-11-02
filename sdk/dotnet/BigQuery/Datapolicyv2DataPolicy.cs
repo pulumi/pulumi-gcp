@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Datapolicyv2 Datapolicy Predefined Masking
     /// 
     /// ```csharp
@@ -62,6 +63,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Datapolicyv2 Datapolicy Routine
     /// 
     /// ```csharp
@@ -110,6 +112,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Datapolicyv2 Datapolicy Withgrantees
     /// 
     /// ```csharp

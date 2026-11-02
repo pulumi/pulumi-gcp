@@ -69,6 +69,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Bucket Internal Lb
     /// 
     /// ```csharp
@@ -110,6 +111,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Backend Bucket External Lb
     /// 
     /// ```csharp

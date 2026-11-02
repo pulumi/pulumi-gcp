@@ -206,6 +206,52 @@ namespace Pulumi.Gcp.Recaptcha
     /// 
     /// });
     /// ```
+    /// ### Express_key
+    /// A basic test of recaptcha enterprise key that can be used by reCAPTCHA Express
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+    ///     {
+    ///         DisplayName = "display-name-one",
+    ///         Project = "my-project-name",
+    ///         ExpressSettings = new() { },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Universal_key
+    /// A basic test of recaptcha enterprise key that can be used by universal frontend integrations
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+    ///     {
+    ///         DisplayName = "display-name-one",
+    ///         Project = "my-project-name",
+    ///         UniversalSettings = new() { },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -265,6 +311,12 @@ namespace Pulumi.Gcp.Recaptcha
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Settings for keys that can be used by reCAPTCHA Express.
+        /// </summary>
+        [Output("expressSettings")]
+        public Output<Outputs.EnterpriseKeyExpressSettings?> ExpressSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Settings for keys that can be used by iOS apps.
         /// </summary>
         [Output("iosSettings")]
@@ -302,6 +354,12 @@ namespace Pulumi.Gcp.Recaptcha
         /// </summary>
         [Output("testingOptions")]
         public Output<Outputs.EnterpriseKeyTestingOptions?> TestingOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings for keys that can be used by universal frontend integrations.
+        /// </summary>
+        [Output("universalSettings")]
+        public Output<Outputs.EnterpriseKeyUniversalSettings?> UniversalSettings { get; private set; } = null!;
 
         /// <summary>
         /// Settings specific to keys that can be used for WAF (Web Application Firewall).
@@ -394,6 +452,12 @@ namespace Pulumi.Gcp.Recaptcha
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// Settings for keys that can be used by reCAPTCHA Express.
+        /// </summary>
+        [Input("expressSettings")]
+        public Input<Inputs.EnterpriseKeyExpressSettingsArgs>? ExpressSettings { get; set; }
+
+        /// <summary>
         /// Settings for keys that can be used by iOS apps.
         /// </summary>
         [Input("iosSettings")]
@@ -425,6 +489,12 @@ namespace Pulumi.Gcp.Recaptcha
         /// </summary>
         [Input("testingOptions")]
         public Input<Inputs.EnterpriseKeyTestingOptionsArgs>? TestingOptions { get; set; }
+
+        /// <summary>
+        /// Settings for keys that can be used by universal frontend integrations.
+        /// </summary>
+        [Input("universalSettings")]
+        public Input<Inputs.EnterpriseKeyUniversalSettingsArgs>? UniversalSettings { get; set; }
 
         /// <summary>
         /// Settings specific to keys that can be used for WAF (Web Application Firewall).
@@ -496,6 +566,12 @@ namespace Pulumi.Gcp.Recaptcha
         }
 
         /// <summary>
+        /// Settings for keys that can be used by reCAPTCHA Express.
+        /// </summary>
+        [Input("expressSettings")]
+        public Input<Inputs.EnterpriseKeyExpressSettingsGetArgs>? ExpressSettings { get; set; }
+
+        /// <summary>
         /// Settings for keys that can be used by iOS apps.
         /// </summary>
         [Input("iosSettings")]
@@ -549,6 +625,12 @@ namespace Pulumi.Gcp.Recaptcha
         /// </summary>
         [Input("testingOptions")]
         public Input<Inputs.EnterpriseKeyTestingOptionsGetArgs>? TestingOptions { get; set; }
+
+        /// <summary>
+        /// Settings for keys that can be used by universal frontend integrations.
+        /// </summary>
+        [Input("universalSettings")]
+        public Input<Inputs.EnterpriseKeyUniversalSettingsGetArgs>? UniversalSettings { get; set; }
 
         /// <summary>
         /// Settings specific to keys that can be used for WAF (Web Application Firewall).

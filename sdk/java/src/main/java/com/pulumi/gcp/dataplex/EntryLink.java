@@ -106,6 +106,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dataplex Entry Link Full
  * 
  * <pre>
@@ -219,6 +220,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ## Import
  * 
  * EntryLink can be imported using any of these accepted formats:

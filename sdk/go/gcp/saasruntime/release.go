@@ -113,6 +113,11 @@ type Release struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Reference to a component and revision in a composite Application Design
+	// Center ApplicationTemplate. Set by the service on Releases created by an
+	// ApplicationTemplate import.
+	// Structure is documented below.
+	ApplicationTemplateComponents ReleaseApplicationTemplateComponentArrayOutput `pulumi:"applicationTemplateComponents"`
 	// Blueprints are OCI Images that contain all of the artifacts needed to
 	// provision a unit. Metadata such as, type of the engine used to actuate the
 	// blueprint (e.g. terraform, helm etc) and version will come from the image
@@ -236,6 +241,11 @@ type releaseState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Reference to a component and revision in a composite Application Design
+	// Center ApplicationTemplate. Set by the service on Releases created by an
+	// ApplicationTemplate import.
+	// Structure is documented below.
+	ApplicationTemplateComponents []ReleaseApplicationTemplateComponent `pulumi:"applicationTemplateComponents"`
 	// Blueprints are OCI Images that contain all of the artifacts needed to
 	// provision a unit. Metadata such as, type of the engine used to actuate the
 	// blueprint (e.g. terraform, helm etc) and version will come from the image
@@ -316,6 +326,11 @@ type ReleaseState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Reference to a component and revision in a composite Application Design
+	// Center ApplicationTemplate. Set by the service on Releases created by an
+	// ApplicationTemplate import.
+	// Structure is documented below.
+	ApplicationTemplateComponents ReleaseApplicationTemplateComponentArrayInput
 	// Blueprints are OCI Images that contain all of the artifacts needed to
 	// provision a unit. Metadata such as, type of the engine used to actuate the
 	// blueprint (e.g. terraform, helm etc) and version will come from the image
@@ -578,6 +593,16 @@ func (o ReleaseOutput) ToReleaseOutputWithContext(ctx context.Context) ReleaseOu
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ReleaseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Reference to a component and revision in a composite Application Design
+// Center ApplicationTemplate. Set by the service on Releases created by an
+// ApplicationTemplate import.
+// Structure is documented below.
+func (o ReleaseOutput) ApplicationTemplateComponents() ReleaseApplicationTemplateComponentArrayOutput {
+	return o.ApplyT(func(v *Release) ReleaseApplicationTemplateComponentArrayOutput {
+		return v.ApplicationTemplateComponents
+	}).(ReleaseApplicationTemplateComponentArrayOutput)
 }
 
 // Blueprints are OCI Images that contain all of the artifacts needed to

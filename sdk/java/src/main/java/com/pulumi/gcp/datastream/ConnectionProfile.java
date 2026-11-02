@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Datastream Connection Profile Postgresql Private Connection
  * 
  * <pre>
@@ -260,6 +261,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Datastream Connection Profile Full
  * 
  * <pre>
@@ -300,6 +302,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Datastream Connection Profile Postgres
  * 
  * <pre>
@@ -396,6 +399,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Datastream Connection Profile Sql Server
  * 
  * <pre>
@@ -487,6 +491,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Datastream Stream Postgresql Sslconfig Server And Client Verification
  * 
  * ### Datastream Connection Profile Salesforce
@@ -534,6 +539,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Datastream Connection Profile Spanner
  * 
  * <pre>
@@ -574,6 +580,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Datastream Connection Profile Postgres Secret Manager
  * 
  * <pre>
@@ -617,6 +624,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Datastream Connection Profile Mongodb
  * 
  * <pre>

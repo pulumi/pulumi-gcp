@@ -55,6 +55,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Spoke Linked Vpc Network Group
  *
  * ```typescript
@@ -99,6 +100,7 @@ import * as utilities from "../utilities";
  *     group: defaultGroup.id,
  * });
  * ```
+ *
  * ### Network Connectivity Spoke Router Appliance Basic
  *
  * ```typescript
@@ -106,17 +108,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network = new gcp.compute.Network("network", {
- *     name: "tf-test-network_97962",
+ *     name: "tf-test-network_50206",
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_34534",
+ *     name: "tf-test-subnet_9873",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,
  * });
  * const instance = new gcp.compute.Instance("instance", {
- *     name: "tf-test-instance_87829",
+ *     name: "tf-test-instance_48153",
  *     machineType: "e2-medium",
  *     canIpForward: true,
  *     zone: "us-central1-a",
@@ -134,14 +136,14 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
- *     name: "tf-test-hub_44023",
+ *     name: "tf-test-hub_58845",
  *     description: "A sample hub",
  *     labels: {
  *         "label-two": "value-one",
  *     },
  * });
  * const primary = new gcp.networkconnectivity.Spoke("primary", {
- *     name: "tf-test-name_50206",
+ *     name: "tf-test-name_9305",
  *     location: "us-central1",
  *     description: "A sample spoke with a linked routher appliance instance",
  *     labels: {
@@ -158,6 +160,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Spoke Vpn Tunnel Basic
  *
  * ```typescript
@@ -283,6 +286,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Spoke Interconnect Attachment Basic
  *
  * ```typescript
@@ -331,6 +335,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Spoke Linked Producer Vpc Network Basic
  *
  * ```typescript
@@ -382,6 +387,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [linkedVpcSpoke],
  * });
  * ```
+ *
  * ### Network Connectivity Spoke Center Group
  *
  * ```typescript
@@ -420,6 +426,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Spoke Linked Vpc Network Ipv6 Support
  *
  * ```typescript
@@ -454,6 +461,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Connectivity Spoke Gateway
  *
  * ```typescript
@@ -465,7 +473,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_9873",
+ *     name: "tf-test-subnet_48542",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,

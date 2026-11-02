@@ -89,8 +89,8 @@ import (
 //						DistanceMeasureType:       pulumi.String("DOT_PRODUCT_DISTANCE"),
 //						AlgorithmConfig: &vertex.AiIndexMetadataConfigAlgorithmConfigArgs{
 //							TreeAhConfig: &vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{
-//								LeafNodeEmbeddingCount:   pulumi.Int(500),
-//								LeafNodesToSearchPercent: pulumi.Int(7),
+//								LeafNodeEmbeddingCount:    pulumi.Int(500),
+//								FractionLeafNodesToSearch: pulumi.Float64(0.07),
 //							},
 //						},
 //					},
@@ -110,6 +110,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Index Streaming
 //
 // ```go

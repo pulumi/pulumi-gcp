@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Compute Router Encrypted Interconnect
  *
  * ```typescript
@@ -64,6 +65,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Router Ncc Gw
  *
  * ```typescript
@@ -233,6 +235,10 @@ export class Router extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    declare public /*out*/ readonly routerId: pulumi.Output<number>;
+    /**
      * The URI of the created resource.
      */
     declare public /*out*/ readonly selfLink: pulumi.Output<string>;
@@ -262,6 +268,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["region"] = state?.region;
+            resourceInputs["routerId"] = state?.routerId;
             resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as RouterArgs | undefined;
@@ -277,6 +284,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["routerId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -351,6 +359,10 @@ export interface RouterState {
      * Region where the router resides.
      */
     region?: pulumi.Input<string | undefined>;
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    routerId?: pulumi.Input<number | undefined>;
     /**
      * The URI of the created resource.
      */

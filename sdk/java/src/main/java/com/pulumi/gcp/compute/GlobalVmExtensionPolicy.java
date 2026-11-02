@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Compute Global Vm Extension Policy Basic
  * 
  * <pre>
@@ -130,6 +131,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Compute Global Vm Extension Policy Custom Rollout
  * 
  * <pre>

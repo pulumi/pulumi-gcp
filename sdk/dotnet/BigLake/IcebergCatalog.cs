@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// 
     /// ### Biglake Iceberg Catalog Primary Location
     /// 
     /// ```csharp
@@ -91,6 +92,7 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// 
     /// ### Biglake Iceberg Catalog Biglake
     /// 
     /// ```csharp
@@ -135,6 +137,7 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// 
     /// ### Biglake Iceberg Catalog Federated Unity
     /// 
     /// ```csharp
@@ -170,6 +173,7 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// 
     /// ### Biglake Iceberg Catalog Federated Glue
     /// 
     /// ```csharp

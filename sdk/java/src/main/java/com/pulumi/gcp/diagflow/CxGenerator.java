@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .languageCode("fr")
  *             .displayName("TF Prompt generator")
  *             .llmModelSettings(CxGeneratorLlmModelSettingsArgs.builder()
- *                 .model("gemini-2.0-flash-001")
+ *                 .model("gemini-2.5-flash")
  *                 .promptText("Return me some great results")
  *                 .build())
  *             .promptText(CxGeneratorPromptTextArgs.builder()

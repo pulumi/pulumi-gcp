@@ -15,11 +15,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
  *
- * > **Warning:** Due to limitations of the API, this provider cannot update the
- * number of nodes in a node group and changes to node group size either
- * through provider config or through external changes will cause
- * the provider to delete and recreate the node group.
- *
  * ## Example Usage
  *
  * ### Node Group Basic
@@ -41,10 +36,6 @@ import * as utilities from "../utilities";
  *     nodeTemplate: soletenant_tmpl.id,
  * });
  * ```
- * > **Warning:** Due to limitations of the API, this provider cannot update the
- * number of nodes in a node group and changes to node group size either
- * through provider config or through external changes will cause
- * the provider to delete and recreate the node group.
  *
  * ### Node Group Maintenance Interval
  *
@@ -66,10 +57,6 @@ import * as utilities from "../utilities";
  *     maintenanceInterval: "RECURRENT",
  * });
  * ```
- * > **Warning:** Due to limitations of the API, this provider cannot update the
- * number of nodes in a node group and changes to node group size either
- * through provider config or through external changes will cause
- * the provider to delete and recreate the node group.
  *
  * ### Node Group Autoscaling Policy
  *
@@ -99,6 +86,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Node Group Share Settings
  *
  * ```typescript

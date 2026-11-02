@@ -20,26 +20,46 @@ __all__ = [
 ]
 
 class V2ConsumerPolicyEnableRuleArgsDict(TypedDict):
+    catalogs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of service catalog names to be enabled in the format of catalogs/<catalog_name>, for example catalogs/default-cloud-services.
+    """
     services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    (Optional): List of service names to be enabled in the format of services/<service_name>
+    List of service names to be enabled in the format of services/<service_name>
     """
 
 @pulumi.input_type
 class V2ConsumerPolicyEnableRuleArgs:
     def __init__(__self__, *,
+                 catalogs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: (Optional): List of service names to be enabled in the format of services/<service_name>
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] catalogs: List of service catalog names to be enabled in the format of catalogs/<catalog_name>, for example catalogs/default-cloud-services.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of service names to be enabled in the format of services/<service_name>
         """
+        if catalogs is not None:
+            pulumi.set(__self__, "catalogs", catalogs)
         if services is not None:
             pulumi.set(__self__, "services", services)
 
     @_builtins.property
     @pulumi.getter
+    def catalogs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of service catalog names to be enabled in the format of catalogs/<catalog_name>, for example catalogs/default-cloud-services.
+        """
+        return pulumi.get(self, "catalogs")
+
+    @catalogs.setter
+    def catalogs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "catalogs", value)
+
+    @_builtins.property
+    @pulumi.getter
     def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        (Optional): List of service names to be enabled in the format of services/<service_name>
+        List of service names to be enabled in the format of services/<service_name>
         """
         return pulumi.get(self, "services")
 

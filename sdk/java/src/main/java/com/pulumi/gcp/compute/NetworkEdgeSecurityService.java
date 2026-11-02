@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.NetworkEdgeSecurityServiceArgs;
 import com.pulumi.gcp.compute.inputs.NetworkEdgeSecurityServiceState;
+import com.pulumi.gcp.compute.outputs.NetworkEdgeSecurityServiceParams;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -162,6 +163,22 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={NetworkEdgeSecurityServiceParams.class}, tree="[0]")
+    private Output</* @Nullable */ NetworkEdgeSecurityServiceParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<NetworkEdgeSecurityServiceParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

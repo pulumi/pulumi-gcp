@@ -66,6 +66,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Scan Config Ignore Http Status Errors
 //
 // ```go
@@ -119,6 +120,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Scan Config Static Ip
 //
 // ```go

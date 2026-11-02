@@ -6,13 +6,33 @@ package com.pulumi.gcp.bigtable.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigtable.inputs.AppProfileStandardIsolationMemoryConfigArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AppProfileStandardIsolationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppProfileStandardIsolationArgs Empty = new AppProfileStandardIsolationArgs();
+
+    /**
+     * The memory config to use for requests sent using this app profile.
+     * If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+     * 
+     */
+    @Import(name="memoryConfig")
+    private @Nullable Output<AppProfileStandardIsolationMemoryConfigArgs> memoryConfig;
+
+    /**
+     * @return The memory config to use for requests sent using this app profile.
+     * If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+     * 
+     */
+    public Optional<Output<AppProfileStandardIsolationMemoryConfigArgs>> memoryConfig() {
+        return Optional.ofNullable(this.memoryConfig);
+    }
 
     /**
      * The priority of requests sent using this app profile.
@@ -34,6 +54,7 @@ public final class AppProfileStandardIsolationArgs extends com.pulumi.resources.
     private AppProfileStandardIsolationArgs() {}
 
     private AppProfileStandardIsolationArgs(AppProfileStandardIsolationArgs $) {
+        this.memoryConfig = $.memoryConfig;
         this.priority = $.priority;
     }
 
@@ -53,6 +74,29 @@ public final class AppProfileStandardIsolationArgs extends com.pulumi.resources.
 
         public Builder(AppProfileStandardIsolationArgs defaults) {
             $ = new AppProfileStandardIsolationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param memoryConfig The memory config to use for requests sent using this app profile.
+         * If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryConfig(@Nullable Output<AppProfileStandardIsolationMemoryConfigArgs> memoryConfig) {
+            $.memoryConfig = memoryConfig;
+            return this;
+        }
+
+        /**
+         * @param memoryConfig The memory config to use for requests sent using this app profile.
+         * If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryConfig(AppProfileStandardIsolationMemoryConfigArgs memoryConfig) {
+            return memoryConfig(Output.of(memoryConfig));
         }
 
         /**

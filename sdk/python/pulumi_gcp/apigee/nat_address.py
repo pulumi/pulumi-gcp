@@ -292,6 +292,7 @@ class NatAddress(pulumi.CustomResource):
             name="my-nat-address",
             instance_id=apigee_instance.id)
         ```
+
         ### Apigee Nat Address With Activate
 
         ```python
@@ -445,6 +446,7 @@ class NatAddress(pulumi.CustomResource):
             name="my-nat-address",
             instance_id=apigee_instance.id)
         ```
+
         ### Apigee Nat Address With Activate
 
         ```python

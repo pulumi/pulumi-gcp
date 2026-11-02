@@ -89,6 +89,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Cluster Private
  * 
  * <pre>
@@ -151,6 +152,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Cluster Custom Domain
  * 
  * <pre>
@@ -217,6 +219,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Cluster Tags
  * 
  * <pre>
@@ -292,6 +295,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Cluster Custom Urls
  * 
  * <pre>

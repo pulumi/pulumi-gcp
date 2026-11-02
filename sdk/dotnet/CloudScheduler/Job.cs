@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scheduler Job Http
     /// 
     /// ```csharp
@@ -93,6 +94,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scheduler Job Paused
     /// 
     /// ```csharp
@@ -133,6 +135,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scheduler Job App Engine
     /// 
     /// ```csharp
@@ -172,6 +175,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scheduler Job Oauth
     /// 
     /// ```csharp
@@ -204,6 +208,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scheduler Job Oidc
     /// 
     /// ```csharp

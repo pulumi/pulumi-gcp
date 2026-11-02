@@ -661,6 +661,7 @@ class VMwareNodePool(pulumi.CustomResource):
                 "enable_load_balancer": True,
             })
         ```
+
         ### Gkeonprem Vmware Node Pool Full
 
         ```python
@@ -872,6 +873,7 @@ class VMwareNodePool(pulumi.CustomResource):
                 "enable_load_balancer": True,
             })
         ```
+
         ### Gkeonprem Vmware Node Pool Full
 
         ```python

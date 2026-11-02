@@ -58,6 +58,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Dataaccessscope With Dataaccesslabel
 //
 // ```go
@@ -100,6 +101,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Dataaccessscope With Asset Namespace
 //
 // ```go
@@ -133,6 +135,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Dataaccessscope With Ingestion Label
 //
 // ```go
@@ -169,6 +172,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Chronicle Dataaccessscope With Denied Labels
 //
 // ```go

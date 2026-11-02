@@ -42,9 +42,13 @@ import * as utilities from "../utilities";
  *         dbWorkload: "OLTP",
  *         licenseType: "LICENSE_INCLUDED",
  *     },
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Autonomous Database Full
  *
  * ```typescript
@@ -91,6 +95,7 @@ import * as utilities from "../utilities";
  *     project: "my-project",
  * });
  * ```
+ *
  * ### Oracledatabase Autonomous Database Odbnetwork
  *
  * ```typescript
@@ -115,6 +120,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Autonomous Database Publicip
  *
  * ```typescript
@@ -138,6 +144,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Autonomous Database Disaster Recovery
  *
  * ```typescript

@@ -709,6 +709,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map Default Route Action
 
         ```python
@@ -867,6 +868,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map L7 Ilb Path
 
         ```python
@@ -968,6 +970,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map L7 Ilb Path Partial
 
         ```python
@@ -1037,6 +1040,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map L7 Ilb Route
 
         ```python
@@ -1116,6 +1120,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map L7 Ilb Route Partial
 
         ```python
@@ -1170,6 +1175,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map Path Template Match
 
         ```python
@@ -1244,6 +1250,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 ],
             }])
         ```
+
         ### Region Url Map Path Matcher Default Route Action
 
         ```python
@@ -1416,6 +1423,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map Default Mirror Percent
 
         ```python
@@ -1464,6 +1472,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "default_service": home.id,
             }])
         ```
+
         ### Region Url Map Path Matcher Default Mirror Percent
 
         ```python
@@ -1512,6 +1521,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "default_service": home.id,
             }])
         ```
+
         ### Region Url Map Path Rule Mirror Percent
 
         ```python
@@ -1560,6 +1570,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Region Url Map Route Rule Mirror Percent
 
         ```python
@@ -1752,6 +1763,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map Default Route Action
 
         ```python
@@ -1910,6 +1922,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map L7 Ilb Path
 
         ```python
@@ -2011,6 +2024,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map L7 Ilb Path Partial
 
         ```python
@@ -2080,6 +2094,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map L7 Ilb Route
 
         ```python
@@ -2159,6 +2174,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map L7 Ilb Route Partial
 
         ```python
@@ -2213,6 +2229,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map Path Template Match
 
         ```python
@@ -2287,6 +2304,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 ],
             }])
         ```
+
         ### Region Url Map Path Matcher Default Route Action
 
         ```python
@@ -2459,6 +2477,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+
         ### Region Url Map Default Mirror Percent
 
         ```python
@@ -2507,6 +2526,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "default_service": home.id,
             }])
         ```
+
         ### Region Url Map Path Matcher Default Mirror Percent
 
         ```python
@@ -2555,6 +2575,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "default_service": home.id,
             }])
         ```
+
         ### Region Url Map Path Rule Mirror Percent
 
         ```python
@@ -2603,6 +2624,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Region Url Map Route Rule Mirror Percent
 
         ```python

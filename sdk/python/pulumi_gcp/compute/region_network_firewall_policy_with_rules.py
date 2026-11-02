@@ -609,6 +609,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Compute Region Network Firewall Policy With Rules Roce
 
         ```python
@@ -846,6 +847,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Compute Region Network Firewall Policy With Rules Roce
 
         ```python

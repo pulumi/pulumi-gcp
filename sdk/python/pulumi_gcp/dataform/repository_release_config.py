@@ -481,6 +481,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dataform Repository Release Config Disabled
 
         ```python
@@ -628,6 +629,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dataform Repository Release Config Disabled
 
         ```python

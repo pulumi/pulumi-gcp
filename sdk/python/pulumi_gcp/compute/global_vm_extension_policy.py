@@ -453,6 +453,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Compute Global Vm Extension Policy Basic
 
         ```python
@@ -480,6 +481,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Compute Global Vm Extension Policy Custom Rollout
 
         ```python
@@ -608,6 +610,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Compute Global Vm Extension Policy Basic
 
         ```python
@@ -635,6 +638,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Compute Global Vm Extension Policy Custom Rollout
 
         ```python

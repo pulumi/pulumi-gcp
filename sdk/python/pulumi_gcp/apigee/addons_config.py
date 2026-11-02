@@ -193,6 +193,7 @@ class AddonsConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Apigee Addons Full
 
         ```python
@@ -315,6 +316,7 @@ class AddonsConfig(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Apigee Addons Full
 
         ```python

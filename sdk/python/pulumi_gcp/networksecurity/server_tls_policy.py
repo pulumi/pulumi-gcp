@@ -499,6 +499,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Security Server Tls Policy Advanced
 
         ```python
@@ -517,6 +518,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 "client_validation_mode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
             })
         ```
+
         ### Network Security Server Tls Policy Server Cert
 
         ```python
@@ -537,6 +539,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Network Security Server Tls Policy Mtls
 
         ```python
@@ -660,6 +663,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Network Security Server Tls Policy Advanced
 
         ```python
@@ -678,6 +682,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 "client_validation_mode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
             })
         ```
+
         ### Network Security Server Tls Policy Server Cert
 
         ```python
@@ -698,6 +703,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Network Security Server Tls Policy Mtls
 
         ```python

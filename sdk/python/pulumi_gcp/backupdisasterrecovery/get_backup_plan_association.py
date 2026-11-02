@@ -27,7 +27,10 @@ class GetBackupPlanAssociationResult:
     """
     A collection of values returned by getBackupPlanAssociation.
     """
-    def __init__(__self__, backup_plan=None, backup_plan_association_id=None, create_time=None, data_source=None, deletion_policy=None, id=None, location=None, name=None, project=None, resource=None, resource_type=None, rules_config_infos=None, update_time=None):
+    def __init__(__self__, auto_protection_policy_binding=None, backup_plan=None, backup_plan_association_id=None, create_time=None, data_source=None, deletion_policy=None, id=None, location=None, name=None, project=None, resource=None, resource_type=None, rules_config_infos=None, update_time=None):
+        if auto_protection_policy_binding and not isinstance(auto_protection_policy_binding, str):
+            raise TypeError("Expected argument 'auto_protection_policy_binding' to be a str")
+        pulumi.set(__self__, "auto_protection_policy_binding", auto_protection_policy_binding)
         if backup_plan and not isinstance(backup_plan, str):
             raise TypeError("Expected argument 'backup_plan' to be a str")
         pulumi.set(__self__, "backup_plan", backup_plan)
@@ -67,6 +70,11 @@ class GetBackupPlanAssociationResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="autoProtectionPolicyBinding")
+    def auto_protection_policy_binding(self) -> _builtins.str:
+        return pulumi.get(self, "auto_protection_policy_binding")
 
     @_builtins.property
     @pulumi.getter(name="backupPlan")
@@ -143,6 +151,7 @@ class AwaitableGetBackupPlanAssociationResult(GetBackupPlanAssociationResult):
         if False:
             yield self
         return GetBackupPlanAssociationResult(
+            auto_protection_policy_binding=self.auto_protection_policy_binding,
             backup_plan=self.backup_plan,
             backup_plan_association_id=self.backup_plan_association_id,
             create_time=self.create_time,
@@ -189,6 +198,7 @@ def get_backup_plan_association(backup_plan_association_id: Optional[_builtins.s
     __ret__ = pulumi.runtime.invoke('gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation', __args__, opts=opts, typ=GetBackupPlanAssociationResult).value
 
     return AwaitableGetBackupPlanAssociationResult(
+        auto_protection_policy_binding=pulumi.get(__ret__, 'auto_protection_policy_binding'),
         backup_plan=pulumi.get(__ret__, 'backup_plan'),
         backup_plan_association_id=pulumi.get(__ret__, 'backup_plan_association_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
@@ -232,6 +242,7 @@ def get_backup_plan_association_output(backup_plan_association_id: pulumi.Input[
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation', __args__, opts=opts, typ=GetBackupPlanAssociationResult)
     return __ret__.apply(lambda __response__: GetBackupPlanAssociationResult(
+        auto_protection_policy_binding=pulumi.get(__response__, 'auto_protection_policy_binding'),
         backup_plan=pulumi.get(__response__, 'backup_plan'),
         backup_plan_association_id=pulumi.get(__response__, 'backup_plan_association_id'),
         create_time=pulumi.get(__response__, 'create_time'),

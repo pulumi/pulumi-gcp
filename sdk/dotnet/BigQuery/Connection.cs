@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Connection Basic
     /// 
     /// ```csharp
@@ -106,6 +107,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Connection Full
     /// 
     /// ```csharp
@@ -169,6 +171,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Connection Aws
     /// 
     /// ```csharp
@@ -196,6 +199,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Connection Azure
     /// 
     /// ```csharp
@@ -221,6 +225,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Connection Cloudspanner
     /// 
     /// ```csharp
@@ -246,6 +251,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Connection Cloudspanner Databoost
     /// 
     /// ```csharp
@@ -273,6 +279,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Connection Spark
     /// 
     /// ```csharp
@@ -325,6 +332,31 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
+    /// ### Bigquery Connection Salesforce Data Cloud
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         ConnectionId = "my-connection",
+    ///         Location = "US",
+    ///         SalesforceDataCloud = new Gcp.BigQuery.Inputs.ConnectionSalesforceDataCloudArgs
+    ///         {
+    ///             InstanceUri = "my-instance.c360a.salesforce.com",
+    ///             TenantId = "tenant-id",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Bigquery Connection Sql With Cmek
     /// 
     /// ```csharp
@@ -381,6 +413,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Connection Sql With Cmek Password Wo
     /// 
     /// ```csharp
@@ -438,6 +471,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Connection Connector Configuration
     /// 
     /// ```csharp
@@ -448,20 +482,20 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var namePrefix = "my-connection";
-    /// 
-    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
-    ///         Name = $"{namePrefix}-alloydb-network",
+    ///         Name = "alloydb-network",
     ///     });
     /// 
-    ///     var @default = new Gcp.Alloydb.Cluster("default", new()
+    ///     var namePrefix = "my-connection";
+    /// 
+    ///     var defaultCluster = new Gcp.Alloydb.Cluster("default", new()
     ///     {
     ///         ClusterId = $"{namePrefix}-alloydb-cluster",
     ///         Location = "us-central1",
     ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
     ///         {
-    ///             Network = defaultNetwork.Id,
+    ///             Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         },
     ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
     ///         {
@@ -470,39 +504,14 @@ namespace Pulumi.Gcp.BigQuery
     ///         DeletionProtection = false,
     ///     });
     /// 
-    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
-    ///     {
-    ///         Name = $"{namePrefix}-alloydb-ip",
-    ///         AddressType = "INTERNAL",
-    ///         Purpose = "VPC_PEERING",
-    ///         PrefixLength = 16,
-    ///         Network = defaultNetwork.Id,
-    ///     });
-    /// 
-    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpc_connection", new()
-    ///     {
-    ///         Network = defaultNetwork.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             privateIpAlloc.Name,
-    ///         },
-    ///     });
-    /// 
     ///     var defaultInstance = new Gcp.Alloydb.Instance("default", new()
     ///     {
-    ///         Cluster = @default.Name,
+    ///         Cluster = defaultCluster.Name,
     ///         InstanceId = $"{namePrefix}-alloydb-instance",
     ///         InstanceType = "PRIMARY",
     ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
     ///         {
     ///             CpuCount = 2,
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             vpcConnection,
     ///         },
     ///     });
     /// 
@@ -669,6 +678,14 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Connection properties specific to Salesforce Data Cloud.
+        /// This connection type is intended for use only by Salesforce partner projects.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("salesforceDataCloud")]
+        public Output<Outputs.ConnectionSalesforceDataCloud?> SalesforceDataCloud { get; private set; } = null!;
+
+        /// <summary>
         /// Container for connection properties to execute stored procedures for Apache Spark. resources.
         /// Structure is documented below.
         /// </summary>
@@ -821,6 +838,14 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Connection properties specific to Salesforce Data Cloud.
+        /// This connection type is intended for use only by Salesforce partner projects.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("salesforceDataCloud")]
+        public Input<Inputs.ConnectionSalesforceDataCloudArgs>? SalesforceDataCloud { get; set; }
+
+        /// <summary>
         /// Container for connection properties to execute stored procedures for Apache Spark. resources.
         /// Structure is documented below.
         /// </summary>
@@ -946,6 +971,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Connection properties specific to Salesforce Data Cloud.
+        /// This connection type is intended for use only by Salesforce partner projects.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("salesforceDataCloud")]
+        public Input<Inputs.ConnectionSalesforceDataCloudGetArgs>? SalesforceDataCloud { get; set; }
 
         /// <summary>
         /// Container for connection properties to execute stored procedures for Apache Spark. resources.

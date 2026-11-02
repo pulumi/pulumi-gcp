@@ -76,6 +76,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Featureonlinestore With Optimized
  * 
  * <pre>
@@ -126,6 +127,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
  * 
  * <pre>

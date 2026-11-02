@@ -49,6 +49,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Bigquery Dataset Cmek
  *
  * ```typescript
@@ -74,6 +75,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Dataset Authorized Dataset
  *
  * ```typescript
@@ -131,6 +133,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Bigquery Dataset Authorized Routine
  *
  * ```typescript
@@ -181,6 +184,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Bigquery Dataset External Reference Aws
  *
  * ```typescript
@@ -198,6 +202,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Dataset External Catalog Dataset Options
  *
  * ```typescript

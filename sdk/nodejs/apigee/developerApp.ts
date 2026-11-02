@@ -68,6 +68,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Apigee Developer App Basic Test
  *
  * ```typescript

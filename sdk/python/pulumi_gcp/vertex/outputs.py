@@ -16,6 +16,23 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AiCustomJobEncryptionSpec',
+    'AiCustomJobError',
+    'AiCustomJobJobSpec',
+    'AiCustomJobJobSpecBaseOutputDirectory',
+    'AiCustomJobJobSpecPscInterfaceConfig',
+    'AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig',
+    'AiCustomJobJobSpecScheduling',
+    'AiCustomJobJobSpecWorkerPoolSpec',
+    'AiCustomJobJobSpecWorkerPoolSpecContainerSpec',
+    'AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv',
+    'AiCustomJobJobSpecWorkerPoolSpecDiskSpec',
+    'AiCustomJobJobSpecWorkerPoolSpecLustreMount',
+    'AiCustomJobJobSpecWorkerPoolSpecMachineSpec',
+    'AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity',
+    'AiCustomJobJobSpecWorkerPoolSpecNfsMount',
+    'AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec',
+    'AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv',
     'AiDatasetEncryptionSpec',
     'AiDeploymentResourcePoolDedicatedResources',
     'AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec',
@@ -119,6 +136,30 @@ __all__ = [
     'AiIndexMetadataConfigAlgorithmConfigTreeAhConfig',
     'AiMetadataStoreEncryptionSpec',
     'AiMetadataStoreState',
+    'AiModelDevelopmentClusterClusterEvent',
+    'AiModelDevelopmentClusterClusterStatus',
+    'AiModelDevelopmentClusterClusterStatusError',
+    'AiModelDevelopmentClusterClusterStatusNodesStatus',
+    'AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost',
+    'AiModelDevelopmentClusterLustreExportConfig',
+    'AiModelDevelopmentClusterLustreExportConfigStartTime',
+    'AiModelDevelopmentClusterNetwork',
+    'AiModelDevelopmentClusterNodePool',
+    'AiModelDevelopmentClusterNodePoolBootDisk',
+    'AiModelDevelopmentClusterNodePoolMachineSpec',
+    'AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity',
+    'AiModelDevelopmentClusterNodePoolScalingSpec',
+    'AiModelDevelopmentClusterOrchestratorSpec',
+    'AiModelDevelopmentClusterOrchestratorSpecSlurmSpec',
+    'AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet',
+    'AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition',
+    'AiModelDevelopmentClusterRuntime',
+    'AiModelDevelopmentClusterRuntimeSpec',
+    'AiModelDevelopmentClusterRuntimeTrainingService',
+    'AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec',
+    'AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus',
+    'AiModelDevelopmentClusterRuntimeXmanager',
+    'AiModelDevelopmentClusterRuntimeXmanagerError',
     'AiOnlineEvaluatorCloudObservability',
     'AiOnlineEvaluatorCloudObservabilityOpenTelemetry',
     'AiOnlineEvaluatorCloudObservabilitySessionScope',
@@ -149,7 +190,22 @@ __all__ = [
     'AiPersistentResourceResourcePoolMachineSpec',
     'AiPersistentResourceResourceRuntime',
     'AiPersistentResourceResourceRuntimeSpec',
+    'AiPersistentResourceResourceRuntimeSpecRaySpec',
     'AiPersistentResourceResourceRuntimeSpecServiceAccountSpec',
+    'AiPipelineJobEncryptionSpec',
+    'AiPipelineJobError',
+    'AiPipelineJobJobDetail',
+    'AiPipelineJobJobDetailPipelineContext',
+    'AiPipelineJobJobDetailPipelineRunContext',
+    'AiPipelineJobJobDetailTaskDetail',
+    'AiPipelineJobJobDetailTaskDetailError',
+    'AiPipelineJobPscInterfaceConfig',
+    'AiPipelineJobPscInterfaceConfigDnsPeeringConfig',
+    'AiPipelineJobRuntimeConfig',
+    'AiPipelineJobRuntimeConfigDefaultRuntime',
+    'AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail',
+    'AiPipelineJobRuntimeConfigInputArtifact',
+    'AiPipelineJobTemplateMetadata',
     'AiRagCorpusCorpusStatus',
     'AiRagCorpusEncryptionSpec',
     'AiRagCorpusVectorDbConfig',
@@ -167,6 +223,16 @@ __all__ = [
     'AiRagEngineConfigRagManagedDbConfigBasic',
     'AiRagEngineConfigRagManagedDbConfigScaled',
     'AiRagEngineConfigRagManagedDbConfigUnprovisioned',
+    'AiRagFileFileStatus',
+    'AiRagFileGcsSource',
+    'AiRagFileGoogleDriveSource',
+    'AiRagFileGoogleDriveSourceResourceIds',
+    'AiRagFileRagFileParsingConfig',
+    'AiRagFileRagFileParsingConfigLayoutParser',
+    'AiRagFileRagFileParsingConfigLlmParser',
+    'AiRagFileRagFileTransformationConfig',
+    'AiRagFileRagFileTransformationConfigRagFileChunkingConfig',
+    'AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking',
     'AiReasoningEngineContextSpec',
     'AiReasoningEngineContextSpecExampleStoreConfig',
     'AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig',
@@ -244,6 +310,1161 @@ __all__ = [
     'GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult',
     'GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult',
 ]
+
+@pulumi.output_type
+class AiCustomJobEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: _builtins.str):
+        """
+        :param _builtins.str kms_key_name: Resource name of the Cloud KMS key used to protect the resource.
+               The Cloud KMS key must be in the same region as the resource. It must have the format
+               `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> _builtins.str:
+        """
+        Resource name of the Cloud KMS key used to protect the resource.
+        The Cloud KMS key must be in the same region as the resource. It must have the format
+        `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiCustomJobError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param _builtins.str message: (Output)
+               A developer-facing error message, which should be in English.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workerPoolSpecs":
+            suggest = "worker_pool_specs"
+        elif key == "baseOutputDirectory":
+            suggest = "base_output_directory"
+        elif key == "enableDashboardAccess":
+            suggest = "enable_dashboard_access"
+        elif key == "enableWebAccess":
+            suggest = "enable_web_access"
+        elif key == "pscInterfaceConfig":
+            suggest = "psc_interface_config"
+        elif key == "reservedIpRanges":
+            suggest = "reserved_ip_ranges"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 worker_pool_specs: Sequence['outputs.AiCustomJobJobSpecWorkerPoolSpec'],
+                 base_output_directory: Optional['outputs.AiCustomJobJobSpecBaseOutputDirectory'] = None,
+                 enable_dashboard_access: Optional[_builtins.bool] = None,
+                 enable_web_access: Optional[_builtins.bool] = None,
+                 network: Optional[_builtins.str] = None,
+                 psc_interface_config: Optional['outputs.AiCustomJobJobSpecPscInterfaceConfig'] = None,
+                 reserved_ip_ranges: Optional[Sequence[_builtins.str]] = None,
+                 scheduling: Optional['outputs.AiCustomJobJobSpecScheduling'] = None,
+                 service_account: Optional[_builtins.str] = None,
+                 tensorboard: Optional[_builtins.str] = None):
+        """
+        :param Sequence['AiCustomJobJobSpecWorkerPoolSpecArgs'] worker_pool_specs: The spec of the worker pools including machine type and Docker image.
+               All worker pools except the first one are optional and can be skipped by providing an empty value.
+               Structure is documented below.
+        :param 'AiCustomJobJobSpecBaseOutputDirectoryArgs' base_output_directory: The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob.
+               Structure is documented below.
+        :param _builtins.bool enable_dashboard_access: Whether you want Vertex AI to enable access to the customized dashboard in training chief container.
+        :param _builtins.bool enable_web_access: Whether you want Vertex AI to enable interactive shell access to training containers.
+        :param _builtins.str network: The full name of the Compute Engine network to which the Job should be peered.
+        :param 'AiCustomJobJobSpecPscInterfaceConfigArgs' psc_interface_config: Configuration for PSC-I for CustomJob.
+               Structure is documented below.
+        :param Sequence[_builtins.str] reserved_ip_ranges: A list of names for the reserved ip ranges under the VPC network that can be used for this job.
+        :param 'AiCustomJobJobSpecSchedulingArgs' scheduling: Scheduling options for a CustomJob.
+               Structure is documented below.
+        :param _builtins.str service_account: Specifies the service account for workload run-as account.
+        :param _builtins.str tensorboard: The name of a Vertex AI Tensorboard resource to which this CustomJob will upload Tensorboard logs.
+        """
+        pulumi.set(__self__, "worker_pool_specs", worker_pool_specs)
+        if base_output_directory is not None:
+            pulumi.set(__self__, "base_output_directory", base_output_directory)
+        if enable_dashboard_access is not None:
+            pulumi.set(__self__, "enable_dashboard_access", enable_dashboard_access)
+        if enable_web_access is not None:
+            pulumi.set(__self__, "enable_web_access", enable_web_access)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if psc_interface_config is not None:
+            pulumi.set(__self__, "psc_interface_config", psc_interface_config)
+        if reserved_ip_ranges is not None:
+            pulumi.set(__self__, "reserved_ip_ranges", reserved_ip_ranges)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if tensorboard is not None:
+            pulumi.set(__self__, "tensorboard", tensorboard)
+
+    @_builtins.property
+    @pulumi.getter(name="workerPoolSpecs")
+    def worker_pool_specs(self) -> Sequence['outputs.AiCustomJobJobSpecWorkerPoolSpec']:
+        """
+        The spec of the worker pools including machine type and Docker image.
+        All worker pools except the first one are optional and can be skipped by providing an empty value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "worker_pool_specs")
+
+    @_builtins.property
+    @pulumi.getter(name="baseOutputDirectory")
+    def base_output_directory(self) -> Optional['outputs.AiCustomJobJobSpecBaseOutputDirectory']:
+        """
+        The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "base_output_directory")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDashboardAccess")
+    def enable_dashboard_access(self) -> Optional[_builtins.bool]:
+        """
+        Whether you want Vertex AI to enable access to the customized dashboard in training chief container.
+        """
+        return pulumi.get(self, "enable_dashboard_access")
+
+    @_builtins.property
+    @pulumi.getter(name="enableWebAccess")
+    def enable_web_access(self) -> Optional[_builtins.bool]:
+        """
+        Whether you want Vertex AI to enable interactive shell access to training containers.
+        """
+        return pulumi.get(self, "enable_web_access")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        The full name of the Compute Engine network to which the Job should be peered.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="pscInterfaceConfig")
+    def psc_interface_config(self) -> Optional['outputs.AiCustomJobJobSpecPscInterfaceConfig']:
+        """
+        Configuration for PSC-I for CustomJob.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_interface_config")
+
+    @_builtins.property
+    @pulumi.getter(name="reservedIpRanges")
+    def reserved_ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of names for the reserved ip ranges under the VPC network that can be used for this job.
+        """
+        return pulumi.get(self, "reserved_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter
+    def scheduling(self) -> Optional['outputs.AiCustomJobJobSpecScheduling']:
+        """
+        Scheduling options for a CustomJob.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[_builtins.str]:
+        """
+        Specifies the service account for workload run-as account.
+        """
+        return pulumi.get(self, "service_account")
+
+    @_builtins.property
+    @pulumi.getter
+    def tensorboard(self) -> Optional[_builtins.str]:
+        """
+        The name of a Vertex AI Tensorboard resource to which this CustomJob will upload Tensorboard logs.
+        """
+        return pulumi.get(self, "tensorboard")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecBaseOutputDirectory(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputUriPrefix":
+            suggest = "output_uri_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecBaseOutputDirectory. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecBaseOutputDirectory.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecBaseOutputDirectory.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output_uri_prefix: _builtins.str):
+        """
+        :param _builtins.str output_uri_prefix: Cloud Storage folder URL to store the output.
+        """
+        pulumi.set(__self__, "output_uri_prefix", output_uri_prefix)
+
+    @_builtins.property
+    @pulumi.getter(name="outputUriPrefix")
+    def output_uri_prefix(self) -> _builtins.str:
+        """
+        Cloud Storage folder URL to store the output.
+        """
+        return pulumi.get(self, "output_uri_prefix")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecPscInterfaceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsPeeringConfigs":
+            suggest = "dns_peering_configs"
+        elif key == "networkAttachment":
+            suggest = "network_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecPscInterfaceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecPscInterfaceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecPscInterfaceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dns_peering_configs: Optional[Sequence['outputs.AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig']] = None,
+                 network_attachment: Optional[_builtins.str] = None):
+        """
+        :param Sequence['AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfigArgs'] dns_peering_configs: DNS peering config for the PSC interface.
+               Structure is documented below.
+        :param _builtins.str network_attachment: The name of the attachment to connect to.
+        """
+        if dns_peering_configs is not None:
+            pulumi.set(__self__, "dns_peering_configs", dns_peering_configs)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsPeeringConfigs")
+    def dns_peering_configs(self) -> Optional[Sequence['outputs.AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig']]:
+        """
+        DNS peering config for the PSC interface.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dns_peering_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[_builtins.str]:
+        """
+        The name of the attachment to connect to.
+        """
+        return pulumi.get(self, "network_attachment")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetNetwork":
+            suggest = "target_network"
+        elif key == "targetProject":
+            suggest = "target_project"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecPscInterfaceConfigDnsPeeringConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 target_network: _builtins.str,
+                 target_project: _builtins.str):
+        """
+        :param _builtins.str domain: The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+        :param _builtins.str target_network: The VPC network name in the target_project where the DNS zone specified by 'domain' is visible.
+        :param _builtins.str target_project: The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "target_network", target_network)
+        pulumi.set(__self__, "target_project", target_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="targetNetwork")
+    def target_network(self) -> _builtins.str:
+        """
+        The VPC network name in the target_project where the DNS zone specified by 'domain' is visible.
+        """
+        return pulumi.get(self, "target_network")
+
+    @_builtins.property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> _builtins.str:
+        """
+        The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+        """
+        return pulumi.get(self, "target_project")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecScheduling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableRetries":
+            suggest = "disable_retries"
+        elif key == "maxWaitDuration":
+            suggest = "max_wait_duration"
+        elif key == "restartJobOnWorkerRestart":
+            suggest = "restart_job_on_worker_restart"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecScheduling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecScheduling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecScheduling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_retries: Optional[_builtins.bool] = None,
+                 max_wait_duration: Optional[_builtins.str] = None,
+                 restart_job_on_worker_restart: Optional[_builtins.bool] = None,
+                 strategy: Optional[_builtins.str] = None,
+                 timeout: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool disable_retries: Indicates if the job should retry for internal errors after the job starts running.
+        :param _builtins.str max_wait_duration: The maximum duration that a job will wait for the requested resources to be provisioned if the scheduling strategy is set to FLEX_START.
+        :param _builtins.bool restart_job_on_worker_restart: Restarts the entire CustomJob if a worker gets restarted.
+        :param _builtins.str strategy: This determines which type of scheduling strategy to use. Possible values: ["STANDARD", "SPOT", "FLEX_START"]
+        :param _builtins.str timeout: The maximum job running time. The default is 7 days. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        if disable_retries is not None:
+            pulumi.set(__self__, "disable_retries", disable_retries)
+        if max_wait_duration is not None:
+            pulumi.set(__self__, "max_wait_duration", max_wait_duration)
+        if restart_job_on_worker_restart is not None:
+            pulumi.set(__self__, "restart_job_on_worker_restart", restart_job_on_worker_restart)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter(name="disableRetries")
+    def disable_retries(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the job should retry for internal errors after the job starts running.
+        """
+        return pulumi.get(self, "disable_retries")
+
+    @_builtins.property
+    @pulumi.getter(name="maxWaitDuration")
+    def max_wait_duration(self) -> Optional[_builtins.str]:
+        """
+        The maximum duration that a job will wait for the requested resources to be provisioned if the scheduling strategy is set to FLEX_START.
+        """
+        return pulumi.get(self, "max_wait_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="restartJobOnWorkerRestart")
+    def restart_job_on_worker_restart(self) -> Optional[_builtins.bool]:
+        """
+        Restarts the entire CustomJob if a worker gets restarted.
+        """
+        return pulumi.get(self, "restart_job_on_worker_restart")
+
+    @_builtins.property
+    @pulumi.getter
+    def strategy(self) -> Optional[_builtins.str]:
+        """
+        This determines which type of scheduling strategy to use. Possible values: ["STANDARD", "SPOT", "FLEX_START"]
+        """
+        return pulumi.get(self, "strategy")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.str]:
+        """
+        The maximum job running time. The default is 7 days. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecWorkerPoolSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerSpec":
+            suggest = "container_spec"
+        elif key == "diskSpec":
+            suggest = "disk_spec"
+        elif key == "lustreMounts":
+            suggest = "lustre_mounts"
+        elif key == "machineSpec":
+            suggest = "machine_spec"
+        elif key == "nfsMounts":
+            suggest = "nfs_mounts"
+        elif key == "pythonPackageSpec":
+            suggest = "python_package_spec"
+        elif key == "replicaCount":
+            suggest = "replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecWorkerPoolSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_spec: Optional['outputs.AiCustomJobJobSpecWorkerPoolSpecContainerSpec'] = None,
+                 disk_spec: Optional['outputs.AiCustomJobJobSpecWorkerPoolSpecDiskSpec'] = None,
+                 lustre_mounts: Optional[Sequence['outputs.AiCustomJobJobSpecWorkerPoolSpecLustreMount']] = None,
+                 machine_spec: Optional['outputs.AiCustomJobJobSpecWorkerPoolSpecMachineSpec'] = None,
+                 nfs_mounts: Optional[Sequence['outputs.AiCustomJobJobSpecWorkerPoolSpecNfsMount']] = None,
+                 python_package_spec: Optional['outputs.AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec'] = None,
+                 replica_count: Optional[_builtins.int] = None):
+        """
+        :param 'AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs' container_spec: The custom container task. Either `container_spec` or `python_package_spec` can be provided, but not both.
+               Structure is documented below.
+        :param 'AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs' disk_spec: Disk spec.
+               Structure is documented below.
+        :param Sequence['AiCustomJobJobSpecWorkerPoolSpecLustreMountArgs'] lustre_mounts: List of Lustre mounts.
+               Structure is documented below.
+        :param 'AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs' machine_spec: Specification of a single machine.
+               Structure is documented below.
+        :param Sequence['AiCustomJobJobSpecWorkerPoolSpecNfsMountArgs'] nfs_mounts: List of NFS mount spec.
+               Structure is documented below.
+        :param 'AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecArgs' python_package_spec: The Python packaged task. Either `container_spec` or `python_package_spec` can be provided, but not both.
+               Structure is documented below.
+        :param _builtins.int replica_count: The number of worker replicas to use for this worker pool.
+        """
+        if container_spec is not None:
+            pulumi.set(__self__, "container_spec", container_spec)
+        if disk_spec is not None:
+            pulumi.set(__self__, "disk_spec", disk_spec)
+        if lustre_mounts is not None:
+            pulumi.set(__self__, "lustre_mounts", lustre_mounts)
+        if machine_spec is not None:
+            pulumi.set(__self__, "machine_spec", machine_spec)
+        if nfs_mounts is not None:
+            pulumi.set(__self__, "nfs_mounts", nfs_mounts)
+        if python_package_spec is not None:
+            pulumi.set(__self__, "python_package_spec", python_package_spec)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
+
+    @_builtins.property
+    @pulumi.getter(name="containerSpec")
+    def container_spec(self) -> Optional['outputs.AiCustomJobJobSpecWorkerPoolSpecContainerSpec']:
+        """
+        The custom container task. Either `container_spec` or `python_package_spec` can be provided, but not both.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="diskSpec")
+    def disk_spec(self) -> Optional['outputs.AiCustomJobJobSpecWorkerPoolSpecDiskSpec']:
+        """
+        Disk spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "disk_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="lustreMounts")
+    def lustre_mounts(self) -> Optional[Sequence['outputs.AiCustomJobJobSpecWorkerPoolSpecLustreMount']]:
+        """
+        List of Lustre mounts.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "lustre_mounts")
+
+    @_builtins.property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> Optional['outputs.AiCustomJobJobSpecWorkerPoolSpecMachineSpec']:
+        """
+        Specification of a single machine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="nfsMounts")
+    def nfs_mounts(self) -> Optional[Sequence['outputs.AiCustomJobJobSpecWorkerPoolSpecNfsMount']]:
+        """
+        List of NFS mount spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "nfs_mounts")
+
+    @_builtins.property
+    @pulumi.getter(name="pythonPackageSpec")
+    def python_package_spec(self) -> Optional['outputs.AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec']:
+        """
+        The Python packaged task. Either `container_spec` or `python_package_spec` can be provided, but not both.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python_package_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> Optional[_builtins.int]:
+        """
+        The number of worker replicas to use for this worker pool.
+        """
+        return pulumi.get(self, "replica_count")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecWorkerPoolSpecContainerSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageUri":
+            suggest = "image_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecWorkerPoolSpecContainerSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecContainerSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecContainerSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_uri: _builtins.str,
+                 args: Optional[Sequence[_builtins.str]] = None,
+                 commands: Optional[Sequence[_builtins.str]] = None,
+                 envs: Optional[Sequence['outputs.AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv']] = None):
+        """
+        :param _builtins.str image_uri: The URI of a container image in the Container Registry that is to be run on each worker replica.
+        :param Sequence[_builtins.str] args: The arguments to be passed when starting the container.
+        :param Sequence[_builtins.str] commands: The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
+        :param Sequence['AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnvArgs'] envs: Environment variables to be passed to the container. Maximum limit is 100.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "image_uri", image_uri)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> _builtins.str:
+        """
+        The URI of a container image in the Container Registry that is to be run on each worker replica.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The arguments to be passed when starting the container.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv']]:
+        """
+        Environment variables to be passed to the container. Maximum limit is 100.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "envs")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecWorkerPoolSpecContainerSpecEnv(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Name of the environment variable.
+        :param _builtins.str value: Value of the environment variable.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecWorkerPoolSpecDiskSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "bootDiskType":
+            suggest = "boot_disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecWorkerPoolSpecDiskSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecDiskSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecDiskSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boot_disk_size_gb: Optional[_builtins.int] = None,
+                 boot_disk_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int boot_disk_size_gb: Size in GB of the boot disk (default is 100GB).
+        :param _builtins.str boot_disk_type: Type of the disk. The default value depends on the machine type. Valid values include: "pd-ssd", "pd-standard", "pd-balanced", and "hyperdisk-balanced".
+        """
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size in GB of the boot disk (default is 100GB).
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the disk. The default value depends on the machine type. Valid values include: "pd-ssd", "pd-standard", "pd-balanced", and "hyperdisk-balanced".
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecWorkerPoolSpecLustreMount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceIp":
+            suggest = "instance_ip"
+        elif key == "mountPoint":
+            suggest = "mount_point"
+        elif key == "volumeHandle":
+            suggest = "volume_handle"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecWorkerPoolSpecLustreMount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecLustreMount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecLustreMount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filesystem: _builtins.str,
+                 instance_ip: _builtins.str,
+                 mount_point: _builtins.str,
+                 volume_handle: _builtins.str):
+        """
+        :param _builtins.str filesystem: The name of the Lustre filesystem.
+        :param _builtins.str instance_ip: IP address of the Lustre instance.
+        :param _builtins.str mount_point: Destination mount path. The Lustre file system will be mounted for the user under /mnt/lustre/<mount_point>.
+        :param _builtins.str volume_handle: The unique identifier of the Lustre volume.
+        """
+        pulumi.set(__self__, "filesystem", filesystem)
+        pulumi.set(__self__, "instance_ip", instance_ip)
+        pulumi.set(__self__, "mount_point", mount_point)
+        pulumi.set(__self__, "volume_handle", volume_handle)
+
+    @_builtins.property
+    @pulumi.getter
+    def filesystem(self) -> _builtins.str:
+        """
+        The name of the Lustre filesystem.
+        """
+        return pulumi.get(self, "filesystem")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceIp")
+    def instance_ip(self) -> _builtins.str:
+        """
+        IP address of the Lustre instance.
+        """
+        return pulumi.get(self, "instance_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="mountPoint")
+    def mount_point(self) -> _builtins.str:
+        """
+        Destination mount path. The Lustre file system will be mounted for the user under /mnt/lustre/<mount_point>.
+        """
+        return pulumi.get(self, "mount_point")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeHandle")
+    def volume_handle(self) -> _builtins.str:
+        """
+        The unique identifier of the Lustre volume.
+        """
+        return pulumi.get(self, "volume_handle")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecWorkerPoolSpecMachineSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
+        elif key == "tpuTopology":
+            suggest = "tpu_topology"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecWorkerPoolSpecMachineSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecMachineSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecMachineSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_count: Optional[_builtins.int] = None,
+                 accelerator_type: Optional[_builtins.str] = None,
+                 machine_type: Optional[_builtins.str] = None,
+                 reservation_affinity: Optional['outputs.AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity'] = None,
+                 tpu_topology: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int accelerator_count: The number of accelerators to attach to the machine.
+        :param _builtins.str accelerator_type: The type of accelerator(s) that may be attached to the machine.
+        :param _builtins.str machine_type: The type of the machine.
+        :param 'AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinityArgs' reservation_affinity: Configuration for using robust to failure reservation.
+               Structure is documented below.
+        :param _builtins.str tpu_topology: The topology of the TPUs.
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if tpu_topology is not None:
+            pulumi.set(__self__, "tpu_topology", tpu_topology)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[_builtins.int]:
+        """
+        The number of accelerators to attach to the machine.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[_builtins.str]:
+        """
+        The type of accelerator(s) that may be attached to the machine.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the machine.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional['outputs.AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity']:
+        """
+        Configuration for using robust to failure reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @_builtins.property
+    @pulumi.getter(name="tpuTopology")
+    def tpu_topology(self) -> Optional[_builtins.str]:
+        """
+        The topology of the TPUs.
+        """
+        return pulumi.get(self, "tpu_topology")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "reservationAffinityType":
+            suggest = "reservation_affinity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecMachineSpecReservationAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 reservation_affinity_type: _builtins.str,
+                 key: Optional[_builtins.str] = None,
+                 values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str reservation_affinity_type: Specifies the reservation affinity type. Possible values: "NO_RESERVATION", "ANY_RESERVATION", and "SPECIFIC_RESERVATION"
+        :param _builtins.str key: Corresponds to the label key of a reservation resource.
+        :param Sequence[_builtins.str] values: Corresponds to the label values of a reservation resource.
+        """
+        pulumi.set(__self__, "reservation_affinity_type", reservation_affinity_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinityType")
+    def reservation_affinity_type(self) -> _builtins.str:
+        """
+        Specifies the reservation affinity type. Possible values: "NO_RESERVATION", "ANY_RESERVATION", and "SPECIFIC_RESERVATION"
+        """
+        return pulumi.get(self, "reservation_affinity_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Corresponds to the label key of a reservation resource.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecWorkerPoolSpecNfsMount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPoint":
+            suggest = "mount_point"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecWorkerPoolSpecNfsMount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecNfsMount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecNfsMount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_point: _builtins.str,
+                 path: _builtins.str,
+                 server: _builtins.str):
+        """
+        :param _builtins.str mount_point: Destination mount path. The path must be absolute.
+        :param _builtins.str path: Source path exported from NFS database.
+        :param _builtins.str server: IP address of the NFS server.
+        """
+        pulumi.set(__self__, "mount_point", mount_point)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "server", server)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPoint")
+    def mount_point(self) -> _builtins.str:
+        """
+        Destination mount path. The path must be absolute.
+        """
+        return pulumi.get(self, "mount_point")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        Source path exported from NFS database.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> _builtins.str:
+        """
+        IP address of the NFS server.
+        """
+        return pulumi.get(self, "server")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executorImageUri":
+            suggest = "executor_image_uri"
+        elif key == "packageUris":
+            suggest = "package_uris"
+        elif key == "pythonModule":
+            suggest = "python_module"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 executor_image_uri: _builtins.str,
+                 package_uris: Sequence[_builtins.str],
+                 python_module: _builtins.str,
+                 args: Optional[Sequence[_builtins.str]] = None,
+                 envs: Optional[Sequence['outputs.AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv']] = None):
+        """
+        :param _builtins.str executor_image_uri: The URI of a container image in Artifact Registry that will run the provided Python package.
+        :param Sequence[_builtins.str] package_uris: The Google Cloud Storage location of the Python package files which are the training program and its dependent packages.
+        :param _builtins.str python_module: The Python module name to run after installing the packages.
+        :param Sequence[_builtins.str] args: Command line arguments to be passed to the Python task.
+        :param Sequence['AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnvArgs'] envs: Environment variables to be passed to the python module. Maximum limit is 100.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "executor_image_uri", executor_image_uri)
+        pulumi.set(__self__, "package_uris", package_uris)
+        pulumi.set(__self__, "python_module", python_module)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+
+    @_builtins.property
+    @pulumi.getter(name="executorImageUri")
+    def executor_image_uri(self) -> _builtins.str:
+        """
+        The URI of a container image in Artifact Registry that will run the provided Python package.
+        """
+        return pulumi.get(self, "executor_image_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="packageUris")
+    def package_uris(self) -> Sequence[_builtins.str]:
+        """
+        The Google Cloud Storage location of the Python package files which are the training program and its dependent packages.
+        """
+        return pulumi.get(self, "package_uris")
+
+    @_builtins.property
+    @pulumi.getter(name="pythonModule")
+    def python_module(self) -> _builtins.str:
+        """
+        The Python module name to run after installing the packages.
+        """
+        return pulumi.get(self, "python_module")
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Command line arguments to be passed to the Python task.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv']]:
+        """
+        Environment variables to be passed to the python module. Maximum limit is 100.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "envs")
+
+
+@pulumi.output_type
+class AiCustomJobJobSpecWorkerPoolSpecPythonPackageSpecEnv(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Name of the environment variable.
+        :param _builtins.str value: Value of the environment variable.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class AiDatasetEncryptionSpec(dict):
@@ -6602,7 +7823,9 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "leafNodeEmbeddingCount":
+        if key == "fractionLeafNodesToSearch":
+            suggest = "fraction_leaf_nodes_to_search"
+        elif key == "leafNodeEmbeddingCount":
             suggest = "leaf_node_embedding_count"
         elif key == "leafNodesToSearchPercent":
             suggest = "leaf_nodes_to_search_percent"
@@ -6619,17 +7842,36 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 fraction_leaf_nodes_to_search: Optional[_builtins.float] = None,
                  leaf_node_embedding_count: Optional[_builtins.int] = None,
                  leaf_nodes_to_search_percent: Optional[_builtins.int] = None):
         """
+        :param _builtins.float fraction_leaf_nodes_to_search: The default fraction of leaf nodes that any query may be searched. Must be in
+               range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+               This value can only be set when creating the index.
         :param _builtins.int leaf_node_embedding_count: Number of embeddings on each leaf node. The default value is 1000 if not set.
-        :param _builtins.int leaf_nodes_to_search_percent: The default percentage of leaf nodes that any query may be searched. Must be in
+        :param _builtins.int leaf_nodes_to_search_percent: (Optional, Deprecated)
+               The default percentage of leaf nodes that any query may be searched. Must be in
                range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+               
+               > **Warning:** `leaf_nodes_to_search_percent` is deprecated and will be removed in a future major release. Use `fraction_leaf_nodes_to_search` instead.
         """
+        if fraction_leaf_nodes_to_search is not None:
+            pulumi.set(__self__, "fraction_leaf_nodes_to_search", fraction_leaf_nodes_to_search)
         if leaf_node_embedding_count is not None:
             pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
         if leaf_nodes_to_search_percent is not None:
             pulumi.set(__self__, "leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
+
+    @_builtins.property
+    @pulumi.getter(name="fractionLeafNodesToSearch")
+    def fraction_leaf_nodes_to_search(self) -> Optional[_builtins.float]:
+        """
+        The default fraction of leaf nodes that any query may be searched. Must be in
+        range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+        This value can only be set when creating the index.
+        """
+        return pulumi.get(self, "fraction_leaf_nodes_to_search")
 
     @_builtins.property
     @pulumi.getter(name="leafNodeEmbeddingCount")
@@ -6641,10 +7883,14 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="leafNodesToSearchPercent")
+    @_utilities.deprecated("""`leaf_nodes_to_search_percent` is deprecated and will be removed in a future major release. Use `fraction_leaf_nodes_to_search` instead.""")
     def leaf_nodes_to_search_percent(self) -> Optional[_builtins.int]:
         """
+        (Optional, Deprecated)
         The default percentage of leaf nodes that any query may be searched. Must be in
         range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+
+        > **Warning:** `leaf_nodes_to_search_percent` is deprecated and will be removed in a future major release. Use `fraction_leaf_nodes_to_search` instead.
         """
         return pulumi.get(self, "leaf_nodes_to_search_percent")
 
@@ -6723,6 +7969,2122 @@ class AiMetadataStoreState(dict):
         The disk utilization of the MetadataStore in bytes.
         """
         return pulumi.get(self, "disk_utilization_bytes")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterClusterEvent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventMessage":
+            suggest = "event_message"
+        elif key == "eventTime":
+            suggest = "event_time"
+        elif key == "eventType":
+            suggest = "event_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterClusterEvent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterClusterEvent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterClusterEvent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_message: Optional[_builtins.str] = None,
+                 event_time: Optional[_builtins.str] = None,
+                 event_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str event_message: (Output)
+               The detailed description of the cluster event.
+        :param _builtins.str event_time: (Output)
+               The occurrence time of the cluster event.
+        :param _builtins.str event_type: (Output)
+               The type of the cluster event.
+               Possible values:
+               VM_PROLOG_ERROR
+               VM_EPILOG_ERROR
+               VM_CONTINUOUS_GPU_ERROR
+               VM_SCAN_ERROR
+               VM_SLURM_POWER_DOWN
+               VM_SLURM_DRAIN
+               VM_DELETION
+               VM_REPORT_AND_REPLACEMENT
+               VM_REBOOT
+        """
+        if event_message is not None:
+            pulumi.set(__self__, "event_message", event_message)
+        if event_time is not None:
+            pulumi.set(__self__, "event_time", event_time)
+        if event_type is not None:
+            pulumi.set(__self__, "event_type", event_type)
+
+    @_builtins.property
+    @pulumi.getter(name="eventMessage")
+    def event_message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The detailed description of the cluster event.
+        """
+        return pulumi.get(self, "event_message")
+
+    @_builtins.property
+    @pulumi.getter(name="eventTime")
+    def event_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The occurrence time of the cluster event.
+        """
+        return pulumi.get(self, "event_time")
+
+    @_builtins.property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The type of the cluster event.
+        Possible values:
+        VM_PROLOG_ERROR
+        VM_EPILOG_ERROR
+        VM_CONTINUOUS_GPU_ERROR
+        VM_SCAN_ERROR
+        VM_SLURM_POWER_DOWN
+        VM_SLURM_DRAIN
+        VM_DELETION
+        VM_REPORT_AND_REPLACEMENT
+        VM_REBOOT
+        """
+        return pulumi.get(self, "event_type")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterClusterStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodesStatuses":
+            suggest = "nodes_statuses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterClusterStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterClusterStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterClusterStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 detail: Optional[_builtins.str] = None,
+                 errors: Optional[Sequence['outputs.AiModelDevelopmentClusterClusterStatusError']] = None,
+                 nodes_statuses: Optional[Sequence['outputs.AiModelDevelopmentClusterClusterStatusNodesStatus']] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str detail: (Output)
+               Human-readable detail about the current state.
+        :param Sequence['AiModelDevelopmentClusterClusterStatusErrorArgs'] errors: (Output)
+               The `Status` type defines a logical error model that is suitable for
+               different programming environments, including REST APIs and RPC APIs. It is
+               used by [gRPC](https://github.com/grpc). Each `Status` message contains
+               three pieces of data: error code, error message, and error details.
+               You can find out more about this error model and how to work with it in the
+               [API Design Guide](https://cloud.google.com/apis/design/errors).
+               Structure is documented below.
+        :param Sequence['AiModelDevelopmentClusterClusterStatusNodesStatusArgs'] nodes_statuses: (Output)
+               The status information of all the nodes in the cluster.
+               Structure is documented below.
+        :param _builtins.str state: (Output)
+               The current state of the XManager instance.
+               Possible values:
+               PROVISIONING
+               RUNNING
+               DELETING
+               ERROR
+        """
+        if detail is not None:
+            pulumi.set(__self__, "detail", detail)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if nodes_statuses is not None:
+            pulumi.set(__self__, "nodes_statuses", nodes_statuses)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def detail(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Human-readable detail about the current state.
+        """
+        return pulumi.get(self, "detail")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.AiModelDevelopmentClusterClusterStatusError']]:
+        """
+        (Output)
+        The `Status` type defines a logical error model that is suitable for
+        different programming environments, including REST APIs and RPC APIs. It is
+        used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        three pieces of data: error code, error message, and error details.
+        You can find out more about this error model and how to work with it in the
+        [API Design Guide](https://cloud.google.com/apis/design/errors).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="nodesStatuses")
+    def nodes_statuses(self) -> Optional[Sequence['outputs.AiModelDevelopmentClusterClusterStatusNodesStatus']]:
+        """
+        (Output)
+        The status information of all the nodes in the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "nodes_statuses")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The current state of the XManager instance.
+        Possible values:
+        PROVISIONING
+        RUNNING
+        DELETING
+        ERROR
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterClusterStatusError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 details: Optional[Sequence[Mapping[str, _builtins.str]]] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, _builtins.str]] details: (Output)
+               A list of messages that carry the error details.  There is a common set of
+               message types for APIs to use.
+        :param _builtins.str message: (Output)
+               A developer-facing error message, which should be in English. Any
+               user-facing error message should be localized and sent in the
+               google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def details(self) -> Optional[Sequence[Mapping[str, _builtins.str]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.  There is a common set of
+        message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterClusterStatusNodesStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "instanceId":
+            suggest = "instance_id"
+        elif key == "instanceName":
+            suggest = "instance_name"
+        elif key == "lastUpdateTime":
+            suggest = "last_update_time"
+        elif key == "nodePoolId":
+            suggest = "node_pool_id"
+        elif key == "nodePoolType":
+            suggest = "node_pool_type"
+        elif key == "nodeState":
+            suggest = "node_state"
+        elif key == "physicalHosts":
+            suggest = "physical_hosts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterClusterStatusNodesStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterClusterStatusNodesStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterClusterStatusNodesStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: Optional[_builtins.str] = None,
+                 detail: Optional[_builtins.str] = None,
+                 instance_id: Optional[_builtins.str] = None,
+                 instance_name: Optional[_builtins.str] = None,
+                 last_update_time: Optional[_builtins.str] = None,
+                 node_pool_id: Optional[_builtins.str] = None,
+                 node_pool_type: Optional[_builtins.str] = None,
+                 node_state: Optional[_builtins.str] = None,
+                 physical_hosts: Optional[Sequence['outputs.AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost']] = None):
+        """
+        :param _builtins.str create_time: (Output)
+               Time when the TrainingService was created.
+        :param _builtins.str detail: (Output)
+               Human-readable detail about the current state.
+        :param _builtins.str instance_id: (Output)
+               The XManager instance ID (for example, "xmc-").
+        :param _builtins.str instance_name: (Output)
+               The name of the Compute Engine instance associated with the node.
+        :param _builtins.str last_update_time: (Output)
+               The time when the node's current state or detail last changed.
+        :param _builtins.str node_pool_id: (Output)
+               The ID of the node pool.
+        :param _builtins.str node_pool_type: (Output)
+               The type of the node pool.
+               Possible values:
+               NODE_POOL_TYPE_LOGIN
+               NODE_POOL_TYPE_COMPUTE
+        :param _builtins.str node_state: (Output)
+               The state of the node.
+               Possible values:
+               PREPARING
+               RUNNING
+               ERROR
+               UPDATING
+        :param Sequence['AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHostArgs'] physical_hosts: (Output)
+               Physical Host Hardware information.
+               Structure is documented below.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if detail is not None:
+            pulumi.set(__self__, "detail", detail)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if last_update_time is not None:
+            pulumi.set(__self__, "last_update_time", last_update_time)
+        if node_pool_id is not None:
+            pulumi.set(__self__, "node_pool_id", node_pool_id)
+        if node_pool_type is not None:
+            pulumi.set(__self__, "node_pool_type", node_pool_type)
+        if node_state is not None:
+            pulumi.set(__self__, "node_state", node_state)
+        if physical_hosts is not None:
+            pulumi.set(__self__, "physical_hosts", physical_hosts)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Time when the TrainingService was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def detail(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Human-readable detail about the current state.
+        """
+        return pulumi.get(self, "detail")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The XManager instance ID (for example, "xmc-").
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the Compute Engine instance associated with the node.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="lastUpdateTime")
+    def last_update_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time when the node's current state or detail last changed.
+        """
+        return pulumi.get(self, "last_update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="nodePoolId")
+    def node_pool_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The ID of the node pool.
+        """
+        return pulumi.get(self, "node_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="nodePoolType")
+    def node_pool_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The type of the node pool.
+        Possible values:
+        NODE_POOL_TYPE_LOGIN
+        NODE_POOL_TYPE_COMPUTE
+        """
+        return pulumi.get(self, "node_pool_type")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeState")
+    def node_state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the node.
+        Possible values:
+        PREPARING
+        RUNNING
+        ERROR
+        UPDATING
+        """
+        return pulumi.get(self, "node_state")
+
+    @_builtins.property
+    @pulumi.getter(name="physicalHosts")
+    def physical_hosts(self) -> Optional[Sequence['outputs.AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost']]:
+        """
+        (Output)
+        Physical Host Hardware information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "physical_hosts")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockId":
+            suggest = "block_id"
+        elif key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "hostId":
+            suggest = "host_id"
+        elif key == "subblockId":
+            suggest = "subblock_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterClusterStatusNodesStatusPhysicalHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_id: Optional[_builtins.str] = None,
+                 cluster_name: Optional[_builtins.str] = None,
+                 host_id: Optional[_builtins.str] = None,
+                 subblock_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str block_id: (Output)
+               Name of the block.
+        :param _builtins.str cluster_name: (Output)
+               Name of the physical cluster.
+        :param _builtins.str host_id: (Output)
+               Name of the host.
+        :param _builtins.str subblock_id: (Output)
+               Name of the sub-block.
+        """
+        if block_id is not None:
+            pulumi.set(__self__, "block_id", block_id)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if host_id is not None:
+            pulumi.set(__self__, "host_id", host_id)
+        if subblock_id is not None:
+            pulumi.set(__self__, "subblock_id", subblock_id)
+
+    @_builtins.property
+    @pulumi.getter(name="blockId")
+    def block_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Name of the block.
+        """
+        return pulumi.get(self, "block_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Name of the physical cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @_builtins.property
+    @pulumi.getter(name="hostId")
+    def host_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Name of the host.
+        """
+        return pulumi.get(self, "host_id")
+
+    @_builtins.property
+    @pulumi.getter(name="subblockId")
+    def subblock_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Name of the sub-block.
+        """
+        return pulumi.get(self, "subblock_id")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterLustreExportConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationBucket":
+            suggest = "destination_bucket"
+        elif key == "daysOfWeeks":
+            suggest = "days_of_weeks"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterLustreExportConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterLustreExportConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterLustreExportConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_bucket: _builtins.str,
+                 days_of_weeks: Optional[Sequence[_builtins.str]] = None,
+                 lustres: Optional[Sequence[_builtins.str]] = None,
+                 start_time: Optional['outputs.AiModelDevelopmentClusterLustreExportConfigStartTime'] = None):
+        """
+        :param _builtins.str destination_bucket: The Cloud Storage bucket that backups are written to, without
+               the "gs://" scheme.
+        :param Sequence[_builtins.str] days_of_weeks: Days of the week on which a backup runs, each at most once and
+               none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+        :param Sequence[_builtins.str] lustres: The Managed Lustre instances to back up, each named as
+               "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+               must be attached to one of the cluster's node pools, and no entry may
+               repeat. If empty, every attached instance is backed up.
+        :param 'AiModelDevelopmentClusterLustreExportConfigStartTimeArgs' start_time: Time when the ModelDevelopmentCluster for the first time entered the
+               `RUNNING` state.
+        """
+        pulumi.set(__self__, "destination_bucket", destination_bucket)
+        if days_of_weeks is not None:
+            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+        if lustres is not None:
+            pulumi.set(__self__, "lustres", lustres)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationBucket")
+    def destination_bucket(self) -> _builtins.str:
+        """
+        The Cloud Storage bucket that backups are written to, without
+        the "gs://" scheme.
+        """
+        return pulumi.get(self, "destination_bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Days of the week on which a backup runs, each at most once and
+        none of them DAY_OF_WEEK_UNSPECIFIED. If empty, a backup runs every day.
+        """
+        return pulumi.get(self, "days_of_weeks")
+
+    @_builtins.property
+    @pulumi.getter
+    def lustres(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The Managed Lustre instances to back up, each named as
+        "projects/{project}/locations/{zone}/instances/{instance}". Every entry
+        must be attached to one of the cluster's node pools, and no entry may
+        repeat. If empty, every attached instance is backed up.
+        """
+        return pulumi.get(self, "lustres")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional['outputs.AiModelDevelopmentClusterLustreExportConfigStartTime']:
+        """
+        Time when the ModelDevelopmentCluster for the first time entered the
+        `RUNNING` state.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterLustreExportConfigStartTime(dict):
+    def __init__(__self__, *,
+                 hours: Optional[_builtins.int] = None,
+                 minutes: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+               typically must be less than or equal to 23. An API may choose to allow the
+               value "24:00:00" for scenarios like business closing time.
+        :param _builtins.int minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or
+               equal to 59.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+
+    @_builtins.property
+    @pulumi.getter
+    def hours(self) -> Optional[_builtins.int]:
+        """
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        typically must be less than or equal to 23. An API may choose to allow the
+        value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @_builtins.property
+    @pulumi.getter
+    def minutes(self) -> Optional[_builtins.int]:
+        """
+        Minutes of an hour. Must be greater than or equal to 0 and less than or
+        equal to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterNetwork(dict):
+    def __init__(__self__, *,
+                 network: _builtins.str,
+                 subnetwork: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str network: Network spec of the cluster.
+               Structure is documented below.
+        :param _builtins.str subnetwork: The name of the subnetwork in the above network to create the cluster.
+               If not specified:
+               * for auto mode VPC, the subnet in corresponding region is auto-selected;
+               * for custom mode VPC, a new subnet will be automatically created.
+        """
+        pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> _builtins.str:
+        """
+        Network spec of the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[_builtins.str]:
+        """
+        The name of the subnetwork in the above network to create the cluster.
+        If not specified:
+        * for auto mode VPC, the subnet in corresponding region is auto-selected;
+        * for custom mode VPC, a new subnet will be automatically created.
+        """
+        return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterNodePool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineSpec":
+            suggest = "machine_spec"
+        elif key == "bootDisk":
+            suggest = "boot_disk"
+        elif key == "effectiveFlexStartMaxDuration":
+            suggest = "effective_flex_start_max_duration"
+        elif key == "enablePublicIps":
+            suggest = "enable_public_ips"
+        elif key == "flexStartMaxDuration":
+            suggest = "flex_start_max_duration"
+        elif key == "nodeImage":
+            suggest = "node_image"
+        elif key == "provisioningModel":
+            suggest = "provisioning_model"
+        elif key == "scalingSpec":
+            suggest = "scaling_spec"
+        elif key == "startupScript":
+            suggest = "startup_script"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterNodePool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterNodePool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterNodePool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 machine_spec: 'outputs.AiModelDevelopmentClusterNodePoolMachineSpec',
+                 boot_disk: Optional['outputs.AiModelDevelopmentClusterNodePoolBootDisk'] = None,
+                 effective_flex_start_max_duration: Optional[_builtins.str] = None,
+                 enable_public_ips: Optional[_builtins.bool] = None,
+                 filestores: Optional[Sequence[_builtins.str]] = None,
+                 flex_start_max_duration: Optional[_builtins.str] = None,
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 lustres: Optional[Sequence[_builtins.str]] = None,
+                 node_image: Optional[_builtins.str] = None,
+                 provisioning_model: Optional[_builtins.str] = None,
+                 scaling_spec: Optional['outputs.AiModelDevelopmentClusterNodePoolScalingSpec'] = None,
+                 startup_script: Optional[_builtins.str] = None,
+                 zone: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: The unique ID referring to this node pool.
+        :param 'AiModelDevelopmentClusterNodePoolMachineSpecArgs' machine_spec: Specification of a single machine.
+               Structure is documented below.
+        :param 'AiModelDevelopmentClusterNodePoolBootDiskArgs' boot_disk: Represents the spec of disk options.
+               Structure is documented below.
+        :param _builtins.str effective_flex_start_max_duration: (Output)
+               The effective maximum duration for instances in this node pool.
+               This field reflects the value of `flex_start_max_duration` if it is
+               set by the user, or the server-applied default (for example, 7 days) if it
+               is not.
+               This field is only applicable when `provisioning_model` is set to
+               `FLEX_START`.
+        :param _builtins.bool enable_public_ips: Whether to enable public IPs for the node pool.
+        :param Sequence[_builtins.str] filestores: List of the existing Filestore instances to be mounted.
+               For example:
+               if "projects/my-project/locations/us-central1-a/instances/my-instance" is
+               specified, the instance will be mounted to the node pool under the path
+               "mnt/filestore/"
+        :param _builtins.str flex_start_max_duration: The maximum duration for instances in this node pool.
+               This field is only applicable when `provisioning_model` is set to
+               `FLEX_START`.
+        :param Mapping[str, _builtins.str] labels: The labels with user-defined metadata to organize the node pool. These
+               labels are applied to the underlying compute resources (for example, the
+               VM instances) of the node pool, so they appear in billing exports and
+               Cloud Monitoring filters.
+               Label keys and values can be no longer than 64 characters
+               (Unicode codepoints), can only contain lowercase letters, numeric
+               characters, underscores and dashes. International characters are allowed.
+               See https://goo.gl/xmQnxf for more information and examples of labels.
+        :param Sequence[_builtins.str] lustres: List of the existing Google Managed Lustre instances to be mounted.
+               Similar to the filestores, the instance will be mounted to the node pool
+               under the path "/mnt/lustre/"
+        :param _builtins.str node_image: The node image to be used for the VMs in the node pool.
+               In format of "projects//global/images/" or
+               "projects/test-project/global/images/family/"
+        :param _builtins.str provisioning_model: Specifies the provisioning model for the node pool.
+               Behavior for `PROVISIONING_MODEL_UNSPECIFIED`:
+               - For CPU node pools: Defaults to `ON_DEMAND`.
+               - For GPU node pools:
+               - If
+                 `machine_spec.reservation_affinity`
+                 is set, it defaults to `RESERVATION`.
+               - If
+                 `machine_spec.reservation_affinity`
+                 is NOT set, this is an INVALID state and the request will be rejected.
+                 An explicit `provisioning_model` must be provided.
+        :param 'AiModelDevelopmentClusterNodePoolScalingSpecArgs' scaling_spec: The scaling spec of the node pool.
+        :param _builtins.str startup_script: Startup script for the node pool instances.
+        :param _builtins.str zone: The zone of the node pool.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "machine_spec", machine_spec)
+        if boot_disk is not None:
+            pulumi.set(__self__, "boot_disk", boot_disk)
+        if effective_flex_start_max_duration is not None:
+            pulumi.set(__self__, "effective_flex_start_max_duration", effective_flex_start_max_duration)
+        if enable_public_ips is not None:
+            pulumi.set(__self__, "enable_public_ips", enable_public_ips)
+        if filestores is not None:
+            pulumi.set(__self__, "filestores", filestores)
+        if flex_start_max_duration is not None:
+            pulumi.set(__self__, "flex_start_max_duration", flex_start_max_duration)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if lustres is not None:
+            pulumi.set(__self__, "lustres", lustres)
+        if node_image is not None:
+            pulumi.set(__self__, "node_image", node_image)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if scaling_spec is not None:
+            pulumi.set(__self__, "scaling_spec", scaling_spec)
+        if startup_script is not None:
+            pulumi.set(__self__, "startup_script", startup_script)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The unique ID referring to this node pool.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> 'outputs.AiModelDevelopmentClusterNodePoolMachineSpec':
+        """
+        Specification of a single machine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="bootDisk")
+    def boot_disk(self) -> Optional['outputs.AiModelDevelopmentClusterNodePoolBootDisk']:
+        """
+        Represents the spec of disk options.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "boot_disk")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveFlexStartMaxDuration")
+    def effective_flex_start_max_duration(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The effective maximum duration for instances in this node pool.
+        This field reflects the value of `flex_start_max_duration` if it is
+        set by the user, or the server-applied default (for example, 7 days) if it
+        is not.
+        This field is only applicable when `provisioning_model` is set to
+        `FLEX_START`.
+        """
+        return pulumi.get(self, "effective_flex_start_max_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="enablePublicIps")
+    def enable_public_ips(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable public IPs for the node pool.
+        """
+        return pulumi.get(self, "enable_public_ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def filestores(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of the existing Filestore instances to be mounted.
+        For example:
+        if "projects/my-project/locations/us-central1-a/instances/my-instance" is
+        specified, the instance will be mounted to the node pool under the path
+        "mnt/filestore/"
+        """
+        return pulumi.get(self, "filestores")
+
+    @_builtins.property
+    @pulumi.getter(name="flexStartMaxDuration")
+    def flex_start_max_duration(self) -> Optional[_builtins.str]:
+        """
+        The maximum duration for instances in this node pool.
+        This field is only applicable when `provisioning_model` is set to
+        `FLEX_START`.
+        """
+        return pulumi.get(self, "flex_start_max_duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The labels with user-defined metadata to organize the node pool. These
+        labels are applied to the underlying compute resources (for example, the
+        VM instances) of the node pool, so they appear in billing exports and
+        Cloud Monitoring filters.
+        Label keys and values can be no longer than 64 characters
+        (Unicode codepoints), can only contain lowercase letters, numeric
+        characters, underscores and dashes. International characters are allowed.
+        See https://goo.gl/xmQnxf for more information and examples of labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def lustres(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of the existing Google Managed Lustre instances to be mounted.
+        Similar to the filestores, the instance will be mounted to the node pool
+        under the path "/mnt/lustre/"
+        """
+        return pulumi.get(self, "lustres")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeImage")
+    def node_image(self) -> Optional[_builtins.str]:
+        """
+        The node image to be used for the VMs in the node pool.
+        In format of "projects//global/images/" or
+        "projects/test-project/global/images/family/"
+        """
+        return pulumi.get(self, "node_image")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[_builtins.str]:
+        """
+        Specifies the provisioning model for the node pool.
+        Behavior for `PROVISIONING_MODEL_UNSPECIFIED`:
+        - For CPU node pools: Defaults to `ON_DEMAND`.
+        - For GPU node pools:
+        - If
+          `machine_spec.reservation_affinity`
+          is set, it defaults to `RESERVATION`.
+        - If
+          `machine_spec.reservation_affinity`
+          is NOT set, this is an INVALID state and the request will be rejected.
+          An explicit `provisioning_model` must be provided.
+        """
+        return pulumi.get(self, "provisioning_model")
+
+    @_builtins.property
+    @pulumi.getter(name="scalingSpec")
+    def scaling_spec(self) -> Optional['outputs.AiModelDevelopmentClusterNodePoolScalingSpec']:
+        """
+        The scaling spec of the node pool.
+        """
+        return pulumi.get(self, "scaling_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="startupScript")
+    def startup_script(self) -> Optional[_builtins.str]:
+        """
+        Startup script for the node pool instances.
+        """
+        return pulumi.get(self, "startup_script")
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> Optional[_builtins.str]:
+        """
+        The zone of the node pool.
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterNodePoolBootDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "bootDiskType":
+            suggest = "boot_disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterNodePoolBootDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterNodePoolBootDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterNodePoolBootDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boot_disk_size_gb: Optional[_builtins.int] = None,
+                 boot_disk_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int boot_disk_size_gb: Size in GB of the boot disk (default is 100GB).
+        :param _builtins.str boot_disk_type: Type of the boot disk. For non-A3U machines, the default value is
+               "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+               Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+               "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+        """
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size in GB of the boot disk (default is 100GB).
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the boot disk. For non-A3U machines, the default value is
+        "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+        Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+        "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterNodePoolMachineSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterNodePoolMachineSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterNodePoolMachineSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterNodePoolMachineSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_type: _builtins.str,
+                 reservation_affinity: Optional['outputs.AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity'] = None):
+        """
+        :param _builtins.str machine_type: The type of the machine.
+               
+               See the [list of machine types supported for
+               prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+               
+               See the [list of machine types supported for custom
+               training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+               
+               For DeployedModel this field is optional, and the default
+               value is 'n1-standard-2'. For BatchPredictionJob or as part of
+               WorkerPoolSpec this field is required.
+        :param 'AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinityArgs' reservation_affinity: A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+               DeployedModel) to draw its Compute Engine resources from a Shared
+               Reservation, or exclusively from on-demand capacity.
+        """
+        pulumi.set(__self__, "machine_type", machine_type)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> _builtins.str:
+        """
+        The type of the machine.
+
+        See the [list of machine types supported for
+        prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+
+        See the [list of machine types supported for custom
+        training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+
+        For DeployedModel this field is optional, and the default
+        value is 'n1-standard-2'. For BatchPredictionJob or as part of
+        WorkerPoolSpec this field is required.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional['outputs.AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity']:
+        """
+        A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+        DeployedModel) to draw its Compute Engine resources from a Shared
+        Reservation, or exclusively from on-demand capacity.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "reservationAffinityType":
+            suggest = "reservation_affinity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 reservation_affinity_type: _builtins.str,
+                 values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str reservation_affinity_type: Specifies the reservation affinity type.
+               Possible values:
+               NO_RESERVATION
+               ANY_RESERVATION
+               SPECIFIC_RESERVATION
+        :param Sequence[_builtins.str] values: Corresponds to the label values of a reservation resource. This must be the
+               resource name of the reservation, reservation block, or reservation sub-
+               block.
+        """
+        pulumi.set(__self__, "reservation_affinity_type", reservation_affinity_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinityType")
+    def reservation_affinity_type(self) -> _builtins.str:
+        """
+        Specifies the reservation affinity type.
+        Possible values:
+        NO_RESERVATION
+        ANY_RESERVATION
+        SPECIFIC_RESERVATION
+        """
+        return pulumi.get(self, "reservation_affinity_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Corresponds to the label values of a reservation resource. This must be the
+        resource name of the reservation, reservation block, or reservation sub-
+        block.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterNodePoolScalingSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNodeCount":
+            suggest = "max_node_count"
+        elif key == "minNodeCount":
+            suggest = "min_node_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterNodePoolScalingSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterNodePoolScalingSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterNodePoolScalingSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_node_count: Optional[_builtins.int] = None,
+                 min_node_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int max_node_count: maximum size of the node pool,
+               must be ≥ min_node_count
+        :param _builtins.int min_node_count: minimum size of the node pool,
+               must be >= 0 and <= max_node_count
+        """
+        if max_node_count is not None:
+            pulumi.set(__self__, "max_node_count", max_node_count)
+        if min_node_count is not None:
+            pulumi.set(__self__, "min_node_count", min_node_count)
+
+    @_builtins.property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> Optional[_builtins.int]:
+        """
+        maximum size of the node pool,
+        must be ≥ min_node_count
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> Optional[_builtins.int]:
+        """
+        minimum size of the node pool,
+        must be >= 0 and <= max_node_count
+        """
+        return pulumi.get(self, "min_node_count")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterOrchestratorSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slurmSpec":
+            suggest = "slurm_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterOrchestratorSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterOrchestratorSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterOrchestratorSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 slurm_spec: Optional['outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec'] = None):
+        """
+        :param 'AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs' slurm_spec: The Slurm orchestrator related spec of the cluster.
+        """
+        if slurm_spec is not None:
+            pulumi.set(__self__, "slurm_spec", slurm_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="slurmSpec")
+    def slurm_spec(self) -> Optional['outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec']:
+        """
+        The Slurm orchestrator related spec of the cluster.
+        """
+        return pulumi.get(self, "slurm_spec")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterOrchestratorSpecSlurmSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "homeDirectoryStorage":
+            suggest = "home_directory_storage"
+        elif key == "loginNodePoolId":
+            suggest = "login_node_pool_id"
+        elif key == "defaultPartitionId":
+            suggest = "default_partition_id"
+        elif key == "epilogBashScripts":
+            suggest = "epilog_bash_scripts"
+        elif key == "nodeSets":
+            suggest = "node_sets"
+        elif key == "prologBashScripts":
+            suggest = "prolog_bash_scripts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterOrchestratorSpecSlurmSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterOrchestratorSpecSlurmSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterOrchestratorSpecSlurmSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 home_directory_storage: _builtins.str,
+                 login_node_pool_id: _builtins.str,
+                 config: Optional[Mapping[str, _builtins.str]] = None,
+                 default_partition_id: Optional[_builtins.str] = None,
+                 epilog_bash_scripts: Optional[Sequence[_builtins.str]] = None,
+                 node_sets: Optional[Sequence['outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet']] = None,
+                 partitions: Optional[Sequence['outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition']] = None,
+                 prolog_bash_scripts: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str home_directory_storage: Full name of the Filestore to be mounted as /home directory on every node.
+        :param _builtins.str login_node_pool_id: The node pool id to be used as slurm login node.
+        :param Mapping[str, _builtins.str] config: Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+               slurm.conf.
+               
+               Keys are Slurm parameter names exactly as documented by SchedMD
+               (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+               Values are written the way slurm.conf writes them, including composite
+               forms such as 'bf_window=1440,bf_resolution=600'.
+               
+               Example:
+               { "PriorityType":            "priority/multifactor",
+               "PriorityWeightAge":       "1000",
+               "PreemptMode":             "SUSPEND,GANG",
+               "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+               
+               Unsupported, reserved, or misspelled parameters, and values that are not
+               legal for the parameter, are rejected at request time with the offending
+               parameter named; they are never silently dropped. Settings
+               that apply to a single partition or node pool belong in
+               'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+               several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+               are valid at more than one scope with different meanings and different
+               legal values.
+               
+               On update this map is replaced wholesale; supply the complete desired set.
+        :param _builtins.str default_partition_id: Id of the partition that Slurm jobs submitted without an explicit
+               partition run on, for example 'sbatch' without '--partition'. Must match
+               the 'id' of one of 'partitions'.
+               
+               If unset, the service uses the first entry of 'partitions' and this field
+               stays empty; the cluster always has a default partition whether or not this
+               field is set. Setting it makes the choice independent of list order, which
+               matters because 'partitions' is replaced wholesale on update: reordering
+               the list, or prepending a partition to it, otherwise moves the default and
+               silently redirects every job submitted without '--partition'.
+        :param Sequence[_builtins.str] epilog_bash_scripts: Custom bash scripts executed after each slurm job on every allocated node.
+        :param Sequence['AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs'] node_sets: Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+               pool. Node pools without an entry use the settings derived by the cluster's
+               Slurm controller.
+        :param Sequence['AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartitionArgs'] partitions: The Slurm partitions spec.
+        :param Sequence[_builtins.str] prolog_bash_scripts: Custom bash scripts executed before each slurm job on every allocated node.
+        """
+        pulumi.set(__self__, "home_directory_storage", home_directory_storage)
+        pulumi.set(__self__, "login_node_pool_id", login_node_pool_id)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if default_partition_id is not None:
+            pulumi.set(__self__, "default_partition_id", default_partition_id)
+        if epilog_bash_scripts is not None:
+            pulumi.set(__self__, "epilog_bash_scripts", epilog_bash_scripts)
+        if node_sets is not None:
+            pulumi.set(__self__, "node_sets", node_sets)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
+        if prolog_bash_scripts is not None:
+            pulumi.set(__self__, "prolog_bash_scripts", prolog_bash_scripts)
+
+    @_builtins.property
+    @pulumi.getter(name="homeDirectoryStorage")
+    def home_directory_storage(self) -> _builtins.str:
+        """
+        Full name of the Filestore to be mounted as /home directory on every node.
+        """
+        return pulumi.get(self, "home_directory_storage")
+
+    @_builtins.property
+    @pulumi.getter(name="loginNodePoolId")
+    def login_node_pool_id(self) -> _builtins.str:
+        """
+        The node pool id to be used as slurm login node.
+        """
+        return pulumi.get(self, "login_node_pool_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Cluster-scoped Slurm settings, emitted as global 'Key=Value' lines in
+        slurm.conf.
+
+        Keys are Slurm parameter names exactly as documented by SchedMD
+        (https://slurm.schedmd.com/slurm.conf.html), matched case-insensitively.
+        Values are written the way slurm.conf writes them, including composite
+        forms such as 'bf_window=1440,bf_resolution=600'.
+
+        Example:
+        { "PriorityType":            "priority/multifactor",
+        "PriorityWeightAge":       "1000",
+        "PreemptMode":             "SUSPEND,GANG",
+        "SchedulerParameters":     "bf_window=1440,bf_resolution=600" }
+
+        Unsupported, reserved, or misspelled parameters, and values that are not
+        legal for the parameter, are rejected at request time with the offending
+        parameter named; they are never silently dropped. Settings
+        that apply to a single partition or node pool belong in
+        'SlurmPartition.config' or 'SlurmNodeSet.config' instead -
+        several parameters (e.g. 'DefMemPerCPU', 'OverTimeLimit', 'PreemptMode')
+        are valid at more than one scope with different meanings and different
+        legal values.
+
+        On update this map is replaced wholesale; supply the complete desired set.
+        """
+        return pulumi.get(self, "config")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPartitionId")
+    def default_partition_id(self) -> Optional[_builtins.str]:
+        """
+        Id of the partition that Slurm jobs submitted without an explicit
+        partition run on, for example 'sbatch' without '--partition'. Must match
+        the 'id' of one of 'partitions'.
+
+        If unset, the service uses the first entry of 'partitions' and this field
+        stays empty; the cluster always has a default partition whether or not this
+        field is set. Setting it makes the choice independent of list order, which
+        matters because 'partitions' is replaced wholesale on update: reordering
+        the list, or prepending a partition to it, otherwise moves the default and
+        silently redirects every job submitted without '--partition'.
+        """
+        return pulumi.get(self, "default_partition_id")
+
+    @_builtins.property
+    @pulumi.getter(name="epilogBashScripts")
+    def epilog_bash_scripts(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Custom bash scripts executed after each slurm job on every allocated node.
+        """
+        return pulumi.get(self, "epilog_bash_scripts")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeSets")
+    def node_sets(self) -> Optional[Sequence['outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet']]:
+        """
+        Node-scoped Slurm settings, keyed by node pool. At most one entry per node
+        pool. Node pools without an entry use the settings derived by the cluster's
+        Slurm controller.
+        """
+        return pulumi.get(self, "node_sets")
+
+    @_builtins.property
+    @pulumi.getter
+    def partitions(self) -> Optional[Sequence['outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition']]:
+        """
+        The Slurm partitions spec.
+        """
+        return pulumi.get(self, "partitions")
+
+    @_builtins.property
+    @pulumi.getter(name="prologBashScripts")
+    def prolog_bash_scripts(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Custom bash scripts executed before each slurm job on every allocated node.
+        """
+        return pulumi.get(self, "prolog_bash_scripts")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodePoolId":
+            suggest = "node_pool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_pool_id: _builtins.str,
+                 config: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str node_pool_id: (Output)
+               The ID of the node pool.
+        :param Mapping[str, _builtins.str] config: Node-scoped Slurm settings, emitted as additional 'Key=Value' pairs on the
+               'NodeName=' line for this node pool's nodes in slurm.conf.
+               
+               Example:
+               { "Features":     "a3mega,nvlink",
+               "Weight":       "10",
+               "MemSpecLimit": "4096" }
+               
+               On update this map is replaced wholesale; supply the complete desired set.
+        """
+        pulumi.set(__self__, "node_pool_id", node_pool_id)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+
+    @_builtins.property
+    @pulumi.getter(name="nodePoolId")
+    def node_pool_id(self) -> _builtins.str:
+        """
+        (Output)
+        The ID of the node pool.
+        """
+        return pulumi.get(self, "node_pool_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Node-scoped Slurm settings, emitted as additional 'Key=Value' pairs on the
+        'NodeName=' line for this node pool's nodes in slurm.conf.
+
+        Example:
+        { "Features":     "a3mega,nvlink",
+        "Weight":       "10",
+        "MemSpecLimit": "4096" }
+
+        On update this map is replaced wholesale; supply the complete desired set.
+        """
+        return pulumi.get(self, "config")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodePoolIds":
+            suggest = "node_pool_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 node_pool_ids: Sequence[_builtins.str],
+                 config: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str id: an identifier for the resource with format `projects/{{project}}/locations/{{region}}/modelDevelopmentClusters/{{model_development_cluster_id}}`
+        :param Sequence[_builtins.str] node_pool_ids: Node pools for the slurm partition
+        :param Mapping[str, _builtins.str] config: Partition-scoped Slurm settings, emitted as additional 'Key=Value' pairs
+               on this partition's 'PartitionName=' line in slurm.conf.
+               
+               Example:
+               { "MaxTime":       "4-00:00:00",
+               "DenyAccounts":  "low-pri",
+               "PriorityTier":  "20",
+               "OverSubscribe": "YES:4" }
+               
+               Note: values set here take precedence over service-computed defaults for
+               the same parameter (for example 'OverSubscribe' and 'DefMemPerCPU', which
+               the service otherwise derives from the partition's exclusivity and from
+               the memory per CPU of its nodes).
+               
+               'Default' is rejected here: which partition is the default is a
+               cluster-scoped choice, so it belongs in 'SlurmSpec.default_partition_id'.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node_pool_ids", node_pool_ids)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        an identifier for the resource with format `projects/{{project}}/locations/{{region}}/modelDevelopmentClusters/{{model_development_cluster_id}}`
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="nodePoolIds")
+    def node_pool_ids(self) -> Sequence[_builtins.str]:
+        """
+        Node pools for the slurm partition
+        """
+        return pulumi.get(self, "node_pool_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Partition-scoped Slurm settings, emitted as additional 'Key=Value' pairs
+        on this partition's 'PartitionName=' line in slurm.conf.
+
+        Example:
+        { "MaxTime":       "4-00:00:00",
+        "DenyAccounts":  "low-pri",
+        "PriorityTier":  "20",
+        "OverSubscribe": "YES:4" }
+
+        Note: values set here take precedence over service-computed defaults for
+        the same parameter (for example 'OverSubscribe' and 'DefMemPerCPU', which
+        the service otherwise derives from the partition's exclusivity and from
+        the memory per CPU of its nodes).
+
+        'Default' is rejected here: which partition is the default is a
+        cluster-scoped choice, so it belongs in 'SlurmSpec.default_partition_id'.
+        """
+        return pulumi.get(self, "config")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterRuntime(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trainingServices":
+            suggest = "training_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterRuntime. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterRuntime.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterRuntime.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 training_services: Optional[Sequence['outputs.AiModelDevelopmentClusterRuntimeTrainingService']] = None,
+                 xmanagers: Optional[Sequence['outputs.AiModelDevelopmentClusterRuntimeXmanager']] = None):
+        """
+        :param Sequence['AiModelDevelopmentClusterRuntimeTrainingServiceArgs'] training_services: (Output)
+               The training services running on this Vertex AI Training Cluster.
+               Structure is documented below.
+        :param Sequence['AiModelDevelopmentClusterRuntimeXmanagerArgs'] xmanagers: (Output)
+               A purpose-built, output-only view of the XManager instance attached to a
+               cluster.
+               Structure is documented below.
+        """
+        if training_services is not None:
+            pulumi.set(__self__, "training_services", training_services)
+        if xmanagers is not None:
+            pulumi.set(__self__, "xmanagers", xmanagers)
+
+    @_builtins.property
+    @pulumi.getter(name="trainingServices")
+    def training_services(self) -> Optional[Sequence['outputs.AiModelDevelopmentClusterRuntimeTrainingService']]:
+        """
+        (Output)
+        The training services running on this Vertex AI Training Cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "training_services")
+
+    @_builtins.property
+    @pulumi.getter
+    def xmanagers(self) -> Optional[Sequence['outputs.AiModelDevelopmentClusterRuntimeXmanager']]:
+        """
+        (Output)
+        A purpose-built, output-only view of the XManager instance attached to a
+        cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "xmanagers")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterRuntimeSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterRuntimeSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterRuntimeSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterRuntimeSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str service_account: The default service account used by the cluster when running any workloads
+               on it. If not specified, the default compute engine service account will be
+               used.
+        """
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[_builtins.str]:
+        """
+        The default service account used by the cluster when running any workloads
+        on it. If not specified, the default compute engine service account will be
+        used.
+        """
+        return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterRuntimeTrainingService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "deploymentSpecs":
+            suggest = "deployment_specs"
+        elif key == "gcsBucket":
+            suggest = "gcs_bucket"
+        elif key == "imageUri":
+            suggest = "image_uri"
+        elif key == "serviceStatuses":
+            suggest = "service_statuses"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterRuntimeTrainingService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterRuntimeTrainingService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterRuntimeTrainingService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: Optional[_builtins.str] = None,
+                 deployment_specs: Optional[Sequence['outputs.AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec']] = None,
+                 gcs_bucket: Optional[_builtins.str] = None,
+                 image_uri: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 service_statuses: Optional[Sequence['outputs.AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus']] = None,
+                 update_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create_time: (Output)
+               Time when the TrainingService was created.
+        :param Sequence['AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpecArgs'] deployment_specs: (Output)
+               Orchestrator-agnostic deployment spec.
+               Structure is documented below.
+        :param _builtins.str gcs_bucket: (Output)
+               Cloud Storage bucket name dynamically GCSFuse-mounted on all nodes, for
+               storing checkpoints and other service outputs.
+        :param _builtins.str image_uri: (Output)
+               Cloud Storage URI of the squashfs (.sqsh) container image.
+        :param _builtins.str name: (Output)
+               Identifier. Resource name of the TrainingService. Format:
+               `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
+        :param Sequence['AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatusArgs'] service_statuses: (Output)
+               Status of a TrainingService.
+               Structure is documented below.
+        :param _builtins.str update_time: (Output)
+               Time when the TrainingService was most recently updated.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if deployment_specs is not None:
+            pulumi.set(__self__, "deployment_specs", deployment_specs)
+        if gcs_bucket is not None:
+            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if service_statuses is not None:
+            pulumi.set(__self__, "service_statuses", service_statuses)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Time when the TrainingService was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentSpecs")
+    def deployment_specs(self) -> Optional[Sequence['outputs.AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec']]:
+        """
+        (Output)
+        Orchestrator-agnostic deployment spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "deployment_specs")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsBucket")
+    def gcs_bucket(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Cloud Storage bucket name dynamically GCSFuse-mounted on all nodes, for
+        storing checkpoints and other service outputs.
+        """
+        return pulumi.get(self, "gcs_bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Cloud Storage URI of the squashfs (.sqsh) container image.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Identifier. Resource name of the TrainingService. Format:
+        `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceStatuses")
+    def service_statuses(self) -> Optional[Sequence['outputs.AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus']]:
+        """
+        (Output)
+        Status of a TrainingService.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_statuses")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Time when the TrainingService was most recently updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workerNodeCount":
+            suggest = "worker_node_count"
+        elif key == "workerNodePoolId":
+            suggest = "worker_node_pool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterRuntimeTrainingServiceDeploymentSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 worker_node_count: Optional[_builtins.int] = None,
+                 worker_node_pool_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int worker_node_count: (Output)
+               Number of worker nodes to allocate.
+        :param _builtins.str worker_node_pool_id: (Output)
+               ID of a node pool on the parent ModelDevelopmentCluster (see
+               `ModelDevelopmentCluster.node_pools[].id`) on which to place the worker
+               nodes.
+        """
+        if worker_node_count is not None:
+            pulumi.set(__self__, "worker_node_count", worker_node_count)
+        if worker_node_pool_id is not None:
+            pulumi.set(__self__, "worker_node_pool_id", worker_node_pool_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeCount")
+    def worker_node_count(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        Number of worker nodes to allocate.
+        """
+        return pulumi.get(self, "worker_node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodePoolId")
+    def worker_node_pool_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        ID of a node pool on the parent ModelDevelopmentCluster (see
+        `ModelDevelopmentCluster.node_pools[].id`) on which to place the worker
+        nodes.
+        """
+        return pulumi.get(self, "worker_node_pool_id")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterRuntimeTrainingServiceServiceStatus(dict):
+    def __init__(__self__, *,
+                 detail: Optional[_builtins.str] = None,
+                 endpoints: Optional[Mapping[str, _builtins.str]] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str detail: (Output)
+               Human-readable detail about the current state.
+        :param Mapping[str, _builtins.str] endpoints: (Output)
+               Endpoints clients use to connect to the running service.
+        :param _builtins.str state: (Output)
+               The current state of the XManager instance.
+               Possible values:
+               PROVISIONING
+               RUNNING
+               DELETING
+               ERROR
+        """
+        if detail is not None:
+            pulumi.set(__self__, "detail", detail)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def detail(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Human-readable detail about the current state.
+        """
+        return pulumi.get(self, "detail")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Output)
+        Endpoints clients use to connect to the running service.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The current state of the XManager instance.
+        Possible values:
+        PROVISIONING
+        RUNNING
+        DELETING
+        ERROR
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterRuntimeXmanager(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiEndpoint":
+            suggest = "api_endpoint"
+        elif key == "instanceId":
+            suggest = "instance_id"
+        elif key == "uiEndpoint":
+            suggest = "ui_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterRuntimeXmanager. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterRuntimeXmanager.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterRuntimeXmanager.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_endpoint: Optional[_builtins.str] = None,
+                 errors: Optional[Sequence['outputs.AiModelDevelopmentClusterRuntimeXmanagerError']] = None,
+                 instance_id: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None,
+                 ui_endpoint: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str api_endpoint: (Output)
+               The gRPC API endpoint (Experiment State Server) of the
+               XManager instance. Empty unless the instance is running.
+        :param Sequence['AiModelDevelopmentClusterRuntimeXmanagerErrorArgs'] errors: (Output)
+               The `Status` type defines a logical error model that is suitable for
+               different programming environments, including REST APIs and RPC APIs. It is
+               used by [gRPC](https://github.com/grpc). Each `Status` message contains
+               three pieces of data: error code, error message, and error details.
+               You can find out more about this error model and how to work with it in the
+               [API Design Guide](https://cloud.google.com/apis/design/errors).
+               Structure is documented below.
+        :param _builtins.str instance_id: (Output)
+               The XManager instance ID (for example, "xmc-").
+        :param _builtins.str state: (Output)
+               The current state of the XManager instance.
+               Possible values:
+               PROVISIONING
+               RUNNING
+               DELETING
+               ERROR
+        :param _builtins.str ui_endpoint: (Output)
+               The UI endpoint of the XManager instance. Empty unless the
+               instance is running.
+        """
+        if api_endpoint is not None:
+            pulumi.set(__self__, "api_endpoint", api_endpoint)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if ui_endpoint is not None:
+            pulumi.set(__self__, "ui_endpoint", ui_endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="apiEndpoint")
+    def api_endpoint(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The gRPC API endpoint (Experiment State Server) of the
+        XManager instance. Empty unless the instance is running.
+        """
+        return pulumi.get(self, "api_endpoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.AiModelDevelopmentClusterRuntimeXmanagerError']]:
+        """
+        (Output)
+        The `Status` type defines a logical error model that is suitable for
+        different programming environments, including REST APIs and RPC APIs. It is
+        used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        three pieces of data: error code, error message, and error details.
+        You can find out more about this error model and how to work with it in the
+        [API Design Guide](https://cloud.google.com/apis/design/errors).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The XManager instance ID (for example, "xmc-").
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The current state of the XManager instance.
+        Possible values:
+        PROVISIONING
+        RUNNING
+        DELETING
+        ERROR
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="uiEndpoint")
+    def ui_endpoint(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The UI endpoint of the XManager instance. Empty unless the
+        instance is running.
+        """
+        return pulumi.get(self, "ui_endpoint")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterRuntimeXmanagerError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 details: Optional[Sequence[Mapping[str, _builtins.str]]] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, _builtins.str]] details: (Output)
+               A list of messages that carry the error details.  There is a common set of
+               message types for APIs to use.
+        :param _builtins.str message: (Output)
+               A developer-facing error message, which should be in English. Any
+               user-facing error message should be localized and sent in the
+               google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def details(self) -> Optional[Sequence[Mapping[str, _builtins.str]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.  There is a common set of
+        message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type
@@ -8390,7 +11752,9 @@ class AiPersistentResourceResourceRuntimeSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "serviceAccountSpec":
+        if key == "raySpec":
+            suggest = "ray_spec"
+        elif key == "serviceAccountSpec":
             suggest = "service_account_spec"
 
         if suggest:
@@ -8405,13 +11769,27 @@ class AiPersistentResourceResourceRuntimeSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 ray_spec: Optional['outputs.AiPersistentResourceResourceRuntimeSpecRaySpec'] = None,
                  service_account_spec: Optional['outputs.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec'] = None):
         """
+        :param 'AiPersistentResourceResourceRuntimeSpecRaySpecArgs' ray_spec: Configuration information for the Ray cluster.
+               Structure is documented below.
         :param 'AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs' service_account_spec: Configuration for the use of custom service account to run the workloads.
                Structure is documented below.
         """
+        if ray_spec is not None:
+            pulumi.set(__self__, "ray_spec", ray_spec)
         if service_account_spec is not None:
             pulumi.set(__self__, "service_account_spec", service_account_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="raySpec")
+    def ray_spec(self) -> Optional['outputs.AiPersistentResourceResourceRuntimeSpecRaySpec']:
+        """
+        Configuration information for the Ray cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ray_spec")
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountSpec")
@@ -8421,6 +11799,52 @@ class AiPersistentResourceResourceRuntimeSpec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "service_account_spec")
+
+
+@pulumi.output_type
+class AiPersistentResourceResourceRuntimeSpecRaySpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageUri":
+            suggest = "image_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourceResourceRuntimeSpecRaySpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourceResourceRuntimeSpecRaySpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourceResourceRuntimeSpecRaySpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str image_uri: Default image for user to choose a preferred ML framework
+               (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+               images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+               Either this or the resource_pool_images is required. Use this field if
+               you need all the resource pools to have the same Ray image. Otherwise, use
+               the `resource_pool_images` field.
+        """
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[_builtins.str]:
+        """
+        Default image for user to choose a preferred ML framework
+        (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+        images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+        Either this or the resource_pool_images is required. Use this field if
+        you need all the resource pools to have the same Ray image. Otherwise, use
+        the `resource_pool_images` field.
+        """
+        return pulumi.get(self, "image_uri")
 
 
 @pulumi.output_type
@@ -8462,6 +11886,1136 @@ class AiPersistentResourceResourceRuntimeSpecServiceAccountSpec(dict):
         Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
         """
         return pulumi.get(self, "enable_custom_service_account")
+
+
+@pulumi.output_type
+class AiPipelineJobEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: _builtins.str):
+        """
+        :param _builtins.str kms_key_name: The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> _builtins.str:
+        """
+        The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiPipelineJobError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 details: Optional[Sequence[Mapping[str, _builtins.str]]] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, _builtins.str]] details: (Output)
+               A list of messages that carry the error details.
+        :param _builtins.str message: (Output)
+               A developer-facing error message, which should be in English.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def details(self) -> Optional[Sequence[Mapping[str, _builtins.str]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AiPipelineJobJobDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pipelineContexts":
+            suggest = "pipeline_contexts"
+        elif key == "pipelineRunContexts":
+            suggest = "pipeline_run_contexts"
+        elif key == "taskDetails":
+            suggest = "task_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobJobDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobJobDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobJobDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pipeline_contexts: Optional[Sequence['outputs.AiPipelineJobJobDetailPipelineContext']] = None,
+                 pipeline_run_contexts: Optional[Sequence['outputs.AiPipelineJobJobDetailPipelineRunContext']] = None,
+                 task_details: Optional[Sequence['outputs.AiPipelineJobJobDetailTaskDetail']] = None):
+        """
+        :param Sequence['AiPipelineJobJobDetailPipelineContextArgs'] pipeline_contexts: (Output)
+               The context of the pipeline.
+               Structure is documented below.
+        :param Sequence['AiPipelineJobJobDetailPipelineRunContextArgs'] pipeline_run_contexts: (Output)
+               The context of the current pipeline run.
+               Structure is documented below.
+        :param Sequence['AiPipelineJobJobDetailTaskDetailArgs'] task_details: (Output)
+               The runtime details of the tasks under the pipeline.
+               Structure is documented below.
+        """
+        if pipeline_contexts is not None:
+            pulumi.set(__self__, "pipeline_contexts", pipeline_contexts)
+        if pipeline_run_contexts is not None:
+            pulumi.set(__self__, "pipeline_run_contexts", pipeline_run_contexts)
+        if task_details is not None:
+            pulumi.set(__self__, "task_details", task_details)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineContexts")
+    def pipeline_contexts(self) -> Optional[Sequence['outputs.AiPipelineJobJobDetailPipelineContext']]:
+        """
+        (Output)
+        The context of the pipeline.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pipeline_contexts")
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineRunContexts")
+    def pipeline_run_contexts(self) -> Optional[Sequence['outputs.AiPipelineJobJobDetailPipelineRunContext']]:
+        """
+        (Output)
+        The context of the current pipeline run.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pipeline_run_contexts")
+
+    @_builtins.property
+    @pulumi.getter(name="taskDetails")
+    def task_details(self) -> Optional[Sequence['outputs.AiPipelineJobJobDetailTaskDetail']]:
+        """
+        (Output)
+        The runtime details of the tasks under the pipeline.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "task_details")
+
+
+@pulumi.output_type
+class AiPipelineJobJobDetailPipelineContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "parentContexts":
+            suggest = "parent_contexts"
+        elif key == "schemaTitle":
+            suggest = "schema_title"
+        elif key == "schemaVersion":
+            suggest = "schema_version"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobJobDetailPipelineContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobJobDetailPipelineContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobJobDetailPipelineContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 etag: Optional[_builtins.str] = None,
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 metadata: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 parent_contexts: Optional[Sequence[_builtins.str]] = None,
+                 schema_title: Optional[_builtins.str] = None,
+                 schema_version: Optional[_builtins.str] = None,
+                 update_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create_time: (Output)
+               Task create time.
+        :param _builtins.str description: (Output)
+               Description of the Context.
+        :param _builtins.str display_name: The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param _builtins.str etag: (Output)
+               An eTag used to perform consistent read-modify-write updates.
+        :param Mapping[str, _builtins.str] labels: The labels with user-defined metadata to organize PipelineJob.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param _builtins.str metadata: (Output)
+               Properties of the Context.
+        :param _builtins.str name: (Output)
+               The resource name of the Context.
+        :param Sequence[_builtins.str] parent_contexts: (Output)
+               A list of resource names of Contexts that are parents of this Context.
+        :param _builtins.str schema_title: (Output)
+               The title of the schema describing the metadata.
+        :param _builtins.str schema_version: (Output)
+               The version of the schema in schema_name to use.
+        :param _builtins.str update_time: (Output)
+               Timestamp when this Context was last updated.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_contexts is not None:
+            pulumi.set(__self__, "parent_contexts", parent_contexts)
+        if schema_title is not None:
+            pulumi.set(__self__, "schema_title", schema_title)
+        if schema_version is not None:
+            pulumi.set(__self__, "schema_version", schema_version)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Task create time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Description of the Context.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        An eTag used to perform consistent read-modify-write updates.
+        """
+        return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The labels with user-defined metadata to organize PipelineJob.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Properties of the Context.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The resource name of the Context.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="parentContexts")
+    def parent_contexts(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        A list of resource names of Contexts that are parents of this Context.
+        """
+        return pulumi.get(self, "parent_contexts")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaTitle")
+    def schema_title(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The title of the schema describing the metadata.
+        """
+        return pulumi.get(self, "schema_title")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaVersion")
+    def schema_version(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The version of the schema in schema_name to use.
+        """
+        return pulumi.get(self, "schema_version")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Timestamp when this Context was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class AiPipelineJobJobDetailPipelineRunContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "parentContexts":
+            suggest = "parent_contexts"
+        elif key == "schemaTitle":
+            suggest = "schema_title"
+        elif key == "schemaVersion":
+            suggest = "schema_version"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobJobDetailPipelineRunContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobJobDetailPipelineRunContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobJobDetailPipelineRunContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 etag: Optional[_builtins.str] = None,
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 metadata: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 parent_contexts: Optional[Sequence[_builtins.str]] = None,
+                 schema_title: Optional[_builtins.str] = None,
+                 schema_version: Optional[_builtins.str] = None,
+                 update_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create_time: (Output)
+               Task create time.
+        :param _builtins.str description: (Output)
+               Description of the Context.
+        :param _builtins.str display_name: The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param _builtins.str etag: (Output)
+               An eTag used to perform consistent read-modify-write updates.
+        :param Mapping[str, _builtins.str] labels: The labels with user-defined metadata to organize PipelineJob.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param _builtins.str metadata: (Output)
+               Properties of the Context.
+        :param _builtins.str name: (Output)
+               The resource name of the Context.
+        :param Sequence[_builtins.str] parent_contexts: (Output)
+               A list of resource names of Contexts that are parents of this Context.
+        :param _builtins.str schema_title: (Output)
+               The title of the schema describing the metadata.
+        :param _builtins.str schema_version: (Output)
+               The version of the schema in schema_name to use.
+        :param _builtins.str update_time: (Output)
+               Timestamp when this Context was last updated.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_contexts is not None:
+            pulumi.set(__self__, "parent_contexts", parent_contexts)
+        if schema_title is not None:
+            pulumi.set(__self__, "schema_title", schema_title)
+        if schema_version is not None:
+            pulumi.set(__self__, "schema_version", schema_version)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Task create time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Description of the Context.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        An eTag used to perform consistent read-modify-write updates.
+        """
+        return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The labels with user-defined metadata to organize PipelineJob.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Properties of the Context.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The resource name of the Context.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="parentContexts")
+    def parent_contexts(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        A list of resource names of Contexts that are parents of this Context.
+        """
+        return pulumi.get(self, "parent_contexts")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaTitle")
+    def schema_title(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The title of the schema describing the metadata.
+        """
+        return pulumi.get(self, "schema_title")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaVersion")
+    def schema_version(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The version of the schema in schema_name to use.
+        """
+        return pulumi.get(self, "schema_version")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Timestamp when this Context was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class AiPipelineJobJobDetailTaskDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "parentTaskId":
+            suggest = "parent_task_id"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "taskId":
+            suggest = "task_id"
+        elif key == "taskName":
+            suggest = "task_name"
+        elif key == "taskUniqueName":
+            suggest = "task_unique_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobJobDetailTaskDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobJobDetailTaskDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobJobDetailTaskDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: Optional[_builtins.str] = None,
+                 end_time: Optional[_builtins.str] = None,
+                 errors: Optional[Sequence['outputs.AiPipelineJobJobDetailTaskDetailError']] = None,
+                 parent_task_id: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None,
+                 task_id: Optional[_builtins.str] = None,
+                 task_name: Optional[_builtins.str] = None,
+                 task_unique_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create_time: (Output)
+               Task create time.
+        :param _builtins.str end_time: (Output)
+               Task end time.
+        :param Sequence['AiPipelineJobJobDetailTaskDetailErrorArgs'] errors: (Output)
+               The error that occurred during task execution. Only populated when the task's state is FAILED or CANCELLED.
+               Structure is documented below.
+        :param _builtins.str parent_task_id: (Output)
+               The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
+        :param _builtins.str start_time: (Output)
+               Task start time.
+        :param _builtins.str state: (Output)
+               The detailed state of the task.
+        :param _builtins.str task_id: (Output)
+               The system generated ID of the task.
+        :param _builtins.str task_name: (Output)
+               The user specified name of the task that is defined in pipeline_spec.
+        :param _builtins.str task_unique_name: (Output)
+               The unique name of a task.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if parent_task_id is not None:
+            pulumi.set(__self__, "parent_task_id", parent_task_id)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if task_id is not None:
+            pulumi.set(__self__, "task_id", task_id)
+        if task_name is not None:
+            pulumi.set(__self__, "task_name", task_name)
+        if task_unique_name is not None:
+            pulumi.set(__self__, "task_unique_name", task_unique_name)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Task create time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Task end time.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.AiPipelineJobJobDetailTaskDetailError']]:
+        """
+        (Output)
+        The error that occurred during task execution. Only populated when the task's state is FAILED or CANCELLED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="parentTaskId")
+    def parent_task_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
+        """
+        return pulumi.get(self, "parent_task_id")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Task start time.
+        """
+        return pulumi.get(self, "start_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The detailed state of the task.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="taskId")
+    def task_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The system generated ID of the task.
+        """
+        return pulumi.get(self, "task_id")
+
+    @_builtins.property
+    @pulumi.getter(name="taskName")
+    def task_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The user specified name of the task that is defined in pipeline_spec.
+        """
+        return pulumi.get(self, "task_name")
+
+    @_builtins.property
+    @pulumi.getter(name="taskUniqueName")
+    def task_unique_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The unique name of a task.
+        """
+        return pulumi.get(self, "task_unique_name")
+
+
+@pulumi.output_type
+class AiPipelineJobJobDetailTaskDetailError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param _builtins.str message: (Output)
+               A developer-facing error message, which should be in English.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AiPipelineJobPscInterfaceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsPeeringConfigs":
+            suggest = "dns_peering_configs"
+        elif key == "networkAttachment":
+            suggest = "network_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobPscInterfaceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobPscInterfaceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobPscInterfaceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dns_peering_configs: Optional[Sequence['outputs.AiPipelineJobPscInterfaceConfigDnsPeeringConfig']] = None,
+                 network_attachment: Optional[_builtins.str] = None):
+        """
+        :param Sequence['AiPipelineJobPscInterfaceConfigDnsPeeringConfigArgs'] dns_peering_configs: DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+               Structure is documented below.
+        :param _builtins.str network_attachment: The name of the Compute Engine network attachment to attach to the resource within the region and user project. To specify this field, you must have already created a network attachment. This field is only used for resources using PSC-I.
+        """
+        if dns_peering_configs is not None:
+            pulumi.set(__self__, "dns_peering_configs", dns_peering_configs)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsPeeringConfigs")
+    def dns_peering_configs(self) -> Optional[Sequence['outputs.AiPipelineJobPscInterfaceConfigDnsPeeringConfig']]:
+        """
+        DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dns_peering_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[_builtins.str]:
+        """
+        The name of the Compute Engine network attachment to attach to the resource within the region and user project. To specify this field, you must have already created a network attachment. This field is only used for resources using PSC-I.
+        """
+        return pulumi.get(self, "network_attachment")
+
+
+@pulumi.output_type
+class AiPipelineJobPscInterfaceConfigDnsPeeringConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetNetwork":
+            suggest = "target_network"
+        elif key == "targetProject":
+            suggest = "target_project"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobPscInterfaceConfigDnsPeeringConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobPscInterfaceConfigDnsPeeringConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobPscInterfaceConfigDnsPeeringConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 target_network: _builtins.str,
+                 target_project: _builtins.str):
+        """
+        :param _builtins.str domain: The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+        :param _builtins.str target_network: The VPC network name in the targetProject where the DNS zone specified by domain is visible.
+        :param _builtins.str target_project: The project ID hosting the Cloud DNS managed zone that contains the above domain. The Vertex AI Service Agent must be granted the dns.peer role on this project.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "target_network", target_network)
+        pulumi.set(__self__, "target_project", target_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="targetNetwork")
+    def target_network(self) -> _builtins.str:
+        """
+        The VPC network name in the targetProject where the DNS zone specified by domain is visible.
+        """
+        return pulumi.get(self, "target_network")
+
+    @_builtins.property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> _builtins.str:
+        """
+        The project ID hosting the Cloud DNS managed zone that contains the above domain. The Vertex AI Service Agent must be granted the dns.peer role on this project.
+        """
+        return pulumi.get(self, "target_project")
+
+
+@pulumi.output_type
+class AiPipelineJobRuntimeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcsOutputDirectory":
+            suggest = "gcs_output_directory"
+        elif key == "defaultRuntime":
+            suggest = "default_runtime"
+        elif key == "failurePolicy":
+            suggest = "failure_policy"
+        elif key == "inputArtifacts":
+            suggest = "input_artifacts"
+        elif key == "parameterValues":
+            suggest = "parameter_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobRuntimeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobRuntimeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobRuntimeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcs_output_directory: _builtins.str,
+                 default_runtime: Optional['outputs.AiPipelineJobRuntimeConfigDefaultRuntime'] = None,
+                 failure_policy: Optional[_builtins.str] = None,
+                 input_artifacts: Optional[Sequence['outputs.AiPipelineJobRuntimeConfigInputArtifact']] = None,
+                 parameter_values: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str gcs_output_directory: A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-directory pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+        :param 'AiPipelineJobRuntimeConfigDefaultRuntimeArgs' default_runtime: (Optional, Beta)
+               The default runtime for the PipelineJob.
+               Structure is documented below.
+        :param _builtins.str failure_policy: Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as `PIPELINE_FAILURE_POLICY_FAIL_SLOW`. However, if a pipeline is set to `PIPELINE_FAILURE_POLICY_FAIL_FAST`, it will stop scheduling any new tasks as soon as the pipeline fails.
+               Possible values are: `PIPELINE_FAILURE_POLICY_UNSPECIFIED`, `PIPELINE_FAILURE_POLICY_FAIL_SLOW`, `PIPELINE_FAILURE_POLICY_FAIL_FAST`.
+        :param Sequence['AiPipelineJobRuntimeConfigInputArtifactArgs'] input_artifacts: The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+               Structure is documented below.
+        :param Mapping[str, _builtins.str] parameter_values: The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+        """
+        pulumi.set(__self__, "gcs_output_directory", gcs_output_directory)
+        if default_runtime is not None:
+            pulumi.set(__self__, "default_runtime", default_runtime)
+        if failure_policy is not None:
+            pulumi.set(__self__, "failure_policy", failure_policy)
+        if input_artifacts is not None:
+            pulumi.set(__self__, "input_artifacts", input_artifacts)
+        if parameter_values is not None:
+            pulumi.set(__self__, "parameter_values", parameter_values)
+
+    @_builtins.property
+    @pulumi.getter(name="gcsOutputDirectory")
+    def gcs_output_directory(self) -> _builtins.str:
+        """
+        A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-directory pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+        """
+        return pulumi.get(self, "gcs_output_directory")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRuntime")
+    def default_runtime(self) -> Optional['outputs.AiPipelineJobRuntimeConfigDefaultRuntime']:
+        """
+        (Optional, Beta)
+        The default runtime for the PipelineJob.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_runtime")
+
+    @_builtins.property
+    @pulumi.getter(name="failurePolicy")
+    def failure_policy(self) -> Optional[_builtins.str]:
+        """
+        Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as `PIPELINE_FAILURE_POLICY_FAIL_SLOW`. However, if a pipeline is set to `PIPELINE_FAILURE_POLICY_FAIL_FAST`, it will stop scheduling any new tasks as soon as the pipeline fails.
+        Possible values are: `PIPELINE_FAILURE_POLICY_UNSPECIFIED`, `PIPELINE_FAILURE_POLICY_FAIL_SLOW`, `PIPELINE_FAILURE_POLICY_FAIL_FAST`.
+        """
+        return pulumi.get(self, "failure_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="inputArtifacts")
+    def input_artifacts(self) -> Optional[Sequence['outputs.AiPipelineJobRuntimeConfigInputArtifact']]:
+        """
+        The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "input_artifacts")
+
+    @_builtins.property
+    @pulumi.getter(name="parameterValues")
+    def parameter_values(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+        """
+        return pulumi.get(self, "parameter_values")
+
+
+@pulumi.output_type
+class AiPipelineJobRuntimeConfigDefaultRuntime(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "persistentResourceRuntimeDetail":
+            suggest = "persistent_resource_runtime_detail"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobRuntimeConfigDefaultRuntime. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobRuntimeConfigDefaultRuntime.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobRuntimeConfigDefaultRuntime.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 persistent_resource_runtime_detail: Optional['outputs.AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail'] = None):
+        """
+        :param 'AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetailArgs' persistent_resource_runtime_detail: (Optional, Beta)
+               Persistent resource based runtime detail.
+               Structure is documented below.
+        """
+        if persistent_resource_runtime_detail is not None:
+            pulumi.set(__self__, "persistent_resource_runtime_detail", persistent_resource_runtime_detail)
+
+    @_builtins.property
+    @pulumi.getter(name="persistentResourceRuntimeDetail")
+    def persistent_resource_runtime_detail(self) -> Optional['outputs.AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail']:
+        """
+        (Optional, Beta)
+        Persistent resource based runtime detail.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "persistent_resource_runtime_detail")
+
+
+@pulumi.output_type
+class AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "persistentResourceName":
+            suggest = "persistent_resource_name"
+        elif key == "taskResourceUnavailableTimeoutBehavior":
+            suggest = "task_resource_unavailable_timeout_behavior"
+        elif key == "taskResourceUnavailableWaitTimeMs":
+            suggest = "task_resource_unavailable_wait_time_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobRuntimeConfigDefaultRuntimePersistentResourceRuntimeDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 persistent_resource_name: Optional[_builtins.str] = None,
+                 task_resource_unavailable_timeout_behavior: Optional[_builtins.str] = None,
+                 task_resource_unavailable_wait_time_ms: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str persistent_resource_name: (Optional, Beta)
+               PersistentResource name, format: `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`.
+        :param _builtins.str task_resource_unavailable_timeout_behavior: (Optional, Beta)
+               Sets the behavior when a task has reached the defined wait duration while waiting for task resources to become available in the specified persistent resource.
+               Possible values are: `TASK_RESOURCE_UNAVAILABLE_TIMEOUT_BEHAVIOR_UNSPECIFIED`, `FAIL`, `FALL_BACK_TO_ON_DEMAND`.
+        :param _builtins.str task_resource_unavailable_wait_time_ms: (Optional, Beta)
+               The maxWaitTime for the task if the persistent resource is unavailable.
+        """
+        if persistent_resource_name is not None:
+            pulumi.set(__self__, "persistent_resource_name", persistent_resource_name)
+        if task_resource_unavailable_timeout_behavior is not None:
+            pulumi.set(__self__, "task_resource_unavailable_timeout_behavior", task_resource_unavailable_timeout_behavior)
+        if task_resource_unavailable_wait_time_ms is not None:
+            pulumi.set(__self__, "task_resource_unavailable_wait_time_ms", task_resource_unavailable_wait_time_ms)
+
+    @_builtins.property
+    @pulumi.getter(name="persistentResourceName")
+    def persistent_resource_name(self) -> Optional[_builtins.str]:
+        """
+        (Optional, Beta)
+        PersistentResource name, format: `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`.
+        """
+        return pulumi.get(self, "persistent_resource_name")
+
+    @_builtins.property
+    @pulumi.getter(name="taskResourceUnavailableTimeoutBehavior")
+    def task_resource_unavailable_timeout_behavior(self) -> Optional[_builtins.str]:
+        """
+        (Optional, Beta)
+        Sets the behavior when a task has reached the defined wait duration while waiting for task resources to become available in the specified persistent resource.
+        Possible values are: `TASK_RESOURCE_UNAVAILABLE_TIMEOUT_BEHAVIOR_UNSPECIFIED`, `FAIL`, `FALL_BACK_TO_ON_DEMAND`.
+        """
+        return pulumi.get(self, "task_resource_unavailable_timeout_behavior")
+
+    @_builtins.property
+    @pulumi.getter(name="taskResourceUnavailableWaitTimeMs")
+    def task_resource_unavailable_wait_time_ms(self) -> Optional[_builtins.str]:
+        """
+        (Optional, Beta)
+        The maxWaitTime for the task if the persistent resource is unavailable.
+        """
+        return pulumi.get(self, "task_resource_unavailable_wait_time_ms")
+
+
+@pulumi.output_type
+class AiPipelineJobRuntimeConfigInputArtifact(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+        elif key == "artifactKey":
+            suggest = "artifact_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPipelineJobRuntimeConfigInputArtifact. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPipelineJobRuntimeConfigInputArtifact.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPipelineJobRuntimeConfigInputArtifact.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 artifact_id: _builtins.str,
+                 artifact_key: _builtins.str):
+        """
+        :param _builtins.str artifact_id: Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must be within the same project, location and default metadatastore as the pipeline.
+        :param _builtins.str artifact_key: The identifier for this object. Format specified above.
+        """
+        pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "artifact_key", artifact_key)
+
+    @_builtins.property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> _builtins.str:
+        """
+        Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must be within the same project, location and default metadatastore as the pipeline.
+        """
+        return pulumi.get(self, "artifact_id")
+
+    @_builtins.property
+    @pulumi.getter(name="artifactKey")
+    def artifact_key(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "artifact_key")
+
+
+@pulumi.output_type
+class AiPipelineJobTemplateMetadata(dict):
+    def __init__(__self__, *,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str version: (Output)
+               The version_name in artifact registry.
+        """
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The version_name in artifact registry.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -9134,6 +13688,478 @@ class AiRagEngineConfigRagManagedDbConfigScaled(dict):
 class AiRagEngineConfigRagManagedDbConfigUnprovisioned(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class AiRagFileFileStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorStatus":
+            suggest = "error_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiRagFileFileStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiRagFileFileStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiRagFileFileStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_status: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str error_status: (Output)
+               Only populated when the state is ERROR.
+        :param _builtins.str state: (Output)
+               RagFile state.
+        """
+        if error_status is not None:
+            pulumi.set(__self__, "error_status", error_status)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="errorStatus")
+    def error_status(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Only populated when the state is ERROR.
+        """
+        return pulumi.get(self, "error_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        RagFile state.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class AiRagFileGcsSource(dict):
+    def __init__(__self__, *,
+                 uris: _builtins.str):
+        """
+        :param _builtins.str uris: The Cloud Storage URI of the file to import, for example
+               `gs://my-bucket/my-file.pdf`. Must reference a single file; directories
+               and wildcards are not supported because each resource manages one RagFile.
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @_builtins.property
+    @pulumi.getter
+    def uris(self) -> _builtins.str:
+        """
+        The Cloud Storage URI of the file to import, for example
+        `gs://my-bucket/my-file.pdf`. Must reference a single file; directories
+        and wildcards are not supported because each resource manages one RagFile.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
+class AiRagFileGoogleDriveSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceIds":
+            suggest = "resource_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiRagFileGoogleDriveSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiRagFileGoogleDriveSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiRagFileGoogleDriveSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_ids: 'outputs.AiRagFileGoogleDriveSourceResourceIds'):
+        """
+        :param 'AiRagFileGoogleDriveSourceResourceIdsArgs' resource_ids: The Google Drive file to import.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "resource_ids", resource_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceIds")
+    def resource_ids(self) -> 'outputs.AiRagFileGoogleDriveSourceResourceIds':
+        """
+        The Google Drive file to import.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "resource_ids")
+
+
+@pulumi.output_type
+class AiRagFileGoogleDriveSourceResourceIds(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiRagFileGoogleDriveSourceResourceIds. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiRagFileGoogleDriveSourceResourceIds.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiRagFileGoogleDriveSourceResourceIds.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_id: _builtins.str,
+                 resource_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str resource_id: The ID of the Google Drive file.
+        :param _builtins.str resource_type: The type of the Google Drive resource. Only individual files are
+               supported because each resource manages one RagFile.
+               Default value is `RESOURCE_TYPE_FILE`.
+               Possible values are: `RESOURCE_TYPE_FILE`.
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> _builtins.str:
+        """
+        The ID of the Google Drive file.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the Google Drive resource. Only individual files are
+        supported because each resource manages one RagFile.
+        Default value is `RESOURCE_TYPE_FILE`.
+        Possible values are: `RESOURCE_TYPE_FILE`.
+        """
+        return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class AiRagFileRagFileParsingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "layoutParser":
+            suggest = "layout_parser"
+        elif key == "llmParser":
+            suggest = "llm_parser"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiRagFileRagFileParsingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiRagFileRagFileParsingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiRagFileRagFileParsingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 layout_parser: Optional['outputs.AiRagFileRagFileParsingConfigLayoutParser'] = None,
+                 llm_parser: Optional['outputs.AiRagFileRagFileParsingConfigLlmParser'] = None):
+        """
+        :param 'AiRagFileRagFileParsingConfigLayoutParserArgs' layout_parser: The Document AI Layout Parser to use for the file.
+               Structure is documented below.
+        :param 'AiRagFileRagFileParsingConfigLlmParserArgs' llm_parser: The LLM parser to use for the file.
+               Structure is documented below.
+        """
+        if layout_parser is not None:
+            pulumi.set(__self__, "layout_parser", layout_parser)
+        if llm_parser is not None:
+            pulumi.set(__self__, "llm_parser", llm_parser)
+
+    @_builtins.property
+    @pulumi.getter(name="layoutParser")
+    def layout_parser(self) -> Optional['outputs.AiRagFileRagFileParsingConfigLayoutParser']:
+        """
+        The Document AI Layout Parser to use for the file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "layout_parser")
+
+    @_builtins.property
+    @pulumi.getter(name="llmParser")
+    def llm_parser(self) -> Optional['outputs.AiRagFileRagFileParsingConfigLlmParser']:
+        """
+        The LLM parser to use for the file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "llm_parser")
+
+
+@pulumi.output_type
+class AiRagFileRagFileParsingConfigLayoutParser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxParsingRequestsPerMin":
+            suggest = "max_parsing_requests_per_min"
+        elif key == "processorName":
+            suggest = "processor_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiRagFileRagFileParsingConfigLayoutParser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiRagFileRagFileParsingConfigLayoutParser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiRagFileRagFileParsingConfigLayoutParser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_parsing_requests_per_min: Optional[_builtins.int] = None,
+                 processor_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int max_parsing_requests_per_min: The maximum number of requests the job is allowed to make to the
+               Document AI processor per minute.
+        :param _builtins.str processor_name: The full resource name of a Document AI processor or processor version
+               of type `LAYOUT_PARSER_PROCESSOR`. Format:
+               `projects/{project_id}/locations/{location}/processors/{processor_id}` or
+               `projects/{project_id}/locations/{location}/processors/{processor_id}/processorVersions/{processor_version_id}`.
+        """
+        if max_parsing_requests_per_min is not None:
+            pulumi.set(__self__, "max_parsing_requests_per_min", max_parsing_requests_per_min)
+        if processor_name is not None:
+            pulumi.set(__self__, "processor_name", processor_name)
+
+    @_builtins.property
+    @pulumi.getter(name="maxParsingRequestsPerMin")
+    def max_parsing_requests_per_min(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of requests the job is allowed to make to the
+        Document AI processor per minute.
+        """
+        return pulumi.get(self, "max_parsing_requests_per_min")
+
+    @_builtins.property
+    @pulumi.getter(name="processorName")
+    def processor_name(self) -> Optional[_builtins.str]:
+        """
+        The full resource name of a Document AI processor or processor version
+        of type `LAYOUT_PARSER_PROCESSOR`. Format:
+        `projects/{project_id}/locations/{location}/processors/{processor_id}` or
+        `projects/{project_id}/locations/{location}/processors/{processor_id}/processorVersions/{processor_version_id}`.
+        """
+        return pulumi.get(self, "processor_name")
+
+
+@pulumi.output_type
+class AiRagFileRagFileParsingConfigLlmParser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customParsingPrompt":
+            suggest = "custom_parsing_prompt"
+        elif key == "maxParsingRequestsPerMin":
+            suggest = "max_parsing_requests_per_min"
+        elif key == "modelName":
+            suggest = "model_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiRagFileRagFileParsingConfigLlmParser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiRagFileRagFileParsingConfigLlmParser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiRagFileRagFileParsingConfigLlmParser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_parsing_prompt: Optional[_builtins.str] = None,
+                 max_parsing_requests_per_min: Optional[_builtins.int] = None,
+                 model_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str custom_parsing_prompt: The prompt to use for parsing. If not specified, a default prompt is used.
+        :param _builtins.int max_parsing_requests_per_min: The maximum number of requests the job is allowed to make to the LLM
+               model per minute.
+        :param _builtins.str model_name: The name of a LLM model used for parsing. Format:
+               `projects/{project_id}/locations/{location}/publishers/{publisher}/models/{model}`.
+        """
+        if custom_parsing_prompt is not None:
+            pulumi.set(__self__, "custom_parsing_prompt", custom_parsing_prompt)
+        if max_parsing_requests_per_min is not None:
+            pulumi.set(__self__, "max_parsing_requests_per_min", max_parsing_requests_per_min)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+
+    @_builtins.property
+    @pulumi.getter(name="customParsingPrompt")
+    def custom_parsing_prompt(self) -> Optional[_builtins.str]:
+        """
+        The prompt to use for parsing. If not specified, a default prompt is used.
+        """
+        return pulumi.get(self, "custom_parsing_prompt")
+
+    @_builtins.property
+    @pulumi.getter(name="maxParsingRequestsPerMin")
+    def max_parsing_requests_per_min(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of requests the job is allowed to make to the LLM
+        model per minute.
+        """
+        return pulumi.get(self, "max_parsing_requests_per_min")
+
+    @_builtins.property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[_builtins.str]:
+        """
+        The name of a LLM model used for parsing. Format:
+        `projects/{project_id}/locations/{location}/publishers/{publisher}/models/{model}`.
+        """
+        return pulumi.get(self, "model_name")
+
+
+@pulumi.output_type
+class AiRagFileRagFileTransformationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ragFileChunkingConfig":
+            suggest = "rag_file_chunking_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiRagFileRagFileTransformationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiRagFileRagFileTransformationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiRagFileRagFileTransformationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rag_file_chunking_config: Optional['outputs.AiRagFileRagFileTransformationConfigRagFileChunkingConfig'] = None):
+        """
+        :param 'AiRagFileRagFileTransformationConfigRagFileChunkingConfigArgs' rag_file_chunking_config: The chunking config for the file.
+               Structure is documented below.
+        """
+        if rag_file_chunking_config is not None:
+            pulumi.set(__self__, "rag_file_chunking_config", rag_file_chunking_config)
+
+    @_builtins.property
+    @pulumi.getter(name="ragFileChunkingConfig")
+    def rag_file_chunking_config(self) -> Optional['outputs.AiRagFileRagFileTransformationConfigRagFileChunkingConfig']:
+        """
+        The chunking config for the file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rag_file_chunking_config")
+
+
+@pulumi.output_type
+class AiRagFileRagFileTransformationConfigRagFileChunkingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedLengthChunking":
+            suggest = "fixed_length_chunking"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiRagFileRagFileTransformationConfigRagFileChunkingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiRagFileRagFileTransformationConfigRagFileChunkingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiRagFileRagFileTransformationConfigRagFileChunkingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fixed_length_chunking: Optional['outputs.AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking'] = None):
+        """
+        :param 'AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunkingArgs' fixed_length_chunking: The fixed length chunking config.
+               Structure is documented below.
+        """
+        if fixed_length_chunking is not None:
+            pulumi.set(__self__, "fixed_length_chunking", fixed_length_chunking)
+
+    @_builtins.property
+    @pulumi.getter(name="fixedLengthChunking")
+    def fixed_length_chunking(self) -> Optional['outputs.AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking']:
+        """
+        The fixed length chunking config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fixed_length_chunking")
+
+
+@pulumi.output_type
+class AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chunkOverlap":
+            suggest = "chunk_overlap"
+        elif key == "chunkSize":
+            suggest = "chunk_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiRagFileRagFileTransformationConfigRagFileChunkingConfigFixedLengthChunking.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chunk_overlap: Optional[_builtins.int] = None,
+                 chunk_size: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int chunk_overlap: The overlap between chunks.
+        :param _builtins.int chunk_size: The size of the chunks.
+        """
+        if chunk_overlap is not None:
+            pulumi.set(__self__, "chunk_overlap", chunk_overlap)
+        if chunk_size is not None:
+            pulumi.set(__self__, "chunk_size", chunk_size)
+
+    @_builtins.property
+    @pulumi.getter(name="chunkOverlap")
+    def chunk_overlap(self) -> Optional[_builtins.int]:
+        """
+        The overlap between chunks.
+        """
+        return pulumi.get(self, "chunk_overlap")
+
+    @_builtins.property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> Optional[_builtins.int]:
+        """
+        The size of the chunks.
+        """
+        return pulumi.get(self, "chunk_size")
 
 
 @pulumi.output_type
@@ -13311,15 +18337,30 @@ class GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult(dict):
 @pulumi.output_type
 class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult(dict):
     def __init__(__self__, *,
+                 fraction_leaf_nodes_to_search: _builtins.float,
                  leaf_node_embedding_count: _builtins.int,
                  leaf_nodes_to_search_percent: _builtins.int):
         """
+        :param _builtins.float fraction_leaf_nodes_to_search: The default fraction of leaf nodes that any query may be searched. Must be in
+               range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+               This value can only be set when creating the index.
         :param _builtins.int leaf_node_embedding_count: Number of embeddings on each leaf node. The default value is 1000 if not set.
         :param _builtins.int leaf_nodes_to_search_percent: The default percentage of leaf nodes that any query may be searched. Must be in
                range 1-100, inclusive. The default value is 10 (means 10%) if not set.
         """
+        pulumi.set(__self__, "fraction_leaf_nodes_to_search", fraction_leaf_nodes_to_search)
         pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
         pulumi.set(__self__, "leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
+
+    @_builtins.property
+    @pulumi.getter(name="fractionLeafNodesToSearch")
+    def fraction_leaf_nodes_to_search(self) -> _builtins.float:
+        """
+        The default fraction of leaf nodes that any query may be searched. Must be in
+        range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+        This value can only be set when creating the index.
+        """
+        return pulumi.get(self, "fraction_leaf_nodes_to_search")
 
     @_builtins.property
     @pulumi.getter(name="leafNodeEmbeddingCount")

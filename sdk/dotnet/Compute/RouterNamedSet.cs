@@ -102,6 +102,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Router Named Set Prefix
     /// 
     /// ```csharp
@@ -150,6 +151,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Router Named Set Community
     /// 
     /// ```csharp

@@ -118,6 +118,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Config Hyperdisk
  * 
  * <pre>
@@ -194,6 +195,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Config Hyperdisk Source Snapshot
  * 
  * ### Workstation Config Persistent Directories
@@ -282,6 +284,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Config Source Snapshot
  * 
  * <pre>
@@ -367,6 +370,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Config Shielded Instance Config
  * 
  * <pre>
@@ -442,6 +446,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Config Accelerators
  * 
  * <pre>
@@ -517,6 +522,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Config Boost
  * 
  * <pre>
@@ -605,6 +611,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Config Encryption Key
  * 
  * <pre>
@@ -706,6 +713,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Config Allowed Ports
  * 
  * <pre>
@@ -790,6 +798,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Workstation Config Idle Action
  * 
  * <pre>

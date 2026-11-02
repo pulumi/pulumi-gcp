@@ -88,6 +88,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [agentRegistry],
  * });
  * ```
+ *
  * ### Network Services Agent Gateway Client To Agent
  *
  * ```typescript
@@ -109,6 +110,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [agentRegistry],
  * });
  * ```
+ *
  * ### Network Services Agent Gateway Self Managed
  *
  * ```typescript

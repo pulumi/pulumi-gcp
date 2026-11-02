@@ -268,7 +268,6 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Optional, Beta)
      * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
      * 
      */
@@ -276,8 +275,7 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
     private @Nullable Output<String> wildfireAnalysisProfile;
 
     /**
-     * @return (Optional, Beta)
-     * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+     * @return Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
      * 
      */
     public Optional<Output<String>> wildfireAnalysisProfile() {
@@ -665,8 +663,7 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param wildfireAnalysisProfile (Optional, Beta)
-         * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+         * @param wildfireAnalysisProfile Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
          * 
          * @return builder
          * 
@@ -677,8 +674,7 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param wildfireAnalysisProfile (Optional, Beta)
-         * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+         * @param wildfireAnalysisProfile Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
          * 
          * @return builder
          * 

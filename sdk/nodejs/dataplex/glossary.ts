@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
+ *
  * ### Dataplex Glossary Full
  *
  * ```typescript

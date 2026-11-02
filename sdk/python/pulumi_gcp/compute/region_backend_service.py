@@ -1888,6 +1888,7 @@ class RegionBackendService(pulumi.CustomResource):
             connection_draining_timeout_sec=10,
             session_affinity="CLIENT_IP")
         ```
+
         ### Region Backend Service External Iap
 
         ```python
@@ -1905,6 +1906,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "oauth2_client_secret": "xyz",
             })
         ```
+
         ### Region Backend Service Ilb Round Robin
 
         ```python
@@ -1924,6 +1926,7 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
+
         ### Region Backend Service External
 
         ```python
@@ -1943,6 +1946,7 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="TCP",
             load_balancing_scheme="EXTERNAL")
         ```
+
         ### Region Backend Service External Weighted
 
         ```python
@@ -1963,6 +1967,7 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL",
             locality_lb_policy="WEIGHTED_MAGLEV")
         ```
+
         ### Region Backend Service Ilb Ring Hash
 
         ```python
@@ -1998,6 +2003,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "consecutive_errors": 2,
             })
         ```
+
         ### Region Backend Service Ilb Stateful Session Affinity
 
         ```python
@@ -2025,6 +2031,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "name": "mycookie",
             })
         ```
+
         ### Region Backend Service Balancing Mode
 
         ```python
@@ -2086,6 +2093,7 @@ class RegionBackendService(pulumi.CustomResource):
             timeout_sec=10,
             health_checks=default_region_health_check.id)
         ```
+
         ### Region Backend Service In Flight
 
         ```python
@@ -2150,6 +2158,7 @@ class RegionBackendService(pulumi.CustomResource):
             }],
             health_checks=default_region_health_check.self_link)
         ```
+
         ### Region Backend Service Connection Tracking
 
         ```python
@@ -2177,6 +2186,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "enable_strong_affinity": False,
             })
         ```
+
         ### Region Backend Service Ip Address Selection Policy
 
         ```python
@@ -2197,6 +2207,7 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="HTTP",
             ip_address_selection_policy="IPV6_ONLY")
         ```
+
         ### Region Backend Service Ilb Custom Metrics
 
         ```python
@@ -2242,6 +2253,7 @@ class RegionBackendService(pulumi.CustomResource):
                 ],
             }])
         ```
+
         ### Region Backend Service Dynamic Forwarding
 
         ```python
@@ -2258,6 +2270,7 @@ class RegionBackendService(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Region Backend Service Dynamic Forwarding Forward Proxy Cloud Run
 
         ```python
@@ -2276,6 +2289,7 @@ class RegionBackendService(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Region Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
 
         ```python
@@ -2294,6 +2308,7 @@ class RegionBackendService(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Region Backend Service Ha Policy
 
         ```python
@@ -2312,6 +2327,7 @@ class RegionBackendService(pulumi.CustomResource):
             },
             connection_draining_timeout_sec=0)
         ```
+
         ### Region Backend Service Ha Policy Manual Leader
 
         ```python
@@ -2371,6 +2387,7 @@ class RegionBackendService(pulumi.CustomResource):
             },
             connection_draining_timeout_sec=0)
         ```
+
         ### Region Backend Service Ha Policy Internal Lb
 
         ```python
@@ -2432,6 +2449,7 @@ class RegionBackendService(pulumi.CustomResource):
             },
             connection_draining_timeout_sec=0)
         ```
+
         ### Region Backend Service Tls Settings
 
         ```python
@@ -2467,6 +2485,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
+
         ### Region Backend Service Identity
 
         ```python
@@ -2729,6 +2748,7 @@ class RegionBackendService(pulumi.CustomResource):
             connection_draining_timeout_sec=10,
             session_affinity="CLIENT_IP")
         ```
+
         ### Region Backend Service External Iap
 
         ```python
@@ -2746,6 +2766,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "oauth2_client_secret": "xyz",
             })
         ```
+
         ### Region Backend Service Ilb Round Robin
 
         ```python
@@ -2765,6 +2786,7 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
+
         ### Region Backend Service External
 
         ```python
@@ -2784,6 +2806,7 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="TCP",
             load_balancing_scheme="EXTERNAL")
         ```
+
         ### Region Backend Service External Weighted
 
         ```python
@@ -2804,6 +2827,7 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL",
             locality_lb_policy="WEIGHTED_MAGLEV")
         ```
+
         ### Region Backend Service Ilb Ring Hash
 
         ```python
@@ -2839,6 +2863,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "consecutive_errors": 2,
             })
         ```
+
         ### Region Backend Service Ilb Stateful Session Affinity
 
         ```python
@@ -2866,6 +2891,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "name": "mycookie",
             })
         ```
+
         ### Region Backend Service Balancing Mode
 
         ```python
@@ -2927,6 +2953,7 @@ class RegionBackendService(pulumi.CustomResource):
             timeout_sec=10,
             health_checks=default_region_health_check.id)
         ```
+
         ### Region Backend Service In Flight
 
         ```python
@@ -2991,6 +3018,7 @@ class RegionBackendService(pulumi.CustomResource):
             }],
             health_checks=default_region_health_check.self_link)
         ```
+
         ### Region Backend Service Connection Tracking
 
         ```python
@@ -3018,6 +3046,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "enable_strong_affinity": False,
             })
         ```
+
         ### Region Backend Service Ip Address Selection Policy
 
         ```python
@@ -3038,6 +3067,7 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="HTTP",
             ip_address_selection_policy="IPV6_ONLY")
         ```
+
         ### Region Backend Service Ilb Custom Metrics
 
         ```python
@@ -3083,6 +3113,7 @@ class RegionBackendService(pulumi.CustomResource):
                 ],
             }])
         ```
+
         ### Region Backend Service Dynamic Forwarding
 
         ```python
@@ -3099,6 +3130,7 @@ class RegionBackendService(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Region Backend Service Dynamic Forwarding Forward Proxy Cloud Run
 
         ```python
@@ -3117,6 +3149,7 @@ class RegionBackendService(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Region Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
 
         ```python
@@ -3135,6 +3168,7 @@ class RegionBackendService(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Region Backend Service Ha Policy
 
         ```python
@@ -3153,6 +3187,7 @@ class RegionBackendService(pulumi.CustomResource):
             },
             connection_draining_timeout_sec=0)
         ```
+
         ### Region Backend Service Ha Policy Manual Leader
 
         ```python
@@ -3212,6 +3247,7 @@ class RegionBackendService(pulumi.CustomResource):
             },
             connection_draining_timeout_sec=0)
         ```
+
         ### Region Backend Service Ha Policy Internal Lb
 
         ```python
@@ -3273,6 +3309,7 @@ class RegionBackendService(pulumi.CustomResource):
             },
             connection_draining_timeout_sec=0)
         ```
+
         ### Region Backend Service Tls Settings
 
         ```python
@@ -3308,6 +3345,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
+
         ### Region Backend Service Identity
 
         ```python

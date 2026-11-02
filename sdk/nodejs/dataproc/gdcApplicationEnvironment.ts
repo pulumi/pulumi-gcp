@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     namespace: "default",
  * });
  * ```
+ *
  * ### Dataprocgdc Applicationenvironment
  *
  * ```typescript

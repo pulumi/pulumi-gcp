@@ -25,6 +25,10 @@ __all__ = [
     'AgentGatewayNetworkConfigDnsPeeringConfig',
     'AgentGatewayNetworkConfigEgress',
     'AgentGatewaySelfManaged',
+    'CdnEdgeExtensionExtensionChain',
+    'CdnEdgeExtensionExtensionChainExtension',
+    'CdnEdgeExtensionExtensionChainMatchCondition',
+    'CdnEdgeExtensionTarget',
     'EdgeCacheKeysetPublicKey',
     'EdgeCacheKeysetValidationSharedKey',
     'EdgeCacheOriginAwsV4Authentication',
@@ -120,6 +124,11 @@ __all__ = [
     'TcpRouteRuleAction',
     'TcpRouteRuleActionDestination',
     'TcpRouteRuleMatch',
+    'TelemetryPolicyMetricsConfiguration',
+    'TelemetryPolicyTelemetryTarget',
+    'TelemetryPolicyTracingConfiguration',
+    'TelemetryPolicyTracingConfigurationCustomSpanAttribute',
+    'TelemetryPolicyTracingConfigurationParentBasedSampling',
     'TlsRouteRule',
     'TlsRouteRuleAction',
     'TlsRouteRuleActionDestination',
@@ -647,6 +656,250 @@ class AgentGatewaySelfManaged(dict):
         A supported Google Cloud networking proxy in the Project and Location.
         """
         return pulumi.get(self, "resource_uri")
+
+
+@pulumi.output_type
+class CdnEdgeExtensionExtensionChain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchCondition":
+            suggest = "match_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CdnEdgeExtensionExtensionChain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CdnEdgeExtensionExtensionChain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CdnEdgeExtensionExtensionChain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 extensions: Sequence['outputs.CdnEdgeExtensionExtensionChainExtension'],
+                 match_condition: 'outputs.CdnEdgeExtensionExtensionChainMatchCondition',
+                 name: _builtins.str):
+        """
+        :param Sequence['CdnEdgeExtensionExtensionChainExtensionArgs'] extensions: A set of extensions to execute for the matching request.
+               At least one extension is required. Up to 3 extensions can be defined for each extension chain.
+               Structure is documented below.
+        :param 'CdnEdgeExtensionExtensionChainMatchConditionArgs' match_condition: Conditions under which this chain is invoked for a request.
+               Structure is documented below.
+        :param _builtins.str name: The name for this extension chain. The name is logged as part of the HTTP request logs.
+               The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+               and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+               and the last character must be a letter or a number.
+        """
+        pulumi.set(__self__, "extensions", extensions)
+        pulumi.set(__self__, "match_condition", match_condition)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def extensions(self) -> Sequence['outputs.CdnEdgeExtensionExtensionChainExtension']:
+        """
+        A set of extensions to execute for the matching request.
+        At least one extension is required. Up to 3 extensions can be defined for each extension chain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extensions")
+
+    @_builtins.property
+    @pulumi.getter(name="matchCondition")
+    def match_condition(self) -> 'outputs.CdnEdgeExtensionExtensionChainMatchCondition':
+        """
+        Conditions under which this chain is invoked for a request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match_condition")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name for this extension chain. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last character must be a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class CdnEdgeExtensionExtensionChainExtension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failOpen":
+            suggest = "fail_open"
+        elif key == "forwardAttributes":
+            suggest = "forward_attributes"
+        elif key == "forwardHeaders":
+            suggest = "forward_headers"
+        elif key == "supportedEvents":
+            suggest = "supported_events"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CdnEdgeExtensionExtensionChainExtension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CdnEdgeExtensionExtensionChainExtension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CdnEdgeExtensionExtensionChainExtension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 service: _builtins.str,
+                 fail_open: Optional[_builtins.bool] = None,
+                 forward_attributes: Optional[Sequence[_builtins.str]] = None,
+                 forward_headers: Optional[Sequence[_builtins.str]] = None,
+                 supported_events: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str name: The name for this extension. The name is logged as part of the HTTP request logs.
+               The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+               and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+               and the last a letter or a number.
+        :param _builtins.str service: The reference to the service that runs the extension.
+               Must be a reference to a WasmPlugin resource.
+        :param _builtins.bool fail_open: Determines how the proxy behaves if the call to the extension fails or times out.
+               When set to TRUE, request or response processing continues without error.
+               Any subsequent extensions in the extension chain are also executed.
+        :param Sequence[_builtins.str] forward_attributes: List of the Envoy attributes to forward to the extension server.
+        :param Sequence[_builtins.str] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
+               If omitted, all headers are sent. Each element is a string indicating the header name.
+        :param Sequence[_builtins.str] supported_events: A set of events during request or response processing for which this extension is called.
+               Eligible values are `REQUEST_HEADERS` and `RESPONSE_HEADERS`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service", service)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
+        if forward_attributes is not None:
+            pulumi.set(__self__, "forward_attributes", forward_attributes)
+        if forward_headers is not None:
+            pulumi.set(__self__, "forward_headers", forward_headers)
+        if supported_events is not None:
+            pulumi.set(__self__, "supported_events", supported_events)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name for this extension. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> _builtins.str:
+        """
+        The reference to the service that runs the extension.
+        Must be a reference to a WasmPlugin resource.
+        """
+        return pulumi.get(self, "service")
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[_builtins.bool]:
+        """
+        Determines how the proxy behaves if the call to the extension fails or times out.
+        When set to TRUE, request or response processing continues without error.
+        Any subsequent extensions in the extension chain are also executed.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardAttributes")
+    def forward_attributes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of the Envoy attributes to forward to the extension server.
+        """
+        return pulumi.get(self, "forward_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardHeaders")
+    def forward_headers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of the HTTP headers to forward to the extension (from the client or backend).
+        If omitted, all headers are sent. Each element is a string indicating the header name.
+        """
+        return pulumi.get(self, "forward_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="supportedEvents")
+    def supported_events(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A set of events during request or response processing for which this extension is called.
+        Eligible values are `REQUEST_HEADERS` and `RESPONSE_HEADERS`.
+        """
+        return pulumi.get(self, "supported_events")
+
+
+@pulumi.output_type
+class CdnEdgeExtensionExtensionChainMatchCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "celExpression":
+            suggest = "cel_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CdnEdgeExtensionExtensionChainMatchCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CdnEdgeExtensionExtensionChainMatchCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CdnEdgeExtensionExtensionChainMatchCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cel_expression: _builtins.str):
+        """
+        :param _builtins.str cel_expression: A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        pulumi.set(__self__, "cel_expression", cel_expression)
+
+    @_builtins.property
+    @pulumi.getter(name="celExpression")
+    def cel_expression(self) -> _builtins.str:
+        """
+        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        return pulumi.get(self, "cel_expression")
+
+
+@pulumi.output_type
+class CdnEdgeExtensionTarget(dict):
+    def __init__(__self__, *,
+                 resources: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] resources: A list of references to the resources that are targeted by CdnEdgeExtension.
+               Types of resources supported: EdgeCacheService.
+               The format can be `projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}` or
+               `//networkservices.googleapis.com/projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}`.
+        """
+        pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Sequence[_builtins.str]:
+        """
+        A list of references to the resources that are targeted by CdnEdgeExtension.
+        Types of resources supported: EdgeCacheService.
+        The format can be `projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}` or
+        `//networkservices.googleapis.com/projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}`.
+        """
+        return pulumi.get(self, "resources")
 
 
 @pulumi.output_type
@@ -6703,9 +6956,11 @@ class ServiceLbPoliciesIsolationConfig(dict):
                  isolation_granularity: Optional[_builtins.str] = None,
                  isolation_mode: Optional[_builtins.str] = None):
         """
-        :param _builtins.str isolation_granularity: The isolation granularity of the load balancer.
+        :param _builtins.str isolation_granularity: (Optional, Beta)
+               The isolation granularity of the load balancer.
                Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
-        :param _builtins.str isolation_mode: The isolation mode of the load balancer.
+        :param _builtins.str isolation_mode: (Optional, Beta)
+               The isolation mode of the load balancer.
                Default value is `NEAREST`.
                Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
         """
@@ -6718,6 +6973,7 @@ class ServiceLbPoliciesIsolationConfig(dict):
     @pulumi.getter(name="isolationGranularity")
     def isolation_granularity(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         The isolation granularity of the load balancer.
         Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
         """
@@ -6727,6 +6983,7 @@ class ServiceLbPoliciesIsolationConfig(dict):
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         The isolation mode of the load balancer.
         Default value is `NEAREST`.
         Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
@@ -6919,6 +7176,232 @@ class TcpRouteRuleMatch(dict):
         Specifies the destination port to match against.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class TelemetryPolicyMetricsConfiguration(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Indicates whether metrics are enabled or disabled. Set to true to explicitly enable, or false to explicitly disable.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether metrics are enabled or disabled. Set to true to explicitly enable, or false to explicitly disable.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class TelemetryPolicyTelemetryTarget(dict):
+    def __init__(__self__, *,
+                 resources: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] resources: Lists references to the resources that are targeted by the policy.
+               Types of resources supported:
+               - `run.googleapis.com/`
+               - `compute.googleapis.com/`
+               - `networkservices.googleapis.com/`
+                 The format must be the full resource name of a supported resource.
+        """
+        pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Sequence[_builtins.str]:
+        """
+        Lists references to the resources that are targeted by the policy.
+        Types of resources supported:
+        - `run.googleapis.com/`
+        - `compute.googleapis.com/`
+        - `networkservices.googleapis.com/`
+          The format must be the full resource name of a supported resource.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class TelemetryPolicyTracingConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customSpanAttributes":
+            suggest = "custom_span_attributes"
+        elif key == "parentBasedSampling":
+            suggest = "parent_based_sampling"
+        elif key == "samplingRate":
+            suggest = "sampling_rate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TelemetryPolicyTracingConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TelemetryPolicyTracingConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TelemetryPolicyTracingConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_span_attributes: Optional[Sequence['outputs.TelemetryPolicyTracingConfigurationCustomSpanAttribute']] = None,
+                 parent_based_sampling: Optional['outputs.TelemetryPolicyTracingConfigurationParentBasedSampling'] = None,
+                 sampling_rate: Optional[_builtins.float] = None):
+        """
+        :param Sequence['TelemetryPolicyTracingConfigurationCustomSpanAttributeArgs'] custom_span_attributes: Provides key-value pairs for adding context to spans. Supports literalValue (static) and fromHeaderValue (dynamic extraction).
+               Structure is documented below.
+        :param 'TelemetryPolicyTracingConfigurationParentBasedSamplingArgs' parent_based_sampling: Configures honoring a sampled bit in downstream traceparentID headers.
+               Structure is documented below.
+        :param _builtins.float sampling_rate: Specifies the tracing sampling rate. The sampling rate is a float number in the interval [0, 1]. The sampling rate is applied to all requests to the targeted resources. The default value is 0.0.
+        """
+        if custom_span_attributes is not None:
+            pulumi.set(__self__, "custom_span_attributes", custom_span_attributes)
+        if parent_based_sampling is not None:
+            pulumi.set(__self__, "parent_based_sampling", parent_based_sampling)
+        if sampling_rate is not None:
+            pulumi.set(__self__, "sampling_rate", sampling_rate)
+
+    @_builtins.property
+    @pulumi.getter(name="customSpanAttributes")
+    def custom_span_attributes(self) -> Optional[Sequence['outputs.TelemetryPolicyTracingConfigurationCustomSpanAttribute']]:
+        """
+        Provides key-value pairs for adding context to spans. Supports literalValue (static) and fromHeaderValue (dynamic extraction).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_span_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="parentBasedSampling")
+    def parent_based_sampling(self) -> Optional['outputs.TelemetryPolicyTracingConfigurationParentBasedSampling']:
+        """
+        Configures honoring a sampled bit in downstream traceparentID headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parent_based_sampling")
+
+    @_builtins.property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> Optional[_builtins.float]:
+        """
+        Specifies the tracing sampling rate. The sampling rate is a float number in the interval [0, 1]. The sampling rate is applied to all requests to the targeted resources. The default value is 0.0.
+        """
+        return pulumi.get(self, "sampling_rate")
+
+
+@pulumi.output_type
+class TelemetryPolicyTracingConfigurationCustomSpanAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "fromHeaderValue":
+            suggest = "from_header_value"
+        elif key == "literalValue":
+            suggest = "literal_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TelemetryPolicyTracingConfigurationCustomSpanAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TelemetryPolicyTracingConfigurationCustomSpanAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TelemetryPolicyTracingConfigurationCustomSpanAttribute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_name: _builtins.str,
+                 from_header_value: Optional[_builtins.str] = None,
+                 literal_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str attribute_name: Defines the key for a custom attribute that is added to the trace spans generated by the Google Cloud Load Balancer (GCLB).
+        :param _builtins.str from_header_value: Specifies an incoming request header name from which the value for the custom span attribute should be dynamically extracted. Mutually exclusive with literalValue.
+        :param _builtins.str literal_value: Assigns a static, constant value to the custom trace span attribute defined by the corresponding attributeName. Mutually exclusive with fromHeaderValue.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        if from_header_value is not None:
+            pulumi.set(__self__, "from_header_value", from_header_value)
+        if literal_value is not None:
+            pulumi.set(__self__, "literal_value", literal_value)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> _builtins.str:
+        """
+        Defines the key for a custom attribute that is added to the trace spans generated by the Google Cloud Load Balancer (GCLB).
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @_builtins.property
+    @pulumi.getter(name="fromHeaderValue")
+    def from_header_value(self) -> Optional[_builtins.str]:
+        """
+        Specifies an incoming request header name from which the value for the custom span attribute should be dynamically extracted. Mutually exclusive with literalValue.
+        """
+        return pulumi.get(self, "from_header_value")
+
+    @_builtins.property
+    @pulumi.getter(name="literalValue")
+    def literal_value(self) -> Optional[_builtins.str]:
+        """
+        Assigns a static, constant value to the custom trace span attribute defined by the corresponding attributeName. Mutually exclusive with fromHeaderValue.
+        """
+        return pulumi.get(self, "literal_value")
+
+
+@pulumi.output_type
+class TelemetryPolicyTracingConfigurationParentBasedSampling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingRate":
+            suggest = "sampling_rate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TelemetryPolicyTracingConfigurationParentBasedSampling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TelemetryPolicyTracingConfigurationParentBasedSampling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TelemetryPolicyTracingConfigurationParentBasedSampling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 sampling_rate: Optional[_builtins.float] = None):
+        """
+        :param _builtins.bool enabled: Provides a master switch to respect a sampled bit in incoming traceparentID headers. Default is false.
+        :param _builtins.float sampling_rate: Specifies the sampling rate to use when the sampled bit is set in the incoming traceparentID header.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if sampling_rate is not None:
+            pulumi.set(__self__, "sampling_rate", sampling_rate)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Provides a master switch to respect a sampled bit in incoming traceparentID headers. Default is false.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> Optional[_builtins.float]:
+        """
+        Specifies the sampling rate to use when the sampled bit is set in the incoming traceparentID header.
+        """
+        return pulumi.get(self, "sampling_rate")
 
 
 @pulumi.output_type

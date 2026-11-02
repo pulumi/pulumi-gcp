@@ -426,6 +426,7 @@ class Budget(pulumi.CustomResource):
                 "threshold_percent": 0.5,
             }])
         ```
+
         ### Billing Budget Lastperiod
 
         ```python
@@ -447,6 +448,7 @@ class Budget(pulumi.CustomResource):
                 "threshold_percent": float(10),
             }])
         ```
+
         ### Billing Budget Filter
 
         ```python
@@ -484,6 +486,7 @@ class Budget(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Billing Budget Notify
 
         ```python
@@ -524,6 +527,7 @@ class Budget(pulumi.CustomResource):
                 "disable_default_iam_recipients": True,
             })
         ```
+
         ### Billing Budget Notify Project Recipient
 
         ```python
@@ -549,6 +553,7 @@ class Budget(pulumi.CustomResource):
                 "enable_project_level_recipients": True,
             })
         ```
+
         ### Billing Budget Customperiod
 
         ```python
@@ -680,6 +685,7 @@ class Budget(pulumi.CustomResource):
                 "threshold_percent": 0.5,
             }])
         ```
+
         ### Billing Budget Lastperiod
 
         ```python
@@ -701,6 +707,7 @@ class Budget(pulumi.CustomResource):
                 "threshold_percent": float(10),
             }])
         ```
+
         ### Billing Budget Filter
 
         ```python
@@ -738,6 +745,7 @@ class Budget(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Billing Budget Notify
 
         ```python
@@ -778,6 +786,7 @@ class Budget(pulumi.CustomResource):
                 "disable_default_iam_recipients": True,
             })
         ```
+
         ### Billing Budget Notify Project Recipient
 
         ```python
@@ -803,6 +812,7 @@ class Budget(pulumi.CustomResource):
                 "enable_project_level_recipients": True,
             })
         ```
+
         ### Billing Budget Customperiod
 
         ```python

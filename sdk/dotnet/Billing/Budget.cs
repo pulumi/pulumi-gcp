@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// 
     /// ### Billing Budget Lastperiod
     /// 
     /// ```csharp
@@ -107,6 +108,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// 
     /// ### Billing Budget Filter
     /// 
     /// ```csharp
@@ -173,6 +175,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// 
     /// ### Billing Budget Notify
     /// 
     /// ```csharp
@@ -243,6 +246,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// 
     /// ### Billing Budget Notify Project Recipient
     /// 
     /// ```csharp
@@ -288,6 +292,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// 
     /// ### Billing Budget Customperiod
     /// 
     /// ```csharp

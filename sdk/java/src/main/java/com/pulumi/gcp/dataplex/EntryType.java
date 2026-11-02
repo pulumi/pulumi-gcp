@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Dataplex Entry Type Full
  * 
  * <pre>

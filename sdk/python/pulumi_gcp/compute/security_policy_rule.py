@@ -550,6 +550,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Security Policy Rule Default Rule
 
         ```python
@@ -584,6 +585,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Security Policy Rule Multiple Rules
 
         ```python
@@ -622,6 +624,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Security Policy Rule Advanced Features
 
         ```python
@@ -658,6 +661,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Security Policy Rule With Body Exclude
 
         ```python
@@ -737,6 +741,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_backend_service]))
         ```
+
         ### Security Policy Rule Request Body Expression
 
         ```python
@@ -851,6 +856,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Security Policy Rule Default Rule
 
         ```python
@@ -885,6 +891,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Security Policy Rule Multiple Rules
 
         ```python
@@ -923,6 +930,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+
         ### Security Policy Rule Advanced Features
 
         ```python
@@ -959,6 +967,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Security Policy Rule With Body Exclude
 
         ```python
@@ -1038,6 +1047,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_backend_service]))
         ```
+
         ### Security Policy Rule Request Body Expression
 
         ```python

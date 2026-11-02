@@ -53,6 +53,7 @@ export interface GetSubscriptionArgs {
 export interface GetSubscriptionResult {
     readonly ackDeadlineSeconds: number;
     readonly bigqueryConfigs: outputs.pubsub.GetSubscriptionBigqueryConfig[];
+    readonly bigtableConfigs: outputs.pubsub.GetSubscriptionBigtableConfig[];
     readonly cloudStorageConfigs: outputs.pubsub.GetSubscriptionCloudStorageConfig[];
     readonly deadLetterPolicies: outputs.pubsub.GetSubscriptionDeadLetterPolicy[];
     readonly deletionPolicy: string;

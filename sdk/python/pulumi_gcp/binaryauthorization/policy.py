@@ -405,6 +405,7 @@ class Policy(pulumi.CustomResource):
                 "require_attestations_bies": [attestor.name],
             }])
         ```
+
         ### Binary Authorization Policy Global Evaluation
 
         ```python
@@ -529,6 +530,7 @@ class Policy(pulumi.CustomResource):
                 "require_attestations_bies": [attestor.name],
             }])
         ```
+
         ### Binary Authorization Policy Global Evaluation
 
         ```python

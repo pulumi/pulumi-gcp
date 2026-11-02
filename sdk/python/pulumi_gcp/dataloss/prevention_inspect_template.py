@@ -466,6 +466,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Custom Type
 
         ```python
@@ -529,6 +530,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Custom Type Surrogate
 
         ```python
@@ -590,6 +592,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Max Infotype Per Finding Default
 
         ```python
@@ -787,6 +790,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Custom Type
 
         ```python
@@ -850,6 +854,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Custom Type Surrogate
 
         ```python
@@ -911,6 +916,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Max Infotype Per Finding Default
 
         ```python

@@ -154,6 +154,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Transcoder Job Template Overlays
  * 
  * <pre>
@@ -306,6 +307,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Transcoder Job Template Encryptions
  * 
  * <pre>
@@ -504,6 +506,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Transcoder Job Template Pubsub
  * 
  * <pre>

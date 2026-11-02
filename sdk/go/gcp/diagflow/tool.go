@@ -75,6 +75,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflow Tool Connector
 //
 // ```go
@@ -194,6 +195,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflow Tool Function
 //
 // ```go
@@ -253,6 +255,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflow Tool Auth
 //
 // ```go
@@ -310,6 +313,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflow Tool Bearer
 //
 // ```go
@@ -365,6 +369,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflow Tool Oauth
 //
 // ```go
@@ -445,6 +450,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dialogflow Tool Service Agent
 //
 // ```go

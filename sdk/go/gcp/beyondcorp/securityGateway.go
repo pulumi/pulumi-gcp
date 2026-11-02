@@ -47,6 +47,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Beyondcorp Security Gateway Logging
 //
 // ```go
@@ -79,6 +80,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Beyondcorp Security Gateway Spa
 //
 // ```go

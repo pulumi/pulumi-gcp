@@ -72,6 +72,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Index Datastore Mode
     /// 
     /// ```csharp
@@ -117,6 +118,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Index Vector
     /// 
     /// ```csharp
@@ -168,6 +170,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Index Name Descending
     /// 
     /// ```csharp
@@ -205,6 +208,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Index Mongodb Compatible Scope
     /// 
     /// ```csharp
@@ -252,6 +256,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Index Sparse Any
     /// 
     /// ```csharp
@@ -299,6 +304,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Index Unique
     /// 
     /// ```csharp
@@ -347,6 +353,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Index Skip Wait
     /// 
     /// ```csharp
@@ -390,6 +397,51 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
+    /// ### Firestore Index Deletion Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id-deletion-policy",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "name",
+    ///                 Order = "ASCENDING",
+    ///             },
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 Order = "DESCENDING",
+    ///             },
+    ///         },
+    ///         DeletionPolicy = "PREVENT",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Firestore Index Text Search
     /// 
     /// ```csharp
@@ -444,6 +496,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Index Suppress Geojson Indexing
     /// 
     /// ```csharp
@@ -490,6 +543,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Index Geo Search
     /// 
     /// ```csharp

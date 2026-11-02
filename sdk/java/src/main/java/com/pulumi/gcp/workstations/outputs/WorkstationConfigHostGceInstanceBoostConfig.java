@@ -28,6 +28,12 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
      */
     private @Nullable Integer bootDiskSizeGb;
     /**
+     * @return (Optional, Beta)
+     * Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+     * 
+     */
+    private @Nullable Boolean enableAutomaticFailover;
+    /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
      * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
@@ -64,6 +70,14 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
      */
     public Optional<Integer> bootDiskSizeGb() {
         return Optional.ofNullable(this.bootDiskSizeGb);
+    }
+    /**
+     * @return (Optional, Beta)
+     * Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+     * 
+     */
+    public Optional<Boolean> enableAutomaticFailover() {
+        return Optional.ofNullable(this.enableAutomaticFailover);
     }
     /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
@@ -106,6 +120,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
     public static final class Builder {
         private @Nullable List<WorkstationConfigHostGceInstanceBoostConfigAccelerator> accelerators;
         private @Nullable Integer bootDiskSizeGb;
+        private @Nullable Boolean enableAutomaticFailover;
         private @Nullable Boolean enableNestedVirtualization;
         private String id;
         private @Nullable String machineType;
@@ -115,6 +130,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
     	      Objects.requireNonNull(defaults);
     	      this.accelerators = defaults.accelerators;
     	      this.bootDiskSizeGb = defaults.bootDiskSizeGb;
+    	      this.enableAutomaticFailover = defaults.enableAutomaticFailover;
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.id = defaults.id;
     	      this.machineType = defaults.machineType;
@@ -134,6 +150,12 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
         public Builder bootDiskSizeGb(@Nullable Integer bootDiskSizeGb) {
 
             this.bootDiskSizeGb = bootDiskSizeGb;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableAutomaticFailover(@Nullable Boolean enableAutomaticFailover) {
+
+            this.enableAutomaticFailover = enableAutomaticFailover;
             return this;
         }
         @CustomType.Setter
@@ -166,6 +188,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
             final var _resultValue = new WorkstationConfigHostGceInstanceBoostConfig();
             _resultValue.accelerators = accelerators;
             _resultValue.bootDiskSizeGb = bootDiskSizeGb;
+            _resultValue.enableAutomaticFailover = enableAutomaticFailover;
             _resultValue.enableNestedVirtualization = enableNestedVirtualization;
             _resultValue.id = id;
             _resultValue.machineType = machineType;

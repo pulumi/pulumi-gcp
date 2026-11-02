@@ -47,6 +47,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait30s],
  * });
  * ```
+ *
  * ### Firebase App Check Play Integrity Config Full
  *
  * ```typescript

@@ -343,6 +343,7 @@ class Database(pulumi.CustomResource):
             name="my-database",
             instance=instance.name)
         ```
+
         ### Sql Database Deletion Policy
 
         ```python
@@ -439,6 +440,7 @@ class Database(pulumi.CustomResource):
             name="my-database",
             instance=instance.name)
         ```
+
         ### Sql Database Deletion Policy
 
         ```python

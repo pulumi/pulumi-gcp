@@ -76,6 +76,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Entry Full
 //
 // ```go
@@ -237,6 +238,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Entry Bigquery Table
 //
 // ```go
@@ -408,6 +410,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Entry Glossary Term
 //
 // ```go

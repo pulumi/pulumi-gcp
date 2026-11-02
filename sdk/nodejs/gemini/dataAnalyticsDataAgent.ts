@@ -55,6 +55,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gemini Data Analytics Data Agent Bigquery
  *
  * ```typescript
@@ -100,10 +101,52 @@ import * as utilities from "../utilities";
  *                         projectId: dataset.project,
  *                         datasetId: dataset.datasetId,
  *                         tableId: table.tableId,
+ *                         schema: {
+ *                             description: "Sales orders table.",
+ *                             displayName: "Sales Orders",
+ *                             synonyms: [
+ *                                 "orders",
+ *                                 "purchases",
+ *                             ],
+ *                             tags: [
+ *                                 "sales",
+ *                                 "finance",
+ *                             ],
+ *                             fields: [
+ *                                 {
+ *                                     name: "order_id",
+ *                                     type: "STRING",
+ *                                     description: "Unique order identifier.",
+ *                                     mode: "REQUIRED",
+ *                                     synonyms: ["id"],
+ *                                     tags: ["identifier"],
+ *                                     category: "DIMENSION",
+ *                                 },
+ *                                 {
+ *                                     name: "order_total",
+ *                                     type: "FLOAT",
+ *                                     description: "Total order amount.",
+ *                                     mode: "NULLABLE",
+ *                                     synonyms: [
+ *                                         "revenue",
+ *                                         "amount",
+ *                                     ],
+ *                                     tags: ["metric"],
+ *                                     category: "MEASURE",
+ *                                     valueFormat: "$#,##0.00",
+ *                                 },
+ *                             ],
+ *                             filters: [{
+ *                                 field: "order_total",
+ *                                 value: "0",
+ *                                 type: "ALWAYS_FILTER",
+ *                             }],
+ *                         },
  *                     }],
  *                 },
  *             },
  *             options: {
+ *                 model: "LATEST_GA_MODEL",
  *                 analysis: {
  *                     python: {
  *                         enabled: true,
@@ -114,8 +157,13 @@ import * as utilities from "../utilities";
  *                 },
  *             },
  *             exampleQueries: [{
- *                 naturalLanguageQuestion: "What is the total order value?",
- *                 sqlQuery: "SELECT SUM(order_total) AS total_order_value FROM sales",
+ *                 naturalLanguageQuestion: "What is the total order value above a threshold?",
+ *                 sqlQuery: "SELECT SUM(order_total) AS total_order_value FROM sales WHERE order_total > @min_total",
+ *                 parameters: [{
+ *                     name: "min_total",
+ *                     description: "Minimum order total threshold.",
+ *                     dataType: "FLOAT64",
+ *                 }],
  *             }],
  *             glossaryTerms: [{
  *                 displayName: "Order",
@@ -143,6 +191,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [table],
  * });
  * ```
+ *
  * ### Gemini Data Analytics Data Agent Cmek
  *
  * ```typescript

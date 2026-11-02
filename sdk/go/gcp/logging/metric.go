@@ -80,6 +80,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Logging Metric Counter Basic
 //
 // ```go
@@ -110,6 +111,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Logging Metric Counter Labels
 //
 // ```go
@@ -150,6 +152,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Logging Metric Logging Bucket
 //
 // ```go
@@ -185,6 +188,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Logging Metric Disabled
 //
 // ```go

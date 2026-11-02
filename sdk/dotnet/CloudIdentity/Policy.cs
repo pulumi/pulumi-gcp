@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.CloudIdentity
     ///     * [Policy API overview](https://docs.cloud.google.com/identity/docs/concepts/overview-policies)
     /// 
     /// &gt; **Note:** This is available only in beta
+    /// 
     /// ## Example Usage
     /// 
     /// ### Cloudidentity Policy Basic

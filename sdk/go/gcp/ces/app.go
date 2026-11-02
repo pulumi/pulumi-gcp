@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			fakePrivateKeySecret, err := secretmanager.NewSecret(ctx, "fake_private_key_secret", &secretmanager.SecretArgs{
-//				SecretId: pulumi.String("fake-pk-secret-app-tf1"),
+//				SecretId: pulumi.String("fake-pk-secret-app-tf"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
@@ -203,8 +203,9 @@ import (
 //					},
 //				},
 //				ModelSettings: &ces.AppModelSettingsArgs{
-//					Model:       pulumi.String("gemini-3.0-flash-001"),
-//					Temperature: pulumi.Float64(0.5),
+//					Model:         pulumi.String("gemini-3.0-flash-001"),
+//					Temperature:   pulumi.Float64(0.5),
+//					ThinkingLevel: pulumi.String("LOW"),
 //				},
 //				EvaluationMetricsThresholds: &ces.AppEvaluationMetricsThresholdsArgs{
 //					GoldenEvaluationMetricsThresholds: &ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs{
@@ -311,6 +312,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Ces App Ambient Sound Gcs Uri
 //
 // ```go

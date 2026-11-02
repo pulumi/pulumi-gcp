@@ -17,6 +17,8 @@ public final class GetDiskDiskEncryptionKey {
      * &#39;roles/cloudkms.cryptoKeyEncrypterDecrypter&#39; to use this feature.
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
      * 
+     * Specify the key without a &#39;/cryptoKeyVersions/&#39; suffix.
+     * 
      */
     private String kmsKeySelfLink;
     /**
@@ -75,6 +77,8 @@ public final class GetDiskDiskEncryptionKey {
      * (&#39;service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com&#39;) must have
      * &#39;roles/cloudkms.cryptoKeyEncrypterDecrypter&#39; to use this feature.
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * 
+     * Specify the key without a &#39;/cryptoKeyVersions/&#39; suffix.
      * 
      */
     public String kmsKeySelfLink() {

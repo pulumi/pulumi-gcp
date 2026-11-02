@@ -359,6 +359,7 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Organization Custom Module Full
 
         ```python
@@ -473,6 +474,7 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Organization Custom Module Full
 
         ```python

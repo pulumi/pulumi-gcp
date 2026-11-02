@@ -77,7 +77,7 @@ import (
 //				},
 //				LanguageCode: pulumi.String("en"),
 //				LlmModelSettings: &diagflow.CxGenerativeSettingsLlmModelSettingsArgs{
-//					Model:      pulumi.String("gemini-2.0-flash-001"),
+//					Model:      pulumi.String("gemini-2.5-flash"),
 //					PromptText: pulumi.String("example prompt text"),
 //				},
 //			})

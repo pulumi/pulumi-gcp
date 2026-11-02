@@ -5231,10 +5231,8 @@ type CloudVmClusterProperties struct {
 	// (Output)
 	// OCIDs of scan IPs.
 	ScanIpIds []string `pulumi:"scanIpIds"`
-	// (Output)
 	// SCAN listener port - TCP
 	ScanListenerPortTcp *int `pulumi:"scanListenerPortTcp"`
-	// (Output)
 	// SCAN listener port - TLS
 	ScanListenerPortTcpSsl *int `pulumi:"scanListenerPortTcpSsl"`
 	// (Output)
@@ -5367,10 +5365,8 @@ type CloudVmClusterPropertiesArgs struct {
 	// (Output)
 	// OCIDs of scan IPs.
 	ScanIpIds pulumi.StringArrayInput `pulumi:"scanIpIds"`
-	// (Output)
 	// SCAN listener port - TCP
 	ScanListenerPortTcp pulumi.IntPtrInput `pulumi:"scanListenerPortTcp"`
-	// (Output)
 	// SCAN listener port - TLS
 	ScanListenerPortTcpSsl pulumi.IntPtrInput `pulumi:"scanListenerPortTcpSsl"`
 	// (Output)
@@ -5639,13 +5635,11 @@ func (o CloudVmClusterPropertiesOutput) ScanIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudVmClusterProperties) []string { return v.ScanIpIds }).(pulumi.StringArrayOutput)
 }
 
-// (Output)
 // SCAN listener port - TCP
 func (o CloudVmClusterPropertiesOutput) ScanListenerPortTcp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CloudVmClusterProperties) *int { return v.ScanListenerPortTcp }).(pulumi.IntPtrOutput)
 }
 
-// (Output)
 // SCAN listener port - TLS
 func (o CloudVmClusterPropertiesOutput) ScanListenerPortTcpSsl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CloudVmClusterProperties) *int { return v.ScanListenerPortTcpSsl }).(pulumi.IntPtrOutput)
@@ -6005,7 +5999,6 @@ func (o CloudVmClusterPropertiesPtrOutput) ScanIpIds() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// (Output)
 // SCAN listener port - TCP
 func (o CloudVmClusterPropertiesPtrOutput) ScanListenerPortTcp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CloudVmClusterProperties) *int {
@@ -6016,7 +6009,6 @@ func (o CloudVmClusterPropertiesPtrOutput) ScanListenerPortTcp() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Output)
 // SCAN listener port - TLS
 func (o CloudVmClusterPropertiesPtrOutput) ScanListenerPortTcpSsl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CloudVmClusterProperties) *int {

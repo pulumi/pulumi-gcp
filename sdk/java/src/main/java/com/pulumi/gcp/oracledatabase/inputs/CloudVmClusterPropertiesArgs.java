@@ -412,7 +412,6 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * (Output)
      * SCAN listener port - TCP
      * 
      */
@@ -420,8 +419,7 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
     private @Nullable Output<Integer> scanListenerPortTcp;
 
     /**
-     * @return (Output)
-     * SCAN listener port - TCP
+     * @return SCAN listener port - TCP
      * 
      */
     public Optional<Output<Integer>> scanListenerPortTcp() {
@@ -429,7 +427,6 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * (Output)
      * SCAN listener port - TLS
      * 
      */
@@ -437,8 +434,7 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
     private @Nullable Output<Integer> scanListenerPortTcpSsl;
 
     /**
-     * @return (Output)
-     * SCAN listener port - TLS
+     * @return SCAN listener port - TLS
      * 
      */
     public Optional<Output<Integer>> scanListenerPortTcpSsl() {
@@ -1258,8 +1254,7 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scanListenerPortTcp (Output)
-         * SCAN listener port - TCP
+         * @param scanListenerPortTcp SCAN listener port - TCP
          * 
          * @return builder
          * 
@@ -1270,8 +1265,7 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scanListenerPortTcp (Output)
-         * SCAN listener port - TCP
+         * @param scanListenerPortTcp SCAN listener port - TCP
          * 
          * @return builder
          * 
@@ -1281,8 +1275,7 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scanListenerPortTcpSsl (Output)
-         * SCAN listener port - TLS
+         * @param scanListenerPortTcpSsl SCAN listener port - TLS
          * 
          * @return builder
          * 
@@ -1293,8 +1286,7 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scanListenerPortTcpSsl (Output)
-         * SCAN listener port - TLS
+         * @param scanListenerPortTcpSsl SCAN listener port - TLS
          * 
          * @return builder
          * 

@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     nodeType: "n1-node-96-624",
  * });
  * ```
+ *
  * ### Node Template Server Binding
  *
  * ```typescript
@@ -52,6 +53,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Node Template Accelerators
  *
  * ```typescript
@@ -71,6 +73,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Node Template Disks
  *
  * ```typescript

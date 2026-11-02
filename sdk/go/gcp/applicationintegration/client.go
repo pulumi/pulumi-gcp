@@ -48,6 +48,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Integrations Client Full
 //
 // ```go

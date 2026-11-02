@@ -106,6 +106,7 @@ import * as utilities from "../utilities";
  *     zeroAdvertisedRoutePriority: true,
  * });
  * ```
+ *
  * ### Router Peer Router Appliance
  *
  * ```typescript

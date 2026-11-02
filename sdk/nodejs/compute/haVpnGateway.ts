@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     network: network1.id,
  * });
  * ```
+ *
  * ### Ha Vpn Gateway Ipv6
  *
  * ```typescript
@@ -56,6 +57,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Compute Ha Vpn Gateway Encrypted Interconnect
  *
  * ```typescript

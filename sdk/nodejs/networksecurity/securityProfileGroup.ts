@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Security Security Profile Group Mirroring
  *
  * ```typescript
@@ -74,6 +75,7 @@ import * as utilities from "../utilities";
  *     customMirroringProfile: defaultSecurityProfile.id,
  * });
  * ```
+ *
  * ### Network Security Security Profile Group Intercept
  *
  * ```typescript
@@ -110,6 +112,7 @@ import * as utilities from "../utilities";
  *     customInterceptProfile: defaultSecurityProfile.id,
  * });
  * ```
+ *
  * ### Network Security Security Profile Group Url Filtering
  *
  * ```typescript
@@ -143,6 +146,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Security Security Profile Group Wildfire
  *
  * ```typescript
@@ -294,7 +298,6 @@ export class SecurityProfileGroup extends pulumi.CustomResource {
      */
     declare public readonly urlFilteringProfile: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Beta)
      * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
      */
     declare public readonly wildfireAnalysisProfile: pulumi.Output<string | undefined>;
@@ -432,7 +435,6 @@ export interface SecurityProfileGroupState {
      */
     urlFilteringProfile?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
      */
     wildfireAnalysisProfile?: pulumi.Input<string | undefined>;
@@ -493,7 +495,6 @@ export interface SecurityProfileGroupArgs {
      */
     urlFilteringProfile?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
      */
     wildfireAnalysisProfile?: pulumi.Input<string | undefined>;

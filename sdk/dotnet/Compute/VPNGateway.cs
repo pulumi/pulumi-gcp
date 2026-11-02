@@ -101,6 +101,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Target Vpn Gateway Tags
     /// 
     /// ```csharp

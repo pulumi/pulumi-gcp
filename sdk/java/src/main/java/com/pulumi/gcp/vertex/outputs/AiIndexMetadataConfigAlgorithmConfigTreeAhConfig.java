@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,18 +13,41 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
     /**
+     * @return The default fraction of leaf nodes that any query may be searched. Must be in
+     * range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+     * This value can only be set when creating the index.
+     * 
+     */
+    private @Nullable Double fractionLeafNodesToSearch;
+    /**
      * @return Number of embeddings on each leaf node. The default value is 1000 if not set.
      * 
      */
     private @Nullable Integer leafNodeEmbeddingCount;
     /**
-     * @return The default percentage of leaf nodes that any query may be searched. Must be in
+     * @return (Optional, Deprecated)
+     * The default percentage of leaf nodes that any query may be searched. Must be in
      * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
      * 
+     * &gt; **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * 
+     * @deprecated
+     * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * 
      */
+    @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
     private @Nullable Integer leafNodesToSearchPercent;
 
     private AiIndexMetadataConfigAlgorithmConfigTreeAhConfig() {}
+    /**
+     * @return The default fraction of leaf nodes that any query may be searched. Must be in
+     * range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+     * This value can only be set when creating the index.
+     * 
+     */
+    public Optional<Double> fractionLeafNodesToSearch() {
+        return Optional.ofNullable(this.fractionLeafNodesToSearch);
+    }
     /**
      * @return Number of embeddings on each leaf node. The default value is 1000 if not set.
      * 
@@ -32,10 +56,17 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
         return Optional.ofNullable(this.leafNodeEmbeddingCount);
     }
     /**
-     * @return The default percentage of leaf nodes that any query may be searched. Must be in
+     * @return (Optional, Deprecated)
+     * The default percentage of leaf nodes that any query may be searched. Must be in
      * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
      * 
+     * &gt; **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * 
+     * @deprecated
+     * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * 
      */
+    @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
     public Optional<Integer> leafNodesToSearchPercent() {
         return Optional.ofNullable(this.leafNodesToSearchPercent);
     }
@@ -49,15 +80,23 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Double fractionLeafNodesToSearch;
         private @Nullable Integer leafNodeEmbeddingCount;
         private @Nullable Integer leafNodesToSearchPercent;
         public Builder() {}
         public Builder(AiIndexMetadataConfigAlgorithmConfigTreeAhConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.fractionLeafNodesToSearch = defaults.fractionLeafNodesToSearch;
     	      this.leafNodeEmbeddingCount = defaults.leafNodeEmbeddingCount;
     	      this.leafNodesToSearchPercent = defaults.leafNodesToSearchPercent;
         }
 
+        @CustomType.Setter
+        public Builder fractionLeafNodesToSearch(@Nullable Double fractionLeafNodesToSearch) {
+
+            this.fractionLeafNodesToSearch = fractionLeafNodesToSearch;
+            return this;
+        }
         @CustomType.Setter
         public Builder leafNodeEmbeddingCount(@Nullable Integer leafNodeEmbeddingCount) {
 
@@ -72,6 +111,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
         }
         public AiIndexMetadataConfigAlgorithmConfigTreeAhConfig build() {
             final var _resultValue = new AiIndexMetadataConfigAlgorithmConfigTreeAhConfig();
+            _resultValue.fractionLeafNodesToSearch = fractionLeafNodesToSearch;
             _resultValue.leafNodeEmbeddingCount = leafNodeEmbeddingCount;
             _resultValue.leafNodesToSearchPercent = leafNodesToSearchPercent;
             return _resultValue;

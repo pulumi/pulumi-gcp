@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Colab Runtime Template No Name
  *
  * ```typescript
@@ -55,6 +56,7 @@ import * as utilities from "../utilities";
  *     softwareConfig: {},
  * });
  * ```
+ *
  * ### Colab Runtime Template Full
  *
  * ```typescript

@@ -1071,6 +1071,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.networkSecurityCustomEndpoint);
     }
 
+    @Import(name="networkServices2CustomEndpoint")
+    private @Nullable Output<String> networkServices2CustomEndpoint;
+
+    public Optional<Output<String>> networkServices2CustomEndpoint() {
+        return Optional.ofNullable(this.networkServices2CustomEndpoint);
+    }
+
     @Import(name="networkServicesCustomEndpoint")
     private @Nullable Output<String> networkServicesCustomEndpoint;
 
@@ -1721,6 +1728,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.networkManagementCustomEndpoint = $.networkManagementCustomEndpoint;
         this.networkManagementv1CustomEndpoint = $.networkManagementv1CustomEndpoint;
         this.networkSecurityCustomEndpoint = $.networkSecurityCustomEndpoint;
+        this.networkServices2CustomEndpoint = $.networkServices2CustomEndpoint;
         this.networkServicesCustomEndpoint = $.networkServicesCustomEndpoint;
         this.observabilityCustomEndpoint = $.observabilityCustomEndpoint;
         this.oracleDatabaseCustomEndpoint = $.oracleDatabaseCustomEndpoint;
@@ -3164,6 +3172,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder networkSecurityCustomEndpoint(String networkSecurityCustomEndpoint) {
             return networkSecurityCustomEndpoint(Output.of(networkSecurityCustomEndpoint));
+        }
+
+        public Builder networkServices2CustomEndpoint(@Nullable Output<String> networkServices2CustomEndpoint) {
+            $.networkServices2CustomEndpoint = networkServices2CustomEndpoint;
+            return this;
+        }
+
+        public Builder networkServices2CustomEndpoint(String networkServices2CustomEndpoint) {
+            return networkServices2CustomEndpoint(Output.of(networkServices2CustomEndpoint));
         }
 
         public Builder networkServicesCustomEndpoint(@Nullable Output<String> networkServicesCustomEndpoint) {

@@ -861,6 +861,7 @@ class Secret(pulumi.CustomResource):
             },
             deletion_protection=False)
         ```
+
         ### Secret With Annotations
 
         ```python
@@ -884,6 +885,7 @@ class Secret(pulumi.CustomResource):
             },
             secret_type="ACCESS_KEY")
         ```
+
         ### Secret With Version Destroy Ttl
 
         ```python
@@ -897,6 +899,7 @@ class Secret(pulumi.CustomResource):
                 "auto": {},
             })
         ```
+
         ### Secret With Automatic Cmek
 
         ```python
@@ -1048,6 +1051,7 @@ class Secret(pulumi.CustomResource):
             },
             deletion_protection=False)
         ```
+
         ### Secret With Annotations
 
         ```python
@@ -1071,6 +1075,7 @@ class Secret(pulumi.CustomResource):
             },
             secret_type="ACCESS_KEY")
         ```
+
         ### Secret With Version Destroy Ttl
 
         ```python
@@ -1084,6 +1089,7 @@ class Secret(pulumi.CustomResource):
                 "auto": {},
             })
         ```
+
         ### Secret With Automatic Cmek
 
         ```python

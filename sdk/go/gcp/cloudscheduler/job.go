@@ -67,6 +67,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Scheduler Job Http
 //
 // ```go
@@ -114,6 +115,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Scheduler Job Paused
 //
 // ```go
@@ -162,6 +164,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Scheduler Job App Engine
 //
 // ```go
@@ -206,6 +209,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Scheduler Job Oauth
 //
 // ```go
@@ -247,6 +251,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Scheduler Job Oidc
 //
 // ```go

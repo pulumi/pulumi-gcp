@@ -46,8 +46,7 @@ class TransportArgs:
         :param pulumi.Input[_builtins.bool] admin_enabled: (Optional, Beta)
                Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] advertised_routes: List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
-        :param pulumi.Input[_builtins.bool] auto_accept: (Optional, Beta)
-               Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+        :param pulumi.Input[_builtins.bool] auto_accept: Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         :param pulumi.Input[_builtins.str] bandwidth: Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -56,8 +55,7 @@ class TransportArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.str] hub: (Optional, Beta)
-               The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+        :param pulumi.Input[_builtins.str] hub: The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -67,8 +65,7 @@ class TransportArgs:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] provided_activation_key: Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
-        :param pulumi.Input[_builtins.bool] psc_routing_enabled: (Optional, Beta)
-               Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+        :param pulumi.Input[_builtins.bool] psc_routing_enabled: Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         :param pulumi.Input[_builtins.str] remote_account_id: The user supplied account id for the CSP associated with the remote profile.
         :param pulumi.Input[_builtins.str] stack_type: IP version stack for the established connectivity.
                Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
@@ -162,7 +159,6 @@ class TransportArgs:
     @pulumi.getter(name="autoAccept")
     def auto_accept(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (Optional, Beta)
         Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         """
         return pulumi.get(self, "auto_accept")
@@ -216,7 +212,6 @@ class TransportArgs:
     @pulumi.getter
     def hub(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         """
         return pulumi.get(self, "hub")
@@ -304,7 +299,6 @@ class TransportArgs:
     @pulumi.getter(name="pscRoutingEnabled")
     def psc_routing_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (Optional, Beta)
         Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         """
         return pulumi.get(self, "psc_routing_enabled")
@@ -371,8 +365,7 @@ class _TransportState:
         :param pulumi.Input[_builtins.bool] admin_enabled: (Optional, Beta)
                Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] advertised_routes: List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
-        :param pulumi.Input[_builtins.bool] auto_accept: (Optional, Beta)
-               Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+        :param pulumi.Input[_builtins.bool] auto_accept: Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         :param pulumi.Input[_builtins.str] bandwidth: Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -383,8 +376,7 @@ class _TransportState:
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] generated_activation_key: [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
-        :param pulumi.Input[_builtins.str] hub: (Optional, Beta)
-               The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+        :param pulumi.Input[_builtins.str] hub: The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -395,8 +387,7 @@ class _TransportState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] provided_activation_key: Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
-        :param pulumi.Input[_builtins.bool] psc_routing_enabled: (Optional, Beta)
-               Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+        :param pulumi.Input[_builtins.bool] psc_routing_enabled: Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of this resource. This is required to construct the resource name, but is not sent to the API since the region is already contained in the parent field.
@@ -483,7 +474,6 @@ class _TransportState:
     @pulumi.getter(name="autoAccept")
     def auto_accept(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (Optional, Beta)
         Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         """
         return pulumi.get(self, "auto_accept")
@@ -561,7 +551,6 @@ class _TransportState:
     @pulumi.getter
     def hub(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         """
         return pulumi.get(self, "hub")
@@ -661,7 +650,6 @@ class _TransportState:
     @pulumi.getter(name="pscRoutingEnabled")
     def psc_routing_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (Optional, Beta)
         Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         """
         return pulumi.get(self, "psc_routing_enabled")
@@ -790,10 +778,10 @@ class Transport(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         primary_network = gcp.compute.Network("primary-network",
-            name="tf-test-my-vpc-network_48153",
+            name="tf-test-my-vpc-network_29506",
             auto_create_subnetworks=False)
         primary = gcp.networkconnectivity.Transport("primary",
-            name="tf-test-basic-transport_58845",
+            name="tf-test-basic-transport_86474",
             region="us-east4",
             description="A sample transport",
             remote_profile=f"https://networkconnectivity.googleapis.com/v1/{project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",
@@ -829,8 +817,7 @@ class Transport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] admin_enabled: (Optional, Beta)
                Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] advertised_routes: List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
-        :param pulumi.Input[_builtins.bool] auto_accept: (Optional, Beta)
-               Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+        :param pulumi.Input[_builtins.bool] auto_accept: Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         :param pulumi.Input[_builtins.str] bandwidth: Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -839,8 +826,7 @@ class Transport(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.str] hub: (Optional, Beta)
-               The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+        :param pulumi.Input[_builtins.str] hub: The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -850,8 +836,7 @@ class Transport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] provided_activation_key: Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
-        :param pulumi.Input[_builtins.bool] psc_routing_enabled: (Optional, Beta)
-               Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+        :param pulumi.Input[_builtins.bool] psc_routing_enabled: Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         :param pulumi.Input[_builtins.str] region: The region of this resource. This is required to construct the resource name, but is not sent to the API since the region is already contained in the parent field.
         :param pulumi.Input[_builtins.str] remote_account_id: The user supplied account id for the CSP associated with the remote profile.
         :param pulumi.Input[_builtins.str] remote_profile: Resource URL of the remoteTransportProfile that this Transport is
@@ -884,10 +869,10 @@ class Transport(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         primary_network = gcp.compute.Network("primary-network",
-            name="tf-test-my-vpc-network_48153",
+            name="tf-test-my-vpc-network_29506",
             auto_create_subnetworks=False)
         primary = gcp.networkconnectivity.Transport("primary",
-            name="tf-test-basic-transport_58845",
+            name="tf-test-basic-transport_86474",
             region="us-east4",
             description="A sample transport",
             remote_profile=f"https://networkconnectivity.googleapis.com/v1/{project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",
@@ -1032,8 +1017,7 @@ class Transport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] admin_enabled: (Optional, Beta)
                Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] advertised_routes: List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
-        :param pulumi.Input[_builtins.bool] auto_accept: (Optional, Beta)
-               Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+        :param pulumi.Input[_builtins.bool] auto_accept: Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         :param pulumi.Input[_builtins.str] bandwidth: Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1044,8 +1028,7 @@ class Transport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] generated_activation_key: [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
-        :param pulumi.Input[_builtins.str] hub: (Optional, Beta)
-               The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+        :param pulumi.Input[_builtins.str] hub: The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -1056,8 +1039,7 @@ class Transport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] provided_activation_key: Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
-        :param pulumi.Input[_builtins.bool] psc_routing_enabled: (Optional, Beta)
-               Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+        :param pulumi.Input[_builtins.bool] psc_routing_enabled: Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of this resource. This is required to construct the resource name, but is not sent to the API since the region is already contained in the parent field.
@@ -1118,7 +1100,6 @@ class Transport(pulumi.CustomResource):
     @pulumi.getter(name="autoAccept")
     def auto_accept(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        (Optional, Beta)
         Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         """
         return pulumi.get(self, "auto_accept")
@@ -1172,7 +1153,6 @@ class Transport(pulumi.CustomResource):
     @pulumi.getter
     def hub(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         """
         return pulumi.get(self, "hub")
@@ -1240,7 +1220,6 @@ class Transport(pulumi.CustomResource):
     @pulumi.getter(name="pscRoutingEnabled")
     def psc_routing_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        (Optional, Beta)
         Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         """
         return pulumi.get(self, "psc_routing_enabled")

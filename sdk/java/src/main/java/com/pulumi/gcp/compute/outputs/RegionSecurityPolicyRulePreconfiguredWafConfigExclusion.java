@@ -18,8 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
     /**
-     * @return (Optional, Beta)
-     * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+     * @return A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
      * Structure is documented below.
      * 
      */
@@ -64,8 +63,7 @@ public final class RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
 
     private RegionSecurityPolicyRulePreconfiguredWafConfigExclusion() {}
     /**
-     * @return (Optional, Beta)
-     * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+     * @return A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
      * Structure is documented below.
      * 
      */

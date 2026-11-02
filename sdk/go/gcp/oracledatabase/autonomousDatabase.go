@@ -59,6 +59,9 @@ import (
 //					DbWorkload:        pulumi.String("OLTP"),
 //					LicenseType:       pulumi.String("LICENSE_INCLUDED"),
 //				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
 //				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -69,6 +72,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Autonomous Database Full
 //
 // ```go
@@ -136,6 +140,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Autonomous Database Odbnetwork
 //
 // ```go
@@ -175,6 +180,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Autonomous Database Publicip
 //
 // ```go
@@ -213,6 +219,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Autonomous Database Disaster Recovery
 //
 // ```go

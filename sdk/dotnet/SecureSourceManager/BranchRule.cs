@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Secure Source Manager Branch Rule With Fields
     /// 
     /// ```csharp

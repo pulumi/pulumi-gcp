@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     domainId: exampleAppHostingBackend.uri,
  * });
  * ```
+ *
  * ### Firebase App Hosting Default Domain Full
  *
  * ```typescript
@@ -64,6 +65,7 @@ import * as utilities from "../utilities";
  *     disabled: false,
  * });
  * ```
+ *
  * ### Firebase App Hosting Default Domain Disabled
  *
  * ```typescript

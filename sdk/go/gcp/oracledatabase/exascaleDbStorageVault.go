@@ -40,6 +40,9 @@ import (
 //						TotalSizeGbs: pulumi.Int(512),
 //					},
 //				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
 //				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -50,6 +53,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Exascale Db Storage Vault Full
 //
 // ```go
@@ -92,6 +96,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
 //
 // ```go

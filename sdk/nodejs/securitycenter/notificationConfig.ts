@@ -86,6 +86,10 @@ export class NotificationConfig extends pulumi.CustomResource {
      */
     declare public readonly configId: pulumi.Output<string>;
     /**
+     * Indicates whether the notifications will be sent for deleted findings.
+     */
+    declare public readonly deletionNotificationsEnabled: pulumi.Output<boolean | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -138,6 +142,7 @@ export class NotificationConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NotificationConfigState | undefined;
             resourceInputs["configId"] = state?.configId;
+            resourceInputs["deletionNotificationsEnabled"] = state?.deletionNotificationsEnabled;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
@@ -160,6 +165,7 @@ export class NotificationConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'streamingConfig'");
             }
             resourceInputs["configId"] = args?.configId;
+            resourceInputs["deletionNotificationsEnabled"] = args?.deletionNotificationsEnabled;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["organization"] = args?.organization;
@@ -181,6 +187,10 @@ export interface NotificationConfigState {
      * This must be unique within the organization.
      */
     configId?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates whether the notifications will be sent for deleted findings.
+     */
+    deletionNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -229,6 +239,10 @@ export interface NotificationConfigArgs {
      * This must be unique within the organization.
      */
     configId: pulumi.Input<string>;
+    /**
+     * Indicates whether the notifications will be sent for deleted findings.
+     */
+    deletionNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

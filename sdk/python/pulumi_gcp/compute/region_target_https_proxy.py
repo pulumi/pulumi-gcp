@@ -655,6 +655,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
+
         ### Region Target Https Proxy Http Keep Alive Timeout
 
         ```python
@@ -705,6 +706,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
+
         ### Region Target Https Proxy Mtls
 
         ```python
@@ -782,6 +784,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             ssl_certificates=[default_region_ssl_certificate.id],
             server_tls_policy=default_server_tls_policy.id)
         ```
+
         ### Region Target Https Proxy Certificate Manager Certificate
 
         ```python
@@ -947,6 +950,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
+
         ### Region Target Https Proxy Http Keep Alive Timeout
 
         ```python
@@ -997,6 +1001,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
+
         ### Region Target Https Proxy Mtls
 
         ```python
@@ -1074,6 +1079,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             ssl_certificates=[default_region_ssl_certificate.id],
             server_tls_policy=default_server_tls_policy.id)
         ```
+
         ### Region Target Https Proxy Certificate Manager Certificate
 
         ```python

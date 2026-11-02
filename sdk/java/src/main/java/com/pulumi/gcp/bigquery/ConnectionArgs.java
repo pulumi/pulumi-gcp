@@ -11,6 +11,7 @@ import com.pulumi.gcp.bigquery.inputs.ConnectionCloudResourceArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSpannerArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationArgs;
+import com.pulumi.gcp.bigquery.inputs.ConnectionSalesforceDataCloudArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionSparkArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -260,6 +261,25 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Connection properties specific to Salesforce Data Cloud.
+     * This connection type is intended for use only by Salesforce partner projects.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="salesforceDataCloud")
+    private @Nullable Output<ConnectionSalesforceDataCloudArgs> salesforceDataCloud;
+
+    /**
+     * @return Connection properties specific to Salesforce Data Cloud.
+     * This connection type is intended for use only by Salesforce partner projects.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionSalesforceDataCloudArgs>> salesforceDataCloud() {
+        return Optional.ofNullable(this.salesforceDataCloud);
+    }
+
+    /**
      * Container for connection properties to execute stored procedures for Apache Spark. resources.
      * Structure is documented below.
      * 
@@ -292,6 +312,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.kmsKeyName = $.kmsKeyName;
         this.location = $.location;
         this.project = $.project;
+        this.salesforceDataCloud = $.salesforceDataCloud;
         this.spark = $.spark;
     }
 
@@ -626,6 +647,31 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param salesforceDataCloud Connection properties specific to Salesforce Data Cloud.
+         * This connection type is intended for use only by Salesforce partner projects.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceDataCloud(@Nullable Output<ConnectionSalesforceDataCloudArgs> salesforceDataCloud) {
+            $.salesforceDataCloud = salesforceDataCloud;
+            return this;
+        }
+
+        /**
+         * @param salesforceDataCloud Connection properties specific to Salesforce Data Cloud.
+         * This connection type is intended for use only by Salesforce partner projects.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceDataCloud(ConnectionSalesforceDataCloudArgs salesforceDataCloud) {
+            return salesforceDataCloud(Output.of(salesforceDataCloud));
         }
 
         /**

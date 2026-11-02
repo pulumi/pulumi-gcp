@@ -72,7 +72,8 @@ class RegionInstanceGroupManagerArgs:
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
-               When set to "DELETE", deleting the resource is allowed.
+               When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+               When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
                
                ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
@@ -248,7 +249,8 @@ class RegionInstanceGroupManagerArgs:
         the command will fail if this field is set to "PREVENT" in Terraform state.
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
-        When set to "DELETE", deleting the resource is allowed.
+        When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+        When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 
         ***
         """
@@ -629,7 +631,8 @@ class _RegionInstanceGroupManagerState:
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
-               When set to "DELETE", deleting the resource is allowed.
+               When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+               When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
                
                ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
@@ -825,7 +828,8 @@ class _RegionInstanceGroupManagerState:
         the command will fail if this field is set to "PREVENT" in Terraform state.
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
-        When set to "DELETE", deleting the resource is allowed.
+        When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+        When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 
         ***
         """
@@ -1396,7 +1400,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
-               When set to "DELETE", deleting the resource is allowed.
+               When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+               When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
                
                ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
@@ -1738,7 +1743,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
-               When set to "DELETE", deleting the resource is allowed.
+               When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+               When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
                
                ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
@@ -1888,7 +1894,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         the command will fail if this field is set to "PREVENT" in Terraform state.
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
-        When set to "DELETE", deleting the resource is allowed.
+        When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+        When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 
         ***
         """

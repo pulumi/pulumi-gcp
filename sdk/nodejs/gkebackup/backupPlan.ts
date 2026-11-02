@@ -23,28 +23,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "basic-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "basic-plan",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/basic-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -53,6 +34,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Autopilot
  *
  * ```typescript
@@ -87,31 +69,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Cmek
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "cmek-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const keyRing = new gcp.kms.KeyRing("key_ring", {
  *     name: "backup-key",
  *     location: "us-east1",
@@ -122,7 +86,7 @@ import * as utilities from "../utilities";
  * });
  * const cmek = new gcp.gkebackup.BackupPlan("cmek", {
  *     name: "cmek-plan",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/cmek-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -139,34 +103,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Nslabels
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "nslabels-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const nslabels = new gcp.gkebackup.BackupPlan("nslabels", {
  *     name: "nslabels-plan",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/nslabels-cluster",
  *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
@@ -180,34 +126,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "full-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const full = new gcp.gkebackup.BackupPlan("full", {
  *     name: "full-plan",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/full-cluster",
  *     location: "us-east1",
  *     retentionPolicy: {
  *         backupDeleteLockDays: 30,
@@ -234,34 +162,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Permissive
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "permissive-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const permissive = new gcp.gkebackup.BackupPlan("permissive", {
  *     name: "permissive-plan",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/permissive-cluster",
  *     location: "us-east1",
  *     retentionPolicy: {
  *         backupDeleteLockDays: 30,
@@ -289,34 +199,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Rpo Daily Window
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "rpo-daily-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const rpoDailyWindow = new gcp.gkebackup.BackupPlan("rpo_daily_window", {
  *     name: "rpo-daily-window",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/rpo-daily-cluster",
  *     location: "us-east1",
  *     retentionPolicy: {
  *         backupDeleteLockDays: 30,
@@ -358,34 +250,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Rpo Weekly Window
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "rpo-weekly-cluster",
- *     location: "us-east1",
- *     initialNodeCount: 1,
- *     nodeConfig: {
- *         machineType: "n4-standard-2",
- *     },
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: true,
- *     network: "default",
- *     subnetwork: "default",
- * });
  * const rpoWeeklyWindow = new gcp.gkebackup.BackupPlan("rpo_weekly_window", {
  *     name: "rpo-weekly-window",
- *     cluster: primary.id,
+ *     cluster: "projects/my-project-name/locations/us-east1/clusters/rpo-weekly-cluster",
  *     location: "us-east1",
  *     retentionPolicy: {
  *         backupDeleteLockDays: 30,

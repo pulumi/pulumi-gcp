@@ -83,6 +83,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Build
  * 
  * <pre>
@@ -216,6 +217,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Service Account
  * 
  * <pre>
@@ -284,6 +286,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Include Build Logs
  * 
  * <pre>
@@ -328,6 +331,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Pubsub Config
  * 
  * <pre>
@@ -387,6 +391,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Webhook Config
  * 
  * <pre>
@@ -482,6 +487,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Manual
  * 
  * <pre>
@@ -526,6 +532,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Manual Github Enterprise
  * 
  * <pre>
@@ -573,6 +580,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Manual Bitbucket Server
  * 
  * <pre>
@@ -620,6 +628,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Repo
  * 
  * <pre>
@@ -684,6 +693,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Bitbucket Server Push
  * 
  * <pre>
@@ -729,6 +739,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Bitbucket Server Pull Request
  * 
  * <pre>
@@ -775,6 +786,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Github Enterprise
  * 
  * <pre>
@@ -819,6 +831,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Allow Failure
  * 
  * <pre>
@@ -926,6 +939,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Allow Exit Codes
  * 
  * <pre>
@@ -1035,6 +1049,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Pubsub With Repo
  * 
  * <pre>
@@ -1114,6 +1129,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Developer Connect Pull
  * 
  * <pre>
@@ -1157,6 +1173,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Developer Connect Push
  * 
  * <pre>
@@ -1199,6 +1216,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Trigger Developer Connect Push Branch
  * 
  * <pre>

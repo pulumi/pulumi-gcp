@@ -56,6 +56,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [permissions],
  * });
  * ```
+ *
  * ### Bigquerydatatransfer Config Cmek
  *
  * ```typescript
@@ -102,6 +103,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [permissions],
  * });
  * ```
+ *
  * ### Bigquerydatatransfer Config Salesforce
  *
  * ```typescript

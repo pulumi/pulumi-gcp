@@ -1179,6 +1179,11 @@ class WorkstationConfigHostGceInstanceBoostConfigArgsDict(TypedDict):
     """
     Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
     """
+    enable_automatic_failover: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Optional, Beta)
+    Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+    """
     enable_nested_virtualization: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
@@ -1199,6 +1204,7 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
                  id: pulumi.Input[_builtins.str],
                  accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]]] = None,
                  boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_automatic_failover: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pool_size: pulumi.Input[Optional[_builtins.int]] = None):
@@ -1207,6 +1213,8 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]] accelerators: An accelerator card attached to the boost instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+        :param pulumi.Input[_builtins.bool] enable_automatic_failover: (Optional, Beta)
+               Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
                See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         :param pulumi.Input[_builtins.str] machine_type: The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
@@ -1217,6 +1225,8 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
             pulumi.set(__self__, "accelerators", accelerators)
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if enable_automatic_failover is not None:
+            pulumi.set(__self__, "enable_automatic_failover", enable_automatic_failover)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if machine_type is not None:
@@ -1260,6 +1270,19 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
     @boot_disk_size_gb.setter
     def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableAutomaticFailover")
+    def enable_automatic_failover(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+        """
+        return pulumi.get(self, "enable_automatic_failover")
+
+    @enable_automatic_failover.setter
+    def enable_automatic_failover(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_automatic_failover", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNestedVirtualization")

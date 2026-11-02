@@ -84,6 +84,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Ruledeployment Disabled
  * 
  * <pre>
@@ -138,6 +139,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Ruledeployment Run Frequency Missing
  * 
  * <pre>

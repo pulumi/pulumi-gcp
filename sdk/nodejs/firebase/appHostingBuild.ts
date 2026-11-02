@@ -58,6 +58,7 @@ import * as utilities from "../utilities";
  *     member: serviceAccount.member,
  * });
  * ```
+ *
  * ### Firebase App Hosting Build Full
  *
  * ```typescript
@@ -109,6 +110,7 @@ import * as utilities from "../utilities";
  *     member: serviceAccount.member,
  * });
  * ```
+ *
  * ### Firebase App Hosting Build Github
  *
  * ```typescript

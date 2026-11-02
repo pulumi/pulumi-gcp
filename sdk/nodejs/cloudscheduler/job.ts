@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Scheduler Job Http
  *
  * ```typescript
@@ -66,6 +67,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Scheduler Job Paused
  *
  * ```typescript
@@ -95,6 +97,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Scheduler Job App Engine
  *
  * ```typescript
@@ -124,6 +127,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Scheduler Job Oauth
  *
  * ```typescript
@@ -146,6 +150,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Scheduler Job Oidc
  *
  * ```typescript

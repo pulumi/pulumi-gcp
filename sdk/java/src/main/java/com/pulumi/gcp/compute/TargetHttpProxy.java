@@ -103,6 +103,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Target Http Proxy Http Keep Alive Timeout
  * 
  * <pre>
@@ -179,6 +180,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Target Http Proxy Https Redirect
  * 
  * <pre>
@@ -223,6 +225,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Target Http Proxy Fingerprint
  * 
  * <pre>

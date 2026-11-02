@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
+ *
  * ### Bigtable App Profile Singlecluster
  *
  * ```typescript
@@ -78,6 +79,7 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
+ *
  * ### Bigtable App Profile Multicluster
  *
  * ```typescript
@@ -119,6 +121,7 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
+ *
  * ### Bigtable App Profile Priority
  *
  * ```typescript

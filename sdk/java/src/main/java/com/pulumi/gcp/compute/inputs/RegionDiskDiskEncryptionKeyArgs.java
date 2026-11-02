@@ -17,6 +17,7 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
 
     /**
      * The name of the encryption key that is stored in Google Cloud KMS.
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     @Import(name="kmsKeyName")
@@ -24,6 +25,7 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
 
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     public Optional<Output<String>> kmsKeyName() {
@@ -208,6 +210,7 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
 
         /**
          * @param kmsKeyName The name of the encryption key that is stored in Google Cloud KMS.
+         * Specify the key without a `/cryptoKeyVersions/` suffix.
          * 
          * @return builder
          * 
@@ -219,6 +222,7 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
 
         /**
          * @param kmsKeyName The name of the encryption key that is stored in Google Cloud KMS.
+         * Specify the key without a `/cryptoKeyVersions/` suffix.
          * 
          * @return builder
          * 

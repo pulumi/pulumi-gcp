@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Blockchain Nodes Geth Details
  *
  * ```typescript
@@ -78,6 +79,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Blockchain Nodes Beacon Fee Recipient
  *
  * ```typescript

@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Organization Security Policy With Advanced Options
     /// 
     /// ```csharp

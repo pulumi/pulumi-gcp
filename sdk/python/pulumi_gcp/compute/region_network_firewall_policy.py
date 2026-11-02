@@ -386,6 +386,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
             name="tf-test-policy",
             description="Terraform test")
         ```
+
         ### Region Network Firewall Policy Roce
 
         ```python
@@ -456,6 +457,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
             name="tf-test-policy",
             description="Terraform test")
         ```
+
         ### Region Network Firewall Policy Roce
 
         ```python

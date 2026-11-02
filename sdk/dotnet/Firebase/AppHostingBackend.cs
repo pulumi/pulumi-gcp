@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase App Hosting Backend Full
     /// 
     /// ```csharp
@@ -138,6 +139,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase App Hosting Backend Github
     /// 
     /// ```csharp

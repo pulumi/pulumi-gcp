@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Account Connector Gitlab
     /// 
     /// ```csharp
@@ -66,6 +67,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Account Connector Ghe
     /// 
     /// ```csharp
@@ -127,6 +129,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Account Connector Gle
     /// 
     /// ```csharp
@@ -188,6 +191,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// 
     /// ### Developer Connect Account Connector Bbdc
     /// 
     /// ```csharp

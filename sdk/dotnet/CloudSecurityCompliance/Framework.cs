@@ -113,6 +113,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudsecuritycompliance Framework Project Basic
     /// 
     /// ```csharp
@@ -210,6 +211,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudsecuritycompliance Framework Org Basic Backward
     /// 
     /// ```csharp

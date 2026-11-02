@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
  * });
  * ```
+ *
  * ### Sql Source Representation Instance Postgres
  *
  * ```typescript

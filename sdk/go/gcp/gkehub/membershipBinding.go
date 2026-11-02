@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-//				MembershipId: pulumi.String("tf-test-membership_35762"),
+//				MembershipId: pulumi.String("tf-test-membership_64134"),
 //				Endpoint: &gkehub.MembershipEndpointArgs{
 //					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
 //						ResourceLink: primary.ID().ApplyT(func(id pulumi.ID) (string, error) {
@@ -66,13 +66,13 @@ import (
 //				return err
 //			}
 //			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				ScopeId: pulumi.String("tf-test-scope_24469"),
+//				ScopeId: pulumi.String("tf-test-scope_67762"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gkehub.NewMembershipBinding(ctx, "membership_binding", &gkehub.MembershipBindingArgs{
-//				MembershipBindingId: pulumi.String("tf-test-membership-binding_79580"),
+//				MembershipBindingId: pulumi.String("tf-test-membership-binding_44154"),
 //				Scope:               scope.Name,
 //				MembershipId:        membership.MembershipId,
 //				Location:            pulumi.String("global"),

@@ -210,6 +210,10 @@ namespace Pulumi.Gcp.Compute
         /// The IP of the created resource.
         /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// The numeric ID of the created resource.
+        /// </summary>
+        public readonly string AddressId;
         public readonly string AddressType;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -236,6 +240,8 @@ namespace Pulumi.Gcp.Compute
         [OutputConstructor]
         private GetAddressResult(
             string address,
+
+            string addressId,
 
             string addressType,
 
@@ -264,6 +270,7 @@ namespace Pulumi.Gcp.Compute
             string users)
         {
             Address = address;
+            AddressId = addressId;
             AddressType = addressType;
             Id = id;
             Name = name;

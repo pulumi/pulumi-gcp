@@ -786,6 +786,7 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Workstation Cluster Private
 
         ```python
@@ -816,6 +817,7 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Workstation Cluster Custom Domain
 
         ```python
@@ -849,6 +851,7 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Workstation Cluster Tags
 
         ```python
@@ -883,6 +886,7 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         )
         ```
+
         ### Workstation Cluster Custom Urls
 
         ```python
@@ -1004,6 +1008,7 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Workstation Cluster Private
 
         ```python
@@ -1034,6 +1039,7 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Workstation Cluster Custom Domain
 
         ```python
@@ -1067,6 +1073,7 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Workstation Cluster Tags
 
         ```python
@@ -1101,6 +1108,7 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         )
         ```
+
         ### Workstation Cluster Custom Urls
 
         ```python

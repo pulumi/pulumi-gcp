@@ -5,6 +5,7 @@ package com.pulumi.gcp.gemini.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs;
 import com.pulumi.gcp.gemini.inputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs Empty = new DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs();
+
+    /**
+     * Optional. References to BigQuery property graphs.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="propertyGraphReferences")
+    private @Nullable Output<List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs>> propertyGraphReferences;
+
+    /**
+     * @return Optional. References to BigQuery property graphs.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs>>> propertyGraphReferences() {
+        return Optional.ofNullable(this.propertyGraphReferences);
+    }
 
     /**
      * References to BigQuery tables.
@@ -36,6 +54,7 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatas
     private DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs() {}
 
     private DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs $) {
+        this.propertyGraphReferences = $.propertyGraphReferences;
         this.tableReferences = $.tableReferences;
     }
 
@@ -55,6 +74,40 @@ public final class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatas
 
         public Builder(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs defaults) {
             $ = new DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param propertyGraphReferences Optional. References to BigQuery property graphs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propertyGraphReferences(@Nullable Output<List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs>> propertyGraphReferences) {
+            $.propertyGraphReferences = propertyGraphReferences;
+            return this;
+        }
+
+        /**
+         * @param propertyGraphReferences Optional. References to BigQuery property graphs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propertyGraphReferences(List<DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs> propertyGraphReferences) {
+            return propertyGraphReferences(Output.of(propertyGraphReferences));
+        }
+
+        /**
+         * @param propertyGraphReferences Optional. References to BigQuery property graphs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propertyGraphReferences(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs... propertyGraphReferences) {
+            return propertyGraphReferences(List.of(propertyGraphReferences));
         }
 
         /**

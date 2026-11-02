@@ -1034,9 +1034,7 @@ class NodePool(pulumi.CustomResource):
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="my-gke-cluster",
-            location="us-central1",
-            remove_default_node_pool=True,
-            initial_node_count=1)
+            location="us-central1")
         primary_preemptible_nodes = gcp.container.NodePool("primary_preemptible_nodes",
             name="my-node-pool",
             cluster=primary.id,
@@ -1198,9 +1196,7 @@ class NodePool(pulumi.CustomResource):
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="my-gke-cluster",
-            location="us-central1",
-            remove_default_node_pool=True,
-            initial_node_count=1)
+            location="us-central1")
         primary_preemptible_nodes = gcp.container.NodePool("primary_preemptible_nodes",
             name="my-node-pool",
             cluster=primary.id,

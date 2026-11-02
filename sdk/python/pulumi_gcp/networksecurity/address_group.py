@@ -519,6 +519,7 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
+
         ### Network Security Address Groups Organization Basic
 
         ```python
@@ -533,6 +534,7 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
+
         ### Network Security Address Groups Advanced
 
         ```python
@@ -548,6 +550,7 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
+
         ### Network Security Address Groups Cloud Armor
 
         ```python
@@ -634,6 +637,7 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
+
         ### Network Security Address Groups Organization Basic
 
         ```python
@@ -648,6 +652,7 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
+
         ### Network Security Address Groups Advanced
 
         ```python
@@ -663,6 +668,7 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
+
         ### Network Security Address Groups Cloud Armor
 
         ```python

@@ -109,6 +109,13 @@ export class Release extends pulumi.CustomResource {
      */
     declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate. Set by the service on Releases created by an
+     * ApplicationTemplate import.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly applicationTemplateComponents: pulumi.Output<outputs.saasruntime.ReleaseApplicationTemplateComponent[]>;
+    /**
      * Blueprints are OCI Images that contain all of the artifacts needed to
      * provision a unit. Metadata such as, type of the engine used to actuate the
      * blueprint (e.g. terraform, helm etc) and version will come from the image
@@ -231,6 +238,7 @@ export class Release extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ReleaseState | undefined;
             resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["applicationTemplateComponents"] = state?.applicationTemplateComponents;
             resourceInputs["blueprint"] = state?.blueprint;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -271,6 +279,7 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["releaseId"] = args?.releaseId;
             resourceInputs["releaseRequirements"] = args?.releaseRequirements;
             resourceInputs["unitKind"] = args?.unitKind;
+            resourceInputs["applicationTemplateComponents"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -302,6 +311,13 @@ export interface ReleaseState {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate. Set by the service on Releases created by an
+     * ApplicationTemplate import.
+     * Structure is documented below.
+     */
+    applicationTemplateComponents?: pulumi.Input<pulumi.Input<inputs.saasruntime.ReleaseApplicationTemplateComponent>[] | undefined>;
     /**
      * Blueprints are OCI Images that contain all of the artifacts needed to
      * provision a unit. Metadata such as, type of the engine used to actuate the

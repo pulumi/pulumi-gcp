@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     forwardHeaders: ["Authorization"],
  * });
  * ```
+ *
  * ### Network Services Authz Extension Basic With Auth Grpc
  *
  * ```typescript
@@ -68,6 +69,7 @@ import * as utilities from "../utilities";
  *     forwardHeaders: ["Authorization"],
  * });
  * ```
+ *
  * ### Network Services Authz Extension Iap
  *
  * ```typescript

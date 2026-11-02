@@ -473,6 +473,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                 ],
             }])
         ```
+
         ### Beyondcorp Security Gateway Application Vpc
 
         ```python
@@ -505,6 +506,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Beyondcorp Security Gateway Application Spa Api
 
         ```python
@@ -530,6 +532,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
             }],
             schema="API_GATEWAY")
         ```
+
         ### Beyondcorp Security Gateway Application Spa Proxy
 
         ```python
@@ -666,6 +669,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                 ],
             }])
         ```
+
         ### Beyondcorp Security Gateway Application Vpc
 
         ```python
@@ -698,6 +702,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Beyondcorp Security Gateway Application Spa Api
 
         ```python
@@ -723,6 +728,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
             }],
             schema="API_GATEWAY")
         ```
+
         ### Beyondcorp Security Gateway Application Spa Proxy
 
         ```python

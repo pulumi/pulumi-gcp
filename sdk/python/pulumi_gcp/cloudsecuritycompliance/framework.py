@@ -564,6 +564,7 @@ class Framework(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Cloudsecuritycompliance Framework Project Basic
 
         ```python
@@ -625,6 +626,7 @@ class Framework(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Cloudsecuritycompliance Framework Org Basic Backward
 
         ```python
@@ -802,6 +804,7 @@ class Framework(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Cloudsecuritycompliance Framework Project Basic
 
         ```python
@@ -863,6 +866,7 @@ class Framework(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Cloudsecuritycompliance Framework Org Basic Backward
 
         ```python

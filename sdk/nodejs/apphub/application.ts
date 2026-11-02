@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Apphub Application Global Basic
  *
  * ```typescript
@@ -39,6 +40,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Apphub Application Full
  *
  * ```typescript

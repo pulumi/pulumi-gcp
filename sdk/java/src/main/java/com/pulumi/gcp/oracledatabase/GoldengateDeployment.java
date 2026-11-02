@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  *                     .deployment("deployment")
  *                     .build())
  *                 .build())
+ *             .labels(Map.of("label-one", "value-one"))
  *             .deletionPolicy("PREVENT")
  *             .build());
  * 
@@ -69,6 +70,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Oracledatabase Goldengate Deployment Full
  * 
  * <pre>

@@ -789,6 +789,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             location="global",
             interconnect_attachment=attachment.name.apply(lambda name: f"projects/{project.number}/regions/us-east4/interconnectAttachments/{name}"))
         ```
+
         ### Network Management Vpc Flow Logs Config Vpn Basic
 
         ```python
@@ -839,6 +840,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel.id)
         ```
+
         ### Network Management Vpc Flow Logs Config Network Basic
 
         ```python
@@ -852,6 +854,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             location="global",
             network=network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"))
         ```
+
         ### Network Management Vpc Flow Logs Config Subnet Basic
 
         ```python
@@ -966,6 +969,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             location="global",
             interconnect_attachment=attachment.name.apply(lambda name: f"projects/{project.number}/regions/us-east4/interconnectAttachments/{name}"))
         ```
+
         ### Network Management Vpc Flow Logs Config Vpn Basic
 
         ```python
@@ -1016,6 +1020,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel.id)
         ```
+
         ### Network Management Vpc Flow Logs Config Network Basic
 
         ```python
@@ -1029,6 +1034,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             location="global",
             network=network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"))
         ```
+
         ### Network Management Vpc Flow Logs Config Subnet Basic
 
         ```python

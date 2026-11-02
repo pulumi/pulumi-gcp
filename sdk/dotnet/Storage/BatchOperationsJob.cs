@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// 
     /// ### Storage Batch Operations Description
     /// 
     /// ```csharp

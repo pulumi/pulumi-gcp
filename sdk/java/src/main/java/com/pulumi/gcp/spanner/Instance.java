@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Spanner Instance Processing Units
  * 
  * <pre>
@@ -103,6 +104,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Spanner Instance Multi Regional
  * 
  * <pre>

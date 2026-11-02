@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
+    /// 
     /// ### Beyondcorp Security Gateway Logging
     /// 
     /// ```csharp
@@ -65,6 +66,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
+    /// 
     /// ### Beyondcorp Security Gateway Spa
     /// 
     /// ```csharp

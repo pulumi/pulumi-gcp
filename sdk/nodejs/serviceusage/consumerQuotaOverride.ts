@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
+ *
  * ### Region Consumer Quota Override
  *
  * ```typescript
@@ -74,6 +75,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
+ *
  * ### Consumer Quota Override Custom Dimension
  *
  * ```typescript

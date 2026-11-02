@@ -480,6 +480,7 @@ class SecretVersion(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         ```
+
         ### Secret Version Basic Write Only
 
         ```python
@@ -499,6 +500,7 @@ class SecretVersion(pulumi.CustomResource):
             secret_data_wo_version="1",
             secret_data_wo="secret-data-write-only")
         ```
+
         ### Secret Version Deletion Policy Abandon
 
         ```python
@@ -519,6 +521,7 @@ class SecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="ABANDON")
         ```
+
         ### Secret Version Deletion Policy Disable
 
         ```python
@@ -539,6 +542,7 @@ class SecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="DISABLE")
         ```
+
         ### Secret Version With Base64 String Secret Data
 
         ```python
@@ -560,6 +564,7 @@ class SecretVersion(pulumi.CustomResource):
             is_secret_data_base64=True,
             secret_data=std.filebase64(input="secret-data.pfx").result)
         ```
+
         ### Secret Version With Base64 String Secret Data Write Only
 
         ```python
@@ -669,6 +674,7 @@ class SecretVersion(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         ```
+
         ### Secret Version Basic Write Only
 
         ```python
@@ -688,6 +694,7 @@ class SecretVersion(pulumi.CustomResource):
             secret_data_wo_version="1",
             secret_data_wo="secret-data-write-only")
         ```
+
         ### Secret Version Deletion Policy Abandon
 
         ```python
@@ -708,6 +715,7 @@ class SecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="ABANDON")
         ```
+
         ### Secret Version Deletion Policy Disable
 
         ```python
@@ -728,6 +736,7 @@ class SecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="DISABLE")
         ```
+
         ### Secret Version With Base64 String Secret Data
 
         ```python
@@ -749,6 +758,7 @@ class SecretVersion(pulumi.CustomResource):
             is_secret_data_base64=True,
             secret_data=std.filebase64(input="secret-data.pfx").result)
         ```
+
         ### Secret Version With Base64 String Secret Data Write Only
 
         ```python

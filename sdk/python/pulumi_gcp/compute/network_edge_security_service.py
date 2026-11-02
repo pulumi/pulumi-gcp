@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['NetworkEdgeSecurityServiceArgs', 'NetworkEdgeSecurityService']
 
@@ -22,6 +24,7 @@ class NetworkEdgeSecurityServiceArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['NetworkEdgeSecurityServiceParamsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None):
@@ -36,6 +39,8 @@ class NetworkEdgeSecurityServiceArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created.
+        :param pulumi.Input['NetworkEdgeSecurityServiceParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the gateway security policy.
@@ -47,6 +52,8 @@ class NetworkEdgeSecurityServiceArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -97,6 +104,19 @@ class NetworkEdgeSecurityServiceArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> pulumi.Input[Optional['NetworkEdgeSecurityServiceParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: pulumi.Input[Optional['NetworkEdgeSecurityServiceParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -141,6 +161,7 @@ class _NetworkEdgeSecurityServiceState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['NetworkEdgeSecurityServiceParamsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -161,6 +182,8 @@ class _NetworkEdgeSecurityServiceState:
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
                An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created.
+        :param pulumi.Input['NetworkEdgeSecurityServiceParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the gateway security policy.
@@ -179,6 +202,8 @@ class _NetworkEdgeSecurityServiceState:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -257,6 +282,19 @@ class _NetworkEdgeSecurityServiceState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Input[Optional['NetworkEdgeSecurityServiceParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: pulumi.Input[Optional['NetworkEdgeSecurityServiceParamsArgs']]):
+        pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
@@ -341,6 +379,7 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['NetworkEdgeSecurityServiceParamsArgs', 'NetworkEdgeSecurityServiceParamsArgsDict', 'outputs.NetworkEdgeSecurityServiceParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -397,6 +436,8 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created.
+        :param pulumi.Input[Union['NetworkEdgeSecurityServiceParamsArgs', 'NetworkEdgeSecurityServiceParamsArgsDict', 'outputs.NetworkEdgeSecurityServiceParams']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the gateway security policy.
@@ -468,6 +509,7 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['NetworkEdgeSecurityServiceParamsArgs', 'NetworkEdgeSecurityServiceParamsArgsDict', 'outputs.NetworkEdgeSecurityServiceParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -483,6 +525,7 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["security_policy"] = security_policy
@@ -506,6 +549,7 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['NetworkEdgeSecurityServiceParamsArgs', 'NetworkEdgeSecurityServiceParamsArgsDict', 'outputs.NetworkEdgeSecurityServiceParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -530,6 +574,8 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
                An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created.
+        :param pulumi.Input[Union['NetworkEdgeSecurityServiceParamsArgs', 'NetworkEdgeSecurityServiceParamsArgsDict', 'outputs.NetworkEdgeSecurityServiceParams']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the gateway security policy.
@@ -547,6 +593,7 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["name"] = name
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["security_policy"] = security_policy
@@ -600,6 +647,15 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         Name of the resource. Provided by the client when the resource is created.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.NetworkEdgeSecurityServiceParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter

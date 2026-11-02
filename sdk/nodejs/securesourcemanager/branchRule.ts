@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     includePattern: "main",
  * });
  * ```
+ *
  * ### Secure Source Manager Branch Rule With Fields
  *
  * ```typescript

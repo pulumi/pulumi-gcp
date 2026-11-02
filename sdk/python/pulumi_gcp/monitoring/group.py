@@ -327,6 +327,7 @@ class Group(pulumi.CustomResource):
             display_name="tf-test MonitoringGroup",
             filter="resource.metadata.region=\\"europe-west2\\"")
         ```
+
         ### Monitoring Group Subgroup
 
         ```python
@@ -410,6 +411,7 @@ class Group(pulumi.CustomResource):
             display_name="tf-test MonitoringGroup",
             filter="resource.metadata.region=\\"europe-west2\\"")
         ```
+
         ### Monitoring Group Subgroup
 
         ```python

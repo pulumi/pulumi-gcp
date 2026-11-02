@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiPersistentResourceResourceRuntimeSpecRaySpec;
 import com.pulumi.gcp.vertex.outputs.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiPersistentResourceResourceRuntimeSpec {
     /**
+     * @return Configuration information for the Ray cluster.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiPersistentResourceResourceRuntimeSpecRaySpec raySpec;
+    /**
      * @return Configuration for the use of custom service account to run the workloads.
      * Structure is documented below.
      * 
@@ -19,6 +26,14 @@ public final class AiPersistentResourceResourceRuntimeSpec {
     private @Nullable AiPersistentResourceResourceRuntimeSpecServiceAccountSpec serviceAccountSpec;
 
     private AiPersistentResourceResourceRuntimeSpec() {}
+    /**
+     * @return Configuration information for the Ray cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiPersistentResourceResourceRuntimeSpecRaySpec> raySpec() {
+        return Optional.ofNullable(this.raySpec);
+    }
     /**
      * @return Configuration for the use of custom service account to run the workloads.
      * Structure is documented below.
@@ -37,13 +52,21 @@ public final class AiPersistentResourceResourceRuntimeSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiPersistentResourceResourceRuntimeSpecRaySpec raySpec;
         private @Nullable AiPersistentResourceResourceRuntimeSpecServiceAccountSpec serviceAccountSpec;
         public Builder() {}
         public Builder(AiPersistentResourceResourceRuntimeSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.raySpec = defaults.raySpec;
     	      this.serviceAccountSpec = defaults.serviceAccountSpec;
         }
 
+        @CustomType.Setter
+        public Builder raySpec(@Nullable AiPersistentResourceResourceRuntimeSpecRaySpec raySpec) {
+
+            this.raySpec = raySpec;
+            return this;
+        }
         @CustomType.Setter
         public Builder serviceAccountSpec(@Nullable AiPersistentResourceResourceRuntimeSpecServiceAccountSpec serviceAccountSpec) {
 
@@ -52,6 +75,7 @@ public final class AiPersistentResourceResourceRuntimeSpec {
         }
         public AiPersistentResourceResourceRuntimeSpec build() {
             final var _resultValue = new AiPersistentResourceResourceRuntimeSpec();
+            _resultValue.raySpec = raySpec;
             _resultValue.serviceAccountSpec = serviceAccountSpec;
             return _resultValue;
         }

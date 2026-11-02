@@ -478,6 +478,7 @@ class Repository(pulumi.CustomResource):
             instance=instance.name,
             deletion_policy="PREVENT")
         ```
+
         ### Secure Source Manager Repository Initial Config
 
         ```python
@@ -501,6 +502,7 @@ class Repository(pulumi.CustomResource):
             },
             deletion_policy="PREVENT")
         ```
+
         ### Secure Source Manager Repository Service Account
 
         ```python
@@ -521,6 +523,7 @@ class Repository(pulumi.CustomResource):
             deletion_policy="PREVENT",
             service_account=sa.email)
         ```
+
         ### Secure Source Manager Repository Secret Scanning
 
         ```python
@@ -557,6 +560,7 @@ class Repository(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[ssm_p4sa_dlp_reader]))
         ```
+
         ### Secure Source Manager Repository Secret Scanning Default
 
         ```python
@@ -651,6 +655,7 @@ class Repository(pulumi.CustomResource):
             instance=instance.name,
             deletion_policy="PREVENT")
         ```
+
         ### Secure Source Manager Repository Initial Config
 
         ```python
@@ -674,6 +679,7 @@ class Repository(pulumi.CustomResource):
             },
             deletion_policy="PREVENT")
         ```
+
         ### Secure Source Manager Repository Service Account
 
         ```python
@@ -694,6 +700,7 @@ class Repository(pulumi.CustomResource):
             deletion_policy="PREVENT",
             service_account=sa.email)
         ```
+
         ### Secure Source Manager Repository Secret Scanning
 
         ```python
@@ -730,6 +737,7 @@ class Repository(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[ssm_p4sa_dlp_reader]))
         ```
+
         ### Secure Source Manager Repository Secret Scanning Default
 
         ```python

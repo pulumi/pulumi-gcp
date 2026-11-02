@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class SnapshotSnapshotEncryptionKey {
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     private @Nullable String kmsKeySelfLink;
@@ -47,6 +48,7 @@ public final class SnapshotSnapshotEncryptionKey {
     private SnapshotSnapshotEncryptionKey() {}
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * Specify the key without a `/cryptoKeyVersions/` suffix.
      * 
      */
     public Optional<String> kmsKeySelfLink() {

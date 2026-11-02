@@ -128,6 +128,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Backup Dr Bpa Filestore
 //
 // ```go
@@ -230,6 +231,9 @@ import (
 type BackupPlanAssociation struct {
 	pulumi.CustomResourceState
 
+	// (Beta)
+	// The resource name of the auto protection policy binding that manages this backup plan association, if any.
+	AutoProtectionPolicyBinding pulumi.StringOutput `pulumi:"autoProtectionPolicyBinding"`
 	// The BP with which resource needs to be created
 	// Note:
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -314,6 +318,9 @@ func GetBackupPlanAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackupPlanAssociation resources.
 type backupPlanAssociationState struct {
+	// (Beta)
+	// The resource name of the auto protection policy binding that manages this backup plan association, if any.
+	AutoProtectionPolicyBinding *string `pulumi:"autoProtectionPolicyBinding"`
 	// The BP with which resource needs to be created
 	// Note:
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -354,6 +361,9 @@ type backupPlanAssociationState struct {
 }
 
 type BackupPlanAssociationState struct {
+	// (Beta)
+	// The resource name of the auto protection policy binding that manages this backup plan association, if any.
+	AutoProtectionPolicyBinding pulumi.StringPtrInput
 	// The BP with which resource needs to be created
 	// Note:
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -541,6 +551,12 @@ func (o BackupPlanAssociationOutput) ToBackupPlanAssociationOutput() BackupPlanA
 
 func (o BackupPlanAssociationOutput) ToBackupPlanAssociationOutputWithContext(ctx context.Context) BackupPlanAssociationOutput {
 	return o
+}
+
+// (Beta)
+// The resource name of the auto protection policy binding that manages this backup plan association, if any.
+func (o BackupPlanAssociationOutput) AutoProtectionPolicyBinding() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.AutoProtectionPolicyBinding }).(pulumi.StringOutput)
 }
 
 // The BP with which resource needs to be created

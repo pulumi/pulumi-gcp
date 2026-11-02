@@ -549,7 +549,7 @@ class ServicePerimeter(pulumi.CustomResource):
         has a target outside of the ServicePerimeter, the request will be blocked.
         Otherwise the request is allowed. There are two types of Service Perimeter
         - Regular and Bridge. Regular Service Perimeters cannot overlap, a single
-          GCP project can only belong to a single regular Service Perimeter. Service
+          GCP project, folder, or VPC network can only belong to a single regular Service Perimeter. Service
           Perimeter Bridges can contain only GCP projects as members, a single GCP
           project may belong to multiple Service Perimeter Bridges.
 
@@ -604,6 +604,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Access Context Manager Service Perimeter Secure Data Exchange
 
         ```python
@@ -712,6 +713,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Access Context Manager Service Perimeter Dry-Run
 
         ```python
@@ -733,6 +735,7 @@ class ServicePerimeter(pulumi.CustomResource):
             },
             use_explicit_dry_run_spec=True)
         ```
+
         ## Import
 
         ServicePerimeter can be imported using any of these accepted formats:
@@ -810,7 +813,7 @@ class ServicePerimeter(pulumi.CustomResource):
         has a target outside of the ServicePerimeter, the request will be blocked.
         Otherwise the request is allowed. There are two types of Service Perimeter
         - Regular and Bridge. Regular Service Perimeters cannot overlap, a single
-          GCP project can only belong to a single regular Service Perimeter. Service
+          GCP project, folder, or VPC network can only belong to a single regular Service Perimeter. Service
           Perimeter Bridges can contain only GCP projects as members, a single GCP
           project may belong to multiple Service Perimeter Bridges.
 
@@ -865,6 +868,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Access Context Manager Service Perimeter Secure Data Exchange
 
         ```python
@@ -973,6 +977,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Access Context Manager Service Perimeter Dry-Run
 
         ```python
@@ -994,6 +999,7 @@ class ServicePerimeter(pulumi.CustomResource):
             },
             use_explicit_dry_run_spec=True)
         ```
+
         ## Import
 
         ServicePerimeter can be imported using any of these accepted formats:

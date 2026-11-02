@@ -53,6 +53,23 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
     }
 
     /**
+     * (Optional, Beta)
+     * Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+     * 
+     */
+    @Import(name="enableAutomaticFailover")
+    private @Nullable Output<Boolean> enableAutomaticFailover;
+
+    /**
+     * @return (Optional, Beta)
+     * Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> enableAutomaticFailover() {
+        return Optional.ofNullable(this.enableAutomaticFailover);
+    }
+
+    /**
      * Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
      * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
@@ -119,6 +136,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
     private WorkstationConfigHostGceInstanceBoostConfigArgs(WorkstationConfigHostGceInstanceBoostConfigArgs $) {
         this.accelerators = $.accelerators;
         this.bootDiskSizeGb = $.bootDiskSizeGb;
+        this.enableAutomaticFailover = $.enableAutomaticFailover;
         this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.id = $.id;
         this.machineType = $.machineType;
@@ -196,6 +214,29 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
          */
         public Builder bootDiskSizeGb(Integer bootDiskSizeGb) {
             return bootDiskSizeGb(Output.of(bootDiskSizeGb));
+        }
+
+        /**
+         * @param enableAutomaticFailover (Optional, Beta)
+         * Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutomaticFailover(@Nullable Output<Boolean> enableAutomaticFailover) {
+            $.enableAutomaticFailover = enableAutomaticFailover;
+            return this;
+        }
+
+        /**
+         * @param enableAutomaticFailover (Optional, Beta)
+         * Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutomaticFailover(Boolean enableAutomaticFailover) {
+            return enableAutomaticFailover(Output.of(enableAutomaticFailover));
         }
 
         /**

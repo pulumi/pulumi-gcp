@@ -128,6 +128,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Autoscaler Basic
     /// 
     /// ```csharp

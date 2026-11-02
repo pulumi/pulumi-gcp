@@ -350,6 +350,7 @@ class DataPolicy(pulumi.CustomResource):
             policy_tag=policy_tag.name,
             data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
         ```
+
         ### Bigquery Datapolicy Data Policy Routine
 
         ```python
@@ -463,6 +464,7 @@ class DataPolicy(pulumi.CustomResource):
             policy_tag=policy_tag.name,
             data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
         ```
+
         ### Bigquery Datapolicy Data Policy Routine
 
         ```python

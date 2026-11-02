@@ -548,6 +548,7 @@ class AspectType(pulumi.CustomResource):
         }
         \"\"\")
         ```
+
         ### Dataplex Aspect Type Full
 
         ```python
@@ -785,6 +786,7 @@ class AspectType(pulumi.CustomResource):
         }
         \"\"\")
         ```
+
         ### Dataplex Aspect Type Full
 
         ```python

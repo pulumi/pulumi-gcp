@@ -97,6 +97,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Target Http Proxy Http Keep Alive Timeout
     /// 
     /// ```csharp
@@ -175,6 +176,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Target Http Proxy Https Redirect
     /// 
     /// ```csharp

@@ -1486,6 +1486,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             target=default_target_http_proxy.id,
             port_range="80")
         ```
+
         ### Global Forwarding Rule Internal
 
         ```python
@@ -1568,6 +1569,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 }],
             }])
         ```
+
         ### Global Forwarding Rule External Managed
 
         ```python
@@ -1607,6 +1609,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL_MANAGED",
             network_tier="PREMIUM")
         ```
+
         ### Global Forwarding Rule Hybrid
 
         ```python
@@ -1714,6 +1717,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             target=default_target_http_proxy.id,
             port_range="80")
         ```
+
         ### Private Service Connect Google Apis
 
         ```python
@@ -1750,6 +1754,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 "service_directory_region": "europe-west3",
             })
         ```
+
         ### Private Service Connect Google Apis No Automate Dns
 
         ```python
@@ -2027,6 +2032,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             target=default_target_http_proxy.id,
             port_range="80")
         ```
+
         ### Global Forwarding Rule Internal
 
         ```python
@@ -2109,6 +2115,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 }],
             }])
         ```
+
         ### Global Forwarding Rule External Managed
 
         ```python
@@ -2148,6 +2155,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL_MANAGED",
             network_tier="PREMIUM")
         ```
+
         ### Global Forwarding Rule Hybrid
 
         ```python
@@ -2255,6 +2263,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             target=default_target_http_proxy.id,
             port_range="80")
         ```
+
         ### Private Service Connect Google Apis
 
         ```python
@@ -2291,6 +2300,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 "service_directory_region": "europe-west3",
             })
         ```
+
         ### Private Service Connect Google Apis No Automate Dns
 
         ```python

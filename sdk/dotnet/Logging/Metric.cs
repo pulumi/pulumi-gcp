@@ -77,6 +77,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// 
     /// ### Logging Metric Counter Basic
     /// 
     /// ```csharp
@@ -100,6 +101,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// 
     /// ### Logging Metric Counter Labels
     /// 
     /// ```csharp
@@ -136,6 +138,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// 
     /// ### Logging Metric Logging Bucket
     /// 
     /// ```csharp
@@ -162,6 +165,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// 
     /// ### Logging Metric Disabled
     /// 
     /// ```csharp

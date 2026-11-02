@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     runFrequency: "LIVE",
  * });
  * ```
+ *
  * ### Chronicle Ruledeployment Disabled
  *
  * ```typescript
@@ -71,6 +72,7 @@ import * as utilities from "../utilities";
  *     runFrequency: "LIVE",
  * });
  * ```
+ *
  * ### Chronicle Ruledeployment Run Frequency Missing
  *
  * ```typescript

@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ *
  * ### Vertex Ai Tensorboard Full
  *
  * ```typescript

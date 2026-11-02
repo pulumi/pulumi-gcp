@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiAgentAnomalyDetectionScope{}
 	case "gcp:vertex/aiCacheConfig:AiCacheConfig":
 		r = &AiCacheConfig{}
+	case "gcp:vertex/aiCustomJob:AiCustomJob":
+		r = &AiCustomJob{}
 	case "gcp:vertex/aiDataset:AiDataset":
 		r = &AiDataset{}
 	case "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool":
@@ -93,16 +95,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiIndexEndpointDeployedIndex{}
 	case "gcp:vertex/aiMetadataStore:AiMetadataStore":
 		r = &AiMetadataStore{}
+	case "gcp:vertex/aiModelDevelopmentCluster:AiModelDevelopmentCluster":
+		r = &AiModelDevelopmentCluster{}
 	case "gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel":
 		r = &AiModelGardenEnableModel{}
 	case "gcp:vertex/aiOnlineEvaluator:AiOnlineEvaluator":
 		r = &AiOnlineEvaluator{}
 	case "gcp:vertex/aiPersistentResource:AiPersistentResource":
 		r = &AiPersistentResource{}
+	case "gcp:vertex/aiPipelineJob:AiPipelineJob":
+		r = &AiPipelineJob{}
 	case "gcp:vertex/aiRagCorpus:AiRagCorpus":
 		r = &AiRagCorpus{}
 	case "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig":
 		r = &AiRagEngineConfig{}
+	case "gcp:vertex/aiRagFile:AiRagFile":
+		r = &AiRagFile{}
 	case "gcp:vertex/aiReasoningEngine:AiReasoningEngine":
 		r = &AiReasoningEngine{}
 	case "gcp:vertex/aiReasoningEngineIamBinding:AiReasoningEngineIamBinding":
@@ -142,6 +150,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiCacheConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiCustomJob",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -316,6 +329,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"vertex/aiModelDevelopmentCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"vertex/aiModelGardenEnableModel",
 		&module{version},
 	)
@@ -331,12 +349,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"vertex/aiPipelineJob",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"vertex/aiRagCorpus",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiRagEngineConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiRagFile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

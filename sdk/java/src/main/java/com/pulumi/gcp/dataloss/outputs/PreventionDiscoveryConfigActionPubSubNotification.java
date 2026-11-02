@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class PreventionDiscoveryConfigActionPubSubNotification {
     /**
      * @return How much data to include in the pub/sub message.
-     * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+     * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
      * 
      */
     private @Nullable String detailOfMessage;
@@ -39,7 +39,7 @@ public final class PreventionDiscoveryConfigActionPubSubNotification {
     private PreventionDiscoveryConfigActionPubSubNotification() {}
     /**
      * @return How much data to include in the pub/sub message.
-     * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+     * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
      * 
      */
     public Optional<String> detailOfMessage() {

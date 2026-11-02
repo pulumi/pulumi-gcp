@@ -2153,6 +2153,9 @@ type WorkstationConfigHostGceInstanceBoostConfig struct {
 	Accelerators []WorkstationConfigHostGceInstanceBoostConfigAccelerator `pulumi:"accelerators"`
 	// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// (Optional, Beta)
+	// Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+	EnableAutomaticFailover *bool `pulumi:"enableAutomaticFailover"`
 	// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
 	// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
@@ -2181,6 +2184,9 @@ type WorkstationConfigHostGceInstanceBoostConfigArgs struct {
 	Accelerators WorkstationConfigHostGceInstanceBoostConfigAcceleratorArrayInput `pulumi:"accelerators"`
 	// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// (Optional, Beta)
+	// Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+	EnableAutomaticFailover pulumi.BoolPtrInput `pulumi:"enableAutomaticFailover"`
 	// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
 	// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
@@ -2254,6 +2260,12 @@ func (o WorkstationConfigHostGceInstanceBoostConfigOutput) Accelerators() Workst
 // Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
 func (o WorkstationConfigHostGceInstanceBoostConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// (Optional, Beta)
+// Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+func (o WorkstationConfigHostGceInstanceBoostConfigOutput) EnableAutomaticFailover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfig) *bool { return v.EnableAutomaticFailover }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.

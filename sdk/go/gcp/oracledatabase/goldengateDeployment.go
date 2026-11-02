@@ -44,6 +44,9 @@ import (
 //						Deployment:    pulumi.String("deployment"),
 //					},
 //				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
 //				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
@@ -54,6 +57,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Oracledatabase Goldengate Deployment Full
 //
 // ```go

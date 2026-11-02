@@ -162,6 +162,7 @@ type Provider struct {
 	NetworkManagementCustomEndpoint        pulumi.StringPtrOutput `pulumi:"networkManagementCustomEndpoint"`
 	NetworkManagementv1CustomEndpoint      pulumi.StringPtrOutput `pulumi:"networkManagementv1CustomEndpoint"`
 	NetworkSecurityCustomEndpoint          pulumi.StringPtrOutput `pulumi:"networkSecurityCustomEndpoint"`
+	NetworkServices2CustomEndpoint         pulumi.StringPtrOutput `pulumi:"networkServices2CustomEndpoint"`
 	NetworkServicesCustomEndpoint          pulumi.StringPtrOutput `pulumi:"networkServicesCustomEndpoint"`
 	ObservabilityCustomEndpoint            pulumi.StringPtrOutput `pulumi:"observabilityCustomEndpoint"`
 	OracleDatabaseCustomEndpoint           pulumi.StringPtrOutput `pulumi:"oracleDatabaseCustomEndpoint"`
@@ -420,6 +421,7 @@ type providerArgs struct {
 	NetworkManagementCustomEndpoint        *string                      `pulumi:"networkManagementCustomEndpoint"`
 	NetworkManagementv1CustomEndpoint      *string                      `pulumi:"networkManagementv1CustomEndpoint"`
 	NetworkSecurityCustomEndpoint          *string                      `pulumi:"networkSecurityCustomEndpoint"`
+	NetworkServices2CustomEndpoint         *string                      `pulumi:"networkServices2CustomEndpoint"`
 	NetworkServicesCustomEndpoint          *string                      `pulumi:"networkServicesCustomEndpoint"`
 	ObservabilityCustomEndpoint            *string                      `pulumi:"observabilityCustomEndpoint"`
 	OracleDatabaseCustomEndpoint           *string                      `pulumi:"oracleDatabaseCustomEndpoint"`
@@ -645,6 +647,7 @@ type ProviderArgs struct {
 	NetworkManagementCustomEndpoint        pulumi.StringPtrInput
 	NetworkManagementv1CustomEndpoint      pulumi.StringPtrInput
 	NetworkSecurityCustomEndpoint          pulumi.StringPtrInput
+	NetworkServices2CustomEndpoint         pulumi.StringPtrInput
 	NetworkServicesCustomEndpoint          pulumi.StringPtrInput
 	ObservabilityCustomEndpoint            pulumi.StringPtrInput
 	OracleDatabaseCustomEndpoint           pulumi.StringPtrInput
@@ -1352,6 +1355,10 @@ func (o ProviderOutput) NetworkManagementv1CustomEndpoint() pulumi.StringPtrOutp
 
 func (o ProviderOutput) NetworkSecurityCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkSecurityCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) NetworkServices2CustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkServices2CustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) NetworkServicesCustomEndpoint() pulumi.StringPtrOutput {

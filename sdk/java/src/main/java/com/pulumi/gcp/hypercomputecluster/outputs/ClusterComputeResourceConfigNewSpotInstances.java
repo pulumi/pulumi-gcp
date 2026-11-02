@@ -6,6 +6,7 @@ package com.pulumi.gcp.hypercomputecluster.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,6 +20,13 @@ public final class ClusterComputeResourceConfigNewSpotInstances {
      * 
      */
     private String machineType;
+    /**
+     * @return (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    private @Nullable List<String> networkTags;
     /**
      * @return Specifies the termination action of the instance
      * Possible values:
@@ -44,6 +52,15 @@ public final class ClusterComputeResourceConfigNewSpotInstances {
      */
     public String machineType() {
         return this.machineType;
+    }
+    /**
+     * @return (Optional, Beta)
+     * A list of network tags to attach to the VM instances.
+     * A maximum of 64 network tags are allowed.
+     * 
+     */
+    public List<String> networkTags() {
+        return this.networkTags == null ? List.of() : this.networkTags;
     }
     /**
      * @return Specifies the termination action of the instance
@@ -75,12 +92,14 @@ public final class ClusterComputeResourceConfigNewSpotInstances {
     @CustomType.Builder
     public static final class Builder {
         private String machineType;
+        private @Nullable List<String> networkTags;
         private @Nullable String terminationAction;
         private String zone;
         public Builder() {}
         public Builder(ClusterComputeResourceConfigNewSpotInstances defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.machineType = defaults.machineType;
+    	      this.networkTags = defaults.networkTags;
     	      this.terminationAction = defaults.terminationAction;
     	      this.zone = defaults.zone;
         }
@@ -92,6 +111,15 @@ public final class ClusterComputeResourceConfigNewSpotInstances {
             }
             this.machineType = machineType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder networkTags(@Nullable List<String> networkTags) {
+
+            this.networkTags = networkTags;
+            return this;
+        }
+        public Builder networkTags(String... networkTags) {
+            return networkTags(List.of(networkTags));
         }
         @CustomType.Setter
         public Builder terminationAction(@Nullable String terminationAction) {
@@ -110,6 +138,7 @@ public final class ClusterComputeResourceConfigNewSpotInstances {
         public ClusterComputeResourceConfigNewSpotInstances build() {
             final var _resultValue = new ClusterComputeResourceConfigNewSpotInstances();
             _resultValue.machineType = machineType;
+            _resultValue.networkTags = networkTags;
             _resultValue.terminationAction = terminationAction;
             _resultValue.zone = zone;
             return _resultValue;

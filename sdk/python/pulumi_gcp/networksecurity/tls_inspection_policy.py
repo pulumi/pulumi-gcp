@@ -564,6 +564,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                     tls_inspection_permission,
                 ]))
         ```
+
         ### Network Security Tls Inspection Policy Custom
 
         ```python
@@ -811,6 +812,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                     tls_inspection_permission,
                 ]))
         ```
+
         ### Network Security Tls Inspection Policy Custom
 
         ```python

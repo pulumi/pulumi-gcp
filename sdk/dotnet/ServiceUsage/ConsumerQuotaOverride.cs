@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.ServiceUsage
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Consumer Quota Override
     /// 
     /// ```csharp
@@ -102,6 +103,7 @@ namespace Pulumi.Gcp.ServiceUsage
     /// 
     /// });
     /// ```
+    /// 
     /// ### Consumer Quota Override Custom Dimension
     /// 
     /// ```csharp

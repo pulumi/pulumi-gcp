@@ -83,6 +83,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Workstation Config Container
  *
  * ```typescript
@@ -132,6 +133,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Workstation Config Hyperdisk
  *
  * ```typescript
@@ -173,6 +175,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Workstation Config Hyperdisk Source Snapshot
  *
  * ```typescript
@@ -238,6 +241,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Workstation Config Persistent Directories
  *
  * ```typescript
@@ -292,6 +296,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Workstation Config Source Snapshot
  *
  * ```typescript
@@ -338,6 +343,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Workstation Config Shielded Instance Config
  *
  * ```typescript
@@ -383,6 +389,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Workstation Config Accelerators
  *
  * ```typescript
@@ -428,6 +435,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Workstation Config Boost
  *
  * ```typescript
@@ -486,6 +494,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Workstation Config Encryption Key
  *
  * ```typescript
@@ -547,6 +556,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Workstation Config Allowed Ports
  *
  * ```typescript
@@ -602,6 +612,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Workstation Config Idle Action
  *
  * ```typescript

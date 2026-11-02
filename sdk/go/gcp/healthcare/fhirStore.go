@@ -78,6 +78,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Healthcare Fhir Store Streaming Config
 //
 // ```go
@@ -160,6 +161,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Healthcare Fhir Store Notification Configs
 //
 // ```go
@@ -215,6 +217,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Healthcare Fhir Store Consent Config
 //
 // ```go
@@ -280,6 +283,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Healthcare Fhir Store Validation Config
 //
 // ```go

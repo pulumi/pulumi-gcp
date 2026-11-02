@@ -112,6 +112,15 @@ namespace Pulumi.Gcp.SaaSRuntime
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
+        /// Reference to a component and revision in a composite Application Design
+        /// Center ApplicationTemplate. Set by the service on Releases created by an
+        /// ApplicationTemplate import.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("applicationTemplateComponents")]
+        public Output<ImmutableArray<Outputs.ReleaseApplicationTemplateComponent>> ApplicationTemplateComponents { get; private set; } = null!;
+
+        /// <summary>
         /// Blueprints are OCI Images that contain all of the artifacts needed to
         /// provision a unit. Metadata such as, type of the engine used to actuate the
         /// blueprint (e.g. terraform, helm etc) and version will come from the image
@@ -431,6 +440,21 @@ namespace Pulumi.Gcp.SaaSRuntime
         {
             get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
+        }
+
+        [Input("applicationTemplateComponents")]
+        private InputList<Inputs.ReleaseApplicationTemplateComponentGetArgs>? _applicationTemplateComponents;
+
+        /// <summary>
+        /// Reference to a component and revision in a composite Application Design
+        /// Center ApplicationTemplate. Set by the service on Releases created by an
+        /// ApplicationTemplate import.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ReleaseApplicationTemplateComponentGetArgs> ApplicationTemplateComponents
+        {
+            get => _applicationTemplateComponents ?? (_applicationTemplateComponents = new InputList<Inputs.ReleaseApplicationTemplateComponentGetArgs>());
+            set => _applicationTemplateComponents = value;
         }
 
         /// <summary>

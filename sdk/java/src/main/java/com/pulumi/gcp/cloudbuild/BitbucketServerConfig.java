@@ -70,6 +70,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Bitbucket Server Config Repositories
  * 
  * <pre>
@@ -122,6 +123,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Cloudbuild Bitbucket Server Config Peered Network
  * 
  * <pre>

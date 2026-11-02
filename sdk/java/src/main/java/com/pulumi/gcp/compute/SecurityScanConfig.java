@@ -73,6 +73,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Scan Config Ignore Http Status Errors
  * 
  * <pre>
@@ -125,6 +126,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Scan Config Static Ip
  * 
  * <pre>

@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Change Stream Full
     /// 
     /// ```csharp

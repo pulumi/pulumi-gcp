@@ -67,8 +67,8 @@ public final class NetworkEndpointArgs extends com.pulumi.resources.ResourceArgs
      * range).
      * 
      */
-    @Import(name="ipAddress", required=true)
-    private Output<String> ipAddress;
+    @Import(name="ipAddress")
+    private @Nullable Output<String> ipAddress;
 
     /**
      * @return IPv4 address of network endpoint. The IP address must belong
@@ -76,8 +76,25 @@ public final class NetworkEndpointArgs extends com.pulumi.resources.ResourceArgs
      * range).
      * 
      */
-    public Output<String> ipAddress() {
-        return this.ipAddress;
+    public Optional<Output<String>> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
+    }
+
+    /**
+     * IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     * 
+     */
+    @Import(name="ipv6Address")
+    private @Nullable Output<String> ipv6Address;
+
+    /**
+     * @return IPv6 address of network endpoint. The result of parsing the endpoint config,
+     * or empty if IPv6 is not used.
+     * 
+     */
+    public Optional<Output<String>> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
     }
 
     /**
@@ -152,6 +169,7 @@ public final class NetworkEndpointArgs extends com.pulumi.resources.ResourceArgs
         this.deletionPolicy = $.deletionPolicy;
         this.instance = $.instance;
         this.ipAddress = $.ipAddress;
+        this.ipv6Address = $.ipv6Address;
         this.networkEndpointGroup = $.networkEndpointGroup;
         this.port = $.port;
         this.project = $.project;
@@ -240,7 +258,7 @@ public final class NetworkEndpointArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder ipAddress(Output<String> ipAddress) {
+        public Builder ipAddress(@Nullable Output<String> ipAddress) {
             $.ipAddress = ipAddress;
             return this;
         }
@@ -255,6 +273,29 @@ public final class NetworkEndpointArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
+         * @param ipv6Address IPv6 address of network endpoint. The result of parsing the endpoint config,
+         * or empty if IPv6 is not used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
+            $.ipv6Address = ipv6Address;
+            return this;
+        }
+
+        /**
+         * @param ipv6Address IPv6 address of network endpoint. The result of parsing the endpoint config,
+         * or empty if IPv6 is not used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(String ipv6Address) {
+            return ipv6Address(Output.of(ipv6Address));
         }
 
         /**
@@ -348,9 +389,6 @@ public final class NetworkEndpointArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public NetworkEndpointArgs build() {
-            if ($.ipAddress == null) {
-                throw new MissingRequiredPropertyException("NetworkEndpointArgs", "ipAddress");
-            }
             if ($.networkEndpointGroup == null) {
                 throw new MissingRequiredPropertyException("NetworkEndpointArgs", "networkEndpointGroup");
             }

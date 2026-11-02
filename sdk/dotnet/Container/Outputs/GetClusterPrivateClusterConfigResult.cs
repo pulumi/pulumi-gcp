@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult> MasterGlobalAccessConfigs;
         /// <summary>
-        /// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when EnablePrivateNodes is true.
+        /// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when EnablePrivateNodes is true. On GKE versions 1.29 and later, this field is optional when PrivateEndpointSubnetwork is specified. It is also optional for Autopilot clusters.
         /// </summary>
         public readonly string MasterIpv4CidrBlock;
         /// <summary>

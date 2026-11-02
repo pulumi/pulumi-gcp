@@ -540,6 +540,7 @@ class PrivateConnection(pulumi.CustomResource):
             name="my-network",
             auto_create_subnetworks=False)
         ```
+
         ### Database Migration Service Private Connection Psc
 
         ```python
@@ -571,6 +572,7 @@ class PrivateConnection(pulumi.CustomResource):
             region="us-west1",
             network=default_network.id)
         ```
+
         ### Database Migration Service Private Connection Reserved Public Ip
 
         ```python
@@ -672,6 +674,7 @@ class PrivateConnection(pulumi.CustomResource):
             name="my-network",
             auto_create_subnetworks=False)
         ```
+
         ### Database Migration Service Private Connection Psc
 
         ```python
@@ -703,6 +706,7 @@ class PrivateConnection(pulumi.CustomResource):
             region="us-west1",
             network=default_network.id)
         ```
+
         ### Database Migration Service Private Connection Reserved Public Ip
 
         ```python

@@ -37,7 +37,9 @@ import (
 type V2ConsumerPolicy struct {
 	pulumi.CustomResourceState
 
-	// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+	// Default value is false. This field is deprecated and has no effect.
+	//
+	// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 	CheckUsageOnRemove pulumi.BoolPtrOutput `pulumi:"checkUsageOnRemove"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -56,7 +58,7 @@ type V2ConsumerPolicy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the parent. It can be a project, folder or organization in the format of  projects/<project_id or project_number>, folders/<folder_number> or organizations/<org_number> .
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+	// Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
 	ValidateDependencies pulumi.BoolPtrOutput `pulumi:"validateDependencies"`
 }
 
@@ -96,7 +98,9 @@ func GetV2ConsumerPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering V2ConsumerPolicy resources.
 type v2consumerPolicyState struct {
-	// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+	// Default value is false. This field is deprecated and has no effect.
+	//
+	// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 	CheckUsageOnRemove *bool `pulumi:"checkUsageOnRemove"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -115,12 +119,14 @@ type v2consumerPolicyState struct {
 	Name *string `pulumi:"name"`
 	// The name of the parent. It can be a project, folder or organization in the format of  projects/<project_id or project_number>, folders/<folder_number> or organizations/<org_number> .
 	Parent *string `pulumi:"parent"`
-	// (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+	// Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
 	ValidateDependencies *bool `pulumi:"validateDependencies"`
 }
 
 type V2ConsumerPolicyState struct {
-	// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+	// Default value is false. This field is deprecated and has no effect.
+	//
+	// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 	CheckUsageOnRemove pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -139,7 +145,7 @@ type V2ConsumerPolicyState struct {
 	Name pulumi.StringPtrInput
 	// The name of the parent. It can be a project, folder or organization in the format of  projects/<project_id or project_number>, folders/<folder_number> or organizations/<org_number> .
 	Parent pulumi.StringPtrInput
-	// (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+	// Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
 	ValidateDependencies pulumi.BoolPtrInput
 }
 
@@ -148,7 +154,9 @@ func (V2ConsumerPolicyState) ElementType() reflect.Type {
 }
 
 type v2consumerPolicyArgs struct {
-	// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+	// Default value is false. This field is deprecated and has no effect.
+	//
+	// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 	CheckUsageOnRemove *bool `pulumi:"checkUsageOnRemove"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -164,13 +172,15 @@ type v2consumerPolicyArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the parent. It can be a project, folder or organization in the format of  projects/<project_id or project_number>, folders/<folder_number> or organizations/<org_number> .
 	Parent string `pulumi:"parent"`
-	// (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+	// Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
 	ValidateDependencies *bool `pulumi:"validateDependencies"`
 }
 
 // The set of arguments for constructing a V2ConsumerPolicy resource.
 type V2ConsumerPolicyArgs struct {
-	// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+	// Default value is false. This field is deprecated and has no effect.
+	//
+	// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 	CheckUsageOnRemove pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -186,7 +196,7 @@ type V2ConsumerPolicyArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the parent. It can be a project, folder or organization in the format of  projects/<project_id or project_number>, folders/<folder_number> or organizations/<org_number> .
 	Parent pulumi.StringInput
-	// (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+	// Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
 	ValidateDependencies pulumi.BoolPtrInput
 }
 
@@ -277,7 +287,9 @@ func (o V2ConsumerPolicyOutput) ToV2ConsumerPolicyOutputWithContext(ctx context.
 	return o
 }
 
-// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+// Default value is false. This field is deprecated and has no effect.
+//
+// Deprecated: `checkUsageOnRemove` is deprecated and will be removed in a future major release.
 func (o V2ConsumerPolicyOutput) CheckUsageOnRemove() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *V2ConsumerPolicy) pulumi.BoolPtrOutput { return v.CheckUsageOnRemove }).(pulumi.BoolPtrOutput)
 }
@@ -314,7 +326,7 @@ func (o V2ConsumerPolicyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2ConsumerPolicy) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
-// (Optional) Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
+// Default value is true. If true, this flag enforces dependency management within the consumer policy. When adding a new service, it verifies that all its dependencies are already present/added in the policy. Conversely, when removing a service, it ensures that no other services within the policy depend on the service to be removed. If the validation fails, a comprehensive message will be presented, outlining the missing dependencies and providing instructions on how to address the issue.
 func (o V2ConsumerPolicyOutput) ValidateDependencies() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *V2ConsumerPolicy) pulumi.BoolPtrOutput { return v.ValidateDependencies }).(pulumi.BoolPtrOutput)
 }

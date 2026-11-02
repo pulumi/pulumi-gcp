@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Backup Dr Restore Workload Compute Instance Full
  * 
  * <pre>
@@ -193,6 +194,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Backup Dr Restore Workload Disk Basic
  * 
  * <pre>
@@ -244,6 +246,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Backup Dr Restore Workload Regional Disk
  * 
  * <pre>
@@ -300,6 +303,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Backup Dr Restore Workload Without Delete
  * 
  * <pre>

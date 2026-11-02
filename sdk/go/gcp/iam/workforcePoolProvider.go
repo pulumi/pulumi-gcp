@@ -69,6 +69,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workforce Pool Provider Saml Full
 //
 // ```go
@@ -127,6 +128,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workforce Pool Provider Oidc Basic
 //
 // ```go
@@ -178,6 +180,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workforce Pool Provider Oidc Full
 //
 // ```go
@@ -250,6 +253,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Basic
 //
 // ```go
@@ -311,6 +315,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Full
 //
 // ```go
@@ -375,6 +380,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Basic
 //
 // ```go
@@ -436,6 +442,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workforce Pool Provider Extra Attributes Display Name Oauth2 Config Client Full
 //
 // ```go
@@ -500,6 +507,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Basic
 //
 // ```go
@@ -561,6 +569,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Full
 //
 // ```go
@@ -625,6 +634,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Iam Workforce Pool Provider Oidc Detailed Audit Logging
 //
 // ```go

@@ -62,11 +62,12 @@ type LookupBackupPlanAssociationArgs struct {
 
 // A collection of values returned by getBackupPlanAssociation.
 type LookupBackupPlanAssociationResult struct {
-	BackupPlan              string `pulumi:"backupPlan"`
-	BackupPlanAssociationId string `pulumi:"backupPlanAssociationId"`
-	CreateTime              string `pulumi:"createTime"`
-	DataSource              string `pulumi:"dataSource"`
-	DeletionPolicy          string `pulumi:"deletionPolicy"`
+	AutoProtectionPolicyBinding string `pulumi:"autoProtectionPolicyBinding"`
+	BackupPlan                  string `pulumi:"backupPlan"`
+	BackupPlanAssociationId     string `pulumi:"backupPlanAssociationId"`
+	CreateTime                  string `pulumi:"createTime"`
+	DataSource                  string `pulumi:"dataSource"`
+	DeletionPolicy              string `pulumi:"deletionPolicy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id               string                                    `pulumi:"id"`
 	Location         string                                    `pulumi:"location"`
@@ -111,6 +112,10 @@ func (o LookupBackupPlanAssociationResultOutput) ToLookupBackupPlanAssociationRe
 
 func (o LookupBackupPlanAssociationResultOutput) ToLookupBackupPlanAssociationResultOutputWithContext(ctx context.Context) LookupBackupPlanAssociationResultOutput {
 	return o
+}
+
+func (o LookupBackupPlanAssociationResultOutput) AutoProtectionPolicyBinding() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupPlanAssociationResult) string { return v.AutoProtectionPolicyBinding }).(pulumi.StringOutput)
 }
 
 func (o LookupBackupPlanAssociationResultOutput) BackupPlan() pulumi.StringOutput {

@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int? MaxUnavailable;
         /// <summary>
-        /// The upgrade strategy to be used for upgrading the nodes.
+        /// The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
         /// </summary>
         public readonly string? Strategy;
 

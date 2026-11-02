@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  *
  * const template_basic = new gcp.parametermanager.Template("template-basic", {templateId: "template"});
  * ```
+ *
  * ### Template With Format
  *
  * ```typescript
@@ -31,6 +32,7 @@ import * as utilities from "../utilities";
  *     format: "TEMPLATE_FORMAT_JSON",
  * });
  * ```
+ *
  * ### Template With Labels
  *
  * ```typescript

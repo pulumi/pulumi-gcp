@@ -475,6 +475,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
             description="my description",
             sni="secure.example.com")
         ```
+
         ### Network Security Client Tls Policy Advanced
 
         ```python
@@ -570,6 +571,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
             description="my description",
             sni="secure.example.com")
         ```
+
         ### Network Security Client Tls Policy Advanced
 
         ```python

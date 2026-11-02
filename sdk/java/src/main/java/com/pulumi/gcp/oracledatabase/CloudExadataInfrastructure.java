@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  *                 .computeCount(2)
  *                 .storageCount(3)
  *                 .build())
+ *             .labels(Map.of("label-one", "value-one"))
  *             .deletionProtection(true)
  *             .build());
  * 
@@ -71,6 +72,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Oracledatabase Cloud Exadata Infrastructure Full
  * 
  * <pre>

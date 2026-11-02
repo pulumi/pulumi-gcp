@@ -382,6 +382,7 @@ class CapabilityConfig(pulumi.CustomResource):
             display_name="capdisp",
             types=["AGENT_MANAGEMENT"])
         ```
+
         ### Resource Manager Capability Config Folder
 
         ```python
@@ -412,6 +413,7 @@ class CapabilityConfig(pulumi.CustomResource):
             management_project=management_project.number.apply(lambda number: f"projects/{number}"),
             opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
+
         ### Resource Manager Capability Config Project
 
         ```python
@@ -499,6 +501,7 @@ class CapabilityConfig(pulumi.CustomResource):
             display_name="capdisp",
             types=["AGENT_MANAGEMENT"])
         ```
+
         ### Resource Manager Capability Config Folder
 
         ```python
@@ -529,6 +532,7 @@ class CapabilityConfig(pulumi.CustomResource):
             management_project=management_project.number.apply(lambda number: f"projects/{number}"),
             opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
+
         ### Resource Manager Capability Config Project
 
         ```python

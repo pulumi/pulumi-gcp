@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *
  * const parameter_basic = new gcp.parametermanager.Parameter("parameter-basic", {parameterId: "parameter"});
  * ```
+ *
  * ### Parameter With Format
  *
  * ```typescript
@@ -39,6 +40,7 @@ import * as utilities from "../utilities";
  *     format: "JSON",
  * });
  * ```
+ *
  * ### Parameter With Labels
  *
  * ```typescript
@@ -56,6 +58,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Parameter With Kms Key
  *
  * ```typescript
@@ -68,6 +71,7 @@ import * as utilities from "../utilities";
  *     kmsKey: "kms-key",
  * });
  * ```
+ *
  * ### Parameter With Tags
  *
  * ```typescript

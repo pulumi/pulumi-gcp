@@ -58,6 +58,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Exadb Vm Cluster Full
  *
  * ```typescript

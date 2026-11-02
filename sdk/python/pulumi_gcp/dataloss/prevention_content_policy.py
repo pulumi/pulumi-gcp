@@ -532,6 +532,7 @@ class PreventionContentPolicy(pulumi.CustomResource):
                 "return_verdict": "ALLOW",
             })
         ```
+
         ### Dlp Content Policy Full
 
         ```python
@@ -1045,6 +1046,7 @@ class PreventionContentPolicy(pulumi.CustomResource):
                 "return_verdict": "ALLOW",
             })
         ```
+
         ### Dlp Content Policy Full
 
         ```python

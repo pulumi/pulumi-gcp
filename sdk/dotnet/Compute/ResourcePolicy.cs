@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Full
     /// 
     /// ```csharp
@@ -90,6 +91,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Placement Policy
     /// 
     /// ```csharp
@@ -113,6 +115,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Placement Policy Max Distance
     /// 
     /// ```csharp
@@ -137,6 +140,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Instance Schedule Policy
     /// 
     /// ```csharp
@@ -168,6 +172,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Snapshot Schedule Chain Name
     /// 
     /// ```csharp
@@ -213,6 +218,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Consistency Group
     /// 
     /// ```csharp
@@ -235,6 +241,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Workload Policy
     /// 
     /// ```csharp
@@ -257,6 +264,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Workload Policy Accelerator Topology
     /// 
     /// ```csharp
@@ -280,6 +288,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Workload Policy Accelerator Topology Mode
     /// 
     /// ```csharp
@@ -304,6 +313,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Workload Policy Max Topology Distance
     /// 
     /// ```csharp
@@ -327,6 +337,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Placement Policy Gpu Topology
     /// 
     /// ```csharp
@@ -350,6 +361,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Resource Policy Placement Policy Tpu Topology
     /// 
     /// ```csharp

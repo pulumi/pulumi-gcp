@@ -1089,6 +1089,13 @@ namespace Pulumi.Gcp
             set => _networkSecurityCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _networkServices2CustomEndpoint = new __Value<string?>(() => __config.Get("networkServices2CustomEndpoint"));
+        public static string? NetworkServices2CustomEndpoint
+        {
+            get => _networkServices2CustomEndpoint.Get();
+            set => _networkServices2CustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _networkServicesCustomEndpoint = new __Value<string?>(() => __config.Get("networkServicesCustomEndpoint"));
         public static string? NetworkServicesCustomEndpoint
         {

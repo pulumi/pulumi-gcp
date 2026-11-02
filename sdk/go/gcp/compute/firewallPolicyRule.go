@@ -137,6 +137,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firewall Policy Rule Network Scope
 //
 // ```go
@@ -214,6 +215,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firewall Policy Rule Network Context
 //
 // ```go
@@ -325,6 +327,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firewall Policy Rule Secure Tags
 //
 // ```go

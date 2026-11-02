@@ -152,6 +152,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Index Endpoint Deployed Index Basic Two
  * 
  * <pre>

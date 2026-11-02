@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Consent Store Full
     /// 
     /// ```csharp
@@ -74,6 +75,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// 
     /// ### Healthcare Consent Store Iam
     /// 
     /// ```csharp

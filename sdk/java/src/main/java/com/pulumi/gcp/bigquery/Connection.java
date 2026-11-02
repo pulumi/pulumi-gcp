@@ -16,6 +16,7 @@ import com.pulumi.gcp.bigquery.outputs.ConnectionCloudResource;
 import com.pulumi.gcp.bigquery.outputs.ConnectionCloudSpanner;
 import com.pulumi.gcp.bigquery.outputs.ConnectionCloudSql;
 import com.pulumi.gcp.bigquery.outputs.ConnectionConfiguration;
+import com.pulumi.gcp.bigquery.outputs.ConnectionSalesforceDataCloud;
 import com.pulumi.gcp.bigquery.outputs.ConnectionSpark;
 import java.lang.Boolean;
 import java.lang.String;
@@ -74,6 +75,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Connection Basic
  * 
  * <pre>
@@ -154,6 +156,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Connection Full
  * 
  * <pre>
@@ -235,6 +238,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Connection Aws
  * 
  * <pre>
@@ -277,6 +281,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Connection Azure
  * 
  * <pre>
@@ -317,6 +322,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Connection Cloudspanner
  * 
  * <pre>
@@ -357,6 +363,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Connection Cloudspanner Databoost
  * 
  * <pre>
@@ -399,6 +406,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Connection Spark
  * 
  * <pre>
@@ -464,6 +472,46 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ### Bigquery Connection Salesforce Data Cloud
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionSalesforceDataCloudArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
+ *             .connectionId("my-connection")
+ *             .location("US")
+ *             .salesforceDataCloud(ConnectionSalesforceDataCloudArgs.builder()
+ *                 .instanceUri("my-instance.c360a.salesforce.com")
+ *                 .tenantId("tenant-id")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Bigquery Connection Sql With Cmek
  * 
  * <pre>
@@ -538,6 +586,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Connection Sql With Cmek Password Wo
  * 
  * <pre>
@@ -613,6 +662,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Bigquery Connection Connector Configuration
  * 
  * <pre>
@@ -622,23 +672,22 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
- * import com.pulumi.gcp.compute.GlobalAddress;
- * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.alloydb.Instance;
  * import com.pulumi.gcp.alloydb.InstanceArgs;
  * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
  * import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationArgs;
  * import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAssetArgs;
  * import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAuthenticationArgs;
  * import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAuthenticationUsernamePasswordArgs;
  * import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -652,17 +701,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var namePrefix = "my-connection";
- * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .name(String.format("%s-alloydb-network", namePrefix))
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("alloydb-network")
  *             .build());
  * 
- *         var default_ = new Cluster("default", ClusterArgs.builder()
+ *         final var namePrefix = "my-connection";
+ * 
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId(String.format("%s-alloydb-cluster", namePrefix))
  *             .location("us-central1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
- *                 .network(defaultNetwork.id())
+ *                 .network(default_.id())
  *                 .build())
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password("alloydb-cluster-password")
@@ -670,32 +719,16 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
- *             .name(String.format("%s-alloydb-ip", namePrefix))
- *             .addressType("INTERNAL")
- *             .purpose("VPC_PEERING")
- *             .prefixLength(16)
- *             .network(defaultNetwork.id())
- *             .build());
- * 
- *         var vpcConnection = new com.pulumi.gcp.servicenetworking.Connection("vpcConnection", com.pulumi.gcp.servicenetworking.ConnectionArgs.builder()
- *             .network(defaultNetwork.id())
- *             .service("servicenetworking.googleapis.com")
- *             .reservedPeeringRanges(privateIpAlloc.name())
- *             .build());
- * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .cluster(default_.name())
+ *             .cluster(defaultCluster.name())
  *             .instanceId(String.format("%s-alloydb-instance", namePrefix))
  *             .instanceType("PRIMARY")
  *             .machineConfig(InstanceMachineConfigArgs.builder()
  *                 .cpuCount(2)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(vpcConnection)
- *                 .build());
+ *             .build());
  * 
- *         var connection = new com.pulumi.gcp.bigquery.Connection("connection", com.pulumi.gcp.bigquery.ConnectionArgs.builder()
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
  *             .connectionId("my-connection")
  *             .location("us-central1")
  *             .friendlyName("alloydb connection")
@@ -994,6 +1027,24 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Connection properties specific to Salesforce Data Cloud.
+     * This connection type is intended for use only by Salesforce partner projects.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="salesforceDataCloud", refs={ConnectionSalesforceDataCloud.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionSalesforceDataCloud> salesforceDataCloud;
+
+    /**
+     * @return Connection properties specific to Salesforce Data Cloud.
+     * This connection type is intended for use only by Salesforce partner projects.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionSalesforceDataCloud>> salesforceDataCloud() {
+        return Codegen.optional(this.salesforceDataCloud);
     }
     /**
      * Container for connection properties to execute stored procedures for Apache Spark. resources.

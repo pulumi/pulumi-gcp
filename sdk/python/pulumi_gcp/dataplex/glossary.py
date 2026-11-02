@@ -451,6 +451,7 @@ class Glossary(pulumi.CustomResource):
             glossary_id="glossary-basic",
             location="us-central1")
         ```
+
         ### Dataplex Glossary Full
 
         ```python
@@ -524,6 +525,7 @@ class Glossary(pulumi.CustomResource):
             glossary_id="glossary-basic",
             location="us-central1")
         ```
+
         ### Dataplex Glossary Full
 
         ```python

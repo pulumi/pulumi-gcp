@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     wellKnownRoots: "PUBLIC_ROOTS",
  * });
  * ```
+ *
  * ### Network Security Backend Authentication Config Full
  *
  * ```typescript
@@ -83,6 +84,7 @@ import * as utilities from "../utilities";
  *     trustConfig: trustConfig.id,
  * });
  * ```
+ *
  * ### Backend Service Tls Settings
  *
  * ```typescript

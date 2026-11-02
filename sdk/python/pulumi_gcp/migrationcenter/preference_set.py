@@ -378,6 +378,7 @@ class PreferenceSet(pulumi.CustomResource):
                 "target_product": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
             })
         ```
+
         ### Preference Set Full
 
         ```python
@@ -419,6 +420,7 @@ class PreferenceSet(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Preference Set Compute Engine Preferences Disk Type
 
         ```python
@@ -515,6 +517,7 @@ class PreferenceSet(pulumi.CustomResource):
                 "target_product": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
             })
         ```
+
         ### Preference Set Full
 
         ```python
@@ -556,6 +559,7 @@ class PreferenceSet(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Preference Set Compute Engine Preferences Disk Type
 
         ```python

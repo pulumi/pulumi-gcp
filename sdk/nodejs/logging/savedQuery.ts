@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  *     visibility: "SHARED",
  * });
  * ```
+ *
  * ### Logging Saved Query Private
  *
  * ```typescript
@@ -55,6 +56,7 @@ import * as utilities from "../utilities";
  *     visibility: "PRIVATE",
  * });
  * ```
+ *
  * ### Logging Saved Query Summary Fields
  *
  * ```typescript
@@ -82,6 +84,7 @@ import * as utilities from "../utilities";
  *     visibility: "SHARED",
  * });
  * ```
+ *
  * ### Logging Saved Query Sql Basic
  *
  * ```typescript

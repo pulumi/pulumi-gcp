@@ -564,6 +564,7 @@ class Feed(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Chronicle Feed Gcs
 
         ```python
@@ -622,6 +623,7 @@ class Feed(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[notification]))
         pulumi.export("fetchedFeedServiceAccount", example_feed.feed_service_account)
         ```
+
         ### Chronicle Feed Https Push
 
         ```python
@@ -721,6 +723,7 @@ class Feed(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Chronicle Feed Gcs
 
         ```python
@@ -779,6 +782,7 @@ class Feed(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[notification]))
         pulumi.export("fetchedFeedServiceAccount", example_feed.feed_service_account)
         ```
+
         ### Chronicle Feed Https Push
 
         ```python

@@ -70,6 +70,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Target Instance Custom Network
     /// 
     /// ```csharp
@@ -121,6 +122,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Target Instance With Security Policy
     /// 
     /// ```csharp

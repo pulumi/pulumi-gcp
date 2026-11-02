@@ -69,6 +69,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Healthcare Dicom Store Bq Stream
 //
 // ```go

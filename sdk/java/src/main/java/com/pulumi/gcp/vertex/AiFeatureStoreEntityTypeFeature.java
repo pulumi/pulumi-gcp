@@ -82,6 +82,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
  * 
  * <pre>

@@ -78,6 +78,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger Bigquery Row Limit
 //
 // ```go
@@ -138,6 +139,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger Bigquery Row Limit Percentage
 //
 // ```go
@@ -198,6 +200,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger Job Notification Emails
 //
 // ```go
@@ -247,6 +250,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger Deidentify
 //
 // ```go
@@ -359,6 +363,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger Hybrid
 //
 // ```go
@@ -422,6 +427,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger Inspect
 //
 // ```go
@@ -542,6 +548,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger Publish To Stackdriver
 //
 // ```go
@@ -591,6 +598,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger With Id
 //
 // ```go
@@ -648,6 +656,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger Multiple Actions
 //
 // ```go
@@ -709,6 +718,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
 //
 // ```go
@@ -768,6 +778,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Job Trigger Timespan Config Big Query
 //
 // ```go

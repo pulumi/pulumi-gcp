@@ -499,6 +499,7 @@ class Runtime(pulumi.CustomResource):
             runtime_user="gterraformtestuser@gmail.com",
             opts = pulumi.ResourceOptions(depends_on=[my_template]))
         ```
+
         ### Colab Runtime Stopped
 
         ```python
@@ -526,6 +527,7 @@ class Runtime(pulumi.CustomResource):
             runtime_user="gterraformtestuser@gmail.com",
             opts = pulumi.ResourceOptions(depends_on=[my_template]))
         ```
+
         ### Colab Runtime Full
 
         ```python
@@ -662,6 +664,7 @@ class Runtime(pulumi.CustomResource):
             runtime_user="gterraformtestuser@gmail.com",
             opts = pulumi.ResourceOptions(depends_on=[my_template]))
         ```
+
         ### Colab Runtime Stopped
 
         ```python
@@ -689,6 +692,7 @@ class Runtime(pulumi.CustomResource):
             runtime_user="gterraformtestuser@gmail.com",
             opts = pulumi.ResourceOptions(depends_on=[my_template]))
         ```
+
         ### Colab Runtime Full
 
         ```python

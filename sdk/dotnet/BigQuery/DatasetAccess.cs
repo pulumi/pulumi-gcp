@@ -60,6 +60,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset Access View
     /// 
     /// ```csharp
@@ -105,6 +106,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset Access Authorized Dataset
     /// 
     /// ```csharp
@@ -144,6 +146,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset Access Authorized Routine
     /// 
     /// ```csharp

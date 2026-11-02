@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vmware Engine Network Legacy
     /// 
     /// ```csharp

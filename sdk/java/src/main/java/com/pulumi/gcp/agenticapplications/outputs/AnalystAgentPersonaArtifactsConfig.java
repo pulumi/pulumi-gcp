@@ -4,6 +4,7 @@
 package com.pulumi.gcp.agenticapplications.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions;
 import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions;
 import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptions;
 import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaArtifactsConfigSlideGenerationOptions;
@@ -14,6 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AnalystAgentPersonaArtifactsConfig {
+    /**
+     * @return Options for audit trail export.
+     * 
+     */
+    private @Nullable AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions auditTrailExportOptions;
     /**
      * @return Options for document generation.
      * 
@@ -36,6 +42,13 @@ public final class AnalystAgentPersonaArtifactsConfig {
     private @Nullable AnalystAgentPersonaArtifactsConfigVisualizationOptions visualizationOptions;
 
     private AnalystAgentPersonaArtifactsConfig() {}
+    /**
+     * @return Options for audit trail export.
+     * 
+     */
+    public Optional<AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions> auditTrailExportOptions() {
+        return Optional.ofNullable(this.auditTrailExportOptions);
+    }
     /**
      * @return Options for document generation.
      * 
@@ -74,6 +87,7 @@ public final class AnalystAgentPersonaArtifactsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions auditTrailExportOptions;
         private @Nullable AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions documentGenerationOptions;
         private @Nullable AnalystAgentPersonaArtifactsConfigMethodologyExportOptions methodologyExportOptions;
         private @Nullable AnalystAgentPersonaArtifactsConfigSlideGenerationOptions slideGenerationOptions;
@@ -81,12 +95,19 @@ public final class AnalystAgentPersonaArtifactsConfig {
         public Builder() {}
         public Builder(AnalystAgentPersonaArtifactsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.auditTrailExportOptions = defaults.auditTrailExportOptions;
     	      this.documentGenerationOptions = defaults.documentGenerationOptions;
     	      this.methodologyExportOptions = defaults.methodologyExportOptions;
     	      this.slideGenerationOptions = defaults.slideGenerationOptions;
     	      this.visualizationOptions = defaults.visualizationOptions;
         }
 
+        @CustomType.Setter
+        public Builder auditTrailExportOptions(@Nullable AnalystAgentPersonaArtifactsConfigAuditTrailExportOptions auditTrailExportOptions) {
+
+            this.auditTrailExportOptions = auditTrailExportOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder documentGenerationOptions(@Nullable AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions documentGenerationOptions) {
 
@@ -113,6 +134,7 @@ public final class AnalystAgentPersonaArtifactsConfig {
         }
         public AnalystAgentPersonaArtifactsConfig build() {
             final var _resultValue = new AnalystAgentPersonaArtifactsConfig();
+            _resultValue.auditTrailExportOptions = auditTrailExportOptions;
             _resultValue.documentGenerationOptions = documentGenerationOptions;
             _resultValue.methodologyExportOptions = methodologyExportOptions;
             _resultValue.slideGenerationOptions = slideGenerationOptions;

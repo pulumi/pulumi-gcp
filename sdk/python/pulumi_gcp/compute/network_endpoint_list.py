@@ -280,14 +280,20 @@ class NetworkEndpointList(pulumi.CustomResource):
             name="neg-subnetwork",
             ip_cidr_range="10.0.0.1/16",
             region="us-central1",
-            network=default.id)
+            network=default.id,
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="EXTERNAL")
         endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
             network_interfaces=[{
                 "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
+                "stack_type": "IPV4_IPV6",
+                "ipv6_access_configs": [{
+                    "network_tier": "PREMIUM",
+                }],
             }],
             name="endpoint-instance1",
-            machine_type="e2-medium",
+            machine_type="e2-micro",
             boot_disk={
                 "initialize_params": {
                     "image": my_image.self_link,
@@ -297,34 +303,48 @@ class NetworkEndpointList(pulumi.CustomResource):
             network_interfaces=[{
                 "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
+                "stack_type": "IPV4_IPV6",
+                "ipv6_access_configs": [{
+                    "network_tier": "PREMIUM",
+                }],
             }],
             name="endpoint-instance2",
-            machine_type="e2-medium",
+            machine_type="e2-micro",
             boot_disk={
                 "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
-        default_endpoints = gcp.compute.NetworkEndpointList("default-endpoints",
-            network_endpoint_group=neg["name"],
-            network_endpoints=[
-                {
-                    "instance": endpoint_instance1.name,
-                    "port": neg["defaultPort"],
-                    "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
-                },
-                {
-                    "instance": endpoint_instance2.name,
-                    "port": neg["defaultPort"],
-                    "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
-                },
-            ])
-        group = gcp.compute.NetworkEndpointGroup("group",
+        neg = gcp.compute.NetworkEndpointGroup("neg",
             name="my-lb-neg",
             network=default.id,
             subnetwork=default_subnetwork.id,
             default_port=90,
             zone="us-central1-a")
+        default_endpoints = gcp.compute.NetworkEndpointList("default-endpoints",
+            network_endpoint_group=neg.name,
+            network_endpoints=[
+                {
+                    "instance": endpoint_instance1.name,
+                    "port": neg.default_port,
+                    "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
+                },
+                {
+                    "instance": endpoint_instance1.name,
+                    "port": neg.default_port,
+                    "ipv6_address": endpoint_instance1.network_interfaces[0].ipv6_access_configs[0].external_ipv6,
+                },
+                {
+                    "instance": endpoint_instance2.name,
+                    "port": neg.default_port,
+                    "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
+                },
+                {
+                    "instance": endpoint_instance2.name,
+                    "port": neg.default_port,
+                    "ipv6_address": endpoint_instance2.network_interfaces[0].ipv6_access_configs[0].external_ipv6,
+                },
+            ])
         ```
 
         ## Import
@@ -406,14 +426,20 @@ class NetworkEndpointList(pulumi.CustomResource):
             name="neg-subnetwork",
             ip_cidr_range="10.0.0.1/16",
             region="us-central1",
-            network=default.id)
+            network=default.id,
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="EXTERNAL")
         endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
             network_interfaces=[{
                 "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
+                "stack_type": "IPV4_IPV6",
+                "ipv6_access_configs": [{
+                    "network_tier": "PREMIUM",
+                }],
             }],
             name="endpoint-instance1",
-            machine_type="e2-medium",
+            machine_type="e2-micro",
             boot_disk={
                 "initialize_params": {
                     "image": my_image.self_link,
@@ -423,34 +449,48 @@ class NetworkEndpointList(pulumi.CustomResource):
             network_interfaces=[{
                 "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
+                "stack_type": "IPV4_IPV6",
+                "ipv6_access_configs": [{
+                    "network_tier": "PREMIUM",
+                }],
             }],
             name="endpoint-instance2",
-            machine_type="e2-medium",
+            machine_type="e2-micro",
             boot_disk={
                 "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
-        default_endpoints = gcp.compute.NetworkEndpointList("default-endpoints",
-            network_endpoint_group=neg["name"],
-            network_endpoints=[
-                {
-                    "instance": endpoint_instance1.name,
-                    "port": neg["defaultPort"],
-                    "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
-                },
-                {
-                    "instance": endpoint_instance2.name,
-                    "port": neg["defaultPort"],
-                    "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
-                },
-            ])
-        group = gcp.compute.NetworkEndpointGroup("group",
+        neg = gcp.compute.NetworkEndpointGroup("neg",
             name="my-lb-neg",
             network=default.id,
             subnetwork=default_subnetwork.id,
             default_port=90,
             zone="us-central1-a")
+        default_endpoints = gcp.compute.NetworkEndpointList("default-endpoints",
+            network_endpoint_group=neg.name,
+            network_endpoints=[
+                {
+                    "instance": endpoint_instance1.name,
+                    "port": neg.default_port,
+                    "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
+                },
+                {
+                    "instance": endpoint_instance1.name,
+                    "port": neg.default_port,
+                    "ipv6_address": endpoint_instance1.network_interfaces[0].ipv6_access_configs[0].external_ipv6,
+                },
+                {
+                    "instance": endpoint_instance2.name,
+                    "port": neg.default_port,
+                    "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
+                },
+                {
+                    "instance": endpoint_instance2.name,
+                    "port": neg.default_port,
+                    "ipv6_address": endpoint_instance2.network_interfaces[0].ipv6_access_configs[0].external_ipv6,
+                },
+            ])
         ```
 
         ## Import

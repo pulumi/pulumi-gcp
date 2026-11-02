@@ -41,8 +41,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			targetProject, err := organizations.NewProject(ctx, "target_project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_89239"),
-//				Name:           pulumi.String("tf-test_41898"),
+//				ProjectId:      pulumi.String("tf-test_31660"),
+//				Name:           pulumi.String("tf-test_97962"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -78,7 +78,7 @@ import (
 //			}
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
 //				Project:               targetProject.ProjectId,
-//				Name:                  pulumi.String("test"),
+//				Name:                  pulumi.String("test-vpc"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				compute2,
@@ -87,8 +87,8 @@ import (
 //				return err
 //			}
 //			zone, err := dns.NewManagedZone(ctx, "zone", &dns.ManagedZoneArgs{
-//				Name:       pulumi.String("tf-test-dns_63399"),
-//				DnsName:    pulumi.String("private_97523.example.com."),
+//				Name:       pulumi.String("tf-test-dns_34534"),
+//				DnsName:    pulumi.String("private_87829.example.com."),
 //				Visibility: pulumi.String("private"),
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
@@ -110,7 +110,7 @@ import (
 //					"intent": pulumi.String("example"),
 //				},
 //				TargetProject: targetProject.ProjectId,
-//				TargetVpc:     pulumi.String("test"),
+//				TargetVpc:     pulumi.String("test-vpc"),
 //				Dns:           zone.DnsName,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				dnsPeerBinding,

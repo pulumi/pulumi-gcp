@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ## Import
  *
  * AuthzPolicy can be imported using any of these accepted formats:

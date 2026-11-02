@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.saasruntime.ReleaseArgs;
 import com.pulumi.gcp.saasruntime.inputs.ReleaseState;
+import com.pulumi.gcp.saasruntime.outputs.ReleaseApplicationTemplateComponent;
 import com.pulumi.gcp.saasruntime.outputs.ReleaseBlueprint;
 import com.pulumi.gcp.saasruntime.outputs.ReleaseInputVariable;
 import com.pulumi.gcp.saasruntime.outputs.ReleaseInputVariableDefault;
@@ -144,6 +145,26 @@ public class Release extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> annotations() {
         return Codegen.optional(this.annotations);
+    }
+    /**
+     * Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate. Set by the service on Releases created by an
+     * ApplicationTemplate import.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="applicationTemplateComponents", refs={List.class,ReleaseApplicationTemplateComponent.class}, tree="[0,1]")
+    private Output<List<ReleaseApplicationTemplateComponent>> applicationTemplateComponents;
+
+    /**
+     * @return Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate. Set by the service on Releases created by an
+     * ApplicationTemplate import.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ReleaseApplicationTemplateComponent>> applicationTemplateComponents() {
+        return this.applicationTemplateComponents;
     }
     /**
      * Blueprints are OCI Images that contain all of the artifacts needed to

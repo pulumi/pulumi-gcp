@@ -572,6 +572,7 @@ class DataAccessScope(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Chronicle Dataaccessscope With Dataaccesslabel
 
         ```python
@@ -592,6 +593,7 @@ class DataAccessScope(pulumi.CustomResource):
                 "data_access_label": google_chronicle_data_access_label["customDataAccessLabel"]["dataAccessLabelId"],
             }])
         ```
+
         ### Chronicle Dataaccessscope With Asset Namespace
 
         ```python
@@ -607,6 +609,7 @@ class DataAccessScope(pulumi.CustomResource):
                 "asset_namespace": "my-namespace",
             }])
         ```
+
         ### Chronicle Dataaccessscope With Ingestion Label
 
         ```python
@@ -625,6 +628,7 @@ class DataAccessScope(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Chronicle Dataaccessscope With Denied Labels
 
         ```python
@@ -753,6 +757,7 @@ class DataAccessScope(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Chronicle Dataaccessscope With Dataaccesslabel
 
         ```python
@@ -773,6 +778,7 @@ class DataAccessScope(pulumi.CustomResource):
                 "data_access_label": google_chronicle_data_access_label["customDataAccessLabel"]["dataAccessLabelId"],
             }])
         ```
+
         ### Chronicle Dataaccessscope With Asset Namespace
 
         ```python
@@ -788,6 +794,7 @@ class DataAccessScope(pulumi.CustomResource):
                 "asset_namespace": "my-namespace",
             }])
         ```
+
         ### Chronicle Dataaccessscope With Ingestion Label
 
         ```python
@@ -806,6 +813,7 @@ class DataAccessScope(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Chronicle Dataaccessscope With Denied Labels
 
         ```python

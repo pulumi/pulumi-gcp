@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "PREVENT",
  * });
  * ```
+ *
  * ### Secure Source Manager Repository Initial Config
  *
  * ```typescript
@@ -60,6 +61,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "PREVENT",
  * });
  * ```
+ *
  * ### Secure Source Manager Repository Service Account
  *
  * ```typescript
@@ -83,6 +85,7 @@ import * as utilities from "../utilities";
  *     serviceAccount: sa.email,
  * });
  * ```
+ *
  * ### Secure Source Manager Repository Secret Scanning
  *
  * ```typescript
@@ -124,6 +127,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [ssmP4saDlpReader],
  * });
  * ```
+ *
  * ### Secure Source Manager Repository Secret Scanning Default
  *
  * ```typescript

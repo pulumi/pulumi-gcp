@@ -652,6 +652,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
         \"\"\")
         ```
+
         ### Vertex Ai Index Endpoint Deployed Index Basic Two
 
         ```python
@@ -857,6 +858,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
         \"\"\")
         ```
+
         ### Vertex Ai Index Endpoint Deployed Index Basic Two
 
         ```python

@@ -9,6 +9,8 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.cloudrunv2.inputs.GetInstanceIamPolicyArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.GetInstanceIamPolicyPlainArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetJobArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetJobIamPolicyArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetJobIamPolicyPlainArgs;
@@ -21,6 +23,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolIamPolicyArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolIamPolicyPlainArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolPlainArgs;
+import com.pulumi.gcp.cloudrunv2.outputs.GetInstanceIamPolicyResult;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobIamPolicyResult;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobResult;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceIamPolicyResult;
@@ -30,6 +33,216 @@ import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class Cloudrunv2Functions {
+    /**
+     * Retrieves the current IAM policy data for instance
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudrunv2Functions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args) {
+        return getInstanceIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for instance
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudrunv2Functions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args) {
+        return getInstanceIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for instance
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudrunv2Functions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrunv2/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instance
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudrunv2Functions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrunv2/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instance
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudrunv2Functions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudrunv2/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Get information about a Google Cloud Run v2 Job. For more information see
      * the [official documentation](https://cloud.google.com/run/docs/)

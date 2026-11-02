@@ -451,6 +451,7 @@ class DataProductDataAsset(pulumi.CustomResource):
         ).apply(lambda resolved_outputs: f"//bigquery.googleapis.com/projects/{resolved_outputs['project']}/datasets/{resolved_outputs['dataset_id']}")
         )
         ```
+
         ### Dataplex Data Product Data Asset Full
 
         ```python
@@ -600,6 +601,7 @@ class DataProductDataAsset(pulumi.CustomResource):
         ).apply(lambda resolved_outputs: f"//bigquery.googleapis.com/projects/{resolved_outputs['project']}/datasets/{resolved_outputs['dataset_id']}")
         )
         ```
+
         ### Dataplex Data Product Data Asset Full
 
         ```python

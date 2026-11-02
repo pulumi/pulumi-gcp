@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [bucketForMyIcebergCatalog],
  * });
  * ```
+ *
  * ### Biglake Iceberg Catalog Primary Location
  *
  * ```typescript
@@ -62,6 +63,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [bucketForMyIcebergCatalog],
  * });
  * ```
+ *
  * ### Biglake Iceberg Catalog Biglake
  *
  * ```typescript
@@ -93,6 +95,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Biglake Iceberg Catalog Federated Unity
  *
  * ```typescript
@@ -117,6 +120,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Biglake Iceberg Catalog Federated Glue
  *
  * ```typescript

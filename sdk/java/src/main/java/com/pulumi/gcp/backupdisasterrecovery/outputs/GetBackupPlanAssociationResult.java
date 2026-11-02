@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupPlanAssociationResult {
+    private String autoProtectionPolicyBinding;
     private String backupPlan;
     private String backupPlanAssociationId;
     private String createTime;
@@ -33,6 +34,9 @@ public final class GetBackupPlanAssociationResult {
     private String updateTime;
 
     private GetBackupPlanAssociationResult() {}
+    public String autoProtectionPolicyBinding() {
+        return this.autoProtectionPolicyBinding;
+    }
     public String backupPlan() {
         return this.backupPlan;
     }
@@ -86,6 +90,7 @@ public final class GetBackupPlanAssociationResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String autoProtectionPolicyBinding;
         private String backupPlan;
         private String backupPlanAssociationId;
         private String createTime;
@@ -102,6 +107,7 @@ public final class GetBackupPlanAssociationResult {
         public Builder() {}
         public Builder(GetBackupPlanAssociationResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoProtectionPolicyBinding = defaults.autoProtectionPolicyBinding;
     	      this.backupPlan = defaults.backupPlan;
     	      this.backupPlanAssociationId = defaults.backupPlanAssociationId;
     	      this.createTime = defaults.createTime;
@@ -117,6 +123,14 @@ public final class GetBackupPlanAssociationResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder autoProtectionPolicyBinding(String autoProtectionPolicyBinding) {
+            if (autoProtectionPolicyBinding == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanAssociationResult", "autoProtectionPolicyBinding");
+            }
+            this.autoProtectionPolicyBinding = autoProtectionPolicyBinding;
+            return this;
+        }
         @CustomType.Setter
         public Builder backupPlan(String backupPlan) {
             if (backupPlan == null) {
@@ -224,6 +238,7 @@ public final class GetBackupPlanAssociationResult {
         }
         public GetBackupPlanAssociationResult build() {
             final var _resultValue = new GetBackupPlanAssociationResult();
+            _resultValue.autoProtectionPolicyBinding = autoProtectionPolicyBinding;
             _resultValue.backupPlan = backupPlan;
             _resultValue.backupPlanAssociationId = backupPlanAssociationId;
             _resultValue.createTime = createTime;

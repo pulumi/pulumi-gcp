@@ -78,6 +78,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Data Product Data Asset Full
     /// 
     /// ```csharp

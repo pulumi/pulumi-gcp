@@ -48,6 +48,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebaseailogic Prompt Template Global Only
     /// 
     /// ```csharp
@@ -72,6 +73,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebaseailogic Prompt Template Basic
     /// 
     /// ```csharp

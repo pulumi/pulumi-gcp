@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Tcp Full
  *
  * ```typescript
@@ -64,6 +65,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Ssl
  *
  * ```typescript
@@ -79,6 +81,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Ssl Full
  *
  * ```typescript
@@ -101,6 +104,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Http
  *
  * ```typescript
@@ -116,6 +120,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Http Logs
  *
  * ```typescript
@@ -134,6 +139,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Http Full
  *
  * ```typescript
@@ -157,6 +163,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Https
  *
  * ```typescript
@@ -172,6 +179,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Https Full
  *
  * ```typescript
@@ -195,6 +203,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Http2
  *
  * ```typescript
@@ -210,6 +219,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Http2 Full
  *
  * ```typescript
@@ -233,6 +243,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Grpc
  *
  * ```typescript
@@ -248,6 +259,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Grpc Full
  *
  * ```typescript
@@ -265,6 +277,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Grpc With Tls
  *
  * ```typescript
@@ -280,6 +293,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Region Health Check Grpc With Tls Full
  *
  * ```typescript

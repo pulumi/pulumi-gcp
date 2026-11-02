@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     dataPolicyType: "COLUMN_LEVEL_SECURITY_POLICY",
  * });
  * ```
+ *
  * ### Bigquery Datapolicy Data Policy Routine
  *
  * ```typescript

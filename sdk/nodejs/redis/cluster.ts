@@ -106,12 +106,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-west1",
+ *     location: "us-east1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -121,7 +121,7 @@ import * as utilities from "../utilities";
  * });
  * const cluster_ha_with_labels = new gcp.redis.Cluster("cluster-ha-with-labels", {
  *     name: "ha-cluster",
- *     shardCount: 3,
+ *     shardCount: 1,
  *     labels: {
  *         my_key: "my_val",
  *         other_key: "other_val",
@@ -129,7 +129,7 @@ import * as utilities from "../utilities";
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
- *     region: "us-west1",
+ *     region: "us-east1",
  *     replicaCount: 1,
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -156,6 +156,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Redis Cluster Ha
  *
  * ```typescript
@@ -169,12 +170,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-west1",
+ *     location: "us-east1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -184,11 +185,11 @@ import * as utilities from "../utilities";
  * });
  * const cluster_ha = new gcp.redis.Cluster("cluster-ha", {
  *     name: "ha-cluster",
- *     shardCount: 3,
+ *     shardCount: 1,
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
- *     region: "us-west1",
+ *     region: "us-east1",
  *     replicaCount: 1,
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -215,6 +216,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Redis Cluster Ha Single Zone
  *
  * ```typescript
@@ -228,12 +230,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-west1",
+ *     location: "us-east1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -243,14 +245,15 @@ import * as utilities from "../utilities";
  * });
  * const cluster_ha_single_zone = new gcp.redis.Cluster("cluster-ha-single-zone", {
  *     name: "ha-cluster-single-zone",
- *     shardCount: 3,
+ *     shardCount: 1,
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
- *     region: "us-west1",
+ *     region: "us-east1",
+ *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     zoneDistributionConfig: {
  *         mode: "SINGLE_ZONE",
- *         zone: "us-west1-a",
+ *         zone: "us-east1-b",
  *     },
  *     maintenancePolicy: {
  *         weeklyMaintenanceWindows: [{
@@ -268,6 +271,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Redis Cluster Secondary
  *
  * ```typescript
@@ -281,12 +285,12 @@ import * as utilities from "../utilities";
  * const primaryClusterConsumerSubnet = new gcp.compute.Subnetwork("primary_cluster_consumer_subnet", {
  *     name: "mysubnet-primary-cluster",
  *     ipCidrRange: "10.0.1.0/29",
- *     region: "us-west1",
+ *     region: "us-east1",
  *     network: consumerNet.id,
  * });
  * const primaryClusterRegionScp = new gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp", {
  *     name: "mypolicy-primary-cluster",
- *     location: "us-west1",
+ *     location: "us-east1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "Primary cluster service connection policy",
  *     network: consumerNet.id,
@@ -297,17 +301,17 @@ import * as utilities from "../utilities";
  * // Primary cluster
  * const primaryCluster = new gcp.redis.Cluster("primary_cluster", {
  *     name: "my-primary-cluster",
- *     region: "us-west1",
+ *     region: "us-east1",
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
  *     authorizationMode: "AUTH_MODE_DISABLED",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
- *     shardCount: 3,
+ *     shardCount: 1,
  *     redisConfigs: {
  *         "maxmemory-policy": "volatile-ttl",
  *     },
- *     nodeType: "REDIS_HIGHMEM_MEDIUM",
+ *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     persistenceConfig: {
  *         mode: "RDB",
  *         rdbConfig: {
@@ -359,11 +363,11 @@ import * as utilities from "../utilities";
  *     }],
  *     authorizationMode: "AUTH_MODE_DISABLED",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
- *     shardCount: 3,
+ *     shardCount: 1,
  *     redisConfigs: {
  *         "maxmemory-policy": "volatile-ttl",
  *     },
- *     nodeType: "REDIS_HIGHMEM_MEDIUM",
+ *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     persistenceConfig: {
  *         mode: "RDB",
  *         rdbConfig: {
@@ -374,7 +378,7 @@ import * as utilities from "../utilities";
  *     zoneDistributionConfig: {
  *         mode: "MULTI_ZONE",
  *     },
- *     replicaCount: 2,
+ *     replicaCount: 1,
  *     maintenancePolicy: {
  *         weeklyMaintenanceWindows: [{
  *             day: "WEDNESDAY",
@@ -397,6 +401,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [secondaryClusterRegionScp],
  * });
  * ```
+ *
  * ### Redis Cluster Rdb
  *
  * ```typescript
@@ -410,12 +415,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-west1",
+ *     location: "us-east1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -425,11 +430,11 @@ import * as utilities from "../utilities";
  * });
  * const cluster_rdb = new gcp.redis.Cluster("cluster-rdb", {
  *     name: "rdb-cluster",
- *     shardCount: 3,
+ *     shardCount: 1,
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
- *     region: "us-west1",
+ *     region: "us-east1",
  *     replicaCount: 0,
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -463,6 +468,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Redis Cluster Aof
  *
  * ```typescript
@@ -476,12 +482,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-west1",
+ *     location: "us-east1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -491,11 +497,11 @@ import * as utilities from "../utilities";
  * });
  * const cluster_aof = new gcp.redis.Cluster("cluster-aof", {
  *     name: "aof-cluster",
- *     shardCount: 3,
+ *     shardCount: 1,
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
- *     region: "us-west1",
+ *     region: "us-east1",
  *     replicaCount: 0,
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -528,6 +534,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Redis Cluster Cmek
  *
  * ```typescript
@@ -541,12 +548,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-west1",
+ *     location: "us-east1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -556,18 +563,20 @@ import * as utilities from "../utilities";
  * });
  * const cluster_cmek = new gcp.redis.Cluster("cluster-cmek", {
  *     name: "cmek-cluster",
- *     shardCount: 3,
+ *     shardCount: 1,
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
  *     kmsKey: "my-key",
- *     region: "us-west1",
+ *     region: "us-east1",
+ *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     deletionProtectionEnabled: true,
  * }, {
  *     dependsOn: [_default],
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Redis Cluster Flexible Ca
  *
  * ```typescript
@@ -576,13 +585,13 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.certificateauthority.CaPool("default", {
  *     name: "ca-pool",
- *     location: "us-west1",
+ *     location: "us-east1",
  *     tier: "ENTERPRISE",
  * });
  * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
  *     pool: _default.name,
  *     certificateAuthorityId: "ca-auth",
- *     location: "us-west1",
+ *     location: "us-east1",
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -619,12 +628,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "ca-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-west1",
+ *     region: "us-east1",
  *     network: consumerNet.id,
  * });
  * const defaultServiceConnectionPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "ca-policy",
- *     location: "us-west1",
+ *     location: "us-east1",
  *     serviceClass: "gcp-memorystore-redis",
  *     network: consumerNet.id,
  *     pscConfig: {
@@ -633,8 +642,9 @@ import * as utilities from "../utilities";
  * });
  * const test_cluster = new gcp.redis.Cluster("test-cluster", {
  *     name: "ca-cluster",
- *     shardCount: 3,
- *     region: "us-west1",
+ *     shardCount: 1,
+ *     region: "us-east1",
+ *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
@@ -703,7 +713,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
      */
     declare public readonly authorizationMode: pulumi.Output<string | undefined>;
     /**
@@ -1033,7 +1043,7 @@ export interface ClusterState {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
      */
     authorizationMode?: pulumi.Input<string | undefined>;
     /**
@@ -1254,7 +1264,7 @@ export interface ClusterArgs {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
      */
     authorizationMode?: pulumi.Input<string | undefined>;
     /**

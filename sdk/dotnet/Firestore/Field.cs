@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Field Timestamp Enterprise
     /// 
     /// ```csharp
@@ -99,13 +100,14 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms",
+    ///         Collection = "chatrooms__26240",
     ///         FieldId = "timestamp",
     ///         TtlConfig = new() { },
     ///     });
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Field Timestamp With Ttl Offset Enterprise
     /// 
     /// ```csharp
@@ -131,7 +133,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms",
+    ///         Collection = "chatrooms__35711",
     ///         FieldId = "timestamp",
     ///         TtlConfig = new Gcp.Firestore.Inputs.FieldTtlConfigArgs
     ///         {
@@ -141,6 +143,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Field Timestamp
     /// 
     /// ```csharp
@@ -165,7 +168,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms",
+    ///         Collection = "chatrooms__85072",
     ///         FieldId = "timestamp",
     ///         TtlConfig = new() { },
     ///         IndexConfig = new() { },
@@ -173,6 +176,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Field Timestamp With Ttl Offset
     /// 
     /// ```csharp
@@ -197,7 +201,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms",
+    ///         Collection = "chatrooms__35762",
     ///         FieldId = "timestamp",
     ///         TtlConfig = new Gcp.Firestore.Inputs.FieldTtlConfigArgs
     ///         {
@@ -208,6 +212,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Field Match Override
     /// 
     /// ```csharp
@@ -232,7 +237,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__26240",
+    ///         Collection = "chatrooms__24469",
     ///         FieldId = "field_with_same_configuration_as_ancestor",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -256,6 +261,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Field Wildcard
     /// 
     /// ```csharp
@@ -280,7 +286,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__35711",
+    ///         Collection = "chatrooms__79580",
     ///         FieldId = "*",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -301,6 +307,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Field Skip Wait
     /// 
     /// ```csharp
@@ -325,7 +332,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__85072",
+    ///         Collection = "chatrooms__98863",
     ///         FieldId = "skip_wait",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {

@@ -49,6 +49,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Public Delegated Prefixes Ipv6
     /// 
     /// ```csharp
@@ -91,6 +92,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Public Delegated Prefix Ipv6 Subnet Mode
     /// 
     /// ```csharp
@@ -132,6 +134,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Public Delegated Prefix Internal Ipv6 Subnet Mode
     /// 
     /// ```csharp

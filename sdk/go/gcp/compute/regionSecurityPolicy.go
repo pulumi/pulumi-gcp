@@ -48,6 +48,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy With Ddos Protection Config
 //
 // ```go
@@ -78,6 +79,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy With User Defined Fields
 //
 // ```go
@@ -121,6 +123,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy With Rules
 //
 // ```go
@@ -172,6 +175,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy With Body Exclude
 //
 // ```go
@@ -277,7 +281,7 @@ import (
 //				MachineType: pulumi.String("e2-micro"),
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String("projects/debian-cloud/global/images/family/debian-11"),
+//						SourceImage: pulumi.String("projects/debian-cloud/global/images/family/debian-13"),
 //						AutoDelete:  pulumi.Bool(true),
 //						Boot:        pulumi.Bool(true),
 //					},
@@ -323,6 +327,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy Request Body Expression
 //
 // ```go

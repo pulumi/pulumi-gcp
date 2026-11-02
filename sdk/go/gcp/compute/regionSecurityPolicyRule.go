@@ -69,6 +69,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy Rule Multiple Rules
 //
 // ```go
@@ -136,6 +137,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy Rule Default Rule
 //
 // ```go
@@ -201,6 +203,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy Rule With Preconfigured Waf Config
 //
 // ```go
@@ -282,6 +285,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy Rule With Network Match
 //
 // ```go
@@ -368,6 +372,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy Rule With Body Exclude
 //
 // ```go
@@ -434,7 +439,7 @@ import (
 //				MachineType: pulumi.String("e2-micro"),
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String("projects/debian-cloud/global/images/family/debian-11"),
+//						SourceImage: pulumi.String("projects/debian-cloud/global/images/family/debian-13"),
 //						AutoDelete:  pulumi.Bool(true),
 //						Boot:        pulumi.Bool(true),
 //					},
@@ -511,6 +516,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Region Security Policy Rule Request Body Expression
 //
 // ```go

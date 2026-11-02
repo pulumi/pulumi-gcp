@@ -471,6 +471,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
             port_range="443",
             load_balancing_scheme="EXTERNAL")
         ```
+
         ## Import
 
         ManagedSslCertificate can be imported using any of these accepted formats:
@@ -599,6 +600,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
             port_range="443",
             load_balancing_scheme="EXTERNAL")
         ```
+
         ## Import
 
         ManagedSslCertificate can be imported using any of these accepted formats:

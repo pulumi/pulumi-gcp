@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Listing Restricted
  *
  * ```typescript
@@ -79,6 +80,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Listing Dcr
  *
  * ```typescript
@@ -140,6 +142,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Listing Log Linked Dataset Query User
  *
  * ```typescript
@@ -170,6 +173,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Listing Pubsub
  *
  * ```typescript
@@ -198,6 +202,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Listing Dcr Routine
  *
  * ```typescript
@@ -259,6 +264,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Public Listing
  *
  * ```typescript
@@ -291,6 +297,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Listing Marketplace
  *
  * ```typescript
@@ -321,6 +328,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Analyticshub Listing Multiregion
  *
  * ```typescript

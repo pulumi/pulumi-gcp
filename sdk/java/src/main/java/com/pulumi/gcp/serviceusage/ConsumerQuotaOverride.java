@@ -83,6 +83,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Region Consumer Quota Override
  * 
  * <pre>
@@ -136,6 +137,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Consumer Quota Override Custom Dimension
  * 
  * <pre>

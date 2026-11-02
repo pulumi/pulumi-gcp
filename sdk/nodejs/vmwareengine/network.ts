@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     description: "VMwareEngine standard network sample",
  * });
  * ```
+ *
  * ### Vmware Engine Network Legacy
  *
  * ```typescript

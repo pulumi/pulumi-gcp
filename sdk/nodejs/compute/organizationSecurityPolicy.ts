@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     type: "CLOUD_ARMOR",
  * });
  * ```
+ *
  * ### Organization Security Policy With Advanced Options
  *
  * ```typescript

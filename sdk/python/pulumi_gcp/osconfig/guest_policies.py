@@ -536,6 +536,7 @@ class GuestPolicies(pulumi.CustomResource):
                 "desired_state": "UPDATED",
             }])
         ```
+
         ### Os Config Guest Policies Packages
 
         ```python
@@ -597,6 +598,7 @@ class GuestPolicies(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Os Config Guest Policies Recipes
 
         ```python
@@ -742,6 +744,7 @@ class GuestPolicies(pulumi.CustomResource):
                 "desired_state": "UPDATED",
             }])
         ```
+
         ### Os Config Guest Policies Packages
 
         ```python
@@ -803,6 +806,7 @@ class GuestPolicies(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Os Config Guest Policies Recipes
 
         ```python

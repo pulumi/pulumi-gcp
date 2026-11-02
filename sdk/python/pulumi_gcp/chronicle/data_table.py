@@ -620,6 +620,7 @@ class DataTable(pulumi.CustomResource):
         pulumi.export("dataTableDescription", example.description)
         pulumi.export("dataTableCreateTime", example.create_time)
         ```
+
         ### Chronicle Data Table With Optional Fields
 
         ```python
@@ -754,6 +755,7 @@ class DataTable(pulumi.CustomResource):
         pulumi.export("dataTableDescription", example.description)
         pulumi.export("dataTableCreateTime", example.create_time)
         ```
+
         ### Chronicle Data Table With Optional Fields
 
         ```python

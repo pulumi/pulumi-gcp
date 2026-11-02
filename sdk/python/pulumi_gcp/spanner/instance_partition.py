@@ -466,6 +466,7 @@ class InstancePartition(pulumi.CustomResource):
             display_name="test-spanner-partition",
             node_count=1)
         ```
+
         ### Spanner Instance Partition Autoscaling
 
         ```python
@@ -580,6 +581,7 @@ class InstancePartition(pulumi.CustomResource):
             display_name="test-spanner-partition",
             node_count=1)
         ```
+
         ### Spanner Instance Partition Autoscaling
 
         ```python

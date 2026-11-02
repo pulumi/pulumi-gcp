@@ -97,6 +97,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vmware Engine Cluster Full
  * 
  * <pre>
@@ -195,6 +196,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vmware Engine Cluster Nfs Datastore Filestore
  * 
  * <pre>
@@ -367,6 +369,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vmware Engine Cluster Nfs Datastore Netapp
  * 
  * <pre>

@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     format: "DOCKER",
  * });
  * ```
+ *
  * ### Artifact Registry Repository Multi Region
  *
  * ```typescript
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  *     format: "DOCKER",
  * });
  * ```
+ *
  * ### Artifact Registry Repository Docker
  *
  * ```typescript
@@ -59,6 +61,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Cmek
  *
  * ```typescript
@@ -81,6 +84,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKey],
  * });
  * ```
+ *
  * ### Artifact Registry Repository Virtual
  *
  * ```typescript
@@ -121,6 +125,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote
  *
  * ```typescript
@@ -141,6 +146,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Connector
  *
  * ```typescript
@@ -185,6 +191,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote Apt
  *
  * ```typescript
@@ -208,6 +215,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote Yum
  *
  * ```typescript
@@ -231,6 +239,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Cleanup
  *
  * ```typescript
@@ -298,6 +307,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote Dockerhub Auth
  *
  * ```typescript
@@ -341,6 +351,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote Docker Custom With Auth
  *
  * ```typescript
@@ -386,6 +397,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote Maven Custom With Auth
  *
  * ```typescript
@@ -431,6 +443,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote Npm Custom With Auth
  *
  * ```typescript
@@ -476,6 +489,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote Python Custom With Auth
  *
  * ```typescript
@@ -521,6 +535,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote Common Repository With Docker
  *
  * ```typescript
@@ -547,6 +562,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
  *
  * ```typescript
@@ -576,6 +592,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [upstreamRepo],
  * });
  * ```
+ *
  * ### Artifact Registry Repository Remote Common Repository With Custom Upstream
  *
  * ```typescript
@@ -619,6 +636,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Artifact Registry Repository Vulnerability Scanning
  *
  * ```typescript

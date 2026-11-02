@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// 
     /// ### Storage Ftp Server External
     /// 
     /// ```csharp

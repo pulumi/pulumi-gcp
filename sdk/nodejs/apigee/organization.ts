@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [apigeeVpcConnection],
  * });
  * ```
+ *
  * ### Apigee Organization Cloud Basic Disable Vpc Peering
  *
  * ```typescript
@@ -60,6 +61,7 @@ import * as utilities from "../utilities";
  *     disableVpcPeering: true,
  * });
  * ```
+ *
  * ### Apigee Organization Cloud Basic Data Residency
  *
  * ```typescript
@@ -75,6 +77,7 @@ import * as utilities from "../utilities";
  *     disableVpcPeering: true,
  * });
  * ```
+ *
  * ### Apigee Organization Cloud Full
  *
  * ```typescript
@@ -126,6 +129,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Apigee Organization Cloud Full Disable Vpc Peering
  *
  * ```typescript

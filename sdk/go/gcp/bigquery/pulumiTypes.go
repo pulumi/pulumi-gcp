@@ -315,6 +315,9 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringPtrOut
 }
 
 type AppProfileStandardIsolation struct {
+	// The memory config to use for requests sent using this app profile.
+	// If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+	MemoryConfig *AppProfileStandardIsolationMemoryConfig `pulumi:"memoryConfig"`
 	// The priority of requests sent using this app profile.
 	// Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
 	Priority string `pulumi:"priority"`
@@ -332,6 +335,9 @@ type AppProfileStandardIsolationInput interface {
 }
 
 type AppProfileStandardIsolationArgs struct {
+	// The memory config to use for requests sent using this app profile.
+	// If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+	MemoryConfig AppProfileStandardIsolationMemoryConfigPtrInput `pulumi:"memoryConfig"`
 	// The priority of requests sent using this app profile.
 	// Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
 	Priority pulumi.StringInput `pulumi:"priority"`
@@ -414,6 +420,12 @@ func (o AppProfileStandardIsolationOutput) ToAppProfileStandardIsolationPtrOutpu
 	}).(AppProfileStandardIsolationPtrOutput)
 }
 
+// The memory config to use for requests sent using this app profile.
+// If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+func (o AppProfileStandardIsolationOutput) MemoryConfig() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o.ApplyT(func(v AppProfileStandardIsolation) *AppProfileStandardIsolationMemoryConfig { return v.MemoryConfig }).(AppProfileStandardIsolationMemoryConfigPtrOutput)
+}
+
 // The priority of requests sent using this app profile.
 // Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
 func (o AppProfileStandardIsolationOutput) Priority() pulumi.StringOutput {
@@ -444,6 +456,17 @@ func (o AppProfileStandardIsolationPtrOutput) Elem() AppProfileStandardIsolation
 	}).(AppProfileStandardIsolationOutput)
 }
 
+// The memory config to use for requests sent using this app profile.
+// If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. `memoryConfig` can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+func (o AppProfileStandardIsolationPtrOutput) MemoryConfig() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o.ApplyT(func(v *AppProfileStandardIsolation) *AppProfileStandardIsolationMemoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryConfig
+	}).(AppProfileStandardIsolationMemoryConfigPtrOutput)
+}
+
 // The priority of requests sent using this app profile.
 // Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
 func (o AppProfileStandardIsolationPtrOutput) Priority() pulumi.StringPtrOutput {
@@ -453,6 +476,124 @@ func (o AppProfileStandardIsolationPtrOutput) Priority() pulumi.StringPtrOutput 
 		}
 		return &v.Priority
 	}).(pulumi.StringPtrOutput)
+}
+
+type AppProfileStandardIsolationMemoryConfig struct {
+}
+
+// AppProfileStandardIsolationMemoryConfigInput is an input type that accepts AppProfileStandardIsolationMemoryConfigArgs and AppProfileStandardIsolationMemoryConfigOutput values.
+// You can construct a concrete instance of `AppProfileStandardIsolationMemoryConfigInput` via:
+//
+//	AppProfileStandardIsolationMemoryConfigArgs{...}
+type AppProfileStandardIsolationMemoryConfigInput interface {
+	pulumi.Input
+
+	ToAppProfileStandardIsolationMemoryConfigOutput() AppProfileStandardIsolationMemoryConfigOutput
+	ToAppProfileStandardIsolationMemoryConfigOutputWithContext(context.Context) AppProfileStandardIsolationMemoryConfigOutput
+}
+
+type AppProfileStandardIsolationMemoryConfigArgs struct {
+}
+
+func (AppProfileStandardIsolationMemoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfileStandardIsolationMemoryConfig)(nil)).Elem()
+}
+
+func (i AppProfileStandardIsolationMemoryConfigArgs) ToAppProfileStandardIsolationMemoryConfigOutput() AppProfileStandardIsolationMemoryConfigOutput {
+	return i.ToAppProfileStandardIsolationMemoryConfigOutputWithContext(context.Background())
+}
+
+func (i AppProfileStandardIsolationMemoryConfigArgs) ToAppProfileStandardIsolationMemoryConfigOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileStandardIsolationMemoryConfigOutput)
+}
+
+func (i AppProfileStandardIsolationMemoryConfigArgs) ToAppProfileStandardIsolationMemoryConfigPtrOutput() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return i.ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AppProfileStandardIsolationMemoryConfigArgs) ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileStandardIsolationMemoryConfigOutput).ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(ctx)
+}
+
+// AppProfileStandardIsolationMemoryConfigPtrInput is an input type that accepts AppProfileStandardIsolationMemoryConfigArgs, AppProfileStandardIsolationMemoryConfigPtr and AppProfileStandardIsolationMemoryConfigPtrOutput values.
+// You can construct a concrete instance of `AppProfileStandardIsolationMemoryConfigPtrInput` via:
+//
+//	        AppProfileStandardIsolationMemoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppProfileStandardIsolationMemoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToAppProfileStandardIsolationMemoryConfigPtrOutput() AppProfileStandardIsolationMemoryConfigPtrOutput
+	ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(context.Context) AppProfileStandardIsolationMemoryConfigPtrOutput
+}
+
+type appProfileStandardIsolationMemoryConfigPtrType AppProfileStandardIsolationMemoryConfigArgs
+
+func AppProfileStandardIsolationMemoryConfigPtr(v *AppProfileStandardIsolationMemoryConfigArgs) AppProfileStandardIsolationMemoryConfigPtrInput {
+	return (*appProfileStandardIsolationMemoryConfigPtrType)(v)
+}
+
+func (*appProfileStandardIsolationMemoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfileStandardIsolationMemoryConfig)(nil)).Elem()
+}
+
+func (i *appProfileStandardIsolationMemoryConfigPtrType) ToAppProfileStandardIsolationMemoryConfigPtrOutput() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return i.ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *appProfileStandardIsolationMemoryConfigPtrType) ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileStandardIsolationMemoryConfigPtrOutput)
+}
+
+type AppProfileStandardIsolationMemoryConfigOutput struct{ *pulumi.OutputState }
+
+func (AppProfileStandardIsolationMemoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfileStandardIsolationMemoryConfig)(nil)).Elem()
+}
+
+func (o AppProfileStandardIsolationMemoryConfigOutput) ToAppProfileStandardIsolationMemoryConfigOutput() AppProfileStandardIsolationMemoryConfigOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationMemoryConfigOutput) ToAppProfileStandardIsolationMemoryConfigOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationMemoryConfigOutput) ToAppProfileStandardIsolationMemoryConfigPtrOutput() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o.ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AppProfileStandardIsolationMemoryConfigOutput) ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppProfileStandardIsolationMemoryConfig) *AppProfileStandardIsolationMemoryConfig {
+		return &v
+	}).(AppProfileStandardIsolationMemoryConfigPtrOutput)
+}
+
+type AppProfileStandardIsolationMemoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AppProfileStandardIsolationMemoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfileStandardIsolationMemoryConfig)(nil)).Elem()
+}
+
+func (o AppProfileStandardIsolationMemoryConfigPtrOutput) ToAppProfileStandardIsolationMemoryConfigPtrOutput() AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationMemoryConfigPtrOutput) ToAppProfileStandardIsolationMemoryConfigPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationMemoryConfigPtrOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationMemoryConfigPtrOutput) Elem() AppProfileStandardIsolationMemoryConfigOutput {
+	return o.ApplyT(func(v *AppProfileStandardIsolationMemoryConfig) AppProfileStandardIsolationMemoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AppProfileStandardIsolationMemoryConfig
+		return ret
+	}).(AppProfileStandardIsolationMemoryConfigOutput)
 }
 
 type BiReservationPreferredTable struct {
@@ -3612,6 +3753,355 @@ func (o ConnectionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 		}
 		return &v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionSalesforceDataCloud struct {
+	// Configuration options for cross-cloud caching of data and metadata files.
+	// Structure is documented below.
+	CrossCloudCacheOptions ConnectionSalesforceDataCloudCrossCloudCacheOptions `pulumi:"crossCloudCacheOptions"`
+	// (Output)
+	// A unique Google-owned and Google-generated service account identity for the connection.
+	Identity *string `pulumi:"identity"`
+	// The URL to the user's Salesforce Data Cloud instance.
+	InstanceUri string `pulumi:"instanceUri"`
+	// The ID of the user's Salesforce tenant.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// ConnectionSalesforceDataCloudInput is an input type that accepts ConnectionSalesforceDataCloudArgs and ConnectionSalesforceDataCloudOutput values.
+// You can construct a concrete instance of `ConnectionSalesforceDataCloudInput` via:
+//
+//	ConnectionSalesforceDataCloudArgs{...}
+type ConnectionSalesforceDataCloudInput interface {
+	pulumi.Input
+
+	ToConnectionSalesforceDataCloudOutput() ConnectionSalesforceDataCloudOutput
+	ToConnectionSalesforceDataCloudOutputWithContext(context.Context) ConnectionSalesforceDataCloudOutput
+}
+
+type ConnectionSalesforceDataCloudArgs struct {
+	// Configuration options for cross-cloud caching of data and metadata files.
+	// Structure is documented below.
+	CrossCloudCacheOptions ConnectionSalesforceDataCloudCrossCloudCacheOptionsInput `pulumi:"crossCloudCacheOptions"`
+	// (Output)
+	// A unique Google-owned and Google-generated service account identity for the connection.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
+	// The URL to the user's Salesforce Data Cloud instance.
+	InstanceUri pulumi.StringInput `pulumi:"instanceUri"`
+	// The ID of the user's Salesforce tenant.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+}
+
+func (ConnectionSalesforceDataCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSalesforceDataCloud)(nil)).Elem()
+}
+
+func (i ConnectionSalesforceDataCloudArgs) ToConnectionSalesforceDataCloudOutput() ConnectionSalesforceDataCloudOutput {
+	return i.ToConnectionSalesforceDataCloudOutputWithContext(context.Background())
+}
+
+func (i ConnectionSalesforceDataCloudArgs) ToConnectionSalesforceDataCloudOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSalesforceDataCloudOutput)
+}
+
+func (i ConnectionSalesforceDataCloudArgs) ToConnectionSalesforceDataCloudPtrOutput() ConnectionSalesforceDataCloudPtrOutput {
+	return i.ToConnectionSalesforceDataCloudPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionSalesforceDataCloudArgs) ToConnectionSalesforceDataCloudPtrOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSalesforceDataCloudOutput).ToConnectionSalesforceDataCloudPtrOutputWithContext(ctx)
+}
+
+// ConnectionSalesforceDataCloudPtrInput is an input type that accepts ConnectionSalesforceDataCloudArgs, ConnectionSalesforceDataCloudPtr and ConnectionSalesforceDataCloudPtrOutput values.
+// You can construct a concrete instance of `ConnectionSalesforceDataCloudPtrInput` via:
+//
+//	        ConnectionSalesforceDataCloudArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionSalesforceDataCloudPtrInput interface {
+	pulumi.Input
+
+	ToConnectionSalesforceDataCloudPtrOutput() ConnectionSalesforceDataCloudPtrOutput
+	ToConnectionSalesforceDataCloudPtrOutputWithContext(context.Context) ConnectionSalesforceDataCloudPtrOutput
+}
+
+type connectionSalesforceDataCloudPtrType ConnectionSalesforceDataCloudArgs
+
+func ConnectionSalesforceDataCloudPtr(v *ConnectionSalesforceDataCloudArgs) ConnectionSalesforceDataCloudPtrInput {
+	return (*connectionSalesforceDataCloudPtrType)(v)
+}
+
+func (*connectionSalesforceDataCloudPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSalesforceDataCloud)(nil)).Elem()
+}
+
+func (i *connectionSalesforceDataCloudPtrType) ToConnectionSalesforceDataCloudPtrOutput() ConnectionSalesforceDataCloudPtrOutput {
+	return i.ToConnectionSalesforceDataCloudPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionSalesforceDataCloudPtrType) ToConnectionSalesforceDataCloudPtrOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSalesforceDataCloudPtrOutput)
+}
+
+type ConnectionSalesforceDataCloudOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSalesforceDataCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSalesforceDataCloud)(nil)).Elem()
+}
+
+func (o ConnectionSalesforceDataCloudOutput) ToConnectionSalesforceDataCloudOutput() ConnectionSalesforceDataCloudOutput {
+	return o
+}
+
+func (o ConnectionSalesforceDataCloudOutput) ToConnectionSalesforceDataCloudOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudOutput {
+	return o
+}
+
+func (o ConnectionSalesforceDataCloudOutput) ToConnectionSalesforceDataCloudPtrOutput() ConnectionSalesforceDataCloudPtrOutput {
+	return o.ToConnectionSalesforceDataCloudPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionSalesforceDataCloudOutput) ToConnectionSalesforceDataCloudPtrOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionSalesforceDataCloud) *ConnectionSalesforceDataCloud {
+		return &v
+	}).(ConnectionSalesforceDataCloudPtrOutput)
+}
+
+// Configuration options for cross-cloud caching of data and metadata files.
+// Structure is documented below.
+func (o ConnectionSalesforceDataCloudOutput) CrossCloudCacheOptions() ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput {
+	return o.ApplyT(func(v ConnectionSalesforceDataCloud) ConnectionSalesforceDataCloudCrossCloudCacheOptions {
+		return v.CrossCloudCacheOptions
+	}).(ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput)
+}
+
+// (Output)
+// A unique Google-owned and Google-generated service account identity for the connection.
+func (o ConnectionSalesforceDataCloudOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSalesforceDataCloud) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// The URL to the user's Salesforce Data Cloud instance.
+func (o ConnectionSalesforceDataCloudOutput) InstanceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionSalesforceDataCloud) string { return v.InstanceUri }).(pulumi.StringOutput)
+}
+
+// The ID of the user's Salesforce tenant.
+func (o ConnectionSalesforceDataCloudOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionSalesforceDataCloud) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type ConnectionSalesforceDataCloudPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSalesforceDataCloudPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSalesforceDataCloud)(nil)).Elem()
+}
+
+func (o ConnectionSalesforceDataCloudPtrOutput) ToConnectionSalesforceDataCloudPtrOutput() ConnectionSalesforceDataCloudPtrOutput {
+	return o
+}
+
+func (o ConnectionSalesforceDataCloudPtrOutput) ToConnectionSalesforceDataCloudPtrOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudPtrOutput {
+	return o
+}
+
+func (o ConnectionSalesforceDataCloudPtrOutput) Elem() ConnectionSalesforceDataCloudOutput {
+	return o.ApplyT(func(v *ConnectionSalesforceDataCloud) ConnectionSalesforceDataCloud {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionSalesforceDataCloud
+		return ret
+	}).(ConnectionSalesforceDataCloudOutput)
+}
+
+// Configuration options for cross-cloud caching of data and metadata files.
+// Structure is documented below.
+func (o ConnectionSalesforceDataCloudPtrOutput) CrossCloudCacheOptions() ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput {
+	return o.ApplyT(func(v *ConnectionSalesforceDataCloud) *ConnectionSalesforceDataCloudCrossCloudCacheOptions {
+		if v == nil {
+			return nil
+		}
+		return &v.CrossCloudCacheOptions
+	}).(ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput)
+}
+
+// (Output)
+// A unique Google-owned and Google-generated service account identity for the connection.
+func (o ConnectionSalesforceDataCloudPtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSalesforceDataCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL to the user's Salesforce Data Cloud instance.
+func (o ConnectionSalesforceDataCloudPtrOutput) InstanceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSalesforceDataCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the user's Salesforce tenant.
+func (o ConnectionSalesforceDataCloudPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSalesforceDataCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionSalesforceDataCloudCrossCloudCacheOptions struct {
+	// Whether cross-cloud caching is enabled for queries through BigQuery.
+	// When enabled, read data and metadata are cached, which can improve performance
+	// and reduce network egress costs for cross-cloud queries.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ConnectionSalesforceDataCloudCrossCloudCacheOptionsInput is an input type that accepts ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs and ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput values.
+// You can construct a concrete instance of `ConnectionSalesforceDataCloudCrossCloudCacheOptionsInput` via:
+//
+//	ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs{...}
+type ConnectionSalesforceDataCloudCrossCloudCacheOptionsInput interface {
+	pulumi.Input
+
+	ToConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput() ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput
+	ToConnectionSalesforceDataCloudCrossCloudCacheOptionsOutputWithContext(context.Context) ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput
+}
+
+type ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs struct {
+	// Whether cross-cloud caching is enabled for queries through BigQuery.
+	// When enabled, read data and metadata are cached, which can improve performance
+	// and reduce network egress costs for cross-cloud queries.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSalesforceDataCloudCrossCloudCacheOptions)(nil)).Elem()
+}
+
+func (i ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput() ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput {
+	return i.ToConnectionSalesforceDataCloudCrossCloudCacheOptionsOutputWithContext(context.Background())
+}
+
+func (i ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput)
+}
+
+func (i ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput() ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput {
+	return i.ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput).ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutputWithContext(ctx)
+}
+
+// ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrInput is an input type that accepts ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs, ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtr and ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput values.
+// You can construct a concrete instance of `ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrInput` via:
+//
+//	        ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput() ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput
+	ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutputWithContext(context.Context) ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput
+}
+
+type connectionSalesforceDataCloudCrossCloudCacheOptionsPtrType ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs
+
+func ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtr(v *ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs) ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrInput {
+	return (*connectionSalesforceDataCloudCrossCloudCacheOptionsPtrType)(v)
+}
+
+func (*connectionSalesforceDataCloudCrossCloudCacheOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSalesforceDataCloudCrossCloudCacheOptions)(nil)).Elem()
+}
+
+func (i *connectionSalesforceDataCloudCrossCloudCacheOptionsPtrType) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput() ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput {
+	return i.ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionSalesforceDataCloudCrossCloudCacheOptionsPtrType) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput)
+}
+
+type ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSalesforceDataCloudCrossCloudCacheOptions)(nil)).Elem()
+}
+
+func (o ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput() ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput {
+	return o
+}
+
+func (o ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput {
+	return o
+}
+
+func (o ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput() ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput {
+	return o.ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionSalesforceDataCloudCrossCloudCacheOptions) *ConnectionSalesforceDataCloudCrossCloudCacheOptions {
+		return &v
+	}).(ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput)
+}
+
+// Whether cross-cloud caching is enabled for queries through BigQuery.
+// When enabled, read data and metadata are cached, which can improve performance
+// and reduce network egress costs for cross-cloud queries.
+func (o ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionSalesforceDataCloudCrossCloudCacheOptions) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSalesforceDataCloudCrossCloudCacheOptions)(nil)).Elem()
+}
+
+func (o ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput() ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput {
+	return o
+}
+
+func (o ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput) ToConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutputWithContext(ctx context.Context) ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput {
+	return o
+}
+
+func (o ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput) Elem() ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput {
+	return o.ApplyT(func(v *ConnectionSalesforceDataCloudCrossCloudCacheOptions) ConnectionSalesforceDataCloudCrossCloudCacheOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionSalesforceDataCloudCrossCloudCacheOptions
+		return ret
+	}).(ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput)
+}
+
+// Whether cross-cloud caching is enabled for queries through BigQuery.
+// When enabled, read data and metadata are cached, which can improve performance
+// and reduce network egress costs for cross-cloud queries.
+func (o ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionSalesforceDataCloudCrossCloudCacheOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ConnectionSpark struct {
@@ -13089,6 +13579,174 @@ func (o JobStatusErrorResultArrayOutput) Index(i pulumi.IntInput) JobStatusError
 	}).(JobStatusErrorResultOutput)
 }
 
+type ReservationAssignmentSchedulingPolicy struct {
+	// If present and > 0, the reservation will attempt to limit the concurrency
+	// of jobs running for any particular project within it to the given value.
+	Concurrency *int `pulumi:"concurrency"`
+	// If present and > 0, the reservation will attempt to limit the slot
+	// consumption of queries running for any particular project within it to
+	// the given value.
+	MaxSlots *int `pulumi:"maxSlots"`
+}
+
+// ReservationAssignmentSchedulingPolicyInput is an input type that accepts ReservationAssignmentSchedulingPolicyArgs and ReservationAssignmentSchedulingPolicyOutput values.
+// You can construct a concrete instance of `ReservationAssignmentSchedulingPolicyInput` via:
+//
+//	ReservationAssignmentSchedulingPolicyArgs{...}
+type ReservationAssignmentSchedulingPolicyInput interface {
+	pulumi.Input
+
+	ToReservationAssignmentSchedulingPolicyOutput() ReservationAssignmentSchedulingPolicyOutput
+	ToReservationAssignmentSchedulingPolicyOutputWithContext(context.Context) ReservationAssignmentSchedulingPolicyOutput
+}
+
+type ReservationAssignmentSchedulingPolicyArgs struct {
+	// If present and > 0, the reservation will attempt to limit the concurrency
+	// of jobs running for any particular project within it to the given value.
+	Concurrency pulumi.IntPtrInput `pulumi:"concurrency"`
+	// If present and > 0, the reservation will attempt to limit the slot
+	// consumption of queries running for any particular project within it to
+	// the given value.
+	MaxSlots pulumi.IntPtrInput `pulumi:"maxSlots"`
+}
+
+func (ReservationAssignmentSchedulingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationAssignmentSchedulingPolicy)(nil)).Elem()
+}
+
+func (i ReservationAssignmentSchedulingPolicyArgs) ToReservationAssignmentSchedulingPolicyOutput() ReservationAssignmentSchedulingPolicyOutput {
+	return i.ToReservationAssignmentSchedulingPolicyOutputWithContext(context.Background())
+}
+
+func (i ReservationAssignmentSchedulingPolicyArgs) ToReservationAssignmentSchedulingPolicyOutputWithContext(ctx context.Context) ReservationAssignmentSchedulingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationAssignmentSchedulingPolicyOutput)
+}
+
+func (i ReservationAssignmentSchedulingPolicyArgs) ToReservationAssignmentSchedulingPolicyPtrOutput() ReservationAssignmentSchedulingPolicyPtrOutput {
+	return i.ToReservationAssignmentSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ReservationAssignmentSchedulingPolicyArgs) ToReservationAssignmentSchedulingPolicyPtrOutputWithContext(ctx context.Context) ReservationAssignmentSchedulingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationAssignmentSchedulingPolicyOutput).ToReservationAssignmentSchedulingPolicyPtrOutputWithContext(ctx)
+}
+
+// ReservationAssignmentSchedulingPolicyPtrInput is an input type that accepts ReservationAssignmentSchedulingPolicyArgs, ReservationAssignmentSchedulingPolicyPtr and ReservationAssignmentSchedulingPolicyPtrOutput values.
+// You can construct a concrete instance of `ReservationAssignmentSchedulingPolicyPtrInput` via:
+//
+//	        ReservationAssignmentSchedulingPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReservationAssignmentSchedulingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToReservationAssignmentSchedulingPolicyPtrOutput() ReservationAssignmentSchedulingPolicyPtrOutput
+	ToReservationAssignmentSchedulingPolicyPtrOutputWithContext(context.Context) ReservationAssignmentSchedulingPolicyPtrOutput
+}
+
+type reservationAssignmentSchedulingPolicyPtrType ReservationAssignmentSchedulingPolicyArgs
+
+func ReservationAssignmentSchedulingPolicyPtr(v *ReservationAssignmentSchedulingPolicyArgs) ReservationAssignmentSchedulingPolicyPtrInput {
+	return (*reservationAssignmentSchedulingPolicyPtrType)(v)
+}
+
+func (*reservationAssignmentSchedulingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationAssignmentSchedulingPolicy)(nil)).Elem()
+}
+
+func (i *reservationAssignmentSchedulingPolicyPtrType) ToReservationAssignmentSchedulingPolicyPtrOutput() ReservationAssignmentSchedulingPolicyPtrOutput {
+	return i.ToReservationAssignmentSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *reservationAssignmentSchedulingPolicyPtrType) ToReservationAssignmentSchedulingPolicyPtrOutputWithContext(ctx context.Context) ReservationAssignmentSchedulingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationAssignmentSchedulingPolicyPtrOutput)
+}
+
+type ReservationAssignmentSchedulingPolicyOutput struct{ *pulumi.OutputState }
+
+func (ReservationAssignmentSchedulingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationAssignmentSchedulingPolicy)(nil)).Elem()
+}
+
+func (o ReservationAssignmentSchedulingPolicyOutput) ToReservationAssignmentSchedulingPolicyOutput() ReservationAssignmentSchedulingPolicyOutput {
+	return o
+}
+
+func (o ReservationAssignmentSchedulingPolicyOutput) ToReservationAssignmentSchedulingPolicyOutputWithContext(ctx context.Context) ReservationAssignmentSchedulingPolicyOutput {
+	return o
+}
+
+func (o ReservationAssignmentSchedulingPolicyOutput) ToReservationAssignmentSchedulingPolicyPtrOutput() ReservationAssignmentSchedulingPolicyPtrOutput {
+	return o.ToReservationAssignmentSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationAssignmentSchedulingPolicyOutput) ToReservationAssignmentSchedulingPolicyPtrOutputWithContext(ctx context.Context) ReservationAssignmentSchedulingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationAssignmentSchedulingPolicy) *ReservationAssignmentSchedulingPolicy {
+		return &v
+	}).(ReservationAssignmentSchedulingPolicyPtrOutput)
+}
+
+// If present and > 0, the reservation will attempt to limit the concurrency
+// of jobs running for any particular project within it to the given value.
+func (o ReservationAssignmentSchedulingPolicyOutput) Concurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReservationAssignmentSchedulingPolicy) *int { return v.Concurrency }).(pulumi.IntPtrOutput)
+}
+
+// If present and > 0, the reservation will attempt to limit the slot
+// consumption of queries running for any particular project within it to
+// the given value.
+func (o ReservationAssignmentSchedulingPolicyOutput) MaxSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReservationAssignmentSchedulingPolicy) *int { return v.MaxSlots }).(pulumi.IntPtrOutput)
+}
+
+type ReservationAssignmentSchedulingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ReservationAssignmentSchedulingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationAssignmentSchedulingPolicy)(nil)).Elem()
+}
+
+func (o ReservationAssignmentSchedulingPolicyPtrOutput) ToReservationAssignmentSchedulingPolicyPtrOutput() ReservationAssignmentSchedulingPolicyPtrOutput {
+	return o
+}
+
+func (o ReservationAssignmentSchedulingPolicyPtrOutput) ToReservationAssignmentSchedulingPolicyPtrOutputWithContext(ctx context.Context) ReservationAssignmentSchedulingPolicyPtrOutput {
+	return o
+}
+
+func (o ReservationAssignmentSchedulingPolicyPtrOutput) Elem() ReservationAssignmentSchedulingPolicyOutput {
+	return o.ApplyT(func(v *ReservationAssignmentSchedulingPolicy) ReservationAssignmentSchedulingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAssignmentSchedulingPolicy
+		return ret
+	}).(ReservationAssignmentSchedulingPolicyOutput)
+}
+
+// If present and > 0, the reservation will attempt to limit the concurrency
+// of jobs running for any particular project within it to the given value.
+func (o ReservationAssignmentSchedulingPolicyPtrOutput) Concurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReservationAssignmentSchedulingPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Concurrency
+	}).(pulumi.IntPtrOutput)
+}
+
+// If present and > 0, the reservation will attempt to limit the slot
+// consumption of queries running for any particular project within it to
+// the given value.
+func (o ReservationAssignmentSchedulingPolicyPtrOutput) MaxSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReservationAssignmentSchedulingPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSlots
+	}).(pulumi.IntPtrOutput)
+}
+
 type ReservationAutoscale struct {
 	// (Output)
 	// The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
@@ -13498,6 +14156,174 @@ func (o ReservationReplicationStatusErrorArrayOutput) Index(i pulumi.IntInput) R
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReservationReplicationStatusError {
 		return vs[0].([]ReservationReplicationStatusError)[vs[1].(int)]
 	}).(ReservationReplicationStatusErrorOutput)
+}
+
+type ReservationSchedulingPolicy struct {
+	// If present and > 0, the reservation will attempt to limit the concurrency
+	// of jobs running for any particular project within it to the given value.
+	Concurrency *int `pulumi:"concurrency"`
+	// If present and > 0, the reservation will attempt to limit the slot
+	// consumption of queries running for any particular project within it to
+	// the given value.
+	MaxSlots *int `pulumi:"maxSlots"`
+}
+
+// ReservationSchedulingPolicyInput is an input type that accepts ReservationSchedulingPolicyArgs and ReservationSchedulingPolicyOutput values.
+// You can construct a concrete instance of `ReservationSchedulingPolicyInput` via:
+//
+//	ReservationSchedulingPolicyArgs{...}
+type ReservationSchedulingPolicyInput interface {
+	pulumi.Input
+
+	ToReservationSchedulingPolicyOutput() ReservationSchedulingPolicyOutput
+	ToReservationSchedulingPolicyOutputWithContext(context.Context) ReservationSchedulingPolicyOutput
+}
+
+type ReservationSchedulingPolicyArgs struct {
+	// If present and > 0, the reservation will attempt to limit the concurrency
+	// of jobs running for any particular project within it to the given value.
+	Concurrency pulumi.IntPtrInput `pulumi:"concurrency"`
+	// If present and > 0, the reservation will attempt to limit the slot
+	// consumption of queries running for any particular project within it to
+	// the given value.
+	MaxSlots pulumi.IntPtrInput `pulumi:"maxSlots"`
+}
+
+func (ReservationSchedulingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationSchedulingPolicy)(nil)).Elem()
+}
+
+func (i ReservationSchedulingPolicyArgs) ToReservationSchedulingPolicyOutput() ReservationSchedulingPolicyOutput {
+	return i.ToReservationSchedulingPolicyOutputWithContext(context.Background())
+}
+
+func (i ReservationSchedulingPolicyArgs) ToReservationSchedulingPolicyOutputWithContext(ctx context.Context) ReservationSchedulingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationSchedulingPolicyOutput)
+}
+
+func (i ReservationSchedulingPolicyArgs) ToReservationSchedulingPolicyPtrOutput() ReservationSchedulingPolicyPtrOutput {
+	return i.ToReservationSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ReservationSchedulingPolicyArgs) ToReservationSchedulingPolicyPtrOutputWithContext(ctx context.Context) ReservationSchedulingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationSchedulingPolicyOutput).ToReservationSchedulingPolicyPtrOutputWithContext(ctx)
+}
+
+// ReservationSchedulingPolicyPtrInput is an input type that accepts ReservationSchedulingPolicyArgs, ReservationSchedulingPolicyPtr and ReservationSchedulingPolicyPtrOutput values.
+// You can construct a concrete instance of `ReservationSchedulingPolicyPtrInput` via:
+//
+//	        ReservationSchedulingPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReservationSchedulingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToReservationSchedulingPolicyPtrOutput() ReservationSchedulingPolicyPtrOutput
+	ToReservationSchedulingPolicyPtrOutputWithContext(context.Context) ReservationSchedulingPolicyPtrOutput
+}
+
+type reservationSchedulingPolicyPtrType ReservationSchedulingPolicyArgs
+
+func ReservationSchedulingPolicyPtr(v *ReservationSchedulingPolicyArgs) ReservationSchedulingPolicyPtrInput {
+	return (*reservationSchedulingPolicyPtrType)(v)
+}
+
+func (*reservationSchedulingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationSchedulingPolicy)(nil)).Elem()
+}
+
+func (i *reservationSchedulingPolicyPtrType) ToReservationSchedulingPolicyPtrOutput() ReservationSchedulingPolicyPtrOutput {
+	return i.ToReservationSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *reservationSchedulingPolicyPtrType) ToReservationSchedulingPolicyPtrOutputWithContext(ctx context.Context) ReservationSchedulingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationSchedulingPolicyPtrOutput)
+}
+
+type ReservationSchedulingPolicyOutput struct{ *pulumi.OutputState }
+
+func (ReservationSchedulingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationSchedulingPolicy)(nil)).Elem()
+}
+
+func (o ReservationSchedulingPolicyOutput) ToReservationSchedulingPolicyOutput() ReservationSchedulingPolicyOutput {
+	return o
+}
+
+func (o ReservationSchedulingPolicyOutput) ToReservationSchedulingPolicyOutputWithContext(ctx context.Context) ReservationSchedulingPolicyOutput {
+	return o
+}
+
+func (o ReservationSchedulingPolicyOutput) ToReservationSchedulingPolicyPtrOutput() ReservationSchedulingPolicyPtrOutput {
+	return o.ToReservationSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationSchedulingPolicyOutput) ToReservationSchedulingPolicyPtrOutputWithContext(ctx context.Context) ReservationSchedulingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationSchedulingPolicy) *ReservationSchedulingPolicy {
+		return &v
+	}).(ReservationSchedulingPolicyPtrOutput)
+}
+
+// If present and > 0, the reservation will attempt to limit the concurrency
+// of jobs running for any particular project within it to the given value.
+func (o ReservationSchedulingPolicyOutput) Concurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReservationSchedulingPolicy) *int { return v.Concurrency }).(pulumi.IntPtrOutput)
+}
+
+// If present and > 0, the reservation will attempt to limit the slot
+// consumption of queries running for any particular project within it to
+// the given value.
+func (o ReservationSchedulingPolicyOutput) MaxSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReservationSchedulingPolicy) *int { return v.MaxSlots }).(pulumi.IntPtrOutput)
+}
+
+type ReservationSchedulingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ReservationSchedulingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationSchedulingPolicy)(nil)).Elem()
+}
+
+func (o ReservationSchedulingPolicyPtrOutput) ToReservationSchedulingPolicyPtrOutput() ReservationSchedulingPolicyPtrOutput {
+	return o
+}
+
+func (o ReservationSchedulingPolicyPtrOutput) ToReservationSchedulingPolicyPtrOutputWithContext(ctx context.Context) ReservationSchedulingPolicyPtrOutput {
+	return o
+}
+
+func (o ReservationSchedulingPolicyPtrOutput) Elem() ReservationSchedulingPolicyOutput {
+	return o.ApplyT(func(v *ReservationSchedulingPolicy) ReservationSchedulingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationSchedulingPolicy
+		return ret
+	}).(ReservationSchedulingPolicyOutput)
+}
+
+// If present and > 0, the reservation will attempt to limit the concurrency
+// of jobs running for any particular project within it to the given value.
+func (o ReservationSchedulingPolicyPtrOutput) Concurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReservationSchedulingPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Concurrency
+	}).(pulumi.IntPtrOutput)
+}
+
+// If present and > 0, the reservation will attempt to limit the slot
+// consumption of queries running for any particular project within it to
+// the given value.
+func (o ReservationSchedulingPolicyPtrOutput) MaxSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReservationSchedulingPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSlots
+	}).(pulumi.IntPtrOutput)
 }
 
 type RoutineArgument struct {
@@ -25241,6 +26067,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingPtrInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationInput)(nil)).Elem(), AppProfileStandardIsolationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationPtrInput)(nil)).Elem(), AppProfileStandardIsolationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationMemoryConfigInput)(nil)).Elem(), AppProfileStandardIsolationMemoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationMemoryConfigPtrInput)(nil)).Elem(), AppProfileStandardIsolationMemoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BiReservationPreferredTableInput)(nil)).Elem(), BiReservationPreferredTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BiReservationPreferredTableArrayInput)(nil)).Elem(), BiReservationPreferredTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAwsInput)(nil)).Elem(), ConnectionAwsArgs{})
@@ -25277,6 +26105,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamBindingConditionPtrInput)(nil)).Elem(), ConnectionIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamMemberConditionInput)(nil)).Elem(), ConnectionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamMemberConditionPtrInput)(nil)).Elem(), ConnectionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSalesforceDataCloudInput)(nil)).Elem(), ConnectionSalesforceDataCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSalesforceDataCloudPtrInput)(nil)).Elem(), ConnectionSalesforceDataCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSalesforceDataCloudCrossCloudCacheOptionsInput)(nil)).Elem(), ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrInput)(nil)).Elem(), ConnectionSalesforceDataCloudCrossCloudCacheOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSparkInput)(nil)).Elem(), ConnectionSparkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSparkPtrInput)(nil)).Elem(), ConnectionSparkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSparkMetastoreServiceConfigInput)(nil)).Elem(), ConnectionSparkMetastoreServiceConfigArgs{})
@@ -25375,12 +26207,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusErrorArrayInput)(nil)).Elem(), JobStatusErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusErrorResultInput)(nil)).Elem(), JobStatusErrorResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusErrorResultArrayInput)(nil)).Elem(), JobStatusErrorResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAssignmentSchedulingPolicyInput)(nil)).Elem(), ReservationAssignmentSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAssignmentSchedulingPolicyPtrInput)(nil)).Elem(), ReservationAssignmentSchedulingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAutoscaleInput)(nil)).Elem(), ReservationAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAutoscalePtrInput)(nil)).Elem(), ReservationAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationReplicationStatusInput)(nil)).Elem(), ReservationReplicationStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationReplicationStatusArrayInput)(nil)).Elem(), ReservationReplicationStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationReplicationStatusErrorInput)(nil)).Elem(), ReservationReplicationStatusErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationReplicationStatusErrorArrayInput)(nil)).Elem(), ReservationReplicationStatusErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationSchedulingPolicyInput)(nil)).Elem(), ReservationSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationSchedulingPolicyPtrInput)(nil)).Elem(), ReservationSchedulingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentInput)(nil)).Elem(), RoutineArgumentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentArrayInput)(nil)).Elem(), RoutineArgumentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentTableTypeInput)(nil)).Elem(), RoutineArgumentTableTypeArgs{})
@@ -25533,6 +26369,8 @@ func init() {
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
 	pulumi.RegisterOutputType(AppProfileStandardIsolationOutput{})
 	pulumi.RegisterOutputType(AppProfileStandardIsolationPtrOutput{})
+	pulumi.RegisterOutputType(AppProfileStandardIsolationMemoryConfigOutput{})
+	pulumi.RegisterOutputType(AppProfileStandardIsolationMemoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(BiReservationPreferredTableOutput{})
 	pulumi.RegisterOutputType(BiReservationPreferredTableArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionAwsOutput{})
@@ -25569,6 +26407,10 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(ConnectionIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionSalesforceDataCloudOutput{})
+	pulumi.RegisterOutputType(ConnectionSalesforceDataCloudPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionSalesforceDataCloudCrossCloudCacheOptionsOutput{})
+	pulumi.RegisterOutputType(ConnectionSalesforceDataCloudCrossCloudCacheOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionSparkOutput{})
 	pulumi.RegisterOutputType(ConnectionSparkPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionSparkMetastoreServiceConfigOutput{})
@@ -25667,12 +26509,16 @@ func init() {
 	pulumi.RegisterOutputType(JobStatusErrorArrayOutput{})
 	pulumi.RegisterOutputType(JobStatusErrorResultOutput{})
 	pulumi.RegisterOutputType(JobStatusErrorResultArrayOutput{})
+	pulumi.RegisterOutputType(ReservationAssignmentSchedulingPolicyOutput{})
+	pulumi.RegisterOutputType(ReservationAssignmentSchedulingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ReservationAutoscaleOutput{})
 	pulumi.RegisterOutputType(ReservationAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(ReservationReplicationStatusOutput{})
 	pulumi.RegisterOutputType(ReservationReplicationStatusArrayOutput{})
 	pulumi.RegisterOutputType(ReservationReplicationStatusErrorOutput{})
 	pulumi.RegisterOutputType(ReservationReplicationStatusErrorArrayOutput{})
+	pulumi.RegisterOutputType(ReservationSchedulingPolicyOutput{})
+	pulumi.RegisterOutputType(ReservationSchedulingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentArrayOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentTableTypeOutput{})

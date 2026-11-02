@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:agentidentity/authProvider:AuthProvider":
 		r = &AuthProvider{}
+	case "gcp:agentidentity/authProviderIamBinding:AuthProviderIamBinding":
+		r = &AuthProviderIamBinding{}
+	case "gcp:agentidentity/authProviderIamMember:AuthProviderIamMember":
+		r = &AuthProviderIamMember{}
+	case "gcp:agentidentity/authProviderIamPolicy:AuthProviderIamPolicy":
+		r = &AuthProviderIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +45,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"agentidentity/authProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"agentidentity/authProviderIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"agentidentity/authProviderIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"agentidentity/authProviderIamPolicy",
 		&module{version},
 	)
 }

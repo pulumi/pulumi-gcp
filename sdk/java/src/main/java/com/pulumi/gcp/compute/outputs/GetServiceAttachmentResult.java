@@ -43,6 +43,7 @@ public final class GetServiceAttachmentResult {
     private @Nullable String region;
     private String selfLink;
     private Boolean sendPropagatedConnectionLimitIfZero;
+    private Integer serviceAttachmentId;
     private Boolean showNatIps;
     private String targetService;
     private List<GetServiceAttachmentTunnelingConfig> tunnelingConfigs;
@@ -112,6 +113,9 @@ public final class GetServiceAttachmentResult {
     public Boolean sendPropagatedConnectionLimitIfZero() {
         return this.sendPropagatedConnectionLimitIfZero;
     }
+    public Integer serviceAttachmentId() {
+        return this.serviceAttachmentId;
+    }
     public Boolean showNatIps() {
         return this.showNatIps;
     }
@@ -151,6 +155,7 @@ public final class GetServiceAttachmentResult {
         private @Nullable String region;
         private String selfLink;
         private Boolean sendPropagatedConnectionLimitIfZero;
+        private Integer serviceAttachmentId;
         private Boolean showNatIps;
         private String targetService;
         private List<GetServiceAttachmentTunnelingConfig> tunnelingConfigs;
@@ -177,6 +182,7 @@ public final class GetServiceAttachmentResult {
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
     	      this.sendPropagatedConnectionLimitIfZero = defaults.sendPropagatedConnectionLimitIfZero;
+    	      this.serviceAttachmentId = defaults.serviceAttachmentId;
     	      this.showNatIps = defaults.showNatIps;
     	      this.targetService = defaults.targetService;
     	      this.tunnelingConfigs = defaults.tunnelingConfigs;
@@ -357,6 +363,14 @@ public final class GetServiceAttachmentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAttachmentId(Integer serviceAttachmentId) {
+            if (serviceAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetServiceAttachmentResult", "serviceAttachmentId");
+            }
+            this.serviceAttachmentId = serviceAttachmentId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder showNatIps(Boolean showNatIps) {
             if (showNatIps == null) {
               throw new MissingRequiredPropertyException("GetServiceAttachmentResult", "showNatIps");
@@ -405,6 +419,7 @@ public final class GetServiceAttachmentResult {
             _resultValue.region = region;
             _resultValue.selfLink = selfLink;
             _resultValue.sendPropagatedConnectionLimitIfZero = sendPropagatedConnectionLimitIfZero;
+            _resultValue.serviceAttachmentId = serviceAttachmentId;
             _resultValue.showNatIps = showNatIps;
             _resultValue.targetService = targetService;
             _resultValue.tunnelingConfigs = tunnelingConfigs;

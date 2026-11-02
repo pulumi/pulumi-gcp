@@ -22,6 +22,11 @@ namespace Pulumi.Gcp.Gemini.Outputs
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
+        /// Optional. The schema of the datasource.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchema? Schema;
+        /// <summary>
         /// The table ID.
         /// </summary>
         public readonly string TableId;
@@ -32,10 +37,13 @@ namespace Pulumi.Gcp.Gemini.Outputs
 
             string projectId,
 
+            Outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchema? schema,
+
             string tableId)
         {
             DatasetId = datasetId;
             ProjectId = projectId;
+            Schema = schema;
             TableId = tableId;
         }
     }

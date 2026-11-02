@@ -820,8 +820,12 @@ class CloudVmCluster(pulumi.CustomResource):
                 "gi_version": "19.0.0.0",
                 "hostname_prefix": "hostname1",
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Cloud Vmcluster Odbnetwork
 
         ```python
@@ -857,6 +861,7 @@ class CloudVmCluster(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Cloud Vmcluster Full
 
         ```python
@@ -918,9 +923,12 @@ class CloudVmCluster(pulumi.CustomResource):
                     "incident_logs_enabled": True,
                 },
                 "memory_size_gb": 60,
+                "scan_listener_port_tcp": 1521,
+                "scan_listener_port_tcp_ssl": 2484,
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Cloud Vmcluster Exascale
 
         ```python
@@ -1103,8 +1111,12 @@ class CloudVmCluster(pulumi.CustomResource):
                 "gi_version": "19.0.0.0",
                 "hostname_prefix": "hostname1",
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Cloud Vmcluster Odbnetwork
 
         ```python
@@ -1140,6 +1152,7 @@ class CloudVmCluster(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Cloud Vmcluster Full
 
         ```python
@@ -1201,9 +1214,12 @@ class CloudVmCluster(pulumi.CustomResource):
                     "incident_logs_enabled": True,
                 },
                 "memory_size_gb": 60,
+                "scan_listener_port_tcp": 1521,
+                "scan_listener_port_tcp_ssl": 2484,
             },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Cloud Vmcluster Exascale
 
         ```python

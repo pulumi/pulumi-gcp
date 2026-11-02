@@ -359,6 +359,7 @@ class ConnectionProfileMongodbProfile(dict):
         :param _builtins.str replica_set: Name of the replica set.
         :param _builtins.str secret_manager_stored_password: A reference to a Secret Manager resource name storing the MongoDB
                connection password. Mutually exclusive with password.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param 'ConnectionProfileMongodbProfileSrvConnectionFormatArgs' srv_connection_format: Srv connection format. Mutually exclusive with
                standard_connection_Format.
         :param 'ConnectionProfileMongodbProfileSslConfigArgs' ssl_config: SSL configuration for the MongoDB connection.
@@ -435,6 +436,7 @@ class ConnectionProfileMongodbProfile(dict):
         """
         A reference to a Secret Manager resource name storing the MongoDB
         connection password. Mutually exclusive with password.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret_manager_stored_password")
 

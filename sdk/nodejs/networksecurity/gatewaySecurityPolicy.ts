@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     description: "my description",
  * });
  * ```
+ *
  * ### Network Security Gateway Security Policy Tls Inspection Basic
  *
  * ```typescript

@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Fusion Instance Full
     /// 
     /// ```csharp
@@ -102,6 +103,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Fusion Instance Psc
     /// 
     /// ```csharp
@@ -156,6 +158,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Fusion Instance Cmek
     /// 
     /// ```csharp
@@ -219,6 +222,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Fusion Instance Enterprise
     /// 
     /// ```csharp
@@ -239,6 +243,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Fusion Instance Event
     /// 
     /// ```csharp
@@ -268,6 +273,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Fusion Instance Zone
     /// 
     /// ```csharp
@@ -288,6 +294,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
+    /// 
     /// ### Data Fusion Instance Patch Revision
     /// 
     /// ```csharp

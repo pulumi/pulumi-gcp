@@ -14,7 +14,10 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     public sealed class StandardAppVersionVpcAccess
     {
         /// <summary>
+        /// (Optional, Deprecated)
         /// The egress setting for the VPC Access, controlling what traffic is diverted through it.
+        /// 
+        /// &gt; **Warning:** `EgressSetting` is deprecated and will be removed in a future major release. Use `VpcEgress` instead.
         /// </summary>
         public readonly string? EgressSetting;
         /// <summary>
@@ -22,15 +25,23 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.StandardAppVersionVpcAccessNetworkInterface> NetworkInterfaces;
+        /// <summary>
+        /// The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+        /// Possible values are: `ALL_TRAFFIC`, `PRIVATE_IP_RANGES`.
+        /// </summary>
+        public readonly string? VpcEgress;
 
         [OutputConstructor]
         private StandardAppVersionVpcAccess(
             string? egressSetting,
 
-            ImmutableArray<Outputs.StandardAppVersionVpcAccessNetworkInterface> networkInterfaces)
+            ImmutableArray<Outputs.StandardAppVersionVpcAccessNetworkInterface> networkInterfaces,
+
+            string? vpcEgress)
         {
             EgressSetting = egressSetting;
             NetworkInterfaces = networkInterfaces;
+            VpcEgress = vpcEgress;
         }
     }
 }

@@ -636,6 +636,7 @@ class Slo(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             })
         ```
+
         ### Monitoring Slo Request Based
 
         ```python
@@ -660,6 +661,7 @@ class Slo(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Monitoring Slo Windows Based Good Bad Metric Filter
 
         ```python
@@ -684,6 +686,7 @@ class Slo(pulumi.CustomResource):
                     ]).result,
             })
         ```
+
         ### Monitoring Slo Windows Based Metric Mean
 
         ```python
@@ -713,6 +716,7 @@ class Slo(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Monitoring Slo Windows Based Metric Sum
 
         ```python
@@ -742,6 +746,7 @@ class Slo(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Monitoring Slo Windows Based Ratio Threshold
 
         ```python
@@ -892,6 +897,7 @@ class Slo(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             })
         ```
+
         ### Monitoring Slo Request Based
 
         ```python
@@ -916,6 +922,7 @@ class Slo(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Monitoring Slo Windows Based Good Bad Metric Filter
 
         ```python
@@ -940,6 +947,7 @@ class Slo(pulumi.CustomResource):
                     ]).result,
             })
         ```
+
         ### Monitoring Slo Windows Based Metric Mean
 
         ```python
@@ -969,6 +977,7 @@ class Slo(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Monitoring Slo Windows Based Metric Sum
 
         ```python
@@ -998,6 +1007,7 @@ class Slo(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Monitoring Slo Windows Based Ratio Threshold
 
         ```python

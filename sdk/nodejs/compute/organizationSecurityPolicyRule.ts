@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
+ *
  * ### Organization Security Policy Rule Expression
  *
  * ```typescript
@@ -63,6 +64,7 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
+ *
  * ### Organization Security Policy Rule With Preconfigured Waf Config
  *
  * ```typescript
@@ -108,6 +110,7 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
+ *
  * ### Organization Security Policy Rule With Header Action
  *
  * ```typescript
@@ -143,6 +146,7 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
+ *
  * ### Organization Security Policy Rule With Redirect
  *
  * ```typescript
@@ -170,6 +174,7 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
+ *
  * ### Organization Security Policy Rule Firewall
  *
  * ```typescript

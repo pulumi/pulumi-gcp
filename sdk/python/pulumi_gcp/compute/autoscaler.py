@@ -437,6 +437,7 @@ class Autoscaler(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Autoscaler Basic
 
         ```python
@@ -617,6 +618,7 @@ class Autoscaler(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Autoscaler Basic
 
         ```python

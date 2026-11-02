@@ -32,9 +32,13 @@ import * as utilities from "../utilities";
  *             password: "GenerateWallet@123",
  *         },
  *     },
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Goldengate Connection Full
  *
  * ```typescript
@@ -66,6 +70,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Goldengate Connection Mysql
  *
  * ```typescript
@@ -100,6 +105,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Goldengate Connection Postgresql
  *
  * ```typescript
@@ -127,6 +133,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Goldengate Connection Redis
  *
  * ```typescript
@@ -153,6 +160,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Goldengate Connection Kafka
  *
  * ```typescript
@@ -185,6 +193,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Goldengate Connection Iceberg
  *
  * ```typescript
@@ -223,6 +232,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Goldengate Connection Snowflake
  *
  * ```typescript
@@ -248,6 +258,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ *
  * ### Oracledatabase Goldengate Connection Jms
  *
  * ```typescript

@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.CertificateManager
     ///     };
     /// });
     /// ```
+    /// 
     /// ### Certificate Manager Dns Authorization Regional
     /// 
     /// ```csharp

@@ -75,6 +75,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigtable App Profile Singlecluster
 //
 // ```go
@@ -121,6 +122,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigtable App Profile Multicluster
 //
 // ```go
@@ -180,6 +182,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigtable App Profile Priority
 //
 // ```go

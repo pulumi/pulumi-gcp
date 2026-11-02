@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Build
  *
  * ```typescript
@@ -139,6 +140,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Service Account
  *
  * ```typescript
@@ -171,6 +173,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Include Build Logs
  *
  * ```typescript
@@ -191,6 +194,7 @@ import * as utilities from "../utilities";
  *     includeBuildLogs: "INCLUDE_BUILD_LOGS_WITH_STATUS",
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Pubsub Config
  *
  * ```typescript
@@ -222,6 +226,7 @@ import * as utilities from "../utilities";
  *     filter: "_ACTION.matches('INSERT')",
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Webhook Config
  *
  * ```typescript
@@ -273,6 +278,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Manual
  *
  * ```typescript
@@ -292,6 +298,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Manual Github Enterprise
  *
  * ```typescript
@@ -315,6 +322,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Manual Bitbucket Server
  *
  * ```typescript
@@ -338,6 +346,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Repo
  *
  * ```typescript
@@ -370,6 +379,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Bitbucket Server Push
  *
  * ```typescript
@@ -391,6 +401,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Bitbucket Server Pull Request
  *
  * ```typescript
@@ -413,6 +424,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Github Enterprise
  *
  * ```typescript
@@ -433,6 +445,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Allow Failure
  *
  * ```typescript
@@ -510,6 +523,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Allow Exit Codes
  *
  * ```typescript
@@ -590,6 +604,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Pubsub With Repo
  *
  * ```typescript
@@ -631,6 +646,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Developer Connect Pull
  *
  * ```typescript
@@ -650,6 +666,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Developer Connect Push
  *
  * ```typescript
@@ -668,6 +685,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Developer Connect Push Branch
  *
  * ```typescript

@@ -54,6 +54,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Os Config Patch Deployment Daily
 //
 // ```go
@@ -93,6 +94,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Os Config Patch Deployment Daily Midnight
 //
 // ```go
@@ -132,6 +134,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Os Config Patch Deployment Instance
 //
 // ```go
@@ -219,6 +222,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Os Config Patch Deployment Full
 //
 // ```go

@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  * });
  * export const nextSteps = my_connection.installationStates;
  * ```
+ *
  * ### Developer Connect Connection Existing Credentials
  *
  * ```typescript
@@ -59,6 +60,7 @@ import * as utilities from "../utilities";
  * });
  * export const nextSteps = my_connection.installationStates;
  * ```
+ *
  * ### Developer Connect Connection Existing Installation
  *
  * ```typescript
@@ -101,6 +103,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Connection Github
  *
  * ```typescript
@@ -118,6 +121,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Connection Github Doc
  *
  * ```typescript
@@ -159,6 +163,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Connection Github Enterprise
  *
  * ```typescript
@@ -177,6 +182,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Connection Github Enterprise Doc
  *
  * ```typescript
@@ -237,6 +243,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Developer Connect Connection Gitlab
  *
  * ```typescript
@@ -257,6 +264,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Connection Gitlab Enterprise
  *
  * ```typescript
@@ -278,6 +286,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Connection Bbc
  *
  * ```typescript
@@ -299,6 +308,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Connection Bbdc
  *
  * ```typescript
@@ -320,6 +330,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Connection Http Conn Basic
  *
  * ```typescript
@@ -338,6 +349,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Developer Connect Connection Http Conn Bearer
  *
  * ```typescript

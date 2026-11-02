@@ -16,6 +16,7 @@ public final class ServiceLbPoliciesIsolationConfigArgs extends com.pulumi.resou
     public static final ServiceLbPoliciesIsolationConfigArgs Empty = new ServiceLbPoliciesIsolationConfigArgs();
 
     /**
+     * (Optional, Beta)
      * The isolation granularity of the load balancer.
      * Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
      * 
@@ -24,7 +25,8 @@ public final class ServiceLbPoliciesIsolationConfigArgs extends com.pulumi.resou
     private @Nullable Output<String> isolationGranularity;
 
     /**
-     * @return The isolation granularity of the load balancer.
+     * @return (Optional, Beta)
+     * The isolation granularity of the load balancer.
      * Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
      * 
      */
@@ -33,6 +35,7 @@ public final class ServiceLbPoliciesIsolationConfigArgs extends com.pulumi.resou
     }
 
     /**
+     * (Optional, Beta)
      * The isolation mode of the load balancer.
      * Default value is `NEAREST`.
      * Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
@@ -42,7 +45,8 @@ public final class ServiceLbPoliciesIsolationConfigArgs extends com.pulumi.resou
     private @Nullable Output<String> isolationMode;
 
     /**
-     * @return The isolation mode of the load balancer.
+     * @return (Optional, Beta)
+     * The isolation mode of the load balancer.
      * Default value is `NEAREST`.
      * Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
      * 
@@ -77,7 +81,8 @@ public final class ServiceLbPoliciesIsolationConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param isolationGranularity The isolation granularity of the load balancer.
+         * @param isolationGranularity (Optional, Beta)
+         * The isolation granularity of the load balancer.
          * Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
          * 
          * @return builder
@@ -89,7 +94,8 @@ public final class ServiceLbPoliciesIsolationConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param isolationGranularity The isolation granularity of the load balancer.
+         * @param isolationGranularity (Optional, Beta)
+         * The isolation granularity of the load balancer.
          * Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
          * 
          * @return builder
@@ -100,7 +106,8 @@ public final class ServiceLbPoliciesIsolationConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param isolationMode The isolation mode of the load balancer.
+         * @param isolationMode (Optional, Beta)
+         * The isolation mode of the load balancer.
          * Default value is `NEAREST`.
          * Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
          * 
@@ -113,7 +120,8 @@ public final class ServiceLbPoliciesIsolationConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param isolationMode The isolation mode of the load balancer.
+         * @param isolationMode (Optional, Beta)
+         * The isolation mode of the load balancer.
          * Default value is `NEAREST`.
          * Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
          * 

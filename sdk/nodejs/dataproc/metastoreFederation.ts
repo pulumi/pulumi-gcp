@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Dataproc Metastore Federation Bigquery
  *
  * ```typescript

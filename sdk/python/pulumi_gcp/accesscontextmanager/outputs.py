@@ -47,6 +47,7 @@ __all__ = [
     'GcpUserAccessBindingScopedAccessSettingScope',
     'GcpUserAccessBindingScopedAccessSettingScopeClientScope',
     'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication',
+    'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject',
     'GcpUserAccessBindingSessionSettings',
     'ServicePerimeterDryRunEgressPolicyEgressFrom',
     'ServicePerimeterDryRunEgressPolicyEgressFromSource',
@@ -1695,7 +1696,9 @@ class GcpUserAccessBindingPrincipal(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "serviceAccount":
+        if key == "federatedPrincipal":
+            suggest = "federated_principal"
+        elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "serviceAccountProjectNumber":
             suggest = "service_account_project_number"
@@ -1712,9 +1715,22 @@ class GcpUserAccessBindingPrincipal(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 federated_principal: Optional[_builtins.str] = None,
                  service_account: Optional[_builtins.str] = None,
                  service_account_project_number: Optional[_builtins.str] = None):
         """
+        :param _builtins.str federated_principal: Immutable. The IAM principal identifier of the federated workforce or workload to
+               assign the policy to. Examples include the following:
+               * Single principal:
+                 `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+               * All workloads in a workload identity pool:
+                 `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+               * All Workforce Pools in a Google Cloud organization:
+                 `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+                 Bindings created for all Workforce Pools in a Google Cloud organization
+                 support only `scoped_access_settings` with the `restricted_project`
+                 client scope and active `session_settings`. No other configurations are
+                 allowed.
         :param _builtins.str service_account: Immutable. Service account email used to assign policies to a single service account.
                If a service account is subject to multiple policies (e.g., if there is a policy for all
                service accounts in a project and a policy for the service account), the closest (i.e.
@@ -1722,10 +1738,31 @@ class GcpUserAccessBindingPrincipal(dict):
                closest policy will be used for the enforcement.
         :param _builtins.str service_account_project_number: Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
         """
+        if federated_principal is not None:
+            pulumi.set(__self__, "federated_principal", federated_principal)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_project_number is not None:
             pulumi.set(__self__, "service_account_project_number", service_account_project_number)
+
+    @_builtins.property
+    @pulumi.getter(name="federatedPrincipal")
+    def federated_principal(self) -> Optional[_builtins.str]:
+        """
+        Immutable. The IAM principal identifier of the federated workforce or workload to
+        assign the policy to. Examples include the following:
+        * Single principal:
+          `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+        * All workloads in a workload identity pool:
+          `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+        * All Workforce Pools in a Google Cloud organization:
+          `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+          Bindings created for all Workforce Pools in a Google Cloud organization
+          support only `scoped_access_settings` with the `restricted_project`
+          client scope and active `session_settings`. No other configurations are
+          allowed.
+        """
+        return pulumi.get(self, "federated_principal")
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
@@ -2047,6 +2084,8 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScope(dict):
         suggest = None
         if key == "restrictedClientApplication":
             suggest = "restricted_client_application"
+        elif key == "restrictedProject":
+            suggest = "restricted_project"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GcpUserAccessBindingScopedAccessSettingScopeClientScope. Access the value via the '{suggest}' property getter instead.")
@@ -2060,13 +2099,18 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScope(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 restricted_client_application: Optional['outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication'] = None):
+                 restricted_client_application: Optional['outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication'] = None,
+                 restricted_project: Optional['outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject'] = None):
         """
         :param 'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs' restricted_client_application: Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
+               Structure is documented below.
+        :param 'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProjectArgs' restricted_project: Optional. The Google Cloud project that is subject to this binding's scope.
                Structure is documented below.
         """
         if restricted_client_application is not None:
             pulumi.set(__self__, "restricted_client_application", restricted_client_application)
+        if restricted_project is not None:
+            pulumi.set(__self__, "restricted_project", restricted_project)
 
     @_builtins.property
     @pulumi.getter(name="restrictedClientApplication")
@@ -2076,6 +2120,15 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScope(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "restricted_client_application")
+
+    @_builtins.property
+    @pulumi.getter(name="restrictedProject")
+    def restricted_project(self) -> Optional['outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject']:
+        """
+        Optional. The Google Cloud project that is subject to this binding's scope.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restricted_project")
 
 
 @pulumi.output_type
@@ -2122,6 +2175,28 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApp
     def name(self) -> Optional[_builtins.str]:
         """
         The name of the application. Example: "Cloud Console"
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedProject(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: The Google Cloud project resource name.
+               Format: `projects/{project_number}`. Only the project number is supported.
+               Example: `projects/1234567890`
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The Google Cloud project resource name.
+        Format: `projects/{project_number}`. Only the project number is supported.
+        Example: `projects/1234567890`
         """
         return pulumi.get(self, "name")
 
@@ -2348,7 +2423,10 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -2384,7 +2462,10 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSource(dict):
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -2461,8 +2542,9 @@ class ServicePerimeterDryRunEgressPolicyEgressTo(dict):
         :param Sequence['ServicePerimeterDryRunEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param Sequence[_builtins.str] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -2503,8 +2585,9 @@ class ServicePerimeterDryRunEgressPolicyEgressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -2736,8 +2819,12 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to ingress the perimeter.
                Requests from these resources will be allowed to access perimeter data.
-               Currently only projects are allowed. Format `projects/{project_number}`
-               The project may be in any Google Cloud organization, not just the
+               Projects, folders, organizations, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
+               The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the case
                of allowing all Google Cloud resources only is not supported.
         """
@@ -2779,8 +2866,12 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSource(dict):
         """
         A Google Cloud resource that is allowed to ingress the perimeter.
         Requests from these resources will be allowed to access perimeter data.
-        Currently only projects are allowed. Format `projects/{project_number}`
-        The project may be in any Google Cloud organization, not just the
+        Projects, folders, organizations, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
+        The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the case
         of allowing all Google Cloud resources only is not supported.
         """
@@ -2835,8 +2926,9 @@ class ServicePerimeterDryRunIngressPolicyIngressTo(dict):
         :param Sequence['ServicePerimeterDryRunIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param Sequence[_builtins.str] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -2868,8 +2960,9 @@ class ServicePerimeterDryRunIngressPolicyIngressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,
@@ -3113,7 +3206,10 @@ class ServicePerimeterEgressPolicyEgressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -3149,7 +3245,10 @@ class ServicePerimeterEgressPolicyEgressFromSource(dict):
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -3226,8 +3325,9 @@ class ServicePerimeterEgressPolicyEgressTo(dict):
         :param Sequence['ServicePerimeterEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param Sequence[_builtins.str] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -3268,8 +3368,9 @@ class ServicePerimeterEgressPolicyEgressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -3501,11 +3602,13 @@ class ServicePerimeterIngressPolicyIngressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to ingress the perimeter.
                Requests from these resources will be allowed to access perimeter data.
-               Currently only projects and VPCs are allowed.
-               Project format: `projects/{projectNumber}`
+               Projects, folders, organizations, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                VPC network format:
                `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-               The project may be in any Google Cloud organization, not just the
+               The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the case
                of allowing all Google Cloud resources only is not supported.
         """
@@ -3547,11 +3650,13 @@ class ServicePerimeterIngressPolicyIngressFromSource(dict):
         """
         A Google Cloud resource that is allowed to ingress the perimeter.
         Requests from these resources will be allowed to access perimeter data.
-        Currently only projects and VPCs are allowed.
-        Project format: `projects/{projectNumber}`
+        Projects, folders, organizations, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         VPC network format:
         `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-        The project may be in any Google Cloud organization, not just the
+        The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the case
         of allowing all Google Cloud resources only is not supported.
         """
@@ -3606,8 +3711,9 @@ class ServicePerimeterIngressPolicyIngressTo(dict):
         :param Sequence['ServicePerimeterIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param Sequence[_builtins.str] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -3639,8 +3745,9 @@ class ServicePerimeterIngressPolicyIngressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,
@@ -3815,8 +3922,10 @@ class ServicePerimeterSpec(dict):
                Must be empty for a perimeter bridge.
                Structure is documented below.
         :param Sequence[_builtins.str] resources: A list of GCP resources that are inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         :param Sequence[_builtins.str] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
@@ -3884,8 +3993,10 @@ class ServicePerimeterSpec(dict):
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
         A list of GCP resources that are inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resources")
 
@@ -4100,7 +4211,10 @@ class ServicePerimeterSpecEgressPolicyEgressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -4136,7 +4250,10 @@ class ServicePerimeterSpecEgressPolicyEgressFromSource(dict):
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -4213,8 +4330,9 @@ class ServicePerimeterSpecEgressPolicyEgressTo(dict):
         :param Sequence['ServicePerimeterSpecEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param Sequence[_builtins.str] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -4255,8 +4373,9 @@ class ServicePerimeterSpecEgressPolicyEgressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -4547,7 +4666,10 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -4583,7 +4705,10 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -4639,8 +4764,9 @@ class ServicePerimeterSpecIngressPolicyIngressTo(dict):
         :param Sequence['ServicePerimeterSpecIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param Sequence[_builtins.str] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -4672,8 +4798,9 @@ class ServicePerimeterSpecIngressPolicyIngressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,
@@ -5048,8 +5175,10 @@ class ServicePerimeterStatus(dict):
                Must be empty for a perimeter bridge.
                Structure is documented below.
         :param Sequence[_builtins.str] resources: A list of GCP resources that are inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         :param Sequence[_builtins.str] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
@@ -5117,8 +5246,10 @@ class ServicePerimeterStatus(dict):
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
         A list of GCP resources that are inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resources")
 
@@ -5333,7 +5464,10 @@ class ServicePerimeterStatusEgressPolicyEgressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -5369,7 +5503,10 @@ class ServicePerimeterStatusEgressPolicyEgressFromSource(dict):
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -5446,8 +5583,9 @@ class ServicePerimeterStatusEgressPolicyEgressTo(dict):
         :param Sequence['ServicePerimeterStatusEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param Sequence[_builtins.str] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -5488,8 +5626,9 @@ class ServicePerimeterStatusEgressPolicyEgressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -5780,7 +5919,10 @@ class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -5816,7 +5958,10 @@ class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -5872,8 +6017,9 @@ class ServicePerimeterStatusIngressPolicyIngressTo(dict):
         :param Sequence['ServicePerimeterStatusIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param Sequence[_builtins.str] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -5905,8 +6051,9 @@ class ServicePerimeterStatusIngressPolicyIngressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,
@@ -6487,8 +6634,10 @@ class ServicePerimetersServicePerimeterSpec(dict):
                Must be empty for a perimeter bridge.
                Structure is documented below.
         :param Sequence[_builtins.str] resources: A list of GCP resources that are inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         :param Sequence[_builtins.str] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
@@ -6556,8 +6705,10 @@ class ServicePerimetersServicePerimeterSpec(dict):
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
         A list of GCP resources that are inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resources")
 
@@ -6776,7 +6927,10 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -6812,7 +6966,10 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource(dict):
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -6889,8 +7046,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(dict):
         :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param Sequence[_builtins.str] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -6931,8 +7089,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -7223,7 +7382,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -7259,7 +7421,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -7315,8 +7480,9 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo(dict):
         :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param Sequence[_builtins.str] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -7348,8 +7514,9 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,
@@ -7724,8 +7891,10 @@ class ServicePerimetersServicePerimeterStatus(dict):
                Must be empty for a perimeter bridge.
                Structure is documented below.
         :param Sequence[_builtins.str] resources: A list of GCP resources that are inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         :param Sequence[_builtins.str] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
@@ -7793,8 +7962,10 @@ class ServicePerimetersServicePerimeterStatus(dict):
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
         A list of GCP resources that are inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resources")
 
@@ -8013,7 +8184,10 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource(dict):
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -8049,7 +8223,10 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource(dict):
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -8126,8 +8303,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo(dict):
         :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, that match this to stanza. A request matches
+        :param Sequence[_builtins.str] resources: A list of resources, in the form `projects/{project_number}`,
+               `folders/{folder_number}`, or `organizations/{organization_number}`,
+               that match this to stanza. A request matches
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
@@ -8168,8 +8346,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, that match this to stanza. A request matches
+        A list of resources, in the form `projects/{project_number}`,
+        `folders/{folder_number}`, or `organizations/{organization_number}`,
+        that match this to stanza. A request matches
         if it contains a resource in this list. If * is specified for resources,
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
@@ -8460,7 +8639,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict
                Structure is documented below.
         :param _builtins.str resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
-               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               Projects, folders, and organizations are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               Organization format: `organizations/{organization_number}`
                The resource may be in any Google Cloud organization, not just the
                organization that the perimeter is defined in. `*` is not allowed, the
                case of allowing all Google Cloud resources only is not supported.
@@ -8496,7 +8678,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict
         """
         A Google Cloud resource that is allowed to egress the perimeter.
         Requests from these resources are allowed to access data outside the perimeter.
-        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        Projects, folders, and organizations are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        Organization format: `organizations/{organization_number}`
         The resource may be in any Google Cloud organization, not just the
         organization that the perimeter is defined in. `*` is not allowed, the
         case of allowing all Google Cloud resources only is not supported.
@@ -8552,8 +8737,9 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo(dict):
         :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
-        :param Sequence[_builtins.str] resources: A list of resources, currently only projects in the form
-               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        :param Sequence[_builtins.str] resources: A list of resources protected by this `ServicePerimeter`, in the form
+               `projects/{project_number}`, `folders/{folder_number}`, or
+               `organizations/{organization_number}`,
                that are allowed to be accessed by sources defined in the
                corresponding `IngressFrom`. A request matches if it contains
                a resource in this list. If `*` is specified for resources,
@@ -8585,8 +8771,9 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of resources, currently only projects in the form
-        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        A list of resources protected by this `ServicePerimeter`, in the form
+        `projects/{project_number}`, `folders/{folder_number}`, or
+        `organizations/{organization_number}`,
         that are allowed to be accessed by sources defined in the
         corresponding `IngressFrom`. A request matches if it contains
         a resource in this list. If `*` is specified for resources,

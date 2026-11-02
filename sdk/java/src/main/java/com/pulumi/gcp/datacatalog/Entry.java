@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Data Catalog Entry Fileset
  * 
  * <pre>
@@ -121,6 +122,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Data Catalog Entry Full
  * 
  * <pre>

@@ -499,8 +499,12 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                 "compute_count": 2,
                 "storage_count": 3,
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Cloud Exadata Infrastructure Full
 
         ```python
@@ -618,8 +622,12 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                 "compute_count": 2,
                 "storage_count": 3,
             },
+            labels={
+                "label-one": "value-one",
+            },
             deletion_protection=True)
         ```
+
         ### Oracledatabase Cloud Exadata Infrastructure Full
 
         ```python

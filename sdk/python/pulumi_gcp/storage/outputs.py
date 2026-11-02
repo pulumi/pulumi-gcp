@@ -63,6 +63,10 @@ __all__ = [
     'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets',
     'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations',
     'ControlOrganizationIntelligenceConfigTrialConfig',
+    'ControlProjectFeatureConfigAutoAnnotateConfig',
+    'ControlProjectFeatureConfigAutoAnnotateConfigModel',
+    'ControlProjectFeatureConfigFilter',
+    'ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets',
     'ControlProjectIntelligenceConfigEffectiveIntelligenceConfig',
     'ControlProjectIntelligenceConfigFilter',
     'ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets',
@@ -178,6 +182,10 @@ __all__ = [
     'GetControlOrganizationIntelligenceConfigTrialConfigResult',
     'GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryResult',
     'GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailResult',
+    'GetControlProjectFeatureConfigAutoAnnotateConfigResult',
+    'GetControlProjectFeatureConfigAutoAnnotateConfigModelResult',
+    'GetControlProjectFeatureConfigFilterResult',
+    'GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketResult',
     'GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigResult',
     'GetControlProjectIntelligenceConfigFilterResult',
     'GetControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketResult',
@@ -2698,6 +2706,164 @@ class ControlOrganizationIntelligenceConfigTrialConfig(dict):
         The time at which the trial expires.
         """
         return pulumi.get(self, "expire_time")
+
+
+@pulumi.output_type
+class ControlProjectFeatureConfigAutoAnnotateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "processingLocation":
+            suggest = "processing_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlProjectFeatureConfigAutoAnnotateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlProjectFeatureConfigAutoAnnotateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlProjectFeatureConfigAutoAnnotateConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 models: Sequence['outputs.ControlProjectFeatureConfigAutoAnnotateConfigModel'],
+                 processing_location: _builtins.str):
+        """
+        :param Sequence['ControlProjectFeatureConfigAutoAnnotateConfigModelArgs'] models: The list of unique models used to generate annotations. Each model is identified by
+               its `name`.
+               Structure is documented below.
+        :param _builtins.str processing_location: The geographic location (case-sensitive) where data is processed. Currently, only
+               multi-region locations such as `us`, `eu`, or `asia` are supported.
+               To avoid duplicate billing, configure exactly one processing location for each bucket
+               and model combination. If you configure multiple processing locations for the same
+               bucket and model across different feature configurations, a separate annotation run is
+               triggered in each location, and you're billed for each resulting annotation.
+        """
+        pulumi.set(__self__, "models", models)
+        pulumi.set(__self__, "processing_location", processing_location)
+
+    @_builtins.property
+    @pulumi.getter
+    def models(self) -> Sequence['outputs.ControlProjectFeatureConfigAutoAnnotateConfigModel']:
+        """
+        The list of unique models used to generate annotations. Each model is identified by
+        its `name`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "models")
+
+    @_builtins.property
+    @pulumi.getter(name="processingLocation")
+    def processing_location(self) -> _builtins.str:
+        """
+        The geographic location (case-sensitive) where data is processed. Currently, only
+        multi-region locations such as `us`, `eu`, or `asia` are supported.
+        To avoid duplicate billing, configure exactly one processing location for each bucket
+        and model combination. If you configure multiple processing locations for the same
+        bucket and model across different feature configurations, a separate annotation run is
+        triggered in each location, and you're billed for each resulting annotation.
+        """
+        return pulumi.get(self, "processing_location")
+
+
+@pulumi.output_type
+class ControlProjectFeatureConfigAutoAnnotateConfigModel(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: The name of the model. Supported values include `face-detector`,
+               `object-detector`, `label-detector`, and `content-safety`.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the model. Supported values include `face-detector`,
+        `object-detector`, `label-detector`, and `content-safety`.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ControlProjectFeatureConfigFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includedCloudStorageBuckets":
+            suggest = "included_cloud_storage_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlProjectFeatureConfigFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlProjectFeatureConfigFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlProjectFeatureConfigFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 included_cloud_storage_buckets: 'outputs.ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets'):
+        """
+        :param 'ControlProjectFeatureConfigFilterIncludedCloudStorageBucketsArgs' included_cloud_storage_buckets: The buckets to include in the feature configuration.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "included_cloud_storage_buckets", included_cloud_storage_buckets)
+
+    @_builtins.property
+    @pulumi.getter(name="includedCloudStorageBuckets")
+    def included_cloud_storage_buckets(self) -> 'outputs.ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets':
+        """
+        The buckets to include in the feature configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "included_cloud_storage_buckets")
+
+
+@pulumi.output_type
+class ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketIdRegexes":
+            suggest = "bucket_id_regexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlProjectFeatureConfigFilterIncludedCloudStorageBuckets.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_id_regexes: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] bucket_id_regexes: The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+               supported, so specify exact bucket names (for example, `my-bucket`). Each bucket
+               must already exist in the feature configuration's project. Up to 1,000 buckets can
+               be specified.
+        """
+        pulumi.set(__self__, "bucket_id_regexes", bucket_id_regexes)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketIdRegexes")
+    def bucket_id_regexes(self) -> Sequence[_builtins.str]:
+        """
+        The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+        supported, so specify exact bucket names (for example, `my-bucket`). Each bucket
+        must already exist in the feature configuration's project. Up to 1,000 buckets can
+        be specified.
+        """
+        return pulumi.get(self, "bucket_id_regexes")
 
 
 @pulumi.output_type
@@ -8316,6 +8482,111 @@ class GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDeta
         The type of Cloud resource this summary detail applies to.
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class GetControlProjectFeatureConfigAutoAnnotateConfigResult(dict):
+    def __init__(__self__, *,
+                 models: Sequence['outputs.GetControlProjectFeatureConfigAutoAnnotateConfigModelResult'],
+                 processing_location: _builtins.str):
+        """
+        :param Sequence['GetControlProjectFeatureConfigAutoAnnotateConfigModelArgs'] models: The list of unique models used to generate annotations. Each model is identified by
+               its 'name'.
+        :param _builtins.str processing_location: The geographic location (case-sensitive) where data is processed. Currently, only
+               multi-region locations such as 'us', 'eu', or 'asia' are supported.
+               
+               To avoid duplicate billing, configure exactly one processing location for each bucket
+               and model combination. If you configure multiple processing locations for the same
+               bucket and model across different feature configurations, a separate annotation run is
+               triggered in each location, and you're billed for each resulting annotation.
+        """
+        pulumi.set(__self__, "models", models)
+        pulumi.set(__self__, "processing_location", processing_location)
+
+    @_builtins.property
+    @pulumi.getter
+    def models(self) -> Sequence['outputs.GetControlProjectFeatureConfigAutoAnnotateConfigModelResult']:
+        """
+        The list of unique models used to generate annotations. Each model is identified by
+        its 'name'.
+        """
+        return pulumi.get(self, "models")
+
+    @_builtins.property
+    @pulumi.getter(name="processingLocation")
+    def processing_location(self) -> _builtins.str:
+        """
+        The geographic location (case-sensitive) where data is processed. Currently, only
+        multi-region locations such as 'us', 'eu', or 'asia' are supported.
+
+        To avoid duplicate billing, configure exactly one processing location for each bucket
+        and model combination. If you configure multiple processing locations for the same
+        bucket and model across different feature configurations, a separate annotation run is
+        triggered in each location, and you're billed for each resulting annotation.
+        """
+        return pulumi.get(self, "processing_location")
+
+
+@pulumi.output_type
+class GetControlProjectFeatureConfigAutoAnnotateConfigModelResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: The name of the model. Supported values include 'face-detector',
+               'object-detector', 'label-detector', and 'content-safety'.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the model. Supported values include 'face-detector',
+        'object-detector', 'label-detector', and 'content-safety'.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetControlProjectFeatureConfigFilterResult(dict):
+    def __init__(__self__, *,
+                 included_cloud_storage_buckets: Sequence['outputs.GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketResult']):
+        """
+        :param Sequence['GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketArgs'] included_cloud_storage_buckets: The buckets to include in the feature configuration.
+        """
+        pulumi.set(__self__, "included_cloud_storage_buckets", included_cloud_storage_buckets)
+
+    @_builtins.property
+    @pulumi.getter(name="includedCloudStorageBuckets")
+    def included_cloud_storage_buckets(self) -> Sequence['outputs.GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketResult']:
+        """
+        The buckets to include in the feature configuration.
+        """
+        return pulumi.get(self, "included_cloud_storage_buckets")
+
+
+@pulumi.output_type
+class GetControlProjectFeatureConfigFilterIncludedCloudStorageBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket_id_regexes: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] bucket_id_regexes: The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+               supported, so specify exact bucket names (for example, 'my-bucket'). Each bucket
+               must already exist in the feature configuration's project. Up to 1,000 buckets can
+               be specified.
+        """
+        pulumi.set(__self__, "bucket_id_regexes", bucket_id_regexes)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketIdRegexes")
+    def bucket_id_regexes(self) -> Sequence[_builtins.str]:
+        """
+        The names of the buckets to include. For Auto Annotate, regex wildcards aren't
+        supported, so specify exact bucket names (for example, 'my-bucket'). Each bucket
+        must already exist in the feature configuration's project. Up to 1,000 buckets can
+        be specified.
+        """
+        return pulumi.get(self, "bucket_id_regexes")
 
 
 @pulumi.output_type

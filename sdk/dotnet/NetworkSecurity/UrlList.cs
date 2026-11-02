@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Url Lists Advanced
     /// 
     /// ```csharp

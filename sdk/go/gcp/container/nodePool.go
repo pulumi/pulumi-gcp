@@ -41,10 +41,8 @@ import (
 //				return err
 //			}
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:                  pulumi.String("my-gke-cluster"),
-//				Location:              pulumi.String("us-central1"),
-//				RemoveDefaultNodePool: pulumi.Bool(true),
-//				InitialNodeCount:      pulumi.Int(1),
+//				Name:     pulumi.String("my-gke-cluster"),
+//				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err

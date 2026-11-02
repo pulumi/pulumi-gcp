@@ -260,6 +260,37 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Maps a model name to its specific configuration for this engine. This
+     * allows admin users to turn on/off individual models. This only stores
+     * models whose states are overridden by the admin. When the state is
+     * unspecified, or `modelConfigs` is empty for this model, the system
+     * decides if this model is available based on the default configuration.
+     * For example, a preview model is disabled by default if the admin has not
+     * chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+     * `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+     * for details.
+     * 
+     */
+    @Import(name="modelConfigs")
+    private @Nullable Output<Map<String,String>> modelConfigs;
+
+    /**
+     * @return Maps a model name to its specific configuration for this engine. This
+     * allows admin users to turn on/off individual models. This only stores
+     * models whose states are overridden by the admin. When the state is
+     * unspecified, or `modelConfigs` is empty for this model, the system
+     * decides if this model is available based on the default configuration.
+     * For example, a preview model is disabled by default if the admin has not
+     * chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+     * `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+     * for details.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> modelConfigs() {
+        return Optional.ofNullable(this.modelConfigs);
+    }
+
+    /**
      * The unique full resource name of the search engine. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
@@ -361,6 +392,7 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
         this.kmsKeyName = $.kmsKeyName;
         this.knowledgeGraphConfig = $.knowledgeGraphConfig;
         this.location = $.location;
+        this.modelConfigs = $.modelConfigs;
         this.name = $.name;
         this.procurementContactEmails = $.procurementContactEmails;
         this.project = $.project;
@@ -716,6 +748,43 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param modelConfigs Maps a model name to its specific configuration for this engine. This
+         * allows admin users to turn on/off individual models. This only stores
+         * models whose states are overridden by the admin. When the state is
+         * unspecified, or `modelConfigs` is empty for this model, the system
+         * decides if this model is available based on the default configuration.
+         * For example, a preview model is disabled by default if the admin has not
+         * chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+         * `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+         * for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelConfigs(@Nullable Output<Map<String,String>> modelConfigs) {
+            $.modelConfigs = modelConfigs;
+            return this;
+        }
+
+        /**
+         * @param modelConfigs Maps a model name to its specific configuration for this engine. This
+         * allows admin users to turn on/off individual models. This only stores
+         * models whose states are overridden by the admin. When the state is
+         * unspecified, or `modelConfigs` is empty for this model, the system
+         * decides if this model is available based on the default configuration.
+         * For example, a preview model is disabled by default if the admin has not
+         * chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+         * `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+         * for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelConfigs(Map<String,String> modelConfigs) {
+            return modelConfigs(Output.of(modelConfigs));
         }
 
         /**

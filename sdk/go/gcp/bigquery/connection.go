@@ -53,6 +53,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Connection Basic
 //
 // ```go
@@ -125,6 +126,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Connection Full
 //
 // ```go
@@ -198,6 +200,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Connection Aws
 //
 // ```go
@@ -231,6 +234,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Connection Azure
 //
 // ```go
@@ -263,6 +267,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Connection Cloudspanner
 //
 // ```go
@@ -295,6 +300,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Connection Cloudspanner Databoost
 //
 // ```go
@@ -329,6 +335,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Connection Spark
 //
 // ```go
@@ -384,6 +391,38 @@ import (
 //	}
 //
 // ```
+//
+// ### Bigquery Connection Salesforce Data Cloud
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				ConnectionId: pulumi.String("my-connection"),
+//				Location:     pulumi.String("US"),
+//				SalesforceDataCloud: &bigquery.ConnectionSalesforceDataCloudArgs{
+//					InstanceUri: pulumi.String("my-instance.c360a.salesforce.com"),
+//					TenantId:    pulumi.String("tenant-id"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Bigquery Connection Sql With Cmek
 //
 // ```go
@@ -449,6 +488,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Connection Sql With Cmek Password Wo
 //
 // ```go
@@ -515,6 +555,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Connection Connector Configuration
 //
 // ```go
@@ -527,25 +568,24 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			namePrefix := "my-connection"
-//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.Sprintf("%v-alloydb-network", namePrefix),
-//			})
+//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: pulumi.StringRef("alloydb-network"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
+//			namePrefix := "my-connection"
+//			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.Sprintf("%v-alloydb-cluster", namePrefix),
 //				Location:  pulumi.String("us-central1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: defaultNetwork.ID(),
+//					Network: pulumi.String(_default.Id),
 //				},
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-cluster-password"),
@@ -555,36 +595,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
-//				Name:         pulumi.Sprintf("%v-alloydb-ip", namePrefix),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      defaultNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: defaultNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					privateIpAlloc.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			defaultInstance, err := alloydb.NewInstance(ctx, "default", &alloydb.InstanceArgs{
-//				Cluster:      _default.Name,
+//				Cluster:      defaultCluster.Name,
 //				InstanceId:   pulumi.Sprintf("%v-alloydb-instance", namePrefix),
 //				InstanceType: pulumi.String("PRIMARY"),
 //				MachineConfig: &alloydb.InstanceMachineConfigArgs{
 //					CpuCount: pulumi.Int(2),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vpcConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -690,6 +708,10 @@ type Connection struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Connection properties specific to Salesforce Data Cloud.
+	// This connection type is intended for use only by Salesforce partner projects.
+	// Structure is documented below.
+	SalesforceDataCloud ConnectionSalesforceDataCloudPtrOutput `pulumi:"salesforceDataCloud"`
 	// Container for connection properties to execute stored procedures for Apache Spark. resources.
 	// Structure is documented below.
 	Spark ConnectionSparkPtrOutput `pulumi:"spark"`
@@ -777,6 +799,10 @@ type connectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Connection properties specific to Salesforce Data Cloud.
+	// This connection type is intended for use only by Salesforce partner projects.
+	// Structure is documented below.
+	SalesforceDataCloud *ConnectionSalesforceDataCloud `pulumi:"salesforceDataCloud"`
 	// Container for connection properties to execute stored procedures for Apache Spark. resources.
 	// Structure is documented below.
 	Spark *ConnectionSpark `pulumi:"spark"`
@@ -835,6 +861,10 @@ type ConnectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Connection properties specific to Salesforce Data Cloud.
+	// This connection type is intended for use only by Salesforce partner projects.
+	// Structure is documented below.
+	SalesforceDataCloud ConnectionSalesforceDataCloudPtrInput
 	// Container for connection properties to execute stored procedures for Apache Spark. resources.
 	// Structure is documented below.
 	Spark ConnectionSparkPtrInput
@@ -892,6 +922,10 @@ type connectionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Connection properties specific to Salesforce Data Cloud.
+	// This connection type is intended for use only by Salesforce partner projects.
+	// Structure is documented below.
+	SalesforceDataCloud *ConnectionSalesforceDataCloud `pulumi:"salesforceDataCloud"`
 	// Container for connection properties to execute stored procedures for Apache Spark. resources.
 	// Structure is documented below.
 	Spark *ConnectionSpark `pulumi:"spark"`
@@ -946,6 +980,10 @@ type ConnectionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Connection properties specific to Salesforce Data Cloud.
+	// This connection type is intended for use only by Salesforce partner projects.
+	// Structure is documented below.
+	SalesforceDataCloud ConnectionSalesforceDataCloudPtrInput
 	// Container for connection properties to execute stored procedures for Apache Spark. resources.
 	// Structure is documented below.
 	Spark ConnectionSparkPtrInput
@@ -1133,6 +1171,13 @@ func (o ConnectionOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Connection properties specific to Salesforce Data Cloud.
+// This connection type is intended for use only by Salesforce partner projects.
+// Structure is documented below.
+func (o ConnectionOutput) SalesforceDataCloud() ConnectionSalesforceDataCloudPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionSalesforceDataCloudPtrOutput { return v.SalesforceDataCloud }).(ConnectionSalesforceDataCloudPtrOutput)
 }
 
 // Container for connection properties to execute stored procedures for Apache Spark. resources.

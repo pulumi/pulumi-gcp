@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// 
     /// ### Monitoring Metric Descriptor Alert
     /// 
     /// ```csharp

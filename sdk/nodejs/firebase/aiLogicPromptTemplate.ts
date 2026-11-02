@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ *
  * ### Firebaseailogic Prompt Template Global Only
  *
  * ```typescript
@@ -51,6 +52,7 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ *
  * ### Firebaseailogic Prompt Template Basic
  *
  * ```typescript

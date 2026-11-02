@@ -156,14 +156,12 @@ public final class CloudVmClusterProperties {
      */
     private @Nullable List<String> scanIpIds;
     /**
-     * @return (Output)
-     * SCAN listener port - TCP
+     * @return SCAN listener port - TCP
      * 
      */
     private @Nullable Integer scanListenerPortTcp;
     /**
-     * @return (Output)
-     * SCAN listener port - TLS
+     * @return SCAN listener port - TLS
      * 
      */
     private @Nullable Integer scanListenerPortTcpSsl;
@@ -431,16 +429,14 @@ public final class CloudVmClusterProperties {
         return this.scanIpIds == null ? List.of() : this.scanIpIds;
     }
     /**
-     * @return (Output)
-     * SCAN listener port - TCP
+     * @return SCAN listener port - TCP
      * 
      */
     public Optional<Integer> scanListenerPortTcp() {
         return Optional.ofNullable(this.scanListenerPortTcp);
     }
     /**
-     * @return (Output)
-     * SCAN listener port - TLS
+     * @return SCAN listener port - TLS
      * 
      */
     public Optional<Integer> scanListenerPortTcpSsl() {

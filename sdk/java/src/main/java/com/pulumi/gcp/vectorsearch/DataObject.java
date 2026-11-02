@@ -134,6 +134,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vectorsearch Data Object With Vectors
  * 
  * <pre>

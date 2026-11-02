@@ -39,6 +39,12 @@ class SchemaArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] json_schema: The JSON representation of the schema.
+               Changes are applied in place and must be backward compatible: existing fields
+               can't be removed or have their type changed. Updating the schema triggers
+               reindexing of all documents in the data store, which can take hours for large
+               data stores and may incur costs. See
+               [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+               for details.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -111,6 +117,12 @@ class SchemaArgs:
     def json_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JSON representation of the schema.
+        Changes are applied in place and must be backward compatible: existing fields
+        can't be removed or have their type changed. Updating the schema triggers
+        reindexing of all documents in the data store, which can take hours for large
+        data stores and may incur costs. See
+        [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+        for details.
         """
         return pulumi.get(self, "json_schema")
 
@@ -153,6 +165,12 @@ class _SchemaState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] json_schema: The JSON representation of the schema.
+               Changes are applied in place and must be backward compatible: existing fields
+               can't be removed or have their type changed. Updating the schema triggers
+               reindexing of all documents in the data store, which can take hours for large
+               data stores and may incur costs. See
+               [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+               for details.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[_builtins.str] name: The unique full resource name of the schema. Values are of the format
@@ -212,6 +230,12 @@ class _SchemaState:
     def json_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JSON representation of the schema.
+        Changes are applied in place and must be backward compatible: existing fields
+        can't be removed or have their type changed. Updating the schema triggers
+        reindexing of all documents in the data store, which can take hours for large
+        data stores and may incur costs. See
+        [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+        for details.
         """
         return pulumi.get(self, "json_schema")
 
@@ -294,6 +318,7 @@ class Schema(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores.schemas)
         * How-to Guides
             * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
+            * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
 
         ## Example Usage
 
@@ -346,6 +371,12 @@ class Schema(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] json_schema: The JSON representation of the schema.
+               Changes are applied in place and must be backward compatible: existing fields
+               can't be removed or have their type changed. Updating the schema triggers
+               reindexing of all documents in the data store, which can take hours for large
+               data stores and may incur costs. See
+               [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+               for details.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -366,6 +397,7 @@ class Schema(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores.schemas)
         * How-to Guides
             * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
+            * [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
 
         ## Example Usage
 
@@ -483,6 +515,12 @@ class Schema(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] json_schema: The JSON representation of the schema.
+               Changes are applied in place and must be backward compatible: existing fields
+               can't be removed or have their type changed. Updating the schema triggers
+               reindexing of all documents in the data store, which can take hours for large
+               data stores and may incur costs. See
+               [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+               for details.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[_builtins.str] name: The unique full resource name of the schema. Values are of the format
@@ -532,6 +570,12 @@ class Schema(pulumi.CustomResource):
     def json_schema(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The JSON representation of the schema.
+        Changes are applied in place and must be backward compatible: existing fields
+        can't be removed or have their type changed. Updating the schema triggers
+        reindexing of all documents in the data store, which can take hours for large
+        data stores and may incur costs. See
+        [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+        for details.
         """
         return pulumi.get(self, "json_schema")
 

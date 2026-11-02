@@ -515,6 +515,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
             data_policy_type="RAW_DATA_ACCESS_POLICY",
             data_policy_id="basic_data_policy")
         ```
+
         ### Bigquery Datapolicyv2 Datapolicy Predefined Masking
 
         ```python
@@ -529,6 +530,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
             },
             data_policy_id="predefined_masking_data_policy")
         ```
+
         ### Bigquery Datapolicyv2 Datapolicy Routine
 
         ```python
@@ -558,6 +560,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
                 "routine": custom_masking_routine.id,
             })
         ```
+
         ### Bigquery Datapolicyv2 Datapolicy Withgrantees
 
         ```python
@@ -652,6 +655,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
             data_policy_type="RAW_DATA_ACCESS_POLICY",
             data_policy_id="basic_data_policy")
         ```
+
         ### Bigquery Datapolicyv2 Datapolicy Predefined Masking
 
         ```python
@@ -666,6 +670,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
             },
             data_policy_id="predefined_masking_data_policy")
         ```
+
         ### Bigquery Datapolicyv2 Datapolicy Routine
 
         ```python
@@ -695,6 +700,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
                 "routine": custom_masking_routine.id,
             })
         ```
+
         ### Bigquery Datapolicyv2 Datapolicy Withgrantees
 
         ```python

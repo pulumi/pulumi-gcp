@@ -531,6 +531,7 @@ class Job(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Pubsub
 
         ```python
@@ -653,6 +654,7 @@ class Job(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Encryptions
 
         ```python
@@ -837,6 +839,7 @@ class Job(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Overlays
 
         ```python
@@ -979,6 +982,7 @@ class Job(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Manifests
 
         ```python
@@ -1329,6 +1333,7 @@ class Job(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Pubsub
 
         ```python
@@ -1451,6 +1456,7 @@ class Job(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Encryptions
 
         ```python
@@ -1635,6 +1641,7 @@ class Job(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Overlays
 
         ```python
@@ -1777,6 +1784,7 @@ class Job(pulumi.CustomResource):
                 "label": "key",
             })
         ```
+
         ### Transcoder Job Manifests
 
         ```python

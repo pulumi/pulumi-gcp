@@ -101,6 +101,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Image Guest Os
  * 
  * <pre>
@@ -168,6 +169,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Image Basic Storage Location
  * 
  * <pre>

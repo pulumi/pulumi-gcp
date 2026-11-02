@@ -119,6 +119,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Notebook Execution Custom Env
     /// 
     /// ```csharp
@@ -235,6 +236,202 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
+    /// ### Colab Notebook Execution Workbench Runtime Custom Container
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var outputBucket = new Gcp.Storage.Bucket("output_bucket", new()
+    ///     {
+    ///         Name = "my_bucket",
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var notebook_execution = new Gcp.Colab.NotebookExecution("notebook-execution", new()
+    ///     {
+    ///         DisplayName = "Notebook execution workbench runtime custom container",
+    ///         Location = "us-central1",
+    ///         DirectNotebookSource = new Gcp.Colab.Inputs.NotebookExecutionDirectNotebookSourceArgs
+    ///         {
+    ///             Content = Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = @"    {
+    ///       \""cells\"": [
+    ///         {
+    ///           \""cell_type\"": \""code\"",
+    ///           \""execution_count\"": null,
+    ///           \""metadata\"": {},
+    ///           \""outputs\"": [],
+    ///           \""source\"": [
+    ///             \""print(\\\""Hello, World!\\\"")\""
+    ///           ]
+    ///         }
+    ///       ],
+    ///       \""metadata\"": {
+    ///         \""kernelspec\"": {
+    ///           \""display_name\"": \""Python 3\"",
+    ///           \""language\"": \""python\"",
+    ///           \""name\"": \""python3\""
+    ///         },
+    ///         \""language_info\"": {
+    ///           \""codemirror_mode\"": {
+    ///             \""name\"": \""ipython\"",
+    ///             \""version\"": 3
+    ///           },
+    ///           \""file_extension\"": \"".py\"",
+    ///           \""mimetype\"": \""text/x-python\"",
+    ///           \""name\"": \""python\"",
+    ///           \""nbconvert_exporter\"": \""python\"",
+    ///           \""pygments_lexer\"": \""ipython3\"",
+    ///           \""version\"": \""3.8.5\""
+    ///         }
+    ///       },
+    ///       \""nbformat\"": 4,
+    ///       \""nbformat_minor\"": 4
+    ///     }
+    /// ",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///         CustomEnvironmentSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecArgs
+    ///         {
+    ///             MachineSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs
+    ///             {
+    ///                 MachineType = "n1-standard-2",
+    ///             },
+    ///             PersistentDiskSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs
+    ///             {
+    ///                 DiskType = "pd-ssd",
+    ///                 DiskSizeGb = "100",
+    ///             },
+    ///         },
+    ///         WorkbenchRuntime = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeArgs
+    ///         {
+    ///             CustomContainerImage = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs
+    ///             {
+    ///                 Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///                 Tag = "latest",
+    ///             },
+    ///         },
+    ///         KernelName = "python3",
+    ///         GcsOutputUri = outputBucket.Name.Apply(name =&gt; $"gs://{name}"),
+    ///         ServiceAccount = "my@service-account.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             outputBucket,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Colab Notebook Execution Workbench Runtime Custom Container No Tag
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var outputBucket = new Gcp.Storage.Bucket("output_bucket", new()
+    ///     {
+    ///         Name = "my_bucket",
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var notebook_execution = new Gcp.Colab.NotebookExecution("notebook-execution", new()
+    ///     {
+    ///         DisplayName = "Notebook execution workbench runtime custom container no tag",
+    ///         Location = "us-central1",
+    ///         DirectNotebookSource = new Gcp.Colab.Inputs.NotebookExecutionDirectNotebookSourceArgs
+    ///         {
+    ///             Content = Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = @"    {
+    ///       \""cells\"": [
+    ///         {
+    ///           \""cell_type\"": \""code\"",
+    ///           \""execution_count\"": null,
+    ///           \""metadata\"": {},
+    ///           \""outputs\"": [],
+    ///           \""source\"": [
+    ///             \""print(\\\""Hello, World!\\\"")\""
+    ///           ]
+    ///         }
+    ///       ],
+    ///       \""metadata\"": {
+    ///         \""kernelspec\"": {
+    ///           \""display_name\"": \""Python 3\"",
+    ///           \""language\"": \""python\"",
+    ///           \""name\"": \""python3\""
+    ///         },
+    ///         \""language_info\"": {
+    ///           \""codemirror_mode\"": {
+    ///             \""name\"": \""ipython\"",
+    ///             \""version\"": 3
+    ///           },
+    ///           \""file_extension\"": \"".py\"",
+    ///           \""mimetype\"": \""text/x-python\"",
+    ///           \""name\"": \""python\"",
+    ///           \""nbconvert_exporter\"": \""python\"",
+    ///           \""pygments_lexer\"": \""ipython3\"",
+    ///           \""version\"": \""3.8.5\""
+    ///         }
+    ///       },
+    ///       \""nbformat\"": 4,
+    ///       \""nbformat_minor\"": 4
+    ///     }
+    /// ",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///         CustomEnvironmentSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecArgs
+    ///         {
+    ///             MachineSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs
+    ///             {
+    ///                 MachineType = "n1-standard-2",
+    ///             },
+    ///             PersistentDiskSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs
+    ///             {
+    ///                 DiskType = "pd-ssd",
+    ///                 DiskSizeGb = "100",
+    ///             },
+    ///         },
+    ///         WorkbenchRuntime = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeArgs
+    ///         {
+    ///             CustomContainerImage = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeCustomContainerImageArgs
+    ///             {
+    ///                 Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///             },
+    ///         },
+    ///         KernelName = "python3",
+    ///         GcsOutputUri = outputBucket.Name.Apply(name =&gt; $"gs://{name}"),
+    ///         ServiceAccount = "my@service-account.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             outputBucket,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Colab Notebook Execution Workbench Runtime Vm
     /// 
     /// ```csharp
@@ -331,6 +528,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Notebook Execution Workbench Runtime Vm Name
     /// 
     /// ```csharp
@@ -427,6 +625,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Notebook Execution Full
     /// 
     /// ```csharp
@@ -538,6 +737,7 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// 
     /// ### Colab Notebook Execution Dataform
     /// 
     /// ```csharp
@@ -732,6 +932,12 @@ namespace Pulumi.Gcp.Colab
         public Output<string> GcsOutputUri { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+        /// </summary>
+        [Output("kernelName")]
+        public Output<string?> KernelName { get; private set; } = null!;
+
+        /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations
         /// </summary>
         [Output("location")]
@@ -879,6 +1085,12 @@ namespace Pulumi.Gcp.Colab
         public Input<string> GcsOutputUri { get; set; } = null!;
 
         /// <summary>
+        /// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+        /// </summary>
+        [Input("kernelName")]
+        public Input<string>? KernelName { get; set; }
+
+        /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations
         /// </summary>
         [Input("location", required: true)]
@@ -986,6 +1198,12 @@ namespace Pulumi.Gcp.Colab
         /// </summary>
         [Input("gcsOutputUri")]
         public Input<string>? GcsOutputUri { get; set; }
+
+        /// <summary>
+        /// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+        /// </summary>
+        [Input("kernelName")]
+        public Input<string>? KernelName { get; set; }
 
         /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const testFolder = new gcp.organizations.Folder("test_folder", {
- *     displayName: "tf-test-_29506",
+ *     displayName: "tf-test-_91207",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
@@ -48,6 +48,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [iam],
  * });
  * ```
+ *
  * ### Observability Folder Settings Basic Global
  *
  * ```typescript
@@ -56,7 +57,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const testFolder = new gcp.organizations.Folder("test_folder", {
- *     displayName: "tf-test-_86474",
+ *     displayName: "tf-test-_14939",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });

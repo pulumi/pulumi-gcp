@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.Apphub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apphub Service Full
     /// 
     /// ```csharp

@@ -35,12 +35,44 @@ __all__ = [
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReferenceArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReferenceArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilterArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilterArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs',
@@ -55,18 +87,56 @@ __all__ = [
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReferenceArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReferenceArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReferenceArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReferenceArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFieldArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFieldArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilterArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilterArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReferenceArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReferenceArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilterArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilterArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs',
@@ -81,6 +151,12 @@ __all__ = [
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsArgsDict',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgs',
     'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineArgsDict',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReferenceArgs',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReferenceArgsDict',
     'DataAnalyticsDataAgentIamBindingConditionArgs',
     'DataAnalyticsDataAgentIamBindingConditionArgsDict',
     'DataAnalyticsDataAgentIamMemberConditionArgs',
@@ -533,7 +609,6 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgsDict(TypedDict
     datasource_references: pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgsDict']
     """
     Required. Data sources that are available for answering questions.
-    This Terraform resource currently supports BigQuery table references.
     Structure is documented below.
     """
     example_queries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgsDict']]]]]
@@ -544,6 +619,11 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgsDict(TypedDict
     glossary_terms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgsDict']]]]]
     """
     Optional. Term definitions for the agent's domain.
+    Structure is documented below.
+    """
+    looker_golden_queries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgsDict']]]]]
+    """
+    Optional. A list of golden queries for Looker data sources.
     Structure is documented below.
     """
     options: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgsDict']]]
@@ -562,6 +642,11 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgsDict(TypedDict
     Optional. The basic entry point for data owners creating domain
     knowledge for the agent.
     """
+    user_functions: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsArgsDict']]]
+    """
+    Optional. A collection of user functions to be included in context.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs:
@@ -569,16 +654,19 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs:
                  datasource_references: pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs'],
                  example_queries: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs']]]] = None,
                  glossary_terms: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs']]]] = None,
+                 looker_golden_queries: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgs']]]] = None,
                  options: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs']] = None,
                  schema_relationships: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs']]]] = None,
-                 system_instruction: pulumi.Input[Optional[_builtins.str]] = None):
+                 system_instruction: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_functions: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsArgs']] = None):
         """
         :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs'] datasource_references: Required. Data sources that are available for answering questions.
-               This Terraform resource currently supports BigQuery table references.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs']]] example_queries: Optional. A list of example queries for BigQuery data sources.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs']]] glossary_terms: Optional. Term definitions for the agent's domain.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgs']]] looker_golden_queries: Optional. A list of golden queries for Looker data sources.
                Structure is documented below.
         :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs'] options: Optional. Additional options for the conversation.
                Structure is documented below.
@@ -587,25 +675,30 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] system_instruction: Optional. The basic entry point for data owners creating domain
                knowledge for the agent.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsArgs'] user_functions: Optional. A collection of user functions to be included in context.
+               Structure is documented below.
         """
         pulumi.set(__self__, "datasource_references", datasource_references)
         if example_queries is not None:
             pulumi.set(__self__, "example_queries", example_queries)
         if glossary_terms is not None:
             pulumi.set(__self__, "glossary_terms", glossary_terms)
+        if looker_golden_queries is not None:
+            pulumi.set(__self__, "looker_golden_queries", looker_golden_queries)
         if options is not None:
             pulumi.set(__self__, "options", options)
         if schema_relationships is not None:
             pulumi.set(__self__, "schema_relationships", schema_relationships)
         if system_instruction is not None:
             pulumi.set(__self__, "system_instruction", system_instruction)
+        if user_functions is not None:
+            pulumi.set(__self__, "user_functions", user_functions)
 
     @_builtins.property
     @pulumi.getter(name="datasourceReferences")
     def datasource_references(self) -> pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs']:
         """
         Required. Data sources that are available for answering questions.
-        This Terraform resource currently supports BigQuery table references.
         Structure is documented below.
         """
         return pulumi.get(self, "datasource_references")
@@ -639,6 +732,19 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs:
     @glossary_terms.setter
     def glossary_terms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs']]]]):
         pulumi.set(self, "glossary_terms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lookerGoldenQueries")
+    def looker_golden_queries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgs']]]]:
+        """
+        Optional. A list of golden queries for Looker data sources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "looker_golden_queries")
+
+    @looker_golden_queries.setter
+    def looker_golden_queries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgs']]]]):
+        pulumi.set(self, "looker_golden_queries", value)
 
     @_builtins.property
     @pulumi.getter
@@ -680,27 +786,61 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs:
     def system_instruction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_instruction", value)
 
+    @_builtins.property
+    @pulumi.getter(name="userFunctions")
+    def user_functions(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsArgs']]:
+        """
+        Optional. A collection of user functions to be included in context.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_functions")
+
+    @user_functions.setter
+    def user_functions(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsArgs']]):
+        pulumi.set(self, "user_functions", value)
+
 
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgsDict(TypedDict):
-    bq: pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgsDict']
+    bq: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgsDict']]]
     """
     References to BigQuery tables.
+    Structure is documented below.
+    """
+    looker: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerArgsDict']]]
+    """
+    References to Looker explores.
+    Structure is documented below.
+    """
+    studio: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioArgsDict']]]
+    """
+    References to Looker Studio datasources.
     Structure is documented below.
     """
 
 @pulumi.input_type
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs:
     def __init__(__self__, *,
-                 bq: pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs']):
+                 bq: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs']] = None,
+                 looker: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerArgs']] = None,
+                 studio: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioArgs']] = None):
         """
         :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs'] bq: References to BigQuery tables.
                Structure is documented below.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerArgs'] looker: References to Looker explores.
+               Structure is documented below.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioArgs'] studio: References to Looker Studio datasources.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "bq", bq)
+        if bq is not None:
+            pulumi.set(__self__, "bq", bq)
+        if looker is not None:
+            pulumi.set(__self__, "looker", looker)
+        if studio is not None:
+            pulumi.set(__self__, "studio", studio)
 
     @_builtins.property
     @pulumi.getter
-    def bq(self) -> pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs']:
+    def bq(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs']]:
         """
         References to BigQuery tables.
         Structure is documented below.
@@ -708,11 +848,42 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferenc
         return pulumi.get(self, "bq")
 
     @bq.setter
-    def bq(self, value: pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs']):
+    def bq(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs']]):
         pulumi.set(self, "bq", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def looker(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerArgs']]:
+        """
+        References to Looker explores.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "looker")
+
+    @looker.setter
+    def looker(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerArgs']]):
+        pulumi.set(self, "looker", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def studio(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioArgs']]:
+        """
+        References to Looker Studio datasources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "studio")
+
+    @studio.setter
+    def studio(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioArgs']]):
+        pulumi.set(self, "studio", value)
 
 
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgsDict(TypedDict):
+    property_graph_references: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgsDict']]]]]
+    """
+    Optional. References to BigQuery property graphs.
+    Structure is documented below.
+    """
     table_references: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgsDict']]]]]
     """
     References to BigQuery tables.
@@ -722,13 +893,31 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferenc
 @pulumi.input_type
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs:
     def __init__(__self__, *,
+                 property_graph_references: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs']]]] = None,
                  table_references: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs']]] property_graph_references: Optional. References to BigQuery property graphs.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs']]] table_references: References to BigQuery tables.
                Structure is documented below.
         """
+        if property_graph_references is not None:
+            pulumi.set(__self__, "property_graph_references", property_graph_references)
         if table_references is not None:
             pulumi.set(__self__, "table_references", table_references)
+
+    @_builtins.property
+    @pulumi.getter(name="propertyGraphReferences")
+    def property_graph_references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs']]]]:
+        """
+        Optional. References to BigQuery property graphs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "property_graph_references")
+
+    @property_graph_references.setter
+    def property_graph_references(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs']]]]):
+        pulumi.set(self, "property_graph_references", value)
 
     @_builtins.property
     @pulumi.getter(name="tableReferences")
@@ -744,6 +933,72 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferenc
         pulumi.set(self, "table_references", value)
 
 
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    Required. The dataset that the property graph belongs to.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    Required. The project that the property graph belongs to.
+    """
+    property_graph_id: pulumi.Input[_builtins.str]
+    """
+    Required. The property graph ID.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPropertyGraphReferenceArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[_builtins.str],
+                 project_id: pulumi.Input[_builtins.str],
+                 property_graph_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] dataset_id: Required. The dataset that the property graph belongs to.
+        :param pulumi.Input[_builtins.str] project_id: Required. The project that the property graph belongs to.
+        :param pulumi.Input[_builtins.str] property_graph_id: Required. The property graph ID.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "property_graph_id", property_graph_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The dataset that the property graph belongs to.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The project that the property graph belongs to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="propertyGraphId")
+    def property_graph_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The property graph ID.
+        """
+        return pulumi.get(self, "property_graph_id")
+
+    @property_graph_id.setter
+    def property_graph_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "property_graph_id", value)
+
+
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgsDict(TypedDict):
     dataset_id: pulumi.Input[_builtins.str]
     """
@@ -757,21 +1012,31 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferenc
     """
     The table ID.
     """
+    schema: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgsDict']]]
+    """
+    Optional. The schema of the datasource.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 table_id: pulumi.Input[_builtins.str]):
+                 table_id: pulumi.Input[_builtins.str],
+                 schema: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] dataset_id: The dataset that the table belongs to.
         :param pulumi.Input[_builtins.str] project_id: The project that the table belongs to.
         :param pulumi.Input[_builtins.str] table_id: The table ID.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs'] schema: Optional. The schema of the datasource.
+               Structure is documented below.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "table_id", table_id)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
@@ -809,11 +1074,1068 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferenc
     def table_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "table_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs']]:
+        """
+        Optional. The schema of the datasource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs']]):
+        pulumi.set(self, "schema", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. A textual description of the explore's content and purpose.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Explore display name.
+    """
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgsDict']]]]]
+    """
+    Optional. The fields in the schema.
+    Structure is documented below.
+    """
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgsDict']]]]]
+    """
+    Optional. The filters on the datasource's underlying data.
+    Structure is documented below.
+    """
+    synonyms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of tags or keywords associated with the explore, used for categorization.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs']]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgs']]]] = None,
+                 synonyms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Optional. A textual description of the explore's content and purpose.
+        :param pulumi.Input[_builtins.str] display_name: Optional. Explore display name.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs']]] fields: Optional. The fields in the schema.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgs']]] filters: Optional. The filters on the datasource's underlying data.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] synonyms: Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Optional. A list of tags or keywords associated with the explore, used for categorization.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. A textual description of the explore's content and purpose.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Explore display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs']]]]:
+        """
+        Optional. The fields in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgs']]]]:
+        """
+        Optional. The filters on the datasource's underlying data.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgs']]]]):
+        pulumi.set(self, "filters", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of tags or keywords associated with the explore, used for categorization.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Field category.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. A brief description of the field.
+    """
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The name of the field.
+    """
+    subfields: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+    """
+    synonyms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of alternative names or synonyms that can be used to refer to this field.
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of tags or keywords associated with the field, used for categorization.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The type of the field.
+    """
+    value_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Value format of the field.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFieldArgs:
+    def __init__(__self__, *,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subfields: pulumi.Input[Optional[_builtins.str]] = None,
+                 synonyms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_format: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] category: Optional. Field category.
+        :param pulumi.Input[_builtins.str] description: Optional. A brief description of the field.
+        :param pulumi.Input[_builtins.str] mode: Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+        :param pulumi.Input[_builtins.str] name: Optional. The name of the field.
+        :param pulumi.Input[_builtins.str] subfields: Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] synonyms: Optional. A list of alternative names or synonyms that can be used to refer to this field.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Optional. A list of tags or keywords associated with the field, used for categorization.
+        :param pulumi.Input[_builtins.str] type: Optional. The type of the field.
+        :param pulumi.Input[_builtins.str] value_format: Optional. Value format of the field.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if subfields is not None:
+            pulumi.set(__self__, "subfields", subfields)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value_format is not None:
+            pulumi.set(__self__, "value_format", value_format)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Field category.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "category", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. A brief description of the field.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The name of the field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subfields(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+        """
+        return pulumi.get(self, "subfields")
+
+    @subfields.setter
+    def subfields(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subfields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of alternative names or synonyms that can be used to refer to this field.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of tags or keywords associated with the field, used for categorization.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The type of the field.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueFormat")
+    def value_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Value format of the field.
+        """
+        return pulumi.get(self, "value_format")
+
+    @value_format.setter
+    def value_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value_format", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Required. The field to filter on.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The value for the field to filter on.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceSchemaFilterArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: Required. The field to filter on.
+        :param pulumi.Input[_builtins.str] type: Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+        :param pulumi.Input[_builtins.str] value: Optional. The value for the field to filter on.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Required. The field to filter on.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The value for the field to filter on.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerArgsDict(TypedDict):
+    explore_references: pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceArgsDict']]]
+    """
+    Required. References to Looker explores.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerArgs:
+    def __init__(__self__, *,
+                 explore_references: pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceArgs']]] explore_references: Required. References to Looker explores.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "explore_references", explore_references)
+
+    @_builtins.property
+    @pulumi.getter(name="exploreReferences")
+    def explore_references(self) -> pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceArgs']]]:
+        """
+        Required. References to Looker explores.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "explore_references")
+
+    @explore_references.setter
+    def explore_references(self, value: pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceArgs']]]):
+        pulumi.set(self, "explore_references", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceArgsDict(TypedDict):
+    explore: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the LookML Explore.
+    """
+    lookml_model: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the LookML model.
+    """
+    looker_instance_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The base URL of the Looker instance.
+    """
+    private_looker_instance_info: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgsDict']]]
+    """
+    Optional. Private Looker instance info if the Looker instance is behind a private network.
+    Structure is documented below.
+    """
+    schema: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaArgsDict']]]
+    """
+    Optional. The schema of the datasource.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceArgs:
+    def __init__(__self__, *,
+                 explore: pulumi.Input[_builtins.str],
+                 lookml_model: pulumi.Input[_builtins.str],
+                 looker_instance_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_looker_instance_info: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs']] = None,
+                 schema: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] explore: Required. Name of the LookML Explore.
+        :param pulumi.Input[_builtins.str] lookml_model: Required. Name of the LookML model.
+        :param pulumi.Input[_builtins.str] looker_instance_uri: Optional. The base URL of the Looker instance.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs'] private_looker_instance_info: Optional. Private Looker instance info if the Looker instance is behind a private network.
+               Structure is documented below.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaArgs'] schema: Optional. The schema of the datasource.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "explore", explore)
+        pulumi.set(__self__, "lookml_model", lookml_model)
+        if looker_instance_uri is not None:
+            pulumi.set(__self__, "looker_instance_uri", looker_instance_uri)
+        if private_looker_instance_info is not None:
+            pulumi.set(__self__, "private_looker_instance_info", private_looker_instance_info)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @_builtins.property
+    @pulumi.getter
+    def explore(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Name of the LookML Explore.
+        """
+        return pulumi.get(self, "explore")
+
+    @explore.setter
+    def explore(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "explore", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lookmlModel")
+    def lookml_model(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Name of the LookML model.
+        """
+        return pulumi.get(self, "lookml_model")
+
+    @lookml_model.setter
+    def lookml_model(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "lookml_model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lookerInstanceUri")
+    def looker_instance_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The base URL of the Looker instance.
+        """
+        return pulumi.get(self, "looker_instance_uri")
+
+    @looker_instance_uri.setter
+    def looker_instance_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "looker_instance_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateLookerInstanceInfo")
+    def private_looker_instance_info(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs']]:
+        """
+        Optional. Private Looker instance info if the Looker instance is behind a private network.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_looker_instance_info")
+
+    @private_looker_instance_info.setter
+    def private_looker_instance_info(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs']]):
+        pulumi.set(self, "private_looker_instance_info", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaArgs']]:
+        """
+        Optional. The schema of the datasource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaArgs']]):
+        pulumi.set(self, "schema", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgsDict(TypedDict):
+    looker_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The Looker instance ID.
+    """
+    service_directory_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The service directory name of the Looker instance.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs:
+    def __init__(__self__, *,
+                 looker_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] looker_instance_id: Optional. The Looker instance ID.
+        :param pulumi.Input[_builtins.str] service_directory_name: Optional. The service directory name of the Looker instance.
+        """
+        if looker_instance_id is not None:
+            pulumi.set(__self__, "looker_instance_id", looker_instance_id)
+        if service_directory_name is not None:
+            pulumi.set(__self__, "service_directory_name", service_directory_name)
+
+    @_builtins.property
+    @pulumi.getter(name="lookerInstanceId")
+    def looker_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The Looker instance ID.
+        """
+        return pulumi.get(self, "looker_instance_id")
+
+    @looker_instance_id.setter
+    def looker_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "looker_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryName")
+    def service_directory_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The service directory name of the Looker instance.
+        """
+        return pulumi.get(self, "service_directory_name")
+
+    @service_directory_name.setter
+    def service_directory_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_directory_name", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. A textual description of the explore's content and purpose.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Explore display name.
+    """
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgsDict']]]]]
+    """
+    Optional. The fields in the schema.
+    Structure is documented below.
+    """
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgsDict']]]]]
+    """
+    Optional. The filters on the datasource's underlying data.
+    Structure is documented below.
+    """
+    synonyms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of tags or keywords associated with the explore, used for categorization.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs']]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs']]]] = None,
+                 synonyms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Optional. A textual description of the explore's content and purpose.
+        :param pulumi.Input[_builtins.str] display_name: Optional. Explore display name.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs']]] fields: Optional. The fields in the schema.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs']]] filters: Optional. The filters on the datasource's underlying data.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] synonyms: Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Optional. A list of tags or keywords associated with the explore, used for categorization.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. A textual description of the explore's content and purpose.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Explore display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs']]]]:
+        """
+        Optional. The fields in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs']]]]:
+        """
+        Optional. The filters on the datasource's underlying data.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs']]]]):
+        pulumi.set(self, "filters", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of tags or keywords associated with the explore, used for categorization.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Field category.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. A brief description of the field.
+    """
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The name of the field.
+    """
+    subfields: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+    """
+    synonyms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of alternative names or synonyms that can be used to refer to this field.
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of tags or keywords associated with the field, used for categorization.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The type of the field.
+    """
+    value_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Value format of the field.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs:
+    def __init__(__self__, *,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subfields: pulumi.Input[Optional[_builtins.str]] = None,
+                 synonyms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_format: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] category: Optional. Field category.
+        :param pulumi.Input[_builtins.str] description: Optional. A brief description of the field.
+        :param pulumi.Input[_builtins.str] mode: Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+        :param pulumi.Input[_builtins.str] name: Optional. The name of the field.
+        :param pulumi.Input[_builtins.str] subfields: Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] synonyms: Optional. A list of alternative names or synonyms that can be used to refer to this field.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Optional. A list of tags or keywords associated with the field, used for categorization.
+        :param pulumi.Input[_builtins.str] type: Optional. The type of the field.
+        :param pulumi.Input[_builtins.str] value_format: Optional. Value format of the field.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if subfields is not None:
+            pulumi.set(__self__, "subfields", subfields)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value_format is not None:
+            pulumi.set(__self__, "value_format", value_format)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Field category.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "category", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. A brief description of the field.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The name of the field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subfields(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+        """
+        return pulumi.get(self, "subfields")
+
+    @subfields.setter
+    def subfields(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subfields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of alternative names or synonyms that can be used to refer to this field.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of tags or keywords associated with the field, used for categorization.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The type of the field.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueFormat")
+    def value_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Value format of the field.
+        """
+        return pulumi.get(self, "value_format")
+
+    @value_format.setter
+    def value_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value_format", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Required. The field to filter on.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The value for the field to filter on.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: Required. The field to filter on.
+        :param pulumi.Input[_builtins.str] type: Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+        :param pulumi.Input[_builtins.str] value: Optional. The value for the field to filter on.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Required. The field to filter on.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The value for the field to filter on.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioArgsDict(TypedDict):
+    studio_references: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReferenceArgsDict']]]]]
+    """
+    Optional. The references to the studio datasources.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioArgs:
+    def __init__(__self__, *,
+                 studio_references: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReferenceArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReferenceArgs']]] studio_references: Optional. The references to the studio datasources.
+               Structure is documented below.
+        """
+        if studio_references is not None:
+            pulumi.set(__self__, "studio_references", studio_references)
+
+    @_builtins.property
+    @pulumi.getter(name="studioReferences")
+    def studio_references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReferenceArgs']]]]:
+        """
+        Optional. The references to the studio datasources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "studio_references")
+
+    @studio_references.setter
+    def studio_references(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReferenceArgs']]]]):
+        pulumi.set(self, "studio_references", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReferenceArgsDict(TypedDict):
+    datasource_id: pulumi.Input[_builtins.str]
+    """
+    Required. The ID of the datasource.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesStudioStudioReferenceArgs:
+    def __init__(__self__, *,
+                 datasource_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] datasource_id: Required. The ID of the datasource.
+        """
+        pulumi.set(__self__, "datasource_id", datasource_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasourceId")
+    def datasource_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The ID of the datasource.
+        """
+        return pulumi.get(self, "datasource_id")
+
+    @datasource_id.setter
+    def datasource_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "datasource_id", value)
+
 
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgsDict(TypedDict):
     natural_language_question: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. A natural language question that a user might ask.
+    """
+    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgsDict']]]]]
+    """
+    Optional. The list of query parameters.
+    Structure is documented below.
     """
     sql_query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -825,14 +2147,19 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgsDi
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs:
     def __init__(__self__, *,
                  natural_language_question: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs']]]] = None,
                  sql_query: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] natural_language_question: Optional. A natural language question that a user might ask.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs']]] parameters: Optional. The list of query parameters.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] sql_query: Optional. The SQL query that should be generated to answer
                the natural language question.
         """
         if natural_language_question is not None:
             pulumi.set(__self__, "natural_language_question", natural_language_question)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if sql_query is not None:
             pulumi.set(__self__, "sql_query", sql_query)
 
@@ -849,6 +2176,19 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs:
         pulumi.set(self, "natural_language_question", value)
 
     @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs']]]]:
+        """
+        Optional. The list of query parameters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
     @pulumi.getter(name="sqlQuery")
     def sql_query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -860,6 +2200,73 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs:
     @sql_query.setter
     def sql_query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_query", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgsDict(TypedDict):
+    data_type: pulumi.Input[_builtins.str]
+    """
+    Required. The data type of the parameter, e.g. "STRING", "INT64", "DATE".
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Required. The name of the parameter reference in the SQL query.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The description of the parameter that can be used by the LLM to extract the parameter value from the user question.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryParameterArgs:
+    def __init__(__self__, *,
+                 data_type: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] data_type: Required. The data type of the parameter, e.g. "STRING", "INT64", "DATE".
+        :param pulumi.Input[_builtins.str] name: Required. The name of the parameter reference in the SQL query.
+        :param pulumi.Input[_builtins.str] description: Optional. The description of the parameter that can be used by the LLM to extract the parameter value from the user question.
+        """
+        pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The data type of the parameter, e.g. "STRING", "INT64", "DATE".
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The name of the parameter reference in the SQL query.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The description of the parameter that can be used by the LLM to extract the parameter value from the user question.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
 
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgsDict(TypedDict):
@@ -929,6 +2336,276 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs:
         pulumi.set(self, "labels", value)
 
 
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgsDict(TypedDict):
+    looker_query: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryArgsDict']]]
+    """
+    Optional. The Looker Query corresponding to the natural language questions.
+    Structure is documented below.
+    """
+    natural_language_questions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. Natural language questions that a user might ask.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryArgs:
+    def __init__(__self__, *,
+                 looker_query: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryArgs']] = None,
+                 natural_language_questions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryArgs'] looker_query: Optional. The Looker Query corresponding to the natural language questions.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] natural_language_questions: Optional. Natural language questions that a user might ask.
+        """
+        if looker_query is not None:
+            pulumi.set(__self__, "looker_query", looker_query)
+        if natural_language_questions is not None:
+            pulumi.set(__self__, "natural_language_questions", natural_language_questions)
+
+    @_builtins.property
+    @pulumi.getter(name="lookerQuery")
+    def looker_query(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryArgs']]:
+        """
+        Optional. The Looker Query corresponding to the natural language questions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "looker_query")
+
+    @looker_query.setter
+    def looker_query(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryArgs']]):
+        pulumi.set(self, "looker_query", value)
+
+    @_builtins.property
+    @pulumi.getter(name="naturalLanguageQuestions")
+    def natural_language_questions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Natural language questions that a user might ask.
+        """
+        return pulumi.get(self, "natural_language_questions")
+
+    @natural_language_questions.setter
+    def natural_language_questions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "natural_language_questions", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryArgsDict(TypedDict):
+    explore: pulumi.Input[_builtins.str]
+    """
+    Required. The LookML explore used to generate the query.
+    """
+    model: pulumi.Input[_builtins.str]
+    """
+    Required. The LookML model used to generate the query.
+    """
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The short alphanumeric identifier for the query, used for share links and Explore URLs.
+    """
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. The fields to retrieve from the explore.
+    """
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilterArgsDict']]]]]
+    """
+    Optional. The filters to apply to the explore.
+    Structure is documented below.
+    """
+    limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Limit in the query.
+    """
+    query_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The primary identifier for the query resource in Looker.
+    """
+    sorts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. The sorts to apply to the explore.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryArgs:
+    def __init__(__self__, *,
+                 explore: pulumi.Input[_builtins.str],
+                 model: pulumi.Input[_builtins.str],
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilterArgs']]]] = None,
+                 limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sorts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] explore: Required. The LookML explore used to generate the query.
+        :param pulumi.Input[_builtins.str] model: Required. The LookML model used to generate the query.
+        :param pulumi.Input[_builtins.str] client_id: Optional. The short alphanumeric identifier for the query, used for share links and Explore URLs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: Optional. The fields to retrieve from the explore.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilterArgs']]] filters: Optional. The filters to apply to the explore.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] limit: Optional. Limit in the query.
+        :param pulumi.Input[_builtins.str] query_id: Optional. The primary identifier for the query resource in Looker.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sorts: Optional. The sorts to apply to the explore.
+        """
+        pulumi.set(__self__, "explore", explore)
+        pulumi.set(__self__, "model", model)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if query_id is not None:
+            pulumi.set(__self__, "query_id", query_id)
+        if sorts is not None:
+            pulumi.set(__self__, "sorts", sorts)
+
+    @_builtins.property
+    @pulumi.getter
+    def explore(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The LookML explore used to generate the query.
+        """
+        return pulumi.get(self, "explore")
+
+    @explore.setter
+    def explore(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "explore", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The LookML model used to generate the query.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The short alphanumeric identifier for the query, used for share links and Explore URLs.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. The fields to retrieve from the explore.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilterArgs']]]]:
+        """
+        Optional. The filters to apply to the explore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilterArgs']]]]):
+        pulumi.set(self, "filters", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Limit in the query.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryId")
+    def query_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The primary identifier for the query resource in Looker.
+        """
+        return pulumi.get(self, "query_id")
+
+    @query_id.setter
+    def query_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "query_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sorts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. The sorts to apply to the explore.
+        """
+        return pulumi.get(self, "sorts")
+
+    @sorts.setter
+    def sorts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "sorts", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilterArgsDict(TypedDict):
+    field: pulumi.Input[_builtins.str]
+    """
+    Required. The field to filter on.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The value for the field to filter on.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextLookerGoldenQueryLookerQueryFilterArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: Required. The field to filter on.
+        :param pulumi.Input[_builtins.str] value: Optional. The value for the field to filter on.
+        """
+        pulumi.set(__self__, "field", field)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The field to filter on.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The value for the field to filter on.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgsDict(TypedDict):
     analysis: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgsDict']]]
     """
@@ -940,22 +2617,30 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgsDict(Ty
     Optional. Options for datasource configuration.
     Structure is documented below.
     """
+    model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The model to use for the agent loop.
+    """
 
 @pulumi.input_type
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs:
     def __init__(__self__, *,
                  analysis: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs']] = None,
-                 datasource: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs']] = None):
+                 datasource: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs']] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs'] analysis: Optional. Options for analysis.
                Structure is documented below.
         :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs'] datasource: Optional. Options for datasource configuration.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] model: Optional. The model to use for the agent loop.
         """
         if analysis is not None:
             pulumi.set(__self__, "analysis", analysis)
         if datasource is not None:
             pulumi.set(__self__, "datasource", datasource)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
 
     @_builtins.property
     @pulumi.getter
@@ -982,6 +2667,18 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs:
     @datasource.setter
     def datasource(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs']]):
         pulumi.set(self, "datasource", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The model to use for the agent loop.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model", value)
 
 
 class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgsDict(TypedDict):
@@ -1221,8 +2918,6 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship
     paths: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
     Required. The ordered list of paths within the table schema.
-
-    <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
     """
     table_fqn: pulumi.Input[_builtins.str]
     """
@@ -1236,8 +2931,6 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship
                  table_fqn: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] paths: Required. The ordered list of paths within the table schema.
-               
-               <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
         :param pulumi.Input[_builtins.str] table_fqn: Required. The service-qualified full resource name of the table.
         """
         pulumi.set(__self__, "paths", paths)
@@ -1248,8 +2941,6 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship
     def paths(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         Required. The ordered list of paths within the table schema.
-
-        <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
         """
         return pulumi.get(self, "paths")
 
@@ -1270,11 +2961,169 @@ class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship
         pulumi.set(self, "table_fqn", value)
 
 
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsArgsDict(TypedDict):
+    bq_routines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineArgsDict']]]]]
+    """
+    Optional. A list of BigQuery routines to include in the context.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsArgs:
+    def __init__(__self__, *,
+                 bq_routines: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineArgs']]] bq_routines: Optional. A list of BigQuery routines to include in the context.
+               Structure is documented below.
+        """
+        if bq_routines is not None:
+            pulumi.set(__self__, "bq_routines", bq_routines)
+
+    @_builtins.property
+    @pulumi.getter(name="bqRoutines")
+    def bq_routines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineArgs']]]]:
+        """
+        Optional. A list of BigQuery routines to include in the context.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bq_routines")
+
+    @bq_routines.setter
+    def bq_routines(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineArgs']]]]):
+        pulumi.set(self, "bq_routines", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. User override or addition to description, to tell the agent when to use the UDF.
+    """
+    routine_reference: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReferenceArgsDict']]]
+    """
+    Optional. The reference to the BigQuery routine.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine_reference: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReferenceArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Optional. User override or addition to description, to tell the agent when to use the UDF.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReferenceArgs'] routine_reference: Optional. The reference to the BigQuery routine.
+               Structure is documented below.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if routine_reference is not None:
+            pulumi.set(__self__, "routine_reference", routine_reference)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. User override or addition to description, to tell the agent when to use the UDF.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routineReference")
+    def routine_reference(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReferenceArgs']]:
+        """
+        Optional. The reference to the BigQuery routine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "routine_reference")
+
+    @routine_reference.setter
+    def routine_reference(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReferenceArgs']]):
+        pulumi.set(self, "routine_reference", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReferenceArgsDict(TypedDict):
+    dataset_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The dataset ID of the routine.
+    """
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The project ID of the routine.
+    """
+    routine_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The routine ID of the routine.
+
+    <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextUserFunctionsBqRoutineRoutineReferenceArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] dataset_id: Optional. The dataset ID of the routine.
+        :param pulumi.Input[_builtins.str] project_id: Optional. The project ID of the routine.
+        :param pulumi.Input[_builtins.str] routine_id: Optional. The routine ID of the routine.
+               
+               <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
+        """
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if routine_id is not None:
+            pulumi.set(__self__, "routine_id", routine_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The dataset ID of the routine.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dataset_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The project ID of the routine.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routineId")
+    def routine_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The routine ID of the routine.
+
+        <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
+        """
+        return pulumi.get(self, "routine_id")
+
+    @routine_id.setter
+    def routine_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "routine_id", value)
+
+
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgsDict(TypedDict):
     datasource_references: pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgsDict']
     """
     Required. Data sources that are available for answering questions.
-    This Terraform resource currently supports BigQuery table references.
     Structure is documented below.
     """
     example_queries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgsDict']]]]]
@@ -1285,6 +3134,11 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgsDict(TypedDict):
     glossary_terms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgsDict']]]]]
     """
     Optional. Term definitions for the agent's domain.
+    Structure is documented below.
+    """
+    looker_golden_queries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryArgsDict']]]]]
+    """
+    Optional. A list of golden queries for Looker data sources.
     Structure is documented below.
     """
     options: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgsDict']]]
@@ -1303,6 +3157,11 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgsDict(TypedDict):
     Optional. The basic entry point for data owners creating domain
     knowledge for the agent.
     """
+    user_functions: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsArgsDict']]]
+    """
+    Optional. A collection of user functions to be included in context.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs:
@@ -1310,16 +3169,19 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs:
                  datasource_references: pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs'],
                  example_queries: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs']]]] = None,
                  glossary_terms: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs']]]] = None,
+                 looker_golden_queries: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryArgs']]]] = None,
                  options: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs']] = None,
                  schema_relationships: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs']]]] = None,
-                 system_instruction: pulumi.Input[Optional[_builtins.str]] = None):
+                 system_instruction: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_functions: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsArgs']] = None):
         """
         :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs'] datasource_references: Required. Data sources that are available for answering questions.
-               This Terraform resource currently supports BigQuery table references.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs']]] example_queries: Optional. A list of example queries for BigQuery data sources.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs']]] glossary_terms: Optional. Term definitions for the agent's domain.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryArgs']]] looker_golden_queries: Optional. A list of golden queries for Looker data sources.
                Structure is documented below.
         :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs'] options: Optional. Additional options for the conversation.
                Structure is documented below.
@@ -1328,25 +3190,30 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] system_instruction: Optional. The basic entry point for data owners creating domain
                knowledge for the agent.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsArgs'] user_functions: Optional. A collection of user functions to be included in context.
+               Structure is documented below.
         """
         pulumi.set(__self__, "datasource_references", datasource_references)
         if example_queries is not None:
             pulumi.set(__self__, "example_queries", example_queries)
         if glossary_terms is not None:
             pulumi.set(__self__, "glossary_terms", glossary_terms)
+        if looker_golden_queries is not None:
+            pulumi.set(__self__, "looker_golden_queries", looker_golden_queries)
         if options is not None:
             pulumi.set(__self__, "options", options)
         if schema_relationships is not None:
             pulumi.set(__self__, "schema_relationships", schema_relationships)
         if system_instruction is not None:
             pulumi.set(__self__, "system_instruction", system_instruction)
+        if user_functions is not None:
+            pulumi.set(__self__, "user_functions", user_functions)
 
     @_builtins.property
     @pulumi.getter(name="datasourceReferences")
     def datasource_references(self) -> pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs']:
         """
         Required. Data sources that are available for answering questions.
-        This Terraform resource currently supports BigQuery table references.
         Structure is documented below.
         """
         return pulumi.get(self, "datasource_references")
@@ -1380,6 +3247,19 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs:
     @glossary_terms.setter
     def glossary_terms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs']]]]):
         pulumi.set(self, "glossary_terms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lookerGoldenQueries")
+    def looker_golden_queries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryArgs']]]]:
+        """
+        Optional. A list of golden queries for Looker data sources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "looker_golden_queries")
+
+    @looker_golden_queries.setter
+    def looker_golden_queries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryArgs']]]]):
+        pulumi.set(self, "looker_golden_queries", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1421,27 +3301,61 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs:
     def system_instruction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_instruction", value)
 
+    @_builtins.property
+    @pulumi.getter(name="userFunctions")
+    def user_functions(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsArgs']]:
+        """
+        Optional. A collection of user functions to be included in context.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_functions")
+
+    @user_functions.setter
+    def user_functions(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsArgs']]):
+        pulumi.set(self, "user_functions", value)
+
 
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgsDict(TypedDict):
-    bq: pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgsDict']
+    bq: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgsDict']]]
     """
     References to BigQuery tables.
+    Structure is documented below.
+    """
+    looker: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerArgsDict']]]
+    """
+    References to Looker explores.
+    Structure is documented below.
+    """
+    studio: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioArgsDict']]]
+    """
+    References to Looker Studio datasources.
     Structure is documented below.
     """
 
 @pulumi.input_type
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs:
     def __init__(__self__, *,
-                 bq: pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs']):
+                 bq: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs']] = None,
+                 looker: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerArgs']] = None,
+                 studio: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioArgs']] = None):
         """
         :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs'] bq: References to BigQuery tables.
                Structure is documented below.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerArgs'] looker: References to Looker explores.
+               Structure is documented below.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioArgs'] studio: References to Looker Studio datasources.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "bq", bq)
+        if bq is not None:
+            pulumi.set(__self__, "bq", bq)
+        if looker is not None:
+            pulumi.set(__self__, "looker", looker)
+        if studio is not None:
+            pulumi.set(__self__, "studio", studio)
 
     @_builtins.property
     @pulumi.getter
-    def bq(self) -> pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs']:
+    def bq(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs']]:
         """
         References to BigQuery tables.
         Structure is documented below.
@@ -1449,11 +3363,42 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences
         return pulumi.get(self, "bq")
 
     @bq.setter
-    def bq(self, value: pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs']):
+    def bq(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs']]):
         pulumi.set(self, "bq", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def looker(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerArgs']]:
+        """
+        References to Looker explores.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "looker")
+
+    @looker.setter
+    def looker(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerArgs']]):
+        pulumi.set(self, "looker", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def studio(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioArgs']]:
+        """
+        References to Looker Studio datasources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "studio")
+
+    @studio.setter
+    def studio(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioArgs']]):
+        pulumi.set(self, "studio", value)
 
 
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgsDict(TypedDict):
+    property_graph_references: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReferenceArgsDict']]]]]
+    """
+    Optional. References to BigQuery property graphs.
+    Structure is documented below.
+    """
     table_references: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgsDict']]]]]
     """
     References to BigQuery tables.
@@ -1463,13 +3408,31 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences
 @pulumi.input_type
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs:
     def __init__(__self__, *,
+                 property_graph_references: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReferenceArgs']]]] = None,
                  table_references: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReferenceArgs']]] property_graph_references: Optional. References to BigQuery property graphs.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs']]] table_references: References to BigQuery tables.
                Structure is documented below.
         """
+        if property_graph_references is not None:
+            pulumi.set(__self__, "property_graph_references", property_graph_references)
         if table_references is not None:
             pulumi.set(__self__, "table_references", table_references)
+
+    @_builtins.property
+    @pulumi.getter(name="propertyGraphReferences")
+    def property_graph_references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReferenceArgs']]]]:
+        """
+        Optional. References to BigQuery property graphs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "property_graph_references")
+
+    @property_graph_references.setter
+    def property_graph_references(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReferenceArgs']]]]):
+        pulumi.set(self, "property_graph_references", value)
 
     @_builtins.property
     @pulumi.getter(name="tableReferences")
@@ -1485,6 +3448,72 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences
         pulumi.set(self, "table_references", value)
 
 
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReferenceArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    Required. The dataset that the property graph belongs to.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    Required. The project that the property graph belongs to.
+    """
+    property_graph_id: pulumi.Input[_builtins.str]
+    """
+    Required. The property graph ID.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPropertyGraphReferenceArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[_builtins.str],
+                 project_id: pulumi.Input[_builtins.str],
+                 property_graph_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] dataset_id: Required. The dataset that the property graph belongs to.
+        :param pulumi.Input[_builtins.str] project_id: Required. The project that the property graph belongs to.
+        :param pulumi.Input[_builtins.str] property_graph_id: Required. The property graph ID.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "property_graph_id", property_graph_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The dataset that the property graph belongs to.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The project that the property graph belongs to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="propertyGraphId")
+    def property_graph_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The property graph ID.
+        """
+        return pulumi.get(self, "property_graph_id")
+
+    @property_graph_id.setter
+    def property_graph_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "property_graph_id", value)
+
+
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgsDict(TypedDict):
     dataset_id: pulumi.Input[_builtins.str]
     """
@@ -1498,21 +3527,31 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences
     """
     The table ID.
     """
+    schema: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaArgsDict']]]
+    """
+    Optional. The schema of the datasource.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 table_id: pulumi.Input[_builtins.str]):
+                 table_id: pulumi.Input[_builtins.str],
+                 schema: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] dataset_id: The dataset that the table belongs to.
         :param pulumi.Input[_builtins.str] project_id: The project that the table belongs to.
         :param pulumi.Input[_builtins.str] table_id: The table ID.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaArgs'] schema: Optional. The schema of the datasource.
+               Structure is documented below.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "table_id", table_id)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
@@ -1550,11 +3589,1068 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences
     def table_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "table_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaArgs']]:
+        """
+        Optional. The schema of the datasource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaArgs']]):
+        pulumi.set(self, "schema", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. A textual description of the explore's content and purpose.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Explore display name.
+    """
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFieldArgsDict']]]]]
+    """
+    Optional. The fields in the schema.
+    Structure is documented below.
+    """
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilterArgsDict']]]]]
+    """
+    Optional. The filters on the datasource's underlying data.
+    Structure is documented below.
+    """
+    synonyms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of tags or keywords associated with the explore, used for categorization.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFieldArgs']]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilterArgs']]]] = None,
+                 synonyms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Optional. A textual description of the explore's content and purpose.
+        :param pulumi.Input[_builtins.str] display_name: Optional. Explore display name.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFieldArgs']]] fields: Optional. The fields in the schema.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilterArgs']]] filters: Optional. The filters on the datasource's underlying data.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] synonyms: Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Optional. A list of tags or keywords associated with the explore, used for categorization.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. A textual description of the explore's content and purpose.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Explore display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFieldArgs']]]]:
+        """
+        Optional. The fields in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilterArgs']]]]:
+        """
+        Optional. The filters on the datasource's underlying data.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilterArgs']]]]):
+        pulumi.set(self, "filters", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of tags or keywords associated with the explore, used for categorization.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFieldArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Field category.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. A brief description of the field.
+    """
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The name of the field.
+    """
+    subfields: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+    """
+    synonyms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of alternative names or synonyms that can be used to refer to this field.
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of tags or keywords associated with the field, used for categorization.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The type of the field.
+    """
+    value_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Value format of the field.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFieldArgs:
+    def __init__(__self__, *,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subfields: pulumi.Input[Optional[_builtins.str]] = None,
+                 synonyms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_format: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] category: Optional. Field category.
+        :param pulumi.Input[_builtins.str] description: Optional. A brief description of the field.
+        :param pulumi.Input[_builtins.str] mode: Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+        :param pulumi.Input[_builtins.str] name: Optional. The name of the field.
+        :param pulumi.Input[_builtins.str] subfields: Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] synonyms: Optional. A list of alternative names or synonyms that can be used to refer to this field.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Optional. A list of tags or keywords associated with the field, used for categorization.
+        :param pulumi.Input[_builtins.str] type: Optional. The type of the field.
+        :param pulumi.Input[_builtins.str] value_format: Optional. Value format of the field.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if subfields is not None:
+            pulumi.set(__self__, "subfields", subfields)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value_format is not None:
+            pulumi.set(__self__, "value_format", value_format)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Field category.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "category", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. A brief description of the field.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The name of the field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subfields(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+        """
+        return pulumi.get(self, "subfields")
+
+    @subfields.setter
+    def subfields(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subfields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of alternative names or synonyms that can be used to refer to this field.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of tags or keywords associated with the field, used for categorization.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The type of the field.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueFormat")
+    def value_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Value format of the field.
+        """
+        return pulumi.get(self, "value_format")
+
+    @value_format.setter
+    def value_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value_format", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilterArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Required. The field to filter on.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The value for the field to filter on.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceSchemaFilterArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: Required. The field to filter on.
+        :param pulumi.Input[_builtins.str] type: Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+        :param pulumi.Input[_builtins.str] value: Optional. The value for the field to filter on.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Required. The field to filter on.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The value for the field to filter on.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerArgsDict(TypedDict):
+    explore_references: pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceArgsDict']]]
+    """
+    Required. References to Looker explores.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerArgs:
+    def __init__(__self__, *,
+                 explore_references: pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceArgs']]] explore_references: Required. References to Looker explores.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "explore_references", explore_references)
+
+    @_builtins.property
+    @pulumi.getter(name="exploreReferences")
+    def explore_references(self) -> pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceArgs']]]:
+        """
+        Required. References to Looker explores.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "explore_references")
+
+    @explore_references.setter
+    def explore_references(self, value: pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceArgs']]]):
+        pulumi.set(self, "explore_references", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceArgsDict(TypedDict):
+    explore: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the LookML Explore.
+    """
+    lookml_model: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the LookML model.
+    """
+    looker_instance_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The base URL of the Looker instance.
+    """
+    private_looker_instance_info: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgsDict']]]
+    """
+    Optional. Private Looker instance info if the Looker instance is behind a private network.
+    Structure is documented below.
+    """
+    schema: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaArgsDict']]]
+    """
+    Optional. The schema of the datasource.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceArgs:
+    def __init__(__self__, *,
+                 explore: pulumi.Input[_builtins.str],
+                 lookml_model: pulumi.Input[_builtins.str],
+                 looker_instance_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_looker_instance_info: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs']] = None,
+                 schema: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] explore: Required. Name of the LookML Explore.
+        :param pulumi.Input[_builtins.str] lookml_model: Required. Name of the LookML model.
+        :param pulumi.Input[_builtins.str] looker_instance_uri: Optional. The base URL of the Looker instance.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs'] private_looker_instance_info: Optional. Private Looker instance info if the Looker instance is behind a private network.
+               Structure is documented below.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaArgs'] schema: Optional. The schema of the datasource.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "explore", explore)
+        pulumi.set(__self__, "lookml_model", lookml_model)
+        if looker_instance_uri is not None:
+            pulumi.set(__self__, "looker_instance_uri", looker_instance_uri)
+        if private_looker_instance_info is not None:
+            pulumi.set(__self__, "private_looker_instance_info", private_looker_instance_info)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @_builtins.property
+    @pulumi.getter
+    def explore(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Name of the LookML Explore.
+        """
+        return pulumi.get(self, "explore")
+
+    @explore.setter
+    def explore(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "explore", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lookmlModel")
+    def lookml_model(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Name of the LookML model.
+        """
+        return pulumi.get(self, "lookml_model")
+
+    @lookml_model.setter
+    def lookml_model(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "lookml_model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lookerInstanceUri")
+    def looker_instance_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The base URL of the Looker instance.
+        """
+        return pulumi.get(self, "looker_instance_uri")
+
+    @looker_instance_uri.setter
+    def looker_instance_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "looker_instance_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateLookerInstanceInfo")
+    def private_looker_instance_info(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs']]:
+        """
+        Optional. Private Looker instance info if the Looker instance is behind a private network.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_looker_instance_info")
+
+    @private_looker_instance_info.setter
+    def private_looker_instance_info(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs']]):
+        pulumi.set(self, "private_looker_instance_info", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaArgs']]:
+        """
+        Optional. The schema of the datasource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaArgs']]):
+        pulumi.set(self, "schema", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgsDict(TypedDict):
+    looker_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The Looker instance ID.
+    """
+    service_directory_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The service directory name of the Looker instance.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferencePrivateLookerInstanceInfoArgs:
+    def __init__(__self__, *,
+                 looker_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] looker_instance_id: Optional. The Looker instance ID.
+        :param pulumi.Input[_builtins.str] service_directory_name: Optional. The service directory name of the Looker instance.
+        """
+        if looker_instance_id is not None:
+            pulumi.set(__self__, "looker_instance_id", looker_instance_id)
+        if service_directory_name is not None:
+            pulumi.set(__self__, "service_directory_name", service_directory_name)
+
+    @_builtins.property
+    @pulumi.getter(name="lookerInstanceId")
+    def looker_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The Looker instance ID.
+        """
+        return pulumi.get(self, "looker_instance_id")
+
+    @looker_instance_id.setter
+    def looker_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "looker_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryName")
+    def service_directory_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The service directory name of the Looker instance.
+        """
+        return pulumi.get(self, "service_directory_name")
+
+    @service_directory_name.setter
+    def service_directory_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_directory_name", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. A textual description of the explore's content and purpose.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Explore display name.
+    """
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgsDict']]]]]
+    """
+    Optional. The fields in the schema.
+    Structure is documented below.
+    """
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgsDict']]]]]
+    """
+    Optional. The filters on the datasource's underlying data.
+    Structure is documented below.
+    """
+    synonyms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of tags or keywords associated with the explore, used for categorization.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs']]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs']]]] = None,
+                 synonyms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Optional. A textual description of the explore's content and purpose.
+        :param pulumi.Input[_builtins.str] display_name: Optional. Explore display name.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs']]] fields: Optional. The fields in the schema.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs']]] filters: Optional. The filters on the datasource's underlying data.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] synonyms: Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Optional. A list of tags or keywords associated with the explore, used for categorization.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. A textual description of the explore's content and purpose.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Explore display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs']]]]:
+        """
+        Optional. The fields in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs']]]]:
+        """
+        Optional. The filters on the datasource's underlying data.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs']]]]):
+        pulumi.set(self, "filters", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of alternative names or synonyms that can be used to refer to the explore.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of tags or keywords associated with the explore, used for categorization.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Field category.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. A brief description of the field.
+    """
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The name of the field.
+    """
+    subfields: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+    """
+    synonyms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of alternative names or synonyms that can be used to refer to this field.
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. A list of tags or keywords associated with the field, used for categorization.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The type of the field.
+    """
+    value_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Value format of the field.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFieldArgs:
+    def __init__(__self__, *,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subfields: pulumi.Input[Optional[_builtins.str]] = None,
+                 synonyms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_format: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] category: Optional. Field category.
+        :param pulumi.Input[_builtins.str] description: Optional. A brief description of the field.
+        :param pulumi.Input[_builtins.str] mode: Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+        :param pulumi.Input[_builtins.str] name: Optional. The name of the field.
+        :param pulumi.Input[_builtins.str] subfields: Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] synonyms: Optional. A list of alternative names or synonyms that can be used to refer to this field.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Optional. A list of tags or keywords associated with the field, used for categorization.
+        :param pulumi.Input[_builtins.str] type: Optional. The type of the field.
+        :param pulumi.Input[_builtins.str] value_format: Optional. Value format of the field.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if subfields is not None:
+            pulumi.set(__self__, "subfields", subfields)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value_format is not None:
+            pulumi.set(__self__, "value_format", value_format)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Field category.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "category", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. A brief description of the field.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The mode of the field (e.g., NULLABLE, REPEATED).
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The name of the field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subfields(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects.
+        """
+        return pulumi.get(self, "subfields")
+
+    @subfields.setter
+    def subfields(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subfields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of alternative names or synonyms that can be used to refer to this field.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A list of tags or keywords associated with the field, used for categorization.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The type of the field.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueFormat")
+    def value_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Value format of the field.
+        """
+        return pulumi.get(self, "value_format")
+
+    @value_format.setter
+    def value_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value_format", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Required. The field to filter on.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The value for the field to filter on.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesLookerExploreReferenceSchemaFilterArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: Required. The field to filter on.
+        :param pulumi.Input[_builtins.str] type: Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+        :param pulumi.Input[_builtins.str] value: Optional. The value for the field to filter on.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Required. The field to filter on.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The type of filter present on a datasource, such as ALWAYS_FILTER.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The value for the field to filter on.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioArgsDict(TypedDict):
+    studio_references: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReferenceArgsDict']]]]]
+    """
+    Optional. The references to the studio datasources.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioArgs:
+    def __init__(__self__, *,
+                 studio_references: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReferenceArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReferenceArgs']]] studio_references: Optional. The references to the studio datasources.
+               Structure is documented below.
+        """
+        if studio_references is not None:
+            pulumi.set(__self__, "studio_references", studio_references)
+
+    @_builtins.property
+    @pulumi.getter(name="studioReferences")
+    def studio_references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReferenceArgs']]]]:
+        """
+        Optional. The references to the studio datasources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "studio_references")
+
+    @studio_references.setter
+    def studio_references(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReferenceArgs']]]]):
+        pulumi.set(self, "studio_references", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReferenceArgsDict(TypedDict):
+    datasource_id: pulumi.Input[_builtins.str]
+    """
+    Required. The ID of the datasource.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesStudioStudioReferenceArgs:
+    def __init__(__self__, *,
+                 datasource_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] datasource_id: Required. The ID of the datasource.
+        """
+        pulumi.set(__self__, "datasource_id", datasource_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasourceId")
+    def datasource_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The ID of the datasource.
+        """
+        return pulumi.get(self, "datasource_id")
+
+    @datasource_id.setter
+    def datasource_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "datasource_id", value)
+
 
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgsDict(TypedDict):
     natural_language_question: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. A natural language question that a user might ask.
+    """
+    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterArgsDict']]]]]
+    """
+    Optional. The list of query parameters.
+    Structure is documented below.
     """
     sql_query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1566,14 +4662,19 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgsDict
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs:
     def __init__(__self__, *,
                  natural_language_question: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterArgs']]]] = None,
                  sql_query: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] natural_language_question: Optional. A natural language question that a user might ask.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterArgs']]] parameters: Optional. The list of query parameters.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] sql_query: Optional. The SQL query that should be generated to answer
                the natural language question.
         """
         if natural_language_question is not None:
             pulumi.set(__self__, "natural_language_question", natural_language_question)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if sql_query is not None:
             pulumi.set(__self__, "sql_query", sql_query)
 
@@ -1590,6 +4691,19 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs:
         pulumi.set(self, "natural_language_question", value)
 
     @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterArgs']]]]:
+        """
+        Optional. The list of query parameters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
     @pulumi.getter(name="sqlQuery")
     def sql_query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1601,6 +4715,73 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs:
     @sql_query.setter
     def sql_query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_query", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterArgsDict(TypedDict):
+    data_type: pulumi.Input[_builtins.str]
+    """
+    Required. The data type of the parameter, e.g. "STRING", "INT64", "DATE".
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Required. The name of the parameter reference in the SQL query.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The description of the parameter that can be used by the LLM to extract the parameter value from the user question.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryParameterArgs:
+    def __init__(__self__, *,
+                 data_type: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] data_type: Required. The data type of the parameter, e.g. "STRING", "INT64", "DATE".
+        :param pulumi.Input[_builtins.str] name: Required. The name of the parameter reference in the SQL query.
+        :param pulumi.Input[_builtins.str] description: Optional. The description of the parameter that can be used by the LLM to extract the parameter value from the user question.
+        """
+        pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The data type of the parameter, e.g. "STRING", "INT64", "DATE".
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The name of the parameter reference in the SQL query.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The description of the parameter that can be used by the LLM to extract the parameter value from the user question.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
 
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgsDict(TypedDict):
@@ -1670,6 +4851,276 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs:
         pulumi.set(self, "labels", value)
 
 
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryArgsDict(TypedDict):
+    looker_query: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryArgsDict']]]
+    """
+    Optional. The Looker Query corresponding to the natural language questions.
+    Structure is documented below.
+    """
+    natural_language_questions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. Natural language questions that a user might ask.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryArgs:
+    def __init__(__self__, *,
+                 looker_query: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryArgs']] = None,
+                 natural_language_questions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryArgs'] looker_query: Optional. The Looker Query corresponding to the natural language questions.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] natural_language_questions: Optional. Natural language questions that a user might ask.
+        """
+        if looker_query is not None:
+            pulumi.set(__self__, "looker_query", looker_query)
+        if natural_language_questions is not None:
+            pulumi.set(__self__, "natural_language_questions", natural_language_questions)
+
+    @_builtins.property
+    @pulumi.getter(name="lookerQuery")
+    def looker_query(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryArgs']]:
+        """
+        Optional. The Looker Query corresponding to the natural language questions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "looker_query")
+
+    @looker_query.setter
+    def looker_query(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryArgs']]):
+        pulumi.set(self, "looker_query", value)
+
+    @_builtins.property
+    @pulumi.getter(name="naturalLanguageQuestions")
+    def natural_language_questions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Natural language questions that a user might ask.
+        """
+        return pulumi.get(self, "natural_language_questions")
+
+    @natural_language_questions.setter
+    def natural_language_questions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "natural_language_questions", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryArgsDict(TypedDict):
+    explore: pulumi.Input[_builtins.str]
+    """
+    Required. The LookML explore used to generate the query.
+    """
+    model: pulumi.Input[_builtins.str]
+    """
+    Required. The LookML model used to generate the query.
+    """
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The short alphanumeric identifier for the query, used for share links and Explore URLs.
+    """
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. The fields to retrieve from the explore.
+    """
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilterArgsDict']]]]]
+    """
+    Optional. The filters to apply to the explore.
+    Structure is documented below.
+    """
+    limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Limit in the query.
+    """
+    query_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The primary identifier for the query resource in Looker.
+    """
+    sorts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. The sorts to apply to the explore.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryArgs:
+    def __init__(__self__, *,
+                 explore: pulumi.Input[_builtins.str],
+                 model: pulumi.Input[_builtins.str],
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilterArgs']]]] = None,
+                 limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sorts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] explore: Required. The LookML explore used to generate the query.
+        :param pulumi.Input[_builtins.str] model: Required. The LookML model used to generate the query.
+        :param pulumi.Input[_builtins.str] client_id: Optional. The short alphanumeric identifier for the query, used for share links and Explore URLs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: Optional. The fields to retrieve from the explore.
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilterArgs']]] filters: Optional. The filters to apply to the explore.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] limit: Optional. Limit in the query.
+        :param pulumi.Input[_builtins.str] query_id: Optional. The primary identifier for the query resource in Looker.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sorts: Optional. The sorts to apply to the explore.
+        """
+        pulumi.set(__self__, "explore", explore)
+        pulumi.set(__self__, "model", model)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if query_id is not None:
+            pulumi.set(__self__, "query_id", query_id)
+        if sorts is not None:
+            pulumi.set(__self__, "sorts", sorts)
+
+    @_builtins.property
+    @pulumi.getter
+    def explore(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The LookML explore used to generate the query.
+        """
+        return pulumi.get(self, "explore")
+
+    @explore.setter
+    def explore(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "explore", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The LookML model used to generate the query.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The short alphanumeric identifier for the query, used for share links and Explore URLs.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. The fields to retrieve from the explore.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilterArgs']]]]:
+        """
+        Optional. The filters to apply to the explore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilterArgs']]]]):
+        pulumi.set(self, "filters", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Limit in the query.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryId")
+    def query_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The primary identifier for the query resource in Looker.
+        """
+        return pulumi.get(self, "query_id")
+
+    @query_id.setter
+    def query_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "query_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sorts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. The sorts to apply to the explore.
+        """
+        return pulumi.get(self, "sorts")
+
+    @sorts.setter
+    def sorts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "sorts", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilterArgsDict(TypedDict):
+    field: pulumi.Input[_builtins.str]
+    """
+    Required. The field to filter on.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The value for the field to filter on.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextLookerGoldenQueryLookerQueryFilterArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: Required. The field to filter on.
+        :param pulumi.Input[_builtins.str] value: Optional. The value for the field to filter on.
+        """
+        pulumi.set(__self__, "field", field)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The field to filter on.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The value for the field to filter on.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgsDict(TypedDict):
     analysis: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgsDict']]]
     """
@@ -1681,22 +5132,30 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgsDict(Type
     Optional. Options for datasource configuration.
     Structure is documented below.
     """
+    model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The model to use for the agent loop.
+    """
 
 @pulumi.input_type
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs:
     def __init__(__self__, *,
                  analysis: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs']] = None,
-                 datasource: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs']] = None):
+                 datasource: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs']] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs'] analysis: Optional. Options for analysis.
                Structure is documented below.
         :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs'] datasource: Optional. Options for datasource configuration.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] model: Optional. The model to use for the agent loop.
         """
         if analysis is not None:
             pulumi.set(__self__, "analysis", analysis)
         if datasource is not None:
             pulumi.set(__self__, "datasource", datasource)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
 
     @_builtins.property
     @pulumi.getter
@@ -1723,6 +5182,18 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs:
     @datasource.setter
     def datasource(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs']]):
         pulumi.set(self, "datasource", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The model to use for the agent loop.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model", value)
 
 
 class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgsDict(TypedDict):
@@ -1962,8 +5433,6 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRi
     paths: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
     Required. The ordered list of paths within the table schema.
-
-    <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
     """
     table_fqn: pulumi.Input[_builtins.str]
     """
@@ -1977,8 +5446,6 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRi
                  table_fqn: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] paths: Required. The ordered list of paths within the table schema.
-               
-               <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
         :param pulumi.Input[_builtins.str] table_fqn: Required. The service-qualified full resource name of the table.
         """
         pulumi.set(__self__, "paths", paths)
@@ -1989,8 +5456,6 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRi
     def paths(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         Required. The ordered list of paths within the table schema.
-
-        <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
         """
         return pulumi.get(self, "paths")
 
@@ -2009,6 +5474,165 @@ class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRi
     @table_fqn.setter
     def table_fqn(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "table_fqn", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsArgsDict(TypedDict):
+    bq_routines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineArgsDict']]]]]
+    """
+    Optional. A list of BigQuery routines to include in the context.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsArgs:
+    def __init__(__self__, *,
+                 bq_routines: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineArgs']]] bq_routines: Optional. A list of BigQuery routines to include in the context.
+               Structure is documented below.
+        """
+        if bq_routines is not None:
+            pulumi.set(__self__, "bq_routines", bq_routines)
+
+    @_builtins.property
+    @pulumi.getter(name="bqRoutines")
+    def bq_routines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineArgs']]]]:
+        """
+        Optional. A list of BigQuery routines to include in the context.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bq_routines")
+
+    @bq_routines.setter
+    def bq_routines(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineArgs']]]]):
+        pulumi.set(self, "bq_routines", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. User override or addition to description, to tell the agent when to use the UDF.
+    """
+    routine_reference: NotRequired[pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReferenceArgsDict']]]
+    """
+    Optional. The reference to the BigQuery routine.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine_reference: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReferenceArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Optional. User override or addition to description, to tell the agent when to use the UDF.
+        :param pulumi.Input['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReferenceArgs'] routine_reference: Optional. The reference to the BigQuery routine.
+               Structure is documented below.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if routine_reference is not None:
+            pulumi.set(__self__, "routine_reference", routine_reference)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. User override or addition to description, to tell the agent when to use the UDF.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routineReference")
+    def routine_reference(self) -> pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReferenceArgs']]:
+        """
+        Optional. The reference to the BigQuery routine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "routine_reference")
+
+    @routine_reference.setter
+    def routine_reference(self, value: pulumi.Input[Optional['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReferenceArgs']]):
+        pulumi.set(self, "routine_reference", value)
+
+
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReferenceArgsDict(TypedDict):
+    dataset_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The dataset ID of the routine.
+    """
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The project ID of the routine.
+    """
+    routine_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The routine ID of the routine.
+
+    <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
+    """
+
+@pulumi.input_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextUserFunctionsBqRoutineRoutineReferenceArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] dataset_id: Optional. The dataset ID of the routine.
+        :param pulumi.Input[_builtins.str] project_id: Optional. The project ID of the routine.
+        :param pulumi.Input[_builtins.str] routine_id: Optional. The routine ID of the routine.
+               
+               <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
+        """
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if routine_id is not None:
+            pulumi.set(__self__, "routine_id", routine_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The dataset ID of the routine.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dataset_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The project ID of the routine.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routineId")
+    def routine_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The routine ID of the routine.
+
+        <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
+        """
+        return pulumi.get(self, "routine_id")
+
+    @routine_id.setter
+    def routine_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "routine_id", value)
 
 
 class DataAnalyticsDataAgentIamBindingConditionArgsDict(TypedDict):

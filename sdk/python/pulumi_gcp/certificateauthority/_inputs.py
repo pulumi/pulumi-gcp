@@ -2122,6 +2122,13 @@ class CaPoolIamMemberConditionArgs:
 
 
 class CaPoolIssuancePolicyArgsDict(TypedDict):
+    allow_requester_specified_not_before_time: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If set to true, allows requesters to specify the requested_not_before_time
+    field when creating a Certificate. Certificates requested with this
+    option enabled will have a 'not_before_time' equal to the value
+    specified in the request.
+    """
     allowed_issuance_modes: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyAllowedIssuanceModesArgsDict']]]
     """
     IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
@@ -2164,6 +2171,7 @@ class CaPoolIssuancePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class CaPoolIssuancePolicyArgs:
     def __init__(__self__, *,
+                 allow_requester_specified_not_before_time: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_issuance_modes: pulumi.Input[Optional['CaPoolIssuancePolicyAllowedIssuanceModesArgs']] = None,
                  allowed_key_types: pulumi.Input[Optional[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgs']]]] = None,
                  backdate_duration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2171,6 +2179,10 @@ class CaPoolIssuancePolicyArgs:
                  identity_constraints: pulumi.Input[Optional['CaPoolIssuancePolicyIdentityConstraintsArgs']] = None,
                  maximum_lifetime: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.bool] allow_requester_specified_not_before_time: If set to true, allows requesters to specify the requested_not_before_time
+               field when creating a Certificate. Certificates requested with this
+               option enabled will have a 'not_before_time' equal to the value
+               specified in the request.
         :param pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArgs'] allowed_issuance_modes: IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgs']]] allowed_key_types: If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
@@ -2192,6 +2204,8 @@ class CaPoolIssuancePolicyArgs:
         :param pulumi.Input[_builtins.str] maximum_lifetime: The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
                expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
         """
+        if allow_requester_specified_not_before_time is not None:
+            pulumi.set(__self__, "allow_requester_specified_not_before_time", allow_requester_specified_not_before_time)
         if allowed_issuance_modes is not None:
             pulumi.set(__self__, "allowed_issuance_modes", allowed_issuance_modes)
         if allowed_key_types is not None:
@@ -2204,6 +2218,21 @@ class CaPoolIssuancePolicyArgs:
             pulumi.set(__self__, "identity_constraints", identity_constraints)
         if maximum_lifetime is not None:
             pulumi.set(__self__, "maximum_lifetime", maximum_lifetime)
+
+    @_builtins.property
+    @pulumi.getter(name="allowRequesterSpecifiedNotBeforeTime")
+    def allow_requester_specified_not_before_time(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to true, allows requesters to specify the requested_not_before_time
+        field when creating a Certificate. Certificates requested with this
+        option enabled will have a 'not_before_time' equal to the value
+        specified in the request.
+        """
+        return pulumi.get(self, "allow_requester_specified_not_before_time")
+
+    @allow_requester_specified_not_before_time.setter
+    def allow_requester_specified_not_before_time(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_requester_specified_not_before_time", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedIssuanceModes")

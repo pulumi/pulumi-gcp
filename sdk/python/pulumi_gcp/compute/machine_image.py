@@ -423,6 +423,7 @@ class MachineImage(pulumi.CustomResource):
             name="my-image",
             source_instance=vm.self_link)
         ```
+
         ### Compute Machine Image Kms
 
         ```python
@@ -453,6 +454,7 @@ class MachineImage(pulumi.CustomResource):
                 "kms_key_name": crypto_key.id,
             })
         ```
+
         ### Machine Image Resource Manager Tags
 
         ```python
@@ -574,6 +576,7 @@ class MachineImage(pulumi.CustomResource):
             name="my-image",
             source_instance=vm.self_link)
         ```
+
         ### Compute Machine Image Kms
 
         ```python
@@ -604,6 +607,7 @@ class MachineImage(pulumi.CustomResource):
                 "kms_key_name": crypto_key.id,
             })
         ```
+
         ### Machine Image Resource Manager Tags
 
         ```python

@@ -13,11 +13,18 @@ namespace Pulumi.Gcp.Colab.Inputs
     public sealed class NotebookExecutionWorkbenchRuntimeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Use a container image to start the workbench instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customContainerImage")]
+        public Input<Inputs.NotebookExecutionWorkbenchRuntimeCustomContainerImageGetArgs>? CustomContainerImage { get; set; }
+
+        /// <summary>
         /// Custom Compute Engine VM image for the Workbench instance.
         /// Structure is documented below.
         /// </summary>
-        [Input("vmImage", required: true)]
-        public Input<Inputs.NotebookExecutionWorkbenchRuntimeVmImageGetArgs> VmImage { get; set; } = null!;
+        [Input("vmImage")]
+        public Input<Inputs.NotebookExecutionWorkbenchRuntimeVmImageGetArgs>? VmImage { get; set; }
 
         public NotebookExecutionWorkbenchRuntimeGetArgs()
         {

@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Parser Full
  * 
  * <pre>

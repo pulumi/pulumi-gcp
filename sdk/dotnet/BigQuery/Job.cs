@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Job Query Table Reference
     /// 
     /// ```csharp
@@ -127,6 +128,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Job Load
     /// 
     /// ```csharp
@@ -184,6 +186,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Job Load Geojson
     /// 
     /// ```csharp
@@ -266,6 +269,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Job Load Parquet
     /// 
     /// ```csharp
@@ -347,6 +351,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Job Copy
     /// 
     /// ```csharp
@@ -496,6 +501,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Job Extract
     /// 
     /// ```csharp

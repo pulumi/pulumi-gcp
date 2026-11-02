@@ -81,6 +81,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Datastore Mode
 //
 // ```go
@@ -132,6 +133,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Vector
 //
 // ```go
@@ -187,6 +189,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Name Descending
 //
 // ```go
@@ -231,6 +234,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Mongodb Compatible Scope
 //
 // ```go
@@ -284,6 +288,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Sparse Any
 //
 // ```go
@@ -337,6 +342,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Unique
 //
 // ```go
@@ -391,6 +397,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Skip Wait
 //
 // ```go
@@ -440,6 +447,57 @@ import (
 //	}
 //
 // ```
+//
+// ### Firestore Index Deletion Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-id-deletion-policy"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_DISABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("atestcollection"),
+//				Fields: firestore.IndexFieldArray{
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("name"),
+//						Order:     pulumi.String("ASCENDING"),
+//					},
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("description"),
+//						Order:     pulumi.String("DESCENDING"),
+//					},
+//				},
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Firestore Index Text Search
 //
 // ```go
@@ -497,6 +555,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Suppress Geojson Indexing
 //
 // ```go
@@ -548,6 +607,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Geo Search
 //
 // ```go

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.ReservationAssignmentArgs;
 import com.pulumi.gcp.bigquery.inputs.ReservationAssignmentState;
+import com.pulumi.gcp.bigquery.outputs.ReservationAssignmentSchedulingPolicy;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -132,14 +133,14 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="jobType", refs={String.class}, tree="[0]")
-    private Output<String> jobType;
+    private Output</* @Nullable */ String> jobType;
 
     /**
      * @return Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      * 
      */
-    public Output<String> jobType() {
-        return this.jobType;
+    public Output<Optional<String>> jobType() {
+        return Codegen.optional(this.jobType);
     }
     /**
      * The location for the resource
@@ -220,6 +221,28 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> reservation() {
         return this.reservation;
+    }
+    /**
+     * The scheduling policy to use for jobs and queries of this assignee when
+     * running under the associated reservation. The scheduling policy controls
+     * how the reservation&#39;s resources are distributed. This overrides the default
+     * scheduling policy specified on the reservation.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="schedulingPolicy", refs={ReservationAssignmentSchedulingPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ ReservationAssignmentSchedulingPolicy> schedulingPolicy;
+
+    /**
+     * @return The scheduling policy to use for jobs and queries of this assignee when
+     * running under the associated reservation. The scheduling policy controls
+     * how the reservation&#39;s resources are distributed. This overrides the default
+     * scheduling policy specified on the reservation.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ReservationAssignmentSchedulingPolicy>> schedulingPolicy() {
+        return Codegen.optional(this.schedulingPolicy);
     }
     /**
      * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.

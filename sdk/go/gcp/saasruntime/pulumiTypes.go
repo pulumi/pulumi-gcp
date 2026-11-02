@@ -13,6 +13,259 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ReleaseApplicationTemplateComponent struct {
+	// (Output)
+	// Name of the component in the composite ApplicationTemplate.
+	Component *string `pulumi:"component"`
+	// (Output)
+	// Reference to the composite ApplicationTemplate.
+	// Structure is documented below.
+	CompositeReves []ReleaseApplicationTemplateComponentCompositeRef `pulumi:"compositeReves"`
+	// (Output)
+	// Revision of the ApplicationTemplate.
+	Revision *string `pulumi:"revision"`
+}
+
+// ReleaseApplicationTemplateComponentInput is an input type that accepts ReleaseApplicationTemplateComponentArgs and ReleaseApplicationTemplateComponentOutput values.
+// You can construct a concrete instance of `ReleaseApplicationTemplateComponentInput` via:
+//
+//	ReleaseApplicationTemplateComponentArgs{...}
+type ReleaseApplicationTemplateComponentInput interface {
+	pulumi.Input
+
+	ToReleaseApplicationTemplateComponentOutput() ReleaseApplicationTemplateComponentOutput
+	ToReleaseApplicationTemplateComponentOutputWithContext(context.Context) ReleaseApplicationTemplateComponentOutput
+}
+
+type ReleaseApplicationTemplateComponentArgs struct {
+	// (Output)
+	// Name of the component in the composite ApplicationTemplate.
+	Component pulumi.StringPtrInput `pulumi:"component"`
+	// (Output)
+	// Reference to the composite ApplicationTemplate.
+	// Structure is documented below.
+	CompositeReves ReleaseApplicationTemplateComponentCompositeRefArrayInput `pulumi:"compositeReves"`
+	// (Output)
+	// Revision of the ApplicationTemplate.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+}
+
+func (ReleaseApplicationTemplateComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseApplicationTemplateComponent)(nil)).Elem()
+}
+
+func (i ReleaseApplicationTemplateComponentArgs) ToReleaseApplicationTemplateComponentOutput() ReleaseApplicationTemplateComponentOutput {
+	return i.ToReleaseApplicationTemplateComponentOutputWithContext(context.Background())
+}
+
+func (i ReleaseApplicationTemplateComponentArgs) ToReleaseApplicationTemplateComponentOutputWithContext(ctx context.Context) ReleaseApplicationTemplateComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseApplicationTemplateComponentOutput)
+}
+
+// ReleaseApplicationTemplateComponentArrayInput is an input type that accepts ReleaseApplicationTemplateComponentArray and ReleaseApplicationTemplateComponentArrayOutput values.
+// You can construct a concrete instance of `ReleaseApplicationTemplateComponentArrayInput` via:
+//
+//	ReleaseApplicationTemplateComponentArray{ ReleaseApplicationTemplateComponentArgs{...} }
+type ReleaseApplicationTemplateComponentArrayInput interface {
+	pulumi.Input
+
+	ToReleaseApplicationTemplateComponentArrayOutput() ReleaseApplicationTemplateComponentArrayOutput
+	ToReleaseApplicationTemplateComponentArrayOutputWithContext(context.Context) ReleaseApplicationTemplateComponentArrayOutput
+}
+
+type ReleaseApplicationTemplateComponentArray []ReleaseApplicationTemplateComponentInput
+
+func (ReleaseApplicationTemplateComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseApplicationTemplateComponent)(nil)).Elem()
+}
+
+func (i ReleaseApplicationTemplateComponentArray) ToReleaseApplicationTemplateComponentArrayOutput() ReleaseApplicationTemplateComponentArrayOutput {
+	return i.ToReleaseApplicationTemplateComponentArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseApplicationTemplateComponentArray) ToReleaseApplicationTemplateComponentArrayOutputWithContext(ctx context.Context) ReleaseApplicationTemplateComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseApplicationTemplateComponentArrayOutput)
+}
+
+type ReleaseApplicationTemplateComponentOutput struct{ *pulumi.OutputState }
+
+func (ReleaseApplicationTemplateComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseApplicationTemplateComponent)(nil)).Elem()
+}
+
+func (o ReleaseApplicationTemplateComponentOutput) ToReleaseApplicationTemplateComponentOutput() ReleaseApplicationTemplateComponentOutput {
+	return o
+}
+
+func (o ReleaseApplicationTemplateComponentOutput) ToReleaseApplicationTemplateComponentOutputWithContext(ctx context.Context) ReleaseApplicationTemplateComponentOutput {
+	return o
+}
+
+// (Output)
+// Name of the component in the composite ApplicationTemplate.
+func (o ReleaseApplicationTemplateComponentOutput) Component() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseApplicationTemplateComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Reference to the composite ApplicationTemplate.
+// Structure is documented below.
+func (o ReleaseApplicationTemplateComponentOutput) CompositeReves() ReleaseApplicationTemplateComponentCompositeRefArrayOutput {
+	return o.ApplyT(func(v ReleaseApplicationTemplateComponent) []ReleaseApplicationTemplateComponentCompositeRef {
+		return v.CompositeReves
+	}).(ReleaseApplicationTemplateComponentCompositeRefArrayOutput)
+}
+
+// (Output)
+// Revision of the ApplicationTemplate.
+func (o ReleaseApplicationTemplateComponentOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseApplicationTemplateComponent) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseApplicationTemplateComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseApplicationTemplateComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseApplicationTemplateComponent)(nil)).Elem()
+}
+
+func (o ReleaseApplicationTemplateComponentArrayOutput) ToReleaseApplicationTemplateComponentArrayOutput() ReleaseApplicationTemplateComponentArrayOutput {
+	return o
+}
+
+func (o ReleaseApplicationTemplateComponentArrayOutput) ToReleaseApplicationTemplateComponentArrayOutputWithContext(ctx context.Context) ReleaseApplicationTemplateComponentArrayOutput {
+	return o
+}
+
+func (o ReleaseApplicationTemplateComponentArrayOutput) Index(i pulumi.IntInput) ReleaseApplicationTemplateComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseApplicationTemplateComponent {
+		return vs[0].([]ReleaseApplicationTemplateComponent)[vs[1].(int)]
+	}).(ReleaseApplicationTemplateComponentOutput)
+}
+
+type ReleaseApplicationTemplateComponentCompositeRef struct {
+	// (Output)
+	// Reference to the ApplicationTemplate resource.
+	ApplicationTemplate *string `pulumi:"applicationTemplate"`
+	// (Output)
+	// Revision of the ApplicationTemplate.
+	Revision *string `pulumi:"revision"`
+	// (Output)
+	// Reference to the ongoing import and replication operation. Opaque for external usage.
+	SyncOperation *string `pulumi:"syncOperation"`
+}
+
+// ReleaseApplicationTemplateComponentCompositeRefInput is an input type that accepts ReleaseApplicationTemplateComponentCompositeRefArgs and ReleaseApplicationTemplateComponentCompositeRefOutput values.
+// You can construct a concrete instance of `ReleaseApplicationTemplateComponentCompositeRefInput` via:
+//
+//	ReleaseApplicationTemplateComponentCompositeRefArgs{...}
+type ReleaseApplicationTemplateComponentCompositeRefInput interface {
+	pulumi.Input
+
+	ToReleaseApplicationTemplateComponentCompositeRefOutput() ReleaseApplicationTemplateComponentCompositeRefOutput
+	ToReleaseApplicationTemplateComponentCompositeRefOutputWithContext(context.Context) ReleaseApplicationTemplateComponentCompositeRefOutput
+}
+
+type ReleaseApplicationTemplateComponentCompositeRefArgs struct {
+	// (Output)
+	// Reference to the ApplicationTemplate resource.
+	ApplicationTemplate pulumi.StringPtrInput `pulumi:"applicationTemplate"`
+	// (Output)
+	// Revision of the ApplicationTemplate.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// (Output)
+	// Reference to the ongoing import and replication operation. Opaque for external usage.
+	SyncOperation pulumi.StringPtrInput `pulumi:"syncOperation"`
+}
+
+func (ReleaseApplicationTemplateComponentCompositeRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseApplicationTemplateComponentCompositeRef)(nil)).Elem()
+}
+
+func (i ReleaseApplicationTemplateComponentCompositeRefArgs) ToReleaseApplicationTemplateComponentCompositeRefOutput() ReleaseApplicationTemplateComponentCompositeRefOutput {
+	return i.ToReleaseApplicationTemplateComponentCompositeRefOutputWithContext(context.Background())
+}
+
+func (i ReleaseApplicationTemplateComponentCompositeRefArgs) ToReleaseApplicationTemplateComponentCompositeRefOutputWithContext(ctx context.Context) ReleaseApplicationTemplateComponentCompositeRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseApplicationTemplateComponentCompositeRefOutput)
+}
+
+// ReleaseApplicationTemplateComponentCompositeRefArrayInput is an input type that accepts ReleaseApplicationTemplateComponentCompositeRefArray and ReleaseApplicationTemplateComponentCompositeRefArrayOutput values.
+// You can construct a concrete instance of `ReleaseApplicationTemplateComponentCompositeRefArrayInput` via:
+//
+//	ReleaseApplicationTemplateComponentCompositeRefArray{ ReleaseApplicationTemplateComponentCompositeRefArgs{...} }
+type ReleaseApplicationTemplateComponentCompositeRefArrayInput interface {
+	pulumi.Input
+
+	ToReleaseApplicationTemplateComponentCompositeRefArrayOutput() ReleaseApplicationTemplateComponentCompositeRefArrayOutput
+	ToReleaseApplicationTemplateComponentCompositeRefArrayOutputWithContext(context.Context) ReleaseApplicationTemplateComponentCompositeRefArrayOutput
+}
+
+type ReleaseApplicationTemplateComponentCompositeRefArray []ReleaseApplicationTemplateComponentCompositeRefInput
+
+func (ReleaseApplicationTemplateComponentCompositeRefArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseApplicationTemplateComponentCompositeRef)(nil)).Elem()
+}
+
+func (i ReleaseApplicationTemplateComponentCompositeRefArray) ToReleaseApplicationTemplateComponentCompositeRefArrayOutput() ReleaseApplicationTemplateComponentCompositeRefArrayOutput {
+	return i.ToReleaseApplicationTemplateComponentCompositeRefArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseApplicationTemplateComponentCompositeRefArray) ToReleaseApplicationTemplateComponentCompositeRefArrayOutputWithContext(ctx context.Context) ReleaseApplicationTemplateComponentCompositeRefArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseApplicationTemplateComponentCompositeRefArrayOutput)
+}
+
+type ReleaseApplicationTemplateComponentCompositeRefOutput struct{ *pulumi.OutputState }
+
+func (ReleaseApplicationTemplateComponentCompositeRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseApplicationTemplateComponentCompositeRef)(nil)).Elem()
+}
+
+func (o ReleaseApplicationTemplateComponentCompositeRefOutput) ToReleaseApplicationTemplateComponentCompositeRefOutput() ReleaseApplicationTemplateComponentCompositeRefOutput {
+	return o
+}
+
+func (o ReleaseApplicationTemplateComponentCompositeRefOutput) ToReleaseApplicationTemplateComponentCompositeRefOutputWithContext(ctx context.Context) ReleaseApplicationTemplateComponentCompositeRefOutput {
+	return o
+}
+
+// (Output)
+// Reference to the ApplicationTemplate resource.
+func (o ReleaseApplicationTemplateComponentCompositeRefOutput) ApplicationTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseApplicationTemplateComponentCompositeRef) *string { return v.ApplicationTemplate }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Revision of the ApplicationTemplate.
+func (o ReleaseApplicationTemplateComponentCompositeRefOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseApplicationTemplateComponentCompositeRef) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Reference to the ongoing import and replication operation. Opaque for external usage.
+func (o ReleaseApplicationTemplateComponentCompositeRefOutput) SyncOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseApplicationTemplateComponentCompositeRef) *string { return v.SyncOperation }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseApplicationTemplateComponentCompositeRefArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseApplicationTemplateComponentCompositeRefArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseApplicationTemplateComponentCompositeRef)(nil)).Elem()
+}
+
+func (o ReleaseApplicationTemplateComponentCompositeRefArrayOutput) ToReleaseApplicationTemplateComponentCompositeRefArrayOutput() ReleaseApplicationTemplateComponentCompositeRefArrayOutput {
+	return o
+}
+
+func (o ReleaseApplicationTemplateComponentCompositeRefArrayOutput) ToReleaseApplicationTemplateComponentCompositeRefArrayOutputWithContext(ctx context.Context) ReleaseApplicationTemplateComponentCompositeRefArrayOutput {
+	return o
+}
+
+func (o ReleaseApplicationTemplateComponentCompositeRefArrayOutput) Index(i pulumi.IntInput) ReleaseApplicationTemplateComponentCompositeRefOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseApplicationTemplateComponentCompositeRef {
+		return vs[0].([]ReleaseApplicationTemplateComponentCompositeRef)[vs[1].(int)]
+	}).(ReleaseApplicationTemplateComponentCompositeRefOutput)
+}
+
 type ReleaseBlueprint struct {
 	// (Output)
 	// Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
@@ -867,6 +1120,486 @@ func (o RolloutKindErrorBudgetPtrOutput) AllowedPercentage() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+type SaaSApplicationTemplate struct {
+	// Reference to the ApplicationTemplate resource, in the format
+	// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+	ApplicationTemplate string `pulumi:"applicationTemplate"`
+	// Revision of the ApplicationTemplate to import, as a full resource name
+	// prefixed by `applicationTemplate`:
+	// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}/revisions/{revision}`.
+	// Changes to the revision trigger a new import. If empty, the service
+	// stores `applicationTemplate` but doesn't import it.
+	Revision *string `pulumi:"revision"`
+	// (Output)
+	// Reference to the ongoing import and replication operation. Opaque for external usage.
+	SyncOperation *string `pulumi:"syncOperation"`
+}
+
+// SaaSApplicationTemplateInput is an input type that accepts SaaSApplicationTemplateArgs and SaaSApplicationTemplateOutput values.
+// You can construct a concrete instance of `SaaSApplicationTemplateInput` via:
+//
+//	SaaSApplicationTemplateArgs{...}
+type SaaSApplicationTemplateInput interface {
+	pulumi.Input
+
+	ToSaaSApplicationTemplateOutput() SaaSApplicationTemplateOutput
+	ToSaaSApplicationTemplateOutputWithContext(context.Context) SaaSApplicationTemplateOutput
+}
+
+type SaaSApplicationTemplateArgs struct {
+	// Reference to the ApplicationTemplate resource, in the format
+	// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+	ApplicationTemplate pulumi.StringInput `pulumi:"applicationTemplate"`
+	// Revision of the ApplicationTemplate to import, as a full resource name
+	// prefixed by `applicationTemplate`:
+	// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}/revisions/{revision}`.
+	// Changes to the revision trigger a new import. If empty, the service
+	// stores `applicationTemplate` but doesn't import it.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// (Output)
+	// Reference to the ongoing import and replication operation. Opaque for external usage.
+	SyncOperation pulumi.StringPtrInput `pulumi:"syncOperation"`
+}
+
+func (SaaSApplicationTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaaSApplicationTemplate)(nil)).Elem()
+}
+
+func (i SaaSApplicationTemplateArgs) ToSaaSApplicationTemplateOutput() SaaSApplicationTemplateOutput {
+	return i.ToSaaSApplicationTemplateOutputWithContext(context.Background())
+}
+
+func (i SaaSApplicationTemplateArgs) ToSaaSApplicationTemplateOutputWithContext(ctx context.Context) SaaSApplicationTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaaSApplicationTemplateOutput)
+}
+
+func (i SaaSApplicationTemplateArgs) ToSaaSApplicationTemplatePtrOutput() SaaSApplicationTemplatePtrOutput {
+	return i.ToSaaSApplicationTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i SaaSApplicationTemplateArgs) ToSaaSApplicationTemplatePtrOutputWithContext(ctx context.Context) SaaSApplicationTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaaSApplicationTemplateOutput).ToSaaSApplicationTemplatePtrOutputWithContext(ctx)
+}
+
+// SaaSApplicationTemplatePtrInput is an input type that accepts SaaSApplicationTemplateArgs, SaaSApplicationTemplatePtr and SaaSApplicationTemplatePtrOutput values.
+// You can construct a concrete instance of `SaaSApplicationTemplatePtrInput` via:
+//
+//	        SaaSApplicationTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type SaaSApplicationTemplatePtrInput interface {
+	pulumi.Input
+
+	ToSaaSApplicationTemplatePtrOutput() SaaSApplicationTemplatePtrOutput
+	ToSaaSApplicationTemplatePtrOutputWithContext(context.Context) SaaSApplicationTemplatePtrOutput
+}
+
+type saaSApplicationTemplatePtrType SaaSApplicationTemplateArgs
+
+func SaaSApplicationTemplatePtr(v *SaaSApplicationTemplateArgs) SaaSApplicationTemplatePtrInput {
+	return (*saaSApplicationTemplatePtrType)(v)
+}
+
+func (*saaSApplicationTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SaaSApplicationTemplate)(nil)).Elem()
+}
+
+func (i *saaSApplicationTemplatePtrType) ToSaaSApplicationTemplatePtrOutput() SaaSApplicationTemplatePtrOutput {
+	return i.ToSaaSApplicationTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *saaSApplicationTemplatePtrType) ToSaaSApplicationTemplatePtrOutputWithContext(ctx context.Context) SaaSApplicationTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaaSApplicationTemplatePtrOutput)
+}
+
+type SaaSApplicationTemplateOutput struct{ *pulumi.OutputState }
+
+func (SaaSApplicationTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaaSApplicationTemplate)(nil)).Elem()
+}
+
+func (o SaaSApplicationTemplateOutput) ToSaaSApplicationTemplateOutput() SaaSApplicationTemplateOutput {
+	return o
+}
+
+func (o SaaSApplicationTemplateOutput) ToSaaSApplicationTemplateOutputWithContext(ctx context.Context) SaaSApplicationTemplateOutput {
+	return o
+}
+
+func (o SaaSApplicationTemplateOutput) ToSaaSApplicationTemplatePtrOutput() SaaSApplicationTemplatePtrOutput {
+	return o.ToSaaSApplicationTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o SaaSApplicationTemplateOutput) ToSaaSApplicationTemplatePtrOutputWithContext(ctx context.Context) SaaSApplicationTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SaaSApplicationTemplate) *SaaSApplicationTemplate {
+		return &v
+	}).(SaaSApplicationTemplatePtrOutput)
+}
+
+// Reference to the ApplicationTemplate resource, in the format
+// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+func (o SaaSApplicationTemplateOutput) ApplicationTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v SaaSApplicationTemplate) string { return v.ApplicationTemplate }).(pulumi.StringOutput)
+}
+
+// Revision of the ApplicationTemplate to import, as a full resource name
+// prefixed by `applicationTemplate`:
+// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}/revisions/{revision}`.
+// Changes to the revision trigger a new import. If empty, the service
+// stores `applicationTemplate` but doesn't import it.
+func (o SaaSApplicationTemplateOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SaaSApplicationTemplate) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Reference to the ongoing import and replication operation. Opaque for external usage.
+func (o SaaSApplicationTemplateOutput) SyncOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SaaSApplicationTemplate) *string { return v.SyncOperation }).(pulumi.StringPtrOutput)
+}
+
+type SaaSApplicationTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (SaaSApplicationTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SaaSApplicationTemplate)(nil)).Elem()
+}
+
+func (o SaaSApplicationTemplatePtrOutput) ToSaaSApplicationTemplatePtrOutput() SaaSApplicationTemplatePtrOutput {
+	return o
+}
+
+func (o SaaSApplicationTemplatePtrOutput) ToSaaSApplicationTemplatePtrOutputWithContext(ctx context.Context) SaaSApplicationTemplatePtrOutput {
+	return o
+}
+
+func (o SaaSApplicationTemplatePtrOutput) Elem() SaaSApplicationTemplateOutput {
+	return o.ApplyT(func(v *SaaSApplicationTemplate) SaaSApplicationTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret SaaSApplicationTemplate
+		return ret
+	}).(SaaSApplicationTemplateOutput)
+}
+
+// Reference to the ApplicationTemplate resource, in the format
+// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+func (o SaaSApplicationTemplatePtrOutput) ApplicationTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SaaSApplicationTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplicationTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Revision of the ApplicationTemplate to import, as a full resource name
+// prefixed by `applicationTemplate`:
+// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}/revisions/{revision}`.
+// Changes to the revision trigger a new import. If empty, the service
+// stores `applicationTemplate` but doesn't import it.
+func (o SaaSApplicationTemplatePtrOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SaaSApplicationTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Revision
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Reference to the ongoing import and replication operation. Opaque for external usage.
+func (o SaaSApplicationTemplatePtrOutput) SyncOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SaaSApplicationTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncOperation
+	}).(pulumi.StringPtrOutput)
+}
+
+type SaaSCondition struct {
+	// (Output)
+	// Last time the condition transited from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
+	// A developer-facing error message.
+	Message *string `pulumi:"message"`
+	// (Output)
+	// Brief reason for the condition's last transition.
+	Reason *string `pulumi:"reason"`
+	// (Output)
+	// Status of the condition.
+	// Possible values:
+	// STATUS_UNKNOWN
+	// STATUS_TRUE
+	// STATUS_FALSE
+	Status *string `pulumi:"status"`
+	// (Output)
+	// Type of the condition.
+	// Possible values:
+	// TYPE_READY
+	// TYPE_SYNCHRONIZED
+	Type *string `pulumi:"type"`
+}
+
+// SaaSConditionInput is an input type that accepts SaaSConditionArgs and SaaSConditionOutput values.
+// You can construct a concrete instance of `SaaSConditionInput` via:
+//
+//	SaaSConditionArgs{...}
+type SaaSConditionInput interface {
+	pulumi.Input
+
+	ToSaaSConditionOutput() SaaSConditionOutput
+	ToSaaSConditionOutputWithContext(context.Context) SaaSConditionOutput
+}
+
+type SaaSConditionArgs struct {
+	// (Output)
+	// Last time the condition transited from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
+	// A developer-facing error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
+	// Brief reason for the condition's last transition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
+	// Status of the condition.
+	// Possible values:
+	// STATUS_UNKNOWN
+	// STATUS_TRUE
+	// STATUS_FALSE
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// (Output)
+	// Type of the condition.
+	// Possible values:
+	// TYPE_READY
+	// TYPE_SYNCHRONIZED
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SaaSConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaaSCondition)(nil)).Elem()
+}
+
+func (i SaaSConditionArgs) ToSaaSConditionOutput() SaaSConditionOutput {
+	return i.ToSaaSConditionOutputWithContext(context.Background())
+}
+
+func (i SaaSConditionArgs) ToSaaSConditionOutputWithContext(ctx context.Context) SaaSConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaaSConditionOutput)
+}
+
+// SaaSConditionArrayInput is an input type that accepts SaaSConditionArray and SaaSConditionArrayOutput values.
+// You can construct a concrete instance of `SaaSConditionArrayInput` via:
+//
+//	SaaSConditionArray{ SaaSConditionArgs{...} }
+type SaaSConditionArrayInput interface {
+	pulumi.Input
+
+	ToSaaSConditionArrayOutput() SaaSConditionArrayOutput
+	ToSaaSConditionArrayOutputWithContext(context.Context) SaaSConditionArrayOutput
+}
+
+type SaaSConditionArray []SaaSConditionInput
+
+func (SaaSConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SaaSCondition)(nil)).Elem()
+}
+
+func (i SaaSConditionArray) ToSaaSConditionArrayOutput() SaaSConditionArrayOutput {
+	return i.ToSaaSConditionArrayOutputWithContext(context.Background())
+}
+
+func (i SaaSConditionArray) ToSaaSConditionArrayOutputWithContext(ctx context.Context) SaaSConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaaSConditionArrayOutput)
+}
+
+type SaaSConditionOutput struct{ *pulumi.OutputState }
+
+func (SaaSConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaaSCondition)(nil)).Elem()
+}
+
+func (o SaaSConditionOutput) ToSaaSConditionOutput() SaaSConditionOutput {
+	return o
+}
+
+func (o SaaSConditionOutput) ToSaaSConditionOutputWithContext(ctx context.Context) SaaSConditionOutput {
+	return o
+}
+
+// (Output)
+// Last time the condition transited from one status to another.
+func (o SaaSConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SaaSCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message.
+func (o SaaSConditionOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SaaSCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Brief reason for the condition's last transition.
+func (o SaaSConditionOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SaaSCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Status of the condition.
+// Possible values:
+// STATUS_UNKNOWN
+// STATUS_TRUE
+// STATUS_FALSE
+func (o SaaSConditionOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SaaSCondition) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Type of the condition.
+// Possible values:
+// TYPE_READY
+// TYPE_SYNCHRONIZED
+func (o SaaSConditionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SaaSCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SaaSConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (SaaSConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SaaSCondition)(nil)).Elem()
+}
+
+func (o SaaSConditionArrayOutput) ToSaaSConditionArrayOutput() SaaSConditionArrayOutput {
+	return o
+}
+
+func (o SaaSConditionArrayOutput) ToSaaSConditionArrayOutputWithContext(ctx context.Context) SaaSConditionArrayOutput {
+	return o
+}
+
+func (o SaaSConditionArrayOutput) Index(i pulumi.IntInput) SaaSConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SaaSCondition {
+		return vs[0].([]SaaSCondition)[vs[1].(int)]
+	}).(SaaSConditionOutput)
+}
+
+type SaaSError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message *string `pulumi:"message"`
+}
+
+// SaaSErrorInput is an input type that accepts SaaSErrorArgs and SaaSErrorOutput values.
+// You can construct a concrete instance of `SaaSErrorInput` via:
+//
+//	SaaSErrorArgs{...}
+type SaaSErrorInput interface {
+	pulumi.Input
+
+	ToSaaSErrorOutput() SaaSErrorOutput
+	ToSaaSErrorOutputWithContext(context.Context) SaaSErrorOutput
+}
+
+type SaaSErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (SaaSErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaaSError)(nil)).Elem()
+}
+
+func (i SaaSErrorArgs) ToSaaSErrorOutput() SaaSErrorOutput {
+	return i.ToSaaSErrorOutputWithContext(context.Background())
+}
+
+func (i SaaSErrorArgs) ToSaaSErrorOutputWithContext(ctx context.Context) SaaSErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaaSErrorOutput)
+}
+
+// SaaSErrorArrayInput is an input type that accepts SaaSErrorArray and SaaSErrorArrayOutput values.
+// You can construct a concrete instance of `SaaSErrorArrayInput` via:
+//
+//	SaaSErrorArray{ SaaSErrorArgs{...} }
+type SaaSErrorArrayInput interface {
+	pulumi.Input
+
+	ToSaaSErrorArrayOutput() SaaSErrorArrayOutput
+	ToSaaSErrorArrayOutputWithContext(context.Context) SaaSErrorArrayOutput
+}
+
+type SaaSErrorArray []SaaSErrorInput
+
+func (SaaSErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SaaSError)(nil)).Elem()
+}
+
+func (i SaaSErrorArray) ToSaaSErrorArrayOutput() SaaSErrorArrayOutput {
+	return i.ToSaaSErrorArrayOutputWithContext(context.Background())
+}
+
+func (i SaaSErrorArray) ToSaaSErrorArrayOutputWithContext(ctx context.Context) SaaSErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaaSErrorArrayOutput)
+}
+
+type SaaSErrorOutput struct{ *pulumi.OutputState }
+
+func (SaaSErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaaSError)(nil)).Elem()
+}
+
+func (o SaaSErrorOutput) ToSaaSErrorOutput() SaaSErrorOutput {
+	return o
+}
+
+func (o SaaSErrorOutput) ToSaaSErrorOutputWithContext(ctx context.Context) SaaSErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o SaaSErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SaaSError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message.
+func (o SaaSErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SaaSError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type SaaSErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (SaaSErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SaaSError)(nil)).Elem()
+}
+
+func (o SaaSErrorArrayOutput) ToSaaSErrorArrayOutput() SaaSErrorArrayOutput {
+	return o
+}
+
+func (o SaaSErrorArrayOutput) ToSaaSErrorArrayOutputWithContext(ctx context.Context) SaaSErrorArrayOutput {
+	return o
+}
+
+func (o SaaSErrorArrayOutput) Index(i pulumi.IntInput) SaaSErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SaaSError {
+		return vs[0].([]SaaSError)[vs[1].(int)]
+	}).(SaaSErrorOutput)
+}
+
 type SaaSLocation struct {
 	// Name of location.
 	Name *string `pulumi:"name"`
@@ -1470,6 +2203,707 @@ func (o UnitInputVariableArrayOutput) Index(i pulumi.IntInput) UnitInputVariable
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UnitInputVariable {
 		return vs[0].([]UnitInputVariable)[vs[1].(int)]
 	}).(UnitInputVariableOutput)
+}
+
+type UnitKindAppParams struct {
+	// Grouping used to construct the name of the App Hub Application.
+	// Multiple UnitKinds can specify the same group to use the same
+	// Application across their respective Units. Corresponds to the
+	// appBoundaryId in the ADC composite ApplicationTemplate. If empty,
+	// the service creates no App Hub application.
+	Group *string `pulumi:"group"`
+	// Corresponds to the scope in the ADC composite ApplicationTemplate.
+	// Structure is documented below.
+	Scope *UnitKindAppParamsScope `pulumi:"scope"`
+}
+
+// UnitKindAppParamsInput is an input type that accepts UnitKindAppParamsArgs and UnitKindAppParamsOutput values.
+// You can construct a concrete instance of `UnitKindAppParamsInput` via:
+//
+//	UnitKindAppParamsArgs{...}
+type UnitKindAppParamsInput interface {
+	pulumi.Input
+
+	ToUnitKindAppParamsOutput() UnitKindAppParamsOutput
+	ToUnitKindAppParamsOutputWithContext(context.Context) UnitKindAppParamsOutput
+}
+
+type UnitKindAppParamsArgs struct {
+	// Grouping used to construct the name of the App Hub Application.
+	// Multiple UnitKinds can specify the same group to use the same
+	// Application across their respective Units. Corresponds to the
+	// appBoundaryId in the ADC composite ApplicationTemplate. If empty,
+	// the service creates no App Hub application.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Corresponds to the scope in the ADC composite ApplicationTemplate.
+	// Structure is documented below.
+	Scope UnitKindAppParamsScopePtrInput `pulumi:"scope"`
+}
+
+func (UnitKindAppParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitKindAppParams)(nil)).Elem()
+}
+
+func (i UnitKindAppParamsArgs) ToUnitKindAppParamsOutput() UnitKindAppParamsOutput {
+	return i.ToUnitKindAppParamsOutputWithContext(context.Background())
+}
+
+func (i UnitKindAppParamsArgs) ToUnitKindAppParamsOutputWithContext(ctx context.Context) UnitKindAppParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindAppParamsOutput)
+}
+
+func (i UnitKindAppParamsArgs) ToUnitKindAppParamsPtrOutput() UnitKindAppParamsPtrOutput {
+	return i.ToUnitKindAppParamsPtrOutputWithContext(context.Background())
+}
+
+func (i UnitKindAppParamsArgs) ToUnitKindAppParamsPtrOutputWithContext(ctx context.Context) UnitKindAppParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindAppParamsOutput).ToUnitKindAppParamsPtrOutputWithContext(ctx)
+}
+
+// UnitKindAppParamsPtrInput is an input type that accepts UnitKindAppParamsArgs, UnitKindAppParamsPtr and UnitKindAppParamsPtrOutput values.
+// You can construct a concrete instance of `UnitKindAppParamsPtrInput` via:
+//
+//	        UnitKindAppParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type UnitKindAppParamsPtrInput interface {
+	pulumi.Input
+
+	ToUnitKindAppParamsPtrOutput() UnitKindAppParamsPtrOutput
+	ToUnitKindAppParamsPtrOutputWithContext(context.Context) UnitKindAppParamsPtrOutput
+}
+
+type unitKindAppParamsPtrType UnitKindAppParamsArgs
+
+func UnitKindAppParamsPtr(v *UnitKindAppParamsArgs) UnitKindAppParamsPtrInput {
+	return (*unitKindAppParamsPtrType)(v)
+}
+
+func (*unitKindAppParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitKindAppParams)(nil)).Elem()
+}
+
+func (i *unitKindAppParamsPtrType) ToUnitKindAppParamsPtrOutput() UnitKindAppParamsPtrOutput {
+	return i.ToUnitKindAppParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *unitKindAppParamsPtrType) ToUnitKindAppParamsPtrOutputWithContext(ctx context.Context) UnitKindAppParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindAppParamsPtrOutput)
+}
+
+type UnitKindAppParamsOutput struct{ *pulumi.OutputState }
+
+func (UnitKindAppParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitKindAppParams)(nil)).Elem()
+}
+
+func (o UnitKindAppParamsOutput) ToUnitKindAppParamsOutput() UnitKindAppParamsOutput {
+	return o
+}
+
+func (o UnitKindAppParamsOutput) ToUnitKindAppParamsOutputWithContext(ctx context.Context) UnitKindAppParamsOutput {
+	return o
+}
+
+func (o UnitKindAppParamsOutput) ToUnitKindAppParamsPtrOutput() UnitKindAppParamsPtrOutput {
+	return o.ToUnitKindAppParamsPtrOutputWithContext(context.Background())
+}
+
+func (o UnitKindAppParamsOutput) ToUnitKindAppParamsPtrOutputWithContext(ctx context.Context) UnitKindAppParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UnitKindAppParams) *UnitKindAppParams {
+		return &v
+	}).(UnitKindAppParamsPtrOutput)
+}
+
+// Grouping used to construct the name of the App Hub Application.
+// Multiple UnitKinds can specify the same group to use the same
+// Application across their respective Units. Corresponds to the
+// appBoundaryId in the ADC composite ApplicationTemplate. If empty,
+// the service creates no App Hub application.
+func (o UnitKindAppParamsOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitKindAppParams) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the scope in the ADC composite ApplicationTemplate.
+// Structure is documented below.
+func (o UnitKindAppParamsOutput) Scope() UnitKindAppParamsScopePtrOutput {
+	return o.ApplyT(func(v UnitKindAppParams) *UnitKindAppParamsScope { return v.Scope }).(UnitKindAppParamsScopePtrOutput)
+}
+
+type UnitKindAppParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (UnitKindAppParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitKindAppParams)(nil)).Elem()
+}
+
+func (o UnitKindAppParamsPtrOutput) ToUnitKindAppParamsPtrOutput() UnitKindAppParamsPtrOutput {
+	return o
+}
+
+func (o UnitKindAppParamsPtrOutput) ToUnitKindAppParamsPtrOutputWithContext(ctx context.Context) UnitKindAppParamsPtrOutput {
+	return o
+}
+
+func (o UnitKindAppParamsPtrOutput) Elem() UnitKindAppParamsOutput {
+	return o.ApplyT(func(v *UnitKindAppParams) UnitKindAppParams {
+		if v != nil {
+			return *v
+		}
+		var ret UnitKindAppParams
+		return ret
+	}).(UnitKindAppParamsOutput)
+}
+
+// Grouping used to construct the name of the App Hub Application.
+// Multiple UnitKinds can specify the same group to use the same
+// Application across their respective Units. Corresponds to the
+// appBoundaryId in the ADC composite ApplicationTemplate. If empty,
+// the service creates no App Hub application.
+func (o UnitKindAppParamsPtrOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitKindAppParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the scope in the ADC composite ApplicationTemplate.
+// Structure is documented below.
+func (o UnitKindAppParamsPtrOutput) Scope() UnitKindAppParamsScopePtrOutput {
+	return o.ApplyT(func(v *UnitKindAppParams) *UnitKindAppParamsScope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(UnitKindAppParamsScopePtrOutput)
+}
+
+type UnitKindAppParamsScope struct {
+	// Scope type.
+	// Possible values:
+	// TYPE_REGIONAL
+	// TYPE_GLOBAL
+	Type string `pulumi:"type"`
+}
+
+// UnitKindAppParamsScopeInput is an input type that accepts UnitKindAppParamsScopeArgs and UnitKindAppParamsScopeOutput values.
+// You can construct a concrete instance of `UnitKindAppParamsScopeInput` via:
+//
+//	UnitKindAppParamsScopeArgs{...}
+type UnitKindAppParamsScopeInput interface {
+	pulumi.Input
+
+	ToUnitKindAppParamsScopeOutput() UnitKindAppParamsScopeOutput
+	ToUnitKindAppParamsScopeOutputWithContext(context.Context) UnitKindAppParamsScopeOutput
+}
+
+type UnitKindAppParamsScopeArgs struct {
+	// Scope type.
+	// Possible values:
+	// TYPE_REGIONAL
+	// TYPE_GLOBAL
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (UnitKindAppParamsScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitKindAppParamsScope)(nil)).Elem()
+}
+
+func (i UnitKindAppParamsScopeArgs) ToUnitKindAppParamsScopeOutput() UnitKindAppParamsScopeOutput {
+	return i.ToUnitKindAppParamsScopeOutputWithContext(context.Background())
+}
+
+func (i UnitKindAppParamsScopeArgs) ToUnitKindAppParamsScopeOutputWithContext(ctx context.Context) UnitKindAppParamsScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindAppParamsScopeOutput)
+}
+
+func (i UnitKindAppParamsScopeArgs) ToUnitKindAppParamsScopePtrOutput() UnitKindAppParamsScopePtrOutput {
+	return i.ToUnitKindAppParamsScopePtrOutputWithContext(context.Background())
+}
+
+func (i UnitKindAppParamsScopeArgs) ToUnitKindAppParamsScopePtrOutputWithContext(ctx context.Context) UnitKindAppParamsScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindAppParamsScopeOutput).ToUnitKindAppParamsScopePtrOutputWithContext(ctx)
+}
+
+// UnitKindAppParamsScopePtrInput is an input type that accepts UnitKindAppParamsScopeArgs, UnitKindAppParamsScopePtr and UnitKindAppParamsScopePtrOutput values.
+// You can construct a concrete instance of `UnitKindAppParamsScopePtrInput` via:
+//
+//	        UnitKindAppParamsScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type UnitKindAppParamsScopePtrInput interface {
+	pulumi.Input
+
+	ToUnitKindAppParamsScopePtrOutput() UnitKindAppParamsScopePtrOutput
+	ToUnitKindAppParamsScopePtrOutputWithContext(context.Context) UnitKindAppParamsScopePtrOutput
+}
+
+type unitKindAppParamsScopePtrType UnitKindAppParamsScopeArgs
+
+func UnitKindAppParamsScopePtr(v *UnitKindAppParamsScopeArgs) UnitKindAppParamsScopePtrInput {
+	return (*unitKindAppParamsScopePtrType)(v)
+}
+
+func (*unitKindAppParamsScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitKindAppParamsScope)(nil)).Elem()
+}
+
+func (i *unitKindAppParamsScopePtrType) ToUnitKindAppParamsScopePtrOutput() UnitKindAppParamsScopePtrOutput {
+	return i.ToUnitKindAppParamsScopePtrOutputWithContext(context.Background())
+}
+
+func (i *unitKindAppParamsScopePtrType) ToUnitKindAppParamsScopePtrOutputWithContext(ctx context.Context) UnitKindAppParamsScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindAppParamsScopePtrOutput)
+}
+
+type UnitKindAppParamsScopeOutput struct{ *pulumi.OutputState }
+
+func (UnitKindAppParamsScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitKindAppParamsScope)(nil)).Elem()
+}
+
+func (o UnitKindAppParamsScopeOutput) ToUnitKindAppParamsScopeOutput() UnitKindAppParamsScopeOutput {
+	return o
+}
+
+func (o UnitKindAppParamsScopeOutput) ToUnitKindAppParamsScopeOutputWithContext(ctx context.Context) UnitKindAppParamsScopeOutput {
+	return o
+}
+
+func (o UnitKindAppParamsScopeOutput) ToUnitKindAppParamsScopePtrOutput() UnitKindAppParamsScopePtrOutput {
+	return o.ToUnitKindAppParamsScopePtrOutputWithContext(context.Background())
+}
+
+func (o UnitKindAppParamsScopeOutput) ToUnitKindAppParamsScopePtrOutputWithContext(ctx context.Context) UnitKindAppParamsScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UnitKindAppParamsScope) *UnitKindAppParamsScope {
+		return &v
+	}).(UnitKindAppParamsScopePtrOutput)
+}
+
+// Scope type.
+// Possible values:
+// TYPE_REGIONAL
+// TYPE_GLOBAL
+func (o UnitKindAppParamsScopeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitKindAppParamsScope) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type UnitKindAppParamsScopePtrOutput struct{ *pulumi.OutputState }
+
+func (UnitKindAppParamsScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitKindAppParamsScope)(nil)).Elem()
+}
+
+func (o UnitKindAppParamsScopePtrOutput) ToUnitKindAppParamsScopePtrOutput() UnitKindAppParamsScopePtrOutput {
+	return o
+}
+
+func (o UnitKindAppParamsScopePtrOutput) ToUnitKindAppParamsScopePtrOutputWithContext(ctx context.Context) UnitKindAppParamsScopePtrOutput {
+	return o
+}
+
+func (o UnitKindAppParamsScopePtrOutput) Elem() UnitKindAppParamsScopeOutput {
+	return o.ApplyT(func(v *UnitKindAppParamsScope) UnitKindAppParamsScope {
+		if v != nil {
+			return *v
+		}
+		var ret UnitKindAppParamsScope
+		return ret
+	}).(UnitKindAppParamsScopeOutput)
+}
+
+// Scope type.
+// Possible values:
+// TYPE_REGIONAL
+// TYPE_GLOBAL
+func (o UnitKindAppParamsScopePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitKindAppParamsScope) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type UnitKindApplicationTemplateComponent struct {
+	// Name of the component in the composite ApplicationTemplate (the root
+	// module ID, e.g. a composite component ID or `native-components`).
+	Component *string `pulumi:"component"`
+	// Reference to the composite ApplicationTemplate.
+	// Structure is documented below.
+	CompositeRef *UnitKindApplicationTemplateComponentCompositeRef `pulumi:"compositeRef"`
+	// Revision of the component. If the component does not have a revision,
+	// this is the revision of the composite ApplicationTemplate.
+	Revision *string `pulumi:"revision"`
+}
+
+// UnitKindApplicationTemplateComponentInput is an input type that accepts UnitKindApplicationTemplateComponentArgs and UnitKindApplicationTemplateComponentOutput values.
+// You can construct a concrete instance of `UnitKindApplicationTemplateComponentInput` via:
+//
+//	UnitKindApplicationTemplateComponentArgs{...}
+type UnitKindApplicationTemplateComponentInput interface {
+	pulumi.Input
+
+	ToUnitKindApplicationTemplateComponentOutput() UnitKindApplicationTemplateComponentOutput
+	ToUnitKindApplicationTemplateComponentOutputWithContext(context.Context) UnitKindApplicationTemplateComponentOutput
+}
+
+type UnitKindApplicationTemplateComponentArgs struct {
+	// Name of the component in the composite ApplicationTemplate (the root
+	// module ID, e.g. a composite component ID or `native-components`).
+	Component pulumi.StringPtrInput `pulumi:"component"`
+	// Reference to the composite ApplicationTemplate.
+	// Structure is documented below.
+	CompositeRef UnitKindApplicationTemplateComponentCompositeRefPtrInput `pulumi:"compositeRef"`
+	// Revision of the component. If the component does not have a revision,
+	// this is the revision of the composite ApplicationTemplate.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+}
+
+func (UnitKindApplicationTemplateComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitKindApplicationTemplateComponent)(nil)).Elem()
+}
+
+func (i UnitKindApplicationTemplateComponentArgs) ToUnitKindApplicationTemplateComponentOutput() UnitKindApplicationTemplateComponentOutput {
+	return i.ToUnitKindApplicationTemplateComponentOutputWithContext(context.Background())
+}
+
+func (i UnitKindApplicationTemplateComponentArgs) ToUnitKindApplicationTemplateComponentOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindApplicationTemplateComponentOutput)
+}
+
+func (i UnitKindApplicationTemplateComponentArgs) ToUnitKindApplicationTemplateComponentPtrOutput() UnitKindApplicationTemplateComponentPtrOutput {
+	return i.ToUnitKindApplicationTemplateComponentPtrOutputWithContext(context.Background())
+}
+
+func (i UnitKindApplicationTemplateComponentArgs) ToUnitKindApplicationTemplateComponentPtrOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindApplicationTemplateComponentOutput).ToUnitKindApplicationTemplateComponentPtrOutputWithContext(ctx)
+}
+
+// UnitKindApplicationTemplateComponentPtrInput is an input type that accepts UnitKindApplicationTemplateComponentArgs, UnitKindApplicationTemplateComponentPtr and UnitKindApplicationTemplateComponentPtrOutput values.
+// You can construct a concrete instance of `UnitKindApplicationTemplateComponentPtrInput` via:
+//
+//	        UnitKindApplicationTemplateComponentArgs{...}
+//
+//	or:
+//
+//	        nil
+type UnitKindApplicationTemplateComponentPtrInput interface {
+	pulumi.Input
+
+	ToUnitKindApplicationTemplateComponentPtrOutput() UnitKindApplicationTemplateComponentPtrOutput
+	ToUnitKindApplicationTemplateComponentPtrOutputWithContext(context.Context) UnitKindApplicationTemplateComponentPtrOutput
+}
+
+type unitKindApplicationTemplateComponentPtrType UnitKindApplicationTemplateComponentArgs
+
+func UnitKindApplicationTemplateComponentPtr(v *UnitKindApplicationTemplateComponentArgs) UnitKindApplicationTemplateComponentPtrInput {
+	return (*unitKindApplicationTemplateComponentPtrType)(v)
+}
+
+func (*unitKindApplicationTemplateComponentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitKindApplicationTemplateComponent)(nil)).Elem()
+}
+
+func (i *unitKindApplicationTemplateComponentPtrType) ToUnitKindApplicationTemplateComponentPtrOutput() UnitKindApplicationTemplateComponentPtrOutput {
+	return i.ToUnitKindApplicationTemplateComponentPtrOutputWithContext(context.Background())
+}
+
+func (i *unitKindApplicationTemplateComponentPtrType) ToUnitKindApplicationTemplateComponentPtrOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindApplicationTemplateComponentPtrOutput)
+}
+
+type UnitKindApplicationTemplateComponentOutput struct{ *pulumi.OutputState }
+
+func (UnitKindApplicationTemplateComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitKindApplicationTemplateComponent)(nil)).Elem()
+}
+
+func (o UnitKindApplicationTemplateComponentOutput) ToUnitKindApplicationTemplateComponentOutput() UnitKindApplicationTemplateComponentOutput {
+	return o
+}
+
+func (o UnitKindApplicationTemplateComponentOutput) ToUnitKindApplicationTemplateComponentOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentOutput {
+	return o
+}
+
+func (o UnitKindApplicationTemplateComponentOutput) ToUnitKindApplicationTemplateComponentPtrOutput() UnitKindApplicationTemplateComponentPtrOutput {
+	return o.ToUnitKindApplicationTemplateComponentPtrOutputWithContext(context.Background())
+}
+
+func (o UnitKindApplicationTemplateComponentOutput) ToUnitKindApplicationTemplateComponentPtrOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UnitKindApplicationTemplateComponent) *UnitKindApplicationTemplateComponent {
+		return &v
+	}).(UnitKindApplicationTemplateComponentPtrOutput)
+}
+
+// Name of the component in the composite ApplicationTemplate (the root
+// module ID, e.g. a composite component ID or `native-components`).
+func (o UnitKindApplicationTemplateComponentOutput) Component() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitKindApplicationTemplateComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+// Reference to the composite ApplicationTemplate.
+// Structure is documented below.
+func (o UnitKindApplicationTemplateComponentOutput) CompositeRef() UnitKindApplicationTemplateComponentCompositeRefPtrOutput {
+	return o.ApplyT(func(v UnitKindApplicationTemplateComponent) *UnitKindApplicationTemplateComponentCompositeRef {
+		return v.CompositeRef
+	}).(UnitKindApplicationTemplateComponentCompositeRefPtrOutput)
+}
+
+// Revision of the component. If the component does not have a revision,
+// this is the revision of the composite ApplicationTemplate.
+func (o UnitKindApplicationTemplateComponentOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitKindApplicationTemplateComponent) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+type UnitKindApplicationTemplateComponentPtrOutput struct{ *pulumi.OutputState }
+
+func (UnitKindApplicationTemplateComponentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitKindApplicationTemplateComponent)(nil)).Elem()
+}
+
+func (o UnitKindApplicationTemplateComponentPtrOutput) ToUnitKindApplicationTemplateComponentPtrOutput() UnitKindApplicationTemplateComponentPtrOutput {
+	return o
+}
+
+func (o UnitKindApplicationTemplateComponentPtrOutput) ToUnitKindApplicationTemplateComponentPtrOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentPtrOutput {
+	return o
+}
+
+func (o UnitKindApplicationTemplateComponentPtrOutput) Elem() UnitKindApplicationTemplateComponentOutput {
+	return o.ApplyT(func(v *UnitKindApplicationTemplateComponent) UnitKindApplicationTemplateComponent {
+		if v != nil {
+			return *v
+		}
+		var ret UnitKindApplicationTemplateComponent
+		return ret
+	}).(UnitKindApplicationTemplateComponentOutput)
+}
+
+// Name of the component in the composite ApplicationTemplate (the root
+// module ID, e.g. a composite component ID or `native-components`).
+func (o UnitKindApplicationTemplateComponentPtrOutput) Component() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitKindApplicationTemplateComponent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Component
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the composite ApplicationTemplate.
+// Structure is documented below.
+func (o UnitKindApplicationTemplateComponentPtrOutput) CompositeRef() UnitKindApplicationTemplateComponentCompositeRefPtrOutput {
+	return o.ApplyT(func(v *UnitKindApplicationTemplateComponent) *UnitKindApplicationTemplateComponentCompositeRef {
+		if v == nil {
+			return nil
+		}
+		return v.CompositeRef
+	}).(UnitKindApplicationTemplateComponentCompositeRefPtrOutput)
+}
+
+// Revision of the component. If the component does not have a revision,
+// this is the revision of the composite ApplicationTemplate.
+func (o UnitKindApplicationTemplateComponentPtrOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitKindApplicationTemplateComponent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Revision
+	}).(pulumi.StringPtrOutput)
+}
+
+type UnitKindApplicationTemplateComponentCompositeRef struct {
+	// Reference to the ApplicationTemplate resource, in the format
+	// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+	ApplicationTemplate string `pulumi:"applicationTemplate"`
+	// Revision of the ApplicationTemplate, as a full resource name
+	// prefixed by `applicationTemplate`.
+	Revision *string `pulumi:"revision"`
+	// (Output)
+	// Reference to the ongoing import and replication operation. Opaque for external usage.
+	SyncOperation *string `pulumi:"syncOperation"`
+}
+
+// UnitKindApplicationTemplateComponentCompositeRefInput is an input type that accepts UnitKindApplicationTemplateComponentCompositeRefArgs and UnitKindApplicationTemplateComponentCompositeRefOutput values.
+// You can construct a concrete instance of `UnitKindApplicationTemplateComponentCompositeRefInput` via:
+//
+//	UnitKindApplicationTemplateComponentCompositeRefArgs{...}
+type UnitKindApplicationTemplateComponentCompositeRefInput interface {
+	pulumi.Input
+
+	ToUnitKindApplicationTemplateComponentCompositeRefOutput() UnitKindApplicationTemplateComponentCompositeRefOutput
+	ToUnitKindApplicationTemplateComponentCompositeRefOutputWithContext(context.Context) UnitKindApplicationTemplateComponentCompositeRefOutput
+}
+
+type UnitKindApplicationTemplateComponentCompositeRefArgs struct {
+	// Reference to the ApplicationTemplate resource, in the format
+	// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+	ApplicationTemplate pulumi.StringInput `pulumi:"applicationTemplate"`
+	// Revision of the ApplicationTemplate, as a full resource name
+	// prefixed by `applicationTemplate`.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// (Output)
+	// Reference to the ongoing import and replication operation. Opaque for external usage.
+	SyncOperation pulumi.StringPtrInput `pulumi:"syncOperation"`
+}
+
+func (UnitKindApplicationTemplateComponentCompositeRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitKindApplicationTemplateComponentCompositeRef)(nil)).Elem()
+}
+
+func (i UnitKindApplicationTemplateComponentCompositeRefArgs) ToUnitKindApplicationTemplateComponentCompositeRefOutput() UnitKindApplicationTemplateComponentCompositeRefOutput {
+	return i.ToUnitKindApplicationTemplateComponentCompositeRefOutputWithContext(context.Background())
+}
+
+func (i UnitKindApplicationTemplateComponentCompositeRefArgs) ToUnitKindApplicationTemplateComponentCompositeRefOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentCompositeRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindApplicationTemplateComponentCompositeRefOutput)
+}
+
+func (i UnitKindApplicationTemplateComponentCompositeRefArgs) ToUnitKindApplicationTemplateComponentCompositeRefPtrOutput() UnitKindApplicationTemplateComponentCompositeRefPtrOutput {
+	return i.ToUnitKindApplicationTemplateComponentCompositeRefPtrOutputWithContext(context.Background())
+}
+
+func (i UnitKindApplicationTemplateComponentCompositeRefArgs) ToUnitKindApplicationTemplateComponentCompositeRefPtrOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentCompositeRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindApplicationTemplateComponentCompositeRefOutput).ToUnitKindApplicationTemplateComponentCompositeRefPtrOutputWithContext(ctx)
+}
+
+// UnitKindApplicationTemplateComponentCompositeRefPtrInput is an input type that accepts UnitKindApplicationTemplateComponentCompositeRefArgs, UnitKindApplicationTemplateComponentCompositeRefPtr and UnitKindApplicationTemplateComponentCompositeRefPtrOutput values.
+// You can construct a concrete instance of `UnitKindApplicationTemplateComponentCompositeRefPtrInput` via:
+//
+//	        UnitKindApplicationTemplateComponentCompositeRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type UnitKindApplicationTemplateComponentCompositeRefPtrInput interface {
+	pulumi.Input
+
+	ToUnitKindApplicationTemplateComponentCompositeRefPtrOutput() UnitKindApplicationTemplateComponentCompositeRefPtrOutput
+	ToUnitKindApplicationTemplateComponentCompositeRefPtrOutputWithContext(context.Context) UnitKindApplicationTemplateComponentCompositeRefPtrOutput
+}
+
+type unitKindApplicationTemplateComponentCompositeRefPtrType UnitKindApplicationTemplateComponentCompositeRefArgs
+
+func UnitKindApplicationTemplateComponentCompositeRefPtr(v *UnitKindApplicationTemplateComponentCompositeRefArgs) UnitKindApplicationTemplateComponentCompositeRefPtrInput {
+	return (*unitKindApplicationTemplateComponentCompositeRefPtrType)(v)
+}
+
+func (*unitKindApplicationTemplateComponentCompositeRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitKindApplicationTemplateComponentCompositeRef)(nil)).Elem()
+}
+
+func (i *unitKindApplicationTemplateComponentCompositeRefPtrType) ToUnitKindApplicationTemplateComponentCompositeRefPtrOutput() UnitKindApplicationTemplateComponentCompositeRefPtrOutput {
+	return i.ToUnitKindApplicationTemplateComponentCompositeRefPtrOutputWithContext(context.Background())
+}
+
+func (i *unitKindApplicationTemplateComponentCompositeRefPtrType) ToUnitKindApplicationTemplateComponentCompositeRefPtrOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentCompositeRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitKindApplicationTemplateComponentCompositeRefPtrOutput)
+}
+
+type UnitKindApplicationTemplateComponentCompositeRefOutput struct{ *pulumi.OutputState }
+
+func (UnitKindApplicationTemplateComponentCompositeRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitKindApplicationTemplateComponentCompositeRef)(nil)).Elem()
+}
+
+func (o UnitKindApplicationTemplateComponentCompositeRefOutput) ToUnitKindApplicationTemplateComponentCompositeRefOutput() UnitKindApplicationTemplateComponentCompositeRefOutput {
+	return o
+}
+
+func (o UnitKindApplicationTemplateComponentCompositeRefOutput) ToUnitKindApplicationTemplateComponentCompositeRefOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentCompositeRefOutput {
+	return o
+}
+
+func (o UnitKindApplicationTemplateComponentCompositeRefOutput) ToUnitKindApplicationTemplateComponentCompositeRefPtrOutput() UnitKindApplicationTemplateComponentCompositeRefPtrOutput {
+	return o.ToUnitKindApplicationTemplateComponentCompositeRefPtrOutputWithContext(context.Background())
+}
+
+func (o UnitKindApplicationTemplateComponentCompositeRefOutput) ToUnitKindApplicationTemplateComponentCompositeRefPtrOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentCompositeRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UnitKindApplicationTemplateComponentCompositeRef) *UnitKindApplicationTemplateComponentCompositeRef {
+		return &v
+	}).(UnitKindApplicationTemplateComponentCompositeRefPtrOutput)
+}
+
+// Reference to the ApplicationTemplate resource, in the format
+// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+func (o UnitKindApplicationTemplateComponentCompositeRefOutput) ApplicationTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitKindApplicationTemplateComponentCompositeRef) string { return v.ApplicationTemplate }).(pulumi.StringOutput)
+}
+
+// Revision of the ApplicationTemplate, as a full resource name
+// prefixed by `applicationTemplate`.
+func (o UnitKindApplicationTemplateComponentCompositeRefOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitKindApplicationTemplateComponentCompositeRef) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Reference to the ongoing import and replication operation. Opaque for external usage.
+func (o UnitKindApplicationTemplateComponentCompositeRefOutput) SyncOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitKindApplicationTemplateComponentCompositeRef) *string { return v.SyncOperation }).(pulumi.StringPtrOutput)
+}
+
+type UnitKindApplicationTemplateComponentCompositeRefPtrOutput struct{ *pulumi.OutputState }
+
+func (UnitKindApplicationTemplateComponentCompositeRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitKindApplicationTemplateComponentCompositeRef)(nil)).Elem()
+}
+
+func (o UnitKindApplicationTemplateComponentCompositeRefPtrOutput) ToUnitKindApplicationTemplateComponentCompositeRefPtrOutput() UnitKindApplicationTemplateComponentCompositeRefPtrOutput {
+	return o
+}
+
+func (o UnitKindApplicationTemplateComponentCompositeRefPtrOutput) ToUnitKindApplicationTemplateComponentCompositeRefPtrOutputWithContext(ctx context.Context) UnitKindApplicationTemplateComponentCompositeRefPtrOutput {
+	return o
+}
+
+func (o UnitKindApplicationTemplateComponentCompositeRefPtrOutput) Elem() UnitKindApplicationTemplateComponentCompositeRefOutput {
+	return o.ApplyT(func(v *UnitKindApplicationTemplateComponentCompositeRef) UnitKindApplicationTemplateComponentCompositeRef {
+		if v != nil {
+			return *v
+		}
+		var ret UnitKindApplicationTemplateComponentCompositeRef
+		return ret
+	}).(UnitKindApplicationTemplateComponentCompositeRefOutput)
+}
+
+// Reference to the ApplicationTemplate resource, in the format
+// `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}`.
+func (o UnitKindApplicationTemplateComponentCompositeRefPtrOutput) ApplicationTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitKindApplicationTemplateComponentCompositeRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplicationTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Revision of the ApplicationTemplate, as a full resource name
+// prefixed by `applicationTemplate`.
+func (o UnitKindApplicationTemplateComponentCompositeRefPtrOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitKindApplicationTemplateComponentCompositeRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Revision
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Reference to the ongoing import and replication operation. Opaque for external usage.
+func (o UnitKindApplicationTemplateComponentCompositeRefPtrOutput) SyncOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitKindApplicationTemplateComponentCompositeRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncOperation
+	}).(pulumi.StringPtrOutput)
 }
 
 type UnitKindDependency struct {
@@ -3622,6 +5056,10 @@ func (o UnitOutputVariableArrayOutput) Index(i pulumi.IntInput) UnitOutputVariab
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseApplicationTemplateComponentInput)(nil)).Elem(), ReleaseApplicationTemplateComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseApplicationTemplateComponentArrayInput)(nil)).Elem(), ReleaseApplicationTemplateComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseApplicationTemplateComponentCompositeRefInput)(nil)).Elem(), ReleaseApplicationTemplateComponentCompositeRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseApplicationTemplateComponentCompositeRefArrayInput)(nil)).Elem(), ReleaseApplicationTemplateComponentCompositeRefArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseBlueprintInput)(nil)).Elem(), ReleaseBlueprintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseBlueprintPtrInput)(nil)).Elem(), ReleaseBlueprintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseInputVariableInput)(nil)).Elem(), ReleaseInputVariableArgs{})
@@ -3634,6 +5072,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseReleaseRequirementsPtrInput)(nil)).Elem(), ReleaseReleaseRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutKindErrorBudgetInput)(nil)).Elem(), RolloutKindErrorBudgetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutKindErrorBudgetPtrInput)(nil)).Elem(), RolloutKindErrorBudgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SaaSApplicationTemplateInput)(nil)).Elem(), SaaSApplicationTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SaaSApplicationTemplatePtrInput)(nil)).Elem(), SaaSApplicationTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SaaSConditionInput)(nil)).Elem(), SaaSConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SaaSConditionArrayInput)(nil)).Elem(), SaaSConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SaaSErrorInput)(nil)).Elem(), SaaSErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SaaSErrorArrayInput)(nil)).Elem(), SaaSErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SaaSLocationInput)(nil)).Elem(), SaaSLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SaaSLocationArrayInput)(nil)).Elem(), SaaSLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitConditionInput)(nil)).Elem(), UnitConditionArgs{})
@@ -3644,6 +5088,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitDependentArrayInput)(nil)).Elem(), UnitDependentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitInputVariableInput)(nil)).Elem(), UnitInputVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitInputVariableArrayInput)(nil)).Elem(), UnitInputVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindAppParamsInput)(nil)).Elem(), UnitKindAppParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindAppParamsPtrInput)(nil)).Elem(), UnitKindAppParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindAppParamsScopeInput)(nil)).Elem(), UnitKindAppParamsScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindAppParamsScopePtrInput)(nil)).Elem(), UnitKindAppParamsScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindApplicationTemplateComponentInput)(nil)).Elem(), UnitKindApplicationTemplateComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindApplicationTemplateComponentPtrInput)(nil)).Elem(), UnitKindApplicationTemplateComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindApplicationTemplateComponentCompositeRefInput)(nil)).Elem(), UnitKindApplicationTemplateComponentCompositeRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindApplicationTemplateComponentCompositeRefPtrInput)(nil)).Elem(), UnitKindApplicationTemplateComponentCompositeRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindDependencyInput)(nil)).Elem(), UnitKindDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindDependencyArrayInput)(nil)).Elem(), UnitKindDependencyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindInputVariableMappingInput)(nil)).Elem(), UnitKindInputVariableMappingArgs{})
@@ -3674,6 +5126,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationUpgradeInputVariableArrayInput)(nil)).Elem(), UnitOperationUpgradeInputVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitOutputVariableInput)(nil)).Elem(), UnitOutputVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitOutputVariableArrayInput)(nil)).Elem(), UnitOutputVariableArray{})
+	pulumi.RegisterOutputType(ReleaseApplicationTemplateComponentOutput{})
+	pulumi.RegisterOutputType(ReleaseApplicationTemplateComponentArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseApplicationTemplateComponentCompositeRefOutput{})
+	pulumi.RegisterOutputType(ReleaseApplicationTemplateComponentCompositeRefArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseBlueprintOutput{})
 	pulumi.RegisterOutputType(ReleaseBlueprintPtrOutput{})
 	pulumi.RegisterOutputType(ReleaseInputVariableOutput{})
@@ -3686,6 +5142,12 @@ func init() {
 	pulumi.RegisterOutputType(ReleaseReleaseRequirementsPtrOutput{})
 	pulumi.RegisterOutputType(RolloutKindErrorBudgetOutput{})
 	pulumi.RegisterOutputType(RolloutKindErrorBudgetPtrOutput{})
+	pulumi.RegisterOutputType(SaaSApplicationTemplateOutput{})
+	pulumi.RegisterOutputType(SaaSApplicationTemplatePtrOutput{})
+	pulumi.RegisterOutputType(SaaSConditionOutput{})
+	pulumi.RegisterOutputType(SaaSConditionArrayOutput{})
+	pulumi.RegisterOutputType(SaaSErrorOutput{})
+	pulumi.RegisterOutputType(SaaSErrorArrayOutput{})
 	pulumi.RegisterOutputType(SaaSLocationOutput{})
 	pulumi.RegisterOutputType(SaaSLocationArrayOutput{})
 	pulumi.RegisterOutputType(UnitConditionOutput{})
@@ -3696,6 +5158,14 @@ func init() {
 	pulumi.RegisterOutputType(UnitDependentArrayOutput{})
 	pulumi.RegisterOutputType(UnitInputVariableOutput{})
 	pulumi.RegisterOutputType(UnitInputVariableArrayOutput{})
+	pulumi.RegisterOutputType(UnitKindAppParamsOutput{})
+	pulumi.RegisterOutputType(UnitKindAppParamsPtrOutput{})
+	pulumi.RegisterOutputType(UnitKindAppParamsScopeOutput{})
+	pulumi.RegisterOutputType(UnitKindAppParamsScopePtrOutput{})
+	pulumi.RegisterOutputType(UnitKindApplicationTemplateComponentOutput{})
+	pulumi.RegisterOutputType(UnitKindApplicationTemplateComponentPtrOutput{})
+	pulumi.RegisterOutputType(UnitKindApplicationTemplateComponentCompositeRefOutput{})
+	pulumi.RegisterOutputType(UnitKindApplicationTemplateComponentCompositeRefPtrOutput{})
 	pulumi.RegisterOutputType(UnitKindDependencyOutput{})
 	pulumi.RegisterOutputType(UnitKindDependencyArrayOutput{})
 	pulumi.RegisterOutputType(UnitKindInputVariableMappingOutput{})

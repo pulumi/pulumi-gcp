@@ -44,14 +44,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "subnet-net1",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = network1.Id,
     ///     });
     /// 
     ///     var ip1Network1 = new Gcp.Compute.Address("ip1_network1", new()
     ///     {
     ///         Name = "ip1-net1",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Subnetwork = subnetNetwork1.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -61,8 +61,9 @@ namespace Pulumi.Gcp.Redis
     ///     var cluster_user_connCluster = new Gcp.Redis.Cluster("cluster-user-conn", new()
     ///     {
     ///         Name = "cluster-user-conn",
-    ///         ShardCount = 3,
-    ///         Region = "us-west1",
+    ///         ShardCount = 1,
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
+    ///         Region = "us-east1",
     ///         ReplicaCount = 0,
     ///         DeletionProtectionEnabled = false,
     ///     });
@@ -70,7 +71,7 @@ namespace Pulumi.Gcp.Redis
     ///     var forwardingRule1Network1 = new Gcp.Compute.ForwardingRule("forwarding_rule1_network1", new()
     ///     {
     ///         Name = "fwd1-net1",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         IpAddress = ip1Network1.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network1.Id,
@@ -80,7 +81,7 @@ namespace Pulumi.Gcp.Redis
     ///     var ip2Network1 = new Gcp.Compute.Address("ip2_network1", new()
     ///     {
     ///         Name = "ip2-net1",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Subnetwork = subnetNetwork1.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -89,7 +90,7 @@ namespace Pulumi.Gcp.Redis
     ///     var forwardingRule2Network1 = new Gcp.Compute.ForwardingRule("forwarding_rule2_network1", new()
     ///     {
     ///         Name = "fwd2-net1",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         IpAddress = ip2Network1.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network1.Id,
@@ -106,14 +107,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "subnet-net2",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = network2.Id,
     ///     });
     /// 
     ///     var ip1Network2 = new Gcp.Compute.Address("ip1_network2", new()
     ///     {
     ///         Name = "ip1-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Subnetwork = subnetNetwork2.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -122,7 +123,7 @@ namespace Pulumi.Gcp.Redis
     ///     var forwardingRule1Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule1_network2", new()
     ///     {
     ///         Name = "fwd1-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         IpAddress = ip1Network2.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network2.Id,
@@ -132,7 +133,7 @@ namespace Pulumi.Gcp.Redis
     ///     var ip2Network2 = new Gcp.Compute.Address("ip2_network2", new()
     ///     {
     ///         Name = "ip2-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Subnetwork = subnetNetwork2.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -141,7 +142,7 @@ namespace Pulumi.Gcp.Redis
     ///     var forwardingRule2Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule2_network2", new()
     ///     {
     ///         Name = "fwd2-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         IpAddress = ip2Network2.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network2.Id,
@@ -153,7 +154,7 @@ namespace Pulumi.Gcp.Redis
     ///     var cluster_user_conn = new Gcp.Redis.ClusterUserCreatedConnections("cluster-user-conn", new()
     ///     {
     ///         Name = "cluster-user-conn",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         ClusterEndpoints = new[]
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterUserCreatedConnectionsClusterEndpointArgs
@@ -218,6 +219,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Cluster User And Auto Created Connections
     /// 
     /// ```csharp
@@ -238,14 +240,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "subnet-net2",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = network2.Id,
     ///     });
     /// 
     ///     var ip1Network2 = new Gcp.Compute.Address("ip1_network2", new()
     ///     {
     ///         Name = "ip1-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Subnetwork = subnetNetwork2.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -261,14 +263,14 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "subnet-net1",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Network = network1.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "scpolicy",
-    ///         Location = "us-west1",
+    ///         Location = "us-east1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
     ///         Network = network1.Id,
@@ -285,8 +287,9 @@ namespace Pulumi.Gcp.Redis
     ///     var cluster_user_auto_connCluster = new Gcp.Redis.Cluster("cluster-user-auto-conn", new()
     ///     {
     ///         Name = "cluster-user-auto-conn",
-    ///         ShardCount = 3,
-    ///         Region = "us-west1",
+    ///         ShardCount = 1,
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
+    ///         Region = "us-east1",
     ///         ReplicaCount = 0,
     ///         DeletionProtectionEnabled = false,
     ///         PscConfigs = new[]
@@ -307,7 +310,7 @@ namespace Pulumi.Gcp.Redis
     ///     var forwardingRule1Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule1_network2", new()
     ///     {
     ///         Name = "fwd1-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         IpAddress = ip1Network2.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network2.Id,
@@ -317,7 +320,7 @@ namespace Pulumi.Gcp.Redis
     ///     var ip2Network2 = new Gcp.Compute.Address("ip2_network2", new()
     ///     {
     ///         Name = "ip2-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         Subnetwork = subnetNetwork2.Id,
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
@@ -326,7 +329,7 @@ namespace Pulumi.Gcp.Redis
     ///     var forwardingRule2Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule2_network2", new()
     ///     {
     ///         Name = "fwd2-net2",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         IpAddress = ip2Network2.Id,
     ///         LoadBalancingScheme = "",
     ///         Network = network2.Id,
@@ -336,7 +339,7 @@ namespace Pulumi.Gcp.Redis
     ///     var cluster_user_auto_conn = new Gcp.Redis.ClusterUserCreatedConnections("cluster-user-auto-conn", new()
     ///     {
     ///         Name = "cluster-user-auto-conn",
-    ///         Region = "us-west1",
+    ///         Region = "us-east1",
     ///         ClusterEndpoints = new[]
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterUserCreatedConnectionsClusterEndpointArgs

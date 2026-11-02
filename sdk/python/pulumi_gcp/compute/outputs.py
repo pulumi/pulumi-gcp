@@ -354,6 +354,7 @@ __all__ = [
     'ManagedSslCertificateManaged',
     'MangedSslCertificateManaged',
     'NetworkAttachmentConnectionEndpoint',
+    'NetworkEdgeSecurityServiceParams',
     'NetworkEndpointListNetworkEndpoint',
     'NetworkFirewallPolicyIamBindingCondition',
     'NetworkFirewallPolicyIamMemberCondition',
@@ -5633,6 +5634,7 @@ class DiskDiskEncryptionKey(dict):
                (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
                See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+               Specify the key without a `/cryptoKeyVersions/` suffix.
         :param _builtins.str kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param _builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -5691,6 +5693,7 @@ class DiskDiskEncryptionKey(dict):
         (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
         `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
         See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        Specify the key without a `/cryptoKeyVersions/` suffix.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -11656,7 +11659,7 @@ class ImageGuestOsFeature(dict):
                  type: _builtins.str):
         """
         :param _builtins.str type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -11665,7 +11668,7 @@ class ImageGuestOsFeature(dict):
     def type(self) -> _builtins.str:
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
         """
         return pulumi.get(self, "type")
 
@@ -13116,17 +13119,16 @@ class InstanceBootDiskInitializeParams(dict):
         :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk.
                This sets the number of I/O operations per second that the disk can handle.
                For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-               Note: Updating currently is only supported for hyperdisk skus via disk update
-               api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-               for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-               you'll need to manually delete and recreate it.
+               Note: Updating in place is only supported for hyperdisk skus; changing this
+               value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+               Hyperdisk allows for an update of IOPS every 4 hours; to update more
+               frequently than that, you'll need to manually delete and recreate the disk.
         :param _builtins.int provisioned_throughput: Indicates how much throughput to provision for the disk.
                This sets the number of throughput mb per second that the disk can handle.
                For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-               Note: Updating currently is only supported for hyperdisk skus via disk update
-               api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-               for an update of throughput every 4 hours. To update your hyperdisk more
-               frequently, you'll need to manually delete and recreate it.
+               Note: This is only supported for hyperdisk skus, and can be updated in place.
+               Hyperdisk allows for an update of throughput every 4 hours; to update more
+               frequently than that, you'll need to manually delete and recreate the disk.
         :param Sequence[_builtins.str] replica_zones: A list of short names or self_links of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
         :param Mapping[str, _builtins.str] resource_manager_tags: A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
         :param _builtins.str resource_policies: A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
@@ -13223,10 +13225,10 @@ class InstanceBootDiskInitializeParams(dict):
         Indicates how many IOPS to provision for the disk.
         This sets the number of I/O operations per second that the disk can handle.
         For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-        Note: Updating currently is only supported for hyperdisk skus via disk update
-        api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-        for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-        you'll need to manually delete and recreate it.
+        Note: Updating in place is only supported for hyperdisk skus; changing this
+        value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+        Hyperdisk allows for an update of IOPS every 4 hours; to update more
+        frequently than that, you'll need to manually delete and recreate the disk.
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -13237,10 +13239,9 @@ class InstanceBootDiskInitializeParams(dict):
         Indicates how much throughput to provision for the disk.
         This sets the number of throughput mb per second that the disk can handle.
         For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-        Note: Updating currently is only supported for hyperdisk skus via disk update
-        api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-        for an update of throughput every 4 hours. To update your hyperdisk more
-        frequently, you'll need to manually delete and recreate it.
+        Note: This is only supported for hyperdisk skus, and can be updated in place.
+        Hyperdisk allows for an update of throughput every 4 hours; to update more
+        frequently than that, you'll need to manually delete and recreate the disk.
         """
         return pulumi.get(self, "provisioned_throughput")
 
@@ -26394,12 +26395,54 @@ class NetworkAttachmentConnectionEndpoint(dict):
 
 
 @pulumi.output_type
+class NetworkEdgeSecurityServiceParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkEdgeSecurityServiceParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkEdgeSecurityServiceParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkEdgeSecurityServiceParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the networkEdgeSecurityService. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource manager tags to be bound to the networkEdgeSecurityService. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class NetworkEndpointListNetworkEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "ipAddress":
             suggest = "ip_address"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NetworkEndpointListNetworkEndpoint. Access the value via the '{suggest}' property getter instead.")
@@ -26415,6 +26458,7 @@ class NetworkEndpointListNetworkEndpoint(dict):
     def __init__(__self__, *,
                  instance: Optional[_builtins.str] = None,
                  ip_address: Optional[_builtins.str] = None,
+                 ipv6_address: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None):
         """
         :param _builtins.str instance: The name for a specific VM instance that the IP address belongs to.
@@ -26424,6 +26468,8 @@ class NetworkEndpointListNetworkEndpoint(dict):
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
                **Note** `ip_address` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
+        :param _builtins.str ipv6_address: IPv6 address of network endpoint. The result of parsing the endpoint config,
+               or empty if IPv6 is not used.
         :param _builtins.int port: Port number of network endpoint.
                **Note** `port` is required unless the Network Endpoint Group is created
                with the type of `GCE_VM_IP`
@@ -26432,6 +26478,8 @@ class NetworkEndpointListNetworkEndpoint(dict):
             pulumi.set(__self__, "instance", instance)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if port is not None:
             pulumi.set(__self__, "port", port)
 
@@ -26455,6 +26503,15 @@ class NetworkEndpointListNetworkEndpoint(dict):
         **Note** `ip_address` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
         """
         return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[_builtins.str]:
+        """
+        IPv6 address of network endpoint. The result of parsing the endpoint config,
+        or empty if IPv6 is not used.
+        """
+        return pulumi.get(self, "ipv6_address")
 
     @_builtins.property
     @pulumi.getter
@@ -34578,6 +34635,7 @@ class RegionDiskDiskEncryptionKey(dict):
                  sha256: Optional[_builtins.str] = None):
         """
         :param _builtins.str kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
+               Specify the key without a `/cryptoKeyVersions/` suffix.
         :param _builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -34628,6 +34686,7 @@ class RegionDiskDiskEncryptionKey(dict):
     def kms_key_name(self) -> Optional[_builtins.str]:
         """
         The name of the encryption key that is stored in Google Cloud KMS.
+        Specify the key without a `/cryptoKeyVersions/` suffix.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -34714,7 +34773,7 @@ class RegionDiskGuestOsFeature(dict):
                  type: _builtins.str):
         """
         :param _builtins.str type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -34723,7 +34782,7 @@ class RegionDiskGuestOsFeature(dict):
     def type(self) -> _builtins.str:
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`, `SNP_SVSM_CAPABLE`, `SUSPEND_SAFE_FPR`.
         """
         return pulumi.get(self, "type")
 
@@ -44685,8 +44744,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusion(dict):
                  target_rule_ids: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
-        :param Sequence['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs'] request_bodies: (Optional, Beta)
-               A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+        :param Sequence['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs'] request_bodies: A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
         :param Sequence['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs'] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
@@ -44727,7 +44785,6 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusion(dict):
     @pulumi.getter(name="requestBodies")
     def request_bodies(self) -> Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody']]:
         """
-        (Optional, Beta)
         A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
         Structure is documented below.
         """
@@ -45943,8 +46000,7 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicy(dict):
         :param _builtins.str backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
-        :param _builtins.float mirror_percent: (Optional, Beta)
-               The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         if backend_service is not None:
@@ -45966,7 +46022,6 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -47635,8 +47690,7 @@ class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
         :param _builtins.str backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
-        :param _builtins.float mirror_percent: (Optional, Beta)
-               The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -47657,7 +47711,6 @@ class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -49172,8 +49225,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
         :param _builtins.str backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
-        :param _builtins.float mirror_percent: (Optional, Beta)
-               The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -49194,7 +49246,6 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -51353,8 +51404,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
         :param _builtins.str backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
-        :param _builtins.float mirror_percent: (Optional, Beta)
-               The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -51375,7 +51425,6 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -58908,8 +58957,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusion(dict):
                  target_rule_ids: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
-        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs'] request_bodies: (Optional, Beta)
-               A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs'] request_bodies: A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
         :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs'] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
@@ -58950,7 +58998,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusion(dict):
     @pulumi.getter(name="requestBodies")
     def request_bodies(self) -> Optional[Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody']]:
         """
-        (Optional, Beta)
         A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
         Structure is documented below.
         """
@@ -60519,6 +60566,7 @@ class SnapshotSnapshotEncryptionKey(dict):
                  sha256: Optional[_builtins.str] = None):
         """
         :param _builtins.str kms_key_self_link: The name of the encryption key that is stored in Google Cloud KMS.
+               Specify the key without a `/cryptoKeyVersions/` suffix.
         :param _builtins.str kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param _builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -60547,6 +60595,7 @@ class SnapshotSnapshotEncryptionKey(dict):
     def kms_key_self_link(self) -> Optional[_builtins.str]:
         """
         The name of the encryption key that is stored in Google Cloud KMS.
+        Specify the key without a `/cryptoKeyVersions/` suffix.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -63126,8 +63175,7 @@ class URLMapDefaultRouteActionRequestMirrorPolicy(dict):
                  mirror_percent: Optional[_builtins.float] = None):
         """
         :param _builtins.str backend_service: The full or partial URL to the BackendService resource being mirrored to.
-        :param _builtins.float mirror_percent: (Optional, Beta)
-               The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -63146,7 +63194,6 @@ class URLMapDefaultRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -65848,8 +65895,7 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
                  mirror_percent: Optional[_builtins.float] = None):
         """
         :param _builtins.str backend_service: The full or partial URL to the BackendService resource being mirrored to.
-        :param _builtins.float mirror_percent: (Optional, Beta)
-               The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -65868,7 +65914,6 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -68428,8 +68473,7 @@ class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
                  mirror_percent: Optional[_builtins.float] = None):
         """
         :param _builtins.str backend_service: The full or partial URL to the BackendService resource being mirrored to.
-        :param _builtins.float mirror_percent: (Optional, Beta)
-               The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -68448,7 +68492,6 @@ class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -71846,8 +71889,7 @@ class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
                  mirror_percent: Optional[_builtins.float] = None):
         """
         :param _builtins.str backend_service: The full or partial URL to the BackendService resource being mirrored to.
-        :param _builtins.float mirror_percent: (Optional, Beta)
-               The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -71866,7 +71908,6 @@ class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -76007,6 +76048,8 @@ class GetDiskDiskEncryptionKeyResult(dict):
                ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
                'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
                See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+               
+               Specify the key without a '/cryptoKeyVersions/' suffix.
         :param _builtins.str kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param _builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -76043,6 +76086,8 @@ class GetDiskDiskEncryptionKeyResult(dict):
         ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
         'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
         See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+
+        Specify the key without a '/cryptoKeyVersions/' suffix.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -76501,10 +76546,11 @@ class GetForwardingRulesRuleResult(dict):
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
-        :param _builtins.str network: This field is not used for external load balancing.
+        :param _builtins.str network: This field is not used for global external load balancing.
                
-               For Internal TCP/UDP Load Balancing, this field identifies the network that
-               the load balanced IP should belong to for this Forwarding Rule.
+               For Internal TCP/UDP Load Balancing and Regional External Load Balancing ('EXTERNAL_MANAGED'),
+               this field identifies the network that the load balanced IP should belong to
+               for this Forwarding Rule.
                If the subnetwork is specified, the network of the subnetwork will be used.
                If neither subnetwork nor this field is specified, the default network will
                be used.
@@ -76599,8 +76645,9 @@ class GetForwardingRulesRuleResult(dict):
                This field is only used for INTERNAL load balancing.
         :param Sequence[_builtins.str] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param _builtins.str subnetwork: This field identifies the subnetwork that the load balanced IP should
-               belong to for this Forwarding Rule, used in internal load balancing and
-               network load balancing with IPv6.
+               belong to for this Forwarding Rule, used in internal load balancing,
+               network load balancing with IPv6, and regional external ('EXTERNAL_MANAGED')
+               load balancing with IPv6.
                
                If the network specified is in auto subnet mode, this field is optional.
                However, a subnetwork must be specified if the network is in custom subnet
@@ -76930,10 +76977,11 @@ class GetForwardingRulesRuleResult(dict):
     @pulumi.getter
     def network(self) -> _builtins.str:
         """
-        This field is not used for external load balancing.
+        This field is not used for global external load balancing.
 
-        For Internal TCP/UDP Load Balancing, this field identifies the network that
-        the load balanced IP should belong to for this Forwarding Rule.
+        For Internal TCP/UDP Load Balancing and Regional External Load Balancing ('EXTERNAL_MANAGED'),
+        this field identifies the network that the load balanced IP should belong to
+        for this Forwarding Rule.
         If the subnetwork is specified, the network of the subnetwork will be used.
         If neither subnetwork nor this field is specified, the default network will
         be used.
@@ -77140,8 +77188,9 @@ class GetForwardingRulesRuleResult(dict):
     def subnetwork(self) -> _builtins.str:
         """
         This field identifies the subnetwork that the load balanced IP should
-        belong to for this Forwarding Rule, used in internal load balancing and
-        network load balancing with IPv6.
+        belong to for this Forwarding Rule, used in internal load balancing,
+        network load balancing with IPv6, and regional external ('EXTERNAL_MANAGED')
+        load balancing with IPv6.
 
         If the network specified is in auto subnet mode, this field is optional.
         However, a subnetwork must be specified if the network is in custom subnet
@@ -85394,6 +85443,8 @@ class GetRegionDiskDiskEncryptionKeyResult(dict):
                  sha256: _builtins.str):
         """
         :param _builtins.str kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
+               
+               Specify the key without a '/cryptoKeyVersions/' suffix.
         :param _builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
         :param _builtins.str raw_key_wo: Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -85423,6 +85474,8 @@ class GetRegionDiskDiskEncryptionKeyResult(dict):
     def kms_key_name(self) -> _builtins.str:
         """
         The name of the encryption key that is stored in Google Cloud KMS.
+
+        Specify the key without a '/cryptoKeyVersions/' suffix.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -85495,7 +85548,7 @@ class GetRegionDiskGuestOsFeatureResult(dict):
     def __init__(__self__, *,
                  type: _builtins.str):
         """
-        :param _builtins.str type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE"]
+        :param _builtins.str type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "IDPF", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE", "SUSPEND_SAFE_FPR"]
         """
         pulumi.set(__self__, "type", type)
 
@@ -85503,7 +85556,7 @@ class GetRegionDiskGuestOsFeatureResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE"]
+        The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "IDPF", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE", "SUSPEND_SAFE_FPR"]
         """
         return pulumi.get(self, "type")
 
@@ -94691,6 +94744,7 @@ class GetServiceAttachmentsServiceAttachmentResult(dict):
                  region: _builtins.str,
                  self_link: _builtins.str,
                  send_propagated_connection_limit_if_zero: _builtins.bool,
+                 service_attachment_id: _builtins.int,
                  show_nat_ips: _builtins.bool,
                  target_service: _builtins.str,
                  tunneling_configs: Sequence['outputs.GetServiceAttachmentsServiceAttachmentTunnelingConfigResult']):
@@ -94737,6 +94791,7 @@ class GetServiceAttachmentsServiceAttachmentResult(dict):
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
+        :param _builtins.int service_attachment_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param _builtins.bool show_nat_ips: NOTE: This field is temporarily non-functional due to an underlying API issue.
                Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
                [If true, show NAT IPs of all connected endpoints.]
@@ -94763,6 +94818,7 @@ class GetServiceAttachmentsServiceAttachmentResult(dict):
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "send_propagated_connection_limit_if_zero", send_propagated_connection_limit_if_zero)
+        pulumi.set(__self__, "service_attachment_id", service_attachment_id)
         pulumi.set(__self__, "show_nat_ips", show_nat_ips)
         pulumi.set(__self__, "target_service", target_service)
         pulumi.set(__self__, "tunneling_configs", tunneling_configs)
@@ -94941,6 +94997,14 @@ class GetServiceAttachmentsServiceAttachmentResult(dict):
         Defaults to false.
         """
         return pulumi.get(self, "send_propagated_connection_limit_if_zero")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAttachmentId")
+    def service_attachment_id(self) -> _builtins.int:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "service_attachment_id")
 
     @_builtins.property
     @pulumi.getter(name="showNatIps")
@@ -95198,6 +95262,8 @@ class GetSnapshotSnapshotEncryptionKeyResult(dict):
                  sha256: _builtins.str):
         """
         :param _builtins.str kms_key_self_link: The name of the encryption key that is stored in Google Cloud KMS.
+               
+               Specify the key without a '/cryptoKeyVersions/' suffix.
         :param _builtins.str kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param _builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -95218,6 +95284,8 @@ class GetSnapshotSnapshotEncryptionKeyResult(dict):
     def kms_key_self_link(self) -> _builtins.str:
         """
         The name of the encryption key that is stored in Google Cloud KMS.
+
+        Specify the key without a '/cryptoKeyVersions/' suffix.
         """
         return pulumi.get(self, "kms_key_self_link")
 

@@ -49,6 +49,7 @@ import * as utilities from "../utilities";
  *     destinationPorts: ["433"],
  * });
  * ```
+ *
  * ### Vmware Engine External Access Rule Full
  *
  * ```typescript

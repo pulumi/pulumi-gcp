@@ -52,6 +52,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Bucket Security Policy
     /// 
     /// ```csharp
@@ -86,6 +87,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Bucket Query String Whitelist
     /// 
     /// ```csharp
@@ -122,6 +124,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Backend Bucket Include Http Headers
     /// 
     /// ```csharp

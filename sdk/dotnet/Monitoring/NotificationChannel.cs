@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// 
     /// ### Notification Channel Sensitive
     /// 
     /// ```csharp

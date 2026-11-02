@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, allow_net_admin=None, anonymous_authentication_configs=None, authenticator_groups_configs=None, autopilot_cluster_policy_configs=None, autopilot_privileged_admissions=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, dataplane_optimization_mode=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_policy=None, deletion_protection=None, description=None, desired_emulated_version=None, disable_l4_lb_firewall_reconciliation=None, dns_configs=None, effective_labels=None, emulated_version=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, gke_auto_upgrade_configs=None, id=None, identity_service_configs=None, ignore_node_count_changes=None, in_transit_encryption_config=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, managed_machine_learning_diagnostics_configs=None, managed_opentelemetry_configs=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_performance_configs=None, network_policies=None, networking_mode=None, node_configs=None, node_creation_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, rbac_binding_configs=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, rollback_safe_upgrades=None, secret_manager_configs=None, secret_sync_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, skip_node_pool_refresh=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, allow_net_admin=None, anonymous_authentication_configs=None, authenticator_groups_configs=None, autopilot_cluster_policy_configs=None, autopilot_privileged_admissions=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, dataplane_optimization_mode=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_policy=None, deletion_protection=None, description=None, desired_emulated_version=None, disable_l4_lb_firewall_reconciliation=None, dns_configs=None, effective_labels=None, emulated_version=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, gke_auto_upgrade_configs=None, id=None, identity_service_configs=None, ignore_node_count_changes=None, in_transit_encryption_config=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, managed_machine_learning_diagnostics_configs=None, managed_opentelemetry_configs=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_performance_configs=None, network_policies=None, networking_mode=None, node_configs=None, node_creation_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, rbac_binding_configs=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, rollback_safe_upgrades=None, schedule_upgrade_configs=None, secret_manager_configs=None, secret_sync_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, skip_node_pool_refresh=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -295,6 +295,9 @@ class GetClusterResult:
         if rollback_safe_upgrades and not isinstance(rollback_safe_upgrades, list):
             raise TypeError("Expected argument 'rollback_safe_upgrades' to be a list")
         pulumi.set(__self__, "rollback_safe_upgrades", rollback_safe_upgrades)
+        if schedule_upgrade_configs and not isinstance(schedule_upgrade_configs, list):
+            raise TypeError("Expected argument 'schedule_upgrade_configs' to be a list")
+        pulumi.set(__self__, "schedule_upgrade_configs", schedule_upgrade_configs)
         if secret_manager_configs and not isinstance(secret_manager_configs, list):
             raise TypeError("Expected argument 'secret_manager_configs' to be a list")
         pulumi.set(__self__, "secret_manager_configs", secret_manager_configs)
@@ -787,6 +790,11 @@ class GetClusterResult:
         return pulumi.get(self, "rollback_safe_upgrades")
 
     @_builtins.property
+    @pulumi.getter(name="scheduleUpgradeConfigs")
+    def schedule_upgrade_configs(self) -> Sequence['outputs.GetClusterScheduleUpgradeConfigResult']:
+        return pulumi.get(self, "schedule_upgrade_configs")
+
+    @_builtins.property
     @pulumi.getter(name="secretManagerConfigs")
     def secret_manager_configs(self) -> Sequence['outputs.GetClusterSecretManagerConfigResult']:
         return pulumi.get(self, "secret_manager_configs")
@@ -952,6 +960,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             resource_labels=self.resource_labels,
             resource_usage_export_configs=self.resource_usage_export_configs,
             rollback_safe_upgrades=self.rollback_safe_upgrades,
+            schedule_upgrade_configs=self.schedule_upgrade_configs,
             secret_manager_configs=self.secret_manager_configs,
             secret_sync_configs=self.secret_sync_configs,
             security_posture_configs=self.security_posture_configs,
@@ -1120,6 +1129,7 @@ def get_cluster(location: Optional[_builtins.str] = None,
         resource_labels=pulumi.get(__ret__, 'resource_labels'),
         resource_usage_export_configs=pulumi.get(__ret__, 'resource_usage_export_configs'),
         rollback_safe_upgrades=pulumi.get(__ret__, 'rollback_safe_upgrades'),
+        schedule_upgrade_configs=pulumi.get(__ret__, 'schedule_upgrade_configs'),
         secret_manager_configs=pulumi.get(__ret__, 'secret_manager_configs'),
         secret_sync_configs=pulumi.get(__ret__, 'secret_sync_configs'),
         security_posture_configs=pulumi.get(__ret__, 'security_posture_configs'),
@@ -1285,6 +1295,7 @@ def get_cluster_output(location: pulumi.Input[Optional[Optional[_builtins.str]]]
         resource_labels=pulumi.get(__response__, 'resource_labels'),
         resource_usage_export_configs=pulumi.get(__response__, 'resource_usage_export_configs'),
         rollback_safe_upgrades=pulumi.get(__response__, 'rollback_safe_upgrades'),
+        schedule_upgrade_configs=pulumi.get(__response__, 'schedule_upgrade_configs'),
         secret_manager_configs=pulumi.get(__response__, 'secret_manager_configs'),
         secret_sync_configs=pulumi.get(__response__, 'secret_sync_configs'),
         security_posture_configs=pulumi.get(__response__, 'security_posture_configs'),

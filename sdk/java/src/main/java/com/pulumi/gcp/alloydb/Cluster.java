@@ -110,6 +110,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Alloydb Cluster Before Upgrade
  * 
  * <pre>
@@ -171,6 +172,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Alloydb Cluster After Upgrade
  * 
  * <pre>
@@ -232,6 +234,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Alloydb Cluster Full
  * 
  * <pre>
@@ -315,6 +318,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Alloydb Cluster Restore
  * 
  * <pre>
@@ -436,6 +440,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Alloydb Secondary Cluster Basic
  * 
  * <pre>

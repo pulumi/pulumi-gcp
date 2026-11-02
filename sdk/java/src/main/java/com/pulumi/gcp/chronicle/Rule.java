@@ -67,6 +67,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Rule With Force Deletion
  * 
  * <pre>
@@ -104,6 +105,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Chronicle Rule With Data Access Scope
  * 
  * <pre>

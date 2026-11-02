@@ -18,7 +18,7 @@ public final class PreventionDiscoveryConfigActionPubSubNotificationArgs extends
 
     /**
      * How much data to include in the pub/sub message.
-     * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+     * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
      * 
      */
     @Import(name="detailOfMessage")
@@ -26,7 +26,7 @@ public final class PreventionDiscoveryConfigActionPubSubNotificationArgs extends
 
     /**
      * @return How much data to include in the pub/sub message.
-     * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+     * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
      * 
      */
     public Optional<Output<String>> detailOfMessage() {
@@ -111,7 +111,7 @@ public final class PreventionDiscoveryConfigActionPubSubNotificationArgs extends
 
         /**
          * @param detailOfMessage How much data to include in the pub/sub message.
-         * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+         * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class PreventionDiscoveryConfigActionPubSubNotificationArgs extends
 
         /**
          * @param detailOfMessage How much data to include in the pub/sub message.
-         * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+         * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`, `FILE_STORE_PROFILE`.
          * 
          * @return builder
          * 

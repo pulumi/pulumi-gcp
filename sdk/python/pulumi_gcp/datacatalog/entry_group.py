@@ -303,6 +303,7 @@ class EntryGroup(pulumi.CustomResource):
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basic_entry_group", entry_group_id="my_group")
         ```
+
         ### Data Catalog Entry Group Full
 
         ```python
@@ -371,6 +372,7 @@ class EntryGroup(pulumi.CustomResource):
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basic_entry_group", entry_group_id="my_group")
         ```
+
         ### Data Catalog Entry Group Full
 
         ```python

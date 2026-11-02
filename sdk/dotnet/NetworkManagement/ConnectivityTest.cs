@@ -111,6 +111,7 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Management Connectivity Test Addresses
     /// 
     /// ```csharp
@@ -173,6 +174,7 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Management Connectivity Test Endpoints
     /// 
     /// ```csharp
@@ -220,6 +222,7 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Management Connectivity Test Gke Pod
     /// 
     /// ```csharp

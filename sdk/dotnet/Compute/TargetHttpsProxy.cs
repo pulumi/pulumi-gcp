@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Target Https Proxy Http Keep Alive Timeout
     /// 
     /// ```csharp
@@ -204,6 +205,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Target Https Proxy Mtls
     /// 
     /// ```csharp
@@ -353,6 +355,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Target Https Proxy Certificate Manager Certificate
     /// 
     /// ```csharp
@@ -439,6 +442,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Target Https Proxy Fingerprint
     /// 
     /// ```csharp

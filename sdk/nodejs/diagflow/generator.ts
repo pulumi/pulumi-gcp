@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     triggerEvent: "MANUAL_CALL",
  * });
  * ```
+ *
  * ### Dialogflow Generator Agent Coaching
  *
  * ```typescript
@@ -64,6 +65,7 @@ import * as utilities from "../utilities";
  *     triggerEvent: "END_OF_UTTERANCE",
  * });
  * ```
+ *
  * ### Dialogflow Generator With Tools
  *
  * ```typescript

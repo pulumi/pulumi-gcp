@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     principalAccessBoundaryPolicyId: "pab-policy-for-org",
  * });
  * ```
+ *
  * ### Iam Organizations Policy Binding
  *
  * ```typescript

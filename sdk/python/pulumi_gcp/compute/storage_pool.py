@@ -764,6 +764,7 @@ class StoragePool(pulumi.CustomResource):
             deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
+
         ### Compute Storage Pool Full
 
         ```python
@@ -895,6 +896,7 @@ class StoragePool(pulumi.CustomResource):
             deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
+
         ### Compute Storage Pool Full
 
         ```python

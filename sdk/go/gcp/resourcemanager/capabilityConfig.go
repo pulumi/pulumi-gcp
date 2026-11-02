@@ -53,6 +53,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Resource Manager Capability Config Folder
 //
 // ```go
@@ -121,6 +122,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Resource Manager Capability Config Project
 //
 // ```go

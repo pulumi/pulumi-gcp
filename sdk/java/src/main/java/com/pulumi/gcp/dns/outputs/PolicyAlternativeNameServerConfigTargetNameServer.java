@@ -18,8 +18,6 @@ public final class PolicyAlternativeNameServerConfigTargetNameServer {
      * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
      * Possible values are: `default`, `private`.
      * 
-     * &lt;a name=&#34;nestedDns64Config&#34;&gt;&lt;/a&gt;The `dns64Config` block supports:
-     * 
      */
     private @Nullable String forwardingPath;
     /**
@@ -34,8 +32,6 @@ public final class PolicyAlternativeNameServerConfigTargetNameServer {
      * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
      * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
      * Possible values are: `default`, `private`.
-     * 
-     * &lt;a name=&#34;nestedDns64Config&#34;&gt;&lt;/a&gt;The `dns64Config` block supports:
      * 
      */
     public Optional<String> forwardingPath() {

@@ -138,6 +138,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
  * ### Vertex Ai Endpoint Private Service Connect
  * 
  * <pre>
@@ -169,7 +170,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Network("default", NetworkArgs.builder()
- *             .name("psc-network-_78545")
+ *             .name("psc-network-_72437")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
@@ -196,6 +197,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Vertex Ai Endpoint Dedicated Endpoint
  * 
  * <pre>

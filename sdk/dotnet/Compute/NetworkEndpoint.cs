@@ -56,9 +56,11 @@ namespace Pulumi.Gcp.Compute
     ///         IpCidrRange = "10.0.0.1/16",
     ///         Region = "us-central1",
     ///         Network = @default.Id,
+    ///         StackType = "IPV4_IPV6",
+    ///         Ipv6AccessType = "EXTERNAL",
     ///     });
     /// 
-    ///     var endpoint_instance = new Gcp.Compute.Instance("endpoint-instance", new()
+    ///     var endpoint_instance1 = new Gcp.Compute.Instance("endpoint-instance1", new()
     ///     {
     ///         NetworkInterfaces = new[]
     ///         {
@@ -69,10 +71,18 @@ namespace Pulumi.Gcp.Compute
     ///                     null,
     ///                 },
     ///                 Subnetwork = defaultSubnetwork.Id,
+    ///                 StackType = "IPV4_IPV6",
+    ///                 Ipv6AccessConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs
+    ///                     {
+    ///                         NetworkTier = "PREMIUM",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
-    ///         Name = "endpoint-instance",
-    ///         MachineType = "e2-medium",
+    ///         Name = "endpoint-instance1",
+    ///         MachineType = "e2-micro",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
@@ -82,21 +92,69 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var default_endpoint = new Gcp.Compute.NetworkEndpoint("default-endpoint", new()
-    ///     {
-    ///         NetworkEndpointGroup = neg.Name,
-    ///         Instance = endpoint_instance.Name,
-    ///         Port = neg.DefaultPort,
-    ///         IpAddress = endpoint_instance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
-    ///     });
-    /// 
-    ///     var @group = new Gcp.Compute.NetworkEndpointGroup("group", new()
+    ///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
     ///     {
     ///         Name = "my-lb-neg",
     ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         DefaultPort = 90,
     ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var default_endpoint = new Gcp.Compute.NetworkEndpoint("default-endpoint", new()
+    ///     {
+    ///         NetworkEndpointGroup = neg.Name,
+    ///         Instance = endpoint_instance1.Name,
+    ///         Port = neg.DefaultPort,
+    ///         IpAddress = endpoint_instance1.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
+    ///     });
+    /// 
+    ///     var ipv6_endpoint1 = new Gcp.Compute.NetworkEndpoint("ipv6-endpoint1", new()
+    ///     {
+    ///         NetworkEndpointGroup = neg.Name,
+    ///         Instance = endpoint_instance1.Name,
+    ///         Port = neg.DefaultPort,
+    ///         Ipv6Address = endpoint_instance1.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].Ipv6AccessConfigs[0]?.ExternalIpv6),
+    ///     });
+    /// 
+    ///     var endpoint_instance2 = new Gcp.Compute.Instance("endpoint-instance2", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Subnetwork = defaultSubnetwork.Id,
+    ///                 StackType = "IPV4_IPV6",
+    ///                 Ipv6AccessConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs
+    ///                     {
+    ///                         NetworkTier = "PREMIUM",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Name = "endpoint-instance2",
+    ///         MachineType = "e2-micro",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var ipv6_endpoint2 = new Gcp.Compute.NetworkEndpoint("ipv6-endpoint2", new()
+    ///     {
+    ///         NetworkEndpointGroup = neg.Name,
+    ///         Instance = endpoint_instance2.Name,
+    ///         Port = neg.DefaultPort,
+    ///         Ipv6Address = endpoint_instance2.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].Ipv6AccessConfigs[0]?.ExternalIpv6),
     ///     });
     /// 
     /// });
@@ -148,7 +206,14 @@ namespace Pulumi.Gcp.Compute
         /// range).
         /// </summary>
         [Output("ipAddress")]
-        public Output<string> IpAddress { get; private set; } = null!;
+        public Output<string?> IpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// IPv6 address of network endpoint. The result of parsing the endpoint config,
+        /// or empty if IPv6 is not used.
+        /// </summary>
+        [Output("ipv6Address")]
+        public Output<string?> Ipv6Address { get; private set; } = null!;
 
         /// <summary>
         /// The network endpoint group this endpoint is part of.
@@ -247,8 +312,15 @@ namespace Pulumi.Gcp.Compute
         /// to a VM in GCE (either the primary IP or as part of an aliased IP
         /// range).
         /// </summary>
-        [Input("ipAddress", required: true)]
-        public Input<string> IpAddress { get; set; } = null!;
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// IPv6 address of network endpoint. The result of parsing the endpoint config,
+        /// or empty if IPv6 is not used.
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
 
         /// <summary>
         /// The network endpoint group this endpoint is part of.
@@ -311,6 +383,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// IPv6 address of network endpoint. The result of parsing the endpoint config,
+        /// or empty if IPv6 is not used.
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
 
         /// <summary>
         /// The network endpoint group this endpoint is part of.

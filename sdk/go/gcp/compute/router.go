@@ -69,6 +69,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Compute Router Encrypted Interconnect
 //
 // ```go
@@ -106,6 +107,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Router Ncc Gw
 //
 // ```go
@@ -256,6 +258,8 @@ type Router struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Region where the router resides.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	RouterId pulumi.IntOutput `pulumi:"routerId"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
@@ -329,6 +333,8 @@ type routerState struct {
 	Project *string `pulumi:"project"`
 	// Region where the router resides.
 	Region *string `pulumi:"region"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	RouterId *int `pulumi:"routerId"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 }
@@ -373,6 +379,8 @@ type RouterState struct {
 	Project pulumi.StringPtrInput
 	// Region where the router resides.
 	Region pulumi.StringPtrInput
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	RouterId pulumi.IntPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 }
@@ -622,6 +630,11 @@ func (o RouterOutput) Project() pulumi.StringOutput {
 // Region where the router resides.
 func (o RouterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o RouterOutput) RouterId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Router) pulumi.IntOutput { return v.RouterId }).(pulumi.IntOutput)
 }
 
 // The URI of the created resource.

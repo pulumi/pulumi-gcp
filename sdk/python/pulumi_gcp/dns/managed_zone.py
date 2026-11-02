@@ -762,6 +762,7 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Dns Managed Zone Private
 
         ```python
@@ -793,6 +794,7 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Dns Managed Zone Private Forwarding
 
         ```python
@@ -834,6 +836,7 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Dns Managed Zone Private Forwarding Ipv6
 
         ```python
@@ -859,6 +862,7 @@ class ManagedZone(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Dns Managed Zone Private Gke
 
         ```python
@@ -922,6 +926,7 @@ class ManagedZone(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Dns Managed Zone Private Peering
 
         ```python
@@ -950,6 +955,7 @@ class ManagedZone(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dns Managed Zone Service Directory
 
         ```python
@@ -973,6 +979,7 @@ class ManagedZone(pulumi.CustomResource):
             name="network",
             auto_create_subnetworks=False)
         ```
+
         ### Dns Managed Zone Cloud Logging
 
         ```python
@@ -990,6 +997,7 @@ class ManagedZone(pulumi.CustomResource):
                 "enable_logging": True,
             })
         ```
+
         ### Dns Managed Zone Iam Condition
 
         ```python
@@ -1107,6 +1115,7 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Dns Managed Zone Private
 
         ```python
@@ -1138,6 +1147,7 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Dns Managed Zone Private Forwarding
 
         ```python
@@ -1179,6 +1189,7 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Dns Managed Zone Private Forwarding Ipv6
 
         ```python
@@ -1204,6 +1215,7 @@ class ManagedZone(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Dns Managed Zone Private Gke
 
         ```python
@@ -1267,6 +1279,7 @@ class ManagedZone(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Dns Managed Zone Private Peering
 
         ```python
@@ -1295,6 +1308,7 @@ class ManagedZone(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dns Managed Zone Service Directory
 
         ```python
@@ -1318,6 +1332,7 @@ class ManagedZone(pulumi.CustomResource):
             name="network",
             auto_create_subnetworks=False)
         ```
+
         ### Dns Managed Zone Cloud Logging
 
         ```python
@@ -1335,6 +1350,7 @@ class ManagedZone(pulumi.CustomResource):
                 "enable_logging": True,
             })
         ```
+
         ### Dns Managed Zone Iam Condition
 
         ```python

@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Clouddeploy Custom Target Type Git Skaffold Modules
  * 
  * <pre>
@@ -126,6 +127,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Clouddeploy Custom Target Type Gcs Skaffold Modules
  * 
  * <pre>
@@ -174,6 +176,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
  * 
  * <pre>
@@ -223,6 +226,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Clouddeploy Custom Target Type Tasks
  * 
  * <pre>

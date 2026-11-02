@@ -47,6 +47,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Services Edge Cache Origin Advanced
 //
 // ```go
@@ -128,6 +129,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Network Services Edge Cache Origin V4auth
 //
 // ```go

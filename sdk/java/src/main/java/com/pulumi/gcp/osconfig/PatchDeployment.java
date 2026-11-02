@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Os Config Patch Deployment Daily
  * 
  * <pre>
@@ -121,6 +122,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Os Config Patch Deployment Daily Midnight
  * 
  * <pre>
@@ -171,6 +173,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Os Config Patch Deployment Instance
  * 
  * <pre>
@@ -265,6 +268,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Os Config Patch Deployment Full
  * 
  * <pre>

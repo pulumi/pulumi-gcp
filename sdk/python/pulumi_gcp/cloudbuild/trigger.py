@@ -1135,6 +1135,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Build
 
         ```python
@@ -1235,6 +1236,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Cloudbuild Trigger Service Account
 
         ```python
@@ -1263,6 +1265,7 @@ class Trigger(pulumi.CustomResource):
                     logs_writer,
                 ]))
         ```
+
         ### Cloudbuild Trigger Include Build Logs
 
         ```python
@@ -1282,6 +1285,7 @@ class Trigger(pulumi.CustomResource):
             },
             include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
         ```
+
         ### Cloudbuild Trigger Pubsub Config
 
         ```python
@@ -1312,6 +1316,7 @@ class Trigger(pulumi.CustomResource):
             },
             filter="_ACTION.matches('INSERT')")
         ```
+
         ### Cloudbuild Trigger Webhook Config
 
         ```python
@@ -1357,6 +1362,7 @@ class Trigger(pulumi.CustomResource):
                 "repo_type": "GITHUB",
             })
         ```
+
         ### Cloudbuild Trigger Manual
 
         ```python
@@ -1375,6 +1381,7 @@ class Trigger(pulumi.CustomResource):
                 "approval_required": True,
             })
         ```
+
         ### Cloudbuild Trigger Manual Github Enterprise
 
         ```python
@@ -1397,6 +1404,7 @@ class Trigger(pulumi.CustomResource):
                 "github_enterprise_config": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
             })
         ```
+
         ### Cloudbuild Trigger Manual Bitbucket Server
 
         ```python
@@ -1419,6 +1427,7 @@ class Trigger(pulumi.CustomResource):
                 "bitbucket_server_config": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
             })
         ```
+
         ### Cloudbuild Trigger Repo
 
         ```python
@@ -1448,6 +1457,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Bitbucket Server Push
 
         ```python
@@ -1468,6 +1478,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Bitbucket Server Pull Request
 
         ```python
@@ -1489,6 +1500,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Github Enterprise
 
         ```python
@@ -1508,6 +1520,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Allow Failure
 
         ```python
@@ -1584,6 +1597,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Cloudbuild Trigger Allow Exit Codes
 
         ```python
@@ -1663,6 +1677,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Cloudbuild Trigger Pubsub With Repo
 
         ```python
@@ -1701,6 +1716,7 @@ class Trigger(pulumi.CustomResource):
                 "repo_type": "GITHUB",
             })
         ```
+
         ### Cloudbuild Trigger Developer Connect Pull
 
         ```python
@@ -1719,6 +1735,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Developer Connect Push
 
         ```python
@@ -1736,6 +1753,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Developer Connect Push Branch
 
         ```python
@@ -1888,6 +1906,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Build
 
         ```python
@@ -1988,6 +2007,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Cloudbuild Trigger Service Account
 
         ```python
@@ -2016,6 +2036,7 @@ class Trigger(pulumi.CustomResource):
                     logs_writer,
                 ]))
         ```
+
         ### Cloudbuild Trigger Include Build Logs
 
         ```python
@@ -2035,6 +2056,7 @@ class Trigger(pulumi.CustomResource):
             },
             include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
         ```
+
         ### Cloudbuild Trigger Pubsub Config
 
         ```python
@@ -2065,6 +2087,7 @@ class Trigger(pulumi.CustomResource):
             },
             filter="_ACTION.matches('INSERT')")
         ```
+
         ### Cloudbuild Trigger Webhook Config
 
         ```python
@@ -2110,6 +2133,7 @@ class Trigger(pulumi.CustomResource):
                 "repo_type": "GITHUB",
             })
         ```
+
         ### Cloudbuild Trigger Manual
 
         ```python
@@ -2128,6 +2152,7 @@ class Trigger(pulumi.CustomResource):
                 "approval_required": True,
             })
         ```
+
         ### Cloudbuild Trigger Manual Github Enterprise
 
         ```python
@@ -2150,6 +2175,7 @@ class Trigger(pulumi.CustomResource):
                 "github_enterprise_config": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
             })
         ```
+
         ### Cloudbuild Trigger Manual Bitbucket Server
 
         ```python
@@ -2172,6 +2198,7 @@ class Trigger(pulumi.CustomResource):
                 "bitbucket_server_config": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
             })
         ```
+
         ### Cloudbuild Trigger Repo
 
         ```python
@@ -2201,6 +2228,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Bitbucket Server Push
 
         ```python
@@ -2221,6 +2249,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Bitbucket Server Pull Request
 
         ```python
@@ -2242,6 +2271,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Github Enterprise
 
         ```python
@@ -2261,6 +2291,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Allow Failure
 
         ```python
@@ -2337,6 +2368,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Cloudbuild Trigger Allow Exit Codes
 
         ```python
@@ -2416,6 +2448,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Cloudbuild Trigger Pubsub With Repo
 
         ```python
@@ -2454,6 +2487,7 @@ class Trigger(pulumi.CustomResource):
                 "repo_type": "GITHUB",
             })
         ```
+
         ### Cloudbuild Trigger Developer Connect Pull
 
         ```python
@@ -2472,6 +2506,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Developer Connect Push
 
         ```python
@@ -2489,6 +2524,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Developer Connect Push Branch
 
         ```python

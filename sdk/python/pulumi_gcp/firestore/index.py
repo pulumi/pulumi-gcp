@@ -543,6 +543,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Datastore Mode
 
         ```python
@@ -574,6 +575,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Vector
 
         ```python
@@ -609,6 +611,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Name Descending
 
         ```python
@@ -631,6 +634,7 @@ class Index(pulumi.CustomResource):
                 "order": "DESCENDING",
             }])
         ```
+
         ### Firestore Index Mongodb Compatible Scope
 
         ```python
@@ -664,6 +668,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Sparse Any
 
         ```python
@@ -697,6 +702,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Unique
 
         ```python
@@ -731,6 +737,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Skip Wait
 
         ```python
@@ -760,6 +767,37 @@ class Index(pulumi.CustomResource):
             ],
             skip_wait=True)
         ```
+
+        ### Firestore Index Deletion Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id-deletion-policy",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            fields=[
+                {
+                    "field_path": "name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "field_path": "description",
+                    "order": "DESCENDING",
+                },
+            ],
+            deletion_policy="PREVENT")
+        ```
+
         ### Firestore Index Text Search
 
         ```python
@@ -793,6 +831,7 @@ class Index(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Firestore Index Suppress Geojson Indexing
 
         ```python
@@ -822,6 +861,7 @@ class Index(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Firestore Index Geo Search
 
         ```python
@@ -953,6 +993,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Datastore Mode
 
         ```python
@@ -984,6 +1025,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Vector
 
         ```python
@@ -1019,6 +1061,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Name Descending
 
         ```python
@@ -1041,6 +1084,7 @@ class Index(pulumi.CustomResource):
                 "order": "DESCENDING",
             }])
         ```
+
         ### Firestore Index Mongodb Compatible Scope
 
         ```python
@@ -1074,6 +1118,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Sparse Any
 
         ```python
@@ -1107,6 +1152,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Unique
 
         ```python
@@ -1141,6 +1187,7 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Firestore Index Skip Wait
 
         ```python
@@ -1170,6 +1217,37 @@ class Index(pulumi.CustomResource):
             ],
             skip_wait=True)
         ```
+
+        ### Firestore Index Deletion Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id-deletion-policy",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            fields=[
+                {
+                    "field_path": "name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "field_path": "description",
+                    "order": "DESCENDING",
+                },
+            ],
+            deletion_policy="PREVENT")
+        ```
+
         ### Firestore Index Text Search
 
         ```python
@@ -1203,6 +1281,7 @@ class Index(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Firestore Index Suppress Geojson Indexing
 
         ```python
@@ -1232,6 +1311,7 @@ class Index(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Firestore Index Geo Search
 
         ```python

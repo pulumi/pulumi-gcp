@@ -68,6 +68,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vmware Engine Datastore Filestore
     /// 
     /// ```csharp
@@ -113,6 +114,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vmware Engine Datastore Netapp
     /// 
     /// ```csharp
