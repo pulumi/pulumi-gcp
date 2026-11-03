@@ -24,10 +24,10 @@ pulumiConvert: 1
 integrationTestProvider: true
 allowMissingDocs: false
 releaseVerification:
-    nodejs: examples/bucket
-    python: examples/bucket-py
-    dotnet: examples/serverless-cs
-    go: examples/bucket-go
+    nodejs: release-verification/nodejs
+    python: release-verification/python
+    dotnet: release-verification/dotnet
+    go: release-verification/go
 autoMergeProviderUpgrades: false
 runner:
     buildSdk: pulumi-ubuntu-8core

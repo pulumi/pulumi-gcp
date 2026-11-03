@@ -59,7 +59,7 @@ func TestAccTopic(t *testing.T) {
 func TestAccBucket(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "bucket"),
+			Dir: filepath.Join(getCwd(t), "..", "release-verification", "nodejs"),
 			// GCP buckets seem to be eventually consistent, so we need to retry on failure when deploying a cloud function
 			// that uses the bucket as a trigger.
 			RetryFailedSteps: true,
@@ -111,7 +111,7 @@ func TestPulumiLabelsSecretNode(t *testing.T) {
 }
 
 func TestBucketUpgrade(t *testing.T) {
-	defaultUpgradeTest(t, "bucket")
+	defaultUpgradeTest(t, "../release-verification/nodejs")
 }
 
 func TestTopicUpgrade(t *testing.T) {

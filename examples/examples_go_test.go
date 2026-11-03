@@ -26,7 +26,7 @@ import (
 func TestAccBucketGo(t *testing.T) {
 	test := getGoBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "bucket-go"),
+			Dir: filepath.Join(getCwd(t), "..", "release-verification", "go"),
 		})
 
 	integration.ProgramTest(t, &test)

@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp/examples/bucket-go
+module github.com/pulumi/pulumi-gcp/release-verification/go
 
 go 1.26.6
 
