@@ -14,10 +14,10 @@ ones. Upstream places its own capture below the conditional reads, so
 this patch hoists it back above them.
 
 diff --git a/google-beta/services/sql/resource_sql_database_instance.go b/google-beta/services/sql/resource_sql_database_instance.go
-index f30b3fcd4781..171409ed7062 100644
+index 6cb77d139f29..78fcbee39644 100644
 --- a/google-beta/services/sql/resource_sql_database_instance.go
 +++ b/google-beta/services/sql/resource_sql_database_instance.go
-@@ -3116,10 +3116,15 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
+@@ -3131,10 +3131,15 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
  			if err != nil {
  				return err
  			}
@@ -37,11 +37,11 @@ index f30b3fcd4781..171409ed7062 100644
  		}
  
  		if d.HasChange("settings.0.entraid_config") {
-@@ -3155,7 +3160,6 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
+@@ -3170,7 +3175,6 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
  			}
  		}
  
 -		desiredSetting := d.Get("settings")
  		instance = &sqladmin.DatabaseInstance{
- 			Settings: expandSqlDatabaseInstanceSettings(desiredSetting.([]interface{}), databaseVersion),
- 		}
+ 			Settings:                  expandSqlDatabaseInstanceSettings(desiredSetting.([]interface{}), databaseVersion),
+ 			DatabaseCenterIntegration: d.Get("database_center_integration").(string),
