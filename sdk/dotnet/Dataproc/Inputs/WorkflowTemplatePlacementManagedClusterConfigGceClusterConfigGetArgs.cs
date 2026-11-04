@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
+        /// Multi-zone configuration for cluster instances. Structure is documented below.
+        /// </summary>
+        [Input("multiZoneConfig")]
+        public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigGetArgs>? MultiZoneConfig { get; set; }
+
+        /// <summary>
         /// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `NetworkUri` nor `SubnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `Default`
         /// </summary>
         [Input("network")]

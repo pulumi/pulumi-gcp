@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Alloydb
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("default", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
     ///         {
     ///             Network = defaultNetwork.Id,
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     ///     var @default = new Gcp.Alloydb.Backup("default", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         BackupId = "alloydb-backup",
     ///         ClusterName = defaultCluster.Name,
     ///     }, new CustomResourceOptions
@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Alloydb
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("default", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
     ///         {
     ///             Network = defaultNetwork.Id,
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     ///     var @default = new Gcp.Alloydb.Backup("default", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         BackupId = "alloydb-backup",
     ///         ClusterName = defaultCluster.Name,
     ///         Description = "example description",

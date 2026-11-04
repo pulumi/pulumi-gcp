@@ -1758,7 +1758,10 @@ class IcebergTableSchemaField(dict):
         :param _builtins.int id: The unique identifier of the field.
         :param _builtins.str name: The name of the partition field.
         :param _builtins.bool required: Whether the field is required.
-        :param _builtins.str type: The type of the field.
+        :param _builtins.str type: The type of the field. Primitive types are plain names such as `long`. List, map and
+               struct types are JSON objects as defined by the
+               [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+               typically written with `jsonencode`.
         :param _builtins.str doc: A description of the field.
         """
         pulumi.set(__self__, "id", id)
@@ -1796,7 +1799,10 @@ class IcebergTableSchemaField(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of the field.
+        The type of the field. Primitive types are plain names such as `long`. List, map and
+        struct types are JSON objects as defined by the
+        [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+        typically written with `jsonencode`.
         """
         return pulumi.get(self, "type")
 

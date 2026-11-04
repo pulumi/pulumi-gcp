@@ -497,6 +497,66 @@ namespace Pulumi.Gcp.Firestore
     /// });
     /// ```
     /// 
+    /// ### Firestore Index Search Index Options
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "search-index-options-db",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
+    ///         ApiScope = "MONGODB_COMPATIBLE_API",
+    ///         QueryScope = "COLLECTION_GROUP",
+    ///         Multikey = true,
+    ///         SearchIndexOptions = new Gcp.Firestore.Inputs.IndexSearchIndexOptionsArgs
+    ///         {
+    ///             TextLanguage = "es",
+    ///             TextLanguageOverrideFieldPath = "lang",
+    ///         },
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 SearchConfig = new Gcp.Firestore.Inputs.IndexFieldSearchConfigArgs
+    ///                 {
+    ///                     TextSpec = new Gcp.Firestore.Inputs.IndexFieldSearchConfigTextSpecArgs
+    ///                     {
+    ///                         IndexSpecs = new[]
+    ///                         {
+    ///                             new Gcp.Firestore.Inputs.IndexFieldSearchConfigTextSpecIndexSpecArgs
+    ///                             {
+    ///                                 IndexType = "TOKENIZED",
+    ///                                 MatchType = "MATCH_GLOBALLY",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Firestore Index Suppress Geojson Indexing
     /// 
     /// ```csharp
@@ -687,6 +747,13 @@ namespace Pulumi.Gcp.Firestore
         public Output<string?> QueryScope { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Options to configure the search index.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("searchIndexOptions")]
+        public Output<Outputs.IndexSearchIndexOptions> SearchIndexOptions { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to skip waiting for the index to be created.
         /// </summary>
         [Output("skipWait")]
@@ -823,6 +890,13 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? QueryScope { get; set; }
 
         /// <summary>
+        /// Optional. Options to configure the search index.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("searchIndexOptions")]
+        public Input<Inputs.IndexSearchIndexOptionsArgs>? SearchIndexOptions { get; set; }
+
+        /// <summary>
         /// Whether to skip waiting for the index to be created.
         /// </summary>
         [Input("skipWait")]
@@ -926,6 +1000,13 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
+
+        /// <summary>
+        /// Optional. Options to configure the search index.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("searchIndexOptions")]
+        public Input<Inputs.IndexSearchIndexOptionsGetArgs>? SearchIndexOptions { get; set; }
 
         /// <summary>
         /// Whether to skip waiting for the index to be created.

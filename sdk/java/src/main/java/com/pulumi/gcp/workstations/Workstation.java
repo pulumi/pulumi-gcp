@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .ipCidrRange("10.0.0.0/24")
- *             .region("us-central1")
+ *             .region("us-east4")
  *             .network(default_.name())
  *             .build());
  * 
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .workstationClusterId("workstation-cluster")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .location("us-central1")
+ *             .location("us-east4")
  *             .labels(Map.of("label", "key"))
  *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
  *             .workstationConfigId("workstation-config")
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
- *             .location("us-central1")
+ *             .location("us-east4")
  *             .host(WorkstationConfigHostArgs.builder()
  *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
  *                     .machineType("e2-standard-4")
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *             .workstationId("work-station")
  *             .workstationConfigId(defaultWorkstationConfig.workstationConfigId())
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
- *             .location("us-central1")
+ *             .location("us-east4")
  *             .labels(Map.of("label", "key"))
  *             .env(Map.of("name", "foo"))
  *             .annotations(Map.of("label-one", "value-one"))
@@ -109,6 +109,10 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ## Regional Endpoint Policies
+ * 
+ * This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
  * 
  * ## Import
  * 

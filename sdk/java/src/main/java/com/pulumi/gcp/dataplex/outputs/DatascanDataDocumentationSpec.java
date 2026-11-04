@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataplex.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,12 @@ public final class DatascanDataDocumentationSpec {
      * 
      */
     private @Nullable Boolean catalogPublishingEnabled;
+    /**
+     * @return Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+     * Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+     * 
+     */
+    private @Nullable List<String> generationScopes;
     /**
      * @return The SQL dialect to use in the generated SQL queries.
      * If not specified, the default dialect is Google SQL.
@@ -32,6 +39,14 @@ public final class DatascanDataDocumentationSpec {
      */
     public Optional<Boolean> catalogPublishingEnabled() {
         return Optional.ofNullable(this.catalogPublishingEnabled);
+    }
+    /**
+     * @return Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+     * Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+     * 
+     */
+    public List<String> generationScopes() {
+        return this.generationScopes == null ? List.of() : this.generationScopes;
     }
     /**
      * @return The SQL dialect to use in the generated SQL queries.
@@ -53,11 +68,13 @@ public final class DatascanDataDocumentationSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean catalogPublishingEnabled;
+        private @Nullable List<String> generationScopes;
         private @Nullable String sqlDialect;
         public Builder() {}
         public Builder(DatascanDataDocumentationSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalogPublishingEnabled = defaults.catalogPublishingEnabled;
+    	      this.generationScopes = defaults.generationScopes;
     	      this.sqlDialect = defaults.sqlDialect;
         }
 
@@ -68,6 +85,15 @@ public final class DatascanDataDocumentationSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder generationScopes(@Nullable List<String> generationScopes) {
+
+            this.generationScopes = generationScopes;
+            return this;
+        }
+        public Builder generationScopes(String... generationScopes) {
+            return generationScopes(List.of(generationScopes));
+        }
+        @CustomType.Setter
         public Builder sqlDialect(@Nullable String sqlDialect) {
 
             this.sqlDialect = sqlDialect;
@@ -76,6 +102,7 @@ public final class DatascanDataDocumentationSpec {
         public DatascanDataDocumentationSpec build() {
             final var _resultValue = new DatascanDataDocumentationSpec();
             _resultValue.catalogPublishingEnabled = catalogPublishingEnabled;
+            _resultValue.generationScopes = generationScopes;
             _resultValue.sqlDialect = sqlDialect;
             return _resultValue;
         }

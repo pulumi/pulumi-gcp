@@ -35,7 +35,10 @@ public final class IcebergTableSchemaField {
      */
     private Boolean required;
     /**
-     * @return The type of the field.
+     * @return The type of the field. Primitive types are plain names such as `long`. List, map and
+     * struct types are JSON objects as defined by the
+     * [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+     * typically written with `jsonencode`.
      * 
      */
     private String type;
@@ -70,7 +73,10 @@ public final class IcebergTableSchemaField {
         return this.required;
     }
     /**
-     * @return The type of the field.
+     * @return The type of the field. Primitive types are plain names such as `long`. List, map and
+     * struct types are JSON objects as defined by the
+     * [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+     * typically written with `jsonencode`.
      * 
      */
     public String type() {

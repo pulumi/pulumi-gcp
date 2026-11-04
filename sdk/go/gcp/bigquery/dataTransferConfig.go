@@ -34,6 +34,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -65,72 +66,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewDataTransferConfig(ctx, "query_config", &bigquery.DataTransferConfigArgs{
-//				DisplayName:          pulumi.String("my-query"),
-//				Location:             pulumi.String("asia-northeast1"),
-//				DataSourceId:         pulumi.String("scheduled_query"),
-//				Schedule:             pulumi.String("first sunday of quarter 00:00"),
-//				DestinationDatasetId: myDataset.DatasetId,
-//				Params: pulumi.StringMap{
-//					"destination_table_name_template": pulumi.String("my_table"),
-//					"write_disposition":               pulumi.String("WRITE_APPEND"),
-//					"query":                           pulumi.String("SELECT name FROM tabl WHERE x = 'y'"),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				permissions,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Bigquerydatatransfer Config Cmek
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/iam.serviceAccountTokenCreator"),
-//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myDataset, err := bigquery.NewDataset(ctx, "my_dataset", &bigquery.DatasetArgs{
-//				DatasetId:    pulumi.String("example_dataset"),
-//				FriendlyName: pulumi.String("foo"),
-//				Description:  pulumi.String("bar"),
-//				Location:     pulumi.String("asia-northeast1"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				permissions,
-//			}))
-//			if err != nil {
-//				return err
-//			}
 //			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
 //				Name:     pulumi.String("example-keyring"),
-//				Location: pulumi.String("us"),
+//				Location: pulumi.String("asia-northeast1"),
 //			})
 //			if err != nil {
 //				return err
@@ -142,8 +80,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewDataTransferConfig(ctx, "query_config_cmek", &bigquery.DataTransferConfigArgs{
-//				DisplayName:          pulumi.String("display-name"),
+//			bigqueryEncrypter, err := kms.NewCryptoKeyIAMMember(ctx, "bigquery_encrypter", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.Sprintf("serviceAccount:bq-%v@bigquery-encryption.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDataTransferConfig(ctx, "query_config", &bigquery.DataTransferConfigArgs{
+//				DisplayName:          pulumi.String("my-query"),
 //				Location:             pulumi.String("asia-northeast1"),
 //				DataSourceId:         pulumi.String("scheduled_query"),
 //				Schedule:             pulumi.String("first sunday of quarter 00:00"),
@@ -158,6 +104,7 @@ import (
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				permissions,
+//				bigqueryEncrypter,
 //			}))
 //			if err != nil {
 //				return err
@@ -168,44 +115,81 @@ import (
 //
 // ```
 //
-// ### Bigquerydatatransfer Config Salesforce
+// ### Bigquerydatatransfer Config Schedule Options V2
 //
 // ```go
 // package main
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			myDataset, err := bigquery.NewDataset(ctx, "my_dataset", &bigquery.DatasetArgs{
-//				DatasetId:   pulumi.String("my_dataset"),
-//				Description: pulumi.String("My dataset"),
-//				Location:    pulumi.String("asia-northeast1"),
+//			eventDriven, err := pubsub.NewTopic(ctx, "event_driven", &pubsub.TopicArgs{
+//				Name: pulumi.String("my-topic"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewDataTransferConfig(ctx, "salesforce_config", &bigquery.DataTransferConfigArgs{
-//				DisplayName:          pulumi.String("my-salesforce-config"),
-//				Location:             pulumi.String("asia-northeast1"),
-//				DataSourceId:         pulumi.String("salesforce"),
-//				Schedule:             pulumi.String("first sunday of quarter 00:00"),
-//				DestinationDatasetId: myDataset.DatasetId,
+//			eventDrivenSubscription, err := pubsub.NewSubscription(ctx, "event_driven", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("my-subscription"),
+//				Topic: eventDriven.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			eventDrivenBucket, err := storage.NewBucket(ctx, "event_driven", &storage.BucketArgs{
+//				Name:                     pulumi.String("my-bucket"),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//				ForceDestroy:             pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			eventDrivenDataset, err := bigquery.NewDataset(ctx, "event_driven", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("my_dataset"),
+//				FriendlyName: pulumi.String("foo"),
+//				Description:  pulumi.String("bar"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			eventDrivenTable, err := bigquery.NewTable(ctx, "event_driven", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          eventDrivenDataset.DatasetId,
+//				TableId:            pulumi.String("my_table"),
+//				Schema:             pulumi.String("[{\"name\":\"name\",\"type\":\"STRING\"}]"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDataTransferConfig(ctx, "event_driven_config", &bigquery.DataTransferConfigArgs{
+//				DisplayName:          pulumi.String("my-event-driven-config"),
+//				Location:             eventDrivenDataset.Location,
+//				DataSourceId:         pulumi.String("google_cloud_storage"),
+//				DestinationDatasetId: eventDrivenDataset.DatasetId,
+//				ScheduleOptionsV2: &bigquery.DataTransferConfigScheduleOptionsV2Args{
+//					EventDrivenSchedule: &bigquery.DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs{
+//						PubsubSubscription: eventDrivenSubscription.ID(),
+//					},
+//				},
 //				Params: pulumi.StringMap{
-//					"connector.authentication.oauth.clientId":     pulumi.String("client-id"),
-//					"connector.authentication.oauth.clientSecret": pulumi.String("client-secret"),
-//					"connector.authentication.oauth.myDomain":     pulumi.String("MyDomainName"),
-//					"assets": pulumi.String("[\"asset-a\",\"asset-b\"]"),
+//					"data_path_template": eventDrivenBucket.Url.ApplyT(func(url string) (string, error) {
+//						return fmt.Sprintf("%v/*.json", url), nil
+//					}).(pulumi.StringOutput),
+//					"destination_table_name_template": eventDrivenTable.TableId,
+//					"file_format":                     pulumi.String("JSON"),
+//					"write_disposition":               pulumi.String("APPEND"),
 //				},
 //			})
 //			if err != nil {
@@ -296,6 +280,13 @@ type DataTransferConfig struct {
 	// Options customizing the data transfer schedule.
 	// Structure is documented below.
 	ScheduleOptions DataTransferConfigScheduleOptionsPtrOutput `pulumi:"scheduleOptions"`
+	// Options customizing the type of data transfer schedule.
+	// Only the event-driven schedule is exposed here; time-based and manual
+	// schedules are configured through the `schedule` and `scheduleOptions`
+	// fields instead. This field cannot be used together with `schedule` or
+	// `scheduleOptions`.
+	// Structure is documented below.
+	ScheduleOptionsV2 DataTransferConfigScheduleOptionsV2PtrOutput `pulumi:"scheduleOptionsV2"`
 	// Different parameters are configured primarily using the the `params` field on this
 	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
 	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -410,6 +401,13 @@ type dataTransferConfigState struct {
 	// Options customizing the data transfer schedule.
 	// Structure is documented below.
 	ScheduleOptions *DataTransferConfigScheduleOptions `pulumi:"scheduleOptions"`
+	// Options customizing the type of data transfer schedule.
+	// Only the event-driven schedule is exposed here; time-based and manual
+	// schedules are configured through the `schedule` and `scheduleOptions`
+	// fields instead. This field cannot be used together with `schedule` or
+	// `scheduleOptions`.
+	// Structure is documented below.
+	ScheduleOptionsV2 *DataTransferConfigScheduleOptionsV2 `pulumi:"scheduleOptionsV2"`
 	// Different parameters are configured primarily using the the `params` field on this
 	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
 	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -486,6 +484,13 @@ type DataTransferConfigState struct {
 	// Options customizing the data transfer schedule.
 	// Structure is documented below.
 	ScheduleOptions DataTransferConfigScheduleOptionsPtrInput
+	// Options customizing the type of data transfer schedule.
+	// Only the event-driven schedule is exposed here; time-based and manual
+	// schedules are configured through the `schedule` and `scheduleOptions`
+	// fields instead. This field cannot be used together with `schedule` or
+	// `scheduleOptions`.
+	// Structure is documented below.
+	ScheduleOptionsV2 DataTransferConfigScheduleOptionsV2PtrInput
 	// Different parameters are configured primarily using the the `params` field on this
 	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
 	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -560,6 +565,13 @@ type dataTransferConfigArgs struct {
 	// Options customizing the data transfer schedule.
 	// Structure is documented below.
 	ScheduleOptions *DataTransferConfigScheduleOptions `pulumi:"scheduleOptions"`
+	// Options customizing the type of data transfer schedule.
+	// Only the event-driven schedule is exposed here; time-based and manual
+	// schedules are configured through the `schedule` and `scheduleOptions`
+	// fields instead. This field cannot be used together with `schedule` or
+	// `scheduleOptions`.
+	// Structure is documented below.
+	ScheduleOptionsV2 *DataTransferConfigScheduleOptionsV2 `pulumi:"scheduleOptionsV2"`
 	// Different parameters are configured primarily using the the `params` field on this
 	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
 	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -631,6 +643,13 @@ type DataTransferConfigArgs struct {
 	// Options customizing the data transfer schedule.
 	// Structure is documented below.
 	ScheduleOptions DataTransferConfigScheduleOptionsPtrInput
+	// Options customizing the type of data transfer schedule.
+	// Only the event-driven schedule is exposed here; time-based and manual
+	// schedules are configured through the `schedule` and `scheduleOptions`
+	// fields instead. This field cannot be used together with `schedule` or
+	// `scheduleOptions`.
+	// Structure is documented below.
+	ScheduleOptionsV2 DataTransferConfigScheduleOptionsV2PtrInput
 	// Different parameters are configured primarily using the the `params` field on this
 	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
 	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -838,6 +857,16 @@ func (o DataTransferConfigOutput) Schedule() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o DataTransferConfigOutput) ScheduleOptions() DataTransferConfigScheduleOptionsPtrOutput {
 	return o.ApplyT(func(v *DataTransferConfig) DataTransferConfigScheduleOptionsPtrOutput { return v.ScheduleOptions }).(DataTransferConfigScheduleOptionsPtrOutput)
+}
+
+// Options customizing the type of data transfer schedule.
+// Only the event-driven schedule is exposed here; time-based and manual
+// schedules are configured through the `schedule` and `scheduleOptions`
+// fields instead. This field cannot be used together with `schedule` or
+// `scheduleOptions`.
+// Structure is documented below.
+func (o DataTransferConfigOutput) ScheduleOptionsV2() DataTransferConfigScheduleOptionsV2PtrOutput {
+	return o.ApplyT(func(v *DataTransferConfig) DataTransferConfigScheduleOptionsV2PtrOutput { return v.ScheduleOptionsV2 }).(DataTransferConfigScheduleOptionsV2PtrOutput)
 }
 
 // Different parameters are configured primarily using the the `params` field on this

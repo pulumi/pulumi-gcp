@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs;
 import java.lang.String;
@@ -57,6 +58,23 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     }
 
     /**
+     * The rule to exclude image findings based on spatial relationships with other image findings.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="excludeByImageFindings")
+    private @Nullable Output<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs> excludeByImageFindings;
+
+    /**
+     * @return The rule to exclude image findings based on spatial relationships with other image findings.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs>> excludeByImageFindings() {
+        return Optional.ofNullable(this.excludeByImageFindings);
+    }
+
+    /**
      * Set of infoTypes for which findings would affect this rule.
      * Structure is documented below.
      * 
@@ -75,7 +93,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
 
     /**
      * How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-     * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+     * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
      * 
      */
     @Import(name="matchingType", required=true)
@@ -83,7 +101,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
 
     /**
      * @return How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-     * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+     * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
      * 
      */
     public Output<String> matchingType() {
@@ -112,6 +130,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs $) {
         this.dictionary = $.dictionary;
         this.excludeByHotword = $.excludeByHotword;
+        this.excludeByImageFindings = $.excludeByImageFindings;
         this.excludeInfoTypes = $.excludeInfoTypes;
         this.matchingType = $.matchingType;
         this.regex = $.regex;
@@ -184,6 +203,29 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
         }
 
         /**
+         * @param excludeByImageFindings The rule to exclude image findings based on spatial relationships with other image findings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeByImageFindings(@Nullable Output<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs> excludeByImageFindings) {
+            $.excludeByImageFindings = excludeByImageFindings;
+            return this;
+        }
+
+        /**
+         * @param excludeByImageFindings The rule to exclude image findings based on spatial relationships with other image findings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeByImageFindings(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs excludeByImageFindings) {
+            return excludeByImageFindings(Output.of(excludeByImageFindings));
+        }
+
+        /**
          * @param excludeInfoTypes Set of infoTypes for which findings would affect this rule.
          * Structure is documented below.
          * 
@@ -208,7 +250,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
 
         /**
          * @param matchingType How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
          * 
          * @return builder
          * 
@@ -220,7 +262,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
 
         /**
          * @param matchingType How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
          * 
          * @return builder
          * 

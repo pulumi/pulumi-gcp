@@ -766,13 +766,13 @@ class Instance(pulumi.CustomResource):
 
         gpu_reservation = gcp.compute.Reservation("gpu_reservation",
             name="wbi-reservation",
-            zone="us-east1-b",
+            zone="us-central1-b",
             specific_reservation={
                 "count": 1,
                 "instance_properties": {
-                    "machine_type": "g2-standard-4",
+                    "machine_type": "n1-standard-1",
                     "guest_accelerators": [{
-                        "accelerator_type": "nvidia-l4",
+                        "accelerator_type": "nvidia-tesla-t4",
                         "accelerator_count": 1,
                     }],
                 },
@@ -780,11 +780,11 @@ class Instance(pulumi.CustomResource):
             specific_reservation_required=False)
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-east1-b",
+            location="us-central1-b",
             gce_setup={
-                "machine_type": "g2-standard-4",
+                "machine_type": "n1-standard-1",
                 "accelerator_configs": [{
-                    "type": "NVIDIA_L4",
+                    "type": "NVIDIA_TESLA_T4",
                     "core_count": "1",
                 }],
                 "boot_disk": {
@@ -1121,13 +1121,13 @@ class Instance(pulumi.CustomResource):
 
         gpu_reservation = gcp.compute.Reservation("gpu_reservation",
             name="wbi-reservation",
-            zone="us-east1-b",
+            zone="us-central1-b",
             specific_reservation={
                 "count": 1,
                 "instance_properties": {
-                    "machine_type": "g2-standard-4",
+                    "machine_type": "n1-standard-1",
                     "guest_accelerators": [{
-                        "accelerator_type": "nvidia-l4",
+                        "accelerator_type": "nvidia-tesla-t4",
                         "accelerator_count": 1,
                     }],
                 },
@@ -1135,11 +1135,11 @@ class Instance(pulumi.CustomResource):
             specific_reservation_required=False)
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-east1-b",
+            location="us-central1-b",
             gce_setup={
-                "machine_type": "g2-standard-4",
+                "machine_type": "n1-standard-1",
                 "accelerator_configs": [{
-                    "type": "NVIDIA_L4",
+                    "type": "NVIDIA_TESLA_T4",
                     "core_count": "1",
                 }],
                 "boot_disk": {

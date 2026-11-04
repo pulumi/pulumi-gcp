@@ -68,6 +68,7 @@ type LookupDatasetResult struct {
 	DefaultCollation                string                                     `pulumi:"defaultCollation"`
 	DefaultEncryptionConfigurations []GetDatasetDefaultEncryptionConfiguration `pulumi:"defaultEncryptionConfigurations"`
 	DefaultPartitionExpirationMs    int                                        `pulumi:"defaultPartitionExpirationMs"`
+	DefaultRoundingMode             string                                     `pulumi:"defaultRoundingMode"`
 	DefaultTableExpirationMs        int                                        `pulumi:"defaultTableExpirationMs"`
 	DeleteContentsOnDestroy         bool                                       `pulumi:"deleteContentsOnDestroy"`
 	DeletionPolicy                  string                                     `pulumi:"deletionPolicy"`
@@ -148,6 +149,10 @@ func (o LookupDatasetResultOutput) DefaultEncryptionConfigurations() GetDatasetD
 
 func (o LookupDatasetResultOutput) DefaultPartitionExpirationMs() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatasetResult) int { return v.DefaultPartitionExpirationMs }).(pulumi.IntOutput)
+}
+
+func (o LookupDatasetResultOutput) DefaultRoundingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetResult) string { return v.DefaultRoundingMode }).(pulumi.StringOutput)
 }
 
 func (o LookupDatasetResultOutput) DefaultTableExpirationMs() pulumi.IntOutput {

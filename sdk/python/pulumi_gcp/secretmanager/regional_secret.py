@@ -85,10 +85,19 @@ class RegionalSecretArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['RegionalSecretRotationArgs'] rotation: The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
                will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-               set to configure rotation.
+               set to configure rotation, unless `secret_type` is `CLOUD_SQL_DB_CREDENTIALS`.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
                For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+               Supported values are:
+               * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+                 credentials. Managed rotation can be enabled on these secrets using the
+                 `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+                 be added manually to secrets of this type.
+               * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+               * `ACCESS_KEY`: Secrets where the payload contains an access key.
+               * `CERTIFICATE`: Secrets where the payload contains a certificate.
+               * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -289,7 +298,7 @@ class RegionalSecretArgs:
         """
         The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
         will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-        set to configure rotation.
+        set to configure rotation, unless `secret_type` is `CLOUD_SQL_DB_CREDENTIALS`.
         Structure is documented below.
         """
         return pulumi.get(self, "rotation")
@@ -304,6 +313,15 @@ class RegionalSecretArgs:
         """
         This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        Supported values are:
+        * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+          credentials. Managed rotation can be enabled on these secrets using the
+          `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+          be added manually to secrets of this type.
+        * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+        * `ACCESS_KEY`: Secrets where the payload contains an access key.
+        * `CERTIFICATE`: Secrets where the payload contains a certificate.
+        * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         """
         return pulumi.get(self, "secret_type")
 
@@ -401,6 +419,7 @@ class _RegionalSecretState:
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_members: pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretPolicyMemberArgs']]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  rotation: pulumi.Input[Optional['RegionalSecretRotationArgs']] = None,
@@ -459,17 +478,29 @@ class _RegionalSecretState:
         :param pulumi.Input[_builtins.str] location: The location of the regional secret. eg us-central1
         :param pulumi.Input[_builtins.str] name: The resource name of the regional secret. Format:
                `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
+        :param pulumi.Input[Sequence[pulumi.Input['RegionalSecretPolicyMemberArgs']]] policy_members: An object containing a unique resource identity tied to the regional secret. This identity can be
+               granted the permissions required by features such as managed rotation.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input['RegionalSecretRotationArgs'] rotation: The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
                will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-               set to configure rotation.
+               set to configure rotation, unless `secret_type` is `CLOUD_SQL_DB_CREDENTIALS`.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
                For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+               Supported values are:
+               * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+                 credentials. Managed rotation can be enabled on these secrets using the
+                 `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+                 be added manually to secrets of this type.
+               * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+               * `ACCESS_KEY`: Secrets where the payload contains an access key.
+               * `CERTIFICATE`: Secrets where the payload contains a certificate.
+               * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -513,6 +544,8 @@ class _RegionalSecretState:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if policy_members is not None:
+            pulumi.set(__self__, "policy_members", policy_members)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -701,6 +734,20 @@ class _RegionalSecretState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyMembers")
+    def policy_members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretPolicyMemberArgs']]]]:
+        """
+        An object containing a unique resource identity tied to the regional secret. This identity can be
+        granted the permissions required by features such as managed rotation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policy_members")
+
+    @policy_members.setter
+    def policy_members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretPolicyMemberArgs']]]]):
+        pulumi.set(self, "policy_members", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -732,7 +779,7 @@ class _RegionalSecretState:
         """
         The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
         will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-        set to configure rotation.
+        set to configure rotation, unless `secret_type` is `CLOUD_SQL_DB_CREDENTIALS`.
         Structure is documented below.
         """
         return pulumi.get(self, "rotation")
@@ -759,6 +806,15 @@ class _RegionalSecretState:
         """
         This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        Supported values are:
+        * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+          credentials. Managed rotation can be enabled on these secrets using the
+          `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+          be added manually to secrets of this type.
+        * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+        * `ACCESS_KEY`: Secrets where the payload contains an access key.
+        * `CERTIFICATE`: Secrets where the payload contains a certificate.
+        * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         """
         return pulumi.get(self, "secret_type")
 
@@ -1002,6 +1058,18 @@ class RegionalSecret(pulumi.CustomResource):
             version_destroy_ttl="86400s")
         ```
 
+        ### Regional Secret Cloud Sql Db Credentials
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        regional_secret_cloud_sql_db_credentials = gcp.secretmanager.RegionalSecret("regional-secret-cloud-sql-db-credentials",
+            secret_id="tf-reg-secret",
+            location="us-central1",
+            secret_type="CLOUD_SQL_DB_CREDENTIALS")
+        ```
+
         ## Import
 
         RegionalSecret can be imported using any of these accepted formats:
@@ -1065,11 +1133,20 @@ class RegionalSecret(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['RegionalSecretRotationArgs', 'RegionalSecretRotationArgsDict', 'outputs.RegionalSecretRotation']] rotation: The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
                will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-               set to configure rotation.
+               set to configure rotation, unless `secret_type` is `CLOUD_SQL_DB_CREDENTIALS`.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
                For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+               Supported values are:
+               * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+                 credentials. Managed rotation can be enabled on these secrets using the
+                 `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+                 be added manually to secrets of this type.
+               * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+               * `ACCESS_KEY`: Secrets where the payload contains an access key.
+               * `CERTIFICATE`: Secrets where the payload contains a certificate.
+               * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1234,6 +1311,18 @@ class RegionalSecret(pulumi.CustomResource):
             version_destroy_ttl="86400s")
         ```
 
+        ### Regional Secret Cloud Sql Db Credentials
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        regional_secret_cloud_sql_db_credentials = gcp.secretmanager.RegionalSecret("regional-secret-cloud-sql-db-credentials",
+            secret_id="tf-reg-secret",
+            location="us-central1",
+            secret_type="CLOUD_SQL_DB_CREDENTIALS")
+        ```
+
         ## Import
 
         RegionalSecret can be imported using any of these accepted formats:
@@ -1315,6 +1404,7 @@ class RegionalSecret(pulumi.CustomResource):
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["policy_members"] = None
             __props__.__dict__["pulumi_labels"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1339,6 +1429,7 @@ class RegionalSecret(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalSecretPolicyMemberArgs', 'RegionalSecretPolicyMemberArgsDict', 'outputs.RegionalSecretPolicyMember']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             rotation: pulumi.Input[Optional[Union['RegionalSecretRotationArgs', 'RegionalSecretRotationArgsDict', 'outputs.RegionalSecretRotation']]] = None,
@@ -1401,17 +1492,29 @@ class RegionalSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the regional secret. eg us-central1
         :param pulumi.Input[_builtins.str] name: The resource name of the regional secret. Format:
                `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretPolicyMemberArgs', 'RegionalSecretPolicyMemberArgsDict', 'outputs.RegionalSecretPolicyMember']]]] policy_members: An object containing a unique resource identity tied to the regional secret. This identity can be
+               granted the permissions required by features such as managed rotation.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[Union['RegionalSecretRotationArgs', 'RegionalSecretRotationArgsDict', 'outputs.RegionalSecretRotation']] rotation: The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
                will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-               set to configure rotation.
+               set to configure rotation, unless `secret_type` is `CLOUD_SQL_DB_CREDENTIALS`.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
                For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+               Supported values are:
+               * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+                 credentials. Managed rotation can be enabled on these secrets using the
+                 `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+                 be added manually to secrets of this type.
+               * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+               * `ACCESS_KEY`: Secrets where the payload contains an access key.
+               * `CERTIFICATE`: Secrets where the payload contains a certificate.
+               * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1448,6 +1551,7 @@ class RegionalSecret(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
+        __props__.__dict__["policy_members"] = policy_members
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["rotation"] = rotation
@@ -1583,6 +1687,16 @@ class RegionalSecret(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="policyMembers")
+    def policy_members(self) -> pulumi.Output[Sequence['outputs.RegionalSecretPolicyMember']]:
+        """
+        An object containing a unique resource identity tied to the regional secret. This identity can be
+        granted the permissions required by features such as managed rotation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policy_members")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1606,7 +1720,7 @@ class RegionalSecret(pulumi.CustomResource):
         """
         The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
         will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-        set to configure rotation.
+        set to configure rotation, unless `secret_type` is `CLOUD_SQL_DB_CREDENTIALS`.
         Structure is documented below.
         """
         return pulumi.get(self, "rotation")
@@ -1625,6 +1739,15 @@ class RegionalSecret(pulumi.CustomResource):
         """
         This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        Supported values are:
+        * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+          credentials. Managed rotation can be enabled on these secrets using the
+          `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+          be added manually to secrets of this type.
+        * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+        * `ACCESS_KEY`: Secrets where the payload contains an access key.
+        * `CERTIFICATE`: Secrets where the payload contains a certificate.
+        * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         """
         return pulumi.get(self, "secret_type")
 

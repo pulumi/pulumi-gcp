@@ -47,12 +47,18 @@ class MetastoreServiceArgs:
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
-        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+               the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+               service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+               
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
-               When set to "DELETE", deleting the resource is allowed.
+               When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+               subnetworks will be deleted asynchronously by the API.
+               
+               Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
         :param pulumi.Input[_builtins.bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
@@ -154,12 +160,18 @@ class MetastoreServiceArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+        the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+        service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+
         When a 'terraform destroy' or 'pulumi up' would delete the resource,
         the command will fail if this field is set to "PREVENT" in Terraform state.
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
-        When set to "DELETE", deleting the resource is allowed.
+        When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+        subnetworks will be deleted asynchronously by the API.
+
+        Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -448,12 +460,18 @@ class _MetastoreServiceState:
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
-        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+               the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+               service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+               
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
-               When set to "DELETE", deleting the resource is allowed.
+               When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+               subnetworks will be deleted asynchronously by the API.
+               
+               Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
         :param pulumi.Input[_builtins.bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
@@ -608,12 +626,18 @@ class _MetastoreServiceState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+        the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+        service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+
         When a 'terraform destroy' or 'pulumi up' would delete the resource,
         the command will fail if this field is set to "PREVENT" in Terraform state.
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
-        When set to "DELETE", deleting the resource is allowed.
+        When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+        subnetworks will be deleted asynchronously by the API.
+
+        Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -1086,6 +1110,7 @@ class MetastoreService(pulumi.CustomResource):
             service_id="metastore-srv",
             location="us-central1",
             tier="DEVELOPER",
+            deletion_policy="FORCE",
             hive_metastore_config={
                 "version": "3.1.2",
             },
@@ -1305,12 +1330,18 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
-        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+               the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+               service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+               
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
-               When set to "DELETE", deleting the resource is allowed.
+               When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+               subnetworks will be deleted asynchronously by the API.
+               
+               Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
         :param pulumi.Input[_builtins.bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict', 'outputs.MetastoreServiceEncryptionConfig']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
@@ -1460,6 +1491,7 @@ class MetastoreService(pulumi.CustomResource):
             service_id="metastore-srv",
             location="us-central1",
             tier="DEVELOPER",
+            deletion_policy="FORCE",
             hive_metastore_config={
                 "version": "3.1.2",
             },
@@ -1802,12 +1834,18 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
-        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+               the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+               service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+               
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
-               When set to "DELETE", deleting the resource is allowed.
+               When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+               subnetworks will be deleted asynchronously by the API.
+               
+               Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
         :param pulumi.Input[_builtins.bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict', 'outputs.MetastoreServiceEncryptionConfig']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
@@ -1925,12 +1963,18 @@ class MetastoreService(pulumi.CustomResource):
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+        the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+        service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+
         When a 'terraform destroy' or 'pulumi up' would delete the resource,
         the command will fail if this field is set to "PREVENT" in Terraform state.
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
-        When set to "DELETE", deleting the resource is allowed.
+        When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+        subnetworks will be deleted asynchronously by the API.
+
+        Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
         """
         return pulumi.get(self, "deletion_policy")
 

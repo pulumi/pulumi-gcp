@@ -192,12 +192,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs;
@@ -221,18 +227,36 @@ import javax.annotation.Nullable;
  *             .description("My description")
  *             .displayName("display_name")
  *             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
- *                 .customInfoTypes(PreventionInspectTemplateInspectConfigCustomInfoTypeArgs.builder()
- *                     .infoType(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs.builder()
- *                         .name("MY_CUSTOM_TYPE")
+ *                 .customInfoTypes(                
+ *                     PreventionInspectTemplateInspectConfigCustomInfoTypeArgs.builder()
+ *                         .infoType(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs.builder()
+ *                             .name("MY_CUSTOM_TYPE")
+ *                             .build())
+ *                         .likelihood("UNLIKELY")
+ *                         .regex(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs.builder()
+ *                             .pattern("test*")
+ *                             .build())
+ *                         .build(),
+ *                     PreventionInspectTemplateInspectConfigCustomInfoTypeArgs.builder()
+ *                         .infoType(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs.builder()
+ *                             .name("MY_METADATA_KV_TYPE")
+ *                             .build())
+ *                         .likelihood("POSSIBLE")
+ *                         .metadataKeyValueExpression(PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs.builder()
+ *                             .keyRegex("key.*")
+ *                             .valueRegex("val.*")
+ *                             .build())
  *                         .build())
- *                     .likelihood("UNLIKELY")
- *                     .regex(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs.builder()
- *                         .pattern("test*")
+ *                 .infoTypes(                
+ *                     PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
+ *                         .name("EMAIL_ADDRESS")
+ *                         .build(),
+ *                     PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
+ *                         .name("OBJECT_TYPE/PERSON")
+ *                         .build(),
+ *                     PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
+ *                         .name("OBJECT_TYPE/PERSON/PASSPORT")
  *                         .build())
- *                     .build())
- *                 .infoTypes(PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
- *                     .name("EMAIL_ADDRESS")
- *                     .build())
  *                 .minLikelihood("UNLIKELY")
  *                 .ruleSets(                
  *                     PreventionInspectTemplateInspectConfigRuleSetArgs.builder()
@@ -245,6 +269,29 @@ import javax.annotation.Nullable;
  *                                     .pattern(".+}{@literal @}{@code example.com")
  *                                     .build())
  *                                 .matchingType("MATCHING_TYPE_FULL_MATCH")
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     PreventionInspectTemplateInspectConfigRuleSetArgs.builder()
+ *                         .infoTypes(PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs.builder()
+ *                             .name("OBJECT_TYPE/PERSON")
+ *                             .build())
+ *                         .rules(PreventionInspectTemplateInspectConfigRuleSetRuleArgs.builder()
+ *                             .exclusionRule(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs.builder()
+ *                                 .matchingType("MATCHING_TYPE_RULE_SPECIFIC")
+ *                                 .excludeByImageFindings(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs.builder()
+ *                                     .infoTypes(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs.builder()
+ *                                         .name("OBJECT_TYPE/PERSON/PASSPORT")
+ *                                         .version("latest")
+ *                                         .sensitivityScore(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs.builder()
+ *                                             .score("SENSITIVITY_LOW")
+ *                                             .build())
+ *                                         .build())
+ *                                     .imageContainmentType(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs.builder()
+ *                                         .fullyInside(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs.builder()
+ *                                             .build())
+ *                                         .build())
+ *                                     .build())
  *                                 .build())
  *                             .build())
  *                         .build(),

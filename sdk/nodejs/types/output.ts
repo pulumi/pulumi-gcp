@@ -8842,6 +8842,18 @@ export namespace artifactregistry {
         versionPolicy: string;
     }
 
+    export interface GetRepositoryPlatformLogsConfig {
+        /**
+         * The state of the platform logs: enabled or disabled. Possible values: ["ENABLED", "DISABLED"]
+         */
+        loggingState: string;
+        /**
+         * The severity level for the logs. Logs will be generated if their
+         * severity level is >= than the value of the severity level mentioned here. Possible values: ["DEBUG", "INFO", "NOTICE", "WARNING", "ERROR", "CRITICAL", "ALERT", "EMERGENCY"]
+         */
+        severityLevel: string;
+    }
+
     export interface GetRepositoryRemoteRepositoryConfig {
         /**
          * Specific settings for an Apt remote repository.
@@ -9232,6 +9244,20 @@ export namespace artifactregistry {
          * Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
          */
         versionPolicy?: string;
+    }
+
+    export interface RepositoryPlatformLogsConfig {
+        /**
+         * The state of the platform logs: enabled or disabled.
+         * Possible values are: `ENABLED`, `DISABLED`.
+         */
+        loggingState?: string;
+        /**
+         * The severity level for the logs. Logs will be generated if their
+         * severity level is >= than the value of the severity level mentioned here.
+         * Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+         */
+        severityLevel?: string;
     }
 
     export interface RepositoryRemoteRepositoryConfig {
@@ -12237,7 +12263,10 @@ export namespace biglake {
          */
         required: boolean;
         /**
-         * The type of the field.
+         * The type of the field. Primitive types are plain names such as `long`. List, map and
+         * struct types are JSON objects as defined by the
+         * [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+         * typically written with `jsonencode`.
          */
         type: string;
     }
@@ -12723,6 +12752,8 @@ export namespace bigquery {
          * scheduled at or after the end time. The end time can be changed at any
          * moment. The time when a data transfer can be triggered manually is not
          * limited by this option.
+         *
+         * <a name="nestedScheduleOptionsV2"></a>The `scheduleOptionsV2` block supports:
          */
         endTime?: string;
         /**
@@ -12733,6 +12764,23 @@ export namespace bigquery {
          * limited by this option.
          */
         startTime?: string;
+    }
+
+    export interface DataTransferConfigScheduleOptionsV2 {
+        /**
+         * Event-driven transfer schedule options. If set, the transfer will be
+         * scheduled upon events arriving.
+         */
+        eventDrivenSchedule: outputs.bigquery.DataTransferConfigScheduleOptionsV2EventDrivenSchedule;
+    }
+
+    export interface DataTransferConfigScheduleOptionsV2EventDrivenSchedule {
+        /**
+         * Pub/Sub subscription name used to receive events. Only the
+         * Google Cloud Storage data source supports this option. Format:
+         * projects/{project}/subscriptions/{subscription}.
+         */
+        pubsubSubscription: string;
     }
 
     export interface DataTransferConfigSensitiveParams {
@@ -17285,6 +17333,16 @@ export namespace certificateauthority {
          * expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
          */
         maximumLifetime?: string;
+        /**
+         * Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+         * If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions
+         * will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don't
+         * appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+         * add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions
+         * set in this CaPool's baseline_values.
+         * Structure is documented below.
+         */
+        passthroughExtensions?: outputs.certificateauthority.CaPoolIssuancePolicyPassthroughExtensions;
     }
 
     export interface CaPoolIssuancePolicyAllowedIssuanceModes {
@@ -17610,6 +17668,27 @@ export namespace certificateauthority {
          * Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
          */
         title?: string;
+    }
+
+    export interface CaPoolIssuancePolicyPassthroughExtensions {
+        /**
+         * A set of ObjectIds identifying custom X.509 extensions.
+         * Will be combined with knownExtensions to determine the full set of X.509 extensions.
+         * Structure is documented below.
+         */
+        additionalExtensions?: outputs.certificateauthority.CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension[];
+        /**
+         * A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+         * Acceptable values are: `BASE_KEY_USAGE`, `EXTENDED_KEY_USAGE`, `CA_OPTIONS`, `POLICY_IDS`, `AIA_OCSP_SERVERS`, `NAME_CONSTRAINTS`.
+         */
+        knownExtensions?: string[];
+    }
+
+    export interface CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
     }
 
     export interface CaPoolPublishingOptions {
@@ -58139,12 +58218,27 @@ export namespace compute {
 
     export interface GetRegionNetworkEndpointGroupPscData {
         /**
+         * Address allocated from given subnetwork for PSC. This IP address acts
+         * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+         */
+        consumerPscAddress: string;
+        /**
          * The PSC producer port to use when consumer PSC NEG connects to a producer. If
          * this flag isn't specified for a PSC NEG with endpoint type
          * private-service-connect, then PSC NEG will be connected to a first port in the
          * available PSC producer port range.
          */
         producerPort: string;
+        /**
+         * The PSC connection id of the PSC Network Endpoint Group Consumer.
+         */
+        pscConnectionId: string;
+        /**
+         * The connection status of the PSC Network Endpoint Group Consumer.
+         * Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED',
+         * 'REJECTED', 'CLOSED', 'NEEDS_ATTENTION'
+         */
+        pscConnectionStatus: string;
     }
 
     export interface GetRegionNetworkEndpointGroupServerlessDeployment {
@@ -69896,12 +69990,30 @@ export namespace compute {
 
     export interface RegionNetworkEndpointGroupPscData {
         /**
+         * (Output)
+         * Address allocated from given subnetwork for PSC. This IP address acts
+         * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+         */
+        consumerPscAddress: string;
+        /**
          * The PSC producer port to use when consumer PSC NEG connects to a producer. If
          * this flag isn't specified for a PSC NEG with endpoint type
          * private-service-connect, then PSC NEG will be connected to a first port in the
          * available PSC producer port range.
          */
         producerPort?: string;
+        /**
+         * (Output)
+         * The PSC connection id of the PSC Network Endpoint Group Consumer.
+         */
+        pscConnectionId: string;
+        /**
+         * (Output)
+         * The connection status of the PSC Network Endpoint Group Consumer.
+         * Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+         * `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+         */
+        pscConnectionStatus: string;
     }
 
     export interface RegionNetworkEndpointGroupServerlessDeployment {
@@ -93640,6 +93752,11 @@ export namespace dataloss {
          * Structure is documented below.
          */
         recordTransformations?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations;
+        /**
+         * Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+         * Structure is documented below.
+         */
+        transformationErrorHandling?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigImageTransformations {
@@ -96856,6 +96973,23 @@ export namespace dataloss {
         seconds?: number;
     }
 
+    export interface PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling {
+        /**
+         * Ignore errors
+         */
+        leaveUntransformed?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingLeaveUntransformed;
+        /**
+         * Throw an error
+         */
+        throwError?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowError;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingLeaveUntransformed {
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowError {
+    }
+
     export interface PreventionDiscoveryConfigAction {
         /**
          * Export data profiles into a provided location
@@ -97908,6 +98042,11 @@ export namespace dataloss {
          */
         likelihood?: string;
         /**
+         * Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+         * Structure is documented below.
+         */
+        metadataKeyValueExpression?: outputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression;
+        /**
          * Regular expression which defines the rule.
          * Structure is documented below.
          */
@@ -97981,6 +98120,17 @@ export namespace dataloss {
         score: string;
     }
 
+    export interface PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression {
+        /**
+         * The regular expression for the key.
+         */
+        keyRegex: string;
+        /**
+         * The regular expression for the value.
+         */
+        valueRegex: string;
+    }
+
     export interface PreventionInspectTemplateInspectConfigCustomInfoTypeRegex {
         /**
          * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
@@ -98014,12 +98164,11 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * Name of the information type.
          */
         name: string;
         /**
-         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Optional custom sensitivity for this InfoType.
          * Structure is documented below.
          */
         sensitivityScore?: outputs.dataloss.PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore;
@@ -98133,12 +98282,11 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigRuleSetInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * Name of the information type.
          */
         name: string;
         /**
-         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Optional custom sensitivity for this InfoType.
          * Structure is documented below.
          */
         sensitivityScore?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore;
@@ -98182,13 +98330,18 @@ export namespace dataloss {
          */
         excludeByHotword?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword;
         /**
+         * The rule to exclude image findings based on spatial relationships with other image findings.
+         * Structure is documented below.
+         */
+        excludeByImageFindings?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings;
+        /**
          * Set of infoTypes for which findings would affect this rule.
          * Structure is documented below.
          */
         excludeInfoTypes?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes;
         /**
          * How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
          */
         matchingType: string;
         /**
@@ -98267,6 +98420,67 @@ export namespace dataloss {
         windowBefore?: number;
     }
 
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings {
+        /**
+         * Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings.
+         * Structure is documented below.
+         */
+        imageContainmentType?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType;
+        /**
+         * A list of image-supported infoTypes to be used as context for the exclusion rule.
+         * Structure is documented below.
+         */
+        infoTypes: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType[];
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType {
+        /**
+         * Defines a condition where one bounding box encloses another.
+         */
+        encloses?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEncloses;
+        /**
+         * Defines a condition where one bounding box is fully inside another.
+         */
+        fullyInside?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInside;
+        /**
+         * Defines a condition for overlapping bounding boxes.
+         */
+        overlaps?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlaps;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEncloses {
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInside {
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlaps {
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType {
+        /**
+         * Name of the information type.
+         */
+        name: string;
+        /**
+         * Optional custom sensitivity for this InfoType.
+         * Structure is documented below.
+         */
+        sensitivityScore?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: string;
+    }
+
     export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
         /**
          * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
@@ -98277,12 +98491,11 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * Name of the information type.
          */
         name: string;
         /**
-         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Optional custom sensitivity for this InfoType.
          * Structure is documented below.
          */
         sensitivityScore?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore;
@@ -99715,6 +99928,11 @@ export namespace dataplex {
 
     export interface DataProductAccessGroup {
         /**
+         * Configuration for the default IAM role associated with the access group.
+         * Structure is documented below.
+         */
+        defaultIamRoleConfig?: outputs.dataplex.DataProductAccessGroupDefaultIamRoleConfig;
+        /**
          * Description of the access group.
          */
         description?: string;
@@ -99735,6 +99953,14 @@ export namespace dataplex {
          * Structure is documented below.
          */
         principal: outputs.dataplex.DataProductAccessGroupPrincipal;
+    }
+
+    export interface DataProductAccessGroupDefaultIamRoleConfig {
+        /**
+         * Default IAM role associated with the access group, such as
+         * `roles/bigquery.dataViewer`.
+         */
+        role: string;
     }
 
     export interface DataProductAccessGroupPrincipal {
@@ -99877,6 +100103,11 @@ export namespace dataplex {
          */
         catalogPublishingEnabled?: boolean;
         /**
+         * Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+         * Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+         */
+        generationScopes?: string[];
+        /**
          * The SQL dialect to use in the generated SQL queries.
          * If not specified, the default dialect is Google SQL.
          * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
@@ -99901,6 +100132,11 @@ export namespace dataplex {
          * Structure is documented below.
          */
         includeFields?: outputs.dataplex.DatascanDataProfileSpecIncludeFields;
+        /**
+         * The execution mode for the profile scan.
+         * Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+         */
+        mode?: string;
         /**
          * Actions to take upon job completion.
          * Structure is documented below.
@@ -100059,6 +100295,12 @@ export namespace dataplex {
          */
         column?: string;
         /**
+         * Specifies the debug queries for this rule.
+         * Currently, only one query is supported, but this may be expanded in the future.
+         * Structure is documented below.
+         */
+        debugQueries?: outputs.dataplex.DatascanDataQualitySpecRuleDebugQuery[];
+        /**
          * Description of the rule.
          * The maximum length is 1,024 characters.
          */
@@ -100135,6 +100377,18 @@ export namespace dataplex {
          * Row-level rule which evaluates whether each column value is unique.
          */
         uniquenessExpectation?: outputs.dataplex.DatascanDataQualitySpecRuleUniquenessExpectation;
+    }
+
+    export interface DatascanDataQualitySpecRuleDebugQuery {
+        /**
+         * Specifies the description of the debug query.
+         * The maximum length is 1,024 characters.
+         */
+        description?: string;
+        /**
+         * Specifies the SQL statement to be executed.
+         */
+        sqlStatement: string;
     }
 
     export interface DatascanDataQualitySpecRuleNonNullExpectation {
@@ -104716,7 +104970,7 @@ export namespace dataproc {
          */
         endpointConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigEndpointConfig;
         /**
-         * The shared Compute Engine config settings for all instances in a cluster.
+         * The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
          */
         gceClusterConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig;
         /**
@@ -104736,6 +104990,10 @@ export namespace dataproc {
          */
         masterConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfig;
         /**
+         * The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+         */
+        masterFlexibleConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig;
+        /**
          * Metastore configuration.
          */
         metastoreConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig;
@@ -104743,6 +105001,10 @@ export namespace dataproc {
          * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          */
         secondaryWorkerConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig;
+        /**
+         * The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+         */
+        secondaryWorkerFlexibleConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig;
         /**
          * Security settings for the cluster.
          */
@@ -104761,10 +105023,14 @@ export namespace dataproc {
         tempBucket?: string;
         /**
          * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
+         */
+        workerConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig;
+        /**
+         * The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
          *
          * ***
          */
-        workerConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig;
+        workerFlexibleConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
@@ -104801,6 +105067,10 @@ export namespace dataproc {
          * The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
          */
         metadata?: {[key: string]: string};
+        /**
+         * Multi-zone configuration for cluster instances. Structure is documented below.
+         */
+        multiZoneConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig;
         /**
          * The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
          */
@@ -104841,6 +105111,13 @@ export namespace dataproc {
          * The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
          */
         zone: string;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig {
+        /**
+         * Specifies the target shape of the cluster. Possible values: `TARGET_SHAPE_UNSPECIFIED`, `ANY`.
+         */
+        targetShape?: string;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
@@ -105152,6 +105429,25 @@ export namespace dataproc {
         instanceTemplateName: string;
     }
 
+    export interface WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig {
+        /**
+         * Size of the boot disk in GB for each instance in the instance group.
+         */
+        bootDiskSizeGb?: number;
+        /**
+         * The core count for each instance in the instance group.
+         */
+        coreCount?: number;
+        /**
+         * The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+         */
+        hardwareClass?: string;
+        /**
+         * Number of instances in the instance group.
+         */
+        numInstances?: number;
+    }
+
     export interface WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
         /**
          * Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
@@ -105396,6 +105692,25 @@ export namespace dataproc {
          * Output only. The name of the Instance Template used for the Managed Instance Group.
          */
         instanceTemplateName: string;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig {
+        /**
+         * Size of the boot disk in GB for each instance in the instance group.
+         */
+        bootDiskSizeGb?: number;
+        /**
+         * The core count for each instance in the instance group.
+         */
+        coreCount?: number;
+        /**
+         * The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+         */
+        hardwareClass?: string;
+        /**
+         * Number of instances in the instance group.
+         */
+        numInstances?: number;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
@@ -105719,6 +106034,25 @@ export namespace dataproc {
          * Output only. The name of the Instance Template used for the Managed Instance Group.
          */
         instanceTemplateName: string;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig {
+        /**
+         * Size of the boot disk in GB for each instance in the instance group.
+         */
+        bootDiskSizeGb?: number;
+        /**
+         * The core count for each instance in the instance group.
+         */
+        coreCount?: number;
+        /**
+         * The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+         */
+        hardwareClass?: string;
+        /**
+         * Number of instances in the instance group.
+         */
+        numInstances?: number;
     }
 
 }
@@ -117215,6 +117549,24 @@ export namespace eventarc {
         logSeverity: string;
     }
 
+    export interface GoogleApiSourceOrganizationSubscription {
+        /**
+         * Enable org level subscription.
+         */
+        enabled: boolean;
+    }
+
+    export interface GoogleApiSourceProjectSubscriptions {
+        /**
+         * A list of projects to receive events from.
+         * All the projects must be in the same org. The listed projects should have
+         * the format project/{identifier} where identifier can be either the
+         * project id for project number. A single list may contain both formats. At
+         * most 100 projects can be listed.
+         */
+        lists: string[];
+    }
+
     export interface MessageBusLoggingConfig {
         /**
          * Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
@@ -119793,6 +120145,18 @@ export namespace firestore {
     }
 
     export interface IndexFieldVectorConfigFlat {
+    }
+
+    export interface IndexSearchIndexOptions {
+        /**
+         * Optional. The language code used to parse all text fields included in the search index,
+         * for example, "en", "es", "jp".
+         */
+        textLanguage: string;
+        /**
+         * Optional. The path to the field that records the text language override of each document.
+         */
+        textLanguageOverrideFieldPath: string;
     }
 
     export interface UserCredsResourceIdentity {
@@ -130984,6 +131348,18 @@ export namespace integrationconnectors {
         status: string;
     }
 
+    export interface ConnectionTrafficShapingConfig {
+        /**
+         * Specifies the duration over which the API call quota limits are calculated.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        duration: string;
+        /**
+         * Maximum number of api calls allowed.
+         */
+        quotaLimit: string;
+    }
+
 }
 
 export namespace kms {
@@ -136484,6 +136860,12 @@ export namespace modelarmor {
 
     export interface TemplateFilterConfig {
         /**
+         * Settings for customizing filter rules. Note: This field is not supported in
+         * FloorSetting and Streaming Sanitization APIs.
+         * Structure is documented below.
+         */
+        filterRuleSettings?: outputs.modelarmor.TemplateFilterConfigFilterRuleSettings;
+        /**
          * Malicious URI filter settings.
          * Structure is documented below.
          */
@@ -136503,6 +136885,83 @@ export namespace modelarmor {
          * Structure is documented below.
          */
         sdpSettings?: outputs.modelarmor.TemplateFilterConfigSdpSettings;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettings {
+        /**
+         * List of rule sets to be applied to filters.
+         * Structure is documented below.
+         */
+        ruleSets?: outputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSet[];
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSet {
+        /**
+         * List of filters this rule set is applied to.
+         * Possible values:
+         * PROMPT_INJECTION_AND_JAILBREAK
+         * RESPONSIBLE_AI
+         */
+        filterTypes: string[];
+        /**
+         * Set of rules to be applied to filterTypes.
+         * Structure is documented below.
+         */
+        rules: outputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRule[];
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSetRule {
+        /**
+         * The rule that specifies conditions when filter detections are excluded from
+         * results.
+         * Structure is documented below.
+         */
+        exclusionRule?: outputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule {
+        /**
+         * Dictionary which defines the rule.
+         * Structure is documented below.
+         */
+        dictionary?: outputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary;
+        /**
+         * Specifies the scope of the input that should be matched against the
+         * exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+         * Possible values:
+         * MATCHING_SCOPE_FULL_MATCH
+         * MATCHING_SCOPE_PARTIAL_MATCH
+         */
+        matchingScope?: string;
+        /**
+         * Regular expression which defines the rule.
+         * Structure is documented below.
+         */
+        regex?: outputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary {
+        /**
+         * Message defining a list of words or phrases.
+         * Structure is documented below.
+         */
+        wordList?: outputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at
+         * least one phrase and every phrase must contain at least two characters that
+         * are letters or digits.
+         */
+        words: string[];
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex {
+        /**
+         * The regular expression pattern.
+         */
+        pattern: string;
     }
 
     export interface TemplateFilterConfigMaliciousUriFilterSettings {
@@ -136628,6 +137087,14 @@ export namespace modelarmor {
          * end user if the prompt trips Model Armor filters.
          */
         customPromptSafetyErrorMessage?: string;
+        /**
+         * Indicates whether the template is subject to data residency compliance. If
+         * true (default for new templates), the template is subject to data residency
+         * compliance. If false, the template bypasses data residency compliance
+         * checks. If unset, the value is determined by the API; templates created
+         * before data residency enforcement may report false.
+         */
+        dataResidencyCompliant: boolean;
         /**
          * Possible values:
          * INSPECT_ONLY
@@ -141934,9 +142401,16 @@ export namespace networksecurity {
         /**
          * When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
          * Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-         * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+         * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
          */
         clientValidationMode?: string;
+        /**
+         * List of validation relaxations to apply when validating client certificates.
+         * Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+         * and must be empty for all other clientValidationMode values.
+         * Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+         */
+        clientValidationRelaxations?: string[];
         /**
          * Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
          * If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
@@ -143054,6 +143528,10 @@ export namespace networkservices {
          */
         faultInjectionPolicy?: outputs.networkservices.GrpcRouteRuleActionFaultInjectionPolicy;
         /**
+         * Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+         */
+        idleTimeout?: string;
+        /**
          * Specifies the retry policy associated with this route.
          * Structure is documented below.
          */
@@ -143165,6 +143643,12 @@ export namespace networkservices {
          * Required. Name of the service to match against.
          */
         grpcService: string;
+        /**
+         * Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+         * Default value is `EXACT`.
+         * Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+         */
+        type?: string;
     }
 
     export interface HttpRouteRule {
@@ -143194,10 +143678,20 @@ export namespace networkservices {
          */
         destinations?: outputs.networkservices.HttpRouteRuleActionDestination[];
         /**
+         * Static HTTP Response object to be returned regardless of the request.
+         * Structure is documented below.
+         */
+        directResponse?: outputs.networkservices.HttpRouteRuleActionDirectResponse;
+        /**
          * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
          * Structure is documented below.
          */
         faultInjectionPolicy?: outputs.networkservices.HttpRouteRuleActionFaultInjectionPolicy;
+        /**
+         * Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        idleTimeout?: string;
         /**
          * If set, the request is directed as configured by this field.
          * Structure is documented below.
@@ -143281,6 +143775,21 @@ export namespace networkservices {
          * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
          */
         weight?: number;
+    }
+
+    export interface HttpRouteRuleActionDirectResponse {
+        /**
+         * Response body as base64 encoded bytes. Maximum body size is 4096B.
+         */
+        bytesBody?: string;
+        /**
+         * Status to return as part of HTTP Response. Must be a positive integer.
+         */
+        status: number;
+        /**
+         * Response body as a string. Maximum body length is 1024 characters.
+         */
+        stringBody?: string;
     }
 
     export interface HttpRouteRuleActionFaultInjectionPolicy {
@@ -143370,6 +143879,10 @@ export namespace networkservices {
          * Structure is documented below.
          */
         destination?: outputs.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestination;
+        /**
+         * The percentage of requests to get mirrored to the desired destination.
+         */
+        mirrorPercent?: number;
     }
 
     export interface HttpRouteRuleActionRequestMirrorPolicyDestination {
@@ -148411,6 +148924,12 @@ export namespace oracledatabase {
          * Format: projects/{project}/global/networks/{network}
          */
         network: string;
+        /**
+         * The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+         * Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+         */
+        odbDnsZone: string;
         /**
          * The name of the OdbNetwork associated with the VM Cluster.
          * Format:
@@ -158718,6 +159237,11 @@ export namespace pubsub {
          */
         aiInferences: outputs.pubsub.GetSubscriptionMessageTransformAiInference[];
         /**
+         * Compression/Decompression. Configuration for compressing/decompressing
+         * message data using a user-specified compression algorithm.
+         */
+        compressions: outputs.pubsub.GetSubscriptionMessageTransformCompression[];
+        /**
          * Controls whether or not to use this transform. If not set or 'false',
          * the transform will be applied to messages. Default: 'true'.
          */
@@ -158755,6 +159279,18 @@ export namespace pubsub {
          * message to form the inference request.
          */
         parameters: {[key: string]: string};
+    }
+
+    export interface GetSubscriptionMessageTransformCompression {
+        /**
+         * Specifies the compression algorithm to use.
+         * Possible values include 'ZLIB'.
+         */
+        compressionAlgorithm: string;
+        /**
+         * Specifies whether to compress or decompress the message. Possible values: ["COMPRESS", "DECOMPRESS"]
+         */
+        compressionMode: string;
     }
 
     export interface GetSubscriptionMessageTransformJavascriptUdf {
@@ -159105,6 +159641,11 @@ export namespace pubsub {
          */
         aiInferences: outputs.pubsub.GetTopicMessageTransformAiInference[];
         /**
+         * Configuration for compressing/decompressing message data using a
+         * user-specified compression algorithm.
+         */
+        compressions: outputs.pubsub.GetTopicMessageTransformCompression[];
+        /**
          * Controls whether or not to use this transform. If not set or 'false',
          * the transform will be applied to messages. Default: 'true'.
          */
@@ -159142,6 +159683,19 @@ export namespace pubsub {
          * message to form the inference request.
          */
         parameters: {[key: string]: string};
+    }
+
+    export interface GetTopicMessageTransformCompression {
+        /**
+         * Specifies the compression algorithm to use.
+         * Possible values include 'ZLIB'.
+         * See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+         */
+        compressionAlgorithm: string;
+        /**
+         * Specifies whether to compress or decompress the message. Possible values: ["COMPRESS", "DECOMPRESS"]
+         */
+        compressionMode: string;
     }
 
     export interface GetTopicMessageTransformJavascriptUdf {
@@ -159513,6 +160067,12 @@ export namespace pubsub {
          */
         aiInference?: outputs.pubsub.SubscriptionMessageTransformAiInference;
         /**
+         * Compression/Decompression. Configuration for compressing/decompressing
+         * message data using a user-specified compression algorithm.
+         * Structure is documented below.
+         */
+        compression?: outputs.pubsub.SubscriptionMessageTransformCompression;
+        /**
          * Controls whether or not to use this transform. If not set or `false`,
          * the transform will be applied to messages. Default: `true`.
          */
@@ -159552,6 +160112,19 @@ export namespace pubsub {
          * message to form the inference request.
          */
         parameters?: {[key: string]: string};
+    }
+
+    export interface SubscriptionMessageTransformCompression {
+        /**
+         * Specifies the compression algorithm to use.
+         * Possible values include `ZLIB`.
+         */
+        compressionAlgorithm: string;
+        /**
+         * Specifies whether to compress or decompress the message.
+         * Possible values are: `COMPRESS`, `DECOMPRESS`.
+         */
+        compressionMode: string;
     }
 
     export interface SubscriptionMessageTransformJavascriptUdf {
@@ -159921,6 +160494,12 @@ export namespace pubsub {
          */
         aiInference?: outputs.pubsub.TopicMessageTransformAiInference;
         /**
+         * Configuration for compressing/decompressing message data using a
+         * user-specified compression algorithm.
+         * Structure is documented below.
+         */
+        compression?: outputs.pubsub.TopicMessageTransformCompression;
+        /**
          * Controls whether or not to use this transform. If not set or `false`,
          * the transform will be applied to messages. Default: `true`.
          */
@@ -159960,6 +160539,20 @@ export namespace pubsub {
          * message to form the inference request.
          */
         parameters?: {[key: string]: string};
+    }
+
+    export interface TopicMessageTransformCompression {
+        /**
+         * Specifies the compression algorithm to use.
+         * Possible values include `ZLIB`.
+         * See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+         */
+        compressionAlgorithm: string;
+        /**
+         * Specifies whether to compress or decompress the message.
+         * Possible values are: `COMPRESS`, `DECOMPRESS`.
+         */
+        compressionMode: string;
     }
 
     export interface TopicMessageTransformJavascriptUdf {
@@ -161986,6 +162579,16 @@ export namespace secretmanager {
         kmsKeyName: string;
     }
 
+    export interface GetRegionalSecretPolicyMember {
+        /**
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+         * If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+         * new resource. Format:
+         * 'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+         */
+        iamPolicyUidPrincipal: string;
+    }
+
     export interface GetRegionalSecretRotation {
         /**
          * Timestamp in UTC at which the Secret is scheduled to rotate.
@@ -162072,6 +162675,11 @@ export namespace secretmanager {
          */
         name: string;
         /**
+         * An object containing a unique resource identity tied to the regional secret. This identity can be
+         * granted the permissions required by features such as managed rotation.
+         */
+        policyMembers: outputs.secretmanager.GetRegionalSecretsSecretPolicyMember[];
+        /**
          * The ID of the project.
          */
         project: string;
@@ -162092,6 +162700,15 @@ export namespace secretmanager {
         /**
          * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
          * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+         * Supported values are:
+         * * 'CLOUD_SQL_DB_CREDENTIALS': Secrets used for managed rotation of Cloud SQL single-user
+         *   credentials. Managed rotation can be enabled on these secrets using the
+         *   'google_secret_manager_regional_secret_managed_rotation' resource. Secret versions cannot
+         *   be added manually to secrets of this type.
+         * * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+         * * 'ACCESS_KEY': Secrets where the payload contains an access key.
+         * * 'CERTIFICATE': Secrets where the payload contains a certificate.
+         * * 'OTHER': Secrets whose type doesn't belong to any of the above types.
          */
         secretType: string;
         /**
@@ -162125,6 +162742,16 @@ export namespace secretmanager {
          * Describes the Cloud KMS encryption key that will be used to protect destination secret.
          */
         kmsKeyName: string;
+    }
+
+    export interface GetRegionalSecretsSecretPolicyMember {
+        /**
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+         * If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+         * new resource. Format:
+         * 'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+         */
+        iamPolicyUidPrincipal: string;
     }
 
     export interface GetRegionalSecretsSecretRotation {
@@ -162288,6 +162915,11 @@ export namespace secretmanager {
         /**
          * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
          * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+         * Supported values are:
+         * * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+         * * 'ACCESS_KEY': Secrets where the payload contains an access key.
+         * * 'CERTIFICATE': Secrets where the payload contains a certificate.
+         * * 'OTHER': Secrets whose type doesn't belong to any of the above types.
          */
         secretType: string;
         /**
@@ -162433,6 +163065,83 @@ export namespace secretmanager {
          * A title for the expression, i.e. a short string describing its purpose.
          */
         title: string;
+    }
+
+    export interface RegionalSecretManagedRotationCloudSqlSingleUserCredentials {
+        /**
+         * The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+         */
+        instanceId: string;
+        /**
+         * The initial password to set for the database user. If not provided, a random password will be generated.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The initial password to set for the database user. If not provided, a random password will be generated.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `password` or `passwordWo` can only be set.
+         */
+        passwordWo?: string;
+        /**
+         * Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        passwordWoVersion?: string;
+        /**
+         * The username of the Cloud SQL database user.
+         */
+        username: string;
+    }
+
+    export interface RegionalSecretManagedRotationRotation {
+        /**
+         * (Output)
+         * The current status of the managed rotation.
+         * Structure is documented below.
+         */
+        managedRotationStatuses: outputs.secretmanager.RegionalSecretManagedRotationRotationManagedRotationStatus[];
+    }
+
+    export interface RegionalSecretManagedRotationRotationManagedRotationStatus {
+        /**
+         * (Output)
+         * Customer-facing issues that occurred during an asynchronous managed rotation, for example
+         * permission errors.
+         * Structure is documented below.
+         */
+        errors: outputs.secretmanager.RegionalSecretManagedRotationRotationManagedRotationStatusError[];
+        /**
+         * (Output)
+         * Indicates whether the managed rotation is `ACTIVE` or `INACTIVE`.
+         */
+        state: string;
+    }
+
+    export interface RegionalSecretManagedRotationRotationManagedRotationStatusError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of `google.rpc.Code`.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message: string;
+    }
+
+    export interface RegionalSecretPolicyMember {
+        /**
+         * (Output)
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+         * If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+         * new resource. Format:
+         * `principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}`
+         */
+        iamPolicyUidPrincipal: string;
     }
 
     export interface RegionalSecretRotation {
@@ -166508,6 +167217,10 @@ export namespace sql {
          */
         connectionName: string;
         /**
+         * The Database Center integration control.
+         */
+        databaseCenterIntegration: string;
+        /**
          * To filter out the Cloud SQL instances which are of the specified database version.
          */
         databaseVersion: string;
@@ -167633,6 +168346,21 @@ export namespace storage {
          * enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
          */
         permanentObjectDeletionEnabled: boolean;
+    }
+
+    export interface BatchOperationsJobLoggingConfig {
+        /**
+         * States in which Action are logged.If empty, no logs are generated.
+         * Possible values include `SUCCEEDED`, `FAILED`.
+         * See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+         */
+        logActionStates: string[];
+        /**
+         * Specifies the actions to be logged.
+         * Possible values include `TRANSFORM`.
+         * See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+         */
+        logActions: string[];
     }
 
     export interface BatchOperationsJobPutMetadata {
@@ -173935,6 +174663,17 @@ export namespace vertex {
          */
         autoscalingMetricSpecs?: outputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec[];
         /**
+         * (Optional, Beta)
+         * Number of initial replicas being deployed on when scaling the workload up
+         * from zero or when creating the workload in case minReplicaCount = 0.
+         * When minReplicaCount > 0 (meaning that the scale-to-zero feature is not
+         * enabled), initialReplicaCount should not be set. When minReplicaCount
+         * = 0 (meaning that the scale-to-zero feature is enabled),
+         * initialReplicaCount should be larger than zero, but no greater than
+         * max_replica_count.
+         */
+        initialReplicaCount?: number;
+        /**
          * Specification of a single machine.
          * Structure is documented below.
          */
@@ -173955,7 +174694,8 @@ export namespace vertex {
         maxReplicaCount: number;
         /**
          * The minimum number of machine replicas that will be always deployed on.
-         * This value must be greater than or equal to 1.
+         * This value must be greater than or equal to 1. To enable scale-to-zero
+         * (in beta), set this value to 0 and also set `initialReplicaCount`.
          * If traffic increases, it may dynamically be deployed onto more replicas,
          * and as traffic decreases, some of these extra replicas may be freed.
          */
@@ -173969,6 +174709,12 @@ export namespace vertex {
          * requiredReplicaCount will be min_replica_count.
          */
         requiredReplicaCount?: number;
+        /**
+         * (Optional, Beta)
+         * Specification for scale-to-zero feature.
+         * Structure is documented below.
+         */
+        scaleToZeroSpec?: outputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec;
         /**
          * If true, schedule the deployment workload on [spot
          * VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
@@ -174070,6 +174816,22 @@ export namespace vertex {
          * full resource name of the reservation or reservation block.
          */
         values?: string[];
+    }
+
+    export interface AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec {
+        /**
+         * (Optional, Beta)
+         * Duration of no traffic before scaling to zero. [MinValue=300] (5
+         * minutes) [MaxValue=28800] (8 hours)
+         */
+        idleScaledownPeriod?: string;
+        /**
+         * (Optional, Beta)
+         * Minimum duration that a deployment will be scaled up before traffic is
+         * evaluated for potential scale-down. [MinValue=300] (5 minutes)
+         * [MaxValue=28800] (8 hours)
+         */
+        minScaleupPeriod?: string;
     }
 
     export interface AiEndpointWithModelGardenDeploymentEndpointConfig {
@@ -175736,7 +176498,9 @@ export namespace vertex {
          */
         flexStartMaxDuration?: string;
         /**
-         * The unique ID referring to this node pool.
+         * The unique ID referring to this node pool. Cannot be modified in
+         * place on an existing node pool; changing `id` updates the list of
+         * node pools by adding/removing pools (validated server-side).
          */
         id: string;
         /**
@@ -175864,9 +176628,52 @@ export namespace vertex {
 
     export interface AiModelDevelopmentClusterOrchestratorSpec {
         /**
+         * The GKE orchestrator related spec of the cluster.
+         */
+        kubernetesSpec?: outputs.vertex.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec;
+        /**
          * The Slurm orchestrator related spec of the cluster.
          */
         slurmSpec?: outputs.vertex.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec;
+    }
+
+    export interface AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec {
+        /**
+         * The Kubernetes version of the GKE control plane.
+         * Accepted formats are minor version (for example, '"1.30"'), patch version
+         * (for example, '"1.30.5"'), full GKE release version (for example,
+         * '"1.30.5-gke.1014001"'), or '"-"' to use the service default version.
+         * Upgrades can advance at most one minor version at a time; downgrades are
+         * rejected.
+         */
+        controlPlaneVersion: string;
+        /**
+         * Whether to enable IP alias.
+         */
+        enableIpAlias?: boolean;
+        /**
+         * IDs of the NodePools to be included in this GKE cluster. These IDs must
+         * correspond to NodePools defined in the 'node_pools' field.
+         */
+        nodePoolIds?: string[];
+        /**
+         * The Kubernetes versions for specific node pools, keyed by node pool ID.
+         * When specified, all node pool IDs in the cluster must be included.
+         * Accepted formats are minor version (for example, '"1.30"'), patch version
+         * (for example, '"1.30.5"'), full GKE release version (for example,
+         * '"1.30.5-gke.1014001"'), or '"-"' to align with the control plane version.
+         * Node pools cannot be newer than the control plane or more than 2 minor
+         * versions behind it; upgrades can advance at most one minor version at a
+         * time and downgrades are rejected.
+         */
+        nodePoolVersions: {[key: string]: string};
+        /**
+         * Whether the GKE cluster's control plane endpoint is publicly accessible.
+         * If true, the cluster is created with a public access endpoint (i.e. the
+         * private cluster configuration is disabled). If false or unset, the cluster
+         * is created with only private control plane access by default.
+         */
+        publicAccessEndpointEnabled?: boolean;
     }
 
     export interface AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
@@ -178365,6 +179172,365 @@ export namespace vertex {
          * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
          */
         kmsKeyName: string;
+    }
+
+    export interface AiTrainingPipelineEncryptionSpec {
+        /**
+         * The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+         */
+        kmsKeyName: string;
+    }
+
+    export interface AiTrainingPipelineError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message: string;
+    }
+
+    export interface AiTrainingPipelineInputDataConfig {
+        /**
+         * Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema.
+         */
+        annotationSchemaUri?: string;
+        /**
+         * Applicable only to Datasets that have DataItems and Annotations. A filter on Annotations of the Dataset.
+         */
+        annotationsFilter?: string;
+        /**
+         * The BigQuery location where the training data is to be written to.
+         * Structure is documented below.
+         */
+        bigqueryDestination?: outputs.vertex.AiTrainingPipelineInputDataConfigBigqueryDestination;
+        /**
+         * The ID of the Dataset in the same Project and Location which data will be used to train the Model.
+         */
+        datasetId: string;
+        /**
+         * Assigns input data to training, validation, and test sets based on the given filters.
+         * Structure is documented below.
+         */
+        filterSplit?: outputs.vertex.AiTrainingPipelineInputDataConfigFilterSplit;
+        /**
+         * The instructions how the input data should be split between the training, validation and test sets.
+         * Structure is documented below.
+         */
+        fractionSplit?: outputs.vertex.AiTrainingPipelineInputDataConfigFractionSplit;
+        /**
+         * The Cloud Storage location where the training data is to be written to.
+         * Structure is documented below.
+         */
+        gcsDestination?: outputs.vertex.AiTrainingPipelineInputDataConfigGcsDestination;
+        /**
+         * Whether to persist the ML use assignment to data item system labels.
+         */
+        persistMlUseAssignment?: boolean;
+        /**
+         * Assigns input data to training, validation, and test sets based on the value of a provided key. Supported only for tabular Datasets.
+         * Structure is documented below.
+         */
+        predefinedSplit?: outputs.vertex.AiTrainingPipelineInputDataConfigPredefinedSplit;
+        /**
+         * Only applicable to Datasets that have SavedQueries. The ID of a SavedQuery under the Dataset specified by datasetId used for filtering Annotations for training.
+         */
+        savedQueryId?: string;
+        /**
+         * Assigns input data to the training, validation, and test sets so that the distribution of values found in the categorical column is mirrored within each split. Supported only for tabular Datasets.
+         * Structure is documented below.
+         */
+        stratifiedSplit?: outputs.vertex.AiTrainingPipelineInputDataConfigStratifiedSplit;
+        /**
+         * Assigns input data to training, validation, and test sets based on provided timestamps. Supported only for tabular Datasets.
+         * Structure is documented below.
+         */
+        timestampSplit?: outputs.vertex.AiTrainingPipelineInputDataConfigTimestampSplit;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigBigqueryDestination {
+        /**
+         * The BigQuery table to which the output is to be written.
+         */
+        outputUri: string;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigFilterSplit {
+        /**
+         * A filter on DataItems of the Dataset for test set.
+         */
+        testFilter: string;
+        /**
+         * A filter on DataItems of the Dataset for training set.
+         */
+        trainingFilter: string;
+        /**
+         * A filter on DataItems of the Dataset for validation set.
+         */
+        validationFilter: string;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigFractionSplit {
+        /**
+         * The fraction of the input data that is to be used to evaluate the Model.
+         */
+        testFraction?: number;
+        /**
+         * The fraction of the input data that is to be used to train the Model.
+         */
+        trainingFraction?: number;
+        /**
+         * The fraction of the input data that is to be used to validate the Model.
+         */
+        validationFraction?: number;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigGcsDestination {
+        /**
+         * The Cloud Storage URI prefix to write to.
+         */
+        outputUriPrefix: string;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigPredefinedSplit {
+        /**
+         * The key is a name of one of the Dataset's data columns.
+         */
+        key: string;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigStratifiedSplit {
+        /**
+         * The key is a name of one of the Dataset's data columns.
+         */
+        key: string;
+        /**
+         * The fraction of the input data that is to be used to evaluate the Model.
+         */
+        testFraction?: number;
+        /**
+         * The fraction of the input data that is to be used to train the Model.
+         */
+        trainingFraction?: number;
+        /**
+         * The fraction of the input data that is to be used to validate the Model.
+         */
+        validationFraction?: number;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigTimestampSplit {
+        /**
+         * The key is a name of one of the Dataset's data columns.
+         */
+        key: string;
+        /**
+         * The fraction of the input data that is to be used to evaluate the Model.
+         */
+        testFraction?: number;
+        /**
+         * The fraction of the input data that is to be used to train the Model.
+         */
+        trainingFraction?: number;
+        /**
+         * The fraction of the input data that is to be used to validate the Model.
+         */
+        validationFraction?: number;
+    }
+
+    export interface AiTrainingPipelineModelToUpload {
+        /**
+         * The path to the directory containing the Model artifact and any of its supporting files.
+         */
+        artifactUri?: string;
+        /**
+         * The specification of the container that is to be used when deploying this Model.
+         * Structure is documented below.
+         */
+        containerSpec?: outputs.vertex.AiTrainingPipelineModelToUploadContainerSpec;
+        /**
+         * The description of the Model.
+         */
+        description?: string;
+        /**
+         * The user-defined name of the Model.
+         */
+        displayName: string;
+        /**
+         * Customer-managed encryption key spec for a Model.
+         * Structure is documented below.
+         */
+        encryptionSpec?: outputs.vertex.AiTrainingPipelineModelToUploadEncryptionSpec;
+        /**
+         * Specification of Model explanation.
+         * Structure is documented below.
+         */
+        explanationSpec?: outputs.vertex.AiTrainingPipelineModelToUploadExplanationSpec;
+        /**
+         * The labels with user-defined metadata to organize your Models.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * (Output)
+         * The resource name of the Model.
+         */
+        name: string;
+        /**
+         * User provided version aliases so that a model version can be referenced using alias.
+         */
+        versionAliases?: string[];
+        /**
+         * The description of this version.
+         */
+        versionDescription?: string;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpec {
+        /**
+         * Specifies the arguments to the command when the container starts.
+         */
+        args?: string[];
+        /**
+         * Specifies the command that runs when the container starts.
+         */
+        commands?: string[];
+        /**
+         * Deployment timeout. Limit for deployment timeout is 2 hours.
+         */
+        deploymentTimeout?: string;
+        /**
+         * List of environment variables to be set in the container.
+         * Structure is documented below.
+         */
+        envs?: outputs.vertex.AiTrainingPipelineModelToUploadContainerSpecEnv[];
+        /**
+         * List of ports to expose from the container for gRPC.
+         * Structure is documented below.
+         */
+        grpcPorts?: outputs.vertex.AiTrainingPipelineModelToUploadContainerSpecGrpcPort[];
+        /**
+         * Specification for Kubernetes readiness probe.
+         * Structure is documented below.
+         */
+        healthProbe?: outputs.vertex.AiTrainingPipelineModelToUploadContainerSpecHealthProbe;
+        /**
+         * HTTP path on the container to send health checks to.
+         */
+        healthRoute?: string;
+        /**
+         * URI of the Docker image to be used as the custom container for serving predictions.
+         */
+        imageUri: string;
+        /**
+         * List of ports that are exposed by the container's process.
+         * Structure is documented below.
+         */
+        ports?: outputs.vertex.AiTrainingPipelineModelToUploadContainerSpecPort[];
+        /**
+         * HTTP path on the container to send prediction requests to.
+         */
+        predictRoute?: string;
+        /**
+         * The amount of the VM memory to reserve as the shared memory for the model in megabytes.
+         */
+        sharedMemorySizeMb?: string;
+        /**
+         * Specification for Kubernetes startup probe.
+         * Structure is documented below.
+         */
+        startupProbe?: outputs.vertex.AiTrainingPipelineModelToUploadContainerSpecStartupProbe;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecEnv {
+        /**
+         * The name of the environment variable.
+         */
+        name: string;
+        /**
+         * The value of the environment variable.
+         */
+        value: string;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecGrpcPort {
+        /**
+         * The number of the port on the container.
+         */
+        containerPort: number;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecHealthProbe {
+        /**
+         * ExecAction specifies a command to execute.
+         * Structure is documented below.
+         */
+        exec?: outputs.vertex.AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec;
+        /**
+         * How often (in seconds) to perform the probe.
+         */
+        periodSeconds?: number;
+        /**
+         * Number of seconds after which the probe times out.
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec {
+        /**
+         * Command is the command line to execute inside the container.
+         */
+        commands?: string[];
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecPort {
+        /**
+         * The number of the port on the container.
+         */
+        containerPort: number;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecStartupProbe {
+        /**
+         * ExecAction specifies a command to execute.
+         * Structure is documented below.
+         */
+        exec?: outputs.vertex.AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec;
+        /**
+         * How often (in seconds) to perform the probe.
+         */
+        periodSeconds?: number;
+        /**
+         * Number of seconds after which the probe times out.
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec {
+        /**
+         * Command is the command line to execute inside the container.
+         */
+        commands?: string[];
+    }
+
+    export interface AiTrainingPipelineModelToUploadEncryptionSpec {
+        /**
+         * The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+         */
+        kmsKeyName: string;
+    }
+
+    export interface AiTrainingPipelineModelToUploadExplanationSpec {
+        /**
+         * Metadata describing the Model's input and output for explanation. This field uses JSON data as a string.
+         */
+        metadata?: string;
+        /**
+         * Parameters that configure explaining of the Model's predictions. This field uses JSON data as a string.
+         */
+        parameters?: string;
     }
 
     export interface GetAiIndexDeployedIndex {

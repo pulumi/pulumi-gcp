@@ -60,7 +60,7 @@ import (
 //			}
 //			_, err = alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: defaultNetwork.ID(),
 //				},
@@ -102,7 +102,7 @@ import (
 //			}
 //			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: pulumi.String(_default.Id),
 //				},
@@ -155,7 +155,7 @@ import (
 //			}
 //			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: pulumi.String(_default.Id),
 //				},
@@ -209,7 +209,7 @@ import (
 //			}
 //			_, err = alloydb.NewCluster(ctx, "full", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster-full"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: _default.ID(),
 //				},
@@ -223,7 +223,7 @@ import (
 //					RecoveryWindowDays: pulumi.Int(14),
 //				},
 //				AutomatedBackupPolicy: &alloydb.ClusterAutomatedBackupPolicyArgs{
-//					Location:     pulumi.String("us-central1"),
+//					Location:     pulumi.String("us-east1"),
 //					BackupWindow: pulumi.String("1800s"),
 //					Enabled:      pulumi.Bool(true),
 //					WeeklySchedule: &alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleArgs{
@@ -289,7 +289,7 @@ import (
 //			}
 //			source, err := alloydb.NewCluster(ctx, "source", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-source-cluster"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				Network:   _default.Id,
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-source-cluster"),
@@ -334,7 +334,7 @@ import (
 //			}
 //			sourceBackup, err := alloydb.NewBackup(ctx, "source", &alloydb.BackupArgs{
 //				BackupId:    pulumi.String("alloydb-backup"),
-//				Location:    pulumi.String("us-central1"),
+//				Location:    pulumi.String("us-east1"),
 //				ClusterName: source.Name,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				sourceInstance,
@@ -344,7 +344,7 @@ import (
 //			}
 //			_, err = alloydb.NewCluster(ctx, "restored_from_backup", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-backup-restored"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: pulumi.String(_default.Id),
 //				},
@@ -358,7 +358,7 @@ import (
 //			}
 //			_, err = alloydb.NewCluster(ctx, "restored_via_pitr", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-pitr-restored"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: pulumi.String(_default.Id),
 //				},
@@ -406,7 +406,7 @@ import (
 //			}
 //			primary, err := alloydb.NewCluster(ctx, "primary", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-primary-cluster"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: _default.ID(),
 //				},

@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.ModelArmor.Inputs
     public sealed class TemplateFilterConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Settings for customizing filter rules. Note: This field is not supported in
+        /// FloorSetting and Streaming Sanitization APIs.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("filterRuleSettings")]
+        public Input<Inputs.TemplateFilterConfigFilterRuleSettingsGetArgs>? FilterRuleSettings { get; set; }
+
+        /// <summary>
         /// Malicious URI filter settings.
         /// Structure is documented below.
         /// </summary>

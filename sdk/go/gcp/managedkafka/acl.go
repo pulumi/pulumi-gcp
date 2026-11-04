@@ -14,6 +14,13 @@ import (
 
 // A Managed Service for Apache Kafka ACL. Apache Kafka is a trademark owned by the Apache Software Foundation.
 //
+// > **Warning:** `managedkafka.Acl` cannot be used in conjunction with
+// `managedkafka.AclBinding` for the same ACL (same `cluster` and
+// `aclId`), or they will fight over which ACL entries are set.
+// `managedkafka.Acl` is authoritative: on every apply it replaces
+// the full `aclEntries` list, removing any entry added by a
+// `managedkafka.AclBinding`.
+//
 // ## Example Usage
 //
 // ### Managedkafka Acl Basic

@@ -174,10 +174,22 @@ export class GoogleApiSource extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * Config to enable subscribing to events from all projects in the
+     * GoogleApiSource's org.
+     * Structure is documented below.
+     */
+    declare public readonly organizationSubscription: pulumi.Output<outputs.eventarc.GoogleApiSourceOrganizationSubscription | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * Config to enable subscribing to all events from a list of projects.
+     * All the projects must be in the same org as the GoogleApiSource.
+     * Structure is documented below.
+     */
+    declare public readonly projectSubscriptions: pulumi.Output<outputs.eventarc.GoogleApiSourceProjectSubscriptions | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
@@ -220,7 +232,9 @@ export class GoogleApiSource extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["loggingConfig"] = state?.loggingConfig;
             resourceInputs["name"] = state?.name;
+            resourceInputs["organizationSubscription"] = state?.organizationSubscription;
             resourceInputs["project"] = state?.project;
+            resourceInputs["projectSubscriptions"] = state?.projectSubscriptions;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["uid"] = state?.uid;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -244,7 +258,9 @@ export class GoogleApiSource extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["loggingConfig"] = args?.loggingConfig;
+            resourceInputs["organizationSubscription"] = args?.organizationSubscription;
             resourceInputs["project"] = args?.project;
+            resourceInputs["projectSubscriptions"] = args?.projectSubscriptions;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -342,10 +358,22 @@ export interface GoogleApiSourceState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Config to enable subscribing to events from all projects in the
+     * GoogleApiSource's org.
+     * Structure is documented below.
+     */
+    organizationSubscription?: pulumi.Input<inputs.eventarc.GoogleApiSourceOrganizationSubscription | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Config to enable subscribing to all events from a list of projects.
+     * All the projects must be in the same org as the GoogleApiSource.
+     * Structure is documented below.
+     */
+    projectSubscriptions?: pulumi.Input<inputs.eventarc.GoogleApiSourceProjectSubscriptions | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
@@ -420,8 +448,20 @@ export interface GoogleApiSourceArgs {
      */
     loggingConfig?: pulumi.Input<inputs.eventarc.GoogleApiSourceLoggingConfig | undefined>;
     /**
+     * Config to enable subscribing to events from all projects in the
+     * GoogleApiSource's org.
+     * Structure is documented below.
+     */
+    organizationSubscription?: pulumi.Input<inputs.eventarc.GoogleApiSourceOrganizationSubscription | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Config to enable subscribing to all events from a list of projects.
+     * All the projects must be in the same org as the GoogleApiSource.
+     * Structure is documented below.
+     */
+    projectSubscriptions?: pulumi.Input<inputs.eventarc.GoogleApiSourceProjectSubscriptions | undefined>;
 }

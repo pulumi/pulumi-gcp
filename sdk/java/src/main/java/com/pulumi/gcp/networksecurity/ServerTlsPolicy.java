@@ -177,8 +177,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.certificatemanager.TrustConfig;
  * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
  * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
@@ -202,9 +200,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .build());
- * 
  *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
  *             .name("my-trust-config")
  *             .description("sample trust config description")
@@ -231,7 +226,79 @@ import javax.annotation.Nullable;
  *             .allowOpen(false)
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
  *                 .clientValidationMode("REJECT_INVALID")
- *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(_name -> String.format("projects/%s/locations/global/trustConfigs/%s", project.number(),_name)))
+ *                 .clientValidationTrustConfig(defaultTrustConfig.id())
+ *                 .build())
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Network Security Server Tls Policy Mtls Validation Relaxations
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.TrustConfig;
+ * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreTrustAnchorArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreIntermediateCaArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
+ * import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
+ *             .name("my-trust-config")
+ *             .description("sample trust config description")
+ *             .location("global")
+ *             .trustStores(TrustConfigTrustStoreArgs.builder()
+ *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input("test-fixtures/ca_cert.pem")
+ *                         .build()).result())
+ *                     .build())
+ *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input("test-fixtures/ca_cert.pem")
+ *                         .build()).result())
+ *                     .build())
+ *                 .build())
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()
+ *             .name("my-server-tls-policy")
+ *             .description("ServerTlsPolicy with mTLS validation relaxations")
+ *             .location("global")
+ *             .allowOpen(false)
+ *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
+ *                 .clientValidationMode("ALLOW_VALIDATION_RELAXATIONS")
+ *                 .clientValidationRelaxations(                
+ *                     "ALLOW_MISSING_EKU",
+ *                     "ALLOW_SHA1_HASHING",
+ *                     "ALLOW_EXPIRED_LEAF_CERTIFICATE")
+ *                 .clientValidationTrustConfig(defaultTrustConfig.id())
  *                 .build())
  *             .labels(Map.of("foo", "bar"))
  *             .build());

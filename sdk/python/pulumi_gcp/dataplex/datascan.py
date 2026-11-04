@@ -790,6 +790,7 @@ class Datascan(pulumi.CustomResource):
                     },
                 },
                 "catalog_publishing_enabled": True,
+                "mode": "STANDARD",
             },
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[source]))
@@ -897,6 +898,10 @@ class Datascan(pulumi.CustomResource):
                             "priority": "high",
                         },
                         "non_null_expectation": {},
+                        "debug_queries": [{
+                            "description": "test debug query description",
+                            "sql_statement": "select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where address is null",
+                        }],
                     },
                     {
                         "column": "council_district",
@@ -1217,6 +1222,7 @@ class Datascan(pulumi.CustomResource):
             data_documentation_spec={
                 "catalog_publishing_enabled": True,
                 "sql_dialect": "GOOGLE_SQL",
+                "generation_scopes": ["ALL"],
             },
             project="my-project-name")
         ```
@@ -1873,6 +1879,7 @@ class Datascan(pulumi.CustomResource):
                     },
                 },
                 "catalog_publishing_enabled": True,
+                "mode": "STANDARD",
             },
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[source]))
@@ -1980,6 +1987,10 @@ class Datascan(pulumi.CustomResource):
                             "priority": "high",
                         },
                         "non_null_expectation": {},
+                        "debug_queries": [{
+                            "description": "test debug query description",
+                            "sql_statement": "select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where address is null",
+                        }],
                     },
                     {
                         "column": "council_district",
@@ -2300,6 +2311,7 @@ class Datascan(pulumi.CustomResource):
             data_documentation_spec={
                 "catalog_publishing_enabled": True,
                 "sql_dialect": "GOOGLE_SQL",
+                "generation_scopes": ["ALL"],
             },
             project="my-project-name")
         ```

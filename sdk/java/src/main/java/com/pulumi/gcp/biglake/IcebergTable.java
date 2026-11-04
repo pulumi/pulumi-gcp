@@ -193,6 +193,126 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Biglake Iceberg Table Nested Types
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.biglake.IcebergCatalog;
+ * import com.pulumi.gcp.biglake.IcebergCatalogArgs;
+ * import com.pulumi.gcp.biglake.IcebergNamespace;
+ * import com.pulumi.gcp.biglake.IcebergNamespaceArgs;
+ * import com.pulumi.gcp.biglake.IcebergTable;
+ * import com.pulumi.gcp.biglake.IcebergTableArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaFieldArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name("my-bucket")
+ *             .location("us-central1")
+ *             .forceDestroy(true)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var catalog = new IcebergCatalog("catalog", IcebergCatalogArgs.builder()
+ *             .name(bucket.name())
+ *             .catalogType("CATALOG_TYPE_GCS_BUCKET")
+ *             .build());
+ * 
+ *         var namespace = new IcebergNamespace("namespace", IcebergNamespaceArgs.builder()
+ *             .catalog(catalog.name())
+ *             .namespaceId("my_namespace")
+ *             .build());
+ * 
+ *         var myIcebergTable = new IcebergTable("myIcebergTable", IcebergTableArgs.builder()
+ *             .catalog(catalog.name())
+ *             .namespace(namespace.namespaceId())
+ *             .name("my_table")
+ *             .schema(IcebergTableSchemaArgs.builder()
+ *                 .type("struct")
+ *                 .fields(                
+ *                     IcebergTableSchemaFieldArgs.builder()
+ *                         .id(1)
+ *                         .name("id")
+ *                         .type("long")
+ *                         .required(true)
+ *                         .build(),
+ *                     IcebergTableSchemaFieldArgs.builder()
+ *                         .id(2)
+ *                         .name("tags")
+ *                         .type(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("type", "list"),
+ *                                 jsonProperty("element-id", 5),
+ *                                 jsonProperty("element", "string"),
+ *                                 jsonProperty("element-required", false)
+ *                             )))
+ *                         .required(false)
+ *                         .build(),
+ *                     IcebergTableSchemaFieldArgs.builder()
+ *                         .id(3)
+ *                         .name("attributes")
+ *                         .type(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("type", "map"),
+ *                                 jsonProperty("key-id", 6),
+ *                                 jsonProperty("key", "string"),
+ *                                 jsonProperty("value-id", 7),
+ *                                 jsonProperty("value", "long"),
+ *                                 jsonProperty("value-required", false)
+ *                             )))
+ *                         .required(false)
+ *                         .build(),
+ *                     IcebergTableSchemaFieldArgs.builder()
+ *                         .id(4)
+ *                         .name("address")
+ *                         .type(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("type", "struct"),
+ *                                 jsonProperty("fields", jsonArray(
+ *                                     jsonObject(
+ *                                         jsonProperty("id", 8),
+ *                                         jsonProperty("name", "street"),
+ *                                         jsonProperty("type", "string"),
+ *                                         jsonProperty("required", false)
+ *                                     ), 
+ *                                     jsonObject(
+ *                                         jsonProperty("id", 9),
+ *                                         jsonProperty("name", "city"),
+ *                                         jsonProperty("type", "string"),
+ *                                         jsonProperty("required", false)
+ *                                     )
+ *                                 ))
+ *                             )))
+ *                         .required(false)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Biglake Iceberg Table Update
  * 
  * <pre>

@@ -268,6 +268,11 @@ type Secret struct {
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+	// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+	// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+	// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 	SecretType pulumi.StringPtrOutput `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -401,6 +406,11 @@ type secretState struct {
 	SecretId *string `pulumi:"secretId"`
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+	// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+	// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+	// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 	SecretType *string `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -497,6 +507,11 @@ type SecretState struct {
 	SecretId pulumi.StringPtrInput
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+	// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+	// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+	// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 	SecretType pulumi.StringPtrInput
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -585,6 +600,11 @@ type secretArgs struct {
 	SecretId *string `pulumi:"secretId"`
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+	// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+	// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+	// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 	SecretType *string `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -670,6 +690,11 @@ type SecretArgs struct {
 	SecretId pulumi.StringPtrInput
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+	// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+	// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+	// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 	SecretType pulumi.StringPtrInput
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -895,6 +920,11 @@ func (o SecretOutput) SecretId() pulumi.StringOutput {
 
 // This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 // For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+// Supported values are:
+// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 func (o SecretOutput) SecretType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.SecretType }).(pulumi.StringPtrOutput)
 }

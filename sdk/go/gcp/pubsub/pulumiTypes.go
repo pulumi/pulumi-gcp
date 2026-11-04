@@ -3494,6 +3494,10 @@ type SubscriptionMessageTransform struct {
 	// be sent to.
 	// Structure is documented below.
 	AiInference *SubscriptionMessageTransformAiInference `pulumi:"aiInference"`
+	// Compression/Decompression. Configuration for compressing/decompressing
+	// message data using a user-specified compression algorithm.
+	// Structure is documented below.
+	Compression *SubscriptionMessageTransformCompression `pulumi:"compression"`
 	// Controls whether or not to use this transform. If not set or `false`,
 	// the transform will be applied to messages. Default: `true`.
 	Disabled *bool `pulumi:"disabled"`
@@ -3520,6 +3524,10 @@ type SubscriptionMessageTransformArgs struct {
 	// be sent to.
 	// Structure is documented below.
 	AiInference SubscriptionMessageTransformAiInferencePtrInput `pulumi:"aiInference"`
+	// Compression/Decompression. Configuration for compressing/decompressing
+	// message data using a user-specified compression algorithm.
+	// Structure is documented below.
+	Compression SubscriptionMessageTransformCompressionPtrInput `pulumi:"compression"`
 	// Controls whether or not to use this transform. If not set or `false`,
 	// the transform will be applied to messages. Default: `true`.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
@@ -3586,6 +3594,13 @@ func (o SubscriptionMessageTransformOutput) ToSubscriptionMessageTransformOutput
 // Structure is documented below.
 func (o SubscriptionMessageTransformOutput) AiInference() SubscriptionMessageTransformAiInferencePtrOutput {
 	return o.ApplyT(func(v SubscriptionMessageTransform) *SubscriptionMessageTransformAiInference { return v.AiInference }).(SubscriptionMessageTransformAiInferencePtrOutput)
+}
+
+// Compression/Decompression. Configuration for compressing/decompressing
+// message data using a user-specified compression algorithm.
+// Structure is documented below.
+func (o SubscriptionMessageTransformOutput) Compression() SubscriptionMessageTransformCompressionPtrOutput {
+	return o.ApplyT(func(v SubscriptionMessageTransform) *SubscriptionMessageTransformCompression { return v.Compression }).(SubscriptionMessageTransformCompressionPtrOutput)
 }
 
 // Controls whether or not to use this transform. If not set or `false`,
@@ -3965,6 +3980,170 @@ func (o SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput) P
 		}
 		return v.Parameters
 	}).(pulumi.StringMapOutput)
+}
+
+type SubscriptionMessageTransformCompression struct {
+	// Specifies the compression algorithm to use.
+	// Possible values include `ZLIB`.
+	CompressionAlgorithm string `pulumi:"compressionAlgorithm"`
+	// Specifies whether to compress or decompress the message.
+	// Possible values are: `COMPRESS`, `DECOMPRESS`.
+	CompressionMode string `pulumi:"compressionMode"`
+}
+
+// SubscriptionMessageTransformCompressionInput is an input type that accepts SubscriptionMessageTransformCompressionArgs and SubscriptionMessageTransformCompressionOutput values.
+// You can construct a concrete instance of `SubscriptionMessageTransformCompressionInput` via:
+//
+//	SubscriptionMessageTransformCompressionArgs{...}
+type SubscriptionMessageTransformCompressionInput interface {
+	pulumi.Input
+
+	ToSubscriptionMessageTransformCompressionOutput() SubscriptionMessageTransformCompressionOutput
+	ToSubscriptionMessageTransformCompressionOutputWithContext(context.Context) SubscriptionMessageTransformCompressionOutput
+}
+
+type SubscriptionMessageTransformCompressionArgs struct {
+	// Specifies the compression algorithm to use.
+	// Possible values include `ZLIB`.
+	CompressionAlgorithm pulumi.StringInput `pulumi:"compressionAlgorithm"`
+	// Specifies whether to compress or decompress the message.
+	// Possible values are: `COMPRESS`, `DECOMPRESS`.
+	CompressionMode pulumi.StringInput `pulumi:"compressionMode"`
+}
+
+func (SubscriptionMessageTransformCompressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionMessageTransformCompression)(nil)).Elem()
+}
+
+func (i SubscriptionMessageTransformCompressionArgs) ToSubscriptionMessageTransformCompressionOutput() SubscriptionMessageTransformCompressionOutput {
+	return i.ToSubscriptionMessageTransformCompressionOutputWithContext(context.Background())
+}
+
+func (i SubscriptionMessageTransformCompressionArgs) ToSubscriptionMessageTransformCompressionOutputWithContext(ctx context.Context) SubscriptionMessageTransformCompressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionMessageTransformCompressionOutput)
+}
+
+func (i SubscriptionMessageTransformCompressionArgs) ToSubscriptionMessageTransformCompressionPtrOutput() SubscriptionMessageTransformCompressionPtrOutput {
+	return i.ToSubscriptionMessageTransformCompressionPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionMessageTransformCompressionArgs) ToSubscriptionMessageTransformCompressionPtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformCompressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionMessageTransformCompressionOutput).ToSubscriptionMessageTransformCompressionPtrOutputWithContext(ctx)
+}
+
+// SubscriptionMessageTransformCompressionPtrInput is an input type that accepts SubscriptionMessageTransformCompressionArgs, SubscriptionMessageTransformCompressionPtr and SubscriptionMessageTransformCompressionPtrOutput values.
+// You can construct a concrete instance of `SubscriptionMessageTransformCompressionPtrInput` via:
+//
+//	        SubscriptionMessageTransformCompressionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionMessageTransformCompressionPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionMessageTransformCompressionPtrOutput() SubscriptionMessageTransformCompressionPtrOutput
+	ToSubscriptionMessageTransformCompressionPtrOutputWithContext(context.Context) SubscriptionMessageTransformCompressionPtrOutput
+}
+
+type subscriptionMessageTransformCompressionPtrType SubscriptionMessageTransformCompressionArgs
+
+func SubscriptionMessageTransformCompressionPtr(v *SubscriptionMessageTransformCompressionArgs) SubscriptionMessageTransformCompressionPtrInput {
+	return (*subscriptionMessageTransformCompressionPtrType)(v)
+}
+
+func (*subscriptionMessageTransformCompressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionMessageTransformCompression)(nil)).Elem()
+}
+
+func (i *subscriptionMessageTransformCompressionPtrType) ToSubscriptionMessageTransformCompressionPtrOutput() SubscriptionMessageTransformCompressionPtrOutput {
+	return i.ToSubscriptionMessageTransformCompressionPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionMessageTransformCompressionPtrType) ToSubscriptionMessageTransformCompressionPtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformCompressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionMessageTransformCompressionPtrOutput)
+}
+
+type SubscriptionMessageTransformCompressionOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionMessageTransformCompressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionMessageTransformCompression)(nil)).Elem()
+}
+
+func (o SubscriptionMessageTransformCompressionOutput) ToSubscriptionMessageTransformCompressionOutput() SubscriptionMessageTransformCompressionOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformCompressionOutput) ToSubscriptionMessageTransformCompressionOutputWithContext(ctx context.Context) SubscriptionMessageTransformCompressionOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformCompressionOutput) ToSubscriptionMessageTransformCompressionPtrOutput() SubscriptionMessageTransformCompressionPtrOutput {
+	return o.ToSubscriptionMessageTransformCompressionPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionMessageTransformCompressionOutput) ToSubscriptionMessageTransformCompressionPtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformCompressionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionMessageTransformCompression) *SubscriptionMessageTransformCompression {
+		return &v
+	}).(SubscriptionMessageTransformCompressionPtrOutput)
+}
+
+// Specifies the compression algorithm to use.
+// Possible values include `ZLIB`.
+func (o SubscriptionMessageTransformCompressionOutput) CompressionAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionMessageTransformCompression) string { return v.CompressionAlgorithm }).(pulumi.StringOutput)
+}
+
+// Specifies whether to compress or decompress the message.
+// Possible values are: `COMPRESS`, `DECOMPRESS`.
+func (o SubscriptionMessageTransformCompressionOutput) CompressionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionMessageTransformCompression) string { return v.CompressionMode }).(pulumi.StringOutput)
+}
+
+type SubscriptionMessageTransformCompressionPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionMessageTransformCompressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionMessageTransformCompression)(nil)).Elem()
+}
+
+func (o SubscriptionMessageTransformCompressionPtrOutput) ToSubscriptionMessageTransformCompressionPtrOutput() SubscriptionMessageTransformCompressionPtrOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformCompressionPtrOutput) ToSubscriptionMessageTransformCompressionPtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformCompressionPtrOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformCompressionPtrOutput) Elem() SubscriptionMessageTransformCompressionOutput {
+	return o.ApplyT(func(v *SubscriptionMessageTransformCompression) SubscriptionMessageTransformCompression {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionMessageTransformCompression
+		return ret
+	}).(SubscriptionMessageTransformCompressionOutput)
+}
+
+// Specifies the compression algorithm to use.
+// Possible values include `ZLIB`.
+func (o SubscriptionMessageTransformCompressionPtrOutput) CompressionAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionMessageTransformCompression) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CompressionAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to compress or decompress the message.
+// Possible values are: `COMPRESS`, `DECOMPRESS`.
+func (o SubscriptionMessageTransformCompressionPtrOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionMessageTransformCompression) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CompressionMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type SubscriptionMessageTransformJavascriptUdf struct {
@@ -7432,6 +7611,10 @@ type TopicMessageTransform struct {
 	// be sent to.
 	// Structure is documented below.
 	AiInference *TopicMessageTransformAiInference `pulumi:"aiInference"`
+	// Configuration for compressing/decompressing message data using a
+	// user-specified compression algorithm.
+	// Structure is documented below.
+	Compression *TopicMessageTransformCompression `pulumi:"compression"`
 	// Controls whether or not to use this transform. If not set or `false`,
 	// the transform will be applied to messages. Default: `true`.
 	Disabled *bool `pulumi:"disabled"`
@@ -7458,6 +7641,10 @@ type TopicMessageTransformArgs struct {
 	// be sent to.
 	// Structure is documented below.
 	AiInference TopicMessageTransformAiInferencePtrInput `pulumi:"aiInference"`
+	// Configuration for compressing/decompressing message data using a
+	// user-specified compression algorithm.
+	// Structure is documented below.
+	Compression TopicMessageTransformCompressionPtrInput `pulumi:"compression"`
 	// Controls whether or not to use this transform. If not set or `false`,
 	// the transform will be applied to messages. Default: `true`.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
@@ -7524,6 +7711,13 @@ func (o TopicMessageTransformOutput) ToTopicMessageTransformOutputWithContext(ct
 // Structure is documented below.
 func (o TopicMessageTransformOutput) AiInference() TopicMessageTransformAiInferencePtrOutput {
 	return o.ApplyT(func(v TopicMessageTransform) *TopicMessageTransformAiInference { return v.AiInference }).(TopicMessageTransformAiInferencePtrOutput)
+}
+
+// Configuration for compressing/decompressing message data using a
+// user-specified compression algorithm.
+// Structure is documented below.
+func (o TopicMessageTransformOutput) Compression() TopicMessageTransformCompressionPtrOutput {
+	return o.ApplyT(func(v TopicMessageTransform) *TopicMessageTransformCompression { return v.Compression }).(TopicMessageTransformCompressionPtrOutput)
 }
 
 // Controls whether or not to use this transform. If not set or `false`,
@@ -7899,6 +8093,174 @@ func (o TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput) Paramete
 		}
 		return v.Parameters
 	}).(pulumi.StringMapOutput)
+}
+
+type TopicMessageTransformCompression struct {
+	// Specifies the compression algorithm to use.
+	// Possible values include `ZLIB`.
+	// See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+	CompressionAlgorithm string `pulumi:"compressionAlgorithm"`
+	// Specifies whether to compress or decompress the message.
+	// Possible values are: `COMPRESS`, `DECOMPRESS`.
+	CompressionMode string `pulumi:"compressionMode"`
+}
+
+// TopicMessageTransformCompressionInput is an input type that accepts TopicMessageTransformCompressionArgs and TopicMessageTransformCompressionOutput values.
+// You can construct a concrete instance of `TopicMessageTransformCompressionInput` via:
+//
+//	TopicMessageTransformCompressionArgs{...}
+type TopicMessageTransformCompressionInput interface {
+	pulumi.Input
+
+	ToTopicMessageTransformCompressionOutput() TopicMessageTransformCompressionOutput
+	ToTopicMessageTransformCompressionOutputWithContext(context.Context) TopicMessageTransformCompressionOutput
+}
+
+type TopicMessageTransformCompressionArgs struct {
+	// Specifies the compression algorithm to use.
+	// Possible values include `ZLIB`.
+	// See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+	CompressionAlgorithm pulumi.StringInput `pulumi:"compressionAlgorithm"`
+	// Specifies whether to compress or decompress the message.
+	// Possible values are: `COMPRESS`, `DECOMPRESS`.
+	CompressionMode pulumi.StringInput `pulumi:"compressionMode"`
+}
+
+func (TopicMessageTransformCompressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicMessageTransformCompression)(nil)).Elem()
+}
+
+func (i TopicMessageTransformCompressionArgs) ToTopicMessageTransformCompressionOutput() TopicMessageTransformCompressionOutput {
+	return i.ToTopicMessageTransformCompressionOutputWithContext(context.Background())
+}
+
+func (i TopicMessageTransformCompressionArgs) ToTopicMessageTransformCompressionOutputWithContext(ctx context.Context) TopicMessageTransformCompressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMessageTransformCompressionOutput)
+}
+
+func (i TopicMessageTransformCompressionArgs) ToTopicMessageTransformCompressionPtrOutput() TopicMessageTransformCompressionPtrOutput {
+	return i.ToTopicMessageTransformCompressionPtrOutputWithContext(context.Background())
+}
+
+func (i TopicMessageTransformCompressionArgs) ToTopicMessageTransformCompressionPtrOutputWithContext(ctx context.Context) TopicMessageTransformCompressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMessageTransformCompressionOutput).ToTopicMessageTransformCompressionPtrOutputWithContext(ctx)
+}
+
+// TopicMessageTransformCompressionPtrInput is an input type that accepts TopicMessageTransformCompressionArgs, TopicMessageTransformCompressionPtr and TopicMessageTransformCompressionPtrOutput values.
+// You can construct a concrete instance of `TopicMessageTransformCompressionPtrInput` via:
+//
+//	        TopicMessageTransformCompressionArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicMessageTransformCompressionPtrInput interface {
+	pulumi.Input
+
+	ToTopicMessageTransformCompressionPtrOutput() TopicMessageTransformCompressionPtrOutput
+	ToTopicMessageTransformCompressionPtrOutputWithContext(context.Context) TopicMessageTransformCompressionPtrOutput
+}
+
+type topicMessageTransformCompressionPtrType TopicMessageTransformCompressionArgs
+
+func TopicMessageTransformCompressionPtr(v *TopicMessageTransformCompressionArgs) TopicMessageTransformCompressionPtrInput {
+	return (*topicMessageTransformCompressionPtrType)(v)
+}
+
+func (*topicMessageTransformCompressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicMessageTransformCompression)(nil)).Elem()
+}
+
+func (i *topicMessageTransformCompressionPtrType) ToTopicMessageTransformCompressionPtrOutput() TopicMessageTransformCompressionPtrOutput {
+	return i.ToTopicMessageTransformCompressionPtrOutputWithContext(context.Background())
+}
+
+func (i *topicMessageTransformCompressionPtrType) ToTopicMessageTransformCompressionPtrOutputWithContext(ctx context.Context) TopicMessageTransformCompressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMessageTransformCompressionPtrOutput)
+}
+
+type TopicMessageTransformCompressionOutput struct{ *pulumi.OutputState }
+
+func (TopicMessageTransformCompressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicMessageTransformCompression)(nil)).Elem()
+}
+
+func (o TopicMessageTransformCompressionOutput) ToTopicMessageTransformCompressionOutput() TopicMessageTransformCompressionOutput {
+	return o
+}
+
+func (o TopicMessageTransformCompressionOutput) ToTopicMessageTransformCompressionOutputWithContext(ctx context.Context) TopicMessageTransformCompressionOutput {
+	return o
+}
+
+func (o TopicMessageTransformCompressionOutput) ToTopicMessageTransformCompressionPtrOutput() TopicMessageTransformCompressionPtrOutput {
+	return o.ToTopicMessageTransformCompressionPtrOutputWithContext(context.Background())
+}
+
+func (o TopicMessageTransformCompressionOutput) ToTopicMessageTransformCompressionPtrOutputWithContext(ctx context.Context) TopicMessageTransformCompressionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicMessageTransformCompression) *TopicMessageTransformCompression {
+		return &v
+	}).(TopicMessageTransformCompressionPtrOutput)
+}
+
+// Specifies the compression algorithm to use.
+// Possible values include `ZLIB`.
+// See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+func (o TopicMessageTransformCompressionOutput) CompressionAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicMessageTransformCompression) string { return v.CompressionAlgorithm }).(pulumi.StringOutput)
+}
+
+// Specifies whether to compress or decompress the message.
+// Possible values are: `COMPRESS`, `DECOMPRESS`.
+func (o TopicMessageTransformCompressionOutput) CompressionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicMessageTransformCompression) string { return v.CompressionMode }).(pulumi.StringOutput)
+}
+
+type TopicMessageTransformCompressionPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicMessageTransformCompressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicMessageTransformCompression)(nil)).Elem()
+}
+
+func (o TopicMessageTransformCompressionPtrOutput) ToTopicMessageTransformCompressionPtrOutput() TopicMessageTransformCompressionPtrOutput {
+	return o
+}
+
+func (o TopicMessageTransformCompressionPtrOutput) ToTopicMessageTransformCompressionPtrOutputWithContext(ctx context.Context) TopicMessageTransformCompressionPtrOutput {
+	return o
+}
+
+func (o TopicMessageTransformCompressionPtrOutput) Elem() TopicMessageTransformCompressionOutput {
+	return o.ApplyT(func(v *TopicMessageTransformCompression) TopicMessageTransformCompression {
+		if v != nil {
+			return *v
+		}
+		var ret TopicMessageTransformCompression
+		return ret
+	}).(TopicMessageTransformCompressionOutput)
+}
+
+// Specifies the compression algorithm to use.
+// Possible values include `ZLIB`.
+// See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+func (o TopicMessageTransformCompressionPtrOutput) CompressionAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicMessageTransformCompression) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CompressionAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to compress or decompress the message.
+// Possible values are: `COMPRESS`, `DECOMPRESS`.
+func (o TopicMessageTransformCompressionPtrOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicMessageTransformCompression) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CompressionMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type TopicMessageTransformJavascriptUdf struct {
@@ -9650,6 +10012,9 @@ type GetSubscriptionMessageTransform struct {
 	// requests built from the Pub/Sub message data and provided parameters will
 	// be sent to.
 	AiInferences []GetSubscriptionMessageTransformAiInference `pulumi:"aiInferences"`
+	// Compression/Decompression. Configuration for compressing/decompressing
+	// message data using a user-specified compression algorithm.
+	Compressions []GetSubscriptionMessageTransformCompression `pulumi:"compressions"`
 	// Controls whether or not to use this transform. If not set or 'false',
 	// the transform will be applied to messages. Default: 'true'.
 	Disabled bool `pulumi:"disabled"`
@@ -9674,6 +10039,9 @@ type GetSubscriptionMessageTransformArgs struct {
 	// requests built from the Pub/Sub message data and provided parameters will
 	// be sent to.
 	AiInferences GetSubscriptionMessageTransformAiInferenceArrayInput `pulumi:"aiInferences"`
+	// Compression/Decompression. Configuration for compressing/decompressing
+	// message data using a user-specified compression algorithm.
+	Compressions GetSubscriptionMessageTransformCompressionArrayInput `pulumi:"compressions"`
 	// Controls whether or not to use this transform. If not set or 'false',
 	// the transform will be applied to messages. Default: 'true'.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
@@ -9740,6 +10108,14 @@ func (o GetSubscriptionMessageTransformOutput) AiInferences() GetSubscriptionMes
 	return o.ApplyT(func(v GetSubscriptionMessageTransform) []GetSubscriptionMessageTransformAiInference {
 		return v.AiInferences
 	}).(GetSubscriptionMessageTransformAiInferenceArrayOutput)
+}
+
+// Compression/Decompression. Configuration for compressing/decompressing
+// message data using a user-specified compression algorithm.
+func (o GetSubscriptionMessageTransformOutput) Compressions() GetSubscriptionMessageTransformCompressionArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionMessageTransform) []GetSubscriptionMessageTransformCompression {
+		return v.Compressions
+	}).(GetSubscriptionMessageTransformCompressionArrayOutput)
 }
 
 // Controls whether or not to use this transform. If not set or 'false',
@@ -10008,6 +10384,115 @@ func (o GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionMessageTransformAiInferenceUnstructuredInference {
 		return vs[0].([]GetSubscriptionMessageTransformAiInferenceUnstructuredInference)[vs[1].(int)]
 	}).(GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput)
+}
+
+type GetSubscriptionMessageTransformCompression struct {
+	// Specifies the compression algorithm to use.
+	// Possible values include 'ZLIB'.
+	CompressionAlgorithm string `pulumi:"compressionAlgorithm"`
+	// Specifies whether to compress or decompress the message. Possible values: ["COMPRESS", "DECOMPRESS"]
+	CompressionMode string `pulumi:"compressionMode"`
+}
+
+// GetSubscriptionMessageTransformCompressionInput is an input type that accepts GetSubscriptionMessageTransformCompressionArgs and GetSubscriptionMessageTransformCompressionOutput values.
+// You can construct a concrete instance of `GetSubscriptionMessageTransformCompressionInput` via:
+//
+//	GetSubscriptionMessageTransformCompressionArgs{...}
+type GetSubscriptionMessageTransformCompressionInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionMessageTransformCompressionOutput() GetSubscriptionMessageTransformCompressionOutput
+	ToGetSubscriptionMessageTransformCompressionOutputWithContext(context.Context) GetSubscriptionMessageTransformCompressionOutput
+}
+
+type GetSubscriptionMessageTransformCompressionArgs struct {
+	// Specifies the compression algorithm to use.
+	// Possible values include 'ZLIB'.
+	CompressionAlgorithm pulumi.StringInput `pulumi:"compressionAlgorithm"`
+	// Specifies whether to compress or decompress the message. Possible values: ["COMPRESS", "DECOMPRESS"]
+	CompressionMode pulumi.StringInput `pulumi:"compressionMode"`
+}
+
+func (GetSubscriptionMessageTransformCompressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionMessageTransformCompression)(nil)).Elem()
+}
+
+func (i GetSubscriptionMessageTransformCompressionArgs) ToGetSubscriptionMessageTransformCompressionOutput() GetSubscriptionMessageTransformCompressionOutput {
+	return i.ToGetSubscriptionMessageTransformCompressionOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionMessageTransformCompressionArgs) ToGetSubscriptionMessageTransformCompressionOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformCompressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionMessageTransformCompressionOutput)
+}
+
+// GetSubscriptionMessageTransformCompressionArrayInput is an input type that accepts GetSubscriptionMessageTransformCompressionArray and GetSubscriptionMessageTransformCompressionArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionMessageTransformCompressionArrayInput` via:
+//
+//	GetSubscriptionMessageTransformCompressionArray{ GetSubscriptionMessageTransformCompressionArgs{...} }
+type GetSubscriptionMessageTransformCompressionArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionMessageTransformCompressionArrayOutput() GetSubscriptionMessageTransformCompressionArrayOutput
+	ToGetSubscriptionMessageTransformCompressionArrayOutputWithContext(context.Context) GetSubscriptionMessageTransformCompressionArrayOutput
+}
+
+type GetSubscriptionMessageTransformCompressionArray []GetSubscriptionMessageTransformCompressionInput
+
+func (GetSubscriptionMessageTransformCompressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionMessageTransformCompression)(nil)).Elem()
+}
+
+func (i GetSubscriptionMessageTransformCompressionArray) ToGetSubscriptionMessageTransformCompressionArrayOutput() GetSubscriptionMessageTransformCompressionArrayOutput {
+	return i.ToGetSubscriptionMessageTransformCompressionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionMessageTransformCompressionArray) ToGetSubscriptionMessageTransformCompressionArrayOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformCompressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionMessageTransformCompressionArrayOutput)
+}
+
+type GetSubscriptionMessageTransformCompressionOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionMessageTransformCompressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionMessageTransformCompression)(nil)).Elem()
+}
+
+func (o GetSubscriptionMessageTransformCompressionOutput) ToGetSubscriptionMessageTransformCompressionOutput() GetSubscriptionMessageTransformCompressionOutput {
+	return o
+}
+
+func (o GetSubscriptionMessageTransformCompressionOutput) ToGetSubscriptionMessageTransformCompressionOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformCompressionOutput {
+	return o
+}
+
+// Specifies the compression algorithm to use.
+// Possible values include 'ZLIB'.
+func (o GetSubscriptionMessageTransformCompressionOutput) CompressionAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionMessageTransformCompression) string { return v.CompressionAlgorithm }).(pulumi.StringOutput)
+}
+
+// Specifies whether to compress or decompress the message. Possible values: ["COMPRESS", "DECOMPRESS"]
+func (o GetSubscriptionMessageTransformCompressionOutput) CompressionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionMessageTransformCompression) string { return v.CompressionMode }).(pulumi.StringOutput)
+}
+
+type GetSubscriptionMessageTransformCompressionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionMessageTransformCompressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionMessageTransformCompression)(nil)).Elem()
+}
+
+func (o GetSubscriptionMessageTransformCompressionArrayOutput) ToGetSubscriptionMessageTransformCompressionArrayOutput() GetSubscriptionMessageTransformCompressionArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionMessageTransformCompressionArrayOutput) ToGetSubscriptionMessageTransformCompressionArrayOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformCompressionArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionMessageTransformCompressionArrayOutput) Index(i pulumi.IntInput) GetSubscriptionMessageTransformCompressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionMessageTransformCompression {
+		return vs[0].([]GetSubscriptionMessageTransformCompression)[vs[1].(int)]
+	}).(GetSubscriptionMessageTransformCompressionOutput)
 }
 
 type GetSubscriptionMessageTransformJavascriptUdf struct {
@@ -12171,6 +12656,9 @@ type GetTopicMessageTransform struct {
 	// requests built from the Pub/Sub message data and provided parameters will
 	// be sent to.
 	AiInferences []GetTopicMessageTransformAiInference `pulumi:"aiInferences"`
+	// Configuration for compressing/decompressing message data using a
+	// user-specified compression algorithm.
+	Compressions []GetTopicMessageTransformCompression `pulumi:"compressions"`
 	// Controls whether or not to use this transform. If not set or 'false',
 	// the transform will be applied to messages. Default: 'true'.
 	Disabled bool `pulumi:"disabled"`
@@ -12195,6 +12683,9 @@ type GetTopicMessageTransformArgs struct {
 	// requests built from the Pub/Sub message data and provided parameters will
 	// be sent to.
 	AiInferences GetTopicMessageTransformAiInferenceArrayInput `pulumi:"aiInferences"`
+	// Configuration for compressing/decompressing message data using a
+	// user-specified compression algorithm.
+	Compressions GetTopicMessageTransformCompressionArrayInput `pulumi:"compressions"`
 	// Controls whether or not to use this transform. If not set or 'false',
 	// the transform will be applied to messages. Default: 'true'.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
@@ -12259,6 +12750,12 @@ func (o GetTopicMessageTransformOutput) ToGetTopicMessageTransformOutputWithCont
 // be sent to.
 func (o GetTopicMessageTransformOutput) AiInferences() GetTopicMessageTransformAiInferenceArrayOutput {
 	return o.ApplyT(func(v GetTopicMessageTransform) []GetTopicMessageTransformAiInference { return v.AiInferences }).(GetTopicMessageTransformAiInferenceArrayOutput)
+}
+
+// Configuration for compressing/decompressing message data using a
+// user-specified compression algorithm.
+func (o GetTopicMessageTransformOutput) Compressions() GetTopicMessageTransformCompressionArrayOutput {
+	return o.ApplyT(func(v GetTopicMessageTransform) []GetTopicMessageTransformCompression { return v.Compressions }).(GetTopicMessageTransformCompressionArrayOutput)
 }
 
 // Controls whether or not to use this transform. If not set or 'false',
@@ -12525,6 +13022,118 @@ func (o GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput) Ind
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicMessageTransformAiInferenceUnstructuredInference {
 		return vs[0].([]GetTopicMessageTransformAiInferenceUnstructuredInference)[vs[1].(int)]
 	}).(GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput)
+}
+
+type GetTopicMessageTransformCompression struct {
+	// Specifies the compression algorithm to use.
+	// Possible values include 'ZLIB'.
+	// See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+	CompressionAlgorithm string `pulumi:"compressionAlgorithm"`
+	// Specifies whether to compress or decompress the message. Possible values: ["COMPRESS", "DECOMPRESS"]
+	CompressionMode string `pulumi:"compressionMode"`
+}
+
+// GetTopicMessageTransformCompressionInput is an input type that accepts GetTopicMessageTransformCompressionArgs and GetTopicMessageTransformCompressionOutput values.
+// You can construct a concrete instance of `GetTopicMessageTransformCompressionInput` via:
+//
+//	GetTopicMessageTransformCompressionArgs{...}
+type GetTopicMessageTransformCompressionInput interface {
+	pulumi.Input
+
+	ToGetTopicMessageTransformCompressionOutput() GetTopicMessageTransformCompressionOutput
+	ToGetTopicMessageTransformCompressionOutputWithContext(context.Context) GetTopicMessageTransformCompressionOutput
+}
+
+type GetTopicMessageTransformCompressionArgs struct {
+	// Specifies the compression algorithm to use.
+	// Possible values include 'ZLIB'.
+	// See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+	CompressionAlgorithm pulumi.StringInput `pulumi:"compressionAlgorithm"`
+	// Specifies whether to compress or decompress the message. Possible values: ["COMPRESS", "DECOMPRESS"]
+	CompressionMode pulumi.StringInput `pulumi:"compressionMode"`
+}
+
+func (GetTopicMessageTransformCompressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicMessageTransformCompression)(nil)).Elem()
+}
+
+func (i GetTopicMessageTransformCompressionArgs) ToGetTopicMessageTransformCompressionOutput() GetTopicMessageTransformCompressionOutput {
+	return i.ToGetTopicMessageTransformCompressionOutputWithContext(context.Background())
+}
+
+func (i GetTopicMessageTransformCompressionArgs) ToGetTopicMessageTransformCompressionOutputWithContext(ctx context.Context) GetTopicMessageTransformCompressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicMessageTransformCompressionOutput)
+}
+
+// GetTopicMessageTransformCompressionArrayInput is an input type that accepts GetTopicMessageTransformCompressionArray and GetTopicMessageTransformCompressionArrayOutput values.
+// You can construct a concrete instance of `GetTopicMessageTransformCompressionArrayInput` via:
+//
+//	GetTopicMessageTransformCompressionArray{ GetTopicMessageTransformCompressionArgs{...} }
+type GetTopicMessageTransformCompressionArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicMessageTransformCompressionArrayOutput() GetTopicMessageTransformCompressionArrayOutput
+	ToGetTopicMessageTransformCompressionArrayOutputWithContext(context.Context) GetTopicMessageTransformCompressionArrayOutput
+}
+
+type GetTopicMessageTransformCompressionArray []GetTopicMessageTransformCompressionInput
+
+func (GetTopicMessageTransformCompressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicMessageTransformCompression)(nil)).Elem()
+}
+
+func (i GetTopicMessageTransformCompressionArray) ToGetTopicMessageTransformCompressionArrayOutput() GetTopicMessageTransformCompressionArrayOutput {
+	return i.ToGetTopicMessageTransformCompressionArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicMessageTransformCompressionArray) ToGetTopicMessageTransformCompressionArrayOutputWithContext(ctx context.Context) GetTopicMessageTransformCompressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicMessageTransformCompressionArrayOutput)
+}
+
+type GetTopicMessageTransformCompressionOutput struct{ *pulumi.OutputState }
+
+func (GetTopicMessageTransformCompressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicMessageTransformCompression)(nil)).Elem()
+}
+
+func (o GetTopicMessageTransformCompressionOutput) ToGetTopicMessageTransformCompressionOutput() GetTopicMessageTransformCompressionOutput {
+	return o
+}
+
+func (o GetTopicMessageTransformCompressionOutput) ToGetTopicMessageTransformCompressionOutputWithContext(ctx context.Context) GetTopicMessageTransformCompressionOutput {
+	return o
+}
+
+// Specifies the compression algorithm to use.
+// Possible values include 'ZLIB'.
+// See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+func (o GetTopicMessageTransformCompressionOutput) CompressionAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicMessageTransformCompression) string { return v.CompressionAlgorithm }).(pulumi.StringOutput)
+}
+
+// Specifies whether to compress or decompress the message. Possible values: ["COMPRESS", "DECOMPRESS"]
+func (o GetTopicMessageTransformCompressionOutput) CompressionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicMessageTransformCompression) string { return v.CompressionMode }).(pulumi.StringOutput)
+}
+
+type GetTopicMessageTransformCompressionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicMessageTransformCompressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicMessageTransformCompression)(nil)).Elem()
+}
+
+func (o GetTopicMessageTransformCompressionArrayOutput) ToGetTopicMessageTransformCompressionArrayOutput() GetTopicMessageTransformCompressionArrayOutput {
+	return o
+}
+
+func (o GetTopicMessageTransformCompressionArrayOutput) ToGetTopicMessageTransformCompressionArrayOutputWithContext(ctx context.Context) GetTopicMessageTransformCompressionArrayOutput {
+	return o
+}
+
+func (o GetTopicMessageTransformCompressionArrayOutput) Index(i pulumi.IntInput) GetTopicMessageTransformCompressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicMessageTransformCompression {
+		return vs[0].([]GetTopicMessageTransformCompression)[vs[1].(int)]
+	}).(GetTopicMessageTransformCompressionOutput)
 }
 
 type GetTopicMessageTransformJavascriptUdf struct {
@@ -12887,6 +13496,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformAiInferencePtrInput)(nil)).Elem(), SubscriptionMessageTransformAiInferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformAiInferenceUnstructuredInferenceInput)(nil)).Elem(), SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrInput)(nil)).Elem(), SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformCompressionInput)(nil)).Elem(), SubscriptionMessageTransformCompressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformCompressionPtrInput)(nil)).Elem(), SubscriptionMessageTransformCompressionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformJavascriptUdfInput)(nil)).Elem(), SubscriptionMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformJavascriptUdfPtrInput)(nil)).Elem(), SubscriptionMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigInput)(nil)).Elem(), SubscriptionPushConfigArgs{})
@@ -12929,6 +13540,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformAiInferencePtrInput)(nil)).Elem(), TopicMessageTransformAiInferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformAiInferenceUnstructuredInferenceInput)(nil)).Elem(), TopicMessageTransformAiInferenceUnstructuredInferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformAiInferenceUnstructuredInferencePtrInput)(nil)).Elem(), TopicMessageTransformAiInferenceUnstructuredInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformCompressionInput)(nil)).Elem(), TopicMessageTransformCompressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformCompressionPtrInput)(nil)).Elem(), TopicMessageTransformCompressionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformJavascriptUdfInput)(nil)).Elem(), TopicMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformJavascriptUdfPtrInput)(nil)).Elem(), TopicMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicSchemaSettingsInput)(nil)).Elem(), TopicSchemaSettingsArgs{})
@@ -12959,6 +13572,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformAiInferenceArrayInput)(nil)).Elem(), GetSubscriptionMessageTransformAiInferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceInput)(nil)).Elem(), GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayInput)(nil)).Elem(), GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformCompressionInput)(nil)).Elem(), GetSubscriptionMessageTransformCompressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformCompressionArrayInput)(nil)).Elem(), GetSubscriptionMessageTransformCompressionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformJavascriptUdfInput)(nil)).Elem(), GetSubscriptionMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformJavascriptUdfArrayInput)(nil)).Elem(), GetSubscriptionMessageTransformJavascriptUdfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigInput)(nil)).Elem(), GetSubscriptionPushConfigArgs{})
@@ -12997,6 +13612,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformAiInferenceArrayInput)(nil)).Elem(), GetTopicMessageTransformAiInferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformAiInferenceUnstructuredInferenceInput)(nil)).Elem(), GetTopicMessageTransformAiInferenceUnstructuredInferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayInput)(nil)).Elem(), GetTopicMessageTransformAiInferenceUnstructuredInferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformCompressionInput)(nil)).Elem(), GetTopicMessageTransformCompressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformCompressionArrayInput)(nil)).Elem(), GetTopicMessageTransformCompressionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformJavascriptUdfInput)(nil)).Elem(), GetTopicMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformJavascriptUdfArrayInput)(nil)).Elem(), GetTopicMessageTransformJavascriptUdfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicSchemaSettingInput)(nil)).Elem(), GetTopicSchemaSettingArgs{})
@@ -13045,6 +13662,8 @@ func init() {
 	pulumi.RegisterOutputType(SubscriptionMessageTransformAiInferencePtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput{})
 	pulumi.RegisterOutputType(SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionMessageTransformCompressionOutput{})
+	pulumi.RegisterOutputType(SubscriptionMessageTransformCompressionPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionMessageTransformJavascriptUdfOutput{})
 	pulumi.RegisterOutputType(SubscriptionMessageTransformJavascriptUdfPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigOutput{})
@@ -13087,6 +13706,8 @@ func init() {
 	pulumi.RegisterOutputType(TopicMessageTransformAiInferencePtrOutput{})
 	pulumi.RegisterOutputType(TopicMessageTransformAiInferenceUnstructuredInferenceOutput{})
 	pulumi.RegisterOutputType(TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput{})
+	pulumi.RegisterOutputType(TopicMessageTransformCompressionOutput{})
+	pulumi.RegisterOutputType(TopicMessageTransformCompressionPtrOutput{})
 	pulumi.RegisterOutputType(TopicMessageTransformJavascriptUdfOutput{})
 	pulumi.RegisterOutputType(TopicMessageTransformJavascriptUdfPtrOutput{})
 	pulumi.RegisterOutputType(TopicSchemaSettingsOutput{})
@@ -13117,6 +13738,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSubscriptionMessageTransformAiInferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionMessageTransformCompressionOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionMessageTransformCompressionArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionMessageTransformJavascriptUdfOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionMessageTransformJavascriptUdfArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionPushConfigOutput{})
@@ -13155,6 +13778,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTopicMessageTransformAiInferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicMessageTransformCompressionOutput{})
+	pulumi.RegisterOutputType(GetTopicMessageTransformCompressionArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageTransformJavascriptUdfOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageTransformJavascriptUdfArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicSchemaSettingOutput{})

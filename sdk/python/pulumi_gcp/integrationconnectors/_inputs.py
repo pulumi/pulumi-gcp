@@ -111,6 +111,8 @@ __all__ = [
     'ConnectionSslConfigPrivateServerCertificateArgsDict',
     'ConnectionStatusArgs',
     'ConnectionStatusArgsDict',
+    'ConnectionTrafficShapingConfigArgs',
+    'ConnectionTrafficShapingConfigArgsDict',
 ]
 
 class ConnectionAuthConfigArgsDict(TypedDict):
@@ -3251,5 +3253,55 @@ class ConnectionStatusArgs:
     @status.setter
     def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+
+class ConnectionTrafficShapingConfigArgsDict(TypedDict):
+    duration: pulumi.Input[_builtins.str]
+    """
+    Specifies the duration over which the API call quota limits are calculated.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+    """
+    quota_limit: pulumi.Input[_builtins.str]
+    """
+    Maximum number of api calls allowed.
+    """
+
+@pulumi.input_type
+class ConnectionTrafficShapingConfigArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[_builtins.str],
+                 quota_limit: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] duration: Specifies the duration over which the API call quota limits are calculated.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param pulumi.Input[_builtins.str] quota_limit: Maximum number of api calls allowed.
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "quota_limit", quota_limit)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies the duration over which the API call quota limits are calculated.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="quotaLimit")
+    def quota_limit(self) -> pulumi.Input[_builtins.str]:
+        """
+        Maximum number of api calls allowed.
+        """
+        return pulumi.get(self, "quota_limit")
+
+    @quota_limit.setter
+    def quota_limit(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "quota_limit", value)
 
 

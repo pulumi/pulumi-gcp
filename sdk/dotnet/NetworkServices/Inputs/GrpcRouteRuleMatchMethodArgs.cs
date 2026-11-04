@@ -30,6 +30,14 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         [Input("grpcService", required: true)]
         public Input<string> GrpcService { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+        /// Default value is `EXACT`.
+        /// Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public GrpcRouteRuleMatchMethodArgs()
         {
         }

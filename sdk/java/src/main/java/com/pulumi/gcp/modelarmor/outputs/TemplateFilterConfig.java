@@ -4,6 +4,7 @@
 package com.pulumi.gcp.modelarmor.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.modelarmor.outputs.TemplateFilterConfigFilterRuleSettings;
 import com.pulumi.gcp.modelarmor.outputs.TemplateFilterConfigMaliciousUriFilterSettings;
 import com.pulumi.gcp.modelarmor.outputs.TemplateFilterConfigPiAndJailbreakFilterSettings;
 import com.pulumi.gcp.modelarmor.outputs.TemplateFilterConfigRaiSettings;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TemplateFilterConfig {
+    /**
+     * @return Settings for customizing filter rules. Note: This field is not supported in
+     * FloorSetting and Streaming Sanitization APIs.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable TemplateFilterConfigFilterRuleSettings filterRuleSettings;
     /**
      * @return Malicious URI filter settings.
      * Structure is documented below.
@@ -40,6 +48,15 @@ public final class TemplateFilterConfig {
     private @Nullable TemplateFilterConfigSdpSettings sdpSettings;
 
     private TemplateFilterConfig() {}
+    /**
+     * @return Settings for customizing filter rules. Note: This field is not supported in
+     * FloorSetting and Streaming Sanitization APIs.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<TemplateFilterConfigFilterRuleSettings> filterRuleSettings() {
+        return Optional.ofNullable(this.filterRuleSettings);
+    }
     /**
      * @return Malicious URI filter settings.
      * Structure is documented below.
@@ -82,6 +99,7 @@ public final class TemplateFilterConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable TemplateFilterConfigFilterRuleSettings filterRuleSettings;
         private @Nullable TemplateFilterConfigMaliciousUriFilterSettings maliciousUriFilterSettings;
         private @Nullable TemplateFilterConfigPiAndJailbreakFilterSettings piAndJailbreakFilterSettings;
         private @Nullable TemplateFilterConfigRaiSettings raiSettings;
@@ -89,12 +107,19 @@ public final class TemplateFilterConfig {
         public Builder() {}
         public Builder(TemplateFilterConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.filterRuleSettings = defaults.filterRuleSettings;
     	      this.maliciousUriFilterSettings = defaults.maliciousUriFilterSettings;
     	      this.piAndJailbreakFilterSettings = defaults.piAndJailbreakFilterSettings;
     	      this.raiSettings = defaults.raiSettings;
     	      this.sdpSettings = defaults.sdpSettings;
         }
 
+        @CustomType.Setter
+        public Builder filterRuleSettings(@Nullable TemplateFilterConfigFilterRuleSettings filterRuleSettings) {
+
+            this.filterRuleSettings = filterRuleSettings;
+            return this;
+        }
         @CustomType.Setter
         public Builder maliciousUriFilterSettings(@Nullable TemplateFilterConfigMaliciousUriFilterSettings maliciousUriFilterSettings) {
 
@@ -121,6 +146,7 @@ public final class TemplateFilterConfig {
         }
         public TemplateFilterConfig build() {
             final var _resultValue = new TemplateFilterConfig();
+            _resultValue.filterRuleSettings = filterRuleSettings;
             _resultValue.maliciousUriFilterSettings = maliciousUriFilterSettings;
             _resultValue.piAndJailbreakFilterSettings = piAndJailbreakFilterSettings;
             _resultValue.raiSettings = raiSettings;

@@ -33,6 +33,7 @@ class CloudVmClusterArgs:
                  exascale_db_storage_vault: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -69,6 +70,9 @@ class CloudVmClusterArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] network: The name of the VPC network.
                Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[_builtins.str] odb_dns_zone: The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+               Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
         :param pulumi.Input[_builtins.str] odb_network: The name of the OdbNetwork associated with the VM Cluster.
                Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -103,6 +107,8 @@ class CloudVmClusterArgs:
             pulumi.set(__self__, "labels", labels)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if odb_dns_zone is not None:
+            pulumi.set(__self__, "odb_dns_zone", odb_dns_zone)
         if odb_network is not None:
             pulumi.set(__self__, "odb_network", odb_network)
         if odb_subnet is not None:
@@ -274,6 +280,20 @@ class CloudVmClusterArgs:
         pulumi.set(self, "network", value)
 
     @_builtins.property
+    @pulumi.getter(name="odbDnsZone")
+    def odb_dns_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+        Format:
+        projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+        """
+        return pulumi.get(self, "odb_dns_zone")
+
+    @odb_dns_zone.setter
+    def odb_dns_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "odb_dns_zone", value)
+
+    @_builtins.property
     @pulumi.getter(name="odbNetwork")
     def odb_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -350,6 +370,7 @@ class _CloudVmClusterState:
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -396,6 +417,9 @@ class _CloudVmClusterState:
                projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
         :param pulumi.Input[_builtins.str] network: The name of the VPC network.
                Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[_builtins.str] odb_dns_zone: The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+               Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
         :param pulumi.Input[_builtins.str] odb_network: The name of the OdbNetwork associated with the VM Cluster.
                Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -445,6 +469,8 @@ class _CloudVmClusterState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if odb_dns_zone is not None:
+            pulumi.set(__self__, "odb_dns_zone", odb_dns_zone)
         if odb_network is not None:
             pulumi.set(__self__, "odb_network", odb_network)
         if odb_subnet is not None:
@@ -682,6 +708,20 @@ class _CloudVmClusterState:
         pulumi.set(self, "network", value)
 
     @_builtins.property
+    @pulumi.getter(name="odbDnsZone")
+    def odb_dns_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+        Format:
+        projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+        """
+        return pulumi.get(self, "odb_dns_zone")
+
+    @odb_dns_zone.setter
+    def odb_dns_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "odb_dns_zone", value)
+
+    @_builtins.property
     @pulumi.getter(name="odbNetwork")
     def odb_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -769,6 +809,7 @@ class CloudVmCluster(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -852,6 +893,43 @@ class CloudVmCluster(pulumi.CustomResource):
             odb_network="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
             odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
             backup_odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet",
+            properties={
+                "license_type": "LICENSE_INCLUDED",
+                "ssh_public_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
+                "cpu_core_count": 4,
+                "gi_version": "19.0.0.0",
+                "hostname_prefix": "hostname1",
+            },
+            deletion_protection=True)
+        ```
+
+        ### Oracledatabase Cloud Vmcluster Odbdnszone
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cloud_exadata_infrastructures = gcp.oracledatabase.CloudExadataInfrastructure("cloudExadataInfrastructures",
+            cloud_exadata_infrastructure_id="my-exadata",
+            display_name="my-exadata displayname",
+            location="europe-west2",
+            project="my-project",
+            properties={
+                "shape": "Exadata.X9M",
+                "compute_count": 2,
+                "storage_count": 3,
+            },
+            deletion_protection=True)
+        my_vmcluster = gcp.oracledatabase.CloudVmCluster("my_vmcluster",
+            cloud_vm_cluster_id="my-instance",
+            display_name="my-instance displayname",
+            location="europe-west2",
+            project="my-project",
+            exadata_infrastructure=cloud_exadata_infrastructures.id,
+            odb_network="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
+            odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
+            backup_odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet",
+            odb_dns_zone="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbDnsZones/my-odbdnszone",
             properties={
                 "license_type": "LICENSE_INCLUDED",
                 "ssh_public_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
@@ -1046,6 +1124,9 @@ class CloudVmCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbNode`.
         :param pulumi.Input[_builtins.str] network: The name of the VPC network.
                Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[_builtins.str] odb_dns_zone: The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+               Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
         :param pulumi.Input[_builtins.str] odb_network: The name of the OdbNetwork associated with the VM Cluster.
                Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -1143,6 +1224,43 @@ class CloudVmCluster(pulumi.CustomResource):
             odb_network="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
             odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
             backup_odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet",
+            properties={
+                "license_type": "LICENSE_INCLUDED",
+                "ssh_public_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
+                "cpu_core_count": 4,
+                "gi_version": "19.0.0.0",
+                "hostname_prefix": "hostname1",
+            },
+            deletion_protection=True)
+        ```
+
+        ### Oracledatabase Cloud Vmcluster Odbdnszone
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cloud_exadata_infrastructures = gcp.oracledatabase.CloudExadataInfrastructure("cloudExadataInfrastructures",
+            cloud_exadata_infrastructure_id="my-exadata",
+            display_name="my-exadata displayname",
+            location="europe-west2",
+            project="my-project",
+            properties={
+                "shape": "Exadata.X9M",
+                "compute_count": 2,
+                "storage_count": 3,
+            },
+            deletion_protection=True)
+        my_vmcluster = gcp.oracledatabase.CloudVmCluster("my_vmcluster",
+            cloud_vm_cluster_id="my-instance",
+            display_name="my-instance displayname",
+            location="europe-west2",
+            project="my-project",
+            exadata_infrastructure=cloud_exadata_infrastructures.id,
+            odb_network="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
+            odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
+            backup_odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet",
+            odb_dns_zone="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbDnsZones/my-odbdnszone",
             properties={
                 "license_type": "LICENSE_INCLUDED",
                 "ssh_public_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
@@ -1333,6 +1451,7 @@ class CloudVmCluster(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1364,6 +1483,7 @@ class CloudVmCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["network"] = network
+            __props__.__dict__["odb_dns_zone"] = odb_dns_zone
             __props__.__dict__["odb_network"] = odb_network
             __props__.__dict__["odb_subnet"] = odb_subnet
             __props__.__dict__["project"] = project
@@ -1403,6 +1523,7 @@ class CloudVmCluster(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
+            odb_dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
             odb_network: pulumi.Input[Optional[_builtins.str]] = None,
             odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1453,6 +1574,9 @@ class CloudVmCluster(pulumi.CustomResource):
                projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
         :param pulumi.Input[_builtins.str] network: The name of the VPC network.
                Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[_builtins.str] odb_dns_zone: The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+               Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
         :param pulumi.Input[_builtins.str] odb_network: The name of the OdbNetwork associated with the VM Cluster.
                Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -1489,6 +1613,7 @@ class CloudVmCluster(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["odb_dns_zone"] = odb_dns_zone
         __props__.__dict__["odb_network"] = odb_network
         __props__.__dict__["odb_subnet"] = odb_subnet
         __props__.__dict__["project"] = project
@@ -1652,6 +1777,16 @@ class CloudVmCluster(pulumi.CustomResource):
         Format: projects/{project}/global/networks/{network}
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="odbDnsZone")
+    def odb_dns_zone(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+        Format:
+        projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+        """
+        return pulumi.get(self, "odb_dns_zone")
 
     @_builtins.property
     @pulumi.getter(name="odbNetwork")

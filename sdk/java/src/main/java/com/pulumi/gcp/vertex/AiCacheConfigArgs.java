@@ -49,11 +49,31 @@ public final class AiCacheConfigArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+     * The cache config is a project-level setting, so this only selects which regional endpoint
+     * requests are sent to. If not specified, the provider-level region is used.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+     * The cache config is a project-level setting, so this only selects which regional endpoint
+     * requests are sent to. If not specified, the provider-level region is used.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
     private AiCacheConfigArgs() {}
 
     private AiCacheConfigArgs(AiCacheConfigArgs $) {
         this.disableCache = $.disableCache;
         this.project = $.project;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -116,6 +136,31 @@ public final class AiCacheConfigArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param region The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+         * The cache config is a project-level setting, so this only selects which regional endpoint
+         * requests are sent to. If not specified, the provider-level region is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+         * The cache config is a project-level setting, so this only selects which regional endpoint
+         * requests are sent to. If not specified, the provider-level region is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         public AiCacheConfigArgs build() {

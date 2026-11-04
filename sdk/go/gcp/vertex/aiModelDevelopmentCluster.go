@@ -58,7 +58,7 @@ import (
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 //				Name:                  pulumi.String("mdc-subnet"),
 //				IpCidrRange:           pulumi.String("10.0.0.0/24"),
-//				Region:                pulumi.String("us-central1"),
+//				Region:                pulumi.String("us-east4"),
 //				Network:               net.ID(),
 //				PrivateIpGoogleAccess: pulumi.Bool(true),
 //			})
@@ -95,7 +95,7 @@ import (
 //			}
 //			home, err := filestore.NewInstance(ctx, "home", &filestore.InstanceArgs{
 //				Name:     pulumi.String("mdc-home"),
-//				Location: pulumi.String("us-central1-b"),
+//				Location: pulumi.String("us-east4-b"),
 //				Tier:     pulumi.String("BASIC_HDD"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
 //					CapacityGb: pulumi.Int(1024),
@@ -115,7 +115,7 @@ import (
 //			}
 //			data, err := filestore.NewInstance(ctx, "data", &filestore.InstanceArgs{
 //				Name:     pulumi.String("mdc-data"),
-//				Location: pulumi.String("us-central1-b"),
+//				Location: pulumi.String("us-east4-b"),
 //				Tier:     pulumi.String("BASIC_HDD"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
 //					CapacityGb: pulumi.Int(1024),
@@ -135,7 +135,7 @@ import (
 //			}
 //			res, err := compute.NewReservation(ctx, "res", &compute.ReservationArgs{
 //				Name:                        pulumi.String("mdc-res"),
-//				Zone:                        pulumi.String("us-central1-b"),
+//				Zone:                        pulumi.String("us-east4-b"),
 //				SpecificReservationRequired: pulumi.Bool(true),
 //				SpecificReservation: &compute.ReservationSpecificReservationArgs{
 //					Count: pulumi.Int(1),
@@ -148,7 +148,7 @@ import (
 //				return err
 //			}
 //			_, err = vertex.NewAiModelDevelopmentCluster(ctx, "default", &vertex.AiModelDevelopmentClusterArgs{
-//				Region:                    pulumi.String("us-central1"),
+//				Region:                    pulumi.String("us-east4"),
 //				ModelDevelopmentClusterId: pulumi.String("tftest"),
 //				DisplayName:               pulumi.String("tftest"),
 //				DeletionPolicy:            pulumi.String("DELETE"),
@@ -214,7 +214,7 @@ import (
 //				NodePools: vertex.AiModelDevelopmentClusterNodePoolArray{
 //					&vertex.AiModelDevelopmentClusterNodePoolArgs{
 //						Id:                pulumi.String("compute"),
-//						Zone:              pulumi.String("us-central1-b"),
+//						Zone:              pulumi.String("us-east4-b"),
 //						ProvisioningModel: pulumi.String("ON_DEMAND"),
 //						NodeImage:         pulumi.String("projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113"),
 //						StartupScript:     pulumi.String("#!/bin/bash\necho hello"),
@@ -239,7 +239,7 @@ import (
 //					},
 //					&vertex.AiModelDevelopmentClusterNodePoolArgs{
 //						Id:                   pulumi.String("flexpool"),
-//						Zone:                 pulumi.String("us-central1-b"),
+//						Zone:                 pulumi.String("us-east4-b"),
 //						ProvisioningModel:    pulumi.String("FLEX_START"),
 //						FlexStartMaxDuration: pulumi.String("3600s"),
 //						NodeImage:            pulumi.String("projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113"),
@@ -265,7 +265,7 @@ import (
 //					},
 //					&vertex.AiModelDevelopmentClusterNodePoolArgs{
 //						Id:                pulumi.String("login"),
-//						Zone:              pulumi.String("us-central1-b"),
+//						Zone:              pulumi.String("us-east4-b"),
 //						ProvisioningModel: pulumi.String("ON_DEMAND"),
 //						NodeImage:         pulumi.String("projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113"),
 //						StartupScript:     pulumi.String("#!/bin/bash\necho hello"),
@@ -290,7 +290,7 @@ import (
 //					},
 //					&vertex.AiModelDevelopmentClusterNodePoolArgs{
 //						Id:                pulumi.String("respool"),
-//						Zone:              pulumi.String("us-central1-b"),
+//						Zone:              pulumi.String("us-east4-b"),
 //						ProvisioningModel: pulumi.String("RESERVATION"),
 //						NodeImage:         pulumi.String("projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113"),
 //						StartupScript:     pulumi.String("#!/bin/bash\necho hello"),
@@ -317,6 +317,121 @@ import (
 //						ScalingSpec: &vertex.AiModelDevelopmentClusterNodePoolScalingSpecArgs{
 //							MinNodeCount: pulumi.Int(0),
 //							MaxNodeCount: pulumi.Int(1),
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				internal,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Vertex Ai Model Development Cluster Gke
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("mdc-gke-net"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:                  pulumi.String("mdc-gke-subnet"),
+//				IpCidrRange:           pulumi.String("10.0.0.0/24"),
+//				Region:                pulumi.String("us-east1"),
+//				Network:               net.ID(),
+//				PrivateIpGoogleAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			internal, err := compute.NewFirewall(ctx, "internal", &compute.FirewallArgs{
+//				Name:      pulumi.String("mdc-gke-fw"),
+//				Network:   net.Name,
+//				Direction: pulumi.String("INGRESS"),
+//				SourceRanges: pulumi.StringArray{
+//					pulumi.String("10.0.0.0/24"),
+//				},
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("0-65535"),
+//						},
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("udp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("0-65535"),
+//						},
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("icmp"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiModelDevelopmentCluster(ctx, "default", &vertex.AiModelDevelopmentClusterArgs{
+//				Region:                    pulumi.String("us-east1"),
+//				ModelDevelopmentClusterId: pulumi.String("tftest-gke"),
+//				DisplayName:               pulumi.String("tftest-gke"),
+//				DeletionPolicy:            pulumi.String("DELETE"),
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("dev"),
+//				},
+//				Network: &vertex.AiModelDevelopmentClusterNetworkArgs{
+//					Network:    net.ID(),
+//					Subnetwork: subnet.ID(),
+//				},
+//				OrchestratorSpec: &vertex.AiModelDevelopmentClusterOrchestratorSpecArgs{
+//					KubernetesSpec: &vertex.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs{
+//						NodePoolIds: pulumi.StringArray{
+//							pulumi.String("cpu1"),
+//						},
+//						EnableIpAlias:               pulumi.Bool(true),
+//						PublicAccessEndpointEnabled: pulumi.Bool(true),
+//						ControlPlaneVersion:         pulumi.String("-"),
+//						NodePoolVersions: pulumi.StringMap{
+//							"cpu1": pulumi.String("-"),
+//						},
+//					},
+//				},
+//				NodePools: vertex.AiModelDevelopmentClusterNodePoolArray{
+//					&vertex.AiModelDevelopmentClusterNodePoolArgs{
+//						Id:                pulumi.String("cpu1"),
+//						Zone:              pulumi.String("us-east1-b"),
+//						ProvisioningModel: pulumi.String("ON_DEMAND"),
+//						BootDisk: &vertex.AiModelDevelopmentClusterNodePoolBootDiskArgs{
+//							BootDiskSizeGb: pulumi.Int(100),
+//							BootDiskType:   pulumi.String("pd-standard"),
+//						},
+//						MachineSpec: &vertex.AiModelDevelopmentClusterNodePoolMachineSpecArgs{
+//							MachineType: pulumi.String("n2-standard-4"),
+//						},
+//						ScalingSpec: &vertex.AiModelDevelopmentClusterNodePoolScalingSpecArgs{
+//							MinNodeCount: pulumi.Int(1),
+//							MaxNodeCount: pulumi.Int(2),
 //						},
 //					},
 //				},
@@ -423,10 +538,15 @@ import (
 //
 // <a name="nestedOrchestratorSpec"></a>The `orchestratorSpec` block supports:
 //
-//   - `slurmSpec` -
-//     (Optional)
-//     The Slurm orchestrator related spec of the cluster.
-//     Structure is documented below.
+// * `slurmSpec` -
+// (Optional)
+// The Slurm orchestrator related spec of the cluster.
+// Structure is documented below.
+//
+// * `kubernetesSpec` -
+// (Optional)
+// The GKE orchestrator related spec of the cluster.
+// Structure is documented below.
 //
 // <a name="nestedOrchestratorSpecSlurmSpec"></a>The `slurmSpec` block supports:
 //
@@ -535,6 +655,44 @@ import (
 // * `nodePoolIds` -
 // (Required)
 // Node pools for the slurm partition
+//
+// <a name="nestedOrchestratorSpecKubernetesSpec"></a>The `kubernetesSpec` block supports:
+//
+// * `nodePoolIds` -
+// (Optional)
+// IDs of the NodePools to be included in this GKE cluster. These IDs must
+// correspond to NodePools defined in the `nodePools` field.
+//
+// * `enableIpAlias` -
+// (Optional)
+// Whether to enable IP alias.
+//
+// * `publicAccessEndpointEnabled` -
+// (Optional)
+// Whether the GKE cluster's control plane endpoint is publicly accessible.
+// If true, the cluster is created with a public access endpoint (i.e. the
+// private cluster configuration is disabled). If false or unset, the cluster
+// is created with only private control plane access by default.
+//
+// * `controlPlaneVersion` -
+// (Optional)
+// The Kubernetes version of the GKE control plane.
+// Accepted formats are minor version (for example, `"1.30"`), patch version
+// (for example, `"1.30.5"`), full GKE release version (for example,
+// `"1.30.5-gke.1014001"`), or `"-"` to use the service default version.
+// Upgrades can advance at most one minor version at a time; downgrades are
+// rejected.
+//
+// * `nodePoolVersions` -
+// (Optional)
+// The Kubernetes versions for specific node pools, keyed by node pool ID.
+// When specified, all node pool IDs in the cluster must be included.
+// Accepted formats are minor version (for example, `"1.30"`), patch version
+// (for example, `"1.30.5"`), full GKE release version (for example,
+// `"1.30.5-gke.1014001"`), or `"-"` to align with the control plane version.
+// Node pools cannot be newer than the control plane or more than 2 minor
+// versions behind it; upgrades can advance at most one minor version at a
+// time and downgrades are rejected.
 //
 // <a name="nestedLustreExportConfig"></a>The `lustreExportConfig` block supports:
 //
@@ -668,7 +826,10 @@ type AiModelDevelopmentCluster struct {
 	// Network spec of the cluster.
 	// Structure is documented below.
 	Network AiModelDevelopmentClusterNetworkOutput `pulumi:"network"`
-	// The spec of the pools of different resources.
+	// The spec of the pools of different resources. Node pools can be added,
+	// removed, or reordered in place; changing some fields on an existing node
+	// pool may require replacing the node pool (validated server-side by the
+	// API).
 	// Structure is documented below.
 	NodePools AiModelDevelopmentClusterNodePoolArrayOutput `pulumi:"nodePools"`
 	// The spec of the orchestrator. Only one orchestrator may be specified.
@@ -791,7 +952,10 @@ type aiModelDevelopmentClusterState struct {
 	// Network spec of the cluster.
 	// Structure is documented below.
 	Network *AiModelDevelopmentClusterNetwork `pulumi:"network"`
-	// The spec of the pools of different resources.
+	// The spec of the pools of different resources. Node pools can be added,
+	// removed, or reordered in place; changing some fields on an existing node
+	// pool may require replacing the node pool (validated server-side by the
+	// API).
 	// Structure is documented below.
 	NodePools []AiModelDevelopmentClusterNodePool `pulumi:"nodePools"`
 	// The spec of the orchestrator. Only one orchestrator may be specified.
@@ -871,7 +1035,10 @@ type AiModelDevelopmentClusterState struct {
 	// Network spec of the cluster.
 	// Structure is documented below.
 	Network AiModelDevelopmentClusterNetworkPtrInput
-	// The spec of the pools of different resources.
+	// The spec of the pools of different resources. Node pools can be added,
+	// removed, or reordered in place; changing some fields on an existing node
+	// pool may require replacing the node pool (validated server-side by the
+	// API).
 	// Structure is documented below.
 	NodePools AiModelDevelopmentClusterNodePoolArrayInput
 	// The spec of the orchestrator. Only one orchestrator may be specified.
@@ -940,7 +1107,10 @@ type aiModelDevelopmentClusterArgs struct {
 	// Network spec of the cluster.
 	// Structure is documented below.
 	Network *AiModelDevelopmentClusterNetwork `pulumi:"network"`
-	// The spec of the pools of different resources.
+	// The spec of the pools of different resources. Node pools can be added,
+	// removed, or reordered in place; changing some fields on an existing node
+	// pool may require replacing the node pool (validated server-side by the
+	// API).
 	// Structure is documented below.
 	NodePools []AiModelDevelopmentClusterNodePool `pulumi:"nodePools"`
 	// The spec of the orchestrator. Only one orchestrator may be specified.
@@ -994,7 +1164,10 @@ type AiModelDevelopmentClusterArgs struct {
 	// Network spec of the cluster.
 	// Structure is documented below.
 	Network AiModelDevelopmentClusterNetworkPtrInput
-	// The spec of the pools of different resources.
+	// The spec of the pools of different resources. Node pools can be added,
+	// removed, or reordered in place; changing some fields on an existing node
+	// pool may require replacing the node pool (validated server-side by the
+	// API).
 	// Structure is documented below.
 	NodePools AiModelDevelopmentClusterNodePoolArrayInput
 	// The spec of the orchestrator. Only one orchestrator may be specified.
@@ -1187,7 +1360,10 @@ func (o AiModelDevelopmentClusterOutput) Network() AiModelDevelopmentClusterNetw
 	return o.ApplyT(func(v *AiModelDevelopmentCluster) AiModelDevelopmentClusterNetworkOutput { return v.Network }).(AiModelDevelopmentClusterNetworkOutput)
 }
 
-// The spec of the pools of different resources.
+// The spec of the pools of different resources. Node pools can be added,
+// removed, or reordered in place; changing some fields on an existing node
+// pool may require replacing the node pool (validated server-side by the
+// API).
 // Structure is documented below.
 func (o AiModelDevelopmentClusterOutput) NodePools() AiModelDevelopmentClusterNodePoolArrayOutput {
 	return o.ApplyT(func(v *AiModelDevelopmentCluster) AiModelDevelopmentClusterNodePoolArrayOutput { return v.NodePools }).(AiModelDevelopmentClusterNodePoolArrayOutput)

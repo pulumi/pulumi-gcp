@@ -37,6 +37,8 @@ import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentVersionsArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentVersionsPlainArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetOdbDnsZoneArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetOdbDnsZonePlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
@@ -55,6 +57,7 @@ import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateConnectionTypesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentEnvironmentsResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentTypesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentVersionsResult;
+import com.pulumi.gcp.oracledatabase.outputs.GetOdbDnsZoneResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetOdbNetworkResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetOdbSubnetResult;
 import java.util.concurrent.CompletableFuture;
@@ -4009,6 +4012,231 @@ public final class OracledatabaseFunctions {
      */
     public static CompletableFuture<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVersionsPlain(GetGoldengateDeploymentVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getGoldengateDeploymentVersions:getGoldengateDeploymentVersions", TypeShape.of(GetGoldengateDeploymentVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ODB DNS Zone.
+     * 
+     * For more information see the
+     * * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbDnsZones)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbDnsZoneArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-zone = OracledatabaseFunctions.getOdbDnsZone(GetOdbDnsZoneArgs.builder()
+     *             .location("europe-west2")
+     *             .odbnetwork("my-network-id")
+     *             .odbDnsZoneId("my-dns-zone-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOdbDnsZoneResult> getOdbDnsZone(GetOdbDnsZoneArgs args) {
+        return getOdbDnsZone(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an ODB DNS Zone.
+     * 
+     * For more information see the
+     * * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbDnsZones)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbDnsZoneArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-zone = OracledatabaseFunctions.getOdbDnsZone(GetOdbDnsZoneArgs.builder()
+     *             .location("europe-west2")
+     *             .odbnetwork("my-network-id")
+     *             .odbDnsZoneId("my-dns-zone-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOdbDnsZoneResult> getOdbDnsZonePlain(GetOdbDnsZonePlainArgs args) {
+        return getOdbDnsZonePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an ODB DNS Zone.
+     * 
+     * For more information see the
+     * * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbDnsZones)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbDnsZoneArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-zone = OracledatabaseFunctions.getOdbDnsZone(GetOdbDnsZoneArgs.builder()
+     *             .location("europe-west2")
+     *             .odbnetwork("my-network-id")
+     *             .odbDnsZoneId("my-dns-zone-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOdbDnsZoneResult> getOdbDnsZone(GetOdbDnsZoneArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getOdbDnsZone:getOdbDnsZone", TypeShape.of(GetOdbDnsZoneResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ODB DNS Zone.
+     * 
+     * For more information see the
+     * * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbDnsZones)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbDnsZoneArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-zone = OracledatabaseFunctions.getOdbDnsZone(GetOdbDnsZoneArgs.builder()
+     *             .location("europe-west2")
+     *             .odbnetwork("my-network-id")
+     *             .odbDnsZoneId("my-dns-zone-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOdbDnsZoneResult> getOdbDnsZone(GetOdbDnsZoneArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getOdbDnsZone:getOdbDnsZone", TypeShape.of(GetOdbDnsZoneResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ODB DNS Zone.
+     * 
+     * For more information see the
+     * * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbDnsZones)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetOdbDnsZoneArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-zone = OracledatabaseFunctions.getOdbDnsZone(GetOdbDnsZoneArgs.builder()
+     *             .location("europe-west2")
+     *             .odbnetwork("my-network-id")
+     *             .odbDnsZoneId("my-dns-zone-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOdbDnsZoneResult> getOdbDnsZonePlain(GetOdbDnsZonePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getOdbDnsZone:getOdbDnsZone", TypeShape.of(GetOdbDnsZoneResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about an ODB Network.

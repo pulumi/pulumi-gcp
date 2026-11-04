@@ -86,6 +86,7 @@ type LookupCloudVmClusterResult struct {
 	Location           string                               `pulumi:"location"`
 	Name               string                               `pulumi:"name"`
 	Network            string                               `pulumi:"network"`
+	OdbDnsZone         string                               `pulumi:"odbDnsZone"`
 	OdbNetwork         string                               `pulumi:"odbNetwork"`
 	OdbSubnet          string                               `pulumi:"odbSubnet"`
 	Project            *string                              `pulumi:"project"`
@@ -201,6 +202,10 @@ func (o LookupCloudVmClusterResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupCloudVmClusterResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudVmClusterResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudVmClusterResultOutput) OdbDnsZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudVmClusterResult) string { return v.OdbDnsZone }).(pulumi.StringOutput)
 }
 
 func (o LookupCloudVmClusterResultOutput) OdbNetwork() pulumi.StringOutput {

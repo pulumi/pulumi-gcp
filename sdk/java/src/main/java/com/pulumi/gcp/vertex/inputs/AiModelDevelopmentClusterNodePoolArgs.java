@@ -124,14 +124,18 @@ public final class AiModelDevelopmentClusterNodePoolArgs extends com.pulumi.reso
     }
 
     /**
-     * The unique ID referring to this node pool.
+     * The unique ID referring to this node pool. Cannot be modified in
+     * place on an existing node pool; changing `id` updates the list of
+     * node pools by adding/removing pools (validated server-side).
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The unique ID referring to this node pool.
+     * @return The unique ID referring to this node pool. Cannot be modified in
+     * place on an existing node pool; changing `id` updates the list of
+     * node pools by adding/removing pools (validated server-side).
      * 
      */
     public Output<String> id() {
@@ -485,7 +489,9 @@ public final class AiModelDevelopmentClusterNodePoolArgs extends com.pulumi.reso
         }
 
         /**
-         * @param id The unique ID referring to this node pool.
+         * @param id The unique ID referring to this node pool. Cannot be modified in
+         * place on an existing node pool; changing `id` updates the list of
+         * node pools by adding/removing pools (validated server-side).
          * 
          * @return builder
          * 
@@ -496,7 +502,9 @@ public final class AiModelDevelopmentClusterNodePoolArgs extends com.pulumi.reso
         }
 
         /**
-         * @param id The unique ID referring to this node pool.
+         * @param id The unique ID referring to this node pool. Cannot be modified in
+         * place on an existing node pool; changing `id` updates the list of
+         * node pools by adding/removing pools (validated server-side).
          * 
          * @return builder
          * 

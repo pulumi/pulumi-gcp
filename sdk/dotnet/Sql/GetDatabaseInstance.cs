@@ -134,6 +134,7 @@ namespace Pulumi.Gcp.Sql
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceBlueGreenDeploymentResult> BlueGreenDeployments;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> Clones;
         public readonly string ConnectionName;
+        public readonly string DatabaseCenterIntegration;
         public readonly string DatabaseVersion;
         public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
@@ -185,6 +186,8 @@ namespace Pulumi.Gcp.Sql
             ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> clones,
 
             string connectionName,
+
+            string databaseCenterIntegration,
 
             string databaseVersion,
 
@@ -263,6 +266,7 @@ namespace Pulumi.Gcp.Sql
             BlueGreenDeployments = blueGreenDeployments;
             Clones = clones;
             ConnectionName = connectionName;
+            DatabaseCenterIntegration = databaseCenterIntegration;
             DatabaseVersion = databaseVersion;
             DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;

@@ -811,21 +811,15 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var tagKey = new Gcp.Tags.TagKey("tag_key", new()
+    ///     var tagKey = Gcp.Tags.GetTagKey.Invoke(new()
     ///     {
     ///         Parent = project.Apply(getProjectResult =&gt; getProjectResult.Id),
     ///         ShortName = "tag_key",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             example,
-    ///         },
     ///     });
     /// 
-    ///     var tagValue = new Gcp.Tags.TagValue("tag_value", new()
+    ///     var tagValue = Gcp.Tags.GetTagValue.Invoke(new()
     ///     {
-    ///         Parent = tagKey.Id,
+    ///         Parent = tagKey.Apply(getTagKeyResult =&gt; getTagKeyResult.Id),
     ///         ShortName = "tag_value",
     ///     });
     /// 
@@ -833,13 +827,13 @@ namespace Pulumi.Gcp.PubSub
     ///     {
     ///         Name = "example-subscription",
     ///         Topic = example.Id,
-    ///         Tags = Output.Tuple(tagKey.NamespacedName, tagValue.ShortName).Apply(values =&gt;
+    ///         Tags = Output.Tuple(tagKey, tagValue).Apply(values =&gt;
     ///         {
-    ///             var namespacedName = values.Item1;
-    ///             var shortName = values.Item2;
+    ///             var tagKey = values.Item1;
+    ///             var tagValue = values.Item2;
     ///             return 
     ///             {
-    ///                 { namespacedName, shortName },
+    ///                 { tagKey.Apply(getTagKeyResult =&gt; getTagKeyResult.NamespacedName), tagValue.Apply(getTagValueResult =&gt; getTagValueResult.ShortName) },
     ///             };
     ///         }),
     ///     });
@@ -897,7 +891,7 @@ namespace Pulumi.Gcp.PubSub
     ///             {
     ///                 AiInference = new Gcp.PubSub.Inputs.SubscriptionMessageTransformAiInferenceArgs
     ///                 {
-    ///                     Endpoint = "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+    ///                     Endpoint = "projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash",
     ///                     UnstructuredInference = new Gcp.PubSub.Inputs.SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs
     ///                     {
     ///                         Parameters = 

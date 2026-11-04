@@ -752,6 +752,178 @@ func (o BatchOperationsJobDeleteObjectPtrOutput) PermanentObjectDeletionEnabled(
 	}).(pulumi.BoolPtrOutput)
 }
 
+type BatchOperationsJobLoggingConfig struct {
+	// States in which Action are logged.If empty, no logs are generated.
+	// Possible values include `SUCCEEDED`, `FAILED`.
+	// See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+	LogActionStates []string `pulumi:"logActionStates"`
+	// Specifies the actions to be logged.
+	// Possible values include `TRANSFORM`.
+	// See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+	LogActions []string `pulumi:"logActions"`
+}
+
+// BatchOperationsJobLoggingConfigInput is an input type that accepts BatchOperationsJobLoggingConfigArgs and BatchOperationsJobLoggingConfigOutput values.
+// You can construct a concrete instance of `BatchOperationsJobLoggingConfigInput` via:
+//
+//	BatchOperationsJobLoggingConfigArgs{...}
+type BatchOperationsJobLoggingConfigInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobLoggingConfigOutput() BatchOperationsJobLoggingConfigOutput
+	ToBatchOperationsJobLoggingConfigOutputWithContext(context.Context) BatchOperationsJobLoggingConfigOutput
+}
+
+type BatchOperationsJobLoggingConfigArgs struct {
+	// States in which Action are logged.If empty, no logs are generated.
+	// Possible values include `SUCCEEDED`, `FAILED`.
+	// See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+	LogActionStates pulumi.StringArrayInput `pulumi:"logActionStates"`
+	// Specifies the actions to be logged.
+	// Possible values include `TRANSFORM`.
+	// See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+	LogActions pulumi.StringArrayInput `pulumi:"logActions"`
+}
+
+func (BatchOperationsJobLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobLoggingConfig)(nil)).Elem()
+}
+
+func (i BatchOperationsJobLoggingConfigArgs) ToBatchOperationsJobLoggingConfigOutput() BatchOperationsJobLoggingConfigOutput {
+	return i.ToBatchOperationsJobLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobLoggingConfigArgs) ToBatchOperationsJobLoggingConfigOutputWithContext(ctx context.Context) BatchOperationsJobLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobLoggingConfigOutput)
+}
+
+func (i BatchOperationsJobLoggingConfigArgs) ToBatchOperationsJobLoggingConfigPtrOutput() BatchOperationsJobLoggingConfigPtrOutput {
+	return i.ToBatchOperationsJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobLoggingConfigArgs) ToBatchOperationsJobLoggingConfigPtrOutputWithContext(ctx context.Context) BatchOperationsJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobLoggingConfigOutput).ToBatchOperationsJobLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// BatchOperationsJobLoggingConfigPtrInput is an input type that accepts BatchOperationsJobLoggingConfigArgs, BatchOperationsJobLoggingConfigPtr and BatchOperationsJobLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `BatchOperationsJobLoggingConfigPtrInput` via:
+//
+//	        BatchOperationsJobLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchOperationsJobLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobLoggingConfigPtrOutput() BatchOperationsJobLoggingConfigPtrOutput
+	ToBatchOperationsJobLoggingConfigPtrOutputWithContext(context.Context) BatchOperationsJobLoggingConfigPtrOutput
+}
+
+type batchOperationsJobLoggingConfigPtrType BatchOperationsJobLoggingConfigArgs
+
+func BatchOperationsJobLoggingConfigPtr(v *BatchOperationsJobLoggingConfigArgs) BatchOperationsJobLoggingConfigPtrInput {
+	return (*batchOperationsJobLoggingConfigPtrType)(v)
+}
+
+func (*batchOperationsJobLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobLoggingConfig)(nil)).Elem()
+}
+
+func (i *batchOperationsJobLoggingConfigPtrType) ToBatchOperationsJobLoggingConfigPtrOutput() BatchOperationsJobLoggingConfigPtrOutput {
+	return i.ToBatchOperationsJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *batchOperationsJobLoggingConfigPtrType) ToBatchOperationsJobLoggingConfigPtrOutputWithContext(ctx context.Context) BatchOperationsJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobLoggingConfigPtrOutput)
+}
+
+type BatchOperationsJobLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobLoggingConfig)(nil)).Elem()
+}
+
+func (o BatchOperationsJobLoggingConfigOutput) ToBatchOperationsJobLoggingConfigOutput() BatchOperationsJobLoggingConfigOutput {
+	return o
+}
+
+func (o BatchOperationsJobLoggingConfigOutput) ToBatchOperationsJobLoggingConfigOutputWithContext(ctx context.Context) BatchOperationsJobLoggingConfigOutput {
+	return o
+}
+
+func (o BatchOperationsJobLoggingConfigOutput) ToBatchOperationsJobLoggingConfigPtrOutput() BatchOperationsJobLoggingConfigPtrOutput {
+	return o.ToBatchOperationsJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BatchOperationsJobLoggingConfigOutput) ToBatchOperationsJobLoggingConfigPtrOutputWithContext(ctx context.Context) BatchOperationsJobLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchOperationsJobLoggingConfig) *BatchOperationsJobLoggingConfig {
+		return &v
+	}).(BatchOperationsJobLoggingConfigPtrOutput)
+}
+
+// States in which Action are logged.If empty, no logs are generated.
+// Possible values include `SUCCEEDED`, `FAILED`.
+// See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+func (o BatchOperationsJobLoggingConfigOutput) LogActionStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BatchOperationsJobLoggingConfig) []string { return v.LogActionStates }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the actions to be logged.
+// Possible values include `TRANSFORM`.
+// See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+func (o BatchOperationsJobLoggingConfigOutput) LogActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BatchOperationsJobLoggingConfig) []string { return v.LogActions }).(pulumi.StringArrayOutput)
+}
+
+type BatchOperationsJobLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobLoggingConfig)(nil)).Elem()
+}
+
+func (o BatchOperationsJobLoggingConfigPtrOutput) ToBatchOperationsJobLoggingConfigPtrOutput() BatchOperationsJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobLoggingConfigPtrOutput) ToBatchOperationsJobLoggingConfigPtrOutputWithContext(ctx context.Context) BatchOperationsJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobLoggingConfigPtrOutput) Elem() BatchOperationsJobLoggingConfigOutput {
+	return o.ApplyT(func(v *BatchOperationsJobLoggingConfig) BatchOperationsJobLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BatchOperationsJobLoggingConfig
+		return ret
+	}).(BatchOperationsJobLoggingConfigOutput)
+}
+
+// States in which Action are logged.If empty, no logs are generated.
+// Possible values include `SUCCEEDED`, `FAILED`.
+// See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+func (o BatchOperationsJobLoggingConfigPtrOutput) LogActionStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BatchOperationsJobLoggingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogActionStates
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the actions to be logged.
+// Possible values include `TRANSFORM`.
+// See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+func (o BatchOperationsJobLoggingConfigPtrOutput) LogActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BatchOperationsJobLoggingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogActions
+	}).(pulumi.StringArrayOutput)
+}
+
 type BatchOperationsJobPutMetadata struct {
 	// Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
 	CacheControl *string `pulumi:"cacheControl"`
@@ -38532,6 +38704,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListBucketsPrefixListPtrInput)(nil)).Elem(), BatchOperationsJobBucketListBucketsPrefixListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobDeleteObjectInput)(nil)).Elem(), BatchOperationsJobDeleteObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobDeleteObjectPtrInput)(nil)).Elem(), BatchOperationsJobDeleteObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobLoggingConfigInput)(nil)).Elem(), BatchOperationsJobLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobLoggingConfigPtrInput)(nil)).Elem(), BatchOperationsJobLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobPutMetadataInput)(nil)).Elem(), BatchOperationsJobPutMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobPutMetadataPtrInput)(nil)).Elem(), BatchOperationsJobPutMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobPutObjectHoldInput)(nil)).Elem(), BatchOperationsJobPutObjectHoldArgs{})
@@ -39084,6 +39258,8 @@ func init() {
 	pulumi.RegisterOutputType(BatchOperationsJobBucketListBucketsPrefixListPtrOutput{})
 	pulumi.RegisterOutputType(BatchOperationsJobDeleteObjectOutput{})
 	pulumi.RegisterOutputType(BatchOperationsJobDeleteObjectPtrOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobLoggingConfigOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(BatchOperationsJobPutMetadataOutput{})
 	pulumi.RegisterOutputType(BatchOperationsJobPutMetadataPtrOutput{})
 	pulumi.RegisterOutputType(BatchOperationsJobPutObjectHoldOutput{})

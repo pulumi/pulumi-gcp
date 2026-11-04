@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: defaultGoogleComputeNetwork.id,
  *     },
@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-network"});
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: defaultNetwork.id,
  *     },

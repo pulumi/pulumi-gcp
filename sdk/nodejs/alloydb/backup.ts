@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-network"});
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: defaultNetwork.id,
  *     },
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [vpcConnection],
  * });
  * const _default = new gcp.alloydb.Backup("default", {
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupId: "alloydb-backup",
  *     clusterName: defaultCluster.name,
  * }, {
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-network"});
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: defaultNetwork.id,
  *     },
@@ -95,7 +95,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [vpcConnection],
  * });
  * const _default = new gcp.alloydb.Backup("default", {
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupId: "alloydb-backup",
  *     clusterName: defaultCluster.name,
  *     description: "example description",

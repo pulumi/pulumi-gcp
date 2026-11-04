@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly bool? CatalogPublishingEnabled;
         /// <summary>
+        /// Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+        /// Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+        /// </summary>
+        public readonly ImmutableArray<string> GenerationScopes;
+        /// <summary>
         /// The SQL dialect to use in the generated SQL queries.
         /// If not specified, the default dialect is Google SQL.
         /// Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
@@ -28,9 +33,12 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         private DatascanDataDocumentationSpec(
             bool? catalogPublishingEnabled,
 
+            ImmutableArray<string> generationScopes,
+
             string? sqlDialect)
         {
             CatalogPublishingEnabled = catalogPublishingEnabled;
+            GenerationScopes = generationScopes;
             SqlDialect = sqlDialect;
         }
     }

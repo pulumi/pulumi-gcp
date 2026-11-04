@@ -79,6 +79,52 @@ namespace Pulumi.Gcp.ModelArmor
     ///             {
     ///                 FilterEnforcement = "ENABLED",
     ///             },
+    ///             FilterRuleSettings = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsArgs
+    ///             {
+    ///                 RuleSets = new[]
+    ///                 {
+    ///                     new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetArgs
+    ///                     {
+    ///                         FilterTypes = new[]
+    ///                         {
+    ///                             "PROMPT_INJECTION_AND_JAILBREAK",
+    ///                             "RESPONSIBLE_AI",
+    ///                         },
+    ///                         Rules = new[]
+    ///                         {
+    ///                             new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs
+    ///                             {
+    ///                                 ExclusionRule = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs
+    ///                                 {
+    ///                                     MatchingScope = "MATCHING_SCOPE_PARTIAL_MATCH",
+    ///                                     Dictionary = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs
+    ///                                     {
+    ///                                         WordList = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs
+    ///                                         {
+    ///                                             Words = new[]
+    ///                                             {
+    ///                                                 "allowphrase1",
+    ///                                                 "allowphrase2",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs
+    ///                             {
+    ///                                 ExclusionRule = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs
+    ///                                 {
+    ///                                     MatchingScope = "MATCHING_SCOPE_FULL_MATCH",
+    ///                                     Regex = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs
+    ///                                     {
+    ///                                         Pattern = "^safe_pattern_[0-9]+$",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
     ///         },
     ///         TemplateMetadata = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataArgs
     ///         {
@@ -143,6 +189,7 @@ namespace Pulumi.Gcp.ModelArmor
     ///             {
     ///                 Alias = "FILTER_VERSION_ALIAS_LATEST",
     ///             },
+    ///             DataResidencyCompliant = true,
     ///         },
     ///     });
     /// 
@@ -181,7 +228,7 @@ namespace Pulumi.Gcp.ModelArmor
     ///         {
     ///             FilterVersionSelector = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataFilterVersionSelectorArgs
     ///             {
-    ///                 Version = "v1",
+    ///                 Version = "v3",
     ///             },
     ///         },
     ///     });

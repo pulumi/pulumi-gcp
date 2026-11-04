@@ -39,7 +39,7 @@ public final class ServerTlsPolicyMtlsPolicyArgs extends com.pulumi.resources.Re
     /**
      * When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
      * Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-     * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+     * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
      * 
      */
     @Import(name="clientValidationMode")
@@ -48,11 +48,32 @@ public final class ServerTlsPolicyMtlsPolicyArgs extends com.pulumi.resources.Re
     /**
      * @return When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
      * Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-     * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+     * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
      * 
      */
     public Optional<Output<String>> clientValidationMode() {
         return Optional.ofNullable(this.clientValidationMode);
+    }
+
+    /**
+     * List of validation relaxations to apply when validating client certificates.
+     * Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+     * and must be empty for all other clientValidationMode values.
+     * Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+     * 
+     */
+    @Import(name="clientValidationRelaxations")
+    private @Nullable Output<List<String>> clientValidationRelaxations;
+
+    /**
+     * @return List of validation relaxations to apply when validating client certificates.
+     * Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+     * and must be empty for all other clientValidationMode values.
+     * Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+     * 
+     */
+    public Optional<Output<List<String>>> clientValidationRelaxations() {
+        return Optional.ofNullable(this.clientValidationRelaxations);
     }
 
     /**
@@ -79,6 +100,7 @@ public final class ServerTlsPolicyMtlsPolicyArgs extends com.pulumi.resources.Re
     private ServerTlsPolicyMtlsPolicyArgs(ServerTlsPolicyMtlsPolicyArgs $) {
         this.clientValidationCas = $.clientValidationCas;
         this.clientValidationMode = $.clientValidationMode;
+        this.clientValidationRelaxations = $.clientValidationRelaxations;
         this.clientValidationTrustConfig = $.clientValidationTrustConfig;
     }
 
@@ -140,7 +162,7 @@ public final class ServerTlsPolicyMtlsPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param clientValidationMode When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
          * Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-         * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+         * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
          * 
          * @return builder
          * 
@@ -153,13 +175,53 @@ public final class ServerTlsPolicyMtlsPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param clientValidationMode When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
          * Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-         * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+         * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
          * 
          * @return builder
          * 
          */
         public Builder clientValidationMode(String clientValidationMode) {
             return clientValidationMode(Output.of(clientValidationMode));
+        }
+
+        /**
+         * @param clientValidationRelaxations List of validation relaxations to apply when validating client certificates.
+         * Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+         * and must be empty for all other clientValidationMode values.
+         * Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientValidationRelaxations(@Nullable Output<List<String>> clientValidationRelaxations) {
+            $.clientValidationRelaxations = clientValidationRelaxations;
+            return this;
+        }
+
+        /**
+         * @param clientValidationRelaxations List of validation relaxations to apply when validating client certificates.
+         * Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+         * and must be empty for all other clientValidationMode values.
+         * Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientValidationRelaxations(List<String> clientValidationRelaxations) {
+            return clientValidationRelaxations(Output.of(clientValidationRelaxations));
+        }
+
+        /**
+         * @param clientValidationRelaxations List of validation relaxations to apply when validating client certificates.
+         * Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+         * and must be empty for all other clientValidationMode values.
+         * Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientValidationRelaxations(String... clientValidationRelaxations) {
+            return clientValidationRelaxations(List.of(clientValidationRelaxations));
         }
 
         /**

@@ -46,6 +46,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<string>? Likelihood { get; set; }
 
         /// <summary>
+        /// Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("metadataKeyValueExpression")]
+        public Input<Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs>? MetadataKeyValueExpression { get; set; }
+
+        /// <summary>
         /// Regular expression which defines the rule.
         /// Structure is documented below.
         /// </summary>

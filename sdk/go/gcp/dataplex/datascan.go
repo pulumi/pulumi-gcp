@@ -121,6 +121,7 @@ import (
 //						},
 //					},
 //					CatalogPublishingEnabled: pulumi.Bool(true),
+//					Mode:                     pulumi.String("STANDARD"),
 //				},
 //				Project: pulumi.String("my-project-name"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -281,6 +282,12 @@ import (
 //								"priority": pulumi.String("high"),
 //							},
 //							NonNullExpectation: &dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs{},
+//							DebugQueries: dataplex.DatascanDataQualitySpecRuleDebugQueryArray{
+//								&dataplex.DatascanDataQualitySpecRuleDebugQueryArgs{
+//									Description:  pulumi.String("test debug query description"),
+//									SqlStatement: pulumi.String("select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where address is null"),
+//								},
+//							},
 //						},
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
 //							Column:     pulumi.String("council_district"),
@@ -724,6 +731,9 @@ import (
 //				DataDocumentationSpec: &dataplex.DatascanDataDocumentationSpecArgs{
 //					CatalogPublishingEnabled: pulumi.Bool(true),
 //					SqlDialect:               pulumi.String("GOOGLE_SQL"),
+//					GenerationScopes: pulumi.StringArray{
+//						pulumi.String("ALL"),
+//					},
 //				},
 //				Project: pulumi.String("my-project-name"),
 //			})

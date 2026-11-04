@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryDockerConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryMavenConfigArgs;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryPlatformLogsConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryVirtualRepositoryConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryVulnerabilityScanningConfigArgs;
@@ -117,6 +118,23 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * If this is true, an unspecified repo type will be treated as error rather
+     * than defaulting to standard.
+     * 
+     */
+    @Import(name="disallowUnspecifiedMode")
+    private @Nullable Output<Boolean> disallowUnspecifiedMode;
+
+    /**
+     * @return If this is true, an unspecified repo type will be treated as error rather
+     * than defaulting to standard.
+     * 
+     */
+    public Optional<Output<Boolean>> disallowUnspecifiedMode() {
+        return Optional.ofNullable(this.disallowUnspecifiedMode);
     }
 
     /**
@@ -305,6 +323,23 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for platform logs.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="platformLogsConfig")
+    private @Nullable Output<RepositoryPlatformLogsConfigArgs> platformLogsConfig;
+
+    /**
+     * @return Configuration for platform logs.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryPlatformLogsConfigArgs>> platformLogsConfig() {
+        return Optional.ofNullable(this.platformLogsConfig);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -444,6 +479,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
+        this.disallowUnspecifiedMode = $.disallowUnspecifiedMode;
         this.dockerConfig = $.dockerConfig;
         this.effectiveLabels = $.effectiveLabels;
         this.format = $.format;
@@ -453,6 +489,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         this.mavenConfig = $.mavenConfig;
         this.mode = $.mode;
         this.name = $.name;
+        this.platformLogsConfig = $.platformLogsConfig;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.registryUri = $.registryUri;
@@ -618,6 +655,29 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disallowUnspecifiedMode If this is true, an unspecified repo type will be treated as error rather
+         * than defaulting to standard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disallowUnspecifiedMode(@Nullable Output<Boolean> disallowUnspecifiedMode) {
+            $.disallowUnspecifiedMode = disallowUnspecifiedMode;
+            return this;
+        }
+
+        /**
+         * @param disallowUnspecifiedMode If this is true, an unspecified repo type will be treated as error rather
+         * than defaulting to standard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disallowUnspecifiedMode(Boolean disallowUnspecifiedMode) {
+            return disallowUnspecifiedMode(Output.of(disallowUnspecifiedMode));
         }
 
         /**
@@ -857,6 +917,29 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param platformLogsConfig Configuration for platform logs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder platformLogsConfig(@Nullable Output<RepositoryPlatformLogsConfigArgs> platformLogsConfig) {
+            $.platformLogsConfig = platformLogsConfig;
+            return this;
+        }
+
+        /**
+         * @param platformLogsConfig Configuration for platform logs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder platformLogsConfig(RepositoryPlatformLogsConfigArgs platformLogsConfig) {
+            return platformLogsConfig(Output.of(platformLogsConfig));
         }
 
         /**

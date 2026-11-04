@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
     public sealed class TemplateFilterConfig
     {
         /// <summary>
+        /// Settings for customizing filter rules. Note: This field is not supported in
+        /// FloorSetting and Streaming Sanitization APIs.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TemplateFilterConfigFilterRuleSettings? FilterRuleSettings;
+        /// <summary>
         /// Malicious URI filter settings.
         /// Structure is documented below.
         /// </summary>
@@ -36,6 +42,8 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
 
         [OutputConstructor]
         private TemplateFilterConfig(
+            Outputs.TemplateFilterConfigFilterRuleSettings? filterRuleSettings,
+
             Outputs.TemplateFilterConfigMaliciousUriFilterSettings? maliciousUriFilterSettings,
 
             Outputs.TemplateFilterConfigPiAndJailbreakFilterSettings? piAndJailbreakFilterSettings,
@@ -44,6 +52,7 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
 
             Outputs.TemplateFilterConfigSdpSettings? sdpSettings)
         {
+            FilterRuleSettings = filterRuleSettings;
             MaliciousUriFilterSettings = maliciousUriFilterSettings;
             PiAndJailbreakFilterSettings = piAndJailbreakFilterSettings;
             RaiSettings = raiSettings;

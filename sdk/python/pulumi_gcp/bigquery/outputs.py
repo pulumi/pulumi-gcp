@@ -46,6 +46,8 @@ __all__ = [
     'DataTransferConfigEmailPreferences',
     'DataTransferConfigEncryptionConfiguration',
     'DataTransferConfigScheduleOptions',
+    'DataTransferConfigScheduleOptionsV2',
+    'DataTransferConfigScheduleOptionsV2EventDrivenSchedule',
     'DataTransferConfigSensitiveParams',
     'DataTransferDataSourceEnrollmentParameter',
     'Datapolicyv2DataPolicyDataGovernanceTag',
@@ -1705,6 +1707,8 @@ class DataTransferConfigScheduleOptions(dict):
                scheduled at or after the end time. The end time can be changed at any
                moment. The time when a data transfer can be triggered manually is not
                limited by this option.
+               
+               <a name="nested_schedule_options_v2"></a>The `schedule_options_v2` block supports:
         :param _builtins.str start_time: Specifies time to start scheduling transfer runs. The first run will be
                scheduled at or after the start time according to a recurrence pattern
                defined in the schedule string. The start time can be changed at any
@@ -1738,6 +1742,8 @@ class DataTransferConfigScheduleOptions(dict):
         scheduled at or after the end time. The end time can be changed at any
         moment. The time when a data transfer can be triggered manually is not
         limited by this option.
+
+        <a name="nested_schedule_options_v2"></a>The `schedule_options_v2` block supports:
         """
         return pulumi.get(self, "end_time")
 
@@ -1752,6 +1758,82 @@ class DataTransferConfigScheduleOptions(dict):
         limited by this option.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class DataTransferConfigScheduleOptionsV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventDrivenSchedule":
+            suggest = "event_driven_schedule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataTransferConfigScheduleOptionsV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataTransferConfigScheduleOptionsV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataTransferConfigScheduleOptionsV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_driven_schedule: 'outputs.DataTransferConfigScheduleOptionsV2EventDrivenSchedule'):
+        """
+        :param 'DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs' event_driven_schedule: Event-driven transfer schedule options. If set, the transfer will be
+               scheduled upon events arriving.
+        """
+        pulumi.set(__self__, "event_driven_schedule", event_driven_schedule)
+
+    @_builtins.property
+    @pulumi.getter(name="eventDrivenSchedule")
+    def event_driven_schedule(self) -> 'outputs.DataTransferConfigScheduleOptionsV2EventDrivenSchedule':
+        """
+        Event-driven transfer schedule options. If set, the transfer will be
+        scheduled upon events arriving.
+        """
+        return pulumi.get(self, "event_driven_schedule")
+
+
+@pulumi.output_type
+class DataTransferConfigScheduleOptionsV2EventDrivenSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubSubscription":
+            suggest = "pubsub_subscription"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataTransferConfigScheduleOptionsV2EventDrivenSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataTransferConfigScheduleOptionsV2EventDrivenSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataTransferConfigScheduleOptionsV2EventDrivenSchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pubsub_subscription: _builtins.str):
+        """
+        :param _builtins.str pubsub_subscription: Pub/Sub subscription name used to receive events. Only the
+               Google Cloud Storage data source supports this option. Format:
+               projects/{project}/subscriptions/{subscription}.
+        """
+        pulumi.set(__self__, "pubsub_subscription", pubsub_subscription)
+
+    @_builtins.property
+    @pulumi.getter(name="pubsubSubscription")
+    def pubsub_subscription(self) -> _builtins.str:
+        """
+        Pub/Sub subscription name used to receive events. Only the
+        Google Cloud Storage data source supports this option. Format:
+        projects/{project}/subscriptions/{subscription}.
+        """
+        return pulumi.get(self, "pubsub_subscription")
 
 
 @pulumi.output_type

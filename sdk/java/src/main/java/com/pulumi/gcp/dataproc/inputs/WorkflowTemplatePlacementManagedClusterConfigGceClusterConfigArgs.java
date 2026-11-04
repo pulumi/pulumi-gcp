@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs;
@@ -49,6 +50,21 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     public Optional<Output<Map<String,String>>> metadata() {
         return Optional.ofNullable(this.metadata);
+    }
+
+    /**
+     * Multi-zone configuration for cluster instances. Structure is documented below.
+     * 
+     */
+    @Import(name="multiZoneConfig")
+    private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs> multiZoneConfig;
+
+    /**
+     * @return Multi-zone configuration for cluster instances. Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs>> multiZoneConfig() {
+        return Optional.ofNullable(this.multiZoneConfig);
     }
 
     /**
@@ -206,6 +222,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     private WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs $) {
         this.internalIpOnly = $.internalIpOnly;
         this.metadata = $.metadata;
+        this.multiZoneConfig = $.multiZoneConfig;
         this.network = $.network;
         this.nodeGroupAffinity = $.nodeGroupAffinity;
         this.privateIpv6GoogleAccess = $.privateIpv6GoogleAccess;
@@ -276,6 +293,27 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
          */
         public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
+        }
+
+        /**
+         * @param multiZoneConfig Multi-zone configuration for cluster instances. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiZoneConfig(@Nullable Output<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs> multiZoneConfig) {
+            $.multiZoneConfig = multiZoneConfig;
+            return this;
+        }
+
+        /**
+         * @param multiZoneConfig Multi-zone configuration for cluster instances. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiZoneConfig(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs multiZoneConfig) {
+            return multiZoneConfig(Output.of(multiZoneConfig));
         }
 
         /**

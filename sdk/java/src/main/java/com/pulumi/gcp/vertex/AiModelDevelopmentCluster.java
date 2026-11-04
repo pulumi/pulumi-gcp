@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
  *             .name("mdc-subnet")
  *             .ipCidrRange("10.0.0.0/24")
- *             .region("us-central1")
+ *             .region("us-east4")
  *             .network(net.id())
  *             .privateIpGoogleAccess(true)
  *             .build());
@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  * 
  *         var home = new Instance("home", InstanceArgs.builder()
  *             .name("mdc-home")
- *             .location("us-central1-b")
+ *             .location("us-east4-b")
  *             .tier("BASIC_HDD")
  *             .fileShares(InstanceFileSharesArgs.builder()
  *                 .capacityGb(1024)
@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  * 
  *         var data = new Instance("data", InstanceArgs.builder()
  *             .name("mdc-data")
- *             .location("us-central1-b")
+ *             .location("us-east4-b")
  *             .tier("BASIC_HDD")
  *             .fileShares(InstanceFileSharesArgs.builder()
  *                 .capacityGb(1024)
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  * 
  *         var res = new Reservation("res", ReservationArgs.builder()
  *             .name("mdc-res")
- *             .zone("us-central1-b")
+ *             .zone("us-east4-b")
  *             .specificReservationRequired(true)
  *             .specificReservation(ReservationSpecificReservationArgs.builder()
  *                 .count(1)
@@ -171,7 +171,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new AiModelDevelopmentCluster("default", AiModelDevelopmentClusterArgs.builder()
- *             .region("us-central1")
+ *             .region("us-east4")
  *             .modelDevelopmentClusterId("tftest")
  *             .displayName("tftest")
  *             .deletionPolicy("DELETE")
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  *             .nodePools(            
  *                 AiModelDevelopmentClusterNodePoolArgs.builder()
  *                     .id("compute")
- *                     .zone("us-central1-b")
+ *                     .zone("us-east4-b")
  *                     .provisioningModel("ON_DEMAND")
  *                     .nodeImage("projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113")
  *                     .startupScript("""
@@ -248,7 +248,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 AiModelDevelopmentClusterNodePoolArgs.builder()
  *                     .id("flexpool")
- *                     .zone("us-central1-b")
+ *                     .zone("us-east4-b")
  *                     .provisioningModel("FLEX_START")
  *                     .flexStartMaxDuration("3600s")
  *                     .nodeImage("projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113")
@@ -272,7 +272,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 AiModelDevelopmentClusterNodePoolArgs.builder()
  *                     .id("login")
- *                     .zone("us-central1-b")
+ *                     .zone("us-east4-b")
  *                     .provisioningModel("ON_DEMAND")
  *                     .nodeImage("projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113")
  *                     .startupScript("""
@@ -295,7 +295,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 AiModelDevelopmentClusterNodePoolArgs.builder()
  *                     .id("respool")
- *                     .zone("us-central1-b")
+ *                     .zone("us-east4-b")
  *                     .provisioningModel("RESERVATION")
  *                     .nodeImage("projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113")
  *                     .startupScript("""
@@ -326,6 +326,121 @@ import javax.annotation.Nullable;
  * 
  *     }}{@code
  * }}{@code
+ * }
+ * </pre>
+ * 
+ * ### Vertex Ai Model Development Cluster Gke
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Firewall;
+ * import com.pulumi.gcp.compute.FirewallArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+ * import com.pulumi.gcp.vertex.AiModelDevelopmentCluster;
+ * import com.pulumi.gcp.vertex.AiModelDevelopmentClusterArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiModelDevelopmentClusterNetworkArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiModelDevelopmentClusterOrchestratorSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiModelDevelopmentClusterNodePoolArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiModelDevelopmentClusterNodePoolBootDiskArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiModelDevelopmentClusterNodePoolMachineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiModelDevelopmentClusterNodePoolScalingSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var net = new Network("net", NetworkArgs.builder()
+ *             .name("mdc-gke-net")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
+ *             .name("mdc-gke-subnet")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-east1")
+ *             .network(net.id())
+ *             .privateIpGoogleAccess(true)
+ *             .build());
+ * 
+ *         var internal = new Firewall("internal", FirewallArgs.builder()
+ *             .name("mdc-gke-fw")
+ *             .network(net.name())
+ *             .direction("INGRESS")
+ *             .sourceRanges("10.0.0.0/24")
+ *             .allows(            
+ *                 FirewallAllowArgs.builder()
+ *                     .protocol("tcp")
+ *                     .ports("0-65535")
+ *                     .build(),
+ *                 FirewallAllowArgs.builder()
+ *                     .protocol("udp")
+ *                     .ports("0-65535")
+ *                     .build(),
+ *                 FirewallAllowArgs.builder()
+ *                     .protocol("icmp")
+ *                     .build())
+ *             .build());
+ * 
+ *         var default_ = new AiModelDevelopmentCluster("default", AiModelDevelopmentClusterArgs.builder()
+ *             .region("us-east1")
+ *             .modelDevelopmentClusterId("tftest-gke")
+ *             .displayName("tftest-gke")
+ *             .deletionPolicy("DELETE")
+ *             .labels(Map.of("env", "dev"))
+ *             .network(AiModelDevelopmentClusterNetworkArgs.builder()
+ *                 .network(net.id())
+ *                 .subnetwork(subnet.id())
+ *                 .build())
+ *             .orchestratorSpec(AiModelDevelopmentClusterOrchestratorSpecArgs.builder()
+ *                 .kubernetesSpec(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs.builder()
+ *                     .nodePoolIds("cpu1")
+ *                     .enableIpAlias(true)
+ *                     .publicAccessEndpointEnabled(true)
+ *                     .controlPlaneVersion("-")
+ *                     .nodePoolVersions(Map.of("cpu1", "-"))
+ *                     .build())
+ *                 .build())
+ *             .nodePools(AiModelDevelopmentClusterNodePoolArgs.builder()
+ *                 .id("cpu1")
+ *                 .zone("us-east1-b")
+ *                 .provisioningModel("ON_DEMAND")
+ *                 .bootDisk(AiModelDevelopmentClusterNodePoolBootDiskArgs.builder()
+ *                     .bootDiskSizeGb(100)
+ *                     .bootDiskType("pd-standard")
+ *                     .build())
+ *                 .machineSpec(AiModelDevelopmentClusterNodePoolMachineSpecArgs.builder()
+ *                     .machineType("n2-standard-4")
+ *                     .build())
+ *                 .scalingSpec(AiModelDevelopmentClusterNodePoolScalingSpecArgs.builder()
+ *                     .minNodeCount(1)
+ *                     .maxNodeCount(2)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(internal)
+ *                 .build());
+ * 
+ *     }
+ * }
  * }
  * </pre>
  * 
@@ -420,9 +535,14 @@ import javax.annotation.Nullable;
  * &lt;a name=&#34;nestedOrchestratorSpec&#34;&gt;&lt;/a&gt;The `orchestratorSpec` block supports:
  * 
  * * `slurmSpec` -
- *   (Optional)
- *   The Slurm orchestrator related spec of the cluster.
- *   Structure is documented below.
+ * (Optional)
+ * The Slurm orchestrator related spec of the cluster.
+ * Structure is documented below.
+ * 
+ * * `kubernetesSpec` -
+ * (Optional)
+ * The GKE orchestrator related spec of the cluster.
+ * Structure is documented below.
  * 
  * &lt;a name=&#34;nestedOrchestratorSpecSlurmSpec&#34;&gt;&lt;/a&gt;The `slurmSpec` block supports:
  * 
@@ -531,6 +651,44 @@ import javax.annotation.Nullable;
  * * `nodePoolIds` -
  * (Required)
  * Node pools for the slurm partition
+ * 
+ * &lt;a name=&#34;nestedOrchestratorSpecKubernetesSpec&#34;&gt;&lt;/a&gt;The `kubernetesSpec` block supports:
+ * 
+ * * `nodePoolIds` -
+ * (Optional)
+ * IDs of the NodePools to be included in this GKE cluster. These IDs must
+ * correspond to NodePools defined in the `nodePools` field.
+ * 
+ * * `enableIpAlias` -
+ * (Optional)
+ * Whether to enable IP alias.
+ * 
+ * * `publicAccessEndpointEnabled` -
+ * (Optional)
+ * Whether the GKE cluster&#39;s control plane endpoint is publicly accessible.
+ * If true, the cluster is created with a public access endpoint (i.e. the
+ * private cluster configuration is disabled). If false or unset, the cluster
+ * is created with only private control plane access by default.
+ * 
+ * * `controlPlaneVersion` -
+ * (Optional)
+ * The Kubernetes version of the GKE control plane.
+ * Accepted formats are minor version (for example, `&#34;1.30&#34;`), patch version
+ * (for example, `&#34;1.30.5&#34;`), full GKE release version (for example,
+ * `&#34;1.30.5-gke.1014001&#34;`), or `&#34;-&#34;` to use the service default version.
+ * Upgrades can advance at most one minor version at a time; downgrades are
+ * rejected.
+ * 
+ * * `nodePoolVersions` -
+ * (Optional)
+ * The Kubernetes versions for specific node pools, keyed by node pool ID.
+ * When specified, all node pool IDs in the cluster must be included.
+ * Accepted formats are minor version (for example, `&#34;1.30&#34;`), patch version
+ * (for example, `&#34;1.30.5&#34;`), full GKE release version (for example,
+ * `&#34;1.30.5-gke.1014001&#34;`), or `&#34;-&#34;` to align with the control plane version.
+ * Node pools cannot be newer than the control plane or more than 2 minor
+ * versions behind it; upgrades can advance at most one minor version at a
+ * time and downgrades are rejected.
  * 
  * &lt;a name=&#34;nestedLustreExportConfig&#34;&gt;&lt;/a&gt;The `lustreExportConfig` block supports:
  * 
@@ -827,7 +985,10 @@ public class AiModelDevelopmentCluster extends com.pulumi.resources.CustomResour
         return this.network;
     }
     /**
-     * The spec of the pools of different resources.
+     * The spec of the pools of different resources. Node pools can be added,
+     * removed, or reordered in place; changing some fields on an existing node
+     * pool may require replacing the node pool (validated server-side by the
+     * API).
      * Structure is documented below.
      * 
      */
@@ -835,7 +996,10 @@ public class AiModelDevelopmentCluster extends com.pulumi.resources.CustomResour
     private Output<List<AiModelDevelopmentClusterNodePool>> nodePools;
 
     /**
-     * @return The spec of the pools of different resources.
+     * @return The spec of the pools of different resources. Node pools can be added,
+     * removed, or reordered in place; changing some fields on an existing node
+     * pool may require replacing the node pool (validated server-side by the
+     * API).
      * Structure is documented below.
      * 
      */

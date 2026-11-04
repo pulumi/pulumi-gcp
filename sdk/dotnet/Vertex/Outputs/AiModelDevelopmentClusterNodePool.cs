@@ -47,7 +47,9 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly string? FlexStartMaxDuration;
         /// <summary>
-        /// The unique ID referring to this node pool.
+        /// The unique ID referring to this node pool. Cannot be modified in
+        /// place on an existing node pool; changing `Id` updates the list of
+        /// node pools by adding/removing pools (validated server-side).
         /// </summary>
         public readonly string Id;
         /// <summary>

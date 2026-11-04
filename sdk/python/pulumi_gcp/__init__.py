@@ -9016,6 +9016,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "managedkafka/aclBinding",
+  "fqn": "pulumi_gcp.managedkafka",
+  "classes": {
+   "gcp:managedkafka/aclBinding:AclBinding": "AclBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "managedkafka/cluster",
   "fqn": "pulumi_gcp.managedkafka",
   "classes": {
@@ -10120,6 +10128,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "oracledatabase/odbDnsZone",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/odbDnsZone:OdbDnsZone": "OdbDnsZone"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "oracledatabase/odbNetwork",
   "fqn": "pulumi_gcp.oracledatabase",
   "classes": {
@@ -10780,6 +10796,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.secretmanager",
   "classes": {
    "gcp:secretmanager/regionalSecretIamPolicy:RegionalSecretIamPolicy": "RegionalSecretIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "secretmanager/regionalSecretManagedRotation",
+  "fqn": "pulumi_gcp.secretmanager",
+  "classes": {
+   "gcp:secretmanager/regionalSecretManagedRotation:RegionalSecretManagedRotation": "RegionalSecretManagedRotation"
   }
  },
  {
@@ -12372,6 +12396,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiTensorboardRun:AiTensorboardRun": "AiTensorboardRun"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiTrainingPipeline",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiTrainingPipeline:AiTrainingPipeline": "AiTrainingPipeline"
   }
  },
  {

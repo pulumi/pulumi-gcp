@@ -70,20 +70,21 @@ type LookupRegionalSecretResult struct {
 	EffectiveLabels            map[string]string                            `pulumi:"effectiveLabels"`
 	ExpireTime                 string                                       `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string                      `pulumi:"id"`
-	Labels            map[string]string           `pulumi:"labels"`
-	Location          string                      `pulumi:"location"`
-	Name              string                      `pulumi:"name"`
-	Project           *string                     `pulumi:"project"`
-	PulumiLabels      map[string]string           `pulumi:"pulumiLabels"`
-	Rotations         []GetRegionalSecretRotation `pulumi:"rotations"`
-	SecretId          string                      `pulumi:"secretId"`
-	SecretType        string                      `pulumi:"secretType"`
-	Tags              map[string]string           `pulumi:"tags"`
-	Topics            []GetRegionalSecretTopic    `pulumi:"topics"`
-	Ttl               string                      `pulumi:"ttl"`
-	VersionAliases    map[string]string           `pulumi:"versionAliases"`
-	VersionDestroyTtl string                      `pulumi:"versionDestroyTtl"`
+	Id                string                          `pulumi:"id"`
+	Labels            map[string]string               `pulumi:"labels"`
+	Location          string                          `pulumi:"location"`
+	Name              string                          `pulumi:"name"`
+	PolicyMembers     []GetRegionalSecretPolicyMember `pulumi:"policyMembers"`
+	Project           *string                         `pulumi:"project"`
+	PulumiLabels      map[string]string               `pulumi:"pulumiLabels"`
+	Rotations         []GetRegionalSecretRotation     `pulumi:"rotations"`
+	SecretId          string                          `pulumi:"secretId"`
+	SecretType        string                          `pulumi:"secretType"`
+	Tags              map[string]string               `pulumi:"tags"`
+	Topics            []GetRegionalSecretTopic        `pulumi:"topics"`
+	Ttl               string                          `pulumi:"ttl"`
+	VersionAliases    map[string]string               `pulumi:"versionAliases"`
+	VersionDestroyTtl string                          `pulumi:"versionDestroyTtl"`
 }
 
 func LookupRegionalSecretOutput(ctx *pulumi.Context, args LookupRegionalSecretOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalSecretResultOutput {
@@ -169,6 +170,10 @@ func (o LookupRegionalSecretResultOutput) Location() pulumi.StringOutput {
 
 func (o LookupRegionalSecretResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalSecretResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionalSecretResultOutput) PolicyMembers() GetRegionalSecretPolicyMemberArrayOutput {
+	return o.ApplyT(func(v LookupRegionalSecretResult) []GetRegionalSecretPolicyMember { return v.PolicyMembers }).(GetRegionalSecretPolicyMemberArrayOutput)
 }
 
 func (o LookupRegionalSecretResultOutput) Project() pulumi.StringPtrOutput {

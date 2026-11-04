@@ -85,6 +85,7 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *         catalogPublishingEnabled: true,
+ *         mode: "STANDARD",
  *     },
  *     project: "my-project-name",
  * }, {
@@ -196,6 +197,10 @@ import * as utilities from "../utilities";
  *                     priority: "high",
  *                 },
  *                 nonNullExpectation: {},
+ *                 debugQueries: [{
+ *                     description: "test debug query description",
+ *                     sqlStatement: "select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where address is null",
+ *                 }],
  *             },
  *             {
  *                 column: "council_district",
@@ -506,6 +511,7 @@ import * as utilities from "../utilities";
  *     dataDocumentationSpec: {
  *         catalogPublishingEnabled: true,
  *         sqlDialect: "GOOGLE_SQL",
+ *         generationScopes: ["ALL"],
  *     },
  *     project: "my-project-name",
  * });

@@ -1402,11 +1402,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1423,7 +1423,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-east1",
+            region="northamerica-south1",
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1461,11 +1461,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1478,7 +1478,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-east1",
+            region="northamerica-south1",
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1516,11 +1516,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1533,11 +1533,11 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-east1",
+            region="northamerica-south1",
             node_type="REDIS_SHARED_CORE_NANO",
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
-                "zone": "us-east1-b",
+                "zone": "northamerica-south1-a",
             },
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -1566,11 +1566,11 @@ class Cluster(pulumi.CustomResource):
         primary_cluster_consumer_subnet = gcp.compute.Subnetwork("primary_cluster_consumer_subnet",
             name="mysubnet-primary-cluster",
             ip_cidr_range="10.0.1.0/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         primary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp",
             name="mypolicy-primary-cluster",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="Primary cluster service connection policy",
             network=consumer_net.id,
@@ -1580,7 +1580,7 @@ class Cluster(pulumi.CustomResource):
         # Primary cluster
         primary_cluster = gcp.redis.Cluster("primary_cluster",
             name="my-primary-cluster",
-            region="us-east1",
+            region="northamerica-south1",
             psc_configs=[{
                 "network": consumer_net.id,
             }],
@@ -1687,11 +1687,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1704,7 +1704,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-east1",
+            region="northamerica-south1",
             replica_count=0,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1749,11 +1749,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1766,7 +1766,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-east1",
+            region="northamerica-south1",
             replica_count=0,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1810,11 +1810,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -1828,7 +1828,7 @@ class Cluster(pulumi.CustomResource):
                 "network": consumer_net.id,
             }],
             kms_key="my-key",
-            region="us-east1",
+            region="northamerica-south1",
             node_type="REDIS_SHARED_CORE_NANO",
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
@@ -1843,12 +1843,12 @@ class Cluster(pulumi.CustomResource):
 
         default = gcp.certificateauthority.CaPool("default",
             name="ca-pool",
-            location="us-east1",
+            location="northamerica-south1",
             tier="ENTERPRISE")
         default_authority = gcp.certificateauthority.Authority("default",
             pool=default.name,
             certificate_authority_id="ca-auth",
-            location="us-east1",
+            location="northamerica-south1",
             config={
                 "subject_config": {
                     "subject": {
@@ -1883,11 +1883,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="ca-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="ca-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             network=consumer_net.id,
             psc_config={
@@ -1896,7 +1896,7 @@ class Cluster(pulumi.CustomResource):
         test_cluster = gcp.redis.Cluster("test-cluster",
             name="ca-cluster",
             shard_count=1,
-            region="us-east1",
+            region="northamerica-south1",
             node_type="REDIS_SHARED_CORE_NANO",
             psc_configs=[{
                 "network": consumer_net.id,
@@ -2098,11 +2098,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2119,7 +2119,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-east1",
+            region="northamerica-south1",
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2157,11 +2157,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2174,7 +2174,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-east1",
+            region="northamerica-south1",
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2212,11 +2212,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2229,11 +2229,11 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-east1",
+            region="northamerica-south1",
             node_type="REDIS_SHARED_CORE_NANO",
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
-                "zone": "us-east1-b",
+                "zone": "northamerica-south1-a",
             },
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -2262,11 +2262,11 @@ class Cluster(pulumi.CustomResource):
         primary_cluster_consumer_subnet = gcp.compute.Subnetwork("primary_cluster_consumer_subnet",
             name="mysubnet-primary-cluster",
             ip_cidr_range="10.0.1.0/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         primary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp",
             name="mypolicy-primary-cluster",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="Primary cluster service connection policy",
             network=consumer_net.id,
@@ -2276,7 +2276,7 @@ class Cluster(pulumi.CustomResource):
         # Primary cluster
         primary_cluster = gcp.redis.Cluster("primary_cluster",
             name="my-primary-cluster",
-            region="us-east1",
+            region="northamerica-south1",
             psc_configs=[{
                 "network": consumer_net.id,
             }],
@@ -2383,11 +2383,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2400,7 +2400,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-east1",
+            region="northamerica-south1",
             replica_count=0,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2445,11 +2445,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2462,7 +2462,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs=[{
                 "network": consumer_net.id,
             }],
-            region="us-east1",
+            region="northamerica-south1",
             replica_count=0,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2506,11 +2506,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=consumer_net.id,
@@ -2524,7 +2524,7 @@ class Cluster(pulumi.CustomResource):
                 "network": consumer_net.id,
             }],
             kms_key="my-key",
-            region="us-east1",
+            region="northamerica-south1",
             node_type="REDIS_SHARED_CORE_NANO",
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
@@ -2539,12 +2539,12 @@ class Cluster(pulumi.CustomResource):
 
         default = gcp.certificateauthority.CaPool("default",
             name="ca-pool",
-            location="us-east1",
+            location="northamerica-south1",
             tier="ENTERPRISE")
         default_authority = gcp.certificateauthority.Authority("default",
             pool=default.name,
             certificate_authority_id="ca-auth",
-            location="us-east1",
+            location="northamerica-south1",
             config={
                 "subject_config": {
                     "subject": {
@@ -2579,11 +2579,11 @@ class Cluster(pulumi.CustomResource):
         consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
             name="ca-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-east1",
+            region="northamerica-south1",
             network=consumer_net.id)
         default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="ca-policy",
-            location="us-east1",
+            location="northamerica-south1",
             service_class="gcp-memorystore-redis",
             network=consumer_net.id,
             psc_config={
@@ -2592,7 +2592,7 @@ class Cluster(pulumi.CustomResource):
         test_cluster = gcp.redis.Cluster("test-cluster",
             name="ca-cluster",
             shard_count=1,
-            region="us-east1",
+            region="northamerica-south1",
             node_type="REDIS_SHARED_CORE_NANO",
             psc_configs=[{
                 "network": consumer_net.id,

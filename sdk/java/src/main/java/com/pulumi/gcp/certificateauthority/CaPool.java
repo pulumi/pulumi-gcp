@@ -97,6 +97,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedIssuanceModesArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyPassthroughExtensionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs;
@@ -168,6 +170,16 @@ import javax.annotation.Nullable;
  *                     .celExpression(CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs.builder()
  *                         .expression("subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )")
  *                         .title("My title")
+ *                         .build())
+ *                     .build())
+ *                 .passthroughExtensions(CaPoolIssuancePolicyPassthroughExtensionsArgs.builder()
+ *                     .knownExtensions(                    
+ *                         "EXTENDED_KEY_USAGE",
+ *                         "BASE_KEY_USAGE")
+ *                     .additionalExtensions(CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs.builder()
+ *                         .objectIdPaths(                        
+ *                             1,
+ *                             5)
  *                         .build())
  *                     .build())
  *                 .baselineValues(CaPoolIssuancePolicyBaselineValuesArgs.builder()

@@ -29,10 +29,25 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         /// <summary>
         /// When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
         /// Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-        /// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+        /// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
         /// </summary>
         [Input("clientValidationMode")]
         public Input<string>? ClientValidationMode { get; set; }
+
+        [Input("clientValidationRelaxations")]
+        private InputList<string>? _clientValidationRelaxations;
+
+        /// <summary>
+        /// List of validation relaxations to apply when validating client certificates.
+        /// Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+        /// and must be empty for all other clientValidationMode values.
+        /// Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+        /// </summary>
+        public InputList<string> ClientValidationRelaxations
+        {
+            get => _clientValidationRelaxations ?? (_clientValidationRelaxations = new InputList<string>());
+            set => _clientValidationRelaxations = value;
+        }
 
         /// <summary>
         /// Reference to the TrustConfig from certificatemanager.googleapis.com namespace.

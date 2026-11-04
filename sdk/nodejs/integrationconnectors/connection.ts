@@ -327,10 +327,18 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
+     * Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+     */
+    declare public readonly asyncOperationsEnabled: pulumi.Output<boolean | undefined>;
+    /**
      * authConfig for the connection.
      * Structure is documented below.
      */
     declare public readonly authConfig: pulumi.Output<outputs.integrationconnectors.ConnectionAuthConfig | undefined>;
+    /**
+     * Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+     */
+    declare public readonly authOverrideEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Config Variables for the connection.
      * Structure is documented below.
@@ -463,6 +471,11 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public readonly suspended: pulumi.Output<boolean | undefined>;
     /**
+     * Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+     * Structure is documented below.
+     */
+    declare public readonly trafficShapingConfigs: pulumi.Output<outputs.integrationconnectors.ConnectionTrafficShapingConfig[] | undefined>;
+    /**
      * Time the Namespace was updated in UTC.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -480,7 +493,9 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
+            resourceInputs["asyncOperationsEnabled"] = state?.asyncOperationsEnabled;
             resourceInputs["authConfig"] = state?.authConfig;
+            resourceInputs["authOverrideEnabled"] = state?.authOverrideEnabled;
             resourceInputs["configVariables"] = state?.configVariables;
             resourceInputs["connectionRevision"] = state?.connectionRevision;
             resourceInputs["connectorVersion"] = state?.connectorVersion;
@@ -508,6 +523,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["statuses"] = state?.statuses;
             resourceInputs["subscriptionType"] = state?.subscriptionType;
             resourceInputs["suspended"] = state?.suspended;
+            resourceInputs["trafficShapingConfigs"] = state?.trafficShapingConfigs;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
@@ -517,7 +533,9 @@ export class Connection extends pulumi.CustomResource {
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["asyncOperationsEnabled"] = args?.asyncOperationsEnabled;
             resourceInputs["authConfig"] = args?.authConfig;
+            resourceInputs["authOverrideEnabled"] = args?.authOverrideEnabled;
             resourceInputs["configVariables"] = args?.configVariables;
             resourceInputs["connectorVersion"] = args?.connectorVersion;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
@@ -535,6 +553,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["sslConfig"] = args?.sslConfig;
             resourceInputs["suspended"] = args?.suspended;
+            resourceInputs["trafficShapingConfigs"] = args?.trafficShapingConfigs;
             resourceInputs["connectionRevision"] = undefined /*out*/;
             resourceInputs["connectorVersionInfraConfigs"] = undefined /*out*/;
             resourceInputs["connectorVersionLaunchStage"] = undefined /*out*/;
@@ -559,10 +578,18 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
+     * Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+     */
+    asyncOperationsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * authConfig for the connection.
      * Structure is documented below.
      */
     authConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfig | undefined>;
+    /**
+     * Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+     */
+    authOverrideEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Config Variables for the connection.
      * Structure is documented below.
@@ -695,6 +722,11 @@ export interface ConnectionState {
      */
     suspended?: pulumi.Input<boolean | undefined>;
     /**
+     * Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+     * Structure is documented below.
+     */
+    trafficShapingConfigs?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionTrafficShapingConfig>[] | undefined>;
+    /**
      * Time the Namespace was updated in UTC.
      */
     updateTime?: pulumi.Input<string | undefined>;
@@ -705,10 +737,18 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
+     * Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+     */
+    asyncOperationsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * authConfig for the connection.
      * Structure is documented below.
      */
     authConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfig | undefined>;
+    /**
+     * Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+     */
+    authOverrideEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Config Variables for the connection.
      * Structure is documented below.
@@ -794,4 +834,9 @@ export interface ConnectionArgs {
      * Suspended indicates if a user has suspended a connection or not.
      */
     suspended?: pulumi.Input<boolean | undefined>;
+    /**
+     * Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+     * Structure is documented below.
+     */
+    trafficShapingConfigs?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionTrafficShapingConfig>[] | undefined>;
 }

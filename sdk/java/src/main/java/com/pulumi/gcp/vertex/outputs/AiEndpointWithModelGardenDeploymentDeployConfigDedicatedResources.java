@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec;
 import com.pulumi.gcp.vertex.outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec;
+import com.pulumi.gcp.vertex.outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -39,6 +40,18 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
      */
     private @Nullable List<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec> autoscalingMetricSpecs;
     /**
+     * @return (Optional, Beta)
+     * Number of initial replicas being deployed on when scaling the workload up
+     * from zero or when creating the workload in case minReplicaCount = 0.
+     * When minReplicaCount &gt; 0 (meaning that the scale-to-zero feature is not
+     * enabled), initialReplicaCount should not be set. When minReplicaCount
+     * = 0 (meaning that the scale-to-zero feature is enabled),
+     * initialReplicaCount should be larger than zero, but no greater than
+     * max_replica_count.
+     * 
+     */
+    private @Nullable Integer initialReplicaCount;
+    /**
      * @return Specification of a single machine.
      * Structure is documented below.
      * 
@@ -61,7 +74,8 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
     private @Nullable Integer maxReplicaCount;
     /**
      * @return The minimum number of machine replicas that will be always deployed on.
-     * This value must be greater than or equal to 1.
+     * This value must be greater than or equal to 1. To enable scale-to-zero
+     * (in beta), set this value to 0 and also set `initialReplicaCount`.
      * If traffic increases, it may dynamically be deployed onto more replicas,
      * and as traffic decreases, some of these extra replicas may be freed.
      * 
@@ -77,6 +91,13 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
      * 
      */
     private @Nullable Integer requiredReplicaCount;
+    /**
+     * @return (Optional, Beta)
+     * Specification for scale-to-zero feature.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec scaleToZeroSpec;
     /**
      * @return If true, schedule the deployment workload on [spot
      * VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
@@ -110,6 +131,20 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
         return this.autoscalingMetricSpecs == null ? List.of() : this.autoscalingMetricSpecs;
     }
     /**
+     * @return (Optional, Beta)
+     * Number of initial replicas being deployed on when scaling the workload up
+     * from zero or when creating the workload in case minReplicaCount = 0.
+     * When minReplicaCount &gt; 0 (meaning that the scale-to-zero feature is not
+     * enabled), initialReplicaCount should not be set. When minReplicaCount
+     * = 0 (meaning that the scale-to-zero feature is enabled),
+     * initialReplicaCount should be larger than zero, but no greater than
+     * max_replica_count.
+     * 
+     */
+    public Optional<Integer> initialReplicaCount() {
+        return Optional.ofNullable(this.initialReplicaCount);
+    }
+    /**
      * @return Specification of a single machine.
      * Structure is documented below.
      * 
@@ -136,7 +171,8 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
     }
     /**
      * @return The minimum number of machine replicas that will be always deployed on.
-     * This value must be greater than or equal to 1.
+     * This value must be greater than or equal to 1. To enable scale-to-zero
+     * (in beta), set this value to 0 and also set `initialReplicaCount`.
      * If traffic increases, it may dynamically be deployed onto more replicas,
      * and as traffic decreases, some of these extra replicas may be freed.
      * 
@@ -157,6 +193,15 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
         return Optional.ofNullable(this.requiredReplicaCount);
     }
     /**
+     * @return (Optional, Beta)
+     * Specification for scale-to-zero feature.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec> scaleToZeroSpec() {
+        return Optional.ofNullable(this.scaleToZeroSpec);
+    }
+    /**
      * @return If true, schedule the deployment workload on [spot
      * VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
      * 
@@ -175,19 +220,23 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec> autoscalingMetricSpecs;
+        private @Nullable Integer initialReplicaCount;
         private AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec machineSpec;
         private @Nullable Integer maxReplicaCount;
         private Integer minReplicaCount;
         private @Nullable Integer requiredReplicaCount;
+        private @Nullable AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec scaleToZeroSpec;
         private @Nullable Boolean spot;
         public Builder() {}
         public Builder(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingMetricSpecs = defaults.autoscalingMetricSpecs;
+    	      this.initialReplicaCount = defaults.initialReplicaCount;
     	      this.machineSpec = defaults.machineSpec;
     	      this.maxReplicaCount = defaults.maxReplicaCount;
     	      this.minReplicaCount = defaults.minReplicaCount;
     	      this.requiredReplicaCount = defaults.requiredReplicaCount;
+    	      this.scaleToZeroSpec = defaults.scaleToZeroSpec;
     	      this.spot = defaults.spot;
         }
 
@@ -199,6 +248,12 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
         }
         public Builder autoscalingMetricSpecs(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec... autoscalingMetricSpecs) {
             return autoscalingMetricSpecs(List.of(autoscalingMetricSpecs));
+        }
+        @CustomType.Setter
+        public Builder initialReplicaCount(@Nullable Integer initialReplicaCount) {
+
+            this.initialReplicaCount = initialReplicaCount;
+            return this;
         }
         @CustomType.Setter
         public Builder machineSpec(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec machineSpec) {
@@ -229,6 +284,12 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
             return this;
         }
         @CustomType.Setter
+        public Builder scaleToZeroSpec(@Nullable AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec scaleToZeroSpec) {
+
+            this.scaleToZeroSpec = scaleToZeroSpec;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spot(@Nullable Boolean spot) {
 
             this.spot = spot;
@@ -237,10 +298,12 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
         public AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources build() {
             final var _resultValue = new AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources();
             _resultValue.autoscalingMetricSpecs = autoscalingMetricSpecs;
+            _resultValue.initialReplicaCount = initialReplicaCount;
             _resultValue.machineSpec = machineSpec;
             _resultValue.maxReplicaCount = maxReplicaCount;
             _resultValue.minReplicaCount = minReplicaCount;
             _resultValue.requiredReplicaCount = requiredReplicaCount;
+            _resultValue.scaleToZeroSpec = scaleToZeroSpec;
             _resultValue.spot = spot;
             return _resultValue;
         }

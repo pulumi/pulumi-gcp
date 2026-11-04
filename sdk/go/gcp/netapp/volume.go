@@ -204,6 +204,9 @@ type Volume struct {
 	// Settings for volumes with SMB access.
 	// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
 	SmbSettings pulumi.StringArrayOutput `pulumi:"smbSettings"`
+	// Optional. Snap_reserve specifies percentage of volume storage reserved for
+	// snapshot storage. Default is 0 percent.
+	SnapReserve pulumi.Float64PtrOutput `pulumi:"snapReserve"`
 	// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
 	SnapshotDirectory pulumi.BoolPtrOutput `pulumi:"snapshotDirectory"`
 	// Snapshot policy defines the schedule for automatic snapshot creation.
@@ -384,6 +387,9 @@ type volumeState struct {
 	// Settings for volumes with SMB access.
 	// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
 	SmbSettings []string `pulumi:"smbSettings"`
+	// Optional. Snap_reserve specifies percentage of volume storage reserved for
+	// snapshot storage. Default is 0 percent.
+	SnapReserve *float64 `pulumi:"snapReserve"`
 	// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
 	SnapshotDirectory *bool `pulumi:"snapshotDirectory"`
 	// Snapshot policy defines the schedule for automatic snapshot creation.
@@ -518,6 +524,9 @@ type VolumeState struct {
 	// Settings for volumes with SMB access.
 	// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
 	SmbSettings pulumi.StringArrayInput
+	// Optional. Snap_reserve specifies percentage of volume storage reserved for
+	// snapshot storage. Default is 0 percent.
+	SnapReserve pulumi.Float64PtrInput
 	// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
 	SnapshotDirectory pulumi.BoolPtrInput
 	// Snapshot policy defines the schedule for automatic snapshot creation.
@@ -624,6 +633,9 @@ type volumeArgs struct {
 	// Settings for volumes with SMB access.
 	// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
 	SmbSettings []string `pulumi:"smbSettings"`
+	// Optional. Snap_reserve specifies percentage of volume storage reserved for
+	// snapshot storage. Default is 0 percent.
+	SnapReserve *float64 `pulumi:"snapReserve"`
 	// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
 	SnapshotDirectory *bool `pulumi:"snapshotDirectory"`
 	// Snapshot policy defines the schedule for automatic snapshot creation.
@@ -719,6 +731,9 @@ type VolumeArgs struct {
 	// Settings for volumes with SMB access.
 	// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
 	SmbSettings pulumi.StringArrayInput
+	// Optional. Snap_reserve specifies percentage of volume storage reserved for
+	// snapshot storage. Default is 0 percent.
+	SnapReserve pulumi.Float64PtrInput
 	// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
 	SnapshotDirectory pulumi.BoolPtrInput
 	// Snapshot policy defines the schedule for automatic snapshot creation.
@@ -1041,6 +1056,12 @@ func (o VolumeOutput) ShareName() pulumi.StringPtrOutput {
 // Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
 func (o VolumeOutput) SmbSettings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringArrayOutput { return v.SmbSettings }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Snap_reserve specifies percentage of volume storage reserved for
+// snapshot storage. Default is 0 percent.
+func (o VolumeOutput) SnapReserve() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.Float64PtrOutput { return v.SnapReserve }).(pulumi.Float64PtrOutput)
 }
 
 // If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.

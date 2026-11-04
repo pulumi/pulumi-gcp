@@ -28,6 +28,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations? RecordTransformations;
+        /// <summary>
+        /// Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling? TransformationErrorHandling;
 
         [OutputConstructor]
         private PreventionDeidentifyTemplateDeidentifyConfig(
@@ -35,11 +40,14 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations? infoTypeTransformations,
 
-            Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations? recordTransformations)
+            Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations? recordTransformations,
+
+            Outputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling? transformationErrorHandling)
         {
             ImageTransformations = imageTransformations;
             InfoTypeTransformations = infoTypeTransformations;
             RecordTransformations = recordTransformations;
+            TransformationErrorHandling = transformationErrorHandling;
         }
     }
 }

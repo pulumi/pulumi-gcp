@@ -27,12 +27,14 @@ class RepositoryArgs:
                  cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disallow_unspecified_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  docker_config: pulumi.Input[Optional['RepositoryDockerConfigArgs']] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  maven_config: pulumi.Input[Optional['RepositoryMavenConfigArgs']] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform_logs_config: pulumi.Input[Optional['RepositoryPlatformLogsConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_repository_config: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigArgs']] = None,
                  virtual_repository_config: pulumi.Input[Optional['RepositoryVirtualRepositoryConfigArgs']] = None,
@@ -60,6 +62,8 @@ class RepositoryArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-provided description of the repository.
+        :param pulumi.Input[_builtins.bool] disallow_unspecified_mode: If this is true, an unspecified repo type will be treated as error rather
+               than defaulting to standard.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
@@ -87,6 +91,8 @@ class RepositoryArgs:
         :param pulumi.Input[_builtins.str] mode: The mode configures the repository to serve artifacts from different sources.
                Default value is `STANDARD_REPOSITORY`.
                Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
+        :param pulumi.Input['RepositoryPlatformLogsConfigArgs'] platform_logs_config: Configuration for platform logs.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
@@ -106,6 +112,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disallow_unspecified_mode is not None:
+            pulumi.set(__self__, "disallow_unspecified_mode", disallow_unspecified_mode)
         if docker_config is not None:
             pulumi.set(__self__, "docker_config", docker_config)
         if kms_key_name is not None:
@@ -118,6 +126,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "maven_config", maven_config)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if platform_logs_config is not None:
+            pulumi.set(__self__, "platform_logs_config", platform_logs_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if remote_repository_config is not None:
@@ -214,6 +224,19 @@ class RepositoryArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="disallowUnspecifiedMode")
+    def disallow_unspecified_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If this is true, an unspecified repo type will be treated as error rather
+        than defaulting to standard.
+        """
+        return pulumi.get(self, "disallow_unspecified_mode")
+
+    @disallow_unspecified_mode.setter
+    def disallow_unspecified_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disallow_unspecified_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="dockerConfig")
     def docker_config(self) -> pulumi.Input[Optional['RepositoryDockerConfigArgs']]:
         """
@@ -307,6 +330,19 @@ class RepositoryArgs:
         pulumi.set(self, "mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="platformLogsConfig")
+    def platform_logs_config(self) -> pulumi.Input[Optional['RepositoryPlatformLogsConfigArgs']]:
+        """
+        Configuration for platform logs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "platform_logs_config")
+
+    @platform_logs_config.setter
+    def platform_logs_config(self, value: pulumi.Input[Optional['RepositoryPlatformLogsConfigArgs']]):
+        pulumi.set(self, "platform_logs_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -367,6 +403,7 @@ class _RepositoryState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disallow_unspecified_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  docker_config: pulumi.Input[Optional['RepositoryDockerConfigArgs']] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -376,6 +413,7 @@ class _RepositoryState:
                  maven_config: pulumi.Input[Optional['RepositoryMavenConfigArgs']] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform_logs_config: pulumi.Input[Optional['RepositoryPlatformLogsConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  registry_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -402,6 +440,8 @@ class _RepositoryState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-provided description of the repository.
+        :param pulumi.Input[_builtins.bool] disallow_unspecified_mode: If this is true, an unspecified repo type will be treated as error rather
+               than defaulting to standard.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -436,6 +476,8 @@ class _RepositoryState:
                Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         :param pulumi.Input[_builtins.str] name: The name of the repository, for example:
                "repo1"
+        :param pulumi.Input['RepositoryPlatformLogsConfigArgs'] platform_logs_config: Configuration for platform logs.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -461,6 +503,8 @@ class _RepositoryState:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disallow_unspecified_mode is not None:
+            pulumi.set(__self__, "disallow_unspecified_mode", disallow_unspecified_mode)
         if docker_config is not None:
             pulumi.set(__self__, "docker_config", docker_config)
         if effective_labels is not None:
@@ -479,6 +523,8 @@ class _RepositoryState:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if platform_logs_config is not None:
+            pulumi.set(__self__, "platform_logs_config", platform_logs_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -565,6 +611,19 @@ class _RepositoryState:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disallowUnspecifiedMode")
+    def disallow_unspecified_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If this is true, an unspecified repo type will be treated as error rather
+        than defaulting to standard.
+        """
+        return pulumi.get(self, "disallow_unspecified_mode")
+
+    @disallow_unspecified_mode.setter
+    def disallow_unspecified_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disallow_unspecified_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerConfig")
@@ -700,6 +759,19 @@ class _RepositoryState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="platformLogsConfig")
+    def platform_logs_config(self) -> pulumi.Input[Optional['RepositoryPlatformLogsConfigArgs']]:
+        """
+        Configuration for platform logs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "platform_logs_config")
+
+    @platform_logs_config.setter
+    def platform_logs_config(self, value: pulumi.Input[Optional['RepositoryPlatformLogsConfigArgs']]):
+        pulumi.set(self, "platform_logs_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -812,6 +884,7 @@ class Repository(pulumi.CustomResource):
                  cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disallow_unspecified_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -819,6 +892,7 @@ class Repository(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  maven_config: pulumi.Input[Optional[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict', 'outputs.RepositoryMavenConfig']]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform_logs_config: pulumi.Input[Optional[Union['RepositoryPlatformLogsConfigArgs', 'RepositoryPlatformLogsConfigArgsDict', 'outputs.RepositoryPlatformLogsConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_repository_config: pulumi.Input[Optional[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict', 'outputs.RepositoryRemoteRepositoryConfig']]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1463,6 +1537,8 @@ class Repository(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-provided description of the repository.
+        :param pulumi.Input[_builtins.bool] disallow_unspecified_mode: If this is true, an unspecified repo type will be treated as error rather
+               than defaulting to standard.
         :param pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] format: The format of packages that are stored in the repository. Supported formats
@@ -1494,6 +1570,8 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mode: The mode configures the repository to serve artifacts from different sources.
                Default value is `STANDARD_REPOSITORY`.
                Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
+        :param pulumi.Input[Union['RepositoryPlatformLogsConfigArgs', 'RepositoryPlatformLogsConfigArgsDict', 'outputs.RepositoryPlatformLogsConfig']] platform_logs_config: Configuration for platform logs.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict', 'outputs.RepositoryRemoteRepositoryConfig']] remote_repository_config: Configuration specific for a Remote Repository.
@@ -2152,6 +2230,7 @@ class Repository(pulumi.CustomResource):
                  cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disallow_unspecified_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2159,6 +2238,7 @@ class Repository(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  maven_config: pulumi.Input[Optional[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict', 'outputs.RepositoryMavenConfig']]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform_logs_config: pulumi.Input[Optional[Union['RepositoryPlatformLogsConfigArgs', 'RepositoryPlatformLogsConfigArgsDict', 'outputs.RepositoryPlatformLogsConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_repository_config: pulumi.Input[Optional[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict', 'outputs.RepositoryRemoteRepositoryConfig']]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2177,6 +2257,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["cleanup_policy_dry_run"] = cleanup_policy_dry_run
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
+            __props__.__dict__["disallow_unspecified_mode"] = disallow_unspecified_mode
             __props__.__dict__["docker_config"] = docker_config
             if format is None and not opts.urn:
                 raise TypeError("Missing required property 'format'")
@@ -2186,6 +2267,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["maven_config"] = maven_config
             __props__.__dict__["mode"] = mode
+            __props__.__dict__["platform_logs_config"] = platform_logs_config
             __props__.__dict__["project"] = project
             __props__.__dict__["remote_repository_config"] = remote_repository_config
             if repository_id is None and not opts.urn:
@@ -2216,6 +2298,7 @@ class Repository(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            disallow_unspecified_mode: pulumi.Input[Optional[_builtins.bool]] = None,
             docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2225,6 +2308,7 @@ class Repository(pulumi.CustomResource):
             maven_config: pulumi.Input[Optional[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict', 'outputs.RepositoryMavenConfig']]] = None,
             mode: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            platform_logs_config: pulumi.Input[Optional[Union['RepositoryPlatformLogsConfigArgs', 'RepositoryPlatformLogsConfigArgsDict', 'outputs.RepositoryPlatformLogsConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             registry_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2255,6 +2339,8 @@ class Repository(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-provided description of the repository.
+        :param pulumi.Input[_builtins.bool] disallow_unspecified_mode: If this is true, an unspecified repo type will be treated as error rather
+               than defaulting to standard.
         :param pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -2289,6 +2375,8 @@ class Repository(pulumi.CustomResource):
                Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         :param pulumi.Input[_builtins.str] name: The name of the repository, for example:
                "repo1"
+        :param pulumi.Input[Union['RepositoryPlatformLogsConfigArgs', 'RepositoryPlatformLogsConfigArgsDict', 'outputs.RepositoryPlatformLogsConfig']] platform_logs_config: Configuration for platform logs.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -2313,6 +2401,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
+        __props__.__dict__["disallow_unspecified_mode"] = disallow_unspecified_mode
         __props__.__dict__["docker_config"] = docker_config
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["format"] = format
@@ -2322,6 +2411,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["maven_config"] = maven_config
         __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
+        __props__.__dict__["platform_logs_config"] = platform_logs_config
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["registry_uri"] = registry_uri
@@ -2381,6 +2471,15 @@ class Repository(pulumi.CustomResource):
         The user-provided description of the repository.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="disallowUnspecifiedMode")
+    def disallow_unspecified_mode(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If this is true, an unspecified repo type will be treated as error rather
+        than defaulting to standard.
+        """
+        return pulumi.get(self, "disallow_unspecified_mode")
 
     @_builtins.property
     @pulumi.getter(name="dockerConfig")
@@ -2478,6 +2577,15 @@ class Repository(pulumi.CustomResource):
         "repo1"
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="platformLogsConfig")
+    def platform_logs_config(self) -> pulumi.Output[Optional['outputs.RepositoryPlatformLogsConfig']]:
+        """
+        Configuration for platform logs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "platform_logs_config")
 
     @_builtins.property
     @pulumi.getter

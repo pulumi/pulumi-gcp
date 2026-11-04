@@ -375,6 +375,8 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs',
     'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs',
@@ -409,6 +411,8 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs',
@@ -433,6 +437,8 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs',
@@ -459,6 +465,8 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgsDict',
 ]
 
 class AutoscalingPolicyBasicAlgorithmArgsDict(TypedDict):
@@ -15322,7 +15330,7 @@ class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
     """
     gce_cluster_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict']]]
     """
-    The shared Compute Engine config settings for all instances in a cluster.
+    The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
     """
     gke_cluster_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgsDict']]]
     """
@@ -15340,6 +15348,10 @@ class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
     """
     The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
     """
+    master_flexible_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgsDict']]]
+    """
+    The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+    """
     metastore_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgsDict']]]
     """
     Metastore configuration.
@@ -15347,6 +15359,10 @@ class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
     secondary_worker_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict']]]
     """
     The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
+    """
+    secondary_worker_flexible_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgsDict']]]
+    """
+    The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
     """
     security_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict']]]
     """
@@ -15367,6 +15383,10 @@ class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
     worker_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict']]]
     """
     The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
+    """
+    worker_flexible_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgsDict']]]
+    """
+    The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
 
     ***
     """
@@ -15382,29 +15402,35 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
                  initialization_actions: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs']]]] = None,
                  lifecycle_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs']] = None,
                  master_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs']] = None,
+                 master_flexible_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs']] = None,
                  metastore_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs']] = None,
                  secondary_worker_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs']] = None,
+                 secondary_worker_flexible_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs']] = None,
                  security_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs']] = None,
                  software_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs']] = None,
                  staging_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  temp_bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 worker_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs']] = None):
+                 worker_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs']] = None,
+                 worker_flexible_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs']] = None):
         """
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs'] autoscaling_config: Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs'] encryption_config: Encryption settings for the cluster.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs'] endpoint_config: Port/endpoint configuration for this cluster
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs'] gce_cluster_config: The shared Compute Engine config settings for all instances in a cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs'] gce_cluster_config: The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs'] gke_cluster_config: The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs']]] initialization_actions: Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs'] lifecycle_config: Lifecycle setting for the cluster.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs'] master_config: The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs'] master_flexible_config: The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs'] metastore_config: Metastore configuration.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs'] secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs'] secondary_worker_flexible_config: The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs'] security_config: Security settings for the cluster.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs'] software_config: The config settings for software inside the cluster.
         :param pulumi.Input[_builtins.str] staging_bucket: A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
         :param pulumi.Input[_builtins.str] temp_bucket: A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs'] worker_config: The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs'] worker_flexible_config: The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
                
                ***
         """
@@ -15424,10 +15450,14 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
             pulumi.set(__self__, "lifecycle_config", lifecycle_config)
         if master_config is not None:
             pulumi.set(__self__, "master_config", master_config)
+        if master_flexible_config is not None:
+            pulumi.set(__self__, "master_flexible_config", master_flexible_config)
         if metastore_config is not None:
             pulumi.set(__self__, "metastore_config", metastore_config)
         if secondary_worker_config is not None:
             pulumi.set(__self__, "secondary_worker_config", secondary_worker_config)
+        if secondary_worker_flexible_config is not None:
+            pulumi.set(__self__, "secondary_worker_flexible_config", secondary_worker_flexible_config)
         if security_config is not None:
             pulumi.set(__self__, "security_config", security_config)
         if software_config is not None:
@@ -15438,6 +15468,8 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
             pulumi.set(__self__, "temp_bucket", temp_bucket)
         if worker_config is not None:
             pulumi.set(__self__, "worker_config", worker_config)
+        if worker_flexible_config is not None:
+            pulumi.set(__self__, "worker_flexible_config", worker_flexible_config)
 
     @_builtins.property
     @pulumi.getter(name="autoscalingConfig")
@@ -15479,7 +15511,7 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
     @pulumi.getter(name="gceClusterConfig")
     def gce_cluster_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs']]:
         """
-        The shared Compute Engine config settings for all instances in a cluster.
+        The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
         """
         return pulumi.get(self, "gce_cluster_config")
 
@@ -15536,6 +15568,18 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
         pulumi.set(self, "master_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="masterFlexibleConfig")
+    def master_flexible_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs']]:
+        """
+        The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+        """
+        return pulumi.get(self, "master_flexible_config")
+
+    @master_flexible_config.setter
+    def master_flexible_config(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs']]):
+        pulumi.set(self, "master_flexible_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="metastoreConfig")
     def metastore_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs']]:
         """
@@ -15558,6 +15602,18 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
     @secondary_worker_config.setter
     def secondary_worker_config(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs']]):
         pulumi.set(self, "secondary_worker_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secondaryWorkerFlexibleConfig")
+    def secondary_worker_flexible_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs']]:
+        """
+        The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+        """
+        return pulumi.get(self, "secondary_worker_flexible_config")
+
+    @secondary_worker_flexible_config.setter
+    def secondary_worker_flexible_config(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs']]):
+        pulumi.set(self, "secondary_worker_flexible_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securityConfig")
@@ -15612,14 +15668,26 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
     def worker_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs']]:
         """
         The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
-
-        ***
         """
         return pulumi.get(self, "worker_config")
 
     @worker_config.setter
     def worker_config(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs']]):
         pulumi.set(self, "worker_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerFlexibleConfig")
+    def worker_flexible_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs']]:
+        """
+        The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
+
+        ***
+        """
+        return pulumi.get(self, "worker_flexible_config")
+
+    @worker_flexible_config.setter
+    def worker_flexible_config(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs']]):
+        pulumi.set(self, "worker_flexible_config", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgsDict(TypedDict):
@@ -15738,6 +15806,10 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict(Type
     """
     The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
     """
+    multi_zone_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgsDict']]]
+    """
+    Multi-zone configuration for cluster instances. Structure is documented below.
+    """
     network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
@@ -15784,6 +15856,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
     def __init__(__self__, *,
                  internal_ip_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 multi_zone_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs']] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group_affinity: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs']] = None,
                  private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
@@ -15797,6 +15870,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
         """
         :param pulumi.Input[_builtins.bool] internal_ip_only: If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs'] multi_zone_config: Multi-zone configuration for cluster instances. Structure is documented below.
         :param pulumi.Input[_builtins.str] network: The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs'] node_group_affinity: Node Group Affinity for sole-tenant clusters.
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
@@ -15812,6 +15886,8 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
             pulumi.set(__self__, "internal_ip_only", internal_ip_only)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if multi_zone_config is not None:
+            pulumi.set(__self__, "multi_zone_config", multi_zone_config)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if node_group_affinity is not None:
@@ -15856,6 +15932,18 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
     @metadata.setter
     def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter(name="multiZoneConfig")
+    def multi_zone_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs']]:
+        """
+        Multi-zone configuration for cluster instances. Structure is documented below.
+        """
+        return pulumi.get(self, "multi_zone_config")
+
+    @multi_zone_config.setter
+    def multi_zone_config(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs']]):
+        pulumi.set(self, "multi_zone_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -15976,6 +16064,35 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
     @zone.setter
     def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgsDict(TypedDict):
+    target_shape: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies the target shape of the cluster. Possible values: `TARGET_SHAPE_UNSPECIFIED`, `ANY`.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs:
+    def __init__(__self__, *,
+                 target_shape: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] target_shape: Specifies the target shape of the cluster. Possible values: `TARGET_SHAPE_UNSPECIFIED`, `ANY`.
+        """
+        if target_shape is not None:
+            pulumi.set(__self__, "target_shape", target_shape)
+
+    @_builtins.property
+    @pulumi.getter(name="targetShape")
+    def target_shape(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the target shape of the cluster. Possible values: `TARGET_SHAPE_UNSPECIFIED`, `ANY`.
+        """
+        return pulumi.get(self, "target_shape")
+
+    @target_shape.setter
+    def target_shape(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target_shape", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgsDict(TypedDict):
@@ -17404,6 +17521,95 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfi
         pulumi.set(self, "instance_template_name", value)
 
 
+class WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgsDict(TypedDict):
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the boot disk in GB for each instance in the instance group.
+    """
+    core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The core count for each instance in the instance group.
+    """
+    hardware_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+    """
+    num_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of instances in the instance group.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs:
+    def __init__(__self__, *,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 hardware_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_instances: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size of the boot disk in GB for each instance in the instance group.
+        :param pulumi.Input[_builtins.int] core_count: The core count for each instance in the instance group.
+        :param pulumi.Input[_builtins.str] hardware_class: The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+        :param pulumi.Input[_builtins.int] num_instances: Number of instances in the instance group.
+        """
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if core_count is not None:
+            pulumi.set(__self__, "core_count", core_count)
+        if hardware_class is not None:
+            pulumi.set(__self__, "hardware_class", hardware_class)
+        if num_instances is not None:
+            pulumi.set(__self__, "num_instances", num_instances)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the boot disk in GB for each instance in the instance group.
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="coreCount")
+    def core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The core count for each instance in the instance group.
+        """
+        return pulumi.get(self, "core_count")
+
+    @core_count.setter
+    def core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "core_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hardwareClass")
+    def hardware_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+        """
+        return pulumi.get(self, "hardware_class")
+
+    @hardware_class.setter
+    def hardware_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hardware_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numInstances")
+    def num_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of instances in the instance group.
+        """
+        return pulumi.get(self, "num_instances")
+
+    @num_instances.setter
+    def num_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_instances", value)
+
+
 class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgsDict(TypedDict):
     dataproc_metastore_service: pulumi.Input[_builtins.str]
     """
@@ -18543,6 +18749,95 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
     @instance_template_name.setter
     def instance_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_template_name", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgsDict(TypedDict):
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the boot disk in GB for each instance in the instance group.
+    """
+    core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The core count for each instance in the instance group.
+    """
+    hardware_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+    """
+    num_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of instances in the instance group.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs:
+    def __init__(__self__, *,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 hardware_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_instances: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size of the boot disk in GB for each instance in the instance group.
+        :param pulumi.Input[_builtins.int] core_count: The core count for each instance in the instance group.
+        :param pulumi.Input[_builtins.str] hardware_class: The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+        :param pulumi.Input[_builtins.int] num_instances: Number of instances in the instance group.
+        """
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if core_count is not None:
+            pulumi.set(__self__, "core_count", core_count)
+        if hardware_class is not None:
+            pulumi.set(__self__, "hardware_class", hardware_class)
+        if num_instances is not None:
+            pulumi.set(__self__, "num_instances", num_instances)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the boot disk in GB for each instance in the instance group.
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="coreCount")
+    def core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The core count for each instance in the instance group.
+        """
+        return pulumi.get(self, "core_count")
+
+    @core_count.setter
+    def core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "core_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hardwareClass")
+    def hardware_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+        """
+        return pulumi.get(self, "hardware_class")
+
+    @hardware_class.setter
+    def hardware_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hardware_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numInstances")
+    def num_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of instances in the instance group.
+        """
+        return pulumi.get(self, "num_instances")
+
+    @num_instances.setter
+    def num_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_instances", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict(TypedDict):
@@ -20036,5 +20331,94 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfi
     @instance_template_name.setter
     def instance_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_template_name", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgsDict(TypedDict):
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the boot disk in GB for each instance in the instance group.
+    """
+    core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The core count for each instance in the instance group.
+    """
+    hardware_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+    """
+    num_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of instances in the instance group.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs:
+    def __init__(__self__, *,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 hardware_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_instances: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size of the boot disk in GB for each instance in the instance group.
+        :param pulumi.Input[_builtins.int] core_count: The core count for each instance in the instance group.
+        :param pulumi.Input[_builtins.str] hardware_class: The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+        :param pulumi.Input[_builtins.int] num_instances: Number of instances in the instance group.
+        """
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if core_count is not None:
+            pulumi.set(__self__, "core_count", core_count)
+        if hardware_class is not None:
+            pulumi.set(__self__, "hardware_class", hardware_class)
+        if num_instances is not None:
+            pulumi.set(__self__, "num_instances", num_instances)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the boot disk in GB for each instance in the instance group.
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="coreCount")
+    def core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The core count for each instance in the instance group.
+        """
+        return pulumi.get(self, "core_count")
+
+    @core_count.setter
+    def core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "core_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hardwareClass")
+    def hardware_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+        """
+        return pulumi.get(self, "hardware_class")
+
+    @hardware_class.setter
+    def hardware_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hardware_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numInstances")
+    def num_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of instances in the instance group.
+        """
+        return pulumi.get(self, "num_instances")
+
+    @num_instances.setter
+    def num_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_instances", value)
 
 

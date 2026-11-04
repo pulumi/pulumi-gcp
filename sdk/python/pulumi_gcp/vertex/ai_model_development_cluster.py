@@ -40,7 +40,10 @@ class AiModelDevelopmentClusterArgs:
                This value should be 1-10 characters, and valid characters
                are `/^a-z?$/`. When using `slurm_spec`,
                hyphens are not allowed (`/^[a-z][a-z0-9]{0,9}$/`).
-        :param pulumi.Input[Sequence[pulumi.Input['AiModelDevelopmentClusterNodePoolArgs']]] node_pools: The spec of the pools of different resources.
+        :param pulumi.Input[Sequence[pulumi.Input['AiModelDevelopmentClusterNodePoolArgs']]] node_pools: The spec of the pools of different resources. Node pools can be added,
+               removed, or reordered in place; changing some fields on an existing node
+               pool may require replacing the node pool (validated server-side by the
+               API).
                Structure is documented below.
         :param pulumi.Input['AiModelDevelopmentClusterOrchestratorSpecArgs'] orchestrator_spec: The spec of the orchestrator. Only one orchestrator may be specified.
                Structure is documented below.
@@ -115,7 +118,10 @@ class AiModelDevelopmentClusterArgs:
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> pulumi.Input[Sequence[pulumi.Input['AiModelDevelopmentClusterNodePoolArgs']]]:
         """
-        The spec of the pools of different resources.
+        The spec of the pools of different resources. Node pools can be added,
+        removed, or reordered in place; changing some fields on an existing node
+        pool may require replacing the node pool (validated server-side by the
+        API).
         Structure is documented below.
         """
         return pulumi.get(self, "node_pools")
@@ -322,7 +328,10 @@ class _AiModelDevelopmentClusterState:
                `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
         :param pulumi.Input['AiModelDevelopmentClusterNetworkArgs'] network: Network spec of the cluster.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AiModelDevelopmentClusterNodePoolArgs']]] node_pools: The spec of the pools of different resources.
+        :param pulumi.Input[Sequence[pulumi.Input['AiModelDevelopmentClusterNodePoolArgs']]] node_pools: The spec of the pools of different resources. Node pools can be added,
+               removed, or reordered in place; changing some fields on an existing node
+               pool may require replacing the node pool (validated server-side by the
+               API).
                Structure is documented below.
         :param pulumi.Input['AiModelDevelopmentClusterOrchestratorSpecArgs'] orchestrator_spec: The spec of the orchestrator. Only one orchestrator may be specified.
                Structure is documented below.
@@ -546,7 +555,10 @@ class _AiModelDevelopmentClusterState:
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiModelDevelopmentClusterNodePoolArgs']]]]:
         """
-        The spec of the pools of different resources.
+        The spec of the pools of different resources. Node pools can be added,
+        removed, or reordered in place; changing some fields on an existing node
+        pool may require replacing the node pool (validated server-side by the
+        API).
         Structure is documented below.
         """
         return pulumi.get(self, "node_pools")
@@ -706,7 +718,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
         subnet = gcp.compute.Subnetwork("subnet",
             name="mdc-subnet",
             ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
+            region="us-east4",
             network=net.id,
             private_ip_google_access=True)
         internal = gcp.compute.Firewall("internal",
@@ -729,7 +741,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             ])
         home = gcp.filestore.Instance("home",
             name="mdc-home",
-            location="us-central1-b",
+            location="us-east4-b",
             tier="BASIC_HDD",
             file_shares={
                 "capacity_gb": 1024,
@@ -741,7 +753,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             }])
         data = gcp.filestore.Instance("data",
             name="mdc-data",
-            location="us-central1-b",
+            location="us-east4-b",
             tier="BASIC_HDD",
             file_shares={
                 "capacity_gb": 1024,
@@ -753,7 +765,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             }])
         res = gcp.compute.Reservation("res",
             name="mdc-res",
-            zone="us-central1-b",
+            zone="us-east4-b",
             specific_reservation_required=True,
             specific_reservation={
                 "count": 1,
@@ -762,7 +774,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                 },
             })
         default = gcp.vertex.AiModelDevelopmentCluster("default",
-            region="us-central1",
+            region="us-east4",
             model_development_cluster_id="tftest",
             display_name="tftest",
             deletion_policy="DELETE",
@@ -822,7 +834,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             node_pools=[
                 {
                     "id": "compute",
-                    "zone": "us-central1-b",
+                    "zone": "us-east4-b",
                     "provisioning_model": "ON_DEMAND",
                     "node_image": "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
                     "startup_script": \"\"\"#!/bin/bash
@@ -846,7 +858,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                 },
                 {
                     "id": "flexpool",
-                    "zone": "us-central1-b",
+                    "zone": "us-east4-b",
                     "provisioning_model": "FLEX_START",
                     "flex_start_max_duration": "3600s",
                     "node_image": "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
@@ -871,7 +883,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                 },
                 {
                     "id": "login",
-                    "zone": "us-central1-b",
+                    "zone": "us-east4-b",
                     "provisioning_model": "ON_DEMAND",
                     "node_image": "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
                     "startup_script": \"\"\"#!/bin/bash
@@ -895,7 +907,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                 },
                 {
                     "id": "respool",
-                    "zone": "us-central1-b",
+                    "zone": "us-east4-b",
                     "provisioning_model": "RESERVATION",
                     "node_image": "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
                     "startup_script": \"\"\"#!/bin/bash
@@ -922,6 +934,81 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                     },
                 },
             ],
+            opts = pulumi.ResourceOptions(depends_on=[internal]))
+        ```
+
+        ### Vertex Ai Model Development Cluster Gke
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net",
+            name="mdc-gke-net",
+            auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            name="mdc-gke-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-east1",
+            network=net.id,
+            private_ip_google_access=True)
+        internal = gcp.compute.Firewall("internal",
+            name="mdc-gke-fw",
+            network=net.name,
+            direction="INGRESS",
+            source_ranges=["10.0.0.0/24"],
+            allows=[
+                {
+                    "protocol": "tcp",
+                    "ports": ["0-65535"],
+                },
+                {
+                    "protocol": "udp",
+                    "ports": ["0-65535"],
+                },
+                {
+                    "protocol": "icmp",
+                },
+            ])
+        default = gcp.vertex.AiModelDevelopmentCluster("default",
+            region="us-east1",
+            model_development_cluster_id="tftest-gke",
+            display_name="tftest-gke",
+            deletion_policy="DELETE",
+            labels={
+                "env": "dev",
+            },
+            network={
+                "network": net.id,
+                "subnetwork": subnet.id,
+            },
+            orchestrator_spec={
+                "kubernetes_spec": {
+                    "node_pool_ids": ["cpu1"],
+                    "enable_ip_alias": True,
+                    "public_access_endpoint_enabled": True,
+                    "control_plane_version": "-",
+                    "node_pool_versions": {
+                        "cpu1": "-",
+                    },
+                },
+            },
+            node_pools=[{
+                "id": "cpu1",
+                "zone": "us-east1-b",
+                "provisioning_model": "ON_DEMAND",
+                "boot_disk": {
+                    "boot_disk_size_gb": 100,
+                    "boot_disk_type": "pd-standard",
+                },
+                "machine_spec": {
+                    "machine_type": "n2-standard-4",
+                },
+                "scaling_spec": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                },
+            }],
             opts = pulumi.ResourceOptions(depends_on=[internal]))
         ```
 
@@ -1016,9 +1103,14 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
         <a name="nested_orchestrator_spec"></a>The `orchestrator_spec` block supports:
 
         * `slurm_spec` -
-          (Optional)
-          The Slurm orchestrator related spec of the cluster.
-          Structure is documented below.
+        (Optional)
+        The Slurm orchestrator related spec of the cluster.
+        Structure is documented below.
+
+        * `kubernetes_spec` -
+        (Optional)
+        The GKE orchestrator related spec of the cluster.
+        Structure is documented below.
 
         <a name="nested_orchestrator_spec_slurm_spec"></a>The `slurm_spec` block supports:
 
@@ -1127,6 +1219,44 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
         * `node_pool_ids` -
         (Required)
         Node pools for the slurm partition
+
+        <a name="nested_orchestrator_spec_kubernetes_spec"></a>The `kubernetes_spec` block supports:
+
+        * `node_pool_ids` -
+        (Optional)
+        IDs of the NodePools to be included in this GKE cluster. These IDs must
+        correspond to NodePools defined in the `node_pools` field.
+
+        * `enable_ip_alias` -
+        (Optional)
+        Whether to enable IP alias.
+
+        * `public_access_endpoint_enabled` -
+        (Optional)
+        Whether the GKE cluster's control plane endpoint is publicly accessible.
+        If true, the cluster is created with a public access endpoint (i.e. the
+        private cluster configuration is disabled). If false or unset, the cluster
+        is created with only private control plane access by default.
+
+        * `control_plane_version` -
+        (Optional)
+        The Kubernetes version of the GKE control plane.
+        Accepted formats are minor version (for example, `"1.30"`), patch version
+        (for example, `"1.30.5"`), full GKE release version (for example,
+        `"1.30.5-gke.1014001"`), or `"-"` to use the service default version.
+        Upgrades can advance at most one minor version at a time; downgrades are
+        rejected.
+
+        * `node_pool_versions` -
+        (Optional)
+        The Kubernetes versions for specific node pools, keyed by node pool ID.
+        When specified, all node pool IDs in the cluster must be included.
+        Accepted formats are minor version (for example, `"1.30"`), patch version
+        (for example, `"1.30.5"`), full GKE release version (for example,
+        `"1.30.5-gke.1014001"`), or `"-"` to align with the control plane version.
+        Node pools cannot be newer than the control plane or more than 2 minor
+        versions behind it; upgrades can advance at most one minor version at a
+        time and downgrades are rejected.
 
         <a name="nested_lustre_export_config"></a>The `lustre_export_config` block supports:
 
@@ -1240,7 +1370,10 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                hyphens are not allowed (`/^[a-z][a-z0-9]{0,9}$/`).
         :param pulumi.Input[Union['AiModelDevelopmentClusterNetworkArgs', 'AiModelDevelopmentClusterNetworkArgsDict', 'outputs.AiModelDevelopmentClusterNetwork']] network: Network spec of the cluster.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiModelDevelopmentClusterNodePoolArgs', 'AiModelDevelopmentClusterNodePoolArgsDict', 'outputs.AiModelDevelopmentClusterNodePool']]]] node_pools: The spec of the pools of different resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiModelDevelopmentClusterNodePoolArgs', 'AiModelDevelopmentClusterNodePoolArgsDict', 'outputs.AiModelDevelopmentClusterNodePool']]]] node_pools: The spec of the pools of different resources. Node pools can be added,
+               removed, or reordered in place; changing some fields on an existing node
+               pool may require replacing the node pool (validated server-side by the
+               API).
                Structure is documented below.
         :param pulumi.Input[Union['AiModelDevelopmentClusterOrchestratorSpecArgs', 'AiModelDevelopmentClusterOrchestratorSpecArgsDict', 'outputs.AiModelDevelopmentClusterOrchestratorSpec']] orchestrator_spec: The spec of the orchestrator. Only one orchestrator may be specified.
                Structure is documented below.
@@ -1285,7 +1418,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
         subnet = gcp.compute.Subnetwork("subnet",
             name="mdc-subnet",
             ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
+            region="us-east4",
             network=net.id,
             private_ip_google_access=True)
         internal = gcp.compute.Firewall("internal",
@@ -1308,7 +1441,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             ])
         home = gcp.filestore.Instance("home",
             name="mdc-home",
-            location="us-central1-b",
+            location="us-east4-b",
             tier="BASIC_HDD",
             file_shares={
                 "capacity_gb": 1024,
@@ -1320,7 +1453,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             }])
         data = gcp.filestore.Instance("data",
             name="mdc-data",
-            location="us-central1-b",
+            location="us-east4-b",
             tier="BASIC_HDD",
             file_shares={
                 "capacity_gb": 1024,
@@ -1332,7 +1465,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             }])
         res = gcp.compute.Reservation("res",
             name="mdc-res",
-            zone="us-central1-b",
+            zone="us-east4-b",
             specific_reservation_required=True,
             specific_reservation={
                 "count": 1,
@@ -1341,7 +1474,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                 },
             })
         default = gcp.vertex.AiModelDevelopmentCluster("default",
-            region="us-central1",
+            region="us-east4",
             model_development_cluster_id="tftest",
             display_name="tftest",
             deletion_policy="DELETE",
@@ -1401,7 +1534,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             node_pools=[
                 {
                     "id": "compute",
-                    "zone": "us-central1-b",
+                    "zone": "us-east4-b",
                     "provisioning_model": "ON_DEMAND",
                     "node_image": "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
                     "startup_script": \"\"\"#!/bin/bash
@@ -1425,7 +1558,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                 },
                 {
                     "id": "flexpool",
-                    "zone": "us-central1-b",
+                    "zone": "us-east4-b",
                     "provisioning_model": "FLEX_START",
                     "flex_start_max_duration": "3600s",
                     "node_image": "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
@@ -1450,7 +1583,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                 },
                 {
                     "id": "login",
-                    "zone": "us-central1-b",
+                    "zone": "us-east4-b",
                     "provisioning_model": "ON_DEMAND",
                     "node_image": "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
                     "startup_script": \"\"\"#!/bin/bash
@@ -1474,7 +1607,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                 },
                 {
                     "id": "respool",
-                    "zone": "us-central1-b",
+                    "zone": "us-east4-b",
                     "provisioning_model": "RESERVATION",
                     "node_image": "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
                     "startup_script": \"\"\"#!/bin/bash
@@ -1501,6 +1634,81 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                     },
                 },
             ],
+            opts = pulumi.ResourceOptions(depends_on=[internal]))
+        ```
+
+        ### Vertex Ai Model Development Cluster Gke
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net",
+            name="mdc-gke-net",
+            auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            name="mdc-gke-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-east1",
+            network=net.id,
+            private_ip_google_access=True)
+        internal = gcp.compute.Firewall("internal",
+            name="mdc-gke-fw",
+            network=net.name,
+            direction="INGRESS",
+            source_ranges=["10.0.0.0/24"],
+            allows=[
+                {
+                    "protocol": "tcp",
+                    "ports": ["0-65535"],
+                },
+                {
+                    "protocol": "udp",
+                    "ports": ["0-65535"],
+                },
+                {
+                    "protocol": "icmp",
+                },
+            ])
+        default = gcp.vertex.AiModelDevelopmentCluster("default",
+            region="us-east1",
+            model_development_cluster_id="tftest-gke",
+            display_name="tftest-gke",
+            deletion_policy="DELETE",
+            labels={
+                "env": "dev",
+            },
+            network={
+                "network": net.id,
+                "subnetwork": subnet.id,
+            },
+            orchestrator_spec={
+                "kubernetes_spec": {
+                    "node_pool_ids": ["cpu1"],
+                    "enable_ip_alias": True,
+                    "public_access_endpoint_enabled": True,
+                    "control_plane_version": "-",
+                    "node_pool_versions": {
+                        "cpu1": "-",
+                    },
+                },
+            },
+            node_pools=[{
+                "id": "cpu1",
+                "zone": "us-east1-b",
+                "provisioning_model": "ON_DEMAND",
+                "boot_disk": {
+                    "boot_disk_size_gb": 100,
+                    "boot_disk_type": "pd-standard",
+                },
+                "machine_spec": {
+                    "machine_type": "n2-standard-4",
+                },
+                "scaling_spec": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                },
+            }],
             opts = pulumi.ResourceOptions(depends_on=[internal]))
         ```
 
@@ -1595,9 +1803,14 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
         <a name="nested_orchestrator_spec"></a>The `orchestrator_spec` block supports:
 
         * `slurm_spec` -
-          (Optional)
-          The Slurm orchestrator related spec of the cluster.
-          Structure is documented below.
+        (Optional)
+        The Slurm orchestrator related spec of the cluster.
+        Structure is documented below.
+
+        * `kubernetes_spec` -
+        (Optional)
+        The GKE orchestrator related spec of the cluster.
+        Structure is documented below.
 
         <a name="nested_orchestrator_spec_slurm_spec"></a>The `slurm_spec` block supports:
 
@@ -1706,6 +1919,44 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
         * `node_pool_ids` -
         (Required)
         Node pools for the slurm partition
+
+        <a name="nested_orchestrator_spec_kubernetes_spec"></a>The `kubernetes_spec` block supports:
+
+        * `node_pool_ids` -
+        (Optional)
+        IDs of the NodePools to be included in this GKE cluster. These IDs must
+        correspond to NodePools defined in the `node_pools` field.
+
+        * `enable_ip_alias` -
+        (Optional)
+        Whether to enable IP alias.
+
+        * `public_access_endpoint_enabled` -
+        (Optional)
+        Whether the GKE cluster's control plane endpoint is publicly accessible.
+        If true, the cluster is created with a public access endpoint (i.e. the
+        private cluster configuration is disabled). If false or unset, the cluster
+        is created with only private control plane access by default.
+
+        * `control_plane_version` -
+        (Optional)
+        The Kubernetes version of the GKE control plane.
+        Accepted formats are minor version (for example, `"1.30"`), patch version
+        (for example, `"1.30.5"`), full GKE release version (for example,
+        `"1.30.5-gke.1014001"`), or `"-"` to use the service default version.
+        Upgrades can advance at most one minor version at a time; downgrades are
+        rejected.
+
+        * `node_pool_versions` -
+        (Optional)
+        The Kubernetes versions for specific node pools, keyed by node pool ID.
+        When specified, all node pool IDs in the cluster must be included.
+        Accepted formats are minor version (for example, `"1.30"`), patch version
+        (for example, `"1.30.5"`), full GKE release version (for example,
+        `"1.30.5-gke.1014001"`), or `"-"` to align with the control plane version.
+        Node pools cannot be newer than the control plane or more than 2 minor
+        versions behind it; upgrades can advance at most one minor version at a
+        time and downgrades are rejected.
 
         <a name="nested_lustre_export_config"></a>The `lustre_export_config` block supports:
 
@@ -1927,7 +2178,10 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                `projects/{project}/locations/{location}/modelDevelopmentClusters/{cluster}/trainingServices/{training_service}`
         :param pulumi.Input[Union['AiModelDevelopmentClusterNetworkArgs', 'AiModelDevelopmentClusterNetworkArgsDict', 'outputs.AiModelDevelopmentClusterNetwork']] network: Network spec of the cluster.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiModelDevelopmentClusterNodePoolArgs', 'AiModelDevelopmentClusterNodePoolArgsDict', 'outputs.AiModelDevelopmentClusterNodePool']]]] node_pools: The spec of the pools of different resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiModelDevelopmentClusterNodePoolArgs', 'AiModelDevelopmentClusterNodePoolArgsDict', 'outputs.AiModelDevelopmentClusterNodePool']]]] node_pools: The spec of the pools of different resources. Node pools can be added,
+               removed, or reordered in place; changing some fields on an existing node
+               pool may require replacing the node pool (validated server-side by the
+               API).
                Structure is documented below.
         :param pulumi.Input[Union['AiModelDevelopmentClusterOrchestratorSpecArgs', 'AiModelDevelopmentClusterOrchestratorSpecArgsDict', 'outputs.AiModelDevelopmentClusterOrchestratorSpec']] orchestrator_spec: The spec of the orchestrator. Only one orchestrator may be specified.
                Structure is documented below.
@@ -2092,7 +2346,10 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> pulumi.Output[Sequence['outputs.AiModelDevelopmentClusterNodePool']]:
         """
-        The spec of the pools of different resources.
+        The spec of the pools of different resources. Node pools can be added,
+        removed, or reordered in place; changing some fields on an existing node
+        pool may require replacing the node pool (validated server-side by the
+        API).
         Structure is documented below.
         """
         return pulumi.get(self, "node_pools")

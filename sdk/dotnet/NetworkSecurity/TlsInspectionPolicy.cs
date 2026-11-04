@@ -277,6 +277,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         MinTlsVersion = "TLS_1_0",
     ///         TrustConfig = defaultTrustConfig.Id,
     ///         TlsFeatureProfile = "PROFILE_CUSTOM",
+    ///         CertificateIssuanceMode = "LOCAL_INTERMEDIATE_CA_SIGNING",
     ///         CustomTlsFeatures = new[]
     ///         {
     ///             "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
@@ -331,6 +332,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("caPool")]
         public Output<string> CaPool { get; private set; } = null!;
+
+        /// <summary>
+        /// The mode used to issue certificates (local CA signing vs direct leaf).
+        /// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+        /// </summary>
+        [Output("certificateIssuanceMode")]
+        public Output<string?> CertificateIssuanceMode { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp when the resource was created.
@@ -466,6 +474,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("caPool", required: true)]
         public Input<string> CaPool { get; set; } = null!;
 
+        /// <summary>
+        /// The mode used to issue certificates (local CA signing vs direct leaf).
+        /// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+        /// </summary>
+        [Input("certificateIssuanceMode")]
+        public Input<string>? CertificateIssuanceMode { get; set; }
+
         [Input("customTlsFeatures")]
         private InputList<string>? _customTlsFeatures;
 
@@ -555,6 +570,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("caPool")]
         public Input<string>? CaPool { get; set; }
+
+        /// <summary>
+        /// The mode used to issue certificates (local CA signing vs direct leaf).
+        /// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+        /// </summary>
+        [Input("certificateIssuanceMode")]
+        public Input<string>? CertificateIssuanceMode { get; set; }
 
         /// <summary>
         /// The timestamp when the resource was created.

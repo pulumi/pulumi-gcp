@@ -23,7 +23,9 @@ class ConnectionArgs:
     def __init__(__self__, *,
                  connector_version: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
+                 async_operations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  auth_config: pulumi.Input[Optional['ConnectionAuthConfigArgs']] = None,
+                 auth_override_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  config_variables: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -38,14 +40,17 @@ class ConnectionArgs:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_config: pulumi.Input[Optional['ConnectionSslConfigArgs']] = None,
-                 suspended: pulumi.Input[Optional[_builtins.bool]] = None):
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traffic_shaping_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTrafficShapingConfigArgs']]]] = None):
         """
         The set of arguments for constructing a Connection resource.
 
         :param pulumi.Input[_builtins.str] connector_version: connectorVersion of the Connector.
         :param pulumi.Input[_builtins.str] location: Location in which Connection needs to be created.
+        :param pulumi.Input[_builtins.bool] async_operations_enabled: Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
         :param pulumi.Input['ConnectionAuthConfigArgs'] auth_config: authConfig for the connection.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] auth_override_enabled: Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -78,11 +83,17 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionSslConfigArgs'] ssl_config: SSL Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] suspended: Suspended indicates if a user has suspended a connection or not.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionTrafficShapingConfigArgs']]] traffic_shaping_configs: Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+               Structure is documented below.
         """
         pulumi.set(__self__, "connector_version", connector_version)
         pulumi.set(__self__, "location", location)
+        if async_operations_enabled is not None:
+            pulumi.set(__self__, "async_operations_enabled", async_operations_enabled)
         if auth_config is not None:
             pulumi.set(__self__, "auth_config", auth_config)
+        if auth_override_enabled is not None:
+            pulumi.set(__self__, "auth_override_enabled", auth_override_enabled)
         if config_variables is not None:
             pulumi.set(__self__, "config_variables", config_variables)
         if deletion_policy is not None:
@@ -113,6 +124,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "ssl_config", ssl_config)
         if suspended is not None:
             pulumi.set(__self__, "suspended", suspended)
+        if traffic_shaping_configs is not None:
+            pulumi.set(__self__, "traffic_shaping_configs", traffic_shaping_configs)
 
     @_builtins.property
     @pulumi.getter(name="connectorVersion")
@@ -139,6 +152,18 @@ class ConnectionArgs:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="asyncOperationsEnabled")
+    def async_operations_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+        """
+        return pulumi.get(self, "async_operations_enabled")
+
+    @async_operations_enabled.setter
+    def async_operations_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "async_operations_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="authConfig")
     def auth_config(self) -> pulumi.Input[Optional['ConnectionAuthConfigArgs']]:
         """
@@ -150,6 +175,18 @@ class ConnectionArgs:
     @auth_config.setter
     def auth_config(self, value: pulumi.Input[Optional['ConnectionAuthConfigArgs']]):
         pulumi.set(self, "auth_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authOverrideEnabled")
+    def auth_override_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+        """
+        return pulumi.get(self, "auth_override_enabled")
+
+    @auth_override_enabled.setter
+    def auth_override_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auth_override_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="configVariables")
@@ -348,11 +385,26 @@ class ConnectionArgs:
     def suspended(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suspended", value)
 
+    @_builtins.property
+    @pulumi.getter(name="trafficShapingConfigs")
+    def traffic_shaping_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTrafficShapingConfigArgs']]]]:
+        """
+        Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_shaping_configs")
+
+    @traffic_shaping_configs.setter
+    def traffic_shaping_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTrafficShapingConfigArgs']]]]):
+        pulumi.set(self, "traffic_shaping_configs", value)
+
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
+                 async_operations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  auth_config: pulumi.Input[Optional['ConnectionAuthConfigArgs']] = None,
+                 auth_override_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  config_variables: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]]] = None,
                  connection_revision: pulumi.Input[Optional[_builtins.str]] = None,
                  connector_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -380,12 +432,15 @@ class _ConnectionState:
                  statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionStatusArgs']]]] = None,
                  subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traffic_shaping_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTrafficShapingConfigArgs']]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
 
+        :param pulumi.Input[_builtins.bool] async_operations_enabled: Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
         :param pulumi.Input['ConnectionAuthConfigArgs'] auth_config: authConfig for the connection.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] auth_override_enabled: Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_revision: Connection revision. This field is only updated when the connection is created or updated by User.
@@ -436,10 +491,16 @@ class _ConnectionState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] subscription_type: This subscription type enum states the subscription type of the project.
         :param pulumi.Input[_builtins.bool] suspended: Suspended indicates if a user has suspended a connection or not.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionTrafficShapingConfigArgs']]] traffic_shaping_configs: Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Time the Namespace was updated in UTC.
         """
+        if async_operations_enabled is not None:
+            pulumi.set(__self__, "async_operations_enabled", async_operations_enabled)
         if auth_config is not None:
             pulumi.set(__self__, "auth_config", auth_config)
+        if auth_override_enabled is not None:
+            pulumi.set(__self__, "auth_override_enabled", auth_override_enabled)
         if config_variables is not None:
             pulumi.set(__self__, "config_variables", config_variables)
         if connection_revision is not None:
@@ -494,8 +555,22 @@ class _ConnectionState:
             pulumi.set(__self__, "subscription_type", subscription_type)
         if suspended is not None:
             pulumi.set(__self__, "suspended", suspended)
+        if traffic_shaping_configs is not None:
+            pulumi.set(__self__, "traffic_shaping_configs", traffic_shaping_configs)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="asyncOperationsEnabled")
+    def async_operations_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+        """
+        return pulumi.get(self, "async_operations_enabled")
+
+    @async_operations_enabled.setter
+    def async_operations_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "async_operations_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="authConfig")
@@ -509,6 +584,18 @@ class _ConnectionState:
     @auth_config.setter
     def auth_config(self, value: pulumi.Input[Optional['ConnectionAuthConfigArgs']]):
         pulumi.set(self, "auth_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authOverrideEnabled")
+    def auth_override_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+        """
+        return pulumi.get(self, "auth_override_enabled")
+
+    @auth_override_enabled.setter
+    def auth_override_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auth_override_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="configVariables")
@@ -858,6 +945,19 @@ class _ConnectionState:
         pulumi.set(self, "suspended", value)
 
     @_builtins.property
+    @pulumi.getter(name="trafficShapingConfigs")
+    def traffic_shaping_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTrafficShapingConfigArgs']]]]:
+        """
+        Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_shaping_configs")
+
+    @traffic_shaping_configs.setter
+    def traffic_shaping_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTrafficShapingConfigArgs']]]]):
+        pulumi.set(self, "traffic_shaping_configs", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -876,7 +976,9 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 async_operations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  auth_config: pulumi.Input[Optional[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']]] = None,
+                 auth_override_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  config_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]]] = None,
                  connector_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -894,6 +996,7 @@ class Connection(pulumi.CustomResource):
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_config: pulumi.Input[Optional[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict', 'outputs.ConnectionSslConfig']]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traffic_shaping_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionTrafficShapingConfigArgs', 'ConnectionTrafficShapingConfigArgsDict', 'outputs.ConnectionTrafficShapingConfig']]]]] = None,
                  __props__=None):
         """
         An Integration connectors Connection.
@@ -1184,8 +1287,10 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] async_operations_enabled: Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
         :param pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']] auth_config: authConfig for the connection.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] auth_override_enabled: Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connector_version: connectorVersion of the Connector.
@@ -1220,6 +1325,8 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict', 'outputs.ConnectionSslConfig']] ssl_config: SSL Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] suspended: Suspended indicates if a user has suspended a connection or not.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTrafficShapingConfigArgs', 'ConnectionTrafficShapingConfigArgsDict', 'outputs.ConnectionTrafficShapingConfig']]]] traffic_shaping_configs: Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1529,7 +1636,9 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 async_operations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  auth_config: pulumi.Input[Optional[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']]] = None,
+                 auth_override_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  config_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]]] = None,
                  connector_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1547,6 +1656,7 @@ class Connection(pulumi.CustomResource):
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_config: pulumi.Input[Optional[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict', 'outputs.ConnectionSslConfig']]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traffic_shaping_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionTrafficShapingConfigArgs', 'ConnectionTrafficShapingConfigArgsDict', 'outputs.ConnectionTrafficShapingConfig']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1556,7 +1666,9 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
+            __props__.__dict__["async_operations_enabled"] = async_operations_enabled
             __props__.__dict__["auth_config"] = auth_config
+            __props__.__dict__["auth_override_enabled"] = auth_override_enabled
             __props__.__dict__["config_variables"] = config_variables
             if connector_version is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_version'")
@@ -1578,6 +1690,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["ssl_config"] = ssl_config
             __props__.__dict__["suspended"] = suspended
+            __props__.__dict__["traffic_shaping_configs"] = traffic_shaping_configs
             __props__.__dict__["connection_revision"] = None
             __props__.__dict__["connector_version_infra_configs"] = None
             __props__.__dict__["connector_version_launch_stage"] = None
@@ -1601,7 +1714,9 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            async_operations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             auth_config: pulumi.Input[Optional[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']]] = None,
+            auth_override_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             config_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]]] = None,
             connection_revision: pulumi.Input[Optional[_builtins.str]] = None,
             connector_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1629,6 +1744,7 @@ class Connection(pulumi.CustomResource):
             statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionStatusArgs', 'ConnectionStatusArgsDict', 'outputs.ConnectionStatus']]]]] = None,
             subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
             suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            traffic_shaping_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionTrafficShapingConfigArgs', 'ConnectionTrafficShapingConfigArgsDict', 'outputs.ConnectionTrafficShapingConfig']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
@@ -1637,8 +1753,10 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] async_operations_enabled: Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
         :param pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']] auth_config: authConfig for the connection.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] auth_override_enabled: Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_revision: Connection revision. This field is only updated when the connection is created or updated by User.
@@ -1689,13 +1807,17 @@ class Connection(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] subscription_type: This subscription type enum states the subscription type of the project.
         :param pulumi.Input[_builtins.bool] suspended: Suspended indicates if a user has suspended a connection or not.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTrafficShapingConfigArgs', 'ConnectionTrafficShapingConfigArgsDict', 'outputs.ConnectionTrafficShapingConfig']]]] traffic_shaping_configs: Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Time the Namespace was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
+        __props__.__dict__["async_operations_enabled"] = async_operations_enabled
         __props__.__dict__["auth_config"] = auth_config
+        __props__.__dict__["auth_override_enabled"] = auth_override_enabled
         __props__.__dict__["config_variables"] = config_variables
         __props__.__dict__["connection_revision"] = connection_revision
         __props__.__dict__["connector_version"] = connector_version
@@ -1723,8 +1845,17 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["subscription_type"] = subscription_type
         __props__.__dict__["suspended"] = suspended
+        __props__.__dict__["traffic_shaping_configs"] = traffic_shaping_configs
         __props__.__dict__["update_time"] = update_time
         return Connection(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="asyncOperationsEnabled")
+    def async_operations_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+        """
+        return pulumi.get(self, "async_operations_enabled")
 
     @_builtins.property
     @pulumi.getter(name="authConfig")
@@ -1734,6 +1865,14 @@ class Connection(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "auth_config")
+
+    @_builtins.property
+    @pulumi.getter(name="authOverrideEnabled")
+    def auth_override_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+        """
+        return pulumi.get(self, "auth_override_enabled")
 
     @_builtins.property
     @pulumi.getter(name="configVariables")
@@ -1973,6 +2112,15 @@ class Connection(pulumi.CustomResource):
         Suspended indicates if a user has suspended a connection or not.
         """
         return pulumi.get(self, "suspended")
+
+    @_builtins.property
+    @pulumi.getter(name="trafficShapingConfigs")
+    def traffic_shaping_configs(self) -> pulumi.Output[Optional[Sequence['outputs.ConnectionTrafficShapingConfig']]]:
+        """
+        Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_shaping_configs")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

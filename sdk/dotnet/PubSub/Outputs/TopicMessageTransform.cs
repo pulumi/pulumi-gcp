@@ -21,6 +21,12 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly Outputs.TopicMessageTransformAiInference? AiInference;
         /// <summary>
+        /// Configuration for compressing/decompressing message data using a
+        /// user-specified compression algorithm.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TopicMessageTransformCompression? Compression;
+        /// <summary>
         /// Controls whether or not to use this transform. If not set or `False`,
         /// the transform will be applied to messages. Default: `True`.
         /// </summary>
@@ -36,11 +42,14 @@ namespace Pulumi.Gcp.PubSub.Outputs
         private TopicMessageTransform(
             Outputs.TopicMessageTransformAiInference? aiInference,
 
+            Outputs.TopicMessageTransformCompression? compression,
+
             bool? disabled,
 
             Outputs.TopicMessageTransformJavascriptUdf? javascriptUdf)
         {
             AiInference = aiInference;
+            Compression = compression;
             Disabled = disabled;
             JavascriptUdf = javascriptUdf;
         }

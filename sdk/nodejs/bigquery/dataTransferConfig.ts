@@ -41,52 +41,21 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [permissions],
  * });
- * const queryConfig = new gcp.bigquery.DataTransferConfig("query_config", {
- *     displayName: "my-query",
- *     location: "asia-northeast1",
- *     dataSourceId: "scheduled_query",
- *     schedule: "first sunday of quarter 00:00",
- *     destinationDatasetId: myDataset.datasetId,
- *     params: {
- *         destination_table_name_template: "my_table",
- *         write_disposition: "WRITE_APPEND",
- *         query: "SELECT name FROM tabl WHERE x = 'y'",
- *     },
- * }, {
- *     dependsOn: [permissions],
- * });
- * ```
- *
- * ### Bigquerydatatransfer Config Cmek
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const permissions = new gcp.projects.IAMMember("permissions", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/iam.serviceAccountTokenCreator",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com`),
- * });
- * const myDataset = new gcp.bigquery.Dataset("my_dataset", {
- *     datasetId: "example_dataset",
- *     friendlyName: "foo",
- *     description: "bar",
- *     location: "asia-northeast1",
- * }, {
- *     dependsOn: [permissions],
- * });
  * const keyRing = new gcp.kms.KeyRing("key_ring", {
  *     name: "example-keyring",
- *     location: "us",
+ *     location: "asia-northeast1",
  * });
  * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
  *     name: "example-key",
  *     keyRing: keyRing.id,
  * });
- * const queryConfigCmek = new gcp.bigquery.DataTransferConfig("query_config_cmek", {
- *     displayName: "display-name",
+ * const bigqueryEncrypter = new gcp.kms.CryptoKeyIAMMember("bigquery_encrypter", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:bq-${project.number}@bigquery-encryption.iam.gserviceaccount.com`),
+ * });
+ * const queryConfig = new gcp.bigquery.DataTransferConfig("query_config", {
+ *     displayName: "my-query",
  *     location: "asia-northeast1",
  *     dataSourceId: "scheduled_query",
  *     schedule: "first sunday of quarter 00:00",
@@ -100,33 +69,57 @@ import * as utilities from "../utilities";
  *         kmsKeyName: cryptoKey.id,
  *     },
  * }, {
- *     dependsOn: [permissions],
+ *     dependsOn: [
+ *         permissions,
+ *         bigqueryEncrypter,
+ *     ],
  * });
  * ```
  *
- * ### Bigquerydatatransfer Config Salesforce
+ * ### Bigquerydatatransfer Config Schedule Options V2
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = gcp.organizations.getProject({});
- * const myDataset = new gcp.bigquery.Dataset("my_dataset", {
- *     datasetId: "my_dataset",
- *     description: "My dataset",
- *     location: "asia-northeast1",
+ * const eventDriven = new gcp.pubsub.Topic("event_driven", {name: "my-topic"});
+ * const eventDrivenSubscription = new gcp.pubsub.Subscription("event_driven", {
+ *     name: "my-subscription",
+ *     topic: eventDriven.id,
  * });
- * const salesforceConfig = new gcp.bigquery.DataTransferConfig("salesforce_config", {
- *     displayName: "my-salesforce-config",
- *     location: "asia-northeast1",
- *     dataSourceId: "salesforce",
- *     schedule: "first sunday of quarter 00:00",
- *     destinationDatasetId: myDataset.datasetId,
+ * const eventDrivenBucket = new gcp.storage.Bucket("event_driven", {
+ *     name: "my-bucket",
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ *     forceDestroy: true,
+ * });
+ * const eventDrivenDataset = new gcp.bigquery.Dataset("event_driven", {
+ *     datasetId: "my_dataset",
+ *     friendlyName: "foo",
+ *     description: "bar",
+ *     location: "US",
+ * });
+ * const eventDrivenTable = new gcp.bigquery.Table("event_driven", {
+ *     deletionProtection: false,
+ *     datasetId: eventDrivenDataset.datasetId,
+ *     tableId: "my_table",
+ *     schema: "[{\"name\":\"name\",\"type\":\"STRING\"}]",
+ * });
+ * const eventDrivenConfig = new gcp.bigquery.DataTransferConfig("event_driven_config", {
+ *     displayName: "my-event-driven-config",
+ *     location: eventDrivenDataset.location,
+ *     dataSourceId: "google_cloud_storage",
+ *     destinationDatasetId: eventDrivenDataset.datasetId,
+ *     scheduleOptionsV2: {
+ *         eventDrivenSchedule: {
+ *             pubsubSubscription: eventDrivenSubscription.id,
+ *         },
+ *     },
  *     params: {
- *         "connector.authentication.oauth.clientId": "client-id",
- *         "connector.authentication.oauth.clientSecret": "client-secret",
- *         "connector.authentication.oauth.myDomain": "MyDomainName",
- *         assets: "[\"asset-a\",\"asset-b\"]",
+ *         data_path_template: pulumi.interpolate`${eventDrivenBucket.url}/*.json`,
+ *         destination_table_name_template: eventDrivenTable.tableId,
+ *         file_format: "JSON",
+ *         write_disposition: "APPEND",
  *     },
  * });
  * ```
@@ -267,6 +260,15 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     declare public readonly scheduleOptions: pulumi.Output<outputs.bigquery.DataTransferConfigScheduleOptions | undefined>;
     /**
+     * Options customizing the type of data transfer schedule.
+     * Only the event-driven schedule is exposed here; time-based and manual
+     * schedules are configured through the `schedule` and `scheduleOptions`
+     * fields instead. This field cannot be used together with `schedule` or
+     * `scheduleOptions`.
+     * Structure is documented below.
+     */
+    declare public readonly scheduleOptionsV2: pulumi.Output<outputs.bigquery.DataTransferConfigScheduleOptionsV2 | undefined>;
+    /**
      * Different parameters are configured primarily using the the `params` field on this
      * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
      * sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -311,6 +313,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["schedule"] = state?.schedule;
             resourceInputs["scheduleOptions"] = state?.scheduleOptions;
+            resourceInputs["scheduleOptionsV2"] = state?.scheduleOptionsV2;
             resourceInputs["sensitiveParams"] = state?.sensitiveParams;
             resourceInputs["serviceAccountName"] = state?.serviceAccountName;
         } else {
@@ -338,6 +341,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["schedule"] = args?.schedule;
             resourceInputs["scheduleOptions"] = args?.scheduleOptions;
+            resourceInputs["scheduleOptionsV2"] = args?.scheduleOptionsV2;
             resourceInputs["sensitiveParams"] = args?.sensitiveParams;
             resourceInputs["serviceAccountName"] = args?.serviceAccountName;
             resourceInputs["name"] = undefined /*out*/;
@@ -443,6 +447,15 @@ export interface DataTransferConfigState {
      */
     scheduleOptions?: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptions | undefined>;
     /**
+     * Options customizing the type of data transfer schedule.
+     * Only the event-driven schedule is exposed here; time-based and manual
+     * schedules are configured through the `schedule` and `scheduleOptions`
+     * fields instead. This field cannot be used together with `schedule` or
+     * `scheduleOptions`.
+     * Structure is documented below.
+     */
+    scheduleOptionsV2?: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptionsV2 | undefined>;
+    /**
      * Different parameters are configured primarily using the the `params` field on this
      * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
      * sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -547,6 +560,15 @@ export interface DataTransferConfigArgs {
      * Structure is documented below.
      */
     scheduleOptions?: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptions | undefined>;
+    /**
+     * Options customizing the type of data transfer schedule.
+     * Only the event-driven schedule is exposed here; time-based and manual
+     * schedules are configured through the `schedule` and `scheduleOptions`
+     * fields instead. This field cannot be used together with `schedule` or
+     * `scheduleOptions`.
+     * Structure is documented below.
+     */
+    scheduleOptionsV2?: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptionsV2 | undefined>;
     /**
      * Different parameters are configured primarily using the the `params` field on this
      * resource. This block contains the parameters which contain secrets or passwords so that they can be marked

@@ -62,6 +62,7 @@ export interface GetRepositoryResult {
     readonly createTime: string;
     readonly deletionPolicy: string;
     readonly description: string;
+    readonly disallowUnspecifiedMode: boolean;
     readonly dockerConfigs: outputs.artifactregistry.GetRepositoryDockerConfig[];
     readonly effectiveLabels: {[key: string]: string};
     readonly format: string;
@@ -75,6 +76,7 @@ export interface GetRepositoryResult {
     readonly mavenConfigs: outputs.artifactregistry.GetRepositoryMavenConfig[];
     readonly mode: string;
     readonly name: string;
+    readonly platformLogsConfigs: outputs.artifactregistry.GetRepositoryPlatformLogsConfig[];
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly registryUri: string;

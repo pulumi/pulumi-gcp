@@ -276,6 +276,11 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public readonly smbSettings: pulumi.Output<string[]>;
     /**
+     * Optional. Snap_reserve specifies percentage of volume storage reserved for
+     * snapshot storage. Default is 0 percent.
+     */
+    declare public readonly snapReserve: pulumi.Output<number | undefined>;
+    /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
      */
     declare public readonly snapshotDirectory: pulumi.Output<boolean | undefined>;
@@ -369,6 +374,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["serviceLevel"] = state?.serviceLevel;
             resourceInputs["shareName"] = state?.shareName;
             resourceInputs["smbSettings"] = state?.smbSettings;
+            resourceInputs["snapReserve"] = state?.snapReserve;
             resourceInputs["snapshotDirectory"] = state?.snapshotDirectory;
             resourceInputs["snapshotPolicy"] = state?.snapshotPolicy;
             resourceInputs["state"] = state?.state;
@@ -415,6 +421,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["securityStyle"] = args?.securityStyle;
             resourceInputs["shareName"] = args?.shareName;
             resourceInputs["smbSettings"] = args?.smbSettings;
+            resourceInputs["snapReserve"] = args?.snapReserve;
             resourceInputs["snapshotDirectory"] = args?.snapshotDirectory;
             resourceInputs["snapshotPolicy"] = args?.snapshotPolicy;
             resourceInputs["storagePool"] = args?.storagePool;
@@ -635,6 +642,11 @@ export interface VolumeState {
      */
     smbSettings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Optional. Snap_reserve specifies percentage of volume storage reserved for
+     * snapshot storage. Default is 0 percent.
+     */
+    snapReserve?: pulumi.Input<number | undefined>;
+    /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
      */
     snapshotDirectory?: pulumi.Input<boolean | undefined>;
@@ -803,6 +815,11 @@ export interface VolumeArgs {
      * Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
      */
     smbSettings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Optional. Snap_reserve specifies percentage of volume storage reserved for
+     * snapshot storage. Default is 0 percent.
+     */
+    snapReserve?: pulumi.Input<number | undefined>;
     /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
      */

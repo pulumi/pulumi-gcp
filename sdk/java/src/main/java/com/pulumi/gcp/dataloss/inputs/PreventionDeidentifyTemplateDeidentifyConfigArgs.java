@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -68,12 +69,30 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigArgs extends com.
         return Optional.ofNullable(this.recordTransformations);
     }
 
+    /**
+     * Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="transformationErrorHandling")
+    private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs> transformationErrorHandling;
+
+    /**
+     * @return Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs>> transformationErrorHandling() {
+        return Optional.ofNullable(this.transformationErrorHandling);
+    }
+
     private PreventionDeidentifyTemplateDeidentifyConfigArgs() {}
 
     private PreventionDeidentifyTemplateDeidentifyConfigArgs(PreventionDeidentifyTemplateDeidentifyConfigArgs $) {
         this.imageTransformations = $.imageTransformations;
         this.infoTypeTransformations = $.infoTypeTransformations;
         this.recordTransformations = $.recordTransformations;
+        this.transformationErrorHandling = $.transformationErrorHandling;
     }
 
     public static Builder builder() {
@@ -161,6 +180,29 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigArgs extends com.
          */
         public Builder recordTransformations(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs recordTransformations) {
             return recordTransformations(Output.of(recordTransformations));
+        }
+
+        /**
+         * @param transformationErrorHandling Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transformationErrorHandling(@Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs> transformationErrorHandling) {
+            $.transformationErrorHandling = transformationErrorHandling;
+            return this;
+        }
+
+        /**
+         * @param transformationErrorHandling Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transformationErrorHandling(PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs transformationErrorHandling) {
+            return transformationErrorHandling(Output.of(transformationErrorHandling));
         }
 
         public PreventionDeidentifyTemplateDeidentifyConfigArgs build() {

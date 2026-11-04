@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType;
+import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegex;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType;
@@ -47,6 +48,12 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
      * 
      */
     private @Nullable String likelihood;
+    /**
+     * @return Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression metadataKeyValueExpression;
     /**
      * @return Regular expression which defines the rule.
      * Structure is documented below.
@@ -110,6 +117,14 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
         return Optional.ofNullable(this.likelihood);
     }
     /**
+     * @return Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression> metadataKeyValueExpression() {
+        return Optional.ofNullable(this.metadataKeyValueExpression);
+    }
+    /**
      * @return Regular expression which defines the rule.
      * Structure is documented below.
      * 
@@ -154,6 +169,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
         private @Nullable String exclusionType;
         private PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType infoType;
         private @Nullable String likelihood;
+        private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression metadataKeyValueExpression;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore sensitivityScore;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType;
@@ -165,6 +181,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
     	      this.exclusionType = defaults.exclusionType;
     	      this.infoType = defaults.infoType;
     	      this.likelihood = defaults.likelihood;
+    	      this.metadataKeyValueExpression = defaults.metadataKeyValueExpression;
     	      this.regex = defaults.regex;
     	      this.sensitivityScore = defaults.sensitivityScore;
     	      this.storedType = defaults.storedType;
@@ -198,6 +215,12 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
             return this;
         }
         @CustomType.Setter
+        public Builder metadataKeyValueExpression(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression metadataKeyValueExpression) {
+
+            this.metadataKeyValueExpression = metadataKeyValueExpression;
+            return this;
+        }
+        @CustomType.Setter
         public Builder regex(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex) {
 
             this.regex = regex;
@@ -227,6 +250,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
             _resultValue.exclusionType = exclusionType;
             _resultValue.infoType = infoType;
             _resultValue.likelihood = likelihood;
+            _resultValue.metadataKeyValueExpression = metadataKeyValueExpression;
             _resultValue.regex = regex;
             _resultValue.sensitivityScore = sensitivityScore;
             _resultValue.storedType = storedType;

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigEndpointConfig? EndpointConfig;
         /// <summary>
-        /// The shared Compute Engine config settings for all instances in a cluster.
+        /// The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig? GceClusterConfig;
         /// <summary>
@@ -46,6 +46,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfig? MasterConfig;
         /// <summary>
+        /// The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig? MasterFlexibleConfig;
+        /// <summary>
         /// Metastore configuration.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig? MetastoreConfig;
@@ -53,6 +57,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig? SecondaryWorkerConfig;
+        /// <summary>
+        /// The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig? SecondaryWorkerFlexibleConfig;
         /// <summary>
         /// Security settings for the cluster.
         /// </summary>
@@ -71,10 +79,14 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly string? TempBucket;
         /// <summary>
         /// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig? WorkerConfig;
+        /// <summary>
+        /// The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
         /// 
         /// - - -
         /// </summary>
-        public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig? WorkerConfig;
+        public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig? WorkerFlexibleConfig;
 
         [OutputConstructor]
         private WorkflowTemplatePlacementManagedClusterConfig(
@@ -94,9 +106,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfig? masterConfig,
 
+            Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig? masterFlexibleConfig,
+
             Outputs.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig? metastoreConfig,
 
             Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig? secondaryWorkerConfig,
+
+            Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig? secondaryWorkerFlexibleConfig,
 
             Outputs.WorkflowTemplatePlacementManagedClusterConfigSecurityConfig? securityConfig,
 
@@ -106,7 +122,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? tempBucket,
 
-            Outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig? workerConfig)
+            Outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig? workerConfig,
+
+            Outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig? workerFlexibleConfig)
         {
             AutoscalingConfig = autoscalingConfig;
             EncryptionConfig = encryptionConfig;
@@ -116,13 +134,16 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             InitializationActions = initializationActions;
             LifecycleConfig = lifecycleConfig;
             MasterConfig = masterConfig;
+            MasterFlexibleConfig = masterFlexibleConfig;
             MetastoreConfig = metastoreConfig;
             SecondaryWorkerConfig = secondaryWorkerConfig;
+            SecondaryWorkerFlexibleConfig = secondaryWorkerFlexibleConfig;
             SecurityConfig = securityConfig;
             SoftwareConfig = softwareConfig;
             StagingBucket = stagingBucket;
             TempBucket = tempBucket;
             WorkerConfig = workerConfig;
+            WorkerFlexibleConfig = workerFlexibleConfig;
         }
     }
 }

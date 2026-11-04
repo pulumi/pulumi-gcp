@@ -956,32 +956,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-//				Parent:    pulumi.String(project.Id),
-//				ShortName: pulumi.String("tag_key"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				example,
-//			}))
+//			tagKey, err := tags.LookupTagKey(ctx, &tags.LookupTagKeyArgs{
+//				Parent:    project.Id,
+//				ShortName: "tag_key",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-//				Parent:    tagKey.ID(),
-//				ShortName: pulumi.String("tag_value"),
-//			})
+//			tagValue, err := tags.LookupTagValue(ctx, &tags.LookupTagValueArgs{
+//				Parent:    tagKey.Id,
+//				ShortName: "tag_value",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
 //				Topic: example.ID(),
-//				Tags: pulumi.All(tagKey.NamespacedName, tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
-//					namespacedName := _args[0].(string)
-//					shortName := _args[1].(string)
-//					return map[string]string{
-//						namespacedName: shortName,
-//					}, nil
-//				}).(pulumi.StringMapOutput),
+//				Tags: pulumi.StringMap{
+//					tagKey.NamespacedName: pulumi.String(tagValue.ShortName),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -1048,7 +1042,7 @@ import (
 //				MessageTransforms: pubsub.SubscriptionMessageTransformArray{
 //					&pubsub.SubscriptionMessageTransformArgs{
 //						AiInference: &pubsub.SubscriptionMessageTransformAiInferenceArgs{
-//							Endpoint: pulumi.String("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash"),
+//							Endpoint: pulumi.String("projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash"),
 //							UnstructuredInference: &pubsub.SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{
 //								Parameters: pulumi.StringMap{
 //									"max_tokens": pulumi.String("25000"),

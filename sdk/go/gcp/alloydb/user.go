@@ -44,7 +44,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: pulumi.Any(defaultGoogleComputeNetwork.Id),
 //				},
@@ -141,7 +141,7 @@ import (
 //			}
 //			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: defaultNetwork.ID(),
 //				},

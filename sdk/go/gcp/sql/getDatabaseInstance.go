@@ -63,6 +63,7 @@ type LookupDatabaseInstanceResult struct {
 	BlueGreenDeployments             []GetDatabaseInstanceBlueGreenDeployment `pulumi:"blueGreenDeployments"`
 	Clones                           []GetDatabaseInstanceClone               `pulumi:"clones"`
 	ConnectionName                   string                                   `pulumi:"connectionName"`
+	DatabaseCenterIntegration        string                                   `pulumi:"databaseCenterIntegration"`
 	DatabaseVersion                  string                                   `pulumi:"databaseVersion"`
 	DeletionPolicy                   string                                   `pulumi:"deletionPolicy"`
 	DeletionProtection               bool                                     `pulumi:"deletionProtection"`
@@ -154,6 +155,10 @@ func (o LookupDatabaseInstanceResultOutput) Clones() GetDatabaseInstanceCloneArr
 
 func (o LookupDatabaseInstanceResultOutput) ConnectionName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) DatabaseCenterIntegration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.DatabaseCenterIntegration }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) DatabaseVersion() pulumi.StringOutput {

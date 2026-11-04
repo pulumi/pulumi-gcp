@@ -152,6 +152,35 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the default rounding mode specification of new tables created
+     * within this dataset. During table creation, if this field is specified,
+     * the table within this dataset will inherit the default rounding mode of
+     * the dataset. Setting the default rounding mode on a table overrides this
+     * specification. Existing tables in the dataset are unaffected. If columns
+     * are defined during that table creation, they will immediately inherit the
+     * table&#39;s default rounding mode, unless otherwise specified.
+     * Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+     * 
+     */
+    @Import(name="defaultRoundingMode")
+    private @Nullable Output<String> defaultRoundingMode;
+
+    /**
+     * @return Defines the default rounding mode specification of new tables created
+     * within this dataset. During table creation, if this field is specified,
+     * the table within this dataset will inherit the default rounding mode of
+     * the dataset. Setting the default rounding mode on a table overrides this
+     * specification. Existing tables in the dataset are unaffected. If columns
+     * are defined during that table creation, they will immediately inherit the
+     * table&#39;s default rounding mode, unless otherwise specified.
+     * Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+     * 
+     */
+    public Optional<Output<String>> defaultRoundingMode() {
+        return Optional.ofNullable(this.defaultRoundingMode);
+    }
+
+    /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
      * Once this property is set, all newly-created tables in the dataset
@@ -451,6 +480,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultCollation = $.defaultCollation;
         this.defaultEncryptionConfiguration = $.defaultEncryptionConfiguration;
         this.defaultPartitionExpirationMs = $.defaultPartitionExpirationMs;
+        this.defaultRoundingMode = $.defaultRoundingMode;
         this.defaultTableExpirationMs = $.defaultTableExpirationMs;
         this.deleteContentsOnDestroy = $.deleteContentsOnDestroy;
         this.deletionPolicy = $.deletionPolicy;
@@ -651,6 +681,41 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultPartitionExpirationMs(Integer defaultPartitionExpirationMs) {
             return defaultPartitionExpirationMs(Output.of(defaultPartitionExpirationMs));
+        }
+
+        /**
+         * @param defaultRoundingMode Defines the default rounding mode specification of new tables created
+         * within this dataset. During table creation, if this field is specified,
+         * the table within this dataset will inherit the default rounding mode of
+         * the dataset. Setting the default rounding mode on a table overrides this
+         * specification. Existing tables in the dataset are unaffected. If columns
+         * are defined during that table creation, they will immediately inherit the
+         * table&#39;s default rounding mode, unless otherwise specified.
+         * Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultRoundingMode(@Nullable Output<String> defaultRoundingMode) {
+            $.defaultRoundingMode = defaultRoundingMode;
+            return this;
+        }
+
+        /**
+         * @param defaultRoundingMode Defines the default rounding mode specification of new tables created
+         * within this dataset. During table creation, if this field is specified,
+         * the table within this dataset will inherit the default rounding mode of
+         * the dataset. Setting the default rounding mode on a table overrides this
+         * specification. Existing tables in the dataset are unaffected. If columns
+         * are defined during that table creation, they will immediately inherit the
+         * table&#39;s default rounding mode, unless otherwise specified.
+         * Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultRoundingMode(String defaultRoundingMode) {
+            return defaultRoundingMode(Output.of(defaultRoundingMode));
         }
 
         /**

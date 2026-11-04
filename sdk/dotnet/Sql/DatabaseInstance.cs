@@ -283,16 +283,13 @@ namespace Pulumi.Gcp.Sql
     ///             Tier = "db-f1-micro",
     ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
     ///             {
-    ///                 PscConfigs = new[]
+    ///                 PscConfig = 
     ///                 {
-    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs
+    ///                     { "pscEnabled", true },
+    ///                     { "allowedConsumerProjects", new[]
     ///                     {
-    ///                         PscEnabled = true,
-    ///                         AllowedConsumerProjects = new[]
-    ///                         {
-    ///                             "allowed-consumer-project-name",
-    ///                         },
-    ///                     },
+    ///                         "allowed-consumer-project-name",
+    ///                     } },
     ///                 },
     ///                 Ipv4Enabled = false,
     ///             },
@@ -327,24 +324,21 @@ namespace Pulumi.Gcp.Sql
     ///             Tier = "db-f1-micro",
     ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
     ///             {
-    ///                 PscConfigs = new[]
+    ///                 PscConfig = 
     ///                 {
-    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs
+    ///                     { "pscEnabled", true },
+    ///                     { "allowedConsumerProjects", new[]
     ///                     {
-    ///                         PscEnabled = true,
-    ///                         AllowedConsumerProjects = new[]
+    ///                         "allowed-consumer-project-name",
+    ///                     } },
+    ///                     { "pscAutoConnections", new[]
+    ///                     {
+    ///                         
     ///                         {
-    ///                             "allowed-consumer-project-name",
+    ///                             { "consumerNetwork", "network-name" },
+    ///                             { "consumerServiceProjectId", "project-id" },
     ///                         },
-    ///                         PscAutoConnections = new[]
-    ///                         {
-    ///                             new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs
-    ///                             {
-    ///                                 ConsumerNetwork = "network-name",
-    ///                                 ConsumerServiceProjectId = "project-id",
-    ///                             },
-    ///                         },
-    ///                     },
+    ///                     } },
     ///                 },
     ///                 Ipv4Enabled = false,
     ///             },
@@ -379,17 +373,14 @@ namespace Pulumi.Gcp.Sql
     ///             Tier = "db-f1-micro",
     ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
     ///             {
-    ///                 PscConfigs = new[]
+    ///                 PscConfig = 
     ///                 {
-    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs
+    ///                     { "pscEnabled", true },
+    ///                     { "allowedConsumerProjects", new[]
     ///                     {
-    ///                         PscEnabled = true,
-    ///                         AllowedConsumerProjects = new[]
-    ///                         {
-    ///                             "allowed-consumer-project-name",
-    ///                         },
-    ///                         NetworkAttachmentUri = "network-attachment-uri",
-    ///                     },
+    ///                         "allowed-consumer-project-name",
+    ///                     } },
+    ///                     { "networkAttachmentUri", "network-attachment-uri" },
     ///                 },
     ///                 Ipv4Enabled = false,
     ///             },
@@ -652,6 +643,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("connectionName")]
         public Output<string> ConnectionName { get; private set; } = null!;
+
+        /// <summary>
+        /// The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+        /// </summary>
+        [Output("databaseCenterIntegration")]
+        public Output<string?> DatabaseCenterIntegration { get; private set; } = null!;
 
         /// <summary>
         /// The MySQL, PostgreSQL or
@@ -982,6 +979,12 @@ namespace Pulumi.Gcp.Sql
         public Input<Inputs.DatabaseInstanceCloneArgs>? Clone { get; set; }
 
         /// <summary>
+        /// The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+        /// </summary>
+        [Input("databaseCenterIntegration")]
+        public Input<string>? DatabaseCenterIntegration { get; set; }
+
+        /// <summary>
         /// The MySQL, PostgreSQL or
         /// SQL Server version to use. Supported values include `MYSQL_5_6`,
         /// `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -1263,6 +1266,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("connectionName")]
         public Input<string>? ConnectionName { get; set; }
+
+        /// <summary>
+        /// The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+        /// </summary>
+        [Input("databaseCenterIntegration")]
+        public Input<string>? DatabaseCenterIntegration { get; set; }
 
         /// <summary>
         /// The MySQL, PostgreSQL or

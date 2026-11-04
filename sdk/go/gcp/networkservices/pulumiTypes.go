@@ -8646,6 +8646,8 @@ type GrpcRouteRuleAction struct {
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// Structure is documented below.
 	FaultInjectionPolicy *GrpcRouteRuleActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout *string `pulumi:"idleTimeout"`
 	// Specifies the retry policy associated with this route.
 	// Structure is documented below.
 	RetryPolicy *GrpcRouteRuleActionRetryPolicy `pulumi:"retryPolicy"`
@@ -8671,6 +8673,8 @@ type GrpcRouteRuleActionArgs struct {
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// Structure is documented below.
 	FaultInjectionPolicy GrpcRouteRuleActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
 	// Specifies the retry policy associated with this route.
 	// Structure is documented below.
 	RetryPolicy GrpcRouteRuleActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
@@ -8767,6 +8771,11 @@ func (o GrpcRouteRuleActionOutput) FaultInjectionPolicy() GrpcRouteRuleActionFau
 	return o.ApplyT(func(v GrpcRouteRuleAction) *GrpcRouteRuleActionFaultInjectionPolicy { return v.FaultInjectionPolicy }).(GrpcRouteRuleActionFaultInjectionPolicyPtrOutput)
 }
 
+// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+func (o GrpcRouteRuleActionOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleAction) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
 // Specifies the retry policy associated with this route.
 // Structure is documented below.
 func (o GrpcRouteRuleActionOutput) RetryPolicy() GrpcRouteRuleActionRetryPolicyPtrOutput {
@@ -8822,6 +8831,16 @@ func (o GrpcRouteRuleActionPtrOutput) FaultInjectionPolicy() GrpcRouteRuleAction
 		}
 		return v.FaultInjectionPolicy
 	}).(GrpcRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+func (o GrpcRouteRuleActionPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies the retry policy associated with this route.
@@ -9831,6 +9850,10 @@ type GrpcRouteRuleMatchMethod struct {
 	GrpcMethod string `pulumi:"grpcMethod"`
 	// Required. Name of the service to match against.
 	GrpcService string `pulumi:"grpcService"`
+	// Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+	// Default value is `EXACT`.
+	// Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+	Type *string `pulumi:"type"`
 }
 
 // GrpcRouteRuleMatchMethodInput is an input type that accepts GrpcRouteRuleMatchMethodArgs and GrpcRouteRuleMatchMethodOutput values.
@@ -9851,6 +9874,10 @@ type GrpcRouteRuleMatchMethodArgs struct {
 	GrpcMethod pulumi.StringInput `pulumi:"grpcMethod"`
 	// Required. Name of the service to match against.
 	GrpcService pulumi.StringInput `pulumi:"grpcService"`
+	// Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+	// Default value is `EXACT`.
+	// Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GrpcRouteRuleMatchMethodArgs) ElementType() reflect.Type {
@@ -9945,6 +9972,13 @@ func (o GrpcRouteRuleMatchMethodOutput) GrpcService() pulumi.StringOutput {
 	return o.ApplyT(func(v GrpcRouteRuleMatchMethod) string { return v.GrpcService }).(pulumi.StringOutput)
 }
 
+// Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+// Default value is `EXACT`.
+// Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+func (o GrpcRouteRuleMatchMethodOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleMatchMethod) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 type GrpcRouteRuleMatchMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleMatchMethodPtrOutput) ElementType() reflect.Type {
@@ -9996,6 +10030,18 @@ func (o GrpcRouteRuleMatchMethodPtrOutput) GrpcService() pulumi.StringPtrOutput 
 			return nil
 		}
 		return &v.GrpcService
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+// Default value is `EXACT`.
+// Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+func (o GrpcRouteRuleMatchMethodPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleMatchMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10124,9 +10170,15 @@ type HttpRouteRuleAction struct {
 	// The destination to which traffic should be forwarded.
 	// Structure is documented below.
 	Destinations []HttpRouteRuleActionDestination `pulumi:"destinations"`
+	// Static HTTP Response object to be returned regardless of the request.
+	// Structure is documented below.
+	DirectResponse *HttpRouteRuleActionDirectResponse `pulumi:"directResponse"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// Structure is documented below.
 	FaultInjectionPolicy *HttpRouteRuleActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	IdleTimeout *string `pulumi:"idleTimeout"`
 	// If set, the request is directed as configured by this field.
 	// Structure is documented below.
 	Redirect *HttpRouteRuleActionRedirect `pulumi:"redirect"`
@@ -10167,9 +10219,15 @@ type HttpRouteRuleActionArgs struct {
 	// The destination to which traffic should be forwarded.
 	// Structure is documented below.
 	Destinations HttpRouteRuleActionDestinationArrayInput `pulumi:"destinations"`
+	// Static HTTP Response object to be returned regardless of the request.
+	// Structure is documented below.
+	DirectResponse HttpRouteRuleActionDirectResponsePtrInput `pulumi:"directResponse"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// Structure is documented below.
 	FaultInjectionPolicy HttpRouteRuleActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
 	// If set, the request is directed as configured by this field.
 	// Structure is documented below.
 	Redirect HttpRouteRuleActionRedirectPtrInput `pulumi:"redirect"`
@@ -10281,10 +10339,22 @@ func (o HttpRouteRuleActionOutput) Destinations() HttpRouteRuleActionDestination
 	return o.ApplyT(func(v HttpRouteRuleAction) []HttpRouteRuleActionDestination { return v.Destinations }).(HttpRouteRuleActionDestinationArrayOutput)
 }
 
+// Static HTTP Response object to be returned regardless of the request.
+// Structure is documented below.
+func (o HttpRouteRuleActionOutput) DirectResponse() HttpRouteRuleActionDirectResponsePtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *HttpRouteRuleActionDirectResponse { return v.DirectResponse }).(HttpRouteRuleActionDirectResponsePtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 // Structure is documented below.
 func (o HttpRouteRuleActionOutput) FaultInjectionPolicy() HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleAction) *HttpRouteRuleActionFaultInjectionPolicy { return v.FaultInjectionPolicy }).(HttpRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o HttpRouteRuleActionOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
 }
 
 // If set, the request is directed as configured by this field.
@@ -10376,6 +10446,17 @@ func (o HttpRouteRuleActionPtrOutput) Destinations() HttpRouteRuleActionDestinat
 	}).(HttpRouteRuleActionDestinationArrayOutput)
 }
 
+// Static HTTP Response object to be returned regardless of the request.
+// Structure is documented below.
+func (o HttpRouteRuleActionPtrOutput) DirectResponse() HttpRouteRuleActionDirectResponsePtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *HttpRouteRuleActionDirectResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DirectResponse
+	}).(HttpRouteRuleActionDirectResponsePtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 // Structure is documented below.
 func (o HttpRouteRuleActionPtrOutput) FaultInjectionPolicy() HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
@@ -10385,6 +10466,17 @@ func (o HttpRouteRuleActionPtrOutput) FaultInjectionPolicy() HttpRouteRuleAction
 		}
 		return v.FaultInjectionPolicy
 	}).(HttpRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o HttpRouteRuleActionPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
 // If set, the request is directed as configured by this field.
@@ -10846,6 +10938,181 @@ func (o HttpRouteRuleActionDestinationArrayOutput) Index(i pulumi.IntInput) Http
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRuleActionDestination {
 		return vs[0].([]HttpRouteRuleActionDestination)[vs[1].(int)]
 	}).(HttpRouteRuleActionDestinationOutput)
+}
+
+type HttpRouteRuleActionDirectResponse struct {
+	// Response body as base64 encoded bytes. Maximum body size is 4096B.
+	BytesBody *string `pulumi:"bytesBody"`
+	// Status to return as part of HTTP Response. Must be a positive integer.
+	Status int `pulumi:"status"`
+	// Response body as a string. Maximum body length is 1024 characters.
+	StringBody *string `pulumi:"stringBody"`
+}
+
+// HttpRouteRuleActionDirectResponseInput is an input type that accepts HttpRouteRuleActionDirectResponseArgs and HttpRouteRuleActionDirectResponseOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionDirectResponseInput` via:
+//
+//	HttpRouteRuleActionDirectResponseArgs{...}
+type HttpRouteRuleActionDirectResponseInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionDirectResponseOutput() HttpRouteRuleActionDirectResponseOutput
+	ToHttpRouteRuleActionDirectResponseOutputWithContext(context.Context) HttpRouteRuleActionDirectResponseOutput
+}
+
+type HttpRouteRuleActionDirectResponseArgs struct {
+	// Response body as base64 encoded bytes. Maximum body size is 4096B.
+	BytesBody pulumi.StringPtrInput `pulumi:"bytesBody"`
+	// Status to return as part of HTTP Response. Must be a positive integer.
+	Status pulumi.IntInput `pulumi:"status"`
+	// Response body as a string. Maximum body length is 1024 characters.
+	StringBody pulumi.StringPtrInput `pulumi:"stringBody"`
+}
+
+func (HttpRouteRuleActionDirectResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionDirectResponse)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionDirectResponseArgs) ToHttpRouteRuleActionDirectResponseOutput() HttpRouteRuleActionDirectResponseOutput {
+	return i.ToHttpRouteRuleActionDirectResponseOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionDirectResponseArgs) ToHttpRouteRuleActionDirectResponseOutputWithContext(ctx context.Context) HttpRouteRuleActionDirectResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionDirectResponseOutput)
+}
+
+func (i HttpRouteRuleActionDirectResponseArgs) ToHttpRouteRuleActionDirectResponsePtrOutput() HttpRouteRuleActionDirectResponsePtrOutput {
+	return i.ToHttpRouteRuleActionDirectResponsePtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionDirectResponseArgs) ToHttpRouteRuleActionDirectResponsePtrOutputWithContext(ctx context.Context) HttpRouteRuleActionDirectResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionDirectResponseOutput).ToHttpRouteRuleActionDirectResponsePtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionDirectResponsePtrInput is an input type that accepts HttpRouteRuleActionDirectResponseArgs, HttpRouteRuleActionDirectResponsePtr and HttpRouteRuleActionDirectResponsePtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionDirectResponsePtrInput` via:
+//
+//	        HttpRouteRuleActionDirectResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionDirectResponsePtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionDirectResponsePtrOutput() HttpRouteRuleActionDirectResponsePtrOutput
+	ToHttpRouteRuleActionDirectResponsePtrOutputWithContext(context.Context) HttpRouteRuleActionDirectResponsePtrOutput
+}
+
+type httpRouteRuleActionDirectResponsePtrType HttpRouteRuleActionDirectResponseArgs
+
+func HttpRouteRuleActionDirectResponsePtr(v *HttpRouteRuleActionDirectResponseArgs) HttpRouteRuleActionDirectResponsePtrInput {
+	return (*httpRouteRuleActionDirectResponsePtrType)(v)
+}
+
+func (*httpRouteRuleActionDirectResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionDirectResponse)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionDirectResponsePtrType) ToHttpRouteRuleActionDirectResponsePtrOutput() HttpRouteRuleActionDirectResponsePtrOutput {
+	return i.ToHttpRouteRuleActionDirectResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionDirectResponsePtrType) ToHttpRouteRuleActionDirectResponsePtrOutputWithContext(ctx context.Context) HttpRouteRuleActionDirectResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionDirectResponsePtrOutput)
+}
+
+type HttpRouteRuleActionDirectResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionDirectResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionDirectResponse)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionDirectResponseOutput) ToHttpRouteRuleActionDirectResponseOutput() HttpRouteRuleActionDirectResponseOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionDirectResponseOutput) ToHttpRouteRuleActionDirectResponseOutputWithContext(ctx context.Context) HttpRouteRuleActionDirectResponseOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionDirectResponseOutput) ToHttpRouteRuleActionDirectResponsePtrOutput() HttpRouteRuleActionDirectResponsePtrOutput {
+	return o.ToHttpRouteRuleActionDirectResponsePtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionDirectResponseOutput) ToHttpRouteRuleActionDirectResponsePtrOutputWithContext(ctx context.Context) HttpRouteRuleActionDirectResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionDirectResponse) *HttpRouteRuleActionDirectResponse {
+		return &v
+	}).(HttpRouteRuleActionDirectResponsePtrOutput)
+}
+
+// Response body as base64 encoded bytes. Maximum body size is 4096B.
+func (o HttpRouteRuleActionDirectResponseOutput) BytesBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionDirectResponse) *string { return v.BytesBody }).(pulumi.StringPtrOutput)
+}
+
+// Status to return as part of HTTP Response. Must be a positive integer.
+func (o HttpRouteRuleActionDirectResponseOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionDirectResponse) int { return v.Status }).(pulumi.IntOutput)
+}
+
+// Response body as a string. Maximum body length is 1024 characters.
+func (o HttpRouteRuleActionDirectResponseOutput) StringBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionDirectResponse) *string { return v.StringBody }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteRuleActionDirectResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionDirectResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionDirectResponse)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionDirectResponsePtrOutput) ToHttpRouteRuleActionDirectResponsePtrOutput() HttpRouteRuleActionDirectResponsePtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionDirectResponsePtrOutput) ToHttpRouteRuleActionDirectResponsePtrOutputWithContext(ctx context.Context) HttpRouteRuleActionDirectResponsePtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionDirectResponsePtrOutput) Elem() HttpRouteRuleActionDirectResponseOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionDirectResponse) HttpRouteRuleActionDirectResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionDirectResponse
+		return ret
+	}).(HttpRouteRuleActionDirectResponseOutput)
+}
+
+// Response body as base64 encoded bytes. Maximum body size is 4096B.
+func (o HttpRouteRuleActionDirectResponsePtrOutput) BytesBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionDirectResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BytesBody
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status to return as part of HTTP Response. Must be a positive integer.
+func (o HttpRouteRuleActionDirectResponsePtrOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionDirectResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.IntPtrOutput)
+}
+
+// Response body as a string. Maximum body length is 1024 characters.
+func (o HttpRouteRuleActionDirectResponsePtrOutput) StringBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionDirectResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringBody
+	}).(pulumi.StringPtrOutput)
 }
 
 type HttpRouteRuleActionFaultInjectionPolicy struct {
@@ -11758,6 +12025,8 @@ type HttpRouteRuleActionRequestMirrorPolicy struct {
 	// The destination the requests will be mirrored to.
 	// Structure is documented below.
 	Destination *HttpRouteRuleActionRequestMirrorPolicyDestination `pulumi:"destination"`
+	// The percentage of requests to get mirrored to the desired destination.
+	MirrorPercent *float64 `pulumi:"mirrorPercent"`
 }
 
 // HttpRouteRuleActionRequestMirrorPolicyInput is an input type that accepts HttpRouteRuleActionRequestMirrorPolicyArgs and HttpRouteRuleActionRequestMirrorPolicyOutput values.
@@ -11775,6 +12044,8 @@ type HttpRouteRuleActionRequestMirrorPolicyArgs struct {
 	// The destination the requests will be mirrored to.
 	// Structure is documented below.
 	Destination HttpRouteRuleActionRequestMirrorPolicyDestinationPtrInput `pulumi:"destination"`
+	// The percentage of requests to get mirrored to the desired destination.
+	MirrorPercent pulumi.Float64PtrInput `pulumi:"mirrorPercent"`
 }
 
 func (HttpRouteRuleActionRequestMirrorPolicyArgs) ElementType() reflect.Type {
@@ -11862,6 +12133,11 @@ func (o HttpRouteRuleActionRequestMirrorPolicyOutput) Destination() HttpRouteRul
 	}).(HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput)
 }
 
+// The percentage of requests to get mirrored to the desired destination.
+func (o HttpRouteRuleActionRequestMirrorPolicyOutput) MirrorPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRequestMirrorPolicy) *float64 { return v.MirrorPercent }).(pulumi.Float64PtrOutput)
+}
+
 type HttpRouteRuleActionRequestMirrorPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionRequestMirrorPolicyPtrOutput) ElementType() reflect.Type {
@@ -11895,6 +12171,16 @@ func (o HttpRouteRuleActionRequestMirrorPolicyPtrOutput) Destination() HttpRoute
 		}
 		return v.Destination
 	}).(HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput)
+}
+
+// The percentage of requests to get mirrored to the desired destination.
+func (o HttpRouteRuleActionRequestMirrorPolicyPtrOutput) MirrorPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRequestMirrorPolicy) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorPercent
+	}).(pulumi.Float64PtrOutput)
 }
 
 type HttpRouteRuleActionRequestMirrorPolicyDestination struct {
@@ -19169,6 +19455,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionCorsPolicyPtrInput)(nil)).Elem(), HttpRouteRuleActionCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionDestinationInput)(nil)).Elem(), HttpRouteRuleActionDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionDestinationArrayInput)(nil)).Elem(), HttpRouteRuleActionDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionDirectResponseInput)(nil)).Elem(), HttpRouteRuleActionDirectResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionDirectResponsePtrInput)(nil)).Elem(), HttpRouteRuleActionDirectResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyInput)(nil)).Elem(), HttpRouteRuleActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyPtrInput)(nil)).Elem(), HttpRouteRuleActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyAbortInput)(nil)).Elem(), HttpRouteRuleActionFaultInjectionPolicyAbortArgs{})
@@ -19403,6 +19691,8 @@ func init() {
 	pulumi.RegisterOutputType(HttpRouteRuleActionCorsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleActionDestinationOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleActionDestinationArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionDirectResponseOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionDirectResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleActionFaultInjectionPolicyOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleActionFaultInjectionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleActionFaultInjectionPolicyAbortOutput{})

@@ -2170,6 +2170,166 @@ func (o IndexFieldVectorConfigFlatPtrOutput) Elem() IndexFieldVectorConfigFlatOu
 	}).(IndexFieldVectorConfigFlatOutput)
 }
 
+type IndexSearchIndexOptions struct {
+	// Optional. The language code used to parse all text fields included in the search index,
+	// for example, "en", "es", "jp".
+	TextLanguage *string `pulumi:"textLanguage"`
+	// Optional. The path to the field that records the text language override of each document.
+	TextLanguageOverrideFieldPath *string `pulumi:"textLanguageOverrideFieldPath"`
+}
+
+// IndexSearchIndexOptionsInput is an input type that accepts IndexSearchIndexOptionsArgs and IndexSearchIndexOptionsOutput values.
+// You can construct a concrete instance of `IndexSearchIndexOptionsInput` via:
+//
+//	IndexSearchIndexOptionsArgs{...}
+type IndexSearchIndexOptionsInput interface {
+	pulumi.Input
+
+	ToIndexSearchIndexOptionsOutput() IndexSearchIndexOptionsOutput
+	ToIndexSearchIndexOptionsOutputWithContext(context.Context) IndexSearchIndexOptionsOutput
+}
+
+type IndexSearchIndexOptionsArgs struct {
+	// Optional. The language code used to parse all text fields included in the search index,
+	// for example, "en", "es", "jp".
+	TextLanguage pulumi.StringPtrInput `pulumi:"textLanguage"`
+	// Optional. The path to the field that records the text language override of each document.
+	TextLanguageOverrideFieldPath pulumi.StringPtrInput `pulumi:"textLanguageOverrideFieldPath"`
+}
+
+func (IndexSearchIndexOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexSearchIndexOptions)(nil)).Elem()
+}
+
+func (i IndexSearchIndexOptionsArgs) ToIndexSearchIndexOptionsOutput() IndexSearchIndexOptionsOutput {
+	return i.ToIndexSearchIndexOptionsOutputWithContext(context.Background())
+}
+
+func (i IndexSearchIndexOptionsArgs) ToIndexSearchIndexOptionsOutputWithContext(ctx context.Context) IndexSearchIndexOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexSearchIndexOptionsOutput)
+}
+
+func (i IndexSearchIndexOptionsArgs) ToIndexSearchIndexOptionsPtrOutput() IndexSearchIndexOptionsPtrOutput {
+	return i.ToIndexSearchIndexOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i IndexSearchIndexOptionsArgs) ToIndexSearchIndexOptionsPtrOutputWithContext(ctx context.Context) IndexSearchIndexOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexSearchIndexOptionsOutput).ToIndexSearchIndexOptionsPtrOutputWithContext(ctx)
+}
+
+// IndexSearchIndexOptionsPtrInput is an input type that accepts IndexSearchIndexOptionsArgs, IndexSearchIndexOptionsPtr and IndexSearchIndexOptionsPtrOutput values.
+// You can construct a concrete instance of `IndexSearchIndexOptionsPtrInput` via:
+//
+//	        IndexSearchIndexOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IndexSearchIndexOptionsPtrInput interface {
+	pulumi.Input
+
+	ToIndexSearchIndexOptionsPtrOutput() IndexSearchIndexOptionsPtrOutput
+	ToIndexSearchIndexOptionsPtrOutputWithContext(context.Context) IndexSearchIndexOptionsPtrOutput
+}
+
+type indexSearchIndexOptionsPtrType IndexSearchIndexOptionsArgs
+
+func IndexSearchIndexOptionsPtr(v *IndexSearchIndexOptionsArgs) IndexSearchIndexOptionsPtrInput {
+	return (*indexSearchIndexOptionsPtrType)(v)
+}
+
+func (*indexSearchIndexOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexSearchIndexOptions)(nil)).Elem()
+}
+
+func (i *indexSearchIndexOptionsPtrType) ToIndexSearchIndexOptionsPtrOutput() IndexSearchIndexOptionsPtrOutput {
+	return i.ToIndexSearchIndexOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *indexSearchIndexOptionsPtrType) ToIndexSearchIndexOptionsPtrOutputWithContext(ctx context.Context) IndexSearchIndexOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexSearchIndexOptionsPtrOutput)
+}
+
+type IndexSearchIndexOptionsOutput struct{ *pulumi.OutputState }
+
+func (IndexSearchIndexOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexSearchIndexOptions)(nil)).Elem()
+}
+
+func (o IndexSearchIndexOptionsOutput) ToIndexSearchIndexOptionsOutput() IndexSearchIndexOptionsOutput {
+	return o
+}
+
+func (o IndexSearchIndexOptionsOutput) ToIndexSearchIndexOptionsOutputWithContext(ctx context.Context) IndexSearchIndexOptionsOutput {
+	return o
+}
+
+func (o IndexSearchIndexOptionsOutput) ToIndexSearchIndexOptionsPtrOutput() IndexSearchIndexOptionsPtrOutput {
+	return o.ToIndexSearchIndexOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o IndexSearchIndexOptionsOutput) ToIndexSearchIndexOptionsPtrOutputWithContext(ctx context.Context) IndexSearchIndexOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexSearchIndexOptions) *IndexSearchIndexOptions {
+		return &v
+	}).(IndexSearchIndexOptionsPtrOutput)
+}
+
+// Optional. The language code used to parse all text fields included in the search index,
+// for example, "en", "es", "jp".
+func (o IndexSearchIndexOptionsOutput) TextLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IndexSearchIndexOptions) *string { return v.TextLanguage }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The path to the field that records the text language override of each document.
+func (o IndexSearchIndexOptionsOutput) TextLanguageOverrideFieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IndexSearchIndexOptions) *string { return v.TextLanguageOverrideFieldPath }).(pulumi.StringPtrOutput)
+}
+
+type IndexSearchIndexOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (IndexSearchIndexOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexSearchIndexOptions)(nil)).Elem()
+}
+
+func (o IndexSearchIndexOptionsPtrOutput) ToIndexSearchIndexOptionsPtrOutput() IndexSearchIndexOptionsPtrOutput {
+	return o
+}
+
+func (o IndexSearchIndexOptionsPtrOutput) ToIndexSearchIndexOptionsPtrOutputWithContext(ctx context.Context) IndexSearchIndexOptionsPtrOutput {
+	return o
+}
+
+func (o IndexSearchIndexOptionsPtrOutput) Elem() IndexSearchIndexOptionsOutput {
+	return o.ApplyT(func(v *IndexSearchIndexOptions) IndexSearchIndexOptions {
+		if v != nil {
+			return *v
+		}
+		var ret IndexSearchIndexOptions
+		return ret
+	}).(IndexSearchIndexOptionsOutput)
+}
+
+// Optional. The language code used to parse all text fields included in the search index,
+// for example, "en", "es", "jp".
+func (o IndexSearchIndexOptionsPtrOutput) TextLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IndexSearchIndexOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TextLanguage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The path to the field that records the text language override of each document.
+func (o IndexSearchIndexOptionsPtrOutput) TextLanguageOverrideFieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IndexSearchIndexOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TextLanguageOverrideFieldPath
+	}).(pulumi.StringPtrOutput)
+}
+
 type UserCredsResourceIdentity struct {
 	// (Output)
 	// The principal identifier string.
@@ -2304,6 +2464,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigPtrInput)(nil)).Elem(), IndexFieldVectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigFlatInput)(nil)).Elem(), IndexFieldVectorConfigFlatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigFlatPtrInput)(nil)).Elem(), IndexFieldVectorConfigFlatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexSearchIndexOptionsInput)(nil)).Elem(), IndexSearchIndexOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexSearchIndexOptionsPtrInput)(nil)).Elem(), IndexSearchIndexOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserCredsResourceIdentityInput)(nil)).Elem(), UserCredsResourceIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserCredsResourceIdentityArrayInput)(nil)).Elem(), UserCredsResourceIdentityArray{})
 	pulumi.RegisterOutputType(BackupScheduleDailyRecurrenceOutput{})
@@ -2336,6 +2498,8 @@ func init() {
 	pulumi.RegisterOutputType(IndexFieldVectorConfigPtrOutput{})
 	pulumi.RegisterOutputType(IndexFieldVectorConfigFlatOutput{})
 	pulumi.RegisterOutputType(IndexFieldVectorConfigFlatPtrOutput{})
+	pulumi.RegisterOutputType(IndexSearchIndexOptionsOutput{})
+	pulumi.RegisterOutputType(IndexSearchIndexOptionsPtrOutput{})
 	pulumi.RegisterOutputType(UserCredsResourceIdentityOutput{})
 	pulumi.RegisterOutputType(UserCredsResourceIdentityArrayOutput{})
 }

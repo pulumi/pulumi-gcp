@@ -47,7 +47,7 @@ import (
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("workstation-cluster"),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-east4"),
 //				Network:     _default.Name,
 //			})
 //			if err != nil {
@@ -57,7 +57,7 @@ import (
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
 //				Network:              _default.ID(),
 //				Subnetwork:           defaultSubnetwork.ID(),
-//				Location:             pulumi.String("us-central1"),
+//				Location:             pulumi.String("us-east4"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
 //				},
@@ -71,7 +71,7 @@ import (
 //			defaultWorkstationConfig, err := workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
 //				WorkstationConfigId:  pulumi.String("workstation-config"),
 //				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
-//				Location:             pulumi.String("us-central1"),
+//				Location:             pulumi.String("us-east4"),
 //				Host: &workstations.WorkstationConfigHostArgs{
 //					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
 //						MachineType:              pulumi.String("e2-standard-4"),
@@ -87,7 +87,7 @@ import (
 //				WorkstationId:        pulumi.String("work-station"),
 //				WorkstationConfigId:  defaultWorkstationConfig.WorkstationConfigId,
 //				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
-//				Location:             pulumi.String("us-central1"),
+//				Location:             pulumi.String("us-east4"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
 //				},
@@ -106,6 +106,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Regional Endpoint Policies
+//
+// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 //
 // ## Import
 //

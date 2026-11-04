@@ -532,6 +532,689 @@ func (o RegionalSecretIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+type RegionalSecretManagedRotationCloudSqlSingleUserCredentials struct {
+	// The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+	InstanceId string `pulumi:"instanceId"`
+	// The initial password to set for the database user. If not provided, a random password will be generated.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The initial password to set for the database user. If not provided, a random password will be generated.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
+	// The username of the Cloud SQL database user.
+	Username string `pulumi:"username"`
+}
+
+// RegionalSecretManagedRotationCloudSqlSingleUserCredentialsInput is an input type that accepts RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs and RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput values.
+// You can construct a concrete instance of `RegionalSecretManagedRotationCloudSqlSingleUserCredentialsInput` via:
+//
+//	RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs{...}
+type RegionalSecretManagedRotationCloudSqlSingleUserCredentialsInput interface {
+	pulumi.Input
+
+	ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput() RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput
+	ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutputWithContext(context.Context) RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput
+}
+
+type RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs struct {
+	// The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The initial password to set for the database user. If not provided, a random password will be generated.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The initial password to set for the database user. If not provided, a random password will be generated.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo pulumi.StringPtrInput `pulumi:"passwordWo"`
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion pulumi.StringPtrInput `pulumi:"passwordWoVersion"`
+	// The username of the Cloud SQL database user.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretManagedRotationCloudSqlSingleUserCredentials)(nil)).Elem()
+}
+
+func (i RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput() RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput {
+	return i.ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutputWithContext(ctx context.Context) RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput)
+}
+
+func (i RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput() RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput {
+	return i.ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutputWithContext(ctx context.Context) RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput).ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutputWithContext(ctx)
+}
+
+// RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrInput is an input type that accepts RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs, RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtr and RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput values.
+// You can construct a concrete instance of `RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrInput` via:
+//
+//	        RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput() RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput
+	ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutputWithContext(context.Context) RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput
+}
+
+type regionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrType RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs
+
+func RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtr(v *RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs) RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrInput {
+	return (*regionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrType)(v)
+}
+
+func (*regionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionalSecretManagedRotationCloudSqlSingleUserCredentials)(nil)).Elem()
+}
+
+func (i *regionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrType) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput() RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput {
+	return i.ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *regionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrType) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutputWithContext(ctx context.Context) RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput)
+}
+
+type RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretManagedRotationCloudSqlSingleUserCredentials)(nil)).Elem()
+}
+
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput() RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutputWithContext(ctx context.Context) RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput() RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput {
+	return o.ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutputWithContext(ctx context.Context) RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionalSecretManagedRotationCloudSqlSingleUserCredentials) *RegionalSecretManagedRotationCloudSqlSingleUserCredentials {
+		return &v
+	}).(RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput)
+}
+
+// The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionalSecretManagedRotationCloudSqlSingleUserCredentials) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The initial password to set for the database user. If not provided, a random password will be generated.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretManagedRotationCloudSqlSingleUserCredentials) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The initial password to set for the database user. If not provided, a random password will be generated.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `password` or `passwordWo` can only be set.
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretManagedRotationCloudSqlSingleUserCredentials) *string { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretManagedRotationCloudSqlSingleUserCredentials) *string { return v.PasswordWoVersion }).(pulumi.StringPtrOutput)
+}
+
+// The username of the Cloud SQL database user.
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionalSecretManagedRotationCloudSqlSingleUserCredentials) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionalSecretManagedRotationCloudSqlSingleUserCredentials)(nil)).Elem()
+}
+
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput() RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput) ToRegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutputWithContext(ctx context.Context) RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput) Elem() RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput {
+	return o.ApplyT(func(v *RegionalSecretManagedRotationCloudSqlSingleUserCredentials) RegionalSecretManagedRotationCloudSqlSingleUserCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret RegionalSecretManagedRotationCloudSqlSingleUserCredentials
+		return ret
+	}).(RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput)
+}
+
+// The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretManagedRotationCloudSqlSingleUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial password to set for the database user. If not provided, a random password will be generated.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretManagedRotationCloudSqlSingleUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The initial password to set for the database user. If not provided, a random password will be generated.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `password` or `passwordWo` can only be set.
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretManagedRotationCloudSqlSingleUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretManagedRotationCloudSqlSingleUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWoVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username of the Cloud SQL database user.
+func (o RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretManagedRotationCloudSqlSingleUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionalSecretManagedRotationRotation struct {
+	// (Output)
+	// The current status of the managed rotation.
+	// Structure is documented below.
+	ManagedRotationStatuses []RegionalSecretManagedRotationRotationManagedRotationStatus `pulumi:"managedRotationStatuses"`
+}
+
+// RegionalSecretManagedRotationRotationInput is an input type that accepts RegionalSecretManagedRotationRotationArgs and RegionalSecretManagedRotationRotationOutput values.
+// You can construct a concrete instance of `RegionalSecretManagedRotationRotationInput` via:
+//
+//	RegionalSecretManagedRotationRotationArgs{...}
+type RegionalSecretManagedRotationRotationInput interface {
+	pulumi.Input
+
+	ToRegionalSecretManagedRotationRotationOutput() RegionalSecretManagedRotationRotationOutput
+	ToRegionalSecretManagedRotationRotationOutputWithContext(context.Context) RegionalSecretManagedRotationRotationOutput
+}
+
+type RegionalSecretManagedRotationRotationArgs struct {
+	// (Output)
+	// The current status of the managed rotation.
+	// Structure is documented below.
+	ManagedRotationStatuses RegionalSecretManagedRotationRotationManagedRotationStatusArrayInput `pulumi:"managedRotationStatuses"`
+}
+
+func (RegionalSecretManagedRotationRotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretManagedRotationRotation)(nil)).Elem()
+}
+
+func (i RegionalSecretManagedRotationRotationArgs) ToRegionalSecretManagedRotationRotationOutput() RegionalSecretManagedRotationRotationOutput {
+	return i.ToRegionalSecretManagedRotationRotationOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretManagedRotationRotationArgs) ToRegionalSecretManagedRotationRotationOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretManagedRotationRotationOutput)
+}
+
+// RegionalSecretManagedRotationRotationArrayInput is an input type that accepts RegionalSecretManagedRotationRotationArray and RegionalSecretManagedRotationRotationArrayOutput values.
+// You can construct a concrete instance of `RegionalSecretManagedRotationRotationArrayInput` via:
+//
+//	RegionalSecretManagedRotationRotationArray{ RegionalSecretManagedRotationRotationArgs{...} }
+type RegionalSecretManagedRotationRotationArrayInput interface {
+	pulumi.Input
+
+	ToRegionalSecretManagedRotationRotationArrayOutput() RegionalSecretManagedRotationRotationArrayOutput
+	ToRegionalSecretManagedRotationRotationArrayOutputWithContext(context.Context) RegionalSecretManagedRotationRotationArrayOutput
+}
+
+type RegionalSecretManagedRotationRotationArray []RegionalSecretManagedRotationRotationInput
+
+func (RegionalSecretManagedRotationRotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretManagedRotationRotation)(nil)).Elem()
+}
+
+func (i RegionalSecretManagedRotationRotationArray) ToRegionalSecretManagedRotationRotationArrayOutput() RegionalSecretManagedRotationRotationArrayOutput {
+	return i.ToRegionalSecretManagedRotationRotationArrayOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretManagedRotationRotationArray) ToRegionalSecretManagedRotationRotationArrayOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretManagedRotationRotationArrayOutput)
+}
+
+type RegionalSecretManagedRotationRotationOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretManagedRotationRotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretManagedRotationRotation)(nil)).Elem()
+}
+
+func (o RegionalSecretManagedRotationRotationOutput) ToRegionalSecretManagedRotationRotationOutput() RegionalSecretManagedRotationRotationOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationRotationOutput) ToRegionalSecretManagedRotationRotationOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationOutput {
+	return o
+}
+
+// (Output)
+// The current status of the managed rotation.
+// Structure is documented below.
+func (o RegionalSecretManagedRotationRotationOutput) ManagedRotationStatuses() RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput {
+	return o.ApplyT(func(v RegionalSecretManagedRotationRotation) []RegionalSecretManagedRotationRotationManagedRotationStatus {
+		return v.ManagedRotationStatuses
+	}).(RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput)
+}
+
+type RegionalSecretManagedRotationRotationArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretManagedRotationRotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretManagedRotationRotation)(nil)).Elem()
+}
+
+func (o RegionalSecretManagedRotationRotationArrayOutput) ToRegionalSecretManagedRotationRotationArrayOutput() RegionalSecretManagedRotationRotationArrayOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationRotationArrayOutput) ToRegionalSecretManagedRotationRotationArrayOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationArrayOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationRotationArrayOutput) Index(i pulumi.IntInput) RegionalSecretManagedRotationRotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionalSecretManagedRotationRotation {
+		return vs[0].([]RegionalSecretManagedRotationRotation)[vs[1].(int)]
+	}).(RegionalSecretManagedRotationRotationOutput)
+}
+
+type RegionalSecretManagedRotationRotationManagedRotationStatus struct {
+	// (Output)
+	// Customer-facing issues that occurred during an asynchronous managed rotation, for example
+	// permission errors.
+	// Structure is documented below.
+	Errors []RegionalSecretManagedRotationRotationManagedRotationStatusError `pulumi:"errors"`
+	// (Output)
+	// Indicates whether the managed rotation is `ACTIVE` or `INACTIVE`.
+	State *string `pulumi:"state"`
+}
+
+// RegionalSecretManagedRotationRotationManagedRotationStatusInput is an input type that accepts RegionalSecretManagedRotationRotationManagedRotationStatusArgs and RegionalSecretManagedRotationRotationManagedRotationStatusOutput values.
+// You can construct a concrete instance of `RegionalSecretManagedRotationRotationManagedRotationStatusInput` via:
+//
+//	RegionalSecretManagedRotationRotationManagedRotationStatusArgs{...}
+type RegionalSecretManagedRotationRotationManagedRotationStatusInput interface {
+	pulumi.Input
+
+	ToRegionalSecretManagedRotationRotationManagedRotationStatusOutput() RegionalSecretManagedRotationRotationManagedRotationStatusOutput
+	ToRegionalSecretManagedRotationRotationManagedRotationStatusOutputWithContext(context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusOutput
+}
+
+type RegionalSecretManagedRotationRotationManagedRotationStatusArgs struct {
+	// (Output)
+	// Customer-facing issues that occurred during an asynchronous managed rotation, for example
+	// permission errors.
+	// Structure is documented below.
+	Errors RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// Indicates whether the managed rotation is `ACTIVE` or `INACTIVE`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (RegionalSecretManagedRotationRotationManagedRotationStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretManagedRotationRotationManagedRotationStatus)(nil)).Elem()
+}
+
+func (i RegionalSecretManagedRotationRotationManagedRotationStatusArgs) ToRegionalSecretManagedRotationRotationManagedRotationStatusOutput() RegionalSecretManagedRotationRotationManagedRotationStatusOutput {
+	return i.ToRegionalSecretManagedRotationRotationManagedRotationStatusOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretManagedRotationRotationManagedRotationStatusArgs) ToRegionalSecretManagedRotationRotationManagedRotationStatusOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretManagedRotationRotationManagedRotationStatusOutput)
+}
+
+// RegionalSecretManagedRotationRotationManagedRotationStatusArrayInput is an input type that accepts RegionalSecretManagedRotationRotationManagedRotationStatusArray and RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput values.
+// You can construct a concrete instance of `RegionalSecretManagedRotationRotationManagedRotationStatusArrayInput` via:
+//
+//	RegionalSecretManagedRotationRotationManagedRotationStatusArray{ RegionalSecretManagedRotationRotationManagedRotationStatusArgs{...} }
+type RegionalSecretManagedRotationRotationManagedRotationStatusArrayInput interface {
+	pulumi.Input
+
+	ToRegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput() RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput
+	ToRegionalSecretManagedRotationRotationManagedRotationStatusArrayOutputWithContext(context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput
+}
+
+type RegionalSecretManagedRotationRotationManagedRotationStatusArray []RegionalSecretManagedRotationRotationManagedRotationStatusInput
+
+func (RegionalSecretManagedRotationRotationManagedRotationStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretManagedRotationRotationManagedRotationStatus)(nil)).Elem()
+}
+
+func (i RegionalSecretManagedRotationRotationManagedRotationStatusArray) ToRegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput() RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput {
+	return i.ToRegionalSecretManagedRotationRotationManagedRotationStatusArrayOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretManagedRotationRotationManagedRotationStatusArray) ToRegionalSecretManagedRotationRotationManagedRotationStatusArrayOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput)
+}
+
+type RegionalSecretManagedRotationRotationManagedRotationStatusOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretManagedRotationRotationManagedRotationStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretManagedRotationRotationManagedRotationStatus)(nil)).Elem()
+}
+
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusOutput) ToRegionalSecretManagedRotationRotationManagedRotationStatusOutput() RegionalSecretManagedRotationRotationManagedRotationStatusOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusOutput) ToRegionalSecretManagedRotationRotationManagedRotationStatusOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusOutput {
+	return o
+}
+
+// (Output)
+// Customer-facing issues that occurred during an asynchronous managed rotation, for example
+// permission errors.
+// Structure is documented below.
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusOutput) Errors() RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput {
+	return o.ApplyT(func(v RegionalSecretManagedRotationRotationManagedRotationStatus) []RegionalSecretManagedRotationRotationManagedRotationStatusError {
+		return v.Errors
+	}).(RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput)
+}
+
+// (Output)
+// Indicates whether the managed rotation is `ACTIVE` or `INACTIVE`.
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretManagedRotationRotationManagedRotationStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretManagedRotationRotationManagedRotationStatus)(nil)).Elem()
+}
+
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput) ToRegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput() RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput) ToRegionalSecretManagedRotationRotationManagedRotationStatusArrayOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput) Index(i pulumi.IntInput) RegionalSecretManagedRotationRotationManagedRotationStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionalSecretManagedRotationRotationManagedRotationStatus {
+		return vs[0].([]RegionalSecretManagedRotationRotationManagedRotationStatus)[vs[1].(int)]
+	}).(RegionalSecretManagedRotationRotationManagedRotationStatusOutput)
+}
+
+type RegionalSecretManagedRotationRotationManagedRotationStatusError struct {
+	// (Output)
+	// The status code, which should be an enum value of `google.rpc.Code`.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message *string `pulumi:"message"`
+}
+
+// RegionalSecretManagedRotationRotationManagedRotationStatusErrorInput is an input type that accepts RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs and RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput values.
+// You can construct a concrete instance of `RegionalSecretManagedRotationRotationManagedRotationStatusErrorInput` via:
+//
+//	RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs{...}
+type RegionalSecretManagedRotationRotationManagedRotationStatusErrorInput interface {
+	pulumi.Input
+
+	ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput() RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput
+	ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorOutputWithContext(context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput
+}
+
+type RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of `google.rpc.Code`.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretManagedRotationRotationManagedRotationStatusError)(nil)).Elem()
+}
+
+func (i RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs) ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput() RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput {
+	return i.ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs) ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput)
+}
+
+// RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayInput is an input type that accepts RegionalSecretManagedRotationRotationManagedRotationStatusErrorArray and RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput values.
+// You can construct a concrete instance of `RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayInput` via:
+//
+//	RegionalSecretManagedRotationRotationManagedRotationStatusErrorArray{ RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs{...} }
+type RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayInput interface {
+	pulumi.Input
+
+	ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput() RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput
+	ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutputWithContext(context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput
+}
+
+type RegionalSecretManagedRotationRotationManagedRotationStatusErrorArray []RegionalSecretManagedRotationRotationManagedRotationStatusErrorInput
+
+func (RegionalSecretManagedRotationRotationManagedRotationStatusErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretManagedRotationRotationManagedRotationStatusError)(nil)).Elem()
+}
+
+func (i RegionalSecretManagedRotationRotationManagedRotationStatusErrorArray) ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput() RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput {
+	return i.ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretManagedRotationRotationManagedRotationStatusErrorArray) ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput)
+}
+
+type RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretManagedRotationRotationManagedRotationStatusError)(nil)).Elem()
+}
+
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput) ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput() RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput) ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of `google.rpc.Code`.
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionalSecretManagedRotationRotationManagedRotationStatusError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message.
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretManagedRotationRotationManagedRotationStatusError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretManagedRotationRotationManagedRotationStatusError)(nil)).Elem()
+}
+
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput) ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput() RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput) ToRegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutputWithContext(ctx context.Context) RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput {
+	return o
+}
+
+func (o RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput) Index(i pulumi.IntInput) RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionalSecretManagedRotationRotationManagedRotationStatusError {
+		return vs[0].([]RegionalSecretManagedRotationRotationManagedRotationStatusError)[vs[1].(int)]
+	}).(RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput)
+}
+
+type RegionalSecretPolicyMember struct {
+	// (Output)
+	// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+	// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+	// new resource. Format:
+	// `principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}`
+	IamPolicyUidPrincipal *string `pulumi:"iamPolicyUidPrincipal"`
+}
+
+// RegionalSecretPolicyMemberInput is an input type that accepts RegionalSecretPolicyMemberArgs and RegionalSecretPolicyMemberOutput values.
+// You can construct a concrete instance of `RegionalSecretPolicyMemberInput` via:
+//
+//	RegionalSecretPolicyMemberArgs{...}
+type RegionalSecretPolicyMemberInput interface {
+	pulumi.Input
+
+	ToRegionalSecretPolicyMemberOutput() RegionalSecretPolicyMemberOutput
+	ToRegionalSecretPolicyMemberOutputWithContext(context.Context) RegionalSecretPolicyMemberOutput
+}
+
+type RegionalSecretPolicyMemberArgs struct {
+	// (Output)
+	// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+	// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+	// new resource. Format:
+	// `principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}`
+	IamPolicyUidPrincipal pulumi.StringPtrInput `pulumi:"iamPolicyUidPrincipal"`
+}
+
+func (RegionalSecretPolicyMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretPolicyMember)(nil)).Elem()
+}
+
+func (i RegionalSecretPolicyMemberArgs) ToRegionalSecretPolicyMemberOutput() RegionalSecretPolicyMemberOutput {
+	return i.ToRegionalSecretPolicyMemberOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretPolicyMemberArgs) ToRegionalSecretPolicyMemberOutputWithContext(ctx context.Context) RegionalSecretPolicyMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretPolicyMemberOutput)
+}
+
+// RegionalSecretPolicyMemberArrayInput is an input type that accepts RegionalSecretPolicyMemberArray and RegionalSecretPolicyMemberArrayOutput values.
+// You can construct a concrete instance of `RegionalSecretPolicyMemberArrayInput` via:
+//
+//	RegionalSecretPolicyMemberArray{ RegionalSecretPolicyMemberArgs{...} }
+type RegionalSecretPolicyMemberArrayInput interface {
+	pulumi.Input
+
+	ToRegionalSecretPolicyMemberArrayOutput() RegionalSecretPolicyMemberArrayOutput
+	ToRegionalSecretPolicyMemberArrayOutputWithContext(context.Context) RegionalSecretPolicyMemberArrayOutput
+}
+
+type RegionalSecretPolicyMemberArray []RegionalSecretPolicyMemberInput
+
+func (RegionalSecretPolicyMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretPolicyMember)(nil)).Elem()
+}
+
+func (i RegionalSecretPolicyMemberArray) ToRegionalSecretPolicyMemberArrayOutput() RegionalSecretPolicyMemberArrayOutput {
+	return i.ToRegionalSecretPolicyMemberArrayOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretPolicyMemberArray) ToRegionalSecretPolicyMemberArrayOutputWithContext(ctx context.Context) RegionalSecretPolicyMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretPolicyMemberArrayOutput)
+}
+
+type RegionalSecretPolicyMemberOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretPolicyMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretPolicyMember)(nil)).Elem()
+}
+
+func (o RegionalSecretPolicyMemberOutput) ToRegionalSecretPolicyMemberOutput() RegionalSecretPolicyMemberOutput {
+	return o
+}
+
+func (o RegionalSecretPolicyMemberOutput) ToRegionalSecretPolicyMemberOutputWithContext(ctx context.Context) RegionalSecretPolicyMemberOutput {
+	return o
+}
+
+// (Output)
+// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+// new resource. Format:
+// `principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}`
+func (o RegionalSecretPolicyMemberOutput) IamPolicyUidPrincipal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretPolicyMember) *string { return v.IamPolicyUidPrincipal }).(pulumi.StringPtrOutput)
+}
+
+type RegionalSecretPolicyMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretPolicyMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretPolicyMember)(nil)).Elem()
+}
+
+func (o RegionalSecretPolicyMemberArrayOutput) ToRegionalSecretPolicyMemberArrayOutput() RegionalSecretPolicyMemberArrayOutput {
+	return o
+}
+
+func (o RegionalSecretPolicyMemberArrayOutput) ToRegionalSecretPolicyMemberArrayOutputWithContext(ctx context.Context) RegionalSecretPolicyMemberArrayOutput {
+	return o
+}
+
+func (o RegionalSecretPolicyMemberArrayOutput) Index(i pulumi.IntInput) RegionalSecretPolicyMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionalSecretPolicyMember {
+		return vs[0].([]RegionalSecretPolicyMember)[vs[1].(int)]
+	}).(RegionalSecretPolicyMemberOutput)
+}
+
 type RegionalSecretRotation struct {
 	// Timestamp in UTC at which the Secret is scheduled to rotate.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -2495,6 +3178,112 @@ func (o GetRegionalSecretCustomerManagedEncryptionArrayOutput) Index(i pulumi.In
 	}).(GetRegionalSecretCustomerManagedEncryptionOutput)
 }
 
+type GetRegionalSecretPolicyMember struct {
+	// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+	// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+	// new resource. Format:
+	// 'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+	IamPolicyUidPrincipal string `pulumi:"iamPolicyUidPrincipal"`
+}
+
+// GetRegionalSecretPolicyMemberInput is an input type that accepts GetRegionalSecretPolicyMemberArgs and GetRegionalSecretPolicyMemberOutput values.
+// You can construct a concrete instance of `GetRegionalSecretPolicyMemberInput` via:
+//
+//	GetRegionalSecretPolicyMemberArgs{...}
+type GetRegionalSecretPolicyMemberInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretPolicyMemberOutput() GetRegionalSecretPolicyMemberOutput
+	ToGetRegionalSecretPolicyMemberOutputWithContext(context.Context) GetRegionalSecretPolicyMemberOutput
+}
+
+type GetRegionalSecretPolicyMemberArgs struct {
+	// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+	// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+	// new resource. Format:
+	// 'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+	IamPolicyUidPrincipal pulumi.StringInput `pulumi:"iamPolicyUidPrincipal"`
+}
+
+func (GetRegionalSecretPolicyMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretPolicyMember)(nil)).Elem()
+}
+
+func (i GetRegionalSecretPolicyMemberArgs) ToGetRegionalSecretPolicyMemberOutput() GetRegionalSecretPolicyMemberOutput {
+	return i.ToGetRegionalSecretPolicyMemberOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretPolicyMemberArgs) ToGetRegionalSecretPolicyMemberOutputWithContext(ctx context.Context) GetRegionalSecretPolicyMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretPolicyMemberOutput)
+}
+
+// GetRegionalSecretPolicyMemberArrayInput is an input type that accepts GetRegionalSecretPolicyMemberArray and GetRegionalSecretPolicyMemberArrayOutput values.
+// You can construct a concrete instance of `GetRegionalSecretPolicyMemberArrayInput` via:
+//
+//	GetRegionalSecretPolicyMemberArray{ GetRegionalSecretPolicyMemberArgs{...} }
+type GetRegionalSecretPolicyMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretPolicyMemberArrayOutput() GetRegionalSecretPolicyMemberArrayOutput
+	ToGetRegionalSecretPolicyMemberArrayOutputWithContext(context.Context) GetRegionalSecretPolicyMemberArrayOutput
+}
+
+type GetRegionalSecretPolicyMemberArray []GetRegionalSecretPolicyMemberInput
+
+func (GetRegionalSecretPolicyMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretPolicyMember)(nil)).Elem()
+}
+
+func (i GetRegionalSecretPolicyMemberArray) ToGetRegionalSecretPolicyMemberArrayOutput() GetRegionalSecretPolicyMemberArrayOutput {
+	return i.ToGetRegionalSecretPolicyMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretPolicyMemberArray) ToGetRegionalSecretPolicyMemberArrayOutputWithContext(ctx context.Context) GetRegionalSecretPolicyMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretPolicyMemberArrayOutput)
+}
+
+type GetRegionalSecretPolicyMemberOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretPolicyMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretPolicyMember)(nil)).Elem()
+}
+
+func (o GetRegionalSecretPolicyMemberOutput) ToGetRegionalSecretPolicyMemberOutput() GetRegionalSecretPolicyMemberOutput {
+	return o
+}
+
+func (o GetRegionalSecretPolicyMemberOutput) ToGetRegionalSecretPolicyMemberOutputWithContext(ctx context.Context) GetRegionalSecretPolicyMemberOutput {
+	return o
+}
+
+// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+// new resource. Format:
+// 'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+func (o GetRegionalSecretPolicyMemberOutput) IamPolicyUidPrincipal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretPolicyMember) string { return v.IamPolicyUidPrincipal }).(pulumi.StringOutput)
+}
+
+type GetRegionalSecretPolicyMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretPolicyMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretPolicyMember)(nil)).Elem()
+}
+
+func (o GetRegionalSecretPolicyMemberArrayOutput) ToGetRegionalSecretPolicyMemberArrayOutput() GetRegionalSecretPolicyMemberArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretPolicyMemberArrayOutput) ToGetRegionalSecretPolicyMemberArrayOutputWithContext(ctx context.Context) GetRegionalSecretPolicyMemberArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretPolicyMemberArrayOutput) Index(i pulumi.IntInput) GetRegionalSecretPolicyMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretPolicyMember {
+		return vs[0].([]GetRegionalSecretPolicyMember)[vs[1].(int)]
+	}).(GetRegionalSecretPolicyMemberOutput)
+}
+
 type GetRegionalSecretRotation struct {
 	// Timestamp in UTC at which the Secret is scheduled to rotate.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -2847,6 +3636,9 @@ type GetRegionalSecretsSecret struct {
 	Location string `pulumi:"location"`
 	// The resource name of the Pub/Sub topic that will be published to.
 	Name string `pulumi:"name"`
+	// An object containing a unique resource identity tied to the regional secret. This identity can be
+	// granted the permissions required by features such as managed rotation.
+	PolicyMembers []GetRegionalSecretsSecretPolicyMember `pulumi:"policyMembers"`
 	// The ID of the project.
 	Project string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
@@ -2859,6 +3651,15 @@ type GetRegionalSecretsSecret struct {
 	SecretId string `pulumi:"secretId"`
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * 'CLOUD_SQL_DB_CREDENTIALS': Secrets used for managed rotation of Cloud SQL single-user
+	//   credentials. Managed rotation can be enabled on these secrets using the
+	//   'google_secret_manager_regional_secret_managed_rotation' resource. Secret versions cannot
+	//   be added manually to secrets of this type.
+	// * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+	// * 'ACCESS_KEY': Secrets where the payload contains an access key.
+	// * 'CERTIFICATE': Secrets where the payload contains a certificate.
+	// * 'OTHER': Secrets whose type doesn't belong to any of the above types.
 	SecretType string `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -2918,6 +3719,9 @@ type GetRegionalSecretsSecretArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
 	// The resource name of the Pub/Sub topic that will be published to.
 	Name pulumi.StringInput `pulumi:"name"`
+	// An object containing a unique resource identity tied to the regional secret. This identity can be
+	// granted the permissions required by features such as managed rotation.
+	PolicyMembers GetRegionalSecretsSecretPolicyMemberArrayInput `pulumi:"policyMembers"`
 	// The ID of the project.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
@@ -2930,6 +3734,15 @@ type GetRegionalSecretsSecretArgs struct {
 	SecretId pulumi.StringInput `pulumi:"secretId"`
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * 'CLOUD_SQL_DB_CREDENTIALS': Secrets used for managed rotation of Cloud SQL single-user
+	//   credentials. Managed rotation can be enabled on these secrets using the
+	//   'google_secret_manager_regional_secret_managed_rotation' resource. Secret versions cannot
+	//   be added manually to secrets of this type.
+	// * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+	// * 'ACCESS_KEY': Secrets where the payload contains an access key.
+	// * 'CERTIFICATE': Secrets where the payload contains a certificate.
+	// * 'OTHER': Secrets whose type doesn't belong to any of the above types.
 	SecretType pulumi.StringInput `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -3063,6 +3876,12 @@ func (o GetRegionalSecretsSecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// An object containing a unique resource identity tied to the regional secret. This identity can be
+// granted the permissions required by features such as managed rotation.
+func (o GetRegionalSecretsSecretOutput) PolicyMembers() GetRegionalSecretsSecretPolicyMemberArrayOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) []GetRegionalSecretsSecretPolicyMember { return v.PolicyMembers }).(GetRegionalSecretsSecretPolicyMemberArrayOutput)
+}
+
 // The ID of the project.
 func (o GetRegionalSecretsSecretOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.Project }).(pulumi.StringOutput)
@@ -3088,6 +3907,15 @@ func (o GetRegionalSecretsSecretOutput) SecretId() pulumi.StringOutput {
 
 // This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 // For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+// Supported values are:
+//   - 'CLOUD_SQL_DB_CREDENTIALS': Secrets used for managed rotation of Cloud SQL single-user
+//     credentials. Managed rotation can be enabled on these secrets using the
+//     'google_secret_manager_regional_secret_managed_rotation' resource. Secret versions cannot
+//     be added manually to secrets of this type.
+//   - 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+//   - 'ACCESS_KEY': Secrets where the payload contains an access key.
+//   - 'CERTIFICATE': Secrets where the payload contains a certificate.
+//   - 'OTHER': Secrets whose type doesn't belong to any of the above types.
 func (o GetRegionalSecretsSecretOutput) SecretType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.SecretType }).(pulumi.StringOutput)
 }
@@ -3236,6 +4064,112 @@ func (o GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput) Index(i pu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretsSecretCustomerManagedEncryption {
 		return vs[0].([]GetRegionalSecretsSecretCustomerManagedEncryption)[vs[1].(int)]
 	}).(GetRegionalSecretsSecretCustomerManagedEncryptionOutput)
+}
+
+type GetRegionalSecretsSecretPolicyMember struct {
+	// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+	// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+	// new resource. Format:
+	// 'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+	IamPolicyUidPrincipal string `pulumi:"iamPolicyUidPrincipal"`
+}
+
+// GetRegionalSecretsSecretPolicyMemberInput is an input type that accepts GetRegionalSecretsSecretPolicyMemberArgs and GetRegionalSecretsSecretPolicyMemberOutput values.
+// You can construct a concrete instance of `GetRegionalSecretsSecretPolicyMemberInput` via:
+//
+//	GetRegionalSecretsSecretPolicyMemberArgs{...}
+type GetRegionalSecretsSecretPolicyMemberInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretsSecretPolicyMemberOutput() GetRegionalSecretsSecretPolicyMemberOutput
+	ToGetRegionalSecretsSecretPolicyMemberOutputWithContext(context.Context) GetRegionalSecretsSecretPolicyMemberOutput
+}
+
+type GetRegionalSecretsSecretPolicyMemberArgs struct {
+	// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+	// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+	// new resource. Format:
+	// 'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+	IamPolicyUidPrincipal pulumi.StringInput `pulumi:"iamPolicyUidPrincipal"`
+}
+
+func (GetRegionalSecretsSecretPolicyMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretsSecretPolicyMember)(nil)).Elem()
+}
+
+func (i GetRegionalSecretsSecretPolicyMemberArgs) ToGetRegionalSecretsSecretPolicyMemberOutput() GetRegionalSecretsSecretPolicyMemberOutput {
+	return i.ToGetRegionalSecretsSecretPolicyMemberOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretsSecretPolicyMemberArgs) ToGetRegionalSecretsSecretPolicyMemberOutputWithContext(ctx context.Context) GetRegionalSecretsSecretPolicyMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretsSecretPolicyMemberOutput)
+}
+
+// GetRegionalSecretsSecretPolicyMemberArrayInput is an input type that accepts GetRegionalSecretsSecretPolicyMemberArray and GetRegionalSecretsSecretPolicyMemberArrayOutput values.
+// You can construct a concrete instance of `GetRegionalSecretsSecretPolicyMemberArrayInput` via:
+//
+//	GetRegionalSecretsSecretPolicyMemberArray{ GetRegionalSecretsSecretPolicyMemberArgs{...} }
+type GetRegionalSecretsSecretPolicyMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretsSecretPolicyMemberArrayOutput() GetRegionalSecretsSecretPolicyMemberArrayOutput
+	ToGetRegionalSecretsSecretPolicyMemberArrayOutputWithContext(context.Context) GetRegionalSecretsSecretPolicyMemberArrayOutput
+}
+
+type GetRegionalSecretsSecretPolicyMemberArray []GetRegionalSecretsSecretPolicyMemberInput
+
+func (GetRegionalSecretsSecretPolicyMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretsSecretPolicyMember)(nil)).Elem()
+}
+
+func (i GetRegionalSecretsSecretPolicyMemberArray) ToGetRegionalSecretsSecretPolicyMemberArrayOutput() GetRegionalSecretsSecretPolicyMemberArrayOutput {
+	return i.ToGetRegionalSecretsSecretPolicyMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretsSecretPolicyMemberArray) ToGetRegionalSecretsSecretPolicyMemberArrayOutputWithContext(ctx context.Context) GetRegionalSecretsSecretPolicyMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretsSecretPolicyMemberArrayOutput)
+}
+
+type GetRegionalSecretsSecretPolicyMemberOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretsSecretPolicyMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretsSecretPolicyMember)(nil)).Elem()
+}
+
+func (o GetRegionalSecretsSecretPolicyMemberOutput) ToGetRegionalSecretsSecretPolicyMemberOutput() GetRegionalSecretsSecretPolicyMemberOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretPolicyMemberOutput) ToGetRegionalSecretsSecretPolicyMemberOutputWithContext(ctx context.Context) GetRegionalSecretsSecretPolicyMemberOutput {
+	return o
+}
+
+// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+// new resource. Format:
+// 'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+func (o GetRegionalSecretsSecretPolicyMemberOutput) IamPolicyUidPrincipal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecretPolicyMember) string { return v.IamPolicyUidPrincipal }).(pulumi.StringOutput)
+}
+
+type GetRegionalSecretsSecretPolicyMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretsSecretPolicyMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretsSecretPolicyMember)(nil)).Elem()
+}
+
+func (o GetRegionalSecretsSecretPolicyMemberArrayOutput) ToGetRegionalSecretsSecretPolicyMemberArrayOutput() GetRegionalSecretsSecretPolicyMemberArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretPolicyMemberArrayOutput) ToGetRegionalSecretsSecretPolicyMemberArrayOutputWithContext(ctx context.Context) GetRegionalSecretsSecretPolicyMemberArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretPolicyMemberArrayOutput) Index(i pulumi.IntInput) GetRegionalSecretsSecretPolicyMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretsSecretPolicyMember {
+		return vs[0].([]GetRegionalSecretsSecretPolicyMember)[vs[1].(int)]
+	}).(GetRegionalSecretsSecretPolicyMemberOutput)
 }
 
 type GetRegionalSecretsSecretRotation struct {
@@ -4304,6 +5238,11 @@ type GetSecretsSecret struct {
 	SecretId string `pulumi:"secretId"`
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+	// * 'ACCESS_KEY': Secrets where the payload contains an access key.
+	// * 'CERTIFICATE': Secrets where the payload contains a certificate.
+	// * 'OTHER': Secrets whose type doesn't belong to any of the above types.
 	SecretType string `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -4374,6 +5313,11 @@ type GetSecretsSecretArgs struct {
 	SecretId pulumi.StringInput `pulumi:"secretId"`
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+	// * 'ACCESS_KEY': Secrets where the payload contains an access key.
+	// * 'CERTIFICATE': Secrets where the payload contains a certificate.
+	// * 'OTHER': Secrets whose type doesn't belong to any of the above types.
 	SecretType pulumi.StringInput `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -4526,6 +5470,11 @@ func (o GetSecretsSecretOutput) SecretId() pulumi.StringOutput {
 
 // This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 // For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+// Supported values are:
+// * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+// * 'ACCESS_KEY': Secrets where the payload contains an access key.
+// * 'CERTIFICATE': Secrets where the payload contains a certificate.
+// * 'OTHER': Secrets whose type doesn't belong to any of the above types.
 func (o GetSecretsSecretOutput) SecretType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretType }).(pulumi.StringOutput)
 }
@@ -5413,6 +6362,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretIamBindingConditionPtrInput)(nil)).Elem(), RegionalSecretIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretIamMemberConditionInput)(nil)).Elem(), RegionalSecretIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretIamMemberConditionPtrInput)(nil)).Elem(), RegionalSecretIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretManagedRotationCloudSqlSingleUserCredentialsInput)(nil)).Elem(), RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrInput)(nil)).Elem(), RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretManagedRotationRotationInput)(nil)).Elem(), RegionalSecretManagedRotationRotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretManagedRotationRotationArrayInput)(nil)).Elem(), RegionalSecretManagedRotationRotationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretManagedRotationRotationManagedRotationStatusInput)(nil)).Elem(), RegionalSecretManagedRotationRotationManagedRotationStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretManagedRotationRotationManagedRotationStatusArrayInput)(nil)).Elem(), RegionalSecretManagedRotationRotationManagedRotationStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretManagedRotationRotationManagedRotationStatusErrorInput)(nil)).Elem(), RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayInput)(nil)).Elem(), RegionalSecretManagedRotationRotationManagedRotationStatusErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretPolicyMemberInput)(nil)).Elem(), RegionalSecretPolicyMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretPolicyMemberArrayInput)(nil)).Elem(), RegionalSecretPolicyMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretRotationInput)(nil)).Elem(), RegionalSecretRotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretRotationPtrInput)(nil)).Elem(), RegionalSecretRotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretTopicInput)(nil)).Elem(), RegionalSecretTopicArgs{})
@@ -5441,6 +6400,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretTopicArrayInput)(nil)).Elem(), SecretTopicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretCustomerManagedEncryptionInput)(nil)).Elem(), GetRegionalSecretCustomerManagedEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretCustomerManagedEncryptionArrayInput)(nil)).Elem(), GetRegionalSecretCustomerManagedEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretPolicyMemberInput)(nil)).Elem(), GetRegionalSecretPolicyMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretPolicyMemberArrayInput)(nil)).Elem(), GetRegionalSecretPolicyMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretRotationInput)(nil)).Elem(), GetRegionalSecretRotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretRotationArrayInput)(nil)).Elem(), GetRegionalSecretRotationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretTopicInput)(nil)).Elem(), GetRegionalSecretTopicArgs{})
@@ -5451,6 +6412,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretArrayInput)(nil)).Elem(), GetRegionalSecretsSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretCustomerManagedEncryptionInput)(nil)).Elem(), GetRegionalSecretsSecretCustomerManagedEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretCustomerManagedEncryptionArrayInput)(nil)).Elem(), GetRegionalSecretsSecretCustomerManagedEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretPolicyMemberInput)(nil)).Elem(), GetRegionalSecretsSecretPolicyMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretPolicyMemberArrayInput)(nil)).Elem(), GetRegionalSecretsSecretPolicyMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretRotationInput)(nil)).Elem(), GetRegionalSecretsSecretRotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretRotationArrayInput)(nil)).Elem(), GetRegionalSecretsSecretRotationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretTopicInput)(nil)).Elem(), GetRegionalSecretsSecretTopicArgs{})
@@ -5495,6 +6458,16 @@ func init() {
 	pulumi.RegisterOutputType(RegionalSecretIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RegionalSecretIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(RegionalSecretIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(RegionalSecretManagedRotationCloudSqlSingleUserCredentialsOutput{})
+	pulumi.RegisterOutputType(RegionalSecretManagedRotationCloudSqlSingleUserCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(RegionalSecretManagedRotationRotationOutput{})
+	pulumi.RegisterOutputType(RegionalSecretManagedRotationRotationArrayOutput{})
+	pulumi.RegisterOutputType(RegionalSecretManagedRotationRotationManagedRotationStatusOutput{})
+	pulumi.RegisterOutputType(RegionalSecretManagedRotationRotationManagedRotationStatusArrayOutput{})
+	pulumi.RegisterOutputType(RegionalSecretManagedRotationRotationManagedRotationStatusErrorOutput{})
+	pulumi.RegisterOutputType(RegionalSecretManagedRotationRotationManagedRotationStatusErrorArrayOutput{})
+	pulumi.RegisterOutputType(RegionalSecretPolicyMemberOutput{})
+	pulumi.RegisterOutputType(RegionalSecretPolicyMemberArrayOutput{})
 	pulumi.RegisterOutputType(RegionalSecretRotationOutput{})
 	pulumi.RegisterOutputType(RegionalSecretRotationPtrOutput{})
 	pulumi.RegisterOutputType(RegionalSecretTopicOutput{})
@@ -5523,6 +6496,8 @@ func init() {
 	pulumi.RegisterOutputType(SecretTopicArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretCustomerManagedEncryptionOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretCustomerManagedEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretPolicyMemberOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretPolicyMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretRotationOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretRotationArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretTopicOutput{})
@@ -5533,6 +6508,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionalSecretsSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretsSecretCustomerManagedEncryptionOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretsSecretPolicyMemberOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretsSecretPolicyMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretsSecretRotationOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretsSecretRotationArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretsSecretTopicOutput{})

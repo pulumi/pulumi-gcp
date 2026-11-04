@@ -12,6 +12,7 @@ import com.pulumi.gcp.vertex.AiCacheConfigArgs;
 import com.pulumi.gcp.vertex.inputs.AiCacheConfigState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -119,6 +120,24 @@ public class AiCacheConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+     * The cache config is a project-level setting, so this only selects which regional endpoint
+     * requests are sent to. If not specified, the provider-level region is used.
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> region;
+
+    /**
+     * @return The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+     * The cache config is a project-level setting, so this only selects which regional endpoint
+     * requests are sent to. If not specified, the provider-level region is used.
+     * 
+     */
+    public Output<Optional<String>> region() {
+        return Codegen.optional(this.region);
     }
 
     /**

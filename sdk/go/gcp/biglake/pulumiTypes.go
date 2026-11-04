@@ -5660,7 +5660,10 @@ type IcebergTableSchemaField struct {
 	Name string `pulumi:"name"`
 	// Whether the field is required.
 	Required bool `pulumi:"required"`
-	// The type of the field.
+	// The type of the field. Primitive types are plain names such as `long`. List, map and
+	// struct types are JSON objects as defined by the
+	// [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+	// typically written with `jsonencode`.
 	Type string `pulumi:"type"`
 }
 
@@ -5684,7 +5687,10 @@ type IcebergTableSchemaFieldArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Whether the field is required.
 	Required pulumi.BoolInput `pulumi:"required"`
-	// The type of the field.
+	// The type of the field. Primitive types are plain names such as `long`. List, map and
+	// struct types are JSON objects as defined by the
+	// [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+	// typically written with `jsonencode`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -5759,7 +5765,10 @@ func (o IcebergTableSchemaFieldOutput) Required() pulumi.BoolOutput {
 	return o.ApplyT(func(v IcebergTableSchemaField) bool { return v.Required }).(pulumi.BoolOutput)
 }
 
-// The type of the field.
+// The type of the field. Primitive types are plain names such as `long`. List, map and
+// struct types are JSON objects as defined by the
+// [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+// typically written with `jsonencode`.
 func (o IcebergTableSchemaFieldOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v IcebergTableSchemaField) string { return v.Type }).(pulumi.StringOutput)
 }

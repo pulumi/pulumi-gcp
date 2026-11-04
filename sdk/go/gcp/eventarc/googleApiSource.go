@@ -156,9 +156,17 @@ type GoogleApiSource struct {
 	// Resource name of the form
 	// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Config to enable subscribing to events from all projects in the
+	// GoogleApiSource's org.
+	// Structure is documented below.
+	OrganizationSubscription GoogleApiSourceOrganizationSubscriptionPtrOutput `pulumi:"organizationSubscription"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Config to enable subscribing to all events from a list of projects.
+	// All the projects must be in the same org as the GoogleApiSource.
+	// Structure is documented below.
+	ProjectSubscriptions GoogleApiSourceProjectSubscriptionsPtrOutput `pulumi:"projectSubscriptions"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -261,9 +269,17 @@ type googleApiSourceState struct {
 	// Resource name of the form
 	// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
 	Name *string `pulumi:"name"`
+	// Config to enable subscribing to events from all projects in the
+	// GoogleApiSource's org.
+	// Structure is documented below.
+	OrganizationSubscription *GoogleApiSourceOrganizationSubscription `pulumi:"organizationSubscription"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Config to enable subscribing to all events from a list of projects.
+	// All the projects must be in the same org as the GoogleApiSource.
+	// Structure is documented below.
+	ProjectSubscriptions *GoogleApiSourceProjectSubscriptions `pulumi:"projectSubscriptions"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -323,9 +339,17 @@ type GoogleApiSourceState struct {
 	// Resource name of the form
 	// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
 	Name pulumi.StringPtrInput
+	// Config to enable subscribing to events from all projects in the
+	// GoogleApiSource's org.
+	// Structure is documented below.
+	OrganizationSubscription GoogleApiSourceOrganizationSubscriptionPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Config to enable subscribing to all events from a list of projects.
+	// All the projects must be in the same org as the GoogleApiSource.
+	// Structure is documented below.
+	ProjectSubscriptions GoogleApiSourceProjectSubscriptionsPtrInput
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -376,9 +400,17 @@ type googleApiSourceArgs struct {
 	// resources.
 	// Structure is documented below.
 	LoggingConfig *GoogleApiSourceLoggingConfig `pulumi:"loggingConfig"`
+	// Config to enable subscribing to events from all projects in the
+	// GoogleApiSource's org.
+	// Structure is documented below.
+	OrganizationSubscription *GoogleApiSourceOrganizationSubscription `pulumi:"organizationSubscription"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Config to enable subscribing to all events from a list of projects.
+	// All the projects must be in the same org as the GoogleApiSource.
+	// Structure is documented below.
+	ProjectSubscriptions *GoogleApiSourceProjectSubscriptions `pulumi:"projectSubscriptions"`
 }
 
 // The set of arguments for constructing a GoogleApiSource resource.
@@ -418,9 +450,17 @@ type GoogleApiSourceArgs struct {
 	// resources.
 	// Structure is documented below.
 	LoggingConfig GoogleApiSourceLoggingConfigPtrInput
+	// Config to enable subscribing to events from all projects in the
+	// GoogleApiSource's org.
+	// Structure is documented below.
+	OrganizationSubscription GoogleApiSourceOrganizationSubscriptionPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Config to enable subscribing to all events from a list of projects.
+	// All the projects must be in the same org as the GoogleApiSource.
+	// Structure is documented below.
+	ProjectSubscriptions GoogleApiSourceProjectSubscriptionsPtrInput
 }
 
 func (GoogleApiSourceArgs) ElementType() reflect.Type {
@@ -600,10 +640,26 @@ func (o GoogleApiSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GoogleApiSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Config to enable subscribing to events from all projects in the
+// GoogleApiSource's org.
+// Structure is documented below.
+func (o GoogleApiSourceOutput) OrganizationSubscription() GoogleApiSourceOrganizationSubscriptionPtrOutput {
+	return o.ApplyT(func(v *GoogleApiSource) GoogleApiSourceOrganizationSubscriptionPtrOutput {
+		return v.OrganizationSubscription
+	}).(GoogleApiSourceOrganizationSubscriptionPtrOutput)
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o GoogleApiSourceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GoogleApiSource) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Config to enable subscribing to all events from a list of projects.
+// All the projects must be in the same org as the GoogleApiSource.
+// Structure is documented below.
+func (o GoogleApiSourceOutput) ProjectSubscriptions() GoogleApiSourceProjectSubscriptionsPtrOutput {
+	return o.ApplyT(func(v *GoogleApiSource) GoogleApiSourceProjectSubscriptionsPtrOutput { return v.ProjectSubscriptions }).(GoogleApiSourceProjectSubscriptionsPtrOutput)
 }
 
 // The combination of labels configured directly on the resource

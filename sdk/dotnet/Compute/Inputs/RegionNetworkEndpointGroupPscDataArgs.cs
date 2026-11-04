@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionNetworkEndpointGroupPscDataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
+        /// Address allocated from given subnetwork for PSC. This IP address acts
+        /// as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+        /// </summary>
+        [Input("consumerPscAddress")]
+        public Input<string>? ConsumerPscAddress { get; set; }
+
+        /// <summary>
         /// The PSC producer port to use when consumer PSC NEG connects to a producer. If
         /// this flag isn't specified for a PSC NEG with endpoint type
         /// private-service-connect, then PSC NEG will be connected to a first port in the
@@ -20,6 +28,22 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("producerPort")]
         public Input<string>? ProducerPort { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// The PSC connection id of the PSC Network Endpoint Group Consumer.
+        /// </summary>
+        [Input("pscConnectionId")]
+        public Input<string>? PscConnectionId { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// The connection status of the PSC Network Endpoint Group Consumer.
+        /// Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+        /// `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+        /// </summary>
+        [Input("pscConnectionStatus")]
+        public Input<string>? PscConnectionStatus { get; set; }
 
         public RegionNetworkEndpointGroupPscDataArgs()
         {

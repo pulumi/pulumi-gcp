@@ -27,6 +27,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// scheduled at or after the end time. The end time can be changed at any
         /// moment. The time when a data transfer can be triggered manually is not
         /// limited by this option.
+        /// 
+        /// &lt;a name="NestedScheduleOptionsV2"&gt;&lt;/a&gt;The `ScheduleOptionsV2` block supports:
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }

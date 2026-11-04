@@ -27,7 +27,7 @@ class GetDatasetResult:
     """
     A collection of values returned by getDataset.
     """
-    def __init__(__self__, accesses=None, creation_time=None, dataset_id=None, default_collation=None, default_encryption_configurations=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, deletion_policy=None, description=None, effective_labels=None, etag=None, external_catalog_dataset_options=None, external_dataset_references=None, friendly_name=None, id=None, is_case_insensitive=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, project=None, pulumi_labels=None, resource_tags=None, self_link=None, storage_billing_model=None):
+    def __init__(__self__, accesses=None, creation_time=None, dataset_id=None, default_collation=None, default_encryption_configurations=None, default_partition_expiration_ms=None, default_rounding_mode=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, deletion_policy=None, description=None, effective_labels=None, etag=None, external_catalog_dataset_options=None, external_dataset_references=None, friendly_name=None, id=None, is_case_insensitive=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, project=None, pulumi_labels=None, resource_tags=None, self_link=None, storage_billing_model=None):
         if accesses and not isinstance(accesses, list):
             raise TypeError("Expected argument 'accesses' to be a list")
         pulumi.set(__self__, "accesses", accesses)
@@ -46,6 +46,9 @@ class GetDatasetResult:
         if default_partition_expiration_ms and not isinstance(default_partition_expiration_ms, int):
             raise TypeError("Expected argument 'default_partition_expiration_ms' to be a int")
         pulumi.set(__self__, "default_partition_expiration_ms", default_partition_expiration_ms)
+        if default_rounding_mode and not isinstance(default_rounding_mode, str):
+            raise TypeError("Expected argument 'default_rounding_mode' to be a str")
+        pulumi.set(__self__, "default_rounding_mode", default_rounding_mode)
         if default_table_expiration_ms and not isinstance(default_table_expiration_ms, int):
             raise TypeError("Expected argument 'default_table_expiration_ms' to be a int")
         pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
@@ -136,6 +139,11 @@ class GetDatasetResult:
     @pulumi.getter(name="defaultPartitionExpirationMs")
     def default_partition_expiration_ms(self) -> _builtins.int:
         return pulumi.get(self, "default_partition_expiration_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRoundingMode")
+    def default_rounding_mode(self) -> _builtins.str:
+        return pulumi.get(self, "default_rounding_mode")
 
     @_builtins.property
     @pulumi.getter(name="defaultTableExpirationMs")
@@ -253,6 +261,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             default_collation=self.default_collation,
             default_encryption_configurations=self.default_encryption_configurations,
             default_partition_expiration_ms=self.default_partition_expiration_ms,
+            default_rounding_mode=self.default_rounding_mode,
             default_table_expiration_ms=self.default_table_expiration_ms,
             delete_contents_on_destroy=self.delete_contents_on_destroy,
             deletion_policy=self.deletion_policy,
@@ -311,6 +320,7 @@ def get_dataset(dataset_id: Optional[_builtins.str] = None,
         default_collation=pulumi.get(__ret__, 'default_collation'),
         default_encryption_configurations=pulumi.get(__ret__, 'default_encryption_configurations'),
         default_partition_expiration_ms=pulumi.get(__ret__, 'default_partition_expiration_ms'),
+        default_rounding_mode=pulumi.get(__ret__, 'default_rounding_mode'),
         default_table_expiration_ms=pulumi.get(__ret__, 'default_table_expiration_ms'),
         delete_contents_on_destroy=pulumi.get(__ret__, 'delete_contents_on_destroy'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
@@ -366,6 +376,7 @@ def get_dataset_output(dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
         default_collation=pulumi.get(__response__, 'default_collation'),
         default_encryption_configurations=pulumi.get(__response__, 'default_encryption_configurations'),
         default_partition_expiration_ms=pulumi.get(__response__, 'default_partition_expiration_ms'),
+        default_rounding_mode=pulumi.get(__response__, 'default_rounding_mode'),
         default_table_expiration_ms=pulumi.get(__response__, 'default_table_expiration_ms'),
         delete_contents_on_destroy=pulumi.get(__response__, 'delete_contents_on_destroy'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),

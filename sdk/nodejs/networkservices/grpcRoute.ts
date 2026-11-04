@@ -75,6 +75,7 @@ import * as utilities from "../utilities";
  *                     grpcService: "foo",
  *                     grpcMethod: "bar",
  *                     caseSensitive: true,
+ *                     type: "EXACT",
  *                 },
  *             },
  *         ],
@@ -93,6 +94,7 @@ import * as utilities from "../utilities";
  *                 retryConditions: ["cancelled"],
  *                 numRetries: 1,
  *             },
+ *             idleTimeout: "30s",
  *         },
  *     }],
  * });

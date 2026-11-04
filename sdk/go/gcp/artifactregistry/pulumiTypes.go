@@ -1346,6 +1346,174 @@ func (o RepositoryMavenConfigPtrOutput) VersionPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RepositoryPlatformLogsConfig struct {
+	// The state of the platform logs: enabled or disabled.
+	// Possible values are: `ENABLED`, `DISABLED`.
+	LoggingState *string `pulumi:"loggingState"`
+	// The severity level for the logs. Logs will be generated if their
+	// severity level is >= than the value of the severity level mentioned here.
+	// Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+	SeverityLevel *string `pulumi:"severityLevel"`
+}
+
+// RepositoryPlatformLogsConfigInput is an input type that accepts RepositoryPlatformLogsConfigArgs and RepositoryPlatformLogsConfigOutput values.
+// You can construct a concrete instance of `RepositoryPlatformLogsConfigInput` via:
+//
+//	RepositoryPlatformLogsConfigArgs{...}
+type RepositoryPlatformLogsConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryPlatformLogsConfigOutput() RepositoryPlatformLogsConfigOutput
+	ToRepositoryPlatformLogsConfigOutputWithContext(context.Context) RepositoryPlatformLogsConfigOutput
+}
+
+type RepositoryPlatformLogsConfigArgs struct {
+	// The state of the platform logs: enabled or disabled.
+	// Possible values are: `ENABLED`, `DISABLED`.
+	LoggingState pulumi.StringPtrInput `pulumi:"loggingState"`
+	// The severity level for the logs. Logs will be generated if their
+	// severity level is >= than the value of the severity level mentioned here.
+	// Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+	SeverityLevel pulumi.StringPtrInput `pulumi:"severityLevel"`
+}
+
+func (RepositoryPlatformLogsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryPlatformLogsConfig)(nil)).Elem()
+}
+
+func (i RepositoryPlatformLogsConfigArgs) ToRepositoryPlatformLogsConfigOutput() RepositoryPlatformLogsConfigOutput {
+	return i.ToRepositoryPlatformLogsConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryPlatformLogsConfigArgs) ToRepositoryPlatformLogsConfigOutputWithContext(ctx context.Context) RepositoryPlatformLogsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPlatformLogsConfigOutput)
+}
+
+func (i RepositoryPlatformLogsConfigArgs) ToRepositoryPlatformLogsConfigPtrOutput() RepositoryPlatformLogsConfigPtrOutput {
+	return i.ToRepositoryPlatformLogsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryPlatformLogsConfigArgs) ToRepositoryPlatformLogsConfigPtrOutputWithContext(ctx context.Context) RepositoryPlatformLogsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPlatformLogsConfigOutput).ToRepositoryPlatformLogsConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryPlatformLogsConfigPtrInput is an input type that accepts RepositoryPlatformLogsConfigArgs, RepositoryPlatformLogsConfigPtr and RepositoryPlatformLogsConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryPlatformLogsConfigPtrInput` via:
+//
+//	        RepositoryPlatformLogsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryPlatformLogsConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryPlatformLogsConfigPtrOutput() RepositoryPlatformLogsConfigPtrOutput
+	ToRepositoryPlatformLogsConfigPtrOutputWithContext(context.Context) RepositoryPlatformLogsConfigPtrOutput
+}
+
+type repositoryPlatformLogsConfigPtrType RepositoryPlatformLogsConfigArgs
+
+func RepositoryPlatformLogsConfigPtr(v *RepositoryPlatformLogsConfigArgs) RepositoryPlatformLogsConfigPtrInput {
+	return (*repositoryPlatformLogsConfigPtrType)(v)
+}
+
+func (*repositoryPlatformLogsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryPlatformLogsConfig)(nil)).Elem()
+}
+
+func (i *repositoryPlatformLogsConfigPtrType) ToRepositoryPlatformLogsConfigPtrOutput() RepositoryPlatformLogsConfigPtrOutput {
+	return i.ToRepositoryPlatformLogsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryPlatformLogsConfigPtrType) ToRepositoryPlatformLogsConfigPtrOutputWithContext(ctx context.Context) RepositoryPlatformLogsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPlatformLogsConfigPtrOutput)
+}
+
+type RepositoryPlatformLogsConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryPlatformLogsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryPlatformLogsConfig)(nil)).Elem()
+}
+
+func (o RepositoryPlatformLogsConfigOutput) ToRepositoryPlatformLogsConfigOutput() RepositoryPlatformLogsConfigOutput {
+	return o
+}
+
+func (o RepositoryPlatformLogsConfigOutput) ToRepositoryPlatformLogsConfigOutputWithContext(ctx context.Context) RepositoryPlatformLogsConfigOutput {
+	return o
+}
+
+func (o RepositoryPlatformLogsConfigOutput) ToRepositoryPlatformLogsConfigPtrOutput() RepositoryPlatformLogsConfigPtrOutput {
+	return o.ToRepositoryPlatformLogsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryPlatformLogsConfigOutput) ToRepositoryPlatformLogsConfigPtrOutputWithContext(ctx context.Context) RepositoryPlatformLogsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryPlatformLogsConfig) *RepositoryPlatformLogsConfig {
+		return &v
+	}).(RepositoryPlatformLogsConfigPtrOutput)
+}
+
+// The state of the platform logs: enabled or disabled.
+// Possible values are: `ENABLED`, `DISABLED`.
+func (o RepositoryPlatformLogsConfigOutput) LoggingState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryPlatformLogsConfig) *string { return v.LoggingState }).(pulumi.StringPtrOutput)
+}
+
+// The severity level for the logs. Logs will be generated if their
+// severity level is >= than the value of the severity level mentioned here.
+// Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+func (o RepositoryPlatformLogsConfigOutput) SeverityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryPlatformLogsConfig) *string { return v.SeverityLevel }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryPlatformLogsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryPlatformLogsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryPlatformLogsConfig)(nil)).Elem()
+}
+
+func (o RepositoryPlatformLogsConfigPtrOutput) ToRepositoryPlatformLogsConfigPtrOutput() RepositoryPlatformLogsConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryPlatformLogsConfigPtrOutput) ToRepositoryPlatformLogsConfigPtrOutputWithContext(ctx context.Context) RepositoryPlatformLogsConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryPlatformLogsConfigPtrOutput) Elem() RepositoryPlatformLogsConfigOutput {
+	return o.ApplyT(func(v *RepositoryPlatformLogsConfig) RepositoryPlatformLogsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryPlatformLogsConfig
+		return ret
+	}).(RepositoryPlatformLogsConfigOutput)
+}
+
+// The state of the platform logs: enabled or disabled.
+// Possible values are: `ENABLED`, `DISABLED`.
+func (o RepositoryPlatformLogsConfigPtrOutput) LoggingState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryPlatformLogsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The severity level for the logs. Logs will be generated if their
+// severity level is >= than the value of the severity level mentioned here.
+// Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+func (o RepositoryPlatformLogsConfigPtrOutput) SeverityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryPlatformLogsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SeverityLevel
+	}).(pulumi.StringPtrOutput)
+}
+
 type RepositoryRemoteRepositoryConfig struct {
 	// Specific settings for an Apt remote repository.
 	// Structure is documented below.
@@ -6225,6 +6393,115 @@ func (o GetRepositoryMavenConfigArrayOutput) Index(i pulumi.IntInput) GetReposit
 	}).(GetRepositoryMavenConfigOutput)
 }
 
+type GetRepositoryPlatformLogsConfig struct {
+	// The state of the platform logs: enabled or disabled. Possible values: ["ENABLED", "DISABLED"]
+	LoggingState string `pulumi:"loggingState"`
+	// The severity level for the logs. Logs will be generated if their
+	// severity level is >= than the value of the severity level mentioned here. Possible values: ["DEBUG", "INFO", "NOTICE", "WARNING", "ERROR", "CRITICAL", "ALERT", "EMERGENCY"]
+	SeverityLevel string `pulumi:"severityLevel"`
+}
+
+// GetRepositoryPlatformLogsConfigInput is an input type that accepts GetRepositoryPlatformLogsConfigArgs and GetRepositoryPlatformLogsConfigOutput values.
+// You can construct a concrete instance of `GetRepositoryPlatformLogsConfigInput` via:
+//
+//	GetRepositoryPlatformLogsConfigArgs{...}
+type GetRepositoryPlatformLogsConfigInput interface {
+	pulumi.Input
+
+	ToGetRepositoryPlatformLogsConfigOutput() GetRepositoryPlatformLogsConfigOutput
+	ToGetRepositoryPlatformLogsConfigOutputWithContext(context.Context) GetRepositoryPlatformLogsConfigOutput
+}
+
+type GetRepositoryPlatformLogsConfigArgs struct {
+	// The state of the platform logs: enabled or disabled. Possible values: ["ENABLED", "DISABLED"]
+	LoggingState pulumi.StringInput `pulumi:"loggingState"`
+	// The severity level for the logs. Logs will be generated if their
+	// severity level is >= than the value of the severity level mentioned here. Possible values: ["DEBUG", "INFO", "NOTICE", "WARNING", "ERROR", "CRITICAL", "ALERT", "EMERGENCY"]
+	SeverityLevel pulumi.StringInput `pulumi:"severityLevel"`
+}
+
+func (GetRepositoryPlatformLogsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryPlatformLogsConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryPlatformLogsConfigArgs) ToGetRepositoryPlatformLogsConfigOutput() GetRepositoryPlatformLogsConfigOutput {
+	return i.ToGetRepositoryPlatformLogsConfigOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryPlatformLogsConfigArgs) ToGetRepositoryPlatformLogsConfigOutputWithContext(ctx context.Context) GetRepositoryPlatformLogsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryPlatformLogsConfigOutput)
+}
+
+// GetRepositoryPlatformLogsConfigArrayInput is an input type that accepts GetRepositoryPlatformLogsConfigArray and GetRepositoryPlatformLogsConfigArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryPlatformLogsConfigArrayInput` via:
+//
+//	GetRepositoryPlatformLogsConfigArray{ GetRepositoryPlatformLogsConfigArgs{...} }
+type GetRepositoryPlatformLogsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryPlatformLogsConfigArrayOutput() GetRepositoryPlatformLogsConfigArrayOutput
+	ToGetRepositoryPlatformLogsConfigArrayOutputWithContext(context.Context) GetRepositoryPlatformLogsConfigArrayOutput
+}
+
+type GetRepositoryPlatformLogsConfigArray []GetRepositoryPlatformLogsConfigInput
+
+func (GetRepositoryPlatformLogsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryPlatformLogsConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryPlatformLogsConfigArray) ToGetRepositoryPlatformLogsConfigArrayOutput() GetRepositoryPlatformLogsConfigArrayOutput {
+	return i.ToGetRepositoryPlatformLogsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryPlatformLogsConfigArray) ToGetRepositoryPlatformLogsConfigArrayOutputWithContext(ctx context.Context) GetRepositoryPlatformLogsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryPlatformLogsConfigArrayOutput)
+}
+
+type GetRepositoryPlatformLogsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryPlatformLogsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryPlatformLogsConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryPlatformLogsConfigOutput) ToGetRepositoryPlatformLogsConfigOutput() GetRepositoryPlatformLogsConfigOutput {
+	return o
+}
+
+func (o GetRepositoryPlatformLogsConfigOutput) ToGetRepositoryPlatformLogsConfigOutputWithContext(ctx context.Context) GetRepositoryPlatformLogsConfigOutput {
+	return o
+}
+
+// The state of the platform logs: enabled or disabled. Possible values: ["ENABLED", "DISABLED"]
+func (o GetRepositoryPlatformLogsConfigOutput) LoggingState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryPlatformLogsConfig) string { return v.LoggingState }).(pulumi.StringOutput)
+}
+
+// The severity level for the logs. Logs will be generated if their
+// severity level is >= than the value of the severity level mentioned here. Possible values: ["DEBUG", "INFO", "NOTICE", "WARNING", "ERROR", "CRITICAL", "ALERT", "EMERGENCY"]
+func (o GetRepositoryPlatformLogsConfigOutput) SeverityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryPlatformLogsConfig) string { return v.SeverityLevel }).(pulumi.StringOutput)
+}
+
+type GetRepositoryPlatformLogsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryPlatformLogsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryPlatformLogsConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryPlatformLogsConfigArrayOutput) ToGetRepositoryPlatformLogsConfigArrayOutput() GetRepositoryPlatformLogsConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryPlatformLogsConfigArrayOutput) ToGetRepositoryPlatformLogsConfigArrayOutputWithContext(ctx context.Context) GetRepositoryPlatformLogsConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryPlatformLogsConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryPlatformLogsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryPlatformLogsConfig {
+		return vs[0].([]GetRepositoryPlatformLogsConfig)[vs[1].(int)]
+	}).(GetRepositoryPlatformLogsConfigOutput)
+}
+
 type GetRepositoryRemoteRepositoryConfig struct {
 	// Specific settings for an Apt remote repository.
 	AptRepositories []GetRepositoryRemoteRepositoryConfigAptRepository `pulumi:"aptRepositories"`
@@ -8886,6 +9163,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionPtrInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryMavenConfigInput)(nil)).Elem(), RepositoryMavenConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryMavenConfigPtrInput)(nil)).Elem(), RepositoryMavenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryPlatformLogsConfigInput)(nil)).Elem(), RepositoryPlatformLogsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryPlatformLogsConfigPtrInput)(nil)).Elem(), RepositoryPlatformLogsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigAptRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigAptRepositoryArgs{})
@@ -8950,6 +9229,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryDockerConfigArrayInput)(nil)).Elem(), GetRepositoryDockerConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryMavenConfigInput)(nil)).Elem(), GetRepositoryMavenConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryMavenConfigArrayInput)(nil)).Elem(), GetRepositoryMavenConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryPlatformLogsConfigInput)(nil)).Elem(), GetRepositoryPlatformLogsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryPlatformLogsConfigArrayInput)(nil)).Elem(), GetRepositoryPlatformLogsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigAptRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigAptRepositoryArgs{})
@@ -9014,6 +9295,8 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryMavenConfigOutput{})
 	pulumi.RegisterOutputType(RepositoryMavenConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryPlatformLogsConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryPlatformLogsConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigAptRepositoryOutput{})
@@ -9078,6 +9361,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRepositoryDockerConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryMavenConfigOutput{})
 	pulumi.RegisterOutputType(GetRepositoryMavenConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryPlatformLogsConfigOutput{})
+	pulumi.RegisterOutputType(GetRepositoryPlatformLogsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigAptRepositoryOutput{})

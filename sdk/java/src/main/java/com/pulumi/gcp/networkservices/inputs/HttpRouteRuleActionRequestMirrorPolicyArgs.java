@@ -6,6 +6,7 @@ package com.pulumi.gcp.networkservices.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs;
+import java.lang.Double;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +33,26 @@ public final class HttpRouteRuleActionRequestMirrorPolicyArgs extends com.pulumi
         return Optional.ofNullable(this.destination);
     }
 
+    /**
+     * The percentage of requests to get mirrored to the desired destination.
+     * 
+     */
+    @Import(name="mirrorPercent")
+    private @Nullable Output<Double> mirrorPercent;
+
+    /**
+     * @return The percentage of requests to get mirrored to the desired destination.
+     * 
+     */
+    public Optional<Output<Double>> mirrorPercent() {
+        return Optional.ofNullable(this.mirrorPercent);
+    }
+
     private HttpRouteRuleActionRequestMirrorPolicyArgs() {}
 
     private HttpRouteRuleActionRequestMirrorPolicyArgs(HttpRouteRuleActionRequestMirrorPolicyArgs $) {
         this.destination = $.destination;
+        this.mirrorPercent = $.mirrorPercent;
     }
 
     public static Builder builder() {
@@ -77,6 +94,27 @@ public final class HttpRouteRuleActionRequestMirrorPolicyArgs extends com.pulumi
          */
         public Builder destination(HttpRouteRuleActionRequestMirrorPolicyDestinationArgs destination) {
             return destination(Output.of(destination));
+        }
+
+        /**
+         * @param mirrorPercent The percentage of requests to get mirrored to the desired destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirrorPercent(@Nullable Output<Double> mirrorPercent) {
+            $.mirrorPercent = mirrorPercent;
+            return this;
+        }
+
+        /**
+         * @param mirrorPercent The percentage of requests to get mirrored to the desired destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirrorPercent(Double mirrorPercent) {
+            return mirrorPercent(Output.of(mirrorPercent));
         }
 
         public HttpRouteRuleActionRequestMirrorPolicyArgs build() {

@@ -35,6 +35,7 @@ class DataTransferConfigArgs:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule_options: pulumi.Input[Optional['DataTransferConfigScheduleOptionsArgs']] = None,
+                 schedule_options_v2: pulumi.Input[Optional['DataTransferConfigScheduleOptionsV2Args']] = None,
                  sensitive_params: pulumi.Input[Optional['DataTransferConfigSensitiveParamsArgs']] = None,
                  service_account_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -81,6 +82,12 @@ class DataTransferConfigArgs:
                on the data source; refer to the documentation for your data source.
         :param pulumi.Input['DataTransferConfigScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
                Structure is documented below.
+        :param pulumi.Input['DataTransferConfigScheduleOptionsV2Args'] schedule_options_v2: Options customizing the type of data transfer schedule.
+               Only the event-driven schedule is exposed here; time-based and manual
+               schedules are configured through the `schedule` and `schedule_options`
+               fields instead. This field cannot be used together with `schedule` or
+               `schedule_options`.
+               Structure is documented below.
         :param pulumi.Input['DataTransferConfigSensitiveParamsArgs'] sensitive_params: Different parameters are configured primarily using the the `params` field on this
                resource. This block contains the parameters which contain secrets or passwords so that they can be marked
                sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -117,6 +124,8 @@ class DataTransferConfigArgs:
             pulumi.set(__self__, "schedule", schedule)
         if schedule_options is not None:
             pulumi.set(__self__, "schedule_options", schedule_options)
+        if schedule_options_v2 is not None:
+            pulumi.set(__self__, "schedule_options_v2", schedule_options_v2)
         if sensitive_params is not None:
             pulumi.set(__self__, "sensitive_params", sensitive_params)
         if service_account_name is not None:
@@ -318,6 +327,23 @@ class DataTransferConfigArgs:
         pulumi.set(self, "schedule_options", value)
 
     @_builtins.property
+    @pulumi.getter(name="scheduleOptionsV2")
+    def schedule_options_v2(self) -> pulumi.Input[Optional['DataTransferConfigScheduleOptionsV2Args']]:
+        """
+        Options customizing the type of data transfer schedule.
+        Only the event-driven schedule is exposed here; time-based and manual
+        schedules are configured through the `schedule` and `schedule_options`
+        fields instead. This field cannot be used together with `schedule` or
+        `schedule_options`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_options_v2")
+
+    @schedule_options_v2.setter
+    def schedule_options_v2(self, value: pulumi.Input[Optional['DataTransferConfigScheduleOptionsV2Args']]):
+        pulumi.set(self, "schedule_options_v2", value)
+
+    @_builtins.property
     @pulumi.getter(name="sensitiveParams")
     def sensitive_params(self) -> pulumi.Input[Optional['DataTransferConfigSensitiveParamsArgs']]:
         """
@@ -368,6 +394,7 @@ class _DataTransferConfigState:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule_options: pulumi.Input[Optional['DataTransferConfigScheduleOptionsArgs']] = None,
+                 schedule_options_v2: pulumi.Input[Optional['DataTransferConfigScheduleOptionsV2Args']] = None,
                  sensitive_params: pulumi.Input[Optional['DataTransferConfigSensitiveParamsArgs']] = None,
                  service_account_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -419,6 +446,12 @@ class _DataTransferConfigState:
                on the data source; refer to the documentation for your data source.
         :param pulumi.Input['DataTransferConfigScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
                Structure is documented below.
+        :param pulumi.Input['DataTransferConfigScheduleOptionsV2Args'] schedule_options_v2: Options customizing the type of data transfer schedule.
+               Only the event-driven schedule is exposed here; time-based and manual
+               schedules are configured through the `schedule` and `schedule_options`
+               fields instead. This field cannot be used together with `schedule` or
+               `schedule_options`.
+               Structure is documented below.
         :param pulumi.Input['DataTransferConfigSensitiveParamsArgs'] sensitive_params: Different parameters are configured primarily using the the `params` field on this
                resource. This block contains the parameters which contain secrets or passwords so that they can be marked
                sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -460,6 +493,8 @@ class _DataTransferConfigState:
             pulumi.set(__self__, "schedule", schedule)
         if schedule_options is not None:
             pulumi.set(__self__, "schedule_options", schedule_options)
+        if schedule_options_v2 is not None:
+            pulumi.set(__self__, "schedule_options_v2", schedule_options_v2)
         if sensitive_params is not None:
             pulumi.set(__self__, "sensitive_params", sensitive_params)
         if service_account_name is not None:
@@ -677,6 +712,23 @@ class _DataTransferConfigState:
         pulumi.set(self, "schedule_options", value)
 
     @_builtins.property
+    @pulumi.getter(name="scheduleOptionsV2")
+    def schedule_options_v2(self) -> pulumi.Input[Optional['DataTransferConfigScheduleOptionsV2Args']]:
+        """
+        Options customizing the type of data transfer schedule.
+        Only the event-driven schedule is exposed here; time-based and manual
+        schedules are configured through the `schedule` and `schedule_options`
+        fields instead. This field cannot be used together with `schedule` or
+        `schedule_options`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_options_v2")
+
+    @schedule_options_v2.setter
+    def schedule_options_v2(self, value: pulumi.Input[Optional['DataTransferConfigScheduleOptionsV2Args']]):
+        pulumi.set(self, "schedule_options_v2", value)
+
+    @_builtins.property
     @pulumi.getter(name="sensitiveParams")
     def sensitive_params(self) -> pulumi.Input[Optional['DataTransferConfigSensitiveParamsArgs']]:
         """
@@ -729,6 +781,7 @@ class DataTransferConfig(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule_options: pulumi.Input[Optional[Union['DataTransferConfigScheduleOptionsArgs', 'DataTransferConfigScheduleOptionsArgsDict', 'outputs.DataTransferConfigScheduleOptions']]] = None,
+                 schedule_options_v2: pulumi.Input[Optional[Union['DataTransferConfigScheduleOptionsV2Args', 'DataTransferConfigScheduleOptionsV2ArgsDict', 'outputs.DataTransferConfigScheduleOptionsV2']]] = None,
                  sensitive_params: pulumi.Input[Optional[Union['DataTransferConfigSensitiveParamsArgs', 'DataTransferConfigSensitiveParamsArgsDict', 'outputs.DataTransferConfigSensitiveParams']]] = None,
                  service_account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -764,45 +817,18 @@ class DataTransferConfig(pulumi.CustomResource):
             description="bar",
             location="asia-northeast1",
             opts = pulumi.ResourceOptions(depends_on=[permissions]))
-        query_config = gcp.bigquery.DataTransferConfig("query_config",
-            display_name="my-query",
-            location="asia-northeast1",
-            data_source_id="scheduled_query",
-            schedule="first sunday of quarter 00:00",
-            destination_dataset_id=my_dataset.dataset_id,
-            params={
-                "destination_table_name_template": "my_table",
-                "write_disposition": "WRITE_APPEND",
-                "query": "SELECT name FROM tabl WHERE x = 'y'",
-            },
-            opts = pulumi.ResourceOptions(depends_on=[permissions]))
-        ```
-
-        ### Bigquerydatatransfer Config Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        permissions = gcp.projects.IAMMember("permissions",
-            project=project.project_id,
-            role="roles/iam.serviceAccountTokenCreator",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")
-        my_dataset = gcp.bigquery.Dataset("my_dataset",
-            dataset_id="example_dataset",
-            friendly_name="foo",
-            description="bar",
-            location="asia-northeast1",
-            opts = pulumi.ResourceOptions(depends_on=[permissions]))
         key_ring = gcp.kms.KeyRing("key_ring",
             name="example-keyring",
-            location="us")
+            location="asia-northeast1")
         crypto_key = gcp.kms.CryptoKey("crypto_key",
             name="example-key",
             key_ring=key_ring.id)
-        query_config_cmek = gcp.bigquery.DataTransferConfig("query_config_cmek",
-            display_name="display-name",
+        bigquery_encrypter = gcp.kms.CryptoKeyIAMMember("bigquery_encrypter",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
+        query_config = gcp.bigquery.DataTransferConfig("query_config",
+            display_name="my-query",
             location="asia-northeast1",
             data_source_id="scheduled_query",
             schedule="first sunday of quarter 00:00",
@@ -815,31 +841,52 @@ class DataTransferConfig(pulumi.CustomResource):
             encryption_configuration={
                 "kms_key_name": crypto_key.id,
             },
-            opts = pulumi.ResourceOptions(depends_on=[permissions]))
+            opts = pulumi.ResourceOptions(depends_on=[
+                    permissions,
+                    bigquery_encrypter,
+                ]))
         ```
 
-        ### Bigquerydatatransfer Config Salesforce
+        ### Bigquerydatatransfer Config Schedule Options V2
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.get_project()
-        my_dataset = gcp.bigquery.Dataset("my_dataset",
+        event_driven = gcp.pubsub.Topic("event_driven", name="my-topic")
+        event_driven_subscription = gcp.pubsub.Subscription("event_driven",
+            name="my-subscription",
+            topic=event_driven.id)
+        event_driven_bucket = gcp.storage.Bucket("event_driven",
+            name="my-bucket",
+            location="US",
+            uniform_bucket_level_access=True,
+            force_destroy=True)
+        event_driven_dataset = gcp.bigquery.Dataset("event_driven",
             dataset_id="my_dataset",
-            description="My dataset",
-            location="asia-northeast1")
-        salesforce_config = gcp.bigquery.DataTransferConfig("salesforce_config",
-            display_name="my-salesforce-config",
-            location="asia-northeast1",
-            data_source_id="salesforce",
-            schedule="first sunday of quarter 00:00",
-            destination_dataset_id=my_dataset.dataset_id,
+            friendly_name="foo",
+            description="bar",
+            location="US")
+        event_driven_table = gcp.bigquery.Table("event_driven",
+            deletion_protection=False,
+            dataset_id=event_driven_dataset.dataset_id,
+            table_id="my_table",
+            schema="[{\\"name\\":\\"name\\",\\"type\\":\\"STRING\\"}]")
+        event_driven_config = gcp.bigquery.DataTransferConfig("event_driven_config",
+            display_name="my-event-driven-config",
+            location=event_driven_dataset.location,
+            data_source_id="google_cloud_storage",
+            destination_dataset_id=event_driven_dataset.dataset_id,
+            schedule_options_v2={
+                "event_driven_schedule": {
+                    "pubsub_subscription": event_driven_subscription.id,
+                },
+            },
             params={
-                "connector.authentication.oauth.clientId": "client-id",
-                "connector.authentication.oauth.clientSecret": "client-secret",
-                "connector.authentication.oauth.myDomain": "MyDomainName",
-                "assets": "[\\"asset-a\\",\\"asset-b\\"]",
+                "data_path_template": event_driven_bucket.url.apply(lambda url: f"{url}/*.json"),
+                "destination_table_name_template": event_driven_table.table_id,
+                "file_format": "JSON",
+                "write_disposition": "APPEND",
             })
         ```
 
@@ -903,6 +950,12 @@ class DataTransferConfig(pulumi.CustomResource):
                on the data source; refer to the documentation for your data source.
         :param pulumi.Input[Union['DataTransferConfigScheduleOptionsArgs', 'DataTransferConfigScheduleOptionsArgsDict', 'outputs.DataTransferConfigScheduleOptions']] schedule_options: Options customizing the data transfer schedule.
                Structure is documented below.
+        :param pulumi.Input[Union['DataTransferConfigScheduleOptionsV2Args', 'DataTransferConfigScheduleOptionsV2ArgsDict', 'outputs.DataTransferConfigScheduleOptionsV2']] schedule_options_v2: Options customizing the type of data transfer schedule.
+               Only the event-driven schedule is exposed here; time-based and manual
+               schedules are configured through the `schedule` and `schedule_options`
+               fields instead. This field cannot be used together with `schedule` or
+               `schedule_options`.
+               Structure is documented below.
         :param pulumi.Input[Union['DataTransferConfigSensitiveParamsArgs', 'DataTransferConfigSensitiveParamsArgsDict', 'outputs.DataTransferConfigSensitiveParams']] sensitive_params: Different parameters are configured primarily using the the `params` field on this
                resource. This block contains the parameters which contain secrets or passwords so that they can be marked
                sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -952,45 +1005,18 @@ class DataTransferConfig(pulumi.CustomResource):
             description="bar",
             location="asia-northeast1",
             opts = pulumi.ResourceOptions(depends_on=[permissions]))
-        query_config = gcp.bigquery.DataTransferConfig("query_config",
-            display_name="my-query",
-            location="asia-northeast1",
-            data_source_id="scheduled_query",
-            schedule="first sunday of quarter 00:00",
-            destination_dataset_id=my_dataset.dataset_id,
-            params={
-                "destination_table_name_template": "my_table",
-                "write_disposition": "WRITE_APPEND",
-                "query": "SELECT name FROM tabl WHERE x = 'y'",
-            },
-            opts = pulumi.ResourceOptions(depends_on=[permissions]))
-        ```
-
-        ### Bigquerydatatransfer Config Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        permissions = gcp.projects.IAMMember("permissions",
-            project=project.project_id,
-            role="roles/iam.serviceAccountTokenCreator",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")
-        my_dataset = gcp.bigquery.Dataset("my_dataset",
-            dataset_id="example_dataset",
-            friendly_name="foo",
-            description="bar",
-            location="asia-northeast1",
-            opts = pulumi.ResourceOptions(depends_on=[permissions]))
         key_ring = gcp.kms.KeyRing("key_ring",
             name="example-keyring",
-            location="us")
+            location="asia-northeast1")
         crypto_key = gcp.kms.CryptoKey("crypto_key",
             name="example-key",
             key_ring=key_ring.id)
-        query_config_cmek = gcp.bigquery.DataTransferConfig("query_config_cmek",
-            display_name="display-name",
+        bigquery_encrypter = gcp.kms.CryptoKeyIAMMember("bigquery_encrypter",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
+        query_config = gcp.bigquery.DataTransferConfig("query_config",
+            display_name="my-query",
             location="asia-northeast1",
             data_source_id="scheduled_query",
             schedule="first sunday of quarter 00:00",
@@ -1003,31 +1029,52 @@ class DataTransferConfig(pulumi.CustomResource):
             encryption_configuration={
                 "kms_key_name": crypto_key.id,
             },
-            opts = pulumi.ResourceOptions(depends_on=[permissions]))
+            opts = pulumi.ResourceOptions(depends_on=[
+                    permissions,
+                    bigquery_encrypter,
+                ]))
         ```
 
-        ### Bigquerydatatransfer Config Salesforce
+        ### Bigquerydatatransfer Config Schedule Options V2
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.get_project()
-        my_dataset = gcp.bigquery.Dataset("my_dataset",
+        event_driven = gcp.pubsub.Topic("event_driven", name="my-topic")
+        event_driven_subscription = gcp.pubsub.Subscription("event_driven",
+            name="my-subscription",
+            topic=event_driven.id)
+        event_driven_bucket = gcp.storage.Bucket("event_driven",
+            name="my-bucket",
+            location="US",
+            uniform_bucket_level_access=True,
+            force_destroy=True)
+        event_driven_dataset = gcp.bigquery.Dataset("event_driven",
             dataset_id="my_dataset",
-            description="My dataset",
-            location="asia-northeast1")
-        salesforce_config = gcp.bigquery.DataTransferConfig("salesforce_config",
-            display_name="my-salesforce-config",
-            location="asia-northeast1",
-            data_source_id="salesforce",
-            schedule="first sunday of quarter 00:00",
-            destination_dataset_id=my_dataset.dataset_id,
+            friendly_name="foo",
+            description="bar",
+            location="US")
+        event_driven_table = gcp.bigquery.Table("event_driven",
+            deletion_protection=False,
+            dataset_id=event_driven_dataset.dataset_id,
+            table_id="my_table",
+            schema="[{\\"name\\":\\"name\\",\\"type\\":\\"STRING\\"}]")
+        event_driven_config = gcp.bigquery.DataTransferConfig("event_driven_config",
+            display_name="my-event-driven-config",
+            location=event_driven_dataset.location,
+            data_source_id="google_cloud_storage",
+            destination_dataset_id=event_driven_dataset.dataset_id,
+            schedule_options_v2={
+                "event_driven_schedule": {
+                    "pubsub_subscription": event_driven_subscription.id,
+                },
+            },
             params={
-                "connector.authentication.oauth.clientId": "client-id",
-                "connector.authentication.oauth.clientSecret": "client-secret",
-                "connector.authentication.oauth.myDomain": "MyDomainName",
-                "assets": "[\\"asset-a\\",\\"asset-b\\"]",
+                "data_path_template": event_driven_bucket.url.apply(lambda url: f"{url}/*.json"),
+                "destination_table_name_template": event_driven_table.table_id,
+                "file_format": "JSON",
+                "write_disposition": "APPEND",
             })
         ```
 
@@ -1077,6 +1124,7 @@ class DataTransferConfig(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule_options: pulumi.Input[Optional[Union['DataTransferConfigScheduleOptionsArgs', 'DataTransferConfigScheduleOptionsArgsDict', 'outputs.DataTransferConfigScheduleOptions']]] = None,
+                 schedule_options_v2: pulumi.Input[Optional[Union['DataTransferConfigScheduleOptionsV2Args', 'DataTransferConfigScheduleOptionsV2ArgsDict', 'outputs.DataTransferConfigScheduleOptionsV2']]] = None,
                  sensitive_params: pulumi.Input[Optional[Union['DataTransferConfigSensitiveParamsArgs', 'DataTransferConfigSensitiveParamsArgsDict', 'outputs.DataTransferConfigSensitiveParams']]] = None,
                  service_account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1108,6 +1156,7 @@ class DataTransferConfig(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["schedule_options"] = schedule_options
+            __props__.__dict__["schedule_options_v2"] = schedule_options_v2
             __props__.__dict__["sensitive_params"] = sensitive_params
             __props__.__dict__["service_account_name"] = service_account_name
             __props__.__dict__["name"] = None
@@ -1136,6 +1185,7 @@ class DataTransferConfig(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             schedule: pulumi.Input[Optional[_builtins.str]] = None,
             schedule_options: pulumi.Input[Optional[Union['DataTransferConfigScheduleOptionsArgs', 'DataTransferConfigScheduleOptionsArgsDict', 'outputs.DataTransferConfigScheduleOptions']]] = None,
+            schedule_options_v2: pulumi.Input[Optional[Union['DataTransferConfigScheduleOptionsV2Args', 'DataTransferConfigScheduleOptionsV2ArgsDict', 'outputs.DataTransferConfigScheduleOptionsV2']]] = None,
             sensitive_params: pulumi.Input[Optional[Union['DataTransferConfigSensitiveParamsArgs', 'DataTransferConfigSensitiveParamsArgsDict', 'outputs.DataTransferConfigSensitiveParams']]] = None,
             service_account_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'DataTransferConfig':
         """
@@ -1191,6 +1241,12 @@ class DataTransferConfig(pulumi.CustomResource):
                on the data source; refer to the documentation for your data source.
         :param pulumi.Input[Union['DataTransferConfigScheduleOptionsArgs', 'DataTransferConfigScheduleOptionsArgsDict', 'outputs.DataTransferConfigScheduleOptions']] schedule_options: Options customizing the data transfer schedule.
                Structure is documented below.
+        :param pulumi.Input[Union['DataTransferConfigScheduleOptionsV2Args', 'DataTransferConfigScheduleOptionsV2ArgsDict', 'outputs.DataTransferConfigScheduleOptionsV2']] schedule_options_v2: Options customizing the type of data transfer schedule.
+               Only the event-driven schedule is exposed here; time-based and manual
+               schedules are configured through the `schedule` and `schedule_options`
+               fields instead. This field cannot be used together with `schedule` or
+               `schedule_options`.
+               Structure is documented below.
         :param pulumi.Input[Union['DataTransferConfigSensitiveParamsArgs', 'DataTransferConfigSensitiveParamsArgsDict', 'outputs.DataTransferConfigSensitiveParams']] sensitive_params: Different parameters are configured primarily using the the `params` field on this
                resource. This block contains the parameters which contain secrets or passwords so that they can be marked
                sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -1221,6 +1277,7 @@ class DataTransferConfig(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["schedule_options"] = schedule_options
+        __props__.__dict__["schedule_options_v2"] = schedule_options_v2
         __props__.__dict__["sensitive_params"] = sensitive_params
         __props__.__dict__["service_account_name"] = service_account_name
         return DataTransferConfig(resource_name, opts=opts, __props__=__props__)
@@ -1375,6 +1432,19 @@ class DataTransferConfig(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "schedule_options")
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleOptionsV2")
+    def schedule_options_v2(self) -> pulumi.Output[Optional['outputs.DataTransferConfigScheduleOptionsV2']]:
+        """
+        Options customizing the type of data transfer schedule.
+        Only the event-driven schedule is exposed here; time-based and manual
+        schedules are configured through the `schedule` and `schedule_options`
+        fields instead. This field cannot be used together with `schedule` or
+        `schedule_options`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_options_v2")
 
     @_builtins.property
     @pulumi.getter(name="sensitiveParams")

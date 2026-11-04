@@ -733,6 +733,11 @@ export class Repository extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * If this is true, an unspecified repo type will be treated as error rather
+     * than defaulting to standard.
+     */
+    declare public readonly disallowUnspecifiedMode: pulumi.Output<boolean | undefined>;
+    /**
      * Docker repository config contains repository level configuration for the repositories of docker type.
      * Structure is documented below.
      */
@@ -794,6 +799,11 @@ export class Repository extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * Configuration for platform logs.
+     * Structure is documented below.
+     */
+    declare public readonly platformLogsConfig: pulumi.Output<outputs.artifactregistry.RepositoryPlatformLogsConfig | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -850,6 +860,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
+            resourceInputs["disallowUnspecifiedMode"] = state?.disallowUnspecifiedMode;
             resourceInputs["dockerConfig"] = state?.dockerConfig;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["format"] = state?.format;
@@ -859,6 +870,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["mavenConfig"] = state?.mavenConfig;
             resourceInputs["mode"] = state?.mode;
             resourceInputs["name"] = state?.name;
+            resourceInputs["platformLogsConfig"] = state?.platformLogsConfig;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["registryUri"] = state?.registryUri;
@@ -879,6 +891,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["cleanupPolicyDryRun"] = args?.cleanupPolicyDryRun;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
+            resourceInputs["disallowUnspecifiedMode"] = args?.disallowUnspecifiedMode;
             resourceInputs["dockerConfig"] = args?.dockerConfig;
             resourceInputs["format"] = args?.format;
             resourceInputs["kmsKeyName"] = args?.kmsKeyName;
@@ -886,6 +899,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["mavenConfig"] = args?.mavenConfig;
             resourceInputs["mode"] = args?.mode;
+            resourceInputs["platformLogsConfig"] = args?.platformLogsConfig;
             resourceInputs["project"] = args?.project;
             resourceInputs["remoteRepositoryConfig"] = args?.remoteRepositoryConfig;
             resourceInputs["repositoryId"] = args?.repositoryId;
@@ -939,6 +953,11 @@ export interface RepositoryState {
      * The user-provided description of the repository.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * If this is true, an unspecified repo type will be treated as error rather
+     * than defaulting to standard.
+     */
+    disallowUnspecifiedMode?: pulumi.Input<boolean | undefined>;
     /**
      * Docker repository config contains repository level configuration for the repositories of docker type.
      * Structure is documented below.
@@ -1000,6 +1019,11 @@ export interface RepositoryState {
      * "repo1"
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for platform logs.
+     * Structure is documented below.
+     */
+    platformLogsConfig?: pulumi.Input<inputs.artifactregistry.RepositoryPlatformLogsConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -1071,6 +1095,11 @@ export interface RepositoryArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * If this is true, an unspecified repo type will be treated as error rather
+     * than defaulting to standard.
+     */
+    disallowUnspecifiedMode?: pulumi.Input<boolean | undefined>;
+    /**
      * Docker repository config contains repository level configuration for the repositories of docker type.
      * Structure is documented below.
      */
@@ -1122,6 +1151,11 @@ export interface RepositoryArgs {
      * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      */
     mode?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for platform logs.
+     * Structure is documented below.
+     */
+    platformLogsConfig?: pulumi.Input<inputs.artifactregistry.RepositoryPlatformLogsConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

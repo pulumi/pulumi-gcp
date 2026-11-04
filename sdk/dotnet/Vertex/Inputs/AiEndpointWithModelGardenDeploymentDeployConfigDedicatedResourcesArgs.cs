@@ -42,6 +42,19 @@ namespace Pulumi.Gcp.Vertex.Inputs
         }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Number of initial replicas being deployed on when scaling the workload up
+        /// from zero or when creating the workload in case MinReplicaCount = 0.
+        /// When MinReplicaCount &gt; 0 (meaning that the scale-to-zero feature is not
+        /// enabled), InitialReplicaCount should not be set. When MinReplicaCount
+        /// = 0 (meaning that the scale-to-zero feature is enabled),
+        /// InitialReplicaCount should be larger than zero, but no greater than
+        /// max_replica_count.
+        /// </summary>
+        [Input("initialReplicaCount")]
+        public Input<int>? InitialReplicaCount { get; set; }
+
+        /// <summary>
         /// Specification of a single machine.
         /// Structure is documented below.
         /// </summary>
@@ -66,7 +79,8 @@ namespace Pulumi.Gcp.Vertex.Inputs
 
         /// <summary>
         /// The minimum number of machine replicas that will be always deployed on.
-        /// This value must be greater than or equal to 1.
+        /// This value must be greater than or equal to 1. To enable scale-to-zero
+        /// (in beta), set this value to 0 and also set `InitialReplicaCount`.
         /// If traffic increases, it may dynamically be deployed onto more replicas,
         /// and as traffic decreases, some of these extra replicas may be freed.
         /// </summary>
@@ -83,6 +97,14 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// </summary>
         [Input("requiredReplicaCount")]
         public Input<int>? RequiredReplicaCount { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Specification for scale-to-zero feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scaleToZeroSpec")]
+        public Input<Inputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs>? ScaleToZeroSpec { get; set; }
 
         /// <summary>
         /// If true, schedule the deployment workload on [spot

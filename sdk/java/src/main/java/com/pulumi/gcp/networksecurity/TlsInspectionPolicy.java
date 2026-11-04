@@ -316,6 +316,7 @@ import javax.annotation.Nullable;
  *             .minTlsVersion("TLS_1_0")
  *             .trustConfig(defaultTrustConfig.id())
  *             .tlsFeatureProfile("PROFILE_CUSTOM")
+ *             .certificateIssuanceMode("LOCAL_INTERMEDIATE_CA_SIGNING")
  *             .customTlsFeatures(            
  *                 "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
  *                 "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
@@ -375,6 +376,22 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> caPool() {
         return this.caPool;
+    }
+    /**
+     * The mode used to issue certificates (local CA signing vs direct leaf).
+     * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+     * 
+     */
+    @Export(name="certificateIssuanceMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> certificateIssuanceMode;
+
+    /**
+     * @return The mode used to issue certificates (local CA signing vs direct leaf).
+     * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+     * 
+     */
+    public Output<Optional<String>> certificateIssuanceMode() {
+        return Codegen.optional(this.certificateIssuanceMode);
     }
     /**
      * The timestamp when the resource was created.

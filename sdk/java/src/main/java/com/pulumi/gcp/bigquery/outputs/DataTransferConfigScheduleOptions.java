@@ -27,6 +27,8 @@ public final class DataTransferConfigScheduleOptions {
      * moment. The time when a data transfer can be triggered manually is not
      * limited by this option.
      * 
+     * &lt;a name=&#34;nestedScheduleOptionsV2&#34;&gt;&lt;/a&gt;The `scheduleOptionsV2` block supports:
+     * 
      */
     private @Nullable String endTime;
     /**
@@ -56,6 +58,8 @@ public final class DataTransferConfigScheduleOptions {
      * scheduled at or after the end time. The end time can be changed at any
      * moment. The time when a data transfer can be triggered manually is not
      * limited by this option.
+     * 
+     * &lt;a name=&#34;nestedScheduleOptionsV2&#34;&gt;&lt;/a&gt;The `scheduleOptionsV2` block supports:
      * 
      */
     public Optional<String> endTime() {

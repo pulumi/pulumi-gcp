@@ -7579,6 +7579,115 @@ func (o ConnectionStatusArrayOutput) Index(i pulumi.IntInput) ConnectionStatusOu
 	}).(ConnectionStatusOutput)
 }
 
+type ConnectionTrafficShapingConfig struct {
+	// Specifies the duration over which the API call quota limits are calculated.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Duration string `pulumi:"duration"`
+	// Maximum number of api calls allowed.
+	QuotaLimit string `pulumi:"quotaLimit"`
+}
+
+// ConnectionTrafficShapingConfigInput is an input type that accepts ConnectionTrafficShapingConfigArgs and ConnectionTrafficShapingConfigOutput values.
+// You can construct a concrete instance of `ConnectionTrafficShapingConfigInput` via:
+//
+//	ConnectionTrafficShapingConfigArgs{...}
+type ConnectionTrafficShapingConfigInput interface {
+	pulumi.Input
+
+	ToConnectionTrafficShapingConfigOutput() ConnectionTrafficShapingConfigOutput
+	ToConnectionTrafficShapingConfigOutputWithContext(context.Context) ConnectionTrafficShapingConfigOutput
+}
+
+type ConnectionTrafficShapingConfigArgs struct {
+	// Specifies the duration over which the API call quota limits are calculated.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Maximum number of api calls allowed.
+	QuotaLimit pulumi.StringInput `pulumi:"quotaLimit"`
+}
+
+func (ConnectionTrafficShapingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionTrafficShapingConfig)(nil)).Elem()
+}
+
+func (i ConnectionTrafficShapingConfigArgs) ToConnectionTrafficShapingConfigOutput() ConnectionTrafficShapingConfigOutput {
+	return i.ToConnectionTrafficShapingConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionTrafficShapingConfigArgs) ToConnectionTrafficShapingConfigOutputWithContext(ctx context.Context) ConnectionTrafficShapingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionTrafficShapingConfigOutput)
+}
+
+// ConnectionTrafficShapingConfigArrayInput is an input type that accepts ConnectionTrafficShapingConfigArray and ConnectionTrafficShapingConfigArrayOutput values.
+// You can construct a concrete instance of `ConnectionTrafficShapingConfigArrayInput` via:
+//
+//	ConnectionTrafficShapingConfigArray{ ConnectionTrafficShapingConfigArgs{...} }
+type ConnectionTrafficShapingConfigArrayInput interface {
+	pulumi.Input
+
+	ToConnectionTrafficShapingConfigArrayOutput() ConnectionTrafficShapingConfigArrayOutput
+	ToConnectionTrafficShapingConfigArrayOutputWithContext(context.Context) ConnectionTrafficShapingConfigArrayOutput
+}
+
+type ConnectionTrafficShapingConfigArray []ConnectionTrafficShapingConfigInput
+
+func (ConnectionTrafficShapingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionTrafficShapingConfig)(nil)).Elem()
+}
+
+func (i ConnectionTrafficShapingConfigArray) ToConnectionTrafficShapingConfigArrayOutput() ConnectionTrafficShapingConfigArrayOutput {
+	return i.ToConnectionTrafficShapingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionTrafficShapingConfigArray) ToConnectionTrafficShapingConfigArrayOutputWithContext(ctx context.Context) ConnectionTrafficShapingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionTrafficShapingConfigArrayOutput)
+}
+
+type ConnectionTrafficShapingConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionTrafficShapingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionTrafficShapingConfig)(nil)).Elem()
+}
+
+func (o ConnectionTrafficShapingConfigOutput) ToConnectionTrafficShapingConfigOutput() ConnectionTrafficShapingConfigOutput {
+	return o
+}
+
+func (o ConnectionTrafficShapingConfigOutput) ToConnectionTrafficShapingConfigOutputWithContext(ctx context.Context) ConnectionTrafficShapingConfigOutput {
+	return o
+}
+
+// Specifies the duration over which the API call quota limits are calculated.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o ConnectionTrafficShapingConfigOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionTrafficShapingConfig) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Maximum number of api calls allowed.
+func (o ConnectionTrafficShapingConfigOutput) QuotaLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionTrafficShapingConfig) string { return v.QuotaLimit }).(pulumi.StringOutput)
+}
+
+type ConnectionTrafficShapingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionTrafficShapingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionTrafficShapingConfig)(nil)).Elem()
+}
+
+func (o ConnectionTrafficShapingConfigArrayOutput) ToConnectionTrafficShapingConfigArrayOutput() ConnectionTrafficShapingConfigArrayOutput {
+	return o
+}
+
+func (o ConnectionTrafficShapingConfigArrayOutput) ToConnectionTrafficShapingConfigArrayOutputWithContext(ctx context.Context) ConnectionTrafficShapingConfigArrayOutput {
+	return o
+}
+
+func (o ConnectionTrafficShapingConfigArrayOutput) Index(i pulumi.IntInput) ConnectionTrafficShapingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionTrafficShapingConfig {
+		return vs[0].([]ConnectionTrafficShapingConfig)[vs[1].(int)]
+	}).(ConnectionTrafficShapingConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAuthConfigInput)(nil)).Elem(), ConnectionAuthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAuthConfigPtrInput)(nil)).Elem(), ConnectionAuthConfigArgs{})
@@ -7676,6 +7785,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSslConfigPrivateServerCertificatePtrInput)(nil)).Elem(), ConnectionSslConfigPrivateServerCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionStatusInput)(nil)).Elem(), ConnectionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionStatusArrayInput)(nil)).Elem(), ConnectionStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionTrafficShapingConfigInput)(nil)).Elem(), ConnectionTrafficShapingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionTrafficShapingConfigArrayInput)(nil)).Elem(), ConnectionTrafficShapingConfigArray{})
 	pulumi.RegisterOutputType(ConnectionAuthConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionAuthConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionAuthConfigAdditionalVariableOutput{})
@@ -7772,4 +7883,6 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionSslConfigPrivateServerCertificatePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStatusOutput{})
 	pulumi.RegisterOutputType(ConnectionStatusArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionTrafficShapingConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionTrafficShapingConfigArrayOutput{})
 }

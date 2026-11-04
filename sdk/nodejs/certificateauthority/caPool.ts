@@ -94,6 +94,18 @@ import * as utilities from "../utilities";
  *                 title: "My title",
  *             },
  *         },
+ *         passthroughExtensions: {
+ *             knownExtensions: [
+ *                 "EXTENDED_KEY_USAGE",
+ *                 "BASE_KEY_USAGE",
+ *             ],
+ *             additionalExtensions: [{
+ *                 objectIdPaths: [
+ *                     1,
+ *                     5,
+ *                 ],
+ *             }],
+ *         },
  *         baselineValues: {
  *             aiaOcspServers: ["example.com"],
  *             additionalExtensions: [{

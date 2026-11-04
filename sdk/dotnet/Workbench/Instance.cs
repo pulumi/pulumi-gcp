@@ -92,18 +92,18 @@ namespace Pulumi.Gcp.Workbench
     ///     var gpuReservation = new Gcp.Compute.Reservation("gpu_reservation", new()
     ///     {
     ///         Name = "wbi-reservation",
-    ///         Zone = "us-east1-b",
+    ///         Zone = "us-central1-b",
     ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
     ///         {
     ///             Count = 1,
     ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
     ///             {
-    ///                 MachineType = "g2-standard-4",
+    ///                 MachineType = "n1-standard-1",
     ///                 GuestAccelerators = new[]
     ///                 {
     ///                     new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs
     ///                     {
-    ///                         AcceleratorType = "nvidia-l4",
+    ///                         AcceleratorType = "nvidia-tesla-t4",
     ///                         AcceleratorCount = 1,
     ///                     },
     ///                 },
@@ -115,15 +115,15 @@ namespace Pulumi.Gcp.Workbench
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
-    ///         Location = "us-east1-b",
+    ///         Location = "us-central1-b",
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
-    ///             MachineType = "g2-standard-4",
+    ///             MachineType = "n1-standard-1",
     ///             AcceleratorConfigs = new[]
     ///             {
     ///                 new Gcp.Workbench.Inputs.InstanceGceSetupAcceleratorConfigArgs
     ///                 {
-    ///                     Type = "NVIDIA_L4",
+    ///                     Type = "NVIDIA_TESLA_T4",
     ///                     CoreCount = "1",
     ///                 },
     ///             },

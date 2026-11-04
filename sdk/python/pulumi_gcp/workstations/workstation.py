@@ -601,13 +601,13 @@ class Workstation(pulumi.CustomResource):
         default_subnetwork = gcp.compute.Subnetwork("default",
             name="workstation-cluster",
             ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
+            region="us-east4",
             network=default.name)
         default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster",
             network=default.id,
             subnetwork=default_subnetwork.id,
-            location="us-central1",
+            location="us-east4",
             labels={
                 "label": "key",
             },
@@ -617,7 +617,7 @@ class Workstation(pulumi.CustomResource):
         default_workstation_config = gcp.workstations.WorkstationConfig("default",
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
+            location="us-east4",
             host={
                 "gce_instance": {
                     "machine_type": "e2-standard-4",
@@ -629,7 +629,7 @@ class Workstation(pulumi.CustomResource):
             workstation_id="work-station",
             workstation_config_id=default_workstation_config.workstation_config_id,
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
+            location="us-east4",
             labels={
                 "label": "key",
             },
@@ -640,6 +640,10 @@ class Workstation(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+
+        ## Regional Endpoint Policies
+
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 
         ## Import
 
@@ -712,13 +716,13 @@ class Workstation(pulumi.CustomResource):
         default_subnetwork = gcp.compute.Subnetwork("default",
             name="workstation-cluster",
             ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
+            region="us-east4",
             network=default.name)
         default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster",
             network=default.id,
             subnetwork=default_subnetwork.id,
-            location="us-central1",
+            location="us-east4",
             labels={
                 "label": "key",
             },
@@ -728,7 +732,7 @@ class Workstation(pulumi.CustomResource):
         default_workstation_config = gcp.workstations.WorkstationConfig("default",
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
+            location="us-east4",
             host={
                 "gce_instance": {
                     "machine_type": "e2-standard-4",
@@ -740,7 +744,7 @@ class Workstation(pulumi.CustomResource):
             workstation_id="work-station",
             workstation_config_id=default_workstation_config.workstation_config_id,
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
+            location="us-east4",
             labels={
                 "label": "key",
             },
@@ -751,6 +755,10 @@ class Workstation(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+
+        ## Regional Endpoint Policies
+
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 
         ## Import
 

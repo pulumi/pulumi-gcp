@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs>? EndpointConfig { get; set; }
 
         /// <summary>
-        /// The shared Compute Engine config settings for all instances in a cluster.
+        /// The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
         /// </summary>
         [Input("gceClusterConfig")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs>? GceClusterConfig { get; set; }
@@ -67,6 +67,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs>? MasterConfig { get; set; }
 
         /// <summary>
+        /// The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+        /// </summary>
+        [Input("masterFlexibleConfig")]
+        public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs>? MasterFlexibleConfig { get; set; }
+
+        /// <summary>
         /// Metastore configuration.
         /// </summary>
         [Input("metastoreConfig")]
@@ -77,6 +83,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// </summary>
         [Input("secondaryWorkerConfig")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs>? SecondaryWorkerConfig { get; set; }
+
+        /// <summary>
+        /// The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+        /// </summary>
+        [Input("secondaryWorkerFlexibleConfig")]
+        public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs>? SecondaryWorkerFlexibleConfig { get; set; }
 
         /// <summary>
         /// Security settings for the cluster.
@@ -104,11 +116,17 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs>? WorkerConfig { get; set; }
+
+        /// <summary>
+        /// The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("workerFlexibleConfig")]
+        public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs>? WorkerFlexibleConfig { get; set; }
 
         public WorkflowTemplatePlacementManagedClusterConfigArgs()
         {

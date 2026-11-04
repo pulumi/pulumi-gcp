@@ -2008,6 +2008,10 @@ func (o FloorsettingGoogleMcpServerFloorSettingPtrOutput) InspectOnly() pulumi.B
 }
 
 type TemplateFilterConfig struct {
+	// Settings for customizing filter rules. Note: This field is not supported in
+	// FloorSetting and Streaming Sanitization APIs.
+	// Structure is documented below.
+	FilterRuleSettings *TemplateFilterConfigFilterRuleSettings `pulumi:"filterRuleSettings"`
 	// Malicious URI filter settings.
 	// Structure is documented below.
 	MaliciousUriFilterSettings *TemplateFilterConfigMaliciousUriFilterSettings `pulumi:"maliciousUriFilterSettings"`
@@ -2034,6 +2038,10 @@ type TemplateFilterConfigInput interface {
 }
 
 type TemplateFilterConfigArgs struct {
+	// Settings for customizing filter rules. Note: This field is not supported in
+	// FloorSetting and Streaming Sanitization APIs.
+	// Structure is documented below.
+	FilterRuleSettings TemplateFilterConfigFilterRuleSettingsPtrInput `pulumi:"filterRuleSettings"`
 	// Malicious URI filter settings.
 	// Structure is documented below.
 	MaliciousUriFilterSettings TemplateFilterConfigMaliciousUriFilterSettingsPtrInput `pulumi:"maliciousUriFilterSettings"`
@@ -2125,6 +2133,13 @@ func (o TemplateFilterConfigOutput) ToTemplateFilterConfigPtrOutputWithContext(c
 	}).(TemplateFilterConfigPtrOutput)
 }
 
+// Settings for customizing filter rules. Note: This field is not supported in
+// FloorSetting and Streaming Sanitization APIs.
+// Structure is documented below.
+func (o TemplateFilterConfigOutput) FilterRuleSettings() TemplateFilterConfigFilterRuleSettingsPtrOutput {
+	return o.ApplyT(func(v TemplateFilterConfig) *TemplateFilterConfigFilterRuleSettings { return v.FilterRuleSettings }).(TemplateFilterConfigFilterRuleSettingsPtrOutput)
+}
+
 // Malicious URI filter settings.
 // Structure is documented below.
 func (o TemplateFilterConfigOutput) MaliciousUriFilterSettings() TemplateFilterConfigMaliciousUriFilterSettingsPtrOutput {
@@ -2177,6 +2192,18 @@ func (o TemplateFilterConfigPtrOutput) Elem() TemplateFilterConfigOutput {
 	}).(TemplateFilterConfigOutput)
 }
 
+// Settings for customizing filter rules. Note: This field is not supported in
+// FloorSetting and Streaming Sanitization APIs.
+// Structure is documented below.
+func (o TemplateFilterConfigPtrOutput) FilterRuleSettings() TemplateFilterConfigFilterRuleSettingsPtrOutput {
+	return o.ApplyT(func(v *TemplateFilterConfig) *TemplateFilterConfigFilterRuleSettings {
+		if v == nil {
+			return nil
+		}
+		return v.FilterRuleSettings
+	}).(TemplateFilterConfigFilterRuleSettingsPtrOutput)
+}
+
 // Malicious URI filter settings.
 // Structure is documented below.
 func (o TemplateFilterConfigPtrOutput) MaliciousUriFilterSettings() TemplateFilterConfigMaliciousUriFilterSettingsPtrOutput {
@@ -2219,6 +2246,1004 @@ func (o TemplateFilterConfigPtrOutput) SdpSettings() TemplateFilterConfigSdpSett
 		}
 		return v.SdpSettings
 	}).(TemplateFilterConfigSdpSettingsPtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettings struct {
+	// List of rule sets to be applied to filters.
+	// Structure is documented below.
+	RuleSets []TemplateFilterConfigFilterRuleSettingsRuleSet `pulumi:"ruleSets"`
+}
+
+// TemplateFilterConfigFilterRuleSettingsInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsArgs and TemplateFilterConfigFilterRuleSettingsOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsInput` via:
+//
+//	TemplateFilterConfigFilterRuleSettingsArgs{...}
+type TemplateFilterConfigFilterRuleSettingsInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsOutput() TemplateFilterConfigFilterRuleSettingsOutput
+	ToTemplateFilterConfigFilterRuleSettingsOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsOutput
+}
+
+type TemplateFilterConfigFilterRuleSettingsArgs struct {
+	// List of rule sets to be applied to filters.
+	// Structure is documented below.
+	RuleSets TemplateFilterConfigFilterRuleSettingsRuleSetArrayInput `pulumi:"ruleSets"`
+}
+
+func (TemplateFilterConfigFilterRuleSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettings)(nil)).Elem()
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsArgs) ToTemplateFilterConfigFilterRuleSettingsOutput() TemplateFilterConfigFilterRuleSettingsOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsArgs) ToTemplateFilterConfigFilterRuleSettingsOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsOutput)
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsArgs) ToTemplateFilterConfigFilterRuleSettingsPtrOutput() TemplateFilterConfigFilterRuleSettingsPtrOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsArgs) ToTemplateFilterConfigFilterRuleSettingsPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsOutput).ToTemplateFilterConfigFilterRuleSettingsPtrOutputWithContext(ctx)
+}
+
+// TemplateFilterConfigFilterRuleSettingsPtrInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsArgs, TemplateFilterConfigFilterRuleSettingsPtr and TemplateFilterConfigFilterRuleSettingsPtrOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsPtrInput` via:
+//
+//	        TemplateFilterConfigFilterRuleSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TemplateFilterConfigFilterRuleSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsPtrOutput() TemplateFilterConfigFilterRuleSettingsPtrOutput
+	ToTemplateFilterConfigFilterRuleSettingsPtrOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsPtrOutput
+}
+
+type templateFilterConfigFilterRuleSettingsPtrType TemplateFilterConfigFilterRuleSettingsArgs
+
+func TemplateFilterConfigFilterRuleSettingsPtr(v *TemplateFilterConfigFilterRuleSettingsArgs) TemplateFilterConfigFilterRuleSettingsPtrInput {
+	return (*templateFilterConfigFilterRuleSettingsPtrType)(v)
+}
+
+func (*templateFilterConfigFilterRuleSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateFilterConfigFilterRuleSettings)(nil)).Elem()
+}
+
+func (i *templateFilterConfigFilterRuleSettingsPtrType) ToTemplateFilterConfigFilterRuleSettingsPtrOutput() TemplateFilterConfigFilterRuleSettingsPtrOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *templateFilterConfigFilterRuleSettingsPtrType) ToTemplateFilterConfigFilterRuleSettingsPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsPtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettings)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsOutput) ToTemplateFilterConfigFilterRuleSettingsOutput() TemplateFilterConfigFilterRuleSettingsOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsOutput) ToTemplateFilterConfigFilterRuleSettingsOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsOutput) ToTemplateFilterConfigFilterRuleSettingsPtrOutput() TemplateFilterConfigFilterRuleSettingsPtrOutput {
+	return o.ToTemplateFilterConfigFilterRuleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsOutput) ToTemplateFilterConfigFilterRuleSettingsPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateFilterConfigFilterRuleSettings) *TemplateFilterConfigFilterRuleSettings {
+		return &v
+	}).(TemplateFilterConfigFilterRuleSettingsPtrOutput)
+}
+
+// List of rule sets to be applied to filters.
+// Structure is documented below.
+func (o TemplateFilterConfigFilterRuleSettingsOutput) RuleSets() TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput {
+	return o.ApplyT(func(v TemplateFilterConfigFilterRuleSettings) []TemplateFilterConfigFilterRuleSettingsRuleSet {
+		return v.RuleSets
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateFilterConfigFilterRuleSettings)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsPtrOutput) ToTemplateFilterConfigFilterRuleSettingsPtrOutput() TemplateFilterConfigFilterRuleSettingsPtrOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsPtrOutput) ToTemplateFilterConfigFilterRuleSettingsPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsPtrOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsPtrOutput) Elem() TemplateFilterConfigFilterRuleSettingsOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettings) TemplateFilterConfigFilterRuleSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateFilterConfigFilterRuleSettings
+		return ret
+	}).(TemplateFilterConfigFilterRuleSettingsOutput)
+}
+
+// List of rule sets to be applied to filters.
+// Structure is documented below.
+func (o TemplateFilterConfigFilterRuleSettingsPtrOutput) RuleSets() TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettings) []TemplateFilterConfigFilterRuleSettingsRuleSet {
+		if v == nil {
+			return nil
+		}
+		return v.RuleSets
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSet struct {
+	// List of filters this rule set is applied to.
+	// Possible values:
+	// PROMPT_INJECTION_AND_JAILBREAK
+	// RESPONSIBLE_AI
+	FilterTypes []string `pulumi:"filterTypes"`
+	// Set of rules to be applied to filterTypes.
+	// Structure is documented below.
+	Rules []TemplateFilterConfigFilterRuleSettingsRuleSetRule `pulumi:"rules"`
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetArgs and TemplateFilterConfigFilterRuleSettingsRuleSetOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetInput` via:
+//
+//	TemplateFilterConfigFilterRuleSettingsRuleSetArgs{...}
+type TemplateFilterConfigFilterRuleSettingsRuleSetInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetOutput() TemplateFilterConfigFilterRuleSettingsRuleSetOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetOutput
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetArgs struct {
+	// List of filters this rule set is applied to.
+	// Possible values:
+	// PROMPT_INJECTION_AND_JAILBREAK
+	// RESPONSIBLE_AI
+	FilterTypes pulumi.StringArrayInput `pulumi:"filterTypes"`
+	// Set of rules to be applied to filterTypes.
+	// Structure is documented below.
+	Rules TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayInput `pulumi:"rules"`
+}
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSet)(nil)).Elem()
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetOutput() TemplateFilterConfigFilterRuleSettingsRuleSetOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetOutput)
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetArrayInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetArray and TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetArrayInput` via:
+//
+//	TemplateFilterConfigFilterRuleSettingsRuleSetArray{ TemplateFilterConfigFilterRuleSettingsRuleSetArgs{...} }
+type TemplateFilterConfigFilterRuleSettingsRuleSetArrayInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput() TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetArrayOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetArray []TemplateFilterConfigFilterRuleSettingsRuleSetInput
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateFilterConfigFilterRuleSettingsRuleSet)(nil)).Elem()
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetArray) ToTemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput() TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetArrayOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetArray) ToTemplateFilterConfigFilterRuleSettingsRuleSetArrayOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSet)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetOutput() TemplateFilterConfigFilterRuleSettingsRuleSetOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetOutput {
+	return o
+}
+
+// List of filters this rule set is applied to.
+// Possible values:
+// PROMPT_INJECTION_AND_JAILBREAK
+// RESPONSIBLE_AI
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetOutput) FilterTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TemplateFilterConfigFilterRuleSettingsRuleSet) []string { return v.FilterTypes }).(pulumi.StringArrayOutput)
+}
+
+// Set of rules to be applied to filterTypes.
+// Structure is documented below.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetOutput) Rules() TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput {
+	return o.ApplyT(func(v TemplateFilterConfigFilterRuleSettingsRuleSet) []TemplateFilterConfigFilterRuleSettingsRuleSetRule {
+		return v.Rules
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateFilterConfigFilterRuleSettingsRuleSet)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput() TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetArrayOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput) Index(i pulumi.IntInput) TemplateFilterConfigFilterRuleSettingsRuleSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateFilterConfigFilterRuleSettingsRuleSet {
+		return vs[0].([]TemplateFilterConfigFilterRuleSettingsRuleSet)[vs[1].(int)]
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRule struct {
+	// The rule that specifies conditions when filter detections are excluded from
+	// results.
+	// Structure is documented below.
+	ExclusionRule *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule `pulumi:"exclusionRule"`
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetRuleInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs and TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetRuleInput` via:
+//
+//	TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs{...}
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs struct {
+	// The rule that specifies conditions when filter detections are excluded from
+	// results.
+	// Structure is documented below.
+	ExclusionRule TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrInput `pulumi:"exclusionRule"`
+}
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRule)(nil)).Elem()
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput)
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetRuleArray and TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayInput` via:
+//
+//	TemplateFilterConfigFilterRuleSettingsRuleSetRuleArray{ TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs{...} }
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleArray []TemplateFilterConfigFilterRuleSettingsRuleSetRuleInput
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateFilterConfigFilterRuleSettingsRuleSetRule)(nil)).Elem()
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleArray) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleArray) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRule)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput {
+	return o
+}
+
+// The rule that specifies conditions when filter detections are excluded from
+// results.
+// Structure is documented below.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput) ExclusionRule() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput {
+	return o.ApplyT(func(v TemplateFilterConfigFilterRuleSettingsRuleSetRule) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule {
+		return v.ExclusionRule
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateFilterConfigFilterRuleSettingsRuleSetRule)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput) Index(i pulumi.IntInput) TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateFilterConfigFilterRuleSettingsRuleSetRule {
+		return vs[0].([]TemplateFilterConfigFilterRuleSettingsRuleSetRule)[vs[1].(int)]
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule struct {
+	// Dictionary which defines the rule.
+	// Structure is documented below.
+	Dictionary *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary `pulumi:"dictionary"`
+	// Specifies the scope of the input that should be matched against the
+	// exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+	// Possible values:
+	// MATCHING_SCOPE_FULL_MATCH
+	// MATCHING_SCOPE_PARTIAL_MATCH
+	MatchingScope *string `pulumi:"matchingScope"`
+	// Regular expression which defines the rule.
+	// Structure is documented below.
+	Regex *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex `pulumi:"regex"`
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs and TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleInput` via:
+//
+//	TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs{...}
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs struct {
+	// Dictionary which defines the rule.
+	// Structure is documented below.
+	Dictionary TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrInput `pulumi:"dictionary"`
+	// Specifies the scope of the input that should be matched against the
+	// exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+	// Possible values:
+	// MATCHING_SCOPE_FULL_MATCH
+	// MATCHING_SCOPE_PARTIAL_MATCH
+	MatchingScope pulumi.StringPtrInput `pulumi:"matchingScope"`
+	// Regular expression which defines the rule.
+	// Structure is documented below.
+	Regex TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrInput `pulumi:"regex"`
+}
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule)(nil)).Elem()
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput)
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput).ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutputWithContext(ctx)
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs, TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtr and TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrInput` via:
+//
+//	        TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput
+}
+
+type templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrType TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs
+
+func TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtr(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrInput {
+	return (*templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrType)(v)
+}
+
+func (*templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule)(nil)).Elem()
+}
+
+func (i *templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrType) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutputWithContext(context.Background())
+}
+
+func (i *templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrType) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput {
+	return o.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutputWithContext(context.Background())
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule {
+		return &v
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput)
+}
+
+// Dictionary which defines the rule.
+// Structure is documented below.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput) Dictionary() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o.ApplyT(func(v TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary {
+		return v.Dictionary
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput)
+}
+
+// Specifies the scope of the input that should be matched against the
+// exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+// Possible values:
+// MATCHING_SCOPE_FULL_MATCH
+// MATCHING_SCOPE_PARTIAL_MATCH
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput) MatchingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule) *string { return v.MatchingScope }).(pulumi.StringPtrOutput)
+}
+
+// Regular expression which defines the rule.
+// Structure is documented below.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput) Regex() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o.ApplyT(func(v TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex {
+		return v.Regex
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput) Elem() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule
+		return ret
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput)
+}
+
+// Dictionary which defines the rule.
+// Structure is documented below.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput) Dictionary() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary {
+		if v == nil {
+			return nil
+		}
+		return v.Dictionary
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput)
+}
+
+// Specifies the scope of the input that should be matched against the
+// exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+// Possible values:
+// MATCHING_SCOPE_FULL_MATCH
+// MATCHING_SCOPE_PARTIAL_MATCH
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput) MatchingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MatchingScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Regular expression which defines the rule.
+// Structure is documented below.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput) Regex() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary struct {
+	// Message defining a list of words or phrases.
+	// Structure is documented below.
+	WordList *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList `pulumi:"wordList"`
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs and TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryInput` via:
+//
+//	TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs{...}
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs struct {
+	// Message defining a list of words or phrases.
+	// Structure is documented below.
+	WordList TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrInput `pulumi:"wordList"`
+}
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary)(nil)).Elem()
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput)
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput).ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(ctx)
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs, TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtr and TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrInput` via:
+//
+//	        TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs{...}
+//
+//	or:
+//
+//	        nil
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput
+}
+
+type templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrType TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs
+
+func TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtr(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrInput {
+	return (*templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrType)(v)
+}
+
+func (*templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary)(nil)).Elem()
+}
+
+func (i *templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrType) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (i *templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrType) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary {
+		return &v
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput)
+}
+
+// Message defining a list of words or phrases.
+// Structure is documented below.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput) WordList() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o.ApplyT(func(v TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList {
+		return v.WordList
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput) Elem() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary
+		return ret
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput)
+}
+
+// Message defining a list of words or phrases.
+// Structure is documented below.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput) WordList() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList {
+		if v == nil {
+			return nil
+		}
+		return v.WordList
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList struct {
+	// Words or phrases defining the dictionary. The dictionary must contain at
+	// least one phrase and every phrase must contain at least two characters that
+	// are letters or digits.
+	Words []string `pulumi:"words"`
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs and TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListInput` via:
+//
+//	TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs{...}
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs struct {
+	// Words or phrases defining the dictionary. The dictionary must contain at
+	// least one phrase and every phrase must contain at least two characters that
+	// are letters or digits.
+	Words pulumi.StringArrayInput `pulumi:"words"`
+}
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList)(nil)).Elem()
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput)
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput).ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(ctx)
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs, TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtr and TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrInput` via:
+//
+//	        TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs{...}
+//
+//	or:
+//
+//	        nil
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput
+}
+
+type templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrType TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs
+
+func TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtr(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrInput {
+	return (*templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrType)(v)
+}
+
+func (*templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList)(nil)).Elem()
+}
+
+func (i *templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrType) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (i *templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrType) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList {
+		return &v
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput)
+}
+
+// Words or phrases defining the dictionary. The dictionary must contain at
+// least one phrase and every phrase must contain at least two characters that
+// are letters or digits.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput) Words() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList) []string {
+		return v.Words
+	}).(pulumi.StringArrayOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput) Elem() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList
+		return ret
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput)
+}
+
+// Words or phrases defining the dictionary. The dictionary must contain at
+// least one phrase and every phrase must contain at least two characters that
+// are letters or digits.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput) Words() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Words
+	}).(pulumi.StringArrayOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex struct {
+	// The regular expression pattern.
+	Pattern string `pulumi:"pattern"`
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs and TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexInput` via:
+//
+//	TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs{...}
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs struct {
+	// The regular expression pattern.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+}
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex)(nil)).Elem()
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput)
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutputWithContext(context.Background())
+}
+
+func (i TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput).ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutputWithContext(ctx)
+}
+
+// TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrInput is an input type that accepts TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs, TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtr and TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput values.
+// You can construct a concrete instance of `TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrInput` via:
+//
+//	        TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs{...}
+//
+//	or:
+//
+//	        nil
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrInput interface {
+	pulumi.Input
+
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput
+	ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutputWithContext(context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput
+}
+
+type templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrType TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs
+
+func TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtr(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrInput {
+	return (*templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrType)(v)
+}
+
+func (*templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex)(nil)).Elem()
+}
+
+func (i *templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrType) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput {
+	return i.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutputWithContext(context.Background())
+}
+
+func (i *templateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrType) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o.ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutputWithContext(context.Background())
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex) *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex {
+		return &v
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput)
+}
+
+// The regular expression pattern.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+type TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput struct{ *pulumi.OutputState }
+
+func (TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex)(nil)).Elem()
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput) ToTemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutputWithContext(ctx context.Context) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o
+}
+
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput) Elem() TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex) TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex
+		return ret
+	}).(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput)
+}
+
+// The regular expression pattern.
+func (o TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Pattern
+	}).(pulumi.StringPtrOutput)
 }
 
 type TemplateFilterConfigMaliciousUriFilterSettings struct {
@@ -3366,6 +4391,12 @@ type TemplateTemplateMetadata struct {
 	// Indicates the custom error message set by the user to be returned to the
 	// end user if the prompt trips Model Armor filters.
 	CustomPromptSafetyErrorMessage *string `pulumi:"customPromptSafetyErrorMessage"`
+	// Indicates whether the template is subject to data residency compliance. If
+	// true (default for new templates), the template is subject to data residency
+	// compliance. If false, the template bypasses data residency compliance
+	// checks. If unset, the value is determined by the API; templates created
+	// before data residency enforcement may report false.
+	DataResidencyCompliant *bool `pulumi:"dataResidencyCompliant"`
 	// Possible values:
 	// INSPECT_ONLY
 	// INSPECT_AND_BLOCK
@@ -3417,6 +4448,12 @@ type TemplateTemplateMetadataArgs struct {
 	// Indicates the custom error message set by the user to be returned to the
 	// end user if the prompt trips Model Armor filters.
 	CustomPromptSafetyErrorMessage pulumi.StringPtrInput `pulumi:"customPromptSafetyErrorMessage"`
+	// Indicates whether the template is subject to data residency compliance. If
+	// true (default for new templates), the template is subject to data residency
+	// compliance. If false, the template bypasses data residency compliance
+	// checks. If unset, the value is determined by the API; templates created
+	// before data residency enforcement may report false.
+	DataResidencyCompliant pulumi.BoolPtrInput `pulumi:"dataResidencyCompliant"`
 	// Possible values:
 	// INSPECT_ONLY
 	// INSPECT_AND_BLOCK
@@ -3545,6 +4582,15 @@ func (o TemplateTemplateMetadataOutput) CustomPromptSafetyErrorMessage() pulumi.
 	return o.ApplyT(func(v TemplateTemplateMetadata) *string { return v.CustomPromptSafetyErrorMessage }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the template is subject to data residency compliance. If
+// true (default for new templates), the template is subject to data residency
+// compliance. If false, the template bypasses data residency compliance
+// checks. If unset, the value is determined by the API; templates created
+// before data residency enforcement may report false.
+func (o TemplateTemplateMetadataOutput) DataResidencyCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TemplateTemplateMetadata) *bool { return v.DataResidencyCompliant }).(pulumi.BoolPtrOutput)
+}
+
 // Possible values:
 // INSPECT_ONLY
 // INSPECT_AND_BLOCK
@@ -3661,6 +4707,20 @@ func (o TemplateTemplateMetadataPtrOutput) CustomPromptSafetyErrorMessage() pulu
 		}
 		return v.CustomPromptSafetyErrorMessage
 	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the template is subject to data residency compliance. If
+// true (default for new templates), the template is subject to data residency
+// compliance. If false, the template bypasses data residency compliance
+// checks. If unset, the value is determined by the API; templates created
+// before data residency enforcement may report false.
+func (o TemplateTemplateMetadataPtrOutput) DataResidencyCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TemplateTemplateMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DataResidencyCompliant
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Possible values:
@@ -4084,6 +5144,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingGoogleMcpServerFloorSettingPtrInput)(nil)).Elem(), FloorsettingGoogleMcpServerFloorSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigInput)(nil)).Elem(), TemplateFilterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigPtrInput)(nil)).Elem(), TemplateFilterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsPtrInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetArrayInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrInput)(nil)).Elem(), TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigMaliciousUriFilterSettingsInput)(nil)).Elem(), TemplateFilterConfigMaliciousUriFilterSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigMaliciousUriFilterSettingsPtrInput)(nil)).Elem(), TemplateFilterConfigMaliciousUriFilterSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigPiAndJailbreakFilterSettingsInput)(nil)).Elem(), TemplateFilterConfigPiAndJailbreakFilterSettingsArgs{})
@@ -4130,6 +5204,20 @@ func init() {
 	pulumi.RegisterOutputType(FloorsettingGoogleMcpServerFloorSettingPtrOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigPtrOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsPtrOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetArrayOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetRuleOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetRuleArrayOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRulePtrOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryPtrOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListPtrOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexOutput{})
+	pulumi.RegisterOutputType(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexPtrOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigMaliciousUriFilterSettingsOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigMaliciousUriFilterSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigPiAndJailbreakFilterSettingsOutput{})

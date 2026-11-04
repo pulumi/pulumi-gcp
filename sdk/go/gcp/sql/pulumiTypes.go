@@ -12753,6 +12753,8 @@ type GetDatabaseInstancesInstance struct {
 	Clones []GetDatabaseInstancesInstanceClone `pulumi:"clones"`
 	// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
 	ConnectionName string `pulumi:"connectionName"`
+	// The Database Center integration control.
+	DatabaseCenterIntegration string `pulumi:"databaseCenterIntegration"`
 	// To filter out the Cloud SQL instances which are of the specified database version.
 	DatabaseVersion string `pulumi:"databaseVersion"`
 	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
@@ -12849,6 +12851,8 @@ type GetDatabaseInstancesInstanceArgs struct {
 	Clones GetDatabaseInstancesInstanceCloneArrayInput `pulumi:"clones"`
 	// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
 	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// The Database Center integration control.
+	DatabaseCenterIntegration pulumi.StringInput `pulumi:"databaseCenterIntegration"`
 	// To filter out the Cloud SQL instances which are of the specified database version.
 	DatabaseVersion pulumi.StringInput `pulumi:"databaseVersion"`
 	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
@@ -12999,6 +13003,11 @@ func (o GetDatabaseInstancesInstanceOutput) Clones() GetDatabaseInstancesInstanc
 // The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
 func (o GetDatabaseInstancesInstanceOutput) ConnectionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+// The Database Center integration control.
+func (o GetDatabaseInstancesInstanceOutput) DatabaseCenterIntegration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.DatabaseCenterIntegration }).(pulumi.StringOutput)
 }
 
 // To filter out the Cloud SQL instances which are of the specified database version.

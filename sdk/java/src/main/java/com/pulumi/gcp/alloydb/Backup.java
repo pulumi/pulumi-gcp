@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
  *                 .build())
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var default_ = new Backup("default", BackupArgs.builder()
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupId("alloydb-backup")
  *             .clusterName(defaultCluster.name())
  *             .build(), CustomResourceOptions.builder()
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
  *                 .build())
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var default_ = new Backup("default", BackupArgs.builder()
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupId("alloydb-backup")
  *             .clusterName(defaultCluster.name())
  *             .description("example description")

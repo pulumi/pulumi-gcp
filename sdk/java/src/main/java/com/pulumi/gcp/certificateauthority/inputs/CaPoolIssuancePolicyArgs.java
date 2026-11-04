@@ -9,6 +9,7 @@ import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedIss
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedKeyTypeArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsArgs;
+import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyPassthroughExtensionsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -160,6 +161,33 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.maximumLifetime);
     }
 
+    /**
+     * Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+     * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions
+     * will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don&#39;t
+     * appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+     * add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions
+     * set in this CaPool&#39;s baseline_values.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="passthroughExtensions")
+    private @Nullable Output<CaPoolIssuancePolicyPassthroughExtensionsArgs> passthroughExtensions;
+
+    /**
+     * @return Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+     * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions
+     * will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don&#39;t
+     * appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+     * add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions
+     * set in this CaPool&#39;s baseline_values.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CaPoolIssuancePolicyPassthroughExtensionsArgs>> passthroughExtensions() {
+        return Optional.ofNullable(this.passthroughExtensions);
+    }
+
     private CaPoolIssuancePolicyArgs() {}
 
     private CaPoolIssuancePolicyArgs(CaPoolIssuancePolicyArgs $) {
@@ -170,6 +198,7 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
         this.baselineValues = $.baselineValues;
         this.identityConstraints = $.identityConstraints;
         this.maximumLifetime = $.maximumLifetime;
+        this.passthroughExtensions = $.passthroughExtensions;
     }
 
     public static Builder builder() {
@@ -381,6 +410,39 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
          */
         public Builder maximumLifetime(String maximumLifetime) {
             return maximumLifetime(Output.of(maximumLifetime));
+        }
+
+        /**
+         * @param passthroughExtensions Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+         * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions
+         * will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don&#39;t
+         * appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+         * add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions
+         * set in this CaPool&#39;s baseline_values.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passthroughExtensions(@Nullable Output<CaPoolIssuancePolicyPassthroughExtensionsArgs> passthroughExtensions) {
+            $.passthroughExtensions = passthroughExtensions;
+            return this;
+        }
+
+        /**
+         * @param passthroughExtensions Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+         * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions
+         * will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don&#39;t
+         * appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+         * add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions
+         * set in this CaPool&#39;s baseline_values.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passthroughExtensions(CaPoolIssuancePolicyPassthroughExtensionsArgs passthroughExtensions) {
+            return passthroughExtensions(Output.of(passthroughExtensions));
         }
 
         public CaPoolIssuancePolicyArgs build() {

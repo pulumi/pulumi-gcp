@@ -14,13 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionInspectTemplateInspectConfigRuleSetInfoType {
     /**
-     * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * @return Name of the information type.
      * 
      */
     private String name;
     /**
-     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * @return Optional custom sensitivity for this InfoType.
      * Structure is documented below.
      * 
      */
@@ -33,15 +32,14 @@ public final class PreventionInspectTemplateInspectConfigRuleSetInfoType {
 
     private PreventionInspectTemplateInspectConfigRuleSetInfoType() {}
     /**
-     * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * @return Name of the information type.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * @return Optional custom sensitivity for this InfoType.
      * Structure is documented below.
      * 
      */

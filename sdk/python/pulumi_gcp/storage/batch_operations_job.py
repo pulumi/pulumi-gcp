@@ -26,7 +26,9 @@ class BatchOperationsJobArgs:
                  delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional['BatchOperationsJobLoggingConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  put_metadata: pulumi.Input[Optional['BatchOperationsJobPutMetadataArgs']] = None,
                  put_object_hold: pulumi.Input[Optional['BatchOperationsJobPutObjectHoldArgs']] = None,
@@ -46,7 +48,10 @@ class BatchOperationsJobArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        :param pulumi.Input[_builtins.bool] dry_run: If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
         :param pulumi.Input[_builtins.str] job_id: The ID of the job.
+        :param pulumi.Input['BatchOperationsJobLoggingConfigArgs'] logging_config: Logging configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['BatchOperationsJobPutMetadataArgs'] put_metadata: allows batch operations to update metadata for objects in bucket
@@ -66,8 +71,12 @@ class BatchOperationsJobArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if put_metadata is not None:
@@ -145,6 +154,18 @@ class BatchOperationsJobArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @_builtins.property
     @pulumi.getter(name="jobId")
     def job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -155,6 +176,19 @@ class BatchOperationsJobArgs:
     @job_id.setter
     def job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> pulumi.Input[Optional['BatchOperationsJobLoggingConfigArgs']]:
+        """
+        Logging configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: pulumi.Input[Optional['BatchOperationsJobLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -219,7 +253,9 @@ class _BatchOperationsJobState:
                  delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional['BatchOperationsJobLoggingConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  put_metadata: pulumi.Input[Optional['BatchOperationsJobPutMetadataArgs']] = None,
                  put_object_hold: pulumi.Input[Optional['BatchOperationsJobPutObjectHoldArgs']] = None,
@@ -244,7 +280,10 @@ class _BatchOperationsJobState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        :param pulumi.Input[_builtins.bool] dry_run: If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
         :param pulumi.Input[_builtins.str] job_id: The ID of the job.
+        :param pulumi.Input['BatchOperationsJobLoggingConfigArgs'] logging_config: Logging configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['BatchOperationsJobPutMetadataArgs'] put_metadata: allows batch operations to update metadata for objects in bucket
@@ -271,8 +310,12 @@ class _BatchOperationsJobState:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if put_metadata is not None:
@@ -380,6 +423,18 @@ class _BatchOperationsJobState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @_builtins.property
     @pulumi.getter(name="jobId")
     def job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -390,6 +445,19 @@ class _BatchOperationsJobState:
     @job_id.setter
     def job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> pulumi.Input[Optional['BatchOperationsJobLoggingConfigArgs']]:
+        """
+        Logging configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: pulumi.Input[Optional['BatchOperationsJobLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -491,7 +559,9 @@ class BatchOperationsJob(pulumi.CustomResource):
                  delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional[Union['BatchOperationsJobLoggingConfigArgs', 'BatchOperationsJobLoggingConfigArgsDict', 'outputs.BatchOperationsJobLoggingConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']]] = None,
                  put_object_hold: pulumi.Input[Optional[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict', 'outputs.BatchOperationsJobPutObjectHold']]] = None,
@@ -545,6 +615,7 @@ class BatchOperationsJob(pulumi.CustomResource):
         tf_job = gcp.storage.BatchOperationsJob("tf-job",
             job_id="tf-job",
             description="A sample job description",
+            dry_run=True,
             bucket_list={
                 "buckets": {
                     "bucket": bucket.name,
@@ -557,6 +628,13 @@ class BatchOperationsJob(pulumi.CustomResource):
                 "custom_metadata": {
                     "key": "value",
                 },
+            },
+            logging_config={
+                "log_actions": ["TRANSFORM"],
+                "log_action_states": [
+                    "SUCCEEDED",
+                    "FAILED",
+                ],
             },
             delete_protection=False)
         ```
@@ -592,7 +670,10 @@ class BatchOperationsJob(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        :param pulumi.Input[_builtins.bool] dry_run: If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
         :param pulumi.Input[_builtins.str] job_id: The ID of the job.
+        :param pulumi.Input[Union['BatchOperationsJobLoggingConfigArgs', 'BatchOperationsJobLoggingConfigArgsDict', 'outputs.BatchOperationsJobLoggingConfig']] logging_config: Logging configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']] put_metadata: allows batch operations to update metadata for objects in bucket
@@ -656,6 +737,7 @@ class BatchOperationsJob(pulumi.CustomResource):
         tf_job = gcp.storage.BatchOperationsJob("tf-job",
             job_id="tf-job",
             description="A sample job description",
+            dry_run=True,
             bucket_list={
                 "buckets": {
                     "bucket": bucket.name,
@@ -668,6 +750,13 @@ class BatchOperationsJob(pulumi.CustomResource):
                 "custom_metadata": {
                     "key": "value",
                 },
+            },
+            logging_config={
+                "log_actions": ["TRANSFORM"],
+                "log_action_states": [
+                    "SUCCEEDED",
+                    "FAILED",
+                ],
             },
             delete_protection=False)
         ```
@@ -709,7 +798,9 @@ class BatchOperationsJob(pulumi.CustomResource):
                  delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional[Union['BatchOperationsJobLoggingConfigArgs', 'BatchOperationsJobLoggingConfigArgsDict', 'outputs.BatchOperationsJobLoggingConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']]] = None,
                  put_object_hold: pulumi.Input[Optional[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict', 'outputs.BatchOperationsJobPutObjectHold']]] = None,
@@ -728,7 +819,9 @@ class BatchOperationsJob(pulumi.CustomResource):
             __props__.__dict__["delete_protection"] = delete_protection
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
+            __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["job_id"] = job_id
+            __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["project"] = project
             __props__.__dict__["put_metadata"] = put_metadata
             __props__.__dict__["put_object_hold"] = put_object_hold
@@ -755,7 +848,9 @@ class BatchOperationsJob(pulumi.CustomResource):
             delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_config: pulumi.Input[Optional[Union['BatchOperationsJobLoggingConfigArgs', 'BatchOperationsJobLoggingConfigArgsDict', 'outputs.BatchOperationsJobLoggingConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']]] = None,
             put_object_hold: pulumi.Input[Optional[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict', 'outputs.BatchOperationsJobPutObjectHold']]] = None,
@@ -784,7 +879,10 @@ class BatchOperationsJob(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        :param pulumi.Input[_builtins.bool] dry_run: If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
         :param pulumi.Input[_builtins.str] job_id: The ID of the job.
+        :param pulumi.Input[Union['BatchOperationsJobLoggingConfigArgs', 'BatchOperationsJobLoggingConfigArgsDict', 'outputs.BatchOperationsJobLoggingConfig']] logging_config: Logging configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']] put_metadata: allows batch operations to update metadata for objects in bucket
@@ -808,7 +906,9 @@ class BatchOperationsJob(pulumi.CustomResource):
         __props__.__dict__["delete_protection"] = delete_protection
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
+        __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["job_id"] = job_id
+        __props__.__dict__["logging_config"] = logging_config
         __props__.__dict__["project"] = project
         __props__.__dict__["put_metadata"] = put_metadata
         __props__.__dict__["put_object_hold"] = put_object_hold
@@ -882,12 +982,29 @@ class BatchOperationsJob(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @_builtins.property
     @pulumi.getter(name="jobId")
     def job_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the job.
         """
         return pulumi.get(self, "job_id")
+
+    @_builtins.property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> pulumi.Output[Optional['outputs.BatchOperationsJobLoggingConfig']]:
+        """
+        Logging configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logging_config")
 
     @_builtins.property
     @pulumi.getter

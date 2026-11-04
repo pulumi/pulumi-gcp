@@ -547,7 +547,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_std as std
 
-        project = gcp.organizations.get_project()
         default_trust_config = gcp.certificatemanager.TrustConfig("default",
             name="my-trust-config",
             description="sample trust config description",
@@ -570,7 +569,48 @@ class ServerTlsPolicy(pulumi.CustomResource):
             allow_open=False,
             mtls_policy={
                 "client_validation_mode": "REJECT_INVALID",
-                "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+                "client_validation_trust_config": default_trust_config.id,
+            },
+            labels={
+                "foo": "bar",
+            })
+        ```
+
+        ### Network Security Server Tls Policy Mtls Validation Relaxations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_trust_config = gcp.certificatemanager.TrustConfig("default",
+            name="my-trust-config",
+            description="sample trust config description",
+            location="global",
+            trust_stores=[{
+                "trust_anchors": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+                "intermediate_cas": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+            }],
+            labels={
+                "foo": "bar",
+            })
+        default = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-server-tls-policy",
+            description="ServerTlsPolicy with mTLS validation relaxations",
+            location="global",
+            allow_open=False,
+            mtls_policy={
+                "client_validation_mode": "ALLOW_VALIDATION_RELAXATIONS",
+                "client_validation_relaxations": [
+                    "ALLOW_MISSING_EKU",
+                    "ALLOW_SHA1_HASHING",
+                    "ALLOW_EXPIRED_LEAF_CERTIFICATE",
+                ],
+                "client_validation_trust_config": default_trust_config.id,
             },
             labels={
                 "foo": "bar",
@@ -711,7 +751,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_std as std
 
-        project = gcp.organizations.get_project()
         default_trust_config = gcp.certificatemanager.TrustConfig("default",
             name="my-trust-config",
             description="sample trust config description",
@@ -734,7 +773,48 @@ class ServerTlsPolicy(pulumi.CustomResource):
             allow_open=False,
             mtls_policy={
                 "client_validation_mode": "REJECT_INVALID",
-                "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+                "client_validation_trust_config": default_trust_config.id,
+            },
+            labels={
+                "foo": "bar",
+            })
+        ```
+
+        ### Network Security Server Tls Policy Mtls Validation Relaxations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_trust_config = gcp.certificatemanager.TrustConfig("default",
+            name="my-trust-config",
+            description="sample trust config description",
+            location="global",
+            trust_stores=[{
+                "trust_anchors": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+                "intermediate_cas": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+            }],
+            labels={
+                "foo": "bar",
+            })
+        default = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-server-tls-policy",
+            description="ServerTlsPolicy with mTLS validation relaxations",
+            location="global",
+            allow_open=False,
+            mtls_policy={
+                "client_validation_mode": "ALLOW_VALIDATION_RELAXATIONS",
+                "client_validation_relaxations": [
+                    "ALLOW_MISSING_EKU",
+                    "ALLOW_SHA1_HASHING",
+                    "ALLOW_EXPIRED_LEAF_CERTIFICATE",
+                ],
+                "client_validation_trust_config": default_trust_config.id,
             },
             labels={
                 "foo": "bar",

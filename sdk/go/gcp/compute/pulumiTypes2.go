@@ -32294,11 +32294,20 @@ func (o GetRegionNetworkEndpointGroupCloudRunArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetRegionNetworkEndpointGroupPscData struct {
+	// Address allocated from given subnetwork for PSC. This IP address acts
+	// as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+	ConsumerPscAddress string `pulumi:"consumerPscAddress"`
 	// The PSC producer port to use when consumer PSC NEG connects to a producer. If
 	// this flag isn't specified for a PSC NEG with endpoint type
 	// private-service-connect, then PSC NEG will be connected to a first port in the
 	// available PSC producer port range.
 	ProducerPort string `pulumi:"producerPort"`
+	// The PSC connection id of the PSC Network Endpoint Group Consumer.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// The connection status of the PSC Network Endpoint Group Consumer.
+	// Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED',
+	// 'REJECTED', 'CLOSED', 'NEEDS_ATTENTION'
+	PscConnectionStatus string `pulumi:"pscConnectionStatus"`
 }
 
 // GetRegionNetworkEndpointGroupPscDataInput is an input type that accepts GetRegionNetworkEndpointGroupPscDataArgs and GetRegionNetworkEndpointGroupPscDataOutput values.
@@ -32313,11 +32322,20 @@ type GetRegionNetworkEndpointGroupPscDataInput interface {
 }
 
 type GetRegionNetworkEndpointGroupPscDataArgs struct {
+	// Address allocated from given subnetwork for PSC. This IP address acts
+	// as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+	ConsumerPscAddress pulumi.StringInput `pulumi:"consumerPscAddress"`
 	// The PSC producer port to use when consumer PSC NEG connects to a producer. If
 	// this flag isn't specified for a PSC NEG with endpoint type
 	// private-service-connect, then PSC NEG will be connected to a first port in the
 	// available PSC producer port range.
 	ProducerPort pulumi.StringInput `pulumi:"producerPort"`
+	// The PSC connection id of the PSC Network Endpoint Group Consumer.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
+	// The connection status of the PSC Network Endpoint Group Consumer.
+	// Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED',
+	// 'REJECTED', 'CLOSED', 'NEEDS_ATTENTION'
+	PscConnectionStatus pulumi.StringInput `pulumi:"pscConnectionStatus"`
 }
 
 func (GetRegionNetworkEndpointGroupPscDataArgs) ElementType() reflect.Type {
@@ -32371,12 +32389,30 @@ func (o GetRegionNetworkEndpointGroupPscDataOutput) ToGetRegionNetworkEndpointGr
 	return o
 }
 
+// Address allocated from given subnetwork for PSC. This IP address acts
+// as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+func (o GetRegionNetworkEndpointGroupPscDataOutput) ConsumerPscAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupPscData) string { return v.ConsumerPscAddress }).(pulumi.StringOutput)
+}
+
 // The PSC producer port to use when consumer PSC NEG connects to a producer. If
 // this flag isn't specified for a PSC NEG with endpoint type
 // private-service-connect, then PSC NEG will be connected to a first port in the
 // available PSC producer port range.
 func (o GetRegionNetworkEndpointGroupPscDataOutput) ProducerPort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupPscData) string { return v.ProducerPort }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the PSC Network Endpoint Group Consumer.
+func (o GetRegionNetworkEndpointGroupPscDataOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupPscData) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The connection status of the PSC Network Endpoint Group Consumer.
+// Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED',
+// 'REJECTED', 'CLOSED', 'NEEDS_ATTENTION'
+func (o GetRegionNetworkEndpointGroupPscDataOutput) PscConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupPscData) string { return v.PscConnectionStatus }).(pulumi.StringOutput)
 }
 
 type GetRegionNetworkEndpointGroupPscDataArrayOutput struct{ *pulumi.OutputState }

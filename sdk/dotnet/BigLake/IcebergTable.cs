@@ -165,6 +165,116 @@ namespace Pulumi.Gcp.BigLake
     /// });
     /// ```
     /// 
+    /// ### Biglake Iceberg Table Nested Types
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = "my-bucket",
+    ///         Location = "us-central1",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var catalog = new Gcp.BigLake.IcebergCatalog("catalog", new()
+    ///     {
+    ///         Name = bucket.Name,
+    ///         CatalogType = "CATALOG_TYPE_GCS_BUCKET",
+    ///     });
+    /// 
+    ///     var @namespace = new Gcp.BigLake.IcebergNamespace("namespace", new()
+    ///     {
+    ///         Catalog = catalog.Name,
+    ///         NamespaceId = "my_namespace",
+    ///     });
+    /// 
+    ///     var myIcebergTable = new Gcp.BigLake.IcebergTable("my_iceberg_table", new()
+    ///     {
+    ///         Catalog = catalog.Name,
+    ///         Namespace = @namespace.NamespaceId,
+    ///         Name = "my_table",
+    ///         Schema = new Gcp.BigLake.Inputs.IcebergTableSchemaArgs
+    ///         {
+    ///             Type = "struct",
+    ///             Fields = new[]
+    ///             {
+    ///                 new Gcp.BigLake.Inputs.IcebergTableSchemaFieldArgs
+    ///                 {
+    ///                     Id = 1,
+    ///                     Name = "id",
+    ///                     Type = "long",
+    ///                     Required = true,
+    ///                 },
+    ///                 new Gcp.BigLake.Inputs.IcebergTableSchemaFieldArgs
+    ///                 {
+    ///                     Id = 2,
+    ///                     Name = "tags",
+    ///                     Type = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "list",
+    ///                         ["element-id"] = 5,
+    ///                         ["element"] = "string",
+    ///                         ["element-required"] = false,
+    ///                     }),
+    ///                     Required = false,
+    ///                 },
+    ///                 new Gcp.BigLake.Inputs.IcebergTableSchemaFieldArgs
+    ///                 {
+    ///                     Id = 3,
+    ///                     Name = "attributes",
+    ///                     Type = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "map",
+    ///                         ["key-id"] = 6,
+    ///                         ["key"] = "string",
+    ///                         ["value-id"] = 7,
+    ///                         ["value"] = "long",
+    ///                         ["value-required"] = false,
+    ///                     }),
+    ///                     Required = false,
+    ///                 },
+    ///                 new Gcp.BigLake.Inputs.IcebergTableSchemaFieldArgs
+    ///                 {
+    ///                     Id = 4,
+    ///                     Name = "address",
+    ///                     Type = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "struct",
+    ///                         ["fields"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["id"] = 8,
+    ///                                 ["name"] = "street",
+    ///                                 ["type"] = "string",
+    ///                                 ["required"] = false,
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["id"] = 9,
+    ///                                 ["name"] = "city",
+    ///                                 ["type"] = "string",
+    ///                                 ["required"] = false,
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                     Required = false,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Biglake Iceberg Table Update
     /// 
     /// ```csharp

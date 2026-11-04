@@ -54,6 +54,21 @@ public final class GrpcRouteRuleActionArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+     * 
+     */
+    @Import(name="idleTimeout")
+    private @Nullable Output<String> idleTimeout;
+
+    /**
+     * @return Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+     * 
+     */
+    public Optional<Output<String>> idleTimeout() {
+        return Optional.ofNullable(this.idleTimeout);
+    }
+
+    /**
      * Specifies the retry policy associated with this route.
      * Structure is documented below.
      * 
@@ -90,6 +105,7 @@ public final class GrpcRouteRuleActionArgs extends com.pulumi.resources.Resource
     private GrpcRouteRuleActionArgs(GrpcRouteRuleActionArgs $) {
         this.destinations = $.destinations;
         this.faultInjectionPolicy = $.faultInjectionPolicy;
+        this.idleTimeout = $.idleTimeout;
         this.retryPolicy = $.retryPolicy;
         this.timeout = $.timeout;
     }
@@ -167,6 +183,27 @@ public final class GrpcRouteRuleActionArgs extends com.pulumi.resources.Resource
          */
         public Builder faultInjectionPolicy(GrpcRouteRuleActionFaultInjectionPolicyArgs faultInjectionPolicy) {
             return faultInjectionPolicy(Output.of(faultInjectionPolicy));
+        }
+
+        /**
+         * @param idleTimeout Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(@Nullable Output<String> idleTimeout) {
+            $.idleTimeout = idleTimeout;
+            return this;
+        }
+
+        /**
+         * @param idleTimeout Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(String idleTimeout) {
+            return idleTimeout(Output.of(idleTimeout));
         }
 
         /**

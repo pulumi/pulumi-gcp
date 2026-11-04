@@ -20,6 +20,7 @@ from .regional_secret import *
 from .regional_secret_iam_binding import *
 from .regional_secret_iam_member import *
 from .regional_secret_iam_policy import *
+from .regional_secret_managed_rotation import *
 from .regional_secret_version import *
 from .secret import *
 from .secret_iam_binding import *

@@ -272,6 +272,7 @@ import javax.annotation.Nullable;
  *                             .serviceName("new")
  *                             .weight(1)
  *                             .build())
+ *                         .mirrorPercent(50.0)
  *                         .build())
  *                     .corsPolicy(HttpRouteRuleActionCorsPolicyArgs.builder()
  *                         .allowOrigins("example")
@@ -304,6 +305,7 @@ import javax.annotation.Nullable;
  *                         .add(Map.of("minor-version", "1"))
  *                         .removes("removearg")
  *                         .build())
+ *                     .idleTimeout("1s")
  *                     .build())
  *                 .build())
  *             .build());

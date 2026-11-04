@@ -82,6 +82,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigSdpSettingsBasicConfigArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigPiAndJailbreakFilterSettingsArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigMaliciousUriFilterSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs;
  * import java.util.ArrayList;
@@ -118,6 +125,34 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .maliciousUriFilterSettings(TemplateFilterConfigMaliciousUriFilterSettingsArgs.builder()
  *                     .filterEnforcement("ENABLED")
+ *                     .build())
+ *                 .filterRuleSettings(TemplateFilterConfigFilterRuleSettingsArgs.builder()
+ *                     .ruleSets(TemplateFilterConfigFilterRuleSettingsRuleSetArgs.builder()
+ *                         .filterTypes(                        
+ *                             "PROMPT_INJECTION_AND_JAILBREAK",
+ *                             "RESPONSIBLE_AI")
+ *                         .rules(                        
+ *                             TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs.builder()
+ *                                 .exclusionRule(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs.builder()
+ *                                     .matchingScope("MATCHING_SCOPE_PARTIAL_MATCH")
+ *                                     .dictionary(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs.builder()
+ *                                         .wordList(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs.builder()
+ *                                             .words(                                            
+ *                                                 "allowphrase1",
+ *                                                 "allowphrase2")
+ *                                             .build())
+ *                                         .build())
+ *                                     .build())
+ *                                 .build(),
+ *                             TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs.builder()
+ *                                 .exclusionRule(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs.builder()
+ *                                     .matchingScope("MATCHING_SCOPE_FULL_MATCH")
+ *                                     .regex(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs.builder()
+ *                                         .pattern("^safe_pattern_[0-9]+$")
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .templateMetadata(TemplateTemplateMetadataArgs.builder()
@@ -191,6 +226,7 @@ import javax.annotation.Nullable;
  *                 .filterVersionSelector(TemplateTemplateMetadataFilterVersionSelectorArgs.builder()
  *                     .alias("FILTER_VERSION_ALIAS_LATEST")
  *                     .build())
+ *                 .dataResidencyCompliant(true)
  *                 .build())
  *             .build());
  * 
@@ -241,7 +277,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .templateMetadata(TemplateTemplateMetadataArgs.builder()
  *                 .filterVersionSelector(TemplateTemplateMetadataFilterVersionSelectorArgs.builder()
- *                     .version("v1")
+ *                     .version("v3")
  *                     .build())
  *                 .build())
  *             .build());

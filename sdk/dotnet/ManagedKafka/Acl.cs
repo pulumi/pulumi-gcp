@@ -12,6 +12,13 @@ namespace Pulumi.Gcp.ManagedKafka
     /// <summary>
     /// A Managed Service for Apache Kafka ACL. Apache Kafka is a trademark owned by the Apache Software Foundation.
     /// 
+    /// &gt; **Warning:** `gcp.managedkafka.Acl` cannot be used in conjunction with
+    /// `gcp.managedkafka.AclBinding` for the same ACL (same `Cluster` and
+    /// `AclId`), or they will fight over which ACL entries are set.
+    /// `gcp.managedkafka.Acl` is authoritative: on every apply it replaces
+    /// the full `AclEntries` list, removing any entry added by a
+    /// `gcp.managedkafka.AclBinding`.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Managedkafka Acl Basic

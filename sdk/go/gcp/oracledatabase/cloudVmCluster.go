@@ -149,6 +149,65 @@ import (
 //
 // ```
 //
+// ### Oracledatabase Cloud Vmcluster Odbdnszone
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cloudExadataInfrastructures, err := oracledatabase.NewCloudExadataInfrastructure(ctx, "cloudExadataInfrastructures", &oracledatabase.CloudExadataInfrastructureArgs{
+//				CloudExadataInfrastructureId: pulumi.String("my-exadata"),
+//				DisplayName:                  pulumi.String("my-exadata displayname"),
+//				Location:                     pulumi.String("europe-west2"),
+//				Project:                      pulumi.String("my-project"),
+//				Properties: &oracledatabase.CloudExadataInfrastructurePropertiesArgs{
+//					Shape:        pulumi.String("Exadata.X9M"),
+//					ComputeCount: pulumi.Int(2),
+//					StorageCount: pulumi.Int(3),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oracledatabase.NewCloudVmCluster(ctx, "my_vmcluster", &oracledatabase.CloudVmClusterArgs{
+//				CloudVmClusterId:      pulumi.String("my-instance"),
+//				DisplayName:           pulumi.String("my-instance displayname"),
+//				Location:              pulumi.String("europe-west2"),
+//				Project:               pulumi.String("my-project"),
+//				ExadataInfrastructure: cloudExadataInfrastructures.ID(),
+//				OdbNetwork:            pulumi.String("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork"),
+//				OdbSubnet:             pulumi.String("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"),
+//				BackupOdbSubnet:       pulumi.String("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet"),
+//				OdbDnsZone:            pulumi.String("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbDnsZones/my-odbdnszone"),
+//				Properties: &oracledatabase.CloudVmClusterPropertiesArgs{
+//					LicenseType: pulumi.String("LICENSE_INCLUDED"),
+//					SshPublicKeys: pulumi.StringArray{
+//						pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"),
+//					},
+//					CpuCoreCount:   pulumi.Int(4),
+//					GiVersion:      pulumi.String("19.0.0.0"),
+//					HostnamePrefix: pulumi.String("hostname1"),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Oracledatabase Cloud Vmcluster Full
 //
 // ```go
@@ -436,6 +495,10 @@ type CloudVmCluster struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network pulumi.StringPtrOutput `pulumi:"network"`
+	// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+	OdbDnsZone pulumi.StringPtrOutput `pulumi:"odbDnsZone"`
 	// The name of the OdbNetwork associated with the VM Cluster.
 	// Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -556,6 +619,10 @@ type cloudVmClusterState struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network *string `pulumi:"network"`
+	// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+	OdbDnsZone *string `pulumi:"odbDnsZone"`
 	// The name of the OdbNetwork associated with the VM Cluster.
 	// Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -633,6 +700,10 @@ type CloudVmClusterState struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network pulumi.StringPtrInput
+	// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+	OdbDnsZone pulumi.StringPtrInput
 	// The name of the OdbNetwork associated with the VM Cluster.
 	// Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -700,6 +771,10 @@ type cloudVmClusterArgs struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network *string `pulumi:"network"`
+	// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+	OdbDnsZone *string `pulumi:"odbDnsZone"`
 	// The name of the OdbNetwork associated with the VM Cluster.
 	// Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -761,6 +836,10 @@ type CloudVmClusterArgs struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network pulumi.StringPtrInput
+	// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+	OdbDnsZone pulumi.StringPtrInput
 	// The name of the OdbNetwork associated with the VM Cluster.
 	// Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -970,6 +1049,13 @@ func (o CloudVmClusterOutput) Name() pulumi.StringOutput {
 // Format: projects/{project}/global/networks/{network}
 func (o CloudVmClusterOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+// Format:
+// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+func (o CloudVmClusterOutput) OdbDnsZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.OdbDnsZone }).(pulumi.StringPtrOutput)
 }
 
 // The name of the OdbNetwork associated with the VM Cluster.

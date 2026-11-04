@@ -705,6 +705,22 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.smbSettings;
     }
     /**
+     * Optional. Snap_reserve specifies percentage of volume storage reserved for
+     * snapshot storage. Default is 0 percent.
+     * 
+     */
+    @Export(name="snapReserve", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> snapReserve;
+
+    /**
+     * @return Optional. Snap_reserve specifies percentage of volume storage reserved for
+     * snapshot storage. Default is 0 percent.
+     * 
+     */
+    public Output<Optional<Double>> snapReserve() {
+        return Codegen.optional(this.snapReserve);
+    }
+    /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume&#39;s snapshots. Will enable &#34;Previous Versions&#34; support for SMB.
      * 
      */

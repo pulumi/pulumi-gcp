@@ -35,6 +35,13 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<Inputs.DatascanDataProfileSpecIncludeFieldsArgs>? IncludeFields { get; set; }
 
         /// <summary>
+        /// The execution mode for the profile scan.
+        /// Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
         /// Actions to take upon job completion.
         /// Structure is documented below.
         /// </summary>

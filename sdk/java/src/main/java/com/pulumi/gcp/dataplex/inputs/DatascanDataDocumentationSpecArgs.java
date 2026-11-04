@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +33,23 @@ public final class DatascanDataDocumentationSpecArgs extends com.pulumi.resource
     }
 
     /**
+     * Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+     * Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+     * 
+     */
+    @Import(name="generationScopes")
+    private @Nullable Output<List<String>> generationScopes;
+
+    /**
+     * @return Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+     * Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+     * 
+     */
+    public Optional<Output<List<String>>> generationScopes() {
+        return Optional.ofNullable(this.generationScopes);
+    }
+
+    /**
      * The SQL dialect to use in the generated SQL queries.
      * If not specified, the default dialect is Google SQL.
      * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
@@ -54,6 +72,7 @@ public final class DatascanDataDocumentationSpecArgs extends com.pulumi.resource
 
     private DatascanDataDocumentationSpecArgs(DatascanDataDocumentationSpecArgs $) {
         this.catalogPublishingEnabled = $.catalogPublishingEnabled;
+        this.generationScopes = $.generationScopes;
         this.sqlDialect = $.sqlDialect;
     }
 
@@ -94,6 +113,40 @@ public final class DatascanDataDocumentationSpecArgs extends com.pulumi.resource
          */
         public Builder catalogPublishingEnabled(Boolean catalogPublishingEnabled) {
             return catalogPublishingEnabled(Output.of(catalogPublishingEnabled));
+        }
+
+        /**
+         * @param generationScopes Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+         * Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generationScopes(@Nullable Output<List<String>> generationScopes) {
+            $.generationScopes = generationScopes;
+            return this;
+        }
+
+        /**
+         * @param generationScopes Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+         * Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generationScopes(List<String> generationScopes) {
+            return generationScopes(Output.of(generationScopes));
+        }
+
+        /**
+         * @param generationScopes Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+         * Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generationScopes(String... generationScopes) {
+            return generationScopes(List.of(generationScopes));
         }
 
         /**

@@ -159,6 +159,7 @@ namespace Pulumi.Gcp.SecretManager
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Location;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetRegionalSecretPolicyMemberResult> PolicyMembers;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetRegionalSecretRotationResult> Rotations;
@@ -196,6 +197,8 @@ namespace Pulumi.Gcp.SecretManager
 
             string name,
 
+            ImmutableArray<Outputs.GetRegionalSecretPolicyMemberResult> policyMembers,
+
             string? project,
 
             ImmutableDictionary<string, string> pulumiLabels,
@@ -228,6 +231,7 @@ namespace Pulumi.Gcp.SecretManager
             Labels = labels;
             Location = location;
             Name = name;
+            PolicyMembers = policyMembers;
             Project = project;
             PulumiLabels = pulumiLabels;
             Rotations = rotations;

@@ -89,6 +89,29 @@ public final class TemplateTemplateMetadataArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Indicates whether the template is subject to data residency compliance. If
+     * true (default for new templates), the template is subject to data residency
+     * compliance. If false, the template bypasses data residency compliance
+     * checks. If unset, the value is determined by the API; templates created
+     * before data residency enforcement may report false.
+     * 
+     */
+    @Import(name="dataResidencyCompliant")
+    private @Nullable Output<Boolean> dataResidencyCompliant;
+
+    /**
+     * @return Indicates whether the template is subject to data residency compliance. If
+     * true (default for new templates), the template is subject to data residency
+     * compliance. If false, the template bypasses data residency compliance
+     * checks. If unset, the value is determined by the API; templates created
+     * before data residency enforcement may report false.
+     * 
+     */
+    public Optional<Output<Boolean>> dataResidencyCompliant() {
+        return Optional.ofNullable(this.dataResidencyCompliant);
+    }
+
+    /**
      * Possible values:
      * INSPECT_ONLY
      * INSPECT_AND_BLOCK
@@ -222,6 +245,7 @@ public final class TemplateTemplateMetadataArgs extends com.pulumi.resources.Res
         this.customLlmResponseSafetyErrorMessage = $.customLlmResponseSafetyErrorMessage;
         this.customPromptSafetyErrorCode = $.customPromptSafetyErrorCode;
         this.customPromptSafetyErrorMessage = $.customPromptSafetyErrorMessage;
+        this.dataResidencyCompliant = $.dataResidencyCompliant;
         this.enforcementType = $.enforcementType;
         this.filterVersionSelector = $.filterVersionSelector;
         this.ignorePartialInvocationFailures = $.ignorePartialInvocationFailures;
@@ -339,6 +363,35 @@ public final class TemplateTemplateMetadataArgs extends com.pulumi.resources.Res
          */
         public Builder customPromptSafetyErrorMessage(String customPromptSafetyErrorMessage) {
             return customPromptSafetyErrorMessage(Output.of(customPromptSafetyErrorMessage));
+        }
+
+        /**
+         * @param dataResidencyCompliant Indicates whether the template is subject to data residency compliance. If
+         * true (default for new templates), the template is subject to data residency
+         * compliance. If false, the template bypasses data residency compliance
+         * checks. If unset, the value is determined by the API; templates created
+         * before data residency enforcement may report false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataResidencyCompliant(@Nullable Output<Boolean> dataResidencyCompliant) {
+            $.dataResidencyCompliant = dataResidencyCompliant;
+            return this;
+        }
+
+        /**
+         * @param dataResidencyCompliant Indicates whether the template is subject to data residency compliance. If
+         * true (default for new templates), the template is subject to data residency
+         * compliance. If false, the template bypasses data residency compliance
+         * checks. If unset, the value is determined by the API; templates created
+         * before data residency enforcement may report false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataResidencyCompliant(Boolean dataResidencyCompliant) {
+            return dataResidencyCompliant(Output.of(dataResidencyCompliant));
         }
 
         /**

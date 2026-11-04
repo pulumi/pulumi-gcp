@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
  *                 .build())
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
  *                 .build())
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
  *                 .build())
@@ -276,7 +276,7 @@ import javax.annotation.Nullable;
  * 
  *         var full = new Cluster("full", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster-full")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
  *                 .build())
@@ -290,7 +290,7 @@ import javax.annotation.Nullable;
  *                 .recoveryWindowDays(14)
  *                 .build())
  *             .automatedBackupPolicy(ClusterAutomatedBackupPolicyArgs.builder()
- *                 .location("us-central1")
+ *                 .location("us-east1")
  *                 .backupWindow("1800s")
  *                 .enabled(true)
  *                 .weeklySchedule(ClusterAutomatedBackupPolicyWeeklyScheduleArgs.builder()
@@ -367,7 +367,7 @@ import javax.annotation.Nullable;
  * 
  *         var source = new Cluster("source", ClusterArgs.builder()
  *             .clusterId("alloydb-source-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .network(default_.id())
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password("alloydb-source-cluster")
@@ -402,7 +402,7 @@ import javax.annotation.Nullable;
  * 
  *         var sourceBackup = new Backup("sourceBackup", BackupArgs.builder()
  *             .backupId("alloydb-backup")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .clusterName(source.name())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(sourceInstance)
@@ -410,7 +410,7 @@ import javax.annotation.Nullable;
  * 
  *         var restoredFromBackup = new Cluster("restoredFromBackup", ClusterArgs.builder()
  *             .clusterId("alloydb-backup-restored")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
  *                 .build())
@@ -422,7 +422,7 @@ import javax.annotation.Nullable;
  * 
  *         var restoredViaPitr = new Cluster("restoredViaPitr", ClusterArgs.builder()
  *             .clusterId("alloydb-pitr-restored")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
  *                 .build())
@@ -486,7 +486,7 @@ import javax.annotation.Nullable;
  * 
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .clusterId("alloydb-primary-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
  *                 .build())

@@ -25,13 +25,18 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword? ExcludeByHotword;
         /// <summary>
+        /// The rule to exclude image findings based on spatial relationships with other image findings.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings? ExcludeByImageFindings;
+        /// <summary>
         /// Set of infoTypes for which findings would affect this rule.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes? ExcludeInfoTypes;
         /// <summary>
         /// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-        /// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+        /// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
         /// </summary>
         public readonly string MatchingType;
         /// <summary>
@@ -46,6 +51,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword? excludeByHotword,
 
+            Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings? excludeByImageFindings,
+
             Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes? excludeInfoTypes,
 
             string matchingType,
@@ -54,6 +61,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         {
             Dictionary = dictionary;
             ExcludeByHotword = excludeByHotword;
+            ExcludeByImageFindings = excludeByImageFindings;
             ExcludeInfoTypes = excludeInfoTypes;
             MatchingType = matchingType;
             Regex = regex;

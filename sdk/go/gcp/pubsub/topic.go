@@ -443,6 +443,12 @@ import (
 //							Code:         pulumi.String("..."),
 //						},
 //					},
+//					&pubsub.TopicMessageTransformArgs{
+//						Compression: &pubsub.TopicMessageTransformCompressionArgs{
+//							CompressionAlgorithm: pulumi.String("ZLIB"),
+//							CompressionMode:      pulumi.String("COMPRESS"),
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -561,7 +567,7 @@ import (
 //				MessageTransforms: pubsub.TopicMessageTransformArray{
 //					&pubsub.TopicMessageTransformArgs{
 //						AiInference: &pubsub.TopicMessageTransformAiInferenceArgs{
-//							Endpoint: pulumi.String("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash"),
+//							Endpoint: pulumi.String("projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash"),
 //							UnstructuredInference: &pubsub.TopicMessageTransformAiInferenceUnstructuredInferenceArgs{
 //								Parameters: pulumi.StringMap{
 //									"max_tokens": pulumi.String("25000"),

@@ -34,6 +34,23 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The mode used to issue certificates (local CA signing vs direct leaf).
+     * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+     * 
+     */
+    @Import(name="certificateIssuanceMode")
+    private @Nullable Output<String> certificateIssuanceMode;
+
+    /**
+     * @return The mode used to issue certificates (local CA signing vs direct leaf).
+     * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+     * 
+     */
+    public Optional<Output<String>> certificateIssuanceMode() {
+        return Optional.ofNullable(this.certificateIssuanceMode);
+    }
+
+    /**
      * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
      * 
      */
@@ -207,6 +224,7 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
 
     private TlsInspectionPolicyArgs(TlsInspectionPolicyArgs $) {
         this.caPool = $.caPool;
+        this.certificateIssuanceMode = $.certificateIssuanceMode;
         this.customTlsFeatures = $.customTlsFeatures;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
@@ -256,6 +274,29 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
          */
         public Builder caPool(String caPool) {
             return caPool(Output.of(caPool));
+        }
+
+        /**
+         * @param certificateIssuanceMode The mode used to issue certificates (local CA signing vs direct leaf).
+         * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateIssuanceMode(@Nullable Output<String> certificateIssuanceMode) {
+            $.certificateIssuanceMode = certificateIssuanceMode;
+            return this;
+        }
+
+        /**
+         * @param certificateIssuanceMode The mode used to issue certificates (local CA signing vs direct leaf).
+         * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateIssuanceMode(String certificateIssuanceMode) {
+            return certificateIssuanceMode(Output.of(certificateIssuanceMode));
         }
 
         /**

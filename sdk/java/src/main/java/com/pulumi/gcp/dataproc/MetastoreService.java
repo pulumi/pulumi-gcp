@@ -235,6 +235,7 @@ import javax.annotation.Nullable;
  *             .serviceId("metastore-srv")
  *             .location("us-central1")
  *             .tier("DEVELOPER")
+ *             .deletionPolicy("FORCE")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
  *                 .version("3.1.2")
  *                 .build())
@@ -722,24 +723,36 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.databaseType);
     }
     /**
-     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+     * the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+     * service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+     * 
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * When set to &#34;DELETE&#34;, the resource is deleted directly. PSC endpoints in consumer
+     * subnetworks will be deleted asynchronously by the API.
+     * 
+     * Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output<String> deletionPolicy;
 
     /**
-     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * @return The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+     * the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+     * service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+     * 
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * When set to &#34;DELETE&#34;, the resource is deleted directly. PSC endpoints in consumer
+     * subnetworks will be deleted asynchronously by the API.
+     * 
+     * Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
      * 
      */
     public Output<String> deletionPolicy() {

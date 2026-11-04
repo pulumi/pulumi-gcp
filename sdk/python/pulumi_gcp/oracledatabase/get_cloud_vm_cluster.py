@@ -27,7 +27,7 @@ class GetCloudVmClusterResult:
     """
     A collection of values returned by getCloudVmCluster.
     """
-    def __init__(__self__, backup_odb_subnet=None, backup_subnet_cidr=None, cidr=None, cloud_vm_cluster_id=None, create_time=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_labels=None, exadata_infrastructure=None, exascale_db_storage_vault=None, gcp_oracle_zone=None, id=None, identity_connectors=None, labels=None, location=None, name=None, network=None, odb_network=None, odb_subnet=None, project=None, properties=None, pulumi_labels=None):
+    def __init__(__self__, backup_odb_subnet=None, backup_subnet_cidr=None, cidr=None, cloud_vm_cluster_id=None, create_time=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_labels=None, exadata_infrastructure=None, exascale_db_storage_vault=None, gcp_oracle_zone=None, id=None, identity_connectors=None, labels=None, location=None, name=None, network=None, odb_dns_zone=None, odb_network=None, odb_subnet=None, project=None, properties=None, pulumi_labels=None):
         if backup_odb_subnet and not isinstance(backup_odb_subnet, str):
             raise TypeError("Expected argument 'backup_odb_subnet' to be a str")
         pulumi.set(__self__, "backup_odb_subnet", backup_odb_subnet)
@@ -82,6 +82,9 @@ class GetCloudVmClusterResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
+        if odb_dns_zone and not isinstance(odb_dns_zone, str):
+            raise TypeError("Expected argument 'odb_dns_zone' to be a str")
+        pulumi.set(__self__, "odb_dns_zone", odb_dns_zone)
         if odb_network and not isinstance(odb_network, str):
             raise TypeError("Expected argument 'odb_network' to be a str")
         pulumi.set(__self__, "odb_network", odb_network)
@@ -192,6 +195,11 @@ class GetCloudVmClusterResult:
         return pulumi.get(self, "network")
 
     @_builtins.property
+    @pulumi.getter(name="odbDnsZone")
+    def odb_dns_zone(self) -> _builtins.str:
+        return pulumi.get(self, "odb_dns_zone")
+
+    @_builtins.property
     @pulumi.getter(name="odbNetwork")
     def odb_network(self) -> _builtins.str:
         return pulumi.get(self, "odb_network")
@@ -241,6 +249,7 @@ class AwaitableGetCloudVmClusterResult(GetCloudVmClusterResult):
             location=self.location,
             name=self.name,
             network=self.network,
+            odb_dns_zone=self.odb_dns_zone,
             odb_network=self.odb_network,
             odb_subnet=self.odb_subnet,
             project=self.project,
@@ -302,6 +311,7 @@ def get_cloud_vm_cluster(cloud_vm_cluster_id: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
+        odb_dns_zone=pulumi.get(__ret__, 'odb_dns_zone'),
         odb_network=pulumi.get(__ret__, 'odb_network'),
         odb_subnet=pulumi.get(__ret__, 'odb_subnet'),
         project=pulumi.get(__ret__, 'project'),
@@ -360,6 +370,7 @@ def get_cloud_vm_cluster_output(cloud_vm_cluster_id: pulumi.Input[Optional[_buil
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
+        odb_dns_zone=pulumi.get(__response__, 'odb_dns_zone'),
         odb_network=pulumi.get(__response__, 'odb_network'),
         odb_subnet=pulumi.get(__response__, 'odb_subnet'),
         project=pulumi.get(__response__, 'project'),

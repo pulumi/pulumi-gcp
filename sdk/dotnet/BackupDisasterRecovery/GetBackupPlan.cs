@@ -69,15 +69,18 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetBackupPlanDiskBackupPlanPropertyResult> DiskBackupPlanProperties;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Location;
         public readonly int LogRetentionDays;
         public readonly int MaxCustomOnDemandRetentionDays;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string ResourceType;
         public readonly ImmutableArray<string> SupportedResourceTypes;
         public readonly string UpdateTime;
@@ -102,7 +105,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             ImmutableArray<Outputs.GetBackupPlanDiskBackupPlanPropertyResult> diskBackupPlanProperties,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             string id,
+
+            ImmutableDictionary<string, string> labels,
 
             string location,
 
@@ -113,6 +120,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             string name,
 
             string? project,
+
+            ImmutableDictionary<string, string> pulumiLabels,
 
             string resourceType,
 
@@ -129,12 +138,15 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             DeletionPolicy = deletionPolicy;
             Description = description;
             DiskBackupPlanProperties = diskBackupPlanProperties;
+            EffectiveLabels = effectiveLabels;
             Id = id;
+            Labels = labels;
             Location = location;
             LogRetentionDays = logRetentionDays;
             MaxCustomOnDemandRetentionDays = maxCustomOnDemandRetentionDays;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             ResourceType = resourceType;
             SupportedResourceTypes = supportedResourceTypes;
             UpdateTime = updateTime;

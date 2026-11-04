@@ -6,6 +6,7 @@ package com.pulumi.gcp.secretmanager.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretCustomerManagedEncryption;
+import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretPolicyMember;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretRotation;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretTopic;
 import java.lang.Boolean;
@@ -34,6 +35,7 @@ public final class GetRegionalSecretResult {
     private Map<String,String> labels;
     private String location;
     private String name;
+    private List<GetRegionalSecretPolicyMember> policyMembers;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private List<GetRegionalSecretRotation> rotations;
@@ -85,6 +87,9 @@ public final class GetRegionalSecretResult {
     }
     public String name() {
         return this.name;
+    }
+    public List<GetRegionalSecretPolicyMember> policyMembers() {
+        return this.policyMembers;
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
@@ -138,6 +143,7 @@ public final class GetRegionalSecretResult {
         private Map<String,String> labels;
         private String location;
         private String name;
+        private List<GetRegionalSecretPolicyMember> policyMembers;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private List<GetRegionalSecretRotation> rotations;
@@ -163,6 +169,7 @@ public final class GetRegionalSecretResult {
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
+    	      this.policyMembers = defaults.policyMembers;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.rotations = defaults.rotations;
@@ -275,6 +282,17 @@ public final class GetRegionalSecretResult {
             return this;
         }
         @CustomType.Setter
+        public Builder policyMembers(List<GetRegionalSecretPolicyMember> policyMembers) {
+            if (policyMembers == null) {
+              throw new MissingRequiredPropertyException("GetRegionalSecretResult", "policyMembers");
+            }
+            this.policyMembers = policyMembers;
+            return this;
+        }
+        public Builder policyMembers(GetRegionalSecretPolicyMember... policyMembers) {
+            return policyMembers(List.of(policyMembers));
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -372,6 +390,7 @@ public final class GetRegionalSecretResult {
             _resultValue.labels = labels;
             _resultValue.location = location;
             _resultValue.name = name;
+            _resultValue.policyMembers = policyMembers;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.rotations = rotations;

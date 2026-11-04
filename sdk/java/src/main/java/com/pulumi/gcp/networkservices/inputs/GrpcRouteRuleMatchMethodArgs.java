@@ -62,12 +62,32 @@ public final class GrpcRouteRuleMatchMethodArgs extends com.pulumi.resources.Res
         return this.grpcService;
     }
 
+    /**
+     * Specifies how to match against the name. If not specified, a default value of &#34;EXACT&#34; is used.
+     * Default value is `EXACT`.
+     * Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Specifies how to match against the name. If not specified, a default value of &#34;EXACT&#34; is used.
+     * Default value is `EXACT`.
+     * Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private GrpcRouteRuleMatchMethodArgs() {}
 
     private GrpcRouteRuleMatchMethodArgs(GrpcRouteRuleMatchMethodArgs $) {
         this.caseSensitive = $.caseSensitive;
         this.grpcMethod = $.grpcMethod;
         this.grpcService = $.grpcService;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -149,6 +169,31 @@ public final class GrpcRouteRuleMatchMethodArgs extends com.pulumi.resources.Res
          */
         public Builder grpcService(String grpcService) {
             return grpcService(Output.of(grpcService));
+        }
+
+        /**
+         * @param type Specifies how to match against the name. If not specified, a default value of &#34;EXACT&#34; is used.
+         * Default value is `EXACT`.
+         * Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Specifies how to match against the name. If not specified, a default value of &#34;EXACT&#34; is used.
+         * Default value is `EXACT`.
+         * Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public GrpcRouteRuleMatchMethodArgs build() {

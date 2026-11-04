@@ -75,6 +75,14 @@ namespace Pulumi.Gcp.Vertex
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+        /// The cache config is a project-level setting, so this only selects which regional endpoint
+        /// requests are sent to. If not specified, the provider-level region is used.
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AiCacheConfig resource with the given unique name, arguments, and options.
@@ -134,6 +142,14 @@ namespace Pulumi.Gcp.Vertex
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+        /// The cache config is a project-level setting, so this only selects which regional endpoint
+        /// requests are sent to. If not specified, the provider-level region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public AiCacheConfigArgs()
         {
         }
@@ -160,6 +176,14 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+        /// The cache config is a project-level setting, so this only selects which regional endpoint
+        /// requests are sent to. If not specified, the provider-level region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public AiCacheConfigState()
         {

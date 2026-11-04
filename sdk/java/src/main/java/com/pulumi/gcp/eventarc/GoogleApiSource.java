@@ -11,6 +11,8 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.eventarc.GoogleApiSourceArgs;
 import com.pulumi.gcp.eventarc.inputs.GoogleApiSourceState;
 import com.pulumi.gcp.eventarc.outputs.GoogleApiSourceLoggingConfig;
+import com.pulumi.gcp.eventarc.outputs.GoogleApiSourceOrganizationSubscription;
+import com.pulumi.gcp.eventarc.outputs.GoogleApiSourceProjectSubscriptions;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -357,6 +359,24 @@ public class GoogleApiSource extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Config to enable subscribing to events from all projects in the
+     * GoogleApiSource&#39;s org.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="organizationSubscription", refs={GoogleApiSourceOrganizationSubscription.class}, tree="[0]")
+    private Output</* @Nullable */ GoogleApiSourceOrganizationSubscription> organizationSubscription;
+
+    /**
+     * @return Config to enable subscribing to events from all projects in the
+     * GoogleApiSource&#39;s org.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<GoogleApiSourceOrganizationSubscription>> organizationSubscription() {
+        return Codegen.optional(this.organizationSubscription);
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -371,6 +391,24 @@ public class GoogleApiSource extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Config to enable subscribing to all events from a list of projects.
+     * All the projects must be in the same org as the GoogleApiSource.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="projectSubscriptions", refs={GoogleApiSourceProjectSubscriptions.class}, tree="[0]")
+    private Output</* @Nullable */ GoogleApiSourceProjectSubscriptions> projectSubscriptions;
+
+    /**
+     * @return Config to enable subscribing to all events from a list of projects.
+     * All the projects must be in the same org as the GoogleApiSource.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<GoogleApiSourceProjectSubscriptions>> projectSubscriptions() {
+        return Codegen.optional(this.projectSubscriptions);
     }
     /**
      * The combination of labels configured directly on the resource

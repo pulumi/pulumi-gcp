@@ -58,6 +58,16 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
         /// </summary>
         public readonly string? MaximumLifetime;
+        /// <summary>
+        /// Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+        /// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions
+        /// will be dropped. If a certificate request uses a CertificateTemplate with PredefinedValues that don't
+        /// appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+        /// add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions
+        /// set in this CaPool's baseline_values.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CaPoolIssuancePolicyPassthroughExtensions? PassthroughExtensions;
 
         [OutputConstructor]
         private CaPoolIssuancePolicy(
@@ -73,7 +83,9 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
             Outputs.CaPoolIssuancePolicyIdentityConstraints? identityConstraints,
 
-            string? maximumLifetime)
+            string? maximumLifetime,
+
+            Outputs.CaPoolIssuancePolicyPassthroughExtensions? passthroughExtensions)
         {
             AllowRequesterSpecifiedNotBeforeTime = allowRequesterSpecifiedNotBeforeTime;
             AllowedIssuanceModes = allowedIssuanceModes;
@@ -82,6 +94,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
             BaselineValues = baselineValues;
             IdentityConstraints = identityConstraints;
             MaximumLifetime = maximumLifetime;
+            PassthroughExtensions = passthroughExtensions;
         }
     }
 }

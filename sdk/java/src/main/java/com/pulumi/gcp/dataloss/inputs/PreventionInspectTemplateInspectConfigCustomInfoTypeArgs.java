@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs;
@@ -101,6 +102,23 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
     }
 
     /**
+     * Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="metadataKeyValueExpression")
+    private @Nullable Output<PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs> metadataKeyValueExpression;
+
+    /**
+     * @return Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs>> metadataKeyValueExpression() {
+        return Optional.ofNullable(this.metadataKeyValueExpression);
+    }
+
+    /**
      * Regular expression which defines the rule.
      * Structure is documented below.
      * 
@@ -173,6 +191,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
         this.exclusionType = $.exclusionType;
         this.infoType = $.infoType;
         this.likelihood = $.likelihood;
+        this.metadataKeyValueExpression = $.metadataKeyValueExpression;
         this.regex = $.regex;
         this.sensitivityScore = $.sensitivityScore;
         this.storedType = $.storedType;
@@ -297,6 +316,29 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
          */
         public Builder likelihood(String likelihood) {
             return likelihood(Output.of(likelihood));
+        }
+
+        /**
+         * @param metadataKeyValueExpression Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataKeyValueExpression(@Nullable Output<PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs> metadataKeyValueExpression) {
+            $.metadataKeyValueExpression = metadataKeyValueExpression;
+            return this;
+        }
+
+        /**
+         * @param metadataKeyValueExpression Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataKeyValueExpression(PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs metadataKeyValueExpression) {
+            return metadataKeyValueExpression(Output.of(metadataKeyValueExpression));
         }
 
         /**

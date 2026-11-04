@@ -51,7 +51,7 @@ import (
 //			}
 //			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: defaultNetwork.ID(),
 //				},
@@ -131,7 +131,7 @@ import (
 //			}
 //			primary, err := alloydb.NewCluster(ctx, "primary", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-primary-cluster"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: _default.ID(),
 //				},

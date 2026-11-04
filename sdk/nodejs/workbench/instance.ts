@@ -65,13 +65,13 @@ import * as utilities from "../utilities";
  *
  * const gpuReservation = new gcp.compute.Reservation("gpu_reservation", {
  *     name: "wbi-reservation",
- *     zone: "us-east1-b",
+ *     zone: "us-central1-b",
  *     specificReservation: {
  *         count: 1,
  *         instanceProperties: {
- *             machineType: "g2-standard-4",
+ *             machineType: "n1-standard-1",
  *             guestAccelerators: [{
- *                 acceleratorType: "nvidia-l4",
+ *                 acceleratorType: "nvidia-tesla-t4",
  *                 acceleratorCount: 1,
  *             }],
  *         },
@@ -80,11 +80,11 @@ import * as utilities from "../utilities";
  * });
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
- *     location: "us-east1-b",
+ *     location: "us-central1-b",
  *     gceSetup: {
- *         machineType: "g2-standard-4",
+ *         machineType: "n1-standard-1",
  *         acceleratorConfigs: [{
- *             type: "NVIDIA_L4",
+ *             type: "NVIDIA_TESLA_T4",
  *             coreCount: "1",
  *         }],
  *         bootDisk: {

@@ -6364,6 +6364,8 @@ class ServerTlsPolicyMtlsPolicy(dict):
             suggest = "client_validation_cas"
         elif key == "clientValidationMode":
             suggest = "client_validation_mode"
+        elif key == "clientValidationRelaxations":
+            suggest = "client_validation_relaxations"
         elif key == "clientValidationTrustConfig":
             suggest = "client_validation_trust_config"
 
@@ -6381,6 +6383,7 @@ class ServerTlsPolicyMtlsPolicy(dict):
     def __init__(__self__, *,
                  client_validation_cas: Optional[Sequence['outputs.ServerTlsPolicyMtlsPolicyClientValidationCa']] = None,
                  client_validation_mode: Optional[_builtins.str] = None,
+                 client_validation_relaxations: Optional[Sequence[_builtins.str]] = None,
                  client_validation_trust_config: Optional[_builtins.str] = None):
         """
         :param Sequence['ServerTlsPolicyMtlsPolicyClientValidationCaArgs'] client_validation_cas: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
@@ -6388,7 +6391,11 @@ class ServerTlsPolicyMtlsPolicy(dict):
                Structure is documented below.
         :param _builtins.str client_validation_mode: When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
                Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-               Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+               Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
+        :param Sequence[_builtins.str] client_validation_relaxations: List of validation relaxations to apply when validating client certificates.
+               Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+               and must be empty for all other clientValidationMode values.
+               Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
         :param _builtins.str client_validation_trust_config: Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
                If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
                Allowed only if the policy is to be used with external HTTPS load balancers.
@@ -6397,6 +6404,8 @@ class ServerTlsPolicyMtlsPolicy(dict):
             pulumi.set(__self__, "client_validation_cas", client_validation_cas)
         if client_validation_mode is not None:
             pulumi.set(__self__, "client_validation_mode", client_validation_mode)
+        if client_validation_relaxations is not None:
+            pulumi.set(__self__, "client_validation_relaxations", client_validation_relaxations)
         if client_validation_trust_config is not None:
             pulumi.set(__self__, "client_validation_trust_config", client_validation_trust_config)
 
@@ -6416,9 +6425,20 @@ class ServerTlsPolicyMtlsPolicy(dict):
         """
         When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
         Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-        Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+        Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
         """
         return pulumi.get(self, "client_validation_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="clientValidationRelaxations")
+    def client_validation_relaxations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of validation relaxations to apply when validating client certificates.
+        Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+        and must be empty for all other clientValidationMode values.
+        Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+        """
+        return pulumi.get(self, "client_validation_relaxations")
 
     @_builtins.property
     @pulumi.getter(name="clientValidationTrustConfig")

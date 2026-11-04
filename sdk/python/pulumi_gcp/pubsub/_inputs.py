@@ -59,6 +59,8 @@ __all__ = [
     'SubscriptionMessageTransformAiInferenceArgsDict',
     'SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs',
     'SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgsDict',
+    'SubscriptionMessageTransformCompressionArgs',
+    'SubscriptionMessageTransformCompressionArgsDict',
     'SubscriptionMessageTransformJavascriptUdfArgs',
     'SubscriptionMessageTransformJavascriptUdfArgsDict',
     'SubscriptionPushConfigArgs',
@@ -101,6 +103,8 @@ __all__ = [
     'TopicMessageTransformAiInferenceArgsDict',
     'TopicMessageTransformAiInferenceUnstructuredInferenceArgs',
     'TopicMessageTransformAiInferenceUnstructuredInferenceArgsDict',
+    'TopicMessageTransformCompressionArgs',
+    'TopicMessageTransformCompressionArgsDict',
     'TopicMessageTransformJavascriptUdfArgs',
     'TopicMessageTransformJavascriptUdfArgsDict',
     'TopicSchemaSettingsArgs',
@@ -1437,6 +1441,12 @@ class SubscriptionMessageTransformArgsDict(TypedDict):
     be sent to.
     Structure is documented below.
     """
+    compression: NotRequired[pulumi.Input[Optional['SubscriptionMessageTransformCompressionArgsDict']]]
+    """
+    Compression/Decompression. Configuration for compressing/decompressing
+    message data using a user-specified compression algorithm.
+    Structure is documented below.
+    """
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Controls whether or not to use this transform. If not set or `false`,
@@ -1453,12 +1463,16 @@ class SubscriptionMessageTransformArgsDict(TypedDict):
 class SubscriptionMessageTransformArgs:
     def __init__(__self__, *,
                  ai_inference: pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceArgs']] = None,
+                 compression: pulumi.Input[Optional['SubscriptionMessageTransformCompressionArgs']] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  javascript_udf: pulumi.Input[Optional['SubscriptionMessageTransformJavascriptUdfArgs']] = None):
         """
         :param pulumi.Input['SubscriptionMessageTransformAiInferenceArgs'] ai_inference: AI Inference. Specifies the Vertex AI endpoint that inference
                requests built from the Pub/Sub message data and provided parameters will
                be sent to.
+               Structure is documented below.
+        :param pulumi.Input['SubscriptionMessageTransformCompressionArgs'] compression: Compression/Decompression. Configuration for compressing/decompressing
+               message data using a user-specified compression algorithm.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] disabled: Controls whether or not to use this transform. If not set or `false`,
                the transform will be applied to messages. Default: `true`.
@@ -1468,6 +1482,8 @@ class SubscriptionMessageTransformArgs:
         """
         if ai_inference is not None:
             pulumi.set(__self__, "ai_inference", ai_inference)
+        if compression is not None:
+            pulumi.set(__self__, "compression", compression)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if javascript_udf is not None:
@@ -1487,6 +1503,20 @@ class SubscriptionMessageTransformArgs:
     @ai_inference.setter
     def ai_inference(self, value: pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceArgs']]):
         pulumi.set(self, "ai_inference", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def compression(self) -> pulumi.Input[Optional['SubscriptionMessageTransformCompressionArgs']]:
+        """
+        Compression/Decompression. Configuration for compressing/decompressing
+        message data using a user-specified compression algorithm.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "compression")
+
+    @compression.setter
+    def compression(self, value: pulumi.Input[Optional['SubscriptionMessageTransformCompressionArgs']]):
+        pulumi.set(self, "compression", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1632,6 +1662,59 @@ class SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs:
     @parameters.setter
     def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
+
+
+class SubscriptionMessageTransformCompressionArgsDict(TypedDict):
+    compression_algorithm: pulumi.Input[_builtins.str]
+    """
+    Specifies the compression algorithm to use.
+    Possible values include `ZLIB`.
+    """
+    compression_mode: pulumi.Input[_builtins.str]
+    """
+    Specifies whether to compress or decompress the message.
+    Possible values are: `COMPRESS`, `DECOMPRESS`.
+    """
+
+@pulumi.input_type
+class SubscriptionMessageTransformCompressionArgs:
+    def __init__(__self__, *,
+                 compression_algorithm: pulumi.Input[_builtins.str],
+                 compression_mode: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] compression_algorithm: Specifies the compression algorithm to use.
+               Possible values include `ZLIB`.
+        :param pulumi.Input[_builtins.str] compression_mode: Specifies whether to compress or decompress the message.
+               Possible values are: `COMPRESS`, `DECOMPRESS`.
+        """
+        pulumi.set(__self__, "compression_algorithm", compression_algorithm)
+        pulumi.set(__self__, "compression_mode", compression_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="compressionAlgorithm")
+    def compression_algorithm(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies the compression algorithm to use.
+        Possible values include `ZLIB`.
+        """
+        return pulumi.get(self, "compression_algorithm")
+
+    @compression_algorithm.setter
+    def compression_algorithm(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "compression_algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies whether to compress or decompress the message.
+        Possible values are: `COMPRESS`, `DECOMPRESS`.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "compression_mode", value)
 
 
 class SubscriptionMessageTransformJavascriptUdfArgsDict(TypedDict):
@@ -3125,6 +3208,12 @@ class TopicMessageTransformArgsDict(TypedDict):
     be sent to.
     Structure is documented below.
     """
+    compression: NotRequired[pulumi.Input[Optional['TopicMessageTransformCompressionArgsDict']]]
+    """
+    Configuration for compressing/decompressing message data using a
+    user-specified compression algorithm.
+    Structure is documented below.
+    """
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Controls whether or not to use this transform. If not set or `false`,
@@ -3141,12 +3230,16 @@ class TopicMessageTransformArgsDict(TypedDict):
 class TopicMessageTransformArgs:
     def __init__(__self__, *,
                  ai_inference: pulumi.Input[Optional['TopicMessageTransformAiInferenceArgs']] = None,
+                 compression: pulumi.Input[Optional['TopicMessageTransformCompressionArgs']] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  javascript_udf: pulumi.Input[Optional['TopicMessageTransformJavascriptUdfArgs']] = None):
         """
         :param pulumi.Input['TopicMessageTransformAiInferenceArgs'] ai_inference: AI Inference. Specifies the Vertex AI endpoint that inference
                requests built from the Pub/Sub message data and provided parameters will
                be sent to.
+               Structure is documented below.
+        :param pulumi.Input['TopicMessageTransformCompressionArgs'] compression: Configuration for compressing/decompressing message data using a
+               user-specified compression algorithm.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] disabled: Controls whether or not to use this transform. If not set or `false`,
                the transform will be applied to messages. Default: `true`.
@@ -3156,6 +3249,8 @@ class TopicMessageTransformArgs:
         """
         if ai_inference is not None:
             pulumi.set(__self__, "ai_inference", ai_inference)
+        if compression is not None:
+            pulumi.set(__self__, "compression", compression)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if javascript_udf is not None:
@@ -3175,6 +3270,20 @@ class TopicMessageTransformArgs:
     @ai_inference.setter
     def ai_inference(self, value: pulumi.Input[Optional['TopicMessageTransformAiInferenceArgs']]):
         pulumi.set(self, "ai_inference", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def compression(self) -> pulumi.Input[Optional['TopicMessageTransformCompressionArgs']]:
+        """
+        Configuration for compressing/decompressing message data using a
+        user-specified compression algorithm.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "compression")
+
+    @compression.setter
+    def compression(self, value: pulumi.Input[Optional['TopicMessageTransformCompressionArgs']]):
+        pulumi.set(self, "compression", value)
 
     @_builtins.property
     @pulumi.getter
@@ -3320,6 +3429,62 @@ class TopicMessageTransformAiInferenceUnstructuredInferenceArgs:
     @parameters.setter
     def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
+
+
+class TopicMessageTransformCompressionArgsDict(TypedDict):
+    compression_algorithm: pulumi.Input[_builtins.str]
+    """
+    Specifies the compression algorithm to use.
+    Possible values include `ZLIB`.
+    See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+    """
+    compression_mode: pulumi.Input[_builtins.str]
+    """
+    Specifies whether to compress or decompress the message.
+    Possible values are: `COMPRESS`, `DECOMPRESS`.
+    """
+
+@pulumi.input_type
+class TopicMessageTransformCompressionArgs:
+    def __init__(__self__, *,
+                 compression_algorithm: pulumi.Input[_builtins.str],
+                 compression_mode: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] compression_algorithm: Specifies the compression algorithm to use.
+               Possible values include `ZLIB`.
+               See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+        :param pulumi.Input[_builtins.str] compression_mode: Specifies whether to compress or decompress the message.
+               Possible values are: `COMPRESS`, `DECOMPRESS`.
+        """
+        pulumi.set(__self__, "compression_algorithm", compression_algorithm)
+        pulumi.set(__self__, "compression_mode", compression_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="compressionAlgorithm")
+    def compression_algorithm(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies the compression algorithm to use.
+        Possible values include `ZLIB`.
+        See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+        """
+        return pulumi.get(self, "compression_algorithm")
+
+    @compression_algorithm.setter
+    def compression_algorithm(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "compression_algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies whether to compress or decompress the message.
+        Possible values are: `COMPRESS`, `DECOMPRESS`.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "compression_mode", value)
 
 
 class TopicMessageTransformJavascriptUdfArgsDict(TypedDict):

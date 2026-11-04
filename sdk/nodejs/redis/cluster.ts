@@ -106,12 +106,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-east1",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -129,7 +129,7 @@ import * as utilities from "../utilities";
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     replicaCount: 1,
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -170,12 +170,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-east1",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -189,7 +189,7 @@ import * as utilities from "../utilities";
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     replicaCount: 1,
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -230,12 +230,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-east1",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -249,11 +249,11 @@ import * as utilities from "../utilities";
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     zoneDistributionConfig: {
  *         mode: "SINGLE_ZONE",
- *         zone: "us-east1-b",
+ *         zone: "northamerica-south1-a",
  *     },
  *     maintenancePolicy: {
  *         weeklyMaintenanceWindows: [{
@@ -285,12 +285,12 @@ import * as utilities from "../utilities";
  * const primaryClusterConsumerSubnet = new gcp.compute.Subnetwork("primary_cluster_consumer_subnet", {
  *     name: "mysubnet-primary-cluster",
  *     ipCidrRange: "10.0.1.0/29",
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     network: consumerNet.id,
  * });
  * const primaryClusterRegionScp = new gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp", {
  *     name: "mypolicy-primary-cluster",
- *     location: "us-east1",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "Primary cluster service connection policy",
  *     network: consumerNet.id,
@@ -301,7 +301,7 @@ import * as utilities from "../utilities";
  * // Primary cluster
  * const primaryCluster = new gcp.redis.Cluster("primary_cluster", {
  *     name: "my-primary-cluster",
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
@@ -415,12 +415,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-east1",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -434,7 +434,7 @@ import * as utilities from "../utilities";
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     replicaCount: 0,
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -482,12 +482,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-east1",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -501,7 +501,7 @@ import * as utilities from "../utilities";
  *     pscConfigs: [{
  *         network: consumerNet.id,
  *     }],
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     replicaCount: 0,
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -548,12 +548,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     network: consumerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-east1",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: consumerNet.id,
@@ -568,7 +568,7 @@ import * as utilities from "../utilities";
  *         network: consumerNet.id,
  *     }],
  *     kmsKey: "my-key",
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     deletionProtectionEnabled: true,
  * }, {
@@ -585,13 +585,13 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.certificateauthority.CaPool("default", {
  *     name: "ca-pool",
- *     location: "us-east1",
+ *     location: "northamerica-south1",
  *     tier: "ENTERPRISE",
  * });
  * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
  *     pool: _default.name,
  *     certificateAuthorityId: "ca-auth",
- *     location: "us-east1",
+ *     location: "northamerica-south1",
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -628,12 +628,12 @@ import * as utilities from "../utilities";
  * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
  *     name: "ca-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     network: consumerNet.id,
  * });
  * const defaultServiceConnectionPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "ca-policy",
- *     location: "us-east1",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore-redis",
  *     network: consumerNet.id,
  *     pscConfig: {
@@ -643,7 +643,7 @@ import * as utilities from "../utilities";
  * const test_cluster = new gcp.redis.Cluster("test-cluster", {
  *     name: "ca-cluster",
  *     shardCount: 1,
- *     region: "us-east1",
+ *     region: "northamerica-south1",
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     pscConfigs: [{
  *         network: consumerNet.id,

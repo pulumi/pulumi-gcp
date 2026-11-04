@@ -84,6 +84,39 @@ import (
 //					MaliciousUriFilterSettings: &modelarmor.TemplateFilterConfigMaliciousUriFilterSettingsArgs{
 //						FilterEnforcement: pulumi.String("ENABLED"),
 //					},
+//					FilterRuleSettings: &modelarmor.TemplateFilterConfigFilterRuleSettingsArgs{
+//						RuleSets: modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetArray{
+//							&modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetArgs{
+//								FilterTypes: pulumi.StringArray{
+//									pulumi.String("PROMPT_INJECTION_AND_JAILBREAK"),
+//									pulumi.String("RESPONSIBLE_AI"),
+//								},
+//								Rules: modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArray{
+//									&modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs{
+//										ExclusionRule: &modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs{
+//											MatchingScope: pulumi.String("MATCHING_SCOPE_PARTIAL_MATCH"),
+//											Dictionary: &modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs{
+//												WordList: &modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs{
+//													Words: pulumi.StringArray{
+//														pulumi.String("allowphrase1"),
+//														pulumi.String("allowphrase2"),
+//													},
+//												},
+//											},
+//										},
+//									},
+//									&modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs{
+//										ExclusionRule: &modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs{
+//											MatchingScope: pulumi.String("MATCHING_SCOPE_FULL_MATCH"),
+//											Regex: &modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs{
+//												Pattern: pulumi.String("^safe_pattern_[0-9]+$"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
 //				},
 //				TemplateMetadata: &modelarmor.TemplateTemplateMetadataArgs{
 //					MultiLanguageDetection: &modelarmor.TemplateTemplateMetadataMultiLanguageDetectionArgs{
@@ -146,6 +179,7 @@ import (
 //					FilterVersionSelector: &modelarmor.TemplateTemplateMetadataFilterVersionSelectorArgs{
 //						Alias: pulumi.String("FILTER_VERSION_ALIAS_LATEST"),
 //					},
+//					DataResidencyCompliant: pulumi.Bool(true),
 //				},
 //			})
 //			if err != nil {
@@ -186,7 +220,7 @@ import (
 //				},
 //				TemplateMetadata: &modelarmor.TemplateTemplateMetadataArgs{
 //					FilterVersionSelector: &modelarmor.TemplateTemplateMetadataFilterVersionSelectorArgs{
-//						Version: pulumi.String("v1"),
+//						Version: pulumi.String("v3"),
 //					},
 //				},
 //			})

@@ -178,6 +178,132 @@ import (
 //
 // ```
 //
+// ### Biglake Iceberg Table Nested Types
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my-bucket"),
+//				Location:                 pulumi.String("us-central1"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			catalog, err := biglake.NewIcebergCatalog(ctx, "catalog", &biglake.IcebergCatalogArgs{
+//				Name:        bucket.Name,
+//				CatalogType: pulumi.String("CATALOG_TYPE_GCS_BUCKET"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			namespace, err := biglake.NewIcebergNamespace(ctx, "namespace", &biglake.IcebergNamespaceArgs{
+//				Catalog:     catalog.Name,
+//				NamespaceId: pulumi.String("my_namespace"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"type":             "list",
+//				"element-id":       5,
+//				"element":          "string",
+//				"element-required": false,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"type":           "map",
+//				"key-id":         6,
+//				"key":            "string",
+//				"value-id":       7,
+//				"value":          "long",
+//				"value-required": false,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//				"type": "struct",
+//				"fields": []interface{}{
+//					map[string]interface{}{
+//						"id":       8,
+//						"name":     "street",
+//						"type":     "string",
+//						"required": false,
+//					},
+//					map[string]interface{}{
+//						"id":       9,
+//						"name":     "city",
+//						"type":     "string",
+//						"required": false,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			_, err = biglake.NewIcebergTable(ctx, "my_iceberg_table", &biglake.IcebergTableArgs{
+//				Catalog:   catalog.Name,
+//				Namespace: namespace.NamespaceId,
+//				Name:      pulumi.String("my_table"),
+//				Schema: &biglake.IcebergTableSchemaArgs{
+//					Type: pulumi.String("struct"),
+//					Fields: biglake.IcebergTableSchemaFieldArray{
+//						&biglake.IcebergTableSchemaFieldArgs{
+//							Id:       pulumi.Int(1),
+//							Name:     pulumi.String("id"),
+//							Type:     pulumi.String("long"),
+//							Required: pulumi.Bool(true),
+//						},
+//						&biglake.IcebergTableSchemaFieldArgs{
+//							Id:       pulumi.Int(2),
+//							Name:     pulumi.String("tags"),
+//							Type:     pulumi.String(json0),
+//							Required: pulumi.Bool(false),
+//						},
+//						&biglake.IcebergTableSchemaFieldArgs{
+//							Id:       pulumi.Int(3),
+//							Name:     pulumi.String("attributes"),
+//							Type:     pulumi.String(json1),
+//							Required: pulumi.Bool(false),
+//						},
+//						&biglake.IcebergTableSchemaFieldArgs{
+//							Id:       pulumi.Int(4),
+//							Name:     pulumi.String("address"),
+//							Type:     pulumi.String(json2),
+//							Required: pulumi.Bool(false),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Biglake Iceberg Table Update
 //
 // ```go

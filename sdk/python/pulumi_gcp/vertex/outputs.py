@@ -55,6 +55,7 @@ __all__ = [
     'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec',
     'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec',
     'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity',
+    'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec',
     'AiEndpointWithModelGardenDeploymentEndpointConfig',
     'AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig',
     'AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs',
@@ -150,6 +151,7 @@ __all__ = [
     'AiModelDevelopmentClusterNodePoolMachineSpecReservationAffinity',
     'AiModelDevelopmentClusterNodePoolScalingSpec',
     'AiModelDevelopmentClusterOrchestratorSpec',
+    'AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec',
     'AiModelDevelopmentClusterOrchestratorSpecSlurmSpec',
     'AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSet',
     'AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPartition',
@@ -301,6 +303,27 @@ __all__ = [
     'AiSemanticGovernancePolicyEngineGatewayConfig',
     'AiSemanticGovernancePolicyMcpTools',
     'AiTensorboardEncryptionSpec',
+    'AiTrainingPipelineEncryptionSpec',
+    'AiTrainingPipelineError',
+    'AiTrainingPipelineInputDataConfig',
+    'AiTrainingPipelineInputDataConfigBigqueryDestination',
+    'AiTrainingPipelineInputDataConfigFilterSplit',
+    'AiTrainingPipelineInputDataConfigFractionSplit',
+    'AiTrainingPipelineInputDataConfigGcsDestination',
+    'AiTrainingPipelineInputDataConfigPredefinedSplit',
+    'AiTrainingPipelineInputDataConfigStratifiedSplit',
+    'AiTrainingPipelineInputDataConfigTimestampSplit',
+    'AiTrainingPipelineModelToUpload',
+    'AiTrainingPipelineModelToUploadContainerSpec',
+    'AiTrainingPipelineModelToUploadContainerSpecEnv',
+    'AiTrainingPipelineModelToUploadContainerSpecGrpcPort',
+    'AiTrainingPipelineModelToUploadContainerSpecHealthProbe',
+    'AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec',
+    'AiTrainingPipelineModelToUploadContainerSpecPort',
+    'AiTrainingPipelineModelToUploadContainerSpecStartupProbe',
+    'AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec',
+    'AiTrainingPipelineModelToUploadEncryptionSpec',
+    'AiTrainingPipelineModelToUploadExplanationSpec',
     'GetAiIndexDeployedIndexResult',
     'GetAiIndexEncryptionSpecResult',
     'GetAiIndexIndexStatResult',
@@ -2720,10 +2743,14 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(dict):
             suggest = "min_replica_count"
         elif key == "autoscalingMetricSpecs":
             suggest = "autoscaling_metric_specs"
+        elif key == "initialReplicaCount":
+            suggest = "initial_replica_count"
         elif key == "maxReplicaCount":
             suggest = "max_replica_count"
         elif key == "requiredReplicaCount":
             suggest = "required_replica_count"
+        elif key == "scaleToZeroSpec":
+            suggest = "scale_to_zero_spec"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources. Access the value via the '{suggest}' property getter instead.")
@@ -2740,14 +2767,17 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(dict):
                  machine_spec: 'outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec',
                  min_replica_count: _builtins.int,
                  autoscaling_metric_specs: Optional[Sequence['outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec']] = None,
+                 initial_replica_count: Optional[_builtins.int] = None,
                  max_replica_count: Optional[_builtins.int] = None,
                  required_replica_count: Optional[_builtins.int] = None,
+                 scale_to_zero_spec: Optional['outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec'] = None,
                  spot: Optional[_builtins.bool] = None):
         """
         :param 'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs' machine_spec: Specification of a single machine.
                Structure is documented below.
         :param _builtins.int min_replica_count: The minimum number of machine replicas that will be always deployed on.
-               This value must be greater than or equal to 1.
+               This value must be greater than or equal to 1. To enable scale-to-zero
+               (in beta), set this value to 0 and also set `initial_replica_count`.
                If traffic increases, it may dynamically be deployed onto more replicas,
                and as traffic decreases, some of these extra replicas may be freed.
         :param Sequence['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs'] autoscaling_metric_specs: The metric specifications that overrides a resource
@@ -2768,6 +2798,14 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(dict):
                to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
                autoscaling_metric_specs.target to `80`.
                Structure is documented below.
+        :param _builtins.int initial_replica_count: (Optional, Beta)
+               Number of initial replicas being deployed on when scaling the workload up
+               from zero or when creating the workload in case min_replica_count = 0.
+               When min_replica_count > 0 (meaning that the scale-to-zero feature is not
+               enabled), initial_replica_count should not be set. When min_replica_count
+               = 0 (meaning that the scale-to-zero feature is enabled),
+               initial_replica_count should be larger than zero, but no greater than
+               max_replica_count.
         :param _builtins.int max_replica_count: The maximum number of replicas that may be deployed on when the traffic
                against it increases. If the requested value is too large, the deployment
                will error, but if deployment succeeds then the ability to scale to that
@@ -2785,6 +2823,9 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(dict):
                available_replica_count reaches required_replica_count, and the rest of
                the replicas will be retried. If not set, the default
                required_replica_count will be min_replica_count.
+        :param 'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs' scale_to_zero_spec: (Optional, Beta)
+               Specification for scale-to-zero feature.
+               Structure is documented below.
         :param _builtins.bool spot: If true, schedule the deployment workload on [spot
                VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
         """
@@ -2792,10 +2833,14 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(dict):
         pulumi.set(__self__, "min_replica_count", min_replica_count)
         if autoscaling_metric_specs is not None:
             pulumi.set(__self__, "autoscaling_metric_specs", autoscaling_metric_specs)
+        if initial_replica_count is not None:
+            pulumi.set(__self__, "initial_replica_count", initial_replica_count)
         if max_replica_count is not None:
             pulumi.set(__self__, "max_replica_count", max_replica_count)
         if required_replica_count is not None:
             pulumi.set(__self__, "required_replica_count", required_replica_count)
+        if scale_to_zero_spec is not None:
+            pulumi.set(__self__, "scale_to_zero_spec", scale_to_zero_spec)
         if spot is not None:
             pulumi.set(__self__, "spot", spot)
 
@@ -2813,7 +2858,8 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(dict):
     def min_replica_count(self) -> _builtins.int:
         """
         The minimum number of machine replicas that will be always deployed on.
-        This value must be greater than or equal to 1.
+        This value must be greater than or equal to 1. To enable scale-to-zero
+        (in beta), set this value to 0 and also set `initial_replica_count`.
         If traffic increases, it may dynamically be deployed onto more replicas,
         and as traffic decreases, some of these extra replicas may be freed.
         """
@@ -2845,6 +2891,21 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(dict):
         return pulumi.get(self, "autoscaling_metric_specs")
 
     @_builtins.property
+    @pulumi.getter(name="initialReplicaCount")
+    def initial_replica_count(self) -> Optional[_builtins.int]:
+        """
+        (Optional, Beta)
+        Number of initial replicas being deployed on when scaling the workload up
+        from zero or when creating the workload in case min_replica_count = 0.
+        When min_replica_count > 0 (meaning that the scale-to-zero feature is not
+        enabled), initial_replica_count should not be set. When min_replica_count
+        = 0 (meaning that the scale-to-zero feature is enabled),
+        initial_replica_count should be larger than zero, but no greater than
+        max_replica_count.
+        """
+        return pulumi.get(self, "initial_replica_count")
+
+    @_builtins.property
     @pulumi.getter(name="maxReplicaCount")
     def max_replica_count(self) -> Optional[_builtins.int]:
         """
@@ -2874,6 +2935,16 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(dict):
         required_replica_count will be min_replica_count.
         """
         return pulumi.get(self, "required_replica_count")
+
+    @_builtins.property
+    @pulumi.getter(name="scaleToZeroSpec")
+    def scale_to_zero_spec(self) -> Optional['outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec']:
+        """
+        (Optional, Beta)
+        Specification for scale-to-zero feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scale_to_zero_spec")
 
     @_builtins.property
     @pulumi.getter
@@ -3181,6 +3252,66 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
         full resource name of the reservation or reservation block.
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idleScaledownPeriod":
+            suggest = "idle_scaledown_period"
+        elif key == "minScaleupPeriod":
+            suggest = "min_scaleup_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 idle_scaledown_period: Optional[_builtins.str] = None,
+                 min_scaleup_period: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str idle_scaledown_period: (Optional, Beta)
+               Duration of no traffic before scaling to zero. [MinValue=300] (5
+               minutes) [MaxValue=28800] (8 hours)
+        :param _builtins.str min_scaleup_period: (Optional, Beta)
+               Minimum duration that a deployment will be scaled up before traffic is
+               evaluated for potential scale-down. [MinValue=300] (5 minutes)
+               [MaxValue=28800] (8 hours)
+        """
+        if idle_scaledown_period is not None:
+            pulumi.set(__self__, "idle_scaledown_period", idle_scaledown_period)
+        if min_scaleup_period is not None:
+            pulumi.set(__self__, "min_scaleup_period", min_scaleup_period)
+
+    @_builtins.property
+    @pulumi.getter(name="idleScaledownPeriod")
+    def idle_scaledown_period(self) -> Optional[_builtins.str]:
+        """
+        (Optional, Beta)
+        Duration of no traffic before scaling to zero. [MinValue=300] (5
+        minutes) [MaxValue=28800] (8 hours)
+        """
+        return pulumi.get(self, "idle_scaledown_period")
+
+    @_builtins.property
+    @pulumi.getter(name="minScaleupPeriod")
+    def min_scaleup_period(self) -> Optional[_builtins.str]:
+        """
+        (Optional, Beta)
+        Minimum duration that a deployment will be scaled up before traffic is
+        evaluated for potential scale-down. [MinValue=300] (5 minutes)
+        [MaxValue=28800] (8 hours)
+        """
+        return pulumi.get(self, "min_scaleup_period")
 
 
 @pulumi.output_type
@@ -8701,7 +8832,9 @@ class AiModelDevelopmentClusterNodePool(dict):
                  startup_script: Optional[_builtins.str] = None,
                  zone: Optional[_builtins.str] = None):
         """
-        :param _builtins.str id: The unique ID referring to this node pool.
+        :param _builtins.str id: The unique ID referring to this node pool. Cannot be modified in
+               place on an existing node pool; changing `id` updates the list of
+               node pools by adding/removing pools (validated server-side).
         :param 'AiModelDevelopmentClusterNodePoolMachineSpecArgs' machine_spec: Specification of a single machine.
                Structure is documented below.
         :param 'AiModelDevelopmentClusterNodePoolBootDiskArgs' boot_disk: Represents the spec of disk options.
@@ -8782,7 +8915,9 @@ class AiModelDevelopmentClusterNodePool(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The unique ID referring to this node pool.
+        The unique ID referring to this node pool. Cannot be modified in
+        place on an existing node pool; changing `id` updates the list of
+        node pools by adding/removing pools (validated server-side).
         """
         return pulumi.get(self, "id")
 
@@ -9173,7 +9308,9 @@ class AiModelDevelopmentClusterOrchestratorSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "slurmSpec":
+        if key == "kubernetesSpec":
+            suggest = "kubernetes_spec"
+        elif key == "slurmSpec":
             suggest = "slurm_spec"
 
         if suggest:
@@ -9188,12 +9325,24 @@ class AiModelDevelopmentClusterOrchestratorSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 kubernetes_spec: Optional['outputs.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec'] = None,
                  slurm_spec: Optional['outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec'] = None):
         """
+        :param 'AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs' kubernetes_spec: The GKE orchestrator related spec of the cluster.
         :param 'AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs' slurm_spec: The Slurm orchestrator related spec of the cluster.
         """
+        if kubernetes_spec is not None:
+            pulumi.set(__self__, "kubernetes_spec", kubernetes_spec)
         if slurm_spec is not None:
             pulumi.set(__self__, "slurm_spec", slurm_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="kubernetesSpec")
+    def kubernetes_spec(self) -> Optional['outputs.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec']:
+        """
+        The GKE orchestrator related spec of the cluster.
+        """
+        return pulumi.get(self, "kubernetes_spec")
 
     @_builtins.property
     @pulumi.getter(name="slurmSpec")
@@ -9202,6 +9351,130 @@ class AiModelDevelopmentClusterOrchestratorSpec(dict):
         The Slurm orchestrator related spec of the cluster.
         """
         return pulumi.get(self, "slurm_spec")
+
+
+@pulumi.output_type
+class AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlaneVersion":
+            suggest = "control_plane_version"
+        elif key == "enableIpAlias":
+            suggest = "enable_ip_alias"
+        elif key == "nodePoolIds":
+            suggest = "node_pool_ids"
+        elif key == "nodePoolVersions":
+            suggest = "node_pool_versions"
+        elif key == "publicAccessEndpointEnabled":
+            suggest = "public_access_endpoint_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 control_plane_version: Optional[_builtins.str] = None,
+                 enable_ip_alias: Optional[_builtins.bool] = None,
+                 node_pool_ids: Optional[Sequence[_builtins.str]] = None,
+                 node_pool_versions: Optional[Mapping[str, _builtins.str]] = None,
+                 public_access_endpoint_enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str control_plane_version: The Kubernetes version of the GKE control plane.
+               Accepted formats are minor version (for example, '"1.30"'), patch version
+               (for example, '"1.30.5"'), full GKE release version (for example,
+               '"1.30.5-gke.1014001"'), or '"-"' to use the service default version.
+               Upgrades can advance at most one minor version at a time; downgrades are
+               rejected.
+        :param _builtins.bool enable_ip_alias: Whether to enable IP alias.
+        :param Sequence[_builtins.str] node_pool_ids: IDs of the NodePools to be included in this GKE cluster. These IDs must
+               correspond to NodePools defined in the 'node_pools' field.
+        :param Mapping[str, _builtins.str] node_pool_versions: The Kubernetes versions for specific node pools, keyed by node pool ID.
+               When specified, all node pool IDs in the cluster must be included.
+               Accepted formats are minor version (for example, '"1.30"'), patch version
+               (for example, '"1.30.5"'), full GKE release version (for example,
+               '"1.30.5-gke.1014001"'), or '"-"' to align with the control plane version.
+               Node pools cannot be newer than the control plane or more than 2 minor
+               versions behind it; upgrades can advance at most one minor version at a
+               time and downgrades are rejected.
+        :param _builtins.bool public_access_endpoint_enabled: Whether the GKE cluster's control plane endpoint is publicly accessible.
+               If true, the cluster is created with a public access endpoint (i.e. the
+               private cluster configuration is disabled). If false or unset, the cluster
+               is created with only private control plane access by default.
+        """
+        if control_plane_version is not None:
+            pulumi.set(__self__, "control_plane_version", control_plane_version)
+        if enable_ip_alias is not None:
+            pulumi.set(__self__, "enable_ip_alias", enable_ip_alias)
+        if node_pool_ids is not None:
+            pulumi.set(__self__, "node_pool_ids", node_pool_ids)
+        if node_pool_versions is not None:
+            pulumi.set(__self__, "node_pool_versions", node_pool_versions)
+        if public_access_endpoint_enabled is not None:
+            pulumi.set(__self__, "public_access_endpoint_enabled", public_access_endpoint_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneVersion")
+    def control_plane_version(self) -> Optional[_builtins.str]:
+        """
+        The Kubernetes version of the GKE control plane.
+        Accepted formats are minor version (for example, '"1.30"'), patch version
+        (for example, '"1.30.5"'), full GKE release version (for example,
+        '"1.30.5-gke.1014001"'), or '"-"' to use the service default version.
+        Upgrades can advance at most one minor version at a time; downgrades are
+        rejected.
+        """
+        return pulumi.get(self, "control_plane_version")
+
+    @_builtins.property
+    @pulumi.getter(name="enableIpAlias")
+    def enable_ip_alias(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable IP alias.
+        """
+        return pulumi.get(self, "enable_ip_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="nodePoolIds")
+    def node_pool_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        IDs of the NodePools to be included in this GKE cluster. These IDs must
+        correspond to NodePools defined in the 'node_pools' field.
+        """
+        return pulumi.get(self, "node_pool_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="nodePoolVersions")
+    def node_pool_versions(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The Kubernetes versions for specific node pools, keyed by node pool ID.
+        When specified, all node pool IDs in the cluster must be included.
+        Accepted formats are minor version (for example, '"1.30"'), patch version
+        (for example, '"1.30.5"'), full GKE release version (for example,
+        '"1.30.5-gke.1014001"'), or '"-"' to align with the control plane version.
+        Node pools cannot be newer than the control plane or more than 2 minor
+        versions behind it; upgrades can advance at most one minor version at a
+        time and downgrades are rejected.
+        """
+        return pulumi.get(self, "node_pool_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="publicAccessEndpointEnabled")
+    def public_access_endpoint_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the GKE cluster's control plane endpoint is publicly accessible.
+        If true, the cluster is created with a public access endpoint (i.e. the
+        private cluster configuration is disabled). If false or unset, the cluster
+        is created with only private control plane access by default.
+        """
+        return pulumi.get(self, "public_access_endpoint_enabled")
 
 
 @pulumi.output_type
@@ -18066,6 +18339,1331 @@ class AiTensorboardEncryptionSpec(dict):
         Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiTrainingPipelineEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: _builtins.str):
+        """
+        :param _builtins.str kms_key_name: The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> _builtins.str:
+        """
+        The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiTrainingPipelineError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param _builtins.str message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AiTrainingPipelineInputDataConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "annotationSchemaUri":
+            suggest = "annotation_schema_uri"
+        elif key == "annotationsFilter":
+            suggest = "annotations_filter"
+        elif key == "bigqueryDestination":
+            suggest = "bigquery_destination"
+        elif key == "filterSplit":
+            suggest = "filter_split"
+        elif key == "fractionSplit":
+            suggest = "fraction_split"
+        elif key == "gcsDestination":
+            suggest = "gcs_destination"
+        elif key == "persistMlUseAssignment":
+            suggest = "persist_ml_use_assignment"
+        elif key == "predefinedSplit":
+            suggest = "predefined_split"
+        elif key == "savedQueryId":
+            suggest = "saved_query_id"
+        elif key == "stratifiedSplit":
+            suggest = "stratified_split"
+        elif key == "timestampSplit":
+            suggest = "timestamp_split"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineInputDataConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineInputDataConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineInputDataConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: _builtins.str,
+                 annotation_schema_uri: Optional[_builtins.str] = None,
+                 annotations_filter: Optional[_builtins.str] = None,
+                 bigquery_destination: Optional['outputs.AiTrainingPipelineInputDataConfigBigqueryDestination'] = None,
+                 filter_split: Optional['outputs.AiTrainingPipelineInputDataConfigFilterSplit'] = None,
+                 fraction_split: Optional['outputs.AiTrainingPipelineInputDataConfigFractionSplit'] = None,
+                 gcs_destination: Optional['outputs.AiTrainingPipelineInputDataConfigGcsDestination'] = None,
+                 persist_ml_use_assignment: Optional[_builtins.bool] = None,
+                 predefined_split: Optional['outputs.AiTrainingPipelineInputDataConfigPredefinedSplit'] = None,
+                 saved_query_id: Optional[_builtins.str] = None,
+                 stratified_split: Optional['outputs.AiTrainingPipelineInputDataConfigStratifiedSplit'] = None,
+                 timestamp_split: Optional['outputs.AiTrainingPipelineInputDataConfigTimestampSplit'] = None):
+        """
+        :param _builtins.str dataset_id: The ID of the Dataset in the same Project and Location which data will be used to train the Model.
+        :param _builtins.str annotation_schema_uri: Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema.
+        :param _builtins.str annotations_filter: Applicable only to Datasets that have DataItems and Annotations. A filter on Annotations of the Dataset.
+        :param 'AiTrainingPipelineInputDataConfigBigqueryDestinationArgs' bigquery_destination: The BigQuery location where the training data is to be written to.
+               Structure is documented below.
+        :param 'AiTrainingPipelineInputDataConfigFilterSplitArgs' filter_split: Assigns input data to training, validation, and test sets based on the given filters.
+               Structure is documented below.
+        :param 'AiTrainingPipelineInputDataConfigFractionSplitArgs' fraction_split: The instructions how the input data should be split between the training, validation and test sets.
+               Structure is documented below.
+        :param 'AiTrainingPipelineInputDataConfigGcsDestinationArgs' gcs_destination: The Cloud Storage location where the training data is to be written to.
+               Structure is documented below.
+        :param _builtins.bool persist_ml_use_assignment: Whether to persist the ML use assignment to data item system labels.
+        :param 'AiTrainingPipelineInputDataConfigPredefinedSplitArgs' predefined_split: Assigns input data to training, validation, and test sets based on the value of a provided key. Supported only for tabular Datasets.
+               Structure is documented below.
+        :param _builtins.str saved_query_id: Only applicable to Datasets that have SavedQueries. The ID of a SavedQuery under the Dataset specified by dataset_id used for filtering Annotations for training.
+        :param 'AiTrainingPipelineInputDataConfigStratifiedSplitArgs' stratified_split: Assigns input data to the training, validation, and test sets so that the distribution of values found in the categorical column is mirrored within each split. Supported only for tabular Datasets.
+               Structure is documented below.
+        :param 'AiTrainingPipelineInputDataConfigTimestampSplitArgs' timestamp_split: Assigns input data to training, validation, and test sets based on provided timestamps. Supported only for tabular Datasets.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        if annotation_schema_uri is not None:
+            pulumi.set(__self__, "annotation_schema_uri", annotation_schema_uri)
+        if annotations_filter is not None:
+            pulumi.set(__self__, "annotations_filter", annotations_filter)
+        if bigquery_destination is not None:
+            pulumi.set(__self__, "bigquery_destination", bigquery_destination)
+        if filter_split is not None:
+            pulumi.set(__self__, "filter_split", filter_split)
+        if fraction_split is not None:
+            pulumi.set(__self__, "fraction_split", fraction_split)
+        if gcs_destination is not None:
+            pulumi.set(__self__, "gcs_destination", gcs_destination)
+        if persist_ml_use_assignment is not None:
+            pulumi.set(__self__, "persist_ml_use_assignment", persist_ml_use_assignment)
+        if predefined_split is not None:
+            pulumi.set(__self__, "predefined_split", predefined_split)
+        if saved_query_id is not None:
+            pulumi.set(__self__, "saved_query_id", saved_query_id)
+        if stratified_split is not None:
+            pulumi.set(__self__, "stratified_split", stratified_split)
+        if timestamp_split is not None:
+            pulumi.set(__self__, "timestamp_split", timestamp_split)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> _builtins.str:
+        """
+        The ID of the Dataset in the same Project and Location which data will be used to train the Model.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @_builtins.property
+    @pulumi.getter(name="annotationSchemaUri")
+    def annotation_schema_uri(self) -> Optional[_builtins.str]:
+        """
+        Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema.
+        """
+        return pulumi.get(self, "annotation_schema_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="annotationsFilter")
+    def annotations_filter(self) -> Optional[_builtins.str]:
+        """
+        Applicable only to Datasets that have DataItems and Annotations. A filter on Annotations of the Dataset.
+        """
+        return pulumi.get(self, "annotations_filter")
+
+    @_builtins.property
+    @pulumi.getter(name="bigqueryDestination")
+    def bigquery_destination(self) -> Optional['outputs.AiTrainingPipelineInputDataConfigBigqueryDestination']:
+        """
+        The BigQuery location where the training data is to be written to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_destination")
+
+    @_builtins.property
+    @pulumi.getter(name="filterSplit")
+    def filter_split(self) -> Optional['outputs.AiTrainingPipelineInputDataConfigFilterSplit']:
+        """
+        Assigns input data to training, validation, and test sets based on the given filters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filter_split")
+
+    @_builtins.property
+    @pulumi.getter(name="fractionSplit")
+    def fraction_split(self) -> Optional['outputs.AiTrainingPipelineInputDataConfigFractionSplit']:
+        """
+        The instructions how the input data should be split between the training, validation and test sets.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fraction_split")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsDestination")
+    def gcs_destination(self) -> Optional['outputs.AiTrainingPipelineInputDataConfigGcsDestination']:
+        """
+        The Cloud Storage location where the training data is to be written to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_destination")
+
+    @_builtins.property
+    @pulumi.getter(name="persistMlUseAssignment")
+    def persist_ml_use_assignment(self) -> Optional[_builtins.bool]:
+        """
+        Whether to persist the ML use assignment to data item system labels.
+        """
+        return pulumi.get(self, "persist_ml_use_assignment")
+
+    @_builtins.property
+    @pulumi.getter(name="predefinedSplit")
+    def predefined_split(self) -> Optional['outputs.AiTrainingPipelineInputDataConfigPredefinedSplit']:
+        """
+        Assigns input data to training, validation, and test sets based on the value of a provided key. Supported only for tabular Datasets.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "predefined_split")
+
+    @_builtins.property
+    @pulumi.getter(name="savedQueryId")
+    def saved_query_id(self) -> Optional[_builtins.str]:
+        """
+        Only applicable to Datasets that have SavedQueries. The ID of a SavedQuery under the Dataset specified by dataset_id used for filtering Annotations for training.
+        """
+        return pulumi.get(self, "saved_query_id")
+
+    @_builtins.property
+    @pulumi.getter(name="stratifiedSplit")
+    def stratified_split(self) -> Optional['outputs.AiTrainingPipelineInputDataConfigStratifiedSplit']:
+        """
+        Assigns input data to the training, validation, and test sets so that the distribution of values found in the categorical column is mirrored within each split. Supported only for tabular Datasets.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "stratified_split")
+
+    @_builtins.property
+    @pulumi.getter(name="timestampSplit")
+    def timestamp_split(self) -> Optional['outputs.AiTrainingPipelineInputDataConfigTimestampSplit']:
+        """
+        Assigns input data to training, validation, and test sets based on provided timestamps. Supported only for tabular Datasets.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "timestamp_split")
+
+
+@pulumi.output_type
+class AiTrainingPipelineInputDataConfigBigqueryDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputUri":
+            suggest = "output_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineInputDataConfigBigqueryDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineInputDataConfigBigqueryDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineInputDataConfigBigqueryDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output_uri: _builtins.str):
+        """
+        :param _builtins.str output_uri: The BigQuery table to which the output is to be written.
+        """
+        pulumi.set(__self__, "output_uri", output_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="outputUri")
+    def output_uri(self) -> _builtins.str:
+        """
+        The BigQuery table to which the output is to be written.
+        """
+        return pulumi.get(self, "output_uri")
+
+
+@pulumi.output_type
+class AiTrainingPipelineInputDataConfigFilterSplit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "testFilter":
+            suggest = "test_filter"
+        elif key == "trainingFilter":
+            suggest = "training_filter"
+        elif key == "validationFilter":
+            suggest = "validation_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineInputDataConfigFilterSplit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineInputDataConfigFilterSplit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineInputDataConfigFilterSplit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 test_filter: _builtins.str,
+                 training_filter: _builtins.str,
+                 validation_filter: _builtins.str):
+        """
+        :param _builtins.str test_filter: A filter on DataItems of the Dataset for test set.
+        :param _builtins.str training_filter: A filter on DataItems of the Dataset for training set.
+        :param _builtins.str validation_filter: A filter on DataItems of the Dataset for validation set.
+        """
+        pulumi.set(__self__, "test_filter", test_filter)
+        pulumi.set(__self__, "training_filter", training_filter)
+        pulumi.set(__self__, "validation_filter", validation_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="testFilter")
+    def test_filter(self) -> _builtins.str:
+        """
+        A filter on DataItems of the Dataset for test set.
+        """
+        return pulumi.get(self, "test_filter")
+
+    @_builtins.property
+    @pulumi.getter(name="trainingFilter")
+    def training_filter(self) -> _builtins.str:
+        """
+        A filter on DataItems of the Dataset for training set.
+        """
+        return pulumi.get(self, "training_filter")
+
+    @_builtins.property
+    @pulumi.getter(name="validationFilter")
+    def validation_filter(self) -> _builtins.str:
+        """
+        A filter on DataItems of the Dataset for validation set.
+        """
+        return pulumi.get(self, "validation_filter")
+
+
+@pulumi.output_type
+class AiTrainingPipelineInputDataConfigFractionSplit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "testFraction":
+            suggest = "test_fraction"
+        elif key == "trainingFraction":
+            suggest = "training_fraction"
+        elif key == "validationFraction":
+            suggest = "validation_fraction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineInputDataConfigFractionSplit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineInputDataConfigFractionSplit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineInputDataConfigFractionSplit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 test_fraction: Optional[_builtins.float] = None,
+                 training_fraction: Optional[_builtins.float] = None,
+                 validation_fraction: Optional[_builtins.float] = None):
+        """
+        :param _builtins.float test_fraction: The fraction of the input data that is to be used to evaluate the Model.
+        :param _builtins.float training_fraction: The fraction of the input data that is to be used to train the Model.
+        :param _builtins.float validation_fraction: The fraction of the input data that is to be used to validate the Model.
+        """
+        if test_fraction is not None:
+            pulumi.set(__self__, "test_fraction", test_fraction)
+        if training_fraction is not None:
+            pulumi.set(__self__, "training_fraction", training_fraction)
+        if validation_fraction is not None:
+            pulumi.set(__self__, "validation_fraction", validation_fraction)
+
+    @_builtins.property
+    @pulumi.getter(name="testFraction")
+    def test_fraction(self) -> Optional[_builtins.float]:
+        """
+        The fraction of the input data that is to be used to evaluate the Model.
+        """
+        return pulumi.get(self, "test_fraction")
+
+    @_builtins.property
+    @pulumi.getter(name="trainingFraction")
+    def training_fraction(self) -> Optional[_builtins.float]:
+        """
+        The fraction of the input data that is to be used to train the Model.
+        """
+        return pulumi.get(self, "training_fraction")
+
+    @_builtins.property
+    @pulumi.getter(name="validationFraction")
+    def validation_fraction(self) -> Optional[_builtins.float]:
+        """
+        The fraction of the input data that is to be used to validate the Model.
+        """
+        return pulumi.get(self, "validation_fraction")
+
+
+@pulumi.output_type
+class AiTrainingPipelineInputDataConfigGcsDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputUriPrefix":
+            suggest = "output_uri_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineInputDataConfigGcsDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineInputDataConfigGcsDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineInputDataConfigGcsDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output_uri_prefix: _builtins.str):
+        """
+        :param _builtins.str output_uri_prefix: The Cloud Storage URI prefix to write to.
+        """
+        pulumi.set(__self__, "output_uri_prefix", output_uri_prefix)
+
+    @_builtins.property
+    @pulumi.getter(name="outputUriPrefix")
+    def output_uri_prefix(self) -> _builtins.str:
+        """
+        The Cloud Storage URI prefix to write to.
+        """
+        return pulumi.get(self, "output_uri_prefix")
+
+
+@pulumi.output_type
+class AiTrainingPipelineInputDataConfigPredefinedSplit(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str):
+        """
+        :param _builtins.str key: The key is a name of one of the Dataset's data columns.
+        """
+        pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The key is a name of one of the Dataset's data columns.
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class AiTrainingPipelineInputDataConfigStratifiedSplit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "testFraction":
+            suggest = "test_fraction"
+        elif key == "trainingFraction":
+            suggest = "training_fraction"
+        elif key == "validationFraction":
+            suggest = "validation_fraction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineInputDataConfigStratifiedSplit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineInputDataConfigStratifiedSplit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineInputDataConfigStratifiedSplit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 test_fraction: Optional[_builtins.float] = None,
+                 training_fraction: Optional[_builtins.float] = None,
+                 validation_fraction: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str key: The key is a name of one of the Dataset's data columns.
+        :param _builtins.float test_fraction: The fraction of the input data that is to be used to evaluate the Model.
+        :param _builtins.float training_fraction: The fraction of the input data that is to be used to train the Model.
+        :param _builtins.float validation_fraction: The fraction of the input data that is to be used to validate the Model.
+        """
+        pulumi.set(__self__, "key", key)
+        if test_fraction is not None:
+            pulumi.set(__self__, "test_fraction", test_fraction)
+        if training_fraction is not None:
+            pulumi.set(__self__, "training_fraction", training_fraction)
+        if validation_fraction is not None:
+            pulumi.set(__self__, "validation_fraction", validation_fraction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The key is a name of one of the Dataset's data columns.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="testFraction")
+    def test_fraction(self) -> Optional[_builtins.float]:
+        """
+        The fraction of the input data that is to be used to evaluate the Model.
+        """
+        return pulumi.get(self, "test_fraction")
+
+    @_builtins.property
+    @pulumi.getter(name="trainingFraction")
+    def training_fraction(self) -> Optional[_builtins.float]:
+        """
+        The fraction of the input data that is to be used to train the Model.
+        """
+        return pulumi.get(self, "training_fraction")
+
+    @_builtins.property
+    @pulumi.getter(name="validationFraction")
+    def validation_fraction(self) -> Optional[_builtins.float]:
+        """
+        The fraction of the input data that is to be used to validate the Model.
+        """
+        return pulumi.get(self, "validation_fraction")
+
+
+@pulumi.output_type
+class AiTrainingPipelineInputDataConfigTimestampSplit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "testFraction":
+            suggest = "test_fraction"
+        elif key == "trainingFraction":
+            suggest = "training_fraction"
+        elif key == "validationFraction":
+            suggest = "validation_fraction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineInputDataConfigTimestampSplit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineInputDataConfigTimestampSplit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineInputDataConfigTimestampSplit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 test_fraction: Optional[_builtins.float] = None,
+                 training_fraction: Optional[_builtins.float] = None,
+                 validation_fraction: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str key: The key is a name of one of the Dataset's data columns.
+        :param _builtins.float test_fraction: The fraction of the input data that is to be used to evaluate the Model.
+        :param _builtins.float training_fraction: The fraction of the input data that is to be used to train the Model.
+        :param _builtins.float validation_fraction: The fraction of the input data that is to be used to validate the Model.
+        """
+        pulumi.set(__self__, "key", key)
+        if test_fraction is not None:
+            pulumi.set(__self__, "test_fraction", test_fraction)
+        if training_fraction is not None:
+            pulumi.set(__self__, "training_fraction", training_fraction)
+        if validation_fraction is not None:
+            pulumi.set(__self__, "validation_fraction", validation_fraction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The key is a name of one of the Dataset's data columns.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="testFraction")
+    def test_fraction(self) -> Optional[_builtins.float]:
+        """
+        The fraction of the input data that is to be used to evaluate the Model.
+        """
+        return pulumi.get(self, "test_fraction")
+
+    @_builtins.property
+    @pulumi.getter(name="trainingFraction")
+    def training_fraction(self) -> Optional[_builtins.float]:
+        """
+        The fraction of the input data that is to be used to train the Model.
+        """
+        return pulumi.get(self, "training_fraction")
+
+    @_builtins.property
+    @pulumi.getter(name="validationFraction")
+    def validation_fraction(self) -> Optional[_builtins.float]:
+        """
+        The fraction of the input data that is to be used to validate the Model.
+        """
+        return pulumi.get(self, "validation_fraction")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUpload(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "artifactUri":
+            suggest = "artifact_uri"
+        elif key == "containerSpec":
+            suggest = "container_spec"
+        elif key == "encryptionSpec":
+            suggest = "encryption_spec"
+        elif key == "explanationSpec":
+            suggest = "explanation_spec"
+        elif key == "versionAliases":
+            suggest = "version_aliases"
+        elif key == "versionDescription":
+            suggest = "version_description"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineModelToUpload. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineModelToUpload.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineModelToUpload.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 artifact_uri: Optional[_builtins.str] = None,
+                 container_spec: Optional['outputs.AiTrainingPipelineModelToUploadContainerSpec'] = None,
+                 description: Optional[_builtins.str] = None,
+                 encryption_spec: Optional['outputs.AiTrainingPipelineModelToUploadEncryptionSpec'] = None,
+                 explanation_spec: Optional['outputs.AiTrainingPipelineModelToUploadExplanationSpec'] = None,
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 name: Optional[_builtins.str] = None,
+                 version_aliases: Optional[Sequence[_builtins.str]] = None,
+                 version_description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: The user-defined name of the Model.
+        :param _builtins.str artifact_uri: The path to the directory containing the Model artifact and any of its supporting files.
+        :param 'AiTrainingPipelineModelToUploadContainerSpecArgs' container_spec: The specification of the container that is to be used when deploying this Model.
+               Structure is documented below.
+        :param _builtins.str description: The description of the Model.
+        :param 'AiTrainingPipelineModelToUploadEncryptionSpecArgs' encryption_spec: Customer-managed encryption key spec for a Model.
+               Structure is documented below.
+        :param 'AiTrainingPipelineModelToUploadExplanationSpecArgs' explanation_spec: Specification of Model explanation.
+               Structure is documented below.
+        :param Mapping[str, _builtins.str] labels: The labels with user-defined metadata to organize your Models.
+        :param _builtins.str name: (Output)
+               The resource name of the Model.
+        :param Sequence[_builtins.str] version_aliases: User provided version aliases so that a model version can be referenced using alias.
+        :param _builtins.str version_description: The description of this version.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        if artifact_uri is not None:
+            pulumi.set(__self__, "artifact_uri", artifact_uri)
+        if container_spec is not None:
+            pulumi.set(__self__, "container_spec", container_spec)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
+        if explanation_spec is not None:
+            pulumi.set(__self__, "explanation_spec", explanation_spec)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version_aliases is not None:
+            pulumi.set(__self__, "version_aliases", version_aliases)
+        if version_description is not None:
+            pulumi.set(__self__, "version_description", version_description)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        The user-defined name of the Model.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="artifactUri")
+    def artifact_uri(self) -> Optional[_builtins.str]:
+        """
+        The path to the directory containing the Model artifact and any of its supporting files.
+        """
+        return pulumi.get(self, "artifact_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="containerSpec")
+    def container_spec(self) -> Optional['outputs.AiTrainingPipelineModelToUploadContainerSpec']:
+        """
+        The specification of the container that is to be used when deploying this Model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container_spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the Model.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional['outputs.AiTrainingPipelineModelToUploadEncryptionSpec']:
+        """
+        Customer-managed encryption key spec for a Model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="explanationSpec")
+    def explanation_spec(self) -> Optional['outputs.AiTrainingPipelineModelToUploadExplanationSpec']:
+        """
+        Specification of Model explanation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "explanation_spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The labels with user-defined metadata to organize your Models.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The resource name of the Model.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="versionAliases")
+    def version_aliases(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        User provided version aliases so that a model version can be referenced using alias.
+        """
+        return pulumi.get(self, "version_aliases")
+
+    @_builtins.property
+    @pulumi.getter(name="versionDescription")
+    def version_description(self) -> Optional[_builtins.str]:
+        """
+        The description of this version.
+        """
+        return pulumi.get(self, "version_description")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUploadContainerSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageUri":
+            suggest = "image_uri"
+        elif key == "deploymentTimeout":
+            suggest = "deployment_timeout"
+        elif key == "grpcPorts":
+            suggest = "grpc_ports"
+        elif key == "healthProbe":
+            suggest = "health_probe"
+        elif key == "healthRoute":
+            suggest = "health_route"
+        elif key == "predictRoute":
+            suggest = "predict_route"
+        elif key == "sharedMemorySizeMb":
+            suggest = "shared_memory_size_mb"
+        elif key == "startupProbe":
+            suggest = "startup_probe"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineModelToUploadContainerSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineModelToUploadContainerSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineModelToUploadContainerSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_uri: _builtins.str,
+                 args: Optional[Sequence[_builtins.str]] = None,
+                 commands: Optional[Sequence[_builtins.str]] = None,
+                 deployment_timeout: Optional[_builtins.str] = None,
+                 envs: Optional[Sequence['outputs.AiTrainingPipelineModelToUploadContainerSpecEnv']] = None,
+                 grpc_ports: Optional[Sequence['outputs.AiTrainingPipelineModelToUploadContainerSpecGrpcPort']] = None,
+                 health_probe: Optional['outputs.AiTrainingPipelineModelToUploadContainerSpecHealthProbe'] = None,
+                 health_route: Optional[_builtins.str] = None,
+                 ports: Optional[Sequence['outputs.AiTrainingPipelineModelToUploadContainerSpecPort']] = None,
+                 predict_route: Optional[_builtins.str] = None,
+                 shared_memory_size_mb: Optional[_builtins.str] = None,
+                 startup_probe: Optional['outputs.AiTrainingPipelineModelToUploadContainerSpecStartupProbe'] = None):
+        """
+        :param _builtins.str image_uri: URI of the Docker image to be used as the custom container for serving predictions.
+        :param Sequence[_builtins.str] args: Specifies the arguments to the command when the container starts.
+        :param Sequence[_builtins.str] commands: Specifies the command that runs when the container starts.
+        :param _builtins.str deployment_timeout: Deployment timeout. Limit for deployment timeout is 2 hours.
+        :param Sequence['AiTrainingPipelineModelToUploadContainerSpecEnvArgs'] envs: List of environment variables to be set in the container.
+               Structure is documented below.
+        :param Sequence['AiTrainingPipelineModelToUploadContainerSpecGrpcPortArgs'] grpc_ports: List of ports to expose from the container for gRPC.
+               Structure is documented below.
+        :param 'AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs' health_probe: Specification for Kubernetes readiness probe.
+               Structure is documented below.
+        :param _builtins.str health_route: HTTP path on the container to send health checks to.
+        :param Sequence['AiTrainingPipelineModelToUploadContainerSpecPortArgs'] ports: List of ports that are exposed by the container's process.
+               Structure is documented below.
+        :param _builtins.str predict_route: HTTP path on the container to send prediction requests to.
+        :param _builtins.str shared_memory_size_mb: The amount of the VM memory to reserve as the shared memory for the model in megabytes.
+        :param 'AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs' startup_probe: Specification for Kubernetes startup probe.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "image_uri", image_uri)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if deployment_timeout is not None:
+            pulumi.set(__self__, "deployment_timeout", deployment_timeout)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if grpc_ports is not None:
+            pulumi.set(__self__, "grpc_ports", grpc_ports)
+        if health_probe is not None:
+            pulumi.set(__self__, "health_probe", health_probe)
+        if health_route is not None:
+            pulumi.set(__self__, "health_route", health_route)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if predict_route is not None:
+            pulumi.set(__self__, "predict_route", predict_route)
+        if shared_memory_size_mb is not None:
+            pulumi.set(__self__, "shared_memory_size_mb", shared_memory_size_mb)
+        if startup_probe is not None:
+            pulumi.set(__self__, "startup_probe", startup_probe)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> _builtins.str:
+        """
+        URI of the Docker image to be used as the custom container for serving predictions.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specifies the arguments to the command when the container starts.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specifies the command that runs when the container starts.
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentTimeout")
+    def deployment_timeout(self) -> Optional[_builtins.str]:
+        """
+        Deployment timeout. Limit for deployment timeout is 2 hours.
+        """
+        return pulumi.get(self, "deployment_timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.AiTrainingPipelineModelToUploadContainerSpecEnv']]:
+        """
+        List of environment variables to be set in the container.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "envs")
+
+    @_builtins.property
+    @pulumi.getter(name="grpcPorts")
+    def grpc_ports(self) -> Optional[Sequence['outputs.AiTrainingPipelineModelToUploadContainerSpecGrpcPort']]:
+        """
+        List of ports to expose from the container for gRPC.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc_ports")
+
+    @_builtins.property
+    @pulumi.getter(name="healthProbe")
+    def health_probe(self) -> Optional['outputs.AiTrainingPipelineModelToUploadContainerSpecHealthProbe']:
+        """
+        Specification for Kubernetes readiness probe.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "health_probe")
+
+    @_builtins.property
+    @pulumi.getter(name="healthRoute")
+    def health_route(self) -> Optional[_builtins.str]:
+        """
+        HTTP path on the container to send health checks to.
+        """
+        return pulumi.get(self, "health_route")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence['outputs.AiTrainingPipelineModelToUploadContainerSpecPort']]:
+        """
+        List of ports that are exposed by the container's process.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter(name="predictRoute")
+    def predict_route(self) -> Optional[_builtins.str]:
+        """
+        HTTP path on the container to send prediction requests to.
+        """
+        return pulumi.get(self, "predict_route")
+
+    @_builtins.property
+    @pulumi.getter(name="sharedMemorySizeMb")
+    def shared_memory_size_mb(self) -> Optional[_builtins.str]:
+        """
+        The amount of the VM memory to reserve as the shared memory for the model in megabytes.
+        """
+        return pulumi.get(self, "shared_memory_size_mb")
+
+    @_builtins.property
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> Optional['outputs.AiTrainingPipelineModelToUploadContainerSpecStartupProbe']:
+        """
+        Specification for Kubernetes startup probe.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "startup_probe")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUploadContainerSpecEnv(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: The name of the environment variable.
+        :param _builtins.str value: The value of the environment variable.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUploadContainerSpecGrpcPort(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerPort":
+            suggest = "container_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineModelToUploadContainerSpecGrpcPort. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineModelToUploadContainerSpecGrpcPort.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineModelToUploadContainerSpecGrpcPort.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_port: _builtins.int):
+        """
+        :param _builtins.int container_port: The number of the port on the container.
+        """
+        pulumi.set(__self__, "container_port", container_port)
+
+    @_builtins.property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> _builtins.int:
+        """
+        The number of the port on the container.
+        """
+        return pulumi.get(self, "container_port")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUploadContainerSpecHealthProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exec":
+            suggest = "exec_"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineModelToUploadContainerSpecHealthProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineModelToUploadContainerSpecHealthProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineModelToUploadContainerSpecHealthProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exec_: Optional['outputs.AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec'] = None,
+                 period_seconds: Optional[_builtins.int] = None,
+                 timeout_seconds: Optional[_builtins.int] = None):
+        """
+        :param 'AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs' exec_: ExecAction specifies a command to execute.
+               Structure is documented below.
+        :param _builtins.int period_seconds: How often (in seconds) to perform the probe.
+        :param _builtins.int timeout_seconds: Number of seconds after which the probe times out.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional['outputs.AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec']:
+        """
+        ExecAction specifies a command to execute.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exec_")
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[_builtins.int]:
+        """
+        How often (in seconds) to perform the probe.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[_builtins.int]:
+        """
+        Number of seconds after which the probe times out.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec(dict):
+    def __init__(__self__, *,
+                 commands: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] commands: Command is the command line to execute inside the container.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Command is the command line to execute inside the container.
+        """
+        return pulumi.get(self, "commands")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUploadContainerSpecPort(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerPort":
+            suggest = "container_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineModelToUploadContainerSpecPort. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineModelToUploadContainerSpecPort.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineModelToUploadContainerSpecPort.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_port: _builtins.int):
+        """
+        :param _builtins.int container_port: The number of the port on the container.
+        """
+        pulumi.set(__self__, "container_port", container_port)
+
+    @_builtins.property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> _builtins.int:
+        """
+        The number of the port on the container.
+        """
+        return pulumi.get(self, "container_port")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUploadContainerSpecStartupProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exec":
+            suggest = "exec_"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineModelToUploadContainerSpecStartupProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineModelToUploadContainerSpecStartupProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineModelToUploadContainerSpecStartupProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exec_: Optional['outputs.AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec'] = None,
+                 period_seconds: Optional[_builtins.int] = None,
+                 timeout_seconds: Optional[_builtins.int] = None):
+        """
+        :param 'AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs' exec_: ExecAction specifies a command to execute.
+               Structure is documented below.
+        :param _builtins.int period_seconds: How often (in seconds) to perform the probe.
+        :param _builtins.int timeout_seconds: Number of seconds after which the probe times out.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional['outputs.AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec']:
+        """
+        ExecAction specifies a command to execute.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exec_")
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[_builtins.int]:
+        """
+        How often (in seconds) to perform the probe.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[_builtins.int]:
+        """
+        Number of seconds after which the probe times out.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec(dict):
+    def __init__(__self__, *,
+                 commands: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] commands: Command is the command line to execute inside the container.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Command is the command line to execute inside the container.
+        """
+        return pulumi.get(self, "commands")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUploadEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiTrainingPipelineModelToUploadEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiTrainingPipelineModelToUploadEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiTrainingPipelineModelToUploadEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: _builtins.str):
+        """
+        :param _builtins.str kms_key_name: The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> _builtins.str:
+        """
+        The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiTrainingPipelineModelToUploadExplanationSpec(dict):
+    def __init__(__self__, *,
+                 metadata: Optional[_builtins.str] = None,
+                 parameters: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str metadata: Metadata describing the Model's input and output for explanation. This field uses JSON data as a string.
+        :param _builtins.str parameters: Parameters that configure explaining of the Model's predictions. This field uses JSON data as a string.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Optional[_builtins.str]:
+        """
+        Metadata describing the Model's input and output for explanation. This field uses JSON data as a string.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[_builtins.str]:
+        """
+        Parameters that configure explaining of the Model's predictions. This field uses JSON data as a string.
+        """
+        return pulumi.get(self, "parameters")
 
 
 @pulumi.output_type

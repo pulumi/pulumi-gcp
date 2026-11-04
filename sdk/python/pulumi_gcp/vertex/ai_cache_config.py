@@ -20,17 +20,23 @@ __all__ = ['AiCacheConfigArgs', 'AiCacheConfig']
 class AiCacheConfigArgs:
     def __init__(__self__, *,
                  disable_cache: pulumi.Input[_builtins.bool],
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiCacheConfig resource.
 
         :param pulumi.Input[_builtins.bool] disable_cache: If set to true, disables GenAI caching. Otherwise caching is enabled.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] region: The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+               The cache config is a project-level setting, so this only selects which regional endpoint
+               requests are sent to. If not specified, the provider-level region is used.
         """
         pulumi.set(__self__, "disable_cache", disable_cache)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="disableCache")
@@ -57,13 +63,28 @@ class AiCacheConfigArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+        The cache config is a project-level setting, so this only selects which regional endpoint
+        requests are sent to. If not specified, the provider-level region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _AiCacheConfigState:
     def __init__(__self__, *,
                  disable_cache: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiCacheConfig resources.
 
@@ -71,6 +92,9 @@ class _AiCacheConfigState:
         :param pulumi.Input[_builtins.str] name: Identifier. name of the cache config. Format: - `projects/{project}/cacheConfig`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] region: The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+               The cache config is a project-level setting, so this only selects which regional endpoint
+               requests are sent to. If not specified, the provider-level region is used.
         """
         if disable_cache is not None:
             pulumi.set(__self__, "disable_cache", disable_cache)
@@ -78,6 +102,8 @@ class _AiCacheConfigState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="disableCache")
@@ -116,6 +142,20 @@ class _AiCacheConfigState:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+        The cache config is a project-level setting, so this only selects which regional endpoint
+        requests are sent to. If not specified, the provider-level region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.type_token("gcp:vertex/aiCacheConfig:AiCacheConfig")
 class AiCacheConfig(pulumi.CustomResource):
@@ -125,6 +165,7 @@ class AiCacheConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disable_cache: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Config of GenAI caching features. This is a singleton resource.
@@ -168,6 +209,9 @@ class AiCacheConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable_cache: If set to true, disables GenAI caching. Otherwise caching is enabled.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] region: The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+               The cache config is a project-level setting, so this only selects which regional endpoint
+               requests are sent to. If not specified, the provider-level region is used.
         """
         ...
     @overload
@@ -229,6 +273,7 @@ class AiCacheConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disable_cache: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -242,6 +287,7 @@ class AiCacheConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'disable_cache'")
             __props__.__dict__["disable_cache"] = disable_cache
             __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
             __props__.__dict__["name"] = None
         super(AiCacheConfig, __self__).__init__(
             'gcp:vertex/aiCacheConfig:AiCacheConfig',
@@ -255,7 +301,8 @@ class AiCacheConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             disable_cache: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiCacheConfig':
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiCacheConfig':
         """
         Get an existing AiCacheConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -267,6 +314,9 @@ class AiCacheConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Identifier. name of the cache config. Format: - `projects/{project}/cacheConfig`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] region: The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+               The cache config is a project-level setting, so this only selects which regional endpoint
+               requests are sent to. If not specified, the provider-level region is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -275,6 +325,7 @@ class AiCacheConfig(pulumi.CustomResource):
         __props__.__dict__["disable_cache"] = disable_cache
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
         return AiCacheConfig(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -301,4 +352,14 @@ class AiCacheConfig(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+        The cache config is a project-level setting, so this only selects which regional endpoint
+        requests are sent to. If not specified, the provider-level region is used.
+        """
+        return pulumi.get(self, "region")
 

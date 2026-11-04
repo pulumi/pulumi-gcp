@@ -6,6 +6,7 @@ package com.pulumi.gcp.pubsub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionMessageTransformAiInference;
+import com.pulumi.gcp.pubsub.outputs.GetSubscriptionMessageTransformCompression;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionMessageTransformJavascriptUdf;
 import java.lang.Boolean;
 import java.util.List;
@@ -20,6 +21,12 @@ public final class GetSubscriptionMessageTransform {
      * 
      */
     private List<GetSubscriptionMessageTransformAiInference> aiInferences;
+    /**
+     * @return Compression/Decompression. Configuration for compressing/decompressing
+     * message data using a user-specified compression algorithm.
+     * 
+     */
+    private List<GetSubscriptionMessageTransformCompression> compressions;
     /**
      * @return Controls whether or not to use this transform. If not set or &#39;false&#39;,
      * the transform will be applied to messages. Default: &#39;true&#39;.
@@ -42,6 +49,14 @@ public final class GetSubscriptionMessageTransform {
      */
     public List<GetSubscriptionMessageTransformAiInference> aiInferences() {
         return this.aiInferences;
+    }
+    /**
+     * @return Compression/Decompression. Configuration for compressing/decompressing
+     * message data using a user-specified compression algorithm.
+     * 
+     */
+    public List<GetSubscriptionMessageTransformCompression> compressions() {
+        return this.compressions;
     }
     /**
      * @return Controls whether or not to use this transform. If not set or &#39;false&#39;,
@@ -70,12 +85,14 @@ public final class GetSubscriptionMessageTransform {
     @CustomType.Builder
     public static final class Builder {
         private List<GetSubscriptionMessageTransformAiInference> aiInferences;
+        private List<GetSubscriptionMessageTransformCompression> compressions;
         private Boolean disabled;
         private List<GetSubscriptionMessageTransformJavascriptUdf> javascriptUdfs;
         public Builder() {}
         public Builder(GetSubscriptionMessageTransform defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aiInferences = defaults.aiInferences;
+    	      this.compressions = defaults.compressions;
     	      this.disabled = defaults.disabled;
     	      this.javascriptUdfs = defaults.javascriptUdfs;
         }
@@ -90,6 +107,17 @@ public final class GetSubscriptionMessageTransform {
         }
         public Builder aiInferences(GetSubscriptionMessageTransformAiInference... aiInferences) {
             return aiInferences(List.of(aiInferences));
+        }
+        @CustomType.Setter
+        public Builder compressions(List<GetSubscriptionMessageTransformCompression> compressions) {
+            if (compressions == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionMessageTransform", "compressions");
+            }
+            this.compressions = compressions;
+            return this;
+        }
+        public Builder compressions(GetSubscriptionMessageTransformCompression... compressions) {
+            return compressions(List.of(compressions));
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
@@ -113,6 +141,7 @@ public final class GetSubscriptionMessageTransform {
         public GetSubscriptionMessageTransform build() {
             final var _resultValue = new GetSubscriptionMessageTransform();
             _resultValue.aiInferences = aiInferences;
+            _resultValue.compressions = compressions;
             _resultValue.disabled = disabled;
             _resultValue.javascriptUdfs = javascriptUdfs;
             return _resultValue;

@@ -291,6 +291,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///                             ServiceName = "new",
     ///                             Weight = 1,
     ///                         },
+    ///                         MirrorPercent = 50.0,
     ///                     },
     ///                     CorsPolicy = new Gcp.NetworkServices.Inputs.HttpRouteRuleActionCorsPolicyArgs
     ///                     {
@@ -349,6 +350,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///                             "removearg",
     ///                         },
     ///                     },
+    ///                     IdleTimeout = "1s",
     ///                 },
     ///             },
     ///         },

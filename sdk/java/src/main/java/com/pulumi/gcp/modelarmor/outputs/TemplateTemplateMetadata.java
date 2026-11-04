@@ -41,6 +41,15 @@ public final class TemplateTemplateMetadata {
      */
     private @Nullable String customPromptSafetyErrorMessage;
     /**
+     * @return Indicates whether the template is subject to data residency compliance. If
+     * true (default for new templates), the template is subject to data residency
+     * compliance. If false, the template bypasses data residency compliance
+     * checks. If unset, the value is determined by the API; templates created
+     * before data residency enforcement may report false.
+     * 
+     */
+    private @Nullable Boolean dataResidencyCompliant;
+    /**
      * @return Possible values:
      * INSPECT_ONLY
      * INSPECT_AND_BLOCK
@@ -121,6 +130,17 @@ public final class TemplateTemplateMetadata {
         return Optional.ofNullable(this.customPromptSafetyErrorMessage);
     }
     /**
+     * @return Indicates whether the template is subject to data residency compliance. If
+     * true (default for new templates), the template is subject to data residency
+     * compliance. If false, the template bypasses data residency compliance
+     * checks. If unset, the value is determined by the API; templates created
+     * before data residency enforcement may report false.
+     * 
+     */
+    public Optional<Boolean> dataResidencyCompliant() {
+        return Optional.ofNullable(this.dataResidencyCompliant);
+    }
+    /**
      * @return Possible values:
      * INSPECT_ONLY
      * INSPECT_AND_BLOCK
@@ -194,6 +214,7 @@ public final class TemplateTemplateMetadata {
         private @Nullable String customLlmResponseSafetyErrorMessage;
         private @Nullable Integer customPromptSafetyErrorCode;
         private @Nullable String customPromptSafetyErrorMessage;
+        private @Nullable Boolean dataResidencyCompliant;
         private @Nullable String enforcementType;
         private @Nullable TemplateTemplateMetadataFilterVersionSelector filterVersionSelector;
         private @Nullable Boolean ignorePartialInvocationFailures;
@@ -208,6 +229,7 @@ public final class TemplateTemplateMetadata {
     	      this.customLlmResponseSafetyErrorMessage = defaults.customLlmResponseSafetyErrorMessage;
     	      this.customPromptSafetyErrorCode = defaults.customPromptSafetyErrorCode;
     	      this.customPromptSafetyErrorMessage = defaults.customPromptSafetyErrorMessage;
+    	      this.dataResidencyCompliant = defaults.dataResidencyCompliant;
     	      this.enforcementType = defaults.enforcementType;
     	      this.filterVersionSelector = defaults.filterVersionSelector;
     	      this.ignorePartialInvocationFailures = defaults.ignorePartialInvocationFailures;
@@ -239,6 +261,12 @@ public final class TemplateTemplateMetadata {
         public Builder customPromptSafetyErrorMessage(@Nullable String customPromptSafetyErrorMessage) {
 
             this.customPromptSafetyErrorMessage = customPromptSafetyErrorMessage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataResidencyCompliant(@Nullable Boolean dataResidencyCompliant) {
+
+            this.dataResidencyCompliant = dataResidencyCompliant;
             return this;
         }
         @CustomType.Setter
@@ -292,6 +320,7 @@ public final class TemplateTemplateMetadata {
             _resultValue.customLlmResponseSafetyErrorMessage = customLlmResponseSafetyErrorMessage;
             _resultValue.customPromptSafetyErrorCode = customPromptSafetyErrorCode;
             _resultValue.customPromptSafetyErrorMessage = customPromptSafetyErrorMessage;
+            _resultValue.dataResidencyCompliant = dataResidencyCompliant;
             _resultValue.enforcementType = enforcementType;
             _resultValue.filterVersionSelector = filterVersionSelector;
             _resultValue.ignorePartialInvocationFailures = ignorePartialInvocationFailures;

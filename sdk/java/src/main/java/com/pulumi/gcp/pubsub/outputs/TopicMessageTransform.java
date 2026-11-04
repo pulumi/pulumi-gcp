@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.pubsub.outputs.TopicMessageTransformAiInference;
+import com.pulumi.gcp.pubsub.outputs.TopicMessageTransformCompression;
 import com.pulumi.gcp.pubsub.outputs.TopicMessageTransformJavascriptUdf;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -21,6 +22,13 @@ public final class TopicMessageTransform {
      * 
      */
     private @Nullable TopicMessageTransformAiInference aiInference;
+    /**
+     * @return Configuration for compressing/decompressing message data using a
+     * user-specified compression algorithm.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable TopicMessageTransformCompression compression;
     /**
      * @return Controls whether or not to use this transform. If not set or `false`,
      * the transform will be applied to messages. Default: `true`.
@@ -45,6 +53,15 @@ public final class TopicMessageTransform {
      */
     public Optional<TopicMessageTransformAiInference> aiInference() {
         return Optional.ofNullable(this.aiInference);
+    }
+    /**
+     * @return Configuration for compressing/decompressing message data using a
+     * user-specified compression algorithm.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<TopicMessageTransformCompression> compression() {
+        return Optional.ofNullable(this.compression);
     }
     /**
      * @return Controls whether or not to use this transform. If not set or `false`,
@@ -74,12 +91,14 @@ public final class TopicMessageTransform {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable TopicMessageTransformAiInference aiInference;
+        private @Nullable TopicMessageTransformCompression compression;
         private @Nullable Boolean disabled;
         private @Nullable TopicMessageTransformJavascriptUdf javascriptUdf;
         public Builder() {}
         public Builder(TopicMessageTransform defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aiInference = defaults.aiInference;
+    	      this.compression = defaults.compression;
     	      this.disabled = defaults.disabled;
     	      this.javascriptUdf = defaults.javascriptUdf;
         }
@@ -88,6 +107,12 @@ public final class TopicMessageTransform {
         public Builder aiInference(@Nullable TopicMessageTransformAiInference aiInference) {
 
             this.aiInference = aiInference;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder compression(@Nullable TopicMessageTransformCompression compression) {
+
+            this.compression = compression;
             return this;
         }
         @CustomType.Setter
@@ -105,6 +130,7 @@ public final class TopicMessageTransform {
         public TopicMessageTransform build() {
             final var _resultValue = new TopicMessageTransform();
             _resultValue.aiInference = aiInference;
+            _resultValue.compression = compression;
             _resultValue.disabled = disabled;
             _resultValue.javascriptUdf = javascriptUdf;
             return _resultValue;

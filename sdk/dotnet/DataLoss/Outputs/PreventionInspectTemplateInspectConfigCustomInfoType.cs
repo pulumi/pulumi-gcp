@@ -39,6 +39,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly string? Likelihood;
         /// <summary>
+        /// Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression? MetadataKeyValueExpression;
+        /// <summary>
         /// Regular expression which defines the rule.
         /// Structure is documented below.
         /// </summary>
@@ -68,6 +73,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             string? likelihood,
 
+            Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression? metadataKeyValueExpression,
+
             Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegex? regex,
 
             Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore? sensitivityScore,
@@ -80,6 +87,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
             ExclusionType = exclusionType;
             InfoType = infoType;
             Likelihood = likelihood;
+            MetadataKeyValueExpression = metadataKeyValueExpression;
             Regex = regex;
             SensitivityScore = sensitivityScore;
             StoredType = storedType;

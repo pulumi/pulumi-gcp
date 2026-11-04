@@ -56,6 +56,7 @@ export interface GetDatasetResult {
     readonly defaultCollation: string;
     readonly defaultEncryptionConfigurations: outputs.bigquery.GetDatasetDefaultEncryptionConfiguration[];
     readonly defaultPartitionExpirationMs: number;
+    readonly defaultRoundingMode: string;
     readonly defaultTableExpirationMs: number;
     readonly deleteContentsOnDestroy: boolean;
     readonly deletionPolicy: string;

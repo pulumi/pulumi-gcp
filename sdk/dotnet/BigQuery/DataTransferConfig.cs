@@ -57,67 +57,10 @@ namespace Pulumi.Gcp.BigQuery
     ///         },
     ///     });
     /// 
-    ///     var queryConfig = new Gcp.BigQuery.DataTransferConfig("query_config", new()
-    ///     {
-    ///         DisplayName = "my-query",
-    ///         Location = "asia-northeast1",
-    ///         DataSourceId = "scheduled_query",
-    ///         Schedule = "first sunday of quarter 00:00",
-    ///         DestinationDatasetId = myDataset.DatasetId,
-    ///         Params = 
-    ///         {
-    ///             { "destination_table_name_template", "my_table" },
-    ///             { "write_disposition", "WRITE_APPEND" },
-    ///             { "query", "SELECT name FROM tabl WHERE x = 'y'" },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             permissions,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Bigquerydatatransfer Config Cmek
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var permissions = new Gcp.Projects.IAMMember("permissions", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/iam.serviceAccountTokenCreator",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com",
-    ///     });
-    /// 
-    ///     var myDataset = new Gcp.BigQuery.Dataset("my_dataset", new()
-    ///     {
-    ///         DatasetId = "example_dataset",
-    ///         FriendlyName = "foo",
-    ///         Description = "bar",
-    ///         Location = "asia-northeast1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             permissions,
-    ///         },
-    ///     });
-    /// 
     ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
     ///         Name = "example-keyring",
-    ///         Location = "us",
+    ///         Location = "asia-northeast1",
     ///     });
     /// 
     ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
@@ -126,9 +69,16 @@ namespace Pulumi.Gcp.BigQuery
     ///         KeyRing = keyRing.Id,
     ///     });
     /// 
-    ///     var queryConfigCmek = new Gcp.BigQuery.DataTransferConfig("query_config_cmek", new()
+    ///     var bigqueryEncrypter = new Gcp.Kms.CryptoKeyIAMMember("bigquery_encrypter", new()
     ///     {
-    ///         DisplayName = "display-name",
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:bq-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@bigquery-encryption.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var queryConfig = new Gcp.BigQuery.DataTransferConfig("query_config", new()
+    ///     {
+    ///         DisplayName = "my-query",
     ///         Location = "asia-northeast1",
     ///         DataSourceId = "scheduled_query",
     ///         Schedule = "first sunday of quarter 00:00",
@@ -148,13 +98,14 @@ namespace Pulumi.Gcp.BigQuery
     ///         DependsOn =
     ///         {
     ///             permissions,
+    ///             bigqueryEncrypter,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// ### Bigquerydatatransfer Config Salesforce
+    /// ### Bigquerydatatransfer Config Schedule Options V2
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -164,28 +115,60 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var myDataset = new Gcp.BigQuery.Dataset("my_dataset", new()
+    ///     var eventDriven = new Gcp.PubSub.Topic("event_driven", new()
     ///     {
-    ///         DatasetId = "my_dataset",
-    ///         Description = "My dataset",
-    ///         Location = "asia-northeast1",
+    ///         Name = "my-topic",
     ///     });
     /// 
-    ///     var salesforceConfig = new Gcp.BigQuery.DataTransferConfig("salesforce_config", new()
+    ///     var eventDrivenSubscription = new Gcp.PubSub.Subscription("event_driven", new()
     ///     {
-    ///         DisplayName = "my-salesforce-config",
-    ///         Location = "asia-northeast1",
-    ///         DataSourceId = "salesforce",
-    ///         Schedule = "first sunday of quarter 00:00",
-    ///         DestinationDatasetId = myDataset.DatasetId,
+    ///         Name = "my-subscription",
+    ///         Topic = eventDriven.Id,
+    ///     });
+    /// 
+    ///     var eventDrivenBucket = new Gcp.Storage.Bucket("event_driven", new()
+    ///     {
+    ///         Name = "my-bucket",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var eventDrivenDataset = new Gcp.BigQuery.Dataset("event_driven", new()
+    ///     {
+    ///         DatasetId = "my_dataset",
+    ///         FriendlyName = "foo",
+    ///         Description = "bar",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var eventDrivenTable = new Gcp.BigQuery.Table("event_driven", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         DatasetId = eventDrivenDataset.DatasetId,
+    ///         TableId = "my_table",
+    ///         Schema = "[{\"name\":\"name\",\"type\":\"STRING\"}]",
+    ///     });
+    /// 
+    ///     var eventDrivenConfig = new Gcp.BigQuery.DataTransferConfig("event_driven_config", new()
+    ///     {
+    ///         DisplayName = "my-event-driven-config",
+    ///         Location = eventDrivenDataset.Location,
+    ///         DataSourceId = "google_cloud_storage",
+    ///         DestinationDatasetId = eventDrivenDataset.DatasetId,
+    ///         ScheduleOptionsV2 = new Gcp.BigQuery.Inputs.DataTransferConfigScheduleOptionsV2Args
+    ///         {
+    ///             EventDrivenSchedule = new Gcp.BigQuery.Inputs.DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs
+    ///             {
+    ///                 PubsubSubscription = eventDrivenSubscription.Id,
+    ///             },
+    ///         },
     ///         Params = 
     ///         {
-    ///             { "connector.authentication.oauth.clientId", "client-id" },
-    ///             { "connector.authentication.oauth.clientSecret", "client-secret" },
-    ///             { "connector.authentication.oauth.myDomain", "MyDomainName" },
-    ///             { "assets", "[\"asset-a\",\"asset-b\"]" },
+    ///             { "data_path_template", eventDrivenBucket.Url.Apply(url =&gt; $"{url}/*.json") },
+    ///             { "destination_table_name_template", eventDrivenTable.TableId },
+    ///             { "file_format", "JSON" },
+    ///             { "write_disposition", "APPEND" },
     ///         },
     ///     });
     /// 
@@ -331,6 +314,17 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("scheduleOptions")]
         public Output<Outputs.DataTransferConfigScheduleOptions?> ScheduleOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Options customizing the type of data transfer schedule.
+        /// Only the event-driven schedule is exposed here; time-based and manual
+        /// schedules are configured through the `Schedule` and `ScheduleOptions`
+        /// fields instead. This field cannot be used together with `Schedule` or
+        /// `ScheduleOptions`.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("scheduleOptionsV2")]
+        public Output<Outputs.DataTransferConfigScheduleOptionsV2?> ScheduleOptionsV2 { get; private set; } = null!;
 
         /// <summary>
         /// Different parameters are configured primarily using the the `Params` field on this
@@ -516,6 +510,17 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.DataTransferConfigScheduleOptionsArgs>? ScheduleOptions { get; set; }
 
         /// <summary>
+        /// Options customizing the type of data transfer schedule.
+        /// Only the event-driven schedule is exposed here; time-based and manual
+        /// schedules are configured through the `Schedule` and `ScheduleOptions`
+        /// fields instead. This field cannot be used together with `Schedule` or
+        /// `ScheduleOptions`.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scheduleOptionsV2")]
+        public Input<Inputs.DataTransferConfigScheduleOptionsV2Args>? ScheduleOptionsV2 { get; set; }
+
+        /// <summary>
         /// Different parameters are configured primarily using the the `Params` field on this
         /// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
         /// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -669,6 +674,17 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("scheduleOptions")]
         public Input<Inputs.DataTransferConfigScheduleOptionsGetArgs>? ScheduleOptions { get; set; }
+
+        /// <summary>
+        /// Options customizing the type of data transfer schedule.
+        /// Only the event-driven schedule is exposed here; time-based and manual
+        /// schedules are configured through the `Schedule` and `ScheduleOptions`
+        /// fields instead. This field cannot be used together with `Schedule` or
+        /// `ScheduleOptions`.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scheduleOptionsV2")]
+        public Input<Inputs.DataTransferConfigScheduleOptionsV2GetArgs>? ScheduleOptionsV2 { get; set; }
 
         /// <summary>
         /// Different parameters are configured primarily using the the `Params` field on this

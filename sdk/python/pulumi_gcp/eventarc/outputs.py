@@ -17,6 +17,8 @@ from . import outputs
 
 __all__ = [
     'GoogleApiSourceLoggingConfig',
+    'GoogleApiSourceOrganizationSubscription',
+    'GoogleApiSourceProjectSubscriptions',
     'MessageBusLoggingConfig',
     'PipelineDestination',
     'PipelineDestinationAuthenticationConfig',
@@ -87,6 +89,50 @@ class GoogleApiSourceLoggingConfig(dict):
         Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
         """
         return pulumi.get(self, "log_severity")
+
+
+@pulumi.output_type
+class GoogleApiSourceOrganizationSubscription(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Enable org level subscription.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Enable org level subscription.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GoogleApiSourceProjectSubscriptions(dict):
+    def __init__(__self__, *,
+                 lists: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] lists: A list of projects to receive events from.
+               All the projects must be in the same org. The listed projects should have
+               the format project/{identifier} where identifier can be either the
+               project id for project number. A single list may contain both formats. At
+               most 100 projects can be listed.
+        """
+        pulumi.set(__self__, "lists", lists)
+
+    @_builtins.property
+    @pulumi.getter
+    def lists(self) -> Sequence[_builtins.str]:
+        """
+        A list of projects to receive events from.
+        All the projects must be in the same org. The listed projects should have
+        the format project/{identifier} where identifier can be either the
+        project id for project number. A single list may contain both formats. At
+        most 100 projects can be listed.
+        """
+        return pulumi.get(self, "lists")
 
 
 @pulumi.output_type

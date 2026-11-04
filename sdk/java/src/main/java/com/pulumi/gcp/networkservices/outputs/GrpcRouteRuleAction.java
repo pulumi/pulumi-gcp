@@ -28,6 +28,11 @@ public final class GrpcRouteRuleAction {
      */
     private @Nullable GrpcRouteRuleActionFaultInjectionPolicy faultInjectionPolicy;
     /**
+     * @return Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+     * 
+     */
+    private @Nullable String idleTimeout;
+    /**
      * @return Specifies the retry policy associated with this route.
      * Structure is documented below.
      * 
@@ -57,6 +62,13 @@ public final class GrpcRouteRuleAction {
         return Optional.ofNullable(this.faultInjectionPolicy);
     }
     /**
+     * @return Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+     * 
+     */
+    public Optional<String> idleTimeout() {
+        return Optional.ofNullable(this.idleTimeout);
+    }
+    /**
      * @return Specifies the retry policy associated with this route.
      * Structure is documented below.
      * 
@@ -83,6 +95,7 @@ public final class GrpcRouteRuleAction {
     public static final class Builder {
         private @Nullable List<GrpcRouteRuleActionDestination> destinations;
         private @Nullable GrpcRouteRuleActionFaultInjectionPolicy faultInjectionPolicy;
+        private @Nullable String idleTimeout;
         private @Nullable GrpcRouteRuleActionRetryPolicy retryPolicy;
         private @Nullable String timeout;
         public Builder() {}
@@ -90,6 +103,7 @@ public final class GrpcRouteRuleAction {
     	      Objects.requireNonNull(defaults);
     	      this.destinations = defaults.destinations;
     	      this.faultInjectionPolicy = defaults.faultInjectionPolicy;
+    	      this.idleTimeout = defaults.idleTimeout;
     	      this.retryPolicy = defaults.retryPolicy;
     	      this.timeout = defaults.timeout;
         }
@@ -110,6 +124,12 @@ public final class GrpcRouteRuleAction {
             return this;
         }
         @CustomType.Setter
+        public Builder idleTimeout(@Nullable String idleTimeout) {
+
+            this.idleTimeout = idleTimeout;
+            return this;
+        }
+        @CustomType.Setter
         public Builder retryPolicy(@Nullable GrpcRouteRuleActionRetryPolicy retryPolicy) {
 
             this.retryPolicy = retryPolicy;
@@ -125,6 +145,7 @@ public final class GrpcRouteRuleAction {
             final var _resultValue = new GrpcRouteRuleAction();
             _resultValue.destinations = destinations;
             _resultValue.faultInjectionPolicy = faultInjectionPolicy;
+            _resultValue.idleTimeout = idleTimeout;
             _resultValue.retryPolicy = retryPolicy;
             _resultValue.timeout = timeout;
             return _resultValue;

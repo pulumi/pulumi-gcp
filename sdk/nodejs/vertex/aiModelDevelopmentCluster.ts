@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * const subnet = new gcp.compute.Subnetwork("subnet", {
  *     name: "mdc-subnet",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "us-east4",
  *     network: net.id,
  *     privateIpGoogleAccess: true,
  * });
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * });
  * const home = new gcp.filestore.Instance("home", {
  *     name: "mdc-home",
- *     location: "us-central1-b",
+ *     location: "us-east4-b",
  *     tier: "BASIC_HDD",
  *     fileShares: {
  *         capacityGb: 1024,
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  * });
  * const data = new gcp.filestore.Instance("data", {
  *     name: "mdc-data",
- *     location: "us-central1-b",
+ *     location: "us-east4-b",
  *     tier: "BASIC_HDD",
  *     fileShares: {
  *         capacityGb: 1024,
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * });
  * const res = new gcp.compute.Reservation("res", {
  *     name: "mdc-res",
- *     zone: "us-central1-b",
+ *     zone: "us-east4-b",
  *     specificReservationRequired: true,
  *     specificReservation: {
  *         count: 1,
@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const _default = new gcp.vertex.AiModelDevelopmentCluster("default", {
- *     region: "us-central1",
+ *     region: "us-east4",
  *     modelDevelopmentClusterId: "tftest",
  *     displayName: "tftest",
  *     deletionPolicy: "DELETE",
@@ -157,7 +157,7 @@ import * as utilities from "../utilities";
  *     nodePools: [
  *         {
  *             id: "compute",
- *             zone: "us-central1-b",
+ *             zone: "us-east4-b",
  *             provisioningModel: "ON_DEMAND",
  *             nodeImage: "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
  *             startupScript: `#!/bin/bash
@@ -181,7 +181,7 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             id: "flexpool",
- *             zone: "us-central1-b",
+ *             zone: "us-east4-b",
  *             provisioningModel: "FLEX_START",
  *             flexStartMaxDuration: "3600s",
  *             nodeImage: "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
@@ -206,7 +206,7 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             id: "login",
- *             zone: "us-central1-b",
+ *             zone: "us-east4-b",
  *             provisioningModel: "ON_DEMAND",
  *             nodeImage: "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
  *             startupScript: `#!/bin/bash
@@ -230,7 +230,7 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             id: "respool",
- *             zone: "us-central1-b",
+ *             zone: "us-east4-b",
  *             provisioningModel: "RESERVATION",
  *             nodeImage: "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
  *             startupScript: `#!/bin/bash
@@ -257,6 +257,86 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     ],
+ * }, {
+ *     dependsOn: [internal],
+ * });
+ * ```
+ *
+ * ### Vertex Ai Model Development Cluster Gke
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const net = new gcp.compute.Network("net", {
+ *     name: "mdc-gke-net",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "mdc-gke-subnet",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-east1",
+ *     network: net.id,
+ *     privateIpGoogleAccess: true,
+ * });
+ * const internal = new gcp.compute.Firewall("internal", {
+ *     name: "mdc-gke-fw",
+ *     network: net.name,
+ *     direction: "INGRESS",
+ *     sourceRanges: ["10.0.0.0/24"],
+ *     allows: [
+ *         {
+ *             protocol: "tcp",
+ *             ports: ["0-65535"],
+ *         },
+ *         {
+ *             protocol: "udp",
+ *             ports: ["0-65535"],
+ *         },
+ *         {
+ *             protocol: "icmp",
+ *         },
+ *     ],
+ * });
+ * const _default = new gcp.vertex.AiModelDevelopmentCluster("default", {
+ *     region: "us-east1",
+ *     modelDevelopmentClusterId: "tftest-gke",
+ *     displayName: "tftest-gke",
+ *     deletionPolicy: "DELETE",
+ *     labels: {
+ *         env: "dev",
+ *     },
+ *     network: {
+ *         network: net.id,
+ *         subnetwork: subnet.id,
+ *     },
+ *     orchestratorSpec: {
+ *         kubernetesSpec: {
+ *             nodePoolIds: ["cpu1"],
+ *             enableIpAlias: true,
+ *             publicAccessEndpointEnabled: true,
+ *             controlPlaneVersion: "-",
+ *             nodePoolVersions: {
+ *                 cpu1: "-",
+ *             },
+ *         },
+ *     },
+ *     nodePools: [{
+ *         id: "cpu1",
+ *         zone: "us-east1-b",
+ *         provisioningModel: "ON_DEMAND",
+ *         bootDisk: {
+ *             bootDiskSizeGb: 100,
+ *             bootDiskType: "pd-standard",
+ *         },
+ *         machineSpec: {
+ *             machineType: "n2-standard-4",
+ *         },
+ *         scalingSpec: {
+ *             minNodeCount: 1,
+ *             maxNodeCount: 2,
+ *         },
+ *     }],
  * }, {
  *     dependsOn: [internal],
  * });
@@ -353,9 +433,14 @@ import * as utilities from "../utilities";
  * <a name="nestedOrchestratorSpec"></a>The `orchestratorSpec` block supports:
  *
  * * `slurmSpec` -
- *   (Optional)
- *   The Slurm orchestrator related spec of the cluster.
- *   Structure is documented below.
+ * (Optional)
+ * The Slurm orchestrator related spec of the cluster.
+ * Structure is documented below.
+ *
+ * * `kubernetesSpec` -
+ * (Optional)
+ * The GKE orchestrator related spec of the cluster.
+ * Structure is documented below.
  *
  * <a name="nestedOrchestratorSpecSlurmSpec"></a>The `slurmSpec` block supports:
  *
@@ -464,6 +549,44 @@ import * as utilities from "../utilities";
  * * `nodePoolIds` -
  * (Required)
  * Node pools for the slurm partition
+ *
+ * <a name="nestedOrchestratorSpecKubernetesSpec"></a>The `kubernetesSpec` block supports:
+ *
+ * * `nodePoolIds` -
+ * (Optional)
+ * IDs of the NodePools to be included in this GKE cluster. These IDs must
+ * correspond to NodePools defined in the `nodePools` field.
+ *
+ * * `enableIpAlias` -
+ * (Optional)
+ * Whether to enable IP alias.
+ *
+ * * `publicAccessEndpointEnabled` -
+ * (Optional)
+ * Whether the GKE cluster's control plane endpoint is publicly accessible.
+ * If true, the cluster is created with a public access endpoint (i.e. the
+ * private cluster configuration is disabled). If false or unset, the cluster
+ * is created with only private control plane access by default.
+ *
+ * * `controlPlaneVersion` -
+ * (Optional)
+ * The Kubernetes version of the GKE control plane.
+ * Accepted formats are minor version (for example, `"1.30"`), patch version
+ * (for example, `"1.30.5"`), full GKE release version (for example,
+ * `"1.30.5-gke.1014001"`), or `"-"` to use the service default version.
+ * Upgrades can advance at most one minor version at a time; downgrades are
+ * rejected.
+ *
+ * * `nodePoolVersions` -
+ * (Optional)
+ * The Kubernetes versions for specific node pools, keyed by node pool ID.
+ * When specified, all node pool IDs in the cluster must be included.
+ * Accepted formats are minor version (for example, `"1.30"`), patch version
+ * (for example, `"1.30.5"`), full GKE release version (for example,
+ * `"1.30.5-gke.1014001"`), or `"-"` to align with the control plane version.
+ * Node pools cannot be newer than the control plane or more than 2 minor
+ * versions behind it; upgrades can advance at most one minor version at a
+ * time and downgrades are rejected.
  *
  * <a name="nestedLustreExportConfig"></a>The `lustreExportConfig` block supports:
  *
@@ -646,7 +769,10 @@ export class AiModelDevelopmentCluster extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<outputs.vertex.AiModelDevelopmentClusterNetwork>;
     /**
-     * The spec of the pools of different resources.
+     * The spec of the pools of different resources. Node pools can be added,
+     * removed, or reordered in place; changing some fields on an existing node
+     * pool may require replacing the node pool (validated server-side by the
+     * API).
      * Structure is documented below.
      */
     declare public readonly nodePools: pulumi.Output<outputs.vertex.AiModelDevelopmentClusterNodePool[]>;
@@ -840,7 +966,10 @@ export interface AiModelDevelopmentClusterState {
      */
     network?: pulumi.Input<inputs.vertex.AiModelDevelopmentClusterNetwork | undefined>;
     /**
-     * The spec of the pools of different resources.
+     * The spec of the pools of different resources. Node pools can be added,
+     * removed, or reordered in place; changing some fields on an existing node
+     * pool may require replacing the node pool (validated server-side by the
+     * API).
      * Structure is documented below.
      */
     nodePools?: pulumi.Input<pulumi.Input<inputs.vertex.AiModelDevelopmentClusterNodePool>[] | undefined>;
@@ -938,7 +1067,10 @@ export interface AiModelDevelopmentClusterArgs {
      */
     network?: pulumi.Input<inputs.vertex.AiModelDevelopmentClusterNetwork | undefined>;
     /**
-     * The spec of the pools of different resources.
+     * The spec of the pools of different resources. Node pools can be added,
+     * removed, or reordered in place; changing some fields on an existing node
+     * pool may require replacing the node pool (validated server-side by the
+     * API).
      * Structure is documented below.
      */
     nodePools: pulumi.Input<pulumi.Input<inputs.vertex.AiModelDevelopmentClusterNodePool>[]>;

@@ -94,7 +94,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as std from "@pulumi/std";
  *
- * const project = gcp.organizations.getProject({});
  * const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("default", {
  *     name: "my-trust-config",
  *     description: "sample trust config description",
@@ -122,7 +121,54 @@ import * as utilities from "../utilities";
  *     allowOpen: false,
  *     mtlsPolicy: {
  *         clientValidationMode: "REJECT_INVALID",
- *         clientValidationTrustConfig: pulumi.all([project, defaultTrustConfig.name]).apply(([project, name]) => `projects/${project.number}/locations/global/trustConfigs/${name}`),
+ *         clientValidationTrustConfig: defaultTrustConfig.id,
+ *     },
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
+ *
+ * ### Network Security Server Tls Policy Mtls Validation Relaxations
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("default", {
+ *     name: "my-trust-config",
+ *     description: "sample trust config description",
+ *     location: "global",
+ *     trustStores: [{
+ *         trustAnchors: [{
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/ca_cert.pem",
+ *             }).then(invoke => invoke.result),
+ *         }],
+ *         intermediateCas: [{
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/ca_cert.pem",
+ *             }).then(invoke => invoke.result),
+ *         }],
+ *     }],
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
+ *     name: "my-server-tls-policy",
+ *     description: "ServerTlsPolicy with mTLS validation relaxations",
+ *     location: "global",
+ *     allowOpen: false,
+ *     mtlsPolicy: {
+ *         clientValidationMode: "ALLOW_VALIDATION_RELAXATIONS",
+ *         clientValidationRelaxations: [
+ *             "ALLOW_MISSING_EKU",
+ *             "ALLOW_SHA1_HASHING",
+ *             "ALLOW_EXPIRED_LEAF_CERTIFICATE",
+ *         ],
+ *         clientValidationTrustConfig: defaultTrustConfig.id,
  *     },
  *     labels: {
  *         foo: "bar",

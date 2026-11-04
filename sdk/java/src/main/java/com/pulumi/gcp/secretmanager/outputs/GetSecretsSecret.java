@@ -99,6 +99,11 @@ public final class GetSecretsSecret {
     /**
      * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * &#39;OTHER_DB_CREDENTIALS&#39;: Secrets where the payload contains database credentials.
+     * * &#39;ACCESS_KEY&#39;: Secrets where the payload contains an access key.
+     * * &#39;CERTIFICATE&#39;: Secrets where the payload contains a certificate.
+     * * &#39;OTHER&#39;: Secrets whose type doesn&#39;t belong to any of the above types.
      * 
      */
     private String secretType;
@@ -245,6 +250,11 @@ public final class GetSecretsSecret {
     /**
      * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * &#39;OTHER_DB_CREDENTIALS&#39;: Secrets where the payload contains database credentials.
+     * * &#39;ACCESS_KEY&#39;: Secrets where the payload contains an access key.
+     * * &#39;CERTIFICATE&#39;: Secrets where the payload contains a certificate.
+     * * &#39;OTHER&#39;: Secrets whose type doesn&#39;t belong to any of the above types.
      * 
      */
     public String secretType() {

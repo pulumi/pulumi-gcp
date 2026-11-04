@@ -219,7 +219,7 @@ class RegionBackendServiceArgs:
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
-               Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
                The service lb policy must be regional and in the same region as the backend service.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
@@ -802,7 +802,7 @@ class RegionBackendServiceArgs:
     def service_lb_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to networkservices.ServiceLbPolicy resource.
-        Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+        Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
         The service lb policy must be regional and in the same region as the backend service.
         """
         return pulumi.get(self, "service_lb_policy")
@@ -1091,7 +1091,7 @@ class _RegionBackendServiceState:
         :param pulumi.Input[_builtins.str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
-               Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
                The service lb policy must be regional and in the same region as the backend service.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
@@ -1731,7 +1731,7 @@ class _RegionBackendServiceState:
     def service_lb_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to networkservices.ServiceLbPolicy resource.
-        Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+        Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
         The service lb policy must be regional and in the same region as the backend service.
         """
         return pulumi.get(self, "service_lb_policy")
@@ -2690,7 +2690,7 @@ class RegionBackendService(pulumi.CustomResource):
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
-               Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
                The service lb policy must be regional and in the same region as the backend service.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
@@ -3710,7 +3710,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
-               Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
                The service lb policy must be regional and in the same region as the backend service.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
@@ -4179,7 +4179,7 @@ class RegionBackendService(pulumi.CustomResource):
     def service_lb_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         URL to networkservices.ServiceLbPolicy resource.
-        Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+        Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
         The service lb policy must be regional and in the same region as the backend service.
         """
         return pulumi.get(self, "service_lb_policy")

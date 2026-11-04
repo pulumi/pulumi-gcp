@@ -2170,6 +2170,9 @@ func (o DataProductAccessApprovalConfigPtrOutput) ApproverEmails() pulumi.String
 }
 
 type DataProductAccessGroup struct {
+	// Configuration for the default IAM role associated with the access group.
+	// Structure is documented below.
+	DefaultIamRoleConfig *DataProductAccessGroupDefaultIamRoleConfig `pulumi:"defaultIamRoleConfig"`
 	// Description of the access group.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -2195,6 +2198,9 @@ type DataProductAccessGroupInput interface {
 }
 
 type DataProductAccessGroupArgs struct {
+	// Configuration for the default IAM role associated with the access group.
+	// Structure is documented below.
+	DefaultIamRoleConfig DataProductAccessGroupDefaultIamRoleConfigPtrInput `pulumi:"defaultIamRoleConfig"`
 	// Description of the access group.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// User friendly display name.
@@ -2259,6 +2265,14 @@ func (o DataProductAccessGroupOutput) ToDataProductAccessGroupOutputWithContext(
 	return o
 }
 
+// Configuration for the default IAM role associated with the access group.
+// Structure is documented below.
+func (o DataProductAccessGroupOutput) DefaultIamRoleConfig() DataProductAccessGroupDefaultIamRoleConfigPtrOutput {
+	return o.ApplyT(func(v DataProductAccessGroup) *DataProductAccessGroupDefaultIamRoleConfig {
+		return v.DefaultIamRoleConfig
+	}).(DataProductAccessGroupDefaultIamRoleConfigPtrOutput)
+}
+
 // Description of the access group.
 func (o DataProductAccessGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataProductAccessGroup) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -2303,6 +2317,147 @@ func (o DataProductAccessGroupArrayOutput) Index(i pulumi.IntInput) DataProductA
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataProductAccessGroup {
 		return vs[0].([]DataProductAccessGroup)[vs[1].(int)]
 	}).(DataProductAccessGroupOutput)
+}
+
+type DataProductAccessGroupDefaultIamRoleConfig struct {
+	// Default IAM role associated with the access group, such as
+	// `roles/bigquery.dataViewer`.
+	Role string `pulumi:"role"`
+}
+
+// DataProductAccessGroupDefaultIamRoleConfigInput is an input type that accepts DataProductAccessGroupDefaultIamRoleConfigArgs and DataProductAccessGroupDefaultIamRoleConfigOutput values.
+// You can construct a concrete instance of `DataProductAccessGroupDefaultIamRoleConfigInput` via:
+//
+//	DataProductAccessGroupDefaultIamRoleConfigArgs{...}
+type DataProductAccessGroupDefaultIamRoleConfigInput interface {
+	pulumi.Input
+
+	ToDataProductAccessGroupDefaultIamRoleConfigOutput() DataProductAccessGroupDefaultIamRoleConfigOutput
+	ToDataProductAccessGroupDefaultIamRoleConfigOutputWithContext(context.Context) DataProductAccessGroupDefaultIamRoleConfigOutput
+}
+
+type DataProductAccessGroupDefaultIamRoleConfigArgs struct {
+	// Default IAM role associated with the access group, such as
+	// `roles/bigquery.dataViewer`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (DataProductAccessGroupDefaultIamRoleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductAccessGroupDefaultIamRoleConfig)(nil)).Elem()
+}
+
+func (i DataProductAccessGroupDefaultIamRoleConfigArgs) ToDataProductAccessGroupDefaultIamRoleConfigOutput() DataProductAccessGroupDefaultIamRoleConfigOutput {
+	return i.ToDataProductAccessGroupDefaultIamRoleConfigOutputWithContext(context.Background())
+}
+
+func (i DataProductAccessGroupDefaultIamRoleConfigArgs) ToDataProductAccessGroupDefaultIamRoleConfigOutputWithContext(ctx context.Context) DataProductAccessGroupDefaultIamRoleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductAccessGroupDefaultIamRoleConfigOutput)
+}
+
+func (i DataProductAccessGroupDefaultIamRoleConfigArgs) ToDataProductAccessGroupDefaultIamRoleConfigPtrOutput() DataProductAccessGroupDefaultIamRoleConfigPtrOutput {
+	return i.ToDataProductAccessGroupDefaultIamRoleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataProductAccessGroupDefaultIamRoleConfigArgs) ToDataProductAccessGroupDefaultIamRoleConfigPtrOutputWithContext(ctx context.Context) DataProductAccessGroupDefaultIamRoleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductAccessGroupDefaultIamRoleConfigOutput).ToDataProductAccessGroupDefaultIamRoleConfigPtrOutputWithContext(ctx)
+}
+
+// DataProductAccessGroupDefaultIamRoleConfigPtrInput is an input type that accepts DataProductAccessGroupDefaultIamRoleConfigArgs, DataProductAccessGroupDefaultIamRoleConfigPtr and DataProductAccessGroupDefaultIamRoleConfigPtrOutput values.
+// You can construct a concrete instance of `DataProductAccessGroupDefaultIamRoleConfigPtrInput` via:
+//
+//	        DataProductAccessGroupDefaultIamRoleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataProductAccessGroupDefaultIamRoleConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataProductAccessGroupDefaultIamRoleConfigPtrOutput() DataProductAccessGroupDefaultIamRoleConfigPtrOutput
+	ToDataProductAccessGroupDefaultIamRoleConfigPtrOutputWithContext(context.Context) DataProductAccessGroupDefaultIamRoleConfigPtrOutput
+}
+
+type dataProductAccessGroupDefaultIamRoleConfigPtrType DataProductAccessGroupDefaultIamRoleConfigArgs
+
+func DataProductAccessGroupDefaultIamRoleConfigPtr(v *DataProductAccessGroupDefaultIamRoleConfigArgs) DataProductAccessGroupDefaultIamRoleConfigPtrInput {
+	return (*dataProductAccessGroupDefaultIamRoleConfigPtrType)(v)
+}
+
+func (*dataProductAccessGroupDefaultIamRoleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataProductAccessGroupDefaultIamRoleConfig)(nil)).Elem()
+}
+
+func (i *dataProductAccessGroupDefaultIamRoleConfigPtrType) ToDataProductAccessGroupDefaultIamRoleConfigPtrOutput() DataProductAccessGroupDefaultIamRoleConfigPtrOutput {
+	return i.ToDataProductAccessGroupDefaultIamRoleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataProductAccessGroupDefaultIamRoleConfigPtrType) ToDataProductAccessGroupDefaultIamRoleConfigPtrOutputWithContext(ctx context.Context) DataProductAccessGroupDefaultIamRoleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductAccessGroupDefaultIamRoleConfigPtrOutput)
+}
+
+type DataProductAccessGroupDefaultIamRoleConfigOutput struct{ *pulumi.OutputState }
+
+func (DataProductAccessGroupDefaultIamRoleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductAccessGroupDefaultIamRoleConfig)(nil)).Elem()
+}
+
+func (o DataProductAccessGroupDefaultIamRoleConfigOutput) ToDataProductAccessGroupDefaultIamRoleConfigOutput() DataProductAccessGroupDefaultIamRoleConfigOutput {
+	return o
+}
+
+func (o DataProductAccessGroupDefaultIamRoleConfigOutput) ToDataProductAccessGroupDefaultIamRoleConfigOutputWithContext(ctx context.Context) DataProductAccessGroupDefaultIamRoleConfigOutput {
+	return o
+}
+
+func (o DataProductAccessGroupDefaultIamRoleConfigOutput) ToDataProductAccessGroupDefaultIamRoleConfigPtrOutput() DataProductAccessGroupDefaultIamRoleConfigPtrOutput {
+	return o.ToDataProductAccessGroupDefaultIamRoleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataProductAccessGroupDefaultIamRoleConfigOutput) ToDataProductAccessGroupDefaultIamRoleConfigPtrOutputWithContext(ctx context.Context) DataProductAccessGroupDefaultIamRoleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataProductAccessGroupDefaultIamRoleConfig) *DataProductAccessGroupDefaultIamRoleConfig {
+		return &v
+	}).(DataProductAccessGroupDefaultIamRoleConfigPtrOutput)
+}
+
+// Default IAM role associated with the access group, such as
+// `roles/bigquery.dataViewer`.
+func (o DataProductAccessGroupDefaultIamRoleConfigOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v DataProductAccessGroupDefaultIamRoleConfig) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type DataProductAccessGroupDefaultIamRoleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataProductAccessGroupDefaultIamRoleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataProductAccessGroupDefaultIamRoleConfig)(nil)).Elem()
+}
+
+func (o DataProductAccessGroupDefaultIamRoleConfigPtrOutput) ToDataProductAccessGroupDefaultIamRoleConfigPtrOutput() DataProductAccessGroupDefaultIamRoleConfigPtrOutput {
+	return o
+}
+
+func (o DataProductAccessGroupDefaultIamRoleConfigPtrOutput) ToDataProductAccessGroupDefaultIamRoleConfigPtrOutputWithContext(ctx context.Context) DataProductAccessGroupDefaultIamRoleConfigPtrOutput {
+	return o
+}
+
+func (o DataProductAccessGroupDefaultIamRoleConfigPtrOutput) Elem() DataProductAccessGroupDefaultIamRoleConfigOutput {
+	return o.ApplyT(func(v *DataProductAccessGroupDefaultIamRoleConfig) DataProductAccessGroupDefaultIamRoleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataProductAccessGroupDefaultIamRoleConfig
+		return ret
+	}).(DataProductAccessGroupDefaultIamRoleConfigOutput)
+}
+
+// Default IAM role associated with the access group, such as
+// `roles/bigquery.dataViewer`.
+func (o DataProductAccessGroupDefaultIamRoleConfigPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataProductAccessGroupDefaultIamRoleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Role
+	}).(pulumi.StringPtrOutput)
 }
 
 type DataProductAccessGroupPrincipal struct {
@@ -3900,6 +4055,9 @@ func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput) TypeInferenc
 type DatascanDataDocumentationSpec struct {
 	// If set, the latest DataScan job result will be published to Knowledge Catalog.
 	CatalogPublishingEnabled *bool `pulumi:"catalogPublishingEnabled"`
+	// Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+	// Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+	GenerationScopes []string `pulumi:"generationScopes"`
 	// The SQL dialect to use in the generated SQL queries.
 	// If not specified, the default dialect is Google SQL.
 	// Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
@@ -3920,6 +4078,9 @@ type DatascanDataDocumentationSpecInput interface {
 type DatascanDataDocumentationSpecArgs struct {
 	// If set, the latest DataScan job result will be published to Knowledge Catalog.
 	CatalogPublishingEnabled pulumi.BoolPtrInput `pulumi:"catalogPublishingEnabled"`
+	// Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+	// Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+	GenerationScopes pulumi.StringArrayInput `pulumi:"generationScopes"`
 	// The SQL dialect to use in the generated SQL queries.
 	// If not specified, the default dialect is Google SQL.
 	// Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
@@ -4008,6 +4169,12 @@ func (o DatascanDataDocumentationSpecOutput) CatalogPublishingEnabled() pulumi.B
 	return o.ApplyT(func(v DatascanDataDocumentationSpec) *bool { return v.CatalogPublishingEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+// Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+func (o DatascanDataDocumentationSpecOutput) GenerationScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatascanDataDocumentationSpec) []string { return v.GenerationScopes }).(pulumi.StringArrayOutput)
+}
+
 // The SQL dialect to use in the generated SQL queries.
 // If not specified, the default dialect is Google SQL.
 // Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
@@ -4049,6 +4216,17 @@ func (o DatascanDataDocumentationSpecPtrOutput) CatalogPublishingEnabled() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+// Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+func (o DatascanDataDocumentationSpecPtrOutput) GenerationScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatascanDataDocumentationSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GenerationScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 // The SQL dialect to use in the generated SQL queries.
 // If not specified, the default dialect is Google SQL.
 // Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
@@ -4072,6 +4250,9 @@ type DatascanDataProfileSpec struct {
 	// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
 	// Structure is documented below.
 	IncludeFields *DatascanDataProfileSpecIncludeFields `pulumi:"includeFields"`
+	// The execution mode for the profile scan.
+	// Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+	Mode *string `pulumi:"mode"`
 	// Actions to take upon job completion.
 	// Structure is documented below.
 	PostScanActions *DatascanDataProfileSpecPostScanActions `pulumi:"postScanActions"`
@@ -4105,6 +4286,9 @@ type DatascanDataProfileSpecArgs struct {
 	// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
 	// Structure is documented below.
 	IncludeFields DatascanDataProfileSpecIncludeFieldsPtrInput `pulumi:"includeFields"`
+	// The execution mode for the profile scan.
+	// Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Actions to take upon job completion.
 	// Structure is documented below.
 	PostScanActions DatascanDataProfileSpecPostScanActionsPtrInput `pulumi:"postScanActions"`
@@ -4212,6 +4396,12 @@ func (o DatascanDataProfileSpecOutput) IncludeFields() DatascanDataProfileSpecIn
 	return o.ApplyT(func(v DatascanDataProfileSpec) *DatascanDataProfileSpecIncludeFields { return v.IncludeFields }).(DatascanDataProfileSpecIncludeFieldsPtrOutput)
 }
 
+// The execution mode for the profile scan.
+// Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+func (o DatascanDataProfileSpecOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpec) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
 // Actions to take upon job completion.
 // Structure is documented below.
 func (o DatascanDataProfileSpecOutput) PostScanActions() DatascanDataProfileSpecPostScanActionsPtrOutput {
@@ -4286,6 +4476,17 @@ func (o DatascanDataProfileSpecPtrOutput) IncludeFields() DatascanDataProfileSpe
 		}
 		return v.IncludeFields
 	}).(DatascanDataProfileSpecIncludeFieldsPtrOutput)
+}
+
+// The execution mode for the profile scan.
+// Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+func (o DatascanDataProfileSpecPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
 }
 
 // Actions to take upon job completion.
@@ -6198,6 +6399,10 @@ type DatascanDataQualitySpecRule struct {
 	Attributes map[string]string `pulumi:"attributes"`
 	// The unnested column which this rule is evaluated against.
 	Column *string `pulumi:"column"`
+	// Specifies the debug queries for this rule.
+	// Currently, only one query is supported, but this may be expanded in the future.
+	// Structure is documented below.
+	DebugQueries []DatascanDataQualitySpecRuleDebugQuery `pulumi:"debugQueries"`
 	// Description of the rule.
 	// The maximum length is 1,024 characters.
 	Description *string `pulumi:"description"`
@@ -6261,6 +6466,10 @@ type DatascanDataQualitySpecRuleArgs struct {
 	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// The unnested column which this rule is evaluated against.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// Specifies the debug queries for this rule.
+	// Currently, only one query is supported, but this may be expanded in the future.
+	// Structure is documented below.
+	DebugQueries DatascanDataQualitySpecRuleDebugQueryArrayInput `pulumi:"debugQueries"`
 	// Description of the rule.
 	// The maximum length is 1,024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -6367,6 +6576,13 @@ func (o DatascanDataQualitySpecRuleOutput) Attributes() pulumi.StringMapOutput {
 // The unnested column which this rule is evaluated against.
 func (o DatascanDataQualitySpecRuleOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the debug queries for this rule.
+// Currently, only one query is supported, but this may be expanded in the future.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleOutput) DebugQueries() DatascanDataQualitySpecRuleDebugQueryArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) []DatascanDataQualitySpecRuleDebugQuery { return v.DebugQueries }).(DatascanDataQualitySpecRuleDebugQueryArrayOutput)
 }
 
 // Description of the rule.
@@ -6498,6 +6714,115 @@ func (o DatascanDataQualitySpecRuleArrayOutput) Index(i pulumi.IntInput) Datasca
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualitySpecRule {
 		return vs[0].([]DatascanDataQualitySpecRule)[vs[1].(int)]
 	}).(DatascanDataQualitySpecRuleOutput)
+}
+
+type DatascanDataQualitySpecRuleDebugQuery struct {
+	// Specifies the description of the debug query.
+	// The maximum length is 1,024 characters.
+	Description *string `pulumi:"description"`
+	// Specifies the SQL statement to be executed.
+	SqlStatement string `pulumi:"sqlStatement"`
+}
+
+// DatascanDataQualitySpecRuleDebugQueryInput is an input type that accepts DatascanDataQualitySpecRuleDebugQueryArgs and DatascanDataQualitySpecRuleDebugQueryOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleDebugQueryInput` via:
+//
+//	DatascanDataQualitySpecRuleDebugQueryArgs{...}
+type DatascanDataQualitySpecRuleDebugQueryInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleDebugQueryOutput() DatascanDataQualitySpecRuleDebugQueryOutput
+	ToDatascanDataQualitySpecRuleDebugQueryOutputWithContext(context.Context) DatascanDataQualitySpecRuleDebugQueryOutput
+}
+
+type DatascanDataQualitySpecRuleDebugQueryArgs struct {
+	// Specifies the description of the debug query.
+	// The maximum length is 1,024 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies the SQL statement to be executed.
+	SqlStatement pulumi.StringInput `pulumi:"sqlStatement"`
+}
+
+func (DatascanDataQualitySpecRuleDebugQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleDebugQuery)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleDebugQueryArgs) ToDatascanDataQualitySpecRuleDebugQueryOutput() DatascanDataQualitySpecRuleDebugQueryOutput {
+	return i.ToDatascanDataQualitySpecRuleDebugQueryOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleDebugQueryArgs) ToDatascanDataQualitySpecRuleDebugQueryOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleDebugQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleDebugQueryOutput)
+}
+
+// DatascanDataQualitySpecRuleDebugQueryArrayInput is an input type that accepts DatascanDataQualitySpecRuleDebugQueryArray and DatascanDataQualitySpecRuleDebugQueryArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleDebugQueryArrayInput` via:
+//
+//	DatascanDataQualitySpecRuleDebugQueryArray{ DatascanDataQualitySpecRuleDebugQueryArgs{...} }
+type DatascanDataQualitySpecRuleDebugQueryArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleDebugQueryArrayOutput() DatascanDataQualitySpecRuleDebugQueryArrayOutput
+	ToDatascanDataQualitySpecRuleDebugQueryArrayOutputWithContext(context.Context) DatascanDataQualitySpecRuleDebugQueryArrayOutput
+}
+
+type DatascanDataQualitySpecRuleDebugQueryArray []DatascanDataQualitySpecRuleDebugQueryInput
+
+func (DatascanDataQualitySpecRuleDebugQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualitySpecRuleDebugQuery)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleDebugQueryArray) ToDatascanDataQualitySpecRuleDebugQueryArrayOutput() DatascanDataQualitySpecRuleDebugQueryArrayOutput {
+	return i.ToDatascanDataQualitySpecRuleDebugQueryArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleDebugQueryArray) ToDatascanDataQualitySpecRuleDebugQueryArrayOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleDebugQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleDebugQueryArrayOutput)
+}
+
+type DatascanDataQualitySpecRuleDebugQueryOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleDebugQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleDebugQuery)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleDebugQueryOutput) ToDatascanDataQualitySpecRuleDebugQueryOutput() DatascanDataQualitySpecRuleDebugQueryOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleDebugQueryOutput) ToDatascanDataQualitySpecRuleDebugQueryOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleDebugQueryOutput {
+	return o
+}
+
+// Specifies the description of the debug query.
+// The maximum length is 1,024 characters.
+func (o DatascanDataQualitySpecRuleDebugQueryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleDebugQuery) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the SQL statement to be executed.
+func (o DatascanDataQualitySpecRuleDebugQueryOutput) SqlStatement() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleDebugQuery) string { return v.SqlStatement }).(pulumi.StringOutput)
+}
+
+type DatascanDataQualitySpecRuleDebugQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleDebugQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualitySpecRuleDebugQuery)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleDebugQueryArrayOutput) ToDatascanDataQualitySpecRuleDebugQueryArrayOutput() DatascanDataQualitySpecRuleDebugQueryArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleDebugQueryArrayOutput) ToDatascanDataQualitySpecRuleDebugQueryArrayOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleDebugQueryArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleDebugQueryArrayOutput) Index(i pulumi.IntInput) DatascanDataQualitySpecRuleDebugQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualitySpecRuleDebugQuery {
+		return vs[0].([]DatascanDataQualitySpecRuleDebugQuery)[vs[1].(int)]
+	}).(DatascanDataQualitySpecRuleDebugQueryOutput)
 }
 
 type DatascanDataQualitySpecRuleNonNullExpectation struct {
@@ -18322,6 +18647,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessApprovalConfigPtrInput)(nil)).Elem(), DataProductAccessApprovalConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupInput)(nil)).Elem(), DataProductAccessGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupArrayInput)(nil)).Elem(), DataProductAccessGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupDefaultIamRoleConfigInput)(nil)).Elem(), DataProductAccessGroupDefaultIamRoleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupDefaultIamRoleConfigPtrInput)(nil)).Elem(), DataProductAccessGroupDefaultIamRoleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupPrincipalInput)(nil)).Elem(), DataProductAccessGroupPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductDataAssetAccessGroupConfigInput)(nil)).Elem(), DataProductDataAssetAccessGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductDataAssetAccessGroupConfigArrayInput)(nil)).Elem(), DataProductDataAssetAccessGroupConfigArray{})
@@ -18371,6 +18698,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleInput)(nil)).Elem(), DatascanDataQualitySpecRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleArrayInput)(nil)).Elem(), DatascanDataQualitySpecRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleDebugQueryInput)(nil)).Elem(), DatascanDataQualitySpecRuleDebugQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleDebugQueryArrayInput)(nil)).Elem(), DatascanDataQualitySpecRuleDebugQueryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleNonNullExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleNonNullExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleNonNullExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleNonNullExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleRangeExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleRangeExpectationArgs{})
@@ -18553,6 +18882,8 @@ func init() {
 	pulumi.RegisterOutputType(DataProductAccessApprovalConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataProductAccessGroupOutput{})
 	pulumi.RegisterOutputType(DataProductAccessGroupArrayOutput{})
+	pulumi.RegisterOutputType(DataProductAccessGroupDefaultIamRoleConfigOutput{})
+	pulumi.RegisterOutputType(DataProductAccessGroupDefaultIamRoleConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataProductAccessGroupPrincipalOutput{})
 	pulumi.RegisterOutputType(DataProductDataAssetAccessGroupConfigOutput{})
 	pulumi.RegisterOutputType(DataProductDataAssetAccessGroupConfigArrayOutput{})
@@ -18602,6 +18933,8 @@ func init() {
 	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleDebugQueryOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleDebugQueryArrayOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleNonNullExpectationOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleNonNullExpectationPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleRangeExpectationOutput{})

@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-cluster"});
  * const _default = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: defaultNetwork.id,
  *     },
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: _default.then(_default => _default.id),
  *     },
@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: _default.then(_default => _default.id),
  *     },
@@ -120,7 +120,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.compute.Network("default", {name: "alloydb-cluster-full"});
  * const full = new gcp.alloydb.Cluster("full", {
  *     clusterId: "alloydb-cluster-full",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: _default.id,
  *     },
@@ -134,7 +134,7 @@ import * as utilities from "../utilities";
  *         recoveryWindowDays: 14,
  *     },
  *     automatedBackupPolicy: {
- *         location: "us-central1",
+ *         location: "us-east1",
  *         backupWindow: "1800s",
  *         enabled: true,
  *         weeklySchedule: {
@@ -172,7 +172,7 @@ import * as utilities from "../utilities";
  * });
  * const source = new gcp.alloydb.Cluster("source", {
  *     clusterId: "alloydb-source-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     network: _default.then(_default => _default.id),
  *     initialUser: {
  *         password: "alloydb-source-cluster",
@@ -203,14 +203,14 @@ import * as utilities from "../utilities";
  * });
  * const sourceBackup = new gcp.alloydb.Backup("source", {
  *     backupId: "alloydb-backup",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     clusterName: source.name,
  * }, {
  *     dependsOn: [sourceInstance],
  * });
  * const restoredFromBackup = new gcp.alloydb.Cluster("restored_from_backup", {
  *     clusterId: "alloydb-backup-restored",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: _default.then(_default => _default.id),
  *     },
@@ -221,7 +221,7 @@ import * as utilities from "../utilities";
  * });
  * const restoredViaPitr = new gcp.alloydb.Cluster("restored_via_pitr", {
  *     clusterId: "alloydb-pitr-restored",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: _default.then(_default => _default.id),
  *     },
@@ -243,7 +243,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.compute.Network("default", {name: "alloydb-secondary-cluster"});
  * const primary = new gcp.alloydb.Cluster("primary", {
  *     clusterId: "alloydb-primary-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     networkConfig: {
  *         network: _default.id,
  *     },

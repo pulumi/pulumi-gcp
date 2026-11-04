@@ -75,6 +75,11 @@ export type RegionalSecretIamPolicy = import("./regionalSecretIamPolicy").Region
 export const RegionalSecretIamPolicy: typeof import("./regionalSecretIamPolicy").RegionalSecretIamPolicy = null as any;
 utilities.lazyLoad(exports, ["RegionalSecretIamPolicy"], () => require("./regionalSecretIamPolicy"));
 
+export { RegionalSecretManagedRotationArgs, RegionalSecretManagedRotationState } from "./regionalSecretManagedRotation";
+export type RegionalSecretManagedRotation = import("./regionalSecretManagedRotation").RegionalSecretManagedRotation;
+export const RegionalSecretManagedRotation: typeof import("./regionalSecretManagedRotation").RegionalSecretManagedRotation = null as any;
+utilities.lazyLoad(exports, ["RegionalSecretManagedRotation"], () => require("./regionalSecretManagedRotation"));
+
 export { RegionalSecretVersionArgs, RegionalSecretVersionState } from "./regionalSecretVersion";
 export type RegionalSecretVersion = import("./regionalSecretVersion").RegionalSecretVersion;
 export const RegionalSecretVersion: typeof import("./regionalSecretVersion").RegionalSecretVersion = null as any;
@@ -118,6 +123,8 @@ const _module = {
                 return new RegionalSecretIamMember(name, <any>undefined, { urn })
             case "gcp:secretmanager/regionalSecretIamPolicy:RegionalSecretIamPolicy":
                 return new RegionalSecretIamPolicy(name, <any>undefined, { urn })
+            case "gcp:secretmanager/regionalSecretManagedRotation:RegionalSecretManagedRotation":
+                return new RegionalSecretManagedRotation(name, <any>undefined, { urn })
             case "gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion":
                 return new RegionalSecretVersion(name, <any>undefined, { urn })
             case "gcp:secretmanager/secret:Secret":
@@ -139,6 +146,7 @@ pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecret", _mo
 pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecretIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecretIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecretIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecretManagedRotation", _module)
 pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecretVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "secretmanager/secret", _module)
 pulumi.runtime.registerResourceModule("gcp", "secretmanager/secretIamBinding", _module)

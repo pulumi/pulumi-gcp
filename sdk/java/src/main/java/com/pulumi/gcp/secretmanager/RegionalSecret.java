@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
 import com.pulumi.gcp.secretmanager.inputs.RegionalSecretState;
 import com.pulumi.gcp.secretmanager.outputs.RegionalSecretCustomerManagedEncryption;
+import com.pulumi.gcp.secretmanager.outputs.RegionalSecretPolicyMember;
 import com.pulumi.gcp.secretmanager.outputs.RegionalSecretRotation;
 import com.pulumi.gcp.secretmanager.outputs.RegionalSecretTopic;
 import java.lang.Boolean;
@@ -315,6 +316,41 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Regional Secret Cloud Sql Db Credentials
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.RegionalSecret;
+ * import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var regional_secret_cloud_sql_db_credentials = new RegionalSecret("regional-secret-cloud-sql-db-credentials", RegionalSecretArgs.builder()
+ *             .secretId("tf-reg-secret")
+ *             .location("us-central1")
+ *             .secretType("CLOUD_SQL_DB_CREDENTIALS")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * RegionalSecret can be imported using any of these accepted formats:
@@ -557,6 +593,24 @@ public class RegionalSecret extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * An object containing a unique resource identity tied to the regional secret. This identity can be
+     * granted the permissions required by features such as managed rotation.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="policyMembers", refs={List.class,RegionalSecretPolicyMember.class}, tree="[0,1]")
+    private Output<List<RegionalSecretPolicyMember>> policyMembers;
+
+    /**
+     * @return An object containing a unique resource identity tied to the regional secret. This identity can be
+     * granted the permissions required by features such as managed rotation.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<RegionalSecretPolicyMember>> policyMembers() {
+        return this.policyMembers;
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -591,7 +645,7 @@ public class RegionalSecret extends com.pulumi.resources.CustomResource {
     /**
      * The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
      * will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-     * set to configure rotation.
+     * set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
      * Structure is documented below.
      * 
      */
@@ -601,7 +655,7 @@ public class RegionalSecret extends com.pulumi.resources.CustomResource {
     /**
      * @return The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
      * will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-     * set to configure rotation.
+     * set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
      * Structure is documented below.
      * 
      */
@@ -625,6 +679,15 @@ public class RegionalSecret extends com.pulumi.resources.CustomResource {
     /**
      * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+     *   credentials. Managed rotation can be enabled on these secrets using the
+     *   `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+     *   be added manually to secrets of this type.
+     * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+     * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+     * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+     * * `OTHER`: Secrets whose type doesn&#39;t belong to any of the above types.
      * 
      */
     @Export(name="secretType", refs={String.class}, tree="[0]")
@@ -633,6 +696,15 @@ public class RegionalSecret extends com.pulumi.resources.CustomResource {
     /**
      * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+     *   credentials. Managed rotation can be enabled on these secrets using the
+     *   `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+     *   be added manually to secrets of this type.
+     * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+     * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+     * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+     * * `OTHER`: Secrets whose type doesn&#39;t belong to any of the above types.
      * 
      */
     public Output<Optional<String>> secretType() {

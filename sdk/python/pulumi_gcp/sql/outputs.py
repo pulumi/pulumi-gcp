@@ -6253,6 +6253,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  blue_green_deployments: Sequence['outputs.GetDatabaseInstancesInstanceBlueGreenDeploymentResult'],
                  clones: Sequence['outputs.GetDatabaseInstancesInstanceCloneResult'],
                  connection_name: _builtins.str,
+                 database_center_integration: _builtins.str,
                  database_version: _builtins.str,
                  deletion_policy: _builtins.str,
                  deletion_protection: _builtins.bool,
@@ -6294,6 +6295,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param Sequence['GetDatabaseInstancesInstanceBlueGreenDeploymentArgs'] blue_green_deployments: Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
         :param Sequence['GetDatabaseInstancesInstanceCloneArgs'] clones: Configuration for creating a new instance as a clone of another instance.
         :param _builtins.str connection_name: The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
+        :param _builtins.str database_center_integration: The Database Center integration control.
         :param _builtins.str database_version: To filter out the Cloud SQL instances which are of the specified database version.
         :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
                When a 'terraform destroy' or 'terraform apply' would delete the instance,
@@ -6337,6 +6339,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "blue_green_deployments", blue_green_deployments)
         pulumi.set(__self__, "clones", clones)
         pulumi.set(__self__, "connection_name", connection_name)
+        pulumi.set(__self__, "database_center_integration", database_center_integration)
         pulumi.set(__self__, "database_version", database_version)
         pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -6412,6 +6415,14 @@ class GetDatabaseInstancesInstanceResult(dict):
         The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
         """
         return pulumi.get(self, "connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseCenterIntegration")
+    def database_center_integration(self) -> _builtins.str:
+        """
+        The Database Center integration control.
+        """
+        return pulumi.get(self, "database_center_integration")
 
     @_builtins.property
     @pulumi.getter(name="databaseVersion")

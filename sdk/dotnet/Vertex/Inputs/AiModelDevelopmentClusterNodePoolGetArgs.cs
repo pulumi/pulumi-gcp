@@ -62,7 +62,9 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<string>? FlexStartMaxDuration { get; set; }
 
         /// <summary>
-        /// The unique ID referring to this node pool.
+        /// The unique ID referring to this node pool. Cannot be modified in
+        /// place on an existing node pool; changing `Id` updates the list of
+        /// node pools by adding/removing pools (validated server-side).
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

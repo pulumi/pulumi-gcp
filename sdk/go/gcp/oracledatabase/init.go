@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GoldengateConnectionAssignment{}
 	case "gcp:oracledatabase/goldengateDeployment:GoldengateDeployment":
 		r = &GoldengateDeployment{}
+	case "gcp:oracledatabase/odbDnsZone:OdbDnsZone":
+		r = &OdbDnsZone{}
 	case "gcp:oracledatabase/odbNetwork:OdbNetwork":
 		r = &OdbNetwork{}
 	case "gcp:oracledatabase/odbSubnet:OdbSubnet":
@@ -106,6 +108,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"oracledatabase/goldengateDeployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"oracledatabase/odbDnsZone",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

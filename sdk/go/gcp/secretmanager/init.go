@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionalSecretIamMember{}
 	case "gcp:secretmanager/regionalSecretIamPolicy:RegionalSecretIamPolicy":
 		r = &RegionalSecretIamPolicy{}
+	case "gcp:secretmanager/regionalSecretManagedRotation:RegionalSecretManagedRotation":
+		r = &RegionalSecretManagedRotation{}
 	case "gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion":
 		r = &RegionalSecretVersion{}
 	case "gcp:secretmanager/secret:Secret":
@@ -72,6 +74,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"secretmanager/regionalSecretIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"secretmanager/regionalSecretManagedRotation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

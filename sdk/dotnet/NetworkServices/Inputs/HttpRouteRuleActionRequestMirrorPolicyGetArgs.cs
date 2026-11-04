@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         [Input("destination")]
         public Input<Inputs.HttpRouteRuleActionRequestMirrorPolicyDestinationGetArgs>? Destination { get; set; }
 
+        /// <summary>
+        /// The percentage of requests to get mirrored to the desired destination.
+        /// </summary>
+        [Input("mirrorPercent")]
+        public Input<double>? MirrorPercent { get; set; }
+
         public HttpRouteRuleActionRequestMirrorPolicyGetArgs()
         {
         }

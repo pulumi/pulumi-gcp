@@ -113,6 +113,9 @@ import (
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
 //							GoogleGroup: pulumi.String("tf-test-analysts-_62793@example.com"),
 //						},
+//						DefaultIamRoleConfig: &dataplex.DataProductAccessGroupDefaultIamRoleConfigArgs{
+//							Role: pulumi.String("roles/bigquery.dataViewer"),
+//						},
 //					},
 //					&dataplex.DataProductAccessGroupArgs{
 //						Id:          pulumi.String("scientist"),

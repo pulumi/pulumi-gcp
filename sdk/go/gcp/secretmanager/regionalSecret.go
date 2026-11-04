@@ -271,6 +271,34 @@ import (
 //
 // ```
 //
+// ### Regional Secret Cloud Sql Db Credentials
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewRegionalSecret(ctx, "regional-secret-cloud-sql-db-credentials", &secretmanager.RegionalSecretArgs{
+//				SecretId:   pulumi.String("tf-reg-secret"),
+//				Location:   pulumi.String("us-central1"),
+//				SecretType: pulumi.String("CLOUD_SQL_DB_CREDENTIALS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RegionalSecret can be imported using any of these accepted formats:
@@ -345,6 +373,10 @@ type RegionalSecret struct {
 	// The resource name of the regional secret. Format:
 	// `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
 	Name pulumi.StringOutput `pulumi:"name"`
+	// An object containing a unique resource identity tied to the regional secret. This identity can be
+	// granted the permissions required by features such as managed rotation.
+	// Structure is documented below.
+	PolicyMembers RegionalSecretPolicyMemberArrayOutput `pulumi:"policyMembers"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -353,13 +385,22 @@ type RegionalSecret struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-	// set to configure rotation.
+	// set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
 	// Structure is documented below.
 	Rotation RegionalSecretRotationPtrOutput `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+	//   credentials. Managed rotation can be enabled on these secrets using the
+	//   `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+	//   be added manually to secrets of this type.
+	// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+	// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+	// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+	// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 	SecretType pulumi.StringPtrOutput `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -485,6 +526,10 @@ type regionalSecretState struct {
 	// The resource name of the regional secret. Format:
 	// `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
 	Name *string `pulumi:"name"`
+	// An object containing a unique resource identity tied to the regional secret. This identity can be
+	// granted the permissions required by features such as managed rotation.
+	// Structure is documented below.
+	PolicyMembers []RegionalSecretPolicyMember `pulumi:"policyMembers"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -493,13 +538,22 @@ type regionalSecretState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-	// set to configure rotation.
+	// set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
 	// Structure is documented below.
 	Rotation *RegionalSecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId *string `pulumi:"secretId"`
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+	//   credentials. Managed rotation can be enabled on these secrets using the
+	//   `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+	//   be added manually to secrets of this type.
+	// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+	// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+	// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+	// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 	SecretType *string `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -585,6 +639,10 @@ type RegionalSecretState struct {
 	// The resource name of the regional secret. Format:
 	// `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
 	Name pulumi.StringPtrInput
+	// An object containing a unique resource identity tied to the regional secret. This identity can be
+	// granted the permissions required by features such as managed rotation.
+	// Structure is documented below.
+	PolicyMembers RegionalSecretPolicyMemberArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -593,13 +651,22 @@ type RegionalSecretState struct {
 	PulumiLabels pulumi.StringMapInput
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-	// set to configure rotation.
+	// set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
 	// Structure is documented below.
 	Rotation RegionalSecretRotationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringPtrInput
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+	//   credentials. Managed rotation can be enabled on these secrets using the
+	//   `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+	//   be added manually to secrets of this type.
+	// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+	// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+	// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+	// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 	SecretType pulumi.StringPtrInput
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -685,13 +752,22 @@ type regionalSecretArgs struct {
 	Project *string `pulumi:"project"`
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-	// set to configure rotation.
+	// set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
 	// Structure is documented below.
 	Rotation *RegionalSecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId string `pulumi:"secretId"`
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+	//   credentials. Managed rotation can be enabled on these secrets using the
+	//   `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+	//   be added manually to secrets of this type.
+	// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+	// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+	// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+	// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 	SecretType *string `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -774,13 +850,22 @@ type RegionalSecretArgs struct {
 	Project pulumi.StringPtrInput
 	// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 	// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-	// set to configure rotation.
+	// set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
 	// Structure is documented below.
 	Rotation RegionalSecretRotationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringInput
 	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	// Supported values are:
+	// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+	//   credentials. Managed rotation can be enabled on these secrets using the
+	//   `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+	//   be added manually to secrets of this type.
+	// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+	// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+	// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+	// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
 	SecretType pulumi.StringPtrInput
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
@@ -987,6 +1072,13 @@ func (o RegionalSecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalSecret) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// An object containing a unique resource identity tied to the regional secret. This identity can be
+// granted the permissions required by features such as managed rotation.
+// Structure is documented below.
+func (o RegionalSecretOutput) PolicyMembers() RegionalSecretPolicyMemberArrayOutput {
+	return o.ApplyT(func(v *RegionalSecret) RegionalSecretPolicyMemberArrayOutput { return v.PolicyMembers }).(RegionalSecretPolicyMemberArrayOutput)
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o RegionalSecretOutput) Project() pulumi.StringOutput {
@@ -1002,7 +1094,7 @@ func (o RegionalSecretOutput) PulumiLabels() pulumi.StringMapOutput {
 
 // The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
 // will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-// set to configure rotation.
+// set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
 // Structure is documented below.
 func (o RegionalSecretOutput) Rotation() RegionalSecretRotationPtrOutput {
 	return o.ApplyT(func(v *RegionalSecret) RegionalSecretRotationPtrOutput { return v.Rotation }).(RegionalSecretRotationPtrOutput)
@@ -1015,6 +1107,15 @@ func (o RegionalSecretOutput) SecretId() pulumi.StringOutput {
 
 // This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
 // For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+// Supported values are:
+//   - `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+//     credentials. Managed rotation can be enabled on these secrets using the
+//     `secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+//     be added manually to secrets of this type.
+//   - `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+//   - `ACCESS_KEY`: Secrets where the payload contains an access key.
+//   - `CERTIFICATE`: Secrets where the payload contains a certificate.
+//   - `OTHER`: Secrets whose type doesn't belong to any of the above types.
 func (o RegionalSecretOutput) SecretType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionalSecret) pulumi.StringPtrOutput { return v.SecretType }).(pulumi.StringPtrOutput)
 }

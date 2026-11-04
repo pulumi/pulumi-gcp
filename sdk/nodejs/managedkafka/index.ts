@@ -10,6 +10,11 @@ export type Acl = import("./acl").Acl;
 export const Acl: typeof import("./acl").Acl = null as any;
 utilities.lazyLoad(exports, ["Acl"], () => require("./acl"));
 
+export { AclBindingArgs, AclBindingState } from "./aclBinding";
+export type AclBinding = import("./aclBinding").AclBinding;
+export const AclBinding: typeof import("./aclBinding").AclBinding = null as any;
+utilities.lazyLoad(exports, ["AclBinding"], () => require("./aclBinding"));
+
 export { ClusterArgs, ClusterState } from "./cluster";
 export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
@@ -37,6 +42,8 @@ const _module = {
         switch (type) {
             case "gcp:managedkafka/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
+            case "gcp:managedkafka/aclBinding:AclBinding":
+                return new AclBinding(name, <any>undefined, { urn })
             case "gcp:managedkafka/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
             case "gcp:managedkafka/connectCluster:ConnectCluster":
@@ -51,6 +58,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "managedkafka/acl", _module)
+pulumi.runtime.registerResourceModule("gcp", "managedkafka/aclBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "managedkafka/cluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "managedkafka/connectCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "managedkafka/connector", _module)

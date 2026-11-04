@@ -771,13 +771,13 @@ class WorkstationCluster(pulumi.CustomResource):
         default_subnetwork = gcp.compute.Subnetwork("default",
             name="workstation-cluster",
             ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
+            region="us-west4",
             network=default_network.name)
         default = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster",
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            location="us-central1",
+            location="us-west4",
             labels={
                 "label": "key",
             },
@@ -793,71 +793,6 @@ class WorkstationCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("default",
-            name="workstation-cluster-private",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster-private",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster-private",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            private_cluster_config={
-                "enable_private_endpoint": True,
-            },
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        project = gcp.organizations.get_project()
-        ```
-
-        ### Workstation Cluster Custom Domain
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstation-cluster-custom-domain",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster-custom-domain",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster-custom-domain",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            private_cluster_config={
-                "enable_private_endpoint": True,
-            },
-            domain_config={
-                "domain": "workstations.example.com",
-            },
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        project = gcp.organizations.get_project()
-        ```
-
-        ### Workstation Cluster Tags
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
         project = gcp.organizations.get_project()
         tag_key = gcp.tags.TagKey("tag_key",
             parent=f"projects/{project.number}",
@@ -866,18 +801,33 @@ class WorkstationCluster(pulumi.CustomResource):
             parent=tag_key.name.apply(lambda name: f"tagKeys/{name}"),
             short_name="valuename")
         default_network = gcp.compute.Network("default",
-            name="workstation-cluster-tags",
+            name="workstation-cluster-private",
             auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster-tags",
+            name="workstation-cluster-private",
             ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
+            region="europe-west4",
             network=default_network.name)
         default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster-tags",
+            workstation_cluster_id="workstation-cluster-private",
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            location="us-central1",
+            location="europe-west4",
+            display_name="cluster-display-name",
+            private_cluster_config={
+                "enable_private_endpoint": True,
+            },
+            domain_config={
+                "domain": "workstations.example.com",
+            },
+            workstation_authorization_url="https://console.cloud.google.com/workstations/auth",
+            workstation_launch_url="https://console.cloud.google.com/workstations/launch",
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            },
             tags=pulumi.Output.all(
                 tagKeyShort_name=tag_key.short_name,
                 tagValueShort_name=tag_value.short_name
@@ -887,29 +837,9 @@ class WorkstationCluster(pulumi.CustomResource):
         )
         ```
 
-        ### Workstation Cluster Custom Urls
+        ## Regional Endpoint Policies
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstations-network",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstations-network",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="custom-urls-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            workstation_authorization_url="https://console.cloud.google.com/workstations/auth",
-            workstation_launch_url="https://console.cloud.google.com/workstations/launch")
-        project = gcp.organizations.get_project()
-        ```
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 
         ## Import
 
@@ -993,13 +923,13 @@ class WorkstationCluster(pulumi.CustomResource):
         default_subnetwork = gcp.compute.Subnetwork("default",
             name="workstation-cluster",
             ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
+            region="us-west4",
             network=default_network.name)
         default = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster",
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            location="us-central1",
+            location="us-west4",
             labels={
                 "label": "key",
             },
@@ -1015,71 +945,6 @@ class WorkstationCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("default",
-            name="workstation-cluster-private",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster-private",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster-private",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            private_cluster_config={
-                "enable_private_endpoint": True,
-            },
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        project = gcp.organizations.get_project()
-        ```
-
-        ### Workstation Cluster Custom Domain
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstation-cluster-custom-domain",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster-custom-domain",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster-custom-domain",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            private_cluster_config={
-                "enable_private_endpoint": True,
-            },
-            domain_config={
-                "domain": "workstations.example.com",
-            },
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        project = gcp.organizations.get_project()
-        ```
-
-        ### Workstation Cluster Tags
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
         project = gcp.organizations.get_project()
         tag_key = gcp.tags.TagKey("tag_key",
             parent=f"projects/{project.number}",
@@ -1088,18 +953,33 @@ class WorkstationCluster(pulumi.CustomResource):
             parent=tag_key.name.apply(lambda name: f"tagKeys/{name}"),
             short_name="valuename")
         default_network = gcp.compute.Network("default",
-            name="workstation-cluster-tags",
+            name="workstation-cluster-private",
             auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster-tags",
+            name="workstation-cluster-private",
             ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
+            region="europe-west4",
             network=default_network.name)
         default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster-tags",
+            workstation_cluster_id="workstation-cluster-private",
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            location="us-central1",
+            location="europe-west4",
+            display_name="cluster-display-name",
+            private_cluster_config={
+                "enable_private_endpoint": True,
+            },
+            domain_config={
+                "domain": "workstations.example.com",
+            },
+            workstation_authorization_url="https://console.cloud.google.com/workstations/auth",
+            workstation_launch_url="https://console.cloud.google.com/workstations/launch",
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            },
             tags=pulumi.Output.all(
                 tagKeyShort_name=tag_key.short_name,
                 tagValueShort_name=tag_value.short_name
@@ -1109,29 +989,9 @@ class WorkstationCluster(pulumi.CustomResource):
         )
         ```
 
-        ### Workstation Cluster Custom Urls
+        ## Regional Endpoint Policies
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstations-network",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstations-network",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="custom-urls-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            workstation_authorization_url="https://console.cloud.google.com/workstations/auth",
-            workstation_launch_url="https://console.cloud.google.com/workstations/launch")
-        project = gcp.organizations.get_project()
-        ```
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 
         ## Import
 

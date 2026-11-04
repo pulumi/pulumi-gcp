@@ -79,6 +79,7 @@ export interface GetCloudVmClusterResult {
     readonly location: string;
     readonly name: string;
     readonly network: string;
+    readonly odbDnsZone: string;
     readonly odbNetwork: string;
     readonly odbSubnet: string;
     readonly project?: string;

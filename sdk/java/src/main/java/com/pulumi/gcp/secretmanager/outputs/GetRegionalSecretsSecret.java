@@ -6,6 +6,7 @@ package com.pulumi.gcp.secretmanager.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretsSecretCustomerManagedEncryption;
+import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretsSecretPolicyMember;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretsSecretRotation;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretsSecretTopic;
 import java.lang.Boolean;
@@ -80,6 +81,12 @@ public final class GetRegionalSecretsSecret {
      */
     private String name;
     /**
+     * @return An object containing a unique resource identity tied to the regional secret. This identity can be
+     * granted the permissions required by features such as managed rotation.
+     * 
+     */
+    private List<GetRegionalSecretsSecretPolicyMember> policyMembers;
+    /**
      * @return The ID of the project.
      * 
      */
@@ -104,6 +111,15 @@ public final class GetRegionalSecretsSecret {
     /**
      * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * &#39;CLOUD_SQL_DB_CREDENTIALS&#39;: Secrets used for managed rotation of Cloud SQL single-user
+     *   credentials. Managed rotation can be enabled on these secrets using the
+     *   &#39;google_secret_manager_regional_secret_managed_rotation&#39; resource. Secret versions cannot
+     *   be added manually to secrets of this type.
+     * * &#39;OTHER_DB_CREDENTIALS&#39;: Secrets where the payload contains database credentials.
+     * * &#39;ACCESS_KEY&#39;: Secrets where the payload contains an access key.
+     * * &#39;CERTIFICATE&#39;: Secrets where the payload contains a certificate.
+     * * &#39;OTHER&#39;: Secrets whose type doesn&#39;t belong to any of the above types.
      * 
      */
     private String secretType;
@@ -224,6 +240,14 @@ public final class GetRegionalSecretsSecret {
         return this.name;
     }
     /**
+     * @return An object containing a unique resource identity tied to the regional secret. This identity can be
+     * granted the permissions required by features such as managed rotation.
+     * 
+     */
+    public List<GetRegionalSecretsSecretPolicyMember> policyMembers() {
+        return this.policyMembers;
+    }
+    /**
      * @return The ID of the project.
      * 
      */
@@ -256,6 +280,15 @@ public final class GetRegionalSecretsSecret {
     /**
      * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * &#39;CLOUD_SQL_DB_CREDENTIALS&#39;: Secrets used for managed rotation of Cloud SQL single-user
+     *   credentials. Managed rotation can be enabled on these secrets using the
+     *   &#39;google_secret_manager_regional_secret_managed_rotation&#39; resource. Secret versions cannot
+     *   be added manually to secrets of this type.
+     * * &#39;OTHER_DB_CREDENTIALS&#39;: Secrets where the payload contains database credentials.
+     * * &#39;ACCESS_KEY&#39;: Secrets where the payload contains an access key.
+     * * &#39;CERTIFICATE&#39;: Secrets where the payload contains a certificate.
+     * * &#39;OTHER&#39;: Secrets whose type doesn&#39;t belong to any of the above types.
      * 
      */
     public String secretType() {
@@ -321,6 +354,7 @@ public final class GetRegionalSecretsSecret {
         private Map<String,String> labels;
         private String location;
         private String name;
+        private List<GetRegionalSecretsSecretPolicyMember> policyMembers;
         private String project;
         private Map<String,String> pulumiLabels;
         private List<GetRegionalSecretsSecretRotation> rotations;
@@ -345,6 +379,7 @@ public final class GetRegionalSecretsSecret {
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
+    	      this.policyMembers = defaults.policyMembers;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.rotations = defaults.rotations;
@@ -449,6 +484,17 @@ public final class GetRegionalSecretsSecret {
             return this;
         }
         @CustomType.Setter
+        public Builder policyMembers(List<GetRegionalSecretsSecretPolicyMember> policyMembers) {
+            if (policyMembers == null) {
+              throw new MissingRequiredPropertyException("GetRegionalSecretsSecret", "policyMembers");
+            }
+            this.policyMembers = policyMembers;
+            return this;
+        }
+        public Builder policyMembers(GetRegionalSecretsSecretPolicyMember... policyMembers) {
+            return policyMembers(List.of(policyMembers));
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             if (project == null) {
               throw new MissingRequiredPropertyException("GetRegionalSecretsSecret", "project");
@@ -547,6 +593,7 @@ public final class GetRegionalSecretsSecret {
             _resultValue.labels = labels;
             _resultValue.location = location;
             _resultValue.name = name;
+            _resultValue.policyMembers = policyMembers;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.rotations = rotations;

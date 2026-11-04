@@ -109,6 +109,90 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Biglake Iceberg Table Nested Types
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "my-bucket",
+ *     location: "us-central1",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const catalog = new gcp.biglake.IcebergCatalog("catalog", {
+ *     name: bucket.name,
+ *     catalogType: "CATALOG_TYPE_GCS_BUCKET",
+ * });
+ * const namespace = new gcp.biglake.IcebergNamespace("namespace", {
+ *     catalog: catalog.name,
+ *     namespaceId: "my_namespace",
+ * });
+ * const myIcebergTable = new gcp.biglake.IcebergTable("my_iceberg_table", {
+ *     catalog: catalog.name,
+ *     namespace: namespace.namespaceId,
+ *     name: "my_table",
+ *     schema: {
+ *         type: "struct",
+ *         fields: [
+ *             {
+ *                 id: 1,
+ *                 name: "id",
+ *                 type: "long",
+ *                 required: true,
+ *             },
+ *             {
+ *                 id: 2,
+ *                 name: "tags",
+ *                 type: JSON.stringify({
+ *                     type: "list",
+ *                     "element-id": 5,
+ *                     element: "string",
+ *                     "element-required": false,
+ *                 }),
+ *                 required: false,
+ *             },
+ *             {
+ *                 id: 3,
+ *                 name: "attributes",
+ *                 type: JSON.stringify({
+ *                     type: "map",
+ *                     "key-id": 6,
+ *                     key: "string",
+ *                     "value-id": 7,
+ *                     value: "long",
+ *                     "value-required": false,
+ *                 }),
+ *                 required: false,
+ *             },
+ *             {
+ *                 id: 4,
+ *                 name: "address",
+ *                 type: JSON.stringify({
+ *                     type: "struct",
+ *                     fields: [
+ *                         {
+ *                             id: 8,
+ *                             name: "street",
+ *                             type: "string",
+ *                             required: false,
+ *                         },
+ *                         {
+ *                             id: 9,
+ *                             name: "city",
+ *                             type: "string",
+ *                             required: false,
+ *                         },
+ *                     ],
+ *                 }),
+ *                 required: false,
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ *
  * ### Biglake Iceberg Table Update
  *
  * ```typescript

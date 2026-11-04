@@ -505,6 +505,87 @@ class IcebergTable(pulumi.CustomResource):
             })
         ```
 
+        ### Biglake Iceberg Table Nested Types
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            name="my-bucket",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        catalog = gcp.biglake.IcebergCatalog("catalog",
+            name=bucket.name,
+            catalog_type="CATALOG_TYPE_GCS_BUCKET")
+        namespace = gcp.biglake.IcebergNamespace("namespace",
+            catalog=catalog.name,
+            namespace_id="my_namespace")
+        my_iceberg_table = gcp.biglake.IcebergTable("my_iceberg_table",
+            catalog=catalog.name,
+            namespace=namespace.namespace_id,
+            name="my_table",
+            schema={
+                "type": "struct",
+                "fields": [
+                    {
+                        "id": 1,
+                        "name": "id",
+                        "type": "long",
+                        "required": True,
+                    },
+                    {
+                        "id": 2,
+                        "name": "tags",
+                        "type": json.dumps({
+                            "type": "list",
+                            "element-id": 5,
+                            "element": "string",
+                            "element-required": False,
+                        }),
+                        "required": False,
+                    },
+                    {
+                        "id": 3,
+                        "name": "attributes",
+                        "type": json.dumps({
+                            "type": "map",
+                            "key-id": 6,
+                            "key": "string",
+                            "value-id": 7,
+                            "value": "long",
+                            "value-required": False,
+                        }),
+                        "required": False,
+                    },
+                    {
+                        "id": 4,
+                        "name": "address",
+                        "type": json.dumps({
+                            "type": "struct",
+                            "fields": [
+                                {
+                                    "id": 8,
+                                    "name": "street",
+                                    "type": "string",
+                                    "required": False,
+                                },
+                                {
+                                    "id": 9,
+                                    "name": "city",
+                                    "type": "string",
+                                    "required": False,
+                                },
+                            ],
+                        }),
+                        "required": False,
+                    },
+                ],
+            })
+        ```
+
         ### Biglake Iceberg Table Update
 
         ```python
@@ -681,6 +762,87 @@ class IcebergTable(pulumi.CustomResource):
                     "direction": "asc",
                     "null_order": "nulls-first",
                 }],
+            })
+        ```
+
+        ### Biglake Iceberg Table Nested Types
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            name="my-bucket",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        catalog = gcp.biglake.IcebergCatalog("catalog",
+            name=bucket.name,
+            catalog_type="CATALOG_TYPE_GCS_BUCKET")
+        namespace = gcp.biglake.IcebergNamespace("namespace",
+            catalog=catalog.name,
+            namespace_id="my_namespace")
+        my_iceberg_table = gcp.biglake.IcebergTable("my_iceberg_table",
+            catalog=catalog.name,
+            namespace=namespace.namespace_id,
+            name="my_table",
+            schema={
+                "type": "struct",
+                "fields": [
+                    {
+                        "id": 1,
+                        "name": "id",
+                        "type": "long",
+                        "required": True,
+                    },
+                    {
+                        "id": 2,
+                        "name": "tags",
+                        "type": json.dumps({
+                            "type": "list",
+                            "element-id": 5,
+                            "element": "string",
+                            "element-required": False,
+                        }),
+                        "required": False,
+                    },
+                    {
+                        "id": 3,
+                        "name": "attributes",
+                        "type": json.dumps({
+                            "type": "map",
+                            "key-id": 6,
+                            "key": "string",
+                            "value-id": 7,
+                            "value": "long",
+                            "value-required": False,
+                        }),
+                        "required": False,
+                    },
+                    {
+                        "id": 4,
+                        "name": "address",
+                        "type": json.dumps({
+                            "type": "struct",
+                            "fields": [
+                                {
+                                    "id": 8,
+                                    "name": "street",
+                                    "type": "string",
+                                    "required": False,
+                                },
+                                {
+                                    "id": 9,
+                                    "name": "city",
+                                    "type": "string",
+                                    "required": False,
+                                },
+                            ],
+                        }),
+                        "required": False,
+                    },
+                ],
             })
         ```
 

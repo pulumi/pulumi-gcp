@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListArgs;
 import com.pulumi.gcp.storage.inputs.BatchOperationsJobDeleteObjectArgs;
+import com.pulumi.gcp.storage.inputs.BatchOperationsJobLoggingConfigArgs;
 import com.pulumi.gcp.storage.inputs.BatchOperationsJobPutMetadataArgs;
 import com.pulumi.gcp.storage.inputs.BatchOperationsJobPutObjectHoldArgs;
 import com.pulumi.gcp.storage.inputs.BatchOperationsJobRewriteObjectArgs;
@@ -111,6 +112,21 @@ public final class BatchOperationsJobArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+     * 
+     */
+    @Import(name="dryRun")
+    private @Nullable Output<Boolean> dryRun;
+
+    /**
+     * @return If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+     * 
+     */
+    public Optional<Output<Boolean>> dryRun() {
+        return Optional.ofNullable(this.dryRun);
+    }
+
+    /**
      * The ID of the job.
      * 
      */
@@ -123,6 +139,23 @@ public final class BatchOperationsJobArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> jobId() {
         return Optional.ofNullable(this.jobId);
+    }
+
+    /**
+     * Logging configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="loggingConfig")
+    private @Nullable Output<BatchOperationsJobLoggingConfigArgs> loggingConfig;
+
+    /**
+     * @return Logging configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BatchOperationsJobLoggingConfigArgs>> loggingConfig() {
+        return Optional.ofNullable(this.loggingConfig);
     }
 
     /**
@@ -201,7 +234,9 @@ public final class BatchOperationsJobArgs extends com.pulumi.resources.ResourceA
         this.deleteProtection = $.deleteProtection;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
+        this.dryRun = $.dryRun;
         this.jobId = $.jobId;
+        this.loggingConfig = $.loggingConfig;
         this.project = $.project;
         this.putMetadata = $.putMetadata;
         this.putObjectHold = $.putObjectHold;
@@ -346,6 +381,27 @@ public final class BatchOperationsJobArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param dryRun If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(@Nullable Output<Boolean> dryRun) {
+            $.dryRun = dryRun;
+            return this;
+        }
+
+        /**
+         * @param dryRun If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(Boolean dryRun) {
+            return dryRun(Output.of(dryRun));
+        }
+
+        /**
          * @param jobId The ID of the job.
          * 
          * @return builder
@@ -364,6 +420,29 @@ public final class BatchOperationsJobArgs extends com.pulumi.resources.ResourceA
          */
         public Builder jobId(String jobId) {
             return jobId(Output.of(jobId));
+        }
+
+        /**
+         * @param loggingConfig Logging configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loggingConfig(@Nullable Output<BatchOperationsJobLoggingConfigArgs> loggingConfig) {
+            $.loggingConfig = loggingConfig;
+            return this;
+        }
+
+        /**
+         * @param loggingConfig Logging configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loggingConfig(BatchOperationsJobLoggingConfigArgs loggingConfig) {
+            return loggingConfig(Output.of(loggingConfig));
         }
 
         /**

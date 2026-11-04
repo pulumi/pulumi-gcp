@@ -26,6 +26,7 @@ public final class GetDatasetResult {
     private String defaultCollation;
     private List<GetDatasetDefaultEncryptionConfiguration> defaultEncryptionConfigurations;
     private Integer defaultPartitionExpirationMs;
+    private String defaultRoundingMode;
     private Integer defaultTableExpirationMs;
     private Boolean deleteContentsOnDestroy;
     private String deletionPolicy;
@@ -69,6 +70,9 @@ public final class GetDatasetResult {
     }
     public Integer defaultPartitionExpirationMs() {
         return this.defaultPartitionExpirationMs;
+    }
+    public String defaultRoundingMode() {
+        return this.defaultRoundingMode;
     }
     public Integer defaultTableExpirationMs() {
         return this.defaultTableExpirationMs;
@@ -150,6 +154,7 @@ public final class GetDatasetResult {
         private String defaultCollation;
         private List<GetDatasetDefaultEncryptionConfiguration> defaultEncryptionConfigurations;
         private Integer defaultPartitionExpirationMs;
+        private String defaultRoundingMode;
         private Integer defaultTableExpirationMs;
         private Boolean deleteContentsOnDestroy;
         private String deletionPolicy;
@@ -179,6 +184,7 @@ public final class GetDatasetResult {
     	      this.defaultCollation = defaults.defaultCollation;
     	      this.defaultEncryptionConfigurations = defaults.defaultEncryptionConfigurations;
     	      this.defaultPartitionExpirationMs = defaults.defaultPartitionExpirationMs;
+    	      this.defaultRoundingMode = defaults.defaultRoundingMode;
     	      this.defaultTableExpirationMs = defaults.defaultTableExpirationMs;
     	      this.deleteContentsOnDestroy = defaults.deleteContentsOnDestroy;
     	      this.deletionPolicy = defaults.deletionPolicy;
@@ -253,6 +259,14 @@ public final class GetDatasetResult {
               throw new MissingRequiredPropertyException("GetDatasetResult", "defaultPartitionExpirationMs");
             }
             this.defaultPartitionExpirationMs = defaultPartitionExpirationMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultRoundingMode(String defaultRoundingMode) {
+            if (defaultRoundingMode == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "defaultRoundingMode");
+            }
+            this.defaultRoundingMode = defaultRoundingMode;
             return this;
         }
         @CustomType.Setter
@@ -427,6 +441,7 @@ public final class GetDatasetResult {
             _resultValue.defaultCollation = defaultCollation;
             _resultValue.defaultEncryptionConfigurations = defaultEncryptionConfigurations;
             _resultValue.defaultPartitionExpirationMs = defaultPartitionExpirationMs;
+            _resultValue.defaultRoundingMode = defaultRoundingMode;
             _resultValue.defaultTableExpirationMs = defaultTableExpirationMs;
             _resultValue.deleteContentsOnDestroy = deleteContentsOnDestroy;
             _resultValue.deletionPolicy = deletionPolicy;

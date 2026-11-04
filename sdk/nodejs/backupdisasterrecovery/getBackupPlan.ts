@@ -37,15 +37,18 @@ export interface GetBackupPlanResult {
     readonly deletionPolicy: string;
     readonly description: string;
     readonly diskBackupPlanProperties: outputs.backupdisasterrecovery.GetBackupPlanDiskBackupPlanProperty[];
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly labels: {[key: string]: string};
     readonly location: string;
     readonly logRetentionDays: number;
     readonly maxCustomOnDemandRetentionDays: number;
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly resourceType: string;
     readonly supportedResourceTypes: string[];
     readonly updateTime: string;

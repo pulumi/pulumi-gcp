@@ -5,6 +5,7 @@ package com.pulumi.gcp.modelarmor.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsArgs;
 import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigMaliciousUriFilterSettingsArgs;
 import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigPiAndJailbreakFilterSettingsArgs;
 import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsArgs;
@@ -17,6 +18,25 @@ import javax.annotation.Nullable;
 public final class TemplateFilterConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TemplateFilterConfigArgs Empty = new TemplateFilterConfigArgs();
+
+    /**
+     * Settings for customizing filter rules. Note: This field is not supported in
+     * FloorSetting and Streaming Sanitization APIs.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="filterRuleSettings")
+    private @Nullable Output<TemplateFilterConfigFilterRuleSettingsArgs> filterRuleSettings;
+
+    /**
+     * @return Settings for customizing filter rules. Note: This field is not supported in
+     * FloorSetting and Streaming Sanitization APIs.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TemplateFilterConfigFilterRuleSettingsArgs>> filterRuleSettings() {
+        return Optional.ofNullable(this.filterRuleSettings);
+    }
 
     /**
      * Malicious URI filter settings.
@@ -89,6 +109,7 @@ public final class TemplateFilterConfigArgs extends com.pulumi.resources.Resourc
     private TemplateFilterConfigArgs() {}
 
     private TemplateFilterConfigArgs(TemplateFilterConfigArgs $) {
+        this.filterRuleSettings = $.filterRuleSettings;
         this.maliciousUriFilterSettings = $.maliciousUriFilterSettings;
         this.piAndJailbreakFilterSettings = $.piAndJailbreakFilterSettings;
         this.raiSettings = $.raiSettings;
@@ -111,6 +132,31 @@ public final class TemplateFilterConfigArgs extends com.pulumi.resources.Resourc
 
         public Builder(TemplateFilterConfigArgs defaults) {
             $ = new TemplateFilterConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param filterRuleSettings Settings for customizing filter rules. Note: This field is not supported in
+         * FloorSetting and Streaming Sanitization APIs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterRuleSettings(@Nullable Output<TemplateFilterConfigFilterRuleSettingsArgs> filterRuleSettings) {
+            $.filterRuleSettings = filterRuleSettings;
+            return this;
+        }
+
+        /**
+         * @param filterRuleSettings Settings for customizing filter rules. Note: This field is not supported in
+         * FloorSetting and Streaming Sanitization APIs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterRuleSettings(TemplateFilterConfigFilterRuleSettingsArgs filterRuleSettings) {
+            return filterRuleSettings(Output.of(filterRuleSettings));
         }
 
         /**

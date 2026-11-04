@@ -448,6 +448,37 @@ class Template(pulumi.CustomResource):
                 "malicious_uri_filter_settings": {
                     "filter_enforcement": "ENABLED",
                 },
+                "filter_rule_settings": {
+                    "rule_sets": [{
+                        "filter_types": [
+                            "PROMPT_INJECTION_AND_JAILBREAK",
+                            "RESPONSIBLE_AI",
+                        ],
+                        "rules": [
+                            {
+                                "exclusion_rule": {
+                                    "matching_scope": "MATCHING_SCOPE_PARTIAL_MATCH",
+                                    "dictionary": {
+                                        "word_list": {
+                                            "words": [
+                                                "allowphrase1",
+                                                "allowphrase2",
+                                            ],
+                                        },
+                                    },
+                                },
+                            },
+                            {
+                                "exclusion_rule": {
+                                    "matching_scope": "MATCHING_SCOPE_FULL_MATCH",
+                                    "regex": {
+                                        "pattern": "^safe_pattern_[0-9]+$",
+                                    },
+                                },
+                            },
+                        ],
+                    }],
+                },
             },
             template_metadata={
                 "multi_language_detection": {
@@ -492,6 +523,7 @@ class Template(pulumi.CustomResource):
                 "filter_version_selector": {
                     "alias": "FILTER_VERSION_ALIAS_LATEST",
                 },
+                "data_residency_compliant": True,
             })
         ```
 
@@ -514,7 +546,7 @@ class Template(pulumi.CustomResource):
             },
             template_metadata={
                 "filter_version_selector": {
-                    "version": "v1",
+                    "version": "v3",
                 },
             })
         ```
@@ -644,6 +676,37 @@ class Template(pulumi.CustomResource):
                 "malicious_uri_filter_settings": {
                     "filter_enforcement": "ENABLED",
                 },
+                "filter_rule_settings": {
+                    "rule_sets": [{
+                        "filter_types": [
+                            "PROMPT_INJECTION_AND_JAILBREAK",
+                            "RESPONSIBLE_AI",
+                        ],
+                        "rules": [
+                            {
+                                "exclusion_rule": {
+                                    "matching_scope": "MATCHING_SCOPE_PARTIAL_MATCH",
+                                    "dictionary": {
+                                        "word_list": {
+                                            "words": [
+                                                "allowphrase1",
+                                                "allowphrase2",
+                                            ],
+                                        },
+                                    },
+                                },
+                            },
+                            {
+                                "exclusion_rule": {
+                                    "matching_scope": "MATCHING_SCOPE_FULL_MATCH",
+                                    "regex": {
+                                        "pattern": "^safe_pattern_[0-9]+$",
+                                    },
+                                },
+                            },
+                        ],
+                    }],
+                },
             },
             template_metadata={
                 "multi_language_detection": {
@@ -688,6 +751,7 @@ class Template(pulumi.CustomResource):
                 "filter_version_selector": {
                     "alias": "FILTER_VERSION_ALIAS_LATEST",
                 },
+                "data_residency_compliant": True,
             })
         ```
 
@@ -710,7 +774,7 @@ class Template(pulumi.CustomResource):
             },
             template_metadata={
                 "filter_version_selector": {
-                    "version": "v1",
+                    "version": "v3",
                 },
             })
         ```

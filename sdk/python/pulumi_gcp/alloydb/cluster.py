@@ -1321,7 +1321,7 @@ class Cluster(pulumi.CustomResource):
         default_network = gcp.compute.Network("default", name="alloydb-cluster")
         default = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default_network.id,
             },
@@ -1338,7 +1338,7 @@ class Cluster(pulumi.CustomResource):
         default = gcp.compute.get_network(name="alloydb-network")
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1365,7 +1365,7 @@ class Cluster(pulumi.CustomResource):
         default = gcp.compute.get_network(name="alloydb-network")
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1392,7 +1392,7 @@ class Cluster(pulumi.CustomResource):
         default = gcp.compute.Network("default", name="alloydb-cluster-full")
         full = gcp.alloydb.Cluster("full",
             cluster_id="alloydb-cluster-full",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1406,7 +1406,7 @@ class Cluster(pulumi.CustomResource):
                 "recovery_window_days": 14,
             },
             automated_backup_policy={
-                "location": "us-central1",
+                "location": "us-east1",
                 "backup_window": "1800s",
                 "enabled": True,
                 "weekly_schedule": {
@@ -1441,7 +1441,7 @@ class Cluster(pulumi.CustomResource):
         default = gcp.compute.get_network(name="alloydb-network")
         source = gcp.alloydb.Cluster("source",
             cluster_id="alloydb-source-cluster",
-            location="us-central1",
+            location="us-east1",
             network=default.id,
             initial_user={
                 "password": "alloydb-source-cluster",
@@ -1467,12 +1467,12 @@ class Cluster(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         source_backup = gcp.alloydb.Backup("source",
             backup_id="alloydb-backup",
-            location="us-central1",
+            location="us-east1",
             cluster_name=source.name,
             opts = pulumi.ResourceOptions(depends_on=[source_instance]))
         restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
             cluster_id="alloydb-backup-restored",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1482,7 +1482,7 @@ class Cluster(pulumi.CustomResource):
             deletion_protection=False)
         restored_via_pitr = gcp.alloydb.Cluster("restored_via_pitr",
             cluster_id="alloydb-pitr-restored",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1503,7 +1503,7 @@ class Cluster(pulumi.CustomResource):
         default = gcp.compute.Network("default", name="alloydb-secondary-cluster")
         primary = gcp.alloydb.Cluster("primary",
             cluster_id="alloydb-primary-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1672,7 +1672,7 @@ class Cluster(pulumi.CustomResource):
         default_network = gcp.compute.Network("default", name="alloydb-cluster")
         default = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default_network.id,
             },
@@ -1689,7 +1689,7 @@ class Cluster(pulumi.CustomResource):
         default = gcp.compute.get_network(name="alloydb-network")
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1716,7 +1716,7 @@ class Cluster(pulumi.CustomResource):
         default = gcp.compute.get_network(name="alloydb-network")
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1743,7 +1743,7 @@ class Cluster(pulumi.CustomResource):
         default = gcp.compute.Network("default", name="alloydb-cluster-full")
         full = gcp.alloydb.Cluster("full",
             cluster_id="alloydb-cluster-full",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1757,7 +1757,7 @@ class Cluster(pulumi.CustomResource):
                 "recovery_window_days": 14,
             },
             automated_backup_policy={
-                "location": "us-central1",
+                "location": "us-east1",
                 "backup_window": "1800s",
                 "enabled": True,
                 "weekly_schedule": {
@@ -1792,7 +1792,7 @@ class Cluster(pulumi.CustomResource):
         default = gcp.compute.get_network(name="alloydb-network")
         source = gcp.alloydb.Cluster("source",
             cluster_id="alloydb-source-cluster",
-            location="us-central1",
+            location="us-east1",
             network=default.id,
             initial_user={
                 "password": "alloydb-source-cluster",
@@ -1818,12 +1818,12 @@ class Cluster(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         source_backup = gcp.alloydb.Backup("source",
             backup_id="alloydb-backup",
-            location="us-central1",
+            location="us-east1",
             cluster_name=source.name,
             opts = pulumi.ResourceOptions(depends_on=[source_instance]))
         restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
             cluster_id="alloydb-backup-restored",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1833,7 +1833,7 @@ class Cluster(pulumi.CustomResource):
             deletion_protection=False)
         restored_via_pitr = gcp.alloydb.Cluster("restored_via_pitr",
             cluster_id="alloydb-pitr-restored",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },
@@ -1854,7 +1854,7 @@ class Cluster(pulumi.CustomResource):
         default = gcp.compute.Network("default", name="alloydb-secondary-cluster")
         primary = gcp.alloydb.Cluster("primary",
             cluster_id="alloydb-primary-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default.id,
             },

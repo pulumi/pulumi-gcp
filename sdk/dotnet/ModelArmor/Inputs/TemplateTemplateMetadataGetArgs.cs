@@ -41,6 +41,16 @@ namespace Pulumi.Gcp.ModelArmor.Inputs
         public Input<string>? CustomPromptSafetyErrorMessage { get; set; }
 
         /// <summary>
+        /// Indicates whether the template is subject to data residency compliance. If
+        /// true (default for new templates), the template is subject to data residency
+        /// compliance. If false, the template bypasses data residency compliance
+        /// checks. If unset, the value is determined by the API; templates created
+        /// before data residency enforcement may report false.
+        /// </summary>
+        [Input("dataResidencyCompliant")]
+        public Input<bool>? DataResidencyCompliant { get; set; }
+
+        /// <summary>
         /// Possible values:
         /// INSPECT_ONLY
         /// INSPECT_AND_BLOCK

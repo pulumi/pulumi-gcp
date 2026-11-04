@@ -28,6 +28,13 @@ public final class GrpcRouteRuleMatchMethod {
      * 
      */
     private String grpcService;
+    /**
+     * @return Specifies how to match against the name. If not specified, a default value of &#34;EXACT&#34; is used.
+     * Default value is `EXACT`.
+     * Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+     * 
+     */
+    private @Nullable String type;
 
     private GrpcRouteRuleMatchMethod() {}
     /**
@@ -51,6 +58,15 @@ public final class GrpcRouteRuleMatchMethod {
     public String grpcService() {
         return this.grpcService;
     }
+    /**
+     * @return Specifies how to match against the name. If not specified, a default value of &#34;EXACT&#34; is used.
+     * Default value is `EXACT`.
+     * Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +80,14 @@ public final class GrpcRouteRuleMatchMethod {
         private @Nullable Boolean caseSensitive;
         private String grpcMethod;
         private String grpcService;
+        private @Nullable String type;
         public Builder() {}
         public Builder(GrpcRouteRuleMatchMethod defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caseSensitive = defaults.caseSensitive;
     	      this.grpcMethod = defaults.grpcMethod;
     	      this.grpcService = defaults.grpcService;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
@@ -94,11 +112,18 @@ public final class GrpcRouteRuleMatchMethod {
             this.grpcService = grpcService;
             return this;
         }
+        @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
+            return this;
+        }
         public GrpcRouteRuleMatchMethod build() {
             final var _resultValue = new GrpcRouteRuleMatchMethod();
             _resultValue.caseSensitive = caseSensitive;
             _resultValue.grpcMethod = grpcMethod;
             _resultValue.grpcService = grpcService;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

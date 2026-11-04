@@ -2349,7 +2349,10 @@ class IcebergTableSchemaFieldArgsDict(TypedDict):
     """
     type: pulumi.Input[_builtins.str]
     """
-    The type of the field.
+    The type of the field. Primitive types are plain names such as `long`. List, map and
+    struct types are JSON objects as defined by the
+    [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+    typically written with `jsonencode`.
     """
     doc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -2368,7 +2371,10 @@ class IcebergTableSchemaFieldArgs:
         :param pulumi.Input[_builtins.int] id: The unique identifier of the field.
         :param pulumi.Input[_builtins.str] name: The name of the partition field.
         :param pulumi.Input[_builtins.bool] required: Whether the field is required.
-        :param pulumi.Input[_builtins.str] type: The type of the field.
+        :param pulumi.Input[_builtins.str] type: The type of the field. Primitive types are plain names such as `long`. List, map and
+               struct types are JSON objects as defined by the
+               [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+               typically written with `jsonencode`.
         :param pulumi.Input[_builtins.str] doc: A description of the field.
         """
         pulumi.set(__self__, "id", id)
@@ -2418,7 +2424,10 @@ class IcebergTableSchemaFieldArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the field.
+        The type of the field. Primitive types are plain names such as `long`. List, map and
+        struct types are JSON objects as defined by the
+        [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+        typically written with `jsonencode`.
         """
         return pulumi.get(self, "type")
 

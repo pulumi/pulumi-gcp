@@ -33,6 +33,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         [Input("recordTransformations")]
         public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs>? RecordTransformations { get; set; }
 
+        /// <summary>
+        /// Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("transformationErrorHandling")]
+        public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs>? TransformationErrorHandling { get; set; }
+
         public PreventionDeidentifyTemplateDeidentifyConfigArgs()
         {
         }

@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryCleanupPolicy;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryDockerConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryMavenConfig;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryPlatformLogsConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryVirtualRepositoryConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryVulnerabilityScanningConfig;
@@ -26,6 +27,7 @@ public final class GetRepositoryResult {
     private String createTime;
     private String deletionPolicy;
     private String description;
+    private Boolean disallowUnspecifiedMode;
     private List<GetRepositoryDockerConfig> dockerConfigs;
     private Map<String,String> effectiveLabels;
     private String format;
@@ -40,6 +42,7 @@ public final class GetRepositoryResult {
     private List<GetRepositoryMavenConfig> mavenConfigs;
     private String mode;
     private String name;
+    private List<GetRepositoryPlatformLogsConfig> platformLogsConfigs;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private String registryUri;
@@ -64,6 +67,9 @@ public final class GetRepositoryResult {
     }
     public String description() {
         return this.description;
+    }
+    public Boolean disallowUnspecifiedMode() {
+        return this.disallowUnspecifiedMode;
     }
     public List<GetRepositoryDockerConfig> dockerConfigs() {
         return this.dockerConfigs;
@@ -98,6 +104,9 @@ public final class GetRepositoryResult {
     }
     public String name() {
         return this.name;
+    }
+    public List<GetRepositoryPlatformLogsConfig> platformLogsConfigs() {
+        return this.platformLogsConfigs;
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
@@ -138,6 +147,7 @@ public final class GetRepositoryResult {
         private String createTime;
         private String deletionPolicy;
         private String description;
+        private Boolean disallowUnspecifiedMode;
         private List<GetRepositoryDockerConfig> dockerConfigs;
         private Map<String,String> effectiveLabels;
         private String format;
@@ -148,6 +158,7 @@ public final class GetRepositoryResult {
         private List<GetRepositoryMavenConfig> mavenConfigs;
         private String mode;
         private String name;
+        private List<GetRepositoryPlatformLogsConfig> platformLogsConfigs;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private String registryUri;
@@ -164,6 +175,7 @@ public final class GetRepositoryResult {
     	      this.createTime = defaults.createTime;
     	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
+    	      this.disallowUnspecifiedMode = defaults.disallowUnspecifiedMode;
     	      this.dockerConfigs = defaults.dockerConfigs;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.format = defaults.format;
@@ -174,6 +186,7 @@ public final class GetRepositoryResult {
     	      this.mavenConfigs = defaults.mavenConfigs;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
+    	      this.platformLogsConfigs = defaults.platformLogsConfigs;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.registryUri = defaults.registryUri;
@@ -225,6 +238,14 @@ public final class GetRepositoryResult {
               throw new MissingRequiredPropertyException("GetRepositoryResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disallowUnspecifiedMode(Boolean disallowUnspecifiedMode) {
+            if (disallowUnspecifiedMode == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "disallowUnspecifiedMode");
+            }
+            this.disallowUnspecifiedMode = disallowUnspecifiedMode;
             return this;
         }
         @CustomType.Setter
@@ -314,6 +335,17 @@ public final class GetRepositoryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder platformLogsConfigs(List<GetRepositoryPlatformLogsConfig> platformLogsConfigs) {
+            if (platformLogsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "platformLogsConfigs");
+            }
+            this.platformLogsConfigs = platformLogsConfigs;
+            return this;
+        }
+        public Builder platformLogsConfigs(GetRepositoryPlatformLogsConfig... platformLogsConfigs) {
+            return platformLogsConfigs(List.of(platformLogsConfigs));
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -391,6 +423,7 @@ public final class GetRepositoryResult {
             _resultValue.createTime = createTime;
             _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
+            _resultValue.disallowUnspecifiedMode = disallowUnspecifiedMode;
             _resultValue.dockerConfigs = dockerConfigs;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.format = format;
@@ -401,6 +434,7 @@ public final class GetRepositoryResult {
             _resultValue.mavenConfigs = mavenConfigs;
             _resultValue.mode = mode;
             _resultValue.name = name;
+            _resultValue.platformLogsConfigs = platformLogsConfigs;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.registryUri = registryUri;

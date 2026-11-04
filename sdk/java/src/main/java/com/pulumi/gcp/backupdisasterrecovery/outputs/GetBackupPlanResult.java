@@ -11,6 +11,7 @@ import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanDiskBackupPlan
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -26,16 +27,19 @@ public final class GetBackupPlanResult {
     private String deletionPolicy;
     private String description;
     private List<GetBackupPlanDiskBackupPlanProperty> diskBackupPlanProperties;
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    private Map<String,String> labels;
     private String location;
     private Integer logRetentionDays;
     private Integer maxCustomOnDemandRetentionDays;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private String resourceType;
     private List<String> supportedResourceTypes;
     private String updateTime;
@@ -68,12 +72,18 @@ public final class GetBackupPlanResult {
     public List<GetBackupPlanDiskBackupPlanProperty> diskBackupPlanProperties() {
         return this.diskBackupPlanProperties;
     }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
+    }
+    public Map<String,String> labels() {
+        return this.labels;
     }
     public String location() {
         return this.location;
@@ -89,6 +99,9 @@ public final class GetBackupPlanResult {
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     public String resourceType() {
         return this.resourceType;
@@ -118,12 +131,15 @@ public final class GetBackupPlanResult {
         private String deletionPolicy;
         private String description;
         private List<GetBackupPlanDiskBackupPlanProperty> diskBackupPlanProperties;
+        private Map<String,String> effectiveLabels;
         private String id;
+        private Map<String,String> labels;
         private String location;
         private Integer logRetentionDays;
         private Integer maxCustomOnDemandRetentionDays;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String resourceType;
         private List<String> supportedResourceTypes;
         private String updateTime;
@@ -139,12 +155,15 @@ public final class GetBackupPlanResult {
     	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.diskBackupPlanProperties = defaults.diskBackupPlanProperties;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
+    	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.logRetentionDays = defaults.logRetentionDays;
     	      this.maxCustomOnDemandRetentionDays = defaults.maxCustomOnDemandRetentionDays;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.resourceType = defaults.resourceType;
     	      this.supportedResourceTypes = defaults.supportedResourceTypes;
     	      this.updateTime = defaults.updateTime;
@@ -232,11 +251,27 @@ public final class GetBackupPlanResult {
             return diskBackupPlanProperties(List.of(diskBackupPlanProperties));
         }
         @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetBackupPlanResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder labels(Map<String,String> labels) {
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
@@ -278,6 +313,14 @@ public final class GetBackupPlanResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             if (resourceType == null) {
               throw new MissingRequiredPropertyException("GetBackupPlanResult", "resourceType");
@@ -315,12 +358,15 @@ public final class GetBackupPlanResult {
             _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.diskBackupPlanProperties = diskBackupPlanProperties;
+            _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;
+            _resultValue.labels = labels;
             _resultValue.location = location;
             _resultValue.logRetentionDays = logRetentionDays;
             _resultValue.maxCustomOnDemandRetentionDays = maxCustomOnDemandRetentionDays;
             _resultValue.name = name;
             _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.resourceType = resourceType;
             _resultValue.supportedResourceTypes = supportedResourceTypes;
             _resultValue.updateTime = updateTime;

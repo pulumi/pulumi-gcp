@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .acl import *
+from .acl_binding import *
 from .cluster import *
 from .connect_cluster import *
 from .connector import *

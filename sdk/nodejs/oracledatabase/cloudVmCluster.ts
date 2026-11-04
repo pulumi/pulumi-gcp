@@ -100,6 +100,45 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Oracledatabase Cloud Vmcluster Odbdnszone
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cloudExadataInfrastructures = new gcp.oracledatabase.CloudExadataInfrastructure("cloudExadataInfrastructures", {
+ *     cloudExadataInfrastructureId: "my-exadata",
+ *     displayName: "my-exadata displayname",
+ *     location: "europe-west2",
+ *     project: "my-project",
+ *     properties: {
+ *         shape: "Exadata.X9M",
+ *         computeCount: 2,
+ *         storageCount: 3,
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const myVmcluster = new gcp.oracledatabase.CloudVmCluster("my_vmcluster", {
+ *     cloudVmClusterId: "my-instance",
+ *     displayName: "my-instance displayname",
+ *     location: "europe-west2",
+ *     project: "my-project",
+ *     exadataInfrastructure: cloudExadataInfrastructures.id,
+ *     odbNetwork: "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
+ *     odbSubnet: "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
+ *     backupOdbSubnet: "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet",
+ *     odbDnsZone: "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbDnsZones/my-odbdnszone",
+ *     properties: {
+ *         licenseType: "LICENSE_INCLUDED",
+ *         sshPublicKeys: ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
+ *         cpuCoreCount: 4,
+ *         giVersion: "19.0.0.0",
+ *         hostnamePrefix: "hostname1",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * ```
+ *
  * ### Oracledatabase Cloud Vmcluster Full
  *
  * ```typescript
@@ -386,6 +425,12 @@ export class CloudVmCluster extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<string | undefined>;
     /**
+     * The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+     */
+    declare public readonly odbDnsZone: pulumi.Output<string | undefined>;
+    /**
      * The name of the OdbNetwork associated with the VM Cluster.
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -445,6 +490,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["network"] = state?.network;
+            resourceInputs["odbDnsZone"] = state?.odbDnsZone;
             resourceInputs["odbNetwork"] = state?.odbNetwork;
             resourceInputs["odbSubnet"] = state?.odbSubnet;
             resourceInputs["project"] = state?.project;
@@ -473,6 +519,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["network"] = args?.network;
+            resourceInputs["odbDnsZone"] = args?.odbDnsZone;
             resourceInputs["odbNetwork"] = args?.odbNetwork;
             resourceInputs["odbSubnet"] = args?.odbSubnet;
             resourceInputs["project"] = args?.project;
@@ -585,6 +632,12 @@ export interface CloudVmClusterState {
      */
     network?: pulumi.Input<string | undefined>;
     /**
+     * The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+     */
+    odbDnsZone?: pulumi.Input<string | undefined>;
+    /**
      * The name of the OdbNetwork associated with the VM Cluster.
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -684,6 +737,12 @@ export interface CloudVmClusterArgs {
      * Format: projects/{project}/global/networks/{network}
      */
     network?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+     */
+    odbDnsZone?: pulumi.Input<string | undefined>;
     /**
      * The name of the OdbNetwork associated with the VM Cluster.
      * Format:

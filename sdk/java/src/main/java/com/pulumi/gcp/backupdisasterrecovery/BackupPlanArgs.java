@@ -12,6 +12,7 @@ import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanDiskBackupPlanProp
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -143,6 +144,27 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * This collection of key/value pairs allows for custom labels to be supplied by the user.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return This collection of key/value pairs allows for custom labels to be supplied by the user.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * The location for the backup plan
      * 
      */
@@ -231,6 +253,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.diskBackupPlanProperties = $.diskBackupPlanProperties;
+        this.labels = $.labels;
         this.location = $.location;
         this.logRetentionDays = $.logRetentionDays;
         this.maxCustomOnDemandRetentionDays = $.maxCustomOnDemandRetentionDays;
@@ -428,6 +451,33 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder diskBackupPlanProperties(BackupPlanDiskBackupPlanPropertiesArgs diskBackupPlanProperties) {
             return diskBackupPlanProperties(Output.of(diskBackupPlanProperties));
+        }
+
+        /**
+         * @param labels This collection of key/value pairs allows for custom labels to be supplied by the user.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels This collection of key/value pairs allows for custom labels to be supplied by the user.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

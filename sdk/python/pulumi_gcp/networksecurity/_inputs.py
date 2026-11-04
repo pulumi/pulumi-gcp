@@ -8162,7 +8162,14 @@ class ServerTlsPolicyMtlsPolicyArgsDict(TypedDict):
     """
     When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
     Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-    Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+    Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
+    """
+    client_validation_relaxations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of validation relaxations to apply when validating client certificates.
+    Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+    and must be empty for all other clientValidationMode values.
+    Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
     """
     client_validation_trust_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -8176,6 +8183,7 @@ class ServerTlsPolicyMtlsPolicyArgs:
     def __init__(__self__, *,
                  client_validation_cas: pulumi.Input[Optional[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]] = None,
                  client_validation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_validation_relaxations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_validation_trust_config: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]] client_validation_cas: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
@@ -8183,7 +8191,11 @@ class ServerTlsPolicyMtlsPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client_validation_mode: When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
                Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-               Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+               Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_validation_relaxations: List of validation relaxations to apply when validating client certificates.
+               Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+               and must be empty for all other clientValidationMode values.
+               Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
         :param pulumi.Input[_builtins.str] client_validation_trust_config: Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
                If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
                Allowed only if the policy is to be used with external HTTPS load balancers.
@@ -8192,6 +8204,8 @@ class ServerTlsPolicyMtlsPolicyArgs:
             pulumi.set(__self__, "client_validation_cas", client_validation_cas)
         if client_validation_mode is not None:
             pulumi.set(__self__, "client_validation_mode", client_validation_mode)
+        if client_validation_relaxations is not None:
+            pulumi.set(__self__, "client_validation_relaxations", client_validation_relaxations)
         if client_validation_trust_config is not None:
             pulumi.set(__self__, "client_validation_trust_config", client_validation_trust_config)
 
@@ -8215,13 +8229,28 @@ class ServerTlsPolicyMtlsPolicyArgs:
         """
         When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
         Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-        Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+        Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
         """
         return pulumi.get(self, "client_validation_mode")
 
     @client_validation_mode.setter
     def client_validation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_validation_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientValidationRelaxations")
+    def client_validation_relaxations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of validation relaxations to apply when validating client certificates.
+        Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+        and must be empty for all other clientValidationMode values.
+        Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+        """
+        return pulumi.get(self, "client_validation_relaxations")
+
+    @client_validation_relaxations.setter
+    def client_validation_relaxations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "client_validation_relaxations", value)
 
     @_builtins.property
     @pulumi.getter(name="clientValidationTrustConfig")
