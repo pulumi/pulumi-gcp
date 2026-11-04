@@ -407,6 +407,12 @@ func (RepositoryIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryIamMemberState)(nil)).Elem()
 }
 
+// RepositoryIamMemberExists checks whether an existing RepositoryIamMember resource with the given ID exists.
+func RepositoryIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:sourcerepo/repositoryIamMember:RepositoryIamMember", id, state, "", opts...)
+}
+
 type repositoryIamMemberArgs struct {
 	Condition *RepositoryIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

@@ -22,9 +22,9 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
         /// * Ends with a non-hyphen character
         /// * Not formatted as a UUID
         /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        /// Currently the map must contain only one element
-        /// that describes the autoscaling policy for compute nodes.
-        /// Structure is documented below.
+        ///   Currently the map must contain only one element
+        ///   that describes the autoscaling policy for compute nodes.
+        ///   Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterAutoscalingSettingsAutoscalingPolicy> AutoscalingPolicies;
         /// <summary>

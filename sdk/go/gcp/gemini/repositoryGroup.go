@@ -235,6 +235,12 @@ func (RepositoryGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryGroupState)(nil)).Elem()
 }
 
+// RepositoryGroupExists checks whether an existing RepositoryGroup resource with the given ID exists.
+func RepositoryGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/repositoryGroup:RepositoryGroup", id, state, "", opts...)
+}
+
 type repositoryGroupArgs struct {
 	// Required. Id of the Code Repository Index.
 	CodeRepositoryIndex string `pulumi:"codeRepositoryIndex"`

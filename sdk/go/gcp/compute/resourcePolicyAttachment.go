@@ -201,6 +201,12 @@ func (ResourcePolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourcePolicyAttachmentState)(nil)).Elem()
 }
 
+// ResourcePolicyAttachmentExists checks whether an existing ResourcePolicyAttachment resource with the given ID exists.
+func ResourcePolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourcePolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment", id, state, "", opts...)
+}
+
 type resourcePolicyAttachmentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

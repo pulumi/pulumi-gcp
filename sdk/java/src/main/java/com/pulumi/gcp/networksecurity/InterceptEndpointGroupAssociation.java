@@ -261,11 +261,10 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
      * of the association itself.
      * Structure is documented below.
      * 
-     * @deprecated
-     * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+     * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
      * 
      */
-    @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+    @Deprecated
     @Export(name="locationsDetails", refs={List.class,InterceptEndpointGroupAssociationLocationsDetail.class}, tree="[0,1]")
     private Output<List<InterceptEndpointGroupAssociationLocationsDetail>> locationsDetails;
 

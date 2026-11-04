@@ -91,8 +91,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// * 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
         /// * 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
         /// * 405 (Method Not Found), 501 (Not Implemented): 60s
-        /// These defaults can be overridden in negativeCachingPolicy. If not
-        /// specified, Cloud CDN applies negative caching by default.
+        ///   These defaults can be overridden in negativeCachingPolicy. If not
+        ///   specified, Cloud CDN applies negative caching by default.
         /// </summary>
         public readonly bool? NegativeCaching;
         /// <summary>

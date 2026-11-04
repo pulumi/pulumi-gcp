@@ -347,6 +347,12 @@ func (GoldengateDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*goldengateDeploymentState)(nil)).Elem()
 }
 
+// GoldengateDeploymentExists checks whether an existing GoldengateDeployment resource with the given ID exists.
+func GoldengateDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GoldengateDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/goldengateDeployment:GoldengateDeployment", id, state, "", opts...)
+}
+
 type goldengateDeploymentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

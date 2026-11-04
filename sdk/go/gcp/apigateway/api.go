@@ -211,6 +211,12 @@ func (ApiState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiState)(nil)).Elem()
 }
 
+// ApiExists checks whether an existing Api resource with the given ID exists.
+func ApiExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigateway/api:Api", id, state, "", opts...)
+}
+
 type apiArgs struct {
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
 	ApiId string `pulumi:"apiId"`

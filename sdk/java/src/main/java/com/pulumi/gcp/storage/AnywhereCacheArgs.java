@@ -26,11 +26,10 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
      * 
-     * @deprecated
-     * `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     * @deprecated `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
      * 
      */
-    @Deprecated /* `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`. */
+    @Deprecated
     @Import(name="admissionPolicy")
     private @Nullable Output<String> admissionPolicy;
 
@@ -43,11 +42,10 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
      * 
-     * @deprecated
-     * `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     * @deprecated `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
      * 
      */
-    @Deprecated /* `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`. */
+    @Deprecated
     public Optional<Output<String>> admissionPolicy() {
         return Optional.ofNullable(this.admissionPolicy);
     }
@@ -177,11 +175,10 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+         * @deprecated `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
          * 
          */
-        @Deprecated /* `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`. */
+        @Deprecated
         public Builder admissionPolicy(@Nullable Output<String> admissionPolicy) {
             $.admissionPolicy = admissionPolicy;
             return this;
@@ -198,11 +195,10 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+         * @deprecated `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
          * 
          */
-        @Deprecated /* `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`. */
+        @Deprecated
         public Builder admissionPolicy(String admissionPolicy) {
             return admissionPolicy(Output.of(admissionPolicy));
         }

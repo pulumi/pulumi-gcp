@@ -3034,6 +3034,58 @@ class Datascan(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Datascan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[Union['DatascanDataArgs', 'DatascanDataArgsDict', 'outputs.DatascanData']]] = None,
+            data_discovery_spec: pulumi.Input[Optional[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict', 'outputs.DatascanDataDiscoverySpec']]] = None,
+            data_documentation_spec: pulumi.Input[Optional[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict', 'outputs.DatascanDataDocumentationSpec']]] = None,
+            data_profile_spec: pulumi.Input[Optional[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict', 'outputs.DatascanDataProfileSpec']]] = None,
+            data_quality_spec: pulumi.Input[Optional[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict', 'outputs.DatascanDataQualitySpec']]] = None,
+            data_scan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            execution_identity: pulumi.Input[Optional[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict', 'outputs.DatascanExecutionIdentity']]] = None,
+            execution_spec: pulumi.Input[Optional[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict', 'outputs.DatascanExecutionSpec']]] = None,
+            execution_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatascanExecutionStatusArgs', 'DatascanExecutionStatusArgsDict', 'outputs.DatascanExecutionStatus']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["data"] = data
+        __props__["dataDiscoverySpec"] = data_discovery_spec
+        __props__["dataDocumentationSpec"] = data_documentation_spec
+        __props__["dataProfileSpec"] = data_profile_spec
+        __props__["dataQualitySpec"] = data_quality_spec
+        __props__["dataScanId"] = data_scan_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["executionIdentity"] = execution_identity
+        __props__["executionSpec"] = execution_spec
+        __props__["executionStatuses"] = execution_statuses
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["state"] = state
+        __props__["type"] = type
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:dataplex/datascan:Datascan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

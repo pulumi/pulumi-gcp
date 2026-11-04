@@ -217,6 +217,12 @@ func (DataSharingWithGoogleSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataSharingWithGoogleSettingState)(nil)).Elem()
 }
 
+// DataSharingWithGoogleSettingExists checks whether an existing DataSharingWithGoogleSetting resource with the given ID exists.
+func DataSharingWithGoogleSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataSharingWithGoogleSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting", id, state, "", opts...)
+}
+
 type dataSharingWithGoogleSettingArgs struct {
 	// Id of the Data Sharing With Google Setting.
 	DataSharingWithGoogleSettingId string `pulumi:"dataSharingWithGoogleSettingId"`

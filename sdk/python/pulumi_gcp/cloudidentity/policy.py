@@ -427,6 +427,22 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["setting"] = setting
         return Policy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            customer: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_query: pulumi.Input[Optional[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict', 'outputs.PolicyPolicyQuery']]] = None,
+            setting: pulumi.Input[Optional[Union['PolicySettingArgs', 'PolicySettingArgsDict', 'outputs.PolicySetting']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customer"] = customer
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["name"] = name
+        __props__["policyQuery"] = policy_query
+        __props__["setting"] = setting
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudidentity/policy:Policy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def customer(self) -> pulumi.Output[_builtins.str]:

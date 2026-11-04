@@ -233,6 +233,12 @@ func (FirewallEndpointAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallEndpointAssociationState)(nil)).Elem()
 }
 
+// FirewallEndpointAssociationExists checks whether an existing FirewallEndpointAssociation resource with the given ID exists.
+func FirewallEndpointAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallEndpointAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation", id, state, "", opts...)
+}
+
 type firewallEndpointAssociationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

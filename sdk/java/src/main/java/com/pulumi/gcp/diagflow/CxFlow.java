@@ -206,12 +206,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
@@ -311,13 +311,13 @@ import javax.annotation.Nullable;
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .payload("""
- *           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+ *           }{&#92;{@code "some-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-key}&#92;{@code ": [}&#92;{@code "other-value}&#92;{@code "]}}{@code
  *                                 """)
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .conversationSuccess(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs.builder()
  *                                     .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                     """)
  *                                     .build())
  *                                 .build(),
@@ -329,14 +329,14 @@ import javax.annotation.Nullable;
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .outputAudioText(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs.builder()
  *                                     .ssml("""
- *             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+ *             <speak>Some example <say-as interpret-as=}&#92;{@code "characters}&#92;{@code ">SSML XML</say-as></speak>
  *                                     """)
  *                                     .build())
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .liveAgentHandoff(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                     .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                     """)
  *                                     .build())
  *                                 .build(),
@@ -421,13 +421,13 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .payload("""
- *           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+ *           }{&#92;{@code "some-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-key}&#92;{@code ": [}&#92;{@code "other-value}&#92;{@code "]}}{@code
  *                             """)
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .conversationSuccess(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs.builder()
  *                                 .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -439,14 +439,14 @@ import javax.annotation.Nullable;
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .outputAudioText(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs.builder()
  *                                 .ssml("""
- *             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+ *             <speak>Some example <say-as interpret-as=}&#92;{@code "characters}&#92;{@code ">SSML XML</say-as></speak>
  *                                 """)
  *                                 .build())
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .liveAgentHandoff(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                 .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -555,13 +555,13 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .payload("""
- *           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+ *           }{&#92;{@code "some-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-key}&#92;{@code ": [}&#92;{@code "other-value}&#92;{@code "]}}{@code
  *                             """)
  *                             .build(),
  *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .conversationSuccess(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs.builder()
  *                                 .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -573,14 +573,14 @@ import javax.annotation.Nullable;
  *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .outputAudioText(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs.builder()
  *                                 .ssml("""
- *             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+ *             <speak>Some example <say-as interpret-as=}&#92;{@code "characters}&#92;{@code ">SSML XML</say-as></speak>
  *                                 """)
  *                                 .build())
  *                             .build(),
  *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .liveAgentHandoff(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                 .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -653,19 +653,19 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .dataStoreConnections(CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs.builder()
  *                     .dataStoreType("UNSTRUCTURED")
- *                     .dataStore(Output.tuple(agent.location(), myDatastore.dataStoreId()).applyValue(values -> {
+ *                     .dataStore(Output.tuple(agent.location(), myDatastore.dataStoreId()).applyValue(values -> }{{@code
  *                         var location = values.t1;
  *                         var dataStoreId = values.t2;
  *                         return String.format("projects/%s/locations/%s/collections/default_collection/dataStores/%s", project.number(),location,dataStoreId);
- *                     }))
+ *                     }}{@code ))
  *                     .documentProcessingMode("DOCUMENTS")
  *                     .build())
  *                 .targetFlow(agent.startFlow())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

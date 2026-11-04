@@ -347,6 +347,12 @@ func (CapabilityConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*capabilityConfigState)(nil)).Elem()
 }
 
+// CapabilityConfigExists checks whether an existing CapabilityConfig resource with the given ID exists.
+func CapabilityConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CapabilityConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:resourcemanager/capabilityConfig:CapabilityConfig", id, state, "", opts...)
+}
+
 type capabilityConfigArgs struct {
 	// User-specified identifier of the capability config. Must be 6 to 30 characters,
 	// and contain only lowercase letters, numbers, and hyphens.

@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedSecuritySettingsAwsV4Authentication"&gt;&lt;/a&gt;The `AwsV4Authentication` block supports:
         /// </summary>
         [Input("awsV4Authentication")]

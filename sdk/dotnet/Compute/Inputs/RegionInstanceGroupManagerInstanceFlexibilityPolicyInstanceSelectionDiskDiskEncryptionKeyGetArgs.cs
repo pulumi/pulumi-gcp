@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// , The self link of the encryption key that is stored in Google Cloud KMS.
-        /// - - -
+        /// ***
         /// </summary>
         [Input("kmsKeySelfLink")]
         public Input<string>? KmsKeySelfLink { get; set; }

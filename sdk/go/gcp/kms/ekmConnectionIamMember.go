@@ -675,6 +675,12 @@ func (EkmConnectionIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ekmConnectionIamMemberState)(nil)).Elem()
 }
 
+// EkmConnectionIamMemberExists checks whether an existing EkmConnectionIamMember resource with the given ID exists.
+func EkmConnectionIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EkmConnectionIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember", id, state, "", opts...)
+}
+
 type ekmConnectionIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

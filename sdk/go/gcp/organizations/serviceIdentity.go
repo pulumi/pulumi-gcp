@@ -148,6 +148,12 @@ func (ServiceIdentityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceIdentityState)(nil)).Elem()
 }
 
+// ServiceIdentityExists checks whether an existing ServiceIdentity resource with the given ID exists.
+func ServiceIdentityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceIdentityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:organizations/serviceIdentity:ServiceIdentity", id, state, "", opts...)
+}
+
 type serviceIdentityArgs struct {
 	// The organization in which the resource belongs.
 	Organization string `pulumi:"organization"`

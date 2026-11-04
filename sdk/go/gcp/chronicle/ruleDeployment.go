@@ -447,6 +447,12 @@ func (RuleDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleDeploymentState)(nil)).Elem()
 }
 
+// RuleDeploymentExists checks whether an existing RuleDeployment resource with the given ID exists.
+func RuleDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/ruleDeployment:RuleDeployment", id, state, "", opts...)
+}
+
 type ruleDeploymentArgs struct {
 	// Whether detections resulting from this deployment should be considered
 	// alerts.

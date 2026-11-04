@@ -827,6 +827,46 @@ class AssetsExportJob(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AssetsExportJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assets_export_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            condition: pulumi.Input[Optional[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict', 'outputs.AssetsExportJobCondition']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            inventories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetsExportJobInventoryArgs', 'AssetsExportJobInventoryArgsDict', 'outputs.AssetsExportJobInventory']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetsExportJobNetworkDependencyArgs', 'AssetsExportJobNetworkDependencyArgsDict', 'outputs.AssetsExportJobNetworkDependency']]]]] = None,
+            performance_data: pulumi.Input[Optional[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict', 'outputs.AssetsExportJobPerformanceData']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            recent_executions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetsExportJobRecentExecutionArgs', 'AssetsExportJobRecentExecutionArgsDict', 'outputs.AssetsExportJobRecentExecution']]]]] = None,
+            show_hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            signed_uri_destination: pulumi.Input[Optional[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict', 'outputs.AssetsExportJobSignedUriDestination']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assetsExportJobId"] = assets_export_job_id
+        __props__["condition"] = condition
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["inventories"] = inventories
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["networkDependencies"] = network_dependencies
+        __props__["performanceData"] = performance_data
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["recentExecutions"] = recent_executions
+        __props__["showHidden"] = show_hidden
+        __props__["signedUriDestination"] = signed_uri_destination
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:migrationcenter/assetsExportJob:AssetsExportJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assetsExportJobId")
     def assets_export_job_id(self) -> pulumi.Output[_builtins.str]:

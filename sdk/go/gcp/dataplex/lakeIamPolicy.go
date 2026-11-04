@@ -379,6 +379,12 @@ func (LakeIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lakeIamPolicyState)(nil)).Elem()
 }
 
+// LakeIamPolicyExists checks whether an existing LakeIamPolicy resource with the given ID exists.
+func LakeIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LakeIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/lakeIamPolicy:LakeIamPolicy", id, state, "", opts...)
+}
+
 type lakeIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Lake string `pulumi:"lake"`

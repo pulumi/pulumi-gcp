@@ -367,6 +367,12 @@ func (SecurityScanConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityScanConfigState)(nil)).Elem()
 }
 
+// SecurityScanConfigExists checks whether an existing SecurityScanConfig resource with the given ID exists.
+func SecurityScanConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityScanConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/securityScanConfig:SecurityScanConfig", id, state, "", opts...)
+}
+
 type securityScanConfigArgs struct {
 	// The authentication configuration.
 	// If specified, service will use the authentication configuration during scanning.

@@ -298,6 +298,12 @@ func (DestinationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*destinationState)(nil)).Elem()
 }
 
+// DestinationExists checks whether an existing Destination resource with the given ID exists.
+func DestinationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DestinationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkconnectivity/destination:Destination", id, state, "", opts...)
+}
+
 type destinationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

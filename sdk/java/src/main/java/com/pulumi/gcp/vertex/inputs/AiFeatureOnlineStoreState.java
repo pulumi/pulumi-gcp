@@ -118,11 +118,10 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
      * 
      * &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      * 
-     * @deprecated
-     * `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      * 
      */
-    @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
+    @Deprecated
     @Import(name="embeddingManagement")
     private @Nullable Output<AiFeatureOnlineStoreEmbeddingManagementArgs> embeddingManagement;
 
@@ -133,11 +132,10 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
      * 
      * &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      * 
-     * @deprecated
-     * `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      * 
      */
-    @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
+    @Deprecated
     public Optional<Output<AiFeatureOnlineStoreEmbeddingManagementArgs>> embeddingManagement() {
         return Optional.ofNullable(this.embeddingManagement);
     }
@@ -485,11 +483,10 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+         * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
          * 
          */
-        @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
+        @Deprecated
         public Builder embeddingManagement(@Nullable Output<AiFeatureOnlineStoreEmbeddingManagementArgs> embeddingManagement) {
             $.embeddingManagement = embeddingManagement;
             return this;
@@ -504,11 +501,10 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+         * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
          * 
          */
-        @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
+        @Deprecated
         public Builder embeddingManagement(AiFeatureOnlineStoreEmbeddingManagementArgs embeddingManagement) {
             return embeddingManagement(Output.of(embeddingManagement));
         }

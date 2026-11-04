@@ -1293,6 +1293,66 @@ class ActiveDirectory(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return ActiveDirectory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            administrators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            aes_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            backup_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encrypt_dc_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+            kdc_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            kdc_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ldap_signing: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            net_bios_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            nfs_users_with_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+            organizational_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            security_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            site: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_details: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["administrators"] = administrators
+        __props__["aesEncryption"] = aes_encryption
+        __props__["backupOperators"] = backup_operators
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["dns"] = dns
+        __props__["domain"] = domain
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptDcConnections"] = encrypt_dc_connections
+        __props__["kdcHostname"] = kdc_hostname
+        __props__["kdcIp"] = kdc_ip
+        __props__["labels"] = labels
+        __props__["ldapSigning"] = ldap_signing
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["netBiosPrefix"] = net_bios_prefix
+        __props__["nfsUsersWithLdap"] = nfs_users_with_ldap
+        __props__["organizationalUnit"] = organizational_unit
+        __props__["password"] = password
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["securityOperators"] = security_operators
+        __props__["site"] = site
+        __props__["state"] = state
+        __props__["stateDetails"] = state_details
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'gcp:netapp/activeDirectory:ActiveDirectory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def administrators(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

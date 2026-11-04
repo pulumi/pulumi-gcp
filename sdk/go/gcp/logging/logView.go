@@ -187,6 +187,12 @@ func (LogViewState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logViewState)(nil)).Elem()
 }
 
+// LogViewExists checks whether an existing LogView resource with the given ID exists.
+func LogViewExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogViewState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/logView:LogView", id, state, "", opts...)
+}
+
 type logViewArgs struct {
 	// The bucket of the resource
 	Bucket string `pulumi:"bucket"`

@@ -427,6 +427,12 @@ func (FunctionIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionIamBindingState)(nil)).Elem()
 }
 
+// FunctionIamBindingExists checks whether an existing FunctionIamBinding resource with the given ID exists.
+func FunctionIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FunctionIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudfunctionsv2/functionIamBinding:FunctionIamBinding", id, state, "", opts...)
+}
+
 type functionIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudFunction string                       `pulumi:"cloudFunction"`

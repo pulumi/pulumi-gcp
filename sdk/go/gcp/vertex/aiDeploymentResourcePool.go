@@ -180,6 +180,12 @@ func (AiDeploymentResourcePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiDeploymentResourcePoolState)(nil)).Elem()
 }
 
+// AiDeploymentResourcePoolExists checks whether an existing AiDeploymentResourcePool resource with the given ID exists.
+func AiDeploymentResourcePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiDeploymentResourcePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool", id, state, "", opts...)
+}
+
 type aiDeploymentResourcePoolArgs struct {
 	// The underlying dedicated resources that the deployment resource pool uses.
 	// Structure is documented below.

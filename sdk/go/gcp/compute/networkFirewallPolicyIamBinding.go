@@ -405,6 +405,12 @@ func (NetworkFirewallPolicyIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkFirewallPolicyIamBindingState)(nil)).Elem()
 }
 
+// NetworkFirewallPolicyIamBindingExists checks whether an existing NetworkFirewallPolicyIamBinding resource with the given ID exists.
+func NetworkFirewallPolicyIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkFirewallPolicyIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/networkFirewallPolicyIamBinding:NetworkFirewallPolicyIamBinding", id, state, "", opts...)
+}
+
 type networkFirewallPolicyIamBindingArgs struct {
 	Condition *NetworkFirewallPolicyIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

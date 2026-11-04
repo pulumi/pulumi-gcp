@@ -384,6 +384,12 @@ func (QueryTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*queryTemplateState)(nil)).Elem()
 }
 
+// QueryTemplateExists checks whether an existing QueryTemplate resource with the given ID exists.
+func QueryTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QueryTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigqueryanalyticshub/queryTemplate:QueryTemplate", id, state, "", opts...)
+}
+
 type queryTemplateArgs struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId string `pulumi:"dataExchangeId"`

@@ -356,6 +356,12 @@ func (CryptoKeyIAMMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cryptoKeyIAMMemberState)(nil)).Elem()
 }
 
+// CryptoKeyIAMMemberExists checks whether an existing CryptoKeyIAMMember resource with the given ID exists.
+func CryptoKeyIAMMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CryptoKeyIAMMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", id, state, "", opts...)
+}
+
 type cryptoKeyIAMMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

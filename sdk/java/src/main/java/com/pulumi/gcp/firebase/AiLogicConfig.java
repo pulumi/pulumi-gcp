@@ -243,11 +243,10 @@ public class AiLogicConfig extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
      * 
-     * @deprecated
-     * `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+     * @deprecated `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
      * 
      */
-    @Deprecated /* `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key. */
+    @Deprecated
     @Export(name="generativeLanguageConfig", refs={AiLogicConfigGenerativeLanguageConfig.class}, tree="[0]")
     private Output</* @Nullable */ AiLogicConfigGenerativeLanguageConfig> generativeLanguageConfig;
 

@@ -1131,6 +1131,12 @@ func (FrameworkDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*frameworkDeploymentState)(nil)).Elem()
 }
 
+// FrameworkDeploymentExists checks whether an existing FrameworkDeployment resource with the given ID exists.
+func FrameworkDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FrameworkDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment", id, state, "", opts...)
+}
+
 type frameworkDeploymentArgs struct {
 	// Deployment mode and parameters for each of the Cloud Controls in
 	// the framework. Every Cloud Control in the framework must have a

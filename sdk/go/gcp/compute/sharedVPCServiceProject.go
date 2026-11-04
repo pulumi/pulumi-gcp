@@ -126,6 +126,12 @@ func (SharedVPCServiceProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedVPCServiceProjectState)(nil)).Elem()
 }
 
+// SharedVPCServiceProjectExists checks whether an existing SharedVPCServiceProject resource with the given ID exists.
+func SharedVPCServiceProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SharedVPCServiceProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject", id, state, "", opts...)
+}
+
 type sharedVPCServiceProjectArgs struct {
 	// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
 	DeletionPolicy *string `pulumi:"deletionPolicy"`

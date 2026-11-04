@@ -503,6 +503,12 @@ func (TcpRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tcpRouteState)(nil)).Elem()
 }
 
+// TcpRouteExists checks whether an existing TcpRoute resource with the given ID exists.
+func TcpRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TcpRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/tcpRoute:TcpRoute", id, state, "", opts...)
+}
+
 type tcpRouteArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

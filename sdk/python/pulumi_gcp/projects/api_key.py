@@ -725,6 +725,30 @@ class ApiKey(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return ApiKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            check_existing_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            key_string: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            restrictions: pulumi.Input[Optional[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict', 'outputs.ApiKeyRestrictions']]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checkExistingUsage"] = check_existing_usage
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["keyString"] = key_string
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["restrictions"] = restrictions
+        __props__["serviceAccountEmail"] = service_account_email
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'gcp:projects/apiKey:ApiKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="checkExistingUsage")
     def check_existing_usage(self) -> pulumi.Output[Optional[_builtins.str]]:

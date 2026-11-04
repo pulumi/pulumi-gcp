@@ -1027,6 +1027,54 @@ class DataExchangeSubscription(pulumi.CustomResource):
         __props__.__dict__["subscription_id"] = subscription_id
         return DataExchangeSubscription(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+            data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_exchange_location: pulumi.Input[Optional[_builtins.str]] = None,
+            data_exchange_project: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_dataset: pulumi.Input[Optional[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict', 'outputs.DataExchangeSubscriptionDestinationDataset']]] = None,
+            last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedDatasetMapArgs', 'DataExchangeSubscriptionLinkedDatasetMapArgsDict', 'outputs.DataExchangeSubscriptionLinkedDatasetMap']]]]] = None,
+            linked_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedResourceArgs', 'DataExchangeSubscriptionLinkedResourceArgsDict', 'outputs.DataExchangeSubscriptionLinkedResource']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subscriber_contact: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTime"] = creation_time
+        __props__["dataExchange"] = data_exchange
+        __props__["dataExchangeId"] = data_exchange_id
+        __props__["dataExchangeLocation"] = data_exchange_location
+        __props__["dataExchangeProject"] = data_exchange_project
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["destinationDataset"] = destination_dataset
+        __props__["lastModifyTime"] = last_modify_time
+        __props__["linkedDatasetMaps"] = linked_dataset_maps
+        __props__["linkedResources"] = linked_resources
+        __props__["location"] = location
+        __props__["logLinkedDatasetQueryUserEmail"] = log_linked_dataset_query_user_email
+        __props__["name"] = name
+        __props__["organizationDisplayName"] = organization_display_name
+        __props__["organizationId"] = organization_id
+        __props__["project"] = project
+        __props__["refreshPolicy"] = refresh_policy
+        __props__["resourceType"] = resource_type
+        __props__["state"] = state
+        __props__["subscriberContact"] = subscriber_contact
+        __props__["subscriptionId"] = subscription_id
+        return pulumi.runtime.exists_resource(None, 'gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[_builtins.str]:

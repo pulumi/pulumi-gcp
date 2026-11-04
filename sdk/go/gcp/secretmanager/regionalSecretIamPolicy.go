@@ -622,6 +622,12 @@ func (RegionalSecretIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionalSecretIamPolicyState)(nil)).Elem()
 }
 
+// RegionalSecretIamPolicyExists checks whether an existing RegionalSecretIamPolicy resource with the given ID exists.
+func RegionalSecretIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionalSecretIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:secretmanager/regionalSecretIamPolicy:RegionalSecretIamPolicy", id, state, "", opts...)
+}
+
 type regionalSecretIamPolicyArgs struct {
 	// The location of the regional secret. eg us-central1
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

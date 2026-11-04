@@ -155,6 +155,12 @@ func (ProjectMetadataItemState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectMetadataItemState)(nil)).Elem()
 }
 
+// ProjectMetadataItemExists checks whether an existing ProjectMetadataItem resource with the given ID exists.
+func ProjectMetadataItemExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectMetadataItemState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/projectMetadataItem:ProjectMetadataItem", id, state, "", opts...)
+}
+
 type projectMetadataItemArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

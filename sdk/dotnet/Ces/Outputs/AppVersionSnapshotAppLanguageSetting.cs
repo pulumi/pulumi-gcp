@@ -32,8 +32,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Valid values are:
         /// - A tool's full resource name, which triggers a specific tool execution.
         /// - A predefined system action, such as "escalate" or "exit", which triggers
-        /// an EndSession signal with corresponding metadata
-        /// to terminate the conversation.
+        ///   an EndSession signal with corresponding metadata
+        ///   to terminate the conversation.
         /// </summary>
         public readonly string? FallbackAction;
         /// <summary>

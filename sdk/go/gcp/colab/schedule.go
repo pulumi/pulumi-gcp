@@ -908,6 +908,12 @@ func (ScheduleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduleState)(nil)).Elem()
 }
 
+// ScheduleExists checks whether an existing Schedule resource with the given ID exists.
+func ScheduleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScheduleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:colab/schedule:Schedule", id, state, "", opts...)
+}
+
 type scheduleArgs struct {
 	// Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
 	AllowQueueing *bool `pulumi:"allowQueueing"`

@@ -790,6 +790,34 @@ class TargetTCPProxy(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         return TargetTCPProxy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_service: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_bind: pulumi.Input[Optional[_builtins.bool]] = None,
+            proxy_header: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_id: pulumi.Input[Optional[_builtins.int]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backendService"] = backend_service
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["loadBalancingScheme"] = load_balancing_scheme
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["proxyBind"] = proxy_bind
+        __props__["proxyHeader"] = proxy_header
+        __props__["proxyId"] = proxy_id
+        __props__["selfLink"] = self_link
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/targetTCPProxy:TargetTCPProxy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backendService")
     def backend_service(self) -> pulumi.Output[Optional[_builtins.str]]:

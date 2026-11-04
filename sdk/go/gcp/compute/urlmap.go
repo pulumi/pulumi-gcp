@@ -2799,6 +2799,12 @@ func (URLMapState) ElementType() reflect.Type {
 	return reflect.TypeOf((*urlmapState)(nil)).Elem()
 }
 
+// URLMapExists checks whether an existing URLMap resource with the given ID exists.
+func URLMapExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *URLMapState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/uRLMap:URLMap", id, state, "", opts...)
+}
+
 type urlmapArgs struct {
 	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
 	// This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.

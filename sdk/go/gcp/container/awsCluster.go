@@ -570,6 +570,12 @@ func (AwsClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsClusterState)(nil)).Elem()
 }
 
+// AwsClusterExists checks whether an existing AwsCluster resource with the given ID exists.
+func AwsClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:container/awsCluster:AwsCluster", id, state, "", opts...)
+}
+
 type awsClusterArgs struct {
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	//

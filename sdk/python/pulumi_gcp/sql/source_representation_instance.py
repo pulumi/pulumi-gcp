@@ -783,6 +783,38 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return SourceRepresentationInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            database_version: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dump_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["caCertificate"] = ca_certificate
+        __props__["clientCertificate"] = client_certificate
+        __props__["clientKey"] = client_key
+        __props__["databaseVersion"] = database_version
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dumpFilePath"] = dump_file_path
+        __props__["host"] = host
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["port"] = port
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="caCertificate")
     def ca_certificate(self) -> pulumi.Output[Optional[_builtins.str]]:

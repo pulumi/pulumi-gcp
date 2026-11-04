@@ -149,6 +149,12 @@ func (OrganizationExclusionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationExclusionState)(nil)).Elem()
 }
 
+// OrganizationExclusionExists checks whether an existing OrganizationExclusion resource with the given ID exists.
+func OrganizationExclusionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationExclusionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/organizationExclusion:OrganizationExclusion", id, state, "", opts...)
+}
+
 type organizationExclusionArgs struct {
 	// A human-readable description.
 	Description *string `pulumi:"description"`

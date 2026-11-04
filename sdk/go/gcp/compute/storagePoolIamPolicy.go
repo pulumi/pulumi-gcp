@@ -616,6 +616,12 @@ func (StoragePoolIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storagePoolIamPolicyState)(nil)).Elem()
 }
 
+// StoragePoolIamPolicyExists checks whether an existing StoragePoolIamPolicy resource with the given ID exists.
+func StoragePoolIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StoragePoolIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/storagePoolIamPolicy:StoragePoolIamPolicy", id, state, "", opts...)
+}
+
 type storagePoolIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`

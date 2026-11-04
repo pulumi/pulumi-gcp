@@ -285,11 +285,10 @@ import javax.annotation.Nullable;
  * $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
  * ```
  * 
- * @deprecated
- * gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile
+ * @deprecated gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile
  * 
  */
-@Deprecated /* gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile */
+@Deprecated
 @ResourceType(type="gcp:bigquery/appProfile:AppProfile")
 public class AppProfile extends com.pulumi.resources.CustomResource {
     /**

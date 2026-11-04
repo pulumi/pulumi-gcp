@@ -434,6 +434,18 @@ class AccessLevels(pulumi.CustomResource):
         __props__.__dict__["parent"] = parent
         return AccessLevels(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelsAccessLevelArgs', 'AccessLevelsAccessLevelArgsDict', 'outputs.AccessLevelsAccessLevel']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessLevels"] = access_levels
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["parent"] = parent
+        return pulumi.runtime.exists_resource(None, 'gcp:accesscontextmanager/accessLevels:AccessLevels', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessLevels")
     def access_levels(self) -> pulumi.Output[Optional[Sequence['outputs.AccessLevelsAccessLevel']]]:

@@ -166,6 +166,12 @@ func (CrossSiteNetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*crossSiteNetworkState)(nil)).Elem()
 }
 
+// CrossSiteNetworkExists checks whether an existing CrossSiteNetwork resource with the given ID exists.
+func CrossSiteNetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CrossSiteNetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/crossSiteNetwork:CrossSiteNetwork", id, state, "", opts...)
+}
+
 type crossSiteNetworkArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

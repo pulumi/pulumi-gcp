@@ -245,6 +245,12 @@ func (AppVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appVersionState)(nil)).Elem()
 }
 
+// AppVersionExists checks whether an existing AppVersion resource with the given ID exists.
+func AppVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:ces/appVersion:AppVersion", id, state, "", opts...)
+}
+
 type appVersionArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App string `pulumi:"app"`

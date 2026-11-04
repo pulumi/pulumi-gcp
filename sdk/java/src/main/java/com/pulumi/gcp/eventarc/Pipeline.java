@@ -145,12 +145,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var workflow = new Workflow("workflow", WorkflowArgs.builder()
  *             .name("some-workflow")
  *             .deletionProtection(false)
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  * - getCurrentTime:
  *     call: http.get
  *     args:
- *         url: ${sys.get_env(\"url\")}
+ *         url: $}{{@code sys.get_env(}&#92;{@code "url}&#92;{@code ")}}{@code
  *     result: CurrentDateTime
  * - readWikipedia:
  *     call: http.get
@@ -177,10 +177,10 @@ import javax.annotation.Nullable;
  *         url: https://en.wikipedia.org/w/api.php
  *         query:
  *             action: opensearch
- *             search: ${CurrentDateTime.body.dayOfTheWeek}
+ *             search: $}{{@code CurrentDateTime.body.dayOfTheWeek}}{@code
  *     result: WikiResult
  * - returnOutput:
- *     return: ${WikiResult.body[1]}
+ *     return: $}{{@code WikiResult.body[1]}}{@code
  *             """)
  *             .build());
  * 
@@ -192,8 +192,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -240,7 +240,7 @@ import javax.annotation.Nullable;
  *             .destinations(PipelineDestinationArgs.builder()
  *                 .httpEndpoint(PipelineDestinationHttpEndpointArgs.builder()
  *                     .uri("https://10.77.0.0:80/route")
- *                     .messageBindingTemplate("}{{@code \"headers\":}{{@code \"new-header-key\": \"new-header-value\"}}}{@code ")
+ *                     .messageBindingTemplate("}{&#92;{@code "headers}&#92;{@code ":}{&#92;{@code "new-header-key}&#92;{@code ": }&#92;{@code "new-header-value}&#92;{@code "}}}{@code ")
  *                     .build())
  *                 .networkConfig(PipelineDestinationNetworkConfigArgs.builder()
  *                     .networkAttachment("projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment")
@@ -269,9 +269,9 @@ import javax.annotation.Nullable;
  *                 .transformation(PipelineMediationTransformationArgs.builder()
  *                     .transformationTemplate("""
  * }{{@code
- * \"id\": message.id,
- * \"datacontenttype\": \"application/json\",
- * \"data\": \"}{{@code  \\\"scrubbed\\\": \\\"true\\\" }}{@code \"
+ * }&#92;{@code "id}&#92;{@code ": message.id,
+ * }&#92;{@code "datacontenttype}&#92;{@code ": }&#92;{@code "application/json}&#92;{@code ",
+ * }&#92;{@code "data}&#92;{@code ": }&#92;{@code "}{{@code  }&#92;&#92;&#92;{@code "scrubbed}&#92;&#92;&#92;{@code ": }&#92;&#92;&#92;{@code "true}&#92;&#92;&#92;{@code " }}&#92;{@code "
  * }}{@code
  *                     """)
  *                     .build())
@@ -329,7 +329,7 @@ import javax.annotation.Nullable;
  *             .destinations(PipelineDestinationArgs.builder()
  *                 .httpEndpoint(PipelineDestinationHttpEndpointArgs.builder()
  *                     .uri("https://10.77.0.0:80/route")
- *                     .messageBindingTemplate("}{{@code \"headers\":}{{@code \"new-header-key\": \"new-header-value\"}}}{@code ")
+ *                     .messageBindingTemplate("}{&#92;{@code "headers}&#92;{@code ":}{&#92;{@code "new-header-key}&#92;{@code ": }&#92;{@code "new-header-value}&#92;{@code "}}}{@code ")
  *                     .build())
  *                 .networkConfig(PipelineDestinationNetworkConfigArgs.builder()
  *                     .networkAttachment("projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment")
@@ -343,7 +343,7 @@ import javax.annotation.Nullable;
  *                 .outputPayloadFormat(PipelineDestinationOutputPayloadFormatArgs.builder()
  *                     .protobuf(PipelineDestinationOutputPayloadFormatProtobufArgs.builder()
  *                         .schemaDefinition("""
- * syntax = \"proto3\";
+ * syntax = }&#92;{@code "proto3}&#92;{@code ";
  * message schema }{{@code
  * string name = 1;
  * string severity = 2;
@@ -355,7 +355,7 @@ import javax.annotation.Nullable;
  *             .inputPayloadFormat(PipelineInputPayloadFormatArgs.builder()
  *                 .protobuf(PipelineInputPayloadFormatProtobufArgs.builder()
  *                     .schemaDefinition("""
- * syntax = \"proto3\";
+ * syntax = }&#92;{@code "proto3}&#92;{@code ";
  * message schema }{{@code
  * string name = 1;
  * string severity = 2;
@@ -372,9 +372,9 @@ import javax.annotation.Nullable;
  *                 .transformation(PipelineMediationTransformationArgs.builder()
  *                     .transformationTemplate("""
  * }{{@code
- * \"id\": message.id,
- * \"datacontenttype\": \"application/json\",
- * \"data\": \"}{{@code  \\\"scrubbed\\\": \\\"true\\\" }}{@code \"
+ * }&#92;{@code "id}&#92;{@code ": message.id,
+ * }&#92;{@code "datacontenttype}&#92;{@code ": }&#92;{@code "application/json}&#92;{@code ",
+ * }&#92;{@code "data}&#92;{@code ": }&#92;{@code "}{{@code  }&#92;&#92;&#92;{@code "scrubbed}&#92;&#92;&#92;{@code ": }&#92;&#92;&#92;{@code "true}&#92;&#92;&#92;{@code " }}&#92;{@code "
  * }}{@code
  *                     """)
  *                     .build())
@@ -418,12 +418,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var primary = new Pipeline("primary", PipelineArgs.builder()
  *             .location("us-central1")
  *             .pipelineId("some-pipeline")
@@ -431,20 +431,20 @@ import javax.annotation.Nullable;
  *             .destinations(PipelineDestinationArgs.builder()
  *                 .httpEndpoint(PipelineDestinationHttpEndpointArgs.builder()
  *                     .uri("https://10.77.0.0:80/route")
- *                     .messageBindingTemplate("{\"headers\":{\"new-header-key\": \"new-header-value\"}}")
+ *                     .messageBindingTemplate("}{&#92;{@code "headers}&#92;{@code ":}{&#92;{@code "new-header-key}&#92;{@code ": }&#92;{@code "new-header-value}&#92;{@code "}}}{@code ")
  *                     .build())
  *                 .networkConfig(PipelineDestinationNetworkConfigArgs.builder()
  *                     .networkAttachment("projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment")
  *                     .build())
  *                 .outputPayloadFormat(PipelineDestinationOutputPayloadFormatArgs.builder()
  *                     .avro(PipelineDestinationOutputPayloadFormatAvroArgs.builder()
- *                         .schemaDefinition("{\"type\": \"record\", \"name\": \"my_record\", \"fields\": [{\"name\": \"my_field\", \"type\": \"string\"}]}")
+ *                         .schemaDefinition("}{&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ", }&#92;{@code "name}&#92;{@code ": }&#92;{@code "my_record}&#92;{@code ", }&#92;{@code "fields}&#92;{@code ": [}{&#92;{@code "name}&#92;{@code ": }&#92;{@code "my_field}&#92;{@code ", }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "}}{@code ]}}{@code ")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .inputPayloadFormat(PipelineInputPayloadFormatArgs.builder()
  *                 .avro(PipelineInputPayloadFormatAvroArgs.builder()
- *                     .schemaDefinition("{\"type\": \"record\", \"name\": \"my_record\", \"fields\": [{\"name\": \"my_field\", \"type\": \"string\"}]}")
+ *                     .schemaDefinition("}{&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ", }&#92;{@code "name}&#92;{@code ": }&#92;{@code "my_record}&#92;{@code ", }&#92;{@code "fields}&#92;{@code ": [}{&#92;{@code "name}&#92;{@code ": }&#92;{@code "my_field}&#92;{@code ", }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "}}{@code ]}}{@code ")
  *                     .build())
  *                 .build())
  *             .retryPolicy(PipelineRetryPolicyArgs.builder()
@@ -455,11 +455,11 @@ import javax.annotation.Nullable;
  *             .mediations(PipelineMediationArgs.builder()
  *                 .transformation(PipelineMediationTransformationArgs.builder()
  *                     .transformationTemplate("""
- * {
- * \"id\": message.id,
- * \"datacontenttype\": \"application/json\",
- * \"data\": \"{ \\\"scrubbed\\\": \\\"true\\\" }\"
- * }
+ * }{{@code
+ * }&#92;{@code "id}&#92;{@code ": message.id,
+ * }&#92;{@code "datacontenttype}&#92;{@code ": }&#92;{@code "application/json}&#92;{@code ",
+ * }&#92;{@code "data}&#92;{@code ": }&#92;{@code "}{{@code  }&#92;&#92;&#92;{@code "scrubbed}&#92;&#92;&#92;{@code ": }&#92;&#92;&#92;{@code "true}&#92;&#92;&#92;{@code " }}&#92;{@code "
+ * }}{@code
  *                     """)
  *                     .build())
  *                 .build())
@@ -468,8 +468,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

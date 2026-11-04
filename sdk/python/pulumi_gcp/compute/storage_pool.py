@@ -1129,6 +1129,54 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return StoragePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            capacity_provisioning_type: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict', 'outputs.StoragePoolParams']]] = None,
+            performance_provisioning_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_provisioned_capacity_gb: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_provisioned_iops: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_provisioned_throughput: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoragePoolResourceStatusArgs', 'StoragePoolResourceStatusArgsDict', 'outputs.StoragePoolResourceStatus']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoragePoolStatusArgs', 'StoragePoolStatusArgsDict', 'outputs.StoragePoolStatus']]]]] = None,
+            storage_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["capacityProvisioningType"] = capacity_provisioning_type
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["kind"] = kind
+        __props__["labelFingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["params"] = params
+        __props__["performanceProvisioningType"] = performance_provisioning_type
+        __props__["poolProvisionedCapacityGb"] = pool_provisioned_capacity_gb
+        __props__["poolProvisionedIops"] = pool_provisioned_iops
+        __props__["poolProvisionedThroughput"] = pool_provisioned_throughput
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["resourceStatuses"] = resource_statuses
+        __props__["statuses"] = statuses
+        __props__["storagePoolType"] = storage_pool_type
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/storagePool:StoragePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="capacityProvisioningType")
     def capacity_provisioning_type(self) -> pulumi.Output[_builtins.str]:

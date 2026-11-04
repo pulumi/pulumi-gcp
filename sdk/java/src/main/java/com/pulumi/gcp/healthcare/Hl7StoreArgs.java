@@ -67,9 +67,9 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * conform to the following PCRE regular expression: [&#92;p{Ll}&#92;p{Lo}][&#92;p{Ll}&#92;p{Lo}&#92;p{N}_-]{0,62}
      * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * bytes, and must conform to the following PCRE regular expression: [&#92;p{Ll}&#92;p{Lo}&#92;p{N}_-]{0,63}
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of &#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
@@ -84,9 +84,9 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return User-supplied key-value pairs used to organize HL7v2 stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * conform to the following PCRE regular expression: [&#92;p{Ll}&#92;p{Lo}][&#92;p{Ll}&#92;p{Lo}&#92;p{N}_-]{0,62}
      * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * bytes, and must conform to the following PCRE regular expression: [&#92;p{Ll}&#92;p{Lo}&#92;p{N}_-]{0,63}
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of &#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
@@ -123,11 +123,10 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
-     * @deprecated
-     * `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+     * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
      */
-    @Deprecated /* `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead. */
+    @Deprecated
     @Import(name="notificationConfig")
     private @Nullable Output<Hl7StoreNotificationConfigArgs> notificationConfig;
 
@@ -138,11 +137,10 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
-     * @deprecated
-     * `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+     * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
      */
-    @Deprecated /* `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead. */
+    @Deprecated
     public Optional<Output<Hl7StoreNotificationConfigArgs>> notificationConfig() {
         return Optional.ofNullable(this.notificationConfig);
     }
@@ -288,9 +286,9 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User-supplied key-value pairs used to organize HL7v2 stores.
          * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-         * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+         * conform to the following PCRE regular expression: [&#92;p{Ll}&#92;p{Lo}][&#92;p{Ll}&#92;p{Lo}&#92;p{N}_-]{0,62}
          * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-         * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+         * bytes, and must conform to the following PCRE regular expression: [&#92;p{Ll}&#92;p{Lo}&#92;p{N}_-]{0,63}
          * No more than 64 labels can be associated with a given store.
          * An object containing a list of &#34;key&#34;: value pairs.
          * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
@@ -309,9 +307,9 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User-supplied key-value pairs used to organize HL7v2 stores.
          * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-         * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+         * conform to the following PCRE regular expression: [&#92;p{Ll}&#92;p{Lo}][&#92;p{Ll}&#92;p{Lo}&#92;p{N}_-]{0,62}
          * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-         * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+         * bytes, and must conform to the following PCRE regular expression: [&#92;p{Ll}&#92;p{Lo}&#92;p{N}_-]{0,63}
          * No more than 64 labels can be associated with a given store.
          * An object containing a list of &#34;key&#34;: value pairs.
          * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
@@ -358,11 +356,10 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+         * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
          * 
          */
-        @Deprecated /* `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead. */
+        @Deprecated
         public Builder notificationConfig(@Nullable Output<Hl7StoreNotificationConfigArgs> notificationConfig) {
             $.notificationConfig = notificationConfig;
             return this;
@@ -377,11 +374,10 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+         * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
          * 
          */
-        @Deprecated /* `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead. */
+        @Deprecated
         public Builder notificationConfig(Hl7StoreNotificationConfigArgs notificationConfig) {
             return notificationConfig(Output.of(notificationConfig));
         }

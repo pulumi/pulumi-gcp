@@ -279,6 +279,12 @@ func (SnoozeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snoozeState)(nil)).Elem()
 }
 
+// SnoozeExists checks whether an existing Snooze resource with the given ID exists.
+func SnoozeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnoozeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:monitoring/snooze:Snooze", id, state, "", opts...)
+}
+
 type snoozeArgs struct {
 	// This defines the criteria for applying the Snooze.
 	// > **Note:** After a snooze is created, its criteria can't be modified.

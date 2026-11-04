@@ -303,6 +303,12 @@ func (DatasetIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetIamBindingState)(nil)).Elem()
 }
 
+// DatasetIamBindingExists checks whether an existing DatasetIamBinding resource with the given ID exists.
+func DatasetIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatasetIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/datasetIamBinding:DatasetIamBinding", id, state, "", opts...)
+}
+
 type datasetIamBindingArgs struct {
 	Condition *DatasetIamBindingCondition `pulumi:"condition"`
 	// The dataset ID, in the form

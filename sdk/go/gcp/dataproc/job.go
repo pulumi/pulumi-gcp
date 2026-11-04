@@ -321,6 +321,12 @@ func (JobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobState)(nil)).Elem()
 }
 
+// JobExists checks whether an existing Job resource with the given ID exists.
+func JobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/job:Job", id, state, "", opts...)
+}
+
 type jobArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

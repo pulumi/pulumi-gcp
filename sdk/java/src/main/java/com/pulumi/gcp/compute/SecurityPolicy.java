@@ -163,12 +163,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
  *             .name("my-policy")
  *             .rules(            
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  *                     .priority(1000)
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
  *                         .expr(SecurityPolicyRuleMatchExprArgs.builder()
- *                             .expression("request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2")
+ *                             .expression("request.path.matches(}&#92;{@code "/login.html}&#92;{@code ") && token.recaptcha_session.score < 0.2")
  *                             .build())
  *                         .build())
  *                     .headerAction(SecurityPolicyRuleHeaderActionArgs.builder()
@@ -205,8 +205,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -599,7 +599,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The set of rules that belong to this policy. There must always be a default
-     * rule (rule with priority 2147483647 and match &#34;\*&#34;). If no rules are provided when creating a
+     * rule (rule with priority 2147483647 and match &#34;&#92;*&#34;). If no rules are provided when creating a
      * security policy, a default rule with action &#34;allow&#34; will be added. Structure is documented below.
      * 
      */
@@ -608,7 +608,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The set of rules that belong to this policy. There must always be a default
-     * rule (rule with priority 2147483647 and match &#34;\*&#34;). If no rules are provided when creating a
+     * rule (rule with priority 2147483647 and match &#34;&#92;*&#34;). If no rules are provided when creating a
      * security policy, a default rule with action &#34;allow&#34; will be added. Structure is documented below.
      * 
      */

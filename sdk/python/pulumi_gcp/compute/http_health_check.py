@@ -795,6 +795,38 @@ class HttpHealthCheck(pulumi.CustomResource):
         __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
         return HttpHealthCheck(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            request_path: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checkIntervalSec"] = check_interval_sec
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["healthyThreshold"] = healthy_threshold
+        __props__["host"] = host
+        __props__["name"] = name
+        __props__["port"] = port
+        __props__["project"] = project
+        __props__["requestPath"] = request_path
+        __props__["selfLink"] = self_link
+        __props__["timeoutSec"] = timeout_sec
+        __props__["unhealthyThreshold"] = unhealthy_threshold
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/httpHealthCheck:HttpHealthCheck', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="checkIntervalSec")
     def check_interval_sec(self) -> pulumi.Output[Optional[_builtins.int]]:

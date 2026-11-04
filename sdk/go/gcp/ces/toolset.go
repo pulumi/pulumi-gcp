@@ -1044,6 +1044,12 @@ func (ToolsetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*toolsetState)(nil)).Elem()
 }
 
+// ToolsetExists checks whether an existing Toolset resource with the given ID exists.
+func ToolsetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ToolsetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:ces/toolset:Toolset", id, state, "", opts...)
+}
+
 type toolsetArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App string `pulumi:"app"`

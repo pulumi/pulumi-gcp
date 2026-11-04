@@ -385,6 +385,26 @@ class CaExternalAccountKey(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return CaExternalAccountKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            b64_mac_key: pulumi.Input[Optional[_builtins.str]] = None,
+            b64url_mac_key: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mac_key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["b64MacKey"] = b64_mac_key
+        __props__["b64urlMacKey"] = b64url_mac_key
+        __props__["keyId"] = key_id
+        __props__["location"] = location
+        __props__["macKey"] = mac_key
+        __props__["name"] = name
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/caExternalAccountKey:CaExternalAccountKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="b64MacKey")
     @_utilities.deprecated("""`b64_mac_key` is deprecated and will be removed in a future major release. Use `mac_key` instead.""")

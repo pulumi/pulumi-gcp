@@ -359,11 +359,10 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
      * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
      * 
-     * @deprecated
-     * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+     * @deprecated `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
      * 
      */
-    @Deprecated /* `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead. */
+    @Deprecated
     @Import(name="parallelstoreCsiDriverConfig")
     private @Nullable Output<ClusterAddonsConfigParallelstoreCsiDriverConfigArgs> parallelstoreCsiDriverConfig;
 
@@ -375,11 +374,10 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
      * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
      * 
-     * @deprecated
-     * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+     * @deprecated `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
      * 
      */
-    @Deprecated /* `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead. */
+    @Deprecated
     public Optional<Output<ClusterAddonsConfigParallelstoreCsiDriverConfigArgs>> parallelstoreCsiDriverConfig() {
         return Optional.ofNullable(this.parallelstoreCsiDriverConfig);
     }
@@ -944,11 +942,10 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+         * @deprecated `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
          * 
          */
-        @Deprecated /* `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead. */
+        @Deprecated
         public Builder parallelstoreCsiDriverConfig(@Nullable Output<ClusterAddonsConfigParallelstoreCsiDriverConfigArgs> parallelstoreCsiDriverConfig) {
             $.parallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
             return this;
@@ -964,11 +961,10 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
+         * @deprecated `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
          * 
          */
-        @Deprecated /* `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead. */
+        @Deprecated
         public Builder parallelstoreCsiDriverConfig(ClusterAddonsConfigParallelstoreCsiDriverConfigArgs parallelstoreCsiDriverConfig) {
             return parallelstoreCsiDriverConfig(Output.of(parallelstoreCsiDriverConfig));
         }

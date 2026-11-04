@@ -214,6 +214,12 @@ func (VpcServiceControlsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcServiceControlsState)(nil)).Elem()
 }
 
+// VpcServiceControlsExists checks whether an existing VpcServiceControls resource with the given ID exists.
+func VpcServiceControlsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcServiceControlsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:servicenetworking/vpcServiceControls:VpcServiceControls", id, state, "", opts...)
+}
+
 type vpcServiceControlsArgs struct {
 	// Desired VPC Service Controls state service producer VPC network, as
 	// described at the top of this page.

@@ -165,6 +165,12 @@ func (SubAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subAccountState)(nil)).Elem()
 }
 
+// SubAccountExists checks whether an existing SubAccount resource with the given ID exists.
+func SubAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:billing/subAccount:SubAccount", id, state, "", opts...)
+}
+
 type subAccountArgs struct {
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
 	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.

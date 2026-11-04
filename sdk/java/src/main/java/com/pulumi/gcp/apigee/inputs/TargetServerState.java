@@ -106,14 +106,14 @@ public final class TargetServerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+     * The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+     * @return The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
      * 
      */
     public Optional<Output<String>> name() {
@@ -319,7 +319,7 @@ public final class TargetServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+         * @param name The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class TargetServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+         * @param name The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
          * 
          * @return builder
          * 

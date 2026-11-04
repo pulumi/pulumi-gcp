@@ -957,6 +957,12 @@ func (DiskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskState)(nil)).Elem()
 }
 
+// DiskExists checks whether an existing Disk resource with the given ID exists.
+func DiskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/disk:Disk", id, state, "", opts...)
+}
+
 type diskArgs struct {
 	// The access mode of the disk.
 	// For example:

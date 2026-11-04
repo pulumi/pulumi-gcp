@@ -806,6 +806,32 @@ class CdnEdgeExtension(pulumi.CustomResource):
         __props__.__dict__["target"] = target
         return CdnEdgeExtension(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            extension_chains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CdnEdgeExtensionExtensionChainArgs', 'CdnEdgeExtensionExtensionChainArgsDict', 'outputs.CdnEdgeExtensionExtensionChain']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target: pulumi.Input[Optional[Union['CdnEdgeExtensionTargetArgs', 'CdnEdgeExtensionTargetArgsDict', 'outputs.CdnEdgeExtensionTarget']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["extensionChains"] = extension_chains
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["target"] = target
+        return pulumi.runtime.exists_resource(None, 'gcp:networkservices/cdnEdgeExtension:CdnEdgeExtension', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

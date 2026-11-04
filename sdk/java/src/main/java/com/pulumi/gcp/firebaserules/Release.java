@@ -182,14 +182,14 @@ public class Release extends com.pulumi.resources.CustomResource {
         return this.disabled;
     }
     /**
-     * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
+     * Format: `projects/{project_id}/releases/{release_id}`&#92;Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
+     * @return Format: `projects/{project_id}/releases/{release_id}`&#92;Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
      * 
      */
     public Output<String> name() {

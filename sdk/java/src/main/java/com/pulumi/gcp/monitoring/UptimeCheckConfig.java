@@ -60,12 +60,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var http = new UptimeCheckConfig("http", UptimeCheckConfigArgs.builder()
  *             .displayName("http-uptime-check")
  *             .timeout("60s")
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *                 ))
  *                 .build())
  *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
- *                 .content("\"example\"")
+ *                 .content("}&#92;{@code "example}&#92;{@code "")
  *                 .matcher("MATCHES_JSON_PATH")
  *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
  *                     .jsonPath("$.path")
@@ -100,8 +100,8 @@ import javax.annotation.Nullable;
  *             .checkerType("STATIC_IP_CHECKERS")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -129,12 +129,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var http = new UptimeCheckConfig("http", UptimeCheckConfigArgs.builder()
  *             .displayName("http-uptime-check")
  *             .timeout("60s")
@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  *                 ))
  *                 .build())
  *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
- *                 .content("\"example\"")
+ *                 .content("}&#92;{@code "example}&#92;{@code "")
  *                 .matcher("MATCHES_JSON_PATH")
  *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
  *                     .jsonPath("$.path")
@@ -173,8 +173,8 @@ import javax.annotation.Nullable;
  *             .checkerType("STATIC_IP_CHECKERS")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -201,12 +201,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var statusCode = new UptimeCheckConfig("statusCode", UptimeCheckConfigArgs.builder()
  *             .displayName("http-uptime-check")
  *             .timeout("60s")
@@ -235,7 +235,7 @@ import javax.annotation.Nullable;
  *                 ))
  *                 .build())
  *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
- *                 .content("\"example\"")
+ *                 .content("}&#92;{@code "example}&#92;{@code "")
  *                 .matcher("MATCHES_JSON_PATH")
  *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
  *                     .jsonPath("$.path")
@@ -245,8 +245,8 @@ import javax.annotation.Nullable;
  *             .checkerType("STATIC_IP_CHECKERS")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -332,15 +332,15 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var check = new Group("check", GroupArgs.builder()
  *             .displayName("uptime-check-group")
- *             .filter("resource.metadata.name=has_substring(\"foo\")")
+ *             .filter("resource.metadata.name=has_substring(}&#92;{@code "foo}&#92;{@code ")")
  *             .build());
  * 
  *         var tcpGroup = new UptimeCheckConfig("tcpGroup", UptimeCheckConfigArgs.builder()
@@ -358,8 +358,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

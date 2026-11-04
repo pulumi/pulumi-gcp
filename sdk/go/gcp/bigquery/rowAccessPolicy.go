@@ -311,6 +311,12 @@ func (RowAccessPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rowAccessPolicyState)(nil)).Elem()
 }
 
+// RowAccessPolicyExists checks whether an existing RowAccessPolicy resource with the given ID exists.
+func RowAccessPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RowAccessPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/rowAccessPolicy:RowAccessPolicy", id, state, "", opts...)
+}
+
 type rowAccessPolicyArgs struct {
 	// The ID of the dataset containing this row access policy.
 	DatasetId string `pulumi:"datasetId"`

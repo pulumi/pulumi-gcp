@@ -274,6 +274,12 @@ func (InstantSnapshotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instantSnapshotState)(nil)).Elem()
 }
 
+// InstantSnapshotExists checks whether an existing InstantSnapshot resource with the given ID exists.
+func InstantSnapshotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstantSnapshotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instantSnapshot:InstantSnapshot", id, state, "", opts...)
+}
+
 type instantSnapshotArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

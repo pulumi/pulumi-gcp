@@ -177,6 +177,12 @@ func (LogScopeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logScopeState)(nil)).Elem()
 }
 
+// LogScopeExists checks whether an existing LogScope resource with the given ID exists.
+func LogScopeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogScopeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/logScope:LogScope", id, state, "", opts...)
+}
+
 type logScopeArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

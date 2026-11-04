@@ -1443,6 +1443,70 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict', 'outputs.InstanceAccessRulesOptions']]] = None,
+            available_version: pulumi.Input[Optional[_builtins.str]] = None,
+            capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict', 'outputs.InstanceDynamicTierOptions']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_version: pulumi.Input[Optional[_builtins.str]] = None,
+            filesystem: pulumi.Input[Optional[_builtins.str]] = None,
+            gke_support_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict', 'outputs.InstanceMaintenancePolicy']]] = None,
+            mount_point: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            per_unit_storage_throughput: pulumi.Input[Optional[_builtins.str]] = None,
+            placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            target_version: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            upcoming_maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUpcomingMaintenanceScheduleArgs', 'InstanceUpcomingMaintenanceScheduleArgsDict', 'outputs.InstanceUpcomingMaintenanceSchedule']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessRulesOptions"] = access_rules_options
+        __props__["availableVersion"] = available_version
+        __props__["capacityGib"] = capacity_gib
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["dynamicTierOptions"] = dynamic_tier_options
+        __props__["effectiveLabels"] = effective_labels
+        __props__["effectiveVersion"] = effective_version
+        __props__["filesystem"] = filesystem
+        __props__["gkeSupportEnabled"] = gke_support_enabled
+        __props__["instanceId"] = instance_id
+        __props__["kmsKey"] = kms_key
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["maintenancePolicy"] = maintenance_policy
+        __props__["mountPoint"] = mount_point
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["perUnitStorageThroughput"] = per_unit_storage_throughput
+        __props__["placementPolicy"] = placement_policy
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["state"] = state
+        __props__["stateReason"] = state_reason
+        __props__["targetVersion"] = target_version
+        __props__["uid"] = uid
+        __props__["upcomingMaintenanceSchedules"] = upcoming_maintenance_schedules
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:lustre/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessRulesOptions")
     def access_rules_options(self) -> pulumi.Output[Optional['outputs.InstanceAccessRulesOptions']]:

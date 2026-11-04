@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Regex for Cloud Storage.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex"&gt;&lt;/a&gt;The `AmazonS3BucketRegex` block supports:
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex? AmazonS3BucketRegex;

@@ -197,6 +197,12 @@ func (FolderKajPolicyConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderKajPolicyConfigState)(nil)).Elem()
 }
 
+// FolderKajPolicyConfigExists checks whether an existing FolderKajPolicyConfig resource with the given ID exists.
+func FolderKajPolicyConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderKajPolicyConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig", id, state, "", opts...)
+}
+
 type folderKajPolicyConfigArgs struct {
 	// The default key access justification policy used when a CryptoKey is
 	// created in this folder. This is only used when a Key Access Justifications

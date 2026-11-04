@@ -442,6 +442,12 @@ func (RepositoryIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryIamBindingState)(nil)).Elem()
 }
 
+// RepositoryIamBindingExists checks whether an existing RepositoryIamBinding resource with the given ID exists.
+func RepositoryIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding", id, state, "", opts...)
+}
+
 type repositoryIamBindingArgs struct {
 	Condition *RepositoryIamBindingCondition `pulumi:"condition"`
 	// The name of the repository's location. In addition to specific regions,

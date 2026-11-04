@@ -696,6 +696,32 @@ class InsightsReportConfig(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return InsightsReportConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            csv_options: pulumi.Input[Optional[Union['InsightsReportConfigCsvOptionsArgs', 'InsightsReportConfigCsvOptionsArgsDict', 'outputs.InsightsReportConfigCsvOptions']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            frequency_options: pulumi.Input[Optional[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict', 'outputs.InsightsReportConfigFrequencyOptions']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_metadata_report_options: pulumi.Input[Optional[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict', 'outputs.InsightsReportConfigObjectMetadataReportOptions']]] = None,
+            parquet_options: pulumi.Input[Optional[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict', 'outputs.InsightsReportConfigParquetOptions']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["csvOptions"] = csv_options
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["forceDestroy"] = force_destroy
+        __props__["frequencyOptions"] = frequency_options
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["objectMetadataReportOptions"] = object_metadata_report_options
+        __props__["parquetOptions"] = parquet_options
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/insightsReportConfig:InsightsReportConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="csvOptions")
     def csv_options(self) -> pulumi.Output[Optional['outputs.InsightsReportConfigCsvOptions']]:

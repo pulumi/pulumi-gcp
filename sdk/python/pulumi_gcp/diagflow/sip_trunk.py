@@ -444,6 +444,26 @@ class SipTrunk(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return SipTrunk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SipTrunkConnectionArgs', 'SipTrunkConnectionArgsDict', 'outputs.SipTrunkConnection']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            expected_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connections"] = connections
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["expectedHostnames"] = expected_hostnames
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/sipTrunk:SipTrunk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def connections(self) -> pulumi.Output[Sequence['outputs.SipTrunkConnection']]:

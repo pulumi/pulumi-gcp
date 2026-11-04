@@ -16,21 +16,18 @@ public final class GetSubscriptionMessageTransformJavascriptUdf {
      * &#39;&#39;&#39;
      *   /**
      *   * Transforms a Pub/Sub message.
-     * *   
-     *   * {@literal @}return {(Object&lt;string, (string | Object&lt;string, string&gt;)&gt;|null)} - To
+     * * * {@literal @}return {(Object&lt;string, (string | Object&lt;string, string&gt;)&gt;|null)} - To
      *   * filter a message, return &#39;null&#39;. To transform a message return a map
      *   * with the following keys:
      *   *   - (required) &#39;data&#39; : {string}
      *   *   - (optional) &#39;attributes&#39; : {Object&lt;string, string&gt;}
      *   * Returning empty &#39;attributes&#39; will remove all attributes from the
      *   * message.
-     * *   
-     *   * {@literal @}param  {(Object&lt;string, (string | Object&lt;string, string&gt;)&gt;} Pub/Sub
+     * * * {@literal @}param  {(Object&lt;string, (string | Object&lt;string, string&gt;)&gt;} Pub/Sub
      *   * message. Keys:
      *   *   - (required) &#39;data&#39; : {string}
      *   *   - (required) &#39;attributes&#39; : {Object&lt;string, string&gt;}
-     * *   
-     *   * {@literal @}param  {Object&lt;string, any&gt;} metadata - Pub/Sub message metadata.
+     * * * {@literal @}param  {Object&lt;string, any&gt;} metadata - Pub/Sub message metadata.
      *   * Keys:
      *   *   - (required) &#39;message_id&#39;  : {string}
      *   *   - (optional) &#39;publish_time&#39;: {string} YYYY-MM-DDTHH:MM:SSZ format
@@ -55,21 +52,18 @@ public final class GetSubscriptionMessageTransformJavascriptUdf {
      * &#39;&#39;&#39;
      *   /**
      *   * Transforms a Pub/Sub message.
-     * *   
-     *   * {@literal @}return {(Object&lt;string, (string | Object&lt;string, string&gt;)&gt;|null)} - To
+     * * * {@literal @}return {(Object&lt;string, (string | Object&lt;string, string&gt;)&gt;|null)} - To
      *   * filter a message, return &#39;null&#39;. To transform a message return a map
      *   * with the following keys:
      *   *   - (required) &#39;data&#39; : {string}
      *   *   - (optional) &#39;attributes&#39; : {Object&lt;string, string&gt;}
      *   * Returning empty &#39;attributes&#39; will remove all attributes from the
      *   * message.
-     * *   
-     *   * {@literal @}param  {(Object&lt;string, (string | Object&lt;string, string&gt;)&gt;} Pub/Sub
+     * * * {@literal @}param  {(Object&lt;string, (string | Object&lt;string, string&gt;)&gt;} Pub/Sub
      *   * message. Keys:
      *   *   - (required) &#39;data&#39; : {string}
      *   *   - (required) &#39;attributes&#39; : {Object&lt;string, string&gt;}
-     * *   
-     *   * {@literal @}param  {Object&lt;string, any&gt;} metadata - Pub/Sub message metadata.
+     * * * {@literal @}param  {Object&lt;string, any&gt;} metadata - Pub/Sub message metadata.
      *   * Keys:
      *   *   - (required) &#39;message_id&#39;  : {string}
      *   *   - (optional) &#39;publish_time&#39;: {string} YYYY-MM-DDTHH:MM:SSZ format

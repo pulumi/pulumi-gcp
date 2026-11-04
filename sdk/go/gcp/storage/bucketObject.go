@@ -403,6 +403,12 @@ func (BucketObjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketObjectState)(nil)).Elem()
 }
 
+// BucketObjectExists checks whether an existing BucketObject resource with the given ID exists.
+func BucketObjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketObjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/bucketObject:BucketObject", id, state, "", opts...)
+}
+
 type bucketObjectArgs struct {
 	// The name of the containing bucket.
 	Bucket string `pulumi:"bucket"`

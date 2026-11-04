@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// 1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
         /// 2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
         /// 3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
-        /// Params cannot be specified for categories 1) and 2).
+        ///    Params cannot be specified for categories 1) and 2).
         /// </summary>
         public readonly string Name;
         /// <summary>

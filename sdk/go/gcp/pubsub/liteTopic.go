@@ -212,6 +212,12 @@ func (LiteTopicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*liteTopicState)(nil)).Elem()
 }
 
+// LiteTopicExists checks whether an existing LiteTopic resource with the given ID exists.
+func LiteTopicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LiteTopicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:pubsub/liteTopic:LiteTopic", id, state, "", opts...)
+}
+
 type liteTopicArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

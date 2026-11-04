@@ -1123,6 +1123,12 @@ func (WorkforcePoolProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workforcePoolProviderState)(nil)).Elem()
 }
 
+// WorkforcePoolProviderExists checks whether an existing WorkforcePoolProvider resource with the given ID exists.
+func WorkforcePoolProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkforcePoolProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workforcePoolProvider:WorkforcePoolProvider", id, state, "", opts...)
+}
+
 type workforcePoolProviderArgs struct {
 	// A [Common Expression Language](https://github.com/google/cel-spec) expression, in
 	// plain text, to restrict what otherwise valid authentication credentials issued by the

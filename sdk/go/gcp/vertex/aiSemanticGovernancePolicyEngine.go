@@ -237,6 +237,12 @@ func (AiSemanticGovernancePolicyEngineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiSemanticGovernancePolicyEngineState)(nil)).Elem()
 }
 
+// AiSemanticGovernancePolicyEngineExists checks whether an existing AiSemanticGovernancePolicyEngine resource with the given ID exists.
+func AiSemanticGovernancePolicyEngineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiSemanticGovernancePolicyEngineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine", id, state, "", opts...)
+}
+
 type aiSemanticGovernancePolicyEngineArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -871,6 +871,12 @@ func (RoutineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routineState)(nil)).Elem()
 }
 
+// RoutineExists checks whether an existing Routine resource with the given ID exists.
+func RoutineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoutineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/routine:Routine", id, state, "", opts...)
+}
+
 type routineArgs struct {
 	// Input/output argument of a function or a stored procedure.
 	// Structure is documented below.

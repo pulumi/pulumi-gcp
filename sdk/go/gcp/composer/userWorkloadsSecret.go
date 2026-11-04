@@ -218,6 +218,12 @@ func (UserWorkloadsSecretState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userWorkloadsSecretState)(nil)).Elem()
 }
 
+// UserWorkloadsSecretExists checks whether an existing UserWorkloadsSecret resource with the given ID exists.
+func UserWorkloadsSecretExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserWorkloadsSecretState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:composer/userWorkloadsSecret:UserWorkloadsSecret", id, state, "", opts...)
+}
+
 type userWorkloadsSecretArgs struct {
 	// The "data" field of Kubernetes Secret, organized in key-value pairs,
 	// which can contain sensitive values such as a password, a token, or a key.

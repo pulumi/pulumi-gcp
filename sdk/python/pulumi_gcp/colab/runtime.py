@@ -893,6 +893,40 @@ class Runtime(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return Runtime(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+            is_upgradable: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notebook_runtime_template_ref: pulumi.Input[Optional[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict', 'outputs.RuntimeNotebookRuntimeTemplateRef']]] = None,
+            notebook_runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_user: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoUpgrade"] = auto_upgrade
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["desiredState"] = desired_state
+        __props__["displayName"] = display_name
+        __props__["expirationTime"] = expiration_time
+        __props__["isUpgradable"] = is_upgradable
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["notebookRuntimeTemplateRef"] = notebook_runtime_template_ref
+        __props__["notebookRuntimeType"] = notebook_runtime_type
+        __props__["project"] = project
+        __props__["runtimeUser"] = runtime_user
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:colab/runtime:Runtime', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> pulumi.Output[Optional[_builtins.bool]]:

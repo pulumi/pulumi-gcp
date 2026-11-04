@@ -1367,6 +1367,44 @@ class Tool(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Tool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action_confirmation_requirement: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            connector_spec: pulumi.Input[Optional[Union['ToolConnectorSpecArgs', 'ToolConnectorSpecArgsDict', 'outputs.ToolConnectorSpec']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            function_spec: pulumi.Input[Optional[Union['ToolFunctionSpecArgs', 'ToolFunctionSpecArgsDict', 'outputs.ToolFunctionSpec']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open_api_spec: pulumi.Input[Optional[Union['ToolOpenApiSpecArgs', 'ToolOpenApiSpecArgsDict', 'outputs.ToolOpenApiSpec']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            satisfies_pzi: pulumi.Input[Optional[_builtins.bool]] = None,
+            satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
+            tool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tool_key: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionConfirmationRequirement"] = action_confirmation_requirement
+        __props__["connectorSpec"] = connector_spec
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["functionSpec"] = function_spec
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["openApiSpec"] = open_api_spec
+        __props__["project"] = project
+        __props__["satisfiesPzi"] = satisfies_pzi
+        __props__["satisfiesPzs"] = satisfies_pzs
+        __props__["toolId"] = tool_id
+        __props__["toolKey"] = tool_key
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/tool:Tool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionConfirmationRequirement")
     def action_confirmation_requirement(self) -> pulumi.Output[Mapping[str, _builtins.str]]:

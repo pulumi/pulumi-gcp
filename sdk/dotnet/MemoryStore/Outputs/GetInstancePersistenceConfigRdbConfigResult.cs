@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     public sealed class GetInstancePersistenceConfigRdbConfigResult
     {
         /// <summary>
-        /// Optional. Period between RDB snapshots. 
+        /// Optional. Period between RDB snapshots.
         ///  Possible values:
         ///  ONE_HOUR
         /// SIX_HOURS

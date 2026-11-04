@@ -17,9 +17,9 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// Can be one of:
         /// 1. The numerical field value.
         /// 2. The duration spec for freshness:
-        /// The value must be formatted as an XSD `dayTimeDuration` value (a
-        /// restricted subset of an ISO 8601 duration value). The pattern for
-        /// this is: `nDnM]`.
+        ///    The value must be formatted as an XSD `dayTimeDuration` value (a
+        ///    restricted subset of an ISO 8601 duration value). The pattern for
+        ///    this is: `nDnM]`.
         /// </summary>
         [Input("attributeValue")]
         public Input<string>? AttributeValue { get; set; }

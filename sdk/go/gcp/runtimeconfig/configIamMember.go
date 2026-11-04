@@ -414,6 +414,12 @@ func (ConfigIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configIamMemberState)(nil)).Elem()
 }
 
+// ConfigIamMemberExists checks whether an existing ConfigIamMember resource with the given ID exists.
+func ConfigIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:runtimeconfig/configIamMember:ConfigIamMember", id, state, "", opts...)
+}
+
 type configIamMemberArgs struct {
 	Condition *ConfigIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

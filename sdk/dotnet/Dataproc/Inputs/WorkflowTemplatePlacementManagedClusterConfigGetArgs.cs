@@ -123,7 +123,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("workerFlexibleConfig")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigGetArgs>? WorkerFlexibleConfig { get; set; }

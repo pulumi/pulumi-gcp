@@ -1347,6 +1347,62 @@ class FutureReservation(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return FutureReservation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aggregate_reservation: pulumi.Input[Optional[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict', 'outputs.FutureReservationAggregateReservation']]] = None,
+            auto_created_reservations_delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_created_reservations_duration: pulumi.Input[Optional[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict', 'outputs.FutureReservationAutoCreatedReservationsDuration']]] = None,
+            auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
+            commitment_info: pulumi.Input[Optional[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict', 'outputs.FutureReservationCommitmentInfo']]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['FutureReservationParamsArgs', 'FutureReservationParamsArgsDict', 'outputs.FutureReservationParams']]] = None,
+            planning_status: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling_type: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link_with_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_settings: pulumi.Input[Optional[Union['FutureReservationShareSettingsArgs', 'FutureReservationShareSettingsArgsDict', 'outputs.FutureReservationShareSettings']]] = None,
+            specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            specific_sku_properties: pulumi.Input[Optional[Union['FutureReservationSpecificSkuPropertiesArgs', 'FutureReservationSpecificSkuPropertiesArgsDict', 'outputs.FutureReservationSpecificSkuProperties']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FutureReservationStatusArgs', 'FutureReservationStatusArgsDict', 'outputs.FutureReservationStatus']]]]] = None,
+            time_window: pulumi.Input[Optional[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict', 'outputs.FutureReservationTimeWindow']]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggregateReservation"] = aggregate_reservation
+        __props__["autoCreatedReservationsDeleteTime"] = auto_created_reservations_delete_time
+        __props__["autoCreatedReservationsDuration"] = auto_created_reservations_duration
+        __props__["autoDeleteAutoCreatedReservations"] = auto_delete_auto_created_reservations
+        __props__["commitmentInfo"] = commitment_info
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deploymentType"] = deployment_type
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["namePrefix"] = name_prefix
+        __props__["params"] = params
+        __props__["planningStatus"] = planning_status
+        __props__["project"] = project
+        __props__["reservationMode"] = reservation_mode
+        __props__["reservationName"] = reservation_name
+        __props__["schedulingType"] = scheduling_type
+        __props__["selfLink"] = self_link
+        __props__["selfLinkWithId"] = self_link_with_id
+        __props__["shareSettings"] = share_settings
+        __props__["specificReservationRequired"] = specific_reservation_required
+        __props__["specificSkuProperties"] = specific_sku_properties
+        __props__["statuses"] = statuses
+        __props__["timeWindow"] = time_window
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/futureReservation:FutureReservation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aggregateReservation")
     def aggregate_reservation(self) -> pulumi.Output[Optional['outputs.FutureReservationAggregateReservation']]:

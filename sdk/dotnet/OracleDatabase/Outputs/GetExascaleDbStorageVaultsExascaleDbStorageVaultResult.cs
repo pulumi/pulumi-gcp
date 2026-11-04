@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// <summary>
         /// The location of the resource.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string Location;
         /// <summary>

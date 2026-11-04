@@ -808,6 +808,12 @@ func (FeatureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureState)(nil)).Elem()
 }
 
+// FeatureExists checks whether an existing Feature resource with the given ID exists.
+func FeatureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/feature:Feature", id, state, "", opts...)
+}
+
 type featureArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -297,6 +297,12 @@ func (WorkforcePoolProviderScimTenantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workforcePoolProviderScimTenantState)(nil)).Elem()
 }
 
+// WorkforcePoolProviderScimTenantExists checks whether an existing WorkforcePoolProviderScimTenant resource with the given ID exists.
+func WorkforcePoolProviderScimTenantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkforcePoolProviderScimTenantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant", id, state, "", opts...)
+}
+
 type workforcePoolProviderScimTenantArgs struct {
 	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
 	ClaimMapping map[string]string `pulumi:"claimMapping"`

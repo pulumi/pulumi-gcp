@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var testAccount = new Account("testAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Test Service Account")
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * - getCurrentTime:
  *     call: http.get
  *     args:
- *         url: ${sys.get_env(\"url\")}
+ *         url: $}{{@code sys.get_env(}&#92;{@code "url}&#92;{@code ")}}{@code
  *     result: currentTime
  * - readWikipedia:
  *     call: http.get
@@ -91,15 +91,15 @@ import javax.annotation.Nullable;
  *         url: https://en.wikipedia.org/w/api.php
  *         query:
  *             action: opensearch
- *             search: ${currentTime.body.dayOfWeek}
+ *             search: $}{{@code currentTime.body.dayOfWeek}}{@code
  *     result: wikiResult
  * - returnOutput:
- *     return: ${wikiResult.body[1]}
+ *     return: $}{{@code wikiResult.body[1]}}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -129,12 +129,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
@@ -159,11 +159,11 @@ import javax.annotation.Nullable;
  *             .description("Magic")
  *             .serviceAccount(testAccount.id())
  *             .deletionProtection(false)
- *             .tags(Output.tuple(tagKey.shortName(), tagValue.shortName()).applyValue(values -> {
+ *             .tags(Output.tuple(tagKey.shortName(), tagValue.shortName()).applyValue(values -> }{{@code
  *                 var tagKeyShortName = values.t1;
  *                 var tagValueShortName = values.t2;
  *                 return Map.of(String.format("%s/%s", project.projectId(),tagKeyShortName), tagValueShortName);
- *             }))
+ *             }}{@code ))
  *             .sourceContents("""
  * # This is a sample workflow. You can replace it with your source code.
  * #
@@ -179,7 +179,7 @@ import javax.annotation.Nullable;
  * - getCurrentTime:
  *     call: http.get
  *     args:
- *         url: ${sys.get_env(\"url\")}
+ *         url: $}{{@code sys.get_env(}&#92;{@code "url}&#92;{@code ")}}{@code
  *     result: currentTime
  * - readWikipedia:
  *     call: http.get
@@ -187,15 +187,15 @@ import javax.annotation.Nullable;
  *         url: https://en.wikipedia.org/w/api.php
  *         query:
  *             action: opensearch
- *             search: ${currentTime.body.dayOfWeek}
+ *             search: $}{{@code currentTime.body.dayOfWeek}}{@code
  *     result: wikiResult
  * - returnOutput:
- *     return: ${wikiResult.body[1]}
+ *     return: $}{{@code wikiResult.body[1]}}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

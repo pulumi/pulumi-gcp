@@ -153,6 +153,12 @@ func (BucketState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketState)(nil)).Elem()
 }
 
+// BucketExists checks whether an existing Bucket resource with the given ID exists.
+func BucketExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:observability/bucket:Bucket", id, state, "", opts...)
+}
+
 type bucketArgs struct {
 	// A client-assigned identifier for the bucket.
 	BucketId string `pulumi:"bucketId"`

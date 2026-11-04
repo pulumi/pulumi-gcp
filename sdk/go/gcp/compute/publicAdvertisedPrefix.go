@@ -305,6 +305,12 @@ func (PublicAdvertisedPrefixState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicAdvertisedPrefixState)(nil)).Elem()
 }
 
+// PublicAdvertisedPrefixExists checks whether an existing PublicAdvertisedPrefix resource with the given ID exists.
+func PublicAdvertisedPrefixExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicAdvertisedPrefixState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix", id, state, "", opts...)
+}
+
 type publicAdvertisedPrefixArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

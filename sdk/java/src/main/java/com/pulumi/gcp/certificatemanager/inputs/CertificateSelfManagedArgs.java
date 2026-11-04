@@ -23,11 +23,10 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
      * 
      * &gt; **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
-     * @deprecated
-     * `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
+     * @deprecated `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
      */
-    @Deprecated /* `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead. */
+    @Deprecated
     @Import(name="certificatePem")
     private @Nullable Output<String> certificatePem;
 
@@ -39,11 +38,10 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
      * 
      * &gt; **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
-     * @deprecated
-     * `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
+     * @deprecated `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
      */
-    @Deprecated /* `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead. */
+    @Deprecated
     public Optional<Output<String>> certificatePem() {
         return Optional.ofNullable(this.certificatePem);
     }
@@ -131,11 +129,10 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
      * 
      * &gt; **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
-     * @deprecated
-     * `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
+     * @deprecated `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
      */
-    @Deprecated /* `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead. */
+    @Deprecated
     @Import(name="privateKeyPem")
     private @Nullable Output<String> privateKeyPem;
 
@@ -146,11 +143,10 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
      * 
      * &gt; **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
-     * @deprecated
-     * `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
+     * @deprecated `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
      */
-    @Deprecated /* `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead. */
+    @Deprecated
     public Optional<Output<String>> privateKeyPem() {
         return Optional.ofNullable(this.privateKeyPem);
     }
@@ -194,11 +190,10 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
+         * @deprecated `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
          * 
          */
-        @Deprecated /* `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead. */
+        @Deprecated
         public Builder certificatePem(@Nullable Output<String> certificatePem) {
             $.certificatePem = certificatePem;
             return this;
@@ -214,11 +209,10 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
+         * @deprecated `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
          * 
          */
-        @Deprecated /* `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead. */
+        @Deprecated
         public Builder certificatePem(String certificatePem) {
             return certificatePem(Output.of(certificatePem));
         }
@@ -332,11 +326,10 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
+         * @deprecated `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
          * 
          */
-        @Deprecated /* `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead. */
+        @Deprecated
         public Builder privateKeyPem(@Nullable Output<String> privateKeyPem) {
             $.privateKeyPem = privateKeyPem;
             return this;
@@ -351,11 +344,10 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
+         * @deprecated `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
          * 
          */
-        @Deprecated /* `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead. */
+        @Deprecated
         public Builder privateKeyPem(String privateKeyPem) {
             return privateKeyPem(Output.of(privateKeyPem));
         }

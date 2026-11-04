@@ -307,6 +307,12 @@ func (NativeDashboardState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nativeDashboardState)(nil)).Elem()
 }
 
+// NativeDashboardExists checks whether an existing NativeDashboard resource with the given ID exists.
+func NativeDashboardExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NativeDashboardState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/nativeDashboard:NativeDashboard", id, state, "", opts...)
+}
+
 type nativeDashboardArgs struct {
 	// The access level of the dashboard.
 	// Possible values:

@@ -557,6 +557,20 @@ class WorkforcePoolIamPolicy(pulumi.CustomResource):
         __props__.__dict__["workforce_pool_id"] = workforce_pool_id
         return WorkforcePoolIamPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+            workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["policyData"] = policy_data
+        __props__["workforcePoolId"] = workforce_pool_id
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/workforcePoolIamPolicy:WorkforcePoolIamPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:

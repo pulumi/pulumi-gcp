@@ -367,6 +367,12 @@ func (ProjectBucketConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectBucketConfigState)(nil)).Elem()
 }
 
+// ProjectBucketConfigExists checks whether an existing ProjectBucketConfig resource with the given ID exists.
+func ProjectBucketConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectBucketConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/projectBucketConfig:ProjectBucketConfig", id, state, "", opts...)
+}
+
 type projectBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId string `pulumi:"bucketId"`

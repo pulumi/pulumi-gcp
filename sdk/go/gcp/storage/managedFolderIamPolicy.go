@@ -593,6 +593,12 @@ func (ManagedFolderIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedFolderIamPolicyState)(nil)).Elem()
 }
 
+// ManagedFolderIamPolicyExists checks whether an existing ManagedFolderIamPolicy resource with the given ID exists.
+func ManagedFolderIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagedFolderIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy", id, state, "", opts...)
+}
+
 type managedFolderIamPolicyArgs struct {
 	// The name of the bucket that contains the managed folder. Used to find the parent resource to bind the IAM policy to
 	Bucket string `pulumi:"bucket"`

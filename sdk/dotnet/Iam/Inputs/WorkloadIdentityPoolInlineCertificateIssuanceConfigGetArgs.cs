@@ -19,11 +19,11 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// A required mapping of a cloud region to the CA pool resource located in that region used
         /// for certificate issuance, adhering to these constraints:
         /// * **Key format:** A supported cloud region name equivalent to the location identifier in
-        /// the corresponding map entry's value.
+        ///   the corresponding map entry's value.
         /// * **Value format:** A valid CA pool resource path format like:
-        /// `projects/{project}/locations/{location}/caPools/{ca_pool}`
+        ///   `projects/{project}/locations/{location}/caPools/{ca_pool}`
         /// * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
-        /// same region. Also the CA pool region (in value) must match the workload's region (key).
+        ///   same region. Also the CA pool region (in value) must match the workload's region (key).
         /// </summary>
         public InputMap<string> CaPools
         {
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
         /// * `ECDSA_P256`: Specifies ECDSA with curve P256.
         /// * `ECDSA_P384`: Specifies ECDSA with curve P384.
-        /// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
+        ///   Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
         /// </summary>
         [Input("keyAlgorithm")]
         public Input<string>? KeyAlgorithm { get; set; }

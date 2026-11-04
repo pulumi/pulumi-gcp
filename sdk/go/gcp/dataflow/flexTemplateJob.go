@@ -421,6 +421,12 @@ func (FlexTemplateJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flexTemplateJobState)(nil)).Elem()
 }
 
+// FlexTemplateJobExists checks whether an existing FlexTemplateJob resource with the given ID exists.
+func FlexTemplateJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlexTemplateJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataflow/flexTemplateJob:FlexTemplateJob", id, state, "", opts...)
+}
+
 type flexTemplateJobArgs struct {
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments []string `pulumi:"additionalExperiments"`

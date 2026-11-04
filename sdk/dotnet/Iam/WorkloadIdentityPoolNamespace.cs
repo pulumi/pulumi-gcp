@@ -144,9 +144,9 @@ namespace Pulumi.Gcp.Iam
         /// The current state of the namespace.
         /// * `ACTIVE`: The namespace is active.
         /// * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
-        /// after approximately 30 days. You can restore a soft-deleted namespace using
-        /// UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
-        /// until it is permanently deleted.
+        ///   after approximately 30 days. You can restore a soft-deleted namespace using
+        ///   UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
+        ///   until it is permanently deleted.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// The prefix `gcp-` will be reserved for future uses.
+        ///   The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Output("workloadIdentityPoolNamespaceId")]
         public Output<string> WorkloadIdentityPoolNamespaceId { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// The prefix `gcp-` will be reserved for future uses.
+        ///   The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Input("workloadIdentityPoolNamespaceId", required: true)]
         public Input<string> WorkloadIdentityPoolNamespaceId { get; set; } = null!;
@@ -332,9 +332,9 @@ namespace Pulumi.Gcp.Iam
         /// The current state of the namespace.
         /// * `ACTIVE`: The namespace is active.
         /// * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
-        /// after approximately 30 days. You can restore a soft-deleted namespace using
-        /// UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
-        /// until it is permanently deleted.
+        ///   after approximately 30 days. You can restore a soft-deleted namespace using
+        ///   UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
+        ///   until it is permanently deleted.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -353,7 +353,7 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// The prefix `gcp-` will be reserved for future uses.
+        ///   The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Input("workloadIdentityPoolNamespaceId")]
         public Input<string>? WorkloadIdentityPoolNamespaceId { get; set; }

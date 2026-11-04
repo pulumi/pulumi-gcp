@@ -1111,11 +1111,10 @@ public class FrameworkDeployment extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** Use `parent` instead.
      * 
-     * @deprecated
-     * Use `parent` instead.
+     * @deprecated Use `parent` instead.
      * 
      */
-    @Deprecated /* Use `parent` instead. */
+    @Deprecated
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 

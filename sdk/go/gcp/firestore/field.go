@@ -563,6 +563,12 @@ func (FieldState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fieldState)(nil)).Elem()
 }
 
+// FieldExists checks whether an existing Field resource with the given ID exists.
+func FieldExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FieldState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firestore/field:Field", id, state, "", opts...)
+}
+
 type fieldArgs struct {
 	// The id of the collection group to configure.
 	Collection string `pulumi:"collection"`

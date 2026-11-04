@@ -32,8 +32,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// - $app:       app ID
         /// - $date:      session date in YYYY-MM-DD format
         /// - $session:   session ID
-        /// If the path prefix is not specified, the default prefix
-        /// `$project/$location/$app/$date/$session/` will be used.
+        ///   If the path prefix is not specified, the default prefix
+        ///   `$project/$location/$app/$date/$session/` will be used.
         /// </summary>
         public readonly string? GcsPathPrefix;
 

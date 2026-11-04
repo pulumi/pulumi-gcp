@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The link to the instance group.  One of `Name` or `SelfLink` must be provided.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("selfLink")]
         public string? SelfLink { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The link to the instance group.  One of `Name` or `SelfLink` must be provided.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

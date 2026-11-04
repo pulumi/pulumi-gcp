@@ -306,6 +306,12 @@ func (WorkerPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workerPoolState)(nil)).Elem()
 }
 
+// WorkerPoolExists checks whether an existing WorkerPool resource with the given ID exists.
+func WorkerPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkerPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudbuild/workerPool:WorkerPool", id, state, "", opts...)
+}
+
 type workerPoolArgs struct {
 	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	//

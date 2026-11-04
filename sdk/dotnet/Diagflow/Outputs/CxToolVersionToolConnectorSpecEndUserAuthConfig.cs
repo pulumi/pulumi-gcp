@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `EndUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"&gt;&lt;/a&gt;The `Oauth2AuthCodeConfig` block supports:
         /// </summary>
         public readonly Outputs.CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig? Oauth2JwtBearerConfig;

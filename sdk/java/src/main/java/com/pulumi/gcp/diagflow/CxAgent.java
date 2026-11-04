@@ -69,12 +69,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("dialogflowcx-bucket")
  *             .location("US")
@@ -181,12 +181,12 @@ import javax.annotation.Nullable;
  *                 """)
  *                 .build())
  *             .personalizationSettings(CxAgentPersonalizationSettingsArgs.builder()
- *                 .defaultEndUserMetadata("{\"example-key\": \"example-value\"}")
+ *                 .defaultEndUserMetadata("}{&#92;{@code "example-key}&#92;{@code ": }&#92;{@code "example-value}&#92;{@code "}}{@code ")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -415,11 +415,10 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
-     * @deprecated
-     * `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
      */
-    @Deprecated /* `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
+    @Deprecated
     @Export(name="enableStackdriverLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableStackdriverLogging;
 

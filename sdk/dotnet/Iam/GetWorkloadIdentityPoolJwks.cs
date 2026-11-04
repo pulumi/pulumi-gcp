@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The JWKS URI to retrieve the public keys from (e.g. from `google_iam_workload_identity_pool_openid_config.jwks_uri`).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("resourceName", required: true)]
         public string ResourceName { get; set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The JWKS URI to retrieve the public keys from (e.g. from `google_iam_workload_identity_pool_openid_config.jwks_uri`).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("resourceName", required: true)]
         public Input<string> ResourceName { get; set; } = null!;

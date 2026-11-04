@@ -405,6 +405,12 @@ func (HiveCatalogIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hiveCatalogIamMemberState)(nil)).Elem()
 }
 
+// HiveCatalogIamMemberExists checks whether an existing HiveCatalogIamMember resource with the given ID exists.
+func HiveCatalogIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HiveCatalogIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/hiveCatalogIamMember:HiveCatalogIamMember", id, state, "", opts...)
+}
+
 type hiveCatalogIamMemberArgs struct {
 	Condition *HiveCatalogIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

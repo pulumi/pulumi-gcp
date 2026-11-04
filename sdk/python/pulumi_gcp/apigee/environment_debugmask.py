@@ -630,6 +630,30 @@ class EnvironmentDebugmask(pulumi.CustomResource):
         __props__.__dict__["variables"] = variables
         return EnvironmentDebugmask(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+            fault_x_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespaces: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            request_json_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_x_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            response_json_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            response_x_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["envId"] = env_id
+        __props__["faultXPaths"] = fault_x_paths
+        __props__["name"] = name
+        __props__["namespaces"] = namespaces
+        __props__["requestJsonPaths"] = request_json_paths
+        __props__["requestXPaths"] = request_x_paths
+        __props__["responseJsonPaths"] = response_json_paths
+        __props__["responseXPaths"] = response_x_paths
+        __props__["variables"] = variables
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/environmentDebugmask:EnvironmentDebugmask', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="envId")
     def env_id(self) -> pulumi.Output[_builtins.str]:

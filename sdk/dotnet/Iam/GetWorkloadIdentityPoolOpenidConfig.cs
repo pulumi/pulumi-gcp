@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The OIDC discovery URI.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("resourceName", required: true)]
         public string ResourceName { get; set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The OIDC discovery URI.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("resourceName", required: true)]
         public Input<string> ResourceName { get; set; } = null!;

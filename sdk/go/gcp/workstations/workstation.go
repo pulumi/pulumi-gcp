@@ -343,6 +343,12 @@ func (WorkstationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workstationState)(nil)).Elem()
 }
 
+// WorkstationExists checks whether an existing Workstation resource with the given ID exists.
+func WorkstationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkstationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:workstations/workstation:Workstation", id, state, "", opts...)
+}
+
 type workstationArgs struct {
 	// Client-specified annotations. This is distinct from labels.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

@@ -739,6 +739,30 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         __props__.__dict__["stored_info_type_id"] = stored_info_type_id
         return PreventionStoredInfoType(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeDictionary']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            large_custom_dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeLargeCustomDictionary']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            regex: pulumi.Input[Optional[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict', 'outputs.PreventionStoredInfoTypeRegex']]] = None,
+            stored_info_type_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["dictionary"] = dictionary
+        __props__["displayName"] = display_name
+        __props__["largeCustomDictionary"] = large_custom_dictionary
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["regex"] = regex
+        __props__["storedInfoTypeId"] = stored_info_type_id
+        return pulumi.runtime.exists_resource(None, 'gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

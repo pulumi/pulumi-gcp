@@ -661,6 +661,36 @@ class NetworkPeering(pulumi.CustomResource):
         __props__.__dict__["update_strategy"] = update_strategy
         return NetworkPeering(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+            export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+            import_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_network: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_details: pulumi.Input[Optional[_builtins.str]] = None,
+            update_strategy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["exportCustomRoutes"] = export_custom_routes
+        __props__["exportSubnetRoutesWithPublicIp"] = export_subnet_routes_with_public_ip
+        __props__["importCustomRoutes"] = import_custom_routes
+        __props__["importSubnetRoutesWithPublicIp"] = import_subnet_routes_with_public_ip
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["peerNetwork"] = peer_network
+        __props__["stackType"] = stack_type
+        __props__["state"] = state
+        __props__["stateDetails"] = state_details
+        __props__["updateStrategy"] = update_strategy
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/networkPeering:NetworkPeering', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

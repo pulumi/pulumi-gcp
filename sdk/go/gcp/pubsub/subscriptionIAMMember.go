@@ -341,6 +341,12 @@ func (SubscriptionIAMMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionIAMMemberState)(nil)).Elem()
 }
 
+// SubscriptionIAMMemberExists checks whether an existing SubscriptionIAMMember resource with the given ID exists.
+func SubscriptionIAMMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubscriptionIAMMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember", id, state, "", opts...)
+}
+
 type subscriptionIAMMemberArgs struct {
 	Condition *SubscriptionIAMMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

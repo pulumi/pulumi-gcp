@@ -267,6 +267,12 @@ func (FhirStoreIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fhirStoreIamPolicyState)(nil)).Elem()
 }
 
+// FhirStoreIamPolicyExists checks whether an existing FhirStoreIamPolicy resource with the given ID exists.
+func FhirStoreIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FhirStoreIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy", id, state, "", opts...)
+}
+
 type fhirStoreIamPolicyArgs struct {
 	// The FHIR store ID, in the form
 	// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or

@@ -313,6 +313,12 @@ func (V2ProjectSccBigQueryExportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2projectSccBigQueryExportState)(nil)).Elem()
 }
 
+// V2ProjectSccBigQueryExportExists checks whether an existing V2ProjectSccBigQueryExport resource with the given ID exists.
+func V2ProjectSccBigQueryExportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2ProjectSccBigQueryExportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport", id, state, "", opts...)
+}
+
 type v2projectSccBigQueryExportArgs struct {
 	// This must be unique within the organization.
 	BigQueryExportId string `pulumi:"bigQueryExportId"`

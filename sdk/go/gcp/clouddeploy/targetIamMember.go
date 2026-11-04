@@ -83,6 +83,12 @@ func (TargetIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetIamMemberState)(nil)).Elem()
 }
 
+// TargetIamMemberExists checks whether an existing TargetIamMember resource with the given ID exists.
+func TargetIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddeploy/targetIamMember:TargetIamMember", id, state, "", opts...)
+}
+
 type targetIamMemberArgs struct {
 	Condition *TargetIamMemberCondition `pulumi:"condition"`
 	Location  *string                   `pulumi:"location"`

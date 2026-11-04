@@ -694,6 +694,36 @@ class LicenseConfig(pulumi.CustomResource):
         __props__.__dict__["subscription_tier"] = subscription_tier
         return LicenseConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']]] = None,
+            free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_user_update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            license_count: pulumi.Input[Optional[_builtins.int]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            start_date: pulumi.Input[Optional[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict', 'outputs.LicenseConfigStartDate']]] = None,
+            subscription_term: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_tier: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenew"] = auto_renew
+        __props__["endDate"] = end_date
+        __props__["freeTrial"] = free_trial
+        __props__["lastUserUpdateTime"] = last_user_update_time
+        __props__["licenseConfigId"] = license_config_id
+        __props__["licenseCount"] = license_count
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["startDate"] = start_date
+        __props__["subscriptionTerm"] = subscription_term
+        __props__["subscriptionTier"] = subscription_tier
+        return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/licenseConfig:LicenseConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:

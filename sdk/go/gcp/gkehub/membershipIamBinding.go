@@ -433,6 +433,12 @@ func (MembershipIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*membershipIamBindingState)(nil)).Elem()
 }
 
+// MembershipIamBindingExists checks whether an existing MembershipIamBinding resource with the given ID exists.
+func MembershipIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MembershipIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/membershipIamBinding:MembershipIamBinding", id, state, "", opts...)
+}
+
 type membershipIamBindingArgs struct {
 	Condition *MembershipIamBindingCondition `pulumi:"condition"`
 	// Location of the membership.

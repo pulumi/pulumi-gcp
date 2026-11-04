@@ -16,15 +16,15 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         /// Immutable. The IAM principal identifier of the federated workforce or workload to
         /// assign the policy to. Examples include the following:
         /// * Single principal:
-        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+        ///   `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
         /// * All workloads in a workload identity pool:
-        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+        ///   `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
         /// * All Workforce Pools in a Google Cloud organization:
-        /// `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
-        /// Bindings created for all Workforce Pools in a Google Cloud organization
-        /// support only `ScopedAccessSettings` with the `RestrictedProject`
-        /// client scope and active `SessionSettings`. No other configurations are
-        /// allowed.
+        ///   `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+        ///   Bindings created for all Workforce Pools in a Google Cloud organization
+        ///   support only `ScopedAccessSettings` with the `RestrictedProject`
+        ///   client scope and active `SessionSettings`. No other configurations are
+        ///   allowed.
         /// </summary>
         [Input("federatedPrincipal")]
         public Input<string>? FederatedPrincipal { get; set; }

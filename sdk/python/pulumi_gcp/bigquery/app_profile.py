@@ -971,6 +971,38 @@ class AppProfile(pulumi.CustomResource):
         __props__.__dict__["standard_isolation"] = standard_isolation
         return AppProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict', 'outputs.AppProfileDataBoostIsolationReadOnly']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_cluster_routing_cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            multi_cluster_routing_use_any: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            row_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+            single_cluster_routing: pulumi.Input[Optional[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict', 'outputs.AppProfileSingleClusterRouting']]] = None,
+            standard_isolation: pulumi.Input[Optional[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict', 'outputs.AppProfileStandardIsolation']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appProfileId"] = app_profile_id
+        __props__["dataBoostIsolationReadOnly"] = data_boost_isolation_read_only
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["ignoreWarnings"] = ignore_warnings
+        __props__["instance"] = instance
+        __props__["multiClusterRoutingClusterIds"] = multi_cluster_routing_cluster_ids
+        __props__["multiClusterRoutingUseAny"] = multi_cluster_routing_use_any
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["rowAffinity"] = row_affinity
+        __props__["singleClusterRouting"] = single_cluster_routing
+        __props__["standardIsolation"] = standard_isolation
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/appProfile:AppProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appProfileId")
     def app_profile_id(self) -> pulumi.Output[_builtins.str]:

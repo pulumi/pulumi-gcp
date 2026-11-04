@@ -556,6 +556,20 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
         __props__.__dict__["policy_data"] = policy_data
         return EnvironmentIamPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_data: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["envId"] = env_id
+        __props__["etag"] = etag
+        __props__["orgId"] = org_id
+        __props__["policyData"] = policy_data
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="envId")
     def env_id(self) -> pulumi.Output[_builtins.str]:

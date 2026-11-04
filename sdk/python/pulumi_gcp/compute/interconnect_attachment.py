@@ -2157,6 +2157,92 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
         return InterconnectAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            attachment_group: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            candidate_cloud_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            candidate_cloud_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            candidate_customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            candidate_customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            candidate_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cloud_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            google_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+            interconnect: pulumi.Input[Optional[_builtins.str]] = None,
+            ipsec_internal_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            l2_forwarding: pulumi.Input[Optional[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict', 'outputs.InterconnectAttachmentL2Forwarding']]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mtu: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pairing_key: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict', 'outputs.InterconnectAttachmentParams']]] = None,
+            partner_asn: pulumi.Input[Optional[_builtins.str]] = None,
+            private_interconnect_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentPrivateInterconnectInfoArgs', 'InterconnectAttachmentPrivateInterconnectInfoArgsDict', 'outputs.InterconnectAttachmentPrivateInterconnectInfo']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_length: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_tag8021q: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminEnabled"] = admin_enabled
+        __props__["attachmentGroup"] = attachment_group
+        __props__["bandwidth"] = bandwidth
+        __props__["candidateCloudRouterIpAddress"] = candidate_cloud_router_ip_address
+        __props__["candidateCloudRouterIpv6Address"] = candidate_cloud_router_ipv6_address
+        __props__["candidateCustomerRouterIpAddress"] = candidate_customer_router_ip_address
+        __props__["candidateCustomerRouterIpv6Address"] = candidate_customer_router_ipv6_address
+        __props__["candidateSubnets"] = candidate_subnets
+        __props__["cloudRouterIpAddress"] = cloud_router_ip_address
+        __props__["cloudRouterIpv6Address"] = cloud_router_ipv6_address
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["customerRouterIpAddress"] = customer_router_ip_address
+        __props__["customerRouterIpv6Address"] = customer_router_ipv6_address
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["edgeAvailabilityDomain"] = edge_availability_domain
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryption"] = encryption
+        __props__["googleReferenceId"] = google_reference_id
+        __props__["interconnect"] = interconnect
+        __props__["ipsecInternalAddresses"] = ipsec_internal_addresses
+        __props__["l2Forwarding"] = l2_forwarding
+        __props__["labelFingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["pairingKey"] = pairing_key
+        __props__["params"] = params
+        __props__["partnerAsn"] = partner_asn
+        __props__["privateInterconnectInfos"] = private_interconnect_infos
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["router"] = router
+        __props__["selfLink"] = self_link
+        __props__["stackType"] = stack_type
+        __props__["state"] = state
+        __props__["subnetLength"] = subnet_length
+        __props__["type"] = type
+        __props__["vlanTag8021q"] = vlan_tag8021q
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/interconnectAttachment:InterconnectAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
     def admin_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

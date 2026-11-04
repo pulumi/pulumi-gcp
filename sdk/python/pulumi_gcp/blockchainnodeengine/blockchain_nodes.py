@@ -799,6 +799,38 @@ class BlockchainNodes(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return BlockchainNodes(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            blockchain_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict', 'outputs.BlockchainNodesConnectionInfo']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict', 'outputs.BlockchainNodesEthereumDetails']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["blockchainNodeId"] = blockchain_node_id
+        __props__["blockchainType"] = blockchain_type
+        __props__["connectionInfos"] = connection_infos
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["ethereumDetails"] = ethereum_details
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="blockchainNodeId")
     def blockchain_node_id(self) -> pulumi.Output[_builtins.str]:

@@ -640,6 +640,30 @@ class OrganizationCustomModule(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return OrganizationCustomModule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ancestor_module: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_config: pulumi.Input[Optional[Union['OrganizationCustomModuleCustomConfigArgs', 'OrganizationCustomModuleCustomConfigArgsDict', 'outputs.OrganizationCustomModuleCustomConfig']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
+            last_editor: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ancestorModule"] = ancestor_module
+        __props__["customConfig"] = custom_config
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["enablementState"] = enablement_state
+        __props__["lastEditor"] = last_editor
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:securitycenter/organizationCustomModule:OrganizationCustomModule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="ancestorModule")
     def ancestor_module(self) -> pulumi.Output[_builtins.str]:

@@ -320,6 +320,12 @@ func (RegionHealthAggregationPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionHealthAggregationPolicyState)(nil)).Elem()
 }
 
+// RegionHealthAggregationPolicyExists checks whether an existing RegionHealthAggregationPolicy resource with the given ID exists.
+func RegionHealthAggregationPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionHealthAggregationPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy", id, state, "", opts...)
+}
+
 type regionHealthAggregationPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

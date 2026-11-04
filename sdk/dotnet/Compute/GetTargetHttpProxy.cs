@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get information about a Compute Engine TargetHttpProxy.
         /// 
-        /// 
         /// For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
         /// the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies).
         /// 
@@ -42,7 +41,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get information about a Compute Engine TargetHttpProxy.
         /// 
-        /// 
         /// For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
         /// the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies).
         /// 
@@ -69,7 +67,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Get information about a Compute Engine TargetHttpProxy.
-        /// 
         /// 
         /// For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
         /// the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies).

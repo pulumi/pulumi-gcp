@@ -503,6 +503,12 @@ func (ConnectivityTestState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectivityTestState)(nil)).Elem()
 }
 
+// ConnectivityTestExists checks whether an existing ConnectivityTest resource with the given ID exists.
+func ConnectivityTestExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectivityTestState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkmanagement/connectivityTest:ConnectivityTest", id, state, "", opts...)
+}
+
 type connectivityTestArgs struct {
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks *bool `pulumi:"bypassFirewallChecks"`

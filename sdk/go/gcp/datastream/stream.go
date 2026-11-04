@@ -1608,7 +1608,7 @@ import (
 //			_, err = storage.NewBucketIAMMember(ctx, "blmt_connection_bucket_admin", &storage.BucketIAMMemberArgs{
 //				Bucket: blmtBucket.Name,
 //				Role:   pulumi.String("roles/storage.admin"),
-//				Member: blmtConnection.CloudResource.ApplyT(func(cloudResource bigquery.ConnectionCloudResource) (string, error) {
+//				Member: blmtConnection.CloudResource.ApplyT(func(cloudResource *bigquery.ConnectionCloudResource) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", cloudResource.ServiceAccountId), nil
 //				}).(pulumi.StringOutput),
 //			})
@@ -2101,6 +2101,12 @@ type StreamState struct {
 
 func (StreamState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamState)(nil)).Elem()
+}
+
+// StreamExists checks whether an existing Stream resource with the given ID exists.
+func StreamExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datastream/stream:Stream", id, state, "", opts...)
 }
 
 type streamArgs struct {

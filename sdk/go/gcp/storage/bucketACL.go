@@ -163,6 +163,12 @@ func (BucketACLState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketACLState)(nil)).Elem()
 }
 
+// BucketACLExists checks whether an existing BucketACL resource with the given ID exists.
+func BucketACLExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketACLState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/bucketACL:BucketACL", id, state, "", opts...)
+}
+
 type bucketACLArgs struct {
 	// The name of the bucket it applies to.
 	//

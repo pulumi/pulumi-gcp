@@ -457,6 +457,12 @@ func (MetastoreTableIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreTableIamMemberState)(nil)).Elem()
 }
 
+// MetastoreTableIamMemberExists checks whether an existing MetastoreTableIamMember resource with the given ID exists.
+func MetastoreTableIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreTableIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/metastoreTableIamMember:MetastoreTableIamMember", id, state, "", opts...)
+}
+
 type metastoreTableIamMemberArgs struct {
 	Condition *MetastoreTableIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

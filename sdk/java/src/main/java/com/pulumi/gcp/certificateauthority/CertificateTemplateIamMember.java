@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
  *                     .title("expires_after_2019_12_31")
  *                     .description("Expiring at midnight of 2019-12-31")
- *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .expression("request.time < timestamp(}&#92;{@code "2020-01-01T00:00:00Z}&#92;{@code ")")
  *                     .build())
  *                 .build())
  *             .build());
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  *             .condition(CertificateTemplateIamBindingConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
- *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .expression("request.time < timestamp(}&#92;{@code "2020-01-01T00:00:00Z}&#92;{@code ")")
  *                 .build())
  *             .build());
  * 
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *             .condition(CertificateTemplateIamMemberConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
- *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .expression("request.time < timestamp(}&#92;{@code "2020-01-01T00:00:00Z}&#92;{@code ")")
  *                 .build())
  *             .build());
  * 
@@ -377,7 +377,7 @@ import javax.annotation.Nullable;
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
  *                     .title("expires_after_2019_12_31")
  *                     .description("Expiring at midnight of 2019-12-31")
- *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .expression("request.time < timestamp(}&#92;{@code "2020-01-01T00:00:00Z}&#92;{@code ")")
  *                     .build())
  *                 .build())
  *             .build());
@@ -458,7 +458,7 @@ import javax.annotation.Nullable;
  *             .condition(CertificateTemplateIamBindingConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
- *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .expression("request.time < timestamp(}&#92;{@code "2020-01-01T00:00:00Z}&#92;{@code ")")
  *                 .build())
  *             .build());
  * 
@@ -533,7 +533,7 @@ import javax.annotation.Nullable;
  *             .condition(CertificateTemplateIamMemberConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
- *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .expression("request.time < timestamp(}&#92;{@code "2020-01-01T00:00:00Z}&#92;{@code ")")
  *                 .build())
  *             .build());
  * 

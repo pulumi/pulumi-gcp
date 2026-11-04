@@ -1039,6 +1039,38 @@ class User(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            iam_email: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_policy: pulumi.Input[Optional[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict', 'outputs.UserPasswordPolicy']]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_server_user_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserSqlServerUserDetailArgs', 'UserSqlServerUserDetailArgsDict', 'outputs.UserSqlServerUserDetail']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["databaseRoles"] = database_roles
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["host"] = host
+        __props__["iamEmail"] = iam_email
+        __props__["instance"] = instance
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["passwordPolicy"] = password_policy
+        __props__["passwordWo"] = password_wo
+        __props__["passwordWoVersion"] = password_wo_version
+        __props__["project"] = project
+        __props__["sqlServerUserDetails"] = sql_server_user_details
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'gcp:sql/user:User', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="databaseRoles")
     def database_roles(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

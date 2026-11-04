@@ -806,6 +806,34 @@ class EntryLink(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return EntryLink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict', 'outputs.EntryLinkAspect']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict', 'outputs.EntryLinkEntryReference']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aspects"] = aspects
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["entryGroupId"] = entry_group_id
+        __props__["entryLinkId"] = entry_link_id
+        __props__["entryLinkType"] = entry_link_type
+        __props__["entryReferences"] = entry_references
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:dataplex/entryLink:EntryLink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def aspects(self) -> pulumi.Output[Optional[Sequence['outputs.EntryLinkAspect']]]:

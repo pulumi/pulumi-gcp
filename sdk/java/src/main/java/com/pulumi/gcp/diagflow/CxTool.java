@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent-open-api")
  *             .location("global")
@@ -99,52 +99,52 @@ import javax.annotation.Nullable;
  *                     .service("projects/-/locations/-/namespaces/-/services/-")
  *                     .build())
  *                 .textSchema("""
- *     {
- *       \"openapi\": \"3.0.0\",
- *       \"info\": {
- *         \"title\": \"Time API\",
- *         \"version\": \"1.0.0\",
- *         \"description\": \"A simple API to get the current time.\"
- *       },
- *       \"servers\": [
- *         {
- *           \"url\": \"https://example-api-endpoint.com\"
- *         }
+ *     }{{@code
+ *       }&#92;{@code "openapi}&#92;{@code ": }&#92;{@code "3.0.0}&#92;{@code ",
+ *       }&#92;{@code "info}&#92;{@code ": }{{@code
+ *         }&#92;{@code "title}&#92;{@code ": }&#92;{@code "Time API}&#92;{@code ",
+ *         }&#92;{@code "version}&#92;{@code ": }&#92;{@code "1.0.0}&#92;{@code ",
+ *         }&#92;{@code "description}&#92;{@code ": }&#92;{@code "A simple API to get the current time.}&#92;{@code "
+ *       }}{@code ,
+ *       }&#92;{@code "servers}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "url}&#92;{@code ": }&#92;{@code "https://example-api-endpoint.com}&#92;{@code "
+ *         }}{@code
  *       ],
- *       \"paths\": {
- *         \"/time\": {
- *           \"get\": {
- *             \"operationId\": \"getCurrentTime\",
- *             \"summary\": \"Gets the current server time.\",
- *             \"responses\": {
- *               \"200\": {
- *                 \"description\": \"Successful response with the current time.\",
- *                 \"content\": {
- *                   \"application/json\": {
- *                     \"schema\": {
- *                       \"type\": \"object\",
- *                       \"properties\": {
- *                         \"currentTime\": {
- *                           \"type\": \"string\",
- *                           \"format\": \"date-time\",
- *                           \"description\": \"The current time in ISO 8601 format.\"
- *                         }
- *                       }
- *                     }
- *                   }
- *                 }
- *               }
- *             }
- *           }
- *         }
- *       }
- *     }
+ *       }&#92;{@code "paths}&#92;{@code ": }{{@code
+ *         }&#92;{@code "/time}&#92;{@code ": }{{@code
+ *           }&#92;{@code "get}&#92;{@code ": }{{@code
+ *             }&#92;{@code "operationId}&#92;{@code ": }&#92;{@code "getCurrentTime}&#92;{@code ",
+ *             }&#92;{@code "summary}&#92;{@code ": }&#92;{@code "Gets the current server time.}&#92;{@code ",
+ *             }&#92;{@code "responses}&#92;{@code ": }{{@code
+ *               }&#92;{@code "200}&#92;{@code ": }{{@code
+ *                 }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Successful response with the current time.}&#92;{@code ",
+ *                 }&#92;{@code "content}&#92;{@code ": }{{@code
+ *                   }&#92;{@code "application/json}&#92;{@code ": }{{@code
+ *                     }&#92;{@code "schema}&#92;{@code ": }{{@code
+ *                       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "object}&#92;{@code ",
+ *                       }&#92;{@code "properties}&#92;{@code ": }{{@code
+ *                         }&#92;{@code "currentTime}&#92;{@code ": }{{@code
+ *                           }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code ",
+ *                           }&#92;{@code "format}&#92;{@code ": }&#92;{@code "date-time}&#92;{@code ",
+ *                           }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The current time in ISO 8601 format.}&#92;{@code "
+ *                         }}{@code
+ *                       }}{@code
+ *                     }}{@code
+ *                   }}{@code
+ *                 }}{@code
+ *               }}{@code
+ *             }}{@code
+ *           }}{@code
+ *         }}{@code
+ *       }}{@code
+ *     }}{@code
  *                 """)
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -250,12 +250,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent-fucntion")
  *             .location("global")
@@ -270,35 +270,35 @@ import javax.annotation.Nullable;
  *             .description("Example Description")
  *             .functionSpec(CxToolFunctionSpecArgs.builder()
  *                 .inputSchema("""
- *       {
- *         \"type\": \"object\",
- *         \"properties\": {
- *           \"message_to_echo\": {
- *             \"type\": \"string\",
- *             \"description\": \"The message that should be echoed back.\"
- *           }
- *         },
- *         \"required\": [
- *           \"message_to_echo\"
+ *       }{{@code
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "object}&#92;{@code ",
+ *         }&#92;{@code "properties}&#92;{@code ": }{{@code
+ *           }&#92;{@code "message_to_echo}&#92;{@code ": }{{@code
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code ",
+ *             }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The message that should be echoed back.}&#92;{@code "
+ *           }}{@code
+ *         }}{@code ,
+ *         }&#92;{@code "required}&#92;{@code ": [
+ *           }&#92;{@code "message_to_echo}&#92;{@code "
  *         ]
- *       }
+ *       }}{@code
  *                 """)
  *                 .outputSchema("""
- *       {
- *         \"type\": \"object\",
- *         \"properties\": {
- *           \"echoed_message\": {
- *             \"type\": \"string\",
- *             \"description\": \"The message that is echoed back.\"
- *           }
- *         }
- *       }
+ *       }{{@code
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "object}&#92;{@code ",
+ *         }&#92;{@code "properties}&#92;{@code ": }{{@code
+ *           }&#92;{@code "echoed_message}&#92;{@code ": }{{@code
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code ",
+ *             }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The message that is echoed back.}&#92;{@code "
+ *           }}{@code
+ *         }}{@code
+ *       }}{@code
  *                 """)
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -670,6 +670,12 @@ func (RegionInstantSnapshotIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionInstantSnapshotIamBindingState)(nil)).Elem()
 }
 
+// RegionInstantSnapshotIamBindingExists checks whether an existing RegionInstantSnapshotIamBinding resource with the given ID exists.
+func RegionInstantSnapshotIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionInstantSnapshotIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionInstantSnapshotIamBinding:RegionInstantSnapshotIamBinding", id, state, "", opts...)
+}
+
 type regionInstantSnapshotIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

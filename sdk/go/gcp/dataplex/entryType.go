@@ -321,6 +321,12 @@ func (EntryTypeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entryTypeState)(nil)).Elem()
 }
 
+// EntryTypeExists checks whether an existing EntryType resource with the given ID exists.
+func EntryTypeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntryTypeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/entryType:EntryType", id, state, "", opts...)
+}
+
 type entryTypeArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

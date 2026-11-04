@@ -237,6 +237,12 @@ func (InterconnectGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*interconnectGroupState)(nil)).Elem()
 }
 
+// InterconnectGroupExists checks whether an existing InterconnectGroup resource with the given ID exists.
+func InterconnectGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InterconnectGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/interconnectGroup:InterconnectGroup", id, state, "", opts...)
+}
+
 type interconnectGroupArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

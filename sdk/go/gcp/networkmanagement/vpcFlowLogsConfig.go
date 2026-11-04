@@ -570,6 +570,12 @@ func (VpcFlowLogsConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcFlowLogsConfigState)(nil)).Elem()
 }
 
+// VpcFlowLogsConfigExists checks whether an existing VpcFlowLogsConfig resource with the given ID exists.
+func VpcFlowLogsConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcFlowLogsConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig", id, state, "", opts...)
+}
+
 type vpcFlowLogsConfigArgs struct {
 	// Optional. The aggregation interval for the logs. Default value is
 	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN

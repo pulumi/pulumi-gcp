@@ -826,6 +826,32 @@ class AccessLevelCondition(pulumi.CustomResource):
         __props__.__dict__["vpc_network_sources"] = vpc_network_sources
         return AccessLevelCondition(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict', 'outputs.AccessLevelConditionDevicePolicy']]] = None,
+            ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            negate: pulumi.Input[Optional[_builtins.bool]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            required_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict', 'outputs.AccessLevelConditionVpcNetworkSource']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessLevel"] = access_level
+        __props__["accessPolicyId"] = access_policy_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["devicePolicy"] = device_policy
+        __props__["ipSubnetworks"] = ip_subnetworks
+        __props__["members"] = members
+        __props__["negate"] = negate
+        __props__["regions"] = regions
+        __props__["requiredAccessLevels"] = required_access_levels
+        __props__["vpcNetworkSources"] = vpc_network_sources
+        return pulumi.runtime.exists_resource(None, 'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[_builtins.str]:

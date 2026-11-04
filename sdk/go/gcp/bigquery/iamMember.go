@@ -424,6 +424,12 @@ func (IamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamMemberState)(nil)).Elem()
 }
 
+// IamMemberExists checks whether an existing IamMember resource with the given ID exists.
+func IamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/iamMember:IamMember", id, state, "", opts...)
+}
+
 type iamMemberArgs struct {
 	Condition *IamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

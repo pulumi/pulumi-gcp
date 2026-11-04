@@ -356,6 +356,12 @@ func (CryptoKeyIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cryptoKeyIAMBindingState)(nil)).Elem()
 }
 
+// CryptoKeyIAMBindingExists checks whether an existing CryptoKeyIAMBinding resource with the given ID exists.
+func CryptoKeyIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CryptoKeyIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding", id, state, "", opts...)
+}
+
 type cryptoKeyIAMBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

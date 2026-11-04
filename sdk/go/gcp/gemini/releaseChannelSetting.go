@@ -222,6 +222,12 @@ func (ReleaseChannelSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*releaseChannelSettingState)(nil)).Elem()
 }
 
+// ReleaseChannelSettingExists checks whether an existing ReleaseChannelSetting resource with the given ID exists.
+func ReleaseChannelSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReleaseChannelSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/releaseChannelSetting:ReleaseChannelSetting", id, state, "", opts...)
+}
+
 type releaseChannelSettingArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Apigee
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string> DeletionPolicy { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.Apigee
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.Apigee
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

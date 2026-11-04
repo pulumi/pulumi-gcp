@@ -676,6 +676,30 @@ class TargetServer(pulumi.CustomResource):
         __props__.__dict__["s_sl_info"] = s_sl_info
         return TargetServer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            s_sl_info: pulumi.Input[Optional[Union['TargetServerSSlInfoArgs', 'TargetServerSSlInfoArgsDict', 'outputs.TargetServerSSlInfo']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["envId"] = env_id
+        __props__["host"] = host
+        __props__["isEnabled"] = is_enabled
+        __props__["name"] = name
+        __props__["port"] = port
+        __props__["protocol"] = protocol
+        __props__["sSlInfo"] = s_sl_info
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/targetServer:TargetServer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

@@ -151,6 +151,12 @@ func (AddressGroupIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressGroupIamPolicyState)(nil)).Elem()
 }
 
+// AddressGroupIamPolicyExists checks whether an existing AddressGroupIamPolicy resource with the given ID exists.
+func AddressGroupIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddressGroupIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy", id, state, "", opts...)
+}
+
 type addressGroupIamPolicyArgs struct {
 	// The location of the gateway security policy.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

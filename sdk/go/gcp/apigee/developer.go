@@ -359,6 +359,12 @@ func (DeveloperState) ElementType() reflect.Type {
 	return reflect.TypeOf((*developerState)(nil)).Elem()
 }
 
+// DeveloperExists checks whether an existing Developer resource with the given ID exists.
+func DeveloperExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeveloperState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/developer:Developer", id, state, "", opts...)
+}
+
 type developerArgs struct {
 	// Developer attributes (name/value pairs). The custom attribute limit is 18.
 	// Structure is documented below.

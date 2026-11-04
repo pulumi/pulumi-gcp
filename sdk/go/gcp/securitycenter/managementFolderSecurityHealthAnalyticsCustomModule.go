@@ -312,6 +312,12 @@ func (ManagementFolderSecurityHealthAnalyticsCustomModuleState) ElementType() re
 	return reflect.TypeOf((*managementFolderSecurityHealthAnalyticsCustomModuleState)(nil)).Elem()
 }
 
+// ManagementFolderSecurityHealthAnalyticsCustomModuleExists checks whether an existing ManagementFolderSecurityHealthAnalyticsCustomModule resource with the given ID exists.
+func ManagementFolderSecurityHealthAnalyticsCustomModuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagementFolderSecurityHealthAnalyticsCustomModuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule", id, state, "", opts...)
+}
+
 type managementFolderSecurityHealthAnalyticsCustomModuleArgs struct {
 	// The user specified custom configuration for the module.
 	// Structure is documented below.

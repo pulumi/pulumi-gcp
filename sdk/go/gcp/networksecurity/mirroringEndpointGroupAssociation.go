@@ -365,6 +365,12 @@ func (MirroringEndpointGroupAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mirroringEndpointGroupAssociationState)(nil)).Elem()
 }
 
+// MirroringEndpointGroupAssociationExists checks whether an existing MirroringEndpointGroupAssociation resource with the given ID exists.
+func MirroringEndpointGroupAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MirroringEndpointGroupAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation", id, state, "", opts...)
+}
+
 type mirroringEndpointGroupAssociationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

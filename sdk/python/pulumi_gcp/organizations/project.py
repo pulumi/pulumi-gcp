@@ -805,6 +805,36 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Project(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_create_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            number: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoCreateNetwork"] = auto_create_network
+        __props__["billingAccount"] = billing_account
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["folderId"] = folder_id
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["number"] = number
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'gcp:organizations/project:Project', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoCreateNetwork")
     def auto_create_network(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -305,6 +305,12 @@ func (AppHostingDefaultDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appHostingDefaultDomainState)(nil)).Elem()
 }
 
+// AppHostingDefaultDomainExists checks whether an existing AppHostingDefaultDomain resource with the given ID exists.
+func AppHostingDefaultDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppHostingDefaultDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain", id, state, "", opts...)
+}
+
 type appHostingDefaultDomainArgs struct {
 	// The ID of the Backend that this Domain is associated with
 	Backend string `pulumi:"backend"`

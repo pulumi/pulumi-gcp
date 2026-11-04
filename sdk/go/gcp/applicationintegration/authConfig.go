@@ -302,6 +302,12 @@ func (AuthConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigState)(nil)).Elem()
 }
 
+// AuthConfigExists checks whether an existing AuthConfig resource with the given ID exists.
+func AuthConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:applicationintegration/authConfig:AuthConfig", id, state, "", opts...)
+}
+
 type authConfigArgs struct {
 	// Raw client certificate
 	// Structure is documented below.

@@ -128,12 +128,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
@@ -214,16 +214,16 @@ import javax.annotation.Nullable;
  * export DB_ADDR=%s
  * export DB_PORT=5432
  * echo 1 > /proc/sys/net/ipv4/ip_forward
- * md_url_prefix=\"http://169.254.169.254/computeMetadata/v1/instance\"
- * vm_nic_ip=\"$(curl -H \"Metadata-Flavor: Google\" ${md_url_prefix}/network-interfaces/0/ip)\"
+ * md_url_prefix=}&#92;{@code "http://169.254.169.254/computeMetadata/v1/instance}&#92;{@code "
+ * vm_nic_ip=}&#92;{@code "$(curl -H }&#92;{@code "Metadata-Flavor: Google}&#92;{@code " $}{{@code md_url_prefix}}{@code /network-interfaces/0/ip)}&#92;{@code "
  * iptables -t nat -F
- * iptables -t nat -A PREROUTING \\
- *      -p tcp --dport $DB_PORT \\
- *      -j DNAT \\
+ * iptables -t nat -A PREROUTING }&#92;&#92;{@code
+ *      -p tcp --dport $DB_PORT }&#92;&#92;{@code
+ *      -j DNAT }&#92;&#92;{@code
  *      --to-destination $DB_ADDR
- * iptables -t nat -A POSTROUTING \\
- *      -p tcp --dport $DB_PORT \\
- *      -j SNAT \\
+ * iptables -t nat -A POSTROUTING }&#92;&#92;{@code
+ *      -p tcp --dport $DB_PORT }&#92;&#92;{@code
+ *      -j SNAT }&#92;&#92;{@code
  *      --to-source $vm_nic_ip
  * iptables-save
  * ", _publicIpAddress)))
@@ -257,8 +257,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

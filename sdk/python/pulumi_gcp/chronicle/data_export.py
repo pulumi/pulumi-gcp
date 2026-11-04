@@ -759,6 +759,44 @@ class DataExport(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return DataExport(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_export_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_export_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExportDataExportStatusArgs', 'DataExportDataExportStatusArgsDict', 'outputs.DataExportDataExportStatus']]]]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            estimated_volume: pulumi.Input[Optional[_builtins.int]] = None,
+            exported_volume: pulumi.Input[Optional[_builtins.int]] = None,
+            gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            include_log_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ingestion_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict', 'outputs.DataExportIngestionLabel']]]]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dataExportId"] = data_export_id
+        __props__["dataExportStatuses"] = data_export_statuses
+        __props__["endTime"] = end_time
+        __props__["estimatedVolume"] = estimated_volume
+        __props__["exportedVolume"] = exported_volume
+        __props__["gcsBucket"] = gcs_bucket
+        __props__["includeLogTypes"] = include_log_types
+        __props__["ingestionLabels"] = ingestion_labels
+        __props__["instance"] = instance
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["namespaces"] = namespaces
+        __props__["project"] = project
+        __props__["startTime"] = start_time
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/dataExport:DataExport', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -242,11 +242,10 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
-     * @deprecated
-     * `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
      */
-    @Deprecated /* `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
+    @Deprecated
     @Import(name="enableStackdriverLogging")
     private @Nullable Output<Boolean> enableStackdriverLogging;
 
@@ -256,11 +255,10 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
-     * @deprecated
-     * `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
      */
-    @Deprecated /* `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
+    @Deprecated
     public Optional<Output<Boolean>> enableStackdriverLogging() {
         return Optional.ofNullable(this.enableStackdriverLogging);
     }
@@ -861,11 +859,10 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+         * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
          * 
          */
-        @Deprecated /* `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
+        @Deprecated
         public Builder enableStackdriverLogging(@Nullable Output<Boolean> enableStackdriverLogging) {
             $.enableStackdriverLogging = enableStackdriverLogging;
             return this;
@@ -879,11 +876,10 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+         * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
          * 
          */
-        @Deprecated /* `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
+        @Deprecated
         public Builder enableStackdriverLogging(Boolean enableStackdriverLogging) {
             return enableStackdriverLogging(Output.of(enableStackdriverLogging));
         }

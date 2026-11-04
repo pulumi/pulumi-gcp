@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         public readonly ImmutableArray<Outputs.GetAutonomousDatabasePropertyCustomerContactResult> CustomerContacts;
         /// <summary>
         /// The current state of the Data Safe registration for the
-        /// Autonomous Database. 
+        /// Autonomous Database.
         ///  Possible values:
         ///  DATA_SAFE_STATE_UNSPECIFIED
         /// REGISTERING
@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly int DataStorageSizeTb;
         /// <summary>
-        /// The current state of database management for the Autonomous Database. 
+        /// The current state of database management for the Autonomous Database.
         ///  Possible values:
         ///  DATABASE_MANAGEMENT_STATE_UNSPECIFIED
         /// ENABLING
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string DatabaseManagementState;
         /// <summary>
-        /// The edition of the Autonomous Databases. 
+        /// The edition of the Autonomous Databases.
         ///  Possible values:
         ///  DATABASE_EDITION_UNSPECIFIED
         /// STANDARD_EDITION
@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly bool IsStorageAutoScalingEnabled;
         /// <summary>
-        /// The license type used for the Autonomous Database. 
+        /// The license type used for the Autonomous Database.
         ///  Possible values:
         ///  LICENSE_TYPE_UNSPECIFIED
         /// LICENSE_INCLUDED
@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         public readonly int LocalAdgAutoFailoverMaxDataLossLimit;
         /// <summary>
         /// This field indicates the local disaster recovery (DR) type of an
-        /// Autonomous Database. 
+        /// Autonomous Database.
         ///  Possible values:
         ///  LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED
         /// ADG
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string MaintenanceEndTime;
         /// <summary>
-        /// The maintenance schedule of the Autonomous Database. 
+        /// The maintenance schedule of the Autonomous Database.
         ///  Possible values:
         ///  MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED
         /// EARLY
@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string Ocid;
         /// <summary>
-        /// This field indicates the current mode of the Autonomous Database. 
+        /// This field indicates the current mode of the Autonomous Database.
         ///  Possible values:
         ///  OPEN_MODE_UNSPECIFIED
         /// READ_ONLY
@@ -256,7 +256,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PeerDbIds;
         /// <summary>
-        /// The permission level of the Autonomous Database. 
+        /// The permission level of the Autonomous Database.
         ///  Possible values:
         ///  PERMISSION_LEVEL_UNSPECIFIED
         /// RESTRICTED
@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string PrivateEndpointLabel;
         /// <summary>
-        /// The refresh mode of the cloned Autonomous Database. 
+        /// The refresh mode of the cloned Autonomous Database.
         ///  Possible values:
         ///  REFRESHABLE_MODE_UNSPECIFIED
         /// AUTOMATIC
@@ -284,7 +284,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string RefreshableMode;
         /// <summary>
-        /// The refresh State of the clone. 
+        /// The refresh State of the clone.
         ///  Possible values:
         ///  REFRESHABLE_STATE_UNSPECIFIED
         /// REFRESHING
@@ -292,7 +292,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string RefreshableState;
         /// <summary>
-        /// The Data Guard role of the Autonomous Database. 
+        /// The Data Guard role of the Autonomous Database.
         ///  Possible values:
         ///  ROLE_UNSPECIFIED
         /// PRIMARY

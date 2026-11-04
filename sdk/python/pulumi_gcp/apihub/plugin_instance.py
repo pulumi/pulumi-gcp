@@ -801,6 +801,42 @@ class PluginInstance(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return PluginInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginInstanceActionArgs', 'PluginInstanceActionArgsDict', 'outputs.PluginInstanceAction']]]]] = None,
+            auth_config: pulumi.Input[Optional[Union['PluginInstanceAuthConfigArgs', 'PluginInstanceAuthConfigArgsDict', 'outputs.PluginInstanceAuthConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            error_message: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            source_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actions"] = actions
+        __props__["authConfig"] = auth_config
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disable"] = disable
+        __props__["displayName"] = display_name
+        __props__["errorMessage"] = error_message
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["plugin"] = plugin
+        __props__["pluginInstanceId"] = plugin_instance_id
+        __props__["project"] = project
+        __props__["sourceProjectId"] = source_project_id
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:apihub/pluginInstance:PluginInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def actions(self) -> pulumi.Output[Sequence['outputs.PluginInstanceAction']]:

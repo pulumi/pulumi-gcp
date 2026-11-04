@@ -648,6 +648,12 @@ func (WebTypeAppEngingIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webTypeAppEngingIamMemberState)(nil)).Elem()
 }
 
+// WebTypeAppEngingIamMemberExists checks whether an existing WebTypeAppEngingIamMember resource with the given ID exists.
+func WebTypeAppEngingIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebTypeAppEngingIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember", id, state, "", opts...)
+}
+
 type webTypeAppEngingIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	AppId string `pulumi:"appId"`

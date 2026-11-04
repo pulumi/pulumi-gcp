@@ -379,6 +379,12 @@ func (ApiConfigIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiConfigIamPolicyState)(nil)).Elem()
 }
 
+// ApiConfigIamPolicyExists checks whether an existing ApiConfigIamPolicy resource with the given ID exists.
+func ApiConfigIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiConfigIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigateway/apiConfigIamPolicy:ApiConfigIamPolicy", id, state, "", opts...)
+}
+
 type apiConfigIamPolicyArgs struct {
 	// The API to attach the config to.
 	// Used to find the parent resource to bind the IAM policy to

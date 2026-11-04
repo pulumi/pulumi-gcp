@@ -323,6 +323,12 @@ func (OdbNetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*odbNetworkState)(nil)).Elem()
 }
 
+// OdbNetworkExists checks whether an existing OdbNetwork resource with the given ID exists.
+func OdbNetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OdbNetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/odbNetwork:OdbNetwork", id, state, "", opts...)
+}
+
 type odbNetworkArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

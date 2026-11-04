@@ -601,6 +601,24 @@ class NatAddress(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return NatAddress(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            activate: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activate"] = activate
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["instanceId"] = instance_id
+        __props__["ipAddress"] = ip_address
+        __props__["name"] = name
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/natAddress:NatAddress', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def activate(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -158,6 +158,12 @@ func (V2OrganizationSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2organizationSourceState)(nil)).Elem()
 }
 
+// V2OrganizationSourceExists checks whether an existing V2OrganizationSource resource with the given ID exists.
+func V2OrganizationSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2OrganizationSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/v2OrganizationSource:V2OrganizationSource", id, state, "", opts...)
+}
+
 type v2organizationSourceArgs struct {
 	// The description of the source (max of 1024 characters).
 	Description *string `pulumi:"description"`

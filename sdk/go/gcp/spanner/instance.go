@@ -392,6 +392,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:spanner/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// The autoscaling configuration. Autoscaling is enabled if this field is set.
 	// Exactly one of either num_nodes, processingUnits or autoscalingConfig must be

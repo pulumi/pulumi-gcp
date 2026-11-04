@@ -646,6 +646,12 @@ func (InstanceGroupManagerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceGroupManagerState)(nil)).Elem()
 }
 
+// InstanceGroupManagerExists checks whether an existing InstanceGroupManager resource with the given ID exists.
+func InstanceGroupManagerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceGroupManagerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instanceGroupManager:InstanceGroupManager", id, state, "", opts...)
+}
+
 type instanceGroupManagerArgs struct {
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to

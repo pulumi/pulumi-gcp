@@ -491,6 +491,12 @@ func (RuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleState)(nil)).Elem()
 }
 
+// RuleExists checks whether an existing Rule resource with the given ID exists.
+func RuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/rule:Rule", id, state, "", opts...)
+}
+
 type ruleArgs struct {
 	// Policy to determine if the rule should be deleted forcefully.
 	// If deletionPolicy = "FORCE", any retrohunts and any detections associated with the rule

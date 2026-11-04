@@ -303,6 +303,12 @@ func (DatasetIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetIamMemberState)(nil)).Elem()
 }
 
+// DatasetIamMemberExists checks whether an existing DatasetIamMember resource with the given ID exists.
+func DatasetIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatasetIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/datasetIamMember:DatasetIamMember", id, state, "", opts...)
+}
+
 type datasetIamMemberArgs struct {
 	Condition *DatasetIamMemberCondition `pulumi:"condition"`
 	// The dataset ID, in the form

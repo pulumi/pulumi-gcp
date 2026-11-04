@@ -2248,6 +2248,54 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_descriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateCertificateDescriptionArgs', 'CertificateCertificateDescriptionArgsDict', 'outputs.CertificateCertificateDescription']]]]] = None,
+            certificate_template: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['CertificateConfigArgs', 'CertificateConfigArgsDict', 'outputs.CertificateConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            issuer_certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pem_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            pem_certificate_chains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pem_csr: pulumi.Input[Optional[_builtins.str]] = None,
+            pool: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            requested_not_before_time: pulumi.Input[Optional[_builtins.str]] = None,
+            revocation_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateRevocationDetailArgs', 'CertificateRevocationDetailArgsDict', 'outputs.CertificateRevocationDetail']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificateAuthority"] = certificate_authority
+        __props__["certificateDescriptions"] = certificate_descriptions
+        __props__["certificateTemplate"] = certificate_template
+        __props__["config"] = config
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["issuerCertificateAuthority"] = issuer_certificate_authority
+        __props__["labels"] = labels
+        __props__["lifetime"] = lifetime
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["pemCertificate"] = pem_certificate
+        __props__["pemCertificateChains"] = pem_certificate_chains
+        __props__["pemCsr"] = pem_csr
+        __props__["pool"] = pool
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["requestedNotBeforeTime"] = requested_not_before_time
+        __props__["revocationDetails"] = revocation_details
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:certificateauthority/certificate:Certificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output[Optional[_builtins.str]]:

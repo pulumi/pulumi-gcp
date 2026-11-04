@@ -131,6 +131,12 @@ func (DocumentAiProcessorDefaultVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*documentAiProcessorDefaultVersionState)(nil)).Elem()
 }
 
+// DocumentAiProcessorDefaultVersionExists checks whether an existing DocumentAiProcessorDefaultVersion resource with the given ID exists.
+func DocumentAiProcessorDefaultVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DocumentAiProcessorDefaultVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion", id, state, "", opts...)
+}
+
 type documentAiProcessorDefaultVersionArgs struct {
 	// The processor to set the version on.
 	Processor string `pulumi:"processor"`

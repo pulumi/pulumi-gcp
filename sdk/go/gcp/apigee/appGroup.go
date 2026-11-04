@@ -358,6 +358,12 @@ func (AppGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appGroupState)(nil)).Elem()
 }
 
+// AppGroupExists checks whether an existing AppGroup resource with the given ID exists.
+func AppGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/appGroup:AppGroup", id, state, "", opts...)
+}
+
 type appGroupArgs struct {
 	// A list of attributes
 	// Structure is documented below.

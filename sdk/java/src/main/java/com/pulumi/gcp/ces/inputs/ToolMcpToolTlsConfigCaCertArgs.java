@@ -23,10 +23,10 @@ public final class ToolMcpToolTlsConfigCaCertArgs extends com.pulumi.resources.R
      * store to verify certificates. N.B. Make sure the HTTPS server
      * certificates are signed with &#34;subject alt name&#34;. For instance a
      * certificate can be self-signed using the following command,
-     * openssl x509 -req -days 200 -in example.com.csr\
-     * -signkey example.com.key\
-     * -out example.com.crt\
-     * -extfile &lt;(printf &#34;\nsubjectAltName=&#39;DNS:www.example.com&#39;&#34;)
+     * openssl x509 -req -days 200 -in example.com.csr&#92;
+     * -signkey example.com.key&#92;
+     * -out example.com.crt&#92;
+     * -extfile &lt;(printf &#34;&#92;nsubjectAltName=&#39;DNS:www.example.com&#39;&#34;)
      * A base64-encoded string.
      * 
      */
@@ -41,10 +41,10 @@ public final class ToolMcpToolTlsConfigCaCertArgs extends com.pulumi.resources.R
      * store to verify certificates. N.B. Make sure the HTTPS server
      * certificates are signed with &#34;subject alt name&#34;. For instance a
      * certificate can be self-signed using the following command,
-     * openssl x509 -req -days 200 -in example.com.csr\
-     * -signkey example.com.key\
-     * -out example.com.crt\
-     * -extfile &lt;(printf &#34;\nsubjectAltName=&#39;DNS:www.example.com&#39;&#34;)
+     * openssl x509 -req -days 200 -in example.com.csr&#92;
+     * -signkey example.com.key&#92;
+     * -out example.com.crt&#92;
+     * -extfile &lt;(printf &#34;&#92;nsubjectAltName=&#39;DNS:www.example.com&#39;&#34;)
      * A base64-encoded string.
      * 
      */
@@ -104,10 +104,10 @@ public final class ToolMcpToolTlsConfigCaCertArgs extends com.pulumi.resources.R
          * store to verify certificates. N.B. Make sure the HTTPS server
          * certificates are signed with &#34;subject alt name&#34;. For instance a
          * certificate can be self-signed using the following command,
-         * openssl x509 -req -days 200 -in example.com.csr\
-         * -signkey example.com.key\
-         * -out example.com.crt\
-         * -extfile &lt;(printf &#34;\nsubjectAltName=&#39;DNS:www.example.com&#39;&#34;)
+         * openssl x509 -req -days 200 -in example.com.csr&#92;
+         * -signkey example.com.key&#92;
+         * -out example.com.crt&#92;
+         * -extfile &lt;(printf &#34;&#92;nsubjectAltName=&#39;DNS:www.example.com&#39;&#34;)
          * A base64-encoded string.
          * 
          * @return builder
@@ -126,10 +126,10 @@ public final class ToolMcpToolTlsConfigCaCertArgs extends com.pulumi.resources.R
          * store to verify certificates. N.B. Make sure the HTTPS server
          * certificates are signed with &#34;subject alt name&#34;. For instance a
          * certificate can be self-signed using the following command,
-         * openssl x509 -req -days 200 -in example.com.csr\
-         * -signkey example.com.key\
-         * -out example.com.crt\
-         * -extfile &lt;(printf &#34;\nsubjectAltName=&#39;DNS:www.example.com&#39;&#34;)
+         * openssl x509 -req -days 200 -in example.com.csr&#92;
+         * -signkey example.com.key&#92;
+         * -out example.com.crt&#92;
+         * -extfile &lt;(printf &#34;&#92;nsubjectAltName=&#39;DNS:www.example.com&#39;&#34;)
          * A base64-encoded string.
          * 
          * @return builder

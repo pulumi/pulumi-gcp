@@ -17,7 +17,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSecurityPolicyRulePreconfiguredWafConfigExclusion {
     /**
-     * @return A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+     * @return A list of request body fields to be excluded from inspection during&#92;npreconfigured WAF evaluation.
      * 
      */
     private List<GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> requestBodies;
@@ -54,7 +54,7 @@ public final class GetSecurityPolicyRulePreconfiguredWafConfigExclusion {
 
     private GetSecurityPolicyRulePreconfiguredWafConfigExclusion() {}
     /**
-     * @return A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+     * @return A list of request body fields to be excluded from inspection during&#92;npreconfigured WAF evaluation.
      * 
      */
     public List<GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> requestBodies() {

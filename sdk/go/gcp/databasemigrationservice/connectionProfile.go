@@ -918,6 +918,12 @@ func (ConnectionProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionProfileState)(nil)).Elem()
 }
 
+// ConnectionProfileExists checks whether an existing ConnectionProfile resource with the given ID exists.
+func ConnectionProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:databasemigrationservice/connectionProfile:ConnectionProfile", id, state, "", opts...)
+}
+
 type connectionProfileArgs struct {
 	// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
 	// Structure is documented below.

@@ -775,6 +775,32 @@ class BackupSchedule(pulumi.CustomResource):
         __props__.__dict__["spec"] = spec
         return BackupSchedule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_config: pulumi.Input[Optional[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict', 'outputs.BackupScheduleEncryptionConfig']]] = None,
+            full_backup_spec: pulumi.Input[Optional[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict', 'outputs.BackupScheduleFullBackupSpec']]] = None,
+            incremental_backup_spec: pulumi.Input[Optional[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict', 'outputs.BackupScheduleIncrementalBackupSpec']]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict', 'outputs.BackupScheduleSpec']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["database"] = database
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["encryptionConfig"] = encryption_config
+        __props__["fullBackupSpec"] = full_backup_spec
+        __props__["incrementalBackupSpec"] = incremental_backup_spec
+        __props__["instance"] = instance
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["retentionDuration"] = retention_duration
+        __props__["spec"] = spec
+        return pulumi.runtime.exists_resource(None, 'gcp:spanner/backupSchedule:BackupSchedule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def database(self) -> pulumi.Output[_builtins.str]:

@@ -630,6 +630,30 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         __props__.__dict__["workload_identity_pool_namespace_id"] = workload_identity_pool_namespace_id
         return WorkloadIdentityPoolNamespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolNamespaceOwnerServiceArgs', 'WorkloadIdentityPoolNamespaceOwnerServiceArgsDict', 'outputs.WorkloadIdentityPoolNamespaceOwnerService']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_pool_namespace_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disabled"] = disabled
+        __props__["name"] = name
+        __props__["ownerServices"] = owner_services
+        __props__["project"] = project
+        __props__["state"] = state
+        __props__["workloadIdentityPoolId"] = workload_identity_pool_id
+        __props__["workloadIdentityPoolNamespaceId"] = workload_identity_pool_namespace_id
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

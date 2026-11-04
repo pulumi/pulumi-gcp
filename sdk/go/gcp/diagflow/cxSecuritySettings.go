@@ -369,6 +369,12 @@ func (CxSecuritySettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxSecuritySettingsState)(nil)).Elem()
 }
 
+// CxSecuritySettingsExists checks whether an existing CxSecuritySettings resource with the given ID exists.
+func CxSecuritySettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxSecuritySettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxSecuritySettings:CxSecuritySettings", id, state, "", opts...)
+}
+
 type cxSecuritySettingsArgs struct {
 	// Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
 	// If retentionStrategy is set to REMOVE_AFTER_CONVERSATION or gcsBucket is empty, audio export is disabled.

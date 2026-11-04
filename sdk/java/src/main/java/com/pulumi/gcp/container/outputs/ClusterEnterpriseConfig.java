@@ -14,42 +14,38 @@ public final class ClusterEnterpriseConfig {
     /**
      * @return The effective tier of the cluster.
      * 
-     * @deprecated
-     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+     * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
-    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
+    @Deprecated
     private @Nullable String clusterTier;
     /**
      * @return (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
      * 
-     * @deprecated
-     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+     * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
-    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
+    @Deprecated
     private @Nullable String desiredTier;
 
     private ClusterEnterpriseConfig() {}
     /**
      * @return The effective tier of the cluster.
      * 
-     * @deprecated
-     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+     * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
-    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
+    @Deprecated
     public Optional<String> clusterTier() {
         return Optional.ofNullable(this.clusterTier);
     }
     /**
      * @return (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
      * 
-     * @deprecated
-     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+     * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
-    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
+    @Deprecated
     public Optional<String> desiredTier() {
         return Optional.ofNullable(this.desiredTier);
     }

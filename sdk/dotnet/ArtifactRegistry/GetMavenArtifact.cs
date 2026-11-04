@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly string Id;
         public readonly string Location;
         /// <summary>
-        /// The fully qualified name of the fetched artifact. Format:  
+        /// The fully qualified name of the fetched artifact. Format:
         /// ```
         /// projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/mavenArtifacts/{{group_id}}:{{artifact_id}}:{{version}}
         /// ```

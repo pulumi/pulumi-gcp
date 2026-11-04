@@ -503,6 +503,28 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return ServiceProjectAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_project_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["serviceProject"] = service_project
+        __props__["serviceProjectAttachmentId"] = service_project_attachment_id
+        __props__["state"] = state
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

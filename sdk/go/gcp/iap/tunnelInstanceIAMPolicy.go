@@ -620,6 +620,12 @@ func (TunnelInstanceIAMPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelInstanceIAMPolicyState)(nil)).Elem()
 }
 
+// TunnelInstanceIAMPolicyExists checks whether an existing TunnelInstanceIAMPolicy resource with the given ID exists.
+func TunnelInstanceIAMPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TunnelInstanceIAMPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy", id, state, "", opts...)
+}
+
 type tunnelInstanceIAMPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Instance string `pulumi:"instance"`

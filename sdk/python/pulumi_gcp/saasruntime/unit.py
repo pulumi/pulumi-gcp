@@ -1270,6 +1270,72 @@ class Unit(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Unit(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            application: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitConditionArgs', 'UnitConditionArgsDict', 'outputs.UnitCondition']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitDependencyArgs', 'UnitDependencyArgsDict', 'outputs.UnitDependency']]]]] = None,
+            dependents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitDependentArgs', 'UnitDependentArgsDict', 'outputs.UnitDependent']]]]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            input_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitInputVariableArgs', 'UnitInputVariableArgsDict', 'outputs.UnitInputVariable']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict', 'outputs.UnitMaintenance']]] = None,
+            management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ongoing_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            output_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitOutputVariableArgs', 'UnitOutputVariableArgsDict', 'outputs.UnitOutputVariable']]]]] = None,
+            pending_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            release: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            system_cleanup_at: pulumi.Input[Optional[_builtins.str]] = None,
+            system_managed_state: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_id: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["application"] = application
+        __props__["conditions"] = conditions
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dependencies"] = dependencies
+        __props__["dependents"] = dependents
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["inputVariables"] = input_variables
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["maintenance"] = maintenance
+        __props__["managementMode"] = management_mode
+        __props__["name"] = name
+        __props__["ongoingOperations"] = ongoing_operations
+        __props__["outputVariables"] = output_variables
+        __props__["pendingOperations"] = pending_operations
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["release"] = release
+        __props__["scheduledOperations"] = scheduled_operations
+        __props__["state"] = state
+        __props__["systemCleanupAt"] = system_cleanup_at
+        __props__["systemManagedState"] = system_managed_state
+        __props__["tenant"] = tenant
+        __props__["uid"] = uid
+        __props__["unitId"] = unit_id
+        __props__["unitKind"] = unit_kind
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:saasruntime/unit:Unit', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

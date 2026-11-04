@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// <summary>
         /// The name of a Filestore instance.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string Name;
         /// <summary>

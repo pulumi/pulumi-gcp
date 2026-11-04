@@ -436,6 +436,12 @@ func (GatewayIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayIamMemberState)(nil)).Elem()
 }
 
+// GatewayIamMemberExists checks whether an existing GatewayIamMember resource with the given ID exists.
+func GatewayIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigateway/gatewayIamMember:GatewayIamMember", id, state, "", opts...)
+}
+
 type gatewayIamMemberArgs struct {
 	Condition *GatewayIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

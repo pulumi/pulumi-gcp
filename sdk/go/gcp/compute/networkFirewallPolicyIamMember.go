@@ -405,6 +405,12 @@ func (NetworkFirewallPolicyIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkFirewallPolicyIamMemberState)(nil)).Elem()
 }
 
+// NetworkFirewallPolicyIamMemberExists checks whether an existing NetworkFirewallPolicyIamMember resource with the given ID exists.
+func NetworkFirewallPolicyIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkFirewallPolicyIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/networkFirewallPolicyIamMember:NetworkFirewallPolicyIamMember", id, state, "", opts...)
+}
+
 type networkFirewallPolicyIamMemberArgs struct {
 	Condition *NetworkFirewallPolicyIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

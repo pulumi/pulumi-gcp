@@ -357,6 +357,12 @@ func (JobIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobIAMBindingState)(nil)).Elem()
 }
 
+// JobIAMBindingExists checks whether an existing JobIAMBinding resource with the given ID exists.
+func JobIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JobIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/jobIAMBinding:JobIAMBinding", id, state, "", opts...)
+}
+
 type jobIAMBindingArgs struct {
 	Condition *JobIAMBindingCondition `pulumi:"condition"`
 	JobId     string                  `pulumi:"jobId"`

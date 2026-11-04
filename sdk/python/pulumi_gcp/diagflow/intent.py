@@ -979,6 +979,44 @@ class Intent(pulumi.CustomResource):
         __props__.__dict__["webhook_state"] = webhook_state
         return Intent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            default_response_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            followup_intent_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntentFollowupIntentInfoArgs', 'IntentFollowupIntentInfoArgsDict', 'outputs.IntentFollowupIntentInfo']]]]] = None,
+            input_context_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+            ml_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_followup_intent_name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reset_contexts: pulumi.Input[Optional[_builtins.bool]] = None,
+            root_followup_intent_name: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["defaultResponsePlatforms"] = default_response_platforms
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["events"] = events
+        __props__["followupIntentInfos"] = followup_intent_infos
+        __props__["inputContextNames"] = input_context_names
+        __props__["isFallback"] = is_fallback
+        __props__["mlDisabled"] = ml_disabled
+        __props__["name"] = name
+        __props__["parentFollowupIntentName"] = parent_followup_intent_name
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["resetContexts"] = reset_contexts
+        __props__["rootFollowupIntentName"] = root_followup_intent_name
+        __props__["webhookState"] = webhook_state
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/intent:Intent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

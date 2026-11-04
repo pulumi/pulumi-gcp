@@ -214,6 +214,12 @@ func (DnsZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsZoneState)(nil)).Elem()
 }
 
+// DnsZoneExists checks whether an existing DnsZone resource with the given ID exists.
+func DnsZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/dnsZone:DnsZone", id, state, "", opts...)
+}
+
 type dnsZoneArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

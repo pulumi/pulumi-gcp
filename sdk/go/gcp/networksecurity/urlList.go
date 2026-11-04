@@ -231,6 +231,12 @@ func (UrlListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*urlListState)(nil)).Elem()
 }
 
+// UrlListExists checks whether an existing UrlList resource with the given ID exists.
+func UrlListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UrlListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/urlList:UrlList", id, state, "", opts...)
+}
+
 type urlListArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

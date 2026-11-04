@@ -577,6 +577,12 @@ func (AppHostingBuildState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appHostingBuildState)(nil)).Elem()
 }
 
+// AppHostingBuildExists checks whether an existing AppHostingBuild resource with the given ID exists.
+func AppHostingBuildExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppHostingBuildState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appHostingBuild:AppHostingBuild", id, state, "", opts...)
+}
+
 type appHostingBuildArgs struct {
 	// Unstructured key value map that may be set by external tools to
 	// store and arbitrary metadata. They are not queryable and should be

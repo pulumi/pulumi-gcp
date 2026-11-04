@@ -203,6 +203,16 @@ class WorkloadIdentityServiceAgent(pulumi.CustomResource):
         __props__.__dict__["service_agents"] = service_agents
         return WorkloadIdentityServiceAgent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            service_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityServiceAgentServiceAgentArgs', 'WorkloadIdentityServiceAgentServiceAgentArgsDict', 'outputs.WorkloadIdentityServiceAgentServiceAgent']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["parent"] = parent
+        __props__["serviceAgents"] = service_agents
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/workloadIdentityServiceAgent:WorkloadIdentityServiceAgent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:

@@ -1878,6 +1878,84 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict', 'outputs.InstanceAccelerator']]]]] = None,
+            api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            crypto_key_config: pulumi.Input[Optional[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict', 'outputs.InstanceCryptoKeyConfig']]] = None,
+            dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_rbac: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_stackdriver_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+            event_publish_config: pulumi.Input[Optional[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict', 'outputs.InstanceEventPublishConfig']]] = None,
+            gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            maintenance_events: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMaintenanceEventArgs', 'InstanceMaintenanceEventArgsDict', 'outputs.InstanceMaintenanceEvent']]]]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict', 'outputs.InstanceMaintenancePolicy']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict', 'outputs.InstanceNetworkConfig']]] = None,
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            p4_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            patch_revision: pulumi.Input[Optional[_builtins.str]] = None,
+            private_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            service_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tenant_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accelerators"] = accelerators
+        __props__["apiEndpoint"] = api_endpoint
+        __props__["createTime"] = create_time
+        __props__["cryptoKeyConfig"] = crypto_key_config
+        __props__["dataprocServiceAccount"] = dataproc_service_account
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableRbac"] = enable_rbac
+        __props__["enableStackdriverLogging"] = enable_stackdriver_logging
+        __props__["enableStackdriverMonitoring"] = enable_stackdriver_monitoring
+        __props__["eventPublishConfig"] = event_publish_config
+        __props__["gcsBucket"] = gcs_bucket
+        __props__["labels"] = labels
+        __props__["maintenanceEvents"] = maintenance_events
+        __props__["maintenancePolicy"] = maintenance_policy
+        __props__["name"] = name
+        __props__["networkConfig"] = network_config
+        __props__["options"] = options
+        __props__["p4ServiceAccount"] = p4_service_account
+        __props__["patchRevision"] = patch_revision
+        __props__["privateInstance"] = private_instance
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["serviceAccount"] = service_account
+        __props__["serviceEndpoint"] = service_endpoint
+        __props__["state"] = state
+        __props__["stateMessage"] = state_message
+        __props__["tags"] = tags
+        __props__["tenantProjectId"] = tenant_project_id
+        __props__["type"] = type
+        __props__["updateTime"] = update_time
+        __props__["version"] = version
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:datafusion/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accelerators(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceAccelerator']]]:

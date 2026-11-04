@@ -772,6 +772,12 @@ func (RegionNetworkEndpointGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionNetworkEndpointGroupState)(nil)).Elem()
 }
 
+// RegionNetworkEndpointGroupExists checks whether an existing RegionNetworkEndpointGroup resource with the given ID exists.
+func RegionNetworkEndpointGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionNetworkEndpointGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup", id, state, "", opts...)
+}
+
 type regionNetworkEndpointGroupArgs struct {
 	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.

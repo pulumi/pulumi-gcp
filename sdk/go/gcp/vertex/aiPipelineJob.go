@@ -788,6 +788,12 @@ func (AiPipelineJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiPipelineJobState)(nil)).Elem()
 }
 
+// AiPipelineJobExists checks whether an existing AiPipelineJob resource with the given ID exists.
+func AiPipelineJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiPipelineJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiPipelineJob:AiPipelineJob", id, state, "", opts...)
+}
+
 type aiPipelineJobArgs struct {
 	// The deletion policy for the pipeline job. Setting `FORCE` will cancel the pipeline
 	// job if it is in an active state before deleting it. Defaults to `DELETE`.

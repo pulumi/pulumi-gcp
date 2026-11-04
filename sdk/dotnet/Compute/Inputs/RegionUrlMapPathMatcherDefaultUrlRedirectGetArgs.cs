@@ -54,9 +54,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// * FOUND, which corresponds to 302.
         /// * SEE_OTHER which corresponds to 303.
         /// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-        /// will be retained.
+        ///   will be retained.
         /// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-        /// the request method will be retained.
+        ///   the request method will be retained.
         /// </summary>
         [Input("redirectResponseCode")]
         public Input<string>? RedirectResponseCode { get; set; }

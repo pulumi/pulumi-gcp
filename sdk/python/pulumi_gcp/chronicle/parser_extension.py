@@ -944,6 +944,48 @@ class ParserExtension(pulumi.CustomResource):
         __props__.__dict__["validation_skipped"] = validation_skipped
         return ParserExtension(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cbn_snippet: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dynamic_parsing: pulumi.Input[Optional[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict', 'outputs.ParserExtensionDynamicParsing']]] = None,
+            extension_validation_report: pulumi.Input[Optional[_builtins.str]] = None,
+            field_extractors: pulumi.Input[Optional[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict', 'outputs.ParserExtensionFieldExtractors']]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            last_live_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            log: pulumi.Input[Optional[_builtins.str]] = None,
+            log_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parserextension: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_last_changed_time: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_report: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_skipped: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cbnSnippet"] = cbn_snippet
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dynamicParsing"] = dynamic_parsing
+        __props__["extensionValidationReport"] = extension_validation_report
+        __props__["fieldExtractors"] = field_extractors
+        __props__["instance"] = instance
+        __props__["lastLiveTime"] = last_live_time
+        __props__["location"] = location
+        __props__["log"] = log
+        __props__["logType"] = log_type
+        __props__["name"] = name
+        __props__["parserextension"] = parserextension
+        __props__["project"] = project
+        __props__["state"] = state
+        __props__["stateLastChangedTime"] = state_last_changed_time
+        __props__["validationReport"] = validation_report
+        __props__["validationSkipped"] = validation_skipped
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/parserExtension:ParserExtension', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cbnSnippet")
     def cbn_snippet(self) -> pulumi.Output[Optional[_builtins.str]]:

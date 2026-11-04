@@ -34,22 +34,20 @@ public final class ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigA
     /**
      * The disk type of the attached disk. Such as &#34;pd-ssd&#34; or &#34;pd-standard&#34;. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
-     * @deprecated
-     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
-    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+    @Deprecated
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
      * @return The disk type of the attached disk. Such as &#34;pd-ssd&#34; or &#34;pd-standard&#34;. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
-     * @deprecated
-     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
-    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+    @Deprecated
     public Optional<Output<String>> diskType() {
         return Optional.ofNullable(this.diskType);
     }
@@ -153,11 +151,10 @@ public final class ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigA
          * 
          * @return builder
          * 
-         * @deprecated
-         * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          * 
          */
-        @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+        @Deprecated
         public Builder diskType(@Nullable Output<String> diskType) {
             $.diskType = diskType;
             return this;
@@ -168,11 +165,10 @@ public final class ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigA
          * 
          * @return builder
          * 
-         * @deprecated
-         * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          * 
          */
-        @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+        @Deprecated
         public Builder diskType(String diskType) {
             return diskType(Output.of(diskType));
         }

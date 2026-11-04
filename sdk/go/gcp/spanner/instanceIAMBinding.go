@@ -369,6 +369,12 @@ func (InstanceIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIAMBindingState)(nil)).Elem()
 }
 
+// InstanceIAMBindingExists checks whether an existing InstanceIAMBinding resource with the given ID exists.
+func InstanceIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:spanner/instanceIAMBinding:InstanceIAMBinding", id, state, "", opts...)
+}
+
 type instanceIAMBindingArgs struct {
 	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
 	// The name of the instance.

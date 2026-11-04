@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
         /// * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-        /// Possible values are: `REDACT_DISK_STORAGE`.
+        ///   Possible values are: `REDACT_DISK_STORAGE`.
         /// </summary>
         [Output("redactionScope")]
         public Output<string?> RedactionScope { get; private set; } = null!;
@@ -241,7 +241,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Defines how we redact data. If not set, defaults to not redacting.
         /// * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-        /// Possible values are: `REDACT_WITH_SERVICE`.
+        ///   Possible values are: `REDACT_WITH_SERVICE`.
         /// </summary>
         [Output("redactionStrategy")]
         public Output<string?> RedactionStrategy { get; private set; } = null!;
@@ -249,7 +249,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Defines how long we retain persisted data that contains sensitive info. Only one of `RetentionWindowDays` and `RetentionStrategy` may be set.
         /// * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-        /// Possible values are: `REMOVE_AFTER_CONVERSATION`.
+        ///   Possible values are: `REMOVE_AFTER_CONVERSATION`.
         /// </summary>
         [Output("retentionStrategy")]
         public Output<string?> RetentionStrategy { get; private set; } = null!;
@@ -388,7 +388,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
         /// * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-        /// Possible values are: `REDACT_DISK_STORAGE`.
+        ///   Possible values are: `REDACT_DISK_STORAGE`.
         /// </summary>
         [Input("redactionScope")]
         public Input<string>? RedactionScope { get; set; }
@@ -396,7 +396,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Defines how we redact data. If not set, defaults to not redacting.
         /// * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-        /// Possible values are: `REDACT_WITH_SERVICE`.
+        ///   Possible values are: `REDACT_WITH_SERVICE`.
         /// </summary>
         [Input("redactionStrategy")]
         public Input<string>? RedactionStrategy { get; set; }
@@ -404,7 +404,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Defines how long we retain persisted data that contains sensitive info. Only one of `RetentionWindowDays` and `RetentionStrategy` may be set.
         /// * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-        /// Possible values are: `REMOVE_AFTER_CONVERSATION`.
+        ///   Possible values are: `REMOVE_AFTER_CONVERSATION`.
         /// </summary>
         [Input("retentionStrategy")]
         public Input<string>? RetentionStrategy { get; set; }
@@ -512,7 +512,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
         /// * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-        /// Possible values are: `REDACT_DISK_STORAGE`.
+        ///   Possible values are: `REDACT_DISK_STORAGE`.
         /// </summary>
         [Input("redactionScope")]
         public Input<string>? RedactionScope { get; set; }
@@ -520,7 +520,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Defines how we redact data. If not set, defaults to not redacting.
         /// * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-        /// Possible values are: `REDACT_WITH_SERVICE`.
+        ///   Possible values are: `REDACT_WITH_SERVICE`.
         /// </summary>
         [Input("redactionStrategy")]
         public Input<string>? RedactionStrategy { get; set; }
@@ -528,7 +528,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Defines how long we retain persisted data that contains sensitive info. Only one of `RetentionWindowDays` and `RetentionStrategy` may be set.
         /// * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-        /// Possible values are: `REMOVE_AFTER_CONVERSATION`.
+        ///   Possible values are: `REMOVE_AFTER_CONVERSATION`.
         /// </summary>
         [Input("retentionStrategy")]
         public Input<string>? RetentionStrategy { get; set; }

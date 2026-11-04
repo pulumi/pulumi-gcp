@@ -74,6 +74,12 @@ func (TargetIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetIamPolicyState)(nil)).Elem()
 }
 
+// TargetIamPolicyExists checks whether an existing TargetIamPolicy resource with the given ID exists.
+func TargetIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddeploy/targetIamPolicy:TargetIamPolicy", id, state, "", opts...)
+}
+
 type targetIamPolicyArgs struct {
 	Location   *string `pulumi:"location"`
 	Name       *string `pulumi:"name"`

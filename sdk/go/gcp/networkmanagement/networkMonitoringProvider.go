@@ -204,6 +204,12 @@ func (NetworkMonitoringProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkMonitoringProviderState)(nil)).Elem()
 }
 
+// NetworkMonitoringProviderExists checks whether an existing NetworkMonitoringProvider resource with the given ID exists.
+func NetworkMonitoringProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkMonitoringProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkmanagement/networkMonitoringProvider:NetworkMonitoringProvider", id, state, "", opts...)
+}
+
 type networkMonitoringProviderArgs struct {
 	// The deletion policy for the Network Monitoring Provider.
 	// Setting `deletionPolicy = "FORCE"` forces the deletion of all nested resources

@@ -587,6 +587,12 @@ func (SnapshotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotState)(nil)).Elem()
 }
 
+// SnapshotExists checks whether an existing Snapshot resource with the given ID exists.
+func SnapshotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnapshotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/snapshot:Snapshot", id, state, "", opts...)
+}
+
 type snapshotArgs struct {
 	// Creates the new snapshot in the snapshot chain labeled with the
 	// specified name. The chain name must be 1-63 characters long and

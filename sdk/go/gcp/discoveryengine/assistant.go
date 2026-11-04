@@ -315,6 +315,12 @@ func (AssistantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*assistantState)(nil)).Elem()
 }
 
+// AssistantExists checks whether an existing Assistant resource with the given ID exists.
+func AssistantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AssistantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/assistant:Assistant", id, state, "", opts...)
+}
+
 type assistantArgs struct {
 	// The unique id of the assistant.
 	AssistantId string `pulumi:"assistantId"`

@@ -913,6 +913,42 @@ class ExternalAccessRule(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return ExternalAccessRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict', 'outputs.ExternalAccessRuleDestinationIpRange']]]]] = None,
+            destination_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict', 'outputs.ExternalAccessRuleSourceIpRange']]]]] = None,
+            source_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["destinationIpRanges"] = destination_ip_ranges
+        __props__["destinationPorts"] = destination_ports
+        __props__["ipProtocol"] = ip_protocol
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["priority"] = priority
+        __props__["sourceIpRanges"] = source_ip_ranges
+        __props__["sourcePorts"] = source_ports
+        __props__["state"] = state
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:vmwareengine/externalAccessRule:ExternalAccessRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

@@ -550,6 +550,30 @@ class CustomList(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return CustomList(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            environments: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["category"] = category
+        __props__["customListId"] = custom_list_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["entityIdentifier"] = entity_identifier
+        __props__["environments"] = environments
+        __props__["instance"] = instance
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/customList:CustomList', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Output[_builtins.str]:

@@ -877,6 +877,38 @@ class Generator(pulumi.CustomResource):
         __props__.__dict__["trigger_event"] = trigger_event
         return Generator(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agent_coaching_context: pulumi.Input[Optional[Union['GeneratorAgentCoachingContextArgs', 'GeneratorAgentCoachingContextArgsDict', 'outputs.GeneratorAgentCoachingContext']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            free_form_context: pulumi.Input[Optional[Union['GeneratorFreeFormContextArgs', 'GeneratorFreeFormContextArgsDict', 'outputs.GeneratorFreeFormContext']]] = None,
+            generator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            published_model: pulumi.Input[Optional[_builtins.str]] = None,
+            summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']]] = None,
+            tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            trigger_event: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["agentCoachingContext"] = agent_coaching_context
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["freeFormContext"] = free_form_context
+        __props__["generatorId"] = generator_id
+        __props__["inferenceParameter"] = inference_parameter
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["publishedModel"] = published_model
+        __props__["summarizationContext"] = summarization_context
+        __props__["tools"] = tools
+        __props__["triggerEvent"] = trigger_event
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/generator:Generator', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="agentCoachingContext")
     def agent_coaching_context(self) -> pulumi.Output[Optional['outputs.GeneratorAgentCoachingContext']]:

@@ -376,6 +376,12 @@ func (RegionDiskIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionDiskIamPolicyState)(nil)).Elem()
 }
 
+// RegionDiskIamPolicyExists checks whether an existing RegionDiskIamPolicy resource with the given ID exists.
+func RegionDiskIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionDiskIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy", id, state, "", opts...)
+}
+
 type regionDiskIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`

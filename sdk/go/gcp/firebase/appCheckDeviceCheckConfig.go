@@ -217,6 +217,12 @@ func (AppCheckDeviceCheckConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appCheckDeviceCheckConfigState)(nil)).Elem()
 }
 
+// AppCheckDeviceCheckConfigExists checks whether an existing AppCheckDeviceCheckConfig resource with the given ID exists.
+func AppCheckDeviceCheckConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppCheckDeviceCheckConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig", id, state, "", opts...)
+}
+
 type appCheckDeviceCheckConfigArgs struct {
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).

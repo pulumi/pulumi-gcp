@@ -1760,6 +1760,66 @@ class AiPipelineJob(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AiPipelineJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiPipelineJobEncryptionSpecArgs', 'AiPipelineJobEncryptionSpecArgsDict', 'outputs.AiPipelineJobEncryptionSpec']]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPipelineJobErrorArgs', 'AiPipelineJobErrorArgsDict', 'outputs.AiPipelineJobError']]]]] = None,
+            job_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPipelineJobJobDetailArgs', 'AiPipelineJobJobDetailArgsDict', 'outputs.AiPipelineJobJobDetail']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            preflight_validations: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_interface_config: pulumi.Input[Optional[Union['AiPipelineJobPscInterfaceConfigArgs', 'AiPipelineJobPscInterfaceConfigArgsDict', 'outputs.AiPipelineJobPscInterfaceConfig']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            runtime_config: pulumi.Input[Optional[Union['AiPipelineJobRuntimeConfigArgs', 'AiPipelineJobRuntimeConfigArgsDict', 'outputs.AiPipelineJobRuntimeConfig']]] = None,
+            schedule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            template_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPipelineJobTemplateMetadataArgs', 'AiPipelineJobTemplateMetadataArgsDict', 'outputs.AiPipelineJobTemplateMetadata']]]]] = None,
+            template_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptionSpec"] = encryption_spec
+        __props__["endTime"] = end_time
+        __props__["errors"] = errors
+        __props__["jobDetails"] = job_details
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["pipelineJobId"] = pipeline_job_id
+        __props__["pipelineSpec"] = pipeline_spec
+        __props__["preflightValidations"] = preflight_validations
+        __props__["project"] = project
+        __props__["pscInterfaceConfig"] = psc_interface_config
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["reservedIpRanges"] = reserved_ip_ranges
+        __props__["runtimeConfig"] = runtime_config
+        __props__["scheduleName"] = schedule_name
+        __props__["serviceAccount"] = service_account
+        __props__["startTime"] = start_time
+        __props__["state"] = state
+        __props__["templateMetadatas"] = template_metadatas
+        __props__["templateUri"] = template_uri
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiPipelineJob:AiPipelineJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -749,6 +749,38 @@ class FtpServer(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return FtpServer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            external_config: pulumi.Input[Optional[Union['FtpServerExternalConfigArgs', 'FtpServerExternalConfigArgsDict', 'outputs.FtpServerExternalConfig']]] = None,
+            internal_config: pulumi.Input[Optional[Union['FtpServerInternalConfigArgs', 'FtpServerInternalConfigArgsDict', 'outputs.FtpServerInternalConfig']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            server_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_agent: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessType"] = access_type
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["externalConfig"] = external_config
+        __props__["internalConfig"] = internal_config
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["serverId"] = server_id
+        __props__["serviceAgent"] = service_agent
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/ftpServer:FtpServer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[_builtins.str]:

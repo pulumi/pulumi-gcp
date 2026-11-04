@@ -673,6 +673,12 @@ func (AgentRegistryMcpServerIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentRegistryMcpServerIamMemberState)(nil)).Elem()
 }
 
+// AgentRegistryMcpServerIamMemberExists checks whether an existing AgentRegistryMcpServerIamMember resource with the given ID exists.
+func AgentRegistryMcpServerIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentRegistryMcpServerIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/agentRegistryMcpServerIamMember:AgentRegistryMcpServerIamMember", id, state, "", opts...)
+}
+
 type agentRegistryMcpServerIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

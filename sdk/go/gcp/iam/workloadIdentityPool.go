@@ -557,6 +557,12 @@ func (WorkloadIdentityPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workloadIdentityPoolState)(nil)).Elem()
 }
 
+// WorkloadIdentityPoolExists checks whether an existing WorkloadIdentityPool resource with the given ID exists.
+func WorkloadIdentityPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkloadIdentityPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workloadIdentityPool:WorkloadIdentityPool", id, state, "", opts...)
+}
+
 type workloadIdentityPoolArgs struct {
 	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
 	// defined under a managed identity, matching workloads may receive that identity. A maximum of

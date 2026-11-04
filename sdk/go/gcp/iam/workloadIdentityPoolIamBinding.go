@@ -648,6 +648,12 @@ func (WorkloadIdentityPoolIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workloadIdentityPoolIamBindingState)(nil)).Elem()
 }
 
+// WorkloadIdentityPoolIamBindingExists checks whether an existing WorkloadIdentityPoolIamBinding resource with the given ID exists.
+func WorkloadIdentityPoolIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkloadIdentityPoolIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding", id, state, "", opts...)
+}
+
 type workloadIdentityPoolIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

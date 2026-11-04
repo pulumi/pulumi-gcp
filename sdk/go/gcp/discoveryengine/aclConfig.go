@@ -150,6 +150,12 @@ func (AclConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclConfigState)(nil)).Elem()
 }
 
+// AclConfigExists checks whether an existing AclConfig resource with the given ID exists.
+func AclConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/aclConfig:AclConfig", id, state, "", opts...)
+}
+
 type aclConfigArgs struct {
 	// Identity provider config.
 	// Structure is documented below.

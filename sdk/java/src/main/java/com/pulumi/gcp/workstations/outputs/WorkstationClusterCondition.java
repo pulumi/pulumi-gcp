@@ -24,11 +24,10 @@ public final class WorkstationClusterCondition {
      * @return (Output, Deprecated)
      * A list of messages that carry the error details.
      * 
-     * @deprecated
-     * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+     * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
      * 
      */
-    @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
+    @Deprecated
     private @Nullable List<Map<String,String>> details;
     /**
      * @return (Output)
@@ -50,11 +49,10 @@ public final class WorkstationClusterCondition {
      * @return (Output, Deprecated)
      * A list of messages that carry the error details.
      * 
-     * @deprecated
-     * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+     * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
      * 
      */
-    @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
+    @Deprecated
     public List<Map<String,String>> details() {
         return this.details == null ? List.of() : this.details;
     }

@@ -344,6 +344,12 @@ func (MetricDescriptorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metricDescriptorState)(nil)).Elem()
 }
 
+// MetricDescriptorExists checks whether an existing MetricDescriptor resource with the given ID exists.
+func MetricDescriptorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetricDescriptorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:monitoring/metricDescriptor:MetricDescriptor", id, state, "", opts...)
+}
+
 type metricDescriptorArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

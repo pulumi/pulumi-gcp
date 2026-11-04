@@ -691,6 +691,34 @@ class BigQueryExport(pulumi.CustomResource):
         __props__.__dict__["udm_events_settings"] = udm_events_settings
         return BigQueryExport(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            big_query_export_package: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_graph_settings: pulumi.Input[Optional[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict', 'outputs.BigQueryExportEntityGraphSettings']]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            ioc_matches_settings: pulumi.Input[Optional[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict', 'outputs.BigQueryExportIocMatchesSettings']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned: pulumi.Input[Optional[_builtins.bool]] = None,
+            rule_detections_settings: pulumi.Input[Optional[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict', 'outputs.BigQueryExportRuleDetectionsSettings']]] = None,
+            udm_events_aggregates_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict', 'outputs.BigQueryExportUdmEventsAggregatesSettings']]] = None,
+            udm_events_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict', 'outputs.BigQueryExportUdmEventsSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bigQueryExportPackage"] = big_query_export_package
+        __props__["entityGraphSettings"] = entity_graph_settings
+        __props__["instance"] = instance
+        __props__["iocMatchesSettings"] = ioc_matches_settings
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["provisioned"] = provisioned
+        __props__["ruleDetectionsSettings"] = rule_detections_settings
+        __props__["udmEventsAggregatesSettings"] = udm_events_aggregates_settings
+        __props__["udmEventsSettings"] = udm_events_settings
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/bigQueryExport:BigQueryExport', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bigQueryExportPackage")
     def big_query_export_package(self) -> pulumi.Output[_builtins.str]:

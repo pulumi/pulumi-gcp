@@ -309,6 +309,12 @@ func (VpnConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnConnectionState)(nil)).Elem()
 }
 
+// VpnConnectionExists checks whether an existing VpnConnection resource with the given ID exists.
+func VpnConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpnConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:edgecontainer/vpnConnection:VpnConnection", id, state, "", opts...)
+}
+
 type vpnConnectionArgs struct {
 	// The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
 	Cluster string `pulumi:"cluster"`

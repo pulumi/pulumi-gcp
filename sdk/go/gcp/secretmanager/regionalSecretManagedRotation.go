@@ -305,6 +305,12 @@ func (RegionalSecretManagedRotationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionalSecretManagedRotationState)(nil)).Elem()
 }
 
+// RegionalSecretManagedRotationExists checks whether an existing RegionalSecretManagedRotation resource with the given ID exists.
+func RegionalSecretManagedRotationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionalSecretManagedRotationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:secretmanager/regionalSecretManagedRotation:RegionalSecretManagedRotation", id, state, "", opts...)
+}
+
 type regionalSecretManagedRotationArgs struct {
 	// The Cloud SQL single-user credentials to manage.
 	// Structure is documented below.

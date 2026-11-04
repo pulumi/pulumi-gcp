@@ -251,6 +251,12 @@ func (GibqObservabilitySettingBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gibqObservabilitySettingBindingState)(nil)).Elem()
 }
 
+// GibqObservabilitySettingBindingExists checks whether an existing GibqObservabilitySettingBinding resource with the given ID exists.
+func GibqObservabilitySettingBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GibqObservabilitySettingBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/gibqObservabilitySettingBinding:GibqObservabilitySettingBinding", id, state, "", opts...)
+}
+
 type gibqObservabilitySettingBindingArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

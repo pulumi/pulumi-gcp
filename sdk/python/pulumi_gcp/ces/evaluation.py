@@ -2345,6 +2345,50 @@ class Evaluation(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Evaluation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            evaluation_datasets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            evaluation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            evaluation_runs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict', 'outputs.EvaluationGolden']]] = None,
+            invalid: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            scenario: pulumi.Input[Optional[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict', 'outputs.EvaluationScenario']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["app"] = app
+        __props__["createTime"] = create_time
+        __props__["createdBy"] = created_by
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["etag"] = etag
+        __props__["evaluationDatasets"] = evaluation_datasets
+        __props__["evaluationId"] = evaluation_id
+        __props__["evaluationRuns"] = evaluation_runs
+        __props__["golden"] = golden
+        __props__["invalid"] = invalid
+        __props__["lastUpdatedBy"] = last_updated_by
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["scenario"] = scenario
+        __props__["tags"] = tags
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:ces/evaluation:Evaluation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def app(self) -> pulumi.Output[_builtins.str]:

@@ -376,6 +376,12 @@ func (WorkflowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowState)(nil)).Elem()
 }
 
+// WorkflowExists checks whether an existing Workflow resource with the given ID exists.
+func WorkflowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:workflows/workflow:Workflow", id, state, "", opts...)
+}
+
 type workflowArgs struct {
 	// Describes the level of platform logging to apply to calls and call responses during
 	// executions of this workflow. If both the workflow and the execution specify a logging level,

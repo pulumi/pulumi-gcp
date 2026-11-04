@@ -779,12 +779,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
  *             .datasetId("tf_test_dataplex_dataset_id__10719")
  *             .defaultTableExpirationMs(3600000)
@@ -796,53 +796,53 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .schema("""
  *     [
- *     {
- *       \"name\": \"name\",
- *       \"type\": \"STRING\",
- *       \"mode\": \"NULLABLE\"
- *     },
- *     {
- *       \"name\": \"station_id\",
- *       \"type\": \"INTEGER\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The id of the bike station\"
- *     },
- *     {
- *       \"name\": \"address\",
- *       \"type\": \"STRING\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The address of the bike station\"
- *     },
- *     {
- *       \"name\": \"power_type\",
- *       \"type\": \"STRING\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The powert type of the bike station\"
- *     },
- *     {
- *       \"name\": \"property_type\",
- *       \"type\": \"STRING\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The type of the property\"
- *     },
- *     {
- *       \"name\": \"number_of_docks\",
- *       \"type\": \"INTEGER\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The number of docks the property have\"
- *     },
- *     {
- *       \"name\": \"footprint_length\",
- *       \"type\": \"INTEGER\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The footpring lenght of the property\"
- *     },
- *     {
- *       \"name\": \"council_district\",
- *       \"type\": \"INTEGER\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The council district the property is in\"
- *     }
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "station_id}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The id of the bike station}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "address}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The address of the bike station}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "power_type}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The powert type of the bike station}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "property_type}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The type of the property}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "number_of_docks}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The number of docks the property have}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "footprint_length}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The footpring lenght of the property}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "council_district}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The council district the property is in}&#92;{@code "
+ *     }}{@code
  *     ]
  *             """)
  *             .build());
@@ -851,11 +851,11 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .dataScanId("datadocumentation")
  *             .data(DatascanDataArgs.builder()
- *                 .resource(Output.tuple(tfDataplexTestDataset.datasetId(), tfDataplexTestTable.tableId()).applyValue(values -> {
+ *                 .resource(Output.tuple(tfDataplexTestDataset.datasetId(), tfDataplexTestTable.tableId()).applyValue(values -> }{{@code
  *                     var datasetId = values.t1;
  *                     var tableId = values.t2;
  *                     return String.format("//bigquery.googleapis.com/projects/my-project-name/datasets/%s/tables/%s", datasetId,tableId);
- *                 }))
+ *                 }}{@code ))
  *                 .build())
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
@@ -871,8 +871,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -903,12 +903,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
  *             .datasetId("tf_test_dataplex_dataset_id__26032")
  *             .defaultTableExpirationMs(3600000)
@@ -920,53 +920,53 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .schema("""
  *     [
- *     {
- *       \"name\": \"name\",
- *       \"type\": \"STRING\",
- *       \"mode\": \"NULLABLE\"
- *     },
- *     {
- *       \"name\": \"station_id\",
- *       \"type\": \"INTEGER\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The id of the bike station\"
- *     },
- *     {
- *       \"name\": \"address\",
- *       \"type\": \"STRING\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The address of the bike station\"
- *     },
- *     {
- *       \"name\": \"power_type\",
- *       \"type\": \"STRING\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The powert type of the bike station\"
- *     },
- *     {
- *       \"name\": \"property_type\",
- *       \"type\": \"STRING\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The type of the property\"
- *     },
- *     {
- *       \"name\": \"number_of_docks\",
- *       \"type\": \"INTEGER\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The number of docks the property have\"
- *     },
- *     {
- *       \"name\": \"footprint_length\",
- *       \"type\": \"INTEGER\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The footpring lenght of the property\"
- *     },
- *     {
- *       \"name\": \"council_district\",
- *       \"type\": \"INTEGER\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The council district the property is in\"
- *     }
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "station_id}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The id of the bike station}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "address}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The address of the bike station}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "power_type}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The powert type of the bike station}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "property_type}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The type of the property}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "number_of_docks}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The number of docks the property have}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "footprint_length}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The footpring lenght of the property}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "council_district}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The council district the property is in}&#92;{@code "
+ *     }}{@code
  *     ]
  *             """)
  *             .build());
@@ -975,11 +975,11 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .dataScanId("datadocumentation-onetime")
  *             .data(DatascanDataArgs.builder()
- *                 .resource(Output.tuple(tfDataplexTestDataset.datasetId(), tfDataplexTestTable.tableId()).applyValue(values -> {
+ *                 .resource(Output.tuple(tfDataplexTestDataset.datasetId(), tfDataplexTestTable.tableId()).applyValue(values -> }{{@code
  *                     var datasetId = values.t1;
  *                     var tableId = values.t2;
  *                     return String.format("//bigquery.googleapis.com/projects/my-project-name/datasets/%s/tables/%s", datasetId,tableId);
- *                 }))
+ *                 }}{@code ))
  *                 .build())
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
@@ -993,8 +993,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -1028,12 +1028,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
  *             .datasetId("tf_test_ds__50610")
  *             .defaultTableExpirationMs(3600000)
@@ -1048,16 +1048,16 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .schema("""
  *     [
- *       {
- *         \"name\": \"word\",
- *         \"type\": \"STRING\",
- *         \"mode\": \"REQUIRED\"
- *       },
- *       {
- *         \"name\": \"word_count\",
- *         \"type\": \"INTEGER\",
- *         \"mode\": \"REQUIRED\"
- *       }
+ *       }{{@code
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "word}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "REQUIRED}&#92;{@code "
+ *       }}{@code ,
+ *       }{{@code
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "word_count}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "REQUIRED}&#92;{@code "
+ *       }}{@code
  *     ]
  *             """)
  *             .build());
@@ -1066,11 +1066,11 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .dataScanId("dataplex-id-user-cred")
  *             .data(DatascanDataArgs.builder()
- *                 .resource(Output.tuple(tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> {
+ *                 .resource(Output.tuple(tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> }{{@code
  *                     var datasetId = values.t1;
  *                     var tableId = values.t2;
  *                     return String.format("//bigquery.googleapis.com/projects/my-project-name/datasets/%s/tables/%s", datasetId,tableId);
- *                 }))
+ *                 }}{@code ))
  *                 .build())
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
@@ -1089,8 +1089,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(tfTestTable)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -1190,14 +1190,14 @@ import javax.annotation.Nullable;
  *             .schema("""
  *     [
  *       }{{@code
- *         \"name\": \"word\",
- *         \"type\": \"STRING\",
- *         \"mode\": \"REQUIRED\"
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "word}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "REQUIRED}&#92;{@code "
  *       }}{@code ,
  *       }{{@code
- *         \"name\": \"word_count\",
- *         \"type\": \"INTEGER\",
- *         \"mode\": \"REQUIRED\"
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "word_count}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "REQUIRED}&#92;{@code "
  *       }}{@code
  *     ]
  *             """)
@@ -1490,7 +1490,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
  *                 .enableCatalogBasedRules(true)
- *                 .filter("attributes.priority = \"high\"")
+ *                 .filter("attributes.priority = }&#92;{@code "high}&#92;{@code "")
  *                 .build())
  *             .project(project.projectId())
  *             .build(), CustomResourceOptions.builder()
@@ -1634,9 +1634,9 @@ import javax.annotation.Nullable;
  *             .schema("""
  *     [
  *     }{{@code
- *       \"name\": \"name\",
- *       \"type\": \"STRING\",
- *       \"mode\": \"NULLABLE\"
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *     }}{@code
  *     ]
  *             """)

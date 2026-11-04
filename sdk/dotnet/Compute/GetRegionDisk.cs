@@ -156,7 +156,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name of a specific disk.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name of a specific disk.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

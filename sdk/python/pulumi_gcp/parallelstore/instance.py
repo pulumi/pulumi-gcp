@@ -1304,6 +1304,54 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            daos_version: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            file_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessPoints"] = access_points
+        __props__["capacityGib"] = capacity_gib
+        __props__["createTime"] = create_time
+        __props__["daosVersion"] = daos_version
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deploymentType"] = deployment_type
+        __props__["description"] = description
+        __props__["directoryStripeLevel"] = directory_stripe_level
+        __props__["effectiveLabels"] = effective_labels
+        __props__["effectiveReservedIpRange"] = effective_reserved_ip_range
+        __props__["fileStripeLevel"] = file_stripe_level
+        __props__["instanceId"] = instance_id
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reservedIpRange"] = reserved_ip_range
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:parallelstore/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessPoints")
     def access_points(self) -> pulumi.Output[Sequence[_builtins.str]]:

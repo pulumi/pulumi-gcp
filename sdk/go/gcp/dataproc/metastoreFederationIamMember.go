@@ -430,6 +430,12 @@ func (MetastoreFederationIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreFederationIamMemberState)(nil)).Elem()
 }
 
+// MetastoreFederationIamMemberExists checks whether an existing MetastoreFederationIamMember resource with the given ID exists.
+func MetastoreFederationIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreFederationIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember", id, state, "", opts...)
+}
+
 type metastoreFederationIamMemberArgs struct {
 	Condition *MetastoreFederationIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

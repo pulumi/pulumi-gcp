@@ -324,6 +324,12 @@ func (HiveTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hiveTableState)(nil)).Elem()
 }
 
+// HiveTableExists checks whether an existing HiveTable resource with the given ID exists.
+func HiveTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HiveTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/hiveTable:HiveTable", id, state, "", opts...)
+}
+
 type hiveTableArgs struct {
 	// The Hive catalog where the table is located.
 	Catalog string `pulumi:"catalog"`

@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.Organizations
         /// });
         /// ```
         /// 
-        /// 
         /// ### Configure Kubernetes Provider With OAuth2 Access Token
         /// 
         /// ```csharp
@@ -86,7 +85,6 @@ namespace Pulumi.Gcp.Organizations
         /// });
         /// ```
         /// 
-        /// 
         /// ### Configure Kubernetes Provider With OAuth2 Access Token
         /// 
         /// ```csharp
@@ -135,7 +133,6 @@ namespace Pulumi.Gcp.Organizations
         ///     };
         /// });
         /// ```
-        /// 
         /// 
         /// ### Configure Kubernetes Provider With OAuth2 Access Token
         /// 

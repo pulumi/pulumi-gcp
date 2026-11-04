@@ -670,6 +670,12 @@ func (InstantSnapshotIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instantSnapshotIamMemberState)(nil)).Elem()
 }
 
+// InstantSnapshotIamMemberExists checks whether an existing InstantSnapshotIamMember resource with the given ID exists.
+func InstantSnapshotIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstantSnapshotIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instantSnapshotIamMember:InstantSnapshotIamMember", id, state, "", opts...)
+}
+
 type instantSnapshotIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

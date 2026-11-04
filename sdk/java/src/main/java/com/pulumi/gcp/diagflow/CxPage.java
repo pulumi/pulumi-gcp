@@ -138,12 +138,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
@@ -191,13 +191,13 @@ import javax.annotation.Nullable;
  *                         .build(),
  *                     CxPageEntryFulfillmentMessageArgs.builder()
  *                         .payload("""
- *         {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+ *         }{&#92;{@code "some-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-key}&#92;{@code ": [}&#92;{@code "other-value}&#92;{@code "]}}{@code
  *                         """)
  *                         .build(),
  *                     CxPageEntryFulfillmentMessageArgs.builder()
  *                         .conversationSuccess(CxPageEntryFulfillmentMessageConversationSuccessArgs.builder()
  *                             .metadata("""
- *           {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *           }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                             """)
  *                             .build())
  *                         .build(),
@@ -209,14 +209,14 @@ import javax.annotation.Nullable;
  *                     CxPageEntryFulfillmentMessageArgs.builder()
  *                         .outputAudioText(CxPageEntryFulfillmentMessageOutputAudioTextArgs.builder()
  *                             .ssml("""
- *           <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+ *           <speak>Some example <say-as interpret-as=}&#92;{@code "characters}&#92;{@code ">SSML XML</say-as></speak>
  *                             """)
  *                             .build())
  *                         .build(),
  *                     CxPageEntryFulfillmentMessageArgs.builder()
  *                         .liveAgentHandoff(CxPageEntryFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                             .metadata("""
- *           {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *           }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                             """)
  *                             .build())
  *                         .build(),
@@ -299,13 +299,13 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         CxPageEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                             .payload("""
- *           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+ *           }{&#92;{@code "some-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-key}&#92;{@code ": [}&#92;{@code "other-value}&#92;{@code "]}}{@code
  *                             """)
  *                             .build(),
  *                         CxPageEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                             .conversationSuccess(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs.builder()
  *                                 .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -317,14 +317,14 @@ import javax.annotation.Nullable;
  *                         CxPageEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                             .outputAudioText(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs.builder()
  *                                 .ssml("""
- *             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+ *             <speak>Some example <say-as interpret-as=}&#92;{@code "characters}&#92;{@code ">SSML XML</say-as></speak>
  *                                 """)
  *                                 .build())
  *                             .build(),
  *                         CxPageEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                             .liveAgentHandoff(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                 .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -412,13 +412,13 @@ import javax.annotation.Nullable;
  *                                     .build(),
  *                                 CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs.builder()
  *                                     .payload("""
- *               {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+ *               }{&#92;{@code "some-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-key}&#92;{@code ": [}&#92;{@code "other-value}&#92;{@code "]}}{@code
  *                                     """)
  *                                     .build(),
  *                                 CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs.builder()
  *                                     .conversationSuccess(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs.builder()
  *                                         .metadata("""
- *                 {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *                 }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                         """)
  *                                         .build())
  *                                     .build(),
@@ -430,14 +430,14 @@ import javax.annotation.Nullable;
  *                                 CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs.builder()
  *                                     .outputAudioText(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs.builder()
  *                                         .ssml("""
- *                 <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+ *                 <speak>Some example <say-as interpret-as=}&#92;{@code "characters}&#92;{@code ">SSML XML</say-as></speak>
  *                                         """)
  *                                         .build())
  *                                     .build(),
  *                                 CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs.builder()
  *                                     .liveAgentHandoff(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                         .metadata("""
- *                 {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *                 }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                         """)
  *                                         .build())
  *                                     .build(),
@@ -523,13 +523,13 @@ import javax.annotation.Nullable;
  *                                             .build(),
  *                                         CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                             .payload("""
- *                 {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+ *                 }{&#92;{@code "some-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-key}&#92;{@code ": [}&#92;{@code "other-value}&#92;{@code "]}}{@code
  *                                             """)
  *                                             .build(),
  *                                         CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                             .conversationSuccess(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs.builder()
  *                                                 .metadata("""
- *                   {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *                   }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                                 """)
  *                                                 .build())
  *                                             .build(),
@@ -541,14 +541,14 @@ import javax.annotation.Nullable;
  *                                         CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                             .outputAudioText(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs.builder()
  *                                                 .ssml("""
- *                   <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+ *                   <speak>Some example <say-as interpret-as=}&#92;{@code "characters}&#92;{@code ">SSML XML</say-as></speak>
  *                                                 """)
  *                                                 .build())
  *                                             .build(),
  *                                         CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                             .liveAgentHandoff(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                                 .metadata("""
- *                   {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *                   }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                                 """)
  *                                                 .build())
  *                                             .build(),
@@ -651,13 +651,13 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         CxPageTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .payload("""
- *           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+ *           }{&#92;{@code "some-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-key}&#92;{@code ": [}&#92;{@code "other-value}&#92;{@code "]}}{@code
  *                             """)
  *                             .build(),
  *                         CxPageTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .conversationSuccess(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs.builder()
  *                                 .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -669,14 +669,14 @@ import javax.annotation.Nullable;
  *                         CxPageTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .outputAudioText(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs.builder()
  *                                 .ssml("""
- *             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+ *             <speak>Some example <say-as interpret-as=}&#92;{@code "characters}&#92;{@code ">SSML XML</say-as></speak>
  *                                 """)
  *                                 .build())
  *                             .build(),
  *                         CxPageTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .liveAgentHandoff(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                 .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -772,13 +772,13 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .payload("""
- *           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+ *           }{&#92;{@code "some-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-key}&#92;{@code ": [}&#92;{@code "other-value}&#92;{@code "]}}{@code
  *                             """)
  *                             .build(),
  *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .conversationSuccess(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs.builder()
  *                                 .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -790,14 +790,14 @@ import javax.annotation.Nullable;
  *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .outputAudioText(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs.builder()
  *                                 .ssml("""
- *             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+ *             <speak>Some example <say-as interpret-as=}&#92;{@code "characters}&#92;{@code ">SSML XML</say-as></speak>
  *                                 """)
  *                                 .build())
  *                             .build(),
  *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .liveAgentHandoff(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                 .metadata("""
- *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+ *             }{&#92;{@code "some-metadata-key}&#92;{@code ": }&#92;{@code "some-value}&#92;{@code ", }&#92;{@code "other-metadata-key}&#92;{@code ": 1234}}{@code
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -885,8 +885,8 @@ import javax.annotation.Nullable;
  *             .contentConfig("NO_CONTENT")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

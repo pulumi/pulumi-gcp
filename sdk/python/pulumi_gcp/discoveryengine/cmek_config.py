@@ -658,6 +658,38 @@ class CmekConfig(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return CmekConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cmek_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_version: pulumi.Input[Optional[_builtins.str]] = None,
+            last_rotation_timestamp_micros: pulumi.Input[Optional[_builtins.int]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notebooklm_state: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            set_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            single_region_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict', 'outputs.CmekConfigSingleRegionKey']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cmekConfigId"] = cmek_config_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["isDefault"] = is_default
+        __props__["kmsKey"] = kms_key
+        __props__["kmsKeyVersion"] = kms_key_version
+        __props__["lastRotationTimestampMicros"] = last_rotation_timestamp_micros
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["notebooklmState"] = notebooklm_state
+        __props__["project"] = project
+        __props__["setDefault"] = set_default
+        __props__["singleRegionKeys"] = single_region_keys
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/cmekConfig:CmekConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cmekConfigId")
     def cmek_config_id(self) -> pulumi.Output[_builtins.str]:

@@ -47,11 +47,10 @@ public class V2ConsumerPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Default value is false. This field is deprecated and has no effect.
      * 
-     * @deprecated
-     * `checkUsageOnRemove` is deprecated and will be removed in a future major release.
+     * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `checkUsageOnRemove` is deprecated and will be removed in a future major release. */
+    @Deprecated
     @Export(name="checkUsageOnRemove", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> checkUsageOnRemove;
 

@@ -1197,6 +1197,60 @@ class Target(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Target(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            anthos_cluster: pulumi.Input[Optional[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict', 'outputs.TargetAnthosCluster']]] = None,
+            associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict', 'outputs.TargetAssociatedEntity']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_target: pulumi.Input[Optional[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict', 'outputs.TargetCustomTarget']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict', 'outputs.TargetExecutionConfig']]]]] = None,
+            gke: pulumi.Input[Optional[Union['TargetGkeArgs', 'TargetGkeArgsDict', 'outputs.TargetGke']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_target: pulumi.Input[Optional[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict', 'outputs.TargetMultiTarget']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            require_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            run: pulumi.Input[Optional[Union['TargetRunArgs', 'TargetRunArgsDict', 'outputs.TargetRun']]] = None,
+            target_id: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["anthosCluster"] = anthos_cluster
+        __props__["associatedEntities"] = associated_entities
+        __props__["createTime"] = create_time
+        __props__["customTarget"] = custom_target
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deployParameters"] = deploy_parameters
+        __props__["description"] = description
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["executionConfigs"] = execution_configs
+        __props__["gke"] = gke
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["multiTarget"] = multi_target
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["requireApproval"] = require_approval
+        __props__["run"] = run
+        __props__["targetId"] = target_id
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:clouddeploy/target:Target', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

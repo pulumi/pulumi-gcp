@@ -21,7 +21,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Retrieve Project Logging Sink Basic
         /// 
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,7 +49,6 @@ namespace Pulumi.Gcp.Logging
         /// ## Example Usage
         /// 
         /// ### Retrieve Project Logging Sink Basic
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -81,7 +79,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Retrieve Project Logging Sink Basic
         /// 
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -106,7 +103,7 @@ namespace Pulumi.Gcp.Logging
     public sealed class GetSinkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The identifier for the resource. 
+        /// The identifier for the resource.
         /// Examples:
         /// 
         /// - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
@@ -126,7 +123,7 @@ namespace Pulumi.Gcp.Logging
     public sealed class GetSinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The identifier for the resource. 
+        /// The identifier for the resource.
         /// Examples:
         /// 
         /// - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`

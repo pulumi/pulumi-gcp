@@ -267,6 +267,12 @@ func (DicomStoreIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dicomStoreIamPolicyState)(nil)).Elem()
 }
 
+// DicomStoreIamPolicyExists checks whether an existing DicomStoreIamPolicy resource with the given ID exists.
+func DicomStoreIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DicomStoreIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy", id, state, "", opts...)
+}
+
 type dicomStoreIamPolicyArgs struct {
 	// The DICOM store ID, in the form
 	// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or

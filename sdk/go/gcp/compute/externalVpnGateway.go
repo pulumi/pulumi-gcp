@@ -364,6 +364,12 @@ func (ExternalVpnGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalVpnGatewayState)(nil)).Elem()
 }
 
+// ExternalVpnGatewayExists checks whether an existing ExternalVpnGateway resource with the given ID exists.
+func ExternalVpnGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExternalVpnGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/externalVpnGateway:ExternalVpnGateway", id, state, "", opts...)
+}
+
 type externalVpnGatewayArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -231,6 +231,12 @@ func (CodeRepositoryIndexState) ElementType() reflect.Type {
 	return reflect.TypeOf((*codeRepositoryIndexState)(nil)).Elem()
 }
 
+// CodeRepositoryIndexExists checks whether an existing CodeRepositoryIndex resource with the given ID exists.
+func CodeRepositoryIndexExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CodeRepositoryIndexState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex", id, state, "", opts...)
+}
+
 type codeRepositoryIndexArgs struct {
 	// Required. Id of the Code Repository Index.
 	CodeRepositoryIndexId string `pulumi:"codeRepositoryIndexId"`

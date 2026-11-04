@@ -94,17 +94,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var customDataAccessLabel = new DataAccessLabel("customDataAccessLabel", DataAccessLabelArgs.builder()
  *             .location("us")
  *             .instance("00000000-0000-0000-0000-000000000000")
  *             .dataAccessLabelId("label-id")
- *             .udmQuery("principal.hostname=\"google.com\"")
+ *             .udmQuery("principal.hostname=}&#92;{@code "google.com}&#92;{@code "")
  *             .build());
  * 
  *         var example = new DataAccessScope("example", DataAccessScopeArgs.builder()
@@ -117,8 +117,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -228,17 +228,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var customDataAccessLabel = new DataAccessLabel("customDataAccessLabel", DataAccessLabelArgs.builder()
  *             .location("us")
  *             .instance("00000000-0000-0000-0000-000000000000")
  *             .dataAccessLabelId("label-id")
- *             .udmQuery("principal.hostname=\"google.com\"")
+ *             .udmQuery("principal.hostname=}&#92;{@code "google.com}&#92;{@code "")
  *             .build());
  * 
  *         var example = new DataAccessScope("example", DataAccessScopeArgs.builder()
@@ -265,8 +265,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

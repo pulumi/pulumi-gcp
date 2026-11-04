@@ -385,6 +385,12 @@ func (MetastoreServiceIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreServiceIamPolicyState)(nil)).Elem()
 }
 
+// MetastoreServiceIamPolicyExists checks whether an existing MetastoreServiceIamPolicy resource with the given ID exists.
+func MetastoreServiceIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreServiceIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/metastoreServiceIamPolicy:MetastoreServiceIamPolicy", id, state, "", opts...)
+}
+
 type metastoreServiceIamPolicyArgs struct {
 	// The location where the metastore service should reside.
 	// The default value is `global`.

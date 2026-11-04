@@ -673,6 +673,12 @@ func (SecurityGatewayIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGatewayIamMemberState)(nil)).Elem()
 }
 
+// SecurityGatewayIamMemberExists checks whether an existing SecurityGatewayIamMember resource with the given ID exists.
+func SecurityGatewayIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGatewayIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember", id, state, "", opts...)
+}
+
 type securityGatewayIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

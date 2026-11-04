@@ -223,6 +223,12 @@ func (TenantDefaultSupportedIdpConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantDefaultSupportedIdpConfigState)(nil)).Elem()
 }
 
+// TenantDefaultSupportedIdpConfigExists checks whether an existing TenantDefaultSupportedIdpConfig resource with the given ID exists.
+func TenantDefaultSupportedIdpConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TenantDefaultSupportedIdpConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig", id, state, "", opts...)
+}
+
 type tenantDefaultSupportedIdpConfigArgs struct {
 	// OAuth client ID
 	ClientId string `pulumi:"clientId"`

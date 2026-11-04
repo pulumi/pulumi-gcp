@@ -400,6 +400,12 @@ func (V2OrganizationSourceIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2organizationSourceIamMemberState)(nil)).Elem()
 }
 
+// V2OrganizationSourceIamMemberExists checks whether an existing V2OrganizationSourceIamMember resource with the given ID exists.
+func V2OrganizationSourceIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2OrganizationSourceIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember", id, state, "", opts...)
+}
+
 type v2organizationSourceIamMemberArgs struct {
 	Condition *V2OrganizationSourceIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

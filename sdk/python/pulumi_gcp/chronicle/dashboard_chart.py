@@ -893,6 +893,32 @@ class DashboardChart(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return DashboardChart(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            chart_id: pulumi.Input[Optional[_builtins.str]] = None,
+            chart_layout: pulumi.Input[Optional[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict', 'outputs.DashboardChartChartLayout']]] = None,
+            dashboard_chart: pulumi.Input[Optional[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict', 'outputs.DashboardChartDashboardChart']]] = None,
+            dashboard_query: pulumi.Input[Optional[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict', 'outputs.DashboardChartDashboardQuery']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            native_dashboard: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["chartId"] = chart_id
+        __props__["chartLayout"] = chart_layout
+        __props__["dashboardChart"] = dashboard_chart
+        __props__["dashboardQuery"] = dashboard_query
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["instance"] = instance
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["nativeDashboard"] = native_dashboard
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/dashboardChart:DashboardChart', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="chartId")
     def chart_id(self) -> pulumi.Output[_builtins.str]:

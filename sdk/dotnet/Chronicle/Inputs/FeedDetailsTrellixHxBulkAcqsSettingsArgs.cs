@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Chronicle.Inputs
         /// Usually a device URL is in the form of either:
         /// https://xxx.trellix.com/hx/id//
         /// - or -
-        /// https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+        ///   https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;

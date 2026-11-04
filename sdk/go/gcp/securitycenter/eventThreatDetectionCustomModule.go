@@ -225,6 +225,12 @@ func (EventThreatDetectionCustomModuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventThreatDetectionCustomModuleState)(nil)).Elem()
 }
 
+// EventThreatDetectionCustomModuleExists checks whether an existing EventThreatDetectionCustomModule resource with the given ID exists.
+func EventThreatDetectionCustomModuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EventThreatDetectionCustomModuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule", id, state, "", opts...)
+}
+
 type eventThreatDetectionCustomModuleArgs struct {
 	// Config for the module. For the resident module, its config value is defined at this level.
 	// For the inherited module, its config value is inherited from the ancestor module.

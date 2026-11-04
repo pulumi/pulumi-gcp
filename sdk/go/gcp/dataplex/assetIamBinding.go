@@ -457,6 +457,12 @@ func (AssetIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*assetIamBindingState)(nil)).Elem()
 }
 
+// AssetIamBindingExists checks whether an existing AssetIamBinding resource with the given ID exists.
+func AssetIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AssetIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/assetIamBinding:AssetIamBinding", id, state, "", opts...)
+}
+
 type assetIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Asset     string                    `pulumi:"asset"`

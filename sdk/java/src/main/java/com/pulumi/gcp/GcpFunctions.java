@@ -63,7 +63,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> locationFromId(String id, InvokeOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/locationFromId:locationFromId", TypeShape.of(Void.class), LocationFromIdArgs.builder().id(id).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/locationFromId:locationFromId", TypeShape.of(Void.class), LocationFromIdPlainArgs.builder().id(id).build(), Utilities.withVersion(options));
     }
     /**
      * Returns the location within a provided resource&#39;s id, resource URI, self link, or full resource name.
@@ -76,7 +76,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> locationFromId(String id, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/locationFromId:locationFromId", TypeShape.of(Void.class), LocationFromIdArgs.builder().id(id).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/locationFromId:locationFromId", TypeShape.of(Void.class), LocationFromIdPlainArgs.builder().id(id).build(), Utilities.withVersion(options));
     }
     /**
      * Returns the location within a provided resource&#39;s id, resource URI, self link, or full resource name.
@@ -128,7 +128,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> nameFromId(String id, InvokeOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/nameFromId:nameFromId", TypeShape.of(Void.class), NameFromIdArgs.builder().id(id).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/nameFromId:nameFromId", TypeShape.of(Void.class), NameFromIdPlainArgs.builder().id(id).build(), Utilities.withVersion(options));
     }
     /**
      * Returns the short-form name within a provided resource&#39;s id, resource URI, self link, or full resource name.
@@ -141,7 +141,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> nameFromId(String id, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/nameFromId:nameFromId", TypeShape.of(Void.class), NameFromIdArgs.builder().id(id).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/nameFromId:nameFromId", TypeShape.of(Void.class), NameFromIdPlainArgs.builder().id(id).build(), Utilities.withVersion(options));
     }
     /**
      * Returns the short-form name within a provided resource&#39;s id, resource URI, self link, or full resource name.
@@ -193,7 +193,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> projectFromId(String id, InvokeOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/projectFromId:projectFromId", TypeShape.of(Void.class), ProjectFromIdArgs.builder().id(id).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/projectFromId:projectFromId", TypeShape.of(Void.class), ProjectFromIdPlainArgs.builder().id(id).build(), Utilities.withVersion(options));
     }
     /**
      * Returns the project within a provided resource&#39;s id, resource URI, self link, or full resource name.
@@ -206,7 +206,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> projectFromId(String id, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/projectFromId:projectFromId", TypeShape.of(Void.class), ProjectFromIdArgs.builder().id(id).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/projectFromId:projectFromId", TypeShape.of(Void.class), ProjectFromIdPlainArgs.builder().id(id).build(), Utilities.withVersion(options));
     }
     /**
      * Returns the project within a provided resource&#39;s id, resource URI, self link, or full resource name.
@@ -258,7 +258,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> regionFromId(String id, InvokeOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/regionFromId:regionFromId", TypeShape.of(Void.class), RegionFromIdArgs.builder().id(id).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/regionFromId:regionFromId", TypeShape.of(Void.class), RegionFromIdPlainArgs.builder().id(id).build(), Utilities.withVersion(options));
     }
     /**
      * Returns the region within a provided resource&#39;s id, resource URI, self link, or full resource name.
@@ -271,7 +271,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> regionFromId(String id, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/regionFromId:regionFromId", TypeShape.of(Void.class), RegionFromIdArgs.builder().id(id).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/regionFromId:regionFromId", TypeShape.of(Void.class), RegionFromIdPlainArgs.builder().id(id).build(), Utilities.withVersion(options));
     }
     /**
      * Returns the region within a provided resource&#39;s id, resource URI, self link, or full resource name.
@@ -323,7 +323,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> regionFromZone(String zone, InvokeOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/regionFromZone:regionFromZone", TypeShape.of(Void.class), RegionFromZoneArgs.builder().zone(zone).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/regionFromZone:regionFromZone", TypeShape.of(Void.class), RegionFromZonePlainArgs.builder().zone(zone).build(), Utilities.withVersion(options));
     }
     /**
      * Returns a region name derived from a provided zone.
@@ -336,7 +336,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> regionFromZone(String zone, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/regionFromZone:regionFromZone", TypeShape.of(Void.class), RegionFromZoneArgs.builder().zone(zone).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/regionFromZone:regionFromZone", TypeShape.of(Void.class), RegionFromZonePlainArgs.builder().zone(zone).build(), Utilities.withVersion(options));
     }
     /**
      * Returns a region name derived from a provided zone.
@@ -388,7 +388,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> zoneFromId(String id, InvokeOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/zoneFromId:zoneFromId", TypeShape.of(Void.class), ZoneFromIdArgs.builder().id(id).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/zoneFromId:zoneFromId", TypeShape.of(Void.class), ZoneFromIdPlainArgs.builder().id(id).build(), Utilities.withVersion(options));
     }
     /**
      * Returns the zone within a provided resource&#39;s id, resource URI, self link, or full resource name.
@@ -401,7 +401,7 @@ public final class GcpFunctions {
      * 
      */
     public static Output<Void> zoneFromId(String id, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("gcp:index/zoneFromId:zoneFromId", TypeShape.of(Void.class), ZoneFromIdArgs.builder().id(id).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("gcp:index/zoneFromId:zoneFromId", TypeShape.of(Void.class), ZoneFromIdPlainArgs.builder().id(id).build(), Utilities.withVersion(options));
     }
     /**
      * Returns the zone within a provided resource&#39;s id, resource URI, self link, or full resource name.

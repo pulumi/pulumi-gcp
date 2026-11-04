@@ -254,6 +254,12 @@ func (LinkedDatasetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedDatasetState)(nil)).Elem()
 }
 
+// LinkedDatasetExists checks whether an existing LinkedDataset resource with the given ID exists.
+func LinkedDatasetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LinkedDatasetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/linkedDataset:LinkedDataset", id, state, "", opts...)
+}
+
 type linkedDatasetArgs struct {
 	// The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
 	// with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery

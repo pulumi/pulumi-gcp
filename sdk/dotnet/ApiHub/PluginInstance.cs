@@ -137,11 +137,11 @@ namespace Pulumi.Gcp.ApiHub
         /// The ID to use for the plugin instance, which will become the final
         /// component of the plugin instance's resource name. This field is optional.
         /// * If provided, the same will be used. The service will throw an error if
-        /// the specified id is already used by another plugin instance in the plugin
-        /// resource.
+        ///   the specified id is already used by another plugin instance in the plugin
+        ///   resource.
         /// * If not provided, a system generated id will be used.
-        /// This value should be 4-63 characters, and valid characters
-        /// are /a-z[0-9]-_/.
+        ///   This value should be 4-63 characters, and valid characters
+        ///   are /a-z[0-9]-_/.
         /// </summary>
         [Output("pluginInstanceId")]
         public Output<string> PluginInstanceId { get; private set; } = null!;
@@ -285,11 +285,11 @@ namespace Pulumi.Gcp.ApiHub
         /// The ID to use for the plugin instance, which will become the final
         /// component of the plugin instance's resource name. This field is optional.
         /// * If provided, the same will be used. The service will throw an error if
-        /// the specified id is already used by another plugin instance in the plugin
-        /// resource.
+        ///   the specified id is already used by another plugin instance in the plugin
+        ///   resource.
         /// * If not provided, a system generated id will be used.
-        /// This value should be 4-63 characters, and valid characters
-        /// are /a-z[0-9]-_/.
+        ///   This value should be 4-63 characters, and valid characters
+        ///   are /a-z[0-9]-_/.
         /// </summary>
         [Input("pluginInstanceId", required: true)]
         public Input<string> PluginInstanceId { get; set; } = null!;
@@ -396,11 +396,11 @@ namespace Pulumi.Gcp.ApiHub
         /// The ID to use for the plugin instance, which will become the final
         /// component of the plugin instance's resource name. This field is optional.
         /// * If provided, the same will be used. The service will throw an error if
-        /// the specified id is already used by another plugin instance in the plugin
-        /// resource.
+        ///   the specified id is already used by another plugin instance in the plugin
+        ///   resource.
         /// * If not provided, a system generated id will be used.
-        /// This value should be 4-63 characters, and valid characters
-        /// are /a-z[0-9]-_/.
+        ///   This value should be 4-63 characters, and valid characters
+        ///   are /a-z[0-9]-_/.
         /// </summary>
         [Input("pluginInstanceId")]
         public Input<string>? PluginInstanceId { get; set; }

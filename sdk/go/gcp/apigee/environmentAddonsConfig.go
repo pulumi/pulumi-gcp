@@ -95,6 +95,12 @@ func (EnvironmentAddonsConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentAddonsConfigState)(nil)).Elem()
 }
 
+// EnvironmentAddonsConfigExists checks whether an existing EnvironmentAddonsConfig resource with the given ID exists.
+func EnvironmentAddonsConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentAddonsConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig", id, state, "", opts...)
+}
+
 type environmentAddonsConfigArgs struct {
 	// Flag to enable/disable Analytics.
 	AnalyticsEnabled *bool `pulumi:"analyticsEnabled"`

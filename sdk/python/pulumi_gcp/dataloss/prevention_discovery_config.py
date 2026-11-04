@@ -719,6 +719,42 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return PreventionDiscoveryConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict', 'outputs.PreventionDiscoveryConfigAction']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigErrorArgs', 'PreventionDiscoveryConfigErrorArgsDict', 'outputs.PreventionDiscoveryConfigError']]]]] = None,
+            inspect_templates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_run_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_config: pulumi.Input[Optional[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict', 'outputs.PreventionDiscoveryConfigOrgConfig']]] = None,
+            other_cloud_starting_location: pulumi.Input[Optional[Union['PreventionDiscoveryConfigOtherCloudStartingLocationArgs', 'PreventionDiscoveryConfigOtherCloudStartingLocationArgsDict', 'outputs.PreventionDiscoveryConfigOtherCloudStartingLocation']]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigTargetArgs', 'PreventionDiscoveryConfigTargetArgsDict', 'outputs.PreventionDiscoveryConfigTarget']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actions"] = actions
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["errors"] = errors
+        __props__["inspectTemplates"] = inspect_templates
+        __props__["lastRunTime"] = last_run_time
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["orgConfig"] = org_config
+        __props__["otherCloudStartingLocation"] = other_cloud_starting_location
+        __props__["parent"] = parent
+        __props__["status"] = status
+        __props__["targets"] = targets
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def actions(self) -> pulumi.Output[Optional[Sequence['outputs.PreventionDiscoveryConfigAction']]]:

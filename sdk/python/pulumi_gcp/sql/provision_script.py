@@ -640,6 +640,28 @@ class ProvisionScript(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return ProvisionScript(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            password_secret_version: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            script: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["database"] = database
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["instance"] = instance
+        __props__["passwordSecretVersion"] = password_secret_version
+        __props__["project"] = project
+        __props__["script"] = script
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'gcp:sql/provisionScript:ProvisionScript', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def database(self) -> pulumi.Output[Optional[_builtins.str]]:

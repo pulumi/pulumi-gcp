@@ -664,6 +664,32 @@ class GroupMembership(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return GroupMembership(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            member_key: pulumi.Input[Optional[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict', 'outputs.GroupMembershipMemberKey']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            preferred_member_key: pulumi.Input[Optional[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict', 'outputs.GroupMembershipPreferredMemberKey']]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict', 'outputs.GroupMembershipRole']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createIgnoreAlreadyExists"] = create_ignore_already_exists
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["group"] = group
+        __props__["memberKey"] = member_key
+        __props__["name"] = name
+        __props__["preferredMemberKey"] = preferred_member_key
+        __props__["roles"] = roles
+        __props__["type"] = type
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudidentity/groupMembership:GroupMembership', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createIgnoreAlreadyExists")
     def create_ignore_already_exists(self) -> pulumi.Output[Optional[_builtins.bool]]:

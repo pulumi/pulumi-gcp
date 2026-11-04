@@ -209,6 +209,12 @@ func (ServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceState)(nil)).Elem()
 }
 
+// ServiceExists checks whether an existing Service resource with the given ID exists.
+func ServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:endpoints/service:Service", id, state, "", opts...)
+}
+
 type serviceArgs struct {
 	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'terraform apply' would delete the instance,

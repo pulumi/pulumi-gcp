@@ -427,6 +427,12 @@ func (AiReasoningEngineIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiReasoningEngineIamMemberState)(nil)).Elem()
 }
 
+// AiReasoningEngineIamMemberExists checks whether an existing AiReasoningEngineIamMember resource with the given ID exists.
+func AiReasoningEngineIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiReasoningEngineIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiReasoningEngineIamMember:AiReasoningEngineIamMember", id, state, "", opts...)
+}
+
 type aiReasoningEngineIamMemberArgs struct {
 	Condition *AiReasoningEngineIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// The end user to service account mappings
         /// in a service account based multi-tenant cluster
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly ImmutableDictionary<string, string> UserServiceAccountMapping;
 

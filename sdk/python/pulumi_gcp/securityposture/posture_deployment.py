@@ -726,6 +726,46 @@ class PostureDeployment(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return PostureDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_posture_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_posture_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            failure_message: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            posture_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            posture_id: pulumi.Input[Optional[_builtins.str]] = None,
+            posture_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            target_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["desiredPostureId"] = desired_posture_id
+        __props__["desiredPostureRevisionId"] = desired_posture_revision_id
+        __props__["etag"] = etag
+        __props__["failureMessage"] = failure_message
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["postureDeploymentId"] = posture_deployment_id
+        __props__["postureId"] = posture_id
+        __props__["postureRevisionId"] = posture_revision_id
+        __props__["reconciling"] = reconciling
+        __props__["state"] = state
+        __props__["targetResource"] = target_resource
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:securityposture/postureDeployment:PostureDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -191,11 +191,10 @@ public final class AgentGatewayArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
      * 
-     * @deprecated
-     * `protocols` is deprecated and will be removed in a future major release.
+     * @deprecated `protocols` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
+    @Deprecated
     @Import(name="protocols")
     private @Nullable Output<List<String>> protocols;
 
@@ -206,11 +205,10 @@ public final class AgentGatewayArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
      * 
-     * @deprecated
-     * `protocols` is deprecated and will be removed in a future major release.
+     * @deprecated `protocols` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
+    @Deprecated
     public Optional<Output<List<String>>> protocols() {
         return Optional.ofNullable(this.protocols);
     }
@@ -514,11 +512,10 @@ public final class AgentGatewayArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `protocols` is deprecated and will be removed in a future major release.
+         * @deprecated `protocols` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
+        @Deprecated
         public Builder protocols(@Nullable Output<List<String>> protocols) {
             $.protocols = protocols;
             return this;
@@ -533,11 +530,10 @@ public final class AgentGatewayArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `protocols` is deprecated and will be removed in a future major release.
+         * @deprecated `protocols` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
+        @Deprecated
         public Builder protocols(List<String> protocols) {
             return protocols(Output.of(protocols));
         }
@@ -551,11 +547,10 @@ public final class AgentGatewayArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `protocols` is deprecated and will be removed in a future major release.
+         * @deprecated `protocols` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
+        @Deprecated
         public Builder protocols(String... protocols) {
             return protocols(List.of(protocols));
         }

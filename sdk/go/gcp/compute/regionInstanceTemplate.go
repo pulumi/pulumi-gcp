@@ -776,6 +776,12 @@ func (RegionInstanceTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionInstanceTemplateState)(nil)).Elem()
 }
 
+// RegionInstanceTemplateExists checks whether an existing RegionInstanceTemplate resource with the given ID exists.
+func RegionInstanceTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionInstanceTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionInstanceTemplate:RegionInstanceTemplate", id, state, "", opts...)
+}
+
 type regionInstanceTemplateArgs struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
 	AdvancedMachineFeatures *RegionInstanceTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`

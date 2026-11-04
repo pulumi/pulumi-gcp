@@ -491,6 +491,12 @@ func (AiEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiEndpointState)(nil)).Elem()
 }
 
+// AiEndpointExists checks whether an existing AiEndpoint resource with the given ID exists.
+func AiEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiEndpoint:AiEndpoint", id, state, "", opts...)
+}
+
 type aiEndpointArgs struct {
 	// If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
 	DedicatedEndpointEnabled *bool `pulumi:"dedicatedEndpointEnabled"`

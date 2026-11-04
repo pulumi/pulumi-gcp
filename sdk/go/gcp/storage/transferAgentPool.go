@@ -205,6 +205,12 @@ func (TransferAgentPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transferAgentPoolState)(nil)).Elem()
 }
 
+// TransferAgentPoolExists checks whether an existing TransferAgentPool resource with the given ID exists.
+func TransferAgentPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransferAgentPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/transferAgentPool:TransferAgentPool", id, state, "", opts...)
+}
+
 type transferAgentPoolArgs struct {
 	// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
 	// Structure is documented below.

@@ -57,11 +57,10 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
      * 
      * &gt; **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
      * 
-     * @deprecated
-     * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * @deprecated `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
      * 
      */
-    @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
+    @Deprecated
     @Import(name="leafNodesToSearchPercent")
     private @Nullable Output<Integer> leafNodesToSearchPercent;
 
@@ -72,11 +71,10 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
      * 
      * &gt; **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
      * 
-     * @deprecated
-     * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * @deprecated `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
      * 
      */
-    @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
+    @Deprecated
     public Optional<Output<Integer>> leafNodesToSearchPercent() {
         return Optional.ofNullable(this.leafNodesToSearchPercent);
     }
@@ -162,11 +160,10 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
          * 
          * @return builder
          * 
-         * @deprecated
-         * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+         * @deprecated `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
          * 
          */
-        @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
+        @Deprecated
         public Builder leafNodesToSearchPercent(@Nullable Output<Integer> leafNodesToSearchPercent) {
             $.leafNodesToSearchPercent = leafNodesToSearchPercent;
             return this;
@@ -181,11 +178,10 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
          * 
          * @return builder
          * 
-         * @deprecated
-         * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+         * @deprecated `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
          * 
          */
-        @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
+        @Deprecated
         public Builder leafNodesToSearchPercent(Integer leafNodesToSearchPercent) {
             return leafNodesToSearchPercent(Output.of(leafNodesToSearchPercent));
         }

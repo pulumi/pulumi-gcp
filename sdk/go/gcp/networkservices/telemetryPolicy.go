@@ -339,6 +339,12 @@ func (TelemetryPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*telemetryPolicyState)(nil)).Elem()
 }
 
+// TelemetryPolicyExists checks whether an existing TelemetryPolicy resource with the given ID exists.
+func TelemetryPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TelemetryPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/telemetryPolicy:TelemetryPolicy", id, state, "", opts...)
+}
+
 type telemetryPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

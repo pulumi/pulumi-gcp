@@ -490,6 +490,12 @@ func (ParserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*parserState)(nil)).Elem()
 }
 
+// ParserExists checks whether an existing Parser resource with the given ID exists.
+func ParserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ParserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/parser:Parser", id, state, "", opts...)
+}
+
 type parserArgs struct {
 	// if the parser is built using config
 	// documentation:

@@ -1099,6 +1099,44 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         __props__.__dict__["reserved_ip_ranges"] = reserved_ip_ranges
         return AiIndexEndpointDeployedIndex(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            automatic_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexAutomaticResources']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexDedicatedResources']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deployed_index_auth_config: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict', 'outputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig']]] = None,
+            deployed_index_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_access_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            index: pulumi.Input[Optional[_builtins.str]] = None,
+            index_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            index_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiIndexEndpointDeployedIndexPrivateEndpointArgs', 'AiIndexEndpointDeployedIndexPrivateEndpointArgsDict', 'outputs.AiIndexEndpointDeployedIndexPrivateEndpoint']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["automaticResources"] = automatic_resources
+        __props__["createTime"] = create_time
+        __props__["dedicatedResources"] = dedicated_resources
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deployedIndexAuthConfig"] = deployed_index_auth_config
+        __props__["deployedIndexId"] = deployed_index_id
+        __props__["deploymentGroup"] = deployment_group
+        __props__["displayName"] = display_name
+        __props__["enableAccessLogging"] = enable_access_logging
+        __props__["index"] = index
+        __props__["indexEndpoint"] = index_endpoint
+        __props__["indexSyncTime"] = index_sync_time
+        __props__["name"] = name
+        __props__["privateEndpoints"] = private_endpoints
+        __props__["region"] = region
+        __props__["reservedIpRanges"] = reserved_ip_ranges
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="automaticResources")
     def automatic_resources(self) -> pulumi.Output['outputs.AiIndexEndpointDeployedIndexAutomaticResources']:

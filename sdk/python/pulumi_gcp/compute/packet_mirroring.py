@@ -856,6 +856,34 @@ class PacketMirroring(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return PacketMirroring(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict', 'outputs.PacketMirroringCollectorIlb']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict', 'outputs.PacketMirroringFilter']]] = None,
+            mirrored_resources: pulumi.Input[Optional[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict', 'outputs.PacketMirroringMirroredResources']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict', 'outputs.PacketMirroringNetwork']]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["collectorIlb"] = collector_ilb
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["enable"] = enable
+        __props__["filter"] = filter
+        __props__["mirroredResources"] = mirrored_resources
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/packetMirroring:PacketMirroring', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="collectorIlb")
     def collector_ilb(self) -> pulumi.Output['outputs.PacketMirroringCollectorIlb']:

@@ -445,6 +445,12 @@ func (ConnectionIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionIamBindingState)(nil)).Elem()
 }
 
+// ConnectionIamBindingExists checks whether an existing ConnectionIamBinding resource with the given ID exists.
+func ConnectionIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/connectionIamBinding:ConnectionIamBinding", id, state, "", opts...)
+}
+
 type connectionIamBindingArgs struct {
 	Condition *ConnectionIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

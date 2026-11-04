@@ -296,6 +296,12 @@ func (ApiHubInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiHubInstanceState)(nil)).Elem()
 }
 
+// ApiHubInstanceExists checks whether an existing ApiHubInstance resource with the given ID exists.
+func ApiHubInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiHubInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apihub/apiHubInstance:ApiHubInstance", id, state, "", opts...)
+}
+
 type apiHubInstanceArgs struct {
 	// Optional. Identifier to assign to the Api Hub instance. Must be unique within
 	// scope of the parent resource. If the field is not provided,

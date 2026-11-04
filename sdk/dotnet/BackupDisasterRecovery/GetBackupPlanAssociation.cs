@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// The id of Backupplan association resource.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("backupPlanAssociationId", required: true)]
         public string BackupPlanAssociationId { get; set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// The id of Backupplan association resource.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("backupPlanAssociationId", required: true)]
         public Input<string> BackupPlanAssociationId { get; set; } = null!;

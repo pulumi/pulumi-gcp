@@ -72,7 +72,6 @@ namespace Pulumi.Gcp.Storage
         /// });
         /// ```
         /// 
-        /// 
         /// ### Cloud KMS Keys
         /// 
         /// ```csharp
@@ -178,7 +177,6 @@ namespace Pulumi.Gcp.Storage
         /// });
         /// ```
         /// 
-        /// 
         /// ### Cloud KMS Keys
         /// 
         /// ```csharp
@@ -283,7 +281,6 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ### Cloud KMS Keys
         /// 

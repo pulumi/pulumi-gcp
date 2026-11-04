@@ -792,6 +792,12 @@ func (ManagedZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedZoneState)(nil)).Elem()
 }
 
+// ManagedZoneExists checks whether an existing ManagedZone resource with the given ID exists.
+func ManagedZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagedZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dns/managedZone:ManagedZone", id, state, "", opts...)
+}
+
 type managedZoneArgs struct {
 	// Cloud logging configuration
 	// Structure is documented below.

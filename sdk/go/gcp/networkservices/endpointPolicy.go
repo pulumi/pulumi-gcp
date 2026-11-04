@@ -304,6 +304,12 @@ func (EndpointPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointPolicyState)(nil)).Elem()
 }
 
+// EndpointPolicyExists checks whether an existing EndpointPolicy resource with the given ID exists.
+func EndpointPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EndpointPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/endpointPolicy:EndpointPolicy", id, state, "", opts...)
+}
+
 type endpointPolicyArgs struct {
 	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
 	AuthorizationPolicy *string `pulumi:"authorizationPolicy"`

@@ -431,6 +431,12 @@ func (WorkloadState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workloadState)(nil)).Elem()
 }
 
+// WorkloadExists checks whether an existing Workload resource with the given ID exists.
+func WorkloadExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkloadState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:assuredworkloads/workload:Workload", id, state, "", opts...)
+}
+
 type workloadArgs struct {
 	// Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
 	BillingAccount *string `pulumi:"billingAccount"`

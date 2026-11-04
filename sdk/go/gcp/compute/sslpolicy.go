@@ -358,6 +358,12 @@ func (SSLPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslpolicyState)(nil)).Elem()
 }
 
+// SSLPolicyExists checks whether an existing SSLPolicy resource with the given ID exists.
+func SSLPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SSLPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/sSLPolicy:SSLPolicy", id, state, "", opts...)
+}
+
 type sslpolicyArgs struct {
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. This can be one of

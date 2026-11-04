@@ -895,6 +895,42 @@ class SecurityGateway(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return SecurityGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delegating_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict', 'outputs.SecurityGatewayHub']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging: pulumi.Input[Optional[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict', 'outputs.SecurityGatewayLogging']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_protocol_config: pulumi.Input[Optional[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict', 'outputs.SecurityGatewayProxyProtocolConfig']]] = None,
+            security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_discovery: pulumi.Input[Optional[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict', 'outputs.SecurityGatewayServiceDiscovery']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["delegatingServiceAccount"] = delegating_service_account
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["externalIps"] = external_ips
+        __props__["hubs"] = hubs
+        __props__["location"] = location
+        __props__["logging"] = logging
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["proxyProtocolConfig"] = proxy_protocol_config
+        __props__["securityGatewayId"] = security_gateway_id
+        __props__["serviceDiscovery"] = service_discovery
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:beyondcorp/securityGateway:SecurityGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

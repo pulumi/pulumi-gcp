@@ -137,11 +137,10 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
      * of the association itself.
      * Structure is documented below.
      * 
-     * @deprecated
-     * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+     * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
      * 
      */
-    @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+    @Deprecated
     @Import(name="locationsDetails")
     private @Nullable Output<List<MirroringEndpointGroupAssociationLocationsDetailArgs>> locationsDetails;
 
@@ -152,11 +151,10 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
      * of the association itself.
      * Structure is documented below.
      * 
-     * @deprecated
-     * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+     * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
      * 
      */
-    @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+    @Deprecated
     public Optional<Output<List<MirroringEndpointGroupAssociationLocationsDetailArgs>>> locationsDetails() {
         return Optional.ofNullable(this.locationsDetails);
     }
@@ -540,11 +538,10 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
          * 
          */
-        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+        @Deprecated
         public Builder locationsDetails(@Nullable Output<List<MirroringEndpointGroupAssociationLocationsDetailArgs>> locationsDetails) {
             $.locationsDetails = locationsDetails;
             return this;
@@ -559,11 +556,10 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
          * 
          */
-        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+        @Deprecated
         public Builder locationsDetails(List<MirroringEndpointGroupAssociationLocationsDetailArgs> locationsDetails) {
             return locationsDetails(Output.of(locationsDetails));
         }
@@ -577,11 +573,10 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
          * 
          */
-        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+        @Deprecated
         public Builder locationsDetails(MirroringEndpointGroupAssociationLocationsDetailArgs... locationsDetails) {
             return locationsDetails(List.of(locationsDetails));
         }

@@ -135,7 +135,7 @@ public final class ProjectSccBigQueryExportState extends com.pulumi.resources.Re
      * map to those defined in the corresponding resource.
      * The supported operators are:
      * * = for all value types.
-     * * \&gt;, &lt;, &gt;=, &lt;= for integer values.
+     * * &#92;&gt;, &lt;, &gt;=, &lt;= for integer values.
      * * :, meaning substring matching, for strings.
      *   The supported value types are:
      * * string literals in quotes.
@@ -160,7 +160,7 @@ public final class ProjectSccBigQueryExportState extends com.pulumi.resources.Re
      * map to those defined in the corresponding resource.
      * The supported operators are:
      * * = for all value types.
-     * * \&gt;, &lt;, &gt;=, &lt;= for integer values.
+     * * &#92;&gt;, &lt;, &gt;=, &lt;= for integer values.
      * * :, meaning substring matching, for strings.
      *   The supported value types are:
      * * string literals in quotes.
@@ -452,7 +452,7 @@ public final class ProjectSccBigQueryExportState extends com.pulumi.resources.Re
          * map to those defined in the corresponding resource.
          * The supported operators are:
          * * = for all value types.
-         * * \&gt;, &lt;, &gt;=, &lt;= for integer values.
+         * * &#92;&gt;, &lt;, &gt;=, &lt;= for integer values.
          * * :, meaning substring matching, for strings.
          *   The supported value types are:
          * * string literals in quotes.
@@ -481,7 +481,7 @@ public final class ProjectSccBigQueryExportState extends com.pulumi.resources.Re
          * map to those defined in the corresponding resource.
          * The supported operators are:
          * * = for all value types.
-         * * \&gt;, &lt;, &gt;=, &lt;= for integer values.
+         * * &#92;&gt;, &lt;, &gt;=, &lt;= for integer values.
          * * :, meaning substring matching, for strings.
          *   The supported value types are:
          * * string literals in quotes.

@@ -164,12 +164,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var eventDriven = new Topic("eventDriven", TopicArgs.builder()
  *             .name("my-topic")
  *             .build());
@@ -197,7 +197,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .datasetId(eventDrivenDataset.datasetId())
  *             .tableId("my_table")
- *             .schema("[{\"name\":\"name\",\"type\":\"STRING\"}]")
+ *             .schema("[}{&#92;{@code "name}&#92;{@code ":}&#92;{@code "name}&#92;{@code ",}&#92;{@code "type}&#92;{@code ":}&#92;{@code "STRING}&#92;{@code "}}{@code ]")
  *             .build());
  * 
  *         var eventDrivenConfig = new DataTransferConfig("eventDrivenConfig", DataTransferConfigArgs.builder()
@@ -218,8 +218,8 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

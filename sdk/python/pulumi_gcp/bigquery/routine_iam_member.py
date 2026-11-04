@@ -746,6 +746,26 @@ class RoutineIamMember(pulumi.CustomResource):
         __props__.__dict__["routine_id"] = routine_id
         return RoutineIamMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: pulumi.Input[Optional[Union['RoutineIamMemberConditionArgs', 'RoutineIamMemberConditionArgsDict', 'outputs.RoutineIamMemberCondition']]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            routine_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["condition"] = condition
+        __props__["datasetId"] = dataset_id
+        __props__["etag"] = etag
+        __props__["member"] = member
+        __props__["project"] = project
+        __props__["role"] = role
+        __props__["routineId"] = routine_id
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/routineIamMember:RoutineIamMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.RoutineIamMemberCondition']]:

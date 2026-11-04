@@ -1018,6 +1018,42 @@ class DataAccessScope(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return DataAccessScope(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_all: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict', 'outputs.DataAccessScopeAllowedDataAccessLabel']]]]] = None,
+            author: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_access_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            denied_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict', 'outputs.DataAccessScopeDeniedDataAccessLabel']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            last_editor: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowAll"] = allow_all
+        __props__["allowedDataAccessLabels"] = allowed_data_access_labels
+        __props__["author"] = author
+        __props__["createTime"] = create_time
+        __props__["dataAccessScopeId"] = data_access_scope_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deniedDataAccessLabels"] = denied_data_access_labels
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["instance"] = instance
+        __props__["lastEditor"] = last_editor
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/dataAccessScope:DataAccessScope', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowAll")
     def allow_all(self) -> pulumi.Output[Optional[_builtins.bool]]:

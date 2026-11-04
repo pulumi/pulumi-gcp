@@ -286,11 +286,10 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
      * 
      * &gt; **Warning:** Use `parent` instead.
      * 
-     * @deprecated
-     * Use `parent` instead.
+     * @deprecated Use `parent` instead.
      * 
      */
-    @Deprecated /* Use `parent` instead. */
+    @Deprecated
     @Import(name="organization")
     private @Nullable Output<String> organization;
 
@@ -300,11 +299,10 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
      * 
      * &gt; **Warning:** Use `parent` instead.
      * 
-     * @deprecated
-     * Use `parent` instead.
+     * @deprecated Use `parent` instead.
      * 
      */
-    @Deprecated /* Use `parent` instead. */
+    @Deprecated
     public Optional<Output<String>> organization() {
         return Optional.ofNullable(this.organization);
     }
@@ -797,11 +795,10 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `parent` instead.
+         * @deprecated Use `parent` instead.
          * 
          */
-        @Deprecated /* Use `parent` instead. */
+        @Deprecated
         public Builder organization(@Nullable Output<String> organization) {
             $.organization = organization;
             return this;
@@ -815,11 +812,10 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `parent` instead.
+         * @deprecated Use `parent` instead.
          * 
          */
-        @Deprecated /* Use `parent` instead. */
+        @Deprecated
         public Builder organization(String organization) {
             return organization(Output.of(organization));
         }

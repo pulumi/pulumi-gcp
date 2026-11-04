@@ -812,6 +812,12 @@ func (RegionHealthCheckState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionHealthCheckState)(nil)).Elem()
 }
 
+// RegionHealthCheckExists checks whether an existing RegionHealthCheck resource with the given ID exists.
+func RegionHealthCheckExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionHealthCheckState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionHealthCheck:RegionHealthCheck", id, state, "", opts...)
+}
+
 type regionHealthCheckArgs struct {
 	// How often (in seconds) to send a health check. The default value is 5
 	// seconds.

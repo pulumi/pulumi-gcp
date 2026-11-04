@@ -325,6 +325,12 @@ func (BatchOperationsJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*batchOperationsJobState)(nil)).Elem()
 }
 
+// BatchOperationsJobExists checks whether an existing BatchOperationsJob resource with the given ID exists.
+func BatchOperationsJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BatchOperationsJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/batchOperationsJob:BatchOperationsJob", id, state, "", opts...)
+}
+
 type batchOperationsJobArgs struct {
 	// List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
 	// Structure is documented below.

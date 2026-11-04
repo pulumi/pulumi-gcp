@@ -238,11 +238,10 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
      * 
      * &gt; **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
-     * @deprecated
-     * `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
+     * @deprecated `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
      */
-    @Deprecated /* `extendedAttributesOauth2Client` is deprecated. Use SCIM instead. */
+    @Deprecated
     @Import(name="extendedAttributesOauth2Client")
     private @Nullable Output<WorkforcePoolProviderExtendedAttributesOauth2ClientArgs> extendedAttributesOauth2Client;
 
@@ -262,11 +261,10 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
      * 
      * &gt; **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
-     * @deprecated
-     * `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
+     * @deprecated `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
      */
-    @Deprecated /* `extendedAttributesOauth2Client` is deprecated. Use SCIM instead. */
+    @Deprecated
     public Optional<Output<WorkforcePoolProviderExtendedAttributesOauth2ClientArgs>> extendedAttributesOauth2Client() {
         return Optional.ofNullable(this.extendedAttributesOauth2Client);
     }
@@ -759,11 +757,10 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
+         * @deprecated `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
          * 
          */
-        @Deprecated /* `extendedAttributesOauth2Client` is deprecated. Use SCIM instead. */
+        @Deprecated
         public Builder extendedAttributesOauth2Client(@Nullable Output<WorkforcePoolProviderExtendedAttributesOauth2ClientArgs> extendedAttributesOauth2Client) {
             $.extendedAttributesOauth2Client = extendedAttributesOauth2Client;
             return this;
@@ -787,11 +784,10 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
+         * @deprecated `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
          * 
          */
-        @Deprecated /* `extendedAttributesOauth2Client` is deprecated. Use SCIM instead. */
+        @Deprecated
         public Builder extendedAttributesOauth2Client(WorkforcePoolProviderExtendedAttributesOauth2ClientArgs extendedAttributesOauth2Client) {
             return extendedAttributesOauth2Client(Output.of(extendedAttributesOauth2Client));
         }

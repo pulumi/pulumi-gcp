@@ -299,6 +299,12 @@ func (AccessApprovalSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessApprovalSettingsState)(nil)).Elem()
 }
 
+// AccessApprovalSettingsExists checks whether an existing AccessApprovalSettings resource with the given ID exists.
+func AccessApprovalSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessApprovalSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:organizations/accessApprovalSettings:AccessApprovalSettings", id, state, "", opts...)
+}
+
 type accessApprovalSettingsArgs struct {
 	// The asymmetric crypto key version to use for signing approval requests.
 	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.

@@ -738,22 +738,20 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
      * 
-     * @deprecated
-     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+     * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
-    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
+    @Deprecated
     @Import(name="enterpriseConfig")
     private @Nullable Output<ClusterEnterpriseConfigArgs> enterpriseConfig;
 
     /**
      * @return (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
      * 
-     * @deprecated
-     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+     * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
-    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
+    @Deprecated
     public Optional<Output<ClusterEnterpriseConfigArgs>> enterpriseConfig() {
         return Optional.ofNullable(this.enterpriseConfig);
     }
@@ -1633,11 +1631,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      * pool, this should be set to `true`, alongside setting `initialNodeCount`
      * to at least `1`.
      * 
-     * @deprecated
-     * On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
+     * @deprecated On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
      * 
      */
-    @Deprecated /* On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead. */
+    @Deprecated
     @Import(name="removeDefaultNodePool")
     private @Nullable Output<Boolean> removeDefaultNodePool;
 
@@ -1651,11 +1648,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      * pool, this should be set to `true`, alongside setting `initialNodeCount`
      * to at least `1`.
      * 
-     * @deprecated
-     * On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
+     * @deprecated On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
      * 
      */
-    @Deprecated /* On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead. */
+    @Deprecated
     public Optional<Output<Boolean>> removeDefaultNodePool() {
         return Optional.ofNullable(this.removeDefaultNodePool);
     }
@@ -3006,11 +3002,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+         * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
          * 
          */
-        @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
+        @Deprecated
         public Builder enterpriseConfig(@Nullable Output<ClusterEnterpriseConfigArgs> enterpriseConfig) {
             $.enterpriseConfig = enterpriseConfig;
             return this;
@@ -3021,11 +3016,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+         * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
          * 
          */
-        @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
+        @Deprecated
         public Builder enterpriseConfig(ClusterEnterpriseConfigArgs enterpriseConfig) {
             return enterpriseConfig(Output.of(enterpriseConfig));
         }
@@ -4207,11 +4201,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
+         * @deprecated On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
          * 
          */
-        @Deprecated /* On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead. */
+        @Deprecated
         public Builder removeDefaultNodePool(@Nullable Output<Boolean> removeDefaultNodePool) {
             $.removeDefaultNodePool = removeDefaultNodePool;
             return this;
@@ -4229,11 +4222,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
+         * @deprecated On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
          * 
          */
-        @Deprecated /* On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead. */
+        @Deprecated
         public Builder removeDefaultNodePool(Boolean removeDefaultNodePool) {
             return removeDefaultNodePool(Output.of(removeDefaultNodePool));
         }

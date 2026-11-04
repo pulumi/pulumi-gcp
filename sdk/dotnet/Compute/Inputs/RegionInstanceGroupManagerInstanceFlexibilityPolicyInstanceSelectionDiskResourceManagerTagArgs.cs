@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// , The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
-        /// - - -
+        /// ***
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

@@ -369,6 +369,12 @@ func (NatAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*natAddressState)(nil)).Elem()
 }
 
+// NatAddressExists checks whether an existing NatAddress resource with the given ID exists.
+func NatAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NatAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/natAddress:NatAddress", id, state, "", opts...)
+}
+
 type natAddressArgs struct {
 	// Flag that specifies whether the reserved NAT address should be activate.
 	Activate *bool `pulumi:"activate"`

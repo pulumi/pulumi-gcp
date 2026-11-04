@@ -50,7 +50,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
 
     /**
      * The string data for the records in this record set
-     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `&#92;&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `&#92;&#34; &#92;&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters&#92;&#34; &#92;&#34;morecharacters&#34;`).
      * 
      */
     @Import(name="rrdatas")
@@ -58,7 +58,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
 
     /**
      * @return The string data for the records in this record set
-     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `&#92;&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `&#92;&#34; &#92;&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters&#92;&#34; &#92;&#34;morecharacters&#34;`).
      * 
      */
     public Optional<Output<List<String>>> rrdatas() {
@@ -135,7 +135,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
 
         /**
          * @param rrdatas The string data for the records in this record set
-         * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+         * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `&#92;&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `&#92;&#34; &#92;&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters&#92;&#34; &#92;&#34;morecharacters&#34;`).
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
 
         /**
          * @param rrdatas The string data for the records in this record set
-         * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+         * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `&#92;&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `&#92;&#34; &#92;&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters&#92;&#34; &#92;&#34;morecharacters&#34;`).
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
 
         /**
          * @param rrdatas The string data for the records in this record set
-         * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+         * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `&#92;&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `&#92;&#34; &#92;&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters&#92;&#34; &#92;&#34;morecharacters&#34;`).
          * 
          * @return builder
          * 

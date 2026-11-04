@@ -221,6 +221,12 @@ func (SQuotaPreferenceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*squotaPreferenceState)(nil)).Elem()
 }
 
+// SQuotaPreferenceExists checks whether an existing SQuotaPreference resource with the given ID exists.
+func SQuotaPreferenceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SQuotaPreferenceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudquota/sQuotaPreference:SQuotaPreference", id, state, "", opts...)
+}
+
 type squotaPreferenceArgs struct {
 	// An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
 	// The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.

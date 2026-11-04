@@ -311,7 +311,7 @@ namespace Pulumi.Gcp.Compute
         /// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
         /// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string> DeletionPolicy { get; private set; } = null!;
@@ -502,7 +502,7 @@ namespace Pulumi.Gcp.Compute
         /// The zone that instances in this group should be created
         /// in.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -588,7 +588,7 @@ namespace Pulumi.Gcp.Compute
         /// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
         /// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -788,7 +788,7 @@ namespace Pulumi.Gcp.Compute
         /// The zone that instances in this group should be created
         /// in.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -842,7 +842,7 @@ namespace Pulumi.Gcp.Compute
         /// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
         /// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -1081,7 +1081,7 @@ namespace Pulumi.Gcp.Compute
         /// The zone that instances in this group should be created
         /// in.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

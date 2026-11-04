@@ -1244,6 +1244,64 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["workload_options"] = workload_options
         return Workload(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+            compliance_regime: pulumi.Input[Optional[_builtins.str]] = None,
+            compliance_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadComplianceStatusArgs', 'WorkloadComplianceStatusArgsDict', 'outputs.WorkloadComplianceStatus']]]]] = None,
+            compliant_but_disallowed_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ekm_provisioning_responses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadEkmProvisioningResponseArgs', 'WorkloadEkmProvisioningResponseArgsDict', 'outputs.WorkloadEkmProvisioningResponse']]]]] = None,
+            enable_sovereign_controls: pulumi.Input[Optional[_builtins.bool]] = None,
+            kaj_enrollment_state: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_settings: pulumi.Input[Optional[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict', 'outputs.WorkloadKmsSettings']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            partner: pulumi.Input[Optional[_builtins.str]] = None,
+            partner_permissions: pulumi.Input[Optional[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict', 'outputs.WorkloadPartnerPermissions']]] = None,
+            partner_services_billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_resources_parent: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict', 'outputs.WorkloadResourceSetting']]]]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadResourceArgs', 'WorkloadResourceArgsDict', 'outputs.WorkloadResource']]]]] = None,
+            saa_enrollment_responses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadSaaEnrollmentResponseArgs', 'WorkloadSaaEnrollmentResponseArgsDict', 'outputs.WorkloadSaaEnrollmentResponse']]]]] = None,
+            violation_notifications_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            workload_options: pulumi.Input[Optional[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict', 'outputs.WorkloadWorkloadOptions']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["billingAccount"] = billing_account
+        __props__["complianceRegime"] = compliance_regime
+        __props__["complianceStatuses"] = compliance_statuses
+        __props__["compliantButDisallowedServices"] = compliant_but_disallowed_services
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["ekmProvisioningResponses"] = ekm_provisioning_responses
+        __props__["enableSovereignControls"] = enable_sovereign_controls
+        __props__["kajEnrollmentState"] = kaj_enrollment_state
+        __props__["kmsSettings"] = kms_settings
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["partner"] = partner
+        __props__["partnerPermissions"] = partner_permissions
+        __props__["partnerServicesBillingAccount"] = partner_services_billing_account
+        __props__["provisionedResourcesParent"] = provisioned_resources_parent
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["resourceSettings"] = resource_settings
+        __props__["resources"] = resources
+        __props__["saaEnrollmentResponses"] = saa_enrollment_responses
+        __props__["violationNotificationsEnabled"] = violation_notifications_enabled
+        __props__["workloadOptions"] = workload_options
+        return pulumi.runtime.exists_resource(None, 'gcp:assuredworkloads/workload:Workload', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="billingAccount")
     def billing_account(self) -> pulumi.Output[Optional[_builtins.str]]:

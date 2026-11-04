@@ -391,6 +391,12 @@ func (NamespaceIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*namespaceIamMemberState)(nil)).Elem()
 }
 
+// NamespaceIamMemberExists checks whether an existing NamespaceIamMember resource with the given ID exists.
+func NamespaceIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NamespaceIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:servicedirectory/namespaceIamMember:NamespaceIamMember", id, state, "", opts...)
+}
+
 type namespaceIamMemberArgs struct {
 	Condition *NamespaceIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

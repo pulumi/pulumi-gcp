@@ -21,11 +21,10 @@ public final class ClusterNodePoolNodeConfigSandboxConfigArgs extends com.pulumi
      * 
      * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
      * 
-     * @deprecated
-     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+     * @deprecated `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * 
      */
-    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    @Deprecated
     @Import(name="sandboxType")
     private @Nullable Output<String> sandboxType;
 
@@ -35,11 +34,10 @@ public final class ClusterNodePoolNodeConfigSandboxConfigArgs extends com.pulumi
      * 
      * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
      * 
-     * @deprecated
-     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+     * @deprecated `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * 
      */
-    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    @Deprecated
     public Optional<Output<String>> sandboxType() {
         return Optional.ofNullable(this.sandboxType);
     }
@@ -100,11 +98,10 @@ public final class ClusterNodePoolNodeConfigSandboxConfigArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+         * @deprecated `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
          * 
          */
-        @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+        @Deprecated
         public Builder sandboxType(@Nullable Output<String> sandboxType) {
             $.sandboxType = sandboxType;
             return this;
@@ -118,11 +115,10 @@ public final class ClusterNodePoolNodeConfigSandboxConfigArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+         * @deprecated `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
          * 
          */
-        @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+        @Deprecated
         public Builder sandboxType(String sandboxType) {
             return sandboxType(Output.of(sandboxType));
         }

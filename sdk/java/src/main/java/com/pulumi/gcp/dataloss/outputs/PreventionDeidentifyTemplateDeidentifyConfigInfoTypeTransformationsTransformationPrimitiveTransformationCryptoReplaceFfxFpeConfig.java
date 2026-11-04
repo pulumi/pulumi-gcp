@@ -42,21 +42,21 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey cryptoKey;
     /**
-     * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
+     * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range &#92;[2, 95&#92;]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
      * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
      * 
      */
     private @Nullable String customAlphabet;
     /**
-     * @return The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
+     * @return The native way to select the alphabet. Must be in the range &#92;[2, 95&#92;]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
      * 
      */
     private @Nullable Integer radix;
     /**
-     * @return The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
-     * For example, if the name of custom infoType is &#39;MY\_TOKEN\_INFO\_TYPE&#39; and the surrogate is &#39;abc&#39;, the full replacement value will be: &#39;MY\_TOKEN\_INFO\_TYPE(3):abc&#39;
+     * @return The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info&#92;_type&#92;_name(surrogate&#92;_character&#92;_count):surrogate
+     * For example, if the name of custom infoType is &#39;MY&#92;_TOKEN&#92;_INFO&#92;_TYPE&#39; and the surrogate is &#39;abc&#39;, the full replacement value will be: &#39;MY&#92;_TOKEN&#92;_INFO&#92;_TYPE(3):abc&#39;
      * This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-     * In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
+     * In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY&#92;_TOKEN&#92;_TYPE
      * Structure is documented below.
      * 
      */
@@ -96,7 +96,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         return Optional.ofNullable(this.cryptoKey);
     }
     /**
-     * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
+     * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range &#92;[2, 95&#92;]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
      * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
      * 
      */
@@ -104,17 +104,17 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         return Optional.ofNullable(this.customAlphabet);
     }
     /**
-     * @return The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
+     * @return The native way to select the alphabet. Must be in the range &#92;[2, 95&#92;]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
      * 
      */
     public Optional<Integer> radix() {
         return Optional.ofNullable(this.radix);
     }
     /**
-     * @return The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
-     * For example, if the name of custom infoType is &#39;MY\_TOKEN\_INFO\_TYPE&#39; and the surrogate is &#39;abc&#39;, the full replacement value will be: &#39;MY\_TOKEN\_INFO\_TYPE(3):abc&#39;
+     * @return The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info&#92;_type&#92;_name(surrogate&#92;_character&#92;_count):surrogate
+     * For example, if the name of custom infoType is &#39;MY&#92;_TOKEN&#92;_INFO&#92;_TYPE&#39; and the surrogate is &#39;abc&#39;, the full replacement value will be: &#39;MY&#92;_TOKEN&#92;_INFO&#92;_TYPE(3):abc&#39;
      * This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-     * In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
+     * In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY&#92;_TOKEN&#92;_TYPE
      * Structure is documented below.
      * 
      */

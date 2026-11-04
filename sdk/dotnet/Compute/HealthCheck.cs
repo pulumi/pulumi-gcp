@@ -669,7 +669,7 @@ namespace Pulumi.Gcp.Compute
         /// * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
         /// * The checkIntervalSec field must be at least 30.
         /// * The health check cannot be used with BackendService nor with managed
-        /// instance group auto-healing.
+        ///   instance group auto-healing.
         /// </summary>
         [Output("sourceRegions")]
         public Output<ImmutableArray<string>> SourceRegions { get; private set; } = null!;
@@ -863,7 +863,7 @@ namespace Pulumi.Gcp.Compute
         /// * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
         /// * The checkIntervalSec field must be at least 30.
         /// * The health check cannot be used with BackendService nor with managed
-        /// instance group auto-healing.
+        ///   instance group auto-healing.
         /// </summary>
         public InputList<string> SourceRegions
         {
@@ -1028,7 +1028,7 @@ namespace Pulumi.Gcp.Compute
         /// * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
         /// * The checkIntervalSec field must be at least 30.
         /// * The health check cannot be used with BackendService nor with managed
-        /// instance group auto-healing.
+        ///   instance group auto-healing.
         /// </summary>
         public InputList<string> SourceRegions
         {

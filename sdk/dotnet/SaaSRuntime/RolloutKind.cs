@@ -178,8 +178,8 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// There are two supported values strategies which are used to control a rollout.
         /// - "Google.Cloud.Simple.AllAtOnce"
         /// - "Google.Cloud.Simple.OneLocationAtATime"
-        /// A rollout with one of these simple strategies will rollout across
-        /// all locations defined in the associated UnitKind's Saas Locations.
+        ///   A rollout with one of these simple strategies will rollout across
+        ///   all locations defined in the associated UnitKind's Saas Locations.
         /// </summary>
         [Output("rolloutOrchestrationStrategy")]
         public Output<string?> RolloutOrchestrationStrategy { get; private set; } = null!;
@@ -355,8 +355,8 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// There are two supported values strategies which are used to control a rollout.
         /// - "Google.Cloud.Simple.AllAtOnce"
         /// - "Google.Cloud.Simple.OneLocationAtATime"
-        /// A rollout with one of these simple strategies will rollout across
-        /// all locations defined in the associated UnitKind's Saas Locations.
+        ///   A rollout with one of these simple strategies will rollout across
+        ///   all locations defined in the associated UnitKind's Saas Locations.
         /// </summary>
         [Input("rolloutOrchestrationStrategy")]
         public Input<string>? RolloutOrchestrationStrategy { get; set; }
@@ -530,8 +530,8 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// There are two supported values strategies which are used to control a rollout.
         /// - "Google.Cloud.Simple.AllAtOnce"
         /// - "Google.Cloud.Simple.OneLocationAtATime"
-        /// A rollout with one of these simple strategies will rollout across
-        /// all locations defined in the associated UnitKind's Saas Locations.
+        ///   A rollout with one of these simple strategies will rollout across
+        ///   all locations defined in the associated UnitKind's Saas Locations.
         /// </summary>
         [Input("rolloutOrchestrationStrategy")]
         public Input<string>? RolloutOrchestrationStrategy { get; set; }

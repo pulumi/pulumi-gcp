@@ -748,6 +748,12 @@ func (DatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseState)(nil)).Elem()
 }
 
+// DatabaseExists checks whether an existing Database resource with the given ID exists.
+func DatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firestore/database:Database", id, state, "", opts...)
+}
+
 type databaseArgs struct {
 	// The App Engine integration mode to use for this database.
 	// Possible values are: `ENABLED`, `DISABLED`.

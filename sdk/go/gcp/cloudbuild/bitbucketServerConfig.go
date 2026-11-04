@@ -384,6 +384,12 @@ func (BitbucketServerConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bitbucketServerConfigState)(nil)).Elem()
 }
 
+// BitbucketServerConfigExists checks whether an existing BitbucketServerConfig resource with the given ID exists.
+func BitbucketServerConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BitbucketServerConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig", id, state, "", opts...)
+}
+
 type bitbucketServerConfigArgs struct {
 	// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
 	// Changing this field will result in deleting/ recreating the resource.

@@ -19,13 +19,13 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// * Flow level
         /// * Page level
         /// * Parameter level
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         public readonly Outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings? DtmfSettings;
         /// <summary>
         /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
         /// * Agent level
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         public readonly Outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings? LoggingSettings;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// * Flow level
         /// * Page level
         /// * Parameter level
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         public readonly Outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings? SpeechSettings;
 

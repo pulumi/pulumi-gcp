@@ -341,6 +341,12 @@ func (GlobalAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalAddressState)(nil)).Elem()
 }
 
+// GlobalAddressExists checks whether an existing GlobalAddress resource with the given ID exists.
+func GlobalAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/globalAddress:GlobalAddress", id, state, "", opts...)
+}
+
 type globalAddressArgs struct {
 	// The IP address or beginning of the address range represented by this
 	// resource. This can be supplied as an input to reserve a specific

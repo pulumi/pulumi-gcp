@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// * PARAMETERS: The parameters.
         /// * UTTERANCE: The message utterance.
         /// * FLOW: The flow.
-        /// Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
+        ///   Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
         /// </summary>
         public readonly string? Type;
 

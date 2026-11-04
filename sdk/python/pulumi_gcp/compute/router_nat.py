@@ -1845,6 +1845,66 @@ class RouterNat(pulumi.CustomResource):
         __props__.__dict__["udp_idle_timeout_sec"] = udp_idle_timeout_sec
         return RouterNat(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            icmp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            initial_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            log_config: pulumi.Input[Optional[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict', 'outputs.RouterNatLogConfig']]] = None,
+            max_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+            min_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict', 'outputs.RouterNatNat64Subnetwork']]]]] = None,
+            nat_ip_allocate_option: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict', 'outputs.RouterNatRule']]]]] = None,
+            source_subnetwork_ip_ranges_to_nat: pulumi.Input[Optional[_builtins.str]] = None,
+            source_subnetwork_ip_ranges_to_nat64: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict', 'outputs.RouterNatSubnetwork']]]]] = None,
+            tcp_established_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            tcp_time_wait_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            tcp_transitory_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            udp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoNetworkTier"] = auto_network_tier
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["drainNatIps"] = drain_nat_ips
+        __props__["enableDynamicPortAllocation"] = enable_dynamic_port_allocation
+        __props__["enableEndpointIndependentMapping"] = enable_endpoint_independent_mapping
+        __props__["endpointTypes"] = endpoint_types
+        __props__["icmpIdleTimeoutSec"] = icmp_idle_timeout_sec
+        __props__["initialNatIps"] = initial_nat_ips
+        __props__["logConfig"] = log_config
+        __props__["maxPortsPerVm"] = max_ports_per_vm
+        __props__["minPortsPerVm"] = min_ports_per_vm
+        __props__["name"] = name
+        __props__["nat64Subnetworks"] = nat64_subnetworks
+        __props__["natIpAllocateOption"] = nat_ip_allocate_option
+        __props__["natIps"] = nat_ips
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["router"] = router
+        __props__["rules"] = rules
+        __props__["sourceSubnetworkIpRangesToNat"] = source_subnetwork_ip_ranges_to_nat
+        __props__["sourceSubnetworkIpRangesToNat64"] = source_subnetwork_ip_ranges_to_nat64
+        __props__["subnetworks"] = subnetworks
+        __props__["tcpEstablishedIdleTimeoutSec"] = tcp_established_idle_timeout_sec
+        __props__["tcpTimeWaitTimeoutSec"] = tcp_time_wait_timeout_sec
+        __props__["tcpTransitoryIdleTimeoutSec"] = tcp_transitory_idle_timeout_sec
+        __props__["type"] = type
+        __props__["udpIdleTimeoutSec"] = udp_idle_timeout_sec
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/routerNat:RouterNat', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoNetworkTier")
     def auto_network_tier(self) -> pulumi.Output[_builtins.str]:

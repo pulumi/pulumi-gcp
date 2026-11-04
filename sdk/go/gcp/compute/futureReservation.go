@@ -413,6 +413,12 @@ func (FutureReservationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*futureReservationState)(nil)).Elem()
 }
 
+// FutureReservationExists checks whether an existing FutureReservation resource with the given ID exists.
+func FutureReservationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FutureReservationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/futureReservation:FutureReservation", id, state, "", opts...)
+}
+
 type futureReservationArgs struct {
 	// Aggregate reservation details for the future reservation.
 	// Structure is documented below.

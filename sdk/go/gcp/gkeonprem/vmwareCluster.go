@@ -762,6 +762,12 @@ func (VMwareClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vmwareClusterState)(nil)).Elem()
 }
 
+// VMwareClusterExists checks whether an existing VMwareCluster resource with the given ID exists.
+func VMwareClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VMwareClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkeonprem/vMwareCluster:VMwareCluster", id, state, "", opts...)
+}
+
 type vmwareClusterArgs struct {
 	// The admin cluster this VMware User Cluster belongs to.
 	// This is the full resource name of the admin cluster's hub membership.

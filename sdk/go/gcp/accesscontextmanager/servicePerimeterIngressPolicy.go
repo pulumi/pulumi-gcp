@@ -149,6 +149,12 @@ func (ServicePerimeterIngressPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePerimeterIngressPolicyState)(nil)).Elem()
 }
 
+// ServicePerimeterIngressPolicyExists checks whether an existing ServicePerimeterIngressPolicy resource with the given ID exists.
+func ServicePerimeterIngressPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePerimeterIngressPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy", id, state, "", opts...)
+}
+
 type servicePerimeterIngressPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

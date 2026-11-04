@@ -213,6 +213,12 @@ func (HostProjectRegistrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostProjectRegistrationState)(nil)).Elem()
 }
 
+// HostProjectRegistrationExists checks whether an existing HostProjectRegistration resource with the given ID exists.
+func HostProjectRegistrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostProjectRegistrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apihub/hostProjectRegistration:HostProjectRegistration", id, state, "", opts...)
+}
+
 type hostProjectRegistrationArgs struct {
 	// Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".
 	// As input, project name with either project id or number are accepted.

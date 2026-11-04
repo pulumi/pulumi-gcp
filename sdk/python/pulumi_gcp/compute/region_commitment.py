@@ -1046,6 +1046,50 @@ class RegionCommitment(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return RegionCommitment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            commitment_id: pulumi.Input[Optional[_builtins.int]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            end_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            existing_reservations: pulumi.Input[Optional[_builtins.str]] = None,
+            license_resource: pulumi.Input[Optional[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict', 'outputs.RegionCommitmentLicenseResource']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict', 'outputs.RegionCommitmentParams']]] = None,
+            plan: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict', 'outputs.RegionCommitmentResource']]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            start_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenew"] = auto_renew
+        __props__["category"] = category
+        __props__["commitmentId"] = commitment_id
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["description"] = description
+        __props__["endTimestamp"] = end_timestamp
+        __props__["existingReservations"] = existing_reservations
+        __props__["licenseResource"] = license_resource
+        __props__["name"] = name
+        __props__["params"] = params
+        __props__["plan"] = plan
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["resources"] = resources
+        __props__["selfLink"] = self_link
+        __props__["startTimestamp"] = start_timestamp
+        __props__["status"] = status
+        __props__["statusMessage"] = status_message
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/regionCommitment:RegionCommitment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[_builtins.bool]:

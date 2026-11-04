@@ -2793,6 +2793,66 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["webhook_config"] = webhook_config
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            approval_config: pulumi.Input[Optional[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict', 'outputs.TriggerApprovalConfig']]] = None,
+            bitbucket_server_trigger_config: pulumi.Input[Optional[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict', 'outputs.TriggerBitbucketServerTriggerConfig']]] = None,
+            build: pulumi.Input[Optional[Union['TriggerBuildArgs', 'TriggerBuildArgsDict', 'outputs.TriggerBuild']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            developer_connect_event_config: pulumi.Input[Optional[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict', 'outputs.TriggerDeveloperConnectEventConfig']]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            filename: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            git_file_source: pulumi.Input[Optional[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict', 'outputs.TriggerGitFileSource']]] = None,
+            github: pulumi.Input[Optional[Union['TriggerGithubArgs', 'TriggerGithubArgsDict', 'outputs.TriggerGithub']]] = None,
+            ignored_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            include_build_logs: pulumi.Input[Optional[_builtins.str]] = None,
+            included_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pubsub_config: pulumi.Input[Optional[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict', 'outputs.TriggerPubsubConfig']]] = None,
+            repository_event_config: pulumi.Input[Optional[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict', 'outputs.TriggerRepositoryEventConfig']]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            source_to_build: pulumi.Input[Optional[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict', 'outputs.TriggerSourceToBuild']]] = None,
+            substitutions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_template: pulumi.Input[Optional[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict', 'outputs.TriggerTriggerTemplate']]] = None,
+            webhook_config: pulumi.Input[Optional[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict', 'outputs.TriggerWebhookConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["approvalConfig"] = approval_config
+        __props__["bitbucketServerTriggerConfig"] = bitbucket_server_trigger_config
+        __props__["build"] = build
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["developerConnectEventConfig"] = developer_connect_event_config
+        __props__["disabled"] = disabled
+        __props__["filename"] = filename
+        __props__["filter"] = filter
+        __props__["gitFileSource"] = git_file_source
+        __props__["github"] = github
+        __props__["ignoredFiles"] = ignored_files
+        __props__["includeBuildLogs"] = include_build_logs
+        __props__["includedFiles"] = included_files
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pubsubConfig"] = pubsub_config
+        __props__["repositoryEventConfig"] = repository_event_config
+        __props__["serviceAccount"] = service_account
+        __props__["sourceToBuild"] = source_to_build
+        __props__["substitutions"] = substitutions
+        __props__["tags"] = tags
+        __props__["triggerId"] = trigger_id
+        __props__["triggerTemplate"] = trigger_template
+        __props__["webhookConfig"] = webhook_config
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudbuild/trigger:Trigger', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="approvalConfig")
     def approval_config(self) -> pulumi.Output['outputs.TriggerApprovalConfig']:

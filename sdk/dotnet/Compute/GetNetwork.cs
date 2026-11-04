@@ -90,8 +90,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name of the network.
         /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -126,8 +125,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name of the network.
         /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

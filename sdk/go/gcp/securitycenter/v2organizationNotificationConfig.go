@@ -219,6 +219,12 @@ func (V2OrganizationNotificationConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2organizationNotificationConfigState)(nil)).Elem()
 }
 
+// V2OrganizationNotificationConfigExists checks whether an existing V2OrganizationNotificationConfig resource with the given ID exists.
+func V2OrganizationNotificationConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2OrganizationNotificationConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig", id, state, "", opts...)
+}
+
 type v2organizationNotificationConfigArgs struct {
 	// This must be unique within the organization.
 	ConfigId string `pulumi:"configId"`

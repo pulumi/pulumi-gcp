@@ -392,6 +392,12 @@ func (CollectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*collectionState)(nil)).Elem()
 }
 
+// CollectionExists checks whether an existing Collection resource with the given ID exists.
+func CollectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CollectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vectorsearch/collection:Collection", id, state, "", opts...)
+}
+
 type collectionArgs struct {
 	// ID of the Collection to create.
 	// The id must be 1-63 characters long, and comply with

@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The name of the Backend Service.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string Name;
 

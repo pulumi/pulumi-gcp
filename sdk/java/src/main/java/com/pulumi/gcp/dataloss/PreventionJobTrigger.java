@@ -342,12 +342,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Dataset("default", DatasetArgs.builder()
  *             .datasetId("tf_test")
  *             .friendlyName("terraform-test")
@@ -367,18 +367,18 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("env", "default"))
  *             .schema("""
  *     [
- *     {
- *       \"name\": \"quantity\",
- *       \"type\": \"NUMERIC\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"The quantity\"
- *     },
- *     {
- *       \"name\": \"name\",
- *       \"type\": \"STRING\",
- *       \"mode\": \"NULLABLE\",
- *       \"description\": \"Name of the object\"
- *     }
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "quantity}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "NUMERIC}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The quantity}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Name of the object}&#92;{@code "
+ *     }}{@code
  *     ]
  *             """)
  *             .build());
@@ -424,8 +424,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -1166,7 +1166,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
     }
     /**
      * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+.
      * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
@@ -1175,7 +1175,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+.
      * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */

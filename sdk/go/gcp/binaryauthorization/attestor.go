@@ -277,6 +277,12 @@ func (AttestorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*attestorState)(nil)).Elem()
 }
 
+// AttestorExists checks whether an existing Attestor resource with the given ID exists.
+func AttestorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AttestorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:binaryauthorization/attestor:Attestor", id, state, "", opts...)
+}
+
 type attestorArgs struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.

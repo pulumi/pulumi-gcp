@@ -677,6 +677,32 @@ class AccessApprovalSettings(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         return AccessApprovalSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active_key_version: pulumi.Input[Optional[_builtins.str]] = None,
+            ancestor_has_active_key_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            enrolled_ancestor: pulumi.Input[Optional[_builtins.bool]] = None,
+            enrolled_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict', 'outputs.AccessApprovalSettingsEnrolledService']]]]] = None,
+            invalid_key_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activeKeyVersion"] = active_key_version
+        __props__["ancestorHasActiveKeyVersion"] = ancestor_has_active_key_version
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["enrolledAncestor"] = enrolled_ancestor
+        __props__["enrolledServices"] = enrolled_services
+        __props__["invalidKeyVersion"] = invalid_key_version
+        __props__["name"] = name
+        __props__["notificationEmails"] = notification_emails
+        __props__["project"] = project
+        __props__["projectId"] = project_id
+        return pulumi.runtime.exists_resource(None, 'gcp:projects/accessApprovalSettings:AccessApprovalSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activeKeyVersion")
     def active_key_version(self) -> pulumi.Output[Optional[_builtins.str]]:

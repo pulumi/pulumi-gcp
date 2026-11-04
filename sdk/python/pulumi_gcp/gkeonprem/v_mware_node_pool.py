@@ -1149,6 +1149,50 @@ class VMwareNodePool(pulumi.CustomResource):
         __props__.__dict__["vmware_cluster"] = vmware_cluster
         return VMwareNodePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            config: pulumi.Input[Optional[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict', 'outputs.VMwareNodePoolConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_pool_autoscaling: pulumi.Input[Optional[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict', 'outputs.VMwareNodePoolNodePoolAutoscaling']]] = None,
+            on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareNodePoolStatusArgs', 'VMwareNodePoolStatusArgsDict', 'outputs.VMwareNodePoolStatus']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vmware_cluster: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["config"] = config
+        __props__["createTime"] = create_time
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["nodePoolAutoscaling"] = node_pool_autoscaling
+        __props__["onPremVersion"] = on_prem_version
+        __props__["project"] = project
+        __props__["reconciling"] = reconciling
+        __props__["state"] = state
+        __props__["statuses"] = statuses
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["vmwareCluster"] = vmware_cluster
+        return pulumi.runtime.exists_resource(None, 'gcp:gkeonprem/vMwareNodePool:VMwareNodePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

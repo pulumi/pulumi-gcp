@@ -815,6 +815,32 @@ class GCPolicy(pulumi.CustomResource):
         __props__.__dict__["table"] = table
         return GCPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            column_family: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            gc_rules: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            max_age: pulumi.Input[Optional[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict', 'outputs.GCPolicyMaxAge']]] = None,
+            max_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict', 'outputs.GCPolicyMaxVersion']]]]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            table: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["columnFamily"] = column_family
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["gcRules"] = gc_rules
+        __props__["ignoreWarnings"] = ignore_warnings
+        __props__["instanceName"] = instance_name
+        __props__["maxAge"] = max_age
+        __props__["maxVersions"] = max_versions
+        __props__["mode"] = mode
+        __props__["project"] = project
+        __props__["table"] = table
+        return pulumi.runtime.exists_resource(None, 'gcp:bigtable/gCPolicy:GCPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="columnFamily")
     def column_family(self) -> pulumi.Output[_builtins.str]:

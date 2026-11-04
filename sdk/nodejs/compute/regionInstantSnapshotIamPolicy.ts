@@ -314,6 +314,17 @@ export class RegionInstantSnapshotIamPolicy extends pulumi.CustomResource {
         return new RegionInstantSnapshotIamPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing RegionInstantSnapshotIamPolicy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: RegionInstantSnapshotIamPolicyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("gcp:compute/regionInstantSnapshotIamPolicy:RegionInstantSnapshotIamPolicy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'gcp:compute/regionInstantSnapshotIamPolicy:RegionInstantSnapshotIamPolicy';
 

@@ -249,10 +249,10 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  *   }{{@code
- *     \"name\": \"quantity\",
- *     \"type\": \"NUMERIC\",
- *     \"mode\": \"NULLABLE\",
- *     \"description\": \"The quantity\"
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "quantity}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "NUMERIC}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *     }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The quantity}&#92;{@code "
  *   }}{@code
  * ]
  *             """)
@@ -457,7 +457,7 @@ import javax.annotation.Nullable;
  *                                 .exclusionRule(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs.builder()
  *                                     .matchingType("MATCHING_TYPE_PARTIAL_MATCH")
  *                                     .regex(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs.builder()
- *                                         .pattern(".*}{@literal @}{@code example\\.com")
+ *                                         .pattern(".*}{@literal @}{@code example}&#92;&#92;{@code .com")
  *                                         .groupIndexes(0)
  *                                         .build())
  *                                     .build())

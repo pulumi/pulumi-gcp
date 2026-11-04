@@ -20,15 +20,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// 
         /// The 'allPorts' field has the following limitations:
         /// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, SCTP, or
-        /// L3_DEFAULT.
+        ///   L3_DEFAULT.
         /// * It's applicable only to the following products: internal passthrough
-        /// Network Load Balancers, backend service-based external passthrough Network
-        /// Load Balancers, and internal and external protocol forwarding.
+        ///   Network Load Balancers, backend service-based external passthrough Network
+        ///   Load Balancers, and internal and external protocol forwarding.
         /// * Set this field to true to allow packets addressed to any port or packets
-        /// lacking destination port information (for example, UDP fragments after the
-        /// first fragment) to be forwarded to the backends configured with this
-        /// forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
-        /// true.
+        ///   lacking destination port information (for example, UDP fragments after the
+        ///   first fragment) to be forwarded to the backends configured with this
+        ///   forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
+        ///   true.
         /// </summary>
         public readonly bool AllPorts;
         /// <summary>
@@ -93,10 +93,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// required under the following circumstances:
         /// 
         /// * When the 'target' is set to 'targetGrpcProxy' and
-        /// 'validateForProxyless' is set to 'true', the
-        /// 'IPAddress' should be set to '0.0.0.0'.
+        ///   'validateForProxyless' is set to 'true', the
+        ///   'IPAddress' should be set to '0.0.0.0'.
         /// * When the 'target' is a Private Service Connect Google APIs
-        /// bundle, you must specify an 'IPAddress'.
+        ///   bundle, you must specify an 'IPAddress'.
         /// 
         /// Otherwise, you can optionally specify an IP address that references an
         /// existing static (reserved) IP address resource. When omitted, Google Cloud
@@ -108,7 +108,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// * IP address number, as in '100.1.2.3'
         /// * IPv6 address range, as in '2600:1234::/96'
         /// * Full resource URL, as in
-        /// 'https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name'
+        ///   'https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name'
         /// * Partial URL or by name, as in:
         ///   * 'projects/project_id/regions/region/addresses/address-name'
         ///   * 'regions/region/addresses/address-name'
@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// IPv6 NetLB forwarding rule using BYOIP:
         /// Full resource URL, as in:
         ///   * 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
-        /// Partial URL, as in:
+        ///     Partial URL, as in:
         ///   * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
         ///   * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
         /// </summary>
@@ -178,7 +178,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string LabelFingerprint;
         /// <summary>
         /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
-        /// 
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -250,14 +249,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// 
         /// The 'portRange' field has the following limitations:
         /// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
-        /// and
+        ///   and
         /// * It's applicable only to the following products: external passthrough
-        /// Network Load Balancers, internal and external proxy Network Load
-        /// Balancers, internal and external Application Load Balancers, external
-        /// protocol forwarding, and Classic VPN.
+        ///   Network Load Balancers, internal and external proxy Network Load
+        ///   Balancers, internal and external Application Load Balancers, external
+        ///   protocol forwarding, and Classic VPN.
         /// * Some products have restrictions on what ports can be used. See
-        /// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-        /// for details.
+        ///   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+        ///   for details.
         /// 
         /// For external forwarding rules, two or more forwarding rules cannot use the
         /// same '[IPAddress, IPProtocol]' pair, and cannot have overlapping
@@ -277,12 +276,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// 
         /// The 'ports' field has the following limitations:
         /// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
-        /// and
+        ///   and
         /// * It's applicable only to the following products: internal passthrough
-        /// Network Load Balancers, backend service-based external passthrough Network
-        /// Load Balancers, and internal protocol forwarding.
+        ///   Network Load Balancers, backend service-based external passthrough Network
+        ///   Load Balancers, and internal protocol forwarding.
         /// * You can specify a list of up to five ports by number, separated by
-        /// commas. The ports can be contiguous or discontiguous.
+        ///   commas. The ports can be contiguous or discontiguous.
         /// 
         /// For external forwarding rules, two or more forwarding rules cannot use the
         /// same '[IPAddress, IPProtocol]' pair if they share at least one port

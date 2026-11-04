@@ -1093,6 +1093,32 @@ class CxTool(pulumi.CustomResource):
         __props__.__dict__["tool_type"] = tool_type
         return CxTool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict', 'outputs.CxToolConnectorSpec']]] = None,
+            data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict', 'outputs.CxToolDataStoreSpec']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict', 'outputs.CxToolFunctionSpec']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open_api_spec: pulumi.Input[Optional[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict', 'outputs.CxToolOpenApiSpec']]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            tool_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectorSpec"] = connector_spec
+        __props__["dataStoreSpec"] = data_store_spec
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["functionSpec"] = function_spec
+        __props__["name"] = name
+        __props__["openApiSpec"] = open_api_spec
+        __props__["parent"] = parent
+        __props__["toolType"] = tool_type
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/cxTool:CxTool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectorSpec")
     def connector_spec(self) -> pulumi.Output[Optional['outputs.CxToolConnectorSpec']]:

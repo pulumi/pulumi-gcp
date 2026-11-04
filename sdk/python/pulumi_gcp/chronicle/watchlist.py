@@ -811,6 +811,40 @@ class Watchlist(pulumi.CustomResource):
         __props__.__dict__["watchlist_user_preferences"] = watchlist_user_preferences
         return Watchlist(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_counts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WatchlistEntityCountArgs', 'WatchlistEntityCountArgsDict', 'outputs.WatchlistEntityCount']]]]] = None,
+            entity_population_mechanism: pulumi.Input[Optional[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict', 'outputs.WatchlistEntityPopulationMechanism']]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            multiplying_factor: pulumi.Input[Optional[_builtins.float]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            watchlist_id: pulumi.Input[Optional[_builtins.str]] = None,
+            watchlist_user_preferences: pulumi.Input[Optional[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict', 'outputs.WatchlistWatchlistUserPreferences']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["entityCounts"] = entity_counts
+        __props__["entityPopulationMechanism"] = entity_population_mechanism
+        __props__["instance"] = instance
+        __props__["location"] = location
+        __props__["multiplyingFactor"] = multiplying_factor
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["updateTime"] = update_time
+        __props__["watchlistId"] = watchlist_id
+        __props__["watchlistUserPreferences"] = watchlist_user_preferences
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/watchlist:Watchlist', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

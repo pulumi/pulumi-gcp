@@ -34,9 +34,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// "IT_" have been deprecated in favor of the unprefixed values. Can take one of the
         /// following values:
         /// - OUTAGE: The Interconnect may be completely out of service for some or all of the
-        /// specified window.
+        ///   specified window.
         /// - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain
-        /// up, but with reduced bandwidth.
+        ///   up, but with reduced bandwidth.
         /// </summary>
         public readonly string? IssueType;
         /// <summary>
@@ -64,9 +64,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// State of this notification. Note that the versions of this enum prefixed with "NS_" have
         /// been deprecated in favor of the unprefixed values. Can take one of the following values:
         /// - ACTIVE: This outage notification is active. The event could be in the past, present,
-        /// or future. See startTime and endTime for scheduling.
+        ///   or future. See startTime and endTime for scheduling.
         /// - CANCELLED: The outage associated with this notification was cancelled before the
-        /// outage was due to start.
+        ///   outage was due to start.
         /// - COMPLETED: The outage associated with this notification is complete.
         /// </summary>
         public readonly string? State;

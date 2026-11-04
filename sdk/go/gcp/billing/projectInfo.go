@@ -161,6 +161,12 @@ func (ProjectInfoState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectInfoState)(nil)).Elem()
 }
 
+// ProjectInfoExists checks whether an existing ProjectInfo resource with the given ID exists.
+func ProjectInfoExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectInfoState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:billing/projectInfo:ProjectInfo", id, state, "", opts...)
+}
+
 type projectInfoArgs struct {
 	// The ID of the billing account associated with the project, if
 	// any. Set to empty string to disable billing for the project.

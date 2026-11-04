@@ -1480,6 +1480,62 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return NodePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']]] = None,
+            best_effort_provisioning: pulumi.Input[Optional[Union['NodePoolBestEffortProvisioningArgs', 'NodePoolBestEffortProvisioningArgsDict', 'outputs.NodePoolBestEffortProvisioning']]] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+            initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict', 'outputs.NodePoolMaintenancePolicy']]]]] = None,
+            managed_instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']]] = None,
+            max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict', 'outputs.NodePoolNetworkConfig']]] = None,
+            node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            node_drain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict', 'outputs.NodePoolNodeDrainConfig']]]]] = None,
+            node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            operation: pulumi.Input[Optional[_builtins.str]] = None,
+            placement_policy: pulumi.Input[Optional[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict', 'outputs.NodePoolPlacementPolicy']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            queued_provisioning: pulumi.Input[Optional[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict', 'outputs.NodePoolQueuedProvisioning']]] = None,
+            upgrade_settings: pulumi.Input[Optional[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict', 'outputs.NodePoolUpgradeSettings']]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoscaling"] = autoscaling
+        __props__["bestEffortProvisioning"] = best_effort_provisioning
+        __props__["cluster"] = cluster
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["ignoreNodeCountChanges"] = ignore_node_count_changes
+        __props__["initialNodeCount"] = initial_node_count
+        __props__["instanceGroupUrls"] = instance_group_urls
+        __props__["location"] = location
+        __props__["maintenancePolicies"] = maintenance_policies
+        __props__["managedInstanceGroupUrls"] = managed_instance_group_urls
+        __props__["management"] = management
+        __props__["maxPodsPerNode"] = max_pods_per_node
+        __props__["name"] = name
+        __props__["namePrefix"] = name_prefix
+        __props__["networkConfig"] = network_config
+        __props__["nodeConfig"] = node_config
+        __props__["nodeCount"] = node_count
+        __props__["nodeDrainConfigs"] = node_drain_configs
+        __props__["nodeLocations"] = node_locations
+        __props__["operation"] = operation
+        __props__["placementPolicy"] = placement_policy
+        __props__["project"] = project
+        __props__["queuedProvisioning"] = queued_provisioning
+        __props__["upgradeSettings"] = upgrade_settings
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'gcp:container/nodePool:NodePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def autoscaling(self) -> pulumi.Output[Optional['outputs.NodePoolAutoscaling']]:

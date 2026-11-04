@@ -665,6 +665,12 @@ func (DatasetIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetIamMemberState)(nil)).Elem()
 }
 
+// DatasetIamMemberExists checks whether an existing DatasetIamMember resource with the given ID exists.
+func DatasetIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatasetIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/datasetIamMember:DatasetIamMember", id, state, "", opts...)
+}
+
 type datasetIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

@@ -408,6 +408,12 @@ func (ScopeIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scopeIamBindingState)(nil)).Elem()
 }
 
+// ScopeIamBindingExists checks whether an existing ScopeIamBinding resource with the given ID exists.
+func ScopeIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScopeIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/scopeIamBinding:ScopeIamBinding", id, state, "", opts...)
+}
+
 type scopeIamBindingArgs struct {
 	Condition *ScopeIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

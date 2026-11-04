@@ -2184,6 +2184,90 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alternative_location_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            auth_string: pulumi.Input[Optional[_builtins.str]] = None,
+            authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+            connect_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            current_location_id: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict', 'outputs.InstanceMaintenancePolicy']]] = None,
+            maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict', 'outputs.InstanceMaintenanceSchedule']]]]] = None,
+            maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+            memory_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNodeArgs', 'InstanceNodeArgsDict', 'outputs.InstanceNode']]]]] = None,
+            persistence_config: pulumi.Input[Optional[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict', 'outputs.InstancePersistenceConfig']]] = None,
+            persistence_iam_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            read_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            read_endpoint_port: pulumi.Input[Optional[_builtins.int]] = None,
+            read_replicas_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            redis_version: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+            reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            server_ca_certs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceServerCaCertArgs', 'InstanceServerCaCertArgsDict', 'outputs.InstanceServerCaCert']]]]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alternativeLocationId"] = alternative_location_id
+        __props__["authEnabled"] = auth_enabled
+        __props__["authString"] = auth_string
+        __props__["authorizedNetwork"] = authorized_network
+        __props__["connectMode"] = connect_mode
+        __props__["createTime"] = create_time
+        __props__["currentLocationId"] = current_location_id
+        __props__["customerManagedKey"] = customer_managed_key
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["effectiveReservedIpRange"] = effective_reserved_ip_range
+        __props__["host"] = host
+        __props__["labels"] = labels
+        __props__["locationId"] = location_id
+        __props__["maintenancePolicy"] = maintenance_policy
+        __props__["maintenanceSchedules"] = maintenance_schedules
+        __props__["maintenanceVersion"] = maintenance_version
+        __props__["memorySizeGb"] = memory_size_gb
+        __props__["name"] = name
+        __props__["nodes"] = nodes
+        __props__["persistenceConfig"] = persistence_config
+        __props__["persistenceIamIdentity"] = persistence_iam_identity
+        __props__["port"] = port
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["readEndpoint"] = read_endpoint
+        __props__["readEndpointPort"] = read_endpoint_port
+        __props__["readReplicasMode"] = read_replicas_mode
+        __props__["redisConfigs"] = redis_configs
+        __props__["redisVersion"] = redis_version
+        __props__["region"] = region
+        __props__["replicaCount"] = replica_count
+        __props__["reservedIpRange"] = reserved_ip_range
+        __props__["secondaryIpRange"] = secondary_ip_range
+        __props__["serverCaCerts"] = server_ca_certs
+        __props__["tier"] = tier
+        __props__["transitEncryptionMode"] = transit_encryption_mode
+        return pulumi.runtime.exists_resource(None, 'gcp:redis/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alternativeLocationId")
     def alternative_location_id(self) -> pulumi.Output[_builtins.str]:

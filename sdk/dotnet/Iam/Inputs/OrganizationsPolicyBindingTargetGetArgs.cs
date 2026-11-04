@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
         /// * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
         /// * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
-        /// It must be parent by the policy binding's parent (the organization).
+        ///   It must be parent by the policy binding's parent (the organization).
         /// </summary>
         [Input("principalSet")]
         public Input<string>? PrincipalSet { get; set; }
@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// Immutable. Full Resource Name of the resource used for access policy bindings.
         /// Use this together with `PolicyKind = "ACCESS"`. Examples:
         /// * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
-        /// It must be the policy binding's parent (the organization).
+        ///   It must be the policy binding's parent (the organization).
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }

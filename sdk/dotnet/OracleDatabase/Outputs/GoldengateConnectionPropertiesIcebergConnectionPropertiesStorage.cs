@@ -35,7 +35,6 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// GOOGLE_CLOUD_STORAGE
         /// AZURE_DATA_LAKE_STORAGE
         /// 
-        /// 
         /// &lt;a name="NestedPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage"&gt;&lt;/a&gt;The `AmazonS3IcebergStorage` block supports:
         /// </summary>
         public readonly string StorageType;

@@ -533,6 +533,34 @@ class NetworkMonitoringProvider(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return NetworkMonitoringProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_monitoring_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["errors"] = errors
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["networkMonitoringProviderId"] = network_monitoring_provider_id
+        __props__["project"] = project
+        __props__["providerType"] = provider_type
+        __props__["providerUri"] = provider_uri
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:networkmanagement/networkMonitoringProvider:NetworkMonitoringProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

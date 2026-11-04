@@ -42,12 +42,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Dataset("example", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .location("US")
@@ -57,10 +57,10 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .schema("""
  * [
- *   {
- *     \"name\": \"nullable_field\",
- *     \"type\": \"STRING\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "nullable_field}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code "
+ *   }}{@code
  * ]
  *             """)
  *             .datasetId(example.datasetId())
@@ -75,8 +75,8 @@ import javax.annotation.Nullable;
  *             .grantees("domain:google.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

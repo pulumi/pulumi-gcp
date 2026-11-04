@@ -25,11 +25,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
      * 
      * &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
      * 
-     * @deprecated
-     * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * @deprecated `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
      * 
      */
-    @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
+    @Deprecated
     @Import(name="contains")
     private @Nullable Output<String> contains;
 
@@ -41,11 +40,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
      * 
      * &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
      * 
-     * @deprecated
-     * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * @deprecated `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
      * 
      */
-    @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
+    @Deprecated
     public Optional<Output<String>> contains() {
         return Optional.ofNullable(this.contains);
     }
@@ -58,11 +56,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
      * 
      * &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
      * 
-     * @deprecated
-     * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * @deprecated `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
      * 
      */
-    @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
+    @Deprecated
     @Import(name="exact")
     private @Nullable Output<String> exact;
 
@@ -74,11 +71,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
      * 
      * &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
      * 
-     * @deprecated
-     * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * @deprecated `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
      * 
      */
-    @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
+    @Deprecated
     public Optional<Output<String>> exact() {
         return Optional.ofNullable(this.exact);
     }
@@ -89,11 +85,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
      * 
      * &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
      * 
-     * @deprecated
-     * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+     * @deprecated `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
      * 
      */
-    @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
+    @Deprecated
     @Import(name="ignoreCase")
     private @Nullable Output<Boolean> ignoreCase;
 
@@ -103,11 +98,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
      * 
      * &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
      * 
-     * @deprecated
-     * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+     * @deprecated `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
      * 
      */
-    @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> ignoreCase() {
         return Optional.ofNullable(this.ignoreCase);
     }
@@ -120,11 +114,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
      * 
      * &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
      * 
-     * @deprecated
-     * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * @deprecated `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
      * 
      */
-    @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
+    @Deprecated
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
@@ -136,11 +129,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
      * 
      * &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
      * 
-     * @deprecated
-     * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * @deprecated `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
      * 
      */
-    @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
+    @Deprecated
     public Optional<Output<String>> prefix() {
         return Optional.ofNullable(this.prefix);
     }
@@ -191,11 +183,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
      * 
      * &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
      * 
-     * @deprecated
-     * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * @deprecated `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
      * 
      */
-    @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
+    @Deprecated
     @Import(name="suffix")
     private @Nullable Output<String> suffix;
 
@@ -207,11 +198,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
      * 
      * &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
      * 
-     * @deprecated
-     * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * @deprecated `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
      * 
      */
-    @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
+    @Deprecated
     public Optional<Output<String>> suffix() {
         return Optional.ofNullable(this.suffix);
     }
@@ -256,11 +246,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+         * @deprecated `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
          * 
          */
-        @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
+        @Deprecated
         public Builder contains(@Nullable Output<String> contains) {
             $.contains = contains;
             return this;
@@ -276,11 +265,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+         * @deprecated `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
          * 
          */
-        @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
+        @Deprecated
         public Builder contains(String contains) {
             return contains(Output.of(contains));
         }
@@ -295,11 +283,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+         * @deprecated `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
          * 
          */
-        @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
+        @Deprecated
         public Builder exact(@Nullable Output<String> exact) {
             $.exact = exact;
             return this;
@@ -315,11 +302,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+         * @deprecated `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
          * 
          */
-        @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
+        @Deprecated
         public Builder exact(String exact) {
             return exact(Output.of(exact));
         }
@@ -332,11 +318,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+         * @deprecated `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
          * 
          */
-        @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
+        @Deprecated
         public Builder ignoreCase(@Nullable Output<Boolean> ignoreCase) {
             $.ignoreCase = ignoreCase;
             return this;
@@ -350,11 +335,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+         * @deprecated `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
          * 
          */
-        @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
+        @Deprecated
         public Builder ignoreCase(Boolean ignoreCase) {
             return ignoreCase(Output.of(ignoreCase));
         }
@@ -369,11 +353,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+         * @deprecated `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
          * 
          */
-        @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
+        @Deprecated
         public Builder prefix(@Nullable Output<String> prefix) {
             $.prefix = prefix;
             return this;
@@ -389,11 +372,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+         * @deprecated `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
          * 
          */
-        @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
+        @Deprecated
         public Builder prefix(String prefix) {
             return prefix(Output.of(prefix));
         }
@@ -458,11 +440,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+         * @deprecated `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
          * 
          */
-        @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
+        @Deprecated
         public Builder suffix(@Nullable Output<String> suffix) {
             $.suffix = suffix;
             return this;
@@ -478,11 +459,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipalArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+         * @deprecated `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
          * 
          */
-        @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
+        @Deprecated
         public Builder suffix(String suffix) {
             return suffix(Output.of(suffix));
         }

@@ -1432,6 +1432,52 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["slot_capacity"] = slot_capacity
         return Reservation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict', 'outputs.ReservationAutoscale']]] = None,
+            concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            edition: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            max_slots: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            original_primary_location: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            replication_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict', 'outputs.ReservationReplicationStatus']]]]] = None,
+            reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling_policy: pulumi.Input[Optional[Union['ReservationSchedulingPolicyArgs', 'ReservationSchedulingPolicyArgsDict', 'outputs.ReservationSchedulingPolicy']]] = None,
+            secondary_location: pulumi.Input[Optional[_builtins.str]] = None,
+            slot_capacity: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoscale"] = autoscale
+        __props__["concurrency"] = concurrency
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["edition"] = edition
+        __props__["effectiveLabels"] = effective_labels
+        __props__["ignoreIdleSlots"] = ignore_idle_slots
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["maxSlots"] = max_slots
+        __props__["name"] = name
+        __props__["originalPrimaryLocation"] = original_primary_location
+        __props__["primaryLocation"] = primary_location
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["replicationStatuses"] = replication_statuses
+        __props__["reservationGroup"] = reservation_group
+        __props__["scalingMode"] = scaling_mode
+        __props__["schedulingPolicy"] = scheduling_policy
+        __props__["secondaryLocation"] = secondary_location
+        __props__["slotCapacity"] = slot_capacity
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/reservation:Reservation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def autoscale(self) -> pulumi.Output[Optional['outputs.ReservationAutoscale']]:

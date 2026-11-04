@@ -528,6 +528,28 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return Tenant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_password_signup: pulumi.Input[Optional[_builtins.bool]] = None,
+            client: pulumi.Input[Optional[Union['TenantClientArgs', 'TenantClientArgsDict', 'outputs.TenantClient']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_email_link_signin: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowPasswordSignup"] = allow_password_signup
+        __props__["client"] = client
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disableAuth"] = disable_auth
+        __props__["displayName"] = display_name
+        __props__["enableEmailLinkSignin"] = enable_email_link_signin
+        __props__["name"] = name
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:identityplatform/tenant:Tenant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowPasswordSignup")
     def allow_password_signup(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -53,11 +53,10 @@ public final class ServiceTemplateSpec {
      * 
      * &gt; **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     private @Nullable String servingState;
     /**
      * @return TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
@@ -117,11 +116,10 @@ public final class ServiceTemplateSpec {
      * 
      * &gt; **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     public Optional<String> servingState() {
         return Optional.ofNullable(this.servingState);
     }

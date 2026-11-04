@@ -2057,6 +2057,80 @@ class BareMetalCluster(pulumi.CustomResource):
         __props__.__dict__["validation_checks"] = validation_checks
         return BareMetalCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            bare_metal_version: pulumi.Input[Optional[_builtins.str]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict', 'outputs.BareMetalClusterBinaryAuthorization']]] = None,
+            cluster_operations: pulumi.Input[Optional[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict', 'outputs.BareMetalClusterClusterOperations']]] = None,
+            control_plane: pulumi.Input[Optional[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict', 'outputs.BareMetalClusterControlPlane']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            fleets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BareMetalClusterFleetArgs', 'BareMetalClusterFleetArgsDict', 'outputs.BareMetalClusterFleet']]]]] = None,
+            load_balancer: pulumi.Input[Optional[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict', 'outputs.BareMetalClusterLoadBalancer']]] = None,
+            local_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_config: pulumi.Input[Optional[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict', 'outputs.BareMetalClusterMaintenanceConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict', 'outputs.BareMetalClusterNetworkConfig']]] = None,
+            node_access_config: pulumi.Input[Optional[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict', 'outputs.BareMetalClusterNodeAccessConfig']]] = None,
+            node_config: pulumi.Input[Optional[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict', 'outputs.BareMetalClusterNodeConfig']]] = None,
+            os_environment_config: pulumi.Input[Optional[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict', 'outputs.BareMetalClusterOsEnvironmentConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy: pulumi.Input[Optional[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict', 'outputs.BareMetalClusterProxy']]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_config: pulumi.Input[Optional[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict', 'outputs.BareMetalClusterSecurityConfig']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BareMetalClusterStatusArgs', 'BareMetalClusterStatusArgsDict', 'outputs.BareMetalClusterStatus']]]]] = None,
+            storage: pulumi.Input[Optional[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict', 'outputs.BareMetalClusterStorage']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_policy: pulumi.Input[Optional[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict', 'outputs.BareMetalClusterUpgradePolicy']]] = None,
+            validation_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BareMetalClusterValidationCheckArgs', 'BareMetalClusterValidationCheckArgsDict', 'outputs.BareMetalClusterValidationCheck']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminClusterMembership"] = admin_cluster_membership
+        __props__["annotations"] = annotations
+        __props__["bareMetalVersion"] = bare_metal_version
+        __props__["binaryAuthorization"] = binary_authorization
+        __props__["clusterOperations"] = cluster_operations
+        __props__["controlPlane"] = control_plane
+        __props__["createTime"] = create_time
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["endpoint"] = endpoint
+        __props__["etag"] = etag
+        __props__["fleets"] = fleets
+        __props__["loadBalancer"] = load_balancer
+        __props__["localName"] = local_name
+        __props__["location"] = location
+        __props__["maintenanceConfig"] = maintenance_config
+        __props__["name"] = name
+        __props__["networkConfig"] = network_config
+        __props__["nodeAccessConfig"] = node_access_config
+        __props__["nodeConfig"] = node_config
+        __props__["osEnvironmentConfig"] = os_environment_config
+        __props__["project"] = project
+        __props__["proxy"] = proxy
+        __props__["reconciling"] = reconciling
+        __props__["securityConfig"] = security_config
+        __props__["state"] = state
+        __props__["statuses"] = statuses
+        __props__["storage"] = storage
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["upgradePolicy"] = upgrade_policy
+        __props__["validationChecks"] = validation_checks
+        return pulumi.runtime.exists_resource(None, 'gcp:gkeonprem/bareMetalCluster:BareMetalCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminClusterMembership")
     def admin_cluster_membership(self) -> pulumi.Output[_builtins.str]:

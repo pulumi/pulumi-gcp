@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The name of the database's spanner instance.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("instance", required: true)]
         public string Instance { get; set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The name of the database's spanner instance.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;

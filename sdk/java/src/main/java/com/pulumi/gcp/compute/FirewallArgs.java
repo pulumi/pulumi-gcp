@@ -170,11 +170,10 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
      * This field denotes whether to enable logging for a particular firewall rule.
      * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
      * 
-     * @deprecated
-     * Deprecated in favor of log_config
+     * @deprecated Deprecated in favor of log_config
      * 
      */
-    @Deprecated /* Deprecated in favor of log_config */
+    @Deprecated
     @Import(name="enableLogging")
     private @Nullable Output<Boolean> enableLogging;
 
@@ -182,11 +181,10 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
      * @return This field denotes whether to enable logging for a particular firewall rule.
      * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
      * 
-     * @deprecated
-     * Deprecated in favor of log_config
+     * @deprecated Deprecated in favor of log_config
      * 
      */
-    @Deprecated /* Deprecated in favor of log_config */
+    @Deprecated
     public Optional<Output<Boolean>> enableLogging() {
         return Optional.ofNullable(this.enableLogging);
     }
@@ -728,11 +726,10 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in favor of log_config
+         * @deprecated Deprecated in favor of log_config
          * 
          */
-        @Deprecated /* Deprecated in favor of log_config */
+        @Deprecated
         public Builder enableLogging(@Nullable Output<Boolean> enableLogging) {
             $.enableLogging = enableLogging;
             return this;
@@ -744,11 +741,10 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in favor of log_config
+         * @deprecated Deprecated in favor of log_config
          * 
          */
-        @Deprecated /* Deprecated in favor of log_config */
+        @Deprecated
         public Builder enableLogging(Boolean enableLogging) {
             return enableLogging(Output.of(enableLogging));
         }

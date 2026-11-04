@@ -394,6 +394,12 @@ func (RepositoryIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryIamPolicyState)(nil)).Elem()
 }
 
+// RepositoryIamPolicyExists checks whether an existing RepositoryIamPolicy resource with the given ID exists.
+func RepositoryIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy", id, state, "", opts...)
+}
+
 type repositoryIamPolicyArgs struct {
 	// The name of the repository's location. In addition to specific regions,
 	// special values for multi-region locations are `asia`, `europe`, and `us`.

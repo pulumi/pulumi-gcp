@@ -181,9 +181,9 @@ namespace Pulumi.Gcp.Netapp
         /// Valid targets for volumes with NFS protocol enabled:
         /// - UNIX UID for individual user quota
         /// - UNIX GID for individual group quota
-        /// Valid targets for volumes with SMB protocol enabled:
+        ///   Valid targets for volumes with SMB protocol enabled:
         /// - Windows SID for individual user quota
-        /// Leave empty for default quotas
+        ///   Leave empty for default quotas
         /// </summary>
         [Output("target")]
         public Output<string?> Target { get; private set; } = null!;
@@ -314,9 +314,9 @@ namespace Pulumi.Gcp.Netapp
         /// Valid targets for volumes with NFS protocol enabled:
         /// - UNIX UID for individual user quota
         /// - UNIX GID for individual group quota
-        /// Valid targets for volumes with SMB protocol enabled:
+        ///   Valid targets for volumes with SMB protocol enabled:
         /// - Windows SID for individual user quota
-        /// Leave empty for default quotas
+        ///   Leave empty for default quotas
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
@@ -455,9 +455,9 @@ namespace Pulumi.Gcp.Netapp
         /// Valid targets for volumes with NFS protocol enabled:
         /// - UNIX UID for individual user quota
         /// - UNIX GID for individual group quota
-        /// Valid targets for volumes with SMB protocol enabled:
+        ///   Valid targets for volumes with SMB protocol enabled:
         /// - Windows SID for individual user quota
-        /// Leave empty for default quotas
+        ///   Leave empty for default quotas
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

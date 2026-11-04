@@ -233,6 +233,12 @@ func (AnywhereCacheState) ElementType() reflect.Type {
 	return reflect.TypeOf((*anywhereCacheState)(nil)).Elem()
 }
 
+// AnywhereCacheExists checks whether an existing AnywhereCache resource with the given ID exists.
+func AnywhereCacheExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AnywhereCacheState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/anywhereCache:AnywhereCache", id, state, "", opts...)
+}
+
 type anywhereCacheArgs struct {
 	// (Optional, Deprecated)
 	// The cache admission policy dictates whether a block should be inserted upon a cache miss.

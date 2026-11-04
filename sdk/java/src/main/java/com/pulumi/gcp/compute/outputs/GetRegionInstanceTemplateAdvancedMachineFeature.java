@@ -38,7 +38,7 @@ public final class GetRegionInstanceTemplateAdvancedMachineFeature {
      */
     private String turboMode;
     /**
-     * @return The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\&#39;s nominal CPU count and the underlying platform\&#39;s SMT width.
+     * @return The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance&#92;&#39;s nominal CPU count and the underlying platform&#92;&#39;s SMT width.
      * 
      */
     private Integer visibleCoreCount;
@@ -80,7 +80,7 @@ public final class GetRegionInstanceTemplateAdvancedMachineFeature {
         return this.turboMode;
     }
     /**
-     * @return The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\&#39;s nominal CPU count and the underlying platform\&#39;s SMT width.
+     * @return The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance&#92;&#39;s nominal CPU count and the underlying platform&#92;&#39;s SMT width.
      * 
      */
     public Integer visibleCoreCount() {

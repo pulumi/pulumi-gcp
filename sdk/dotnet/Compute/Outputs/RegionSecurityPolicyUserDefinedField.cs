@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// - IPV6: Points to the beginning of the IPv6 header.
         /// - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
         /// - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
-        /// Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
+        ///   Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
         /// </summary>
         public readonly string Base;
         /// <summary>

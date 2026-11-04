@@ -337,9 +337,9 @@ namespace Pulumi.Gcp.OsConfig
         /// Allowed values:
         /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         /// - `STOPPED` - orchestrator won't make any changes.
-        /// Note: There might be more states added in the future. We use string here
-        /// instead of an enum, to avoid the need of propagating new states to all the
-        /// client code.
+        ///   Note: There might be more states added in the future. We use string here
+        ///   instead of an enum, to avoid the need of propagating new states to all the
+        ///   client code.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -480,9 +480,9 @@ namespace Pulumi.Gcp.OsConfig
         /// Allowed values:
         /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         /// - `STOPPED` - orchestrator won't make any changes.
-        /// Note: There might be more states added in the future. We use string here
-        /// instead of an enum, to avoid the need of propagating new states to all the
-        /// client code.
+        ///   Note: There might be more states added in the future. We use string here
+        ///   instead of an enum, to avoid the need of propagating new states to all the
+        ///   client code.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -650,9 +650,9 @@ namespace Pulumi.Gcp.OsConfig
         /// Allowed values:
         /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         /// - `STOPPED` - orchestrator won't make any changes.
-        /// Note: There might be more states added in the future. We use string here
-        /// instead of an enum, to avoid the need of propagating new states to all the
-        /// client code.
+        ///   Note: There might be more states added in the future. We use string here
+        ///   instead of an enum, to avoid the need of propagating new states to all the
+        ///   client code.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

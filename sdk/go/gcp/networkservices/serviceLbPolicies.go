@@ -404,6 +404,12 @@ func (ServiceLbPoliciesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceLbPoliciesState)(nil)).Elem()
 }
 
+// ServiceLbPoliciesExists checks whether an existing ServiceLbPolicies resource with the given ID exists.
+func ServiceLbPoliciesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceLbPoliciesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/serviceLbPolicies:ServiceLbPolicies", id, state, "", opts...)
+}
+
 type serviceLbPoliciesArgs struct {
 	// Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
 	// Structure is documented below.

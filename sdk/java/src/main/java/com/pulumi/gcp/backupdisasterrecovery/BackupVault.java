@@ -408,11 +408,10 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
-     * @deprecated
-     * `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+     * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
      */
-    @Deprecated /* `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead. */
+    @Deprecated
     @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDelete;
 

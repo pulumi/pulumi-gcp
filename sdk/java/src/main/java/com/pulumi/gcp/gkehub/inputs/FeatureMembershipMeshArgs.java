@@ -18,22 +18,20 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
     /**
      * **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
      * 
-     * @deprecated
-     * Deprecated in favor of the `management` field
+     * @deprecated Deprecated in favor of the `management` field
      * 
      */
-    @Deprecated /* Deprecated in favor of the `management` field */
+    @Deprecated
     @Import(name="controlPlane")
     private @Nullable Output<String> controlPlane;
 
     /**
      * @return **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
      * 
-     * @deprecated
-     * Deprecated in favor of the `management` field
+     * @deprecated Deprecated in favor of the `management` field
      * 
      */
-    @Deprecated /* Deprecated in favor of the `management` field */
+    @Deprecated
     public Optional<Output<String>> controlPlane() {
         return Optional.ofNullable(this.controlPlane);
     }
@@ -83,11 +81,10 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in favor of the `management` field
+         * @deprecated Deprecated in favor of the `management` field
          * 
          */
-        @Deprecated /* Deprecated in favor of the `management` field */
+        @Deprecated
         public Builder controlPlane(@Nullable Output<String> controlPlane) {
             $.controlPlane = controlPlane;
             return this;
@@ -98,11 +95,10 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in favor of the `management` field
+         * @deprecated Deprecated in favor of the `management` field
          * 
          */
-        @Deprecated /* Deprecated in favor of the `management` field */
+        @Deprecated
         public Builder controlPlane(String controlPlane) {
             return controlPlane(Output.of(controlPlane));
         }

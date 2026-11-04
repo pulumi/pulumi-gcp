@@ -140,6 +140,12 @@ func (EnvReferencesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*envReferencesState)(nil)).Elem()
 }
 
+// EnvReferencesExists checks whether an existing EnvReferences resource with the given ID exists.
+func EnvReferencesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvReferencesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/envReferences:EnvReferences", id, state, "", opts...)
+}
+
 type envReferencesArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

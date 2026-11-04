@@ -195,6 +195,12 @@ func (QaScorecardState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qaScorecardState)(nil)).Elem()
 }
 
+// QaScorecardExists checks whether an existing QaScorecard resource with the given ID exists.
+func QaScorecardExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QaScorecardState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:contactcenterinsights/qaScorecard:QaScorecard", id, state, "", opts...)
+}
+
 type qaScorecardArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

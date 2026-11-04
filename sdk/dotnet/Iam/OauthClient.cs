@@ -94,8 +94,8 @@ namespace Pulumi.Gcp.Iam
         /// OAuth flows.
         /// The following scopes are supported:
         /// * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-        /// and delete your Google Cloud data and see the email address for your Google
-        /// Account.
+        ///   and delete your Google Cloud data and see the email address for your Google
+        ///   Account.
         /// </summary>
         [Output("allowedScopes")]
         public Output<ImmutableArray<string>> AllowedScopes { get; private set; } = null!;
@@ -276,8 +276,8 @@ namespace Pulumi.Gcp.Iam
         /// OAuth flows.
         /// The following scopes are supported:
         /// * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-        /// and delete your Google Cloud data and see the email address for your Google
-        /// Account.
+        ///   and delete your Google Cloud data and see the email address for your Google
+        ///   Account.
         /// </summary>
         public InputList<string> AllowedScopes
         {
@@ -393,8 +393,8 @@ namespace Pulumi.Gcp.Iam
         /// OAuth flows.
         /// The following scopes are supported:
         /// * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-        /// and delete your Google Cloud data and see the email address for your Google
-        /// Account.
+        ///   and delete your Google Cloud data and see the email address for your Google
+        ///   Account.
         /// </summary>
         public InputList<string> AllowedScopes
         {

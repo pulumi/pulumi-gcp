@@ -278,6 +278,12 @@ func (AndroidAppState) ElementType() reflect.Type {
 	return reflect.TypeOf((*androidAppState)(nil)).Elem()
 }
 
+// AndroidAppExists checks whether an existing AndroidApp resource with the given ID exists.
+func AndroidAppExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AndroidAppState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/androidApp:AndroidApp", id, state, "", opts...)
+}
+
 type androidAppArgs struct {
 	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
 	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.

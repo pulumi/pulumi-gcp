@@ -414,6 +414,12 @@ func (EnvironmentIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentIamBindingState)(nil)).Elem()
 }
 
+// EnvironmentIamBindingExists checks whether an existing EnvironmentIamBinding resource with the given ID exists.
+func EnvironmentIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/environmentIamBinding:EnvironmentIamBinding", id, state, "", opts...)
+}
+
 type environmentIamBindingArgs struct {
 	Condition *EnvironmentIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

@@ -580,6 +580,12 @@ func (TableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tableState)(nil)).Elem()
 }
 
+// TableExists checks whether an existing Table resource with the given ID exists.
+func TableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/table:Table", id, state, "", opts...)
+}
+
 type tableArgs struct {
 	// Specifies the configuration of a BigLake managed table. Structure is documented below
 	BiglakeConfiguration *TableBiglakeConfiguration `pulumi:"biglakeConfiguration"`

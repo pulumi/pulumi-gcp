@@ -464,6 +464,18 @@ class AddonsConfig(pulumi.CustomResource):
         __props__.__dict__["org"] = org
         return AddonsConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addons_config: pulumi.Input[Optional[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict', 'outputs.AddonsConfigAddonsConfig']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            org: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addonsConfig"] = addons_config
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["org"] = org
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/addonsConfig:AddonsConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addonsConfig")
     def addons_config(self) -> pulumi.Output[Optional['outputs.AddonsConfigAddonsConfig']]:

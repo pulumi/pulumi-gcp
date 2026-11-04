@@ -442,6 +442,12 @@ func (RepositoryGroupIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryGroupIamMemberState)(nil)).Elem()
 }
 
+// RepositoryGroupIamMemberExists checks whether an existing RepositoryGroupIamMember resource with the given ID exists.
+func RepositoryGroupIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryGroupIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/repositoryGroupIamMember:RepositoryGroupIamMember", id, state, "", opts...)
+}
+
 type repositoryGroupIamMemberArgs struct {
 	// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
 	CodeRepositoryIndex string                             `pulumi:"codeRepositoryIndex"`

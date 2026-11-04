@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sampleDataset = new Dataset("sampleDataset", DatasetArgs.builder()
  *             .datasetId("job_load_dataset")
  *             .friendlyName("test")
@@ -72,21 +72,21 @@ import javax.annotation.Nullable;
  *             .tableId("job_load_table")
  *             .schema("""
  * [
- *     {
- *         \"name\": \"feature_id\",
- *         \"type\": \"STRING\",
- *         \"mode\": \"NULLABLE\"
- *     },
- *     {
- *         \"name\": \"example_feature\",
- *         \"type\": \"STRING\",
- *         \"mode\": \"NULLABLE\"
- *     },
- *     {
- *         \"name\": \"feature_timestamp\",
- *         \"type\": \"TIMESTAMP\",
- *         \"mode\": \"NULLABLE\"
- *     }
+ *     }{{@code
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "feature_id}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "example_feature}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "feature_timestamp}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "TIMESTAMP}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *     }}{@code
  * ]
  *             """)
  *             .build());
@@ -98,12 +98,12 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("label-one", "value-one"))
  *             .bigQuery(AiFeatureGroupBigQueryArgs.builder()
  *                 .bigQuerySource(AiFeatureGroupBigQueryBigQuerySourceArgs.builder()
- *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -> {
+ *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -> }{{@code
  *                         var project = values.t1;
  *                         var datasetId = values.t2;
  *                         var tableId = values.t3;
  *                         return String.format("bq://%s.%s.%s", project,datasetId,tableId);
- *                     }))
+ *                     }}{@code ))
  *                     .build())
  *                 .entityIdColumns("feature_id")
  *                 .build())
@@ -117,8 +117,8 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

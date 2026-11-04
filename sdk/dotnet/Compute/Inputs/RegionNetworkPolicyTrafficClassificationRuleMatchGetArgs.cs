@@ -31,7 +31,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Pairs of IP protocols and ports that the rule should match.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedMatchLayer4Configs"&gt;&lt;/a&gt;The `Layer4Configs` block supports:
         /// </summary>
         public InputList<Inputs.RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigGetArgs> Layer4Configs

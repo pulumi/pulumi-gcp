@@ -914,6 +914,44 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return V2PolicyOrchestrator(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            orchestrated_resource: pulumi.Input[Optional[Union['V2PolicyOrchestratorOrchestratedResourceArgs', 'V2PolicyOrchestratorOrchestratedResourceArgsDict', 'outputs.V2PolicyOrchestratorOrchestratedResource']]] = None,
+            orchestration_scope: pulumi.Input[Optional[Union['V2PolicyOrchestratorOrchestrationScopeArgs', 'V2PolicyOrchestratorOrchestrationScopeArgsDict', 'outputs.V2PolicyOrchestratorOrchestrationScope']]] = None,
+            orchestration_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2PolicyOrchestratorOrchestrationStateArgs', 'V2PolicyOrchestratorOrchestrationStateArgsDict', 'outputs.V2PolicyOrchestratorOrchestrationState']]]]] = None,
+            policy_orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["orchestratedResource"] = orchestrated_resource
+        __props__["orchestrationScope"] = orchestration_scope
+        __props__["orchestrationStates"] = orchestration_states
+        __props__["policyOrchestratorId"] = policy_orchestrator_id
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reconciling"] = reconciling
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

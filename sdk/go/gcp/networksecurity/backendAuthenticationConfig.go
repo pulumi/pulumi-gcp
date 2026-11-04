@@ -399,6 +399,12 @@ func (BackendAuthenticationConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendAuthenticationConfigState)(nil)).Elem()
 }
 
+// BackendAuthenticationConfigExists checks whether an existing BackendAuthenticationConfig resource with the given ID exists.
+func BackendAuthenticationConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackendAuthenticationConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig", id, state, "", opts...)
+}
+
 type backendAuthenticationConfigArgs struct {
 	// Reference to a Certificate resource from the certificatemanager.googleapis.com namespace.
 	// Used by a BackendService to negotiate mTLS when the backend connection uses TLS and the backend requests a client certificate. Must have a CLIENT_AUTH scope.

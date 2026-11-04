@@ -241,6 +241,12 @@ func (ClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientState)(nil)).Elem()
 }
 
+// ClientExists checks whether an existing Client resource with the given ID exists.
+func ClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:applicationintegration/client:Client", id, state, "", opts...)
+}
+
 type clientArgs struct {
 	// Cloud KMS config for AuthModule to encrypt/decrypt credentials.
 	// Structure is documented below.

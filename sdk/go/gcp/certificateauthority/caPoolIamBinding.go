@@ -654,6 +654,12 @@ func (CaPoolIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*caPoolIamBindingState)(nil)).Elem()
 }
 
+// CaPoolIamBindingExists checks whether an existing CaPoolIamBinding resource with the given ID exists.
+func CaPoolIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CaPoolIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding", id, state, "", opts...)
+}
+
 type caPoolIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CaPool string `pulumi:"caPool"`

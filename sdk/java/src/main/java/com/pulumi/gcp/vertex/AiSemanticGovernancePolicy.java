@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sgpe = new AiSemanticGovernancePolicyEngine("sgpe", AiSemanticGovernancePolicyEngineArgs.builder()
  *             .region("us-central1")
  *             .build());
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * 
  *         final var agent = AgentregistryFunctions.getAgent(GetAgentArgs.builder()
  *             .location("us-central1")
- *             .filter(agentAiReasoningEngine.displayName().applyValue(_displayName -> String.format("displayName=\"%s\"", _displayName)))
+ *             .filter(agentAiReasoningEngine.displayName().applyValue(_displayName -> String.format("displayName=}&#92;{@code "%s}&#92;{@code "", _displayName)))
  *             .build());
  * 
  *         var policy = new AiSemanticGovernancePolicy("policy", AiSemanticGovernancePolicyArgs.builder()
@@ -96,8 +96,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(sgpe)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

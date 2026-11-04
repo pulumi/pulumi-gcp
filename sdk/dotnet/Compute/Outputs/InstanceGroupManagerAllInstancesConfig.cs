@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// , The label key-value pairs that you want to patch onto the instance.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>

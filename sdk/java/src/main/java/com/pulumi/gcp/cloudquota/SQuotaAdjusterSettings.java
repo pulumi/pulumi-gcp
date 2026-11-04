@@ -79,11 +79,10 @@ public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource 
      * The resource container that determines if the quota adjuster is set for this project.
      * Expect this field to be empty currently.
      * 
-     * @deprecated
-     * `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
+     * @deprecated `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
      * 
      */
-    @Deprecated /* `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead. */
+    @Deprecated
     @Export(name="effectiveContainer", refs={String.class}, tree="[0]")
     private Output<String> effectiveContainer;
 
@@ -101,11 +100,10 @@ public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource 
      * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
      * Expect this field to be empty currently.
      * 
-     * @deprecated
-     * `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
+     * @deprecated `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
      * 
      */
-    @Deprecated /* `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead. */
+    @Deprecated
     @Export(name="effectiveEnablement", refs={String.class}, tree="[0]")
     private Output<String> effectiveEnablement;
 

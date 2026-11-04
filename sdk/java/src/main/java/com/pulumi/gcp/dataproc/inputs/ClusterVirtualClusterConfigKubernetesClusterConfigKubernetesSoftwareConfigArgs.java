@@ -18,7 +18,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesS
     public static final ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs Empty = new ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs();
 
     /**
-     * The components that should be installed in this Dataproc cluster. The key must be a string from the\
+     * The components that should be installed in this Dataproc cluster. The key must be a string from the&#92;
      * KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
      * * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
      * 
@@ -27,7 +27,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesS
     private Output<Map<String,String>> componentVersion;
 
     /**
-     * @return The components that should be installed in this Dataproc cluster. The key must be a string from the\
+     * @return The components that should be installed in this Dataproc cluster. The key must be a string from the&#92;
      * KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
      * * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
      * 
@@ -79,7 +79,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesS
         }
 
         /**
-         * @param componentVersion The components that should be installed in this Dataproc cluster. The key must be a string from the\
+         * @param componentVersion The components that should be installed in this Dataproc cluster. The key must be a string from the&#92;
          * KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
          * * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
          * 
@@ -92,7 +92,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesS
         }
 
         /**
-         * @param componentVersion The components that should be installed in this Dataproc cluster. The key must be a string from the\
+         * @param componentVersion The components that should be installed in this Dataproc cluster. The key must be a string from the&#92;
          * KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
          * * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
          * 

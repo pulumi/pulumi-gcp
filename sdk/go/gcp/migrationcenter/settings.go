@@ -179,6 +179,12 @@ func (SettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*settingsState)(nil)).Elem()
 }
 
+// SettingsExists checks whether an existing Settings resource with the given ID exists.
+func SettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:migrationcenter/settings:Settings", id, state, "", opts...)
+}
+
 type settingsArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

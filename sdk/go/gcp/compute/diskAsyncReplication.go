@@ -154,6 +154,12 @@ func (DiskAsyncReplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskAsyncReplicationState)(nil)).Elem()
 }
 
+// DiskAsyncReplicationExists checks whether an existing DiskAsyncReplication resource with the given ID exists.
+func DiskAsyncReplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiskAsyncReplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/diskAsyncReplication:DiskAsyncReplication", id, state, "", opts...)
+}
+
 type diskAsyncReplicationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -637,6 +637,34 @@ class DataTableRow(pulumi.CustomResource):
         __props__.__dict__["values"] = values
         return DataTableRow(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_table_row: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            row_time_to_live: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dataTableId"] = data_table_id
+        __props__["dataTableRow"] = data_table_row
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["instance"] = instance
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["rowTimeToLive"] = row_time_to_live
+        __props__["updateTime"] = update_time
+        __props__["values"] = values
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/dataTableRow:DataTableRow', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

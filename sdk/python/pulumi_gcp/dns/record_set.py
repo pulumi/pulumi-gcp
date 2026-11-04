@@ -1001,6 +1001,28 @@ class RecordSet(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return RecordSet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_policy: pulumi.Input[Optional[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict', 'outputs.RecordSetRoutingPolicy']]] = None,
+            rrdatas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["managedZone"] = managed_zone
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["routingPolicy"] = routing_policy
+        __props__["rrdatas"] = rrdatas
+        __props__["ttl"] = ttl
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'gcp:dns/recordSet:RecordSet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

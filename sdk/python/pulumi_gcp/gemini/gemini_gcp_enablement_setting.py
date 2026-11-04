@@ -827,6 +827,44 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         __props__.__dict__["web_grounding_type"] = web_grounding_type
         return GeminiGcpEnablementSetting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+            gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
+            gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            release_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disableWebGrounding"] = disable_web_grounding
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableCustomerDataSharing"] = enable_customer_data_sharing
+        __props__["geminiEnterpriseProject"] = gemini_enterprise_project
+        __props__["geminiGcpEnablementSettingId"] = gemini_gcp_enablement_setting_id
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["mutationsEnabled"] = mutations_enabled
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["releaseChannel"] = release_channel
+        __props__["updateTime"] = update_time
+        __props__["webGroundingType"] = web_grounding_type
+        return pulumi.runtime.exists_resource(None, 'gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

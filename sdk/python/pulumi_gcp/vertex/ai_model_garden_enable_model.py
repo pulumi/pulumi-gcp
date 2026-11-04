@@ -321,6 +321,20 @@ class AiModelGardenEnableModel(pulumi.CustomResource):
         __props__.__dict__["publisher_model_name"] = publisher_model_name
         return AiModelGardenEnableModel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            publisher_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            publisher_model_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enablementState"] = enablement_state
+        __props__["project"] = project
+        __props__["publisherEndpoint"] = publisher_endpoint
+        __props__["publisherModelName"] = publisher_model_name
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="enablementState")
     def enablement_state(self) -> pulumi.Output[_builtins.str]:

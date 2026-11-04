@@ -862,6 +862,48 @@ class GitRepositoryLink(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return GitRepositoryLink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            clone_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            git_repository_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_connection: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["cloneUri"] = clone_uri
+        __props__["createTime"] = create_time
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["gitRepositoryLinkId"] = git_repository_link_id
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["parentConnection"] = parent_connection
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reconciling"] = reconciling
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:developerconnect/gitRepositoryLink:GitRepositoryLink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

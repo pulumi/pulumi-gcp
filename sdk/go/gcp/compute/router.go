@@ -389,6 +389,12 @@ func (RouterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerState)(nil)).Elem()
 }
 
+// RouterExists checks whether an existing Router resource with the given ID exists.
+func RouterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/router:Router", id, state, "", opts...)
+}
+
 type routerArgs struct {
 	// BGP information specific to this router.
 	// Structure is documented below.

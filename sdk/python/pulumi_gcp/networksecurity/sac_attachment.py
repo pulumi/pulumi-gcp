@@ -752,6 +752,42 @@ class SacAttachment(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return SacAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            country: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            sac_realm: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            symantec_options: pulumi.Input[Optional[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict', 'outputs.SacAttachmentSymantecOptions']]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["country"] = country
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["nccGateway"] = ncc_gateway
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["sacRealm"] = sac_realm
+        __props__["state"] = state
+        __props__["symantecOptions"] = symantec_options
+        __props__["timeZone"] = time_zone
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:networksecurity/sacAttachment:SacAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def country(self) -> pulumi.Output[Optional[_builtins.str]]:

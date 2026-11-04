@@ -55,19 +55,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
  *             .displayName("My Alert Policy")
  *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()
  *                 .displayName("test condition")
  *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
- *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+ *                     .filter("metric.type=}&#92;{@code "compute.googleapis.com/instance/disk/write_bytes_count}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
  *                     .duration("60s")
  *                     .comparison("COMPARISON_GT")
  *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
@@ -79,8 +79,8 @@ import javax.annotation.Nullable;
  *             .userLabels(Map.of("foo", "bar"))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -105,19 +105,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
  *             .displayName("My Alert Policy")
  *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()
  *                 .displayName("test condition")
  *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
- *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+ *                     .filter("metric.type=}&#92;{@code "compute.googleapis.com/instance/disk/write_bytes_count}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
  *                     .duration("60s")
  *                     .comparison("COMPARISON_GT")
  *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
@@ -130,8 +130,8 @@ import javax.annotation.Nullable;
  *             .userLabels(Map.of("foo", "bar"))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -157,19 +157,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
  *             .displayName("My Alert Policy")
  *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()
  *                 .displayName("test condition")
  *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
- *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+ *                     .filter("metric.type=}&#92;{@code "compute.googleapis.com/instance/disk/write_bytes_count}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
  *                     .duration("60s")
  *                     .forecastOptions(AlertPolicyConditionConditionThresholdForecastOptionsArgs.builder()
  *                         .forecastHorizon("3600s")
@@ -184,8 +184,8 @@ import javax.annotation.Nullable;
  *             .userLabels(Map.of("foo", "bar"))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

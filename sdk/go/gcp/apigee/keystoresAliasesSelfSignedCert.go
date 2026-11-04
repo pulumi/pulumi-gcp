@@ -345,6 +345,12 @@ func (KeystoresAliasesSelfSignedCertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keystoresAliasesSelfSignedCertState)(nil)).Elem()
 }
 
+// KeystoresAliasesSelfSignedCertExists checks whether an existing KeystoresAliasesSelfSignedCert resource with the given ID exists.
+func KeystoresAliasesSelfSignedCertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeystoresAliasesSelfSignedCertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert", id, state, "", opts...)
+}
+
 type keystoresAliasesSelfSignedCertArgs struct {
 	// Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
 	// This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either

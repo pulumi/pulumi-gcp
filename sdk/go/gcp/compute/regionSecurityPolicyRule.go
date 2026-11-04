@@ -784,6 +784,12 @@ func (RegionSecurityPolicyRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionSecurityPolicyRuleState)(nil)).Elem()
 }
 
+// RegionSecurityPolicyRuleExists checks whether an existing RegionSecurityPolicyRule resource with the given ID exists.
+func RegionSecurityPolicyRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionSecurityPolicyRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule", id, state, "", opts...)
+}
+
 type regionSecurityPolicyRuleArgs struct {
 	// The Action to perform when the rule is matched. The following are the valid actions:
 	// * allow: allow access to target.

@@ -621,6 +621,12 @@ func (EkmConnectionIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ekmConnectionIamPolicyState)(nil)).Elem()
 }
 
+// EkmConnectionIamPolicyExists checks whether an existing EkmConnectionIamPolicy resource with the given ID exists.
+func EkmConnectionIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EkmConnectionIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy", id, state, "", opts...)
+}
+
 type ekmConnectionIamPolicyArgs struct {
 	// The location for the EkmConnection.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.

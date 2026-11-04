@@ -1323,6 +1323,12 @@ func (GlobalForwardingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalForwardingRuleState)(nil)).Elem()
 }
 
+// GlobalForwardingRuleExists checks whether an existing GlobalForwardingRule resource with the given ID exists.
+func GlobalForwardingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalForwardingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/globalForwardingRule:GlobalForwardingRule", id, state, "", opts...)
+}
+
 type globalForwardingRuleArgs struct {
 	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.

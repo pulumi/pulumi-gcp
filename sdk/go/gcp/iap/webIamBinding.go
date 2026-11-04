@@ -626,6 +626,12 @@ func (WebIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webIamBindingState)(nil)).Elem()
 }
 
+// WebIamBindingExists checks whether an existing WebIamBinding resource with the given ID exists.
+func WebIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/webIamBinding:WebIamBinding", id, state, "", opts...)
+}
+
 type webIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

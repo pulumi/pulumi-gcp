@@ -220,6 +220,12 @@ func (ManagementServerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managementServerState)(nil)).Elem()
 }
 
+// ManagementServerExists checks whether an existing ManagementServer resource with the given ID exists.
+func ManagementServerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagementServerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:backupdisasterrecovery/managementServer:ManagementServer", id, state, "", opts...)
+}
+
 type managementServerArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

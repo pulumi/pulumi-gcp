@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
         /// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
         /// * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
-        /// It must be parent by the policy binding's parent (the project).
+        ///   It must be parent by the policy binding's parent (the project).
         /// </summary>
         [Input("principalSet")]
         public Input<string>? PrincipalSet { get; set; }
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// * Project:
         /// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
         /// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
-        /// It must be the policy binding's parent (the project).
+        ///   It must be the policy binding's parent (the project).
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }

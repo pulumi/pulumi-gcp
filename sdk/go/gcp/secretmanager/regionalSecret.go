@@ -699,6 +699,12 @@ func (RegionalSecretState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionalSecretState)(nil)).Elem()
 }
 
+// RegionalSecretExists checks whether an existing RegionalSecret resource with the given ID exists.
+func RegionalSecretExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionalSecretState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:secretmanager/regionalSecret:RegionalSecret", id, state, "", opts...)
+}
+
 type regionalSecretArgs struct {
 	// Custom metadata about the regional secret.
 	// Annotations are distinct from various forms of labels. Annotations exist to allow

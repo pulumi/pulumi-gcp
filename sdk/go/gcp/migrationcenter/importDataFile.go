@@ -247,6 +247,12 @@ func (ImportDataFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*importDataFileState)(nil)).Elem()
 }
 
+// ImportDataFileExists checks whether an existing ImportDataFile resource with the given ID exists.
+func ImportDataFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImportDataFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:migrationcenter/importDataFile:ImportDataFile", id, state, "", opts...)
+}
+
 type importDataFileArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

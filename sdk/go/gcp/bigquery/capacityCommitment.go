@@ -227,6 +227,12 @@ func (CapacityCommitmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*capacityCommitmentState)(nil)).Elem()
 }
 
+// CapacityCommitmentExists checks whether an existing CapacityCommitment resource with the given ID exists.
+func CapacityCommitmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CapacityCommitmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/capacityCommitment:CapacityCommitment", id, state, "", opts...)
+}
+
 type capacityCommitmentArgs struct {
 	// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
 	// empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character

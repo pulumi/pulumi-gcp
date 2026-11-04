@@ -385,6 +385,12 @@ func (AutoscalingPolicyIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoscalingPolicyIamPolicyState)(nil)).Elem()
 }
 
+// AutoscalingPolicyIamPolicyExists checks whether an existing AutoscalingPolicyIamPolicy resource with the given ID exists.
+func AutoscalingPolicyIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutoscalingPolicyIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy", id, state, "", opts...)
+}
+
 type autoscalingPolicyIamPolicyArgs struct {
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.

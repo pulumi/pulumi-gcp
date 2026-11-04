@@ -348,7 +348,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Immutable. Contains the id of the allocated IP address
-     * range associated with the private service access connection for example, \&#34;test-default\&#34;
+     * range associated with the private service access connection for example, &#92;&#34;test-default&#92;&#34;
      * associated with IP range 10.0.0.0/29. This field is populated by the service
      * and contains the value currently used by the service.
      * 
@@ -358,7 +358,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Immutable. Contains the id of the allocated IP address
-     * range associated with the private service access connection for example, \&#34;test-default\&#34;
+     * range associated with the private service access connection for example, &#92;&#34;test-default&#92;&#34;
      * associated with IP range 10.0.0.0/29. This field is populated by the service
      * and contains the value currently used by the service.
      * 
@@ -552,7 +552,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Immutable. Contains the id of the allocated IP address range
-     * associated with the private service access connection for example, \&#34;test-default\&#34;
+     * associated with the private service access connection for example, &#92;&#34;test-default&#92;&#34;
      * associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
      * be considered.
      * 
@@ -562,7 +562,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Immutable. Contains the id of the allocated IP address range
-     * associated with the private service access connection for example, \&#34;test-default\&#34;
+     * associated with the private service access connection for example, &#92;&#34;test-default&#92;&#34;
      * associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
      * be considered.
      * 

@@ -412,9 +412,7 @@ namespace Pulumi.Gcp.CloudDeploy
         /// <summary>
         /// Name of the `DeliveryPipeline`. Format is `a-z?`.
         /// 
-        /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -562,9 +560,7 @@ namespace Pulumi.Gcp.CloudDeploy
         /// <summary>
         /// Name of the `DeliveryPipeline`. Format is `a-z?`.
         /// 
-        /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -703,9 +699,7 @@ namespace Pulumi.Gcp.CloudDeploy
         /// <summary>
         /// Name of the `DeliveryPipeline`. Format is `a-z?`.
         /// 
-        /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

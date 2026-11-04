@@ -27,7 +27,6 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
         /// The state and activation time details for the service.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedServicesStates"&gt;&lt;/a&gt;The `States` block contains:
         /// </summary>
         public InputList<Inputs.MulticloudDataTransferConfigServiceStateArgs> States

@@ -345,6 +345,12 @@ func (MembershipState) ElementType() reflect.Type {
 	return reflect.TypeOf((*membershipState)(nil)).Elem()
 }
 
+// MembershipExists checks whether an existing Membership resource with the given ID exists.
+func MembershipExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MembershipState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/membership:Membership", id, state, "", opts...)
+}
+
 type membershipArgs struct {
 	// Authority encodes how Google will recognize identities from this Membership.
 	// See the workload identity documentation for more details:

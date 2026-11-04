@@ -49,7 +49,7 @@ public final class Hl7StoreParserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Byte(s) to be used as the segment terminator. If this is unset, &#39;\r&#39; will be used as segment terminator.
+     * Byte(s) to be used as the segment terminator. If this is unset, &#39;&#92;r&#39; will be used as segment terminator.
      * A base64-encoded string.
      * 
      */
@@ -57,7 +57,7 @@ public final class Hl7StoreParserConfigArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> segmentTerminator;
 
     /**
-     * @return Byte(s) to be used as the segment terminator. If this is unset, &#39;\r&#39; will be used as segment terminator.
+     * @return Byte(s) to be used as the segment terminator. If this is unset, &#39;&#92;r&#39; will be used as segment terminator.
      * A base64-encoded string.
      * 
      */
@@ -156,7 +156,7 @@ public final class Hl7StoreParserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param segmentTerminator Byte(s) to be used as the segment terminator. If this is unset, &#39;\r&#39; will be used as segment terminator.
+         * @param segmentTerminator Byte(s) to be used as the segment terminator. If this is unset, &#39;&#92;r&#39; will be used as segment terminator.
          * A base64-encoded string.
          * 
          * @return builder
@@ -168,7 +168,7 @@ public final class Hl7StoreParserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param segmentTerminator Byte(s) to be used as the segment terminator. If this is unset, &#39;\r&#39; will be used as segment terminator.
+         * @param segmentTerminator Byte(s) to be used as the segment terminator. If this is unset, &#39;&#92;r&#39; will be used as segment terminator.
          * A base64-encoded string.
          * 
          * @return builder

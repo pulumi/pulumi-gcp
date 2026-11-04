@@ -455,6 +455,12 @@ func (V2PolicyOrchestratorForFolderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2policyOrchestratorForFolderState)(nil)).Elem()
 }
 
+// V2PolicyOrchestratorForFolderExists checks whether an existing V2PolicyOrchestratorForFolder resource with the given ID exists.
+func V2PolicyOrchestratorForFolderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2PolicyOrchestratorForFolderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder", id, state, "", opts...)
+}
+
 type v2policyOrchestratorForFolderArgs struct {
 	// Action to be done by the orchestrator in
 	// `projects/{project_id}/zones/{zone_id}` locations defined by the

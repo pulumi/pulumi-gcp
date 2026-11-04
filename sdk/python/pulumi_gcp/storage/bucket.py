@@ -1704,6 +1704,76 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["website"] = website
         return Bucket(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autoclass: pulumi.Input[Optional[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict', 'outputs.BucketAutoclass']]] = None,
+            cors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict', 'outputs.BucketCor']]]]] = None,
+            custom_placement_config: pulumi.Input[Optional[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict', 'outputs.BucketCustomPlacementConfig']]] = None,
+            default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption: pulumi.Input[Optional[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict', 'outputs.BucketEncryption']]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            hierarchical_namespace: pulumi.Input[Optional[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict', 'outputs.BucketHierarchicalNamespace']]] = None,
+            ip_filter: pulumi.Input[Optional[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict', 'outputs.BucketIpFilter']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict', 'outputs.BucketLifecycleRule']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging: pulumi.Input[Optional[Union['BucketLoggingArgs', 'BucketLoggingArgsDict', 'outputs.BucketLogging']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_number: pulumi.Input[Optional[_builtins.int]] = None,
+            public_access_prevention: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            requester_pays: pulumi.Input[Optional[_builtins.bool]] = None,
+            retention_policy: pulumi.Input[Optional[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict', 'outputs.BucketRetentionPolicy']]] = None,
+            rpo: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            soft_delete_policy: pulumi.Input[Optional[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict', 'outputs.BucketSoftDeletePolicy']]] = None,
+            storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+            time_created: pulumi.Input[Optional[_builtins.str]] = None,
+            uniform_bucket_level_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            versioning: pulumi.Input[Optional[Union['BucketVersioningArgs', 'BucketVersioningArgsDict', 'outputs.BucketVersioning']]] = None,
+            website: pulumi.Input[Optional[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict', 'outputs.BucketWebsite']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoclass"] = autoclass
+        __props__["cors"] = cors
+        __props__["customPlacementConfig"] = custom_placement_config
+        __props__["defaultEventBasedHold"] = default_event_based_hold
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableObjectRetention"] = enable_object_retention
+        __props__["encryption"] = encryption
+        __props__["forceDestroy"] = force_destroy
+        __props__["hierarchicalNamespace"] = hierarchical_namespace
+        __props__["ipFilter"] = ip_filter
+        __props__["labels"] = labels
+        __props__["lifecycleRules"] = lifecycle_rules
+        __props__["location"] = location
+        __props__["logging"] = logging
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["projectNumber"] = project_number
+        __props__["publicAccessPrevention"] = public_access_prevention
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["requesterPays"] = requester_pays
+        __props__["retentionPolicy"] = retention_policy
+        __props__["rpo"] = rpo
+        __props__["selfLink"] = self_link
+        __props__["softDeletePolicy"] = soft_delete_policy
+        __props__["storageClass"] = storage_class
+        __props__["timeCreated"] = time_created
+        __props__["uniformBucketLevelAccess"] = uniform_bucket_level_access
+        __props__["updated"] = updated
+        __props__["url"] = url
+        __props__["versioning"] = versioning
+        __props__["website"] = website
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/bucket:Bucket', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def autoclass(self) -> pulumi.Output[Optional['outputs.BucketAutoclass']]:

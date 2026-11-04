@@ -452,6 +452,12 @@ func (GrpcRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*grpcRouteState)(nil)).Elem()
 }
 
+// GrpcRouteExists checks whether an existing GrpcRoute resource with the given ID exists.
+func GrpcRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GrpcRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/grpcRoute:GrpcRoute", id, state, "", opts...)
+}
+
 type grpcRouteArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

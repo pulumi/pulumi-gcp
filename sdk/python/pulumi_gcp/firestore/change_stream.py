@@ -684,6 +684,34 @@ class ChangeStream(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return ChangeStream(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            collection_group_scope: pulumi.Input[Optional[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict', 'outputs.ChangeStreamCollectionGroupScope']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            database_scope: pulumi.Input[Optional[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict', 'outputs.ChangeStreamDatabaseScope']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_period: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["collectionGroupScope"] = collection_group_scope
+        __props__["createTime"] = create_time
+        __props__["database"] = database
+        __props__["databaseScope"] = database_scope
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["etag"] = etag
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["retentionPeriod"] = retention_period
+        __props__["startTime"] = start_time
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:firestore/changeStream:ChangeStream', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="collectionGroupScope")
     def collection_group_scope(self) -> pulumi.Output[Optional['outputs.ChangeStreamCollectionGroupScope']]:

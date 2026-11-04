@@ -14,10 +14,10 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     public sealed class GetInstancePscAutoConnectionResult
     {
         /// <summary>
-        /// Output Only. Type of a PSC Connection. 
+        /// Output Only. Type of a PSC Connection.
         ///  Possible values:
-        ///  CONNECTION_TYPE_DISCOVERY 
-        ///  CONNECTION_TYPE_PRIMARY 
+        ///  CONNECTION_TYPE_DISCOVERY
+        ///  CONNECTION_TYPE_PRIMARY
         ///  CONNECTION_TYPE_READER
         /// </summary>
         public readonly string ConnectionType;
@@ -50,9 +50,9 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
         /// </summary>
         public readonly string PscConnectionId;
         /// <summary>
-        /// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists. 
+        /// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
         ///  Possible values:
-        ///  ACTIVE 
+        ///  ACTIVE
         ///  NOT_FOUND
         /// </summary>
         public readonly string PscConnectionStatus;

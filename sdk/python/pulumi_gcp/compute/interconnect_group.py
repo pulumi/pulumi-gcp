@@ -599,6 +599,30 @@ class InterconnectGroup(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return InterconnectGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configureds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupConfiguredArgs', 'InterconnectGroupConfiguredArgsDict', 'outputs.InterconnectGroupConfigured']]]]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict', 'outputs.InterconnectGroupIntent']]] = None,
+            interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict', 'outputs.InterconnectGroupInterconnect']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            physical_structures: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupPhysicalStructureArgs', 'InterconnectGroupPhysicalStructureArgsDict', 'outputs.InterconnectGroupPhysicalStructure']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configureds"] = configureds
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["intent"] = intent
+        __props__["interconnects"] = interconnects
+        __props__["name"] = name
+        __props__["physicalStructures"] = physical_structures
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/interconnectGroup:InterconnectGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def configureds(self) -> pulumi.Output[Sequence['outputs.InterconnectGroupConfigured']]:

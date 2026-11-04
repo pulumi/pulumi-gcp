@@ -148,6 +148,12 @@ func (ProjectExclusionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectExclusionState)(nil)).Elem()
 }
 
+// ProjectExclusionExists checks whether an existing ProjectExclusion resource with the given ID exists.
+func ProjectExclusionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectExclusionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/projectExclusion:ProjectExclusion", id, state, "", opts...)
+}
+
 type projectExclusionArgs struct {
 	// A human-readable description.
 	Description *string `pulumi:"description"`

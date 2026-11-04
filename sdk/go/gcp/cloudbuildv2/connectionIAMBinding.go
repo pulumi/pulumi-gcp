@@ -424,6 +424,12 @@ func (ConnectionIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionIAMBindingState)(nil)).Elem()
 }
 
+// ConnectionIAMBindingExists checks whether an existing ConnectionIAMBinding resource with the given ID exists.
+func ConnectionIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding", id, state, "", opts...)
+}
+
 type connectionIAMBindingArgs struct {
 	Condition *ConnectionIAMBindingCondition `pulumi:"condition"`
 	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,

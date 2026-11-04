@@ -1904,6 +1904,64 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["storage_billing_model"] = storage_billing_model
         return Dataset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict', 'outputs.DatasetAccess']]]]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_collation: pulumi.Input[Optional[_builtins.str]] = None,
+            default_encryption_configuration: pulumi.Input[Optional[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict', 'outputs.DatasetDefaultEncryptionConfiguration']]] = None,
+            default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            default_rounding_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            external_catalog_dataset_options: pulumi.Input[Optional[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict', 'outputs.DatasetExternalCatalogDatasetOptions']]] = None,
+            external_dataset_reference: pulumi.Input[Optional[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict', 'outputs.DatasetExternalDatasetReference']]] = None,
+            friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+            is_case_insensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            max_time_travel_hours: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_billing_model: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accesses"] = accesses
+        __props__["creationTime"] = creation_time
+        __props__["datasetId"] = dataset_id
+        __props__["defaultCollation"] = default_collation
+        __props__["defaultEncryptionConfiguration"] = default_encryption_configuration
+        __props__["defaultPartitionExpirationMs"] = default_partition_expiration_ms
+        __props__["defaultRoundingMode"] = default_rounding_mode
+        __props__["defaultTableExpirationMs"] = default_table_expiration_ms
+        __props__["deleteContentsOnDestroy"] = delete_contents_on_destroy
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["externalCatalogDatasetOptions"] = external_catalog_dataset_options
+        __props__["externalDatasetReference"] = external_dataset_reference
+        __props__["friendlyName"] = friendly_name
+        __props__["isCaseInsensitive"] = is_case_insensitive
+        __props__["labels"] = labels
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["location"] = location
+        __props__["maxTimeTravelHours"] = max_time_travel_hours
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["resourceTags"] = resource_tags
+        __props__["selfLink"] = self_link
+        __props__["storageBillingModel"] = storage_billing_model
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/dataset:Dataset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accesses(self) -> pulumi.Output[Sequence['outputs.DatasetAccess']]:

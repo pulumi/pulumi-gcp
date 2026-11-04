@@ -263,6 +263,12 @@ func (CustomConstraintState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customConstraintState)(nil)).Elem()
 }
 
+// CustomConstraintExists checks whether an existing CustomConstraint resource with the given ID exists.
+func CustomConstraintExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomConstraintState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:orgpolicy/customConstraint:CustomConstraint", id, state, "", opts...)
+}
+
 type customConstraintArgs struct {
 	// The action to take if the condition is met.
 	// Possible values are: `ALLOW`, `DENY`.

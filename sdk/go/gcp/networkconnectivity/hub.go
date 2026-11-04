@@ -409,6 +409,12 @@ func (HubState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hubState)(nil)).Elem()
 }
 
+// HubExists checks whether an existing Hub resource with the given ID exists.
+func HubExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HubState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkconnectivity/hub:Hub", id, state, "", opts...)
+}
+
 type hubArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

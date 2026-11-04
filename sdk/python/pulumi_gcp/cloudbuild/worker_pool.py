@@ -778,6 +778,42 @@ class WorkerPool(pulumi.CustomResource):
         __props__.__dict__["worker_config"] = worker_config
         return WorkerPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict', 'outputs.WorkerPoolNetworkConfig']]] = None,
+            private_service_connect: pulumi.Input[Optional[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict', 'outputs.WorkerPoolPrivateServiceConnect']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_config: pulumi.Input[Optional[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict', 'outputs.WorkerPoolWorkerConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["createTime"] = create_time
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["networkConfig"] = network_config
+        __props__["privateServiceConnect"] = private_service_connect
+        __props__["project"] = project
+        __props__["state"] = state
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["workerConfig"] = worker_config
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudbuild/workerPool:WorkerPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

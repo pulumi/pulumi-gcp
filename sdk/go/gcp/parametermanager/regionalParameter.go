@@ -403,6 +403,12 @@ func (RegionalParameterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionalParameterState)(nil)).Elem()
 }
 
+// RegionalParameterExists checks whether an existing RegionalParameter resource with the given ID exists.
+func RegionalParameterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionalParameterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:parametermanager/regionalParameter:RegionalParameter", id, state, "", opts...)
+}
+
 type regionalParameterArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -225,6 +225,12 @@ func (ResponsePolicyRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*responsePolicyRuleState)(nil)).Elem()
 }
 
+// ResponsePolicyRuleExists checks whether an existing ResponsePolicyRule resource with the given ID exists.
+func ResponsePolicyRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResponsePolicyRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dns/responsePolicyRule:ResponsePolicyRule", id, state, "", opts...)
+}
+
 type responsePolicyRuleArgs struct {
 	// (Optional, Beta)
 	// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'

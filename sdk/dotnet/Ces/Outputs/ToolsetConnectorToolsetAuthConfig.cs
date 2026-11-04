@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedConnectorToolsetAuthConfigOauth2AuthCodeConfig"&gt;&lt;/a&gt;The `Oauth2AuthCodeConfig` block supports:
         /// </summary>
         public readonly Outputs.ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig? Oauth2JwtBearerConfig;

@@ -214,6 +214,12 @@ func (HiveDatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hiveDatabaseState)(nil)).Elem()
 }
 
+// HiveDatabaseExists checks whether an existing HiveDatabase resource with the given ID exists.
+func HiveDatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HiveDatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/hiveDatabase:HiveDatabase", id, state, "", opts...)
+}
+
 type hiveDatabaseArgs struct {
 	// Hive catalog where the database to create is located.
 	Catalog string `pulumi:"catalog"`

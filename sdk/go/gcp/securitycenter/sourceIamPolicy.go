@@ -137,6 +137,12 @@ func (SourceIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceIamPolicyState)(nil)).Elem()
 }
 
+// SourceIamPolicyExists checks whether an existing SourceIamPolicy resource with the given ID exists.
+func SourceIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SourceIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/sourceIamPolicy:SourceIamPolicy", id, state, "", opts...)
+}
+
 type sourceIamPolicyArgs struct {
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.

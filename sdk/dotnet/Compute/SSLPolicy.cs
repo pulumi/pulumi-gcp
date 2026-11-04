@@ -151,8 +151,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The minimum version of SSL protocol that can be used by the clients
-        /// to establish a connection with the load balancer. When set to`
-        /// TLS_1_3`, the profile field must be set to `RESTRICTED`.
+        /// to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
         /// Default value is `TLS_1_0`.
         /// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         /// </summary>
@@ -300,8 +299,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The minimum version of SSL protocol that can be used by the clients
-        /// to establish a connection with the load balancer. When set to`
-        /// TLS_1_3`, the profile field must be set to `RESTRICTED`.
+        /// to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
         /// Default value is `TLS_1_0`.
         /// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         /// </summary>
@@ -430,8 +428,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The minimum version of SSL protocol that can be used by the clients
-        /// to establish a connection with the load balancer. When set to`
-        /// TLS_1_3`, the profile field must be set to `RESTRICTED`.
+        /// to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
         /// Default value is `TLS_1_0`.
         /// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         /// </summary>

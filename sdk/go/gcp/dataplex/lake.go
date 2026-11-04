@@ -247,6 +247,12 @@ func (LakeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lakeState)(nil)).Elem()
 }
 
+// LakeExists checks whether an existing Lake resource with the given ID exists.
+func LakeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LakeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/lake:Lake", id, state, "", opts...)
+}
+
 type lakeArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

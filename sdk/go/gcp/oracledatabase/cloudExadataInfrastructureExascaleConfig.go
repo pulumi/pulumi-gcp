@@ -186,6 +186,12 @@ func (CloudExadataInfrastructureExascaleConfigState) ElementType() reflect.Type 
 	return reflect.TypeOf((*cloudExadataInfrastructureExascaleConfigState)(nil)).Elem()
 }
 
+// CloudExadataInfrastructureExascaleConfigExists checks whether an existing CloudExadataInfrastructureExascaleConfig resource with the given ID exists.
+func CloudExadataInfrastructureExascaleConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CloudExadataInfrastructureExascaleConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig", id, state, "", opts...)
+}
+
 type cloudExadataInfrastructureExascaleConfigArgs struct {
 	// A reference to CloudExadataInfrastructure resource
 	CloudExadataInfrastructure string `pulumi:"cloudExadataInfrastructure"`

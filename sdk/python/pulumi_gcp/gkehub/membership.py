@@ -731,6 +731,32 @@ class Membership(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         return Membership(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authority: pulumi.Input[Optional[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict', 'outputs.MembershipAuthority']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint: pulumi.Input[Optional[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict', 'outputs.MembershipEndpoint']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            membership_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authority"] = authority
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["endpoint"] = endpoint
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["membershipId"] = membership_id
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        return pulumi.runtime.exists_resource(None, 'gcp:gkehub/membership:Membership', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def authority(self) -> pulumi.Output[Optional['outputs.MembershipAuthority']]:

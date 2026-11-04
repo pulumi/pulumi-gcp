@@ -448,6 +448,12 @@ func (TaskIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*taskIamMemberState)(nil)).Elem()
 }
 
+// TaskIamMemberExists checks whether an existing TaskIamMember resource with the given ID exists.
+func TaskIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TaskIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/taskIamMember:TaskIamMember", id, state, "", opts...)
+}
+
 type taskIamMemberArgs struct {
 	Condition *TaskIamMemberCondition `pulumi:"condition"`
 	// The lake in which the task will be created in.

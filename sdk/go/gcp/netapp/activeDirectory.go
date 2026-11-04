@@ -374,6 +374,12 @@ func (ActiveDirectoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*activeDirectoryState)(nil)).Elem()
 }
 
+// ActiveDirectoryExists checks whether an existing ActiveDirectory resource with the given ID exists.
+func ActiveDirectoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ActiveDirectoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:netapp/activeDirectory:ActiveDirectory", id, state, "", opts...)
+}
+
 type activeDirectoryArgs struct {
 	// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
 	Administrators []string `pulumi:"administrators"`

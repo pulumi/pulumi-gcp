@@ -1512,6 +1512,56 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["target_tags"] = target_tags
         return Firewall(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict', 'outputs.FirewallAllow']]]]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            denies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict', 'outputs.FirewallDeny']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+            log_config: pulumi.Input[Optional[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict', 'outputs.FirewallLogConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['FirewallParamsArgs', 'FirewallParamsArgsDict', 'outputs.FirewallParams']]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            source_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allows"] = allows
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["denies"] = denies
+        __props__["description"] = description
+        __props__["destinationRanges"] = destination_ranges
+        __props__["direction"] = direction
+        __props__["disabled"] = disabled
+        __props__["enableLogging"] = enable_logging
+        __props__["firewallId"] = firewall_id
+        __props__["logConfig"] = log_config
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["params"] = params
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        __props__["sourceRanges"] = source_ranges
+        __props__["sourceServiceAccounts"] = source_service_accounts
+        __props__["sourceTags"] = source_tags
+        __props__["targetServiceAccounts"] = target_service_accounts
+        __props__["targetTags"] = target_tags
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/firewall:Firewall', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def allows(self) -> pulumi.Output[Optional[Sequence['outputs.FirewallAllow']]]:

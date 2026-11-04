@@ -282,9 +282,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
         /// <summary>
         /// The organization for the resource
         /// 
-        /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
@@ -465,9 +463,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
         /// <summary>
         /// The organization for the resource
         /// 
-        /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
@@ -663,9 +659,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
         /// <summary>
         /// The organization for the resource
         /// 
-        /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }

@@ -545,6 +545,26 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["time_zone"] = time_zone
         return Dataset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict', 'outputs.DatasetEncryptionSpec']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["encryptionSpec"] = encryption_spec
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        __props__["timeZone"] = time_zone
+        return pulumi.runtime.exists_resource(None, 'gcp:healthcare/dataset:Dataset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

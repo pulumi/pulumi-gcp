@@ -1822,6 +1822,38 @@ class CxFlow(pulumi.CustomResource):
         __props__.__dict__["transition_routes"] = transition_routes
         return CxFlow(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_settings: pulumi.Input[Optional[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict', 'outputs.CxFlowAdvancedSettings']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict', 'outputs.CxFlowEventHandler']]]]] = None,
+            is_default_start_flow: pulumi.Input[Optional[_builtins.bool]] = None,
+            knowledge_connector_settings: pulumi.Input[Optional[Union['CxFlowKnowledgeConnectorSettingsArgs', 'CxFlowKnowledgeConnectorSettingsArgsDict', 'outputs.CxFlowKnowledgeConnectorSettings']]] = None,
+            language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nlu_settings: pulumi.Input[Optional[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict', 'outputs.CxFlowNluSettings']]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            transition_route_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict', 'outputs.CxFlowTransitionRoute']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advancedSettings"] = advanced_settings
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["eventHandlers"] = event_handlers
+        __props__["isDefaultStartFlow"] = is_default_start_flow
+        __props__["knowledgeConnectorSettings"] = knowledge_connector_settings
+        __props__["languageCode"] = language_code
+        __props__["name"] = name
+        __props__["nluSettings"] = nlu_settings
+        __props__["parent"] = parent
+        __props__["transitionRouteGroups"] = transition_route_groups
+        __props__["transitionRoutes"] = transition_routes
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/cxFlow:CxFlow', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advancedSettings")
     def advanced_settings(self) -> pulumi.Output[Optional['outputs.CxFlowAdvancedSettings']]:

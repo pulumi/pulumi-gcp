@@ -499,6 +499,22 @@ class AutokeyConfig(pulumi.CustomResource):
         __props__.__dict__["key_project_resolution_mode"] = key_project_resolution_mode
         return AutokeyConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            key_project: pulumi.Input[Optional[_builtins.str]] = None,
+            key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["etag"] = etag
+        __props__["folder"] = folder
+        __props__["keyProject"] = key_project
+        __props__["keyProjectResolutionMode"] = key_project_resolution_mode
+        return pulumi.runtime.exists_resource(None, 'gcp:kms/autokeyConfig:AutokeyConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

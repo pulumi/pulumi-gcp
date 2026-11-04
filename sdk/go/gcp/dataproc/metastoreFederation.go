@@ -350,6 +350,12 @@ func (MetastoreFederationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreFederationState)(nil)).Elem()
 }
 
+// MetastoreFederationExists checks whether an existing MetastoreFederation resource with the given ID exists.
+func MetastoreFederationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreFederationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/metastoreFederation:MetastoreFederation", id, state, "", opts...)
+}
+
 type metastoreFederationArgs struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.

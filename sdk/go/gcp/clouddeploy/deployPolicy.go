@@ -422,6 +422,12 @@ func (DeployPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deployPolicyState)(nil)).Elem()
 }
 
+// DeployPolicyExists checks whether an existing DeployPolicy resource with the given ID exists.
+func DeployPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeployPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddeploy/deployPolicy:DeployPolicy", id, state, "", opts...)
+}
+
 type deployPolicyArgs struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

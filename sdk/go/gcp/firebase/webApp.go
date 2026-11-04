@@ -295,6 +295,12 @@ func (WebAppState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webAppState)(nil)).Elem()
 }
 
+// WebAppExists checks whether an existing WebApp resource with the given ID exists.
+func WebAppExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebAppState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/webApp:WebApp", id, state, "", opts...)
+}
+
 type webAppArgs struct {
 	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
 	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.

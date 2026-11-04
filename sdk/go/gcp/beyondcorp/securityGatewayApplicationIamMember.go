@@ -670,6 +670,12 @@ func (SecurityGatewayApplicationIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGatewayApplicationIamMemberState)(nil)).Elem()
 }
 
+// SecurityGatewayApplicationIamMemberExists checks whether an existing SecurityGatewayApplicationIamMember resource with the given ID exists.
+func SecurityGatewayApplicationIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGatewayApplicationIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:beyondcorp/securityGatewayApplicationIamMember:SecurityGatewayApplicationIamMember", id, state, "", opts...)
+}
+
 type securityGatewayApplicationIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	ApplicationId string `pulumi:"applicationId"`

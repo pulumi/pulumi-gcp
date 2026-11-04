@@ -370,6 +370,12 @@ func (AiFeatureOnlineStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiFeatureOnlineStoreState)(nil)).Elem()
 }
 
+// AiFeatureOnlineStoreExists checks whether an existing AiFeatureOnlineStore resource with the given ID exists.
+func AiFeatureOnlineStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiFeatureOnlineStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore", id, state, "", opts...)
+}
+
 type aiFeatureOnlineStoreArgs struct {
 	// Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
 	// Structure is documented below.

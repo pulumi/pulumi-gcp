@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Kms
         /// The Google Cloud Platform location for the KeyRing.
         /// A full list of valid locations can be found by running `gcloud kms locations list`.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.Kms
         /// The Google Cloud Platform location for the KeyRing.
         /// A full list of valid locations can be found by running `gcloud kms locations list`.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

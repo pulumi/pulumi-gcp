@@ -765,11 +765,10 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      * 
-     * @deprecated
-     * This field is not useful for users, and has been removed as an output.
+     * @deprecated This field is not useful for users, and has been removed as an output.
      * 
      */
-    @Deprecated /* This field is not useful for users, and has been removed as an output. */
+    @Deprecated
     @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 

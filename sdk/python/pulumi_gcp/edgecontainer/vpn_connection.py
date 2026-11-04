@@ -839,6 +839,44 @@ class VpnConnection(pulumi.CustomResource):
         __props__.__dict__["vpc_project"] = vpc_project
         return VpnConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpnConnectionDetailArgs', 'VpnConnectionDetailArgsDict', 'outputs.VpnConnectionDetail']]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_high_availability: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_project: pulumi.Input[Optional[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict', 'outputs.VpnConnectionVpcProject']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cluster"] = cluster
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["details"] = details
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableHighAvailability"] = enable_high_availability
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["natGatewayIp"] = nat_gateway_ip
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["router"] = router
+        __props__["updateTime"] = update_time
+        __props__["vpc"] = vpc
+        __props__["vpcProject"] = vpc_project
+        return pulumi.runtime.exists_resource(None, 'gcp:edgecontainer/vpnConnection:VpnConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cluster(self) -> pulumi.Output[_builtins.str]:

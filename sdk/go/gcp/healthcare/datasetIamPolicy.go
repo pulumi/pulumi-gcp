@@ -267,6 +267,12 @@ func (DatasetIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetIamPolicyState)(nil)).Elem()
 }
 
+// DatasetIamPolicyExists checks whether an existing DatasetIamPolicy resource with the given ID exists.
+func DatasetIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatasetIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/datasetIamPolicy:DatasetIamPolicy", id, state, "", opts...)
+}
+
 type datasetIamPolicyArgs struct {
 	// The dataset ID, in the form
 	// `{project_id}/{location_name}/{dataset_name}` or

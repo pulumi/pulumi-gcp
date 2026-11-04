@@ -361,6 +361,12 @@ func (SecurityActionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityActionState)(nil)).Elem()
 }
 
+// SecurityActionExists checks whether an existing SecurityAction resource with the given ID exists.
+func SecurityActionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityActionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/securityAction:SecurityAction", id, state, "", opts...)
+}
+
 type securityActionArgs struct {
 	// Allow a request through if it matches this SecurityAction.
 	Allow *SecurityActionAllow `pulumi:"allow"`

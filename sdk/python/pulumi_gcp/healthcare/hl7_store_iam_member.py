@@ -507,6 +507,22 @@ class Hl7StoreIamMember(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return Hl7StoreIamMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: pulumi.Input[Optional[Union['Hl7StoreIamMemberConditionArgs', 'Hl7StoreIamMemberConditionArgsDict', 'outputs.Hl7StoreIamMemberCondition']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            hl7_v2_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["condition"] = condition
+        __props__["etag"] = etag
+        __props__["hl7V2StoreId"] = hl7_v2_store_id
+        __props__["member"] = member
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.Hl7StoreIamMemberCondition']]:

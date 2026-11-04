@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name of the parent reservation.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("reservation", required: true)]
         public string Reservation { get; set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name of the parent reservation.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("reservation", required: true)]
         public Input<string> Reservation { get; set; } = null!;

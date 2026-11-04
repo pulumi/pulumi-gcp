@@ -268,6 +268,12 @@ func (FolderSinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderSinkState)(nil)).Elem()
 }
 
+// FolderSinkExists checks whether an existing FolderSink resource with the given ID exists.
+func FolderSinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderSinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/folderSink:FolderSink", id, state, "", opts...)
+}
+
 type folderSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *FolderSinkBigqueryOptions `pulumi:"bigqueryOptions"`

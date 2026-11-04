@@ -385,6 +385,24 @@ class SubAccount(pulumi.CustomResource):
         __props__.__dict__["open"] = open
         return SubAccount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            billing_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            master_billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["billingAccountId"] = billing_account_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["masterBillingAccount"] = master_billing_account
+        __props__["name"] = name
+        __props__["open"] = open
+        return pulumi.runtime.exists_resource(None, 'gcp:billing/subAccount:SubAccount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="billingAccountId")
     def billing_account_id(self) -> pulumi.Output[_builtins.str]:

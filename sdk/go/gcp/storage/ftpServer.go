@@ -291,6 +291,12 @@ func (FtpServerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ftpServerState)(nil)).Elem()
 }
 
+// FtpServerExists checks whether an existing FtpServer resource with the given ID exists.
+func FtpServerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FtpServerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/ftpServer:FtpServer", id, state, "", opts...)
+}
+
 type ftpServerArgs struct {
 	// The access type for this SFTP server. Possible values: INTERNAL, EXTERNAL
 	// Possible values are: `INTERNAL`, `EXTERNAL`.

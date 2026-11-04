@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// * Ends with a non-hyphen character
         /// * Not formatted as a UUID
         /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-        /// (section 3.5)
+        ///   (section 3.5)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -348,7 +348,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// * Ends with a non-hyphen character
         /// * Not formatted as a UUID
         /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-        /// (section 3.5)
+        ///   (section 3.5)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -426,7 +426,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// * Ends with a non-hyphen character
         /// * Not formatted as a UUID
         /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-        /// (section 3.5)
+        ///   (section 3.5)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

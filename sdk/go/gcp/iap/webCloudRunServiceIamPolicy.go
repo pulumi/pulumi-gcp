@@ -619,6 +619,12 @@ func (WebCloudRunServiceIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webCloudRunServiceIamPolicyState)(nil)).Elem()
 }
 
+// WebCloudRunServiceIamPolicyExists checks whether an existing WebCloudRunServiceIamPolicy resource with the given ID exists.
+func WebCloudRunServiceIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebCloudRunServiceIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/webCloudRunServiceIamPolicy:WebCloudRunServiceIamPolicy", id, state, "", opts...)
+}
+
 type webCloudRunServiceIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudRunServiceName string `pulumi:"cloudRunServiceName"`

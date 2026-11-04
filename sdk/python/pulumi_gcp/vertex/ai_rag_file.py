@@ -1156,6 +1156,44 @@ class AiRagFile(pulumi.CustomResource):
         __props__.__dict__["user_metadata"] = user_metadata
         return AiRagFile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            file_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiRagFileFileStatusArgs', 'AiRagFileFileStatusArgsDict', 'outputs.AiRagFileFileStatus']]]]] = None,
+            gcs_source: pulumi.Input[Optional[Union['AiRagFileGcsSourceArgs', 'AiRagFileGcsSourceArgsDict', 'outputs.AiRagFileGcsSource']]] = None,
+            google_drive_source: pulumi.Input[Optional[Union['AiRagFileGoogleDriveSourceArgs', 'AiRagFileGoogleDriveSourceArgsDict', 'outputs.AiRagFileGoogleDriveSource']]] = None,
+            max_embedding_requests_per_min: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rag_corpus: pulumi.Input[Optional[_builtins.str]] = None,
+            rag_file_parsing_config: pulumi.Input[Optional[Union['AiRagFileRagFileParsingConfigArgs', 'AiRagFileRagFileParsingConfigArgsDict', 'outputs.AiRagFileRagFileParsingConfig']]] = None,
+            rag_file_transformation_config: pulumi.Input[Optional[Union['AiRagFileRagFileTransformationConfigArgs', 'AiRagFileRagFileTransformationConfigArgsDict', 'outputs.AiRagFileRagFileTransformationConfig']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            user_metadata: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["fileStatuses"] = file_statuses
+        __props__["gcsSource"] = gcs_source
+        __props__["googleDriveSource"] = google_drive_source
+        __props__["maxEmbeddingRequestsPerMin"] = max_embedding_requests_per_min
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["ragCorpus"] = rag_corpus
+        __props__["ragFileParsingConfig"] = rag_file_parsing_config
+        __props__["ragFileTransformationConfig"] = rag_file_transformation_config
+        __props__["region"] = region
+        __props__["updateTime"] = update_time
+        __props__["userMetadata"] = user_metadata
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiRagFile:AiRagFile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

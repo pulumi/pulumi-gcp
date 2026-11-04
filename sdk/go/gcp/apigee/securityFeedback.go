@@ -290,6 +290,12 @@ func (SecurityFeedbackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityFeedbackState)(nil)).Elem()
 }
 
+// SecurityFeedbackExists checks whether an existing SecurityFeedback resource with the given ID exists.
+func SecurityFeedbackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityFeedbackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/securityFeedback:SecurityFeedback", id, state, "", opts...)
+}
+
 type securityFeedbackArgs struct {
 	// Optional text the user can provide for additional, unstructured context.
 	Comment *string `pulumi:"comment"`

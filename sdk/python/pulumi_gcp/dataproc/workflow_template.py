@@ -1054,6 +1054,42 @@ class WorkflowTemplate(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return WorkflowTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dag_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_config: pulumi.Input[Optional[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict', 'outputs.WorkflowTemplateEncryptionConfig']]] = None,
+            jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict', 'outputs.WorkflowTemplateJob']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict', 'outputs.WorkflowTemplateParameter']]]]] = None,
+            placement: pulumi.Input[Optional[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict', 'outputs.WorkflowTemplatePlacement']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dagTimeout"] = dag_timeout
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptionConfig"] = encryption_config
+        __props__["jobs"] = jobs
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["parameters"] = parameters
+        __props__["placement"] = placement
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["updateTime"] = update_time
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'gcp:dataproc/workflowTemplate:WorkflowTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

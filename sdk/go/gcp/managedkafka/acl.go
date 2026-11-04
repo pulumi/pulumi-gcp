@@ -271,6 +271,12 @@ func (AclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclState)(nil)).Elem()
 }
 
+// AclExists checks whether an existing Acl resource with the given ID exists.
+func AclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:managedkafka/acl:Acl", id, state, "", opts...)
+}
+
 type aclArgs struct {
 	// The acl entries that apply to the resource pattern. The maximum number of allowed entries is 100.
 	// Structure is documented below.

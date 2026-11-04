@@ -392,6 +392,12 @@ func (PolicyTagIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyTagIamMemberState)(nil)).Elem()
 }
 
+// PolicyTagIamMemberExists checks whether an existing PolicyTagIamMember resource with the given ID exists.
+func PolicyTagIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicyTagIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datacatalog/policyTagIamMember:PolicyTagIamMember", id, state, "", opts...)
+}
+
 type policyTagIamMemberArgs struct {
 	Condition *PolicyTagIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

@@ -307,6 +307,12 @@ func (TenantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantState)(nil)).Elem()
 }
 
+// TenantExists checks whether an existing Tenant resource with the given ID exists.
+func TenantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TenantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:saasruntime/tenant:Tenant", id, state, "", opts...)
+}
+
 type tenantArgs struct {
 	// Annotations is an unstructured key-value map stored with a resource that
 	// may be set by external tools to store and retrieve arbitrary metadata.

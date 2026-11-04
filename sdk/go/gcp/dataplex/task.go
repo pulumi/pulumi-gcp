@@ -524,6 +524,12 @@ func (TaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*taskState)(nil)).Elem()
 }
 
+// TaskExists checks whether an existing Task resource with the given ID exists.
+func TaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/task:Task", id, state, "", opts...)
+}
+
 type taskArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -673,6 +673,12 @@ func (InstanceIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIAMBindingState)(nil)).Elem()
 }
 
+// InstanceIAMBindingExists checks whether an existing InstanceIAMBinding resource with the given ID exists.
+func InstanceIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instanceIAMBinding:InstanceIAMBinding", id, state, "", opts...)
+}
+
 type instanceIAMBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

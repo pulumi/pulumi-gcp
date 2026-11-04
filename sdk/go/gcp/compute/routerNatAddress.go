@@ -162,6 +162,12 @@ func (RouterNatAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerNatAddressState)(nil)).Elem()
 }
 
+// RouterNatAddressExists checks whether an existing RouterNatAddress resource with the given ID exists.
+func RouterNatAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterNatAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/routerNatAddress:RouterNatAddress", id, state, "", opts...)
+}
+
 type routerNatAddressArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

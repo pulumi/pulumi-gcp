@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
         /// * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
         /// * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
-        /// or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+        ///   or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
         /// </summary>
         public InputList<string> Resources
         {

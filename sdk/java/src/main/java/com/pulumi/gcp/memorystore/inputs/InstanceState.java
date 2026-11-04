@@ -213,22 +213,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
      * 
-     * @deprecated
-     * `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
+     * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      * 
      */
-    @Deprecated /* `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`. */
+    @Deprecated
     @Import(name="desiredPscAutoConnections")
     private @Nullable Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections;
 
     /**
      * @return `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
      * 
-     * @deprecated
-     * `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
+     * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      * 
      */
-    @Deprecated /* `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`. */
+    @Deprecated
     public Optional<Output<List<InstanceDesiredPscAutoConnectionArgs>>> desiredPscAutoConnections() {
         return Optional.ofNullable(this.desiredPscAutoConnections);
     }
@@ -238,11 +236,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Deprecated. Output only. Endpoints clients can connect to the instance through.
      * Structure is documented below.
      * 
-     * @deprecated
-     * This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
+     * @deprecated This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      * 
      */
-    @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
+    @Deprecated
     @Import(name="discoveryEndpoints")
     private @Nullable Output<List<InstanceDiscoveryEndpointArgs>> discoveryEndpoints;
 
@@ -251,11 +248,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Deprecated. Output only. Endpoints clients can connect to the instance through.
      * Structure is documented below.
      * 
-     * @deprecated
-     * This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
+     * @deprecated This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      * 
      */
-    @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
+    @Deprecated
     public Optional<Output<List<InstanceDiscoveryEndpointArgs>>> discoveryEndpoints() {
         return Optional.ofNullable(this.discoveryEndpoints);
     }
@@ -682,11 +678,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Output only. User inputs and resource details of the auto-created PSC connections.
      * Structure is documented below.
      * 
-     * @deprecated
-     * `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
+     * @deprecated `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
      * 
      */
-    @Deprecated /* `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead. */
+    @Deprecated
     @Import(name="pscAutoConnections")
     private @Nullable Output<List<InstancePscAutoConnectionArgs>> pscAutoConnections;
 
@@ -695,11 +690,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Output only. User inputs and resource details of the auto-created PSC connections.
      * Structure is documented below.
      * 
-     * @deprecated
-     * `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
+     * @deprecated `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
      * 
      */
-    @Deprecated /* `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead. */
+    @Deprecated
     public Optional<Output<List<InstancePscAutoConnectionArgs>>> pscAutoConnections() {
         return Optional.ofNullable(this.pscAutoConnections);
     }
@@ -1228,11 +1222,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
+         * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
          * 
          */
-        @Deprecated /* `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`. */
+        @Deprecated
         public Builder desiredPscAutoConnections(@Nullable Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections) {
             $.desiredPscAutoConnections = desiredPscAutoConnections;
             return this;
@@ -1243,11 +1236,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
+         * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
          * 
          */
-        @Deprecated /* `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`. */
+        @Deprecated
         public Builder desiredPscAutoConnections(List<InstanceDesiredPscAutoConnectionArgs> desiredPscAutoConnections) {
             return desiredPscAutoConnections(Output.of(desiredPscAutoConnections));
         }
@@ -1257,11 +1249,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
+         * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
          * 
          */
-        @Deprecated /* `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`. */
+        @Deprecated
         public Builder desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs... desiredPscAutoConnections) {
             return desiredPscAutoConnections(List.of(desiredPscAutoConnections));
         }
@@ -1273,11 +1264,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
+         * @deprecated This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
          * 
          */
-        @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
+        @Deprecated
         public Builder discoveryEndpoints(@Nullable Output<List<InstanceDiscoveryEndpointArgs>> discoveryEndpoints) {
             $.discoveryEndpoints = discoveryEndpoints;
             return this;
@@ -1290,11 +1280,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
+         * @deprecated This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
          * 
          */
-        @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
+        @Deprecated
         public Builder discoveryEndpoints(List<InstanceDiscoveryEndpointArgs> discoveryEndpoints) {
             return discoveryEndpoints(Output.of(discoveryEndpoints));
         }
@@ -1306,11 +1295,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
+         * @deprecated This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
          * 
          */
-        @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
+        @Deprecated
         public Builder discoveryEndpoints(InstanceDiscoveryEndpointArgs... discoveryEndpoints) {
             return discoveryEndpoints(List.of(discoveryEndpoints));
         }
@@ -1932,11 +1920,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
+         * @deprecated `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
          * 
          */
-        @Deprecated /* `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead. */
+        @Deprecated
         public Builder pscAutoConnections(@Nullable Output<List<InstancePscAutoConnectionArgs>> pscAutoConnections) {
             $.pscAutoConnections = pscAutoConnections;
             return this;
@@ -1949,11 +1936,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
+         * @deprecated `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
          * 
          */
-        @Deprecated /* `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead. */
+        @Deprecated
         public Builder pscAutoConnections(List<InstancePscAutoConnectionArgs> pscAutoConnections) {
             return pscAutoConnections(Output.of(pscAutoConnections));
         }
@@ -1965,11 +1951,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
+         * @deprecated `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
          * 
          */
-        @Deprecated /* `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead. */
+        @Deprecated
         public Builder pscAutoConnections(InstancePscAutoConnectionArgs... pscAutoConnections) {
             return pscAutoConnections(List.of(pscAutoConnections));
         }

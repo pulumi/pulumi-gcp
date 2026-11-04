@@ -327,6 +327,12 @@ func (DataExchangeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataExchangeState)(nil)).Elem()
 }
 
+// DataExchangeExists checks whether an existing DataExchange resource with the given ID exists.
+func DataExchangeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataExchangeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigqueryanalyticshub/dataExchange:DataExchange", id, state, "", opts...)
+}
+
 type dataExchangeArgs struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId string `pulumi:"dataExchangeId"`

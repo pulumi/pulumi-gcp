@@ -338,6 +338,12 @@ func (RepositoryReleaseConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryReleaseConfigState)(nil)).Elem()
 }
 
+// RepositoryReleaseConfigExists checks whether an existing RepositoryReleaseConfig resource with the given ID exists.
+func RepositoryReleaseConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryReleaseConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig", id, state, "", opts...)
+}
+
 type repositoryReleaseConfigArgs struct {
 	// Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
 	// Structure is documented below.

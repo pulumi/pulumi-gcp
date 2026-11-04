@@ -2938,6 +2938,74 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["workstation_config_id"] = workstation_config_id
         return WorkstationConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationConfigAllowedPortArgs', 'WorkstationConfigAllowedPortArgsDict', 'outputs.WorkstationConfigAllowedPort']]]]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationConfigConditionArgs', 'WorkstationConfigConditionArgsDict', 'outputs.WorkstationConfigCondition']]]]] = None,
+            container: pulumi.Input[Optional[Union['WorkstationConfigContainerArgs', 'WorkstationConfigContainerArgsDict', 'outputs.WorkstationConfigContainer']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            degraded: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_tcp_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_audit_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_key: pulumi.Input[Optional[Union['WorkstationConfigEncryptionKeyArgs', 'WorkstationConfigEncryptionKeyArgsDict', 'outputs.WorkstationConfigEncryptionKey']]] = None,
+            ephemeral_directories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationConfigEphemeralDirectoryArgs', 'WorkstationConfigEphemeralDirectoryArgsDict', 'outputs.WorkstationConfigEphemeralDirectory']]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[Union['WorkstationConfigHostArgs', 'WorkstationConfigHostArgsDict', 'outputs.WorkstationConfigHost']]] = None,
+            idle_action: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            max_usable_workstations: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            persistent_directories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationConfigPersistentDirectoryArgs', 'WorkstationConfigPersistentDirectoryArgsDict', 'outputs.WorkstationConfigPersistentDirectory']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            readiness_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationConfigReadinessCheckArgs', 'WorkstationConfigReadinessCheckArgsDict', 'outputs.WorkstationConfigReadinessCheck']]]]] = None,
+            replica_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            running_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workstation_config_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedPorts"] = allowed_ports
+        __props__["annotations"] = annotations
+        __props__["conditions"] = conditions
+        __props__["container"] = container
+        __props__["createTime"] = create_time
+        __props__["degraded"] = degraded
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disableTcpConnections"] = disable_tcp_connections
+        __props__["displayName"] = display_name
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableAuditAgent"] = enable_audit_agent
+        __props__["encryptionKey"] = encryption_key
+        __props__["ephemeralDirectories"] = ephemeral_directories
+        __props__["etag"] = etag
+        __props__["host"] = host
+        __props__["idleAction"] = idle_action
+        __props__["idleTimeout"] = idle_timeout
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["maxUsableWorkstations"] = max_usable_workstations
+        __props__["name"] = name
+        __props__["persistentDirectories"] = persistent_directories
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["readinessChecks"] = readiness_checks
+        __props__["replicaZones"] = replica_zones
+        __props__["runningTimeout"] = running_timeout
+        __props__["uid"] = uid
+        __props__["workstationClusterId"] = workstation_cluster_id
+        __props__["workstationConfigId"] = workstation_config_id
+        return pulumi.runtime.exists_resource(None, 'gcp:workstations/workstationConfig:WorkstationConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedPorts")
     def allowed_ports(self) -> pulumi.Output[Sequence['outputs.WorkstationConfigAllowedPort']]:

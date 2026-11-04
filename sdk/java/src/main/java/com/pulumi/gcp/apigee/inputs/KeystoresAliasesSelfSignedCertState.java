@@ -21,7 +21,7 @@ public final class KeystoresAliasesSelfSignedCertState extends com.pulumi.resour
     public static final KeystoresAliasesSelfSignedCertState Empty = new KeystoresAliasesSelfSignedCertState();
 
     /**
-     * Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+     * Alias for the key/certificate pair. Values must match the regular expression [&#92;w&#92;s-.]{1,255}.
      * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
      * this parameter or the JSON body.
      * 
@@ -30,7 +30,7 @@ public final class KeystoresAliasesSelfSignedCertState extends com.pulumi.resour
     private @Nullable Output<String> alias;
 
     /**
-     * @return Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+     * @return Alias for the key/certificate pair. Values must match the regular expression [&#92;w&#92;s-.]{1,255}.
      * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
      * this parameter or the JSON body.
      * 
@@ -256,7 +256,7 @@ public final class KeystoresAliasesSelfSignedCertState extends com.pulumi.resour
         }
 
         /**
-         * @param alias Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+         * @param alias Alias for the key/certificate pair. Values must match the regular expression [&#92;w&#92;s-.]{1,255}.
          * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
          * this parameter or the JSON body.
          * 
@@ -269,7 +269,7 @@ public final class KeystoresAliasesSelfSignedCertState extends com.pulumi.resour
         }
 
         /**
-         * @param alias Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+         * @param alias Alias for the key/certificate pair. Values must match the regular expression [&#92;w&#92;s-.]{1,255}.
          * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
          * this parameter or the JSON body.
          * 

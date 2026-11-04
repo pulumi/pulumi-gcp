@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
+        /// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
         /// </summary>
         [Input("nodeGroup", required: true)]
         public Input<string> NodeGroup { get; set; } = null!;

@@ -288,6 +288,12 @@ func (TargetServerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetServerState)(nil)).Elem()
 }
 
+// TargetServerExists checks whether an existing TargetServer resource with the given ID exists.
+func TargetServerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetServerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/targetServer:TargetServer", id, state, "", opts...)
+}
+
 type targetServerArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

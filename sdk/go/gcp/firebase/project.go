@@ -148,6 +148,12 @@ func (ProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectState)(nil)).Elem()
 }
 
+// ProjectExists checks whether an existing Project resource with the given ID exists.
+func ProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/project:Project", id, state, "", opts...)
+}
+
 type projectArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -191,6 +191,12 @@ func (DomainMappingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainMappingState)(nil)).Elem()
 }
 
+// DomainMappingExists checks whether an existing DomainMapping resource with the given ID exists.
+func DomainMappingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainMappingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:appengine/domainMapping:DomainMapping", id, state, "", opts...)
+}
+
 type domainMappingArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

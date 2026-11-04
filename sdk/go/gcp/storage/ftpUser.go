@@ -287,6 +287,12 @@ func (FtpUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ftpUserState)(nil)).Elem()
 }
 
+// FtpUserExists checks whether an existing FtpUser resource with the given ID exists.
+func FtpUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FtpUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/ftpUser:FtpUser", id, state, "", opts...)
+}
+
 type ftpUserArgs struct {
 	// The email address of the service account associated with the user.
 	CustomerServiceAccount string `pulumi:"customerServiceAccount"`

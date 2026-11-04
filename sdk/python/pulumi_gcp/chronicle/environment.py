@@ -1090,6 +1090,52 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["weight"] = weight
         return Environment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aliases_json: pulumi.Input[Optional[_builtins.str]] = None,
+            base64_image: pulumi.Input[Optional[_builtins.str]] = None,
+            contact: pulumi.Input[Optional[_builtins.str]] = None,
+            contact_emails: pulumi.Input[Optional[_builtins.str]] = None,
+            contact_phone: pulumi.Input[Optional[_builtins.str]] = None,
+            data_access_scopes_json: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dynamic_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentDynamicParameterArgs', 'EnvironmentDynamicParameterArgsDict', 'outputs.EnvironmentDynamicParameter']]]]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parallel_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aliasesJson"] = aliases_json
+        __props__["base64Image"] = base64_image
+        __props__["contact"] = contact
+        __props__["contactEmails"] = contact_emails
+        __props__["contactPhone"] = contact_phone
+        __props__["dataAccessScopesJson"] = data_access_scopes_json
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["dynamicParameters"] = dynamic_parameters
+        __props__["environmentId"] = environment_id
+        __props__["instance"] = instance
+        __props__["instanceUri"] = instance_uri
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["parallelInstance"] = parallel_instance
+        __props__["project"] = project
+        __props__["retentionDuration"] = retention_duration
+        __props__["weight"] = weight
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/environment:Environment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aliasesJson")
     def aliases_json(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -1445,6 +1445,60 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_replica_state: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_services: pulumi.Input[Optional[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict', 'outputs.InstanceDirectoryServices']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_replications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict', 'outputs.InstanceEffectiveReplication']]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            file_shares: pulumi.Input[Optional[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict', 'outputs.InstanceFileShares']]] = None,
+            initial_replication: pulumi.Input[Optional[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict', 'outputs.InstanceInitialReplication']]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict', 'outputs.InstanceNetwork']]]]] = None,
+            performance_config: pulumi.Input[Optional[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict', 'outputs.InstancePerformanceConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtectionEnabled"] = deletion_protection_enabled
+        __props__["deletionProtectionReason"] = deletion_protection_reason
+        __props__["description"] = description
+        __props__["desiredReplicaState"] = desired_replica_state
+        __props__["directoryServices"] = directory_services
+        __props__["effectiveLabels"] = effective_labels
+        __props__["effectiveReplications"] = effective_replications
+        __props__["etag"] = etag
+        __props__["fileShares"] = file_shares
+        __props__["initialReplication"] = initial_replication
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["performanceConfig"] = performance_config
+        __props__["project"] = project
+        __props__["protocol"] = protocol
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["tags"] = tags
+        __props__["tier"] = tier
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:filestore/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

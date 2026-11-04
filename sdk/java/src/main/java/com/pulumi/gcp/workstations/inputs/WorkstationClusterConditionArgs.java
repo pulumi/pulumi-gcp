@@ -39,11 +39,10 @@ public final class WorkstationClusterConditionArgs extends com.pulumi.resources.
      * (Output, Deprecated)
      * A list of messages that carry the error details.
      * 
-     * @deprecated
-     * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+     * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
      * 
      */
-    @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
+    @Deprecated
     @Import(name="details")
     private @Nullable Output<List<Map<String,String>>> details;
 
@@ -51,11 +50,10 @@ public final class WorkstationClusterConditionArgs extends com.pulumi.resources.
      * @return (Output, Deprecated)
      * A list of messages that carry the error details.
      * 
-     * @deprecated
-     * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+     * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
      * 
      */
-    @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
+    @Deprecated
     public Optional<Output<List<Map<String,String>>>> details() {
         return Optional.ofNullable(this.details);
     }
@@ -132,11 +130,10 @@ public final class WorkstationClusterConditionArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+         * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
          * 
          */
-        @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
+        @Deprecated
         public Builder details(@Nullable Output<List<Map<String,String>>> details) {
             $.details = details;
             return this;
@@ -148,11 +145,10 @@ public final class WorkstationClusterConditionArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+         * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
          * 
          */
-        @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
+        @Deprecated
         public Builder details(List<Map<String,String>> details) {
             return details(Output.of(details));
         }
@@ -163,11 +159,10 @@ public final class WorkstationClusterConditionArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+         * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
          * 
          */
-        @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
+        @Deprecated
         public Builder details(Map<String,String>... details) {
             return details(List.of(details));
         }

@@ -138,6 +138,12 @@ func (ConsumersIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*consumersIamPolicyState)(nil)).Elem()
 }
 
+// ConsumersIamPolicyExists checks whether an existing ConsumersIamPolicy resource with the given ID exists.
+func ConsumersIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConsumersIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy", id, state, "", opts...)
+}
+
 type consumersIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	ConsumerProject string `pulumi:"consumerProject"`

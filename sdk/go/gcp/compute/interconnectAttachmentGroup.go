@@ -246,6 +246,12 @@ func (InterconnectAttachmentGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*interconnectAttachmentGroupState)(nil)).Elem()
 }
 
+// InterconnectAttachmentGroupExists checks whether an existing InterconnectAttachmentGroup resource with the given ID exists.
+func InterconnectAttachmentGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InterconnectAttachmentGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup", id, state, "", opts...)
+}
+
 type interconnectAttachmentGroupArgs struct {
 	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
 	// strings. Users are encouraged, but not required, to use their preferred

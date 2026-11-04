@@ -380,6 +380,12 @@ func (AutoProtectionPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoProtectionPolicyState)(nil)).Elem()
 }
 
+// AutoProtectionPolicyExists checks whether an existing AutoProtectionPolicy resource with the given ID exists.
+func AutoProtectionPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutoProtectionPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:backupdisasterrecovery/autoProtectionPolicy:AutoProtectionPolicy", id, state, "", opts...)
+}
+
 type autoProtectionPolicyArgs struct {
 	// The ID of the auto protection policy. This becomes the final component of the policy's resource name.
 	AutoProtectionPolicyId string `pulumi:"autoProtectionPolicyId"`

@@ -795,6 +795,36 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return KeystoresAliasesSelfSignedCert(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_validity_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeystoresAliasesSelfSignedCertCertsInfoArgs', 'KeystoresAliasesSelfSignedCertCertsInfoArgsDict', 'outputs.KeystoresAliasesSelfSignedCertCertsInfo']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            key_size: pulumi.Input[Optional[_builtins.str]] = None,
+            keystore: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sig_alg: pulumi.Input[Optional[_builtins.str]] = None,
+            subject: pulumi.Input[Optional[Union['KeystoresAliasesSelfSignedCertSubjectArgs', 'KeystoresAliasesSelfSignedCertSubjectArgsDict', 'outputs.KeystoresAliasesSelfSignedCertSubject']]] = None,
+            subject_alternative_dns_names: pulumi.Input[Optional[Union['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs', 'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict', 'outputs.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alias"] = alias
+        __props__["certValidityInDays"] = cert_validity_in_days
+        __props__["certsInfos"] = certs_infos
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["environment"] = environment
+        __props__["keySize"] = key_size
+        __props__["keystore"] = keystore
+        __props__["orgId"] = org_id
+        __props__["sigAlg"] = sig_alg
+        __props__["subject"] = subject
+        __props__["subjectAlternativeDnsNames"] = subject_alternative_dns_names
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def alias(self) -> pulumi.Output[_builtins.str]:

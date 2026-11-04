@@ -277,6 +277,12 @@ func (ResizeRequestState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resizeRequestState)(nil)).Elem()
 }
 
+// ResizeRequestExists checks whether an existing ResizeRequest resource with the given ID exists.
+func ResizeRequestExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResizeRequestState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/resizeRequest:ResizeRequest", id, state, "", opts...)
+}
+
 type resizeRequestArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

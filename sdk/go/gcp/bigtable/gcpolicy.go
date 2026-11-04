@@ -361,6 +361,12 @@ func (GCPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpolicyState)(nil)).Elem()
 }
 
+// GCPolicyExists checks whether an existing GCPolicy resource with the given ID exists.
+func GCPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GCPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigtable/gCPolicy:GCPolicy", id, state, "", opts...)
+}
+
 type gcpolicyArgs struct {
 	// The name of the column family.
 	ColumnFamily string `pulumi:"columnFamily"`

@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the frequency of planned maintenance events. Set to one of the following:
         /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
         /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
-        /// Possible values are: `AS_NEEDED`, `RECURRENT`.
+        ///   Possible values are: `AS_NEEDED`, `RECURRENT`.
         /// </summary>
         [Output("maintenanceInterval")]
         public Output<string> MaintenanceInterval { get; private set; } = null!;
@@ -377,7 +377,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the frequency of planned maintenance events. Set to one of the following:
         /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
         /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
-        /// Possible values are: `AS_NEEDED`, `RECURRENT`.
+        ///   Possible values are: `AS_NEEDED`, `RECURRENT`.
         /// </summary>
         [Input("maintenanceInterval")]
         public Input<string>? MaintenanceInterval { get; set; }
@@ -478,7 +478,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the frequency of planned maintenance events. Set to one of the following:
         /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
         /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
-        /// Possible values are: `AS_NEEDED`, `RECURRENT`.
+        ///   Possible values are: `AS_NEEDED`, `RECURRENT`.
         /// </summary>
         [Input("maintenanceInterval")]
         public Input<string>? MaintenanceInterval { get; set; }

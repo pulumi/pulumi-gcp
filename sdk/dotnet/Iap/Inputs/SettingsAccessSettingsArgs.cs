@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Iap.Inputs
         /// <summary>
         /// GCIP claims and endpoint configurations for 3p identity providers.
         /// * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("gcipSettings")]
         public Input<Inputs.SettingsAccessSettingsGcipSettingsArgs>? GcipSettings { get; set; }
@@ -41,8 +41,8 @@ namespace Pulumi.Gcp.Iap.Inputs
         /// Identity sources that IAP can use to authenticate the end user. Only one identity source
         /// can be configured. The possible values are:
         /// * `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
-        /// Identity Federation.
-        /// Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+        ///   Identity Federation.
+        ///   Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
         /// </summary>
         public InputList<string> IdentitySources
         {

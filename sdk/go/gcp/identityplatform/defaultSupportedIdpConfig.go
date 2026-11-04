@@ -207,6 +207,12 @@ func (DefaultSupportedIdpConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultSupportedIdpConfigState)(nil)).Elem()
 }
 
+// DefaultSupportedIdpConfigExists checks whether an existing DefaultSupportedIdpConfig resource with the given ID exists.
+func DefaultSupportedIdpConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefaultSupportedIdpConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig", id, state, "", opts...)
+}
+
 type defaultSupportedIdpConfigArgs struct {
 	// OAuth client ID
 	ClientId string `pulumi:"clientId"`

@@ -244,7 +244,7 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Replication specification. Structure documented below. User should not configure `Schedule`, `EventStream` with this argument. One of `TransferSpec`, or `ReplicationSpec` must be specified.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("replicationSpec")]
         public Output<Outputs.TransferJobReplicationSpec?> ReplicationSpec { get; private set; } = null!;
@@ -370,7 +370,7 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Replication specification. Structure documented below. User should not configure `Schedule`, `EventStream` with this argument. One of `TransferSpec`, or `ReplicationSpec` must be specified.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("replicationSpec")]
         public Input<Inputs.TransferJobReplicationSpecArgs>? ReplicationSpec { get; set; }
@@ -476,7 +476,7 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Replication specification. Structure documented below. User should not configure `Schedule`, `EventStream` with this argument. One of `TransferSpec`, or `ReplicationSpec` must be specified.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("replicationSpec")]
         public Input<Inputs.TransferJobReplicationSpecGetArgs>? ReplicationSpec { get; set; }

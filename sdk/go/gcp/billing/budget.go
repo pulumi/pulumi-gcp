@@ -567,6 +567,12 @@ func (BudgetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*budgetState)(nil)).Elem()
 }
 
+// BudgetExists checks whether an existing Budget resource with the given ID exists.
+func BudgetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BudgetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:billing/budget:Budget", id, state, "", opts...)
+}
+
 type budgetArgs struct {
 	// Defines notifications that are sent on every update to the
 	// billing account's spend, regardless of the thresholds defined

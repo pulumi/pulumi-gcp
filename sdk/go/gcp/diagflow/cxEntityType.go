@@ -284,6 +284,12 @@ func (CxEntityTypeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxEntityTypeState)(nil)).Elem()
 }
 
+// CxEntityTypeExists checks whether an existing CxEntityType resource with the given ID exists.
+func CxEntityTypeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxEntityTypeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxEntityType:CxEntityType", id, state, "", opts...)
+}
+
 type cxEntityTypeArgs struct {
 	// Represents kinds of entities.
 	// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.

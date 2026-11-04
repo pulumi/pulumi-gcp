@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var basicDataStore = new DataStore("basicDataStore", DataStoreArgs.builder()
  *             .location("global")
  *             .dataStoreId("data-store-id")
@@ -67,11 +67,11 @@ import javax.annotation.Nullable;
  *             .location(basicDataStore.location())
  *             .dataStoreId(basicDataStore.dataStoreId())
  *             .schemaId("schema-id")
- *             .jsonSchema("{\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"datetime_detection\":true,\"type\":\"object\",\"geolocation_detection\":true}")
+ *             .jsonSchema("}{&#92;{@code "$schema}&#92;{@code ":}&#92;{@code "https://json-schema.org/draft/2020-12/schema}&#92;{@code ",}&#92;{@code "datetime_detection}&#92;{@code ":true,}&#92;{@code "type}&#92;{@code ":}&#92;{@code "object}&#92;{@code ",}&#92;{@code "geolocation_detection}&#92;{@code ":true}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

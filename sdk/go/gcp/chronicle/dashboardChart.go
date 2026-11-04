@@ -393,6 +393,12 @@ func (DashboardChartState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dashboardChartState)(nil)).Elem()
 }
 
+// DashboardChartExists checks whether an existing DashboardChart resource with the given ID exists.
+func DashboardChartExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DashboardChartState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/dashboardChart:DashboardChart", id, state, "", opts...)
+}
+
 type dashboardChartArgs struct {
 	// The layout of this chart within the NativeDashboard.
 	// Structure is documented below.

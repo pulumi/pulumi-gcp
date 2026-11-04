@@ -678,6 +678,34 @@ class WidgetConfig(pulumi.CustomResource):
         __props__.__dict__["widget_config_id"] = widget_config_id
         return WidgetConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_settings: pulumi.Input[Optional[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict', 'outputs.WidgetConfigAccessSettings']]] = None,
+            collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_id: pulumi.Input[Optional[_builtins.str]] = None,
+            homepage_setting: pulumi.Input[Optional[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict', 'outputs.WidgetConfigHomepageSetting']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_branding: pulumi.Input[Optional[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict', 'outputs.WidgetConfigUiBranding']]] = None,
+            ui_settings: pulumi.Input[Optional[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict', 'outputs.WidgetConfigUiSettings']]] = None,
+            widget_config_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessSettings"] = access_settings
+        __props__["collectionId"] = collection_id
+        __props__["configId"] = config_id
+        __props__["engineId"] = engine_id
+        __props__["homepageSetting"] = homepage_setting
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["uiBranding"] = ui_branding
+        __props__["uiSettings"] = ui_settings
+        __props__["widgetConfigId"] = widget_config_id
+        return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/widgetConfig:WidgetConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessSettings")
     def access_settings(self) -> pulumi.Output['outputs.WidgetConfigAccessSettings']:

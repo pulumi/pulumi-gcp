@@ -2857,6 +2857,44 @@ class RegionUrlMap(pulumi.CustomResource):
         __props__.__dict__["tests"] = tests
         return RegionUrlMap(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            default_route_action: pulumi.Input[Optional[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict', 'outputs.RegionUrlMapDefaultRouteAction']]] = None,
+            default_service: pulumi.Input[Optional[_builtins.str]] = None,
+            default_url_redirect: pulumi.Input[Optional[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict', 'outputs.RegionUrlMapDefaultUrlRedirect']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            header_action: pulumi.Input[Optional[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict', 'outputs.RegionUrlMapHeaderAction']]] = None,
+            host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict', 'outputs.RegionUrlMapHostRule']]]]] = None,
+            map_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict', 'outputs.RegionUrlMapPathMatcher']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict', 'outputs.RegionUrlMapTest']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["defaultRouteAction"] = default_route_action
+        __props__["defaultService"] = default_service
+        __props__["defaultUrlRedirect"] = default_url_redirect
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["fingerprint"] = fingerprint
+        __props__["headerAction"] = header_action
+        __props__["hostRules"] = host_rules
+        __props__["mapId"] = map_id
+        __props__["name"] = name
+        __props__["pathMatchers"] = path_matchers
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        __props__["tests"] = tests
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/regionUrlMap:RegionUrlMap', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[_builtins.str]:

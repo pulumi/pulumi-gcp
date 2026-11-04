@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Firestore
         /// and
         /// [API](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/get/).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Retrieve a document from the Firestore database.
@@ -50,7 +49,6 @@ namespace Pulumi.Gcp.Firestore
         /// and
         /// [API](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/get/).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Retrieve a document from the Firestore database.
@@ -82,7 +80,6 @@ namespace Pulumi.Gcp.Firestore
         /// See [the official documentation](https://cloud.google.com/firestore/native/docs/)
         /// and
         /// [API](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/get/).
-        /// 
         /// 
         /// ## Example Usage
         /// 

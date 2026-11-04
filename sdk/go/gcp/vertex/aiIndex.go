@@ -409,6 +409,12 @@ func (AiIndexState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiIndexState)(nil)).Elem()
 }
 
+// AiIndexExists checks whether an existing AiIndex resource with the given ID exists.
+func AiIndexExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiIndexState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiIndex:AiIndex", id, state, "", opts...)
+}
+
 type aiIndexArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

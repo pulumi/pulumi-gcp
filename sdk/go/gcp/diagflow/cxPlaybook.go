@@ -412,6 +412,12 @@ func (CxPlaybookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxPlaybookState)(nil)).Elem()
 }
 
+// CxPlaybookExists checks whether an existing CxPlaybook resource with the given ID exists.
+func CxPlaybookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxPlaybookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxPlaybook:CxPlaybook", id, state, "", opts...)
+}
+
 type cxPlaybookArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

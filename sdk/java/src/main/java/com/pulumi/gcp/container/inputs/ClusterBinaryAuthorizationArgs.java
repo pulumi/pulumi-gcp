@@ -19,22 +19,20 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
     /**
      * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
      * 
-     * @deprecated
-     * Deprecated in favor of evaluation_mode.
+     * @deprecated Deprecated in favor of evaluation_mode.
      * 
      */
-    @Deprecated /* Deprecated in favor of evaluation_mode. */
+    @Deprecated
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
      * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
      * 
-     * @deprecated
-     * Deprecated in favor of evaluation_mode.
+     * @deprecated Deprecated in favor of evaluation_mode.
      * 
      */
-    @Deprecated /* Deprecated in favor of evaluation_mode. */
+    @Deprecated
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -86,11 +84,10 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in favor of evaluation_mode.
+         * @deprecated Deprecated in favor of evaluation_mode.
          * 
          */
-        @Deprecated /* Deprecated in favor of evaluation_mode. */
+        @Deprecated
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
@@ -101,11 +98,10 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in favor of evaluation_mode.
+         * @deprecated Deprecated in favor of evaluation_mode.
          * 
          */
-        @Deprecated /* Deprecated in favor of evaluation_mode. */
+        @Deprecated
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

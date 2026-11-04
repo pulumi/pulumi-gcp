@@ -192,22 +192,20 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
     /**
      * Output only. The current version of this workflow template.
      * 
-     * @deprecated
-     * version is not useful as a configurable field, and will be removed in the future.
+     * @deprecated version is not useful as a configurable field, and will be removed in the future.
      * 
      */
-    @Deprecated /* version is not useful as a configurable field, and will be removed in the future. */
+    @Deprecated
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
      * @return Output only. The current version of this workflow template.
      * 
-     * @deprecated
-     * version is not useful as a configurable field, and will be removed in the future.
+     * @deprecated version is not useful as a configurable field, and will be removed in the future.
      * 
      */
-    @Deprecated /* version is not useful as a configurable field, and will be removed in the future. */
+    @Deprecated
     public Optional<Output<Integer>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -497,11 +495,10 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * version is not useful as a configurable field, and will be removed in the future.
+         * @deprecated version is not useful as a configurable field, and will be removed in the future.
          * 
          */
-        @Deprecated /* version is not useful as a configurable field, and will be removed in the future. */
+        @Deprecated
         public Builder version(@Nullable Output<Integer> version) {
             $.version = version;
             return this;
@@ -512,11 +509,10 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * version is not useful as a configurable field, and will be removed in the future.
+         * @deprecated version is not useful as a configurable field, and will be removed in the future.
          * 
          */
-        @Deprecated /* version is not useful as a configurable field, and will be removed in the future. */
+        @Deprecated
         public Builder version(Integer version) {
             return version(Output.of(version));
         }

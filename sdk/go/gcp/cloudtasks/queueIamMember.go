@@ -424,6 +424,12 @@ func (QueueIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*queueIamMemberState)(nil)).Elem()
 }
 
+// QueueIamMemberExists checks whether an existing QueueIamMember resource with the given ID exists.
+func QueueIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QueueIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudtasks/queueIamMember:QueueIamMember", id, state, "", opts...)
+}
+
 type queueIamMemberArgs struct {
 	Condition *QueueIamMemberCondition `pulumi:"condition"`
 	// The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,

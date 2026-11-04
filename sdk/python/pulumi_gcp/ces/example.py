@@ -1042,6 +1042,40 @@ class Example(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Example(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_agent: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            example_id: pulumi.Input[Optional[_builtins.str]] = None,
+            invalid: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict', 'outputs.ExampleMessage']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["app"] = app
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["entryAgent"] = entry_agent
+        __props__["etag"] = etag
+        __props__["exampleId"] = example_id
+        __props__["invalid"] = invalid
+        __props__["location"] = location
+        __props__["messages"] = messages
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:ces/example:Example', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def app(self) -> pulumi.Output[_builtins.str]:

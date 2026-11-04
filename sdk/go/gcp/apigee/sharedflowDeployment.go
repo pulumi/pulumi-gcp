@@ -146,6 +146,12 @@ func (SharedflowDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedflowDeploymentState)(nil)).Elem()
 }
 
+// SharedflowDeploymentExists checks whether an existing SharedflowDeployment resource with the given ID exists.
+func SharedflowDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SharedflowDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/sharedflowDeployment:SharedflowDeployment", id, state, "", opts...)
+}
+
 type sharedflowDeploymentArgs struct {
 	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

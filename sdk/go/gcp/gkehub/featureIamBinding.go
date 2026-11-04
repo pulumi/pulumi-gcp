@@ -424,6 +424,12 @@ func (FeatureIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureIamBindingState)(nil)).Elem()
 }
 
+// FeatureIamBindingExists checks whether an existing FeatureIamBinding resource with the given ID exists.
+func FeatureIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/featureIamBinding:FeatureIamBinding", id, state, "", opts...)
+}
+
 type featureIamBindingArgs struct {
 	Condition *FeatureIamBindingCondition `pulumi:"condition"`
 	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,

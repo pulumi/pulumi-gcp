@@ -443,6 +443,12 @@ func (TargetInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetInstanceState)(nil)).Elem()
 }
 
+// TargetInstanceExists checks whether an existing TargetInstance resource with the given ID exists.
+func TargetInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/targetInstance:TargetInstance", id, state, "", opts...)
+}
+
 type targetInstanceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

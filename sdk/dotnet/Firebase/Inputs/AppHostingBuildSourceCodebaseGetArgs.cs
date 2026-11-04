@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.Firebase.Inputs
         /// <summary>
         /// The commit in the codebase to build from.
         /// 
-        /// 
         /// &lt;a name="NestedSourceCodebaseAuthor"&gt;&lt;/a&gt;The `Author` block contains:
         /// </summary>
         [Input("commit")]

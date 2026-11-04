@@ -412,6 +412,12 @@ func (TargetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetState)(nil)).Elem()
 }
 
+// TargetExists checks whether an existing Target resource with the given ID exists.
+func TargetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddeploy/target:Target", id, state, "", opts...)
+}
+
 type targetArgs struct {
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	//

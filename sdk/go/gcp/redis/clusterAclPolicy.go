@@ -181,6 +181,12 @@ func (ClusterAclPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterAclPolicyState)(nil)).Elem()
 }
 
+// ClusterAclPolicyExists checks whether an existing ClusterAclPolicy resource with the given ID exists.
+func ClusterAclPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterAclPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:redis/clusterAclPolicy:ClusterAclPolicy", id, state, "", opts...)
+}
+
 type clusterAclPolicyArgs struct {
 	// The logical name of the ACL policy in the customer project
 	// with the following restrictions:

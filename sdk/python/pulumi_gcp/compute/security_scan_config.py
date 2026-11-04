@@ -886,6 +886,40 @@ class SecurityScanConfig(pulumi.CustomResource):
         __props__.__dict__["user_agent"] = user_agent
         return SecurityScanConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict', 'outputs.SecurityScanConfigAuthentication']]] = None,
+            blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_http_status_errors: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_qps: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict', 'outputs.SecurityScanConfigSchedule']]] = None,
+            starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            static_ip_scan: pulumi.Input[Optional[_builtins.bool]] = None,
+            target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            user_agent: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authentication"] = authentication
+        __props__["blacklistPatterns"] = blacklist_patterns
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["exportToSecurityCommandCenter"] = export_to_security_command_center
+        __props__["ignoreHttpStatusErrors"] = ignore_http_status_errors
+        __props__["maxQps"] = max_qps
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["schedule"] = schedule
+        __props__["startingUrls"] = starting_urls
+        __props__["staticIpScan"] = static_ip_scan
+        __props__["targetPlatforms"] = target_platforms
+        __props__["userAgent"] = user_agent
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/securityScanConfig:SecurityScanConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def authentication(self) -> pulumi.Output[Optional['outputs.SecurityScanConfigAuthentication']]:

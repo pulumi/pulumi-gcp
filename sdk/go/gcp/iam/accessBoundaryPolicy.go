@@ -239,6 +239,12 @@ func (AccessBoundaryPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessBoundaryPolicyState)(nil)).Elem()
 }
 
+// AccessBoundaryPolicyExists checks whether an existing AccessBoundaryPolicy resource with the given ID exists.
+func AccessBoundaryPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessBoundaryPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy", id, state, "", opts...)
+}
+
 type accessBoundaryPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

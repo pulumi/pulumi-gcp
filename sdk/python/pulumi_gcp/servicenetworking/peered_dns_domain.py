@@ -462,6 +462,26 @@ class PeeredDnsDomain(pulumi.CustomResource):
         __props__.__dict__["service"] = service
         return PeeredDnsDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dnsSuffix"] = dns_suffix
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["parent"] = parent
+        __props__["project"] = project
+        __props__["service"] = service
+        return pulumi.runtime.exists_resource(None, 'gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

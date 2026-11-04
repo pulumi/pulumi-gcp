@@ -6193,11 +6193,10 @@ public final class StorageFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
+     * @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
-    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
+    @Deprecated
     public static Output<GetTransferProjectServieAccountResult> getTransferProjectServieAccount() {
         return getTransferProjectServieAccount(GetTransferProjectServieAccountArgs.Empty, InvokeOptions.Empty);
     }
@@ -6237,11 +6236,10 @@ public final class StorageFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
+     * @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
-    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
+    @Deprecated
     public static CompletableFuture<GetTransferProjectServieAccountResult> getTransferProjectServieAccountPlain() {
         return getTransferProjectServieAccountPlain(GetTransferProjectServieAccountPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -6281,11 +6279,10 @@ public final class StorageFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
+     * @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
-    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
+    @Deprecated
     public static Output<GetTransferProjectServieAccountResult> getTransferProjectServieAccount(GetTransferProjectServieAccountArgs args) {
         return getTransferProjectServieAccount(args, InvokeOptions.Empty);
     }
@@ -6325,11 +6322,10 @@ public final class StorageFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
+     * @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
-    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
+    @Deprecated
     public static CompletableFuture<GetTransferProjectServieAccountResult> getTransferProjectServieAccountPlain(GetTransferProjectServieAccountPlainArgs args) {
         return getTransferProjectServieAccountPlain(args, InvokeOptions.Empty);
     }
@@ -6369,11 +6365,10 @@ public final class StorageFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
+     * @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
-    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
+    @Deprecated
     public static Output<GetTransferProjectServieAccountResult> getTransferProjectServieAccount(GetTransferProjectServieAccountArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", TypeShape.of(GetTransferProjectServieAccountResult.class), args, Utilities.withVersion(options));
     }
@@ -6413,11 +6408,10 @@ public final class StorageFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
+     * @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
-    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
+    @Deprecated
     public static Output<GetTransferProjectServieAccountResult> getTransferProjectServieAccount(GetTransferProjectServieAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", TypeShape.of(GetTransferProjectServieAccountResult.class), args, Utilities.withVersion(options));
     }
@@ -6457,11 +6451,10 @@ public final class StorageFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
+     * @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
-    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
+    @Deprecated
     public static CompletableFuture<GetTransferProjectServieAccountResult> getTransferProjectServieAccountPlain(GetTransferProjectServieAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", TypeShape.of(GetTransferProjectServieAccountResult.class), args, Utilities.withVersion(options));
     }

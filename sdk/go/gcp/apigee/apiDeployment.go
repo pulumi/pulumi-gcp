@@ -146,6 +146,12 @@ func (ApiDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiDeploymentState)(nil)).Elem()
 }
 
+// ApiDeploymentExists checks whether an existing ApiDeployment resource with the given ID exists.
+func ApiDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/apiDeployment:ApiDeployment", id, state, "", opts...)
+}
+
 type apiDeploymentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

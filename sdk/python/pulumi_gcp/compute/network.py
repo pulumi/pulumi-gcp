@@ -1349,6 +1349,54 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         return Network(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_create_subnetworks: pulumi.Input[Optional[_builtins.bool]] = None,
+            bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+            bgp_best_path_selection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+            delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_ipv4: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_ipv6_range: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_firewall_policy_enforcement_order: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            numeric_id: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['NetworkParamsArgs', 'NetworkParamsArgsDict', 'outputs.NetworkParams']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoCreateSubnetworks"] = auto_create_subnetworks
+        __props__["bgpAlwaysCompareMed"] = bgp_always_compare_med
+        __props__["bgpBestPathSelectionMode"] = bgp_best_path_selection_mode
+        __props__["bgpInterRegionCost"] = bgp_inter_region_cost
+        __props__["deleteBgpAlwaysCompareMed"] = delete_bgp_always_compare_med
+        __props__["deleteDefaultRoutesOnCreate"] = delete_default_routes_on_create
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["enableUlaInternalIpv6"] = enable_ula_internal_ipv6
+        __props__["gatewayIpv4"] = gateway_ipv4
+        __props__["internalIpv6Range"] = internal_ipv6_range
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["networkFirewallPolicyEnforcementOrder"] = network_firewall_policy_enforcement_order
+        __props__["networkId"] = network_id
+        __props__["networkProfile"] = network_profile
+        __props__["numericId"] = numeric_id
+        __props__["params"] = params
+        __props__["project"] = project
+        __props__["routingMode"] = routing_mode
+        __props__["selfLink"] = self_link
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/network:Network', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoCreateSubnetworks")
     def auto_create_subnetworks(self) -> pulumi.Output[Optional[_builtins.bool]]:

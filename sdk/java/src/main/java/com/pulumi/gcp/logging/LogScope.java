@@ -148,14 +148,14 @@ public class LogScope extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
+     * The resource name of the log scope. For example: &#92;`projects/my-project/locations/global/logScopes/my-log-scope&#92;`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
+     * @return The resource name of the log scope. For example: &#92;`projects/my-project/locations/global/logScopes/my-log-scope&#92;`
      * 
      */
     public Output<String> name() {
@@ -176,14 +176,14 @@ public class LogScope extends com.pulumi.resources.CustomResource {
         return this.parent;
     }
     /**
-     * Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
+     * Names of one or more parent resources : *  &#92;`projects/[PROJECT_ID]&#92;` May alternatively be one or more views : * &#92;`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]&#92;` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
      * 
      */
     @Export(name="resourceNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> resourceNames;
 
     /**
-     * @return Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
+     * @return Names of one or more parent resources : *  &#92;`projects/[PROJECT_ID]&#92;` May alternatively be one or more views : * &#92;`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]&#92;` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
      * 
      */
     public Output<List<String>> resourceNames() {

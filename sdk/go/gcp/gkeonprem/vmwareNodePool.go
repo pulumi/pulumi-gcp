@@ -479,6 +479,12 @@ func (VMwareNodePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vmwareNodePoolState)(nil)).Elem()
 }
 
+// VMwareNodePoolExists checks whether an existing VMwareNodePool resource with the given ID exists.
+func VMwareNodePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VMwareNodePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkeonprem/vMwareNodePool:VMwareNodePool", id, state, "", opts...)
+}
+
 type vmwareNodePoolArgs struct {
 	// Annotations on the node Pool.
 	// This field has the same restrictions as Kubernetes annotations.

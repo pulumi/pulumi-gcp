@@ -495,6 +495,12 @@ func (FunctionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionState)(nil)).Elem()
 }
 
+// FunctionExists checks whether an existing Function resource with the given ID exists.
+func FunctionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FunctionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudfunctions/function:Function", id, state, "", opts...)
+}
+
 type functionArgs struct {
 	// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
 	AutomaticUpdatePolicy *FunctionAutomaticUpdatePolicy `pulumi:"automaticUpdatePolicy"`

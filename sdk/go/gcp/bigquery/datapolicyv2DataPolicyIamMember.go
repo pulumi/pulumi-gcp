@@ -427,6 +427,12 @@ func (Datapolicyv2DataPolicyIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datapolicyv2DataPolicyIamMemberState)(nil)).Elem()
 }
 
+// Datapolicyv2DataPolicyIamMemberExists checks whether an existing Datapolicyv2DataPolicyIamMember resource with the given ID exists.
+func Datapolicyv2DataPolicyIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Datapolicyv2DataPolicyIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/datapolicyv2DataPolicyIamMember:Datapolicyv2DataPolicyIamMember", id, state, "", opts...)
+}
+
 type datapolicyv2DataPolicyIamMemberArgs struct {
 	Condition *Datapolicyv2DataPolicyIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

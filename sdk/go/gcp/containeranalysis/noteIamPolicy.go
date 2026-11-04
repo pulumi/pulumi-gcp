@@ -360,6 +360,12 @@ func (NoteIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*noteIamPolicyState)(nil)).Elem()
 }
 
+// NoteIamPolicyExists checks whether an existing NoteIamPolicy resource with the given ID exists.
+func NoteIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NoteIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:containeranalysis/noteIamPolicy:NoteIamPolicy", id, state, "", opts...)
+}
+
 type noteIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Note string `pulumi:"note"`

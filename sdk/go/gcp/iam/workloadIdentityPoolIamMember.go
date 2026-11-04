@@ -648,6 +648,12 @@ func (WorkloadIdentityPoolIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workloadIdentityPoolIamMemberState)(nil)).Elem()
 }
 
+// WorkloadIdentityPoolIamMemberExists checks whether an existing WorkloadIdentityPoolIamMember resource with the given ID exists.
+func WorkloadIdentityPoolIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkloadIdentityPoolIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workloadIdentityPoolIamMember:WorkloadIdentityPoolIamMember", id, state, "", opts...)
+}
+
 type workloadIdentityPoolIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
@@ -132,14 +132,14 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .attributePropagationSettings(SettingsApplicationSettingsAttributePropagationSettingsArgs.builder()
  *                     .outputCredentials("HEADER")
- *                     .expression("attributes.saml_attributes.filter(attribute, attribute.name in [\"test1\", \"test2\"])")
+ *                     .expression("attributes.saml_attributes.filter(attribute, attribute.name in [}&#92;{@code "test1}&#92;{@code ", }&#92;{@code "test2}&#92;{@code "])")
  *                     .enable(false)
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

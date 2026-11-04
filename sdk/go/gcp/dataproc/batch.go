@@ -703,6 +703,12 @@ func (BatchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*batchState)(nil)).Elem()
 }
 
+// BatchExists checks whether an existing Batch resource with the given ID exists.
+func BatchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BatchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/batch:Batch", id, state, "", opts...)
+}
+
 type batchArgs struct {
 	// The ID to use for the batch, which will become the final component of the batch's resource name.
 	// This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.

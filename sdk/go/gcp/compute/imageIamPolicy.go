@@ -594,6 +594,12 @@ func (ImageIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageIamPolicyState)(nil)).Elem()
 }
 
+// ImageIamPolicyExists checks whether an existing ImageIamPolicy resource with the given ID exists.
+func ImageIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/imageIamPolicy:ImageIamPolicy", id, state, "", opts...)
+}
+
 type imageIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Image string `pulumi:"image"`

@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Iap.Outputs
         /// federation services.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedAccessSettingsWorkforceIdentitySettingsOauth2"&gt;&lt;/a&gt;The `Oauth2` block supports:
         /// </summary>
         public readonly Outputs.SettingsAccessSettingsWorkforceIdentitySettingsOauth2? Oauth2;

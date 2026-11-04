@@ -466,6 +466,12 @@ func (SaaSState) ElementType() reflect.Type {
 	return reflect.TypeOf((*saaSState)(nil)).Elem()
 }
 
+// SaaSExists checks whether an existing SaaS resource with the given ID exists.
+func SaaSExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SaaSState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:saasruntime/saaS:SaaS", id, state, "", opts...)
+}
+
 type saaSArgs struct {
 	// Annotations is an unstructured key-value map stored with a resource that
 	// may be set by external tools to store and retrieve arbitrary metadata.

@@ -223,6 +223,12 @@ func (InstanceGroupNamedPortState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceGroupNamedPortState)(nil)).Elem()
 }
 
+// InstanceGroupNamedPortExists checks whether an existing InstanceGroupNamedPort resource with the given ID exists.
+func InstanceGroupNamedPortExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceGroupNamedPortState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort", id, state, "", opts...)
+}
+
 type instanceGroupNamedPortArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

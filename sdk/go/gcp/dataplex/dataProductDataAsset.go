@@ -360,6 +360,12 @@ func (DataProductDataAssetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataProductDataAssetState)(nil)).Elem()
 }
 
+// DataProductDataAssetExists checks whether an existing DataProductDataAsset resource with the given ID exists.
+func DataProductDataAssetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataProductDataAssetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/dataProductDataAsset:DataProductDataAsset", id, state, "", opts...)
+}
+
 type dataProductDataAssetArgs struct {
 	// Access groups configurations.
 	// Structure is documented below.

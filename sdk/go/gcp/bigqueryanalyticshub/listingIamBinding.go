@@ -445,6 +445,12 @@ func (ListingIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listingIamBindingState)(nil)).Elem()
 }
 
+// ListingIamBindingExists checks whether an existing ListingIamBinding resource with the given ID exists.
+func ListingIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListingIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding", id, state, "", opts...)
+}
+
 type listingIamBindingArgs struct {
 	Condition *ListingIamBindingCondition `pulumi:"condition"`
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to

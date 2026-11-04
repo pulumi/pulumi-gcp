@@ -842,6 +842,40 @@ class DataExchange(pulumi.CustomResource):
         __props__.__dict__["sharing_environment_config"] = sharing_environment_config
         return DataExchange(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            documentation: pulumi.Input[Optional[_builtins.str]] = None,
+            icon: pulumi.Input[Optional[_builtins.str]] = None,
+            listing_count: pulumi.Input[Optional[_builtins.int]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            sharing_environment_config: pulumi.Input[Optional[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict', 'outputs.DataExchangeSharingEnvironmentConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataExchangeId"] = data_exchange_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["discoveryType"] = discovery_type
+        __props__["displayName"] = display_name
+        __props__["documentation"] = documentation
+        __props__["icon"] = icon
+        __props__["listingCount"] = listing_count
+        __props__["location"] = location
+        __props__["logLinkedDatasetQueryUserEmail"] = log_linked_dataset_query_user_email
+        __props__["name"] = name
+        __props__["primaryContact"] = primary_contact
+        __props__["project"] = project
+        __props__["sharingEnvironmentConfig"] = sharing_environment_config
+        return pulumi.runtime.exists_resource(None, 'gcp:bigqueryanalyticshub/dataExchange:DataExchange', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dataExchangeId")
     def data_exchange_id(self) -> pulumi.Output[_builtins.str]:

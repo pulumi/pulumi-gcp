@@ -198,6 +198,12 @@ func (KeyRingImportJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyRingImportJobState)(nil)).Elem()
 }
 
+// KeyRingImportJobExists checks whether an existing KeyRingImportJob resource with the given ID exists.
+func KeyRingImportJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeyRingImportJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/keyRingImportJob:KeyRingImportJob", id, state, "", opts...)
+}
+
 type keyRingImportJobArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

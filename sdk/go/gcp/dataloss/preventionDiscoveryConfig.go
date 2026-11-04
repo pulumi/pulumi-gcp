@@ -214,6 +214,12 @@ func (PreventionDiscoveryConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*preventionDiscoveryConfigState)(nil)).Elem()
 }
 
+// PreventionDiscoveryConfigExists checks whether an existing PreventionDiscoveryConfig resource with the given ID exists.
+func PreventionDiscoveryConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PreventionDiscoveryConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig", id, state, "", opts...)
+}
+
 type preventionDiscoveryConfigArgs struct {
 	// Actions to execute at the completion of scanning
 	// Structure is documented below.

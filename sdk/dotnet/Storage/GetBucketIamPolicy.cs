@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Retrieves the current IAM policy data for bucket
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Retrieves the current IAM policy data for bucket
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -63,7 +61,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Retrieves the current IAM policy data for bucket
-        /// 
         /// 
         /// ## Example Usage
         /// 

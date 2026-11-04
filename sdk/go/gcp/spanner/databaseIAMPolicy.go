@@ -581,6 +581,12 @@ func (DatabaseIAMPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseIAMPolicyState)(nil)).Elem()
 }
 
+// DatabaseIAMPolicyExists checks whether an existing DatabaseIAMPolicy resource with the given ID exists.
+func DatabaseIAMPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseIAMPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", id, state, "", opts...)
+}
+
 type databaseIAMPolicyArgs struct {
 	// The name of the Spanner database.
 	Database string `pulumi:"database"`

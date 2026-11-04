@@ -1092,6 +1092,30 @@ class FeatureMembership(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return FeatureMembership(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configmanagement: pulumi.Input[Optional[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict', 'outputs.FeatureMembershipConfigmanagement']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            feature: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            membership: pulumi.Input[Optional[_builtins.str]] = None,
+            membership_location: pulumi.Input[Optional[_builtins.str]] = None,
+            mesh: pulumi.Input[Optional[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict', 'outputs.FeatureMembershipMesh']]] = None,
+            policycontroller: pulumi.Input[Optional[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict', 'outputs.FeatureMembershipPolicycontroller']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configmanagement"] = configmanagement
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["feature"] = feature
+        __props__["location"] = location
+        __props__["membership"] = membership
+        __props__["membershipLocation"] = membership_location
+        __props__["mesh"] = mesh
+        __props__["policycontroller"] = policycontroller
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:gkehub/featureMembership:FeatureMembership', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def configmanagement(self) -> pulumi.Output[Optional['outputs.FeatureMembershipConfigmanagement']]:

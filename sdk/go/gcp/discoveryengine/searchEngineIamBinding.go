@@ -448,6 +448,12 @@ func (SearchEngineIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*searchEngineIamBindingState)(nil)).Elem()
 }
 
+// SearchEngineIamBindingExists checks whether an existing SearchEngineIamBinding resource with the given ID exists.
+func SearchEngineIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SearchEngineIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/searchEngineIamBinding:SearchEngineIamBinding", id, state, "", opts...)
+}
+
 type searchEngineIamBindingArgs struct {
 	// The collection ID.
 	// Used to find the parent resource to bind the IAM policy to

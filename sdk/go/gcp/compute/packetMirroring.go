@@ -346,6 +346,12 @@ func (PacketMirroringState) ElementType() reflect.Type {
 	return reflect.TypeOf((*packetMirroringState)(nil)).Elem()
 }
 
+// PacketMirroringExists checks whether an existing PacketMirroring resource with the given ID exists.
+func PacketMirroringExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PacketMirroringState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/packetMirroring:PacketMirroring", id, state, "", opts...)
+}
+
 type packetMirroringArgs struct {
 	// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
 	// that will be used as collector for mirrored traffic. The

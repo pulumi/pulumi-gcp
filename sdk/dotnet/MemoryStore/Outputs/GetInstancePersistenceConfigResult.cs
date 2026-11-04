@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancePersistenceConfigAofConfigResult> AofConfigs;
         /// <summary>
-        /// Optional. Current persistence mode. 
+        /// Optional. Current persistence mode.
         ///  Possible values:
         /// DISABLED
         /// RDB

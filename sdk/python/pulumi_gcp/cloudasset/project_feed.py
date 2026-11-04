@@ -739,6 +739,32 @@ class ProjectFeed(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ProjectFeed(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            asset_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            asset_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_project: pulumi.Input[Optional[_builtins.str]] = None,
+            condition: pulumi.Input[Optional[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict', 'outputs.ProjectFeedCondition']]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            feed_id: pulumi.Input[Optional[_builtins.str]] = None,
+            feed_output_config: pulumi.Input[Optional[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict', 'outputs.ProjectFeedFeedOutputConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assetNames"] = asset_names
+        __props__["assetTypes"] = asset_types
+        __props__["billingProject"] = billing_project
+        __props__["condition"] = condition
+        __props__["contentType"] = content_type
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["feedId"] = feed_id
+        __props__["feedOutputConfig"] = feed_output_config
+        __props__["name"] = name
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudasset/projectFeed:ProjectFeed', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assetNames")
     def asset_names(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

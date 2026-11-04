@@ -146,6 +146,12 @@ func (SourceIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceIamMemberState)(nil)).Elem()
 }
 
+// SourceIamMemberExists checks whether an existing SourceIamMember resource with the given ID exists.
+func SourceIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SourceIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/sourceIamMember:SourceIamMember", id, state, "", opts...)
+}
+
 type sourceIamMemberArgs struct {
 	Condition *SourceIamMemberCondition `pulumi:"condition"`
 	Member    string                    `pulumi:"member"`

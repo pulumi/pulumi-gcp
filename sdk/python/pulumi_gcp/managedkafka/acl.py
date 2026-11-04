@@ -651,6 +651,34 @@ class Acl(pulumi.CustomResource):
         __props__.__dict__["resource_type"] = resource_type
         return Acl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict', 'outputs.AclAclEntry']]]]] = None,
+            acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_name_: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclEntries"] = acl_entries
+        __props__["aclId"] = acl_id
+        __props__["cluster"] = cluster
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["patternType"] = pattern_type
+        __props__["project"] = project
+        __props__["resourceName"] = resource_name_
+        __props__["resourceType"] = resource_type
+        return pulumi.runtime.exists_resource(None, 'gcp:managedkafka/acl:Acl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> pulumi.Output[Sequence['outputs.AclAclEntry']]:

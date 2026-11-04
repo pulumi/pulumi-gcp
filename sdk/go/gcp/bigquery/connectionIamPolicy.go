@@ -397,6 +397,12 @@ func (ConnectionIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionIamPolicyState)(nil)).Elem()
 }
 
+// ConnectionIamPolicyExists checks whether an existing ConnectionIamPolicy resource with the given ID exists.
+func ConnectionIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy", id, state, "", opts...)
+}
+
 type connectionIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId string `pulumi:"connectionId"`

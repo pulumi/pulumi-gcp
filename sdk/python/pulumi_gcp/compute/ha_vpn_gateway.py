@@ -1017,6 +1017,42 @@ class HaVpnGateway(pulumi.CustomResource):
         __props__.__dict__["vpn_interfaces"] = vpn_interfaces
         return HaVpnGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gateway_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['HaVpnGatewayParamsArgs', 'HaVpnGatewayParamsArgsDict', 'outputs.HaVpnGatewayParams']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HaVpnGatewayVpnInterfaceArgs', 'HaVpnGatewayVpnInterfaceArgsDict', 'outputs.HaVpnGatewayVpnInterface']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["gatewayIpVersion"] = gateway_ip_version
+        __props__["labelFingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["params"] = params
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        __props__["stackType"] = stack_type
+        __props__["vpnInterfaces"] = vpn_interfaces
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/haVpnGateway:HaVpnGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly Outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig? ShieldedInstanceConfig;
         /// <summary>

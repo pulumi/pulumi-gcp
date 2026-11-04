@@ -127,6 +127,12 @@ func (InstanceAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceAttachmentState)(nil)).Elem()
 }
 
+// InstanceAttachmentExists checks whether an existing InstanceAttachment resource with the given ID exists.
+func InstanceAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/instanceAttachment:InstanceAttachment", id, state, "", opts...)
+}
+
 type instanceAttachmentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

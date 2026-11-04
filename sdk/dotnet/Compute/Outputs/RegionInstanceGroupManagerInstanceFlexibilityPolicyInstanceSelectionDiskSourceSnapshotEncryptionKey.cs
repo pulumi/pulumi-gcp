@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// , The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, RsaEncryptedKey and RawKey may be set.
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string? KmsKeySelfLink;
         /// <summary>

@@ -1264,6 +1264,12 @@ func (WorkstationConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workstationConfigState)(nil)).Elem()
 }
 
+// WorkstationConfigExists checks whether an existing WorkstationConfig resource with the given ID exists.
+func WorkstationConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkstationConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:workstations/workstationConfig:WorkstationConfig", id, state, "", opts...)
+}
+
 type workstationConfigArgs struct {
 	// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
 	// Structure is documented below.

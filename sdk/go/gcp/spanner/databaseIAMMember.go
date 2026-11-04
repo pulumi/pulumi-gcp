@@ -623,6 +623,12 @@ func (DatabaseIAMMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseIAMMemberState)(nil)).Elem()
 }
 
+// DatabaseIAMMemberExists checks whether an existing DatabaseIAMMember resource with the given ID exists.
+func DatabaseIAMMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseIAMMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:spanner/databaseIAMMember:DatabaseIAMMember", id, state, "", opts...)
+}
+
 type databaseIAMMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

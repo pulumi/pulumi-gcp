@@ -146,6 +146,12 @@ func (FlowhookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flowhookState)(nil)).Elem()
 }
 
+// FlowhookExists checks whether an existing Flowhook resource with the given ID exists.
+func FlowhookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlowhookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/flowhook:Flowhook", id, state, "", opts...)
+}
+
 type flowhookArgs struct {
 	// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
 	ContinueOnError *bool `pulumi:"continueOnError"`

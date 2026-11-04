@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Netapp.Inputs
         /// The name must meet the following requirements:
         /// *   Be between 1 and 255 characters long.
         /// *   Contain only uppercase or lowercase letters (A-Z, a-z), numbers (0-9),
-        /// and the following special characters: "-", "_", "}", "{", ".".
+        ///     and the following special characters: "-", "_", "}", "{", ".".
         /// *   Spaces are not allowed.
         /// </summary>
         [Input("name")]

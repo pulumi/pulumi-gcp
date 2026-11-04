@@ -677,6 +677,12 @@ func (TunnelDestGroupIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelDestGroupIamMemberState)(nil)).Elem()
 }
 
+// TunnelDestGroupIamMemberExists checks whether an existing TunnelDestGroupIamMember resource with the given ID exists.
+func TunnelDestGroupIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TunnelDestGroupIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/tunnelDestGroupIamMember:TunnelDestGroupIamMember", id, state, "", opts...)
+}
+
 type tunnelDestGroupIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

@@ -537,6 +537,24 @@ class RemoteConfigRemoteConfig(pulumi.CustomResource):
         __props__.__dict__["versions"] = versions
         return RemoteConfigRemoteConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict', 'outputs.RemoteConfigRemoteConfigCondition']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict', 'outputs.RemoteConfigRemoteConfigParameterGroup']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict', 'outputs.RemoteConfigRemoteConfigParameter']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigVersionArgs', 'RemoteConfigRemoteConfigVersionArgsDict', 'outputs.RemoteConfigRemoteConfigVersion']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["conditions"] = conditions
+        __props__["name"] = name
+        __props__["parameterGroups"] = parameter_groups
+        __props__["parameters"] = parameters
+        __props__["project"] = project
+        __props__["versions"] = versions
+        return pulumi.runtime.exists_resource(None, 'gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def conditions(self) -> pulumi.Output[Optional[Sequence['outputs.RemoteConfigRemoteConfigCondition']]]:

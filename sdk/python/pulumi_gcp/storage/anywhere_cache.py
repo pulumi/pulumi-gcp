@@ -592,6 +592,34 @@ class AnywhereCache(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return AnywhereCache(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admission_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            anywhere_cache_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ingest_on_write: pulumi.Input[Optional[_builtins.bool]] = None,
+            pending_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["admissionPolicy"] = admission_policy
+        __props__["anywhereCacheId"] = anywhere_cache_id
+        __props__["bucket"] = bucket
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["ingestOnWrite"] = ingest_on_write
+        __props__["pendingUpdate"] = pending_update
+        __props__["state"] = state
+        __props__["ttl"] = ttl
+        __props__["updateTime"] = update_time
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/anywhereCache:AnywhereCache', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="admissionPolicy")
     @_utilities.deprecated("""`admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.""")

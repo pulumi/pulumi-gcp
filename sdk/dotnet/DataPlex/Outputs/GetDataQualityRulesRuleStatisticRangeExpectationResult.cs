@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly string MinValue;
         /// <summary>
-        /// The list of aggregate metrics a rule can be evaluated against. 
+        /// The list of aggregate metrics a rule can be evaluated against.
         /// 																	Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
         /// </summary>
         public readonly string Statistic;

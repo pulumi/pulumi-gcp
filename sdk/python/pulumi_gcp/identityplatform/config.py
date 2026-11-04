@@ -811,6 +811,36 @@ class Config(pulumi.CustomResource):
         __props__.__dict__["sms_region_config"] = sms_region_config
         return Config(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authorized_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            autodelete_anonymous_users: pulumi.Input[Optional[_builtins.bool]] = None,
+            blocking_functions: pulumi.Input[Optional[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict', 'outputs.ConfigBlockingFunctions']]] = None,
+            client: pulumi.Input[Optional[Union['ConfigClientArgs', 'ConfigClientArgsDict', 'outputs.ConfigClient']]] = None,
+            mfa: pulumi.Input[Optional[Union['ConfigMfaArgs', 'ConfigMfaArgsDict', 'outputs.ConfigMfa']]] = None,
+            monitoring: pulumi.Input[Optional[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict', 'outputs.ConfigMonitoring']]] = None,
+            multi_tenant: pulumi.Input[Optional[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict', 'outputs.ConfigMultiTenant']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            quota: pulumi.Input[Optional[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict', 'outputs.ConfigQuota']]] = None,
+            sign_in: pulumi.Input[Optional[Union['ConfigSignInArgs', 'ConfigSignInArgsDict', 'outputs.ConfigSignIn']]] = None,
+            sms_region_config: pulumi.Input[Optional[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict', 'outputs.ConfigSmsRegionConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authorizedDomains"] = authorized_domains
+        __props__["autodeleteAnonymousUsers"] = autodelete_anonymous_users
+        __props__["blockingFunctions"] = blocking_functions
+        __props__["client"] = client
+        __props__["mfa"] = mfa
+        __props__["monitoring"] = monitoring
+        __props__["multiTenant"] = multi_tenant
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["quota"] = quota
+        __props__["signIn"] = sign_in
+        __props__["smsRegionConfig"] = sms_region_config
+        return pulumi.runtime.exists_resource(None, 'gcp:identityplatform/config:Config', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authorizedDomains")
     def authorized_domains(self) -> pulumi.Output[Sequence[_builtins.str]]:

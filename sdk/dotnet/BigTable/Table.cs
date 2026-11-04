@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.BigTable
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string> DeletionPolicy { get; private set; } = null!;
@@ -170,9 +170,9 @@ namespace Pulumi.Gcp.BigTable
         /// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
         /// 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
         /// 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
-        /// 					
-        /// 					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
-        /// 					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+        /// 
+        ///                     The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+        ///                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         /// </summary>
         [Output("rowKeySchema")]
         public Output<string?> RowKeySchema { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.BigTable
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -297,9 +297,9 @@ namespace Pulumi.Gcp.BigTable
         /// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
         /// 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
         /// 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
-        /// 					
-        /// 					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
-        /// 					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+        /// 
+        ///                     The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+        ///                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         /// </summary>
         [Input("rowKeySchema")]
         public Input<string>? RowKeySchema { get; set; }
@@ -358,7 +358,7 @@ namespace Pulumi.Gcp.BigTable
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -392,9 +392,9 @@ namespace Pulumi.Gcp.BigTable
         /// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
         /// 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
         /// 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
-        /// 					
-        /// 					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
-        /// 					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+        /// 
+        ///                     The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+        ///                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         /// </summary>
         [Input("rowKeySchema")]
         public Input<string>? RowKeySchema { get; set; }

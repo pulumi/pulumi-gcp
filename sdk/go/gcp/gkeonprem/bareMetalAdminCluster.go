@@ -661,6 +661,12 @@ func (BareMetalAdminClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bareMetalAdminClusterState)(nil)).Elem()
 }
 
+// BareMetalAdminClusterExists checks whether an existing BareMetalAdminCluster resource with the given ID exists.
+func BareMetalAdminClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BareMetalAdminClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster", id, state, "", opts...)
+}
+
 type bareMetalAdminClusterArgs struct {
 	// Annotations on the Bare Metal Admin Cluster.
 	// This field has the same restrictions as Kubernetes annotations.

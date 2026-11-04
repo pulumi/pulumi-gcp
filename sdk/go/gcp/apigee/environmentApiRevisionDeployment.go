@@ -205,6 +205,12 @@ func (EnvironmentApiRevisionDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentApiRevisionDeploymentState)(nil)).Elem()
 }
 
+// EnvironmentApiRevisionDeploymentExists checks whether an existing EnvironmentApiRevisionDeployment resource with the given ID exists.
+func EnvironmentApiRevisionDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentApiRevisionDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment", id, state, "", opts...)
+}
+
 type environmentApiRevisionDeploymentArgs struct {
 	// Apigee API proxy name.
 	Api string `pulumi:"api"`

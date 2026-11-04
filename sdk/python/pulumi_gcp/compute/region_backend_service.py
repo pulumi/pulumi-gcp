@@ -3773,6 +3773,92 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["tls_settings"] = tls_settings
         return RegionBackendService(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            affinity_cookie_ttl_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            backends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict', 'outputs.RegionBackendServiceBackend']]]]] = None,
+            cdn_policy: pulumi.Input[Optional[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict', 'outputs.RegionBackendServiceCdnPolicy']]] = None,
+            circuit_breakers: pulumi.Input[Optional[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict', 'outputs.RegionBackendServiceCircuitBreakers']]] = None,
+            connection_draining_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            connection_tracking_policy: pulumi.Input[Optional[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict', 'outputs.RegionBackendServiceConnectionTrackingPolicy']]] = None,
+            consistent_hash: pulumi.Input[Optional[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict', 'outputs.RegionBackendServiceConsistentHash']]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict', 'outputs.RegionBackendServiceCustomMetric']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dynamic_forwarding: pulumi.Input[Optional[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict', 'outputs.RegionBackendServiceDynamicForwarding']]] = None,
+            enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
+            failover_policy: pulumi.Input[Optional[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict', 'outputs.RegionBackendServiceFailoverPolicy']]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            generated_id: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_policy: pulumi.Input[Optional[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict', 'outputs.RegionBackendServiceHaPolicy']]] = None,
+            health_checks: pulumi.Input[Optional[_builtins.str]] = None,
+            iap: pulumi.Input[Optional[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict', 'outputs.RegionBackendServiceIap']]] = None,
+            ip_address_selection_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            locality_lb_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            log_config: pulumi.Input[Optional[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict', 'outputs.RegionBackendServiceLogConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            network_pass_through_lb_traffic_policy: pulumi.Input[Optional[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict', 'outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicy']]] = None,
+            outlier_detection: pulumi.Input[Optional[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict', 'outputs.RegionBackendServiceOutlierDetection']]] = None,
+            params: pulumi.Input[Optional[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict', 'outputs.RegionBackendServiceParams']]] = None,
+            port_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            service_lb_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+            strong_session_affinity_cookie: pulumi.Input[Optional[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict', 'outputs.RegionBackendServiceStrongSessionAffinityCookie']]] = None,
+            subsetting: pulumi.Input[Optional[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict', 'outputs.RegionBackendServiceSubsetting']]] = None,
+            timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            tls_settings: pulumi.Input[Optional[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict', 'outputs.RegionBackendServiceTlsSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["affinityCookieTtlSec"] = affinity_cookie_ttl_sec
+        __props__["backends"] = backends
+        __props__["cdnPolicy"] = cdn_policy
+        __props__["circuitBreakers"] = circuit_breakers
+        __props__["connectionDrainingTimeoutSec"] = connection_draining_timeout_sec
+        __props__["connectionTrackingPolicy"] = connection_tracking_policy
+        __props__["consistentHash"] = consistent_hash
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["customMetrics"] = custom_metrics
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["dynamicForwarding"] = dynamic_forwarding
+        __props__["enableCdn"] = enable_cdn
+        __props__["failoverPolicy"] = failover_policy
+        __props__["fingerprint"] = fingerprint
+        __props__["generatedId"] = generated_id
+        __props__["haPolicy"] = ha_policy
+        __props__["healthChecks"] = health_checks
+        __props__["iap"] = iap
+        __props__["ipAddressSelectionPolicy"] = ip_address_selection_policy
+        __props__["loadBalancingScheme"] = load_balancing_scheme
+        __props__["localityLbPolicy"] = locality_lb_policy
+        __props__["logConfig"] = log_config
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["networkPassThroughLbTrafficPolicy"] = network_pass_through_lb_traffic_policy
+        __props__["outlierDetection"] = outlier_detection
+        __props__["params"] = params
+        __props__["portName"] = port_name
+        __props__["project"] = project
+        __props__["protocol"] = protocol
+        __props__["region"] = region
+        __props__["securityPolicy"] = security_policy
+        __props__["selfLink"] = self_link
+        __props__["serviceLbPolicy"] = service_lb_policy
+        __props__["sessionAffinity"] = session_affinity
+        __props__["strongSessionAffinityCookie"] = strong_session_affinity_cookie
+        __props__["subsetting"] = subsetting
+        __props__["timeoutSec"] = timeout_sec
+        __props__["tlsSettings"] = tls_settings
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/regionBackendService:RegionBackendService', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="affinityCookieTtlSec")
     def affinity_cookie_ttl_sec(self) -> pulumi.Output[Optional[_builtins.int]]:

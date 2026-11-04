@@ -453,6 +453,26 @@ class V2ConsumerPolicy(pulumi.CustomResource):
         __props__.__dict__["validate_dependencies"] = validate_dependencies
         return V2ConsumerPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            check_usage_on_remove: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2ConsumerPolicyEnableRuleArgs', 'V2ConsumerPolicyEnableRuleArgsDict', 'outputs.V2ConsumerPolicyEnableRule']]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            validate_dependencies: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checkUsageOnRemove"] = check_usage_on_remove
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["enableRules"] = enable_rules
+        __props__["etag"] = etag
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["validateDependencies"] = validate_dependencies
+        return pulumi.runtime.exists_resource(None, 'gcp:serviceusage/v2ConsumerPolicy:V2ConsumerPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="checkUsageOnRemove")
     @_utilities.deprecated("""`check_usage_on_remove` is deprecated and will be removed in a future major release.""")

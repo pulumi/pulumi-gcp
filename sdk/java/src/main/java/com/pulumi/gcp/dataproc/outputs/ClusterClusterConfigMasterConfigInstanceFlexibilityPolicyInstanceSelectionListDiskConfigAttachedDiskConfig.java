@@ -20,11 +20,10 @@ public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInst
     /**
      * @return The disk type of the attached disk. Such as &#34;pd-ssd&#34; or &#34;pd-standard&#34;. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
-     * @deprecated
-     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
-    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+    @Deprecated
     private @Nullable String diskType;
     /**
      * @return Indicates how many IOPS to provision for the disk.
@@ -53,11 +52,10 @@ public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInst
     /**
      * @return The disk type of the attached disk. Such as &#34;pd-ssd&#34; or &#34;pd-standard&#34;. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
-     * @deprecated
-     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
-    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+    @Deprecated
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }

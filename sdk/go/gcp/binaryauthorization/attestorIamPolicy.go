@@ -360,6 +360,12 @@ func (AttestorIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*attestorIamPolicyState)(nil)).Elem()
 }
 
+// AttestorIamPolicyExists checks whether an existing AttestorIamPolicy resource with the given ID exists.
+func AttestorIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AttestorIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:binaryauthorization/attestorIamPolicy:AttestorIamPolicy", id, state, "", opts...)
+}
+
 type attestorIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Attestor string `pulumi:"attestor"`

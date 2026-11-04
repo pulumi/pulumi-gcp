@@ -379,6 +379,12 @@ func (IamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamPolicyState)(nil)).Elem()
 }
 
+// IamPolicyExists checks whether an existing IamPolicy resource with the given ID exists.
+func IamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudrun/iamPolicy:IamPolicy", id, state, "", opts...)
+}
+
 type iamPolicyArgs struct {
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

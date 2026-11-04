@@ -219,6 +219,12 @@ func (EncryptionSpecState) ElementType() reflect.Type {
 	return reflect.TypeOf((*encryptionSpecState)(nil)).Elem()
 }
 
+// EncryptionSpecExists checks whether an existing EncryptionSpec resource with the given ID exists.
+func EncryptionSpecExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EncryptionSpecState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/encryptionSpec:EncryptionSpec", id, state, "", opts...)
+}
+
 type encryptionSpecArgs struct {
 	// A nested object resource.
 	// Structure is documented below.

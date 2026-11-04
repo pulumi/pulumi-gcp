@@ -59,8 +59,8 @@ public final class ServiceProjectAttachmentArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
-     * or \&#34;projects/123\&#34;. As input, project name with either project id or number
+     * &#34;Immutable. Service project name in the format: &#92;&#34;projects/abc&#92;&#34;
+     * or &#92;&#34;projects/123&#92;&#34;. As input, project name with either project id or number
      * are accepted. As output, this field will contain project number.&#34;
      * 
      */
@@ -68,8 +68,8 @@ public final class ServiceProjectAttachmentArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> serviceProject;
 
     /**
-     * @return &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
-     * or \&#34;projects/123\&#34;. As input, project name with either project id or number
+     * @return &#34;Immutable. Service project name in the format: &#92;&#34;projects/abc&#92;&#34;
+     * or &#92;&#34;projects/123&#92;&#34;. As input, project name with either project id or number
      * are accepted. As output, this field will contain project number.&#34;
      * 
      */
@@ -174,8 +174,8 @@ public final class ServiceProjectAttachmentArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param serviceProject &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
-         * or \&#34;projects/123\&#34;. As input, project name with either project id or number
+         * @param serviceProject &#34;Immutable. Service project name in the format: &#92;&#34;projects/abc&#92;&#34;
+         * or &#92;&#34;projects/123&#92;&#34;. As input, project name with either project id or number
          * are accepted. As output, this field will contain project number.&#34;
          * 
          * @return builder
@@ -187,8 +187,8 @@ public final class ServiceProjectAttachmentArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param serviceProject &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
-         * or \&#34;projects/123\&#34;. As input, project name with either project id or number
+         * @param serviceProject &#34;Immutable. Service project name in the format: &#92;&#34;projects/abc&#92;&#34;
+         * or &#92;&#34;projects/123&#92;&#34;. As input, project name with either project id or number
          * are accepted. As output, this field will contain project number.&#34;
          * 
          * @return builder

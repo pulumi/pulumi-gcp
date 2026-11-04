@@ -251,6 +251,12 @@ func (HostGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostGroupState)(nil)).Elem()
 }
 
+// HostGroupExists checks whether an existing HostGroup resource with the given ID exists.
+func HostGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:netapp/hostGroup:HostGroup", id, state, "", opts...)
+}
+
 type hostGroupArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

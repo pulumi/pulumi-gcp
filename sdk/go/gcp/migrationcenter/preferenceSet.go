@@ -312,6 +312,12 @@ func (PreferenceSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*preferenceSetState)(nil)).Elem()
 }
 
+// PreferenceSetExists checks whether an existing PreferenceSet resource with the given ID exists.
+func PreferenceSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PreferenceSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:migrationcenter/preferenceSet:PreferenceSet", id, state, "", opts...)
+}
+
 type preferenceSetArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

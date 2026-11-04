@@ -936,6 +936,24 @@ class SecretIamBinding(pulumi.CustomResource):
         __props__.__dict__["secret_id"] = secret_id
         return SecretIamBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: pulumi.Input[Optional[Union['SecretIamBindingConditionArgs', 'SecretIamBindingConditionArgsDict', 'outputs.SecretIamBindingCondition']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["condition"] = condition
+        __props__["etag"] = etag
+        __props__["members"] = members
+        __props__["project"] = project
+        __props__["role"] = role
+        __props__["secretId"] = secret_id
+        return pulumi.runtime.exists_resource(None, 'gcp:secretmanager/secretIamBinding:SecretIamBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.SecretIamBindingCondition']]:

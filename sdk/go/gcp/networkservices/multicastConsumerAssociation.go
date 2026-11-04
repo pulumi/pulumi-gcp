@@ -365,6 +365,12 @@ func (MulticastConsumerAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*multicastConsumerAssociationState)(nil)).Elem()
 }
 
+// MulticastConsumerAssociationExists checks whether an existing MulticastConsumerAssociation resource with the given ID exists.
+func MulticastConsumerAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MulticastConsumerAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation", id, state, "", opts...)
+}
+
 type multicastConsumerAssociationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

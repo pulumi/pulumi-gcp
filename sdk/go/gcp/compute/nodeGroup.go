@@ -402,6 +402,12 @@ func (NodeGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeGroupState)(nil)).Elem()
 }
 
+// NodeGroupExists checks whether an existing NodeGroup resource with the given ID exists.
+func NodeGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/nodeGroup:NodeGroup", id, state, "", opts...)
+}
+
 type nodeGroupArgs struct {
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.

@@ -1932,6 +1932,92 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["view"] = view
         return Table(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            biglake_configuration: pulumi.Input[Optional[Union['TableBiglakeConfigurationArgs', 'TableBiglakeConfigurationArgsDict', 'outputs.TableBiglakeConfiguration']]] = None,
+            clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_configuration: pulumi.Input[Optional[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict', 'outputs.TableEncryptionConfiguration']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+            external_catalog_table_options: pulumi.Input[Optional[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict', 'outputs.TableExternalCatalogTableOptions']]] = None,
+            external_data_configuration: pulumi.Input[Optional[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict', 'outputs.TableExternalDataConfiguration']]] = None,
+            friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+            generated_schema_columns: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_auto_generated_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_schema_changes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            materialized_view: pulumi.Input[Optional[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict', 'outputs.TableMaterializedView']]] = None,
+            max_staleness: pulumi.Input[Optional[_builtins.str]] = None,
+            num_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            num_long_term_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            num_rows: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            range_partitioning: pulumi.Input[Optional[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict', 'outputs.TableRangePartitioning']]] = None,
+            require_partition_filter: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            schema_foreign_type_info: pulumi.Input[Optional[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict', 'outputs.TableSchemaForeignTypeInfo']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            table_constraints: pulumi.Input[Optional[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict', 'outputs.TableTableConstraints']]] = None,
+            table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            table_metadata_view: pulumi.Input[Optional[_builtins.str]] = None,
+            table_replication_info: pulumi.Input[Optional[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict', 'outputs.TableTableReplicationInfo']]] = None,
+            time_partitioning: pulumi.Input[Optional[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict', 'outputs.TableTimePartitioning']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            view: pulumi.Input[Optional[Union['TableViewArgs', 'TableViewArgsDict', 'outputs.TableView']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["biglakeConfiguration"] = biglake_configuration
+        __props__["clusterings"] = clusterings
+        __props__["creationTime"] = creation_time
+        __props__["datasetId"] = dataset_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptionConfiguration"] = encryption_configuration
+        __props__["etag"] = etag
+        __props__["expirationTime"] = expiration_time
+        __props__["externalCatalogTableOptions"] = external_catalog_table_options
+        __props__["externalDataConfiguration"] = external_data_configuration
+        __props__["friendlyName"] = friendly_name
+        __props__["generatedSchemaColumns"] = generated_schema_columns
+        __props__["ignoreAutoGeneratedSchema"] = ignore_auto_generated_schema
+        __props__["ignoreSchemaChanges"] = ignore_schema_changes
+        __props__["labels"] = labels
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["location"] = location
+        __props__["materializedView"] = materialized_view
+        __props__["maxStaleness"] = max_staleness
+        __props__["numBytes"] = num_bytes
+        __props__["numLongTermBytes"] = num_long_term_bytes
+        __props__["numRows"] = num_rows
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["rangePartitioning"] = range_partitioning
+        __props__["requirePartitionFilter"] = require_partition_filter
+        __props__["resourceTags"] = resource_tags
+        __props__["schema"] = schema
+        __props__["schemaForeignTypeInfo"] = schema_foreign_type_info
+        __props__["selfLink"] = self_link
+        __props__["tableConstraints"] = table_constraints
+        __props__["tableId"] = table_id
+        __props__["tableMetadataView"] = table_metadata_view
+        __props__["tableReplicationInfo"] = table_replication_info
+        __props__["timePartitioning"] = time_partitioning
+        __props__["type"] = type
+        __props__["view"] = view
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/table:Table', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="biglakeConfiguration")
     def biglake_configuration(self) -> pulumi.Output[Optional['outputs.TableBiglakeConfiguration']]:

@@ -442,6 +442,12 @@ func (IcebergTableIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*icebergTableIamBindingState)(nil)).Elem()
 }
 
+// IcebergTableIamBindingExists checks whether an existing IcebergTableIamBinding resource with the given ID exists.
+func IcebergTableIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IcebergTableIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/icebergTableIamBinding:IcebergTableIamBinding", id, state, "", opts...)
+}
+
 type icebergTableIamBindingArgs struct {
 	// The name of the IcebergCatalog.
 	// Used to find the parent resource to bind the IAM policy to

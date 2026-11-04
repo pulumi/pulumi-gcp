@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Cipher configuration for phase 2 of the IKE protocol.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedCipherSuitePhase1"&gt;&lt;/a&gt;The `Phase1` block supports:
         /// </summary>
         public readonly Outputs.VPNTunnelCipherSuitePhase2? Phase2;

@@ -496,6 +496,12 @@ func (EdgeCacheOriginState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgeCacheOriginState)(nil)).Elem()
 }
 
+// EdgeCacheOriginExists checks whether an existing EdgeCacheOrigin resource with the given ID exists.
+func EdgeCacheOriginExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgeCacheOriginState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin", id, state, "", opts...)
+}
+
 type edgeCacheOriginArgs struct {
 	// Enable AWS Signature Version 4 origin authentication.
 	// Structure is documented below.

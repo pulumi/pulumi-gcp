@@ -39,11 +39,10 @@ public final class GetSubnetworksSubnetwork {
     /**
      * @return (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `networkName` instead.)
      * 
-     * @deprecated
-     * Use `networkName` instead. This field will be removed in a future major release.
+     * @deprecated Use `networkName` instead. This field will be removed in a future major release.
      * 
      */
-    @Deprecated /* Use `networkName` instead. This field will be removed in a future major release. */
+    @Deprecated
     private String networkSelfLink;
     /**
      * @return Whether the VMs in the subnet can access Google services without assigned external IP addresses.
@@ -95,11 +94,10 @@ public final class GetSubnetworksSubnetwork {
     /**
      * @return (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `networkName` instead.)
      * 
-     * @deprecated
-     * Use `networkName` instead. This field will be removed in a future major release.
+     * @deprecated Use `networkName` instead. This field will be removed in a future major release.
      * 
      */
-    @Deprecated /* Use `networkName` instead. This field will be removed in a future major release. */
+    @Deprecated
     public String networkSelfLink() {
         return this.networkSelfLink;
     }

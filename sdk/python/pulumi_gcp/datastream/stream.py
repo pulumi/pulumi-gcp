@@ -3332,6 +3332,48 @@ class Stream(pulumi.CustomResource):
         __props__.__dict__["stream_id"] = stream_id
         return Stream(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backfill_all: pulumi.Input[Optional[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict', 'outputs.StreamBackfillAll']]] = None,
+            backfill_none: pulumi.Input[Optional[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict', 'outputs.StreamBackfillNone']]] = None,
+            create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_config: pulumi.Input[Optional[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict', 'outputs.StreamDestinationConfig']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict', 'outputs.StreamRuleSet']]]]] = None,
+            source_config: pulumi.Input[Optional[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict', 'outputs.StreamSourceConfig']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            stream_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backfillAll"] = backfill_all
+        __props__["backfillNone"] = backfill_none
+        __props__["createWithoutValidation"] = create_without_validation
+        __props__["customerManagedEncryptionKey"] = customer_managed_encryption_key
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["desiredState"] = desired_state
+        __props__["destinationConfig"] = destination_config
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["ruleSets"] = rule_sets
+        __props__["sourceConfig"] = source_config
+        __props__["state"] = state
+        __props__["streamId"] = stream_id
+        return pulumi.runtime.exists_resource(None, 'gcp:datastream/stream:Stream', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backfillAll")
     def backfill_all(self) -> pulumi.Output[Optional['outputs.StreamBackfillAll']]:

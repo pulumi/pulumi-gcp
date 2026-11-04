@@ -589,6 +589,30 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return OrganizationSecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_options_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyAdvancedOptionsConfigArgs', 'OrganizationSecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.OrganizationSecurityPolicyAdvancedOptionsConfig']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            short_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advancedOptionsConfig"] = advanced_options_config
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["fingerprint"] = fingerprint
+        __props__["parent"] = parent
+        __props__["policyId"] = policy_id
+        __props__["shortName"] = short_name
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advancedOptionsConfig")
     def advanced_options_config(self) -> pulumi.Output[Optional['outputs.OrganizationSecurityPolicyAdvancedOptionsConfig']]:

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// The end user to service account mappings
         /// in a service account based multi-tenant cluster
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public InputMap<string> UserServiceAccountMapping
         {

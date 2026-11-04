@@ -742,6 +742,32 @@ class Rule(pulumi.CustomResource):
         __props__.__dict__["rule_id"] = rule_id
         return Rule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            condition: pulumi.Input[Optional[Union['RuleConditionArgs', 'RuleConditionArgsDict', 'outputs.RuleCondition']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            operation: pulumi.Input[Optional[_builtins.str]] = None,
+            package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["condition"] = condition
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["operation"] = operation
+        __props__["packageId"] = package_id
+        __props__["project"] = project
+        __props__["repositoryId"] = repository_id
+        __props__["ruleId"] = rule_id
+        return pulumi.runtime.exists_resource(None, 'gcp:artifactregistry/rule:Rule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional[_builtins.str]]:

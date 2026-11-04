@@ -425,6 +425,12 @@ func (RegionalParameterVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionalParameterVersionState)(nil)).Elem()
 }
 
+// RegionalParameterVersionExists checks whether an existing RegionalParameterVersion resource with the given ID exists.
+func RegionalParameterVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionalParameterVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion", id, state, "", opts...)
+}
+
 type regionalParameterVersionArgs struct {
 	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
 	DataCrc32c *string `pulumi:"dataCrc32c"`

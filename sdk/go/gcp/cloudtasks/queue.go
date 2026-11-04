@@ -416,6 +416,12 @@ func (QueueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*queueState)(nil)).Elem()
 }
 
+// QueueExists checks whether an existing Queue resource with the given ID exists.
+func QueueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QueueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudtasks/queue:Queue", id, state, "", opts...)
+}
+
 type queueArgs struct {
 	// Overrides for task-level appEngineRouting. These settings apply only
 	// to App Engine tasks in this queue

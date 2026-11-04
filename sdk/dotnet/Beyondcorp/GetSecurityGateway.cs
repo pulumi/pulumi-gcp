@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// The name of the Security Gateway resource.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("securityGatewayId", required: true)]
         public string SecurityGatewayId { get; set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// The name of the Security Gateway resource.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("securityGatewayId", required: true)]
         public Input<string> SecurityGatewayId { get; set; } = null!;

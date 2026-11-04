@@ -503,6 +503,24 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return UserWorkloadsConfigMap(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["data"] = data
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["environment"] = environment
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def data(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

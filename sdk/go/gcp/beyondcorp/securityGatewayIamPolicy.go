@@ -619,6 +619,12 @@ func (SecurityGatewayIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGatewayIamPolicyState)(nil)).Elem()
 }
 
+// SecurityGatewayIamPolicyExists checks whether an existing SecurityGatewayIamPolicy resource with the given ID exists.
+func SecurityGatewayIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGatewayIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:beyondcorp/securityGatewayIamPolicy:SecurityGatewayIamPolicy", id, state, "", opts...)
+}
+
 type securityGatewayIamPolicyArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`. Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

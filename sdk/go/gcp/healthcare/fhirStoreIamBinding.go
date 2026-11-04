@@ -303,6 +303,12 @@ func (FhirStoreIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fhirStoreIamBindingState)(nil)).Elem()
 }
 
+// FhirStoreIamBindingExists checks whether an existing FhirStoreIamBinding resource with the given ID exists.
+func FhirStoreIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FhirStoreIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding", id, state, "", opts...)
+}
+
 type fhirStoreIamBindingArgs struct {
 	Condition *FhirStoreIamBindingCondition `pulumi:"condition"`
 	// The FHIR store ID, in the form

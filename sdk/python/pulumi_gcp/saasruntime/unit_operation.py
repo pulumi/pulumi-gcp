@@ -1356,6 +1356,58 @@ class UnitOperation(pulumi.CustomResource):
         __props__.__dict__["wait_for_completion"] = wait_for_completion
         return UnitOperation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitOperationConditionArgs', 'UnitOperationConditionArgsDict', 'outputs.UnitOperationCondition']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deprovision: pulumi.Input[Optional[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict', 'outputs.UnitOperationDeprovision']]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            engine_state: pulumi.Input[Optional[_builtins.str]] = None,
+            error_category: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provision: pulumi.Input[Optional[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict', 'outputs.UnitOperationProvision']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            unit: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade: pulumi.Input[Optional[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict', 'outputs.UnitOperationUpgrade']]] = None,
+            wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["conditions"] = conditions
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deprovision"] = deprovision
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["engineState"] = engine_state
+        __props__["errorCategory"] = error_category
+        __props__["etag"] = etag
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["provision"] = provision
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["state"] = state
+        __props__["uid"] = uid
+        __props__["unit"] = unit
+        __props__["unitOperationId"] = unit_operation_id
+        __props__["updateTime"] = update_time
+        __props__["upgrade"] = upgrade
+        __props__["waitForCompletion"] = wait_for_completion
+        return pulumi.runtime.exists_resource(None, 'gcp:saasruntime/unitOperation:UnitOperation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

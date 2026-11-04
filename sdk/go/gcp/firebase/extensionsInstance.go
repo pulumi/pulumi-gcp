@@ -282,6 +282,12 @@ func (ExtensionsInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*extensionsInstanceState)(nil)).Elem()
 }
 
+// ExtensionsInstanceExists checks whether an existing ExtensionsInstance resource with the given ID exists.
+func ExtensionsInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExtensionsInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/extensionsInstance:ExtensionsInstance", id, state, "", opts...)
+}
+
 type extensionsInstanceArgs struct {
 	// The current Config of the Extension Instance.
 	// Structure is documented below.

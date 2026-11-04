@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.AgenticApplications.Inputs
 
         /// <summary>
         /// - Represents an F1 resource.
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("f1Resource")]
         public Input<Inputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1ResourceGetArgs>? F1Resource { get; set; }

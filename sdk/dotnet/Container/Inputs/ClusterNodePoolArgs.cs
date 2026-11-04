@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// The name of the cluster, unique within the project and
         /// location.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

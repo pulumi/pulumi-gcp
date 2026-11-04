@@ -566,6 +566,30 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Database(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict', 'outputs.DatabaseHiveOptions']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["catalog"] = catalog
+        __props__["createTime"] = create_time
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["expireTime"] = expire_time
+        __props__["hiveOptions"] = hive_options
+        __props__["name"] = name
+        __props__["type"] = type
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:biglake/database:Database', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def catalog(self) -> pulumi.Output[_builtins.str]:

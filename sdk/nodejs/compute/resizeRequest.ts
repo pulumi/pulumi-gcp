@@ -118,6 +118,17 @@ export class ResizeRequest extends pulumi.CustomResource {
         return new ResizeRequest(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ResizeRequest resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ResizeRequestState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("gcp:compute/resizeRequest:ResizeRequest", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'gcp:compute/resizeRequest:ResizeRequest';
 

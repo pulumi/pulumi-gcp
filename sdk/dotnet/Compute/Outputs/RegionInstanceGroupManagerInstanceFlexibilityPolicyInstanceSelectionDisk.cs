@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? SourceSnapshot;
         /// <summary>
         /// , The customer-supplied encryption key of the source snapshot. Structure is documented below.
-        /// - - -
+        /// ***
         /// </summary>
         public readonly Outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey? SourceSnapshotEncryptionKey;
         /// <summary>

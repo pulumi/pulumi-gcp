@@ -218,6 +218,12 @@ func (AccessLevelsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessLevelsState)(nil)).Elem()
 }
 
+// AccessLevelsExists checks whether an existing AccessLevels resource with the given ID exists.
+func AccessLevelsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessLevelsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/accessLevels:AccessLevels", id, state, "", opts...)
+}
+
 type accessLevelsArgs struct {
 	// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
 	// Structure is documented below.

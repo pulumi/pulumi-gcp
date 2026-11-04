@@ -250,6 +250,16 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return DocumentAiProcessorDefaultVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            processor: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["processor"] = processor
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def processor(self) -> pulumi.Output[_builtins.str]:

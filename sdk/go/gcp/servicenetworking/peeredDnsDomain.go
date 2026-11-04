@@ -171,6 +171,12 @@ func (PeeredDnsDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*peeredDnsDomainState)(nil)).Elem()
 }
 
+// PeeredDnsDomainExists checks whether an existing PeeredDnsDomain resource with the given ID exists.
+func PeeredDnsDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PeeredDnsDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain", id, state, "", opts...)
+}
+
 type peeredDnsDomainArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

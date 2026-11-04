@@ -298,6 +298,12 @@ func (LocationTagBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*locationTagBindingState)(nil)).Elem()
 }
 
+// LocationTagBindingExists checks whether an existing LocationTagBinding resource with the given ID exists.
+func LocationTagBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LocationTagBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:tags/locationTagBinding:LocationTagBinding", id, state, "", opts...)
+}
+
 type locationTagBindingArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

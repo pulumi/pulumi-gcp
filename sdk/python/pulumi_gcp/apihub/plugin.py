@@ -1026,6 +1026,44 @@ class Plugin(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Plugin(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict', 'outputs.PluginActionsConfig']]]]] = None,
+            config_template: pulumi.Input[Optional[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict', 'outputs.PluginConfigTemplate']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            documentation: pulumi.Input[Optional[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict', 'outputs.PluginDocumentation']]] = None,
+            hosting_service: pulumi.Input[Optional[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict', 'outputs.PluginHostingService']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ownership_type: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_category: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionsConfigs"] = actions_configs
+        __props__["configTemplate"] = config_template
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["documentation"] = documentation
+        __props__["hostingService"] = hosting_service
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["ownershipType"] = ownership_type
+        __props__["pluginCategory"] = plugin_category
+        __props__["pluginId"] = plugin_id
+        __props__["project"] = project
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:apihub/plugin:Plugin', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionsConfigs")
     def actions_configs(self) -> pulumi.Output[Optional[Sequence['outputs.PluginActionsConfig']]]:

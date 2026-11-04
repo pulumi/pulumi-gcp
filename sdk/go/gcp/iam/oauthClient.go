@@ -321,6 +321,12 @@ func (OauthClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oauthClientState)(nil)).Elem()
 }
 
+// OauthClientExists checks whether an existing OauthClient resource with the given ID exists.
+func OauthClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OauthClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/oauthClient:OauthClient", id, state, "", opts...)
+}
+
 type oauthClientArgs struct {
 	// Required. The list of OAuth grant types is allowed for the OauthClient.
 	AllowedGrantTypes []string `pulumi:"allowedGrantTypes"`

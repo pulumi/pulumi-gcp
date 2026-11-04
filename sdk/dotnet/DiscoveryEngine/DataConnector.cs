@@ -421,7 +421,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// - All functionalities, including data synchronization, are halted.
         /// - Any ongoing data synchronization job will be canceled.
         /// - No future data synchronization runs will be scheduled nor can be
-        /// triggered.
+        ///   triggered.
         /// </summary>
         [Output("latestPauseTime")]
         public Output<string> LatestPauseTime { get; private set; } = null!;
@@ -993,7 +993,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// - All functionalities, including data synchronization, are halted.
         /// - Any ongoing data synchronization job will be canceled.
         /// - No future data synchronization runs will be scheduled nor can be
-        /// triggered.
+        ///   triggered.
         /// </summary>
         [Input("latestPauseTime")]
         public Input<string>? LatestPauseTime { get; set; }

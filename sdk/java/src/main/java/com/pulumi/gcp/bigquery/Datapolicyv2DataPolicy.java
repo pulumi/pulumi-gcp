@@ -126,12 +126,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .location("us-central1")
@@ -144,10 +144,10 @@ import javax.annotation.Nullable;
  *             .language("SQL")
  *             .dataGovernanceType("DATA_MASKING")
  *             .definitionBody("SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')")
- *             .returnType("{\"typeKind\" :  \"STRING\"}")
+ *             .returnType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "STRING}&#92;{@code "}}{@code ")
  *             .arguments(RoutineArgumentArgs.builder()
  *                 .name("ssn")
- *                 .dataType("{\"typeKind\" :  \"STRING\"}")
+ *                 .dataType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "STRING}&#92;{@code "}}{@code ")
  *                 .build())
  *             .build());
  * 
@@ -160,8 +160,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

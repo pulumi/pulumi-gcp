@@ -45,21 +45,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new SoarDomain("example", SoarDomainArgs.builder()
  *             .location("us")
  *             .instance("00000000-0000-0000-0000-000000000000")
  *             .displayName("test.com")
- *             .environmentsJson("[\"Default Environment\"]")
+ *             .environmentsJson("[}&#92;{@code "Default Environment}&#92;{@code "]")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

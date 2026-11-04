@@ -476,6 +476,12 @@ func (BackupVaultState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupVaultState)(nil)).Elem()
 }
 
+// BackupVaultExists checks whether an existing BackupVault resource with the given ID exists.
+func BackupVaultExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupVaultState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:backupdisasterrecovery/backupVault:BackupVault", id, state, "", opts...)
+}
+
 type backupVaultArgs struct {
 	// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
 	// Default value is `WITHIN_ORGANIZATION`.

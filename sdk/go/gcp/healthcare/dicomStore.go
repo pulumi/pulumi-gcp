@@ -336,6 +336,12 @@ func (DicomStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dicomStoreState)(nil)).Elem()
 }
 
+// DicomStoreExists checks whether an existing DicomStore resource with the given ID exists.
+func DicomStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DicomStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/dicomStore:DicomStore", id, state, "", opts...)
+}
+
 type dicomStoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'

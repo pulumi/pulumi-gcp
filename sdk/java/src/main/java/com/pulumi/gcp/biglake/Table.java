@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var catalog = new Catalog("catalog", CatalogArgs.builder()
  *             .name("my_catalog")
  *             .location("US")
@@ -91,11 +91,11 @@ import javax.annotation.Nullable;
  *             .catalog(catalog.id())
  *             .type("HIVE")
  *             .hiveOptions(DatabaseHiveOptionsArgs.builder()
- *                 .locationUri(Output.tuple(bucket.name(), metadataFolder.name()).applyValue(values -> {
+ *                 .locationUri(Output.tuple(bucket.name(), metadataFolder.name()).applyValue(values -> }{{@code
  *                     var bucketName = values.t1;
  *                     var metadataFolderName = values.t2;
  *                     return String.format("gs://%s/%s", bucketName,metadataFolderName);
- *                 }))
+ *                 }}{@code ))
  *                 .parameters(Map.of("owner", "Alex"))
  *                 .build())
  *             .build());
@@ -107,11 +107,11 @@ import javax.annotation.Nullable;
  *             .hiveOptions(TableHiveOptionsArgs.builder()
  *                 .tableType("MANAGED_TABLE")
  *                 .storageDescriptor(TableHiveOptionsStorageDescriptorArgs.builder()
- *                     .locationUri(Output.tuple(bucket.name(), dataFolder.name()).applyValue(values -> {
+ *                     .locationUri(Output.tuple(bucket.name(), dataFolder.name()).applyValue(values -> }{{@code
  *                         var bucketName = values.t1;
  *                         var dataFolderName = values.t2;
  *                         return String.format("gs://%s/%s", bucketName,dataFolderName);
- *                     }))
+ *                     }}{@code ))
  *                     .inputFormat("org.apache.hadoop.mapred.SequenceFileInputFormat")
  *                     .outputFormat("org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat")
  *                     .serdeInfo(TableHiveOptionsStorageDescriptorSerdeInfoArgs.builder()
@@ -124,15 +124,15 @@ import javax.annotation.Nullable;
  *                     Map.entry("transient_lastDdlTime", "1680894197"),
  *                     Map.entry("spark.sql.partitionProvider", "catalog"),
  *                     Map.entry("owner", "John Doe"),
- *                     Map.entry("spark.sql.sources.schema.part.0", "{\"type\":\"struct\",\"fields\":[{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"name\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"age\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}]}"),
+ *                     Map.entry("spark.sql.sources.schema.part.0", "}{&#92;{@code "type}&#92;{@code ":}&#92;{@code "struct}&#92;{@code ",}&#92;{@code "fields}&#92;{@code ":[}{&#92;{@code "name}&#92;{@code ":}&#92;{@code "id}&#92;{@code ",}&#92;{@code "type}&#92;{@code ":}&#92;{@code "integer}&#92;{@code ",}&#92;{@code "nullable}&#92;{@code ":true,}&#92;{@code "metadata}&#92;{@code ":}{}}{@code ,}{&#92;{@code "name}&#92;{@code ":}&#92;{@code "name}&#92;{@code ",}&#92;{@code "type}&#92;{@code ":}&#92;{@code "string}&#92;{@code ",}&#92;{@code "nullable}&#92;{@code ":true,}&#92;{@code "metadata}&#92;{@code ":}{}}{@code ,}{&#92;{@code "name}&#92;{@code ":}&#92;{@code "age}&#92;{@code ",}&#92;{@code "type}&#92;{@code ":}&#92;{@code "integer}&#92;{@code ",}&#92;{@code "nullable}&#92;{@code ":true,}&#92;{@code "metadata}&#92;{@code ":}{}}{@code ]}}{@code "),
  *                     Map.entry("spark.sql.sources.provider", "iceberg"),
  *                     Map.entry("provider", "iceberg")
  *                 ))
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

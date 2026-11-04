@@ -150,6 +150,12 @@ func (IamMemberRemoveState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamMemberRemoveState)(nil)).Elem()
 }
 
+// IamMemberRemoveExists checks whether an existing IamMemberRemove resource with the given ID exists.
+func IamMemberRemoveExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IamMemberRemoveState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:projects/iamMemberRemove:IamMemberRemove", id, state, "", opts...)
+}
+
 type iamMemberRemoveArgs struct {
 	// The IAM principal that should not have the target role.
 	// Each entry can have one of the following values:

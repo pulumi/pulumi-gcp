@@ -382,6 +382,12 @@ func (AspectTypeIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aspectTypeIamPolicyState)(nil)).Elem()
 }
 
+// AspectTypeIamPolicyExists checks whether an existing AspectTypeIamPolicy resource with the given ID exists.
+func AspectTypeIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AspectTypeIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/aspectTypeIamPolicy:AspectTypeIamPolicy", id, state, "", opts...)
+}
+
 type aspectTypeIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	AspectTypeId string `pulumi:"aspectTypeId"`

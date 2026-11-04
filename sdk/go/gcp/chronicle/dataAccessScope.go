@@ -471,6 +471,12 @@ func (DataAccessScopeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataAccessScopeState)(nil)).Elem()
 }
 
+// DataAccessScopeExists checks whether an existing DataAccessScope resource with the given ID exists.
+func DataAccessScopeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataAccessScopeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/dataAccessScope:DataAccessScope", id, state, "", opts...)
+}
+
 type dataAccessScopeArgs struct {
 	// Optional. Whether or not the scope allows all labels, allowAll and
 	// allowedDataAccessLabels are mutually exclusive and one of them must be

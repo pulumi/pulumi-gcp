@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     public sealed class GetInstancePersistenceConfigAofConfigResult
     {
         /// <summary>
-        /// Optional. The fsync mode. 
+        /// Optional. The fsync mode.
         ///  Possible values:
         ///  NEVER
         /// EVERY_SEC

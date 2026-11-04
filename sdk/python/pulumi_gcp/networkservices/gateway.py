@@ -1615,6 +1615,64 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            envoy_headers: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addresses"] = addresses
+        __props__["allPorts"] = all_ports
+        __props__["allowGlobalAccess"] = allow_global_access
+        __props__["certificateUrls"] = certificate_urls
+        __props__["createTime"] = create_time
+        __props__["deleteSwgAutogenRouterOnDestroy"] = delete_swg_autogen_router_on_destroy
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["envoyHeaders"] = envoy_headers
+        __props__["gatewaySecurityPolicy"] = gateway_security_policy
+        __props__["ipVersion"] = ip_version
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["ports"] = ports
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["routingMode"] = routing_mode
+        __props__["scope"] = scope
+        __props__["selfLink"] = self_link
+        __props__["serverTlsPolicy"] = server_tls_policy
+        __props__["subnetwork"] = subnetwork
+        __props__["type"] = type
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:networkservices/gateway:Gateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:

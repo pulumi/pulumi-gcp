@@ -627,6 +627,12 @@ func (TagValueIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagValueIamBindingState)(nil)).Elem()
 }
 
+// TagValueIamBindingExists checks whether an existing TagValueIamBinding resource with the given ID exists.
+func TagValueIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagValueIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:tags/tagValueIamBinding:TagValueIamBinding", id, state, "", opts...)
+}
+
 type tagValueIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

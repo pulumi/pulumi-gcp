@@ -73,14 +73,14 @@ public final class EnvReferencesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+     * Required. The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+     * @return Required. The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
      * 
      */
     public Optional<Output<String>> name() {
@@ -222,7 +222,7 @@ public final class EnvReferencesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+         * @param name Required. The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class EnvReferencesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+         * @param name Required. The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
          * 
          * @return builder
          * 

@@ -378,6 +378,12 @@ func (AiIndexEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiIndexEndpointState)(nil)).Elem()
 }
 
+// AiIndexEndpointExists checks whether an existing AiIndexEndpoint resource with the given ID exists.
+func AiIndexEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiIndexEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiIndexEndpoint:AiIndexEndpoint", id, state, "", opts...)
+}
+
 type aiIndexEndpointArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

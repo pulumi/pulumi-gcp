@@ -2077,6 +2077,44 @@ class NotebookExecution(pulumi.CustomResource):
         __props__.__dict__["workbench_runtime"] = workbench_runtime
         return NotebookExecution(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_environment_spec: pulumi.Input[Optional[Union['NotebookExecutionCustomEnvironmentSpecArgs', 'NotebookExecutionCustomEnvironmentSpecArgsDict', 'outputs.NotebookExecutionCustomEnvironmentSpec']]] = None,
+            dataform_repository_source: pulumi.Input[Optional[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict', 'outputs.NotebookExecutionDataformRepositorySource']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            direct_notebook_source: pulumi.Input[Optional[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict', 'outputs.NotebookExecutionDirectNotebookSource']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_user: pulumi.Input[Optional[_builtins.str]] = None,
+            gcs_notebook_source: pulumi.Input[Optional[Union['NotebookExecutionGcsNotebookSourceArgs', 'NotebookExecutionGcsNotebookSourceArgsDict', 'outputs.NotebookExecutionGcsNotebookSource']]] = None,
+            gcs_output_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            kernel_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            notebook_execution_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            notebook_runtime_template_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            workbench_runtime: pulumi.Input[Optional[Union['NotebookExecutionWorkbenchRuntimeArgs', 'NotebookExecutionWorkbenchRuntimeArgsDict', 'outputs.NotebookExecutionWorkbenchRuntime']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customEnvironmentSpec"] = custom_environment_spec
+        __props__["dataformRepositorySource"] = dataform_repository_source
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["directNotebookSource"] = direct_notebook_source
+        __props__["displayName"] = display_name
+        __props__["executionTimeout"] = execution_timeout
+        __props__["executionUser"] = execution_user
+        __props__["gcsNotebookSource"] = gcs_notebook_source
+        __props__["gcsOutputUri"] = gcs_output_uri
+        __props__["kernelName"] = kernel_name
+        __props__["location"] = location
+        __props__["notebookExecutionJobId"] = notebook_execution_job_id
+        __props__["notebookRuntimeTemplateResourceName"] = notebook_runtime_template_resource_name
+        __props__["project"] = project
+        __props__["serviceAccount"] = service_account
+        __props__["workbenchRuntime"] = workbench_runtime
+        return pulumi.runtime.exists_resource(None, 'gcp:colab/notebookExecution:NotebookExecution', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customEnvironmentSpec")
     def custom_environment_spec(self) -> pulumi.Output[Optional['outputs.NotebookExecutionCustomEnvironmentSpec']]:

@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("tf-instance")
  *             .clusters(InstanceClusterArgs.builder()
@@ -85,18 +85,18 @@ import javax.annotation.Nullable;
  *             .columnFamily("name")
  *             .deletionPolicy("ABANDON")
  *             .gcRules("""
- *   {
- *     \"rules\": [
- *       {
- *         \"max_age\": \"168h\"
- *       }
+ *   }{{@code
+ *     }&#92;{@code "rules}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "max_age}&#92;{@code ": }&#92;{@code "168h}&#92;{@code "
+ *       }}{@code
  *     ]
- *   }
+ *   }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -118,34 +118,34 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()
  *             .instanceName(instance.get("name"))
  *             .table(table.get("name"))
  *             .columnFamily("name")
  *             .deletionPolicy("ABANDON")
  *             .gcRules("""
- *   {
- *     \"mode\": \"union\",
- *     \"rules\": [
- *       {
- *         \"max_age\": \"168h\"
- *       },
- *       {
- *         \"max_version\": 10
- *       }
+ *   }{{@code
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "union}&#92;{@code ",
+ *     }&#92;{@code "rules}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "max_age}&#92;{@code ": }&#92;{@code "168h}&#92;{@code "
+ *       }}{@code ,
+ *       }{{@code
+ *         }&#92;{@code "max_version}&#92;{@code ": 10
+ *       }}{@code
  *     ]
- *   }
+ *   }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -172,12 +172,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("instance_name")
  *             .clusters(InstanceClusterArgs.builder()
@@ -202,30 +202,30 @@ import javax.annotation.Nullable;
  *             .columnFamily("cf1")
  *             .deletionPolicy("ABANDON")
  *             .gcRules("""
- *   {
- *     \"mode\": \"union\",
- *     \"rules\": [
- *       {
- *         \"max_age\": \"10h\"
- *       },
- *       {
- *         \"mode\": \"intersection\",
- *         \"rules\": [
- *           {
- *             \"max_age\": \"2h\"
- *           },
- *           {
- *             \"max_version\": 2
- *           }
+ *   }{{@code
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "union}&#92;{@code ",
+ *     }&#92;{@code "rules}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "max_age}&#92;{@code ": }&#92;{@code "10h}&#92;{@code "
+ *       }}{@code ,
+ *       }{{@code
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "intersection}&#92;{@code ",
+ *         }&#92;{@code "rules}&#92;{@code ": [
+ *           }{{@code
+ *             }&#92;{@code "max_age}&#92;{@code ": }&#92;{@code "2h}&#92;{@code "
+ *           }}{@code ,
+ *           }{{@code
+ *             }&#92;{@code "max_version}&#92;{@code ": 2
+ *           }}{@code
  *         ]
- *       }
+ *       }}{@code
  *     ]
- *   }
+ *   }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * This is equivalent to running the following `cbt` command:

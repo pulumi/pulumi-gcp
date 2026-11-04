@@ -224,6 +224,12 @@ func (DomainTrustState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainTrustState)(nil)).Elem()
 }
 
+// DomainTrustExists checks whether an existing DomainTrust resource with the given ID exists.
+func DomainTrustExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainTrustState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:activedirectory/domainTrust:DomainTrust", id, state, "", opts...)
+}
+
 type domainTrustArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

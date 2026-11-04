@@ -470,6 +470,12 @@ func (InstanceFromMachineImageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceFromMachineImageState)(nil)).Elem()
 }
 
+// InstanceFromMachineImageExists checks whether an existing InstanceFromMachineImage resource with the given ID exists.
+func InstanceFromMachineImageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceFromMachineImageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instanceFromMachineImage:InstanceFromMachineImage", id, state, "", opts...)
+}
+
 type instanceFromMachineImageArgs struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures *InstanceFromMachineImageAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`

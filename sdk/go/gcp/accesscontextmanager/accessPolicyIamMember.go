@@ -390,6 +390,12 @@ func (AccessPolicyIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPolicyIamMemberState)(nil)).Elem()
 }
 
+// AccessPolicyIamMemberExists checks whether an existing AccessPolicyIamMember resource with the given ID exists.
+func AccessPolicyIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessPolicyIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember", id, state, "", opts...)
+}
+
 type accessPolicyIamMemberArgs struct {
 	Condition *AccessPolicyIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

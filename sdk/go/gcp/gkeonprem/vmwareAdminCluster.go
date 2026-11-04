@@ -669,6 +669,12 @@ func (VmwareAdminClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vmwareAdminClusterState)(nil)).Elem()
 }
 
+// VmwareAdminClusterExists checks whether an existing VmwareAdminCluster resource with the given ID exists.
+func VmwareAdminClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VmwareAdminClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster", id, state, "", opts...)
+}
+
 type vmwareAdminClusterArgs struct {
 	// The VMware admin cluster addon node configuration.
 	// Structure is documented below.

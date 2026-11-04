@@ -430,6 +430,12 @@ func (DataExchangeIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataExchangeIamMemberState)(nil)).Elem()
 }
 
+// DataExchangeIamMemberExists checks whether an existing DataExchangeIamMember resource with the given ID exists.
+func DataExchangeIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataExchangeIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigqueryanalyticshub/dataExchangeIamMember:DataExchangeIamMember", id, state, "", opts...)
+}
+
 type dataExchangeIamMemberArgs struct {
 	Condition *DataExchangeIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

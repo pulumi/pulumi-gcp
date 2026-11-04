@@ -424,6 +424,12 @@ func (RegionDiskIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionDiskIamBindingState)(nil)).Elem()
 }
 
+// RegionDiskIamBindingExists checks whether an existing RegionDiskIamBinding resource with the given ID exists.
+func RegionDiskIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionDiskIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionDiskIamBinding:RegionDiskIamBinding", id, state, "", opts...)
+}
+
 type regionDiskIamBindingArgs struct {
 	Condition *RegionDiskIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

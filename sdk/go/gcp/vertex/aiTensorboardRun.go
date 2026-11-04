@@ -329,6 +329,12 @@ func (AiTensorboardRunState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiTensorboardRunState)(nil)).Elem()
 }
 
+// AiTensorboardRunExists checks whether an existing AiTensorboardRun resource with the given ID exists.
+func AiTensorboardRunExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiTensorboardRunState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiTensorboardRun:AiTensorboardRun", id, state, "", opts...)
+}
+
 type aiTensorboardRunArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

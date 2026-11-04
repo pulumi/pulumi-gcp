@@ -1210,6 +1210,12 @@ func (AiReasoningEngineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiReasoningEngineState)(nil)).Elem()
 }
 
+// AiReasoningEngineExists checks whether an existing AiReasoningEngine resource with the given ID exists.
+func AiReasoningEngineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiReasoningEngineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiReasoningEngine:AiReasoningEngine", id, state, "", opts...)
+}
+
 type aiReasoningEngineArgs struct {
 	// Optional. Configuration for how Agent Engine sub-resources should manage context.
 	// Structure is documented below.

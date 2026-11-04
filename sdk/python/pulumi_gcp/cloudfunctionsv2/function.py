@@ -2358,6 +2358,44 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return Function(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict', 'outputs.FunctionBuildConfig']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            service_config: pulumi.Input[Optional[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict', 'outputs.FunctionServiceConfig']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["buildConfig"] = build_config
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["environment"] = environment
+        __props__["eventTrigger"] = event_trigger
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["serviceConfig"] = service_config
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudfunctionsv2/function:Function', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="buildConfig")
     def build_config(self) -> pulumi.Output[Optional['outputs.FunctionBuildConfig']]:

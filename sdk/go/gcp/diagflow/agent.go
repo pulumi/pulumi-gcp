@@ -345,6 +345,12 @@ func (AgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentState)(nil)).Elem()
 }
 
+// AgentExists checks whether an existing Agent resource with the given ID exists.
+func AgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/agent:Agent", id, state, "", opts...)
+}
+
 type agentArgs struct {
 	// API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query
 	// different service endpoints for different API versions. However, bots connectors and webhook calls will follow

@@ -358,6 +358,12 @@ func (ChatEngineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*chatEngineState)(nil)).Elem()
 }
 
+// ChatEngineExists checks whether an existing ChatEngine resource with the given ID exists.
+func ChatEngineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ChatEngineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/chatEngine:ChatEngine", id, state, "", opts...)
+}
+
 type chatEngineArgs struct {
 	// Configurations for a chat Engine.
 	// Structure is documented below.

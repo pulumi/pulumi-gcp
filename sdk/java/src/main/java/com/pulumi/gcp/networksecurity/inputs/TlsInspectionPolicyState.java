@@ -201,7 +201,7 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\&#34;PROFILE_COMPATIBLE\&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (&#92;&#34;PROFILE_COMPATIBLE&#92;&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
      * Default value is `PROFILE_UNSPECIFIED`.
      * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
      * 
@@ -210,7 +210,7 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
     private @Nullable Output<String> tlsFeatureProfile;
 
     /**
-     * @return The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\&#34;PROFILE_COMPATIBLE\&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * @return The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (&#92;&#34;PROFILE_COMPATIBLE&#92;&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
      * Default value is `PROFILE_UNSPECIFIED`.
      * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
      * 
@@ -220,14 +220,14 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}\&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+     * A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form &#92;&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}&#92;&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
      * 
      */
     @Import(name="trustConfig")
     private @Nullable Output<String> trustConfig;
 
     /**
-     * @return A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}\&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+     * @return A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form &#92;&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}&#92;&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
      * 
      */
     public Optional<Output<String>> trustConfig() {
@@ -546,7 +546,7 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsFeatureProfile The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\&#34;PROFILE_COMPATIBLE\&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+         * @param tlsFeatureProfile The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (&#92;&#34;PROFILE_COMPATIBLE&#92;&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
          * Default value is `PROFILE_UNSPECIFIED`.
          * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
          * 
@@ -559,7 +559,7 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsFeatureProfile The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\&#34;PROFILE_COMPATIBLE\&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+         * @param tlsFeatureProfile The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (&#92;&#34;PROFILE_COMPATIBLE&#92;&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
          * Default value is `PROFILE_UNSPECIFIED`.
          * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
          * 
@@ -571,7 +571,7 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trustConfig A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}\&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+         * @param trustConfig A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form &#92;&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}&#92;&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
          * 
          * @return builder
          * 
@@ -582,7 +582,7 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trustConfig A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}\&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+         * @param trustConfig A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form &#92;&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}&#92;&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
          * 
          * @return builder
          * 

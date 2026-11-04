@@ -59,11 +59,10 @@ public final class ToolDataStoreTool {
      * 
      * &gt; **Warning:** `maxResults` is deprecated and will be removed in a future release.
      * 
-     * @deprecated
-     * `maxResults` is deprecated and will be removed in a future release.
+     * @deprecated `maxResults` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
+    @Deprecated
     private @Nullable Integer maxResults;
     /**
      * @return The modality configs for the data store.
@@ -129,11 +128,10 @@ public final class ToolDataStoreTool {
      * 
      * &gt; **Warning:** `maxResults` is deprecated and will be removed in a future release.
      * 
-     * @deprecated
-     * `maxResults` is deprecated and will be removed in a future release.
+     * @deprecated `maxResults` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<Integer> maxResults() {
         return Optional.ofNullable(this.maxResults);
     }

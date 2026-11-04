@@ -405,6 +405,12 @@ func (IcebergCatalogIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*icebergCatalogIamMemberState)(nil)).Elem()
 }
 
+// IcebergCatalogIamMemberExists checks whether an existing IcebergCatalogIamMember resource with the given ID exists.
+func IcebergCatalogIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IcebergCatalogIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember", id, state, "", opts...)
+}
+
 type icebergCatalogIamMemberArgs struct {
 	Condition *IcebergCatalogIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

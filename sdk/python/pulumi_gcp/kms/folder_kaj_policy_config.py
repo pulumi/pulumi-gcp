@@ -349,6 +349,16 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
         __props__.__dict__["folder"] = folder
         return FolderKajPolicyConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_key_access_justification_policy: pulumi.Input[Optional[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict', 'outputs.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy']]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultKeyAccessJustificationPolicy"] = default_key_access_justification_policy
+        __props__["folder"] = folder
+        return pulumi.runtime.exists_resource(None, 'gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultKeyAccessJustificationPolicy")
     def default_key_access_justification_policy(self) -> pulumi.Output[Optional['outputs.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy']]:

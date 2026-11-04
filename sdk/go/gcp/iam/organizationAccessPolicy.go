@@ -327,6 +327,12 @@ func (OrganizationAccessPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationAccessPolicyState)(nil)).Elem()
 }
 
+// OrganizationAccessPolicyExists checks whether an existing OrganizationAccessPolicy resource with the given ID exists.
+func OrganizationAccessPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationAccessPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/organizationAccessPolicy:OrganizationAccessPolicy", id, state, "", opts...)
+}
+
 type organizationAccessPolicyArgs struct {
 	// The ID to use for the access policy, which
 	// will become the final component of the access policy's

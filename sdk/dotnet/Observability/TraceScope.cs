@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.Observability
         /// <summary>
         /// Names of the projects that are included in this trace scope.
         /// *  `projects/[PROJECT_ID]`
-        /// A trace scope can include a maximum of 20 projects.
+        ///    A trace scope can include a maximum of 20 projects.
         /// </summary>
         [Output("resourceNames")]
         public Output<ImmutableArray<string>> ResourceNames { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Gcp.Observability
         /// <summary>
         /// Names of the projects that are included in this trace scope.
         /// *  `projects/[PROJECT_ID]`
-        /// A trace scope can include a maximum of 20 projects.
+        ///    A trace scope can include a maximum of 20 projects.
         /// </summary>
         public InputList<string> ResourceNames
         {
@@ -295,7 +295,7 @@ namespace Pulumi.Gcp.Observability
         /// <summary>
         /// Names of the projects that are included in this trace scope.
         /// *  `projects/[PROJECT_ID]`
-        /// A trace scope can include a maximum of 20 projects.
+        ///    A trace scope can include a maximum of 20 projects.
         /// </summary>
         public InputList<string> ResourceNames
         {

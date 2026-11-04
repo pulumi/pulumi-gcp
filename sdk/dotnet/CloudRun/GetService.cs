@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.CloudRun
         /// <summary>
         /// Get information about a Cloud Run Service.
         /// 
-        /// 
         /// For more information see the [official documentation](https://cloud.google.com/run/docs/) and
         /// the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
         /// 
@@ -43,7 +42,6 @@ namespace Pulumi.Gcp.CloudRun
         /// <summary>
         /// Get information about a Cloud Run Service.
         /// 
-        /// 
         /// For more information see the [official documentation](https://cloud.google.com/run/docs/) and
         /// the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
         /// 
@@ -71,7 +69,6 @@ namespace Pulumi.Gcp.CloudRun
 
         /// <summary>
         /// Get information about a Cloud Run Service.
-        /// 
         /// 
         /// For more information see the [official documentation](https://cloud.google.com/run/docs/) and
         /// the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).

@@ -567,6 +567,38 @@ class Subnet(pulumi.CustomResource):
         __props__.__dict__["vlan_id"] = vlan_id
         return Subnet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dhcp_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetDhcpAddressRangeArgs', 'SubnetDhcpAddressRangeArgsDict', 'outputs.SubnetDhcpAddressRange']]]]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            standard_config: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dhcpAddressRanges"] = dhcp_address_ranges
+        __props__["gatewayId"] = gateway_id
+        __props__["gatewayIp"] = gateway_ip
+        __props__["ipCidrRange"] = ip_cidr_range
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["standardConfig"] = standard_config
+        __props__["state"] = state
+        __props__["type"] = type
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["vlanId"] = vlan_id
+        return pulumi.runtime.exists_resource(None, 'gcp:vmwareengine/subnet:Subnet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -253,6 +253,12 @@ func (SacAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sacAttachmentState)(nil)).Elem()
 }
 
+// SacAttachmentExists checks whether an existing SacAttachment resource with the given ID exists.
+func SacAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SacAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/sacAttachment:SacAttachment", id, state, "", opts...)
+}
+
 type sacAttachmentArgs struct {
 	// Case-insensitive ISO-3166 alpha-2 country code used for localization. Only valid for Symantec attachments.
 	Country *string `pulumi:"country"`

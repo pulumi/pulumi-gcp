@@ -339,6 +339,12 @@ func (CertificateIssuanceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateIssuanceConfigState)(nil)).Elem()
 }
 
+// CertificateIssuanceConfigExists checks whether an existing CertificateIssuanceConfig resource with the given ID exists.
+func CertificateIssuanceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CertificateIssuanceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig", id, state, "", opts...)
+}
+
 type certificateIssuanceConfigArgs struct {
 	// The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
 	// Structure is documented below.

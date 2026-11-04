@@ -43,11 +43,10 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci 
      * 
      * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
      * 
-     * @deprecated
-     * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
+     * @deprecated The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
      * 
      */
-    @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead. */
+    @Deprecated
     private @Nullable String version;
 
     private FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci() {}
@@ -92,11 +91,10 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci 
      * 
      * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
      * 
-     * @deprecated
-     * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
+     * @deprecated The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
      * 
      */
-    @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead. */
+    @Deprecated
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

@@ -134,11 +134,10 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
      * 
      * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
      * 
-     * @deprecated
-     * `location` is deprecated and will be removed in a future major release.
+     * @deprecated `location` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `location` is deprecated and will be removed in a future major release. */
+    @Deprecated
     @Import(name="location")
     private @Nullable Output<String> location;
 
@@ -148,11 +147,10 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
      * 
      * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
      * 
-     * @deprecated
-     * `location` is deprecated and will be removed in a future major release.
+     * @deprecated `location` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `location` is deprecated and will be removed in a future major release. */
+    @Deprecated
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
@@ -518,11 +516,10 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * `location` is deprecated and will be removed in a future major release.
+         * @deprecated `location` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `location` is deprecated and will be removed in a future major release. */
+        @Deprecated
         public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
@@ -536,11 +533,10 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * `location` is deprecated and will be removed in a future major release.
+         * @deprecated `location` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `location` is deprecated and will be removed in a future major release. */
+        @Deprecated
         public Builder location(String location) {
             return location(Output.of(location));
         }

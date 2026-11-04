@@ -1007,6 +1007,30 @@ class Field(pulumi.CustomResource):
         __props__.__dict__["ttl_config"] = ttl_config
         return Field(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            collection: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            field: pulumi.Input[Optional[_builtins.str]] = None,
+            index_config: pulumi.Input[Optional[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict', 'outputs.FieldIndexConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+            ttl_config: pulumi.Input[Optional[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict', 'outputs.FieldTtlConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["collection"] = collection
+        __props__["database"] = database
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["field"] = field
+        __props__["indexConfig"] = index_config
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["skipWait"] = skip_wait
+        __props__["ttlConfig"] = ttl_config
+        return pulumi.runtime.exists_resource(None, 'gcp:firestore/field:Field', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def collection(self) -> pulumi.Output[_builtins.str]:

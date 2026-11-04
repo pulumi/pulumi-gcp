@@ -193,6 +193,12 @@ func (CaExternalAccountKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*caExternalAccountKeyState)(nil)).Elem()
 }
 
+// CaExternalAccountKeyExists checks whether an existing CaExternalAccountKey resource with the given ID exists.
+func CaExternalAccountKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CaExternalAccountKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/caExternalAccountKey:CaExternalAccountKey", id, state, "", opts...)
+}
+
 type caExternalAccountKeyArgs struct {
 	// Location for the externalAccountKey. Currently only `global` is supported.
 	Location *string `pulumi:"location"`

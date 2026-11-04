@@ -1847,6 +1847,60 @@ class Schedule(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Schedule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
+            catch_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_notebook_execution_job_request: pulumi.Input[Optional[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict', 'outputs.ScheduleCreateNotebookExecutionJobRequest']]] = None,
+            create_pipeline_job_request: pulumi.Input[Optional[Union['ScheduleCreatePipelineJobRequestArgs', 'ScheduleCreatePipelineJobRequestArgsDict', 'outputs.ScheduleCreatePipelineJobRequest']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cron: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_pause_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_resume_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_scheduled_run_responses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleLastScheduledRunResponseArgs', 'ScheduleLastScheduledRunResponseArgsDict', 'outputs.ScheduleLastScheduledRunResponse']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            max_concurrent_active_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+            max_concurrent_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+            max_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            next_run_time: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            started_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowQueueing"] = allow_queueing
+        __props__["catchUp"] = catch_up
+        __props__["createNotebookExecutionJobRequest"] = create_notebook_execution_job_request
+        __props__["createPipelineJobRequest"] = create_pipeline_job_request
+        __props__["createTime"] = create_time
+        __props__["cron"] = cron
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["desiredState"] = desired_state
+        __props__["displayName"] = display_name
+        __props__["endTime"] = end_time
+        __props__["lastPauseTime"] = last_pause_time
+        __props__["lastResumeTime"] = last_resume_time
+        __props__["lastScheduledRunResponses"] = last_scheduled_run_responses
+        __props__["location"] = location
+        __props__["maxConcurrentActiveRunCount"] = max_concurrent_active_run_count
+        __props__["maxConcurrentRunCount"] = max_concurrent_run_count
+        __props__["maxRunCount"] = max_run_count
+        __props__["name"] = name
+        __props__["nextRunTime"] = next_run_time
+        __props__["project"] = project
+        __props__["startTime"] = start_time
+        __props__["startedRunCount"] = started_run_count
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:colab/schedule:Schedule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowQueueing")
     def allow_queueing(self) -> pulumi.Output[Optional[_builtins.bool]]:

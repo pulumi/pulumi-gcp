@@ -445,6 +445,12 @@ func (ListingIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listingIamMemberState)(nil)).Elem()
 }
 
+// ListingIamMemberExists checks whether an existing ListingIamMember resource with the given ID exists.
+func ListingIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListingIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigqueryanalyticshub/listingIamMember:ListingIamMember", id, state, "", opts...)
+}
+
 type listingIamMemberArgs struct {
 	Condition *ListingIamMemberCondition `pulumi:"condition"`
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to

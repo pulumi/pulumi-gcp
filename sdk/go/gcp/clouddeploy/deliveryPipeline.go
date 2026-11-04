@@ -519,6 +519,12 @@ func (DeliveryPipelineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deliveryPipelineState)(nil)).Elem()
 }
 
+// DeliveryPipelineExists checks whether an existing DeliveryPipeline resource with the given ID exists.
+func DeliveryPipelineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeliveryPipelineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddeploy/deliveryPipeline:DeliveryPipeline", id, state, "", opts...)
+}
+
 type deliveryPipelineArgs struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	//

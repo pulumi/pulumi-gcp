@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Vertex
         /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
         /// See Provider Versions for more details on beta resources.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -45,7 +44,6 @@ namespace Pulumi.Gcp.Vertex
         /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
         /// See Provider Versions for more details on beta resources.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -73,7 +71,6 @@ namespace Pulumi.Gcp.Vertex
         /// Retrieves the current IAM policy data for featureonlinestorefeatureview
         /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
         /// See Provider Versions for more details on beta resources.
-        /// 
         /// 
         /// ## Example Usage
         /// 

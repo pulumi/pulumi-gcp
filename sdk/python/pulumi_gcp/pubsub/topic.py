@@ -1436,6 +1436,38 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Topic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ingestion_data_source_settings: pulumi.Input[Optional[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict', 'outputs.TopicIngestionDataSourceSettings']]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            message_storage_policy: pulumi.Input[Optional[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict', 'outputs.TopicMessageStoragePolicy']]] = None,
+            message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict', 'outputs.TopicMessageTransform']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            schema_settings: pulumi.Input[Optional[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict', 'outputs.TopicSchemaSettings']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["ingestionDataSourceSettings"] = ingestion_data_source_settings
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["labels"] = labels
+        __props__["messageRetentionDuration"] = message_retention_duration
+        __props__["messageStoragePolicy"] = message_storage_policy
+        __props__["messageTransforms"] = message_transforms
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["schemaSettings"] = schema_settings
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'gcp:pubsub/topic:Topic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

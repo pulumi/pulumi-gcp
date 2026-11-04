@@ -338,6 +338,12 @@ func (AccountIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountIamMemberState)(nil)).Elem()
 }
 
+// AccountIamMemberExists checks whether an existing AccountIamMember resource with the given ID exists.
+func AccountIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:billing/accountIamMember:AccountIamMember", id, state, "", opts...)
+}
+
 type accountIamMemberArgs struct {
 	// The billing account id.
 	//

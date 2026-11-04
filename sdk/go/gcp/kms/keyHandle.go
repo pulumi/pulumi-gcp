@@ -288,6 +288,12 @@ func (KeyHandleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyHandleState)(nil)).Elem()
 }
 
+// KeyHandleExists checks whether an existing KeyHandle resource with the given ID exists.
+func KeyHandleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeyHandleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/keyHandle:KeyHandle", id, state, "", opts...)
+}
+
 type keyHandleArgs struct {
 	// The location for the KeyHandle.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.

@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.OracleDatabase
         /// For more information see the
         /// * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbDnsZones)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -47,7 +46,6 @@ namespace Pulumi.Gcp.OracleDatabase
         /// For more information see the
         /// * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbDnsZones)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -76,7 +74,6 @@ namespace Pulumi.Gcp.OracleDatabase
         /// 
         /// For more information see the
         /// * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbDnsZones)
-        /// 
         /// 
         /// ## Example Usage
         /// 

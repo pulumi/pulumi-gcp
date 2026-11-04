@@ -670,6 +670,12 @@ func (SecurityGatewayApplicationIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGatewayApplicationIamBindingState)(nil)).Elem()
 }
 
+// SecurityGatewayApplicationIamBindingExists checks whether an existing SecurityGatewayApplicationIamBinding resource with the given ID exists.
+func SecurityGatewayApplicationIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGatewayApplicationIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:beyondcorp/securityGatewayApplicationIamBinding:SecurityGatewayApplicationIamBinding", id, state, "", opts...)
+}
+
 type securityGatewayApplicationIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	ApplicationId string `pulumi:"applicationId"`

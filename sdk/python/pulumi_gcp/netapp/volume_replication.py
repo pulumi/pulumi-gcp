@@ -1253,6 +1253,66 @@ class VolumeReplication(pulumi.CustomResource):
         __props__.__dict__["wait_for_mirror"] = wait_for_mirror
         return VolumeReplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_destination_volume: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_volume: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_volume_parameters: pulumi.Input[Optional[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict', 'outputs.VolumeReplicationDestinationVolumeParameters']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            force_stopping: pulumi.Input[Optional[_builtins.bool]] = None,
+            healthy: pulumi.Input[Optional[_builtins.bool]] = None,
+            hybrid_peering_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict', 'outputs.VolumeReplicationHybridPeeringDetail']]]]] = None,
+            hybrid_replication_type: pulumi.Input[Optional[_builtins.str]] = None,
+            hybrid_replication_user_commands: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationHybridReplicationUserCommandArgs', 'VolumeReplicationHybridReplicationUserCommandArgsDict', 'outputs.VolumeReplicationHybridReplicationUserCommand']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mirror_state: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            replication_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            replication_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            source_volume: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_details: pulumi.Input[Optional[_builtins.str]] = None,
+            transfer_stats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationTransferStatArgs', 'VolumeReplicationTransferStatArgsDict', 'outputs.VolumeReplicationTransferStat']]]]] = None,
+            volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_mirror: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deleteDestinationVolume"] = delete_destination_volume
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["destinationVolume"] = destination_volume
+        __props__["destinationVolumeParameters"] = destination_volume_parameters
+        __props__["effectiveLabels"] = effective_labels
+        __props__["forceStopping"] = force_stopping
+        __props__["healthy"] = healthy
+        __props__["hybridPeeringDetails"] = hybrid_peering_details
+        __props__["hybridReplicationType"] = hybrid_replication_type
+        __props__["hybridReplicationUserCommands"] = hybrid_replication_user_commands
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["mirrorState"] = mirror_state
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["replicationEnabled"] = replication_enabled
+        __props__["replicationSchedule"] = replication_schedule
+        __props__["role"] = role
+        __props__["sourceVolume"] = source_volume
+        __props__["state"] = state
+        __props__["stateDetails"] = state_details
+        __props__["transferStats"] = transfer_stats
+        __props__["volumeName"] = volume_name
+        __props__["waitForMirror"] = wait_for_mirror
+        return pulumi.runtime.exists_resource(None, 'gcp:netapp/volumeReplication:VolumeReplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

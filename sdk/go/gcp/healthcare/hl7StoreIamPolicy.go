@@ -267,6 +267,12 @@ func (Hl7StoreIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hl7StoreIamPolicyState)(nil)).Elem()
 }
 
+// Hl7StoreIamPolicyExists checks whether an existing Hl7StoreIamPolicy resource with the given ID exists.
+func Hl7StoreIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Hl7StoreIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy", id, state, "", opts...)
+}
+
 type hl7StoreIamPolicyArgs struct {
 	// The HL7v2 store ID, in the form
 	// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or

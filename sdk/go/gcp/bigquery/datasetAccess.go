@@ -495,6 +495,12 @@ func (DatasetAccessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetAccessState)(nil)).Elem()
 }
 
+// DatasetAccessExists checks whether an existing DatasetAccess resource with the given ID exists.
+func DatasetAccessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatasetAccessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/datasetAccess:DatasetAccess", id, state, "", opts...)
+}
+
 type datasetAccessArgs struct {
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.

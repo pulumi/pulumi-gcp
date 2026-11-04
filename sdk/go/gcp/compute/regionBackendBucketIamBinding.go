@@ -679,6 +679,12 @@ func (RegionBackendBucketIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionBackendBucketIamBindingState)(nil)).Elem()
 }
 
+// RegionBackendBucketIamBindingExists checks whether an existing RegionBackendBucketIamBinding resource with the given ID exists.
+func RegionBackendBucketIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionBackendBucketIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionBackendBucketIamBinding:RegionBackendBucketIamBinding", id, state, "", opts...)
+}
+
 type regionBackendBucketIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

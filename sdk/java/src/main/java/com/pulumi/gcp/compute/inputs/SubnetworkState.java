@@ -123,22 +123,20 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      * 
-     * @deprecated
-     * This field is not useful for users, and has been removed as an output.
+     * @deprecated This field is not useful for users, and has been removed as an output.
      * 
      */
-    @Deprecated /* This field is not useful for users, and has been removed as an output. */
+    @Deprecated
     @Import(name="fingerprint")
     private @Nullable Output<String> fingerprint;
 
     /**
      * @return Fingerprint of this resource. This field is used internally during updates of this resource.
      * 
-     * @deprecated
-     * This field is not useful for users, and has been removed as an output.
+     * @deprecated This field is not useful for users, and has been removed as an output.
      * 
      */
-    @Deprecated /* This field is not useful for users, and has been removed as an output. */
+    @Deprecated
     public Optional<Output<String>> fingerprint() {
         return Optional.ofNullable(this.fingerprint);
     }
@@ -838,11 +836,10 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is not useful for users, and has been removed as an output.
+         * @deprecated This field is not useful for users, and has been removed as an output.
          * 
          */
-        @Deprecated /* This field is not useful for users, and has been removed as an output. */
+        @Deprecated
         public Builder fingerprint(@Nullable Output<String> fingerprint) {
             $.fingerprint = fingerprint;
             return this;
@@ -853,11 +850,10 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is not useful for users, and has been removed as an output.
+         * @deprecated This field is not useful for users, and has been removed as an output.
          * 
          */
-        @Deprecated /* This field is not useful for users, and has been removed as an output. */
+        @Deprecated
         public Builder fingerprint(String fingerprint) {
             return fingerprint(Output.of(fingerprint));
         }

@@ -18,12 +18,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// It uses RE2 syntax with the following constraints:
         /// * Any single character operators are allowed.
         /// * Groups may only contain a submatch operator, and may not
-        /// contain character repetition (for example, `.*`).
+        ///   contain character repetition (for example, `.*`).
         /// * Character repetition (for example, `.*`) may only be used in
-        /// a regex together with empty string operators, other
-        /// repetitions, ranges, and repetitions of ranges.
+        ///   a regex together with empty string operators, other
+        ///   repetitions, ranges, and repetitions of ranges.
         /// * Ranges may only contain character ranges, digit ranges, and
-        /// symbols allowed for ranges.
+        ///   symbols allowed for ranges.
         /// </summary>
         public readonly string PathPattern;
         /// <summary>

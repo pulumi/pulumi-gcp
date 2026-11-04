@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Chronicle.Outputs
         /// Amazon SQS access key and secret auth.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuth"&gt;&lt;/a&gt;The `AdditionalS3AccessKeySecretAuth` block supports:
         /// </summary>
         public readonly Outputs.FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuth? SqsAccessKeySecretAuth;

@@ -1610,6 +1610,46 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["spark"] = spark
         return Connection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aws: pulumi.Input[Optional[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict', 'outputs.ConnectionAws']]] = None,
+            azure: pulumi.Input[Optional[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict', 'outputs.ConnectionAzure']]] = None,
+            cloud_resource: pulumi.Input[Optional[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict', 'outputs.ConnectionCloudResource']]] = None,
+            cloud_spanner: pulumi.Input[Optional[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict', 'outputs.ConnectionCloudSpanner']]] = None,
+            cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict', 'outputs.ConnectionCloudSql']]] = None,
+            configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict', 'outputs.ConnectionConfiguration']]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+            has_credential: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            salesforce_data_cloud: pulumi.Input[Optional[Union['ConnectionSalesforceDataCloudArgs', 'ConnectionSalesforceDataCloudArgsDict', 'outputs.ConnectionSalesforceDataCloud']]] = None,
+            spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aws"] = aws
+        __props__["azure"] = azure
+        __props__["cloudResource"] = cloud_resource
+        __props__["cloudSpanner"] = cloud_spanner
+        __props__["cloudSql"] = cloud_sql
+        __props__["configuration"] = configuration
+        __props__["connectionId"] = connection_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["friendlyName"] = friendly_name
+        __props__["hasCredential"] = has_credential
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["salesforceDataCloud"] = salesforce_data_cloud
+        __props__["spark"] = spark
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/connection:Connection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def aws(self) -> pulumi.Output[Optional['outputs.ConnectionAws']]:

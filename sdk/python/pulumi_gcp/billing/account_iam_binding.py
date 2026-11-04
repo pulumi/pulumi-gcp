@@ -525,6 +525,22 @@ class AccountIamBinding(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return AccountIamBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            billing_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            condition: pulumi.Input[Optional[Union['AccountIamBindingConditionArgs', 'AccountIamBindingConditionArgsDict', 'outputs.AccountIamBindingCondition']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["billingAccountId"] = billing_account_id
+        __props__["condition"] = condition
+        __props__["etag"] = etag
+        __props__["members"] = members
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'gcp:billing/accountIamBinding:AccountIamBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="billingAccountId")
     def billing_account_id(self) -> pulumi.Output[_builtins.str]:

@@ -364,6 +364,12 @@ func (WorkforcePoolIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workforcePoolIamPolicyState)(nil)).Elem()
 }
 
+// WorkforcePoolIamPolicyExists checks whether an existing WorkforcePoolIamPolicy resource with the given ID exists.
+func WorkforcePoolIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkforcePoolIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workforcePoolIamPolicy:WorkforcePoolIamPolicy", id, state, "", opts...)
+}
+
 type workforcePoolIamPolicyArgs struct {
 	// The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

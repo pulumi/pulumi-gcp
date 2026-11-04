@@ -44,23 +44,23 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new V2OrganizationMuteConfig("default", V2OrganizationMuteConfigArgs.builder()
  *             .muteConfigId("my-config")
  *             .organization("123456789")
  *             .location("global")
  *             .description("My custom Cloud Security Command Center Finding Organization mute Configuration")
- *             .filter("severity = \"HIGH\"")
+ *             .filter("severity = }&#92;{@code "HIGH}&#92;{@code "")
  *             .type("STATIC")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

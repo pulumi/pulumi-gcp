@@ -193,6 +193,12 @@ func (RegionNetworkPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionNetworkPolicyState)(nil)).Elem()
 }
 
+// RegionNetworkPolicyExists checks whether an existing RegionNetworkPolicy resource with the given ID exists.
+func RegionNetworkPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionNetworkPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionNetworkPolicy:RegionNetworkPolicy", id, state, "", opts...)
+}
+
 type regionNetworkPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

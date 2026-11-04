@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// The ID of the Vertex AI Reasoning Engine to query.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("reasoningEngineId", required: true)]
         public string ReasoningEngineId { get; set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// The ID of the Vertex AI Reasoning Engine to query.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("reasoningEngineId", required: true)]
         public Input<string> ReasoningEngineId { get; set; } = null!;

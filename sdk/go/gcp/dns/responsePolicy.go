@@ -246,6 +246,12 @@ func (ResponsePolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*responsePolicyState)(nil)).Elem()
 }
 
+// ResponsePolicyExists checks whether an existing ResponsePolicy resource with the given ID exists.
+func ResponsePolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResponsePolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dns/responsePolicy:ResponsePolicy", id, state, "", opts...)
+}
+
 type responsePolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -767,6 +767,12 @@ func (EdgeCacheServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgeCacheServiceState)(nil)).Elem()
 }
 
+// EdgeCacheServiceExists checks whether an existing EdgeCacheService resource with the given ID exists.
+func EdgeCacheServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgeCacheServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/edgeCacheService:EdgeCacheService", id, state, "", opts...)
+}
+
 type edgeCacheServiceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -358,6 +358,12 @@ func (CdnEdgeExtensionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cdnEdgeExtensionState)(nil)).Elem()
 }
 
+// CdnEdgeExtensionExists checks whether an existing CdnEdgeExtension resource with the given ID exists.
+func CdnEdgeExtensionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CdnEdgeExtensionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/cdnEdgeExtension:CdnEdgeExtension", id, state, "", opts...)
+}
+
 type cdnEdgeExtensionArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// The bucket to store reports in.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// The bucket to store reports in.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// The bucket to store reports in.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }

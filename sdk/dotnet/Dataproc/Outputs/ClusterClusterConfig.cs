@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterConfigAutoscalingConfig? AutoscalingConfig;
         /// <summary>
-        /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
+        /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
         /// Structure defined below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigAuxiliaryNodeGroup> AuxiliaryNodeGroups;
@@ -88,15 +88,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The config setting for metastore service with the cluster.
         /// Structure defined below.
-        /// - - -
+        /// ***
         /// </summary>
         public readonly Outputs.ClusterClusterConfigMetastoreConfig? MetastoreConfig;
         /// <summary>
         /// The Google Compute Engine config settings for the additional
         /// instances in a cluster. Structure defined below.
         /// * **NOTE** : `PreemptibleWorkerConfig` is
-        /// an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
-        /// such for legacy/compatibility reasons.
+        ///   an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
+        ///   such for legacy/compatibility reasons.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigPreemptibleWorkerConfig? PreemptibleWorkerConfig;
         /// <summary>

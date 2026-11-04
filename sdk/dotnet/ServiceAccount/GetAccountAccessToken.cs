@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A. 
+        /// To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A.
         /// 
         /// In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
         /// 
@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A. 
+        /// To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A.
         /// 
         /// In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
         /// 
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A. 
+        /// To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A.
         /// 
         /// In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
         /// 

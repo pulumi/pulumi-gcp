@@ -228,6 +228,12 @@ func (OwnerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ownerState)(nil)).Elem()
 }
 
+// OwnerExists checks whether an existing Owner resource with the given ID exists.
+func OwnerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OwnerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:siteverification/owner:Owner", id, state, "", opts...)
+}
+
 type ownerArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

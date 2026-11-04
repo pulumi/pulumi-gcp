@@ -23,11 +23,10 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
      * 
      * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
-     * @deprecated
-     * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+     * @deprecated `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
      */
-    @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
+    @Deprecated
     @Import(name="egressSetting")
     private @Nullable Output<String> egressSetting;
 
@@ -37,11 +36,10 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
      * 
      * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
-     * @deprecated
-     * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+     * @deprecated `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
      */
-    @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
+    @Deprecated
     public Optional<Output<String>> egressSetting() {
         return Optional.ofNullable(this.egressSetting);
     }
@@ -114,11 +112,10 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+         * @deprecated `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
          * 
          */
-        @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
+        @Deprecated
         public Builder egressSetting(@Nullable Output<String> egressSetting) {
             $.egressSetting = egressSetting;
             return this;
@@ -132,11 +129,10 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+         * @deprecated `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
          * 
          */
-        @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
+        @Deprecated
         public Builder egressSetting(String egressSetting) {
             return egressSetting(Output.of(egressSetting));
         }

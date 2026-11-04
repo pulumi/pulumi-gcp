@@ -395,6 +395,12 @@ func (DataTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataTableState)(nil)).Elem()
 }
 
+// DataTableExists checks whether an existing DataTable resource with the given ID exists.
+func DataTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/dataTable:DataTable", id, state, "", opts...)
+}
+
 type dataTableArgs struct {
 	// Details of all the columns in the table
 	// Structure is documented below.

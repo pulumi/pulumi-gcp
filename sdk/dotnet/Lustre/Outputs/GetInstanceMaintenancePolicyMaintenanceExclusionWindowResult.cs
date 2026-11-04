@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Lustre.Outputs
         /// * A month and day, with a zero year (for example, an anniversary).
         /// * A year on its own, with a zero month and a zero day.
         /// * A year and month, with a zero day (for example, a credit card expiration
-        /// date).
+        ///   date).
         /// 
         /// Related types:
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Lustre.Outputs
         /// * A month and day, with a zero year (for example, an anniversary).
         /// * A year on its own, with a zero month and a zero day.
         /// * A year and month, with a zero day (for example, a credit card expiration
-        /// date).
+        ///   date).
         /// 
         /// Related types:
         /// 

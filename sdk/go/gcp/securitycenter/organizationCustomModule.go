@@ -295,6 +295,12 @@ func (OrganizationCustomModuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationCustomModuleState)(nil)).Elem()
 }
 
+// OrganizationCustomModuleExists checks whether an existing OrganizationCustomModule resource with the given ID exists.
+func OrganizationCustomModuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationCustomModuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/organizationCustomModule:OrganizationCustomModule", id, state, "", opts...)
+}
+
 type organizationCustomModuleArgs struct {
 	// The user specified custom configuration for the module.
 	// Structure is documented below.

@@ -963,6 +963,26 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return CertificateTemplateIamBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_template: pulumi.Input[Optional[_builtins.str]] = None,
+            condition: pulumi.Input[Optional[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict', 'outputs.CertificateTemplateIamBindingCondition']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificateTemplate"] = certificate_template
+        __props__["condition"] = condition
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["members"] = members
+        __props__["project"] = project
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'gcp:certificateauthority/certificateTemplateIamBinding:CertificateTemplateIamBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certificateTemplate")
     def certificate_template(self) -> pulumi.Output[_builtins.str]:

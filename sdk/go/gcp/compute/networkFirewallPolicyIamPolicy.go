@@ -357,6 +357,12 @@ func (NetworkFirewallPolicyIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkFirewallPolicyIamPolicyState)(nil)).Elem()
 }
 
+// NetworkFirewallPolicyIamPolicyExists checks whether an existing NetworkFirewallPolicyIamPolicy resource with the given ID exists.
+func NetworkFirewallPolicyIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkFirewallPolicyIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/networkFirewallPolicyIamPolicy:NetworkFirewallPolicyIamPolicy", id, state, "", opts...)
+}
+
 type networkFirewallPolicyIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`

@@ -528,6 +528,12 @@ func (ReservationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservationState)(nil)).Elem()
 }
 
+// ReservationExists checks whether an existing Reservation resource with the given ID exists.
+func ReservationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReservationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/reservation:Reservation", id, state, "", opts...)
+}
+
 type reservationArgs struct {
 	// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
 	// Structure is documented below.

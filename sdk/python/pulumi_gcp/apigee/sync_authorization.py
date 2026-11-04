@@ -336,6 +336,18 @@ class SyncAuthorization(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return SyncAuthorization(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["etag"] = etag
+        __props__["identities"] = identities
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/syncAuthorization:SyncAuthorization', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:

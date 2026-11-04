@@ -908,6 +908,48 @@ class AuthProvider(pulumi.CustomResource):
         __props__.__dict__["workload_ids"] = workload_ids
         return AuthProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            auth_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_provider_type_params: pulumi.Input[Optional[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict', 'outputs.AuthProviderAuthProviderTypeParams']]] = None,
+            blocked_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedScopes"] = allowed_scopes
+        __props__["authProviderId"] = auth_provider_id
+        __props__["authProviderTypeParams"] = auth_provider_type_params
+        __props__["blockedScopes"] = blocked_scopes
+        __props__["createTime"] = create_time
+        __props__["deleted"] = deleted
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["expireTime"] = expire_time
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        __props__["workloadIds"] = workload_ids
+        return pulumi.runtime.exists_resource(None, 'gcp:agentidentity/authProvider:AuthProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedScopes")
     def allowed_scopes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

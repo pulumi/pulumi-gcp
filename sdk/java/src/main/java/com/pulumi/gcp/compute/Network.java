@@ -602,11 +602,10 @@ public class Network extends com.pulumi.resources.CustomResource {
      * (Deprecated)
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
-     * @deprecated
-     * `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+     * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
      */
-    @Deprecated /* `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead. */
+    @Deprecated
     @Export(name="numericId", refs={String.class}, tree="[0]")
     private Output<String> numericId;
 

@@ -28,17 +28,17 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
         /// - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
         /// - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-        /// that can be used in the audience field of ID token for authenticated requests.
+        ///   that can be used in the audience field of ID token for authenticated requests.
         /// - `run.googleapis.com/description` sets a user defined description for the Service.
         /// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-        /// for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+        ///   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
         /// - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-        /// when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+        ///   when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
         /// - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
         /// - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
         /// - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
+        ///   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        ///   Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {

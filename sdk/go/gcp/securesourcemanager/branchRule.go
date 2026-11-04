@@ -314,6 +314,12 @@ func (BranchRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*branchRuleState)(nil)).Elem()
 }
 
+// BranchRuleExists checks whether an existing BranchRule resource with the given ID exists.
+func BranchRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BranchRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securesourcemanager/branchRule:BranchRule", id, state, "", opts...)
+}
+
 type branchRuleArgs struct {
 	// Determines if allow stale reviews or approvals before merging to the branch.
 	AllowStaleReviews *bool `pulumi:"allowStaleReviews"`

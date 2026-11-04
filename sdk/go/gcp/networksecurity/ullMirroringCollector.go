@@ -341,6 +341,12 @@ func (UllMirroringCollectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ullMirroringCollectorState)(nil)).Elem()
 }
 
+// UllMirroringCollectorExists checks whether an existing UllMirroringCollector resource with the given ID exists.
+func UllMirroringCollectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UllMirroringCollectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/ullMirroringCollector:UllMirroringCollector", id, state, "", opts...)
+}
+
 type ullMirroringCollectorArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

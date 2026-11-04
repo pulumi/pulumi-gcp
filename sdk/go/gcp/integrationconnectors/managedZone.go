@@ -300,6 +300,12 @@ func (ManagedZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedZoneState)(nil)).Elem()
 }
 
+// ManagedZoneExists checks whether an existing ManagedZone resource with the given ID exists.
+func ManagedZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagedZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:integrationconnectors/managedZone:ManagedZone", id, state, "", opts...)
+}
+
 type managedZoneArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

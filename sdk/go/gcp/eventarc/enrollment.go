@@ -323,6 +323,12 @@ func (EnrollmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*enrollmentState)(nil)).Elem()
 }
 
+// EnrollmentExists checks whether an existing Enrollment resource with the given ID exists.
+func EnrollmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnrollmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:eventarc/enrollment:Enrollment", id, state, "", opts...)
+}
+
 type enrollmentArgs struct {
 	// Resource annotations.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

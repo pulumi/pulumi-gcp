@@ -554,6 +554,12 @@ func (AiEndpointWithModelGardenDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiEndpointWithModelGardenDeploymentState)(nil)).Elem()
 }
 
+// AiEndpointWithModelGardenDeploymentExists checks whether an existing AiEndpointWithModelGardenDeployment resource with the given ID exists.
+func AiEndpointWithModelGardenDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiEndpointWithModelGardenDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment", id, state, "", opts...)
+}
+
 type aiEndpointWithModelGardenDeploymentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -250,7 +250,7 @@ public class InstancePartition extends com.pulumi.resources.CustomResource {
     /**
      * A unique identifier for the instance partition, which cannot be changed after
      * the instance partition is created. The name must be between 2 and 64 characters
-     * and match the regular expression [a-z][a-z0-9\\-]{0,61}[a-z0-9].
+     * and match the regular expression [a-z][a-z0-9&#92;&#92;-]{0,61}[a-z0-9].
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -259,7 +259,7 @@ public class InstancePartition extends com.pulumi.resources.CustomResource {
     /**
      * @return A unique identifier for the instance partition, which cannot be changed after
      * the instance partition is created. The name must be between 2 and 64 characters
-     * and match the regular expression [a-z][a-z0-9\\-]{0,61}[a-z0-9].
+     * and match the regular expression [a-z][a-z0-9&#92;&#92;-]{0,61}[a-z0-9].
      * 
      */
     public Output<String> name() {

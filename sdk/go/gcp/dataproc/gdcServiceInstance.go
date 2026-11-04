@@ -332,6 +332,12 @@ func (GdcServiceInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gdcServiceInstanceState)(nil)).Elem()
 }
 
+// GdcServiceInstanceExists checks whether an existing GdcServiceInstance resource with the given ID exists.
+func GdcServiceInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GdcServiceInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/gdcServiceInstance:GdcServiceInstance", id, state, "", opts...)
+}
+
 type gdcServiceInstanceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

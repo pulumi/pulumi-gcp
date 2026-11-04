@@ -670,6 +670,12 @@ func (StoragePoolIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storagePoolIamMemberState)(nil)).Elem()
 }
 
+// StoragePoolIamMemberExists checks whether an existing StoragePoolIamMember resource with the given ID exists.
+func StoragePoolIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StoragePoolIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/storagePoolIamMember:StoragePoolIamMember", id, state, "", opts...)
+}
+
 type storagePoolIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

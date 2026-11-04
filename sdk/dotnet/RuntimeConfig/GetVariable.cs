@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// <summary>
         /// The name of the RuntimeConfig resource containing this variable.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("parent", required: true)]
         public string Parent { get; set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// <summary>
         /// The name of the RuntimeConfig resource containing this variable.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;

@@ -257,6 +257,12 @@ func (FindingsRefinementState) ElementType() reflect.Type {
 	return reflect.TypeOf((*findingsRefinementState)(nil)).Elem()
 }
 
+// FindingsRefinementExists checks whether an existing FindingsRefinement resource with the given ID exists.
+func FindingsRefinementExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FindingsRefinementState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/findingsRefinement:FindingsRefinement", id, state, "", opts...)
+}
+
 type findingsRefinementArgs struct {
 	// Display name of the findings refinement.
 	DisplayName *string `pulumi:"displayName"`

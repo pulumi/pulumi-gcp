@@ -12,14 +12,14 @@ namespace Pulumi.Gcp.ArtifactRegistry
     public static class GetLocations
     {
         /// <summary>
-        /// Get Artifact Registry locations available for a project. 
+        /// Get Artifact Registry locations available for a project.
         /// 
         /// To get more information about Artifact Registry, see:
         /// 
         /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
-        ///     
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,7 +34,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ### Multi-Regional Artifact Registry Deployment
         /// 
@@ -69,14 +68,14 @@ namespace Pulumi.Gcp.ArtifactRegistry
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLocationsResult>("gcp:artifactregistry/getLocations:getLocations", args ?? new GetLocationsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get Artifact Registry locations available for a project. 
+        /// Get Artifact Registry locations available for a project.
         /// 
         /// To get more information about Artifact Registry, see:
         /// 
         /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
-        ///     
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -91,7 +90,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ### Multi-Regional Artifact Registry Deployment
         /// 
@@ -126,14 +124,14 @@ namespace Pulumi.Gcp.ArtifactRegistry
             => global::Pulumi.Deployment.Instance.Invoke<GetLocationsResult>("gcp:artifactregistry/getLocations:getLocations", args ?? new GetLocationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get Artifact Registry locations available for a project. 
+        /// Get Artifact Registry locations available for a project.
         /// 
         /// To get more information about Artifact Registry, see:
         /// 
         /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
-        ///     
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -148,7 +146,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ### Multi-Regional Artifact Registry Deployment
         /// 

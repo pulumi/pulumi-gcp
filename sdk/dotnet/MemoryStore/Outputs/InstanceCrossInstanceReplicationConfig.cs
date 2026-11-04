@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
         /// 2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
         /// 3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
         /// 4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
-        /// Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+        ///    Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
         /// </summary>
         public readonly string? InstanceRole;
         /// <summary>

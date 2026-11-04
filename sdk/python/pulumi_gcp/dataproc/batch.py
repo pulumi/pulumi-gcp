@@ -1460,6 +1460,58 @@ class Batch(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return Batch(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            batch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            environment_config: pulumi.Input[Optional[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict', 'outputs.BatchEnvironmentConfig']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            operation: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            pyspark_batch: pulumi.Input[Optional[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict', 'outputs.BatchPysparkBatch']]] = None,
+            runtime_config: pulumi.Input[Optional[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict', 'outputs.BatchRuntimeConfig']]] = None,
+            runtime_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchRuntimeInfoArgs', 'BatchRuntimeInfoArgsDict', 'outputs.BatchRuntimeInfo']]]]] = None,
+            spark_batch: pulumi.Input[Optional[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict', 'outputs.BatchSparkBatch']]] = None,
+            spark_r_batch: pulumi.Input[Optional[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict', 'outputs.BatchSparkRBatch']]] = None,
+            spark_sql_batch: pulumi.Input[Optional[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict', 'outputs.BatchSparkSqlBatch']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_histories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchStateHistoryArgs', 'BatchStateHistoryArgsDict', 'outputs.BatchStateHistory']]]]] = None,
+            state_message: pulumi.Input[Optional[_builtins.str]] = None,
+            state_time: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["batchId"] = batch_id
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["environmentConfig"] = environment_config
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["operation"] = operation
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["pysparkBatch"] = pyspark_batch
+        __props__["runtimeConfig"] = runtime_config
+        __props__["runtimeInfos"] = runtime_infos
+        __props__["sparkBatch"] = spark_batch
+        __props__["sparkRBatch"] = spark_r_batch
+        __props__["sparkSqlBatch"] = spark_sql_batch
+        __props__["state"] = state
+        __props__["stateHistories"] = state_histories
+        __props__["stateMessage"] = state_message
+        __props__["stateTime"] = state_time
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'gcp:dataproc/batch:Batch', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="batchId")
     def batch_id(self) -> pulumi.Output[Optional[_builtins.str]]:

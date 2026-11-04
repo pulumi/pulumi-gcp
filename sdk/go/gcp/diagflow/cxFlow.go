@@ -929,6 +929,12 @@ func (CxFlowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxFlowState)(nil)).Elem()
 }
 
+// CxFlowExists checks whether an existing CxFlow resource with the given ID exists.
+func CxFlowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxFlowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxFlow:CxFlow", id, state, "", opts...)
+}
+
 type cxFlowArgs struct {
 	// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.

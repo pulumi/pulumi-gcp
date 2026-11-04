@@ -619,6 +619,12 @@ func (AgentRegistryAgentIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentRegistryAgentIamPolicyState)(nil)).Elem()
 }
 
+// AgentRegistryAgentIamPolicyExists checks whether an existing AgentRegistryAgentIamPolicy resource with the given ID exists.
+func AgentRegistryAgentIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentRegistryAgentIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/agentRegistryAgentIamPolicy:AgentRegistryAgentIamPolicy", id, state, "", opts...)
+}
+
 type agentRegistryAgentIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	AgentId string `pulumi:"agentId"`

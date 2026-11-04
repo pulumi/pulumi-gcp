@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The boot disk size in GB.
         /// Changing this forces a new resource to be created.
-        /// - - -
+        /// ***
         /// </summary>
         [Input("bootDiskSizeGb")]
         public Input<int>? BootDiskSizeGb { get; set; }

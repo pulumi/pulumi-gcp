@@ -306,6 +306,12 @@ func (CurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*curationState)(nil)).Elem()
 }
 
+// CurationExists checks whether an existing Curation resource with the given ID exists.
+func CurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apihub/curation:Curation", id, state, "", opts...)
+}
+
 type curationArgs struct {
 	// The ID to use for the curation resource, which will become the final
 	// component of the curations's resource name. This field is optional.

@@ -258,6 +258,12 @@ func (VariableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*variableState)(nil)).Elem()
 }
 
+// VariableExists checks whether an existing Variable resource with the given ID exists.
+func VariableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VariableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:runtimeconfig/variable:Variable", id, state, "", opts...)
+}
+
 type variableArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

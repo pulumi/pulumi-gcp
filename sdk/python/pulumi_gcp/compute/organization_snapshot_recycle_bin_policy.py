@@ -387,6 +387,18 @@ class OrganizationSnapshotRecycleBinPolicy(pulumi.CustomResource):
         __props__.__dict__["system_rules"] = system_rules
         return OrganizationSnapshotRecycleBinPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationSnapshotRecycleBinPolicyRuleArgs', 'OrganizationSnapshotRecycleBinPolicyRuleArgsDict', 'outputs.OrganizationSnapshotRecycleBinPolicyRule']]]]] = None,
+            system_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationSnapshotRecycleBinPolicySystemRuleArgs', 'OrganizationSnapshotRecycleBinPolicySystemRuleArgsDict', 'outputs.OrganizationSnapshotRecycleBinPolicySystemRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["organization"] = organization
+        __props__["rules"] = rules
+        __props__["systemRules"] = system_rules
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/organizationSnapshotRecycleBinPolicy:OrganizationSnapshotRecycleBinPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def organization(self) -> pulumi.Output[_builtins.str]:

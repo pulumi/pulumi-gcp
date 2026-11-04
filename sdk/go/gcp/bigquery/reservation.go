@@ -534,6 +534,12 @@ func (ReservationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservationState)(nil)).Elem()
 }
 
+// ReservationExists checks whether an existing Reservation resource with the given ID exists.
+func ReservationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReservationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/reservation:Reservation", id, state, "", opts...)
+}
+
 type reservationArgs struct {
 	// The configuration parameters for the auto scaling feature.
 	// Structure is documented below.

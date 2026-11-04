@@ -1292,6 +1292,48 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         __props__.__dict__["timeout"] = timeout
         return EdgeCacheOrigin(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aws_v4_authentication: pulumi.Input[Optional[Union['EdgeCacheOriginAwsV4AuthenticationArgs', 'EdgeCacheOriginAwsV4AuthenticationArgsDict', 'outputs.EdgeCacheOriginAwsV4Authentication']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            failover_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            flex_shielding: pulumi.Input[Optional[Union['EdgeCacheOriginFlexShieldingArgs', 'EdgeCacheOriginFlexShieldingArgsDict', 'outputs.EdgeCacheOriginFlexShielding']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_address: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_override_action: pulumi.Input[Optional[Union['EdgeCacheOriginOriginOverrideActionArgs', 'EdgeCacheOriginOriginOverrideActionArgsDict', 'outputs.EdgeCacheOriginOriginOverrideAction']]] = None,
+            origin_redirect: pulumi.Input[Optional[Union['EdgeCacheOriginOriginRedirectArgs', 'EdgeCacheOriginOriginRedirectArgsDict', 'outputs.EdgeCacheOriginOriginRedirect']]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            retry_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeout: pulumi.Input[Optional[Union['EdgeCacheOriginTimeoutArgs', 'EdgeCacheOriginTimeoutArgsDict', 'outputs.EdgeCacheOriginTimeout']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["awsV4Authentication"] = aws_v4_authentication
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["failoverOrigin"] = failover_origin
+        __props__["flexShielding"] = flex_shielding
+        __props__["labels"] = labels
+        __props__["maxAttempts"] = max_attempts
+        __props__["name"] = name
+        __props__["originAddress"] = origin_address
+        __props__["originOverrideAction"] = origin_override_action
+        __props__["originRedirect"] = origin_redirect
+        __props__["port"] = port
+        __props__["project"] = project
+        __props__["protocol"] = protocol
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["retryConditions"] = retry_conditions
+        __props__["timeout"] = timeout
+        return pulumi.runtime.exists_resource(None, 'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="awsV4Authentication")
     def aws_v4_authentication(self) -> pulumi.Output[Optional['outputs.EdgeCacheOriginAwsV4Authentication']]:

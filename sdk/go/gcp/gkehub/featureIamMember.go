@@ -424,6 +424,12 @@ func (FeatureIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureIamMemberState)(nil)).Elem()
 }
 
+// FeatureIamMemberExists checks whether an existing FeatureIamMember resource with the given ID exists.
+func FeatureIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/featureIamMember:FeatureIamMember", id, state, "", opts...)
+}
+
 type featureIamMemberArgs struct {
 	Condition *FeatureIamMemberCondition `pulumi:"condition"`
 	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,

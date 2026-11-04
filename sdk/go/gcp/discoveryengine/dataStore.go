@@ -456,6 +456,12 @@ func (DataStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataStoreState)(nil)).Elem()
 }
 
+// DataStoreExists checks whether an existing DataStore resource with the given ID exists.
+func DataStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/dataStore:DataStore", id, state, "", opts...)
+}
+
 type dataStoreArgs struct {
 	// Immutable. Whether data in the DataStore has ACL information. If set to `true`,
 	// the source data must have ACL. ACL will be ingested when data is ingested by

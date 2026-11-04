@@ -338,6 +338,12 @@ func (SettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*settingsState)(nil)).Elem()
 }
 
+// SettingsExists checks whether an existing Settings resource with the given ID exists.
+func SettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/settings:Settings", id, state, "", opts...)
+}
+
 type settingsArgs struct {
 	// Top level wrapper for all access related setting in IAP.
 	// Structure is documented below.

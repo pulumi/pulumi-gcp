@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
  *             .name("example_feature_view")
  *             .labels(Map.of("foo", "bar"))
@@ -93,24 +93,24 @@ import javax.annotation.Nullable;
  *             .tableId("example_feature_view")
  *             .schema("""
  *   [
- *   {
- *     \"name\": \"entity_id\",
- *     \"mode\": \"NULLABLE\",
- *     \"type\": \"STRING\",
- *     \"description\": \"Test default entity_id\"
- *   },
- *     {
- *     \"name\": \"test_entity_column\",
- *     \"mode\": \"NULLABLE\",
- *     \"type\": \"STRING\",
- *     \"description\": \"test secondary entity column\"
- *   },
- *   {
- *     \"name\": \"feature_timestamp\",
- *     \"mode\": \"NULLABLE\",
- *     \"type\": \"TIMESTAMP\",
- *     \"description\": \"Default timestamp value\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "entity_id}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Test default entity_id}&#92;{@code "
+ *   }}{@code ,
+ *     }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "test_entity_column}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "description}&#92;{@code ": }&#92;{@code "test secondary entity column}&#92;{@code "
+ *   }}{@code ,
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "feature_timestamp}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "TIMESTAMP}&#92;{@code ",
+ *     }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Default timestamp value}&#92;{@code "
+ *   }}{@code
  * ]
  *             """)
  *             .build());
@@ -123,12 +123,12 @@ import javax.annotation.Nullable;
  *                 .cron("0 0 * * *")
  *                 .build())
  *             .bigQuerySource(AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs.builder()
- *                 .uri(Output.tuple(tf_test_table.project(), tf_test_table.datasetId(), tf_test_table.tableId()).applyValue(values -> {
+ *                 .uri(Output.tuple(tf_test_table.project(), tf_test_table.datasetId(), tf_test_table.tableId()).applyValue(values -> }{{@code
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
  *                     return String.format("bq://%s.%s.%s", project,datasetId,tableId);
- *                 }))
+ *                 }}{@code ))
  *                 .entityIdColumns("test_entity_column")
  *                 .build())
  *             .build());
@@ -136,8 +136,8 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -176,12 +176,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
  *             .name("example_feature_view_feature_registry")
  *             .labels(Map.of("foo", "bar"))
@@ -208,21 +208,21 @@ import javax.annotation.Nullable;
  *             .tableId("example_feature_view_feature_registry")
  *             .schema("""
  * [
- *     {
- *         \"name\": \"feature_id\",
- *         \"type\": \"STRING\",
- *         \"mode\": \"NULLABLE\"
- *     },
- *     {
- *         \"name\": \"example_feature_view_feature_registry\",
- *         \"type\": \"STRING\",
- *         \"mode\": \"NULLABLE\"
- *     },
- *     {
- *         \"name\": \"feature_timestamp\",
- *         \"type\": \"TIMESTAMP\",
- *         \"mode\": \"NULLABLE\"
- *     }
+ *     }{{@code
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "feature_id}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "example_feature_view_feature_registry}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "feature_timestamp}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "TIMESTAMP}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *     }}{@code
  * ]
  *             """)
  *             .build());
@@ -234,12 +234,12 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("label-one", "value-one"))
  *             .bigQuery(AiFeatureGroupBigQueryArgs.builder()
  *                 .bigQuerySource(AiFeatureGroupBigQueryBigQuerySourceArgs.builder()
- *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -> {
+ *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -> }{{@code
  *                         var project = values.t1;
  *                         var datasetId = values.t2;
  *                         var tableId = values.t3;
  *                         return String.format("bq://%s.%s.%s", project,datasetId,tableId);
- *                     }))
+ *                     }}{@code ))
  *                     .build())
  *                 .entityIdColumns("feature_id")
  *                 .build())
@@ -268,8 +268,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -394,19 +394,19 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  *     }{{@code
- *         \"name\": \"feature_id\",
- *         \"type\": \"STRING\",
- *         \"mode\": \"NULLABLE\"
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "feature_id}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *     }}{@code ,
  *     }{{@code
- *         \"name\": \"example_cross_project_featureview\",
- *         \"type\": \"STRING\",
- *         \"mode\": \"NULLABLE\"
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "example_cross_project_featureview}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *     }}{@code ,
  *     }{{@code
- *         \"name\": \"feature_timestamp\",
- *         \"type\": \"TIMESTAMP\",
- *         \"mode\": \"NULLABLE\"
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "feature_timestamp}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "TIMESTAMP}&#92;{@code ",
+ *         }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *     }}{@code
  * ]
  *             """)
@@ -496,12 +496,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
  *             .name("example_feature_view_vector_search")
  *             .labels(Map.of("foo", "bar"))
@@ -526,48 +526,48 @@ import javax.annotation.Nullable;
  *             .tableId("example_feature_view_vector_search")
  *             .schema("""
  * [
- * {
- *   \"name\": \"test_primary_id\",
- *   \"mode\": \"NULLABLE\",
- *   \"type\": \"STRING\",
- *   \"description\": \"primary test id\"
- * },
- * {
- *   \"name\": \"embedding\",
- *   \"mode\": \"REPEATED\",
- *   \"type\": \"FLOAT\",
- *   \"description\": \"embedding column for primary_id column\"
- * },
- * {
- *   \"name\": \"country\",
- *   \"mode\": \"NULLABLE\",
- *   \"type\": \"STRING\",
- *   \"description\": \"country\"
- * },
- * {
- *   \"name\": \"test_crowding_column\",
- *   \"mode\": \"NULLABLE\",
- *   \"type\": \"INTEGER\",
- *   \"description\": \"test crowding column\"
- * },
- * {
- *   \"name\": \"entity_id\",
- *   \"mode\": \"NULLABLE\",
- *   \"type\": \"STRING\",
- *   \"description\": \"Test default entity_id\"
- * },
- * {
- *   \"name\": \"test_entity_column\",
- *   \"mode\": \"NULLABLE\",
- *   \"type\": \"STRING\",
- *   \"description\": \"test secondary entity column\"
- * },
- * {
- *   \"name\": \"feature_timestamp\",
- *   \"mode\": \"NULLABLE\",
- *   \"type\": \"TIMESTAMP\",
- *   \"description\": \"Default timestamp value\"
- * }
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "test_primary_id}&#92;{@code ",
+ *   }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *   }&#92;{@code "description}&#92;{@code ": }&#92;{@code "primary test id}&#92;{@code "
+ * }}{@code ,
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "embedding}&#92;{@code ",
+ *   }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "REPEATED}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "FLOAT}&#92;{@code ",
+ *   }&#92;{@code "description}&#92;{@code ": }&#92;{@code "embedding column for primary_id column}&#92;{@code "
+ * }}{@code ,
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "country}&#92;{@code ",
+ *   }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *   }&#92;{@code "description}&#92;{@code ": }&#92;{@code "country}&#92;{@code "
+ * }}{@code ,
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "test_crowding_column}&#92;{@code ",
+ *   }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "INTEGER}&#92;{@code ",
+ *   }&#92;{@code "description}&#92;{@code ": }&#92;{@code "test crowding column}&#92;{@code "
+ * }}{@code ,
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "entity_id}&#92;{@code ",
+ *   }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *   }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Test default entity_id}&#92;{@code "
+ * }}{@code ,
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "test_entity_column}&#92;{@code ",
+ *   }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *   }&#92;{@code "description}&#92;{@code ": }&#92;{@code "test secondary entity column}&#92;{@code "
+ * }}{@code ,
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "feature_timestamp}&#92;{@code ",
+ *   }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "TIMESTAMP}&#92;{@code ",
+ *   }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Default timestamp value}&#92;{@code "
+ * }}{@code
  * ]
  *             """)
  *             .build());
@@ -580,12 +580,12 @@ import javax.annotation.Nullable;
  *                 .cron("0 0 * * *")
  *                 .build())
  *             .bigQuerySource(AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs.builder()
- *                 .uri(Output.tuple(tf_test_table.project(), tf_test_table.datasetId(), tf_test_table.tableId()).applyValue(values -> {
+ *                 .uri(Output.tuple(tf_test_table.project(), tf_test_table.datasetId(), tf_test_table.tableId()).applyValue(values -> }{{@code
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
  *                     return String.format("bq://%s.%s.%s", project,datasetId,tableId);
- *                 }))
+ *                 }}{@code ))
  *                 .entityIdColumns("test_entity_column")
  *                 .build())
  *             .vectorSearchConfig(AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs.builder()
@@ -603,8 +603,8 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

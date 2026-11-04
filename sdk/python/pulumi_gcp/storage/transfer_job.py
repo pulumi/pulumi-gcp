@@ -903,6 +903,42 @@ class TransferJob(pulumi.CustomResource):
         __props__.__dict__["transfer_spec"] = transfer_spec
         return TransferJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict', 'outputs.TransferJobEventStream']]] = None,
+            last_modification_time: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict', 'outputs.TransferJobLoggingConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_config: pulumi.Input[Optional[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict', 'outputs.TransferJobNotificationConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_spec: pulumi.Input[Optional[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict', 'outputs.TransferJobReplicationSpec']]] = None,
+            schedule: pulumi.Input[Optional[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict', 'outputs.TransferJobSchedule']]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transfer_spec: pulumi.Input[Optional[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict', 'outputs.TransferJobTransferSpec']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTime"] = creation_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionTime"] = deletion_time
+        __props__["description"] = description
+        __props__["eventStream"] = event_stream
+        __props__["lastModificationTime"] = last_modification_time
+        __props__["loggingConfig"] = logging_config
+        __props__["name"] = name
+        __props__["notificationConfig"] = notification_config
+        __props__["project"] = project
+        __props__["replicationSpec"] = replication_spec
+        __props__["schedule"] = schedule
+        __props__["serviceAccount"] = service_account
+        __props__["status"] = status
+        __props__["transferSpec"] = transfer_spec
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/transferJob:TransferJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[_builtins.str]:

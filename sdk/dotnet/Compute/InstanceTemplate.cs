@@ -476,7 +476,7 @@ namespace Pulumi.Gcp.Compute
         /// More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
         /// create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("machineType")]
         public Output<string> MachineType { get; private set; } = null!;
@@ -803,7 +803,7 @@ namespace Pulumi.Gcp.Compute
         /// More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
         /// create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;
@@ -1102,7 +1102,7 @@ namespace Pulumi.Gcp.Compute
         /// More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
         /// create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }

@@ -427,6 +427,12 @@ func (FunctionIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionIamMemberState)(nil)).Elem()
 }
 
+// FunctionIamMemberExists checks whether an existing FunctionIamMember resource with the given ID exists.
+func FunctionIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FunctionIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudfunctionsv2/functionIamMember:FunctionIamMember", id, state, "", opts...)
+}
+
 type functionIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudFunction string                      `pulumi:"cloudFunction"`

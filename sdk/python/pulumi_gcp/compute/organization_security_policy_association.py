@@ -528,6 +528,26 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         __props__.__dict__["policy_id"] = policy_id
         return OrganizationSecurityPolicyAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            excluded_folders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            excluded_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attachmentId"] = attachment_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["excludedFolders"] = excluded_folders
+        __props__["excludedProjects"] = excluded_projects
+        __props__["name"] = name
+        __props__["policyId"] = policy_id
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> pulumi.Output[_builtins.str]:

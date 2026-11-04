@@ -682,6 +682,12 @@ func (RegionBackendServiceIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionBackendServiceIamMemberState)(nil)).Elem()
 }
 
+// RegionBackendServiceIamMemberExists checks whether an existing RegionBackendServiceIamMember resource with the given ID exists.
+func RegionBackendServiceIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionBackendServiceIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionBackendServiceIamMember:RegionBackendServiceIamMember", id, state, "", opts...)
+}
+
 type regionBackendServiceIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

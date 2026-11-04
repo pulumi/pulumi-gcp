@@ -544,6 +544,26 @@ class PolicyTag(pulumi.CustomResource):
         __props__.__dict__["taxonomy"] = taxonomy
         return PolicyTag(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            child_policy_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            taxonomy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["childPolicyTags"] = child_policy_tags
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["name"] = name
+        __props__["parentPolicyTag"] = parent_policy_tag
+        __props__["taxonomy"] = taxonomy
+        return pulumi.runtime.exists_resource(None, 'gcp:datacatalog/policyTag:PolicyTag', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="childPolicyTags")
     def child_policy_tags(self) -> pulumi.Output[Sequence[_builtins.str]]:

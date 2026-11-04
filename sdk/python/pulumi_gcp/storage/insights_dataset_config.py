@@ -1229,6 +1229,60 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return InsightsDatasetConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            activity_data_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_config_state: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageBuckets']]] = None,
+            exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageLocations']]] = None,
+            identity: pulumi.Input[Optional[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict', 'outputs.InsightsDatasetConfigIdentity']]] = None,
+            include_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageBuckets']]] = None,
+            include_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageLocations']]] = None,
+            include_newly_created_buckets: pulumi.Input[Optional[_builtins.bool]] = None,
+            link_dataset: pulumi.Input[Optional[_builtins.bool]] = None,
+            links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsDatasetConfigLinkArgs', 'InsightsDatasetConfigLinkArgsDict', 'outputs.InsightsDatasetConfigLink']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_number: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_scope: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+            source_folders: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict', 'outputs.InsightsDatasetConfigSourceFolders']]] = None,
+            source_projects: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict', 'outputs.InsightsDatasetConfigSourceProjects']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activityDataRetentionPeriodDays"] = activity_data_retention_period_days
+        __props__["createTime"] = create_time
+        __props__["datasetConfigId"] = dataset_config_id
+        __props__["datasetConfigState"] = dataset_config_state
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["excludeCloudStorageBuckets"] = exclude_cloud_storage_buckets
+        __props__["excludeCloudStorageLocations"] = exclude_cloud_storage_locations
+        __props__["identity"] = identity
+        __props__["includeCloudStorageBuckets"] = include_cloud_storage_buckets
+        __props__["includeCloudStorageLocations"] = include_cloud_storage_locations
+        __props__["includeNewlyCreatedBuckets"] = include_newly_created_buckets
+        __props__["linkDataset"] = link_dataset
+        __props__["links"] = links
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["organizationNumber"] = organization_number
+        __props__["organizationScope"] = organization_scope
+        __props__["project"] = project
+        __props__["retentionPeriodDays"] = retention_period_days
+        __props__["sourceFolders"] = source_folders
+        __props__["sourceProjects"] = source_projects
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/insightsDatasetConfig:InsightsDatasetConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activityDataRetentionPeriodDays")
     def activity_data_retention_period_days(self) -> pulumi.Output[_builtins.int]:

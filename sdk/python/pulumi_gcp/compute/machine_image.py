@@ -773,6 +773,32 @@ class MachineImage(pulumi.CustomResource):
         __props__.__dict__["storage_locations"] = storage_locations
         return MachineImage(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
+            machine_image_encryption_key: pulumi.Input[Optional[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict', 'outputs.MachineImageMachineImageEncryptionKey']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict', 'outputs.MachineImageParams']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            source_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["guestFlush"] = guest_flush
+        __props__["machineImageEncryptionKey"] = machine_image_encryption_key
+        __props__["name"] = name
+        __props__["params"] = params
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        __props__["sourceInstance"] = source_instance
+        __props__["storageLocations"] = storage_locations
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/machineImage:MachineImage', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

@@ -226,6 +226,12 @@ func (HookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hookState)(nil)).Elem()
 }
 
+// HookExists checks whether an existing Hook resource with the given ID exists.
+func HookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securesourcemanager/hook:Hook", id, state, "", opts...)
+}
+
 type hookArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

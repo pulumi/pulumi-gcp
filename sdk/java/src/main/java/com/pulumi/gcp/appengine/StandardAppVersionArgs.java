@@ -327,7 +327,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The version of the API in the given runtime environment.
-     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`&#92;
      * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      * 
      */
@@ -336,7 +336,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The version of the API in the given runtime environment.
-     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`&#92;
      * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      * 
      */
@@ -934,7 +934,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param runtimeApiVersion The version of the API in the given runtime environment.
-         * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+         * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`&#92;
          * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
          * 
          * @return builder
@@ -947,7 +947,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param runtimeApiVersion The version of the API in the given runtime environment.
-         * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+         * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`&#92;
          * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
          * 
          * @return builder

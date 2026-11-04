@@ -218,8 +218,8 @@ namespace Pulumi.Gcp.Compute
         /// Possible values:
         /// - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
         /// - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-        /// This field is required for regional backend buckets.
-        /// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        ///   This field is required for regional backend buckets.
+        ///   Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string> LoadBalancingScheme { get; private set; } = null!;
@@ -331,8 +331,8 @@ namespace Pulumi.Gcp.Compute
         /// Possible values:
         /// - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
         /// - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-        /// This field is required for regional backend buckets.
-        /// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        ///   This field is required for regional backend buckets.
+        ///   Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -406,8 +406,8 @@ namespace Pulumi.Gcp.Compute
         /// Possible values:
         /// - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
         /// - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-        /// This field is required for regional backend buckets.
-        /// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        ///   This field is required for regional backend buckets.
+        ///   Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }

@@ -675,6 +675,12 @@ func (EkmConnectionIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ekmConnectionIamBindingState)(nil)).Elem()
 }
 
+// EkmConnectionIamBindingExists checks whether an existing EkmConnectionIamBinding resource with the given ID exists.
+func EkmConnectionIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EkmConnectionIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding", id, state, "", opts...)
+}
+
 type ekmConnectionIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

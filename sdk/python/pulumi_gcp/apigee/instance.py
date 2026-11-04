@@ -1043,6 +1043,40 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["service_attachment"] = service_attachment
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_logging_config: pulumi.Input[Optional[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict', 'outputs.InstanceAccessLoggingConfig']]] = None,
+            consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            service_attachment: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessLoggingConfig"] = access_logging_config
+        __props__["consumerAcceptLists"] = consumer_accept_lists
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["diskEncryptionKeyName"] = disk_encryption_key_name
+        __props__["displayName"] = display_name
+        __props__["host"] = host
+        __props__["ipRange"] = ip_range
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["peeringCidrRange"] = peering_cidr_range
+        __props__["port"] = port
+        __props__["serviceAttachment"] = service_attachment
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessLoggingConfig")
     def access_logging_config(self) -> pulumi.Output[Optional['outputs.InstanceAccessLoggingConfig']]:

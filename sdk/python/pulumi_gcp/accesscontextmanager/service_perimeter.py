@@ -1161,6 +1161,36 @@ class ServicePerimeter(pulumi.CustomResource):
         __props__.__dict__["use_explicit_dry_run_spec"] = use_explicit_dry_run_spec
         return ServicePerimeter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict', 'outputs.ServicePerimeterSpec']]] = None,
+            status: pulumi.Input[Optional[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict', 'outputs.ServicePerimeterStatus']]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            use_explicit_dry_run_spec: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["etag"] = etag
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["perimeterType"] = perimeter_type
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["title"] = title
+        __props__["updateTime"] = update_time
+        __props__["useExplicitDryRunSpec"] = use_explicit_dry_run_spec
+        return pulumi.runtime.exists_resource(None, 'gcp:accesscontextmanager/servicePerimeter:ServicePerimeter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

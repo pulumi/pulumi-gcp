@@ -29,11 +29,10 @@ public final class CryptoKeyVersionAttestation {
      * @return ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      * Structure is documented below.
      * 
-     * @deprecated
-     * `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
+     * @deprecated `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
      * 
      */
-    @Deprecated /* `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead. */
+    @Deprecated
     private @Nullable CryptoKeyVersionAttestationExternalProtectionLevelOptions externalProtectionLevelOptions;
     /**
      * @return (Output)
@@ -63,11 +62,10 @@ public final class CryptoKeyVersionAttestation {
      * @return ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      * Structure is documented below.
      * 
-     * @deprecated
-     * `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
+     * @deprecated `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
      * 
      */
-    @Deprecated /* `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead. */
+    @Deprecated
     public Optional<CryptoKeyVersionAttestationExternalProtectionLevelOptions> externalProtectionLevelOptions() {
         return Optional.ofNullable(this.externalProtectionLevelOptions);
     }

@@ -681,12 +681,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var custom = new Network("custom", NetworkArgs.builder()
  *             .name("custom-vpc")
  *             .autoCreateSubnetworks(false)
@@ -713,7 +713,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .metadata(Map.of("startup-script", """
  * #!/bin/bash
- * echo \"Hello World from MIG VM\" > /var/www/html/index.html
+ * echo }&#92;{@code "Hello World from MIG VM}&#92;{@code " > /var/www/html/index.html
  * apt-get update -y
  * apt-get install -y apache2
  * systemctl start apache2
@@ -752,8 +752,8 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHealthCheck.selfLink())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

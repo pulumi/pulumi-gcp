@@ -98,8 +98,8 @@ namespace Pulumi.Gcp.Compute
         /// The type of the address to reserve.
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are: `EXTERNAL`, `INTERNAL`.
+        ///   Default value is `EXTERNAL`.
+        ///   Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Output("addressType")]
         public Output<string?> AddressType { get; private set; } = null!;
@@ -277,8 +277,8 @@ namespace Pulumi.Gcp.Compute
         /// The type of the address to reserve.
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are: `EXTERNAL`, `INTERNAL`.
+        ///   Default value is `EXTERNAL`.
+        ///   Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -387,8 +387,8 @@ namespace Pulumi.Gcp.Compute
         /// The type of the address to reserve.
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are: `EXTERNAL`, `INTERNAL`.
+        ///   Default value is `EXTERNAL`.
+        ///   Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }

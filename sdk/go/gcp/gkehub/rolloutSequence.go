@@ -639,6 +639,12 @@ func (RolloutSequenceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rolloutSequenceState)(nil)).Elem()
 }
 
+// RolloutSequenceExists checks whether an existing RolloutSequence resource with the given ID exists.
+func RolloutSequenceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RolloutSequenceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/rolloutSequence:RolloutSequence", id, state, "", opts...)
+}
+
 type rolloutSequenceArgs struct {
 	// Configuration for automatic upgrades.
 	// If not specified, the system applies default behavior.

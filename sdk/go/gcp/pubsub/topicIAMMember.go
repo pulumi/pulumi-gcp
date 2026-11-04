@@ -408,6 +408,12 @@ func (TopicIAMMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicIAMMemberState)(nil)).Elem()
 }
 
+// TopicIAMMemberExists checks whether an existing TopicIAMMember resource with the given ID exists.
+func TopicIAMMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TopicIAMMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:pubsub/topicIAMMember:TopicIAMMember", id, state, "", opts...)
+}
+
 type topicIAMMemberArgs struct {
 	Condition *TopicIAMMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

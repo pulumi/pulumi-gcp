@@ -395,6 +395,12 @@ func (ExternalAccessRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalAccessRuleState)(nil)).Elem()
 }
 
+// ExternalAccessRuleExists checks whether an existing ExternalAccessRule resource with the given ID exists.
+func ExternalAccessRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExternalAccessRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vmwareengine/externalAccessRule:ExternalAccessRule", id, state, "", opts...)
+}
+
 type externalAccessRuleArgs struct {
 	// The action that the external access rule performs.
 	// Possible values are: `ALLOW`, `DENY`.

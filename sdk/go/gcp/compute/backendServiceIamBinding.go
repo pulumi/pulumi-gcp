@@ -651,6 +651,12 @@ func (BackendServiceIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendServiceIamBindingState)(nil)).Elem()
 }
 
+// BackendServiceIamBindingExists checks whether an existing BackendServiceIamBinding resource with the given ID exists.
+func BackendServiceIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackendServiceIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/backendServiceIamBinding:BackendServiceIamBinding", id, state, "", opts...)
+}
+
 type backendServiceIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

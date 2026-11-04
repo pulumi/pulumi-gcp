@@ -394,6 +394,12 @@ func (ZoneIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneIamPolicyState)(nil)).Elem()
 }
 
+// ZoneIamPolicyExists checks whether an existing ZoneIamPolicy resource with the given ID exists.
+func ZoneIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/zoneIamPolicy:ZoneIamPolicy", id, state, "", opts...)
+}
+
 type zoneIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	DataplexZone string `pulumi:"dataplexZone"`

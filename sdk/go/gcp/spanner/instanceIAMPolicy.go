@@ -327,6 +327,12 @@ func (InstanceIAMPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIAMPolicyState)(nil)).Elem()
 }
 
+// InstanceIAMPolicyExists checks whether an existing InstanceIAMPolicy resource with the given ID exists.
+func InstanceIAMPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceIAMPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy", id, state, "", opts...)
+}
+
 type instanceIAMPolicyArgs struct {
 	// The name of the instance.
 	Instance string `pulumi:"instance"`

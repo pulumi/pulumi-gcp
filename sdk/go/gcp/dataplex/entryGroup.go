@@ -257,6 +257,12 @@ func (EntryGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entryGroupState)(nil)).Elem()
 }
 
+// EntryGroupExists checks whether an existing EntryGroup resource with the given ID exists.
+func EntryGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntryGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/entryGroup:EntryGroup", id, state, "", opts...)
+}
+
 type entryGroupArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

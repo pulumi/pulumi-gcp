@@ -827,6 +827,12 @@ func (InstanceTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceTemplateState)(nil)).Elem()
 }
 
+// InstanceTemplateExists checks whether an existing InstanceTemplate resource with the given ID exists.
+func InstanceTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instanceTemplate:InstanceTemplate", id, state, "", opts...)
+}
+
 type instanceTemplateArgs struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
 	AdvancedMachineFeatures *InstanceTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`

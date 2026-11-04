@@ -343,6 +343,12 @@ func (DocumentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*documentState)(nil)).Elem()
 }
 
+// DocumentExists checks whether an existing Document resource with the given ID exists.
+func DocumentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DocumentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firestore/document:Document", id, state, "", opts...)
+}
+
 type documentArgs struct {
 	// The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
 	Collection string `pulumi:"collection"`

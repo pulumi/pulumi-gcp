@@ -149,6 +149,12 @@ func (PreviewFeatureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*previewFeatureState)(nil)).Elem()
 }
 
+// PreviewFeatureExists checks whether an existing PreviewFeature resource with the given ID exists.
+func PreviewFeatureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PreviewFeatureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/previewFeature:PreviewFeature", id, state, "", opts...)
+}
+
 type previewFeatureArgs struct {
 	// The activation status of the preview feature.
 	// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.

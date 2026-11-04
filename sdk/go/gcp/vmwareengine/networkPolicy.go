@@ -309,6 +309,12 @@ func (NetworkPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkPolicyState)(nil)).Elem()
 }
 
+// NetworkPolicyExists checks whether an existing NetworkPolicy resource with the given ID exists.
+func NetworkPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vmwareengine/networkPolicy:NetworkPolicy", id, state, "", opts...)
+}
+
 type networkPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -18,7 +18,7 @@ public final class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs ex
     /**
      * The delimiter to use when using the &#39;text&#39; format. Each line of text as
      * specified by the delimiter will be set to the &#39;data&#39; field of a Pub/Sub
-     * message. When unset, &#39;\n&#39; is used.
+     * message. When unset, &#39;&#92;n&#39; is used.
      * 
      */
     @Import(name="delimiter")
@@ -27,7 +27,7 @@ public final class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs ex
     /**
      * @return The delimiter to use when using the &#39;text&#39; format. Each line of text as
      * specified by the delimiter will be set to the &#39;data&#39; field of a Pub/Sub
-     * message. When unset, &#39;\n&#39; is used.
+     * message. When unset, &#39;&#92;n&#39; is used.
      * 
      */
     public Optional<Output<String>> delimiter() {
@@ -61,7 +61,7 @@ public final class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs ex
         /**
          * @param delimiter The delimiter to use when using the &#39;text&#39; format. Each line of text as
          * specified by the delimiter will be set to the &#39;data&#39; field of a Pub/Sub
-         * message. When unset, &#39;\n&#39; is used.
+         * message. When unset, &#39;&#92;n&#39; is used.
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs ex
         /**
          * @param delimiter The delimiter to use when using the &#39;text&#39; format. Each line of text as
          * specified by the delimiter will be set to the &#39;data&#39; field of a Pub/Sub
-         * message. When unset, &#39;\n&#39; is used.
+         * message. When unset, &#39;&#92;n&#39; is used.
          * 
          * @return builder
          * 

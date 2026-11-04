@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Sql
         /// and
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,7 +53,6 @@ namespace Pulumi.Gcp.Sql
         /// and
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,7 +88,6 @@ namespace Pulumi.Gcp.Sql
         /// [official documentation](https://cloud.google.com/sql/)
         /// and
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
-        /// 
         /// 
         /// ## Example Usage
         /// 

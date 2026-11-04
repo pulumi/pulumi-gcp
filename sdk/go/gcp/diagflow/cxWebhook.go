@@ -588,6 +588,12 @@ func (CxWebhookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxWebhookState)(nil)).Elem()
 }
 
+// CxWebhookExists checks whether an existing CxWebhook resource with the given ID exists.
+func CxWebhookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxWebhookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxWebhook:CxWebhook", id, state, "", opts...)
+}
+
 type cxWebhookArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

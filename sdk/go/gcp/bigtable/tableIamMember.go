@@ -370,6 +370,12 @@ func (TableIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tableIamMemberState)(nil)).Elem()
 }
 
+// TableIamMemberExists checks whether an existing TableIamMember resource with the given ID exists.
+func TableIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TableIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigtable/tableIamMember:TableIamMember", id, state, "", opts...)
+}
+
 type tableIamMemberArgs struct {
 	Condition *TableIamMemberCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance that owns the table.

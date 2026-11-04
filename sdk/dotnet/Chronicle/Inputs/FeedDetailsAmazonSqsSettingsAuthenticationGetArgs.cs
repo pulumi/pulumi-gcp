@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Chronicle.Inputs
         /// Amazon SQS access key and secret auth.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuth"&gt;&lt;/a&gt;The `AdditionalS3AccessKeySecretAuth` block supports:
         /// </summary>
         [Input("sqsAccessKeySecretAuth")]

@@ -78,41 +78,41 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var testEntryTypeFull = new AspectType("testEntryTypeFull", AspectTypeArgs.builder()
  *             .aspectTypeId("tf-test-aspect-type_45397")
  *             .location("us-central1")
  *             .project("my-project-name")
  *             .metadataTemplate("""
- * {
- *   \"name\": \"tf-test-template\",
- *   \"type\": \"record\",
- *   \"recordFields\": [
- *     {
- *       \"name\": \"type\",
- *       \"type\": \"enum\",
- *       \"annotations\": {
- *         \"displayName\": \"Type\",
- *         \"description\": \"Specifies the type of view represented by the entry.\"
- *       },
- *       \"index\": 1,
- *       \"constraints\": {
- *         \"required\": true
- *       },
- *       \"enumValues\": [
- *         {
- *           \"name\": \"VIEW\",
- *           \"index\": 1
- *         }
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "tf-test-template}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *   }&#92;{@code "recordFields}&#92;{@code ": [
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "type}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "enum}&#92;{@code ",
+ *       }&#92;{@code "annotations}&#92;{@code ": }{{@code
+ *         }&#92;{@code "displayName}&#92;{@code ": }&#92;{@code "Type}&#92;{@code ",
+ *         }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Specifies the type of view represented by the entry.}&#92;{@code "
+ *       }}{@code ,
+ *       }&#92;{@code "index}&#92;{@code ": 1,
+ *       }&#92;{@code "constraints}&#92;{@code ": }{{@code
+ *         }&#92;{@code "required}&#92;{@code ": true
+ *       }}{@code ,
+ *       }&#92;{@code "enumValues}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "VIEW}&#92;{@code ",
+ *           }&#92;{@code "index}&#92;{@code ": 1
+ *         }}{@code
  *       ]
- *     }
+ *     }}{@code
  *   ]
- * }
+ * }}{@code
  *             """)
  *             .build());
  * 
@@ -133,8 +133,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

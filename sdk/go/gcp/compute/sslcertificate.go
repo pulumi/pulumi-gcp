@@ -269,6 +269,12 @@ func (SSLCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslcertificateState)(nil)).Elem()
 }
 
+// SSLCertificateExists checks whether an existing SSLCertificate resource with the given ID exists.
+func SSLCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SSLCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/sSLCertificate:SSLCertificate", id, state, "", opts...)
+}
+
 type sslcertificateArgs struct {
 	// The certificate in PEM format.
 	// The certificate chain must be no greater than 5 certs long.

@@ -2202,6 +2202,46 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         __props__.__dict__["workforce_pool_id"] = workforce_pool_id
         return WorkforcePoolProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
+            attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detailed_audit_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            extended_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtendedAttributesOauth2Client']]] = None,
+            extra_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtraAttributesOauth2Client']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc: pulumi.Input[Optional[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict', 'outputs.WorkforcePoolProviderOidc']]] = None,
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            saml: pulumi.Input[Optional[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict', 'outputs.WorkforcePoolProviderSaml']]] = None,
+            scim_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attributeCondition"] = attribute_condition
+        __props__["attributeMapping"] = attribute_mapping
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["detailedAuditLogging"] = detailed_audit_logging
+        __props__["disabled"] = disabled
+        __props__["displayName"] = display_name
+        __props__["extendedAttributesOauth2Client"] = extended_attributes_oauth2_client
+        __props__["extraAttributesOauth2Client"] = extra_attributes_oauth2_client
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["oidc"] = oidc
+        __props__["providerId"] = provider_id
+        __props__["saml"] = saml
+        __props__["scimUsage"] = scim_usage
+        __props__["state"] = state
+        __props__["workforcePoolId"] = workforce_pool_id
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/workforcePoolProvider:WorkforcePoolProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attributeCondition")
     def attribute_condition(self) -> pulumi.Output[Optional[_builtins.str]]:

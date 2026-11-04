@@ -311,6 +311,12 @@ func (BindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bindingState)(nil)).Elem()
 }
 
+// BindingExists checks whether an existing Binding resource with the given ID exists.
+func BindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:agentregistry/binding:Binding", id, state, "", opts...)
+}
+
 type bindingArgs struct {
 	// The auth provider of the Binding.
 	// Structure is documented below.

@@ -24,8 +24,8 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// conflicts should be avoided. For more information, including usage
         /// and the valid values, see:
         /// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-        /// An object containing a list of "key": value pairs.
-        /// For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        ///   An object containing a list of "key": value pairs.
+        ///   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> Labels
         {

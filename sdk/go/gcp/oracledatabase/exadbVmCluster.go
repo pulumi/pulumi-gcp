@@ -435,6 +435,12 @@ func (ExadbVmClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*exadbVmClusterState)(nil)).Elem()
 }
 
+// ExadbVmClusterExists checks whether an existing ExadbVmCluster resource with the given ID exists.
+func ExadbVmClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExadbVmClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/exadbVmCluster:ExadbVmCluster", id, state, "", opts...)
+}
+
 type exadbVmClusterArgs struct {
 	// The name of the backup OdbSubnet associated with the ExadbVmCluster.
 	// Format:

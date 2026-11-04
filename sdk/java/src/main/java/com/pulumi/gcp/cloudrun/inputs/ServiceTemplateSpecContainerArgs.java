@@ -71,11 +71,10 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
      * 
      * &gt; **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     @Import(name="envFroms")
     private @Nullable Output<List<ServiceTemplateSpecContainerEnvFromArgs>> envFroms;
 
@@ -90,11 +89,10 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
      * 
      * &gt; **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     public Optional<Output<List<ServiceTemplateSpecContainerEnvFromArgs>>> envFroms() {
         return Optional.ofNullable(this.envFroms);
     }
@@ -281,11 +279,10 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
      * 
      * &gt; **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     @Import(name="workingDir")
     private @Nullable Output<String> workingDir;
 
@@ -297,11 +294,10 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
      * 
      * &gt; **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     public Optional<Output<String>> workingDir() {
         return Optional.ofNullable(this.workingDir);
     }
@@ -424,11 +420,10 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * @deprecated `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+        @Deprecated
         public Builder envFroms(@Nullable Output<List<ServiceTemplateSpecContainerEnvFromArgs>> envFroms) {
             $.envFroms = envFroms;
             return this;
@@ -447,11 +442,10 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * @deprecated `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+        @Deprecated
         public Builder envFroms(List<ServiceTemplateSpecContainerEnvFromArgs> envFroms) {
             return envFroms(Output.of(envFroms));
         }
@@ -469,11 +463,10 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * @deprecated `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+        @Deprecated
         public Builder envFroms(ServiceTemplateSpecContainerEnvFromArgs... envFroms) {
             return envFroms(List.of(envFroms));
         }
@@ -756,11 +749,10 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * @deprecated `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+        @Deprecated
         public Builder workingDir(@Nullable Output<String> workingDir) {
             $.workingDir = workingDir;
             return this;
@@ -776,11 +768,10 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * @deprecated `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+        @Deprecated
         public Builder workingDir(String workingDir) {
             return workingDir(Output.of(workingDir));
         }

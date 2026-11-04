@@ -382,6 +382,12 @@ func (DataPolicyIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataPolicyIamPolicyState)(nil)).Elem()
 }
 
+// DataPolicyIamPolicyExists checks whether an existing DataPolicyIamPolicy resource with the given ID exists.
+func DataPolicyIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataPolicyIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquerydatapolicy/dataPolicyIamPolicy:DataPolicyIamPolicy", id, state, "", opts...)
+}
+
 type dataPolicyIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	DataPolicyId string `pulumi:"dataPolicyId"`

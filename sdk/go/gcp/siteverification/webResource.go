@@ -203,6 +203,12 @@ func (WebResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webResourceState)(nil)).Elem()
 }
 
+// WebResourceExists checks whether an existing WebResource resource with the given ID exists.
+func WebResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:siteverification/webResource:WebResource", id, state, "", opts...)
+}
+
 type webResourceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

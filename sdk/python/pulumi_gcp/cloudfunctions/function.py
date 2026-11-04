@@ -1805,6 +1805,88 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["vpc_connector_egress_settings"] = vpc_connector_egress_settings
         return Function(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            automatic_update_policy: pulumi.Input[Optional[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict', 'outputs.FunctionAutomaticUpdatePolicy']]] = None,
+            available_memory_mb: pulumi.Input[Optional[_builtins.int]] = None,
+            build_environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            build_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            build_worker_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_registry: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_repository: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            entry_point: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']]] = None,
+            https_trigger_security_level: pulumi.Input[Optional[_builtins.str]] = None,
+            https_trigger_url: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_settings: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            min_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            on_deploy_update_policy: pulumi.Input[Optional[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict', 'outputs.FunctionOnDeployUpdatePolicy']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict', 'outputs.FunctionSecretEnvironmentVariable']]]]] = None,
+            secret_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict', 'outputs.FunctionSecretVolume']]]]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+            source_archive_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            source_archive_object: pulumi.Input[Optional[_builtins.str]] = None,
+            source_repository: pulumi.Input[Optional[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict', 'outputs.FunctionSourceRepository']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            trigger_http: pulumi.Input[Optional[_builtins.bool]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_connector_egress_settings: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["automaticUpdatePolicy"] = automatic_update_policy
+        __props__["availableMemoryMb"] = available_memory_mb
+        __props__["buildEnvironmentVariables"] = build_environment_variables
+        __props__["buildServiceAccount"] = build_service_account
+        __props__["buildWorkerPool"] = build_worker_pool
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["dockerRegistry"] = docker_registry
+        __props__["dockerRepository"] = docker_repository
+        __props__["effectiveLabels"] = effective_labels
+        __props__["entryPoint"] = entry_point
+        __props__["environmentVariables"] = environment_variables
+        __props__["eventTrigger"] = event_trigger
+        __props__["httpsTriggerSecurityLevel"] = https_trigger_security_level
+        __props__["httpsTriggerUrl"] = https_trigger_url
+        __props__["ingressSettings"] = ingress_settings
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["labels"] = labels
+        __props__["maxInstances"] = max_instances
+        __props__["minInstances"] = min_instances
+        __props__["name"] = name
+        __props__["onDeployUpdatePolicy"] = on_deploy_update_policy
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["runtime"] = runtime
+        __props__["secretEnvironmentVariables"] = secret_environment_variables
+        __props__["secretVolumes"] = secret_volumes
+        __props__["serviceAccountEmail"] = service_account_email
+        __props__["sourceArchiveBucket"] = source_archive_bucket
+        __props__["sourceArchiveObject"] = source_archive_object
+        __props__["sourceRepository"] = source_repository
+        __props__["status"] = status
+        __props__["timeout"] = timeout
+        __props__["triggerHttp"] = trigger_http
+        __props__["versionId"] = version_id
+        __props__["vpcConnector"] = vpc_connector
+        __props__["vpcConnectorEgressSettings"] = vpc_connector_egress_settings
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudfunctions/function:Function', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="automaticUpdatePolicy")
     def automatic_update_policy(self) -> pulumi.Output['outputs.FunctionAutomaticUpdatePolicy']:

@@ -508,6 +508,12 @@ func (RegionNetworkFirewallPolicyWithRulesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionNetworkFirewallPolicyWithRulesState)(nil)).Elem()
 }
 
+// RegionNetworkFirewallPolicyWithRulesExists checks whether an existing RegionNetworkFirewallPolicyWithRules resource with the given ID exists.
+func RegionNetworkFirewallPolicyWithRulesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionNetworkFirewallPolicyWithRulesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules", id, state, "", opts...)
+}
+
 type regionNetworkFirewallPolicyWithRulesArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -30,7 +30,7 @@ public final class URLMapPathMatcherPathRule {
     private @Nullable URLMapPathMatcherPathRuleCustomErrorResponsePolicy customErrorResponsePolicy;
     /**
      * @return The list of path patterns to match. Each must start with / and the only place a
-     * \* is allowed is at the end following a /. The string fed to the path matcher
+     * &#92;* is allowed is at the end following a /. The string fed to the path matcher
      * does not include any text after the first ? or #, and those chars are not
      * allowed here.
      * 
@@ -78,7 +78,7 @@ public final class URLMapPathMatcherPathRule {
     }
     /**
      * @return The list of path patterns to match. Each must start with / and the only place a
-     * \* is allowed is at the end following a /. The string fed to the path matcher
+     * &#92;* is allowed is at the end following a /. The string fed to the path matcher
      * does not include any text after the first ? or #, and those chars are not
      * allowed here.
      * 

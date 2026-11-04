@@ -174,6 +174,12 @@ func (DocumentAiWarehouseLocationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*documentAiWarehouseLocationState)(nil)).Elem()
 }
 
+// DocumentAiWarehouseLocationExists checks whether an existing DocumentAiWarehouseLocation resource with the given ID exists.
+func DocumentAiWarehouseLocationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DocumentAiWarehouseLocationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation", id, state, "", opts...)
+}
+
 type documentAiWarehouseLocationArgs struct {
 	// The access control mode for accessing the customer data.
 	// Possible values are: `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI`, `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID`, `ACL_MODE_UNIVERSAL_ACCESS`.

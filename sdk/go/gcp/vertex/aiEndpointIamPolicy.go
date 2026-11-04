@@ -77,6 +77,12 @@ func (AiEndpointIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiEndpointIamPolicyState)(nil)).Elem()
 }
 
+// AiEndpointIamPolicyExists checks whether an existing AiEndpointIamPolicy resource with the given ID exists.
+func AiEndpointIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiEndpointIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy", id, state, "", opts...)
+}
+
 type aiEndpointIamPolicyArgs struct {
 	Endpoint   string  `pulumi:"endpoint"`
 	Location   *string `pulumi:"location"`

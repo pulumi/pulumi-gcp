@@ -666,11 +666,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
-     * @deprecated
-     * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+     * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
      */
-    @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
+    @Deprecated
     @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 

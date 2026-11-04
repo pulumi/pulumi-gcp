@@ -1144,6 +1144,34 @@ class ResourcePolicy(pulumi.CustomResource):
         __props__.__dict__["workload_policy"] = workload_policy
         return ResourcePolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict', 'outputs.ResourcePolicyDiskConsistencyGroupPolicy']]] = None,
+            group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict', 'outputs.ResourcePolicyGroupPlacementPolicy']]] = None,
+            instance_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict', 'outputs.ResourcePolicyInstanceSchedulePolicy']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict', 'outputs.ResourcePolicySnapshotSchedulePolicy']]] = None,
+            workload_policy: pulumi.Input[Optional[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict', 'outputs.ResourcePolicyWorkloadPolicy']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["diskConsistencyGroupPolicy"] = disk_consistency_group_policy
+        __props__["groupPlacementPolicy"] = group_placement_policy
+        __props__["instanceSchedulePolicy"] = instance_schedule_policy
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        __props__["snapshotSchedulePolicy"] = snapshot_schedule_policy
+        __props__["workloadPolicy"] = workload_policy
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/resourcePolicy:ResourcePolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

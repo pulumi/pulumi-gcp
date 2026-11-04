@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.BigTable
         /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         /// to default to the backend value. See structure below.
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Output("clusters")]
         public Output<ImmutableArray<Outputs.InstanceCluster>> Clusters { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Output("edition")]
         public Output<string?> Edition { get; private set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.Gcp.BigTable
         /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         /// to default to the backend value. See structure below.
         /// 
-        /// -----
+        /// ***
         /// </summary>
         public InputList<Inputs.InstanceClusterArgs> Clusters
         {
@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -381,7 +381,7 @@ namespace Pulumi.Gcp.BigTable
         /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         /// to default to the backend value. See structure below.
         /// 
-        /// -----
+        /// ***
         /// </summary>
         public InputList<Inputs.InstanceClusterGetArgs> Clusters
         {
@@ -416,7 +416,7 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }

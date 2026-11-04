@@ -42,14 +42,14 @@ public final class ReleaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
+     * Format: `projects/{project_id}/releases/{release_id}`&#92;Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
+     * @return Format: `projects/{project_id}/releases/{release_id}`&#92;Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
      * 
      */
     public Optional<Output<String>> name() {
@@ -149,7 +149,7 @@ public final class ReleaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
+         * @param name Format: `projects/{project_id}/releases/{release_id}`&#92;Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class ReleaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
+         * @param name Format: `projects/{project_id}/releases/{release_id}`&#92;Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
          * 
          * @return builder
          * 

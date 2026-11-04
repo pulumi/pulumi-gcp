@@ -706,6 +706,36 @@ class Key(pulumi.CustomResource):
         __props__.__dict__["valid_before"] = valid_before
         return Key(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            keepers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key_data: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            valid_after: pulumi.Input[Optional[_builtins.str]] = None,
+            valid_before: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["keepers"] = keepers
+        __props__["keyAlgorithm"] = key_algorithm
+        __props__["name"] = name
+        __props__["privateKey"] = private_key
+        __props__["privateKeyType"] = private_key_type
+        __props__["publicKey"] = public_key
+        __props__["publicKeyData"] = public_key_data
+        __props__["publicKeyType"] = public_key_type
+        __props__["serviceAccountId"] = service_account_id
+        __props__["validAfter"] = valid_after
+        __props__["validBefore"] = valid_before
+        return pulumi.runtime.exists_resource(None, 'gcp:serviceaccount/key:Key', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

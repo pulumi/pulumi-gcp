@@ -225,6 +225,12 @@ func (GenericServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*genericServiceState)(nil)).Elem()
 }
 
+// GenericServiceExists checks whether an existing GenericService resource with the given ID exists.
+func GenericServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GenericServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:monitoring/genericService:GenericService", id, state, "", opts...)
+}
+
 type genericServiceArgs struct {
 	// A well-known service type, defined by its service type and service labels.
 	// Valid values of service types and services labels are described at

@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The language to create generators for the following fields:
         /// * Generator.prompt_text.text
-        /// If not specified, the agent's default language is used.
+        ///   If not specified, the agent's default language is used.
         /// </summary>
         [Output("languageCode")]
         public Output<string?> LanguageCode { get; private set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The language to create generators for the following fields:
         /// * Generator.prompt_text.text
-        /// If not specified, the agent's default language is used.
+        ///   If not specified, the agent's default language is used.
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
@@ -292,7 +292,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The language to create generators for the following fields:
         /// * Generator.prompt_text.text
-        /// If not specified, the agent's default language is used.
+        ///   If not specified, the agent's default language is used.
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }

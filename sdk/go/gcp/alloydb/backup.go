@@ -492,6 +492,12 @@ func (BackupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupState)(nil)).Elem()
 }
 
+// BackupExists checks whether an existing Backup resource with the given ID exists.
+func BackupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:alloydb/backup:Backup", id, state, "", opts...)
+}
+
 type backupArgs struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.

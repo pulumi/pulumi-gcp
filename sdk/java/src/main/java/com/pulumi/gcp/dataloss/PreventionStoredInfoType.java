@@ -375,7 +375,7 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
     }
     /**
      * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+     * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+. The maximum length is 100
      * characters. Can be empty to allow the system to generate one.
      * 
      */
@@ -384,7 +384,7 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
 
     /**
      * @return The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+     * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+. The maximum length is 100
      * characters. Can be empty to allow the system to generate one.
      * 
      */

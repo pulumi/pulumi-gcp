@@ -654,6 +654,12 @@ func (CaPoolIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*caPoolIamMemberState)(nil)).Elem()
 }
 
+// CaPoolIamMemberExists checks whether an existing CaPoolIamMember resource with the given ID exists.
+func CaPoolIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CaPoolIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificateauthority/caPoolIamMember:CaPoolIamMember", id, state, "", opts...)
+}
+
 type caPoolIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CaPool string `pulumi:"caPool"`

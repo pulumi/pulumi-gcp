@@ -112,6 +112,12 @@ func (WorkloadIdentityServiceAgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workloadIdentityServiceAgentState)(nil)).Elem()
 }
 
+// WorkloadIdentityServiceAgentExists checks whether an existing WorkloadIdentityServiceAgent resource with the given ID exists.
+func WorkloadIdentityServiceAgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkloadIdentityServiceAgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workloadIdentityServiceAgent:WorkloadIdentityServiceAgent", id, state, "", opts...)
+}
+
 type workloadIdentityServiceAgentArgs struct {
 	// The parent resource path.
 	Parent string `pulumi:"parent"`

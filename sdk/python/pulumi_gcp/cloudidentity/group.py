@@ -672,6 +672,34 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Group(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_group_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict', 'outputs.GroupAdditionalGroupKey']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict', 'outputs.GroupGroupKey']]] = None,
+            initial_group_config: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalGroupKeys"] = additional_group_keys
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["groupKey"] = group_key
+        __props__["initialGroupConfig"] = initial_group_config
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudidentity/group:Group', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalGroupKeys")
     def additional_group_keys(self) -> pulumi.Output[Sequence['outputs.GroupAdditionalGroupKey']]:

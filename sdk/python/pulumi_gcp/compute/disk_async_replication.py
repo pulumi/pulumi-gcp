@@ -325,6 +325,18 @@ class DiskAsyncReplication(pulumi.CustomResource):
         __props__.__dict__["secondary_disk"] = secondary_disk
         return DiskAsyncReplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict', 'outputs.DiskAsyncReplicationSecondaryDisk']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["primaryDisk"] = primary_disk
+        __props__["secondaryDisk"] = secondary_disk
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/diskAsyncReplication:DiskAsyncReplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

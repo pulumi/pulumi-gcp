@@ -336,11 +336,10 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
      * (Deprecated)
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
-     * @deprecated
-     * `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+     * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
      */
-    @Deprecated /* `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead. */
+    @Deprecated
     @Import(name="numericId")
     private @Nullable Output<String> numericId;
 
@@ -348,11 +347,10 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
      * @return (Deprecated)
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
-     * @deprecated
-     * `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+     * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
      */
-    @Deprecated /* `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead. */
+    @Deprecated
     public Optional<Output<String>> numericId() {
         return Optional.ofNullable(this.numericId);
     }
@@ -891,11 +889,10 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+         * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
          * 
          */
-        @Deprecated /* `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead. */
+        @Deprecated
         public Builder numericId(@Nullable Output<String> numericId) {
             $.numericId = numericId;
             return this;
@@ -907,11 +904,10 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+         * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
          * 
          */
-        @Deprecated /* `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead. */
+        @Deprecated
         public Builder numericId(String numericId) {
             return numericId(Output.of(numericId));
         }

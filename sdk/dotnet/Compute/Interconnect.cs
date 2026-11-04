@@ -189,7 +189,7 @@ namespace Pulumi.Gcp.Compute
         /// Can take one of the following values:
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner.
         /// - DEDICATED: A dedicated physical interconnection with the customer.
-        /// Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+        ///   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
         /// </summary>
         [Output("interconnectType")]
         public Output<string> InterconnectType { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.Gcp.Compute
         /// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
         /// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-        /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+        ///   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         /// </summary>
         [Output("linkType")]
         public Output<string> LinkType { get; private set; } = null!;
@@ -270,11 +270,11 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The current status of this Interconnect's functionality, which can take one of the following:
         /// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
-        /// be provisioned on this Interconnect.
+        ///   be provisioned on this Interconnect.
         /// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
-        /// provisioned on this Interconnect.
+        ///   provisioned on this Interconnect.
         /// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
-        /// attachments may be provisioned or updated on this Interconnect.
+        ///   attachments may be provisioned or updated on this Interconnect.
         /// </summary>
         [Output("operationalStatus")]
         public Output<string> OperationalStatus { get; private set; } = null!;
@@ -327,8 +327,8 @@ namespace Pulumi.Gcp.Compute
         /// - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
         /// - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
         /// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-        /// Note: 'MACSEC' is a legacy value for compatibility reasons. 'IF_MACSEC' should be used. Choosing 'MACSEC' can result in allocation of non-MACsec capable ports, if available.
-        /// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+        ///   Note: 'MACSEC' is a legacy value for compatibility reasons. 'IF_MACSEC' should be used. Choosing 'MACSEC' can result in allocation of non-MACsec capable ports, if available.
+        ///   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
         /// </summary>
         [Output("requestedFeatures")]
         public Output<ImmutableArray<string>> RequestedFeatures { get; private set; } = null!;
@@ -350,9 +350,9 @@ namespace Pulumi.Gcp.Compute
         /// State of this notification. Note that the versions of this enum prefixed with "NS_" have
         /// been deprecated in favor of the unprefixed values. Can take one of the following values:
         /// - ACTIVE: This outage notification is active. The event could be in the past, present,
-        /// or future. See startTime and endTime for scheduling.
+        ///   or future. See startTime and endTime for scheduling.
         /// - CANCELLED: The outage associated with this notification was cancelled before the
-        /// outage was due to start.
+        ///   outage was due to start.
         /// - COMPLETED: The outage associated with this notification is complete.
         /// </summary>
         [Output("state")]
@@ -469,7 +469,7 @@ namespace Pulumi.Gcp.Compute
         /// Can take one of the following values:
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner.
         /// - DEDICATED: A dedicated physical interconnection with the customer.
-        /// Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+        ///   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
         /// </summary>
         [Input("interconnectType", required: true)]
         public Input<string> InterconnectType { get; set; } = null!;
@@ -496,7 +496,7 @@ namespace Pulumi.Gcp.Compute
         /// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
         /// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-        /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+        ///   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         /// </summary>
         [Input("linkType", required: true)]
         public Input<string> LinkType { get; set; } = null!;
@@ -573,8 +573,8 @@ namespace Pulumi.Gcp.Compute
         /// - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
         /// - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
         /// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-        /// Note: 'MACSEC' is a legacy value for compatibility reasons. 'IF_MACSEC' should be used. Choosing 'MACSEC' can result in allocation of non-MACsec capable ports, if available.
-        /// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+        ///   Note: 'MACSEC' is a legacy value for compatibility reasons. 'IF_MACSEC' should be used. Choosing 'MACSEC' can result in allocation of non-MACsec capable ports, if available.
+        ///   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
         /// </summary>
         public InputList<string> RequestedFeatures
         {
@@ -760,7 +760,7 @@ namespace Pulumi.Gcp.Compute
         /// Can take one of the following values:
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner.
         /// - DEDICATED: A dedicated physical interconnection with the customer.
-        /// Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+        ///   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
         /// </summary>
         [Input("interconnectType")]
         public Input<string>? InterconnectType { get; set; }
@@ -797,7 +797,7 @@ namespace Pulumi.Gcp.Compute
         /// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
         /// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-        /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+        ///   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         /// </summary>
         [Input("linkType")]
         public Input<string>? LinkType { get; set; }
@@ -847,11 +847,11 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The current status of this Interconnect's functionality, which can take one of the following:
         /// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
-        /// be provisioned on this Interconnect.
+        ///   be provisioned on this Interconnect.
         /// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
-        /// provisioned on this Interconnect.
+        ///   provisioned on this Interconnect.
         /// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
-        /// attachments may be provisioned or updated on this Interconnect.
+        ///   attachments may be provisioned or updated on this Interconnect.
         /// </summary>
         [Input("operationalStatus")]
         public Input<string>? OperationalStatus { get; set; }
@@ -917,8 +917,8 @@ namespace Pulumi.Gcp.Compute
         /// - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
         /// - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
         /// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-        /// Note: 'MACSEC' is a legacy value for compatibility reasons. 'IF_MACSEC' should be used. Choosing 'MACSEC' can result in allocation of non-MACsec capable ports, if available.
-        /// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+        ///   Note: 'MACSEC' is a legacy value for compatibility reasons. 'IF_MACSEC' should be used. Choosing 'MACSEC' can result in allocation of non-MACsec capable ports, if available.
+        ///   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
         /// </summary>
         public InputList<string> RequestedFeatures
         {
@@ -943,9 +943,9 @@ namespace Pulumi.Gcp.Compute
         /// State of this notification. Note that the versions of this enum prefixed with "NS_" have
         /// been deprecated in favor of the unprefixed values. Can take one of the following values:
         /// - ACTIVE: This outage notification is active. The event could be in the past, present,
-        /// or future. See startTime and endTime for scheduling.
+        ///   or future. See startTime and endTime for scheduling.
         /// - CANCELLED: The outage associated with this notification was cancelled before the
-        /// outage was due to start.
+        ///   outage was due to start.
         /// - COMPLETED: The outage associated with this notification is complete.
         /// </summary>
         [Input("state")]

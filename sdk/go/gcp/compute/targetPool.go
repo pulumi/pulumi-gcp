@@ -247,6 +247,12 @@ func (TargetPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetPoolState)(nil)).Elem()
 }
 
+// TargetPoolExists checks whether an existing TargetPool resource with the given ID exists.
+func TargetPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/targetPool:TargetPool", id, state, "", opts...)
+}
+
 type targetPoolArgs struct {
 	// URL to the backup target pool. Must also set
 	// failover_ratio.

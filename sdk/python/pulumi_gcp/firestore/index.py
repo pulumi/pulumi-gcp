@@ -1607,6 +1607,38 @@ class Index(pulumi.CustomResource):
         __props__.__dict__["unique"] = unique
         return Index(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            collection: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            density: pulumi.Input[Optional[_builtins.str]] = None,
+            fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict', 'outputs.IndexField']]]]] = None,
+            multikey: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            search_index_options: pulumi.Input[Optional[Union['IndexSearchIndexOptionsArgs', 'IndexSearchIndexOptionsArgsDict', 'outputs.IndexSearchIndexOptions']]] = None,
+            skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+            unique: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiScope"] = api_scope
+        __props__["collection"] = collection
+        __props__["database"] = database
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["density"] = density
+        __props__["fields"] = fields
+        __props__["multikey"] = multikey
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["queryScope"] = query_scope
+        __props__["searchIndexOptions"] = search_index_options
+        __props__["skipWait"] = skip_wait
+        __props__["unique"] = unique
+        return pulumi.runtime.exists_resource(None, 'gcp:firestore/index:Index', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiScope")
     def api_scope(self) -> pulumi.Output[Optional[_builtins.str]]:

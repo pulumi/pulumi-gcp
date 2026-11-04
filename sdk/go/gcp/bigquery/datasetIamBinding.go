@@ -665,6 +665,12 @@ func (DatasetIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetIamBindingState)(nil)).Elem()
 }
 
+// DatasetIamBindingExists checks whether an existing DatasetIamBinding resource with the given ID exists.
+func DatasetIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatasetIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/datasetIamBinding:DatasetIamBinding", id, state, "", opts...)
+}
+
 type datasetIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

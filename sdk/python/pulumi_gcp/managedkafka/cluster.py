@@ -1083,6 +1083,50 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bootstrap_address: pulumi.Input[Optional[_builtins.str]] = None,
+            broker_capacity_config: pulumi.Input[Optional[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict', 'outputs.ClusterBrokerCapacityConfig']]] = None,
+            capacity_config: pulumi.Input[Optional[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict', 'outputs.ClusterCapacityConfig']]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gcp_config: pulumi.Input[Optional[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']]] = None,
+            kafka_version: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            public_cluster_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPublicClusterDetailArgs', 'ClusterPublicClusterDetailArgsDict', 'outputs.ClusterPublicClusterDetail']]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            rebalance_config: pulumi.Input[Optional[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict', 'outputs.ClusterRebalanceConfig']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_config: pulumi.Input[Optional[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict', 'outputs.ClusterTlsConfig']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bootstrapAddress"] = bootstrap_address
+        __props__["brokerCapacityConfig"] = broker_capacity_config
+        __props__["capacityConfig"] = capacity_config
+        __props__["clusterId"] = cluster_id
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["gcpConfig"] = gcp_config
+        __props__["kafkaVersion"] = kafka_version
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["publicClusterDetails"] = public_cluster_details
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["rebalanceConfig"] = rebalance_config
+        __props__["state"] = state
+        __props__["tlsConfig"] = tls_config
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:managedkafka/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bootstrapAddress")
     def bootstrap_address(self) -> pulumi.Output[_builtins.str]:

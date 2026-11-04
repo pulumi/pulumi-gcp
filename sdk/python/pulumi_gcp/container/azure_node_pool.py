@@ -1012,6 +1012,52 @@ class AzureNodePool(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return AzureNodePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            autoscaling: pulumi.Input[Optional[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict', 'outputs.AzureNodePoolAutoscaling']]] = None,
+            azure_availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict', 'outputs.AzureNodePoolConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            management: pulumi.Input[Optional[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict', 'outputs.AzureNodePoolManagement']]] = None,
+            max_pods_constraint: pulumi.Input[Optional[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict', 'outputs.AzureNodePoolMaxPodsConstraint']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["autoscaling"] = autoscaling
+        __props__["azureAvailabilityZone"] = azure_availability_zone
+        __props__["cluster"] = cluster
+        __props__["config"] = config
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["management"] = management
+        __props__["maxPodsConstraint"] = max_pods_constraint
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["reconciling"] = reconciling
+        __props__["state"] = state
+        __props__["subnetId"] = subnet_id
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'gcp:container/azureNodePool:AzureNodePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

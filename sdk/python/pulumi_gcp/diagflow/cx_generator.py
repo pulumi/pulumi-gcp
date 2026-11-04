@@ -627,6 +627,30 @@ class CxGenerator(pulumi.CustomResource):
         __props__.__dict__["prompt_text"] = prompt_text
         return CxGenerator(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            llm_model_settings: pulumi.Input[Optional[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict', 'outputs.CxGeneratorLlmModelSettings']]] = None,
+            model_parameter: pulumi.Input[Optional[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict', 'outputs.CxGeneratorModelParameter']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            placeholders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict', 'outputs.CxGeneratorPlaceholder']]]]] = None,
+            prompt_text: pulumi.Input[Optional[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict', 'outputs.CxGeneratorPromptText']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["languageCode"] = language_code
+        __props__["llmModelSettings"] = llm_model_settings
+        __props__["modelParameter"] = model_parameter
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["placeholders"] = placeholders
+        __props__["promptText"] = prompt_text
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/cxGenerator:CxGenerator', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

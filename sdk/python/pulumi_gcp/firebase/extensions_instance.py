@@ -669,6 +669,40 @@ class ExtensionsInstance(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return ExtensionsInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict', 'outputs.ExtensionsInstanceConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            error_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExtensionsInstanceErrorStatusArgs', 'ExtensionsInstanceErrorStatusArgsDict', 'outputs.ExtensionsInstanceErrorStatus']]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_operation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_operation_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExtensionsInstanceRuntimeDataArgs', 'ExtensionsInstanceRuntimeDataArgsDict', 'outputs.ExtensionsInstanceRuntimeData']]]]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["errorStatuses"] = error_statuses
+        __props__["etag"] = etag
+        __props__["instanceId"] = instance_id
+        __props__["lastOperationName"] = last_operation_name
+        __props__["lastOperationType"] = last_operation_type
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["runtimeDatas"] = runtime_datas
+        __props__["serviceAccountEmail"] = service_account_email
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:firebase/extensionsInstance:ExtensionsInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.ExtensionsInstanceConfig']:

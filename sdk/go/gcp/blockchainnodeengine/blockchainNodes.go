@@ -344,6 +344,12 @@ func (BlockchainNodesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*blockchainNodesState)(nil)).Elem()
 }
 
+// BlockchainNodesExists checks whether an existing BlockchainNodes resource with the given ID exists.
+func BlockchainNodesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BlockchainNodesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes", id, state, "", opts...)
+}
+
 type blockchainNodesArgs struct {
 	// ID of the requesting object.
 	BlockchainNodeId string `pulumi:"blockchainNodeId"`

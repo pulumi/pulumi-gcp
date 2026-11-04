@@ -296,6 +296,26 @@ class RepositoryIamBinding(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return RepositoryIamBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: pulumi.Input[Optional[Union['RepositoryIamBindingConditionArgs', 'RepositoryIamBindingConditionArgsDict', 'outputs.RepositoryIamBindingCondition']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["condition"] = condition
+        __props__["etag"] = etag
+        __props__["members"] = members
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["repository"] = repository
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'gcp:dataform/repositoryIamBinding:RepositoryIamBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.RepositoryIamBindingCondition']]:

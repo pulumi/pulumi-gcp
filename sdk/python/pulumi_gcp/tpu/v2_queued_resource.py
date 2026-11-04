@@ -525,6 +525,22 @@ class V2QueuedResource(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return V2QueuedResource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            tpu: pulumi.Input[Optional[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict', 'outputs.V2QueuedResourceTpu']]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["tpu"] = tpu
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:tpu/v2QueuedResource:V2QueuedResource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

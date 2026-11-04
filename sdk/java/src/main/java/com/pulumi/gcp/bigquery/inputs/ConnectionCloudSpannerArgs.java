@@ -99,11 +99,10 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
      * 
      * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
-     * @deprecated
-     * `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+     * @deprecated `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
      */
-    @Deprecated /* `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead. */
+    @Deprecated
     @Import(name="useServerlessAnalytics")
     private @Nullable Output<Boolean> useServerlessAnalytics;
 
@@ -113,11 +112,10 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
      * 
      * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
-     * @deprecated
-     * `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+     * @deprecated `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
      */
-    @Deprecated /* `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> useServerlessAnalytics() {
         return Optional.ofNullable(this.useServerlessAnalytics);
     }
@@ -264,11 +262,10 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+         * @deprecated `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
          * 
          */
-        @Deprecated /* `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead. */
+        @Deprecated
         public Builder useServerlessAnalytics(@Nullable Output<Boolean> useServerlessAnalytics) {
             $.useServerlessAnalytics = useServerlessAnalytics;
             return this;
@@ -282,11 +279,10 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+         * @deprecated `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
          * 
          */
-        @Deprecated /* `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead. */
+        @Deprecated
         public Builder useServerlessAnalytics(Boolean useServerlessAnalytics) {
             return useServerlessAnalytics(Output.of(useServerlessAnalytics));
         }

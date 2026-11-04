@@ -1600,6 +1600,12 @@ func (AnalystAgentPersonaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*analystAgentPersonaState)(nil)).Elem()
 }
 
+// AnalystAgentPersonaExists checks whether an existing AnalystAgentPersona resource with the given ID exists.
+func AnalystAgentPersonaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AnalystAgentPersonaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:agenticapplications/analystAgentPersona:AnalystAgentPersona", id, state, "", opts...)
+}
+
 type analystAgentPersonaArgs struct {
 	// Id of the requesting object
 	// If auto-generating Id server-side, remove this field and

@@ -424,6 +424,12 @@ func (MulticastGroupRangeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*multicastGroupRangeState)(nil)).Elem()
 }
 
+// MulticastGroupRangeExists checks whether an existing MulticastGroupRange resource with the given ID exists.
+func MulticastGroupRangeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MulticastGroupRangeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/multicastGroupRange:MulticastGroupRange", id, state, "", opts...)
+}
+
 type multicastGroupRangeArgs struct {
 	// A list of consumer projects that are allowed to subscribe to the multicast
 	// IP addresses within the range defined by this MulticastGroupRange. The

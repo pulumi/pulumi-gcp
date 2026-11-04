@@ -692,7 +692,7 @@ namespace Pulumi.Gcp.Container
         /// The name of the cluster, unique within the project and
         /// location.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -1504,7 +1504,7 @@ namespace Pulumi.Gcp.Container
         /// The name of the cluster, unique within the project and
         /// location.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -2301,7 +2301,7 @@ namespace Pulumi.Gcp.Container
         /// The name of the cluster, unique within the project and
         /// location.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

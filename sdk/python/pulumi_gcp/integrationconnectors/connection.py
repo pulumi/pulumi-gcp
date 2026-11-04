@@ -1849,6 +1849,76 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Connection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            async_operations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            auth_config: pulumi.Input[Optional[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']]] = None,
+            auth_override_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            config_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]]] = None,
+            connection_revision: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_version: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_version_infra_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConnectorVersionInfraConfigArgs', 'ConnectionConnectorVersionInfraConfigArgsDict', 'outputs.ConnectionConnectorVersionInfraConfig']]]]] = None,
+            connector_version_launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict', 'outputs.ConnectionDestinationConfig']]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            eventing_config: pulumi.Input[Optional[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict', 'outputs.ConnectionEventingConfig']]] = None,
+            eventing_enablement_type: pulumi.Input[Optional[_builtins.str]] = None,
+            eventing_runtime_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionEventingRuntimeDataArgs', 'ConnectionEventingRuntimeDataArgsDict', 'outputs.ConnectionEventingRuntimeData']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_config: pulumi.Input[Optional[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict', 'outputs.ConnectionLockConfig']]] = None,
+            log_config: pulumi.Input[Optional[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict', 'outputs.ConnectionLogConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_config: pulumi.Input[Optional[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict', 'outputs.ConnectionNodeConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            service_directory: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_config: pulumi.Input[Optional[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict', 'outputs.ConnectionSslConfig']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionStatusArgs', 'ConnectionStatusArgsDict', 'outputs.ConnectionStatus']]]]] = None,
+            subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+            suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            traffic_shaping_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionTrafficShapingConfigArgs', 'ConnectionTrafficShapingConfigArgsDict', 'outputs.ConnectionTrafficShapingConfig']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["asyncOperationsEnabled"] = async_operations_enabled
+        __props__["authConfig"] = auth_config
+        __props__["authOverrideEnabled"] = auth_override_enabled
+        __props__["configVariables"] = config_variables
+        __props__["connectionRevision"] = connection_revision
+        __props__["connectorVersion"] = connector_version
+        __props__["connectorVersionInfraConfigs"] = connector_version_infra_configs
+        __props__["connectorVersionLaunchStage"] = connector_version_launch_stage
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["destinationConfigs"] = destination_configs
+        __props__["effectiveLabels"] = effective_labels
+        __props__["eventingConfig"] = eventing_config
+        __props__["eventingEnablementType"] = eventing_enablement_type
+        __props__["eventingRuntimeDatas"] = eventing_runtime_datas
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["lockConfig"] = lock_config
+        __props__["logConfig"] = log_config
+        __props__["name"] = name
+        __props__["nodeConfig"] = node_config
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["serviceAccount"] = service_account
+        __props__["serviceDirectory"] = service_directory
+        __props__["sslConfig"] = ssl_config
+        __props__["statuses"] = statuses
+        __props__["subscriptionType"] = subscription_type
+        __props__["suspended"] = suspended
+        __props__["trafficShapingConfigs"] = traffic_shaping_configs
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:integrationconnectors/connection:Connection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="asyncOperationsEnabled")
     def async_operations_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

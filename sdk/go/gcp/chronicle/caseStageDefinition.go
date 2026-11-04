@@ -194,6 +194,12 @@ func (CaseStageDefinitionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*caseStageDefinitionState)(nil)).Elem()
 }
 
+// CaseStageDefinitionExists checks whether an existing CaseStageDefinition resource with the given ID exists.
+func CaseStageDefinitionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CaseStageDefinitionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/caseStageDefinition:CaseStageDefinition", id, state, "", opts...)
+}
+
 type caseStageDefinitionArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -20,7 +20,7 @@ public final class PrincipalAccessBoundaryPolicyDetailsArgs extends com.pulumi.r
 
     /**
      * The version number that indicates which Google Cloud services
-     * are included in the enforcement (e.g. \&#34;latest\&#34;, \&#34;1\&#34;, ...). If empty, the
+     * are included in the enforcement (e.g. &#92;&#34;latest&#92;&#34;, &#92;&#34;1&#92;&#34;, ...). If empty, the
      * PAB policy version will be set to the current latest version, and this version
      * won&#39;t get updated when new versions are released.
      * 
@@ -30,7 +30,7 @@ public final class PrincipalAccessBoundaryPolicyDetailsArgs extends com.pulumi.r
 
     /**
      * @return The version number that indicates which Google Cloud services
-     * are included in the enforcement (e.g. \&#34;latest\&#34;, \&#34;1\&#34;, ...). If empty, the
+     * are included in the enforcement (e.g. &#92;&#34;latest&#92;&#34;, &#92;&#34;1&#92;&#34;, ...). If empty, the
      * PAB policy version will be set to the current latest version, and this version
      * won&#39;t get updated when new versions are released.
      * 
@@ -83,7 +83,7 @@ public final class PrincipalAccessBoundaryPolicyDetailsArgs extends com.pulumi.r
 
         /**
          * @param enforcementVersion The version number that indicates which Google Cloud services
-         * are included in the enforcement (e.g. \&#34;latest\&#34;, \&#34;1\&#34;, ...). If empty, the
+         * are included in the enforcement (e.g. &#92;&#34;latest&#92;&#34;, &#92;&#34;1&#92;&#34;, ...). If empty, the
          * PAB policy version will be set to the current latest version, and this version
          * won&#39;t get updated when new versions are released.
          * 
@@ -97,7 +97,7 @@ public final class PrincipalAccessBoundaryPolicyDetailsArgs extends com.pulumi.r
 
         /**
          * @param enforcementVersion The version number that indicates which Google Cloud services
-         * are included in the enforcement (e.g. \&#34;latest\&#34;, \&#34;1\&#34;, ...). If empty, the
+         * are included in the enforcement (e.g. &#92;&#34;latest&#92;&#34;, &#92;&#34;1&#92;&#34;, ...). If empty, the
          * PAB policy version will be set to the current latest version, and this version
          * won&#39;t get updated when new versions are released.
          * 

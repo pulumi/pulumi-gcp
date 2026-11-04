@@ -971,6 +971,48 @@ class Feed(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return Feed(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            details: pulumi.Input[Optional[Union['FeedDetailsArgs', 'FeedDetailsArgsDict', 'outputs.FeedDetails']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            failure_details: pulumi.Input[Optional[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict', 'outputs.FeedFailureDetails']]] = None,
+            failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            feed: pulumi.Input[Optional[_builtins.str]] = None,
+            feed_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            last_feed_initiation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["details"] = details
+        __props__["displayName"] = display_name
+        __props__["enabled"] = enabled
+        __props__["failureDetails"] = failure_details
+        __props__["failureMsg"] = failure_msg
+        __props__["feed"] = feed
+        __props__["feedServiceAccount"] = feed_service_account
+        __props__["instance"] = instance
+        __props__["lastFeedInitiationTime"] = last_feed_initiation_time
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["readOnly"] = read_only
+        __props__["referenceId"] = reference_id
+        __props__["secret"] = secret
+        __props__["state"] = state
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/feed:Feed', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

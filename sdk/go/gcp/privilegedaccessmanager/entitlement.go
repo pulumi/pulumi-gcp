@@ -320,6 +320,12 @@ func (EntitlementState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entitlementState)(nil)).Elem()
 }
 
+// EntitlementExists checks whether an existing Entitlement resource with the given ID exists.
+func EntitlementExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntitlementState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:privilegedaccessmanager/entitlement:entitlement", id, state, "", opts...)
+}
+
 type entitlementArgs struct {
 	// AdditionalNotificationTargets includes email addresses to be notified.
 	// Structure is documented below.

@@ -478,6 +478,12 @@ func (InstanceIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIamPolicyState)(nil)).Elem()
 }
 
+// InstanceIamPolicyExists checks whether an existing InstanceIamPolicy resource with the given ID exists.
+func InstanceIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy", id, state, "", opts...)
+}
+
 type instanceIamPolicyArgs struct {
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name       *string `pulumi:"name"`

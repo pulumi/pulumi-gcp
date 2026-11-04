@@ -318,6 +318,12 @@ func (CertificateMapEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateMapEntryState)(nil)).Elem()
 }
 
+// CertificateMapEntryExists checks whether an existing CertificateMapEntry resource with the given ID exists.
+func CertificateMapEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CertificateMapEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificatemanager/certificateMapEntry:CertificateMapEntry", id, state, "", opts...)
+}
+
 type certificateMapEntryArgs struct {
 	// A set of Certificates defines for the given hostname.
 	// There can be defined up to fifteen certificates in each Certificate Map Entry.

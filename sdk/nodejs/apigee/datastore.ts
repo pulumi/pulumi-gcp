@@ -133,6 +133,17 @@ export class Datastore extends pulumi.CustomResource {
         return new Datastore(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Datastore resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: DatastoreState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("gcp:apigee/datastore:Datastore", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'gcp:apigee/datastore:Datastore';
 

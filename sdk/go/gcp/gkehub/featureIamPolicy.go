@@ -376,6 +376,12 @@ func (FeatureIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureIamPolicyState)(nil)).Elem()
 }
 
+// FeatureIamPolicyExists checks whether an existing FeatureIamPolicy resource with the given ID exists.
+func FeatureIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/featureIamPolicy:FeatureIamPolicy", id, state, "", opts...)
+}
+
 type featureIamPolicyArgs struct {
 	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

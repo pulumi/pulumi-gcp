@@ -34,8 +34,8 @@ namespace Pulumi.Gcp.Filestore.Inputs
         /// The LDAP servers names can come with two formats:
         /// 1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
         /// 2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
-        /// All servers names must be in the same format: either all DNS names or all
-        /// IP addresses.
+        ///    All servers names must be in the same format: either all DNS names or all
+        ///    IP addresses.
         /// </summary>
         public InputList<string> Servers
         {

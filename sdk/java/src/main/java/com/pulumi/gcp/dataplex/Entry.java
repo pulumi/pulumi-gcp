@@ -120,41 +120,41 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var aspect_type_full_one = new AspectType("aspect-type-full-one", AspectTypeArgs.builder()
  *             .aspectTypeId("aspect-type-full-one")
  *             .location("us-central1")
  *             .project("1111111111111")
  *             .metadataTemplate("""
- * {
- *   \"name\": \"tf-test-template\",
- *   \"type\": \"record\",
- *   \"recordFields\": [
- *     {
- *       \"name\": \"type\",
- *       \"type\": \"enum\",
- *       \"annotations\": {
- *         \"displayName\": \"Type\",
- *         \"description\": \"Specifies the type of view represented by the entry.\"
- *       },
- *       \"index\": 1,
- *       \"constraints\": {
- *         \"required\": true
- *       },
- *       \"enumValues\": [
- *         {
- *           \"name\": \"VIEW\",
- *           \"index\": 1
- *         }
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "tf-test-template}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *   }&#92;{@code "recordFields}&#92;{@code ": [
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "type}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "enum}&#92;{@code ",
+ *       }&#92;{@code "annotations}&#92;{@code ": }{{@code
+ *         }&#92;{@code "displayName}&#92;{@code ": }&#92;{@code "Type}&#92;{@code ",
+ *         }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Specifies the type of view represented by the entry.}&#92;{@code "
+ *       }}{@code ,
+ *       }&#92;{@code "index}&#92;{@code ": 1,
+ *       }&#92;{@code "constraints}&#92;{@code ": }{{@code
+ *         }&#92;{@code "required}&#92;{@code ": true
+ *       }}{@code ,
+ *       }&#92;{@code "enumValues}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "VIEW}&#92;{@code ",
+ *           }&#92;{@code "index}&#92;{@code ": 1
+ *         }}{@code
  *       ]
- *     }
+ *     }}{@code
  *   ]
- * }
+ * }}{@code
  *             """)
  *             .build());
  * 
@@ -163,30 +163,30 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .project("1111111111111")
  *             .metadataTemplate("""
- * {
- *   \"name\": \"tf-test-template\",
- *   \"type\": \"record\",
- *   \"recordFields\": [
- *     {
- *       \"name\": \"story\",
- *       \"type\": \"enum\",
- *       \"annotations\": {
- *         \"displayName\": \"Story\",
- *         \"description\": \"Specifies the story of an entry.\"
- *       },
- *       \"index\": 1,
- *       \"constraints\": {
- *         \"required\": true
- *       },
- *       \"enumValues\": [
- *         {
- *           \"name\": \"SEQUENCE\",
- *           \"index\": 1
- *         }
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "tf-test-template}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *   }&#92;{@code "recordFields}&#92;{@code ": [
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "story}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "enum}&#92;{@code ",
+ *       }&#92;{@code "annotations}&#92;{@code ": }{{@code
+ *         }&#92;{@code "displayName}&#92;{@code ": }&#92;{@code "Story}&#92;{@code ",
+ *         }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Specifies the story of an entry.}&#92;{@code "
+ *       }}{@code ,
+ *       }&#92;{@code "index}&#92;{@code ": 1,
+ *       }&#92;{@code "constraints}&#92;{@code ": }{{@code
+ *         }&#92;{@code "required}&#92;{@code ": true
+ *       }}{@code ,
+ *       }&#92;{@code "enumValues}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "SEQUENCE}&#92;{@code ",
+ *           }&#92;{@code "index}&#92;{@code ": 1
+ *         }}{@code
  *       ]
- *     }
+ *     }}{@code
  *   ]
- * }
+ * }}{@code
  *             """)
  *             .build());
  * 
@@ -237,7 +237,7 @@ import javax.annotation.Nullable;
  *                     .aspectKey("1111111111111.us-central1.aspect-type-full-one")
  *                     .aspect(EntryAspectAspectArgs.builder()
  *                         .data("""
- *           {\"type\": \"VIEW\"    }
+ *           }{&#92;{@code "type}&#92;{@code ": }&#92;{@code "VIEW}&#92;{@code "    }}{@code
  *                         """)
  *                         .build())
  *                     .build(),
@@ -245,7 +245,7 @@ import javax.annotation.Nullable;
  *                     .aspectKey("1111111111111.us-central1.aspect-type-full-two")
  *                     .aspect(EntryAspectAspectArgs.builder()
  *                         .data("""
- *           {\"story\": \"SEQUENCE\"    }
+ *           }{&#92;{@code "story}&#92;{@code ": }&#92;{@code "SEQUENCE}&#92;{@code "    }}{@code
  *                         """)
  *                         .build())
  *                     .build())
@@ -255,8 +255,8 @@ import javax.annotation.Nullable;
  *                     aspect_type_full_one)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -300,24 +300,24 @@ import javax.annotation.Nullable;
  *             .project("1111111111111")
  *             .metadataTemplate("""
  * }{{@code
- *   \"name\": \"tf-test-template\",
- *   \"type\": \"record\",
- *   \"recordFields\": [
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "tf-test-template}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *   }&#92;{@code "recordFields}&#92;{@code ": [
  *     }{{@code
- *       \"name\": \"type\",
- *       \"type\": \"enum\",
- *       \"annotations\": }{{@code
- *         \"displayName\": \"Type\",
- *         \"description\": \"Specifies the type of view represented by the entry.\"
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "type}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "enum}&#92;{@code ",
+ *       }&#92;{@code "annotations}&#92;{@code ": }{{@code
+ *         }&#92;{@code "displayName}&#92;{@code ": }&#92;{@code "Type}&#92;{@code ",
+ *         }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Specifies the type of view represented by the entry.}&#92;{@code "
  *       }}{@code ,
- *       \"index\": 1,
- *       \"constraints\": }{{@code
- *         \"required\": true
+ *       }&#92;{@code "index}&#92;{@code ": 1,
+ *       }&#92;{@code "constraints}&#92;{@code ": }{{@code
+ *         }&#92;{@code "required}&#92;{@code ": true
  *       }}{@code ,
- *       \"enumValues\": [
+ *       }&#92;{@code "enumValues}&#92;{@code ": [
  *         }{{@code
- *           \"name\": \"VIEW\",
- *           \"index\": 1
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "VIEW}&#92;{@code ",
+ *           }&#92;{@code "index}&#92;{@code ": 1
  *         }}{@code
  *       ]
  *     }}{@code
@@ -332,24 +332,24 @@ import javax.annotation.Nullable;
  *             .project("1111111111111")
  *             .metadataTemplate("""
  * }{{@code
- *   \"name\": \"tf-test-template\",
- *   \"type\": \"record\",
- *   \"recordFields\": [
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "tf-test-template}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *   }&#92;{@code "recordFields}&#92;{@code ": [
  *     }{{@code
- *       \"name\": \"story\",
- *       \"type\": \"enum\",
- *       \"annotations\": }{{@code
- *         \"displayName\": \"Story\",
- *         \"description\": \"Specifies the story of an entry.\"
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "story}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "enum}&#92;{@code ",
+ *       }&#92;{@code "annotations}&#92;{@code ": }{{@code
+ *         }&#92;{@code "displayName}&#92;{@code ": }&#92;{@code "Story}&#92;{@code ",
+ *         }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Specifies the story of an entry.}&#92;{@code "
  *       }}{@code ,
- *       \"index\": 1,
- *       \"constraints\": }{{@code
- *         \"required\": true
+ *       }&#92;{@code "index}&#92;{@code ": 1,
+ *       }&#92;{@code "constraints}&#92;{@code ": }{{@code
+ *         }&#92;{@code "required}&#92;{@code ": true
  *       }}{@code ,
- *       \"enumValues\": [
+ *       }&#92;{@code "enumValues}&#92;{@code ": [
  *         }{{@code
- *           \"name\": \"SEQUENCE\",
- *           \"index\": 1
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "SEQUENCE}&#92;{@code ",
+ *           }&#92;{@code "index}&#92;{@code ": 1
  *         }}{@code
  *       ]
  *     }}{@code
@@ -410,7 +410,7 @@ import javax.annotation.Nullable;
  *                     .aspectKey("1111111111111.us-central1.aspect-type-one")
  *                     .aspect(EntryAspectAspectArgs.builder()
  *                         .data("""
- *           }{{@code \"type\": \"VIEW\"    }}{@code
+ *           }{&#92;{@code "type}&#92;{@code ": }&#92;{@code "VIEW}&#92;{@code "    }}{@code
  *                         """)
  *                         .build())
  *                     .build(),
@@ -418,7 +418,7 @@ import javax.annotation.Nullable;
  *                     .aspectKey("1111111111111.us-central1.aspect-type-two}{@literal @}{@code Schema.event_type")
  *                     .aspect(EntryAspectAspectArgs.builder()
  *                         .data("""
- *           }{{@code \"story\": \"SEQUENCE\"    }}{@code
+ *           }{&#92;{@code "story}&#92;{@code ": }&#92;{@code "SEQUENCE}&#92;{@code "    }}{@code
  *                         """)
  *                         .build())
  *                     .build())
@@ -500,7 +500,7 @@ import javax.annotation.Nullable;
  *                 .aspectKey("655216118709.global.overview")
  *                 .aspect(EntryAspectAspectArgs.builder()
  *                     .data("""
- *            }{{@code \"content\": \"Term Content\"    }}{@code
+ *            }{&#92;{@code "content}&#92;{@code ": }&#92;{@code "Term Content}&#92;{@code "    }}{@code
  *                     """)
  *                     .build())
  *                 .build())

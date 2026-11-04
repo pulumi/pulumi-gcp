@@ -346,6 +346,12 @@ func (MetadataFeedState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metadataFeedState)(nil)).Elem()
 }
 
+// MetadataFeedExists checks whether an existing MetadataFeed resource with the given ID exists.
+func MetadataFeedExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetadataFeedState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/metadataFeed:MetadataFeed", id, state, "", opts...)
+}
+
 type metadataFeedArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

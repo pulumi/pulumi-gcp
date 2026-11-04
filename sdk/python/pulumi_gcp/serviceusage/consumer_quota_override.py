@@ -690,6 +690,30 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         __props__.__dict__["service"] = service
         return ConsumerQuotaOverride(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            limit: pulumi.Input[Optional[_builtins.str]] = None,
+            metric: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            override_value: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dimensions"] = dimensions
+        __props__["force"] = force
+        __props__["limit"] = limit
+        __props__["metric"] = metric
+        __props__["name"] = name
+        __props__["overrideValue"] = override_value
+        __props__["project"] = project
+        __props__["service"] = service
+        return pulumi.runtime.exists_resource(None, 'gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

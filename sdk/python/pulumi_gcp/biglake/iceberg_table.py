@@ -1011,6 +1011,32 @@ class IcebergTable(pulumi.CustomResource):
         __props__.__dict__["sort_order"] = sort_order
         return IcebergTable(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition_spec: pulumi.Input[Optional[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict', 'outputs.IcebergTablePartitionSpec']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict', 'outputs.IcebergTableSchema']]] = None,
+            sort_order: pulumi.Input[Optional[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict', 'outputs.IcebergTableSortOrder']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["catalog"] = catalog
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["partitionSpec"] = partition_spec
+        __props__["project"] = project
+        __props__["properties"] = properties
+        __props__["schema"] = schema
+        __props__["sortOrder"] = sort_order
+        return pulumi.runtime.exists_resource(None, 'gcp:biglake/icebergTable:IcebergTable', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def catalog(self) -> pulumi.Output[_builtins.str]:

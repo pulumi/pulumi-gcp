@@ -119,7 +119,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string Shape;
         /// <summary>
-        /// The current lifecycle state of the Exadata Infrastructure. 
+        /// The current lifecycle state of the Exadata Infrastructure.
         ///  Possible values:
         ///  STATE_UNSPECIFIED
         /// PROVISIONING

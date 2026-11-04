@@ -480,6 +480,12 @@ func (ServerTlsPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverTlsPolicyState)(nil)).Elem()
 }
 
+// ServerTlsPolicyExists checks whether an existing ServerTlsPolicy resource with the given ID exists.
+func ServerTlsPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerTlsPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy", id, state, "", opts...)
+}
+
 type serverTlsPolicyArgs struct {
 	// This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies.
 	// Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.

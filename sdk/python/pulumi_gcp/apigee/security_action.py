@@ -944,6 +944,42 @@ class SecurityAction(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return SecurityAction(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow: pulumi.Input[Optional[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict', 'outputs.SecurityActionAllow']]] = None,
+            api_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            condition_config: pulumi.Input[Optional[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict', 'outputs.SecurityActionConditionConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deny: pulumi.Input[Optional[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict', 'outputs.SecurityActionDeny']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            flag: pulumi.Input[Optional[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict', 'outputs.SecurityActionFlag']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_action_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allow"] = allow
+        __props__["apiProxies"] = api_proxies
+        __props__["conditionConfig"] = condition_config
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deny"] = deny
+        __props__["description"] = description
+        __props__["envId"] = env_id
+        __props__["expireTime"] = expire_time
+        __props__["flag"] = flag
+        __props__["orgId"] = org_id
+        __props__["securityActionId"] = security_action_id
+        __props__["state"] = state
+        __props__["ttl"] = ttl
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/securityAction:SecurityAction', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def allow(self) -> pulumi.Output[Optional['outputs.SecurityActionAllow']]:

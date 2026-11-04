@@ -588,6 +588,28 @@ class LiteTopic(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return LiteTopic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            partition_config: pulumi.Input[Optional[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict', 'outputs.LiteTopicPartitionConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_config: pulumi.Input[Optional[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict', 'outputs.LiteTopicReservationConfig']]] = None,
+            retention_config: pulumi.Input[Optional[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict', 'outputs.LiteTopicRetentionConfig']]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["name"] = name
+        __props__["partitionConfig"] = partition_config
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["reservationConfig"] = reservation_config
+        __props__["retentionConfig"] = retention_config
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:pubsub/liteTopic:LiteTopic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

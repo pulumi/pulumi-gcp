@@ -427,6 +427,12 @@ func (IcebergNamespaceIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*icebergNamespaceIamMemberState)(nil)).Elem()
 }
 
+// IcebergNamespaceIamMemberExists checks whether an existing IcebergNamespaceIamMember resource with the given ID exists.
+func IcebergNamespaceIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IcebergNamespaceIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/icebergNamespaceIamMember:IcebergNamespaceIamMember", id, state, "", opts...)
+}
+
 type icebergNamespaceIamMemberArgs struct {
 	// The name of the IcebergCatalog.
 	// Used to find the parent resource to bind the IAM policy to

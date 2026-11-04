@@ -1395,6 +1395,68 @@ class V2Vm(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return V2Vm(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerator_config: pulumi.Input[Optional[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict', 'outputs.V2VmAcceleratorConfig']]] = None,
+            accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+            api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict', 'outputs.V2VmDataDisk']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            health: pulumi.Input[Optional[_builtins.str]] = None,
+            health_description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            multislice_node: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict', 'outputs.V2VmNetworkConfig']]] = None,
+            network_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict', 'outputs.V2VmNetworkConfig']]]]] = None,
+            network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmNetworkEndpointArgs', 'V2VmNetworkEndpointArgsDict', 'outputs.V2VmNetworkEndpoint']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            queued_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling_config: pulumi.Input[Optional[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict', 'outputs.V2VmSchedulingConfig']]] = None,
+            service_account: pulumi.Input[Optional[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict', 'outputs.V2VmServiceAccount']]] = None,
+            shielded_instance_config: pulumi.Input[Optional[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict', 'outputs.V2VmShieldedInstanceConfig']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            symptoms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmSymptomArgs', 'V2VmSymptomArgsDict', 'outputs.V2VmSymptom']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceleratorConfig"] = accelerator_config
+        __props__["acceleratorType"] = accelerator_type
+        __props__["apiVersion"] = api_version
+        __props__["cidrBlock"] = cidr_block
+        __props__["dataDisks"] = data_disks
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["health"] = health
+        __props__["healthDescription"] = health_description
+        __props__["labels"] = labels
+        __props__["metadata"] = metadata
+        __props__["multisliceNode"] = multislice_node
+        __props__["name"] = name
+        __props__["networkConfig"] = network_config
+        __props__["networkConfigs"] = network_configs
+        __props__["networkEndpoints"] = network_endpoints
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["queuedResource"] = queued_resource
+        __props__["runtimeVersion"] = runtime_version
+        __props__["schedulingConfig"] = scheduling_config
+        __props__["serviceAccount"] = service_account
+        __props__["shieldedInstanceConfig"] = shielded_instance_config
+        __props__["state"] = state
+        __props__["symptoms"] = symptoms
+        __props__["tags"] = tags
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:tpu/v2Vm:V2Vm', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceleratorConfig")
     def accelerator_config(self) -> pulumi.Output['outputs.V2VmAcceleratorConfig']:

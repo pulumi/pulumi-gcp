@@ -405,6 +405,26 @@ class OrganizationSettings(pulumi.CustomResource):
         __props__.__dict__["storage_location"] = storage_location
         return OrganizationSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disable_default_sink: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disableDefaultSink"] = disable_default_sink
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["kmsServiceAccountId"] = kms_service_account_id
+        __props__["loggingServiceAccountId"] = logging_service_account_id
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["storageLocation"] = storage_location
+        return pulumi.runtime.exists_resource(None, 'gcp:logging/organizationSettings:OrganizationSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="disableDefaultSink")
     def disable_default_sink(self) -> pulumi.Output[_builtins.bool]:

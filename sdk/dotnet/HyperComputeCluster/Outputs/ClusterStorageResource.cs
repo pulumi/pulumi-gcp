@@ -41,7 +41,6 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
         /// Lustre](https://cloud.google.com/products/managed-lustre) instance.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedStorageResourcesBucket"&gt;&lt;/a&gt;The `Bucket` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterStorageResourceLustre> Lustres;

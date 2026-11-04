@@ -433,6 +433,12 @@ func (AiFeatureStoreIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiFeatureStoreIamBindingState)(nil)).Elem()
 }
 
+// AiFeatureStoreIamBindingExists checks whether an existing AiFeatureStoreIamBinding resource with the given ID exists.
+func AiFeatureStoreIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiFeatureStoreIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding", id, state, "", opts...)
+}
+
 type aiFeatureStoreIamBindingArgs struct {
 	Condition *AiFeatureStoreIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

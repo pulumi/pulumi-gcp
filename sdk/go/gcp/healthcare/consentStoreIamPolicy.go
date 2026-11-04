@@ -366,6 +366,12 @@ func (ConsentStoreIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*consentStoreIamPolicyState)(nil)).Elem()
 }
 
+// ConsentStoreIamPolicyExists checks whether an existing ConsentStoreIamPolicy resource with the given ID exists.
+func ConsentStoreIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConsentStoreIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy", id, state, "", opts...)
+}
+
 type consentStoreIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	ConsentStoreId string `pulumi:"consentStoreId"`

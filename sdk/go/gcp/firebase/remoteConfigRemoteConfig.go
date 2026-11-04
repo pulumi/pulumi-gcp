@@ -244,6 +244,12 @@ func (RemoteConfigRemoteConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*remoteConfigRemoteConfigState)(nil)).Elem()
 }
 
+// RemoteConfigRemoteConfigExists checks whether an existing RemoteConfigRemoteConfig resource with the given ID exists.
+func RemoteConfigRemoteConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RemoteConfigRemoteConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig", id, state, "", opts...)
+}
+
 type remoteConfigRemoteConfigArgs struct {
 	// A list of conditions in descending order by priority.
 	// The values of the condition names must be unique.

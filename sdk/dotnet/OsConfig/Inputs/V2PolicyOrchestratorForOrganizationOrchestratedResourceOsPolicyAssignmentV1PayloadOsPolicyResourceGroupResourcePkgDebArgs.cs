@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// Whether dependencies should also be installed.
         /// - install when false: `dpkg -i package`
         /// - install when true: `apt-get update &amp;&amp; apt-get -y install
-        /// package.deb`
+        ///   package.deb`
         /// </summary>
         [Input("pullDeps")]
         public Input<bool>? PullDeps { get; set; }

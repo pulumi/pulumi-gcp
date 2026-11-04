@@ -732,6 +732,50 @@ class DataTransferDataSourceEnrollment(pulumi.CustomResource):
         __props__.__dict__["update_deadline_seconds"] = update_deadline_seconds
         return DataTransferDataSourceEnrollment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_refresh_type: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_data_refresh_window_days: pulumi.Input[Optional[_builtins.int]] = None,
+            default_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            help_url: pulumi.Input[Optional[_builtins.str]] = None,
+            manual_runs_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            minimum_schedule_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataTransferDataSourceEnrollmentParameterArgs', 'DataTransferDataSourceEnrollmentParameterArgsDict', 'outputs.DataTransferDataSourceEnrollmentParameter']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            supports_custom_schedule: pulumi.Input[Optional[_builtins.bool]] = None,
+            unenroll_location: pulumi.Input[Optional[_builtins.str]] = None,
+            update_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authorizationType"] = authorization_type
+        __props__["clientId"] = client_id
+        __props__["dataRefreshType"] = data_refresh_type
+        __props__["dataSourceId"] = data_source_id
+        __props__["defaultDataRefreshWindowDays"] = default_data_refresh_window_days
+        __props__["defaultSchedule"] = default_schedule
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["helpUrl"] = help_url
+        __props__["manualRunsDisabled"] = manual_runs_disabled
+        __props__["minimumScheduleInterval"] = minimum_schedule_interval
+        __props__["name"] = name
+        __props__["parameters"] = parameters
+        __props__["project"] = project
+        __props__["scopes"] = scopes
+        __props__["supportsCustomSchedule"] = supports_custom_schedule
+        __props__["unenrollLocation"] = unenroll_location
+        __props__["updateDeadlineSeconds"] = update_deadline_seconds
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/dataTransferDataSourceEnrollment:DataTransferDataSourceEnrollment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authorizationType")
     def authorization_type(self) -> pulumi.Output[_builtins.str]:

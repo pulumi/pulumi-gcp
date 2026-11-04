@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? DisableMultiNic;
         /// <summary>
-        /// which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988. 
+        /// which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
         /// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         /// </summary>
         public readonly bool? EnableLegacyLustrePort;

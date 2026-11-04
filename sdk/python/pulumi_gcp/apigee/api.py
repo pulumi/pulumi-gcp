@@ -466,6 +466,30 @@ class Api(pulumi.CustomResource):
         __props__.__dict__["revisions"] = revisions
         return Api(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            meta_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiMetaDataArgs', 'ApiMetaDataArgsDict', 'outputs.ApiMetaData']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revisions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configBundle"] = config_bundle
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["detectMd5hash"] = detect_md5hash
+        __props__["latestRevisionId"] = latest_revision_id
+        __props__["md5hash"] = md5hash
+        __props__["metaDatas"] = meta_datas
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["revisions"] = revisions
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/api:Api', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configBundle")
     def config_bundle(self) -> pulumi.Output[_builtins.str]:

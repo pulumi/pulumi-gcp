@@ -182,7 +182,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedMatchLayer4Configs"&gt;&lt;/a&gt;The `Layer4Configs` block supports:
         /// </summary>
         public InputList<Inputs.FirewallPolicyRuleMatchSrcSecureTagGetArgs> SrcSecureTags

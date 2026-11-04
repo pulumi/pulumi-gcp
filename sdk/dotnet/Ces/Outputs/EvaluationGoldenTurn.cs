@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// The sequence of steps required to replay a golden conversation turn.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedGoldenTurnsRootSpan"&gt;&lt;/a&gt;The `RootSpan` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.EvaluationGoldenTurnStep> Steps;

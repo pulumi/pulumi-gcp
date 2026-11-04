@@ -257,6 +257,12 @@ func (AuthorizedViewState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorizedViewState)(nil)).Elem()
 }
 
+// AuthorizedViewExists checks whether an existing AuthorizedView resource with the given ID exists.
+func AuthorizedViewExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthorizedViewState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigtable/authorizedView:AuthorizedView", id, state, "", opts...)
+}
+
 type authorizedViewArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

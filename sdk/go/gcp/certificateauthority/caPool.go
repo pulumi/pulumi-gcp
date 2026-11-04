@@ -442,6 +442,12 @@ func (CaPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*caPoolState)(nil)).Elem()
 }
 
+// CaPoolExists checks whether an existing CaPool resource with the given ID exists.
+func CaPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CaPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificateauthority/caPool:CaPool", id, state, "", opts...)
+}
+
 type caPoolArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

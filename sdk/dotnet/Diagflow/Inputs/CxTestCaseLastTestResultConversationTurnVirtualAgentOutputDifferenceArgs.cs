@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// * PARAMETERS: The parameters.
         /// * UTTERANCE: The message utterance.
         /// * FLOW: The flow.
-        /// Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
+        ///   Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

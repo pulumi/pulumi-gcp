@@ -279,6 +279,16 @@ class SnapshotSettings(pulumi.CustomResource):
         __props__.__dict__["storage_location"] = storage_location
         return SnapshotSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict', 'outputs.SnapshotSettingsStorageLocation']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["project"] = project
+        __props__["storageLocation"] = storage_location
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/snapshotSettings:SnapshotSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:

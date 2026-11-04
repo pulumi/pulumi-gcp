@@ -566,6 +566,26 @@ class BackupSchedule(pulumi.CustomResource):
         __props__.__dict__["weekly_recurrence"] = weekly_recurrence
         return BackupSchedule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            daily_recurrence: pulumi.Input[Optional[Union['BackupScheduleDailyRecurrenceArgs', 'BackupScheduleDailyRecurrenceArgsDict', 'outputs.BackupScheduleDailyRecurrence']]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            retention: pulumi.Input[Optional[_builtins.str]] = None,
+            weekly_recurrence: pulumi.Input[Optional[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict', 'outputs.BackupScheduleWeeklyRecurrence']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dailyRecurrence"] = daily_recurrence
+        __props__["database"] = database
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["retention"] = retention
+        __props__["weeklyRecurrence"] = weekly_recurrence
+        return pulumi.runtime.exists_resource(None, 'gcp:firestore/backupSchedule:BackupSchedule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dailyRecurrence")
     def daily_recurrence(self) -> pulumi.Output[Optional['outputs.BackupScheduleDailyRecurrence']]:

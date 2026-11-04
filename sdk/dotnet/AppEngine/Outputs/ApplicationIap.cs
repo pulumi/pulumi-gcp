@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     public sealed class ApplicationIap
     {
         /// <summary>
-        /// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+        /// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
         /// (default is false)
         /// </summary>
         public readonly bool? Enabled;

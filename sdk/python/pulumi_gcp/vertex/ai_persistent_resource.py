@@ -1423,6 +1423,56 @@ class AiPersistentResource(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AiPersistentResource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict', 'outputs.AiPersistentResourceEncryptionSpec']]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceErrorArgs', 'AiPersistentResourceErrorArgsDict', 'outputs.AiPersistentResourceError']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_interface_config: pulumi.Input[Optional[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict', 'outputs.AiPersistentResourcePscInterfaceConfig']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict', 'outputs.AiPersistentResourceResourcePool']]]]] = None,
+            resource_runtime_spec: pulumi.Input[Optional[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict', 'outputs.AiPersistentResourceResourceRuntimeSpec']]] = None,
+            resource_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceResourceRuntimeArgs', 'AiPersistentResourceResourceRuntimeArgsDict', 'outputs.AiPersistentResourceResourceRuntime']]]]] = None,
+            satisfies_pzi: pulumi.Input[Optional[_builtins.bool]] = None,
+            satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptionSpec"] = encryption_spec
+        __props__["errors"] = errors
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["project"] = project
+        __props__["pscInterfaceConfig"] = psc_interface_config
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reservedIpRanges"] = reserved_ip_ranges
+        __props__["resourcePools"] = resource_pools
+        __props__["resourceRuntimeSpec"] = resource_runtime_spec
+        __props__["resourceRuntimes"] = resource_runtimes
+        __props__["satisfiesPzi"] = satisfies_pzi
+        __props__["satisfiesPzs"] = satisfies_pzs
+        __props__["startTime"] = start_time
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiPersistentResource:AiPersistentResource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

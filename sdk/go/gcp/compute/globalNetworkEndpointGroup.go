@@ -232,6 +232,12 @@ func (GlobalNetworkEndpointGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalNetworkEndpointGroupState)(nil)).Elem()
 }
 
+// GlobalNetworkEndpointGroupExists checks whether an existing GlobalNetworkEndpointGroup resource with the given ID exists.
+func GlobalNetworkEndpointGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalNetworkEndpointGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup", id, state, "", opts...)
+}
+
 type globalNetworkEndpointGroupArgs struct {
 	// The default port used if the port number is not specified in the
 	// network endpoint.

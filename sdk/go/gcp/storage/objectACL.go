@@ -191,6 +191,12 @@ func (ObjectACLState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectACLState)(nil)).Elem()
 }
 
+// ObjectACLExists checks whether an existing ObjectACL resource with the given ID exists.
+func ObjectACLExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectACLState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/objectACL:ObjectACL", id, state, "", opts...)
+}
+
 type objectACLArgs struct {
 	// The name of the bucket the object is stored in.
 	Bucket string `pulumi:"bucket"`

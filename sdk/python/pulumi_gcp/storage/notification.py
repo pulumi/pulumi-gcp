@@ -529,6 +529,28 @@ class Notification(pulumi.CustomResource):
         __props__.__dict__["topic"] = topic
         return Notification(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notification_id: pulumi.Input[Optional[_builtins.str]] = None,
+            object_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            payload_format: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            topic: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["customAttributes"] = custom_attributes
+        __props__["eventTypes"] = event_types
+        __props__["notificationId"] = notification_id
+        __props__["objectNamePrefix"] = object_name_prefix
+        __props__["payloadFormat"] = payload_format
+        __props__["selfLink"] = self_link
+        __props__["topic"] = topic
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/notification:Notification', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

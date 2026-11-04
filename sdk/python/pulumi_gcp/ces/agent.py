@@ -2118,6 +2118,68 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Agent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            after_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict', 'outputs.AgentAfterAgentCallback']]]]] = None,
+            after_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict', 'outputs.AgentAfterModelCallback']]]]] = None,
+            after_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict', 'outputs.AgentAfterToolCallback']]]]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            before_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict', 'outputs.AgentBeforeAgentCallback']]]]] = None,
+            before_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict', 'outputs.AgentBeforeModelCallback']]]]] = None,
+            before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict', 'outputs.AgentBeforeToolCallback']]]]] = None,
+            child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            generated_summary: pulumi.Input[Optional[_builtins.str]] = None,
+            guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instruction: pulumi.Input[Optional[_builtins.str]] = None,
+            llm_agent: pulumi.Input[Optional[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict', 'outputs.AgentLlmAgent']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            model_settings: pulumi.Input[Optional[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict', 'outputs.AgentModelSettings']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_a2a_agent: pulumi.Input[Optional[Union['AgentRemoteA2aAgentArgs', 'AgentRemoteA2aAgentArgsDict', 'outputs.AgentRemoteA2aAgent']]] = None,
+            remote_dialogflow_agent: pulumi.Input[Optional[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict', 'outputs.AgentRemoteDialogflowAgent']]] = None,
+            tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            toolsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]]] = None,
+            transfer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentTransferRuleArgs', 'AgentTransferRuleArgsDict', 'outputs.AgentTransferRule']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["afterAgentCallbacks"] = after_agent_callbacks
+        __props__["afterModelCallbacks"] = after_model_callbacks
+        __props__["afterToolCallbacks"] = after_tool_callbacks
+        __props__["agentId"] = agent_id
+        __props__["app"] = app
+        __props__["beforeAgentCallbacks"] = before_agent_callbacks
+        __props__["beforeModelCallbacks"] = before_model_callbacks
+        __props__["beforeToolCallbacks"] = before_tool_callbacks
+        __props__["childAgents"] = child_agents
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["etag"] = etag
+        __props__["generatedSummary"] = generated_summary
+        __props__["guardrails"] = guardrails
+        __props__["instruction"] = instruction
+        __props__["llmAgent"] = llm_agent
+        __props__["location"] = location
+        __props__["modelSettings"] = model_settings
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["remoteA2aAgent"] = remote_a2a_agent
+        __props__["remoteDialogflowAgent"] = remote_dialogflow_agent
+        __props__["tools"] = tools
+        __props__["toolsets"] = toolsets
+        __props__["transferRules"] = transfer_rules
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:ces/agent:Agent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="afterAgentCallbacks")
     def after_agent_callbacks(self) -> pulumi.Output[Optional[Sequence['outputs.AgentAfterAgentCallback']]]:

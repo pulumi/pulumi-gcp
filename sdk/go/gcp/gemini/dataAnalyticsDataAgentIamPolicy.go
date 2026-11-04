@@ -379,6 +379,12 @@ func (DataAnalyticsDataAgentIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataAnalyticsDataAgentIamPolicyState)(nil)).Elem()
 }
 
+// DataAnalyticsDataAgentIamPolicyExists checks whether an existing DataAnalyticsDataAgentIamPolicy resource with the given ID exists.
+func DataAnalyticsDataAgentIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataAnalyticsDataAgentIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/dataAnalyticsDataAgentIamPolicy:DataAnalyticsDataAgentIamPolicy", id, state, "", opts...)
+}
+
 type dataAnalyticsDataAgentIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	DataAgentId string `pulumi:"dataAgentId"`

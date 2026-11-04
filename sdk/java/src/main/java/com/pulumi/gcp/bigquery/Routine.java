@@ -97,12 +97,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
@@ -116,17 +116,17 @@ import javax.annotation.Nullable;
  *             .arguments(            
  *                 RoutineArgumentArgs.builder()
  *                     .name("x")
- *                     .dataType("{\"typeKind\" :  \"FLOAT64\"}")
+ *                     .dataType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "FLOAT64}&#92;{@code "}}{@code ")
  *                     .build(),
  *                 RoutineArgumentArgs.builder()
  *                     .name("y")
- *                     .dataType("{\"typeKind\" :  \"FLOAT64\"}")
+ *                     .dataType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "FLOAT64}&#92;{@code "}}{@code ")
  *                     .build())
- *             .returnType("{\"typeKind\" :  \"FLOAT64\"}")
+ *             .returnType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "FLOAT64}&#92;{@code "}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -279,12 +279,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
@@ -304,23 +304,23 @@ import javax.annotation.Nullable;
  *             .definitionBody("""
  * from pyspark.sql import SparkSession
  * 
- * spark = SparkSession.builder.appName(\"spark-bigquery-demo\").getOrCreate()
+ * spark = SparkSession.builder.appName(}&#92;{@code "spark-bigquery-demo}&#92;{@code ").getOrCreate()
  *     
  * # Load data from BigQuery.
- * words = spark.read.format(\"bigquery\") \\
- *   .option(\"table\", \"bigquery-public-data:samples.shakespeare\") \\
+ * words = spark.read.format(}&#92;{@code "bigquery}&#92;{@code ") }&#92;&#92;{@code
+ *   .option(}&#92;{@code "table}&#92;{@code ", }&#92;{@code "bigquery-public-data:samples.shakespeare}&#92;{@code ") }&#92;&#92;{@code
  *   .load()
- * words.createOrReplaceTempView(\"words\")
+ * words.createOrReplaceTempView(}&#92;{@code "words}&#92;{@code ")
  *     
  * # Perform word count.
- * word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed(\"sum(word_count)\", \"sum_word_count\")
+ * word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed(}&#92;{@code "sum(word_count)}&#92;{@code ", }&#92;{@code "sum_word_count}&#92;{@code ")
  * word_count.show()
  * word_count.printSchema()
  *     
  * # Saving the data to BigQuery
- * word_count.write.format(\"bigquery\") \\
- *   .option(\"writeMethod\", \"direct\") \\
- *   .save(\"wordcount_dataset.wordcount_output\")
+ * word_count.write.format(}&#92;{@code "bigquery}&#92;{@code ") }&#92;&#92;{@code
+ *   .option(}&#92;{@code "writeMethod}&#92;{@code ", }&#92;{@code "direct}&#92;{@code ") }&#92;&#92;{@code
+ *   .save(}&#92;{@code "wordcount_dataset.wordcount_output}&#92;{@code ")
  *             """)
  *             .sparkOptions(RoutineSparkOptionsArgs.builder()
  *                 .connection(testConnection.name())
@@ -328,8 +328,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -481,12 +481,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("tf_test_dataset_id_22811")
  *             .build());
@@ -500,13 +500,13 @@ import javax.annotation.Nullable;
  *             .definitionBody("SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')")
  *             .arguments(RoutineArgumentArgs.builder()
  *                 .name("ssn")
- *                 .dataType("{\"typeKind\" :  \"STRING\"}")
+ *                 .dataType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "STRING}&#92;{@code "}}{@code ")
  *                 .build())
- *             .returnType("{\"typeKind\" :  \"STRING\"}")
+ *             .returnType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "STRING}&#92;{@code "}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -534,12 +534,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
@@ -556,7 +556,7 @@ import javax.annotation.Nullable;
  *             .routineId("routine_id")
  *             .routineType("SCALAR_FUNCTION")
  *             .definitionBody("")
- *             .returnType("{\"typeKind\" :  \"STRING\"}")
+ *             .returnType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "STRING}&#92;{@code "}}{@code ")
  *             .remoteFunctionOptions(RoutineRemoteFunctionOptionsArgs.builder()
  *                 .endpoint("https://us-east1-my_gcf_project.cloudfunctions.net/remote_add")
  *                 .connection(testConnection.name())
@@ -565,8 +565,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -593,12 +593,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
@@ -611,17 +611,17 @@ import javax.annotation.Nullable;
  *             .arguments(            
  *                 RoutineArgumentArgs.builder()
  *                     .name("x")
- *                     .dataType("{\"typeKind\" :  \"FLOAT64\"}")
+ *                     .dataType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "FLOAT64}&#92;{@code "}}{@code ")
  *                     .build(),
  *                 RoutineArgumentArgs.builder()
  *                     .name("y")
- *                     .dataType("{\"typeKind\" :  \"FLOAT64\"}")
+ *                     .dataType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "FLOAT64}&#92;{@code "}}{@code ")
  *                     .build())
  *             .definitionBody("""
  * def multiply(x, y):
  *   return x * y
  *             """)
- *             .returnType("{\"typeKind\" :  \"FLOAT64\"}")
+ *             .returnType("}{&#92;{@code "typeKind}&#92;{@code " :  }&#92;{@code "FLOAT64}&#92;{@code "}}{@code ")
  *             .pythonOptions(RoutinePythonOptionsArgs.builder()
  *                 .entryPoint("multiply")
  *                 .build())
@@ -633,8 +633,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

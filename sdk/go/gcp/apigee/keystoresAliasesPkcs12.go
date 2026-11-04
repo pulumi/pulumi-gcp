@@ -179,6 +179,12 @@ func (KeystoresAliasesPkcs12State) ElementType() reflect.Type {
 	return reflect.TypeOf((*keystoresAliasesPkcs12State)(nil)).Elem()
 }
 
+// KeystoresAliasesPkcs12Exists checks whether an existing KeystoresAliasesPkcs12 resource with the given ID exists.
+func KeystoresAliasesPkcs12Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeystoresAliasesPkcs12State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12", id, state, "", opts...)
+}
+
 type keystoresAliasesPkcs12Args struct {
 	// Alias Name
 	Alias string `pulumi:"alias"`

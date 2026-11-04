@@ -265,6 +265,12 @@ func (GlossaryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*glossaryState)(nil)).Elem()
 }
 
+// GlossaryExists checks whether an existing Glossary resource with the given ID exists.
+func GlossaryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlossaryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/glossary:Glossary", id, state, "", opts...)
+}
+
 type glossaryArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

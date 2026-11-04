@@ -298,6 +298,12 @@ func (WorkforcePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workforcePoolState)(nil)).Elem()
 }
 
+// WorkforcePoolExists checks whether an existing WorkforcePool resource with the given ID exists.
+func WorkforcePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkforcePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workforcePool:WorkforcePool", id, state, "", opts...)
+}
+
 type workforcePoolArgs struct {
 	// Configure access restrictions on the workforce pool users. This is an optional field. If specified web
 	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.

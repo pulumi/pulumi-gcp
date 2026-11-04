@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Monitoring
         /// legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
         /// accompanied by a non-removal change (trivial or not).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("dashboardJson")]
         public Output<string> DashboardJson { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.Monitoring
         /// legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
         /// accompanied by a non-removal change (trivial or not).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("dashboardJson", required: true)]
         public Input<string> DashboardJson { get; set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.Gcp.Monitoring
         /// legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
         /// accompanied by a non-removal change (trivial or not).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("dashboardJson")]
         public Input<string>? DashboardJson { get; set; }

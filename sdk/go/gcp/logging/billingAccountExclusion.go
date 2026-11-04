@@ -149,6 +149,12 @@ func (BillingAccountExclusionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*billingAccountExclusionState)(nil)).Elem()
 }
 
+// BillingAccountExclusionExists checks whether an existing BillingAccountExclusion resource with the given ID exists.
+func BillingAccountExclusionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BillingAccountExclusionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/billingAccountExclusion:BillingAccountExclusion", id, state, "", opts...)
+}
+
 type billingAccountExclusionArgs struct {
 	// The billing account to create the exclusion for.
 	BillingAccount string `pulumi:"billingAccount"`

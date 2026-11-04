@@ -838,11 +838,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
      * 
-     * @deprecated
-     * `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
+     * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      * 
      */
-    @Deprecated /* `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`. */
+    @Deprecated
     @Export(name="desiredPscAutoConnections", refs={List.class,InstanceDesiredPscAutoConnection.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceDesiredPscAutoConnection>> desiredPscAutoConnections;
 
@@ -858,11 +857,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Deprecated. Output only. Endpoints clients can connect to the instance through.
      * Structure is documented below.
      * 
-     * @deprecated
-     * This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
+     * @deprecated This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      * 
      */
-    @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
+    @Deprecated
     @Export(name="discoveryEndpoints", refs={List.class,InstanceDiscoveryEndpoint.class}, tree="[0,1]")
     private Output<List<InstanceDiscoveryEndpoint>> discoveryEndpoints;
 
@@ -1274,11 +1272,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Output only. User inputs and resource details of the auto-created PSC connections.
      * Structure is documented below.
      * 
-     * @deprecated
-     * `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
+     * @deprecated `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
      * 
      */
-    @Deprecated /* `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead. */
+    @Deprecated
     @Export(name="pscAutoConnections", refs={List.class,InstancePscAutoConnection.class}, tree="[0,1]")
     private Output<List<InstancePscAutoConnection>> pscAutoConnections;
 

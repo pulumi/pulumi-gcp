@@ -463,6 +463,12 @@ func (VolumeReplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeReplicationState)(nil)).Elem()
 }
 
+// VolumeReplicationExists checks whether an existing VolumeReplication resource with the given ID exists.
+func VolumeReplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeReplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:netapp/volumeReplication:VolumeReplication", id, state, "", opts...)
+}
+
 type volumeReplicationArgs struct {
 	// A destination volume is created as part of replication creation. The destination volume will not became
 	// under Terraform management unless you import it manually. If you delete the replication, this volume

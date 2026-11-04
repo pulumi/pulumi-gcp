@@ -269,12 +269,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()
  *             .entryGroupId("my_entry_group")
  *             .build());
@@ -285,42 +285,42 @@ import javax.annotation.Nullable;
  *             .userSpecifiedType("my_custom_type")
  *             .userSpecifiedSystem("SomethingExternal")
  *             .schema("""
- * {
- *   \"columns\": [
- *     {
- *       \"column\": \"first_name\",
- *       \"description\": \"First name\",
- *       \"mode\": \"REQUIRED\",
- *       \"type\": \"STRING\"
- *     },
- *     {
- *       \"column\": \"last_name\",
- *       \"description\": \"Last name\",
- *       \"mode\": \"REQUIRED\",
- *       \"type\": \"STRING\"
- *     },
- *     {
- *       \"column\": \"address\",
- *       \"description\": \"Address\",
- *       \"mode\": \"REPEATED\",
- *       \"subcolumns\": [
- *         {
- *           \"column\": \"city\",
- *           \"description\": \"City\",
- *           \"mode\": \"NULLABLE\",
- *           \"type\": \"STRING\"
- *         },
- *         {
- *           \"column\": \"state\",
- *           \"description\": \"State\",
- *           \"mode\": \"NULLABLE\",
- *           \"type\": \"STRING\"
- *         }
+ * }{{@code
+ *   }&#92;{@code "columns}&#92;{@code ": [
+ *     }{{@code
+ *       }&#92;{@code "column}&#92;{@code ": }&#92;{@code "first_name}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "First name}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "REQUIRED}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "column}&#92;{@code ": }&#92;{@code "last_name}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Last name}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "REQUIRED}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "column}&#92;{@code ": }&#92;{@code "address}&#92;{@code ",
+ *       }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Address}&#92;{@code ",
+ *       }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "REPEATED}&#92;{@code ",
+ *       }&#92;{@code "subcolumns}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "column}&#92;{@code ": }&#92;{@code "city}&#92;{@code ",
+ *           }&#92;{@code "description}&#92;{@code ": }&#92;{@code "City}&#92;{@code ",
+ *           }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *           }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code "
+ *         }}{@code ,
+ *         }{{@code
+ *           }&#92;{@code "column}&#92;{@code ": }&#92;{@code "state}&#92;{@code ",
+ *           }&#92;{@code "description}&#92;{@code ": }&#92;{@code "State}&#92;{@code ",
+ *           }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *           }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code "
+ *         }}{@code
  *       ],
- *       \"type\": \"RECORD\"
- *     }
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "RECORD}&#92;{@code "
+ *     }}{@code
  *   ]
- * }
+ * }}{@code
  *             """)
  *             .build());
  * 
@@ -399,8 +399,8 @@ import javax.annotation.Nullable;
  *             .column("first_name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

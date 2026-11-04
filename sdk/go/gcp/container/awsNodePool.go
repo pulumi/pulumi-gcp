@@ -735,6 +735,12 @@ func (AwsNodePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsNodePoolState)(nil)).Elem()
 }
 
+// AwsNodePoolExists checks whether an existing AwsNodePool resource with the given ID exists.
+func AwsNodePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsNodePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:container/awsNodePool:AwsNodePool", id, state, "", opts...)
+}
+
 type awsNodePoolArgs struct {
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	//

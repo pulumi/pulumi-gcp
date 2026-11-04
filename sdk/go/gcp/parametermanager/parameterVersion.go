@@ -413,6 +413,12 @@ func (ParameterVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*parameterVersionState)(nil)).Elem()
 }
 
+// ParameterVersionExists checks whether an existing ParameterVersion resource with the given ID exists.
+func ParameterVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ParameterVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:parametermanager/parameterVersion:ParameterVersion", id, state, "", opts...)
+}
+
 type parameterVersionArgs struct {
 	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
 	DataCrc32c *string `pulumi:"dataCrc32c"`

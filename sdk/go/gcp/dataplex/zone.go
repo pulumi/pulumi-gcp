@@ -278,6 +278,12 @@ func (ZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneState)(nil)).Elem()
 }
 
+// ZoneExists checks whether an existing Zone resource with the given ID exists.
+func ZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/zone:Zone", id, state, "", opts...)
+}
+
 type zoneArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

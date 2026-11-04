@@ -709,6 +709,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`

@@ -197,6 +197,12 @@ func (TaxonomyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*taxonomyState)(nil)).Elem()
 }
 
+// TaxonomyExists checks whether an existing Taxonomy resource with the given ID exists.
+func TaxonomyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TaxonomyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datacatalog/taxonomy:Taxonomy", id, state, "", opts...)
+}
+
 type taxonomyArgs struct {
 	// A list of policy types that are activated for this taxonomy. If not set,
 	// defaults to an empty list.

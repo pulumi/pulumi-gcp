@@ -296,6 +296,12 @@ func (DeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deploymentState)(nil)).Elem()
 }
 
+// DeploymentExists checks whether an existing Deployment resource with the given ID exists.
+func DeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:deploymentmanager/deployment:Deployment", id, state, "", opts...)
+}
+
 type deploymentArgs struct {
 	// Set the policy to use for creating new resources. Only used on
 	// create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or

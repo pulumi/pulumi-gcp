@@ -391,6 +391,12 @@ func (NamespaceIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*namespaceIamBindingState)(nil)).Elem()
 }
 
+// NamespaceIamBindingExists checks whether an existing NamespaceIamBinding resource with the given ID exists.
+func NamespaceIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NamespaceIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding", id, state, "", opts...)
+}
+
 type namespaceIamBindingArgs struct {
 	Condition *NamespaceIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

@@ -408,6 +408,12 @@ func (NoteIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*noteIamMemberState)(nil)).Elem()
 }
 
+// NoteIamMemberExists checks whether an existing NoteIamMember resource with the given ID exists.
+func NoteIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NoteIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:containeranalysis/noteIamMember:NoteIamMember", id, state, "", opts...)
+}
+
 type noteIamMemberArgs struct {
 	Condition *NoteIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

@@ -719,6 +719,40 @@ class AppHostingDomain(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AppHostingDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingDomainCustomDomainStatusArgs', 'AppHostingDomainCustomDomainStatusArgsDict', 'outputs.AppHostingDomainCustomDomainStatus']]]]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            purge_time: pulumi.Input[Optional[_builtins.str]] = None,
+            serve: pulumi.Input[Optional[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict', 'outputs.AppHostingDomainServe']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backend"] = backend
+        __props__["createTime"] = create_time
+        __props__["customDomainStatuses"] = custom_domain_statuses
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["domainId"] = domain_id
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["purgeTime"] = purge_time
+        __props__["serve"] = serve
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:firebase/appHostingDomain:AppHostingDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def backend(self) -> pulumi.Output[_builtins.str]:

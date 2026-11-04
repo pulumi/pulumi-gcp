@@ -317,6 +317,12 @@ func (CryptoKeyIAMPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cryptoKeyIAMPolicyState)(nil)).Elem()
 }
 
+// CryptoKeyIAMPolicyExists checks whether an existing CryptoKeyIAMPolicy resource with the given ID exists.
+func CryptoKeyIAMPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CryptoKeyIAMPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy", id, state, "", opts...)
+}
+
 type cryptoKeyIAMPolicyArgs struct {
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or

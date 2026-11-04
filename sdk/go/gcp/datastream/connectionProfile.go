@@ -865,6 +865,12 @@ func (ConnectionProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionProfileState)(nil)).Elem()
 }
 
+// ConnectionProfileExists checks whether an existing ConnectionProfile resource with the given ID exists.
+func ConnectionProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datastream/connectionProfile:ConnectionProfile", id, state, "", opts...)
+}
+
 type connectionProfileArgs struct {
 	// BigQuery warehouse profile.
 	BigqueryProfile *ConnectionProfileBigqueryProfile `pulumi:"bigqueryProfile"`

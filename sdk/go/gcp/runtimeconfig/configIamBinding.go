@@ -414,6 +414,12 @@ func (ConfigIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configIamBindingState)(nil)).Elem()
 }
 
+// ConfigIamBindingExists checks whether an existing ConfigIamBinding resource with the given ID exists.
+func ConfigIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:runtimeconfig/configIamBinding:ConfigIamBinding", id, state, "", opts...)
+}
+
 type configIamBindingArgs struct {
 	Condition *ConfigIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

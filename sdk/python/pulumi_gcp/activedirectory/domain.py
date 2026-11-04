@@ -730,6 +730,38 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["reserved_ip_range"] = reserved_ip_range
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin: pulumi.Input[Optional[_builtins.str]] = None,
+            authorized_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["admin"] = admin
+        __props__["authorizedNetworks"] = authorized_networks
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["domainName"] = domain_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["fqdn"] = fqdn
+        __props__["labels"] = labels
+        __props__["locations"] = locations
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reservedIpRange"] = reserved_ip_range
+        return pulumi.runtime.exists_resource(None, 'gcp:activedirectory/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def admin(self) -> pulumi.Output[Optional[_builtins.str]]:

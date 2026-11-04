@@ -430,6 +430,12 @@ func (EntryTypeIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entryTypeIamBindingState)(nil)).Elem()
 }
 
+// EntryTypeIamBindingExists checks whether an existing EntryTypeIamBinding resource with the given ID exists.
+func EntryTypeIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntryTypeIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/entryTypeIamBinding:EntryTypeIamBinding", id, state, "", opts...)
+}
+
 type entryTypeIamBindingArgs struct {
 	Condition *EntryTypeIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

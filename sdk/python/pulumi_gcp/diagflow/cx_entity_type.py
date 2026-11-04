@@ -782,6 +782,34 @@ class CxEntityType(pulumi.CustomResource):
         __props__.__dict__["redact"] = redact
         return CxEntityType(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_expansion_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
+            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict', 'outputs.CxEntityTypeEntity']]]]] = None,
+            excluded_phrases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict', 'outputs.CxEntityTypeExcludedPhrase']]]]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            redact: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoExpansionMode"] = auto_expansion_mode
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["enableFuzzyExtraction"] = enable_fuzzy_extraction
+        __props__["entities"] = entities
+        __props__["excludedPhrases"] = excluded_phrases
+        __props__["kind"] = kind
+        __props__["languageCode"] = language_code
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["redact"] = redact
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/cxEntityType:CxEntityType', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoExpansionMode")
     def auto_expansion_mode(self) -> pulumi.Output[Optional[_builtins.str]]:

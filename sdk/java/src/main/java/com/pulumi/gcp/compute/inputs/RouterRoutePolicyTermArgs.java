@@ -20,7 +20,7 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
     public static final RouterRoutePolicyTermArgs Empty = new RouterRoutePolicyTermArgs();
 
     /**
-     * &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;\
+     * &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;&#92;
      * Structure is documented below.
      * 
      */
@@ -28,7 +28,7 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
     private @Nullable Output<List<RouterRoutePolicyTermActionArgs>> actions;
 
     /**
-     * @return &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;\
+     * @return &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;&#92;
      * Structure is documented below.
      * 
      */
@@ -95,7 +95,7 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param actions &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;\
+         * @param actions &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;&#92;
          * Structure is documented below.
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param actions &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;\
+         * @param actions &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;&#92;
          * Structure is documented below.
          * 
          * @return builder
@@ -118,7 +118,7 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param actions &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;\
+         * @param actions &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;&#92;
          * Structure is documented below.
          * 
          * @return builder

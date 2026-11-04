@@ -196,6 +196,12 @@ func (IAMCustomRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamcustomRoleState)(nil)).Elem()
 }
 
+// IAMCustomRoleExists checks whether an existing IAMCustomRole resource with the given ID exists.
+func IAMCustomRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IAMCustomRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:organizations/iAMCustomRole:IAMCustomRole", id, state, "", opts...)
+}
+
 type iamcustomRoleArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

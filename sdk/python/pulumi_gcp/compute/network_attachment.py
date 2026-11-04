@@ -854,6 +854,44 @@ class NetworkAttachment(pulumi.CustomResource):
         __props__.__dict__["subnetworks"] = subnetworks
         return NetworkAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAttachmentConnectionEndpointArgs', 'NetworkAttachmentConnectionEndpointArgsDict', 'outputs.NetworkAttachmentConnectionEndpoint']]]]] = None,
+            connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            producer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            producer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link_with_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionEndpoints"] = connection_endpoints
+        __props__["connectionPreference"] = connection_preference
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["fingerprint"] = fingerprint
+        __props__["kind"] = kind
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["producerAcceptLists"] = producer_accept_lists
+        __props__["producerRejectLists"] = producer_reject_lists
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        __props__["selfLinkWithId"] = self_link_with_id
+        __props__["subnetworks"] = subnetworks
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/networkAttachment:NetworkAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionEndpoints")
     def connection_endpoints(self) -> pulumi.Output[Sequence['outputs.NetworkAttachmentConnectionEndpoint']]:

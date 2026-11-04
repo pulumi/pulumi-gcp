@@ -407,6 +407,12 @@ func (UnitKindState) ElementType() reflect.Type {
 	return reflect.TypeOf((*unitKindState)(nil)).Elem()
 }
 
+// UnitKindExists checks whether an existing UnitKind resource with the given ID exists.
+func UnitKindExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UnitKindState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:saasruntime/unitKind:UnitKind", id, state, "", opts...)
+}
+
 type unitKindArgs struct {
 	// Annotations is an unstructured key-value map stored with a resource that
 	// may be set by external tools to store and retrieve arbitrary metadata.

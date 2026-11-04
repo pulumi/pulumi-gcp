@@ -279,6 +279,12 @@ func (QaQuestionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qaQuestionState)(nil)).Elem()
 }
 
+// QaQuestionExists checks whether an existing QaQuestion resource with the given ID exists.
+func QaQuestionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QaQuestionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:contactcenterinsights/qaQuestion:QaQuestion", id, state, "", opts...)
+}
+
 type qaQuestionArgs struct {
 	// Short, descriptive string, used in the UI where it's not practical
 	// to display the full question body. E.g., "Greeting".

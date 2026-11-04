@@ -499,6 +499,12 @@ func (AiIndexEndpointDeployedIndexState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiIndexEndpointDeployedIndexState)(nil)).Elem()
 }
 
+// AiIndexEndpointDeployedIndexExists checks whether an existing AiIndexEndpointDeployedIndex resource with the given ID exists.
+func AiIndexEndpointDeployedIndexExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiIndexEndpointDeployedIndexState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex", id, state, "", opts...)
+}
+
 type aiIndexEndpointDeployedIndexArgs struct {
 	// A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
 	// Structure is documented below.

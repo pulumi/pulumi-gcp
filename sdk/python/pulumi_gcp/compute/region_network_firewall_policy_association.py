@@ -585,6 +585,28 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         __props__.__dict__["short_name"] = short_name
         return RegionNetworkFirewallPolicyAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attachment_target: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            short_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attachmentTarget"] = attachment_target
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["firewallPolicy"] = firewall_policy
+        __props__["name"] = name
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["shortName"] = short_name
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attachmentTarget")
     def attachment_target(self) -> pulumi.Output[_builtins.str]:

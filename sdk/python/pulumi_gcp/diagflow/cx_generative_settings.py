@@ -528,6 +528,26 @@ class CxGenerativeSettings(pulumi.CustomResource):
         __props__.__dict__["parent"] = parent
         return CxGenerativeSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            fallback_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict', 'outputs.CxGenerativeSettingsFallbackSettings']]] = None,
+            generative_safety_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict', 'outputs.CxGenerativeSettingsGenerativeSafetySettings']]] = None,
+            knowledge_connector_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict', 'outputs.CxGenerativeSettingsKnowledgeConnectorSettings']]] = None,
+            language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            llm_model_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict', 'outputs.CxGenerativeSettingsLlmModelSettings']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["fallbackSettings"] = fallback_settings
+        __props__["generativeSafetySettings"] = generative_safety_settings
+        __props__["knowledgeConnectorSettings"] = knowledge_connector_settings
+        __props__["languageCode"] = language_code
+        __props__["llmModelSettings"] = llm_model_settings
+        __props__["name"] = name
+        __props__["parent"] = parent
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="fallbackSettings")
     def fallback_settings(self) -> pulumi.Output[Optional['outputs.CxGenerativeSettingsFallbackSettings']]:

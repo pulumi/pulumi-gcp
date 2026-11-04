@@ -879,11 +879,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      * 
-     * @deprecated
-     * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
+     * @deprecated `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
      * 
      */
-    @Deprecated /* `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID. */
+    @Deprecated
     @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output<String> serviceAccount;
 

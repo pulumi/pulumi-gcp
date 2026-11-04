@@ -212,6 +212,12 @@ func (CxEnvironmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxEnvironmentState)(nil)).Elem()
 }
 
+// CxEnvironmentExists checks whether an existing CxEnvironment resource with the given ID exists.
+func CxEnvironmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxEnvironmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxEnvironment:CxEnvironment", id, state, "", opts...)
+}
+
 type cxEnvironmentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

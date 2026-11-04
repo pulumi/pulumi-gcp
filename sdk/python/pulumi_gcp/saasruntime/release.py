@@ -1025,6 +1025,54 @@ class Release(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Release(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            application_template_components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseApplicationTemplateComponentArgs', 'ReleaseApplicationTemplateComponentArgsDict', 'outputs.ReleaseApplicationTemplateComponent']]]]] = None,
+            blueprint: pulumi.Input[Optional[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict', 'outputs.ReleaseBlueprint']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            input_variable_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict', 'outputs.ReleaseInputVariableDefault']]]]] = None,
+            input_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseInputVariableArgs', 'ReleaseInputVariableArgsDict', 'outputs.ReleaseInputVariable']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseOutputVariableArgs', 'ReleaseOutputVariableArgsDict', 'outputs.ReleaseOutputVariable']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            release_id: pulumi.Input[Optional[_builtins.str]] = None,
+            release_requirements: pulumi.Input[Optional[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict', 'outputs.ReleaseReleaseRequirements']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["applicationTemplateComponents"] = application_template_components
+        __props__["blueprint"] = blueprint
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["inputVariableDefaults"] = input_variable_defaults
+        __props__["inputVariables"] = input_variables
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["outputVariables"] = output_variables
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["releaseId"] = release_id
+        __props__["releaseRequirements"] = release_requirements
+        __props__["uid"] = uid
+        __props__["unitKind"] = unit_kind
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:saasruntime/release:Release', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

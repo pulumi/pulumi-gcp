@@ -170,6 +170,12 @@ func (StorageDefaultBucketState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storageDefaultBucketState)(nil)).Elem()
 }
 
+// StorageDefaultBucketExists checks whether an existing StorageDefaultBucket resource with the given ID exists.
+func StorageDefaultBucketExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StorageDefaultBucketState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/storageDefaultBucket:StorageDefaultBucket", id, state, "", opts...)
+}
+
 type storageDefaultBucketArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

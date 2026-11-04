@@ -1139,6 +1139,40 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["time_zone"] = time_zone
         return Job(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_engine_http_target: pulumi.Input[Optional[Union['JobAppEngineHttpTargetArgs', 'JobAppEngineHttpTargetArgsDict', 'outputs.JobAppEngineHttpTarget']]] = None,
+            attempt_deadline: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            http_target: pulumi.Input[Optional[Union['JobHttpTargetArgs', 'JobHttpTargetArgsDict', 'outputs.JobHttpTarget']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pubsub_target: pulumi.Input[Optional[Union['JobPubsubTargetArgs', 'JobPubsubTargetArgsDict', 'outputs.JobPubsubTarget']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            retry_config: pulumi.Input[Optional[Union['JobRetryConfigArgs', 'JobRetryConfigArgsDict', 'outputs.JobRetryConfig']]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appEngineHttpTarget"] = app_engine_http_target
+        __props__["attemptDeadline"] = attempt_deadline
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["httpTarget"] = http_target
+        __props__["name"] = name
+        __props__["paused"] = paused
+        __props__["project"] = project
+        __props__["pubsubTarget"] = pubsub_target
+        __props__["region"] = region
+        __props__["retryConfig"] = retry_config
+        __props__["schedule"] = schedule
+        __props__["state"] = state
+        __props__["timeZone"] = time_zone
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudscheduler/job:Job', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appEngineHttpTarget")
     def app_engine_http_target(self) -> pulumi.Output[Optional['outputs.JobAppEngineHttpTarget']]:

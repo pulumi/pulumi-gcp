@@ -751,6 +751,40 @@ class OdbSubnet(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return OdbSubnet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            odb_subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            odbnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            purpose: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidrRange"] = cidr_range
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["odbSubnetId"] = odb_subnet_id
+        __props__["odbnetwork"] = odbnetwork
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["purpose"] = purpose
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:oracledatabase/odbSubnet:OdbSubnet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cidrRange")
     def cidr_range(self) -> pulumi.Output[_builtins.str]:

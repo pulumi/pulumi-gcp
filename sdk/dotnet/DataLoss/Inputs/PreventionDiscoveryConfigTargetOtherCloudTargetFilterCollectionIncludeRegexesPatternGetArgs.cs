@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// Regex for Cloud Storage.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex"&gt;&lt;/a&gt;The `AmazonS3BucketRegex` block supports:
         /// </summary>
         [Input("amazonS3BucketRegex")]

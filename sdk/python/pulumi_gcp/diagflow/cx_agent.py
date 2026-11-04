@@ -1628,6 +1628,68 @@ class CxAgent(pulumi.CustomResource):
         __props__.__dict__["time_zone"] = time_zone
         return CxAgent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_settings: pulumi.Input[Optional[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict', 'outputs.CxAgentAdvancedSettings']]] = None,
+            answer_feedback_settings: pulumi.Input[Optional[Union['CxAgentAnswerFeedbackSettingsArgs', 'CxAgentAnswerFeedbackSettingsArgsDict', 'outputs.CxAgentAnswerFeedbackSettings']]] = None,
+            avatar_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            client_certificate_settings: pulumi.Input[Optional[Union['CxAgentClientCertificateSettingsArgs', 'CxAgentClientCertificateSettingsArgsDict', 'outputs.CxAgentClientCertificateSettings']]] = None,
+            default_language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_chat_engine_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_multi_language_training: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            gen_app_builder_settings: pulumi.Input[Optional[Union['CxAgentGenAppBuilderSettingsArgs', 'CxAgentGenAppBuilderSettingsArgsDict', 'outputs.CxAgentGenAppBuilderSettings']]] = None,
+            git_integration_settings: pulumi.Input[Optional[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict', 'outputs.CxAgentGitIntegrationSettings']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            personalization_settings: pulumi.Input[Optional[Union['CxAgentPersonalizationSettingsArgs', 'CxAgentPersonalizationSettingsArgsDict', 'outputs.CxAgentPersonalizationSettings']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            satisfies_pzi: pulumi.Input[Optional[_builtins.bool]] = None,
+            satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_settings: pulumi.Input[Optional[_builtins.str]] = None,
+            speech_to_text_settings: pulumi.Input[Optional[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict', 'outputs.CxAgentSpeechToTextSettings']]] = None,
+            start_flow: pulumi.Input[Optional[_builtins.str]] = None,
+            start_playbook: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_language_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            text_to_speech_settings: pulumi.Input[Optional[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict', 'outputs.CxAgentTextToSpeechSettings']]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advancedSettings"] = advanced_settings
+        __props__["answerFeedbackSettings"] = answer_feedback_settings
+        __props__["avatarUri"] = avatar_uri
+        __props__["clientCertificateSettings"] = client_certificate_settings
+        __props__["defaultLanguageCode"] = default_language_code
+        __props__["deleteChatEngineOnDestroy"] = delete_chat_engine_on_destroy
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["enableMultiLanguageTraining"] = enable_multi_language_training
+        __props__["enableSpellCorrection"] = enable_spell_correction
+        __props__["enableStackdriverLogging"] = enable_stackdriver_logging
+        __props__["genAppBuilderSettings"] = gen_app_builder_settings
+        __props__["gitIntegrationSettings"] = git_integration_settings
+        __props__["location"] = location
+        __props__["locked"] = locked
+        __props__["name"] = name
+        __props__["personalizationSettings"] = personalization_settings
+        __props__["project"] = project
+        __props__["satisfiesPzi"] = satisfies_pzi
+        __props__["satisfiesPzs"] = satisfies_pzs
+        __props__["securitySettings"] = security_settings
+        __props__["speechToTextSettings"] = speech_to_text_settings
+        __props__["startFlow"] = start_flow
+        __props__["startPlaybook"] = start_playbook
+        __props__["supportedLanguageCodes"] = supported_language_codes
+        __props__["textToSpeechSettings"] = text_to_speech_settings
+        __props__["timeZone"] = time_zone
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/cxAgent:CxAgent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advancedSettings")
     def advanced_settings(self) -> pulumi.Output['outputs.CxAgentAdvancedSettings']:

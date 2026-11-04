@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
         /// <summary>
         /// Duration before applying GC policy (ex. "8h"). This is required when `Days` isn't set
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }

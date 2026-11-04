@@ -263,6 +263,12 @@ func (SourceRepresentationInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceRepresentationInstanceState)(nil)).Elem()
 }
 
+// SourceRepresentationInstanceExists checks whether an existing SourceRepresentationInstance resource with the given ID exists.
+func SourceRepresentationInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SourceRepresentationInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", id, state, "", opts...)
+}
+
 type sourceRepresentationInstanceArgs struct {
 	// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
 	CaCertificate *string `pulumi:"caCertificate"`

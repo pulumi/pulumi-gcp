@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// Possible values:
         /// * `STABLE`: Stable agent server mode.
         /// * `EXPERIMENTAL`: Experimental agent server mode.
-        /// Possible values are: `STABLE`, `EXPERIMENTAL`.
+        ///   Possible values are: `STABLE`, `EXPERIMENTAL`.
         /// </summary>
         public readonly string? AgentServerMode;
         /// <summary>

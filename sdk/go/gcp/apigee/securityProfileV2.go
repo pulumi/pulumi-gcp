@@ -258,6 +258,12 @@ func (SecurityProfileV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityProfileV2State)(nil)).Elem()
 }
 
+// SecurityProfileV2Exists checks whether an existing SecurityProfileV2 resource with the given ID exists.
+func SecurityProfileV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityProfileV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/securityProfileV2:SecurityProfileV2", id, state, "", opts...)
+}
+
 type securityProfileV2Args struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

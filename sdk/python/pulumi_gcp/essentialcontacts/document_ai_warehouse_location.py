@@ -442,6 +442,24 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
         __props__.__dict__["project_number"] = project_number
         return DocumentAiWarehouseLocation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_control_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            document_creator_default_role: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project_number: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessControlMode"] = access_control_mode
+        __props__["databaseType"] = database_type
+        __props__["documentCreatorDefaultRole"] = document_creator_default_role
+        __props__["kmsKey"] = kms_key
+        __props__["location"] = location
+        __props__["projectNumber"] = project_number
+        return pulumi.runtime.exists_resource(None, 'gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessControlMode")
     def access_control_mode(self) -> pulumi.Output[_builtins.str]:

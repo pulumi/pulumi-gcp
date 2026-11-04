@@ -528,6 +528,28 @@ class EkmConnection(pulumi.CustomResource):
         __props__.__dict__["service_resolvers"] = service_resolvers
         return EkmConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            crypto_space_path: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            key_management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict', 'outputs.EkmConnectionServiceResolver']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["cryptoSpacePath"] = crypto_space_path
+        __props__["etag"] = etag
+        __props__["keyManagementMode"] = key_management_mode
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["serviceResolvers"] = service_resolvers
+        return pulumi.runtime.exists_resource(None, 'gcp:kms/ekmConnection:EkmConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

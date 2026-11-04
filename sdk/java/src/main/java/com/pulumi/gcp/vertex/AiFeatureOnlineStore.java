@@ -294,11 +294,10 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      * 
-     * @deprecated
-     * `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      * 
      */
-    @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
+    @Deprecated
     @Export(name="embeddingManagement", refs={AiFeatureOnlineStoreEmbeddingManagement.class}, tree="[0]")
     private Output<AiFeatureOnlineStoreEmbeddingManagement> embeddingManagement;
 

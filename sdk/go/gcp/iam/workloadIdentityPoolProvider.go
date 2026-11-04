@@ -848,6 +848,12 @@ func (WorkloadIdentityPoolProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workloadIdentityPoolProviderState)(nil)).Elem()
 }
 
+// WorkloadIdentityPoolProviderExists checks whether an existing WorkloadIdentityPoolProvider resource with the given ID exists.
+func WorkloadIdentityPoolProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkloadIdentityPoolProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider", id, state, "", opts...)
+}
+
 type workloadIdentityPoolProviderArgs struct {
 	// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
 	// plain text, to restrict what otherwise valid authentication credentials issued by the

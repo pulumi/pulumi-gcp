@@ -287,6 +287,12 @@ func (ServiceConnectionPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceConnectionPolicyState)(nil)).Elem()
 }
 
+// ServiceConnectionPolicyExists checks whether an existing ServiceConnectionPolicy resource with the given ID exists.
+func ServiceConnectionPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceConnectionPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy", id, state, "", opts...)
+}
+
 type serviceConnectionPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

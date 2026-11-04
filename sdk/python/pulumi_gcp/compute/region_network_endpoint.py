@@ -765,6 +765,32 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         __props__.__dict__["region_network_endpoint_group"] = region_network_endpoint_group
         return RegionNetworkEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_destination_port: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            network_endpoint_id: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            region_network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clientDestinationPort"] = client_destination_port
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["fqdn"] = fqdn
+        __props__["instance"] = instance
+        __props__["ipAddress"] = ip_address
+        __props__["networkEndpointId"] = network_endpoint_id
+        __props__["port"] = port
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["regionNetworkEndpointGroup"] = region_network_endpoint_group
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clientDestinationPort")
     def client_destination_port(self) -> pulumi.Output[Optional[_builtins.int]]:

@@ -620,6 +620,36 @@ class ZoneVmExtensionPolicy(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return ZoneVmExtensionPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.ZoneVmExtensionPolicyExtensionPolicy']]]]] = None,
+            instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.ZoneVmExtensionPolicyInstanceSelector']]]]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_by_global: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["extensionPolicies"] = extension_policies
+        __props__["instanceSelectors"] = instance_selectors
+        __props__["kind"] = kind
+        __props__["managedByGlobal"] = managed_by_global
+        __props__["name"] = name
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["state"] = state
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/zoneVmExtensionPolicy:ZoneVmExtensionPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[_builtins.str]:

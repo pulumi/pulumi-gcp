@@ -225,7 +225,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The set of rules that belong to this policy. There must always be a default
-     * rule (rule with priority 2147483647 and match &#34;\*&#34;). If no rules are provided when creating a
+     * rule (rule with priority 2147483647 and match &#34;&#92;*&#34;). If no rules are provided when creating a
      * security policy, a default rule with action &#34;allow&#34; will be added. Structure is documented below.
      * 
      */
@@ -234,7 +234,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The set of rules that belong to this policy. There must always be a default
-     * rule (rule with priority 2147483647 and match &#34;\*&#34;). If no rules are provided when creating a
+     * rule (rule with priority 2147483647 and match &#34;&#92;*&#34;). If no rules are provided when creating a
      * security policy, a default rule with action &#34;allow&#34; will be added. Structure is documented below.
      * 
      */
@@ -600,7 +600,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param rules The set of rules that belong to this policy. There must always be a default
-         * rule (rule with priority 2147483647 and match &#34;\*&#34;). If no rules are provided when creating a
+         * rule (rule with priority 2147483647 and match &#34;&#92;*&#34;). If no rules are provided when creating a
          * security policy, a default rule with action &#34;allow&#34; will be added. Structure is documented below.
          * 
          * @return builder
@@ -613,7 +613,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param rules The set of rules that belong to this policy. There must always be a default
-         * rule (rule with priority 2147483647 and match &#34;\*&#34;). If no rules are provided when creating a
+         * rule (rule with priority 2147483647 and match &#34;&#92;*&#34;). If no rules are provided when creating a
          * security policy, a default rule with action &#34;allow&#34; will be added. Structure is documented below.
          * 
          * @return builder
@@ -625,7 +625,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param rules The set of rules that belong to this policy. There must always be a default
-         * rule (rule with priority 2147483647 and match &#34;\*&#34;). If no rules are provided when creating a
+         * rule (rule with priority 2147483647 and match &#34;&#92;*&#34;). If no rules are provided when creating a
          * security policy, a default rule with action &#34;allow&#34; will be added. Structure is documented below.
          * 
          * @return builder

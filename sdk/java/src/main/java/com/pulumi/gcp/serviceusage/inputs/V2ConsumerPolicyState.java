@@ -21,22 +21,20 @@ public final class V2ConsumerPolicyState extends com.pulumi.resources.ResourceAr
     /**
      * Default value is false. This field is deprecated and has no effect.
      * 
-     * @deprecated
-     * `checkUsageOnRemove` is deprecated and will be removed in a future major release.
+     * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `checkUsageOnRemove` is deprecated and will be removed in a future major release. */
+    @Deprecated
     @Import(name="checkUsageOnRemove")
     private @Nullable Output<Boolean> checkUsageOnRemove;
 
     /**
      * @return Default value is false. This field is deprecated and has no effect.
      * 
-     * @deprecated
-     * `checkUsageOnRemove` is deprecated and will be removed in a future major release.
+     * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `checkUsageOnRemove` is deprecated and will be removed in a future major release. */
+    @Deprecated
     public Optional<Output<Boolean>> checkUsageOnRemove() {
         return Optional.ofNullable(this.checkUsageOnRemove);
     }
@@ -180,11 +178,10 @@ public final class V2ConsumerPolicyState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * `checkUsageOnRemove` is deprecated and will be removed in a future major release.
+         * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `checkUsageOnRemove` is deprecated and will be removed in a future major release. */
+        @Deprecated
         public Builder checkUsageOnRemove(@Nullable Output<Boolean> checkUsageOnRemove) {
             $.checkUsageOnRemove = checkUsageOnRemove;
             return this;
@@ -195,11 +192,10 @@ public final class V2ConsumerPolicyState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * `checkUsageOnRemove` is deprecated and will be removed in a future major release.
+         * @deprecated `checkUsageOnRemove` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `checkUsageOnRemove` is deprecated and will be removed in a future major release. */
+        @Deprecated
         public Builder checkUsageOnRemove(Boolean checkUsageOnRemove) {
             return checkUsageOnRemove(Output.of(checkUsageOnRemove));
         }

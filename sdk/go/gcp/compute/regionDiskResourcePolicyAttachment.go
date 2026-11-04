@@ -216,6 +216,12 @@ func (RegionDiskResourcePolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionDiskResourcePolicyAttachmentState)(nil)).Elem()
 }
 
+// RegionDiskResourcePolicyAttachmentExists checks whether an existing RegionDiskResourcePolicyAttachment resource with the given ID exists.
+func RegionDiskResourcePolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionDiskResourcePolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment", id, state, "", opts...)
+}
+
 type regionDiskResourcePolicyAttachmentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

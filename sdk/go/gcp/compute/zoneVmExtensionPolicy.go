@@ -212,6 +212,12 @@ func (ZoneVmExtensionPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneVmExtensionPolicyState)(nil)).Elem()
 }
 
+// ZoneVmExtensionPolicyExists checks whether an existing ZoneVmExtensionPolicy resource with the given ID exists.
+func ZoneVmExtensionPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneVmExtensionPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/zoneVmExtensionPolicy:ZoneVmExtensionPolicy", id, state, "", opts...)
+}
+
 type zoneVmExtensionPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

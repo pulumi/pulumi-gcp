@@ -366,6 +366,12 @@ func (EnvironmentIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentIamPolicyState)(nil)).Elem()
 }
 
+// EnvironmentIamPolicyExists checks whether an existing EnvironmentIamPolicy resource with the given ID exists.
+func EnvironmentIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy", id, state, "", opts...)
+}
+
 type environmentIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	EnvId string `pulumi:"envId"`

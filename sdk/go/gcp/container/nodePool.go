@@ -496,6 +496,12 @@ func (NodePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodePoolState)(nil)).Elem()
 }
 
+// NodePoolExists checks whether an existing NodePool resource with the given ID exists.
+func NodePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:container/nodePool:NodePool", id, state, "", opts...)
+}
+
 type nodePoolArgs struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.

@@ -896,6 +896,12 @@ func (MetastoreServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreServiceState)(nil)).Elem()
 }
 
+// MetastoreServiceExists checks whether an existing MetastoreService resource with the given ID exists.
+func MetastoreServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/metastoreService:MetastoreService", id, state, "", opts...)
+}
+
 type metastoreServiceArgs struct {
 	// The database type that the Metastore service stores its data.
 	// Default value is `MYSQL`.

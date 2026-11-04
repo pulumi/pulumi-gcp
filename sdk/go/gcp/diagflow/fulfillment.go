@@ -194,6 +194,12 @@ func (FulfillmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fulfillmentState)(nil)).Elem()
 }
 
+// FulfillmentExists checks whether an existing Fulfillment resource with the given ID exists.
+func FulfillmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FulfillmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/fulfillment:Fulfillment", id, state, "", opts...)
+}
+
 type fulfillmentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

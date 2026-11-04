@@ -408,6 +408,12 @@ func (ScopeIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scopeIamMemberState)(nil)).Elem()
 }
 
+// ScopeIamMemberExists checks whether an existing ScopeIamMember resource with the given ID exists.
+func ScopeIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScopeIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/scopeIamMember:ScopeIamMember", id, state, "", opts...)
+}
+
 type scopeIamMemberArgs struct {
 	Condition *ScopeIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

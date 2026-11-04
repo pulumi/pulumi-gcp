@@ -882,6 +882,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:redis/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// Only applicable to STANDARD_HA tier which protects the instance
 	// against zonal failures by provisioning it across two zones.

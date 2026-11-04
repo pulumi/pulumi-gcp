@@ -193,6 +193,12 @@ func (TagValueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagValueState)(nil)).Elem()
 }
 
+// TagValueExists checks whether an existing TagValue resource with the given ID exists.
+func TagValueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagValueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:tags/tagValue:TagValue", id, state, "", opts...)
+}
+
 type tagValueArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

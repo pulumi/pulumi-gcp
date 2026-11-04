@@ -14,11 +14,10 @@ public final class FeatureMembershipMesh {
     /**
      * @return **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
      * 
-     * @deprecated
-     * Deprecated in favor of the `management` field
+     * @deprecated Deprecated in favor of the `management` field
      * 
      */
-    @Deprecated /* Deprecated in favor of the `management` field */
+    @Deprecated
     private @Nullable String controlPlane;
     /**
      * @return Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
@@ -30,11 +29,10 @@ public final class FeatureMembershipMesh {
     /**
      * @return **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
      * 
-     * @deprecated
-     * Deprecated in favor of the `management` field
+     * @deprecated Deprecated in favor of the `management` field
      * 
      */
-    @Deprecated /* Deprecated in favor of the `management` field */
+    @Deprecated
     public Optional<String> controlPlane() {
         return Optional.ofNullable(this.controlPlane);
     }

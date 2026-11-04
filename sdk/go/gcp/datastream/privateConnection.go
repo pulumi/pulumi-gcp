@@ -378,6 +378,12 @@ func (PrivateConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*privateConnectionState)(nil)).Elem()
 }
 
+// PrivateConnectionExists checks whether an existing PrivateConnection resource with the given ID exists.
+func PrivateConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrivateConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datastream/privateConnection:PrivateConnection", id, state, "", opts...)
+}
+
 type privateConnectionArgs struct {
 	// If set to true, will skip validations.
 	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`

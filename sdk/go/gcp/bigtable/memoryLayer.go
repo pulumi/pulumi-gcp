@@ -218,6 +218,12 @@ func (MemoryLayerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*memoryLayerState)(nil)).Elem()
 }
 
+// MemoryLayerExists checks whether an existing MemoryLayer resource with the given ID exists.
+func MemoryLayerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MemoryLayerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigtable/memoryLayer:MemoryLayer", id, state, "", opts...)
+}
+
 type memoryLayerArgs struct {
 	// The ID of the cluster to enable the memory layer on.
 	Cluster string `pulumi:"cluster"`

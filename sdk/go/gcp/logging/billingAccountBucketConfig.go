@@ -228,6 +228,12 @@ func (BillingAccountBucketConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*billingAccountBucketConfigState)(nil)).Elem()
 }
 
+// BillingAccountBucketConfigExists checks whether an existing BillingAccountBucketConfig resource with the given ID exists.
+func BillingAccountBucketConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BillingAccountBucketConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig", id, state, "", opts...)
+}
+
 type billingAccountBucketConfigArgs struct {
 	// The parent resource that contains the logging bucket.
 	BillingAccount string `pulumi:"billingAccount"`

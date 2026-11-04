@@ -67,12 +67,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // NOTE: This resource issues one CreateDataObject request per block.
  *         // It does NOT batch across resources. Pulumi will parallelize a
  *         // 'for_each' up to '-parallelism', but each item is still a separate
@@ -90,17 +90,17 @@ import javax.annotation.Nullable;
  *             .displayName("My Awesome Collection")
  *             .description("This collection stores important data.")
  *             .dataSchema("""
- * {
- *   \"type\": \"object\",
- *   \"properties\": {
- *     \"title\": {
- *       \"type\": \"string\"
- *     },
- *     \"plot\": {
- *       \"type\": \"string\"
- *     }
- *   }
- * }
+ * }{{@code
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "object}&#92;{@code ",
+ *   }&#92;{@code "properties}&#92;{@code ": }{{@code
+ *     }&#92;{@code "title}&#92;{@code ": }{{@code
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
+ *     }}{@code ,
+ *     }&#92;{@code "plot}&#92;{@code ": }{{@code
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
+ *     }}{@code
+ *   }}{@code
+ * }}{@code
  *             """)
  *             .vectorSchemas(CollectionVectorSchemaArgs.builder()
  *                 .fieldName("text_embedding")
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *                     .vertexEmbeddingConfig(CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs.builder()
  *                         .modelId("text-embedding-005")
  *                         .taskType("RETRIEVAL_DOCUMENT")
- *                         .textTemplate("Title: {title} ---- Plot: {plot}")
+ *                         .textTemplate("Title: }{{@code title}}{@code  ---- Plot: }{{@code plot}}{@code ")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -130,8 +130,8 @@ import javax.annotation.Nullable;
  *                 )))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -162,12 +162,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // NOTE: This resource issues one CreateDataObject request per block.
  *         // It does NOT batch across resources. Pulumi will parallelize a
  *         // 'for_each' up to '-parallelism', but each item is still a separate
@@ -185,17 +185,17 @@ import javax.annotation.Nullable;
  *             .displayName("My BYO-Embedding Collection")
  *             .description("Collection whose vectors are supplied by the client.")
  *             .dataSchema("""
- * {
- *   \"type\": \"object\",
- *   \"properties\": {
- *     \"title\": {
- *       \"type\": \"string\"
- *     },
- *     \"category\": {
- *       \"type\": \"string\"
- *     }
- *   }
- * }
+ * }{{@code
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "object}&#92;{@code ",
+ *   }&#92;{@code "properties}&#92;{@code ": }{{@code
+ *     }&#92;{@code "title}&#92;{@code ": }{{@code
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
+ *     }}{@code ,
+ *     }&#92;{@code "category}&#92;{@code ": }{{@code
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
+ *     }}{@code
+ *   }}{@code
+ * }}{@code
  *             """)
  *             .vectorSchemas(            
  *                 CollectionVectorSchemaArgs.builder()
@@ -246,8 +246,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

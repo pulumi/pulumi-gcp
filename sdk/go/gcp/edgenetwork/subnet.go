@@ -345,6 +345,12 @@ func (SubnetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetState)(nil)).Elem()
 }
 
+// SubnetExists checks whether an existing Subnet resource with the given ID exists.
+func SubnetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubnetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:edgenetwork/subnet:Subnet", id, state, "", opts...)
+}
+
 type subnetArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

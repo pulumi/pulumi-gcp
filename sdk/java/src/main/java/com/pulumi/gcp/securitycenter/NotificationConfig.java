@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sccNotification = new Topic("sccNotification", TopicArgs.builder()
  *             .name("my-topic")
  *             .build());
@@ -70,12 +70,12 @@ import javax.annotation.Nullable;
  *             .description("My custom Cloud Security Command Center Finding Notification Configuration")
  *             .pubsubTopic(sccNotification.id())
  *             .streamingConfig(NotificationConfigStreamingConfigArgs.builder()
- *                 .filter("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\"")
+ *                 .filter("category = }&#92;{@code "OPEN_FIREWALL}&#92;{@code " AND state = }&#92;{@code "ACTIVE}&#92;{@code "")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

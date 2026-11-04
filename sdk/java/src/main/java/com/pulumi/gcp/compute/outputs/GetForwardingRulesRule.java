@@ -290,7 +290,7 @@ public final class GetForwardingRulesRule {
      * forwarding rules cannot use the same &#39;[IPAddress, IPProtocol]&#39; pair, and
      * cannot have overlapping &#39;portRange&#39;s.
      * 
-     * {@literal @}pattern: \d+(?:-\d+)?
+     * {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     private String portRange;
@@ -316,7 +316,7 @@ public final class GetForwardingRulesRule {
      * forwarding rules cannot use the same &#39;[IPAddress, IPProtocol]&#39; pair if
      * they share at least one port number.
      * 
-     * {@literal @}pattern: \d+(?:-\d+)?
+     * {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     private List<String> ports;
@@ -739,7 +739,7 @@ public final class GetForwardingRulesRule {
      * forwarding rules cannot use the same &#39;[IPAddress, IPProtocol]&#39; pair, and
      * cannot have overlapping &#39;portRange&#39;s.
      * 
-     * {@literal @}pattern: \d+(?:-\d+)?
+     * {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     public String portRange() {
@@ -767,7 +767,7 @@ public final class GetForwardingRulesRule {
      * forwarding rules cannot use the same &#39;[IPAddress, IPProtocol]&#39; pair if
      * they share at least one port number.
      * 
-     * {@literal @}pattern: \d+(?:-\d+)?
+     * {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     public List<String> ports() {

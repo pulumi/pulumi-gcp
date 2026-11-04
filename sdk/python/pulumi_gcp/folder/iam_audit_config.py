@@ -686,6 +686,20 @@ class IamAuditConfig(pulumi.CustomResource):
         __props__.__dict__["service"] = service
         return IamAuditConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict', 'outputs.IamAuditConfigAuditLogConfig']]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["auditLogConfigs"] = audit_log_configs
+        __props__["etag"] = etag
+        __props__["folder"] = folder
+        __props__["service"] = service
+        return pulumi.runtime.exists_resource(None, 'gcp:folder/iamAuditConfig:IamAuditConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="auditLogConfigs")
     def audit_log_configs(self) -> pulumi.Output[Sequence['outputs.IamAuditConfigAuditLogConfig']]:

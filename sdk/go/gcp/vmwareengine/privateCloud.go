@@ -393,6 +393,12 @@ func (PrivateCloudState) ElementType() reflect.Type {
 	return reflect.TypeOf((*privateCloudState)(nil)).Elem()
 }
 
+// PrivateCloudExists checks whether an existing PrivateCloud resource with the given ID exists.
+func PrivateCloudExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrivateCloudState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vmwareengine/privateCloud:PrivateCloud", id, state, "", opts...)
+}
+
 type privateCloudArgs struct {
 	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 	DeletionDelayHours *int `pulumi:"deletionDelayHours"`

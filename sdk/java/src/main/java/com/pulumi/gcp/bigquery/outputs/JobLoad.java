@@ -70,7 +70,7 @@ public final class JobLoad {
      * @return The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
      * To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
      * the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
-     * data in its raw, binary state. BigQuery also supports the escape sequence &#34;\t&#34; to specify a tab separator.
+     * data in its raw, binary state. BigQuery also supports the escape sequence &#34;&#92;t&#34; to specify a tab separator.
      * The default value is a comma (&#39;,&#39;).
      * 
      */
@@ -159,11 +159,11 @@ public final class JobLoad {
     private @Nullable String sourceFormat;
     /**
      * @return The fully-qualified URIs that point to your data in Google Cloud.
-     * For Google Cloud Storage URIs: Each URI can contain one &#39;\*&#39; wildcard character
+     * For Google Cloud Storage URIs: Each URI can contain one &#39;&#92;*&#39; wildcard character
      * and it must come after the &#39;bucket&#39; name. Size limits related to load jobs apply
      * to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
      * specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-     * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the &#39;\*&#39; wildcard character is not allowed.
+     * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the &#39;&#92;*&#39; wildcard character is not allowed.
      * 
      */
     private List<String> sourceUris;
@@ -252,7 +252,7 @@ public final class JobLoad {
      * @return The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
      * To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
      * the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
-     * data in its raw, binary state. BigQuery also supports the escape sequence &#34;\t&#34; to specify a tab separator.
+     * data in its raw, binary state. BigQuery also supports the escape sequence &#34;&#92;t&#34; to specify a tab separator.
      * The default value is a comma (&#39;,&#39;).
      * 
      */
@@ -363,11 +363,11 @@ public final class JobLoad {
     }
     /**
      * @return The fully-qualified URIs that point to your data in Google Cloud.
-     * For Google Cloud Storage URIs: Each URI can contain one &#39;\*&#39; wildcard character
+     * For Google Cloud Storage URIs: Each URI can contain one &#39;&#92;*&#39; wildcard character
      * and it must come after the &#39;bucket&#39; name. Size limits related to load jobs apply
      * to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
      * specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-     * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the &#39;\*&#39; wildcard character is not allowed.
+     * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the &#39;&#92;*&#39; wildcard character is not allowed.
      * 
      */
     public List<String> sourceUris() {

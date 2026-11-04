@@ -424,6 +424,12 @@ func (QueueIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*queueIamBindingState)(nil)).Elem()
 }
 
+// QueueIamBindingExists checks whether an existing QueueIamBinding resource with the given ID exists.
+func QueueIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QueueIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudtasks/queueIamBinding:QueueIamBinding", id, state, "", opts...)
+}
+
 type queueIamBindingArgs struct {
 	Condition *QueueIamBindingCondition `pulumi:"condition"`
 	// The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,

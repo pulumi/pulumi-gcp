@@ -375,6 +375,12 @@ func (SecurityGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGatewayState)(nil)).Elem()
 }
 
+// SecurityGatewayExists checks whether an existing SecurityGateway resource with the given ID exists.
+func SecurityGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:beyondcorp/securityGateway:SecurityGateway", id, state, "", opts...)
+}
+
 type securityGatewayArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

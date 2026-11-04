@@ -19,11 +19,10 @@ public final class CertificateSelfManaged {
      * 
      * &gt; **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
-     * @deprecated
-     * `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
+     * @deprecated `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
      */
-    @Deprecated /* `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead. */
+    @Deprecated
     private @Nullable String certificatePem;
     /**
      * @return The certificate chain in PEM-encoded form.
@@ -60,11 +59,10 @@ public final class CertificateSelfManaged {
      * 
      * &gt; **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
-     * @deprecated
-     * `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
+     * @deprecated `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
      */
-    @Deprecated /* `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead. */
+    @Deprecated
     private @Nullable String privateKeyPem;
 
     private CertificateSelfManaged() {}
@@ -76,11 +74,10 @@ public final class CertificateSelfManaged {
      * 
      * &gt; **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
-     * @deprecated
-     * `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
+     * @deprecated `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
      */
-    @Deprecated /* `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead. */
+    @Deprecated
     public Optional<String> certificatePem() {
         return Optional.ofNullable(this.certificatePem);
     }
@@ -127,11 +124,10 @@ public final class CertificateSelfManaged {
      * 
      * &gt; **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
-     * @deprecated
-     * `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
+     * @deprecated `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
      */
-    @Deprecated /* `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead. */
+    @Deprecated
     public Optional<String> privateKeyPem() {
         return Optional.ofNullable(this.privateKeyPem);
     }

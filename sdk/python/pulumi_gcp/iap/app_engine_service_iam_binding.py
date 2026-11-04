@@ -1002,6 +1002,26 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
         __props__.__dict__["service"] = service
         return AppEngineServiceIamBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            condition: pulumi.Input[Optional[Union['AppEngineServiceIamBindingConditionArgs', 'AppEngineServiceIamBindingConditionArgsDict', 'outputs.AppEngineServiceIamBindingCondition']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["condition"] = condition
+        __props__["etag"] = etag
+        __props__["members"] = members
+        __props__["project"] = project
+        __props__["role"] = role
+        __props__["service"] = service
+        return pulumi.runtime.exists_resource(None, 'gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

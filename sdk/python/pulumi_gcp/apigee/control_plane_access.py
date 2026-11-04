@@ -363,6 +363,18 @@ class ControlPlaneAccess(pulumi.CustomResource):
         __props__.__dict__["synchronizer_identities"] = synchronizer_identities
         return ControlPlaneAccess(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            analytics_publisher_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            synchronizer_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["analyticsPublisherIdentities"] = analytics_publisher_identities
+        __props__["name"] = name
+        __props__["synchronizerIdentities"] = synchronizer_identities
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/controlPlaneAccess:ControlPlaneAccess', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="analyticsPublisherIdentities")
     def analytics_publisher_identities(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

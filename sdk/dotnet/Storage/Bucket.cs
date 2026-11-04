@@ -435,7 +435,7 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -698,7 +698,7 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -898,7 +898,7 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

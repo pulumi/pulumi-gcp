@@ -328,6 +328,12 @@ func (V2FolderSccBigQueryExportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2folderSccBigQueryExportState)(nil)).Elem()
 }
 
+// V2FolderSccBigQueryExportExists checks whether an existing V2FolderSccBigQueryExport resource with the given ID exists.
+func V2FolderSccBigQueryExportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2FolderSccBigQueryExportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport", id, state, "", opts...)
+}
+
 type v2folderSccBigQueryExportArgs struct {
 	// This must be unique within the organization.  It must consist of only lowercase letters,
 	// numbers, and hyphens, must start with a letter, must end with either a letter or a number,

@@ -890,6 +890,38 @@ class RegionalSecretVersion(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return RegionalSecretVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_managed_encryptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalSecretVersionCustomerManagedEncryptionArgs', 'RegionalSecretVersionCustomerManagedEncryptionArgsDict', 'outputs.RegionalSecretVersionCustomerManagedEncryption']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            destroy_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_secret_data_base64: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_data_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_data_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["customerManagedEncryptions"] = customer_managed_encryptions
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["destroyTime"] = destroy_time
+        __props__["enabled"] = enabled
+        __props__["isSecretDataBase64"] = is_secret_data_base64
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["secret"] = secret
+        __props__["secretData"] = secret_data
+        __props__["secretDataWo"] = secret_data_wo
+        __props__["secretDataWoVersion"] = secret_data_wo_version
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

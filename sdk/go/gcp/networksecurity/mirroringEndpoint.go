@@ -319,6 +319,12 @@ func (MirroringEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mirroringEndpointState)(nil)).Elem()
 }
 
+// MirroringEndpointExists checks whether an existing MirroringEndpoint resource with the given ID exists.
+func MirroringEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MirroringEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/mirroringEndpoint:MirroringEndpoint", id, state, "", opts...)
+}
+
 type mirroringEndpointArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

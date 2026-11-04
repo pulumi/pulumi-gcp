@@ -379,14 +379,14 @@ public class RegionalEndpoint extends com.pulumi.resources.CustomResource {
         return this.subnetwork;
     }
     /**
-     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \&#34;cloudkms.us-central1.rep.googleapis.com\&#34;.
+     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: &#92;&#34;cloudkms.us-central1.rep.googleapis.com&#92;&#34;.
      * 
      */
     @Export(name="targetGoogleApi", refs={String.class}, tree="[0]")
     private Output<String> targetGoogleApi;
 
     /**
-     * @return The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \&#34;cloudkms.us-central1.rep.googleapis.com\&#34;.
+     * @return The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: &#92;&#34;cloudkms.us-central1.rep.googleapis.com&#92;&#34;.
      * 
      */
     public Output<String> targetGoogleApi() {

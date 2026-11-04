@@ -481,6 +481,12 @@ func (TlsInspectionPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tlsInspectionPolicyState)(nil)).Elem()
 }
 
+// TlsInspectionPolicyExists checks whether an existing TlsInspectionPolicy resource with the given ID exists.
+func TlsInspectionPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TlsInspectionPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy", id, state, "", opts...)
+}
+
 type tlsInspectionPolicyArgs struct {
 	// A CA pool resource used to issue interception certificates.
 	CaPool string `pulumi:"caPool"`

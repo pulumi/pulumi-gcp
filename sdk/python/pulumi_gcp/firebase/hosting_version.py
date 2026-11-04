@@ -658,6 +658,20 @@ class HostingVersion(pulumi.CustomResource):
         __props__.__dict__["version_id"] = version_id
         return HostingVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict', 'outputs.HostingVersionConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["name"] = name
+        __props__["siteId"] = site_id
+        __props__["versionId"] = version_id
+        return pulumi.runtime.exists_resource(None, 'gcp:firebase/hostingVersion:HostingVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional['outputs.HostingVersionConfig']]:

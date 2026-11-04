@@ -804,6 +804,32 @@ class CxTestCase(pulumi.CustomResource):
         __props__.__dict__["test_config"] = test_config
         return CxTestCase(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_test_results: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxTestCaseLastTestResultArgs', 'CxTestCaseLastTestResultArgsDict', 'outputs.CxTestCaseLastTestResult']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            test_case_conversation_turns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict', 'outputs.CxTestCaseTestCaseConversationTurn']]]]] = None,
+            test_config: pulumi.Input[Optional[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict', 'outputs.CxTestCaseTestConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTime"] = creation_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["lastTestResults"] = last_test_results
+        __props__["name"] = name
+        __props__["notes"] = notes
+        __props__["parent"] = parent
+        __props__["tags"] = tags
+        __props__["testCaseConversationTurns"] = test_case_conversation_turns
+        __props__["testConfig"] = test_config
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/cxTestCase:CxTestCase', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[_builtins.str]:

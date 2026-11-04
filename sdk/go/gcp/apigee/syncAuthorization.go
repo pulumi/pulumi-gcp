@@ -194,6 +194,12 @@ func (SyncAuthorizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*syncAuthorizationState)(nil)).Elem()
 }
 
+// SyncAuthorizationExists checks whether an existing SyncAuthorization resource with the given ID exists.
+func SyncAuthorizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SyncAuthorizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/syncAuthorization:SyncAuthorization", id, state, "", opts...)
+}
+
 type syncAuthorizationArgs struct {
 	// Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
 	// The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount@my_project_id.iam.gserviceaccount.com

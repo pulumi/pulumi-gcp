@@ -704,6 +704,24 @@ class ApiIamMember(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return ApiIamMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            condition: pulumi.Input[Optional[Union['ApiIamMemberConditionArgs', 'ApiIamMemberConditionArgsDict', 'outputs.ApiIamMemberCondition']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["condition"] = condition
+        __props__["etag"] = etag
+        __props__["member"] = member
+        __props__["project"] = project
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'gcp:apigateway/apiIamMember:ApiIamMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[_builtins.str]:

@@ -582,6 +582,12 @@ func (AttachedClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*attachedClusterState)(nil)).Elem()
 }
 
+// AttachedClusterExists checks whether an existing AttachedCluster resource with the given ID exists.
+func AttachedClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AttachedClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:container/attachedCluster:AttachedCluster", id, state, "", opts...)
+}
+
 type attachedClusterArgs struct {
 	// Optional. Annotations on the cluster. This field has the same
 	// restrictions as Kubernetes annotations. The total size of all keys and

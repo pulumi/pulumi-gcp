@@ -436,7 +436,6 @@ namespace Pulumi.Gcp.Chronicle.Outputs
         /// Workspace Users settings.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedDetailsAmazonS3Settings"&gt;&lt;/a&gt;The `AmazonS3Settings` block supports:
         /// </summary>
         public readonly Outputs.FeedDetailsWorkspaceUsersSettings? WorkspaceUsersSettings;

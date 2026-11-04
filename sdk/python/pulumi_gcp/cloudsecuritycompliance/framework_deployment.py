@@ -2079,6 +2079,46 @@ class FrameworkDeployment(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return FrameworkDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_control_deployment_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlDeploymentReferenceArgs', 'FrameworkDeploymentCloudControlDeploymentReferenceArgsDict', 'outputs.FrameworkDeploymentCloudControlDeploymentReference']]]]] = None,
+            cloud_control_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlMetadataArgs', 'FrameworkDeploymentCloudControlMetadataArgsDict', 'outputs.FrameworkDeploymentCloudControlMetadata']]]]] = None,
+            computed_target_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_state: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            framework: pulumi.Input[Optional[Union['FrameworkDeploymentFrameworkArgs', 'FrameworkDeploymentFrameworkArgsDict', 'outputs.FrameworkDeploymentFramework']]] = None,
+            framework_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            target_resource_config: pulumi.Input[Optional[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict', 'outputs.FrameworkDeploymentTargetResourceConfig']]] = None,
+            target_resource_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cloudControlDeploymentReferences"] = cloud_control_deployment_references
+        __props__["cloudControlMetadatas"] = cloud_control_metadatas
+        __props__["computedTargetResource"] = computed_target_resource
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deploymentState"] = deployment_state
+        __props__["description"] = description
+        __props__["etag"] = etag
+        __props__["framework"] = framework
+        __props__["frameworkDeploymentId"] = framework_deployment_id
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["parent"] = parent
+        __props__["targetResourceConfig"] = target_resource_config
+        __props__["targetResourceDisplayName"] = target_resource_display_name
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cloudControlDeploymentReferences")
     def cloud_control_deployment_references(self) -> pulumi.Output[Sequence['outputs.FrameworkDeploymentCloudControlDeploymentReference']]:

@@ -73,11 +73,11 @@ namespace Pulumi.Gcp.ApiHub
         /// The ID to use for the curation resource, which will become the final
         /// component of the curations's resource name. This field is optional.
         /// * If provided, the same will be used. The service will throw an error if
-        /// the specified ID is already used by another curation resource in the API
-        /// hub.
+        ///   the specified ID is already used by another curation resource in the API
+        ///   hub.
         /// * If not provided, a system generated ID will be used.
-        /// This value should be 4-500 characters, and valid characters
-        /// are /a-z[0-9]-_/.
+        ///   This value should be 4-500 characters, and valid characters
+        ///   are /a-z[0-9]-_/.
         /// </summary>
         [Output("curationId")]
         public Output<string> CurationId { get; private set; } = null!;
@@ -230,11 +230,11 @@ namespace Pulumi.Gcp.ApiHub
         /// The ID to use for the curation resource, which will become the final
         /// component of the curations's resource name. This field is optional.
         /// * If provided, the same will be used. The service will throw an error if
-        /// the specified ID is already used by another curation resource in the API
-        /// hub.
+        ///   the specified ID is already used by another curation resource in the API
+        ///   hub.
         /// * If not provided, a system generated ID will be used.
-        /// This value should be 4-500 characters, and valid characters
-        /// are /a-z[0-9]-_/.
+        ///   This value should be 4-500 characters, and valid characters
+        ///   are /a-z[0-9]-_/.
         /// </summary>
         [Input("curationId", required: true)]
         public Input<string> CurationId { get; set; } = null!;
@@ -304,11 +304,11 @@ namespace Pulumi.Gcp.ApiHub
         /// The ID to use for the curation resource, which will become the final
         /// component of the curations's resource name. This field is optional.
         /// * If provided, the same will be used. The service will throw an error if
-        /// the specified ID is already used by another curation resource in the API
-        /// hub.
+        ///   the specified ID is already used by another curation resource in the API
+        ///   hub.
         /// * If not provided, a system generated ID will be used.
-        /// This value should be 4-500 characters, and valid characters
-        /// are /a-z[0-9]-_/.
+        ///   This value should be 4-500 characters, and valid characters
+        ///   are /a-z[0-9]-_/.
         /// </summary>
         [Input("curationId")]
         public Input<string>? CurationId { get; set; }

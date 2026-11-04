@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// The name of the Cloud Pub/Sub Topic.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// The name of the Cloud Pub/Sub Topic.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

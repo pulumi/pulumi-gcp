@@ -139,6 +139,12 @@ func (KeyRingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyRingState)(nil)).Elem()
 }
 
+// KeyRingExists checks whether an existing KeyRing resource with the given ID exists.
+func KeyRingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeyRingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/keyRing:KeyRing", id, state, "", opts...)
+}
+
 type keyRingArgs struct {
 	// The location for the KeyRing.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.

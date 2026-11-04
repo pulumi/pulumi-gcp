@@ -976,6 +976,34 @@ class Metric(pulumi.CustomResource):
         __props__.__dict__["value_extractor"] = value_extractor
         return Metric(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_options: pulumi.Input[Optional[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict', 'outputs.MetricBucketOptions']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            label_extractors: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            metric_descriptor: pulumi.Input[Optional[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict', 'outputs.MetricMetricDescriptor']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            value_extractor: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucketName"] = bucket_name
+        __props__["bucketOptions"] = bucket_options
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disabled"] = disabled
+        __props__["filter"] = filter
+        __props__["labelExtractors"] = label_extractors
+        __props__["metricDescriptor"] = metric_descriptor
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["valueExtractor"] = value_extractor
+        return pulumi.runtime.exists_resource(None, 'gcp:logging/metric:Metric', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Output[Optional[_builtins.str]]:

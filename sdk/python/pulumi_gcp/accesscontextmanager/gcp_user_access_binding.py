@@ -649,6 +649,30 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         __props__.__dict__["session_settings"] = session_settings
         return GcpUserAccessBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_levels: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run_access_levels: pulumi.Input[Optional[_builtins.str]] = None,
+            group_key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal: pulumi.Input[Optional[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict', 'outputs.GcpUserAccessBindingPrincipal']]] = None,
+            scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict', 'outputs.GcpUserAccessBindingScopedAccessSetting']]]]] = None,
+            session_settings: pulumi.Input[Optional[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict', 'outputs.GcpUserAccessBindingSessionSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessLevels"] = access_levels
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dryRunAccessLevels"] = dry_run_access_levels
+        __props__["groupKey"] = group_key
+        __props__["name"] = name
+        __props__["organizationId"] = organization_id
+        __props__["principal"] = principal
+        __props__["scopedAccessSettings"] = scoped_access_settings
+        __props__["sessionSettings"] = session_settings
+        return pulumi.runtime.exists_resource(None, 'gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessLevels")
     def access_levels(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -430,6 +430,12 @@ func (MetastoreFederationIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreFederationIamBindingState)(nil)).Elem()
 }
 
+// MetastoreFederationIamBindingExists checks whether an existing MetastoreFederationIamBinding resource with the given ID exists.
+func MetastoreFederationIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreFederationIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding", id, state, "", opts...)
+}
+
 type metastoreFederationIamBindingArgs struct {
 	Condition *MetastoreFederationIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

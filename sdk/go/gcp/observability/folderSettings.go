@@ -245,6 +245,12 @@ func (FolderSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderSettingsState)(nil)).Elem()
 }
 
+// FolderSettingsExists checks whether an existing FolderSettings resource with the given ID exists.
+func FolderSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:observability/folderSettings:FolderSettings", id, state, "", opts...)
+}
+
 type folderSettingsArgs struct {
 	// The default storage location for new resources, e.g. buckets. Only valid for global location.
 	DefaultStorageLocation *string `pulumi:"defaultStorageLocation"`

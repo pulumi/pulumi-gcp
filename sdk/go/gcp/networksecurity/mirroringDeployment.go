@@ -375,6 +375,12 @@ func (MirroringDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mirroringDeploymentState)(nil)).Elem()
 }
 
+// MirroringDeploymentExists checks whether an existing MirroringDeployment resource with the given ID exists.
+func MirroringDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MirroringDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/mirroringDeployment:MirroringDeployment", id, state, "", opts...)
+}
+
 type mirroringDeploymentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

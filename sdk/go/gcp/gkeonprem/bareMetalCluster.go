@@ -840,6 +840,12 @@ func (BareMetalClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bareMetalClusterState)(nil)).Elem()
 }
 
+// BareMetalClusterExists checks whether an existing BareMetalCluster resource with the given ID exists.
+func BareMetalClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BareMetalClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkeonprem/bareMetalCluster:BareMetalCluster", id, state, "", opts...)
+}
+
 type bareMetalClusterArgs struct {
 	// The Admin Cluster this Bare Metal User Cluster belongs to.
 	// This is the full resource name of the Admin Cluster's hub membership.

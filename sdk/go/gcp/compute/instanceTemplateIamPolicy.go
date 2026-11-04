@@ -591,6 +591,12 @@ func (InstanceTemplateIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceTemplateIamPolicyState)(nil)).Elem()
 }
 
+// InstanceTemplateIamPolicyExists checks whether an existing InstanceTemplateIamPolicy resource with the given ID exists.
+func InstanceTemplateIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceTemplateIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instanceTemplateIamPolicy:InstanceTemplateIamPolicy", id, state, "", opts...)
+}
+
 type instanceTemplateIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`

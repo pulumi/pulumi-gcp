@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
         /// * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
         /// * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-        /// and reduce preemption risk for Spot VMs.
+        ///   and reduce preemption risk for Spot VMs.
         /// </summary>
         [Input("locationPolicy")]
         public Input<string>? LocationPolicy { get; set; }

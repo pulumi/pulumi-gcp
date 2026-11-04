@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
         /// See Provider Versions for more details on beta resources.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -44,7 +43,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
         /// See Provider Versions for more details on beta resources.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -71,7 +69,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// Retrieves the current IAM policy data for config
         /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
         /// See Provider Versions for more details on beta resources.
-        /// 
         /// 
         /// ## Example Usage
         /// 

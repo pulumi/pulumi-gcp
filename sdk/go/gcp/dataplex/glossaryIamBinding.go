@@ -430,6 +430,12 @@ func (GlossaryIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*glossaryIamBindingState)(nil)).Elem()
 }
 
+// GlossaryIamBindingExists checks whether an existing GlossaryIamBinding resource with the given ID exists.
+func GlossaryIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlossaryIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/glossaryIamBinding:GlossaryIamBinding", id, state, "", opts...)
+}
+
 type glossaryIamBindingArgs struct {
 	Condition *GlossaryIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

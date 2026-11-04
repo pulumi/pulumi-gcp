@@ -310,6 +310,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigtable/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider

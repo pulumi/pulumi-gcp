@@ -220,6 +220,12 @@ func (LienState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lienState)(nil)).Elem()
 }
 
+// LienExists checks whether an existing Lien resource with the given ID exists.
+func LienExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LienState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:resourcemanager/lien:Lien", id, state, "", opts...)
+}
+
 type lienArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

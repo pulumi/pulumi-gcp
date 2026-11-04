@@ -819,6 +819,44 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return InterceptEndpointGroupAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            intercept_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
+            intercept_endpoint_group_association_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationArgs', 'InterceptEndpointGroupAssociationLocationArgsDict', 'outputs.InterceptEndpointGroupAssociationLocation']]]]] = None,
+            locations_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationsDetailArgs', 'InterceptEndpointGroupAssociationLocationsDetailArgsDict', 'outputs.InterceptEndpointGroupAssociationLocationsDetail']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["interceptEndpointGroup"] = intercept_endpoint_group
+        __props__["interceptEndpointGroupAssociationId"] = intercept_endpoint_group_association_id
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["locations"] = locations
+        __props__["locationsDetails"] = locations_details
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reconciling"] = reconciling
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

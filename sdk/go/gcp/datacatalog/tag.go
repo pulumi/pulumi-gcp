@@ -531,6 +531,12 @@ func (TagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagState)(nil)).Elem()
 }
 
+// TagExists checks whether an existing Tag resource with the given ID exists.
+func TagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datacatalog/tag:Tag", id, state, "", opts...)
+}
+
 type tagArgs struct {
 	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
 	// individual column based on that schema.

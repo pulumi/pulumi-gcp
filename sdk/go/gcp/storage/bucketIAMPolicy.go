@@ -541,6 +541,12 @@ func (BucketIAMPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketIAMPolicyState)(nil)).Elem()
 }
 
+// BucketIAMPolicyExists checks whether an existing BucketIAMPolicy resource with the given ID exists.
+func BucketIAMPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketIAMPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/bucketIAMPolicy:BucketIAMPolicy", id, state, "", opts...)
+}
+
 type bucketIAMPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Bucket string `pulumi:"bucket"`

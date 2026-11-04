@@ -431,6 +431,12 @@ func (MetricState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metricState)(nil)).Elem()
 }
 
+// MetricExists checks whether an existing Metric resource with the given ID exists.
+func MetricExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetricState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/metric:Metric", id, state, "", opts...)
+}
+
 type metricArgs struct {
 	// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
 	// are supported. The bucket has to be in the same project as the metric.

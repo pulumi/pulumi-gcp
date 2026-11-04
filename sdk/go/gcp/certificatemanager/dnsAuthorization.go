@@ -283,6 +283,12 @@ func (DnsAuthorizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsAuthorizationState)(nil)).Elem()
 }
 
+// DnsAuthorizationExists checks whether an existing DnsAuthorization resource with the given ID exists.
+func DnsAuthorizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsAuthorizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificatemanager/dnsAuthorization:DnsAuthorization", id, state, "", opts...)
+}
+
 type dnsAuthorizationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

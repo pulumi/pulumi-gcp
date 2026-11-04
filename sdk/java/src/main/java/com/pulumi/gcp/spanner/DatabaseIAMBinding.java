@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
  *                     .title("My Role")
  *                     .description("Grant permissions on my_role")
- *                     .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
+ *                     .expression("(resource.type == }&#92;{@code "spanner.googleapis.com/DatabaseRole}&#92;{@code " && (resource.name.endsWith(}&#92;{@code "/myrole}&#92;{@code ")))")
  *                     .build())
  *                 .build())
  *             .build());
@@ -195,7 +195,7 @@ import javax.annotation.Nullable;
  *             .condition(DatabaseIAMBindingConditionArgs.builder()
  *                 .title("My Role")
  *                 .description("Grant permissions on my_role")
- *                 .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
+ *                 .expression("(resource.type == }&#92;{@code "spanner.googleapis.com/DatabaseRole}&#92;{@code " && (resource.name.endsWith(}&#92;{@code "/myrole}&#92;{@code ")))")
  *                 .build())
  *             .build());
  * 
@@ -273,7 +273,7 @@ import javax.annotation.Nullable;
  *             .condition(DatabaseIAMMemberConditionArgs.builder()
  *                 .title("My Role")
  *                 .description("Grant permissions on my_role")
- *                 .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
+ *                 .expression("(resource.type == }&#92;{@code "spanner.googleapis.com/DatabaseRole}&#92;{@code " && (resource.name.endsWith(}&#92;{@code "/myrole}&#92;{@code ")))")
  *                 .build())
  *             .build());
  * 
@@ -381,7 +381,7 @@ import javax.annotation.Nullable;
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
  *                     .title("My Role")
  *                     .description("Grant permissions on my_role")
- *                     .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
+ *                     .expression("(resource.type == }&#92;{@code "spanner.googleapis.com/DatabaseRole}&#92;{@code " && (resource.name.endsWith(}&#92;{@code "/myrole}&#92;{@code ")))")
  *                     .build())
  *                 .build())
  *             .build());
@@ -466,7 +466,7 @@ import javax.annotation.Nullable;
  *             .condition(DatabaseIAMBindingConditionArgs.builder()
  *                 .title("My Role")
  *                 .description("Grant permissions on my_role")
- *                 .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
+ *                 .expression("(resource.type == }&#92;{@code "spanner.googleapis.com/DatabaseRole}&#92;{@code " && (resource.name.endsWith(}&#92;{@code "/myrole}&#92;{@code ")))")
  *                 .build())
  *             .build());
  * 
@@ -544,7 +544,7 @@ import javax.annotation.Nullable;
  *             .condition(DatabaseIAMMemberConditionArgs.builder()
  *                 .title("My Role")
  *                 .description("Grant permissions on my_role")
- *                 .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
+ *                 .expression("(resource.type == }&#92;{@code "spanner.googleapis.com/DatabaseRole}&#92;{@code " && (resource.name.endsWith(}&#92;{@code "/myrole}&#92;{@code ")))")
  *                 .build())
  *             .build());
  * 

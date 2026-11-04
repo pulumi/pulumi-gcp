@@ -418,6 +418,12 @@ func (TaxonomyIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*taxonomyIamMemberState)(nil)).Elem()
 }
 
+// TaxonomyIamMemberExists checks whether an existing TaxonomyIamMember resource with the given ID exists.
+func TaxonomyIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TaxonomyIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember", id, state, "", opts...)
+}
+
 type taxonomyIamMemberArgs struct {
 	Condition *TaxonomyIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

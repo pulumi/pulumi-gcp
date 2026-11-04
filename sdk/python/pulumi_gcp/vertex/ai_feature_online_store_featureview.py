@@ -1462,6 +1462,40 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         __props__.__dict__["vector_search_config"] = vector_search_config
         return AiFeatureOnlineStoreFeatureview(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            big_query_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewBigQuerySource']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            feature_online_store: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_registry_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewSyncConfig']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vector_search_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bigQuerySource"] = big_query_source
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["featureOnlineStore"] = feature_online_store
+        __props__["featureRegistrySource"] = feature_registry_source
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["syncConfig"] = sync_config
+        __props__["updateTime"] = update_time
+        __props__["vectorSearchConfig"] = vector_search_config
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bigQuerySource")
     def big_query_source(self) -> pulumi.Output[Optional['outputs.AiFeatureOnlineStoreFeatureviewBigQuerySource']]:

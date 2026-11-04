@@ -623,6 +623,34 @@ class V2OrganizationMuteConfig(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return V2OrganizationMuteConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            most_recent_editor: pulumi.Input[Optional[_builtins.str]] = None,
+            mute_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["filter"] = filter
+        __props__["location"] = location
+        __props__["mostRecentEditor"] = most_recent_editor
+        __props__["muteConfigId"] = mute_config_id
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["type"] = type
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

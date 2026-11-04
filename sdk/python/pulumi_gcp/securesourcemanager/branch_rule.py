@@ -887,6 +887,46 @@ class BranchRule(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return BranchRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_stale_reviews: pulumi.Input[Optional[_builtins.bool]] = None,
+            branch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            include_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            minimum_approvals_count: pulumi.Input[Optional[_builtins.int]] = None,
+            minimum_reviews_count: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+            require_comments_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_linear_history: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_pull_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowStaleReviews"] = allow_stale_reviews
+        __props__["branchRuleId"] = branch_rule_id
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disabled"] = disabled
+        __props__["includePattern"] = include_pattern
+        __props__["location"] = location
+        __props__["minimumApprovalsCount"] = minimum_approvals_count
+        __props__["minimumReviewsCount"] = minimum_reviews_count
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["repositoryId"] = repository_id
+        __props__["requireCommentsResolved"] = require_comments_resolved
+        __props__["requireLinearHistory"] = require_linear_history
+        __props__["requirePullRequest"] = require_pull_request
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:securesourcemanager/branchRule:BranchRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowStaleReviews")
     def allow_stale_reviews(self) -> pulumi.Output[Optional[_builtins.bool]]:

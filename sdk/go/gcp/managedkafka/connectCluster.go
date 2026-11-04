@@ -304,6 +304,12 @@ func (ConnectClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectClusterState)(nil)).Elem()
 }
 
+// ConnectClusterExists checks whether an existing ConnectCluster resource with the given ID exists.
+func ConnectClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:managedkafka/connectCluster:ConnectCluster", id, state, "", opts...)
+}
+
 type connectClusterArgs struct {
 	// A capacity configuration of a Kafka cluster.
 	// Structure is documented below.

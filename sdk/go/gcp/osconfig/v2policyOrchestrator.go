@@ -355,6 +355,12 @@ func (V2PolicyOrchestratorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2policyOrchestratorState)(nil)).Elem()
 }
 
+// V2PolicyOrchestratorExists checks whether an existing V2PolicyOrchestrator resource with the given ID exists.
+func V2PolicyOrchestratorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2PolicyOrchestratorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator", id, state, "", opts...)
+}
+
 type v2policyOrchestratorArgs struct {
 	// Required. Action to be done by the orchestrator in
 	// `projects/{project_id}/zones/{zone_id}` locations defined by the

@@ -156,7 +156,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Filter for the images to be returned by the data source. Syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Filter for the images to be returned by the data source. Syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

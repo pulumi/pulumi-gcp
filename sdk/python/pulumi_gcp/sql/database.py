@@ -581,6 +581,26 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         return Database(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            charset: pulumi.Input[Optional[_builtins.str]] = None,
+            collation: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["charset"] = charset
+        __props__["collation"] = collation
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["instance"] = instance
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        return pulumi.runtime.exists_resource(None, 'gcp:sql/database:Database', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def charset(self) -> pulumi.Output[_builtins.str]:

@@ -56,14 +56,14 @@ public final class ServiceProjectAttachmentState extends com.pulumi.resources.Re
     }
 
     /**
-     * &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34;&#34;
+     * &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:&#92;&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.&#92;&#34;&#34;
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34;&#34;
+     * @return &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:&#92;&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.&#92;&#34;&#34;
      * 
      */
     public Optional<Output<String>> name() {
@@ -88,8 +88,8 @@ public final class ServiceProjectAttachmentState extends com.pulumi.resources.Re
     }
 
     /**
-     * &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
-     * or \&#34;projects/123\&#34;. As input, project name with either project id or number
+     * &#34;Immutable. Service project name in the format: &#92;&#34;projects/abc&#92;&#34;
+     * or &#92;&#34;projects/123&#92;&#34;. As input, project name with either project id or number
      * are accepted. As output, this field will contain project number.&#34;
      * 
      */
@@ -97,8 +97,8 @@ public final class ServiceProjectAttachmentState extends com.pulumi.resources.Re
     private @Nullable Output<String> serviceProject;
 
     /**
-     * @return &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
-     * or \&#34;projects/123\&#34;. As input, project name with either project id or number
+     * @return &#34;Immutable. Service project name in the format: &#92;&#34;projects/abc&#92;&#34;
+     * or &#92;&#34;projects/123&#92;&#34;. As input, project name with either project id or number
      * are accepted. As output, this field will contain project number.&#34;
      * 
      */
@@ -235,7 +235,7 @@ public final class ServiceProjectAttachmentState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34;&#34;
+         * @param name &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:&#92;&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.&#92;&#34;&#34;
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class ServiceProjectAttachmentState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34;&#34;
+         * @param name &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:&#92;&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.&#92;&#34;&#34;
          * 
          * @return builder
          * 
@@ -279,8 +279,8 @@ public final class ServiceProjectAttachmentState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serviceProject &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
-         * or \&#34;projects/123\&#34;. As input, project name with either project id or number
+         * @param serviceProject &#34;Immutable. Service project name in the format: &#92;&#34;projects/abc&#92;&#34;
+         * or &#92;&#34;projects/123&#92;&#34;. As input, project name with either project id or number
          * are accepted. As output, this field will contain project number.&#34;
          * 
          * @return builder
@@ -292,8 +292,8 @@ public final class ServiceProjectAttachmentState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serviceProject &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
-         * or \&#34;projects/123\&#34;. As input, project name with either project id or number
+         * @param serviceProject &#34;Immutable. Service project name in the format: &#92;&#34;projects/abc&#92;&#34;
+         * or &#92;&#34;projects/123&#92;&#34;. As input, project name with either project id or number
          * are accepted. As output, this field will contain project number.&#34;
          * 
          * @return builder

@@ -343,6 +343,20 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         __props__.__dict__["service_accounts"] = service_accounts
         return DefaultServiceAccounts(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            service_accounts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["project"] = project
+        __props__["restorePolicy"] = restore_policy
+        __props__["serviceAccounts"] = service_accounts
+        return pulumi.runtime.exists_resource(None, 'gcp:projects/defaultServiceAccounts:DefaultServiceAccounts', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

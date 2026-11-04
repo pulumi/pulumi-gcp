@@ -822,6 +822,38 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["workspace_compilation_overrides"] = workspace_compilation_overrides
         return Repository(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            git_remote_settings: pulumi.Input[Optional[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict', 'outputs.RepositoryGitRemoteSettings']]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            npmrc_environment_variables_secret_version: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_compilation_overrides: pulumi.Input[Optional[Union['RepositoryWorkspaceCompilationOverridesArgs', 'RepositoryWorkspaceCompilationOverridesArgsDict', 'outputs.RepositoryWorkspaceCompilationOverrides']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["gitRemoteSettings"] = git_remote_settings
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["npmrcEnvironmentVariablesSecretVersion"] = npmrc_environment_variables_secret_version
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["serviceAccount"] = service_account
+        __props__["workspaceCompilationOverrides"] = workspace_compilation_overrides
+        return pulumi.runtime.exists_resource(None, 'gcp:dataform/repository:Repository', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

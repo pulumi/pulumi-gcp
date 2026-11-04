@@ -648,6 +648,12 @@ func (DnsManagedZoneIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsManagedZoneIamBindingState)(nil)).Elem()
 }
 
+// DnsManagedZoneIamBindingExists checks whether an existing DnsManagedZoneIamBinding resource with the given ID exists.
+func DnsManagedZoneIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsManagedZoneIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding", id, state, "", opts...)
+}
+
 type dnsManagedZoneIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

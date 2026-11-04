@@ -193,7 +193,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert")
 public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomResource {
     /**
-     * Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+     * Alias for the key/certificate pair. Values must match the regular expression [&#92;w&#92;s-.]{1,255}.
      * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
      * this parameter or the JSON body.
      * 
@@ -202,7 +202,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
     private Output<String> alias;
 
     /**
-     * @return Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+     * @return Alias for the key/certificate pair. Values must match the regular expression [&#92;w&#92;s-.]{1,255}.
      * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
      * this parameter or the JSON body.
      * 

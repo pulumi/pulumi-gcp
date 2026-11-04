@@ -298,6 +298,12 @@ func (SupportEventSubscriptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*supportEventSubscriptionState)(nil)).Elem()
 }
 
+// SupportEventSubscriptionExists checks whether an existing SupportEventSubscription resource with the given ID exists.
+func SupportEventSubscriptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SupportEventSubscriptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudsupport/supportEventSubscription:SupportEventSubscription", id, state, "", opts...)
+}
+
 type supportEventSubscriptionArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

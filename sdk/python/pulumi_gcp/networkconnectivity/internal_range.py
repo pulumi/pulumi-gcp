@@ -1290,6 +1290,50 @@ class InternalRange(pulumi.CustomResource):
         __props__.__dict__["users"] = users
         return InternalRange(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict', 'outputs.InternalRangeAllocationOptions']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            migration: pulumi.Input[Optional[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict', 'outputs.InternalRangeMigration']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            overlaps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peering: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            usage: pulumi.Input[Optional[_builtins.str]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allocationOptions"] = allocation_options
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["excludeCidrRanges"] = exclude_cidr_ranges
+        __props__["immutable"] = immutable
+        __props__["ipCidrRange"] = ip_cidr_range
+        __props__["labels"] = labels
+        __props__["migration"] = migration
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["overlaps"] = overlaps
+        __props__["peering"] = peering
+        __props__["prefixLength"] = prefix_length
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["targetCidrRanges"] = target_cidr_ranges
+        __props__["usage"] = usage
+        __props__["users"] = users
+        return pulumi.runtime.exists_resource(None, 'gcp:networkconnectivity/internalRange:InternalRange', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allocationOptions")
     def allocation_options(self) -> pulumi.Output[Optional['outputs.InternalRangeAllocationOptions']]:

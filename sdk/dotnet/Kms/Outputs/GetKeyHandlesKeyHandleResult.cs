@@ -22,9 +22,9 @@ namespace Pulumi.Gcp.Kms.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+        /// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string ResourceTypeSelector;
 

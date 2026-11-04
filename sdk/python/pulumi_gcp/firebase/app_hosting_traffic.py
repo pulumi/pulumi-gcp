@@ -770,6 +770,36 @@ class AppHostingTraffic(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AppHostingTraffic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            currents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingTrafficCurrentArgs', 'AppHostingTrafficCurrentArgsDict', 'outputs.AppHostingTrafficCurrent']]]]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rollout_policy: pulumi.Input[Optional[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict', 'outputs.AppHostingTrafficRolloutPolicy']]] = None,
+            target: pulumi.Input[Optional[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict', 'outputs.AppHostingTrafficTarget']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backend"] = backend
+        __props__["createTime"] = create_time
+        __props__["currents"] = currents
+        __props__["deleteTime"] = delete_time
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["rolloutPolicy"] = rollout_policy
+        __props__["target"] = target
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:firebase/appHostingTraffic:AppHostingTraffic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def backend(self) -> pulumi.Output[_builtins.str]:

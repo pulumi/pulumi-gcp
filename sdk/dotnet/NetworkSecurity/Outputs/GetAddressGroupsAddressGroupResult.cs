@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// <summary>
         /// The location of the Address Group.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string Location;
         /// <summary>

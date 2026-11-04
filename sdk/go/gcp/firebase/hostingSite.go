@@ -261,6 +261,12 @@ func (HostingSiteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostingSiteState)(nil)).Elem()
 }
 
+// HostingSiteExists checks whether an existing HostingSite resource with the given ID exists.
+func HostingSiteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostingSiteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/hostingSite:HostingSite", id, state, "", opts...)
+}
+
 type hostingSiteArgs struct {
 	// Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
 	// associated with the Hosting site.

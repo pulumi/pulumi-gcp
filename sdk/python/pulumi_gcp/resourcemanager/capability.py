@@ -310,6 +310,18 @@ class Capability(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return Capability(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            capability_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["capabilityName"] = capability_name
+        __props__["parent"] = parent
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'gcp:resourcemanager/capability:Capability', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="capabilityName")
     def capability_name(self) -> pulumi.Output[_builtins.str]:

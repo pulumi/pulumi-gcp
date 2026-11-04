@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of all retrieved Network Endpoint Groups. For list of the attributes, see 
+        /// A list of all retrieved Network Endpoint Groups. For list of the attributes, see
         /// the `gcp.compute.NetworkEndpointGroup` data source.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkEndpointGroupsNetworkEndpointGroupResult> NetworkEndpointGroups;

@@ -689,6 +689,12 @@ func (RouterNatState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerNatState)(nil)).Elem()
 }
 
+// RouterNatExists checks whether an existing RouterNat resource with the given ID exists.
+func RouterNatExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterNatState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/routerNat:RouterNat", id, state, "", opts...)
+}
+
 type routerNatArgs struct {
 	// The network tier to use when automatically reserving NAT IP addresses.
 	// Must be one of: PREMIUM, STANDARD. If not specified, then the current

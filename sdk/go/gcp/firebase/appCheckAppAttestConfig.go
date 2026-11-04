@@ -220,6 +220,12 @@ func (AppCheckAppAttestConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appCheckAppAttestConfigState)(nil)).Elem()
 }
 
+// AppCheckAppAttestConfigExists checks whether an existing AppCheckAppAttestConfig resource with the given ID exists.
+func AppCheckAppAttestConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppCheckAppAttestConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig", id, state, "", opts...)
+}
+
 type appCheckAppAttestConfigArgs struct {
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).

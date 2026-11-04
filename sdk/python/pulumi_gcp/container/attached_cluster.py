@@ -1461,6 +1461,64 @@ class AttachedCluster(pulumi.CustomResource):
         __props__.__dict__["workload_identity_configs"] = workload_identity_configs
         return AttachedCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            authorization: pulumi.Input[Optional[Union['AttachedClusterAuthorizationArgs', 'AttachedClusterAuthorizationArgsDict', 'outputs.AttachedClusterAuthorization']]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['AttachedClusterBinaryAuthorizationArgs', 'AttachedClusterBinaryAuthorizationArgsDict', 'outputs.AttachedClusterBinaryAuthorization']]] = None,
+            cluster_region: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            distribution: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttachedClusterErrorArgs', 'AttachedClusterErrorArgsDict', 'outputs.AttachedClusterError']]]]] = None,
+            fleet: pulumi.Input[Optional[Union['AttachedClusterFleetArgs', 'AttachedClusterFleetArgsDict', 'outputs.AttachedClusterFleet']]] = None,
+            kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_config: pulumi.Input[Optional[Union['AttachedClusterLoggingConfigArgs', 'AttachedClusterLoggingConfigArgsDict', 'outputs.AttachedClusterLoggingConfig']]] = None,
+            monitoring_config: pulumi.Input[Optional[Union['AttachedClusterMonitoringConfigArgs', 'AttachedClusterMonitoringConfigArgsDict', 'outputs.AttachedClusterMonitoringConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_config: pulumi.Input[Optional[Union['AttachedClusterOidcConfigArgs', 'AttachedClusterOidcConfigArgsDict', 'outputs.AttachedClusterOidcConfig']]] = None,
+            platform_version: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_config: pulumi.Input[Optional[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict', 'outputs.AttachedClusterProxyConfig']]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_posture_config: pulumi.Input[Optional[Union['AttachedClusterSecurityPostureConfigArgs', 'AttachedClusterSecurityPostureConfigArgsDict', 'outputs.AttachedClusterSecurityPostureConfig']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttachedClusterWorkloadIdentityConfigArgs', 'AttachedClusterWorkloadIdentityConfigArgsDict', 'outputs.AttachedClusterWorkloadIdentityConfig']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["authorization"] = authorization
+        __props__["binaryAuthorization"] = binary_authorization
+        __props__["clusterRegion"] = cluster_region
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["distribution"] = distribution
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["errors"] = errors
+        __props__["fleet"] = fleet
+        __props__["kubernetesVersion"] = kubernetes_version
+        __props__["location"] = location
+        __props__["loggingConfig"] = logging_config
+        __props__["monitoringConfig"] = monitoring_config
+        __props__["name"] = name
+        __props__["oidcConfig"] = oidc_config
+        __props__["platformVersion"] = platform_version
+        __props__["project"] = project
+        __props__["proxyConfig"] = proxy_config
+        __props__["reconciling"] = reconciling
+        __props__["securityPostureConfig"] = security_posture_config
+        __props__["state"] = state
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["workloadIdentityConfigs"] = workload_identity_configs
+        return pulumi.runtime.exists_resource(None, 'gcp:container/attachedCluster:AttachedCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

@@ -664,6 +664,24 @@ class AiFeatureOnlineStoreFeatureviewIamPolicy(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return AiFeatureOnlineStoreFeatureviewIamPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_online_store: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_view: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["etag"] = etag
+        __props__["featureOnlineStore"] = feature_online_store
+        __props__["featureView"] = feature_view
+        __props__["policyData"] = policy_data
+        __props__["project"] = project
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:

@@ -175,6 +175,12 @@ func (SshPublicKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sshPublicKeyState)(nil)).Elem()
 }
 
+// SshPublicKeyExists checks whether an existing SshPublicKey resource with the given ID exists.
+func SshPublicKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SshPublicKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oslogin/sshPublicKey:SshPublicKey", id, state, "", opts...)
+}
+
 type sshPublicKeyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

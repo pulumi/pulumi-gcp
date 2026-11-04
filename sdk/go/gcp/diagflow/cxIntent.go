@@ -334,6 +334,12 @@ func (CxIntentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxIntentState)(nil)).Elem()
 }
 
+// CxIntentExists checks whether an existing CxIntent resource with the given ID exists.
+func CxIntentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxIntentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxIntent:CxIntent", id, state, "", opts...)
+}
+
 type cxIntentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

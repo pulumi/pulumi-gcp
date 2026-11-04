@@ -421,6 +421,12 @@ func (TagTemplateIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagTemplateIamMemberState)(nil)).Elem()
 }
 
+// TagTemplateIamMemberExists checks whether an existing TagTemplateIamMember resource with the given ID exists.
+func TagTemplateIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagTemplateIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember", id, state, "", opts...)
+}
+
 type tagTemplateIamMemberArgs struct {
 	Condition *TagTemplateIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

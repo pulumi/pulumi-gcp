@@ -502,6 +502,12 @@ func (SecurityProfileGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityProfileGroupState)(nil)).Elem()
 }
 
+// SecurityProfileGroupExists checks whether an existing SecurityProfileGroup resource with the given ID exists.
+func SecurityProfileGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityProfileGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/securityProfileGroup:SecurityProfileGroup", id, state, "", opts...)
+}
+
 type securityProfileGroupArgs struct {
 	// Reference to a SecurityProfile with the CustomIntercept configuration.
 	CustomInterceptProfile *string `pulumi:"customInterceptProfile"`

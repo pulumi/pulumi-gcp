@@ -344,6 +344,12 @@ func (AiLogicConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiLogicConfigState)(nil)).Elem()
 }
 
+// AiLogicConfigExists checks whether an existing AiLogicConfig resource with the given ID exists.
+func AiLogicConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiLogicConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/aiLogicConfig:AiLogicConfig", id, state, "", opts...)
+}
+
 type aiLogicConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

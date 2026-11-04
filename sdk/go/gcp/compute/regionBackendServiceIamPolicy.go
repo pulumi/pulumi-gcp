@@ -628,6 +628,12 @@ func (RegionBackendServiceIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionBackendServiceIamPolicyState)(nil)).Elem()
 }
 
+// RegionBackendServiceIamPolicyExists checks whether an existing RegionBackendServiceIamPolicy resource with the given ID exists.
+func RegionBackendServiceIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionBackendServiceIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionBackendServiceIamPolicy:RegionBackendServiceIamPolicy", id, state, "", opts...)
+}
+
 type regionBackendServiceIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`

@@ -307,6 +307,12 @@ func (PolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyState)(nil)).Elem()
 }
 
+// PolicyExists checks whether an existing Policy resource with the given ID exists.
+func PolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:organizations/policy:Policy", id, state, "", opts...)
+}
+
 type policyArgs struct {
 	// A boolean policy is a constraint that is either enforced or not. Structure is documented
 	// below.

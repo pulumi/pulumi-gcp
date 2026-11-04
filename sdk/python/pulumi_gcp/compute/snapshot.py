@@ -1398,6 +1398,60 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict', 'outputs.SnapshotParams']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict', 'outputs.SnapshotSnapshotEncryptionKey']]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+            source_disk_encryption_key: pulumi.Input[Optional[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict', 'outputs.SnapshotSourceDiskEncryptionKey']]] = None,
+            source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["chainName"] = chain_name
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["diskSizeGb"] = disk_size_gb
+        __props__["effectiveLabels"] = effective_labels
+        __props__["guestFlush"] = guest_flush
+        __props__["labelFingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["licenses"] = licenses
+        __props__["name"] = name
+        __props__["params"] = params
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["selfLink"] = self_link
+        __props__["snapshotEncryptionKey"] = snapshot_encryption_key
+        __props__["snapshotId"] = snapshot_id
+        __props__["snapshotType"] = snapshot_type
+        __props__["sourceDisk"] = source_disk
+        __props__["sourceDiskEncryptionKey"] = source_disk_encryption_key
+        __props__["sourceInstantSnapshot"] = source_instant_snapshot
+        __props__["storageBytes"] = storage_bytes
+        __props__["storageLocations"] = storage_locations
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/snapshot:Snapshot', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="chainName")
     def chain_name(self) -> pulumi.Output[Optional[_builtins.str]]:

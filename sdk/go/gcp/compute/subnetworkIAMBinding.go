@@ -676,6 +676,12 @@ func (SubnetworkIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetworkIAMBindingState)(nil)).Elem()
 }
 
+// SubnetworkIAMBindingExists checks whether an existing SubnetworkIAMBinding resource with the given ID exists.
+func SubnetworkIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubnetworkIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding", id, state, "", opts...)
+}
+
 type subnetworkIAMBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

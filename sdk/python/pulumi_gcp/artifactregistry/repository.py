@@ -2422,6 +2422,60 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["vulnerability_scanning_config"] = vulnerability_scanning_config
         return Repository(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict', 'outputs.RepositoryCleanupPolicy']]]]] = None,
+            cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disallow_unspecified_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            format: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maven_config: pulumi.Input[Optional[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict', 'outputs.RepositoryMavenConfig']]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            platform_logs_config: pulumi.Input[Optional[Union['RepositoryPlatformLogsConfigArgs', 'RepositoryPlatformLogsConfigArgsDict', 'outputs.RepositoryPlatformLogsConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            registry_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_repository_config: pulumi.Input[Optional[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict', 'outputs.RepositoryRemoteRepositoryConfig']]] = None,
+            repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_repository_config: pulumi.Input[Optional[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict', 'outputs.RepositoryVirtualRepositoryConfig']]] = None,
+            vulnerability_scanning_config: pulumi.Input[Optional[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict', 'outputs.RepositoryVulnerabilityScanningConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cleanupPolicies"] = cleanup_policies
+        __props__["cleanupPolicyDryRun"] = cleanup_policy_dry_run
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disallowUnspecifiedMode"] = disallow_unspecified_mode
+        __props__["dockerConfig"] = docker_config
+        __props__["effectiveLabels"] = effective_labels
+        __props__["format"] = format
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["mavenConfig"] = maven_config
+        __props__["mode"] = mode
+        __props__["name"] = name
+        __props__["platformLogsConfig"] = platform_logs_config
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["registryUri"] = registry_uri
+        __props__["remoteRepositoryConfig"] = remote_repository_config
+        __props__["repositoryId"] = repository_id
+        __props__["updateTime"] = update_time
+        __props__["virtualRepositoryConfig"] = virtual_repository_config
+        __props__["vulnerabilityScanningConfig"] = vulnerability_scanning_config
+        return pulumi.runtime.exists_resource(None, 'gcp:artifactregistry/repository:Repository', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cleanupPolicies")
     def cleanup_policies(self) -> pulumi.Output[Optional[Sequence['outputs.RepositoryCleanupPolicy']]]:

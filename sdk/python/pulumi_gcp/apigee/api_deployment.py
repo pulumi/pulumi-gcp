@@ -426,6 +426,24 @@ class ApiDeployment(pulumi.CustomResource):
         __props__.__dict__["service_account"] = service_account
         return ApiDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["environment"] = environment
+        __props__["orgId"] = org_id
+        __props__["proxyId"] = proxy_id
+        __props__["revision"] = revision
+        __props__["serviceAccount"] = service_account
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/apiDeployment:ApiDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

@@ -1776,6 +1776,12 @@ func (RegionUrlMapState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionUrlMapState)(nil)).Elem()
 }
 
+// RegionUrlMapExists checks whether an existing RegionUrlMap resource with the given ID exists.
+func RegionUrlMapExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionUrlMapState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionUrlMap:RegionUrlMap", id, state, "", opts...)
+}
+
 type regionUrlMapArgs struct {
 	// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
 	// Only one of defaultRouteAction or defaultUrlRedirect must be set.

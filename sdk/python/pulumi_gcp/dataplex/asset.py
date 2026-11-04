@@ -898,6 +898,52 @@ class Asset(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Asset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict', 'outputs.AssetDiscoverySpec']]] = None,
+            discovery_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict', 'outputs.AssetDiscoveryStatus']]]]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lake: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource_spec: pulumi.Input[Optional[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict', 'outputs.AssetResourceSpec']]] = None,
+            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetResourceStatusArgs', 'AssetResourceStatusArgsDict', 'outputs.AssetResourceStatus']]]]] = None,
+            security_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetSecurityStatusArgs', 'AssetSecurityStatusArgsDict', 'outputs.AssetSecurityStatus']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dataplexZone"] = dataplex_zone
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["discoverySpec"] = discovery_spec
+        __props__["discoveryStatuses"] = discovery_statuses
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["lake"] = lake
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["resourceSpec"] = resource_spec
+        __props__["resourceStatuses"] = resource_statuses
+        __props__["securityStatuses"] = security_statuses
+        __props__["state"] = state
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:dataplex/asset:Asset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

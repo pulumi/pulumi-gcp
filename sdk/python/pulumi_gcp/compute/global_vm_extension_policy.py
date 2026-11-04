@@ -830,6 +830,38 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
         __props__.__dict__["update_timestamp"] = update_timestamp
         return GlobalVmExtensionPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.GlobalVmExtensionPolicyExtensionPolicy']]]]] = None,
+            instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.GlobalVmExtensionPolicyInstanceSelector']]]]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rollout_operation: pulumi.Input[Optional[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict', 'outputs.GlobalVmExtensionPolicyRolloutOperation']]] = None,
+            scoped_resource_status: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            update_timestamp: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["extensionPolicies"] = extension_policies
+        __props__["instanceSelectors"] = instance_selectors
+        __props__["kind"] = kind
+        __props__["name"] = name
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["rolloutOperation"] = rollout_operation
+        __props__["scopedResourceStatus"] = scoped_resource_status
+        __props__["selfLink"] = self_link
+        __props__["updateTimestamp"] = update_timestamp
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/globalVmExtensionPolicy:GlobalVmExtensionPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[_builtins.str]:

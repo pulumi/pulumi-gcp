@@ -499,6 +499,12 @@ func (FrameworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*frameworkState)(nil)).Elem()
 }
 
+// FrameworkExists checks whether an existing Framework resource with the given ID exists.
+func FrameworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FrameworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudsecuritycompliance/framework:Framework", id, state, "", opts...)
+}
+
 type frameworkArgs struct {
 	// The details of the cloud controls directly added without any grouping in
 	// the framework.

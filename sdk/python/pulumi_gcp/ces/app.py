@@ -2115,6 +2115,72 @@ class App(pulumi.CustomResource):
         __props__.__dict__["vpc_sc_settings"] = vpc_sc_settings
         return App(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            audio_processing_config: pulumi.Input[Optional[Union['AppAudioProcessingConfigArgs', 'AppAudioProcessingConfigArgsDict', 'outputs.AppAudioProcessingConfig']]] = None,
+            client_certificate_settings: pulumi.Input[Optional[Union['AppClientCertificateSettingsArgs', 'AppClientCertificateSettingsArgsDict', 'outputs.AppClientCertificateSettings']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_store_settings: pulumi.Input[Optional[Union['AppDataStoreSettingsArgs', 'AppDataStoreSettingsArgsDict', 'outputs.AppDataStoreSettings']]] = None,
+            default_channel_profile: pulumi.Input[Optional[Union['AppDefaultChannelProfileArgs', 'AppDefaultChannelProfileArgsDict', 'outputs.AppDefaultChannelProfile']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_count: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            error_handling_settings: pulumi.Input[Optional[Union['AppErrorHandlingSettingsArgs', 'AppErrorHandlingSettingsArgsDict', 'outputs.AppErrorHandlingSettings']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            evaluation_metrics_thresholds: pulumi.Input[Optional[Union['AppEvaluationMetricsThresholdsArgs', 'AppEvaluationMetricsThresholdsArgsDict', 'outputs.AppEvaluationMetricsThresholds']]] = None,
+            global_instruction: pulumi.Input[Optional[_builtins.str]] = None,
+            guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            language_settings: pulumi.Input[Optional[Union['AppLanguageSettingsArgs', 'AppLanguageSettingsArgsDict', 'outputs.AppLanguageSettings']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            logging_settings: pulumi.Input[Optional[Union['AppLoggingSettingsArgs', 'AppLoggingSettingsArgsDict', 'outputs.AppLoggingSettings']]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            model_settings: pulumi.Input[Optional[Union['AppModelSettingsArgs', 'AppModelSettingsArgsDict', 'outputs.AppModelSettings']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pinned: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            root_agent: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone_settings: pulumi.Input[Optional[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict', 'outputs.AppTimeZoneSettings']]] = None,
+            tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict', 'outputs.AppVariableDeclaration']]]]] = None,
+            vpc_sc_settings: pulumi.Input[Optional[Union['AppVpcScSettingsArgs', 'AppVpcScSettingsArgsDict', 'outputs.AppVpcScSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["audioProcessingConfig"] = audio_processing_config
+        __props__["clientCertificateSettings"] = client_certificate_settings
+        __props__["createTime"] = create_time
+        __props__["dataStoreSettings"] = data_store_settings
+        __props__["defaultChannelProfile"] = default_channel_profile
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deploymentCount"] = deployment_count
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["errorHandlingSettings"] = error_handling_settings
+        __props__["etag"] = etag
+        __props__["evaluationMetricsThresholds"] = evaluation_metrics_thresholds
+        __props__["globalInstruction"] = global_instruction
+        __props__["guardrails"] = guardrails
+        __props__["languageSettings"] = language_settings
+        __props__["location"] = location
+        __props__["locked"] = locked
+        __props__["loggingSettings"] = logging_settings
+        __props__["metadata"] = metadata
+        __props__["modelSettings"] = model_settings
+        __props__["name"] = name
+        __props__["pinned"] = pinned
+        __props__["project"] = project
+        __props__["rootAgent"] = root_agent
+        __props__["timeZoneSettings"] = time_zone_settings
+        __props__["toolExecutionMode"] = tool_execution_mode
+        __props__["updateTime"] = update_time
+        __props__["variableDeclarations"] = variable_declarations
+        __props__["vpcScSettings"] = vpc_sc_settings
+        return pulumi.runtime.exists_resource(None, 'gcp:ces/app:App', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

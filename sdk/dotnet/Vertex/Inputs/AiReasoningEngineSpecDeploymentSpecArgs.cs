@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// Possible values:
         /// * `STABLE`: Stable agent server mode.
         /// * `EXPERIMENTAL`: Experimental agent server mode.
-        /// Possible values are: `STABLE`, `EXPERIMENTAL`.
+        ///   Possible values are: `STABLE`, `EXPERIMENTAL`.
         /// </summary>
         [Input("agentServerMode")]
         public Input<string>? AgentServerMode { get; set; }

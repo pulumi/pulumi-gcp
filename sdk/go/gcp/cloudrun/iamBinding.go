@@ -427,6 +427,12 @@ func (IamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamBindingState)(nil)).Elem()
 }
 
+// IamBindingExists checks whether an existing IamBinding resource with the given ID exists.
+func IamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudrun/iamBinding:IamBinding", id, state, "", opts...)
+}
+
 type iamBindingArgs struct {
 	Condition *IamBindingCondition `pulumi:"condition"`
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,

@@ -918,6 +918,46 @@ class BatchOperationsJob(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return BatchOperationsJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket_list: pulumi.Input[Optional[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict', 'outputs.BatchOperationsJobBucketList']]] = None,
+            complete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_object: pulumi.Input[Optional[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict', 'outputs.BatchOperationsJobDeleteObject']]] = None,
+            delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_config: pulumi.Input[Optional[Union['BatchOperationsJobLoggingConfigArgs', 'BatchOperationsJobLoggingConfigArgsDict', 'outputs.BatchOperationsJobLoggingConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']]] = None,
+            put_object_hold: pulumi.Input[Optional[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict', 'outputs.BatchOperationsJobPutObjectHold']]] = None,
+            rewrite_object: pulumi.Input[Optional[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict', 'outputs.BatchOperationsJobRewriteObject']]] = None,
+            schedule_time: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucketList"] = bucket_list
+        __props__["completeTime"] = complete_time
+        __props__["createTime"] = create_time
+        __props__["deleteObject"] = delete_object
+        __props__["deleteProtection"] = delete_protection
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["dryRun"] = dry_run
+        __props__["jobId"] = job_id
+        __props__["loggingConfig"] = logging_config
+        __props__["project"] = project
+        __props__["putMetadata"] = put_metadata
+        __props__["putObjectHold"] = put_object_hold
+        __props__["rewriteObject"] = rewrite_object
+        __props__["scheduleTime"] = schedule_time
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/batchOperationsJob:BatchOperationsJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bucketList")
     def bucket_list(self) -> pulumi.Output[Optional['outputs.BatchOperationsJobBucketList']]:

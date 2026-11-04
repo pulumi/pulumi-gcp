@@ -892,6 +892,38 @@ class RegionSslPolicy(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         return RegionSslPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            min_tls_version: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            post_quantum_key_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+            profile: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["customFeatures"] = custom_features
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["enabledFeatures"] = enabled_features
+        __props__["fingerprint"] = fingerprint
+        __props__["minTlsVersion"] = min_tls_version
+        __props__["name"] = name
+        __props__["postQuantumKeyExchange"] = post_quantum_key_exchange
+        __props__["profile"] = profile
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/regionSslPolicy:RegionSslPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[_builtins.str]:

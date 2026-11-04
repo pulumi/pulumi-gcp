@@ -3478,6 +3478,56 @@ class AnalystAgentPersona(pulumi.CustomResource):
         __props__.__dict__["web_search_config"] = web_search_config
         return AnalystAgentPersona(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            analyst_agent_persona_id: pulumi.Input[Optional[_builtins.str]] = None,
+            artifact_examples: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaArtifactExampleArgs', 'AnalystAgentPersonaArtifactExampleArgsDict', 'outputs.AnalystAgentPersonaArtifactExample']]]]] = None,
+            artifacts_config: pulumi.Input[Optional[Union['AnalystAgentPersonaArtifactsConfigArgs', 'AnalystAgentPersonaArtifactsConfigArgsDict', 'outputs.AnalystAgentPersonaArtifactsConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            external_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaExternalDataSourceArgs', 'AnalystAgentPersonaExternalDataSourceArgsDict', 'outputs.AnalystAgentPersonaExternalDataSource']]]]] = None,
+            gemini_enterprise_engine: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            math_rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            mcp_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaMcpDataSourceArgs', 'AnalystAgentPersonaMcpDataSourceArgsDict', 'outputs.AnalystAgentPersonaMcpDataSource']]]]] = None,
+            model_description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaResourceArgs', 'AnalystAgentPersonaResourceArgsDict', 'outputs.AnalystAgentPersonaResource']]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            skills: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaSkillArgs', 'AnalystAgentPersonaSkillArgsDict', 'outputs.AnalystAgentPersonaSkill']]]]] = None,
+            tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaTableArgs', 'AnalystAgentPersonaTableArgsDict', 'outputs.AnalystAgentPersonaTable']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            web_search_config: pulumi.Input[Optional[Union['AnalystAgentPersonaWebSearchConfigArgs', 'AnalystAgentPersonaWebSearchConfigArgsDict', 'outputs.AnalystAgentPersonaWebSearchConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["analystAgentPersonaId"] = analyst_agent_persona_id
+        __props__["artifactExamples"] = artifact_examples
+        __props__["artifactsConfig"] = artifacts_config
+        __props__["createTime"] = create_time
+        __props__["customerContexts"] = customer_contexts
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayDescription"] = display_description
+        __props__["displayName"] = display_name
+        __props__["externalDataSources"] = external_data_sources
+        __props__["geminiEnterpriseEngine"] = gemini_enterprise_engine
+        __props__["location"] = location
+        __props__["mathRenderingMode"] = math_rendering_mode
+        __props__["mcpDataSources"] = mcp_data_sources
+        __props__["modelDescription"] = model_description
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["resources"] = resources
+        __props__["role"] = role
+        __props__["skills"] = skills
+        __props__["tables"] = tables
+        __props__["updateTime"] = update_time
+        __props__["webSearchConfig"] = web_search_config
+        return pulumi.runtime.exists_resource(None, 'gcp:agenticapplications/analystAgentPersona:AnalystAgentPersona', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="analystAgentPersonaId")
     def analyst_agent_persona_id(self) -> pulumi.Output[_builtins.str]:

@@ -486,6 +486,12 @@ func (EnterpriseKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseKeyState)(nil)).Elem()
 }
 
+// EnterpriseKeyExists checks whether an existing EnterpriseKey resource with the given ID exists.
+func EnterpriseKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnterpriseKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:recaptcha/enterpriseKey:EnterpriseKey", id, state, "", opts...)
+}
+
 type enterpriseKeyArgs struct {
 	// Settings for keys that can be used by Android apps.
 	AndroidSettings *EnterpriseKeyAndroidSettings `pulumi:"androidSettings"`

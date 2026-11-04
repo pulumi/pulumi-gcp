@@ -185,12 +185,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var listing = new DataExchange("listing", DataExchangeArgs.builder()
  *             .location("US")
  *             .dataExchangeId("dcr_data_exchange")
@@ -215,21 +215,21 @@ import javax.annotation.Nullable;
  *             .datasetId(listingDataset.datasetId())
  *             .schema("""
  * [
- *   {
- *     \"name\": \"name\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\"
- *   },
- *   {
- *     \"name\": \"post_abbr\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\"
- *   },
- *   {
- *     \"name\": \"date\",
- *     \"type\": \"DATE\",
- *     \"mode\": \"NULLABLE\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *   }}{@code ,
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "post_abbr}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *   }}{@code ,
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "date}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "DATE}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *   }}{@code
  * ]
  *             """)
  *             .build());
@@ -251,8 +251,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

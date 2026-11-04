@@ -740,6 +740,42 @@ class Hook(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Hook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hook_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict', 'outputs.HookPushOption']]] = None,
+            repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+            target_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disabled"] = disabled
+        __props__["events"] = events
+        __props__["hookId"] = hook_id
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pushOption"] = push_option
+        __props__["repositoryId"] = repository_id
+        __props__["sensitiveQueryString"] = sensitive_query_string
+        __props__["serviceAccountAuth"] = service_account_auth
+        __props__["targetUri"] = target_uri
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:securesourcemanager/hook:Hook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

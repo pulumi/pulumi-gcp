@@ -489,6 +489,12 @@ func (InstanceFromTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceFromTemplateState)(nil)).Elem()
 }
 
+// InstanceFromTemplateExists checks whether an existing InstanceFromTemplate resource with the given ID exists.
+func InstanceFromTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceFromTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instanceFromTemplate:InstanceFromTemplate", id, state, "", opts...)
+}
+
 type instanceFromTemplateArgs struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures *InstanceFromTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`

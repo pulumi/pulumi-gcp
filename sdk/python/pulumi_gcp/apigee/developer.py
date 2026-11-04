@@ -720,6 +720,34 @@ class Developer(pulumi.CustomResource):
         __props__.__dict__["user_name"] = user_name
         return Developer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict', 'outputs.DeveloperAttribute']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            first_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            last_name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organizatio_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attributes"] = attributes
+        __props__["createdAt"] = created_at
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["email"] = email
+        __props__["firstName"] = first_name
+        __props__["lastModifiedAt"] = last_modified_at
+        __props__["lastName"] = last_name
+        __props__["orgId"] = org_id
+        __props__["organizatioName"] = organizatio_name
+        __props__["status"] = status
+        __props__["userName"] = user_name
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/developer:Developer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def attributes(self) -> pulumi.Output[Optional[Sequence['outputs.DeveloperAttribute']]]:

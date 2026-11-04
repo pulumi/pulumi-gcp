@@ -583,6 +583,12 @@ func (CxToolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxToolState)(nil)).Elem()
 }
 
+// CxToolExists checks whether an existing CxTool resource with the given ID exists.
+func CxToolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxToolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxTool:CxTool", id, state, "", opts...)
+}
+
 type cxToolArgs struct {
 	// (Optional, Beta)
 	// Integration connectors tool specification.

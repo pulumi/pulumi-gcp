@@ -460,6 +460,20 @@ class EngineSplitTraffic(pulumi.CustomResource):
         __props__.__dict__["split"] = split
         return EngineSplitTraffic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            migrate_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            split: pulumi.Input[Optional[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict', 'outputs.EngineSplitTrafficSplit']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["migrateTraffic"] = migrate_traffic
+        __props__["project"] = project
+        __props__["service"] = service
+        __props__["split"] = split
+        return pulumi.runtime.exists_resource(None, 'gcp:appengine/engineSplitTraffic:EngineSplitTraffic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="migrateTraffic")
     def migrate_traffic(self) -> pulumi.Output[Optional[_builtins.bool]]:

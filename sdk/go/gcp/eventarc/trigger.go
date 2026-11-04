@@ -338,6 +338,12 @@ func (TriggerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerState)(nil)).Elem()
 }
 
+// TriggerExists checks whether an existing Trigger resource with the given ID exists.
+func TriggerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TriggerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:eventarc/trigger:Trigger", id, state, "", opts...)
+}
+
 type triggerArgs struct {
 	// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
 	Channel *string `pulumi:"channel"`

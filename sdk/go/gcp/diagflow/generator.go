@@ -340,6 +340,12 @@ func (GeneratorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*generatorState)(nil)).Elem()
 }
 
+// GeneratorExists checks whether an existing Generator resource with the given ID exists.
+func GeneratorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GeneratorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/generator:Generator", id, state, "", opts...)
+}
+
 type generatorArgs struct {
 	// Input of prebuilt Agent Coaching feature.
 	// Structure is documented below.

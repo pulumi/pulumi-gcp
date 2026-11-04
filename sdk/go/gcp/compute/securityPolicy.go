@@ -551,6 +551,12 @@ func (SecurityPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityPolicyState)(nil)).Elem()
 }
 
+// SecurityPolicyExists checks whether an existing SecurityPolicy resource with the given ID exists.
+func SecurityPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/securityPolicy:SecurityPolicy", id, state, "", opts...)
+}
+
 type securityPolicyArgs struct {
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig *SecurityPolicyAdaptiveProtectionConfig `pulumi:"adaptiveProtectionConfig"`

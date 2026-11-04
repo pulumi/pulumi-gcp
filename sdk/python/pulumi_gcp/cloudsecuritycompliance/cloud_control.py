@@ -1882,6 +1882,52 @@ class CloudControl(pulumi.CustomResource):
         __props__.__dict__["supported_target_resource_types"] = supported_target_resource_types
         return CloudControl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cloud_control_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            finding_category: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            major_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudControlParameterSpecArgs', 'CloudControlParameterSpecArgsDict', 'outputs.CloudControlParameterSpec']]]]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            related_frameworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            remediation_steps: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudControlRuleArgs', 'CloudControlRuleArgsDict', 'outputs.CloudControlRule']]]]] = None,
+            severity: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_cloud_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            supported_enforcement_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            supported_target_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["categories"] = categories
+        __props__["cloudControlId"] = cloud_control_id
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["findingCategory"] = finding_category
+        __props__["location"] = location
+        __props__["majorRevisionId"] = major_revision_id
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["parameterSpecs"] = parameter_specs
+        __props__["parent"] = parent
+        __props__["relatedFrameworks"] = related_frameworks
+        __props__["remediationSteps"] = remediation_steps
+        __props__["rules"] = rules
+        __props__["severity"] = severity
+        __props__["supportedCloudProviders"] = supported_cloud_providers
+        __props__["supportedEnforcementModes"] = supported_enforcement_modes
+        __props__["supportedTargetResourceTypes"] = supported_target_resource_types
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudsecuritycompliance/cloudControl:CloudControl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def categories(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

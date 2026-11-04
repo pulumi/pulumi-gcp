@@ -379,6 +379,12 @@ func (RestorePlanIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*restorePlanIamPolicyState)(nil)).Elem()
 }
 
+// RestorePlanIamPolicyExists checks whether an existing RestorePlanIamPolicy resource with the given ID exists.
+func RestorePlanIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RestorePlanIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy", id, state, "", opts...)
+}
+
 type restorePlanIamPolicyArgs struct {
 	// The region of the Restore Plan.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

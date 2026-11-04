@@ -1103,6 +1103,54 @@ class UnitKind(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return UnitKind(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            app_params: pulumi.Input[Optional[Union['UnitKindAppParamsArgs', 'UnitKindAppParamsArgsDict', 'outputs.UnitKindAppParams']]] = None,
+            application_template_component: pulumi.Input[Optional[Union['UnitKindApplicationTemplateComponentArgs', 'UnitKindApplicationTemplateComponentArgsDict', 'outputs.UnitKindApplicationTemplateComponent']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            default_release: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict', 'outputs.UnitKindDependency']]]]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            input_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict', 'outputs.UnitKindInputVariableMapping']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict', 'outputs.UnitKindOutputVariableMapping']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            saas: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_kind_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["appParams"] = app_params
+        __props__["applicationTemplateComponent"] = application_template_component
+        __props__["createTime"] = create_time
+        __props__["defaultRelease"] = default_release
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dependencies"] = dependencies
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["inputVariableMappings"] = input_variable_mappings
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["outputVariableMappings"] = output_variable_mappings
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["saas"] = saas
+        __props__["uid"] = uid
+        __props__["unitKindId"] = unit_kind_id
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:saasruntime/unitKind:UnitKind', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

@@ -1814,6 +1814,54 @@ class Spoke(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Spoke(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gateway: pulumi.Input[Optional[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict', 'outputs.SpokeGateway']]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            hub: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            linked_interconnect_attachments: pulumi.Input[Optional[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict', 'outputs.SpokeLinkedInterconnectAttachments']]] = None,
+            linked_producer_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict', 'outputs.SpokeLinkedProducerVpcNetwork']]] = None,
+            linked_router_appliance_instances: pulumi.Input[Optional[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict', 'outputs.SpokeLinkedRouterApplianceInstances']]] = None,
+            linked_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict', 'outputs.SpokeLinkedVpcNetwork']]] = None,
+            linked_vpn_tunnels: pulumi.Input[Optional[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict', 'outputs.SpokeLinkedVpnTunnels']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reasons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpokeReasonArgs', 'SpokeReasonArgsDict', 'outputs.SpokeReason']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            unique_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["gateway"] = gateway
+        __props__["group"] = group
+        __props__["hub"] = hub
+        __props__["labels"] = labels
+        __props__["linkedInterconnectAttachments"] = linked_interconnect_attachments
+        __props__["linkedProducerVpcNetwork"] = linked_producer_vpc_network
+        __props__["linkedRouterApplianceInstances"] = linked_router_appliance_instances
+        __props__["linkedVpcNetwork"] = linked_vpc_network
+        __props__["linkedVpnTunnels"] = linked_vpn_tunnels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reasons"] = reasons
+        __props__["state"] = state
+        __props__["uniqueId"] = unique_id
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:networkconnectivity/spoke:Spoke', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

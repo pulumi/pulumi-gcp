@@ -415,6 +415,12 @@ func (AppProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appProfileState)(nil)).Elem()
 }
 
+// AppProfileExists checks whether an existing AppProfile resource with the given ID exists.
+func AppProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigtable/appProfile:AppProfile", id, state, "", opts...)
+}
+
 type appProfileArgs struct {
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
 	AppProfileId string `pulumi:"appProfileId"`

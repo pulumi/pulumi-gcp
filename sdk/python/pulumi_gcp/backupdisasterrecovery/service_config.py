@@ -273,6 +273,18 @@ class ServiceConfig(pulumi.CustomResource):
         __props__.__dict__["resource_type"] = resource_type
         return ServiceConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["location"] = location
+        __props__["project"] = project
+        __props__["resourceType"] = resource_type
+        return pulumi.runtime.exists_resource(None, 'gcp:backupdisasterrecovery/serviceConfig:ServiceConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def location(self) -> pulumi.Output[_builtins.str]:

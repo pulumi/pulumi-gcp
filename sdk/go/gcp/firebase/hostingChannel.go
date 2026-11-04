@@ -270,6 +270,12 @@ func (HostingChannelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostingChannelState)(nil)).Elem()
 }
 
+// HostingChannelExists checks whether an existing HostingChannel resource with the given ID exists.
+func HostingChannelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostingChannelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/hostingChannel:HostingChannel", id, state, "", opts...)
+}
+
 type hostingChannelArgs struct {
 	// Required. Immutable. A unique ID within the site that identifies the channel.
 	ChannelId string `pulumi:"channelId"`

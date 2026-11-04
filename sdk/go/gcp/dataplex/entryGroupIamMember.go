@@ -430,6 +430,12 @@ func (EntryGroupIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entryGroupIamMemberState)(nil)).Elem()
 }
 
+// EntryGroupIamMemberExists checks whether an existing EntryGroupIamMember resource with the given ID exists.
+func EntryGroupIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntryGroupIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/entryGroupIamMember:EntryGroupIamMember", id, state, "", opts...)
+}
+
 type entryGroupIamMemberArgs struct {
 	Condition *EntryGroupIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

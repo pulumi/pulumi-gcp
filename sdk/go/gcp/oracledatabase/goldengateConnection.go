@@ -681,6 +681,12 @@ func (GoldengateConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*goldengateConnectionState)(nil)).Elem()
 }
 
+// GoldengateConnectionExists checks whether an existing GoldengateConnection resource with the given ID exists.
+func GoldengateConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GoldengateConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/goldengateConnection:GoldengateConnection", id, state, "", opts...)
+}
+
 type goldengateConnectionArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

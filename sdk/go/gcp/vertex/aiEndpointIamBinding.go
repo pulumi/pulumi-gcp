@@ -86,6 +86,12 @@ func (AiEndpointIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiEndpointIamBindingState)(nil)).Elem()
 }
 
+// AiEndpointIamBindingExists checks whether an existing AiEndpointIamBinding resource with the given ID exists.
+func AiEndpointIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiEndpointIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding", id, state, "", opts...)
+}
+
 type aiEndpointIamBindingArgs struct {
 	Condition *AiEndpointIamBindingCondition `pulumi:"condition"`
 	Endpoint  string                         `pulumi:"endpoint"`

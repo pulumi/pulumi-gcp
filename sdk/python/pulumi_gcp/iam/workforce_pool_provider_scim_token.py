@@ -652,6 +652,32 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
         __props__.__dict__["workforce_pool_id"] = workforce_pool_id
         return WorkforcePoolProviderScimToken(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scim_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scim_token_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_token: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["providerId"] = provider_id
+        __props__["scimTenantId"] = scim_tenant_id
+        __props__["scimTokenId"] = scim_token_id
+        __props__["securityToken"] = security_token
+        __props__["state"] = state
+        __props__["workforcePoolId"] = workforce_pool_id
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

@@ -382,6 +382,12 @@ func (ParserExtensionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*parserExtensionState)(nil)).Elem()
 }
 
+// ParserExtensionExists checks whether an existing ParserExtension resource with the given ID exists.
+func ParserExtensionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ParserExtensionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/parserExtension:ParserExtension", id, state, "", opts...)
+}
+
 type parserExtensionArgs struct {
 	// Parser config could be a cbn snippet.
 	CbnSnippet *string `pulumi:"cbnSnippet"`

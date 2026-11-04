@@ -653,6 +653,26 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return NetworkPeeringRoutesConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+            export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+            import_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            peering: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["exportCustomRoutes"] = export_custom_routes
+        __props__["exportSubnetRoutesWithPublicIp"] = export_subnet_routes_with_public_ip
+        __props__["importCustomRoutes"] = import_custom_routes
+        __props__["importSubnetRoutesWithPublicIp"] = import_subnet_routes_with_public_ip
+        __props__["network"] = network
+        __props__["peering"] = peering
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="exportCustomRoutes")
     def export_custom_routes(self) -> pulumi.Output[_builtins.bool]:

@@ -469,6 +469,12 @@ func (AuthzExtensionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authzExtensionState)(nil)).Elem()
 }
 
+// AuthzExtensionExists checks whether an existing AuthzExtension resource with the given ID exists.
+func AuthzExtensionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthzExtensionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/authzExtension:AuthzExtension", id, state, "", opts...)
+}
+
 type authzExtensionArgs struct {
 	// The :authority header in the gRPC request sent from Envoy to the extension service.
 	Authority *string `pulumi:"authority"`

@@ -715,6 +715,12 @@ func (ToolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*toolState)(nil)).Elem()
 }
 
+// ToolExists checks whether an existing Tool resource with the given ID exists.
+func ToolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ToolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/tool:Tool", id, state, "", opts...)
+}
+
 type toolArgs struct {
 	// Optional. Confirmation requirement for the actions. Each key is an action name in the `actionSchemas`.
 	// If an action's confirmation requirement is not specified (either the key is not present, or its value is `CONFIRMATION_REQUIREMENT_UNSPECIFIED`), a default value will be populated depending on the action's method type: GET actions default to `NOT_REQUIRED`, and other actions default to `REQUIRED`.

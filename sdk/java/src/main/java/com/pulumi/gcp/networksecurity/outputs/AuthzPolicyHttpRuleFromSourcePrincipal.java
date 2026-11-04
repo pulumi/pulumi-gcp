@@ -21,11 +21,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
      * 
      * &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
      * 
-     * @deprecated
-     * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * @deprecated `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
      * 
      */
-    @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
+    @Deprecated
     private @Nullable String contains;
     /**
      * @return (Optional, Deprecated)
@@ -35,11 +34,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
      * 
      * &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
      * 
-     * @deprecated
-     * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * @deprecated `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
      * 
      */
-    @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
+    @Deprecated
     private @Nullable String exact;
     /**
      * @return (Optional, Deprecated)
@@ -47,11 +45,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
      * 
      * &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
      * 
-     * @deprecated
-     * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+     * @deprecated `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
      * 
      */
-    @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
+    @Deprecated
     private @Nullable Boolean ignoreCase;
     /**
      * @return (Optional, Deprecated)
@@ -61,11 +58,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
      * 
      * &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
      * 
-     * @deprecated
-     * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * @deprecated `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
      * 
      */
-    @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
+    @Deprecated
     private @Nullable String prefix;
     /**
      * @return Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
@@ -89,11 +85,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
      * 
      * &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
      * 
-     * @deprecated
-     * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * @deprecated `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
      * 
      */
-    @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
+    @Deprecated
     private @Nullable String suffix;
 
     private AuthzPolicyHttpRuleFromSourcePrincipal() {}
@@ -105,11 +100,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
      * 
      * &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
      * 
-     * @deprecated
-     * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * @deprecated `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
      * 
      */
-    @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
+    @Deprecated
     public Optional<String> contains() {
         return Optional.ofNullable(this.contains);
     }
@@ -121,11 +115,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
      * 
      * &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
      * 
-     * @deprecated
-     * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * @deprecated `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
      * 
      */
-    @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
+    @Deprecated
     public Optional<String> exact() {
         return Optional.ofNullable(this.exact);
     }
@@ -135,11 +128,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
      * 
      * &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
      * 
-     * @deprecated
-     * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+     * @deprecated `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
      * 
      */
-    @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
+    @Deprecated
     public Optional<Boolean> ignoreCase() {
         return Optional.ofNullable(this.ignoreCase);
     }
@@ -151,11 +143,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
      * 
      * &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
      * 
-     * @deprecated
-     * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * @deprecated `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
      * 
      */
-    @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
+    @Deprecated
     public Optional<String> prefix() {
         return Optional.ofNullable(this.prefix);
     }
@@ -185,11 +176,10 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
      * 
      * &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
      * 
-     * @deprecated
-     * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * @deprecated `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
      * 
      */
-    @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
+    @Deprecated
     public Optional<String> suffix() {
         return Optional.ofNullable(this.suffix);
     }

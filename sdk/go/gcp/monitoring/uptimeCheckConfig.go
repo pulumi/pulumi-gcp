@@ -587,6 +587,12 @@ func (UptimeCheckConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*uptimeCheckConfigState)(nil)).Elem()
 }
 
+// UptimeCheckConfigExists checks whether an existing UptimeCheckConfig resource with the given ID exists.
+func UptimeCheckConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UptimeCheckConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", id, state, "", opts...)
+}
+
 type uptimeCheckConfigArgs struct {
 	// The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
 	// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.

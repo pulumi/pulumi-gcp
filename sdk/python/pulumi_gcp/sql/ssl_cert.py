@@ -514,6 +514,34 @@ class SslCert(pulumi.CustomResource):
         __props__.__dict__["sha1_fingerprint"] = sha1_fingerprint
         return SslCert(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_serial_number: pulumi.Input[Optional[_builtins.str]] = None,
+            common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            server_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            sha1_fingerprint: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cert"] = cert
+        __props__["certSerialNumber"] = cert_serial_number
+        __props__["commonName"] = common_name
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["expirationTime"] = expiration_time
+        __props__["instance"] = instance
+        __props__["privateKey"] = private_key
+        __props__["project"] = project
+        __props__["serverCaCert"] = server_ca_cert
+        __props__["sha1Fingerprint"] = sha1_fingerprint
+        return pulumi.runtime.exists_resource(None, 'gcp:sql/sslCert:SslCert', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cert(self) -> pulumi.Output[_builtins.str]:

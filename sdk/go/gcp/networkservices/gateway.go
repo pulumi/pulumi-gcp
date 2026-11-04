@@ -687,6 +687,12 @@ func (GatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayState)(nil)).Elem()
 }
 
+// GatewayExists checks whether an existing Gateway resource with the given ID exists.
+func GatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/gateway:Gateway", id, state, "", opts...)
+}
+
 type gatewayArgs struct {
 	// Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
 	// When no address is provided, an IP from the subnetwork is allocated.

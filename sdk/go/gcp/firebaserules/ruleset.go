@@ -197,6 +197,12 @@ func (RulesetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rulesetState)(nil)).Elem()
 }
 
+// RulesetExists checks whether an existing Ruleset resource with the given ID exists.
+func RulesetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RulesetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebaserules/ruleset:Ruleset", id, state, "", opts...)
+}
+
 type rulesetArgs struct {
 	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'terraform apply' would delete the instance,

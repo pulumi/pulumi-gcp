@@ -2224,6 +2224,74 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["subnetwork_id"] = subnetwork_id
         return Subnetwork(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_address: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_gce_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            log_config: pulumi.Input[Optional[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict', 'outputs.SubnetworkLogConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict', 'outputs.SubnetworkParams']]] = None,
+            private_ip_google_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            purpose: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_internal_range: pulumi.Input[Optional[_builtins.str]] = None,
+            resolve_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict', 'outputs.SubnetworkSecondaryIpRange']]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            send_secondary_ip_range_if_empty: pulumi.Input[Optional[_builtins.bool]] = None,
+            stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetwork_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowSubnetCidrRoutesOverlap"] = allow_subnet_cidr_routes_overlap
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["externalIpv6Prefix"] = external_ipv6_prefix
+        __props__["fingerprint"] = fingerprint
+        __props__["gatewayAddress"] = gateway_address
+        __props__["internalIpv6Prefix"] = internal_ipv6_prefix
+        __props__["ipCidrRange"] = ip_cidr_range
+        __props__["ipCollection"] = ip_collection
+        __props__["ipv6AccessType"] = ipv6_access_type
+        __props__["ipv6CidrRange"] = ipv6_cidr_range
+        __props__["ipv6GceEndpoint"] = ipv6_gce_endpoint
+        __props__["logConfig"] = log_config
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["params"] = params
+        __props__["privateIpGoogleAccess"] = private_ip_google_access
+        __props__["privateIpv6GoogleAccess"] = private_ipv6_google_access
+        __props__["project"] = project
+        __props__["purpose"] = purpose
+        __props__["region"] = region
+        __props__["reservedInternalRange"] = reserved_internal_range
+        __props__["resolveSubnetMask"] = resolve_subnet_mask
+        __props__["role"] = role
+        __props__["secondaryIpRanges"] = secondary_ip_ranges
+        __props__["selfLink"] = self_link
+        __props__["sendSecondaryIpRangeIfEmpty"] = send_secondary_ip_range_if_empty
+        __props__["stackType"] = stack_type
+        __props__["state"] = state
+        __props__["subnetworkId"] = subnetwork_id
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/subnetwork:Subnetwork', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> pulumi.Output[_builtins.bool]:

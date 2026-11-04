@@ -496,6 +496,12 @@ func (TargetHttpProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetHttpProxyState)(nil)).Elem()
 }
 
+// TargetHttpProxyExists checks whether an existing TargetHttpProxy resource with the given ID exists.
+func TargetHttpProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetHttpProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/targetHttpProxy:TargetHttpProxy", id, state, "", opts...)
+}
+
 type targetHttpProxyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -344,6 +344,12 @@ func (PreventionStoredInfoTypeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*preventionStoredInfoTypeState)(nil)).Elem()
 }
 
+// PreventionStoredInfoTypeExists checks whether an existing PreventionStoredInfoType resource with the given ID exists.
+func PreventionStoredInfoTypeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PreventionStoredInfoTypeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType", id, state, "", opts...)
+}
+
 type preventionStoredInfoTypeArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

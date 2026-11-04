@@ -150,12 +150,12 @@ namespace Pulumi.Gcp.ContactCenterInsights
         /// <summary>
         /// Questions are tagged for categorization and scoring. Tags can either be:
         /// - Default Tags: These are predefined categories. They are identified by
-        /// their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+        ///   their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
         /// - Custom Tags: These are user-defined categories. They are identified by
-        /// their full resource name (e.g.,
-        /// projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-        /// Both default and custom tags are used to group questions and to influence
-        /// the scoring of each question.
+        ///   their full resource name (e.g.,
+        ///   projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+        ///   Both default and custom tags are used to group questions and to influence
+        ///   the scoring of each question.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -332,12 +332,12 @@ namespace Pulumi.Gcp.ContactCenterInsights
         /// <summary>
         /// Questions are tagged for categorization and scoring. Tags can either be:
         /// - Default Tags: These are predefined categories. They are identified by
-        /// their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+        ///   their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
         /// - Custom Tags: These are user-defined categories. They are identified by
-        /// their full resource name (e.g.,
-        /// projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-        /// Both default and custom tags are used to group questions and to influence
-        /// the scoring of each question.
+        ///   their full resource name (e.g.,
+        ///   projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+        ///   Both default and custom tags are used to group questions and to influence
+        ///   the scoring of each question.
         /// </summary>
         public InputList<string> Tags
         {
@@ -487,12 +487,12 @@ namespace Pulumi.Gcp.ContactCenterInsights
         /// <summary>
         /// Questions are tagged for categorization and scoring. Tags can either be:
         /// - Default Tags: These are predefined categories. They are identified by
-        /// their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+        ///   their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
         /// - Custom Tags: These are user-defined categories. They are identified by
-        /// their full resource name (e.g.,
-        /// projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-        /// Both default and custom tags are used to group questions and to influence
-        /// the scoring of each question.
+        ///   their full resource name (e.g.,
+        ///   projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+        ///   Both default and custom tags are used to group questions and to influence
+        ///   the scoring of each question.
         /// </summary>
         public InputList<string> Tags
         {

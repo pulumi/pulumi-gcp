@@ -230,6 +230,12 @@ func (AppCheckDebugTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appCheckDebugTokenState)(nil)).Elem()
 }
 
+// AppCheckDebugTokenExists checks whether an existing AppCheckDebugToken resource with the given ID exists.
+func AppCheckDebugTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppCheckDebugTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appCheckDebugToken:AppCheckDebugToken", id, state, "", opts...)
+}
+
 type appCheckDebugTokenArgs struct {
 	// The ID of a
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),

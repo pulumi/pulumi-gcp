@@ -537,6 +537,12 @@ func (InstanceDesiredUserCreatedEndpointsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceDesiredUserCreatedEndpointsState)(nil)).Elem()
 }
 
+// InstanceDesiredUserCreatedEndpointsExists checks whether an existing InstanceDesiredUserCreatedEndpoints resource with the given ID exists.
+func InstanceDesiredUserCreatedEndpointsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceDesiredUserCreatedEndpointsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints", id, state, "", opts...)
+}
+
 type instanceDesiredUserCreatedEndpointsArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

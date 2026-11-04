@@ -442,6 +442,12 @@ func (CustomTargetTypeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customTargetTypeState)(nil)).Elem()
 }
 
+// CustomTargetTypeExists checks whether an existing CustomTargetType resource with the given ID exists.
+func CustomTargetTypeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomTargetTypeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddeploy/customTargetType:CustomTargetType", id, state, "", opts...)
+}
+
 type customTargetTypeArgs struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

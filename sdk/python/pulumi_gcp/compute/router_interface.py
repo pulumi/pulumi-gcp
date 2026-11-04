@@ -763,6 +763,36 @@ class RouterInterface(pulumi.CustomResource):
         __props__.__dict__["vpn_tunnel"] = vpn_tunnel
         return RouterInterface(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            interconnect_attachment: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            redundant_interface: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["interconnectAttachment"] = interconnect_attachment
+        __props__["ipRange"] = ip_range
+        __props__["ipVersion"] = ip_version
+        __props__["name"] = name
+        __props__["privateIpAddress"] = private_ip_address
+        __props__["project"] = project
+        __props__["redundantInterface"] = redundant_interface
+        __props__["region"] = region
+        __props__["router"] = router
+        __props__["subnetwork"] = subnetwork
+        __props__["vpnTunnel"] = vpn_tunnel
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/routerInterface:RouterInterface', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

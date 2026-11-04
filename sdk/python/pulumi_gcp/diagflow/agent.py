@@ -943,6 +943,40 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["time_zone"] = time_zone
         return Agent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_uri_backend: pulumi.Input[Optional[_builtins.str]] = None,
+            classification_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+            default_language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_language_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiVersion"] = api_version
+        __props__["avatarUri"] = avatar_uri
+        __props__["avatarUriBackend"] = avatar_uri_backend
+        __props__["classificationThreshold"] = classification_threshold
+        __props__["defaultLanguageCode"] = default_language_code
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["enableLogging"] = enable_logging
+        __props__["matchMode"] = match_mode
+        __props__["project"] = project
+        __props__["supportedLanguageCodes"] = supported_language_codes
+        __props__["tier"] = tier
+        __props__["timeZone"] = time_zone
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/agent:Agent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> pulumi.Output[_builtins.str]:

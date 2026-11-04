@@ -421,6 +421,12 @@ func (TagTemplateIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagTemplateIamBindingState)(nil)).Elem()
 }
 
+// TagTemplateIamBindingExists checks whether an existing TagTemplateIamBinding resource with the given ID exists.
+func TagTemplateIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagTemplateIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding", id, state, "", opts...)
+}
+
 type tagTemplateIamBindingArgs struct {
 	Condition *TagTemplateIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

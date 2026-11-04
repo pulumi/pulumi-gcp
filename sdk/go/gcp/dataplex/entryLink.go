@@ -377,6 +377,12 @@ func (EntryLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entryLinkState)(nil)).Elem()
 }
 
+// EntryLinkExists checks whether an existing EntryLink resource with the given ID exists.
+func EntryLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntryLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/entryLink:EntryLink", id, state, "", opts...)
+}
+
 type entryLinkArgs struct {
 	// The Aspects attached to the Entry Link.
 	// Structure is documented below.

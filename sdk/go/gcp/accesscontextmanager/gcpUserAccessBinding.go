@@ -261,6 +261,12 @@ func (GcpUserAccessBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpUserAccessBindingState)(nil)).Elem()
 }
 
+// GcpUserAccessBindingExists checks whether an existing GcpUserAccessBinding resource with the given ID exists.
+func GcpUserAccessBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GcpUserAccessBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding", id, state, "", opts...)
+}
+
 type gcpUserAccessBindingArgs struct {
 	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
 	AccessLevels *string `pulumi:"accessLevels"`

@@ -1082,6 +1082,40 @@ class DatasetAccess(pulumi.CustomResource):
         __props__.__dict__["view"] = view
         return DatasetAccess(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_updated_member: pulumi.Input[Optional[_builtins.bool]] = None,
+            authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict', 'outputs.DatasetAccessAuthorizedDataset']]] = None,
+            condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict', 'outputs.DatasetAccessCondition']]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+            iam_member: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            routine: pulumi.Input[Optional[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict', 'outputs.DatasetAccessRoutine']]] = None,
+            special_group: pulumi.Input[Optional[_builtins.str]] = None,
+            user_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+            view: pulumi.Input[Optional[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict', 'outputs.DatasetAccessView']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiUpdatedMember"] = api_updated_member
+        __props__["authorizedDataset"] = authorized_dataset
+        __props__["condition"] = condition
+        __props__["datasetId"] = dataset_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["domain"] = domain
+        __props__["groupByEmail"] = group_by_email
+        __props__["iamMember"] = iam_member
+        __props__["project"] = project
+        __props__["role"] = role
+        __props__["routine"] = routine
+        __props__["specialGroup"] = special_group
+        __props__["userByEmail"] = user_by_email
+        __props__["view"] = view
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/datasetAccess:DatasetAccess', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiUpdatedMember")
     def api_updated_member(self) -> pulumi.Output[_builtins.bool]:

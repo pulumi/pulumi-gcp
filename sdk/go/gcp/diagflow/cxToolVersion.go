@@ -747,6 +747,12 @@ func (CxToolVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxToolVersionState)(nil)).Elem()
 }
 
+// CxToolVersionExists checks whether an existing CxToolVersion resource with the given ID exists.
+func CxToolVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxToolVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxToolVersion:CxToolVersion", id, state, "", opts...)
+}
+
 type cxToolVersionArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

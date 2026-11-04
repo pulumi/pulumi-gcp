@@ -1326,6 +1326,48 @@ class SecurityProfile(pulumi.CustomResource):
         __props__.__dict__["wildfire_analysis_profile"] = wildfire_analysis_profile
         return SecurityProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_intercept_profile: pulumi.Input[Optional[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict', 'outputs.SecurityProfileCustomInterceptProfile']]] = None,
+            custom_mirroring_profile: pulumi.Input[Optional[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict', 'outputs.SecurityProfileCustomMirroringProfile']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_prevention_profile: pulumi.Input[Optional[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']]] = None,
+            wildfire_analysis_profile: pulumi.Input[Optional[Union['SecurityProfileWildfireAnalysisProfileArgs', 'SecurityProfileWildfireAnalysisProfileArgsDict', 'outputs.SecurityProfileWildfireAnalysisProfile']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["customInterceptProfile"] = custom_intercept_profile
+        __props__["customMirroringProfile"] = custom_mirroring_profile
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["selfLink"] = self_link
+        __props__["threatPreventionProfile"] = threat_prevention_profile
+        __props__["type"] = type
+        __props__["updateTime"] = update_time
+        __props__["urlFilteringProfile"] = url_filtering_profile
+        __props__["wildfireAnalysisProfile"] = wildfire_analysis_profile
+        return pulumi.runtime.exists_resource(None, 'gcp:networksecurity/securityProfile:SecurityProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -132,12 +132,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
@@ -170,13 +170,13 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .serviceAgentAuth("NONE")
  *                 .httpMethod("POST")
- *                 .requestBody("{\"example-key\": \"example-value\"}")
+ *                 .requestBody("}{&#92;{@code "example-key}&#92;{@code ": }&#92;{@code "example-value}&#92;{@code "}}{@code ")
  *                 .parameterMapping(Map.of("example-parameter", "examplePath"))
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -289,12 +289,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("us-central1")
@@ -329,14 +329,14 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .serviceAgentAuth("NONE")
  *                     .httpMethod("POST")
- *                     .requestBody("{\"example-key\": \"example-value\"}")
+ *                     .requestBody("}{&#92;{@code "example-key}&#92;{@code ": }&#92;{@code "example-value}&#92;{@code "}}{@code ")
  *                     .parameterMapping(Map.of("example-parameter", "examplePath"))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

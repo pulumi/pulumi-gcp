@@ -1838,6 +1838,54 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["sql_server_profile"] = sql_server_profile
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bigquery_profile: pulumi.Input[Optional[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict', 'outputs.ConnectionProfileBigqueryProfile']]] = None,
+            connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            forward_ssh_connectivity: pulumi.Input[Optional[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict', 'outputs.ConnectionProfileForwardSshConnectivity']]] = None,
+            gcs_profile: pulumi.Input[Optional[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict', 'outputs.ConnectionProfileGcsProfile']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mongodb_profile: pulumi.Input[Optional[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict', 'outputs.ConnectionProfileMongodbProfile']]] = None,
+            mysql_profile: pulumi.Input[Optional[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict', 'outputs.ConnectionProfileMysqlProfile']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oracle_profile: pulumi.Input[Optional[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict', 'outputs.ConnectionProfileOracleProfile']]] = None,
+            postgresql_profile: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict', 'outputs.ConnectionProfilePostgresqlProfile']]] = None,
+            private_connectivity: pulumi.Input[Optional[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict', 'outputs.ConnectionProfilePrivateConnectivity']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            salesforce_profile: pulumi.Input[Optional[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict', 'outputs.ConnectionProfileSalesforceProfile']]] = None,
+            spanner_profile: pulumi.Input[Optional[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict', 'outputs.ConnectionProfileSpannerProfile']]] = None,
+            sql_server_profile: pulumi.Input[Optional[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict', 'outputs.ConnectionProfileSqlServerProfile']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bigqueryProfile"] = bigquery_profile
+        __props__["connectionProfileId"] = connection_profile_id
+        __props__["createWithoutValidation"] = create_without_validation
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["forwardSshConnectivity"] = forward_ssh_connectivity
+        __props__["gcsProfile"] = gcs_profile
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["mongodbProfile"] = mongodb_profile
+        __props__["mysqlProfile"] = mysql_profile
+        __props__["name"] = name
+        __props__["oracleProfile"] = oracle_profile
+        __props__["postgresqlProfile"] = postgresql_profile
+        __props__["privateConnectivity"] = private_connectivity
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["salesforceProfile"] = salesforce_profile
+        __props__["spannerProfile"] = spanner_profile
+        __props__["sqlServerProfile"] = sql_server_profile
+        return pulumi.runtime.exists_resource(None, 'gcp:datastream/connectionProfile:ConnectionProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bigqueryProfile")
     def bigquery_profile(self) -> pulumi.Output[Optional['outputs.ConnectionProfileBigqueryProfile']]:

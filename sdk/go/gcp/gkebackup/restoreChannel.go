@@ -259,6 +259,12 @@ func (RestoreChannelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*restoreChannelState)(nil)).Elem()
 }
 
+// RestoreChannelExists checks whether an existing RestoreChannel resource with the given ID exists.
+func RestoreChannelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RestoreChannelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkebackup/restoreChannel:RestoreChannel", id, state, "", opts...)
+}
+
 type restoreChannelArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

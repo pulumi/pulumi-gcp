@@ -180,6 +180,12 @@ func (ServiceNetworkSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceNetworkSettingsState)(nil)).Elem()
 }
 
+// ServiceNetworkSettingsExists checks whether an existing ServiceNetworkSettings resource with the given ID exists.
+func ServiceNetworkSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceNetworkSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings", id, state, "", opts...)
+}
+
 type serviceNetworkSettingsArgs struct {
 	// Ingress settings for this service. Will apply to all versions.
 	// Structure is documented below.

@@ -448,6 +448,12 @@ func (ListingSubscriptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listingSubscriptionState)(nil)).Elem()
 }
 
+// ListingSubscriptionExists checks whether an existing ListingSubscription resource with the given ID exists.
+func ListingSubscriptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListingSubscriptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription", id, state, "", opts...)
+}
+
 type listingSubscriptionArgs struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId string `pulumi:"dataExchangeId"`

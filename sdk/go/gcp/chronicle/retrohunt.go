@@ -269,6 +269,12 @@ func (RetrohuntState) ElementType() reflect.Type {
 	return reflect.TypeOf((*retrohuntState)(nil)).Elem()
 }
 
+// RetrohuntExists checks whether an existing Retrohunt resource with the given ID exists.
+func RetrohuntExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RetrohuntState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/retrohunt:Retrohunt", id, state, "", opts...)
+}
+
 type retrohuntArgs struct {
 	// The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
 	RetrohuntId *string `pulumi:"RetrohuntId"`

@@ -750,6 +750,38 @@ class FtpUser(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return FtpUser(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            customer_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            server_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_directory_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FtpUserStorageDirectoryMappingArgs', 'FtpUserStorageDirectoryMappingArgsDict', 'outputs.FtpUserStorageDirectoryMapping']]]]] = None,
+            user_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FtpUserUserCredentialArgs', 'FtpUserUserCredentialArgsDict', 'outputs.FtpUserUserCredential']]]]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customerServiceAccount"] = customer_service_account
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["serverId"] = server_id
+        __props__["state"] = state
+        __props__["storageDirectoryMappings"] = storage_directory_mappings
+        __props__["userCredentials"] = user_credentials
+        __props__["userId"] = user_id
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/ftpUser:FtpUser', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customerServiceAccount")
     def customer_service_account(self) -> pulumi.Output[_builtins.str]:

@@ -421,6 +421,12 @@ func (EntryGroupIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entryGroupIamBindingState)(nil)).Elem()
 }
 
+// EntryGroupIamBindingExists checks whether an existing EntryGroupIamBinding resource with the given ID exists.
+func EntryGroupIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntryGroupIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datacatalog/entryGroupIamBinding:EntryGroupIamBinding", id, state, "", opts...)
+}
+
 type entryGroupIamBindingArgs struct {
 	Condition *EntryGroupIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

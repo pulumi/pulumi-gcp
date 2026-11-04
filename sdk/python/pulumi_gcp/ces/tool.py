@@ -1937,6 +1937,64 @@ class Tool(pulumi.CustomResource):
         __props__.__dict__["widget_tool"] = widget_tool
         return Tool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agent_tool: pulumi.Input[Optional[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict', 'outputs.ToolAgentTool']]] = None,
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict', 'outputs.ToolClientFunction']]] = None,
+            connector_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolConnectorToolArgs', 'ToolConnectorToolArgsDict', 'outputs.ToolConnectorTool']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict', 'outputs.ToolDataStoreTool']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_type: pulumi.Input[Optional[_builtins.str]] = None,
+            file_search_tool: pulumi.Input[Optional[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict', 'outputs.ToolFileSearchTool']]] = None,
+            generated_summary: pulumi.Input[Optional[_builtins.str]] = None,
+            google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict', 'outputs.ToolGoogleSearchTool']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mcp_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolMcpToolArgs', 'ToolMcpToolArgsDict', 'outputs.ToolMcpTool']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open_api_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolOpenApiToolArgs', 'ToolOpenApiToolArgsDict', 'outputs.ToolOpenApiTool']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict', 'outputs.ToolPythonFunction']]] = None,
+            remote_agent_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolRemoteAgentToolArgs', 'ToolRemoteAgentToolArgsDict', 'outputs.ToolRemoteAgentTool']]]]] = None,
+            system_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolSystemToolArgs', 'ToolSystemToolArgsDict', 'outputs.ToolSystemTool']]]]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            tool_fake_config: pulumi.Input[Optional[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict', 'outputs.ToolToolFakeConfig']]] = None,
+            tool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            widget_tool: pulumi.Input[Optional[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict', 'outputs.ToolWidgetTool']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["agentTool"] = agent_tool
+        __props__["app"] = app
+        __props__["clientFunction"] = client_function
+        __props__["connectorTools"] = connector_tools
+        __props__["createTime"] = create_time
+        __props__["dataStoreTool"] = data_store_tool
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["etag"] = etag
+        __props__["executionType"] = execution_type
+        __props__["fileSearchTool"] = file_search_tool
+        __props__["generatedSummary"] = generated_summary
+        __props__["googleSearchTool"] = google_search_tool
+        __props__["location"] = location
+        __props__["mcpTools"] = mcp_tools
+        __props__["name"] = name
+        __props__["openApiTools"] = open_api_tools
+        __props__["project"] = project
+        __props__["pythonFunction"] = python_function
+        __props__["remoteAgentTools"] = remote_agent_tools
+        __props__["systemTools"] = system_tools
+        __props__["timeout"] = timeout
+        __props__["toolFakeConfig"] = tool_fake_config
+        __props__["toolId"] = tool_id
+        __props__["updateTime"] = update_time
+        __props__["widgetTool"] = widget_tool
+        return pulumi.runtime.exists_resource(None, 'gcp:ces/tool:Tool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="agentTool")
     def agent_tool(self) -> pulumi.Output[Optional['outputs.ToolAgentTool']]:

@@ -353,6 +353,12 @@ func (AiEvaluationMetricState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiEvaluationMetricState)(nil)).Elem()
 }
 
+// AiEvaluationMetricExists checks whether an existing AiEvaluationMetric resource with the given ID exists.
+func AiEvaluationMetricExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiEvaluationMetricState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiEvaluationMetric:AiEvaluationMetric", id, state, "", opts...)
+}
+
 type aiEvaluationMetricArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -32,14 +32,14 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtractionArgs extends c
     }
 
     /**
-     * Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+     * Directory to extract archive to. Defaults to / on Linux or C:&#92; on Windows.
      * 
      */
     @Import(name="destination")
     private @Nullable Output<String> destination;
 
     /**
-     * @return Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+     * @return Directory to extract archive to. Defaults to / on Linux or C:&#92; on Windows.
      * 
      */
     public Optional<Output<String>> destination() {
@@ -111,7 +111,7 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtractionArgs extends c
         }
 
         /**
-         * @param destination Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+         * @param destination Directory to extract archive to. Defaults to / on Linux or C:&#92; on Windows.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtractionArgs extends c
         }
 
         /**
-         * @param destination Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+         * @param destination Directory to extract archive to. Defaults to / on Linux or C:&#92; on Windows.
          * 
          * @return builder
          * 

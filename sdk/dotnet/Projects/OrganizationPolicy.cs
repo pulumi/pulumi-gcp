@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("constraint")]
         public Output<string> Constraint { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Gcp.Projects
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string> DeletionPolicy { get; private set; } = null!;
@@ -264,7 +264,7 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("constraint", required: true)]
         public Input<string> Constraint { get; set; } = null!;
@@ -277,7 +277,7 @@ namespace Pulumi.Gcp.Projects
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -326,7 +326,7 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("constraint")]
         public Input<string>? Constraint { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.Gcp.Projects
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

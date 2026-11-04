@@ -249,6 +249,12 @@ func (ObjectAccessControlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectAccessControlState)(nil)).Elem()
 }
 
+// ObjectAccessControlExists checks whether an existing ObjectAccessControl resource with the given ID exists.
+func ObjectAccessControlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectAccessControlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/objectAccessControl:ObjectAccessControl", id, state, "", opts...)
+}
+
 type objectAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`

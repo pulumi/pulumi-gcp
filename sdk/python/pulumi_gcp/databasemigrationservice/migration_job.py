@@ -1948,6 +1948,66 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["vpc_peering_connectivity"] = vpc_peering_connectivity
         return MigrationJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dump_flags: pulumi.Input[Optional[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict', 'outputs.MigrationJobDumpFlags']]] = None,
+            dump_path: pulumi.Input[Optional[_builtins.str]] = None,
+            dump_type: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MigrationJobErrorArgs', 'MigrationJobErrorArgsDict', 'outputs.MigrationJobError']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            migration_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            objects_config: pulumi.Input[Optional[Union['MigrationJobObjectsConfigArgs', 'MigrationJobObjectsConfigArgsDict', 'outputs.MigrationJobObjectsConfig']]] = None,
+            performance_config: pulumi.Input[Optional[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict', 'outputs.MigrationJobPerformanceConfig']]] = None,
+            phase: pulumi.Input[Optional[_builtins.str]] = None,
+            postgres_homogeneous_config: pulumi.Input[Optional[Union['MigrationJobPostgresHomogeneousConfigArgs', 'MigrationJobPostgresHomogeneousConfigArgsDict', 'outputs.MigrationJobPostgresHomogeneousConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reverse_ssh_connectivity: pulumi.Input[Optional[Union['MigrationJobReverseSshConnectivityArgs', 'MigrationJobReverseSshConnectivityArgsDict', 'outputs.MigrationJobReverseSshConnectivity']]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            static_ip_connectivity: pulumi.Input[Optional[Union['MigrationJobStaticIpConnectivityArgs', 'MigrationJobStaticIpConnectivityArgsDict', 'outputs.MigrationJobStaticIpConnectivity']]] = None,
+            stop_on_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_peering_connectivity: pulumi.Input[Optional[Union['MigrationJobVpcPeeringConnectivityArgs', 'MigrationJobVpcPeeringConnectivityArgsDict', 'outputs.MigrationJobVpcPeeringConnectivity']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["desiredState"] = desired_state
+        __props__["destination"] = destination
+        __props__["displayName"] = display_name
+        __props__["dumpFlags"] = dump_flags
+        __props__["dumpPath"] = dump_path
+        __props__["dumpType"] = dump_type
+        __props__["effectiveLabels"] = effective_labels
+        __props__["errors"] = errors
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["migrationJobId"] = migration_job_id
+        __props__["name"] = name
+        __props__["objectsConfig"] = objects_config
+        __props__["performanceConfig"] = performance_config
+        __props__["phase"] = phase
+        __props__["postgresHomogeneousConfig"] = postgres_homogeneous_config
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reverseSshConnectivity"] = reverse_ssh_connectivity
+        __props__["source"] = source
+        __props__["state"] = state
+        __props__["staticIpConnectivity"] = static_ip_connectivity
+        __props__["stopOnWarnings"] = stop_on_warnings
+        __props__["type"] = type
+        __props__["vpcPeeringConnectivity"] = vpc_peering_connectivity
+        return pulumi.runtime.exists_resource(None, 'gcp:databasemigrationservice/migrationJob:MigrationJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -258,6 +258,12 @@ func (BackupPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPolicyState)(nil)).Elem()
 }
 
+// BackupPolicyExists checks whether an existing BackupPolicy resource with the given ID exists.
+func BackupPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:netapp/backupPolicy:BackupPolicy", id, state, "", opts...)
+}
+
 type backupPolicyArgs struct {
 	// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
 	DailyBackupLimit int `pulumi:"dailyBackupLimit"`

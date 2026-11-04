@@ -1795,6 +1795,52 @@ class HealthCheck(pulumi.CustomResource):
         __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
         return HealthCheck(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            grpc_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict', 'outputs.HealthCheckGrpcHealthCheck']]] = None,
+            grpc_tls_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict', 'outputs.HealthCheckGrpcTlsHealthCheck']]] = None,
+            healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            http2_health_check: pulumi.Input[Optional[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict', 'outputs.HealthCheckHttp2HealthCheck']]] = None,
+            http_health_check: pulumi.Input[Optional[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict', 'outputs.HealthCheckHttpHealthCheck']]] = None,
+            https_health_check: pulumi.Input[Optional[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict', 'outputs.HealthCheckHttpsHealthCheck']]] = None,
+            log_config: pulumi.Input[Optional[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict', 'outputs.HealthCheckLogConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            source_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ssl_health_check: pulumi.Input[Optional[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict', 'outputs.HealthCheckSslHealthCheck']]] = None,
+            tcp_health_check: pulumi.Input[Optional[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict', 'outputs.HealthCheckTcpHealthCheck']]] = None,
+            timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checkIntervalSec"] = check_interval_sec
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["grpcHealthCheck"] = grpc_health_check
+        __props__["grpcTlsHealthCheck"] = grpc_tls_health_check
+        __props__["healthyThreshold"] = healthy_threshold
+        __props__["http2HealthCheck"] = http2_health_check
+        __props__["httpHealthCheck"] = http_health_check
+        __props__["httpsHealthCheck"] = https_health_check
+        __props__["logConfig"] = log_config
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        __props__["sourceRegions"] = source_regions
+        __props__["sslHealthCheck"] = ssl_health_check
+        __props__["tcpHealthCheck"] = tcp_health_check
+        __props__["timeoutSec"] = timeout_sec
+        __props__["type"] = type
+        __props__["unhealthyThreshold"] = unhealthy_threshold
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/healthCheck:HealthCheck', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="checkIntervalSec")
     def check_interval_sec(self) -> pulumi.Output[Optional[_builtins.int]]:

@@ -430,6 +430,12 @@ func (DataExchangeIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataExchangeIamBindingState)(nil)).Elem()
 }
 
+// DataExchangeIamBindingExists checks whether an existing DataExchangeIamBinding resource with the given ID exists.
+func DataExchangeIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataExchangeIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding", id, state, "", opts...)
+}
+
 type dataExchangeIamBindingArgs struct {
 	Condition *DataExchangeIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

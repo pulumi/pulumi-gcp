@@ -390,6 +390,12 @@ func (FirewallPolicyIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallPolicyIamBindingState)(nil)).Elem()
 }
 
+// FirewallPolicyIamBindingExists checks whether an existing FirewallPolicyIamBinding resource with the given ID exists.
+func FirewallPolicyIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallPolicyIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/firewallPolicyIamBinding:FirewallPolicyIamBinding", id, state, "", opts...)
+}
+
 type firewallPolicyIamBindingArgs struct {
 	Condition *FirewallPolicyIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.
